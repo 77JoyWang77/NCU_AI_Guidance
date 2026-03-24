@@ -1,0 +1,157 @@
+from fastapi import APIRouter, Query
+from typing import List, Optional
+import json
+import os
+from pathlib import Path
+from app.models.schemas import Course, CoreAbility, DistributionCondition
+
+router = APIRouter()
+
+# 載入課程資料
+def load_courses():
+    """從 data/raw/courses 載入並轉換課程資料"""
+    base_dir = Path(__file__).parent.parent.parent.parent / 'data' / 'raw' / 'courses'
+
+    all_courses = []
+
+    # 遍歷 114_1 和 114_2 兩個學期的資料
+    for semester_dir in base_dir.iterdir():
+        if not semester_dir.is_dir():
+            continue
+
+        # 讀取該學期目錄下的所有 JSON 檔案
+        for json_file in semester_dir.glob('*.json'):
+            try:
+                with open(json_file, 'r', encoding='utf-8') as f:
+                    courses_data = json.load(f)
+
+                # 處理每門課程
+                for raw_course in courses_data:
+                    converted_course = convert_course_format(raw_course)
+                    if converted_course:
+                        all_courses.append(converted_course)
+
+            except Exception as e:
+                print(f"Error loading {json_file}: {e}")
+                continue
+
+    return all_courses
+
+def convert_course_format(raw_course: dict) -> Optional[dict]:
+    """將原始課程資料轉換為 API 格式"""
+    try:
+        # 基本資訊
+        semester = raw_course.get('學期', '')
+        semester_year = raw_course.get('學年度', '')
+        full_half = raw_course.get('全半年', '半')
+
+        # 計算 semester_display
+        if full_half == '全':
+            semester_display = '全年'
+        elif semester == '1':
+            semester_display = '上學期'
+        elif semester == '2':
+            semester_display = '下學期'
+        else:
+            semester_display = '未指定'
+
+        # 處理課程綱要
+        course_outline = raw_course.get('課程綱要', {})
+
+        # 處理核心能力
+        core_abilities = []
+        for ability in course_outline.get('核心能力', []):
+            core_abilities.append({
+                'ability_name': ability.get('能力名稱', ''),
+                'intensity': ability.get('強度指數', ''),
+                'evaluation': ability.get('評量方式', '')
+            })
+
+        # 處理分發條件
+        distribution_conditions = []
+        distribution_data = raw_course.get('分發條件', {})
+        for priority_item in distribution_data.get('優先順序列表', []):
+            distribution_conditions.append({
+                'priority': priority_item.get('優先順序', ''),
+                'condition': priority_item.get('相關條件限制說明', '')
+            })
+
+        # 轉換為 API 格式
+        converted = {
+            'serial_no': raw_course.get('流水號', ''),
+            'course_id': raw_course.get('課號-班別', ''),
+            'course_name_zh': raw_course.get('課程名稱(中文)', ''),
+            'course_name_en': raw_course.get('課程名稱(英文)', ''),
+            'college': raw_course.get('學院', ''),
+            'department': raw_course.get('系所', ''),
+            'instructor': raw_course.get('授課教師', ''),
+            'credits': int(raw_course.get('學分', 0)),
+            'required_elective': raw_course.get('選修別', ''),
+            'semester_display': semester_display,
+            'semester': f"{semester_year}_{semester}",
+            'full_half_year': full_half,
+            'course_objective': course_outline.get('課程目標', None),
+            'course_content': course_outline.get('授課內容', None),
+            'textbooks': course_outline.get('教科書/參考書', None),
+            'grading': course_outline.get('評量配分比重', None),
+            'course_system': course_outline.get('課程學制', None),
+            'course_field': course_outline.get('課程領域', None),
+            'core_abilities': core_abilities if core_abilities else None,
+            'distribution_conditions': distribution_conditions if distribution_conditions else None,
+            'distribution_link': raw_course.get('分發條件_連結', None),
+            'outline_link': raw_course.get('課程綱要_連結', None),
+            'class_time': raw_course.get('上課時間', None),
+            'classroom': raw_course.get('教室', None),
+            'note': raw_course.get('備註', None),
+            'teaching_method': course_outline.get('授課方式', None),
+            'office_hours': course_outline.get('辦公時間', None),
+            'weeks': course_outline.get('授課週數', None)
+        }
+
+        return converted
+
+    except Exception as e:
+        print(f"Error converting course: {e}")
+        return None
+
+@router.get("", response_model=List[Course])
+async def get_courses(
+    college: Optional[str] = Query(None, description="學院篩選"),
+    department: Optional[str] = Query(None, description="系所篩選"),
+    type: Optional[str] = Query(None, description="必修/選修篩選"),
+    limit: Optional[int] = Query(None, description="回傳結果數量限制（預設回傳全部）")
+):
+    """
+    取得課程列表，支援篩選
+    """
+    courses = load_courses()
+
+    # 套用篩選條件
+    filtered_courses = courses
+
+    if college:
+        filtered_courses = [c for c in filtered_courses if c.get('college') == college]
+
+    if department:
+        filtered_courses = [c for c in filtered_courses if c.get('department') == department]
+
+    if type:
+        filtered_courses = [c for c in filtered_courses if c.get('required_elective') == type]
+
+    # 如果有指定 limit，則限制回傳數量；否則回傳全部
+    if limit:
+        return filtered_courses[:limit]
+    return filtered_courses
+
+@router.get("/{course_id}", response_model=Course)
+async def get_course_by_id(course_id: str):
+    """
+    根據流水號取得課程詳情
+    """
+    courses = load_courses()
+
+    for course in courses:
+        if course.get('serial_no') == course_id:
+            return course
+
+    return {"error": "Course not found"}

@@ -1,0 +1,97 @@
+// 科系兴趣量表相关类型
+export type AssessmentMode = 'grade1' | 'grade2' | 'grade3';
+
+export interface Question {
+  id: string;
+  department: string; // 隐藏，仅用于后端计算
+  title: string; // 研究题目
+  motivation: string; // 动机与问题
+  method: string; // 研究方法
+  result: string; // 研究结果
+  tags: string[]; // 小领域标签
+}
+
+export interface Answer {
+  questionId: string;
+  score: number; // 1-5分
+}
+
+export interface AssessmentResult {
+  departments: DepartmentScore[];
+  tagScores: TagScore[];
+}
+
+export interface DepartmentScore {
+  name: string;
+  college: string;
+  score: number;
+  matchedTags: string[];
+}
+
+export interface TagScore {
+  tag: string;
+  score: number;
+}
+
+// 课程相关类型
+export interface CoreAbility {
+  ability_name: string;  // 能力名称
+  intensity: string;     // 强度指数，如 "(5) 非常高"
+  evaluation: string;    // 评量方式
+}
+
+export interface DistributionCondition {
+  priority: string;  // 优先顺序
+  condition: string; // 条件限制说明
+}
+
+export interface Course {
+  serial_no: string;
+  course_id: string;
+  course_name_zh: string;
+  course_name_en: string;
+  college: string;
+  department: string;
+  instructor: string;
+  credits: number;
+  required_elective: string;
+  semester_display: string; // 上學期/下學期/全年
+  semester?: string; // 114_1, 114_2
+  full_half_year?: string; // 全/半
+  course_objective?: string;
+  course_content?: string;
+  textbooks?: string;
+  grading?: string;
+  // 新增字段
+  course_system?: string;  // 课程学制
+  course_field?: string;  // 课程领域
+  core_abilities?: CoreAbility[];  // 核心能力列表
+  distribution_conditions?: DistributionCondition[];  // 分发条件
+  distribution_link?: string;  // 分发条件链接
+  outline_link?: string;  // 课程纲要链接
+  class_time?: string;  // 上课时间
+  classroom?: string;  // 教室
+  note?: string;  // 备注
+  teaching_method?: string;  // 授课方式
+  office_hours?: string;  // 办公时间
+  weeks?: string;  // 授课周数
+}
+
+// 大专生计划相关类型
+export interface Project {
+  id: string;
+  year: string; // 学年度
+  type: string; // 计划类型 (E/H/M/B)
+  department: string;
+  studentName: string;
+  title: string;
+  pdfPath?: string;
+}
+
+// 学测科目
+export type Subject = '国文' | '英文' | '数学A' | '数学B' | '社会' | '自然';
+
+export interface Grade3Filter {
+  subjects: Subject[];
+  minScore?: number;
+}

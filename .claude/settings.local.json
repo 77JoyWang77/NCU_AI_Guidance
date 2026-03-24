@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python explore_course_system.py:*)",
+      "Bash(python explore_query_page.py:*)",
+      "Bash(python test_click_course_query.py:*)",
+      "Bash(python dump_page_html.py:*)",
+      "Bash(python test_iframe.py:*)",
+      "Bash(python test_scraper.py:*)",
+      "Bash(python debug_year_query.py:*)",
+      "Bash(python test_detail_scraper.py:*)",
+      "Bash(python debug_course_links.py:*)",
+      "Bash(python test_small.py:*)",
+      "Bash(python test_selenium_click.py:*)",
+      "Bash(python check_link.py:*)",
+      "Bash(python test_pagination.py:*)",
+      "Bash(python scripts/1_merge_courses.py:*)",
+      "Bash(ping:*)",
+      "Bash(nul)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

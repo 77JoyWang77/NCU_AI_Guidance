@@ -1,0 +1,624 @@
+import { useState } from 'react';
+import { assessmentAPI } from '../api/services';
+import type { Question, Answer, AssessmentResult, AssessmentMode } from '../types';
+import { HiAcademicCap, HiCheckCircle, HiArrowLeft, HiArrowRight, HiLightBulb, HiSparkles } from 'react-icons/hi';
+
+// 文組科系定義
+const LIBERAL_ARTS_DEPARTMENTS = [
+  '文學院學士班', '中國文學系', '英美語文學系', '法國語文學系',
+  '經濟學系', '企管學系', '財務金融學系', '資訊管理學系',
+  '客家語文暨社會科學學系'
+];
+
+// 理組科系定義
+const SCIENCE_DEPARTMENTS = [
+  '理學院學士班', '化學學系', '物理學系', '數學系', '光電科學與工程學系',
+  '地球科學學士班', '地球科學學系', '太空科學與工程學系', '大氣科學學系',
+  '資訊電機學院學士班', '電機工程學系', '資訊工程學系', '通訊工程學系',
+  '生命科學學系', '生醫科學與工程學系',
+  '工學院學士班', '土木工程學系', '化學工程與材料工程學系', '機械工程學系'
+];
+
+export default function AssessmentPage() {
+  const [mode, setMode] = useState<AssessmentMode>('grade1');
+  const [trackType, setTrackType] = useState<'liberal' | 'science' | null>(null); // 高二模式的文理分組
+  const [selectedSubjects, setSelectedSubjects] = useState<string[]>([]); // 高三模式的學測科目選擇
+  const [availableDepartments, setAvailableDepartments] = useState<string[]>([]); // 高三模式符合的科系
+  const [started, setStarted] = useState(false);
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [answers, setAnswers] = useState<Map<string, number>>(new Map());
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState<AssessmentResult | null>(null);
+
+  const modes = [
+    {
+      id: 'grade1' as AssessmentMode,
+      title: '高一模式',
+      description: '文組 vs 理組分類',
+      subtitle: '初步了解自己適合的學習方向',
+      icon: '1',
+    },
+    {
+      id: 'grade2' as AssessmentMode,
+      title: '高二模式',
+      description: '細分科系探索',
+      subtitle: '深入探索各個科系的研究領域',
+      icon: '2',
+    },
+    {
+      id: 'grade3' as AssessmentMode,
+      title: '高三模式',
+      description: '結合學測分數',
+      subtitle: '根據實際成績找到最適合的科系',
+      icon: '3',
+    },
+  ];
+
+  const loadQuestions = async (filteredDepts?: string[]) => {
+    try {
+      setLoading(true);
+      const data = await assessmentAPI.getQuestions(mode);
+
+      let filteredQuestions = data;
+
+      // 如果是高二模式且選擇了文理分組，篩選題目
+      if (mode === 'grade2' && trackType) {
+        const targetDepts = trackType === 'liberal' ? LIBERAL_ARTS_DEPARTMENTS : SCIENCE_DEPARTMENTS;
+        filteredQuestions = data.filter(q => targetDepts.includes(q.department));
+      }
+      // 如果是高三模式，使用傳入的篩選科系列表
+      else if (mode === 'grade3' && filteredDepts && filteredDepts.length > 0) {
+        filteredQuestions = data.filter(q => filteredDepts.includes(q.department));
+      }
+
+      setQuestions(filteredQuestions);
+      setCurrentIndex(0);
+      setAnswers(new Map());
+      setResult(null);
+    } catch (error) {
+      console.error('載入題目失敗:', error);
+      alert('載入題目失敗，請稍後再試');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleStart = async () => {
+    // 高二模式需要先選擇文理分組
+    if (mode === 'grade2' && !trackType) {
+      return;
+    }
+
+    // 高三模式需要先選擇學測科目
+    if (mode === 'grade3') {
+      if (selectedSubjects.length === 0) {
+        return;
+      }
+
+      try {
+        setLoading(true);
+        const result = await assessmentAPI.filterBySubjects(selectedSubjects);
+        setAvailableDepartments(result.departments);
+        setStarted(true);
+        // 將篩選後的科系列表直接傳遞給 loadQuestions
+        await loadQuestions(result.departments);
+        setLoading(false);
+        return;
+      } catch (error) {
+        console.error('篩選科系失敗:', error);
+        alert('篩選科系失敗，請稍後再試');
+        setLoading(false);
+        return;
+      }
+    }
+
+    setStarted(true);
+    loadQuestions();
+  };
+
+  const handleScore = (score: number) => {
+    const newAnswers = new Map(answers);
+    newAnswers.set(questions[currentIndex].id, score);
+    setAnswers(newAnswers);
+  };
+
+  const handleNext = () => {
+    if (currentIndex < questions.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
+
+  const handlePrevious = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    }
+  };
+
+  const handleSubmit = async () => {
+    try {
+      setLoading(true);
+      const answersArray: Answer[] = Array.from(answers.entries()).map(
+        ([questionId, score]) => ({
+          questionId,
+          score,
+        })
+      );
+
+      const result = await assessmentAPI.submitAnswers(mode, answersArray);
+      setResult(result);
+    } catch (error) {
+      console.error('提交失敗:', error);
+      alert('提交失敗，請稍後再試');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // 判斷文組或理組（高一模式）
+  const determineTrack = () => {
+    if (!result) return null;
+    const topDepts = result.departments.slice(0, 5);
+    const liberalCount = topDepts.filter(d => LIBERAL_ARTS_DEPARTMENTS.includes(d.name)).length;
+    const scienceCount = topDepts.filter(d => SCIENCE_DEPARTMENTS.includes(d.name)).length;
+    return liberalCount > scienceCount ? 'liberal' : 'science';
+  };
+
+  // 選擇模式畫面
+  if (!started) {
+    return (
+      <div className="page-container py-8">
+        <div className="text-center mb-8">
+          <h1 className="text-2xl font-bold text-primary-900 mb-2">科系興趣量表</h1>
+          <p className="text-sm text-gray-600">
+            選擇適合你的測評模式，開始探索未來方向
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-5xl mx-auto">
+          {modes.map((m) => (
+            <button
+              key={m.id}
+              onClick={() => {
+                setMode(m.id);
+                setTrackType(null); // 切換模式時重置文理選擇
+                setSelectedSubjects([]); // 切換模式時重置學測科目選擇
+              }}
+              className={`card-interactive p-8 text-left transition-all ${
+                mode === m.id
+                  ? 'ring-2 ring-primary-600 bg-primary-50'
+                  : ''
+              }`}
+            >
+              <div className="flex items-center justify-center w-12 h-12 bg-primary-100 text-primary-700 rounded-lg mb-4 text-2xl font-bold">
+                {m.icon}
+              </div>
+              <h3 className="text-xl font-bold text-primary-900 mb-2">
+                {m.title}
+              </h3>
+              <p className="text-primary-700 font-medium mb-2">
+                {m.description}
+              </p>
+              <p className="text-gray-600 text-sm">{m.subtitle}</p>
+            </button>
+          ))}
+        </div>
+
+        {/* 高二模式：文理分組選擇 */}
+        {mode === 'grade2' && (
+          <div className="max-w-3xl mx-auto mb-12">
+            <div className="card p-8">
+              <h3 className="text-lg font-bold text-primary-900 mb-4">請選擇你的類組</h3>
+              <div className="grid grid-cols-2 gap-4">
+                <button
+                  onClick={() => setTrackType('liberal')}
+                  className={`p-6 rounded-lg border-2 transition-all ${
+                    trackType === 'liberal'
+                      ? 'border-primary-600 bg-primary-50'
+                      : 'border-gray-200 hover:border-primary-300'
+                  }`}
+                >
+                  <div className="text-center">
+                    <div className="text-3xl mb-2">📚</div>
+                    <h4 className="text-xl font-bold text-primary-900 mb-1">文組</h4>
+                    <p className="text-sm text-gray-600">文學、管理、客家</p>
+                  </div>
+                </button>
+                <button
+                  onClick={() => setTrackType('science')}
+                  className={`p-6 rounded-lg border-2 transition-all ${
+                    trackType === 'science'
+                      ? 'border-primary-600 bg-primary-50'
+                      : 'border-gray-200 hover:border-primary-300'
+                  }`}
+                >
+                  <div className="text-center">
+                    <div className="text-3xl mb-2">🔬</div>
+                    <h4 className="text-xl font-bold text-primary-900 mb-1">理組</h4>
+                    <p className="text-sm text-gray-600">理學、工程、資訊</p>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* 高三模式：學測科目選擇 */}
+        {mode === 'grade3' && (
+          <div className="max-w-3xl mx-auto mb-12">
+            <div className="card p-8">
+              <h3 className="text-lg font-bold text-primary-900 mb-4">請選擇你的學測科目</h3>
+              <p className="text-sm text-gray-600 mb-4">選擇你想要採計的學測科目，系統會篩選出符合的科系</p>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                {[
+                  { id: 'chinese', label: '國文', icon: '📖' },
+                  { id: 'english', label: '英文', icon: '🗣️' },
+                  { id: 'math_a', label: '數學A', icon: '🔢' },
+                  { id: 'math_b', label: '數學B', icon: '📊' },
+                  { id: 'social', label: '社會', icon: '🌍' },
+                  { id: 'science', label: '自然', icon: '🔬' },
+                ].map((subject) => (
+                  <button
+                    key={subject.id}
+                    onClick={() => {
+                      setSelectedSubjects(prev =>
+                        prev.includes(subject.id)
+                          ? prev.filter(s => s !== subject.id)
+                          : [...prev, subject.id]
+                      );
+                    }}
+                    className={`p-4 rounded-lg border-2 transition-all ${
+                      selectedSubjects.includes(subject.id)
+                        ? 'border-primary-600 bg-primary-50'
+                        : 'border-gray-200 hover:border-primary-300'
+                    }`}
+                  >
+                    <div className="text-center">
+                      <div className="text-2xl mb-1">{subject.icon}</div>
+                      <div className="text-sm font-semibold text-primary-900">{subject.label}</div>
+                    </div>
+                  </button>
+                ))}
+              </div>
+              {selectedSubjects.length > 0 && (
+                <div className="mt-4 p-3 bg-primary-50 rounded-lg">
+                  <p className="text-sm text-primary-800">
+                    已選擇 <span className="font-bold">{selectedSubjects.length}</span> 個科目
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        <div className="text-center mb-12">
+          <button
+            onClick={handleStart}
+            disabled={(mode === 'grade2' && !trackType) || (mode === 'grade3' && selectedSubjects.length === 0) || loading}
+            className="btn-primary text-lg px-10 py-4 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {loading ? '載入中...' : '開始測評'}
+          </button>
+          {mode === 'grade2' && !trackType && (
+            <p className="text-sm text-gray-500 mt-2">請先選擇你的類組</p>
+          )}
+          {mode === 'grade3' && selectedSubjects.length === 0 && (
+            <p className="text-sm text-gray-500 mt-2">請至少選擇一個學測科目</p>
+          )}
+        </div>
+
+        <div className="card p-8 max-w-3xl mx-auto">
+          <div className="flex items-start space-x-3 mb-4">
+            <HiLightBulb className="w-6 h-6 text-primary-600 flex-shrink-0 mt-1" />
+            <div>
+              <h4 className="text-lg font-bold text-primary-900 mb-3">測評說明</h4>
+              <ul className="space-y-2 text-gray-600">
+                <li className="flex items-start">
+                  <span className="text-primary-600 mr-2">•</span>
+                  <span>共約 30-40 題，每題評分 1-5 分</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary-600 mr-2">•</span>
+                  <span>題目基於真實的大專生研究計畫</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary-600 mr-2">•</span>
+                  <span>測評時間約 15-20 分鐘</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary-600 mr-2">•</span>
+                  <span>完成後將獲得詳細的科系推薦報告</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // 載入中
+  if (loading && questions.length === 0) {
+    return (
+      <div className="page-container py-8 text-center">
+        <div className="card p-16 max-w-md mx-auto">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-primary-700 mx-auto mb-4"></div>
+          <p className="text-gray-600">載入題目中...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // 顯示結果
+  if (result) {
+    const track = mode === 'grade1' ? determineTrack() : trackType;
+
+    return (
+      <div className="page-container py-8">
+        {/* 簡潔的標題 */}
+        <div className="text-center mb-10">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
+            <HiCheckCircle className="w-10 h-10 text-green-600" />
+          </div>
+          <h1 className="text-3xl font-bold text-primary-900">測評完成</h1>
+        </div>
+
+        {/* 高一模式：顯示文理分組結果 */}
+        {mode === 'grade1' && track && (
+          <div className="card p-6 mb-8 max-w-3xl mx-auto bg-primary-50 border-primary-200">
+            <div className="flex items-center justify-center space-x-3">
+              <HiSparkles className="w-6 h-6 text-primary-700" />
+              <p className="text-lg">
+                <span className="text-gray-700">根據測評結果，你較適合</span>
+                <span className="text-2xl font-bold text-primary-700 mx-2">
+                  {track === 'liberal' ? '文組' : '理組'}
+                </span>
+                <span className="text-gray-700">的學習方向</span>
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* 推薦科系 */}
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-xl font-bold text-primary-900 mb-6">為你推薦的科系</h2>
+
+          {/* Top 3 特別顯示 */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            {result.departments.slice(0, 3).map((dept, index) => (
+              <div
+                key={dept.name}
+                className="card p-6 text-center hover:shadow-medium transition-shadow"
+              >
+                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-full mb-3 ${
+                  index === 0 ? 'bg-amber-100' :
+                  index === 1 ? 'bg-gray-200' : 'bg-orange-100'
+                }`}>
+                  <span className={`text-2xl font-bold ${
+                    index === 0 ? 'text-amber-600' :
+                    index === 1 ? 'text-gray-600' : 'text-orange-600'
+                  }`}>{index + 1}</span>
+                </div>
+                <h3 className="text-lg font-bold text-primary-900 mb-1">{dept.name}</h3>
+                <p className="text-sm text-gray-600 mb-3">{dept.college}</p>
+                <div className="text-3xl font-bold text-primary-700">
+                  {dept.score.toFixed(1)}
+                </div>
+                <div className="text-xs text-gray-500">匹配度</div>
+              </div>
+            ))}
+          </div>
+
+          {/* 其他推薦 */}
+          <div className="card p-6">
+            <h3 className="text-sm font-semibold text-gray-700 mb-4">其他推薦科系</h3>
+            <div className="space-y-2">
+              {result.departments.slice(3, 10).map((dept, index) => (
+                <div
+                  key={dept.name}
+                  className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                >
+                  <div className="flex items-center space-x-3">
+                    <span className="text-sm font-semibold text-gray-500 w-6">{index + 4}</span>
+                    <div>
+                      <h4 className="font-semibold text-primary-900">{dept.name}</h4>
+                      <p className="text-xs text-gray-600">{dept.college}</p>
+                    </div>
+                  </div>
+                  <div className="text-lg font-bold text-primary-700">
+                    {dept.score.toFixed(1)}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* 興趣標籤 */}
+        <div className="card p-8 mt-8 max-w-5xl mx-auto">
+          <h2 className="text-lg font-bold text-primary-900 mb-6">你的興趣標籤</h2>
+          <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
+            {result.tagScores.slice(0, 12).map((tag) => (
+              <div
+                key={tag.tag}
+                className="p-3 bg-primary-50 rounded-lg text-center hover:bg-primary-100 transition-colors"
+              >
+                <div className="text-2xl font-bold text-primary-700 mb-1">
+                  {tag.score.toFixed(0)}
+                </div>
+                <div className="text-xs text-gray-700 font-medium">{tag.tag}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="text-center mt-8">
+          <button
+            onClick={() => {
+              setStarted(false);
+              setResult(null);
+              setTrackType(null);
+            }}
+            className="btn-secondary"
+          >
+            重新測評
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // 答題畫面
+  const current = questions[currentIndex];
+
+  if (!current) {
+    return (
+      <div className="page-container py-8 text-center">
+        <div className="card p-16 max-w-md mx-auto">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-primary-700 mx-auto mb-4"></div>
+          <p className="text-gray-600">載入中...</p>
+        </div>
+      </div>
+    );
+  }
+
+  const currentScore = answers.get(current.id) || 0;
+  const progress = ((currentIndex + 1) / questions.length) * 100;
+  const answeredCount = answers.size;
+  const canSubmit = answeredCount === questions.length;
+
+  // 計算有多少個不同的科系
+  const uniqueDepartments = new Set(questions.map(q => q.department));
+  const departmentCount = uniqueDepartments.size;
+
+  return (
+    <div className="page-container py-8">
+      {/* 進度條 */}
+      <div className="mb-8 max-w-4xl mx-auto">
+        <div className="flex justify-between items-center text-sm text-gray-600 mb-2">
+          <div className="flex items-center space-x-4">
+            <span>第 {currentIndex + 1} / {questions.length} 題</span>
+            <span className="text-primary-600 font-semibold">• 涵蓋 {departmentCount} 個科系</span>
+          </div>
+          <span>已完成: {answeredCount} 題</span>
+        </div>
+        <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+          <div
+            className="h-full bg-primary-700 transition-all duration-300"
+            style={{ width: `${progress}%` }}
+          ></div>
+        </div>
+      </div>
+
+      {/* 題目卡片 */}
+      <div className="card p-8 mb-6 max-w-4xl mx-auto">
+        <div className="flex items-start space-x-3 mb-6">
+          <HiAcademicCap className="w-6 h-6 text-primary-600 flex-shrink-0 mt-1" />
+          <h2 className="text-2xl font-bold text-primary-900">{current.title}</h2>
+        </div>
+
+        <div className="space-y-6 mb-8">
+          <div>
+            <h3 className="text-sm font-semibold text-gray-700 mb-2">研究動機與問題</h3>
+            <p className="text-gray-600 leading-relaxed">{current.motivation}</p>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-semibold text-gray-700 mb-2">研究方法</h3>
+            <p className="text-gray-600 leading-relaxed">{current.method}</p>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-semibold text-gray-700 mb-2">研究結果</h3>
+            <p className="text-gray-600 leading-relaxed">{current.result}</p>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-semibold text-gray-700 mb-2">領域標籤</h3>
+            <div className="flex flex-wrap gap-2">
+              {current.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="badge badge-primary"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* 評分區 */}
+        <div className="border-t border-gray-200 pt-6">
+          <h3 className="text-lg font-bold text-primary-900 mb-4">
+            這個研究主題讓你感興趣嗎？
+          </h3>
+          <div className="space-y-4">
+            <div className="flex justify-between text-sm text-gray-600 mb-3">
+              <span>1 分 - 完全不感興趣</span>
+              <span>5 分 - 非常感興趣</span>
+            </div>
+            <div className="grid grid-cols-5 gap-3">
+              {[1, 2, 3, 4, 5].map((score) => (
+                <button
+                  key={score}
+                  onClick={() => handleScore(score)}
+                  className={`py-4 rounded-lg font-bold text-lg transition-all ${
+                    currentScore === score
+                      ? 'bg-primary-700 text-white ring-2 ring-primary-600 ring-offset-2 scale-105'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  {score}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 導航按鈕 */}
+      <div className="flex justify-between items-center max-w-4xl mx-auto">
+        <button
+          onClick={handlePrevious}
+          disabled={currentIndex === 0}
+          className="btn-secondary disabled:opacity-50"
+        >
+          <HiArrowLeft className="w-5 h-5 mr-2" />
+          上一題
+        </button>
+
+        {currentIndex < questions.length - 1 ? (
+          <button
+            onClick={handleNext}
+            disabled={currentScore === 0}
+            className="btn-primary disabled:opacity-50"
+          >
+            下一題
+            <HiArrowRight className="w-5 h-5 ml-2" />
+          </button>
+        ) : (
+          <button
+            onClick={handleSubmit}
+            disabled={!canSubmit || loading}
+            className="btn-primary disabled:opacity-50"
+          >
+            {loading ? '提交中...' : '完成測評'}
+          </button>
+        )}
+      </div>
+
+      {/* 提示訊息 */}
+      {currentScore === 0 && (
+        <p className="text-center text-gray-500 mt-4 text-sm">
+          請先為這題評分後再繼續
+        </p>
+      )}
+      {!canSubmit && currentIndex === questions.length - 1 && (
+        <p className="text-center text-amber-600 mt-4 text-sm">
+          還有 {questions.length - answeredCount} 題未完成，請完成所有題目後提交
+        </p>
+      )}
+    </div>
+  );
+}

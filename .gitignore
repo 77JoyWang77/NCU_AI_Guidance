@@ -1,0 +1,123 @@
+# 環境變數檔案（包含敏感資訊）
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 虛擬環境
+venv/
+env/
+ENV/
+.venv
+
+# 截圖檔案
+*.png
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# 系統檔案
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# 測試與覆蓋率
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# 日誌檔案
+logs/
+*.log
+
+# 資料庫
+*.db
+*.sqlite
+*.sqlite3
+
+# Vector Database (本地)
+qdrant_storage/
+chroma_db/
+milvus_data/
+
+# 快取
+.cache/
+*.cache
+.redis/
+
+# 備份檔案
+backups/
+*.bak
+*.backup
+
+# 模型檔案（如果本地存放）
+models/
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.onnx
+
+# 資料目錄
+data/
+
+# 大型資料檔案
+*.csv.gz
+*.jsonl.gz
+*.parquet
+
+# 臨時檔案
+tmp/
+temp/
+*.tmp
+
+# Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Node.js (如果有前端)
+node_modules/
+package-lock.json
+yarn.lock
+npm-debug.log*
+
+# 監控與追蹤
+.langsmith/
+sentry.properties
