@@ -82,7 +82,6 @@ backups/
 *.backup
 
 # 模型檔案（如果本地存放）
-models/
 *.pt
 *.pth
 *.bin
