@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>應修科目表 表格編輯器</title>
+<style>
+* { box-sizing: border-box; }
+body { font-family: 'Noto Sans TC', sans-serif; font-size: 12px;
+       background:#f0f0f0; margin:0; display:flex; height:100vh; overflow:hidden; }
+
+/* ── sidebar ── */
+#sidebar { width:220px; background:#263238; color:#cfd8dc; overflow-y:auto;
+            flex-shrink:0; padding:8px 0; }
+#sidebar h3 { color:#80cbc4; padding:8px 12px; margin:0; font-size:13px; }
+.dept-btn { display:block; width:100%; text-align:left; background:none; border:none;
+             color:#cfd8dc; padding:6px 14px; cursor:pointer; font-size:11px;
+             border-left:3px solid transparent; }
+.dept-btn:hover { background:#37474f; }
+.dept-btn.active { background:#37474f; border-left-color:#80cbc4; color:white; }
+
+/* ── main ── */
+#main { flex:1; display:flex; flex-direction:column; overflow:hidden; }
+
+/* ── toolbar ── */
+#toolbar { background:#37474f; color:white; padding:6px 12px;
+            display:flex; gap:10px; align-items:center; flex-shrink:0; }
+#toolbar button { padding:4px 12px; border:none; border-radius:3px; cursor:pointer; font-size:12px; }
+#btn-export-json  { background:#26a69a; color:white; }
+#btn-export-llm   { background:#7e57c2; color:white; }
+#btn-reset        { background:#ef5350; color:white; }
+#dept-title { font-weight:bold; font-size:13px; margin-right:auto; }
+.legend { display:flex; gap:8px; align-items:center; font-size:11px; }
+.leg { padding:2px 8px; border:1px solid #888; border-radius:2px; }
+
+/* ── content ── */
+#content { flex:1; overflow:auto; padding:12px; }
+.table-section { margin-bottom:24px; }
+.table-section h3 { font-size:12px; color:#555; margin:0 0 4px 0; }
+
+/* ── table ── */
+table { border-collapse:collapse; background:white; }
+td { border:1px solid #bbb; padding:3px 6px; vertical-align:top;
+      min-width:36px; max-width:200px; white-space:pre-wrap;
+      word-break:break-all; cursor:text; outline:none; }
+td[data-type="merge"]  { background:#ffe0b2; color:#999; font-style:italic; font-size:10px; }
+td[data-type="empty"]  { background:#fafafa; color:#ddd; }
+td[data-type="value"]  { background:#e3f2fd; }
+td:focus               { outline:2px solid #1976d2; }
+
+/* ── context menu ── */
+#ctx-menu { position:fixed; background:white; border:1px solid #ccc;
+             box-shadow:2px 2px 6px rgba(0,0,0,.2); border-radius:4px;
+             display:none; z-index:999; min-width:140px; }
+#ctx-menu div { padding:7px 14px; cursor:pointer; font-size:12px; }
+#ctx-menu div:hover { background:#e0f2f1; }
+
+/* ── LLM modal ── */
+#llm-modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,.5);
+              z-index:9999; align-items:center; justify-content:center; }
+#llm-modal.show { display:flex; }
+#llm-box { background:white; width:80%; max-height:80vh; border-radius:6px;
+            display:flex; flex-direction:column; overflow:hidden; }
+#llm-box h3 { margin:0; padding:10px 14px; background:#7e57c2; color:white; font-size:14px; }
+#llm-box textarea { flex:1; border:none; padding:10px; font-family:monospace;
+                     font-size:11px; resize:none; outline:none; }
+#llm-box-footer { padding:8px 12px; display:flex; gap:8px; background:#f5f5f5; }
+#llm-box-footer button { padding:4px 12px; border:none; border-radius:3px;
+                           cursor:pointer; background:#7e57c2; color:white; }
+</style>
+</head>
+<body>
+
+<div id="sidebar">
+  <h3>📋 系所列表</h3>
+  <div id="dept-list"></div>
+</div>
+
+<div id="main">
+  <div id="toolbar">
+    <span id="dept-title">（選擇系所）</span>
+    <div class="legend">
+      <span class="leg" style="background:#e3f2fd">藍 = 有值</span>
+      <span class="leg" style="background:#ffe0b2">橘 = ◀ merge</span>
+      <span class="leg" style="background:#fafafa;color:#aaa">白 = 空白</span>
+    </div>
+    <button id="btn-export-json">💾 存 JSON</button>
+    <button id="btn-export-llm">🤖 看 LLM Markdown</button>
+    <button id="btn-reset">↩ 還原</button>
+  </div>
+  <div id="content">
+    <p style="color:#888;padding:20px;">← 點擊左側系所開始編輯</p>
+  </div>
+</div>
+
+<div id="ctx-menu">
+  <div id="ctx-value">🔵 設為 value（有值）</div>
+  <div id="ctx-merge">🟠 設為 merge（合併延伸）</div>
+  <div id="ctx-empty">⬜ 設為 empty（空白格）</div>
+</div>
+
+<div id="llm-modal">
+  <div id="llm-box">
+    <h3>🤖 LLM Markdown 格式（可複製進 prompt）</h3>
+    <textarea id="llm-text" readonly></textarea>
+    <div id="llm-box-footer">
+      <button id="btn-copy-llm">📋 複製全部</button>
+      <button id="btn-close-llm" style="background:#888;">✕ 關閉</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── 資料 ─────────────────────────────────────────────────
+const RAW = {"中國文學系_114": [{"page": 1, "table": 1, "rows": [["科目", "課名及課號", "學分數", null, null, null, null, null, null, null], [null, null, "第一學年", null, "第二學年", null, "第三學年", null, "第四學年", null], [null, null, "上", "下", "上", "下", "上", "下", "上", "下"], ["", "國文", "5", null, "", "", "", "", "", ""], ["", "外文", "3", "3", "", "", "", "", "", ""], ["共同\n必修", "體育課程", "0", "0", "0", "0", "0", "", "", ""], [null, "服務學習課程", "0", "0", null, null, null, null, null, null], [null, "通識課程(含核心必修、選修科目)", "14", null, null, null, null, null, null, null], ["系訂\n必修", "國學導讀 CL1003 / CL1004", "2", "2", "", "", "", "", "", ""], [null, "文學概論 CL1005 / CL1006", "2", "2", "", "", "", "", "", ""], [null, "古籍閱讀 CL1025 / CL1026", "1", "1", "", "", "", "", "", ""], [null, "歷代文選及習作 CL2001 / CL2002", "", "", "3", "3", "", "", "", ""], [null, "中國文學史 CL2005 / CL2006", "", "", "3", "3", "", "", "", ""], [null, "文字學 CL2003 / CL2004", "", "", "2", "2", "", "", "", ""], [null, "詩選及習作 CL2007 / CL2008", "", "", "2", "2", "", "", "", ""], [null, "中國思想史 CL4003 / CL4004", "", "", "", "", "3", "3", "", ""], [null, "詞選及習作 CL2090", "", "", "", "", "3", "", "", ""], [null, "聲韻學 CL3161", "", "", "", "", "3", "", "", ""], [null, "訓詁學 CL4104", "", "", "", "", "", "3", "", ""], [null, "曲選及習作 CL3160", "", "", "", "", "", "3", "", ""], ["備註", "一、共同必修\n1 共同科目修習及其他畢業條件，請見應修科目表注意事項。\n2 本系新生外文課程可從三種外文課程中任選一種：(1) 「大一英文」人文社會課群6學分；\n(2)英文系開設之其他英文課程6學分；(3)語言中心開設或認定之初級第二外語課程，但同一\n外語課程必須連續修滿6學分。\n3 選修「進修英文」取得之學分，不列入本系之畢業學分總數。\n4 通識核心必修四大領域中至少須修習一個領域。\n二、系訂必修\n1 必修科目計73學分，其中系必修48學分，畢業須修滿128學分。\n2 中文系學生，在校四年至少選修並通過本系選修科目32學分。\n3 本系學生畢業前須點畢二部古籍，相關規定依本系「大學生點書辦法」辦理。\n三、雙主修規定\n1 依本校「學生修讀雙主修辦法」辦理。\n2 雙主修學生畢業前須點畢一部古籍，相關規定依本系「大學生點書辦法」辦理。", null, null, null, null, null, null, null, null]]}], "企業管理學系_114": [{"page": 1, "table": 1, "rows": [["科目", "課名及課號", "學分數", null, null, null, null, null, null, null], [null, null, "第一學年", null, "第二學年", null, "第三學年", null, "第四學年", null], [null, null, "上", "下", "上", "下", "上", "下", "上", "下"], ["共同\n必修", "國文", "5", null, "", "", "", "", "", ""], [null, "外文", "3", "3", "", "", "", "", "", ""], [null, "體育課程", "0", "0", "0", "0", "0", "", "", ""], [null, "服務學習課程", "0", "0", null, null, null, null, null, null], [null, "通識課程(含核心必修、選修科目)", "14", null, null, null, null, null, null, null], ["院訂\n必修", "經濟學 MT1011 / MT1012", "3", "3", "", "", "", "", "", ""], [null, "企業概論 MT1021", "3", "", "", "", "", "", "", ""], [null, "會計學 MT1031 / MT1032", "3", "3", "", "", "", "", "", ""], [null, "統計學 MT2041 / MT2042", "", "", "3", "3", "", "", "", ""], [null, "程式設計：Python MT1051", "3", "", "", "", "", "", "", ""], ["系訂\n必修", "微積分 MA1005 / MA1006", "3", "3", "", "", "", "", "", ""], [null, "管理學 BA1003", "", "3", "", "", "", "", "", ""], [null, "財務管理 BA2000", "", "", "3", "", "", "", "", ""], [null, "行銷管理 BA2030", "", "", "3", "", "", "", "", ""], [null, "管理數學 BA2004", "", "", "3", "", "", "", "", ""], [null, "組織行為 BA2015", "", "", "3", "", "", "", "", ""], [null, "作業研究 BA2014", "", "", "", "3", "", "", "", ""], [null, "人力資源管理 BA3005", "", "", "", "3", "", "", "", ""], [null, "資訊管理 BA3004", "", "", "", "3", "", "", "", ""], [null, "生產與作業管理 BA3001", "", "", "", "3", "", "", "", ""], [null, "民法概要 BA3000", "", "", "", "", "3", "", "", ""], [null, "成本會計 BA2016", "", "", "", "", "3", "", "", ""], [null, "商事法 BA3003", "", "", "", "", "", "3", "", ""], [null, "企業政策 BA4000", "", "", "", "", "", "", "3", ""], [null, "企管專題 BA4086", "", "", "", "", "", "", "", "3"], ["備註", "一、共同必修\n1共同科目修習及其他畢業條件，請見應修科目表注意事項。\n2本系新生外文課程可從三種外文課程中任選一種。\n3選修「進修英文」取得之學分，不列入本系之畢業學分總數。\n4通識核心必修四大領域中至少須修習一個領域。\n二、院、系訂必修\n1 必修科目計 97學分，最低畢業學分：128學分。\n2上述各科目以在本系修課為限。在本系以外之學系修讀同名稱、同學分之必修課程，必須事前提出「抵修學分事\n先申請」，經核可後始可選讀及抵修，抵免科目則以三科為限，並須依照本系之修課順序修讀。本規定且適用於\n申請本系雙主修同學。\n3選修科目應至少修習五門14學分，其中三門8學分必須選自以本系課號所開授之選修課程，另二門必須選自「企業\n資源規劃」學分學程之必修（含多選二）課程，或選自「商業智慧與分析」學分學程之必修(含必選)課程。申請本\n系雙主修同學選修科目應至少修習三門8學分，二門本系課號選修，一門前項數位素養課程。\n4申請本系為雙主修同學，除依本校雙主修辦法之規定辦理外，並必須達到入學後核准前每學期成績排名均維持在\n班上前百分之二十以內。\n三、雙主修規定\n1依本校「學生修讀雙主修辦法」辦理。\n2如上述二、2,3,4項說明。", null, null, null, null, null, null, null, null]]}], "光電科學與工程學系_114": [{"page": 1, "table": 1, "rows": [["理學院 光電科學與工程學系應修科目表（114學年度入學新生適用）", null, null, null, null, null, null, null, null, null], ["科目", "課名及課號", "學分數", null, null, null, null, null, null, null], [null, null, "第一學年", null, "第二學年", null, "第三學年", null, "第四學年", null], [null, null, "上", "下", "上", "下", "上", "下", "上", "下"], ["共同\n必修", "國文", "5", null, "", "", "", "", "", ""], [null, "外文", "3", "3", "", "", "", "", "", ""], [null, "體育課程", "0", "0", "0", "0", "0", "", "", ""], [null, "服務學習課程", "0", "0", null, null, null, null, null, null], [null, "通識課程(含核心必修、選修科目)", "14", null, null, null, null, null, null, null], ["系訂\n必修", "微積分 MA1001 / MA1002", "4", "4", "", "", "", "", "", ""], [null, "普通物理A PH1031 / PH1032", "3", "3", "", "", "", "", "", ""], [null, "普物實驗 PH1003 / PH1004", "1", "1", "", "", "", "", "", ""], [null, "普通化學 I / CM1009", "3", "", "", "", "", "", "", ""], [null, "普化實驗 CM1008", "1", "", "", "", "", "", "", ""], [null, "光電科技概論 I / II OS1006 / OS1007", "1", "1", "", "", "", "", "", ""], [null, "計算機概論 OS1008", "3", "", "", "", "", "", "", ""], [null, "工程數學 I / II OS2007 / OS2008", "", "3", "3", "", "", "", "", ""], [null, "電磁學 I / II OS2003 / OS2004", "", "", "3", "3", "", "", "", ""], [null, "基礎電學 I / II OS2013 / OS2014", "", "", "4", "4", "", "", "", ""], [null, "電子實驗 I / II OS2015 / OS2016", "", "", "1", "1", "", "", "", ""], [null, "基礎光學與幾何光學 OS2017", "", "", "3", "", "", "", "", ""], [null, "波動光學 OS2018", "", "", "", "3", "", "", "", ""], [null, "電磁光學 OS3016", "", "", "", "", "3", "", "", ""], [null, "光學實驗 OS3011", "", "", "", "", "1", "", "", ""], [null, "近代物理 OS2001", "", "", "", "3", "", "", "", ""], [null, "光學系統 OS3001", "", "", "", "", "", "3", "", ""], [null, "光電半導體物理 OS2011", "", "", "", "", "3", "", "", ""], [null, "光電工程概論 OS3002", "", "", "", "", "", "3", "", ""], [null, "光電實驗 OS3010", "", "", "", "", "", "1", "", ""], ["備註", "一 、共同必修\n1共同科目修習及其他畢業條件，請見應修科目表注意事項。\n2本系新生外文課程可從下列三種外文課程中任選一種：\n(一)「大一英文」科學課群6學分。\n(二)英文系開設之其他英文課程修滿6學分。\n(三)語言中心開設或認定之第二外語課程，但同一外語課程必須修滿6學分。", null, null, null, null, null, null, null, null], [null, "3選修「進修英文」取得之學分，不列入本系之畢業學分總數。", null, null, null, null, null, null, null, null], [null, "4通識核心必修四大領域中至少須修習一個領域。\n二 、系訂必修\n1 必修科目計95學分，最低畢業學分128。\n2 修業期間內至少選修並通過本系所(OS開頭課號)選修科目12學分(專題類課程除外)。\n三、雙主修規定\n1依本校「學生修讀雙主修辦法」辦理。\n2若其修讀主系課程名稱與本系相近者，可檢附該課程之課程大綱申請抵修本系必修課程，惟能否抵修由\n本系審查之。", null, null, null, null, null, null, null, null]]}], "地球科學學系_114": [], "地球科學學院學士班_114": [{"page": 1, "table": 1, "rows": [["地球科學學院 院學士班 (114學年度入學新生適用)", null, null, null, null, null, null, null, null, null], ["科目", "課名及課號", "學分數", null, null, null, null, null, null, null], [null, null, "第一學年", null, "第二學年", null, "第三學年", null, "第四學年", null], [null, null, "上", "下", "上", "下", "上", "下", "上", "下"], ["共同\n必修", "國文", "5", null, "", "", "", "", "", ""], [null, "外文", "3", "3", "", "", "", "", "", ""], [null, "體育課程", "0", "0", "0", "0", "0", "", "", ""], [null, "服務學習課程", "0", "0", null, null, null, null, null, null], [null, "通識課程(含核心必修、選修科目)", "14", null, null, null, null, null, null, null], ["院訂\n必修", "微積分 MA1003/MA1004", "3", "3", "", "", "", "", "", ""], [null, "普通物理A PH1031/PH1032", "3", "3", "", "", "", "", "", ""], ["科學\n能力\n必修\n課群", "數學課程", "25", null, null, null, null, null, "", ""], [null, "電腦與程式語言課程", null, null, null, null, null, null, "", ""], [null, "物理與化學課程", null, null, null, null, null, null, "", ""], ["地球\n系統\n必修\n課群", "普通地質學 GP2031/GP2032", "2", "2", "", "", "", "", "", ""], [null, "大氣科學通論 AP1002", "1", "", "", "", "", "", "", ""], [null, "大氣科學概論 AP1001", "", "1", "", "", "", "", "", ""], [null, "大氣熱力學 AP2011", "", "", "", "3", "", "", "", ""], [null, "電漿物理導論 SS3002", "", "", "", "", "3", "", "", ""], [null, "衛星系統工程 I SS3008", "", "", "", "", "3", "", "", ""], [null, "水文地質學 GP4010", "", "", "2", null, null, null, null, null], [null, "水文學 GP4070", "", "", "3", null, null, null, null, null], [null, "基礎大地工程學 GP3085", "", "", "", "", "", "3", "", ""], [null, "海洋學概論 HS6063", "", "", "3", null, null, null, null, null], ["跨域\n知識\n技能\n課群", "地球系統科學研究專題導論 GA1001", "1", "", "", "", "", "", "", ""], [null, "地球科學研究群專題課程", "", "2", null, null, null, null, "", ""], [null, "研究計畫寫作GA2002", "", "", "", "1", "", "", "", ""], [null, "專題研究I/II/III/IV GA3001/GA3002/GA4001/GA4002", "", "", "", "", "2", "2", "2", "2"], ["備註", "一、共同必修\n1. 共同科目修習及其他畢業條件，請見應修科目表注意事項。\n2. 本班新生外文課程可從三種外文課程中任選一種。\n(1)修讀「大一英文」科學課群6學分。\n(2)修讀英文系開設之其他英文課程，通過且取得6學分。\n(3)修讀語言中心開設或認定之第二外語課程，但同一外語課程必須修讀並通過取得6學分。\n3. 選修「進修英文」取得之學分，不列入本班之畢業學分總數。\n4. 通識核心必修四大領域中至少須修習一個領域。\n5. 通識課程必須修習並通過「跨領域社會參與學分學程-導航課程」(GS3050或CC0424)，並至少選修「邏輯思考」或「論文寫作」一門相關之\n課程。\n二、系定必修\n1. 最低畢業學分為 128 學分，包括院訂必修 12 學分、科學能力必修課群任選 25 學分、地球系統必修課群任選 16 學分、跨域知識技能課群 50\n學分 (含必修 10 學分及其他選修 40 學分)。\n2. 除第1項規定外，修業期間內必須選修並通過「地球系統科學概論」2 學分，課群分為「科學能力必修」、「地球系統必修」、「跨域知識技\n能」，由導師指導選課。\n3. 「專題研究I/II/III/IV GA3001/GA3002/GA4001/GA4002」中須任選三門修習並通過。\n4. 各類課程之建議參考課號請參看附表一。\n5. 「科學能力必修課群」之各類課程至少各修習一門，未列於應修科目表附表一之科學能力課程可由學生提出申請，經指導導師及班主任同意\n後認可。\n6. 學生需於「研究計畫寫作」課程 (課號：GA2002) 中提出專題計畫書，並於畢業前參與專題成果發表會， 由學士班班務委員會檢視學生學習\n成效。\n三、雙主修規定：依本校「學生修讀雙主修辦法」辦理。", null, null, null, null, null, null, null, null]]}, {"page": 2, "table": 1, "rows": [["科學\n能力\n必修\n課群\n(各類\n課程\n至少\n各修習\n一門)", "數學課程", "應用數學 GP2019 / GP2020 / AP2007 / AP2008 / SS2005 / SS2006"], [null, null, "時序分析 GP3052"], [null, null, "數值分析 GP3053"], [null, null, "統計學 GP3072"], [null, null, "地球科學資料處理 GP4024"], [null, null, "向量分析 AP1006/GP1014"], [null, null, "數據分析與處理 AP4011 (108學年度入學適用) / SS3001"], [null, null, "應地數學 AG7002"], [null, null, "應用數學方法/II HS6017 / HS6030"], [null, null, "應用數值方法 HS6048"], [null, null, "資料分析 HS6074"], [null, "電腦與程式語言課程", "基礎程式語言 GA1002"], [null, null, "程式語言與應用 GP 1017"], [null, null, "程式語言C系列 GP2035"], [null, null, "程式語言Fortran系列 GP2057"], [null, null, "程式語言與繪圖/Ⅰ/Ⅱ AP1013 / AP2049 / AP2050"], [null, null, "程式語言與繪圖 SS1003"], [null, null, "IDL程式語言I SS2012"], [null, null, "MATLAB程式設計與應用 AP4012"], [null, null, "科學計算 HS6091"], [null, "物理與化學課程", "普物實驗 PH1003 / PH1004"], [null, null, "普通化學 CM1009 / CM1010"], [null, null, "普化實驗 CM1008"], [null, null, "流體力學 AP2010"], [null, null, "熱力學 AP2013 (108學年度入學適用)"], [null, null, "力學 SS2001 /GP2002"], [null, null, "電磁學/I/II GP2014/ SS2003 / SS2004"], [null, null, "流體力學概論 GP3096"], [null, null, "流體動力學 HS6033"], ["跨域\n知識\n技能\n課群", "地球科學研究群專題課程", "地球科學專題 (I)/(II) GP4087 / GP4088"], [null, null, "水文與海洋專題 (I)/(II) GP4089 / GP4090"], [null, null, "太空科學專題 I / II SS2031、SS2032"], [null, null, "大氣科學專題 I / II AP2101、AP2102"]]}], "客家語文暨社會科學學系_客家社會及政策組_113": [{"page": 1, "table": 1, "rows": [["科目", "課名及課號", "學分數", null, null, null, null, null, null, null], [null, null, "第一學年", null, "第二學年", null, "第三學年", null, "第四學年", null], [null, null, "上", "下", "上", "下", "上", "下", "上", "下"], ["共同必\n修", "國文", "5", null, "", "", "", "", "", ""], [null, "外文", "3", "3", "", "", "", "", "", ""], [null, "體育課程", "0", "0", "0", "0", "0", "", "", ""], [null, "服務學習課程", "0", "0", null, null, null, null, null, null], [null, "通識課程(含核心必修、選修科目)", "14", null, null, null, null, null, null, null], ["系訂必\n修", "基礎客語Ⅰ/ Ⅱ HK1001/HK1002", "2", "2", "", "", "", "", "", ""], [null, "社會學 HK1005/HK1006", "2", "2", "", "", "", "", "", ""], [null, "客家文化概論 HK1009/HK1010", "2", "2", "", "", "", "", "", ""], [null, "臺灣客家移墾史 HK1015", "", "3", "", "", "", "", "", ""], [null, "進階客語Ⅰ/ Ⅱ HK2001/HK2002", "", "", "2", "2", "", "", "", ""], [null, "專題製作與實習HK4021", "", "", "", "", "", "", "2", ""], ["組訂必\n修", "文化人類學HK2035", "", "", "3", "", "", "", "", ""], [null, "政治學HK2039", "", "", "3", "", "", "", "", ""], [null, "族群理論與關係HK2033", "", "", "", "3", "", "", "", ""], [null, "性別研究HK2037", "", "", "", "3", "", "", "", ""], [null, "社會調查與統計HK3037", "", "", "", "", "3", "", "", ""], [null, "社會科學研究法HK3029", "", "", "", "", "", "3", "", ""], ["跨組必\n修 （客\n家語文\n及傳播\n組6學\n分）", "語言學概論HK2025", "", "", "3", "", "", "", "", ""], [null, "客語概論HK2027", "", "", "3", "", "", "", "", ""], [null, "傳播理論與數位行銷HK2031", "", "", "3", "", "", "", "", ""], [null, "文學概論與客家文學HK2029", "", "", "", "3", "", "", "", ""], [null, "客語數位學習與實作HK2022", "", "", "", "3", "", "", "", ""], [null, "客語閱讀與書寫HK2024", "", "", "", "3", "", "", "", ""], ["備\n註", "一、共同必修\n1 共同科目修習及其他畢業條件，請見應修科目表注意事項。", null, null, null, null, null, null, null, null], [null, "2 共同必修之外文課程須選修「大一英文」人文社會課群6學分。", null, null, null, null, null, null, null, null], [null, "3 選修「進修英文」取得之學分，不列入本系之畢業學分總數。\n4 通識核心必修為四大領域中至少須修習一個領域。\n二、系訂必修\n1 最低畢業學分數為128學分。\n2 必修科目計70學分，共同必修25學分，系訂必修21學分，組訂必修18學分，跨組必修6學分。\n3 選修科目計58學分，至少修習並通過組訂選修24學分；跨院和校際選修以17學分為上限。\n4 本系學生須通過「客家委員會客語能力認證初級」方可畢業。\n5 入學前已取得客家委員會客語能力認證中高級證書者，得於開學後一週內申請免修「基礎客語」，經\n本系授課教師及系所主管審核通過後，始得免修。惟因免修而缺少之學分，須加修本系選修課程補足。\n三、雙主修規定: 依本校「學生修讀雙主修辦法」辦理，專業必修科目計45學分，選修科目任選14學分。", null, null, null, null, null, null, null, null]]}], "客家語文暨社會科學學系_客家語文及傳播組_113": [{"page": 1, "table": 1, "rows": [["科目", "課名及課號", "學分數", null, null, null, null, null, null, null], [null, null, "第一學年", null, "第二學年", null, "第三學年", null, "第四學年", null], [null, null, "上", "下", "上", "下", "上", "下", "上", "下"], ["共同必\n修", "國文", "5", null, "", "", "", "", "", ""], [null, "外文", "3", "3", "", "", "", "", "", ""], [null, "體育課程", "0", "0", "0", "0", "0", "", "", ""], [null, "服務學習課程", "0", "0", null, null, null, null, null, null], [null, "通識課程(含核心必修、選修科目)", "14", null, null, null, null, null, null, null], ["系訂必\n修", "基礎客語Ⅰ/ Ⅱ HK1001/HK1002", "2", "2", "", "", "", "", "", ""], [null, "社會學 HK1005/HK1006", "2", "2", "", "", "", "", "", ""], [null, "客家文化概論 HK1009/HK1010", "2", "2", "", "", "", "", "", ""], [null, "臺灣客家移墾史 HK1015", "", "3", "", "", "", "", "", ""], [null, "進階客語Ⅰ/ Ⅱ HK2001/HK2002", "", "", "2", "2", "", "", "", ""], [null, "專題製作與實習HK4021", "", "", "", "", "", "", "2", ""], ["組訂必\n修", "語言學概論HK2025", "", "", "3", "", "", "", "", ""], [null, "客語概論HK2027", "", "", "3", "", "", "", "", ""], [null, "傳播理論與數位行銷HK2031", "", "", "3", "", "", "", "", ""], [null, "文學概論與客家文學HK2029", "", "", "", "3", "", "", "", ""], [null, "客語數位學習與實作HK2022", "", "", "", "3", "", "", "", ""], [null, "客語閱讀與書寫HK2024", "", "", "", "3", "", "", "", ""], ["跨組必\n修 (客家\n社會及\n政策組6\n學分)", "文化人類學HK2035", "", "", "3", "", "", "", "", ""], [null, "政治學HK2039", "", "", "3", "", "", "", "", ""], [null, "族群理論與關係HK2033", "", "", "", "3", "", "", "", ""], [null, "性別研究HK2037", "", "", "", "3", "", "", "", ""], [null, "社會調查與統計HK3037", "", "", "", "", "3", "", "", ""], [null, "社會科學研究法HK3029", "", "", "", "", "", "3", "", ""], ["備\n註", "一、共同必修\n1 共同科目修習及其他畢業條件，請見應修科目表注意事項。", null, null, null, null, null, null, null, null], [null, "2 共同必修之外文課程須選修「大一英文」人文社會課群6學分。", null, null, null, null, null, null, null, null], [null, "3 選修「進修英文」取得之學分，不列入本系之畢業學分總數。\n4 通識核心必修為四大領域中至少須修習一個領域。\n二、系訂必修\n1 最低畢業學分數為128學分。\n2 必修科目計70學分，共同必修25學分，系訂必修21學分，組訂必修18學分，跨組必修6學分。\n3 選修科目計58學分，至少修習並通過組訂選修24學分；跨院和校際選修以17學分為上限。\n4 本系學生須通過「客家委員會客語能力認證初級」方可畢業。\n5入學前已取得客家委員會客語能力認證中高級證書者，得於開學後一週內申請免修「基礎客語」，經本\n系授課教師及系所主管審核通過後，始得免修。惟因免修而缺少之學分，須加修本系選修課程補足。\n三、雙主修規定: 依本校「學生修讀雙主修辦法」辦理，專業必修科目計45學分，選修科目任選14學分。", null, null, null, null, null, null, null, null]]}], "數學系_數學科學組_114": [{"page": 1, "table": 1, "rows": [["理學院 數學系應修科目表（114學年度入學新生適用）- 數學科學組", null, null, null, null, null, null, null, null, null, null], ["科目", "課名及課號", null, "學分數", null, null, null, null, null, null, null], [null, null, null, "第一學年", null, "第二學年", null, "第三學年", null, "第四學年", null], [null, null, null, "上", "下", "上", "下", "上", "下", "上", "下"], ["共同\n必修", "國文", null, "5", null, "", "", "", "", "", ""], [null, "外文", null, "3", "3", "", "", "", "", "", ""], [null, "體育課程", null, "0", "0", "0", "0", "0", "", "", ""], [null, "服務學習課程", null, "0", "0", null, null, null, null, null, null], [null, "通識課程(含核心必修、選修科目)", null, "14", null, null, null, null, null, null, null], ["組訂\n必修", "微積分 MA1001 / MA1002", null, "4", "4", "", "", "", "", "", ""], [null, "線性代數I / II MA2007 / MA2008", null, "3", "3", "", "", "", "", "", ""], [null, "基礎數學 MA1015", null, "3", "", "", "", "", "", "", ""], [null, "計算機概論I MA1013", null, "", "3", "", "", "", "", "", ""], [null, "三\n科\n擇\n一", "普通物理B PH1033 / PH1034", "3/3", null, null, null, null, null, null, null], [null, null, "普通化學 I / II CM1009 / CM1010", "3/3", null, null, null, null, null, null, null], [null, null, "普通生物學 I / II LS1013 / LS1014", "3/3", null, null, null, null, null, null, null], [null, "高等微積分 I / II MA2045 / MA2046", null, "", "", "4", "4", "", "", "", ""], [null, "代數 I MA2025", null, "", "", "3", "", "", "", "", ""], [null, "微分方程 I MA2041", null, "", "", "3", "", "", "", "", ""], [null, "機率論 MA2021", null, "", "", "", "3", "", "", "", ""], [null, "複變函數論 I MA3015", null, "", "", "", "", "3", "", "", ""], ["組訂\n核心\n選修", "代數 II MA2026", null, "", "", "", "3", "", "", "", ""], [null, "微分方程 II MA2042", null, "", "", "", "3", "", "", "", ""], [null, "程式語言及其應用 MA2051", null, "", "", "", "", "3", "", "", ""], [null, "數理統計 I MA3025", null, "", "", "", "", "3", "", "", ""], [null, "高等微積分 III MA2047", null, "", "", "", "", "3", "", "", ""], [null, "離散數學 I MA3034", null, "", "", "", "", "3", "", "", ""], [null, "幾何學 I MA4005", null, "", "", "", "", "", "3", "", ""], [null, "近世代數 MA3036", null, "", "", "", "", "", "3", "", ""], [null, "拓樸學 MA3003", null, "", "", "", "", "", "3", "", ""], ["備註", "一、共同必修\n1 共同科目修習及其他畢業條件，請見應修科目表注意事項。\n2 本系新生外文課程可從三種外文課程中任選一種：\n(1)「大一英文」科學課群6學分。\n(2)英文系開設之其他英文課程修滿6學分。\n(3)語言中心開設或認定之第二外語課程，但同一外語課程必須修滿6學分。\n3 選修「進修英文」取得之學分，不列入本系之畢業學分總數。\n4 通識核心必修四大領域中至少須修習一個領域。通識課程最多認定24學分，超過部份不列入最低畢業\n學分。\n二、組訂必修、組訂核心選修\n1 最低畢業學分為128學分：共同必修科目25學分，組訂必修科目46學分，組訂核心選修科目12學分。另\n修數學系所12學分課程。\n2 「微積分」上下學期成績平均及格者，方得修習「高等微積分Ⅰ」；「高等微積分Ⅰ」成績至少50分\n者，方得修習「高等微積分Ⅱ」及「高等微積分Ⅲ」；「高等微積分Ⅰ」成績及格者，方得修習「複\n變函數論Ⅰ」；「計算機概論I」成績及格者，方得修習「程式語言及其應用」；「機率論」成績及格\n者，方得修習「數理統計Ⅰ」。\n3 「計算機概論I」需於本系修習，不得以外系之計算機概論相關課程進行抵修。\n三、雙主修規定：依本校「學生修讀雙主修辦法」辦理。", null, null, null, null, null, null, null, null, null]]}], "數學系_計算與資料科學組_114": [{"page": 1, "table": 1, "rows": [["理學院 數學系應修科目表（114學年度入學新生適用）- 計算與資料科學組", null, null, null, null, null, null, null, null, null, null], ["科目", "課名及課號", null, "學分數", null, null, null, null, null, null, null], [null, null, null, "第一學年", null, "第二學年", null, "第三學年", null, "第四學年", null], [null, null, null, "上", "下", "上", "下", "上", "下", "上", "下"], ["共同\n必修", "國文", null, "5", null, "", "", "", "", "", ""], [null, "外文", null, "3", "3", "", "", "", "", "", ""], [null, "體育課程", null, "0", "0", "0", "0", "0", "", "", ""], [null, "服務學習課程", null, "0", "0", null, null, null, null, null, null], [null, "通識課程(含核心必修、選修科目)", null, "14", null, null, null, null, null, null, null], ["組訂\n必修", "微積分I / II MA1001 / MA1002", null, "4", "4", "", "", "", "", "", ""], [null, "線性代數I / II MA2007 / MA2008", null, "3", "3", "", "", "", "", "", ""], [null, "基礎數學 MA1015", null, "3", "", "", "", "", "", "", ""], [null, "計算機概論I MA1013", null, "3", "", "", "", "", "", "", ""], [null, "科學計算導論 MA1018", null, "", "3", "", "", "", "", "", ""], [null, "三科\n擇一", "普通物理B PH1033 / PH1034", "3/3", null, null, null, null, null, null, null], [null, null, "普通化學 I / II CM1009 / CM1010", "3/3", null, null, null, null, null, null, null], [null, null, "普通生物學 I / II LS1013 / LS1014", "3/3", null, null, null, null, null, null, null], [null, "分析導論 I / II MA2049/MA2050", null, "", "", "3", "3", "", "", "", ""], [null, "機率論 MA2021", null, "", "", "3", "", "", "", "", ""], [null, "數值線性代數 MA2030", null, "", "", "3", "", "", "", "", ""], [null, "數學建模 MA3067", null, "", "", "3", "", "", "", "", ""], [null, "統計學 MA2011", null, "", "", "", "3", "", "", "", ""], [null, "數值微分方程 MA2044", null, "", "", "", "3", "", "", "", ""], [null, "最佳化方法與應用 MA2063", null, "", "", "", "3", "", "", "", ""], ["組訂\n核心\n選修", "三\n科\n擇\n二", "數學影像處理 MA3111", "", "", "", "", "3", "", "", ""], [null, null, "金融數學導論 MA3121", "", "", "", "", "3", "", "", ""], [null, null, "資料科學導論 MA3131", "", "", "", "", "3", "", "", ""], [null, "四\n科\n擇\n一", "科學計算專題 I MA3103", "", "", "", "", "3", "", "", ""], [null, null, "影像處理專題 I MA3113", "", "", "", "", "", "3", "", ""], [null, null, "金融數學專題 I MA3123", "", "", "", "", "", "3", "", ""], [null, null, "資料科學專題 I MA3133", "", "", "", "", "", "3", "", ""], ["備註", "一、共同必修\n1 共同科目修習及其他畢業條件，請見應修科目表注意事項。\n2\n本系新生外文課程可從三種外文課程中任選一種：\n(1)「大一英文」科學課群6學分。\n(2)英文系開設之其他英文課程修滿6學分。\n(3)語言中心開設或認定之第二外語課程，但同一外語課程必須修滿6學分。\n3 選修「進修英文」取得之學分，不列入本系之畢業學分總數。\n4 通識核心必修四大領域中至少須修習一個領域。通識課程最多認定24學分，超過部份不列入最低畢業\n學分。\n二、組訂必修、組訂核心選修\n1 最低畢業學分為128學分：共同必修科目25學分，組訂必修科目53學分，組訂核心選修科目9學分，另\n修數學系所12學分課程。\n2 「計算機概論I」需於本系修習，不得以外系之計算機概論相關課程進行抵修。\n三、雙主修規定：依本校「學生修讀雙主修辦法」辦理。", null, null, null, null, null, null, null, null, null]]}], "文學院學士班_114": [{"page": 1, "table": 1, "rows": [["文學院學士班應修科目表（114學年度入學新生適用）", null, null, null, null, null, null, null, null, null, null, null], ["科目", "課名及課號", null, null, "學分數", null, null, null, null, null, null, null], [null, null, null, null, "第一學年", null, "第二學年", null, "第三學年", null, "第四學年", null], [null, null, null, null, "上", "下", "上", "下", "上", "下", "上", "下"], ["共\n同\n必\n修", "國文", null, null, "5", null, "", "", "", "", "", ""], [null, "外文", null, null, "3", "3", "", "", "", "", "", ""], [null, "體育課程", null, null, "0", "0", "0", "0", "0", "", "", ""], [null, "服務學習課程", null, null, "0", "0", null, null, null, null, null, null], [null, "通識課程(含核心必修、選修科目)", null, null, "14", null, null, null, null, null, null, null], ["基\n礎\n課\n程", "12\n學\n分", "哲學概論 PD1101", null, "3", null, "", null, null, null, null, null], [null, null, "史學導論 HI1901", null, "3", null, null, null, null, null, null, null], [null, null, "藝術與視覺文化導論 AR1001", null, "3", null, null, null, null, null, null, null], [null, null, "影像與敘事分析 IL1003", null, "3", null, null, null, null, null, null, null], [null, null, "人文與科技發展 IL1002", null, "3", null, null, null, null, null, null, null], [null, "54\n學\n分", "「哲學\n思維與\n經典詮\n釋」主\n修課群", "哲思方法 PD2203", "3", null, null, null, "", null, null, null], [null, null, null, "中國思想史 PD2304", "3", null, null, null, "", null, null, null], [null, null, null, "形上學 PD2202", "3", null, null, null, "", null, null, null], [null, null, null, "西方哲學史 PD4401", "", null, null, null, "3", null, null, null], [null, null, null, "當代西方思潮 PD4402", "", null, null, null, "3", null, null, null], [null, null, null, "現象學與詮釋學 PD4406", "", null, null, null, "3", null, null, null], [null, null, null, "中國哲學經典詮釋 PD4360", "", null, null, null, "3", null, null, null], [null, null, null, "西方哲學經典詮釋 IL4102", "", null, null, null, "3", null, null, null], [null, null, null, "宗教哲學與生命教育 PD4150", "", null, null, null, "3", null, null, null], [null, null, null, "AI、倫理學與實踐哲學 PD4151", "", null, null, null, "3", null, null, null], [null, null, null, "哲學人類學與數位科技 IL4101", "", null, null, null, "3", null, null, null], [null, null, null, "人本AI的東方觀點 PD4153", "", null, null, null, "3", null, null, null], [null, null, null, "人文應用專題：哲學裡的實境遊戲 PD4101", "", null, null, null, "3", null, null, null], [null, null, "「知識\n傳統與\n歷史應\n用」主\n修課群", "台灣近代史 HI2901", "3", null, null, null, "", null, null, null], [null, null, null, "東亞區域史 HI2902", "3", null, null, null, "", null, null, null], [null, null, null, "中國近現代史 HI2903", "3", null, null, null, "", null, null, null], [null, null, null, "中國的身體與醫藥文化史 HI2904", "3", null, null, null, "", null, null, null], [null, null, null, "中國思想史 PD2304", "3", null, null, null, "", null, null, null], [null, null, null, "1949來台移民社會史 IL2201", "3", null, null, null, "", null, null, null], [null, null, null, "數位人文與歷史學 IL2202", "3", null, null, null, "", null, null, null], [null, null, null, "博物館歷史學 HI4904", "", null, null, null, "3", null, null, null], [null, null, null, "臺灣社會經濟史 HI4908", "", null, null, null, "3", null, null, null], [null, null, null, "台灣史與東亞史的交錯 IL4201", "", null, null, null, "3", null, null, null], [null, null, null, "人文應用專題：歷史學微策展 HI4909", "", null, null, null, "3", null, null, null], [null, null, null, "人文應用專題：公眾史學的理論與實作 HI4910", "", null, null, null, "3", null, null, null], [null, null, null, "人文應用專題：歷史導覽 IL4202", "", null, null, null, "3", null, null, null], [null, "", null, "近代西方藝術 AR2002", "3", null, null, null, "", null, null, null], [null, null, null, "攝影與文化 AR2004", "3", null, null, null, "", null, null, null], [null, null, null, "中國繪畫史 AR2005", "3", null, null, null, "", null, null, null], [null, null, null, "當代藝術思潮 AR4004", "3", null, null, null, "", null, null, null], [null, null, null, "亞洲藝術專題 AR4001", "", null, null, null, "3", null, null, null], [null, null, null, "藝術與社會 AR4002", "", null, null, null, "3", null, null, null], [null, null, null, "亞洲藝術交流與比較 AR4003", "", null, null, null, "3", null, null, null], [null, null, null, "藝術的跨域實驗 AR4005", "", null, null, null, "3", null, null, null], [null, null, null, "藝術理論與批評 AR4006", "", null, null, null, "3", null, null, null]]}, {"page": 2, "table": 1, "rows": [[null, "", null, "數位化藝術史 AR0028", "", "3"], [null, null, null, "亞洲藝術跨領域研究 AR4009", "", "3"], [null, null, null, "藝文環境、法規與科技 AR4010", "", "3"], [null, null, null, "人文應用專題：美術館歷史與實務 AR4007", "", "3"], [null, null, null, "人文應用專題：展覽策畫 AR4008", "", "3"], [null, null, "「影像\n與敘\n事」主\n修課群", "臺灣電影 IL2401", "3", ""], [null, null, null, "電影史 IL2402", "3", ""], [null, null, null, "世界電影 IL2403", "3", ""], [null, null, null, "華語電影與文學 CL2068", "3", ""], [null, null, null, "影像敘事、感知與視覺文化 FR2052", "3", ""], [null, null, null, "動態影像拍攝剪輯 IL4401", "", "3"], [null, null, null, "電影、科技與未來想像 IL4402", "", "3"], [null, null, null, "國際電影合作 IL4403", "", "3"], [null, null, null, "劇本寫作 IL4404", "", "3"], [null, "", null, "電影研究專題 IL4405", "", "3"], [null, null, null, "電影類型 IL4409", "", "3"], [null, null, null, "人文應用專題：電影策展 IL4406", "", "3"], [null, null, null, "人文應用專題：電影行銷實務 IL4407", "", "3"], [null, null, null, "人文應用專題：紀錄片製作 IL4410", "", "3"], [null, null, null, "人文應用專題：短片製作 IL4411", "", "3"], ["應\n用\n課\n程", "6\n學\n分", "人文應用專題：哲學裡的實境遊戲 PD4101", null, "", "3"], [null, null, "人文應用專題：歷史學微策展 HI4909", null, "", "3"], [null, null, "人文應用專題：公眾史學的理論與實作 IL4910", null, "", "3"], [null, null, "人文應用專題：歷史導覽 IL4202", null, "", "3"], [null, null, "人文應用專題：美術館歷史與實務 AR4007", null, "", "3"], [null, null, "人文應用專題：展覽策畫 AR4008", null, "", "3"], [null, null, "人文應用專題：電影策展 IL4406", null, "", "3"], [null, null, "人文應用專題：電影行銷實務 IL4407", null, "", "3"], [null, null, "人文應用專題：紀錄片製作 IL4410", null, "", "3"], [null, null, "人文應用專題：短片製作 IL4411", null, "", "3"], ["備註", null, "一、共同必修", null, null, null], [null, null, "(一) 共同必修課程選修規定及應注意事項參見本校相關辦法。", null, null, null], [null, null, "(二) 本班學生必修之外文課程可修習下列任一類課程：", null, null, null], [null, null, "1. 「大一英文」人文社會課群6學分。", null, null, null], [null, null, "2. 英文系開設之其他英文課程6學分（不含本學士班專業課群內開授之課程）。", null, null, null], [null, null, "3. 語言中心開設或認定之初級第二外語課程，但同一外語課程必須修滿6學分。", null, null, null], [null, null, "(三) 選修「進修英文」取得之學分，不列入本班之畢業學分總數。", null, null, null], [null, null, "(四) 通識核心必修四大領域中至少須修習一個領域。", null, null, null], [null, null, "二、班訂應修", null, null, null], [null, null, "(一) 最低畢業學分數為128學分。", null, null, null], [null, null, "(二) 基礎課程至少選修並通過12學分。", null, null, null], [null, null, "(三) 專業課程至少選修54學分，且至少有一主修課群修滿 27 學分（含該課群基礎課程）作為\n專長領域(畢業證書加註該主修課群專長領域）：", null, null, null], [null, null, "1. 「哲學思維與經典詮釋」主修課群：哲學 Philosophy", null, null, null], [null, null, "2. 「知識傳統與歷史應用」主修課群：歷史 History", null, null, null], [null, null, "3. 「藝術與視覺文化」主修課群：藝術史 Art History", null, null, null], [null, null, "4. 「影像與敘事」主修課群：影像與敘事 Image and Narrative", null, null, null], [null, null, "(四) 應用課程之「人文應用專題」至少選修並通過6學分。", null, null, null], [null, null, "三、學分採計：", null, null, null], [null, null, "(一)有下列情形者得經班主任同意採計為主修課群學分：", null, null, null], [null, null, "1.「哲學思維與經典詮釋」主修課群學分：其他（不在表列之）哲學研究所課程（課號PD）。", null, null, null], [null, null, "2.「知識傳統與歷史應用」主修課群學分：其他（不在表列之）歷史研究所課程（課號HI）。", null, null, null], [null, null, "3.「藝術與視覺文化」主修課群學分：其他（不在表列之）藝術學研究所課程（課號AR）。", null, null, null], [null, null, "(二) 專業課程之科目名稱相同者，不得跨主修課群重複採計。", null, null, null]]}], "法國語文學系_113": [{"page": 1, "table": 1, "rows": [["科目", "課名及課號", "學分數", null, null, null, null, null, null, null], [null, null, "第一學年", null, "第二學年", null, "第三學年", null, "第四學年", null], [null, null, "上", "下", "上", "下", "上", "下", "上", "下"], ["", "國文", "5", null, "", "", "", "", "", ""], ["", "外文", "3", "3", "", "", "", "", "", ""], ["共同必修", "體育課程", "0", "0", "0", "0", "0", "", "", ""], [null, "服務學習課程", "0", "0", null, null, null, null, null, null], [null, "通識課程(含核心必修、選修科目)", "14", null, null, null, null, null, null, null], ["系訂必修", "口語表達(一) FR1019 / FR1020", "2", "2", "", "", "", "", "", ""], [null, "文法與寫作 FR1033 / FR1034", "4", "4", "", "", "", "", "", ""], [null, "讀本 FR1023 / FR1024", "4", "4", "", "", "", "", "", ""], [null, "法文文選(一) FR1039 / FR1040", "2", "2", "", "", "", "", "", ""], [null, "口語表達(二) FR2029 / FR2030", "", "", "2", "2", "", "", "", ""], [null, "寫作(二) FR2031 / FR2032", "", "", "2", "2", "", "", "", ""], [null, "文法(二) FR2043 / FR2044", "", "", "2", "2", "", "", "", ""], [null, "中譯法(一) / (二) FR2035 / FR3047", "", "", "2", null, "2", null, "", ""], [null, "法文文選(二) FR2039 / FR2040", "", "", "2", "2", "", "", "", ""], [null, "法譯中(一) / (二) FR2036 / FR3048", "", "", "2", null, "2", null, "", ""], [null, "口語表達(三) FR3041 / FR3042", "", "", "", "", "2", "2", "", ""], [null, "寫作(三) FR3043 / FR3044", "", "", "", "", "2", "2", "", ""], ["備註", "一 共同必修\n1 共同科目修習及其他畢業條件，請見應修科目表注意事項。\n2 本系新生外文課程共須修習6學分。\n3 選修「進修英文」取得之學分，不列入本系之最低畢業學分數。\n4 通識核心必修四大領域中至少須修習一個領域。\n二 系訂必修\n1 最低畢業學分數為 128學分。\n2 本系學生應修本系所開必修課程56學分，及選修課程47學分；其中至少含本系選修課程35\n學分，其餘學分可自由選修校內外課程（不含本校語言中心開設之法文課程及「進修英\n文」），但外校課程以本校未開設之課程為原則。國際交換生抵修學分數不受此限。\n3 本系新生外文課程共須修習6學分，共有以下三種選項：(1) 「大一英文」人文社會課群6學\n分。(2)英文系開設之其他英文課程6學分。(3)語言中心開設或認定之初級第二外語課程，\n但同一外語課程必須連續修滿6學分。\n4 本系學生須通過並取得「法語鑑定文憑B1」（DELF B1）方可畢業。\n5 入學前已取得法語鑑定考試DELF A2（含）以上證書者，得於入學後以最高級數證書提出免\n修部分基礎必修課程申請。經本系課程委員會資料審核及各科授課教師考核通過後，始得\n免修。惟因免修而缺少之學分數須加修本系選修課程補足。\n三 外系學生至本系修讀雙主修規定\n1 依本校「學生修讀雙主修辦法」辦理。\n2 除本系必修學分外，另須於本系選修課中任選8學分。\n3 畢業前須通過並取得「法語鑑定文憑B1」（DELF B1）方可取得本系雙主修資格。", null, null, null, null, null, null, null, null]]}], "物理學系_113": [{"page": 1, "table": 1, "rows": [["理學院 物理學系應修科目表（113學年度入學新生適用）", null, null, null, null, null, null, null, null, null], ["科目", "課名及課號", "學分數", null, null, null, null, null, null, null], [null, null, "第一學年", null, "第二學年", null, "第三學年", null, "第四學年", null], [null, null, "上", "下", "上", "下", "上", "下", "上", "下"], ["共同\n必修", "國文", "5", null, "", "", "", "", "", ""], [null, "外文", "3", "3", "", "", "", "", "", ""], [null, "體育課程", "0", "0", "0", "0", "0", "", "", ""], [null, "服務學習課程", "0", "0", null, null, null, null, null, null], [null, "通識課程(含核心必修、選修科目)", "14", null, null, null, null, null, null, null], ["系訂\n必修", "微積分 MA1001 / MA1002", "4", "4", "", "", "", "", "", ""], [null, "實驗物理與方法 I PH1029 / PH1030", "6", "6", "", "", "", "", "", ""], [null, "力學 PH1027", "4", "", "", "", "", "", "", ""], [null, "電磁學 PH1028", "", "4", "", "", "", "", "", ""], [null, "應用數學 PH2003 / PH2004", "", "", "3", "3", "", "", "", ""], [null, "熱物理 PH3011", "", "", "3", "", "", "", "", ""], [null, "量子物理 PH3009", "", "", "", "3", "", "", "", ""], [null, "實驗物理與方法 II PH2029 / PH2030", "", "", "6", "6", "", "", "", ""], [null, "跨領域課程（見備註二、2）", "6", null, null, null, null, null, null, null], ["備註", "一、共同必修\n1 共同科目修習及其他畢業條件，請見應修科目表注意事項。\n2 本系新生外文課程可從下列三種外文課程中任選一種：\n(一)「大一英文」科學課群6學分。\n(二) 英文系開設之其他英文課程修滿6學分。\n(三) 語言中心開設或認定之第二外語課程，但同一外語課程必須修滿6學分。", null, null, null, null, null, null, null, null], [null, "3 選修「進修英文」取得之學分，不列入本系之畢業學分總數。", null, null, null, null, null, null, null, null], [null, "4 通識核心必修為人文與思想、應用科學、社會思潮與現象三大領域中至少須修習一個領域。\n二、系訂必修\n1 共同必修科目25學分，系必修科目58學分。最低畢業學分：128。\n2下列課程中任擇６學分修習並通過：\n中國文學史(CL2005 / CL2006)、英國文學I / II (EL2059 / EL2060)、美國文學I (EL2061)、基礎數學(MA1015)、基礎程\n式設計(MA1016)、科學計算導論(MA1018)、普通化學I / II (CM1009 / CM1010)、光學系統/光電工程概論(OS3001 /\nOS3002)、動力學(ME2013)、材料科學(ME2051)、應用力學(CI1005)、工程材料學(CI2005)、材料工程概論 I / II\n(CH1023 / CH1024)、企業概論(MT1021)、會計學(MT1031 / MT1032)、統計學(MT2041 / MT2042)、經濟學(MT1011 /\nMT1012)、電路學I / II (EE2002 / EE2011)、電子學I / II (EE2001 / EE2009)、電路學I (CO2001)、電子學I / II\n(CO2005/CO2006)、計算機概論I / II (CE1001 / CE1002)、大氣熱力學(AP2011)、太空物理學I / II (AP3044 / AP4013)、\n普通地質學+普通地質實習(GP2031 + GP2033 / GP2032 + GP2034)、臺灣客家移墾史(HK1015)、普通生物學I / II\n(LS1013 / LS1014)、認知心理學概論(BM1010)、認知神經科學(BM2005)。其他事先申請經本系審核通過之課程亦可\n認定。\n3 學生須任選甲類或乙類修習並通過。\n(1)甲類：以下課程須擇二科(共6學分)修習並通過：計算物理導論(PH3057)、近代物理實驗(PH3036)、\n電子學(含實驗)I / II (PH3063/PH3064)、物理專題I / II / III / IV ( PH3015/ PH3016/ PH4015/ PH4016)、業界\n實習I / II / III / IV ( PH3021/ PH3022/ PH4021/ PH4022)\n(2)乙類：以下課程須擇二組(共12學分)修習並通過：\n①物理專題I (PH3015)、論文研習與撰寫I (PH3017)。\n②物理專題II (PH3016)、論文研習與撰寫II (PH3018)。\n③物理專題III (PH4015)、論文研習與撰寫III (PH4017)。\n④物理專題IV (PH4016)、論文研習與撰寫IV (PH4018)。\n乙類學生於修業期間，必須參加物理小年會壁報展並報告，完成畢業論文與口試，由至少二位委員評\n分，口試成績為當學期「論文研習與撰寫」學期成績。\n4 修業期限內至少選修並通過本系(PH開頭)選修科目（專題類課程除外）：甲類~15學分、乙類~9學分。\n三、雙主修規定：依本校「學生修讀雙主修辦法」辦理。", null, null, null, null, null, null, null, null]]}], "生命科學系_114": [{"page": 1, "table": 1, "rows": [["生醫理工學院 生命科學系應修科目表（114學年度入學新生適用）", null, null, null, null, null, null, null, null, null], ["科目", "課名及課號", "學分數", null, null, null, null, null, null, null], [null, null, "第一學年", null, "第二學年", null, "第三學年", null, "第四學年", null], [null, null, "上", "下", "上", "下", "上", "下", "上", "下"], ["共同\n必修", "國文", "5", null, "", "", "", "", "", ""], [null, "外文", "3", "3", "", "", "", "", "", ""], [null, "體育課程", "0", "0", "0", "0", "0", "", "", ""], [null, "服務學習課程", "0", "0", null, null, null, null, null, null], [null, "通識課程(含核心必修、選修科目)", "14", null, null, null, null, null, null, null], ["學院\n必修", "生物統計學-R語言HT3001", "", "", "", "", "3", "", null, null], [null, "微積分 MA1001", "4", "", "", "", "", "", "", ""], [null, "普通化學 CM1009 / CM1010", "3", "3", "", "", "", "", "", ""], [null, "普通化學實驗 CM1008", "1", "", "", "", "", "", "", ""], [null, "普通生物學 LS1001 / LS1002", "3", "3", "", "", "", "", "", ""], [null, "普通生物學實驗 LS1003 / LS1004", "1", "1", "", "", "", "", "", ""], [null, "普通物理B PH1038", "", "3", "", "", "", "", "", ""], [null, "有機化學 LS2005 / LS2006", "", "", "3", "3", "", "", "", ""], [null, "生物化學 LS2001 / LS2002", "", "", "3", "3", "", "", "", ""], [null, "生物化學實驗 LS2003 / LS2004", "", "", "1", "1", "", "", "", ""], [null, "微生物學 LS3003", "", "", "3", "", "", "", "", ""], [null, "植物生理學 LS3001", "", "", "", "3", "", "", "", ""], [null, "植物生理學實驗 LS2014", "", "", "", "1", "", "", "", ""], [null, "細胞學 LS2019 / LS2020", "", "", "", "", "2", "2", "", ""], [null, "遺傳學 LS2010", "", "", "", "", "3", "", "", ""], [null, "分子生物學 LS3035/ LS3036", "", "", "", "", "2", "2", "", ""], [null, "動物生理學 LS3018", "", "", "", "", "", "4", "", ""], [null, "動物生理學實驗 LS3020", "", "", "", "", "", "1", "", ""], [null, "書報討論 I / II LS4001 / LS4002", "", "", "", "", "", "", "1", "1"]]}, {"page": 2, "table": 1, "rows": [[null, "生態學 LS4015", "", "", "", "", "", "", "3", ""], ["備註", "一、共同必修\n1 共同科目修習及其他畢業條件，請見應修科目表注意事項。\n2 本系新生外文課程：可修「大一英文」科學課群6學分或英文系之其他課程，但不得以第二外語課程抵免「大一英\n文」學分。", null, null, null, null, null, null, null, null], [null, "3 選修「進修英文」取得之學分，不列入本系之畢業學分總數。", null, null, null, null, null, null, null, null], [null, "4 通識課程: 通識核心必修四大領域中至少須修習一個領域，但不含「基因與遺傳」。\n二、學院及學系必/選訂修規定\n1 必修科目計 92學分，最低畢業學分為128，且不含通識課程的「基因與遺傳」。\n2 修業期限內至少選修並通過本系（LS字頭）選修科目15學分，其中必須包含專題研究課程至少一門，且最多只承認二\n門研究所的專題課程學分，超修部分不予承認。\n三、雙主修規定\n1 依本校「學生修讀雙主修辦法」辦理。\n2 申請本系為雙主修的同學，除依本校雙主修辦法之規定辦理之外，修滿學院及學系必修科目學分 (共67學分)即可取得\n雙主修資格。但本系規定之必修課程應在本系修課為原則，在本系以外所修讀同名稱、同學分之必修課程必須經過本\n系認可始可抵免(抵修)。", null, null, null, null, null, null, null, null]]}], "英美語文學系_114": [{"page": 1, "table": 1, "rows": [["科目", "課名及課號", null, "學分數", null, null, null, null, null, null, null], [null, null, null, "第一學年", null, "第二學年", null, "第三學年", null, "第四學年", null], [null, null, null, "上", "下", "上", "下", "上", "下", "上", "下"], ["", "國文", null, "5", null, "", "", "", "", "", ""], ["", "外文", null, "3", "3", "", "", "", "", "", ""], ["共同\n必修", "體育課程", null, "0", "0", "0", "0", "0", "", "", ""], [null, "服務學習課程", null, "0", "0", null, null, null, null, null, null], ["", "通識課程(含核心必修、選修科目)", null, "14", null, null, null, null, null, null, null], ["系訂\n必修\n(語言\n訓練\n類)", "必修", "EL1060 影像分析寫作", "3", "", "", "", "", "", "", ""], [null, "必修", "EL1064 英文口語訓練", "3", "", "", "", "", "", "", ""], [null, "必修", "EL1204 文獻蒐集與論證寫作", "", "3", "", "", "", "", "", ""], [null, "必修", "EL2078 文學分析寫作", "", "", "3", "", "", "", "", ""], [null, "必修", "EL2076 演說與溝通I", "", "", "3", "", "", "", "", ""], [null, "必選\n一門", "EL4201 研究、寫作與實踐", "", "", "", "", "3", null, "", ""], [null, null, "EL4202 翻譯與媒介", "", "", "", "", "", "", "3", null], ["系訂\n必修\n(專業\n學科\n類)", "必修\n三門", "EL1201 比較觀念文化史", "3", "", "", "", "", "", "", ""], [null, null, "EL1202 文學、歷史與哲思", "3", "", "", "", "", "", "", ""], [null, null, "EL1203 殖民現代性", "", "3", "", "", "", "", "", ""], [null, "必選\n四門", "EL2005 英語語言學概論", "", "", "3", null, "", "", "", ""], [null, null, "EL3201 英國文學研究", "", "", "3", null, null, null, null, null], [null, null, "EL3202 英語系研究", "", "", "", "", "", "3", null, null], [null, null, "EL3203 美國研究I", "", "", "3", null, null, null, null, null], [null, null, "EL3204 美國研究II", "", "", "", null, "", "3", null, null], ["備註", "一 共同必修\n1共同科目修習及其他畢業條件，請見應修科目表注意事項。\n2共同必修之外文課程須選修本系開設之任何課程6學分。語言中心的「大一英文」不列入本系外文課程。\n3選修「進修英文」取得之學分，不列入本系之畢業學分總數。\n4通識核心必修四大領域中至少須修習一個領域。\n二 系訂必修\n1最低畢業學分128。\n2必修及必選修科目計 103 學分，其中本系課程須修滿78 學分。\n(1). 語言訓練類至少必選30學分（除必修及必選之18學分外，應另選本類課程至少12學分）\n(2). 專業學科類至少必選48學分（除必修及必選之21學分外，應另選本類課程至少27學分）\n3其餘25學分可自由選修校內外課程（不含本校語言中心開設之「進修英文」），但外校課程以本校未開設之課程為\n原則。\n三 雙主修規定: 依本校「學生修讀雙主修辦法」辦理。", null, null, null, null, null, null, null, null, null]]}], "財務金融學系_114": [{"page": 1, "table": 1, "rows": [["管理學院 財務金融學系應修科目表 114學年度入學新生適用", null, null, null, null, null, null, null, null, null], ["科目", "課名及課號", "學分數", null, null, null, null, null, null, null], [null, null, "第一學年", null, "第二學年", null, "第三學年", null, "第四學年", null], [null, null, "上", "下", "上", "下", "上", "下", "上", "下"], ["共同\n必修", "國文", "5", null, "", "", "", "", "", ""], [null, "外文", "3", "3", "", "", "", "", "", ""], [null, "體育課程", "0", "0", "0", "0", "0", "", "", ""], [null, "服務學習課程", "0", "0", null, null, null, null, null, null], [null, "通識課程(含核心必修、選修科目)", "14", null, null, null, null, null, null, null], ["院訂\n必修", "經濟學 MT1011 / MT1012", "3", "3", "", "", "", "", "", ""], [null, "企業概論 MT1021", "3", "", "", "", "", "", "", ""], [null, "會計學 MT1031 / MT1032", "3", "3", "", "", "", "", "", ""], [null, "統計學 MT2041 / MT2042", "", "", "3", "3", "", "", "", ""], [null, "程式設計:Python MT1051", "3", "", "", "", "", "", "", ""], ["系訂\n必修", "微積分 MA1005 / MA1006", "3", "3", "", "", "", "", "", ""], [null, "財務金融概論FM1011", "", "3", "", "", "", "", "", ""], [null, "財務管理 FM2031 / FM2032", "", "", "3", "3", "", "", "", ""], [null, "個體,總體經濟學 FM2003 / FM2004", "", "", "3", "3", "", "", "", ""], [null, "投資學 FM3017", "", "", "", "", "3", "", "", ""], [null, "期貨與選擇權 FM3002", "", "", "", "", "3", "", "", ""], [null, "國際財務管理 FM4001", "", "", "", "", "", "3", "", ""], [null, "金融機構與市場 FM3036", "", "", "", "", "3", "", "", ""], [null, "財務報表分析 FM3001", "", "", "", "", "", "", "3", ""], ["備註", "一、 共同必修\n1 共同科目修習及其他畢業條件，請見應修科目表注意事項。\n2 本系新生外文課程可從三種外文課程中任選一種。\n3 (選1）修修「讀進「修大英一文英」文取」得管之理學課分群，6不學列分入。本系之畢業學分總數。\n4 通識核心必修四大領域中至少須修習一個領域。\n二 、院、系訂必修\n1 必修科目計85學分，最低畢業學分：128。\n2 (1) 修業期間內至少修習且通過選修科目43學分（不含通識課程及教育學程科目學分），其中須包含系訂選修科目18學\n分(含)以上；\n(2) 系訂選修FM2009「民法概要」、FM3004「商事法」及FM4013「證券金融法規」三科擇二修習，本規定並適用於雙\n主修同學。\n(3) 系訂選修管理類課程FM2036「組織行為」及FM3011「行銷管理」二科擇一修習，本規定並適用於雙主修同學。\n3 管院 「數位素養」必選課程6學分，範圍包括：\n(1) 「企業資源規劃」學分學程修課表中所列課程(排除FM課號課程) 。\n(2) 「商業智慧與分析」學分學程修課表中所列課程(排除FM課號課程) 。\n(3) 「金融科技」學分學程修課表中所列 IM開頭課號課程 。\n(4) 本系課程委員會承認之數位商品課程 。\n三、雙主修規定\n1 依本校「學生修讀雙主修辦法」辦理。\n2 本系選修「民法概要」、「商事法」、及「證券金融法規」三擇二修習。\n3 本系選修「組織行為」及「行銷管理」二擇一修習。", null, null, null, null, null, null, null, null]]}], "資訊管理學系_114": [{"page": 1, "table": 1, "rows": [["管理學院 資訊管理學系應修科目表 114學年度入學新生適用", null, null, null, null, null, null, null, null, null, null], ["科目", "課名及課號", null, "學分數", null, null, null, null, null, null, null], [null, null, null, "第一學年", null, "第二學年", null, "第三學年", null, "第四學年", null], [null, null, null, "上", "下", "上", "下", "上", "下", "上", "下"], ["共同\n必修", "國文", null, "5", null, "", "", "", "", "", ""], [null, "外文", null, "3", "3", "", "", "", "", "", ""], [null, "體育課程", null, "0", "0", "0", "0", "0", "", "", ""], [null, "服務學習課程", null, "0", "0", null, null, null, null, null, null], [null, "通識課程(含核心必修、選修科目)", null, "14", null, null, null, null, null, null, null], ["院訂\n必修", "會計學 MT1031 / MT1032", null, "3", "3", "", "", "", "", "", ""], [null, "企業概論 MT1021", null, "3", "", "", "", "", "", "", ""], [null, "統計學 MT2041 / MT2042", null, "", "", "3", "3", "", "", "", ""], [null, "經濟學 MT1011 / MT1012", null, "", "", "3", "3", "", "", "", ""], ["系訂\n必修", "微積分 MA1005", null, "3", "", "", "", "", "", "", ""], [null, "計算機概論I IM1001", null, "3", "", "", "", "", "", "", ""], [null, "程式設計 IM1023", null, "", "3", "", "", "", "", "", ""], [null, "資訊管理導論 IM1018", null, "", "3", "", "", "", "", "", ""], [null, "作業系統 IM2046", null, "", "", "3", "", "", "", "", ""], [null, "資料與檔案結構 IM2011", null, "", "", "3", "", "", "", "", ""], [null, "資料庫管理 IM2002", null, "", "", "", "3", "", "", "", ""], [null, "企業資料通訊 IM3061", null, "", "", "", "3", "", "", "", ""], [null, "行銷學 IM3059", null, "", "", "", "", "3", "", "", ""], [null, "系統分析與設計 IM3069", null, "", "", "", "", "3", "", "", ""], [null, "作業研究I IM3003", null, "", "", "", "", "3", "", "", ""], [null, "組織行為 IM3070", null, "", "", "", "", "3", "", "", ""], [null, "人工智慧與機器學習IM3078", null, "", "", "", "", "", "3", "", ""], [null, "演算法 IM2037", null, "", "", "", "", "", "3", "", ""], [null, "電子商務 IM3031", null, "", "", "", "", "", "3", "", ""], [null, "資訊系統發展專題 I/Ⅱ IM3028 / IM4001", null, "", "", "", "", "", "3", "3", ""], [null, "管理資訊系統 IM4048", null, "", "", "", "", "", "", "3", ""], ["備註", "一、共同必修", null, null, null, null, null, null, null, null, null], [null, "1", "共同科目修習及其他畢業條件，請見應修科目表注意事項。", null, null, null, null, null, null, null, null], [null, "2", "本系新生外文課程可修：大一英文管理課群6學分或英文系之其他課程，但不得以第二外語課程抵免大一英文學分。", null, null, null, null, null, null, null, null], [null, "3", "選修「進修英文」取得之學分，不列入本系之畢業學分總數。", null, null, null, null, null, null, null, null], [null, "4", "通識核心必修四大領域中至少須修習一個領域。", null, null, null, null, null, null, null, null], [null, "二、院、系訂必修", null, null, null, null, null, null, null, null, null], [null, "1", "必修科目計 100學分，最低畢業學分：128 學分。", null, null, null, null, null, null, null, null], [null, "2", "選修部份，只認定外系12學分(通識課程至多認列4學分，MT課號「企業實習」課程至多認列3學分)，其餘皆要選修本系所\n開之選修課。", null, null, null, null, null, null, null, null], [null, "3", "必選課：初階程式設計(IM1013)、網頁程式設計(IM3029)、微積分(MA1006)。", null, null, null, null, null, null, null, null], [null, "三、雙主修規定", null, null, null, null, null, null, null, null, null], [null, "1", "依本校「學生修讀雙主修辦法」辦理。", null, null, null, null, null, null, null, null], [null, "2", "必選課：初階程式設計(IM1013)、網頁程式設計(IM3029)、微積分(MA1006)。", null, null, null, null, null, null, null, null], [null, "3", "抵修後學分數不足40學分者，由本系課程委員會審議。", null, null, null, null, null, null, null, null]]}], "資訊電機學院學士班_114": []};
+
+// working copy: deep clone so edits don't touch RAW
+let data = JSON.parse(JSON.stringify(RAW));
+
+let currentDept = null;
+let ctxTarget    = null;
+
+// ── sidebar ──────────────────────────────────────────────
+const deptList = document.getElementById('dept-list');
+Object.keys(data).forEach(dept => {
+  const btn = document.createElement('button');
+  btn.className = 'dept-btn';
+  btn.textContent = dept.replace(/_114$|_113$/, '').replace(/_/g, ' ');
+  btn.dataset.dept = dept;
+  btn.onclick = () => loadDept(dept);
+  deptList.appendChild(btn);
+});
+
+// ── render dept ──────────────────────────────────────────
+function loadDept(dept) {
+  currentDept = dept;
+  document.querySelectorAll('.dept-btn').forEach(b => b.classList.toggle('active', b.dataset.dept === dept));
+  document.getElementById('dept-title').textContent = dept;
+  renderContent();
+}
+
+function renderContent() {
+  const content = document.getElementById('content');
+  content.innerHTML = '';
+  const entries = data[currentDept] || [];
+  if (!entries.length) { content.innerHTML = '<p>無資料</p>'; return; }
+
+  entries.forEach((entry, eIdx) => {
+    const sec = document.createElement('div');
+    sec.className = 'table-section';
+    const h3 = document.createElement('h3');
+    h3.textContent = `Page ${entry.page}，Table ${entry.table}（${entry.rows.length} rows）`;
+    sec.appendChild(h3);
+
+    if (entry.error) {
+      sec.innerHTML += `<p style="color:red">錯誤：${entry.error}</p>`;
+    } else {
+      sec.appendChild(buildTable(entry.rows, eIdx));
+    }
+    content.appendChild(sec);
+  });
+}
+
+function cellType(val) {
+  if (val === null) return 'merge';
+  if (val === '')   return 'empty';
+  return 'value';
+}
+
+function buildTable(rows, eIdx) {
+  const tbl = document.createElement('table');
+  rows.forEach((row, rIdx) => {
+    const tr = document.createElement('tr');
+    row.forEach((cell, cIdx) => {
+      const td = document.createElement('td');
+      const type = cellType(cell);
+      td.dataset.type  = type;
+      td.dataset.eIdx  = eIdx;
+      td.dataset.rIdx  = rIdx;
+      td.dataset.cIdx  = cIdx;
+
+      if (type === 'merge') {
+        td.textContent = '◀ merge';
+        td.contentEditable = false;
+      } else {
+        td.textContent = cell ?? '';
+        td.contentEditable = true;
+      }
+
+      // live edit → sync to data
+      td.addEventListener('input', () => {
+        data[currentDept][eIdx].rows[rIdx][cIdx] = td.textContent;
+      });
+
+      // right-click context menu
+      td.addEventListener('contextmenu', e => {
+        e.preventDefault();
+        ctxTarget = td;
+        const menu = document.getElementById('ctx-menu');
+        menu.style.left = e.clientX + 'px';
+        menu.style.top  = e.clientY + 'px';
+        menu.style.display = 'block';
+      });
+
+      tr.appendChild(td);
+    });
+    tbl.appendChild(tr);
+  });
+  return tbl;
+}
+
+// ── context menu actions ──────────────────────────────────
+function applyType(td, type) {
+  const eIdx = +td.dataset.eIdx, rIdx = +td.dataset.rIdx, cIdx = +td.dataset.cIdx;
+  td.dataset.type = type;
+  if (type === 'merge') {
+    data[currentDept][eIdx].rows[rIdx][cIdx] = null;
+    td.textContent = '◀ merge';
+    td.contentEditable = false;
+  } else if (type === 'empty') {
+    data[currentDept][eIdx].rows[rIdx][cIdx] = '';
+    td.textContent = '';
+    td.contentEditable = true;
+  } else {
+    const cur = data[currentDept][eIdx].rows[rIdx][cIdx];
+    data[currentDept][eIdx].rows[rIdx][cIdx] = (cur === null || cur === '') ? '' : cur;
+    td.textContent = data[currentDept][eIdx].rows[rIdx][cIdx];
+    td.contentEditable = true;
+    td.focus();
+  }
+}
+
+document.getElementById('ctx-value').onclick = () => { if(ctxTarget) applyType(ctxTarget,'value'); hideMenu(); };
+document.getElementById('ctx-merge').onclick = () => { if(ctxTarget) applyType(ctxTarget,'merge'); hideMenu(); };
+document.getElementById('ctx-empty').onclick = () => { if(ctxTarget) applyType(ctxTarget,'empty'); hideMenu(); };
+document.addEventListener('click', hideMenu);
+function hideMenu() { document.getElementById('ctx-menu').style.display = 'none'; }
+
+// ── export JSON ───────────────────────────────────────────
+document.getElementById('btn-export-json').onclick = () => {
+  if (!currentDept) return alert('請先選擇系所');
+  const blob = new Blob([JSON.stringify(data[currentDept], null, 2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = currentDept + '_table.json';
+  a.click();
+};
+
+// ── reset ─────────────────────────────────────────────────
+document.getElementById('btn-reset').onclick = () => {
+  if (!currentDept) return;
+  if (!confirm('還原 ' + currentDept + ' 的所有修改？')) return;
+  data[currentDept] = JSON.parse(JSON.stringify(RAW[currentDept]));
+  renderContent();
+};
+
+// ── LLM Markdown ─────────────────────────────────────────
+document.getElementById('btn-export-llm').onclick = () => {
+  if (!currentDept) return alert('請先選擇系所');
+  const lines = [`# ${currentDept} 應修科目表\n`];
+  (data[currentDept] || []).forEach(entry => {
+    lines.push(`## Page ${entry.page} Table ${entry.table}\n`);
+    const rows = entry.rows;
+    if (!rows.length) return;
+    // build markdown table
+    // header = first row
+    const cols = Math.max(...rows.map(r => r.length));
+
+    rows.forEach((row, ri) => {
+      const cells = Array.from({length: cols}, (_, i) => {
+        const v = row[i] ?? null;
+        if (v === null) return '`←M`';   // merge
+        if (v === '')   return '';         // empty
+        return v.replace(/\n/g,'↵').replace(/\|/g,'\\|');
+      });
+      lines.push('| ' + cells.join(' | ') + ' |');
+      if (ri === 0) lines.push('|' + Array(cols).fill('---').map(s=>' '+s+' ').join('|') + '|');
+    });
+    lines.push('');
+    // legend reminder
+    lines.push('> `←M` = 合併延伸格（None），空白 = 此學期無此課\n');
+  });
+  document.getElementById('llm-text').value = lines.join('\n');
+  document.getElementById('llm-modal').classList.add('show');
+};
+
+document.getElementById('btn-copy-llm').onclick = () => {
+  const ta = document.getElementById('llm-text');
+  ta.select();
+  document.execCommand('copy');
+  document.getElementById('btn-copy-llm').textContent = '✅ 已複製！';
+  setTimeout(() => document.getElementById('btn-copy-llm').textContent = '📋 複製全部', 1500);
+};
+document.getElementById('btn-close-llm').onclick = () => {
+  document.getElementById('llm-modal').classList.remove('show');
+};
+</script>
+</body>
+</html>

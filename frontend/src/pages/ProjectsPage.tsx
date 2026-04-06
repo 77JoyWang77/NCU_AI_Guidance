@@ -115,12 +115,12 @@ export default function ProjectsPage() {
   };
 
   return (
-    <div className="page-container py-4">
+    <div className="h-full flex flex-col page-container py-3">
       {/* 緊湊標題列 - 進入完整報告後隱藏 */}
       {viewMode !== 'pdf-chat' && (
-        <div className="flex items-center justify-between mb-3 py-1">
+        <div className="flex items-center justify-between mb-3 flex-shrink-0">
           <div className="flex items-center gap-2">
-            <h1 className="text-lg font-bold text-primary-900">大專生研究計畫</h1>
+            <h1 className="text-base font-bold text-primary-900">大專生研究計畫</h1>
             <span className="text-sm text-gray-400">·</span>
             <span className="text-sm text-gray-500">探索學長姐的研究成果，了解科系實際研究方向</span>
           </div>
@@ -150,11 +150,11 @@ export default function ProjectsPage() {
 
       {viewMode === 'outline' ? (
         // 大綱視圖（左側列表 + 右側大綱）
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 flex-1 min-h-0">
         {/* 左側：計畫列表 */}
-        <div className="lg:col-span-1">
+        <div className="lg:col-span-1 flex flex-col min-h-0">
 
-              <div className="space-y-3 max-h-[calc(100vh-280px)] overflow-y-auto">
+              <div className="space-y-2 overflow-y-auto flex-1">
                 {filteredProjects.map((project) => (
                   <div
                     key={project.id}
@@ -191,7 +191,7 @@ export default function ProjectsPage() {
             </div>
 
         {/* 右側：研究大綱或提示 */}
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-2 min-h-0 overflow-y-auto">
           {selectedProject ? (
             <div className="card p-8 relative">
                 <div className="mb-6">
@@ -265,7 +265,7 @@ export default function ProjectsPage() {
               </div>
             </div>
           ) : (
-            <div className="card h-[calc(100vh-280px)] flex flex-col items-center justify-center">
+            <div className="card h-full flex flex-col items-center justify-center">
               <HiChat className="w-16 h-16 text-gray-300 mb-4" />
               <p className="text-gray-600 mb-2">選擇一個計畫查看大綱</p>
               <p className="text-sm text-gray-500">點擊左側的計畫卡片</p>
@@ -274,24 +274,28 @@ export default function ProjectsPage() {
         </div>
       </div>
       ) : viewMode === 'pdf-chat' ? (
-        // PDF + 對話視圖
-        <div>
-          {/* 返回按鈕 */}
-          <button
-            onClick={handleBackToOutline}
-            className="mb-4 flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
-          >
-            <HiArrowLeft className="w-5 h-5" />
-            <span className="text-sm font-medium">返回大綱</span>
-          </button>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        // PDF + 對話視圖（全高，不帶外部間距）
+        <div className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-2 gap-4">
             {/* PDF Viewer */}
-            <div className="card overflow-hidden h-[calc(100vh-150px)]">
+            <div className="card overflow-hidden flex flex-col h-full">
+              {/* PDF 面板 header：含返回按鈕 */}
+              <div className="px-4 py-2.5 border-b border-gray-200 flex-shrink-0 flex items-center gap-2">
+                <button
+                  onClick={handleBackToOutline}
+                  className="flex items-center gap-1 text-sm text-primary-600 hover:text-primary-800 transition-colors"
+                >
+                  <HiArrowLeft className="w-4 h-4" />
+                  返回大綱
+                </button>
+                <span className="text-gray-300">|</span>
+                <span className="text-sm font-medium text-gray-700 truncate">{selectedProject.title}</span>
+              </div>
+              <div className="flex-1 overflow-hidden">
               {selectedProject.pdfPath ? (
                 <PdfViewer
                   pdfUrl={getPdfUrl(selectedProject)}
                   projectTitle={selectedProject.title}
+                  hideTitle
                 />
               ) : (
                 <div className="h-full flex items-center justify-center">
@@ -301,18 +305,19 @@ export default function ProjectsPage() {
                   </div>
                 </div>
               )}
+              </div>
             </div>
 
             {/* Chat Area */}
-            <div className="card h-[calc(100vh-150px)] flex flex-col">
-              {/* Chat Header - 簡化版 */}
-              <div className="px-6 py-4 border-b border-gray-200 flex-shrink-0">
-                <h2 className="text-lg font-semibold text-gray-800">AI 問答助手</h2>
-                <p className="text-sm text-gray-500 mt-1">提問關於這份研究計畫的任何問題</p>
+            <div className="card h-full flex flex-col">
+              {/* Chat Header - 緊湊版 */}
+              <div className="px-4 py-2.5 border-b border-gray-200 flex-shrink-0 flex items-center gap-2">
+                <h2 className="text-sm font-semibold text-gray-800">AI 問答助手</h2>
+                <span className="text-xs text-gray-400">· 提問關於這份研究計畫的任何問題</span>
               </div>
 
             {/* Chat Messages */}
-            <div className="flex-1 overflow-y-auto p-6 space-y-4">
+            <div className="flex-1 overflow-y-auto p-4 space-y-3">
               {chatMessages.map((msg, index) => (
                 <div
                   key={index}
@@ -343,7 +348,7 @@ export default function ProjectsPage() {
             </div>
 
             {/* Input */}
-            <form onSubmit={handleSendMessage} className="p-6 border-t border-gray-200">
+            <form onSubmit={handleSendMessage} className="p-3 border-t border-gray-200">
               <div className="flex gap-3">
                 <input
                   type="text"
@@ -363,7 +368,6 @@ export default function ProjectsPage() {
             </form>
             </div>
           </div>
-        </div>
       ) : null}
     </div>
   );

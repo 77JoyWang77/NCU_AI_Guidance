@@ -1,7 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { assessmentAPI } from '../api/services';
 import type { Question, Answer, AssessmentResult, AssessmentMode } from '../types';
-import { HiAcademicCap, HiCheckCircle, HiArrowLeft, HiArrowRight, HiLightBulb, HiSparkles } from 'react-icons/hi';
+import {
+  HiAcademicCap, HiCheckCircle, HiArrowLeft, HiArrowRight, HiLightBulb, HiSparkles,
+  HiBookOpen, HiTranslate, HiCalculator, HiChartBar, HiGlobeAlt, HiBeaker,
+} from 'react-icons/hi';
 
 // 文組科系定義
 const LIBERAL_ARTS_DEPARTMENTS = [
@@ -30,6 +33,11 @@ export default function AssessmentPage() {
   const [answers, setAnswers] = useState<Map<string, number>>(new Map());
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<AssessmentResult | null>(null);
+
+  // 換題時滾回頂端
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentIndex]);
 
   const modes = [
     {
@@ -219,7 +227,7 @@ export default function AssessmentPage() {
                   }`}
                 >
                   <div className="text-center">
-                    <div className="text-3xl mb-2">📚</div>
+                    <HiBookOpen className={`w-8 h-8 mx-auto mb-2 ${trackType === 'liberal' ? 'text-primary-600' : 'text-gray-400'}`} />
                     <h4 className="text-xl font-bold text-primary-900 mb-1">文組</h4>
                     <p className="text-sm text-gray-600">文學、管理、客家</p>
                   </div>
@@ -233,7 +241,7 @@ export default function AssessmentPage() {
                   }`}
                 >
                   <div className="text-center">
-                    <div className="text-3xl mb-2">🔬</div>
+                    <HiBeaker className={`w-8 h-8 mx-auto mb-2 ${trackType === 'science' ? 'text-primary-600' : 'text-gray-400'}`} />
                     <h4 className="text-xl font-bold text-primary-900 mb-1">理組</h4>
                     <p className="text-sm text-gray-600">理學、工程、資訊</p>
                   </div>
@@ -251,34 +259,37 @@ export default function AssessmentPage() {
               <p className="text-sm text-gray-600 mb-4">選擇你想要採計的學測科目，系統會篩選出符合的科系</p>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                 {[
-                  { id: 'chinese', label: '國文', icon: '📖' },
-                  { id: 'english', label: '英文', icon: '🗣️' },
-                  { id: 'math_a', label: '數學A', icon: '🔢' },
-                  { id: 'math_b', label: '數學B', icon: '📊' },
-                  { id: 'social', label: '社會', icon: '🌍' },
-                  { id: 'science', label: '自然', icon: '🔬' },
-                ].map((subject) => (
-                  <button
-                    key={subject.id}
-                    onClick={() => {
-                      setSelectedSubjects(prev =>
-                        prev.includes(subject.id)
-                          ? prev.filter(s => s !== subject.id)
-                          : [...prev, subject.id]
-                      );
-                    }}
-                    className={`p-4 rounded-lg border-2 transition-all ${
-                      selectedSubjects.includes(subject.id)
-                        ? 'border-primary-600 bg-primary-50'
-                        : 'border-gray-200 hover:border-primary-300'
-                    }`}
-                  >
-                    <div className="text-center">
-                      <div className="text-2xl mb-1">{subject.icon}</div>
-                      <div className="text-sm font-semibold text-primary-900">{subject.label}</div>
-                    </div>
-                  </button>
-                ))}
+                  { id: 'chinese',  label: '國文',  Icon: HiBookOpen },
+                  { id: 'english',  label: '英文',  Icon: HiTranslate },
+                  { id: 'math_a',   label: '數學A', Icon: HiCalculator },
+                  { id: 'math_b',   label: '數學B', Icon: HiChartBar },
+                  { id: 'social',   label: '社會',  Icon: HiGlobeAlt },
+                  { id: 'science',  label: '自然',  Icon: HiBeaker },
+                ].map(({ id, label, Icon }) => {
+                  const selected = selectedSubjects.includes(id);
+                  return (
+                    <button
+                      key={id}
+                      onClick={() => {
+                        setSelectedSubjects(prev =>
+                          prev.includes(id)
+                            ? prev.filter(s => s !== id)
+                            : [...prev, id]
+                        );
+                      }}
+                      className={`p-4 rounded-lg border-2 transition-all ${
+                        selected
+                          ? 'border-primary-600 bg-primary-50'
+                          : 'border-gray-200 hover:border-primary-300'
+                      }`}
+                    >
+                      <div className="text-center">
+                        <Icon className={`w-6 h-6 mx-auto mb-1 ${selected ? 'text-primary-600' : 'text-gray-400'}`} />
+                        <div className="text-sm font-semibold text-primary-900">{label}</div>
+                      </div>
+                    </button>
+                  );
+                })}
               </div>
               {selectedSubjects.length > 0 && (
                 <div className="mt-4 p-3 bg-primary-50 rounded-lg">
@@ -493,23 +504,6 @@ export default function AssessmentPage() {
 
   return (
     <div className="page-container py-8">
-      {/* 進度條 */}
-      <div className="mb-8 max-w-4xl mx-auto">
-        <div className="flex justify-between items-center text-sm text-gray-600 mb-2">
-          <div className="flex items-center space-x-4">
-            <span>第 {currentIndex + 1} / {questions.length} 題</span>
-            <span className="text-primary-600 font-semibold">• 涵蓋 {departmentCount} 個科系</span>
-          </div>
-          <span>已完成: {answeredCount} 題</span>
-        </div>
-        <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-          <div
-            className="h-full bg-primary-700 transition-all duration-300"
-            style={{ width: `${progress}%` }}
-          ></div>
-        </div>
-      </div>
-
       {/* 題目卡片 */}
       <div className="card p-8 mb-6 max-w-4xl mx-auto">
         <div className="flex items-start space-x-3 mb-6">
@@ -606,6 +600,23 @@ export default function AssessmentPage() {
             {loading ? '提交中...' : '完成測評'}
           </button>
         )}
+      </div>
+
+      {/* 進度條 */}
+      <div className="mt-4 max-w-4xl mx-auto">
+        <div className="flex justify-between items-center text-xs text-gray-500 mb-1.5">
+          <div className="flex items-center gap-3">
+            <span>第 {currentIndex + 1} / {questions.length} 題</span>
+            <span className="text-primary-600">涵蓋 {departmentCount} 個科系</span>
+          </div>
+          <span>已完成 {answeredCount} 題</span>
+        </div>
+        <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden">
+          <div
+            className="h-full bg-primary-700 transition-all duration-300"
+            style={{ width: `${progress}%` }}
+          ></div>
+        </div>
       </div>
 
       {/* 提示訊息 */}

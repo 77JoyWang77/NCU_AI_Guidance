@@ -9,9 +9,10 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/b
 interface PdfViewerProps {
   pdfUrl: string;
   projectTitle: string;
+  hideTitle?: boolean;
 }
 
-const PdfViewer: React.FC<PdfViewerProps> = ({ pdfUrl, projectTitle }) => {
+const PdfViewer: React.FC<PdfViewerProps> = ({ pdfUrl, projectTitle, hideTitle = false }) => {
   const [numPages, setNumPages] = useState<number | null>(null);
   const [scale, setScale] = useState<number>(1.2);
   const [loading, setLoading] = useState<boolean>(true);
@@ -45,13 +46,15 @@ const PdfViewer: React.FC<PdfViewerProps> = ({ pdfUrl, projectTitle }) => {
   return (
     <div className="h-full flex flex-col bg-gray-50">
       {/* Toolbar */}
-      <div className="bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between flex-shrink-0">
+      <div className="bg-white border-b border-gray-200 px-4 py-2 flex items-center justify-between flex-shrink-0">
         <div className="flex items-center gap-3">
-          <h3 className="text-base font-semibold text-gray-800 truncate max-w-md" title={projectTitle}>
-            {projectTitle}
-          </h3>
+          {!hideTitle && (
+            <h3 className="text-base font-semibold text-gray-800 truncate max-w-md" title={projectTitle}>
+              {projectTitle}
+            </h3>
+          )}
           {numPages && (
-            <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+            <span className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded">
               {numPages} 頁
             </span>
           )}

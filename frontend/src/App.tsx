@@ -17,15 +17,19 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <Layout>
-        <Routes>
+      <Routes>
+        {/* 一般佈局：有 padding 和 footer */}
+        <Route element={<Layout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/assessment" element={<AssessmentPage />} />
-          <Route path="/projects" element={<ProjectsPage />} />
+        </Route>
+        {/* 全高佈局：無 padding、無 footer、無外層捲動 */}
+        <Route element={<Layout fullHeight />}>
           <Route path="/courses" element={<CoursesPage />} />
           <Route path="/course-search" element={<CourseSearchPage />} />
-        </Routes>
-      </Layout>
+          <Route path="/projects" element={<ProjectsPage />} />
+        </Route>
+      </Routes>
     </Router>
   );
 }

@@ -109,7 +109,7 @@ def process_json_file(file_path):
 
 def main():
     """主函數：處理所有 JSON 文件"""
-    base_dir = Path(__file__).parent.parent / "data" / "raw" / "courses"
+    base_dir = Path(__file__).parent.parent.parent / "data" / "raw" / "courses"
 
     # 查找所有 JSON 文件
     json_files = list(base_dir.glob("**/*.json"))

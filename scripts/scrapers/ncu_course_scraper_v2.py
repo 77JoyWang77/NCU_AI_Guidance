@@ -27,10 +27,14 @@ class NCUCourseScraperV2:
         self.driver = webdriver.Chrome(options=chrome_options)
         self.wait = WebDriverWait(self.driver, 15)
 
-        # 創建輸出資料夾
-        self.output_dir = f"{year}_{semester}"
+        # 輸出與舊資料路徑（相對於 project root）
+        _root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        self.output_dir = os.path.join(_root, 'data', 'raw', 'courses', f"{year}_{semester}")
         os.makedirs(self.output_dir, exist_ok=True)
         print(f"✓ 輸出資料夾：{self.output_dir}")
+
+        # 舊資料路徑（用於跳過已爬取的系所）
+        self.data_dir = self.output_dir
 
     def navigate_to_course_page(self):
         """直接前往課程查詢頁面（無需登入）"""
@@ -166,63 +170,72 @@ class NCUCourseScraperV2:
         return result
 
     def parse_outline_detail(self, driver_window):
-        """解析課程綱要的詳細欄位（從表格或文字）"""
+        """解析課程綱要的詳細欄位（從 body text + 獨立找核心能力表格）"""
         result = {}
 
         try:
             text = driver_window.find_element(By.TAG_NAME, "body").text
-            tables = driver_window.find_elements(By.TAG_NAME, "table")
 
-            # 解析表格
-            for table in tables:
-                rows = table.find_elements(By.TAG_NAME, "tr")
-
-                for row in rows:
+            # 第一步：找系所核心能力 table（從最近的 ancestor table 往上找，避免抓到外層容器）
+            core_abilities = []
+            try:
+                ability_table = driver_window.find_element(
+                    By.XPATH, "//th[normalize-space()='系所核心能力']/ancestor::table[1]"
+                )
+                for row in ability_table.find_elements(By.TAG_NAME, "tr")[1:]:
                     cells = row.find_elements(By.TAG_NAME, "td")
-                    if not cells:
-                        cells = row.find_elements(By.TAG_NAME, "th")
+                    if len(cells) >= 3:
+                        name = cells[0].text.strip()
+                        if name:
+                            core_abilities.append({
+                                "能力名稱": name,
+                                "強度指數": cells[1].text.strip(),
+                                "評量方式": cells[2].text.strip()
+                            })
+            except Exception:
+                pass
 
-                    if len(cells) == 2:
-                        field_name = cells[0].text.strip()
-                        field_value = cells[1].text.strip()
+            # 第二步：從 body text 解析所有欄位
+            lines = text.split('\n')
+            current_field = None
+            current_value = []
 
-                        if field_name and field_value:
-                            result[field_name] = field_value
+            field_keywords = ['學期', '開課單位', '流水號', '課號', '授課教師',
+                            '課程名稱(中文)', '課程名稱(英文)', '課程學制', '學分',
+                            '課程目標', '授課內容', '教科書/參考書', '自編教材比例',
+                            '授課方式', '評量配分比重', '辦公時間', '授課週數',
+                            '彈性教學說明', '課程領域', 'Office Hours', '備註']
 
-            # 從文字解析
-            if not result:
-                lines = text.split('\n')
-                current_field = None
-                current_value = []
+            for line in lines:
+                line = line.strip()
+                if not line or '智慧財產權' in line or '侵害他人著作權' in line:
+                    continue
 
-                field_keywords = ['學期', '開課單位', '流水號', '課號', '授課教師',
-                                '課程名稱(中文)', '課程名稱(英文)', '課程學制', '學分',
-                                '課程目標', '授課內容', '教科書/參考書', '自編教材比例',
-                                '授課方式', '評量配分比重', '辦公時間', '授課週數',
-                                '彈性教學說明', '課程領域', 'Office Hours', '備註']
+                is_field = False
+                for keyword in field_keywords:
+                    if line.startswith(keyword + ' ') or line == keyword:
+                        if current_field and current_value:
+                            result[current_field] = '\n'.join(current_value)
+                        current_field = keyword
+                        value = line[len(keyword):].strip()
+                        current_value = [value] if value else []
+                        is_field = True
+                        break
 
-                for line in lines:
-                    line = line.strip()
-                    if not line or '智慧財產權' in line or '侵害他人著作權' in line:
-                        continue
+                if not is_field and current_field:
+                    current_value.append(line)
 
-                    is_field = False
-                    for keyword in field_keywords:
-                        if line.startswith(keyword + ' ') or line.startswith(keyword):
-                            if current_field and current_value:
-                                result[current_field] = '\n'.join(current_value)
+            if current_field and current_value:
+                result[current_field] = '\n'.join(current_value)
 
-                            current_field = keyword
-                            value = line[len(keyword):].strip()
-                            current_value = [value] if value else []
-                            is_field = True
-                            break
+            # 第三步：清理 課程領域，去掉混入的核心能力表格文字
+            if '課程領域' in result:
+                domain = result['課程領域']
+                if '系所核心能力' in domain:
+                    domain = domain[:domain.find('系所核心能力')].strip()
+                result['課程領域'] = domain
 
-                    if not is_field and current_field:
-                        current_value.append(line)
-
-                if current_field and current_value:
-                    result[current_field] = '\n'.join(current_value)
+            result['核心能力'] = core_abilities
 
             if not result:
                 result['完整內容'] = text[:500]
@@ -412,14 +425,21 @@ class NCUCourseScraperV2:
         except Exception as e:
             print(f"  ✗ 儲存錯誤: {e}")
 
-    def scrape_all_depts(self, exclude_keywords=None):
+    def dept_already_scraped(self, full_name):
+        """檢查該系所是否已有 JSON 檔案（同時檢查輸出資料夾和舊資料資料夾）"""
+        safe_name = re.sub(r'[\\/:*?"<>|]', '_', full_name)
+        in_output = os.path.exists(os.path.join(self.output_dir, f"{safe_name}.json"))
+        in_data = os.path.exists(os.path.join(self.data_dir, f"{safe_name}.json"))
+        return in_output or in_data
+
+    def scrape_all_depts(self, exclude_keywords=None, skip_existing=True, max_depts=None):
         """爬取所有系所"""
         if exclude_keywords is None:
-            exclude_keywords = ['碩士', '博士']
+            exclude_keywords = []
 
         try:
             dept_list_url = self.driver.current_url
-            
+
             tables = self.driver.find_elements(By.TAG_NAME, "table")
             dept_table = tables[-1]
             rows = dept_table.find_elements(By.TAG_NAME, "tr")
@@ -427,6 +447,7 @@ class NCUCourseScraperV2:
             total_depts = len(rows) - 1
             print(f"\n找到 {total_depts} 個系所")
 
+            scraped_count = 0
             for dept_index in range(total_depts):
                 tables = self.driver.find_elements(By.TAG_NAME, "table")
                 dept_table = tables[-1]
@@ -442,8 +463,16 @@ class NCUCourseScraperV2:
                 full_name = f"{college}_{dept_name}"
 
                 if any(keyword in full_name for keyword in exclude_keywords):
-                    print(f"\n[{dept_index+1}/{total_depts}] 跳過：{full_name} (碩博士班)")
+                    print(f"\n[{dept_index+1}/{total_depts}] 跳過：{full_name} (排除關鍵字)")
                     continue
+
+                if skip_existing and self.dept_already_scraped(full_name):
+                    print(f"\n[{dept_index+1}/{total_depts}] 已存在，跳過：{full_name}")
+                    continue
+
+                if max_depts is not None and scraped_count >= max_depts:
+                    print(f"\n已達上限 {max_depts} 個系所，停止爬取")
+                    return
 
                 print(f"\n[{dept_index+1}/{total_depts}] 爬取：{full_name}")
 
@@ -455,6 +484,8 @@ class NCUCourseScraperV2:
 
                 if courses:
                     self.save_dept_json(full_name, courses)
+
+                scraped_count += 1
 
                 self.driver.get(dept_list_url)
                 time.sleep(2)

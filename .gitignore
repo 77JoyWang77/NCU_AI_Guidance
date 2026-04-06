@@ -31,12 +31,10 @@ env/
 ENV/
 .venv
 
-# 截圖檔案
-*.png
-
 # IDE
 .vscode/
 .idea/
+.claude/
 *.swp
 *.swo
 *.sublime-project

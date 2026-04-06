@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { courseAPI } from '../api/services';
 import type { Course } from '../types';
 import CourseDetailPanel from '../components/CourseDetailPanel';
@@ -31,7 +31,6 @@ const COLLEGE_ORDER = [
   '地球科學學院',
   '客家學院',
   '生醫理工學院',
-  '永續與綠能科技研究學院',
   '中心、處室',
 ];
 
@@ -45,7 +44,6 @@ const COLLEGE_CONFIG: Record<string, { icon: any; gradient: string; color: strin
   '地球科學學院': { icon: HiGlobeAlt, gradient: 'from-teal-400 to-cyan-500', color: 'text-teal-600' },
   '客家學院': { icon: HiLibrary, gradient: 'from-red-400 to-pink-500', color: 'text-red-600' },
   '生醫理工學院': { icon: HiHeart, gradient: 'from-pink-400 to-rose-500', color: 'text-pink-600' },
-  '永續與綠能科技研究學院': { icon: HiGlobeAlt, gradient: 'from-green-400 to-teal-500', color: 'text-green-600' },
   '中心、處室': { icon: HiOfficeBuilding, gradient: 'from-gray-400 to-gray-500', color: 'text-gray-600' },
 };
 
@@ -74,9 +72,19 @@ export default function CoursesPage() {
   const [searchMode, setSearchMode] = useState<'name' | 'detail'>('name');
   const [searchExpandedDepts, setSearchExpandedDepts] = useState<Set<string>>(new Set());
 
+  // 右側面板 ref，切換課程時滾回頂端
+  const rightPanelRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     loadCourses();
   }, []);
+
+  // 切換課程時右側面板滾回頂端
+  useEffect(() => {
+    if (rightPanelRef.current) {
+      rightPanelRef.current.scrollTop = 0;
+    }
+  }, [selectedCourse]);
 
   const loadCourses = async () => {
     try {
@@ -232,17 +240,16 @@ export default function CoursesPage() {
   }, [courses, searchQuery, searchMode]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* 主要內容區 */}
+    <div className="h-full bg-gray-50">
       {loading ? (
-        <div className="flex items-center justify-center h-96">
+        <div className="flex items-center justify-center h-full">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto mb-4"></div>
             <p className="text-gray-600">載入中...</p>
           </div>
         </div>
       ) : (
-        <div className="flex gap-0 h-[calc(100vh-64px)]">
+        <div className="flex gap-0 h-full">
           {/* 左側區域 (40%) - 導航或課程列表 */}
           <div className="w-96 shrink-0 border-r bg-white overflow-y-auto">
             {showNavigation ? (
@@ -607,7 +614,7 @@ export default function CoursesPage() {
           </div>
 
           {/* 右側：課程詳情 (60%) */}
-          <div className="flex-1 overflow-y-auto bg-gray-50 p-4">
+          <div ref={rightPanelRef} className="flex-1 overflow-y-auto bg-gray-50 p-4">
             <CourseDetailPanel course={selectedCourse} searchKeyword={searchQuery} />
           </div>
         </div>
@@ -615,3 +622,4 @@ export default function CoursesPage() {
     </div>
   );
 }
+

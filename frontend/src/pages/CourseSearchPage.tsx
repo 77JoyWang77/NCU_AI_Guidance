@@ -144,11 +144,11 @@ export default function CourseSearchPage() {
   };
 
   return (
-    <div className="page-container py-4">
+    <div className="h-full flex flex-col page-container py-3">
       {/* 緊湊標題列 */}
-      <div className="flex items-center justify-between mb-3 py-1">
+      <div className="flex items-center justify-between mb-3 flex-shrink-0">
         <div className="flex items-center gap-2">
-          <h1 className="text-lg font-bold text-primary-900">課程諮詢助手</h1>
+          <h1 className="text-base font-bold text-primary-900">課程諮詢助手</h1>
           <span className="text-sm text-gray-400">·</span>
           <span className="text-sm text-gray-500">透過 AI 助手快速找到你需要的課程資訊</span>
         </div>
@@ -161,12 +161,12 @@ export default function CourseSearchPage() {
         </button>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 flex-1 min-h-0">
         {/* 左側：對話列表 */}
-        <div className="lg:col-span-1">
+        <div className="lg:col-span-1 flex flex-col min-h-0">
 
           {/* 對話列表 */}
-          <div className="space-y-3 max-h-[calc(100vh-320px)] overflow-y-auto">
+          <div className="space-y-2 overflow-y-auto flex-1">
             {conversations.length === 0 ? (
               <div className="card p-8 text-center text-gray-500">
                 <p>還沒有對話</p>
@@ -208,17 +208,17 @@ export default function CourseSearchPage() {
         </div>
 
         {/* 右側：對話內容 */}
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-2 min-h-0">
           {selectedConversation ? (
-            <div className="card h-[calc(100vh-240px)] flex flex-col">
-              {/* 對話標題 */}
-              <div className="px-6 py-4 border-b border-gray-200 flex-shrink-0">
-                <h2 className="text-lg font-semibold text-gray-800">{selectedConversation.title}</h2>
-                <p className="text-sm text-gray-500 mt-1">根據課程資料庫提供建議</p>
+            <div className="card h-full flex flex-col">
+              {/* 對話標題 - 緊湊版 */}
+              <div className="px-4 py-2.5 border-b border-gray-200 flex-shrink-0 flex items-center gap-2">
+                <h2 className="text-sm font-semibold text-gray-800">{selectedConversation.title}</h2>
+                <span className="text-xs text-gray-400">· 根據課程資料庫提供建議</span>
               </div>
 
               {/* 對話消息 */}
-              <div className="flex-1 overflow-y-auto p-6 space-y-4">
+              <div className="flex-1 overflow-y-auto p-4 space-y-3">
                 {selectedConversation.messages.map((msg, index) => (
                   <div
                     key={index}
@@ -249,7 +249,7 @@ export default function CourseSearchPage() {
               </div>
 
               {/* 輸入框 */}
-              <form onSubmit={handleSendMessage} className="p-6 border-t border-gray-200">
+              <form onSubmit={handleSendMessage} className="p-3 border-t border-gray-200">
                 <div className="flex gap-3">
                   <input
                     type="text"
@@ -269,7 +269,7 @@ export default function CourseSearchPage() {
               </form>
             </div>
           ) : (
-            <div className="card h-[calc(100vh-240px)] flex flex-col items-center justify-center">
+            <div className="card h-full flex flex-col items-center justify-center">
               <HiChat className="w-16 h-16 text-gray-300 mb-4" />
               <p className="text-gray-600 mb-2">選擇一個對話或開始新對話</p>
               <p className="text-sm text-gray-500">AI 助手會根據課程資料庫回答你的問題</p>

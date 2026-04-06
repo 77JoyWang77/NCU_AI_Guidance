@@ -62,7 +62,7 @@ def extract_pdf_metadata(pdf_dir):
 
 if __name__ == '__main__':
     # PDF資料夾路徑
-    pdf_dir = os.path.join(os.path.dirname(__file__), '..', '各系大專生計畫(104-114)')
+    pdf_dir = os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'raw', 'projects', '104-114')
 
     # 提取元資料
     print('開始掃描PDF檔案...')
@@ -70,7 +70,7 @@ if __name__ == '__main__':
     print(f'共找到 {len(projects)} 個專案')
 
     # 儲存為JSON
-    output_path = os.path.join(os.path.dirname(__file__), '..', 'backend', 'app', 'mock_data', 'projects_metadata.json')
+    output_path = os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'processed', 'projects.json')
     with open(output_path, 'w', encoding='utf-8') as f:
         json.dump(projects, f, ensure_ascii=False, indent=2)
 
