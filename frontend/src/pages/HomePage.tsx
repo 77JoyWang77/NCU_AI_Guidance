@@ -133,10 +133,10 @@ export default function HomePage() {
           </p>
           <Link
             to="/assessment"
-            className="inline-flex items-center px-8 py-4 text-lg font-medium text-primary-900 bg-white rounded-md hover:bg-gray-50 transition-colors"
+            className="group inline-flex items-center px-8 py-4 text-lg font-medium text-primary-900 bg-white rounded-md transition-all duration-300 hover:bg-gray-50 hover:-translate-y-1 hover:shadow-lg active:scale-95 active:-translate-y-0 active:shadow-md"
           >
             立即開始
-            <HiArrowRight className="ml-2 w-5 h-5" />
+            <HiArrowRight className="ml-2 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </div>
       </section>
