@@ -1,7 +1,40 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import { HiChartBar, HiBookOpen, HiSearch, HiAcademicCap, HiArrowRight } from 'react-icons/hi';
 
 export default function HomePage() {
+  const navigate = useNavigate();
+  const [exitEffect, setExitEffect] = useState<string | null>(null);
+
+  const handleStartClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setExitEffect('main');
+    setTimeout(() => {
+      navigate('/assessment');
+    }, 500);
+  };
+
+  const handleFeatureClick = (e: React.MouseEvent, index: number, link: string) => {
+    e.preventDefault();
+    setExitEffect(`feature-${index}`);
+    setTimeout(() => {
+      navigate(link);
+    }, 500);
+  };
+
+  let transitionClasses = 'opacity-100 scale-100 blur-none translate-x-0 translate-y-0 transform-gpu origin-center';
+  if (exitEffect === 'main') {
+    transitionClasses = 'opacity-0 scale-95 blur-sm translate-y-4 transform-gpu origin-center';
+  } else if (exitEffect === 'feature-0') {
+    transitionClasses = 'opacity-100 scale-0 blur-md transform-gpu origin-top-left';
+  } else if (exitEffect === 'feature-1') {
+    transitionClasses = 'opacity-100 scale-0 blur-md transform-gpu origin-top-right';
+  } else if (exitEffect === 'feature-2') {
+    transitionClasses = 'opacity-100 scale-0 blur-md transform-gpu origin-bottom-left';
+  } else if (exitEffect === 'feature-3') {
+    transitionClasses = 'opacity-100 scale-0 blur-md transform-gpu origin-bottom-right';
+  }
+
   const features = [
     {
       title: '科系興趣量表',
@@ -34,7 +67,7 @@ export default function HomePage() {
   ];
 
   return (
-    <div className="page-container">
+    <div className={`page-container transition-all duration-500 ease-in-out transform ${transitionClasses}`}>
       {/* Hero Section */}
       <section className="py-16 md:py-24">
         <div className="text-center max-w-4xl mx-auto">
@@ -49,10 +82,10 @@ export default function HomePage() {
             協助你找到最適合的大學科系
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/assessment" className="btn-primary">
+            <button onClick={handleStartClick} className="btn-primary">
               開始測評
               <HiArrowRight className="ml-2 w-5 h-5" />
-            </Link>
+            </button>
             <Link to="/courses" className="btn-secondary">
               瀏覽課程
             </Link>
@@ -64,13 +97,14 @@ export default function HomePage() {
       <section className="py-16 border-t border-gray-200">
         <h2 className="section-title text-center">平台功能</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {features.map((feature) => {
+          {features.map((feature, index) => {
             const IconComponent = feature.icon;
             return (
-              <Link
+              <a
                 key={feature.title}
-                to={feature.link}
-                className="card-interactive p-8"
+                href={feature.link}
+                onClick={(e) => handleFeatureClick(e, index, feature.link)}
+                className="card-interactive p-8 cursor-pointer"
               >
                 <div className="flex items-start space-x-4">
                   <div className="flex-shrink-0">
@@ -93,7 +127,7 @@ export default function HomePage() {
                     </div>
                   </div>
                 </div>
-              </Link>
+              </a>
             );
           })}
         </div>
@@ -131,15 +165,16 @@ export default function HomePage() {
           <p className="text-primary-100 mb-8 text-lg">
             透過科系興趣量表，找到最適合你的未來方向
           </p>
-          <Link
-            to="/assessment"
+          <button
+            onClick={handleStartClick}
             className="group inline-flex items-center px-8 py-4 text-lg font-medium text-primary-900 bg-white rounded-md transition-all duration-300 hover:bg-gray-50 hover:-translate-y-1 hover:shadow-lg active:scale-95 active:-translate-y-0 active:shadow-md"
           >
             立即開始
             <HiArrowRight className="ml-2 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-          </Link>
+          </button>
         </div>
       </section>
     </div>
   );
 }
+
