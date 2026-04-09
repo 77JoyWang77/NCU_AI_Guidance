@@ -59,9 +59,9 @@ NUM_CTX  = 8192   # Ollama 用；vLLM 由 --max-model-len 8192 決定
 # p99 正常課程約 2000 字元，2000 已足夠
 BOOKS_MAX_LEN = 2000
 
-SKIP_KW          = ["體育", "軍訓"]
-SEQUENCE_ONLY_KW = ["語言中心", "服務學習", "職涯"]
-TOPICS_ONLY_KW   = ["通識", "核心通識"]
+import sys
+sys.path.insert(0, str(BASE / "scripts" / "nlp"))
+from course_classifier import classify_course  # noqa: E402
 
 PROMPT_TEMPLATE = """\
 你是一個課程分析助手。
@@ -97,14 +97,6 @@ PROMPT_TEMPLATE = """\
 - 若詞彙表中沒有符合的，輸出 {{"domain_tags": []}}"""
 
 
-def classify_course(dept: str) -> str:
-    if any(kw in dept for kw in SKIP_KW):
-        return "SKIP"
-    if any(kw in dept for kw in SEQUENCE_ONLY_KW):
-        return "SEQUENCE_ONLY"
-    if any(kw in dept for kw in TOPICS_ONLY_KW):
-        return "TOPICS_ONLY"
-    return "FULL"
 
 
 def load_courses() -> dict:
@@ -271,7 +263,7 @@ def main():
     to_process = [
         (code, c) for code, c in courses.items()
         if code not in domain_results
-        and classify_course(c.get("系所", c.get("department", ""))) in ("FULL", "PARTIAL")
+        and classify_course(c) == "FULL"
     ]
     print(f"待處理：{len(to_process)} 門")
 

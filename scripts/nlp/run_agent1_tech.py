@@ -36,6 +36,9 @@ RAW_DIRS  = [
 ]
 OUT_PATH  = BASE / "data" / "processed" / "nlp_tech_nodes.json"
 
+sys.path.insert(0, str(BASE / "scripts" / "nlp"))
+from course_classifier import classify_course  # noqa: E402
+
 # ── 後端設定（擇一）─────────────────────────────────────────
 # Ollama（Q8_0，GGUF）：
 #   ollama pull qwen3:14b
@@ -56,11 +59,6 @@ BACKEND  = "ollama"   # "ollama" | "vllm"
 # Ollama 需在每次 request 帶入 num_ctx；vLLM 於啟動時由 --max-model-len 決定
 NUM_CTX       = 8192
 BOOKS_MAX_LEN = 2000
-
-# 課程分類：決定是否做技術萃取
-SKIP_KW         = ["體育", "軍訓"]
-SEQUENCE_ONLY_KW = ["語言中心", "服務學習", "職涯"]
-TOPICS_ONLY_KW   = ["通識", "核心通識"]
 
 PROMPT_TEMPLATE = """\
 你是一個課程資訊萃取助手。
@@ -87,15 +85,6 @@ PROMPT_TEMPLATE = """\
 - 如果某一類沒有，輸出空陣列 []
 - 不要包含人名、機構名、課程名"""
 
-
-def classify_course(dept: str) -> str:
-    if any(kw in dept for kw in SKIP_KW):
-        return "SKIP"
-    if any(kw in dept for kw in SEQUENCE_ONLY_KW):
-        return "SEQUENCE_ONLY"
-    if any(kw in dept for kw in TOPICS_ONLY_KW):
-        return "TOPICS_ONLY"
-    return "FULL"  # FULL 或 PARTIAL 皆做技術萃取
 
 
 def load_courses() -> dict:
@@ -191,7 +180,7 @@ def main():
     to_process = [
         (code, c) for code, c in courses.items()
         if code not in results
-        and classify_course(c.get("系所", c.get("department", ""))) in ("FULL", "PARTIAL")
+        and classify_course(c) == "FULL"
     ]
     print(f"待處理：{len(to_process)} 門（已跳過 SKIP/SEQUENCE_ONLY/TOPICS_ONLY 與已完成）")
 

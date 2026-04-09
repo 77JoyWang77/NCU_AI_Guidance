@@ -40,6 +40,9 @@ RAW_DIRS = [
 ]
 OUT_PATH = BASE / "data" / "processed" / "nlp_topic_tags.json"
 
+sys.path.insert(0, str(BASE / "scripts" / "nlp"))
+from course_classifier import classify_course  # noqa: E402
+
 # ── 後端設定（擇一）─────────────────────────────────────────
 MODEL    = "qwen3:14b"
 API_BASE = "http://localhost:11434/v1"
@@ -55,9 +58,6 @@ BACKEND  = "ollama"   # "ollama" | "vllm"
 
 NUM_CTX       = 8192
 BOOKS_MAX_LEN = 2000
-
-# 通識課程的系所關鍵字
-TOPICS_ONLY_KW = ["通識", "核心通識"]
 
 PROMPT_TEMPLATE = """\
 請分析以下通識課程，萃取出主題分類與核心議題。
@@ -92,9 +92,6 @@ core_questions 範例：
 - 「氣候變遷對台灣生態系有哪些具體衝擊？」（環境課）
 - 「人工智慧的發展會帶來哪些倫理困境？」（科技倫理課）"""
 
-
-def is_topics_only(dept: str) -> bool:
-    return any(kw in dept for kw in TOPICS_ONLY_KW)
 
 
 def load_courses() -> dict:
@@ -172,7 +169,7 @@ def main():
     to_process = [
         (code, c) for code, c in courses.items()
         if code not in results
-        and is_topics_only(c.get("系所", c.get("department", "")))
+        and classify_course(c) == "TOPICS_ONLY"
     ]
     print(f"待處理通識課程：{len(to_process)} 門")
 
