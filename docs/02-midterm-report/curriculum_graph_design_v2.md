@@ -21,31 +21,32 @@
 
 ## 二、節點類型（Nodes）
 
-| 節點 | 關鍵屬性 | 來源 |
-|------|---------|------|
-| `University` | name, academic_year | curriculum |
-| `College` | id, name | curriculum |
-| `Department` | id, name, program_type, min_credits | curriculum |
-| `DeptGroup` | id, name, group_label, min_credits | curriculum |
-| `CollegeBachelorProgram` | id, name, min_credits | curriculum |
-| `SpecializationTrack` | id, name, min_credits | curriculum |
-| `CurriculumPlan` | id, name, required_credits | curriculum |
-| `GraduationRule` | type, description, credits... | curriculum |
-| `CreditProgram` | id, name, college, min_credits, cross_school | credit_programs |
-| `ElectiveGroup` | id, name, select, select_credits, group_rule | curriculum + cp |
-| `Slot` | id, slot_name, select, slot_rule | credit_programs |
-| `Course` | code, name, credits, dept, college, level, semester, domain, **source** | raw / stub |
-| `Instructor` | name | raw/courses |
-| `Domain` | name | raw/courses |
-| `Competency` | name | raw/courses |
-| `Certification` | name | curriculum |
+| 節點 | 數量 | 中文說明 | 關鍵屬性 | 來源 |
+|------|------|---------|---------|------|
+| `University` | 1 | 大學（最高層機構） | name, academic_year | curriculum |
+| `College` | 8 | 學院（大學下設） | id, name | curriculum |
+| `Department` | 23 | 系所（開課基本單位） | id, name, program_type, min_credits | curriculum |
+| `DeptGroup` | 11 | 系內分組（如甲乙組、A/B 組） | id, name, group_label, min_credits | curriculum |
+| `CollegeBachelorProgram` | 5 | 學院學士班（跨系的院級學士班） | id, name, min_credits | curriculum |
+| `SpecializationTrack` | 22 | 專長分流（學士班內可選擇的方向） | id, name, min_credits | curriculum |
+| `CurriculumPlan` | 67 | 課程計畫（規範必選修要求的規則容器） | id, name, required_credits | curriculum |
+| `GraduationRule` | 228 | 畢業規定（畢業須滿足的條件描述） | type, description, credits... | curriculum |
+| `CreditProgram` | 42 | 學分學程（跨系主題性學程） | id, name, college, min_credits, cross_school | credit_programs |
+| `ElectiveGroup` | 224 | 選修群（規定最低選課數或學分的群組） | id, name, select, select_credits, group_rule | curriculum + cp |
+| `Slot` | 129 | 等效課程群（可互相替代的一組課程，選其一即可） | id, slot_name, select, slot_rule | credit_programs |
+| `Course` | 1,458 | 課程（單一可修課程，可能有完整資料或為 stub） | code, name, credits, dept, college, level, semester, domain, **source** | raw / stub |
+| `Instructor` | 403 | 授課教師 | name | raw/courses |
+| `Domain` | 183 | 課程領域（課程所屬學科分類，已切割多領域） | name | raw/courses |
+| `Competency` | 202 | 核心能力（課程培養的能力指標） | name | raw/courses |
+| `Certification` | 3 | 證照／認證（畢業需取得的資格） | name | curriculum |
+| **合計** | **3,009** | | | |
 
 ### Course 節點的 source 屬性
 
 | source 值 | 意義 |
 |-----------|------|
-| `"raw"` | 課號在 raw/courses 或 scraped_missing 中找到，有完整資料 |
-| `"cp_only"` | 課號只在 credit_programs 中出現，raw 無對應 → stub 節點 |
+| `"raw"` | 課號在 raw/courses 或 scraped_missing 中找到，有完整資料（教師、領域、核心能力等） |
+| `"cp_only"` | 課號只在 credit_programs 中出現，raw 無對應 → stub 節點（僅有課名與學分） |
 | `"curriculum_only"` | 課號只在 curriculum_requirements 中出現，raw 無對應 → stub 節點 |
 
 > **課號不在 raw 時直接建 stub 節點，不做課名補救（無 MAPS_TO 邊）。**
@@ -56,40 +57,40 @@
 
 ### 3.1 系所結構邊（curriculum_requirements）
 
-| 邊 | 方向 | 數量 |
-|----|------|------|
-| `HAS_COLLEGE` | University → College | 8 |
-| `HAS_DEPARTMENT` | College → Department | 23 |
-| `HAS_CBP` | College → CollegeBachelorProgram | 5 |
-| `HAS_GROUP` | Department/CBP → DeptGroup | 9 |
-| `HAS_TRACK` | Department/CBP → SpecializationTrack | 24 |
-| `HAS_CURRICULUM` | 各節點 → CurriculumPlan | 67 |
-| `GOVERNED_BY` | CurriculumPlan → GraduationRule | 228 |
-| `REQUIRES` | CurriculumPlan → Course（系定必修） | 746 |
-| `HAS_ELECTIVE_GROUP` | CurriculumPlan → ElectiveGroup | 57 |
-| `OFFERS_ELECTIVE` | ElectiveGroup/Slot → Course | 1,668 |
-| `REQUIRES_CERTIFICATION` | 節點 → Certification | 4 |
+| 邊 | 中文說明 | 方向 | 數量 |
+|----|---------|------|------|
+| `HAS_COLLEGE` | 大學設有此學院 | University → College | 8 |
+| `HAS_DEPARTMENT` | 學院下設此系所 | College → Department | 23 |
+| `HAS_CBP` | 學院開設學院學士班 | College → CollegeBachelorProgram | 5 |
+| `HAS_GROUP` | 系所內有此分組 | Department/CBP → DeptGroup | 9 |
+| `HAS_TRACK` | 設有此專長分流 | Department/CBP → SpecializationTrack | 24 |
+| `HAS_CURRICULUM` | 制定此課程計畫 | 各節點 → CurriculumPlan | 67 |
+| `GOVERNED_BY` | 受此畢業規定約束 | CurriculumPlan → GraduationRule | 228 |
+| `REQUIRES` | 規定必修此課程 | CurriculumPlan → Course | 746 |
+| `HAS_ELECTIVE_GROUP` | 包含此選修群 | CurriculumPlan → ElectiveGroup | 57 |
+| `OFFERS_ELECTIVE` | 提供此課程作為選修選項 | ElectiveGroup/Slot → Course | 1,668 |
+| `REQUIRES_CERTIFICATION` | 要求取得此證照才能畢業 | 節點 → Certification | 4 |
 
 ### 3.2 學分學程邊（credit_programs）
 
-| 邊 | 方向 | 數量 | 說明 |
-|----|------|------|------|
-| `HAS_CREDIT_PROGRAM` | College → CreditProgram | — | 學院開設學程 |
-| `PROGRAM_REQUIRES` | CreditProgram → Course | 44 | 學程一般必修 |
-| `REQUIRES_SLOT` | CreditProgram → Slot | 13 | 學程必修但有等效選擇（原 same_as 必修） |
-| `PROGRAM_OFFERS` | CreditProgram → ElectiveGroup | 167 | 學程選修群 |
-| `HAS_SLOT` | ElectiveGroup → Slot | 116 | 等效課程群（原 same_as 選修） |
-| `REQUIRES_PROGRAM` | Department/CBP → CreditProgram | 1 | 畢業強制完成學程（資電學士班 → 創意與創業） |
-| `PROGRAM_CHOICE` | Department/CBP → CreditProgram | 4 | N 選一學程（地科系/地科院學士班三選一） |
-| `PROGRAM_ELECTIVE` | Department → CreditProgram | 2 | 鼓勵選修之學程（企管系） |
+| 邊 | 中文說明 | 方向 | 數量 |
+|----|---------|------|------|
+| `HAS_CREDIT_PROGRAM` | 學院開設此學分學程 | College → CreditProgram | 22 |
+| `PROGRAM_REQUIRES` | 學程規定必修此課程 | CreditProgram → Course | 44 |
+| `REQUIRES_SLOT` | 學程必修但可從等效群組中擇一 | CreditProgram → Slot | 13 |
+| `PROGRAM_OFFERS` | 學程提供此選修群 | CreditProgram → ElectiveGroup | 167 |
+| `HAS_SLOT` | 選修群包含此等效課程群 | ElectiveGroup → Slot | 116 |
+| `REQUIRES_PROGRAM` | 畢業必須完成此學程（強制） | Department/CBP → CreditProgram | 1 |
+| `PROGRAM_CHOICE` | 畢業須從多個學程中擇一完成 | Department/CBP → CreditProgram | 4 |
+| `PROGRAM_ELECTIVE` | 建議修習此學程（非強制） | Department → CreditProgram | 2 |
 
 ### 3.3 課程語意邊（raw/courses）
 
-| 邊 | 方向 | 數量 |
-|----|------|------|
-| `TAUGHT_BY` | Course → Instructor | 878 |
-| `IN_DOMAIN` | Course → Domain | 597 |
-| `DEVELOPS` | Course → Competency | 4,099 |
+| 邊 | 中文說明 | 方向 | 數量 |
+|----|---------|------|------|
+| `TAUGHT_BY` | 此課程由該教師授課 | Course → Instructor | 878 |
+| `IN_DOMAIN` | 此課程屬於該學科領域（一門課可屬多個領域） | Course → Domain | 1,143 |
+| `DEVELOPS` | 此課程培養該核心能力 | Course → Competency | 4,099 |
 
 ---
 
@@ -177,13 +178,15 @@ Phase 3: credit_programs 層
 
 | 指標 | 數值 |
 |------|------|
-| 總節點 | **3,070** |
-| 總邊 | **8,760** |
+| 總節點 | **3,009** |
+| 總邊 | **9,347** |
 | Course（有完整資料） | **1,340** |
 | Course stub | **118** |
 | Slot 節點 | **129** |
 | CreditProgram | **42** |
-| Instructor / Domain / Competency | 403 / 244 / 202 |
+| Instructor / Domain / Competency | 403 / 183 / 202 |
+
+> Domain 節點從 244 降至 183：原始欄位以頓號分隔多個領域（如 `"電力電子 、 智慧型電機控制"`），建圖時切割後各自建立獨立節點。IN_DOMAIN 邊從 597 增至 1,143，一門課現可連到多個領域。
 
 ---
 

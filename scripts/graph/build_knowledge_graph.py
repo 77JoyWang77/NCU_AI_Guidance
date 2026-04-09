@@ -34,6 +34,55 @@ except ImportError:
 
 BASE = Path(__file__).parent.parent.parent
 
+# ── 節點類型中文說明 ────────────────────────────────────────
+NODE_LABELS: dict[str, str] = {
+    "University":              "大學（最高層機構）",
+    "College":                 "學院（大學下設）",
+    "Department":              "系所（開課基本單位）",
+    "DeptGroup":               "系內分組（如甲乙組、A/B 組）",
+    "CollegeBachelorProgram":  "學院學士班（跨系院級學士班）",
+    "SpecializationTrack":     "專長分流（學士班內的方向）",
+    "CurriculumPlan":          "課程計畫（規範必選修要求）",
+    "GraduationRule":          "畢業規定（畢業須滿足的條件）",
+    "CreditProgram":           "學分學程（跨系主題學程）",
+    "ElectiveGroup":           "選修群（規定最低選課數/學分）",
+    "Slot":                    "等效課程群（可互相替代的課程選項）",
+    "Course":                  "課程（單一可修課程）",
+    "Instructor":              "授課教師",
+    "Domain":                  "課程領域（所屬學科領域）",
+    "Competency":              "核心能力（課程培養的能力指標）",
+    "Certification":           "證照／認證（畢業需取得的資格）",
+}
+
+# ── 邊類型中文說明 ────────────────────────────────────────
+EDGE_LABELS: dict[str, str] = {
+    # 系所結構
+    "HAS_COLLEGE":             "設有學院",
+    "HAS_DEPARTMENT":          "下設系所",
+    "HAS_CBP":                 "開設學院學士班",
+    "HAS_GROUP":               "包含系內分組",
+    "HAS_TRACK":               "包含專長分流",
+    "HAS_CURRICULUM":          "制定課程計畫",
+    "HAS_ELECTIVE_GROUP":      "包含選修群",
+    "HAS_SLOT":                "包含等效課程群",
+    # 課程要求
+    "REQUIRES":                "規定必修",
+    "OFFERS_ELECTIVE":         "提供選修",
+    "GOVERNED_BY":             "受畢業規定約束",
+    "REQUIRES_CERTIFICATION":  "要求取得證照",
+    # 學分學程
+    "PROGRAM_REQUIRES":        "學程必修課程",
+    "REQUIRES_SLOT":           "學程必修（等效選一）",
+    "PROGRAM_OFFERS":          "學程提供選修群",
+    "REQUIRES_PROGRAM":        "畢業須完成學程",
+    "PROGRAM_CHOICE":          "畢業擇一完成學程",
+    "PROGRAM_ELECTIVE":        "建議選修學程",
+    # 課程語意
+    "TAUGHT_BY":               "由教師授課",
+    "IN_DOMAIN":               "屬於課程領域",
+    "DEVELOPS":                "培養核心能力",
+}
+
 CURRICULUM_PATH  = BASE / "data" / "processed" / "curriculum_requirements_114.json"
 CP_DIR           = BASE / "data" / "processed" / "credit_programs"
 RAW_DIRS         = [
@@ -73,7 +122,10 @@ def load_raw_courses() -> dict:
 
         # 課程綱要詳細資訊
         outline    = c.get("課程綱要", {}) or {}
-        domain     = outline.get("課程領域", "") or c.get("課程領域", "")
+        # 課程領域：切割頓號/逗號分隔的多個領域
+        domain_raw = outline.get("課程領域", "") or c.get("課程領域", "") or ""
+        domains_list = [p.strip() for p in re.split(r"[、,，]+", domain_raw) if p.strip()]
+        domain = domain_raw.strip()   # 保留原始值備用（load 時不用）
         competencies = [
             a.get("能力名稱", "") for a in (outline.get("核心能力") or [])
             if a.get("能力名稱")
@@ -95,9 +147,9 @@ def load_raw_courses() -> dict:
             "dept":         c.get("系所", ""),
             "college":      c.get("學院", ""),
             "level":        level,
-            "semester":     source,           # e.g. "114_1", "114_2", "both", "scraped"
+            "semester":     source,
             "instructors":  instructors,
-            "domain":       domain.strip(),
+            "domains":      domains_list,   # 切割後的領域列表
             "competencies": competencies,
             "source":       "raw",
         }
@@ -138,7 +190,7 @@ def ensure_course(G: nx.DiGraph, raw: dict, code: str,
                    name=r["name"], credits=r["credits"],
                    dept=r["dept"], college=r["college"],
                    level=r["level"], semester=r["semester"],
-                   domain=r["domain"], source="raw")
+                   domains=r["domains"], source="raw")
     else:
         G.add_node(code, node_type="Course",
                    name=fallback_name, credits=fallback_credits,
@@ -158,9 +210,8 @@ def add_instructor_domain_competency(G: nx.DiGraph, raw: dict):
                 G.add_node(iid, node_type="Instructor", name=name)
             if not G.has_edge(code, iid):
                 G.add_edge(code, iid, relation="TAUGHT_BY")
-        # Domain
-        domain = r.get("domain", "")
-        if domain:
+        # Domain（已切割為列表，每個領域獨立建節點）
+        for domain in r.get("domains", []):
             did = f"domain::{domain}"
             if not G.has_node(did):
                 G.add_node(did, node_type="Domain", name=domain)
@@ -433,10 +484,21 @@ def build_credit_programs_layer(G: nx.DiGraph, raw: dict):
                        min_credits=prog.get("min_credits", 0),
                        cross_school=prog.get("cross_school", False))
 
-            # 連接到學院節點
-            college_key = prog.get("college_id") or prog.get("college", "")
-            if college_key and G.has_node(college_key):
-                G.add_edge(college_key, pid, relation="HAS_CREDIT_PROGRAM")
+            # 連接到學院節點（college 欄位是中文名，需對應到圖裡的英文 id）
+            _college_name_to_id = {
+                "文學院":       "college_liberal_arts",
+                "理學院":       "college_science",
+                "工學院":       "college_engineering",
+                "管理學院":     "college_management",
+                "客家學院":     "college_hakka",
+                "地球科學學院": "college_earth_sciences",
+                "資訊電機學院": "college_electrical_engineering",
+                "生醫理工學院": "college_biomedical_engineering",
+            }
+            college_name = prog.get("college", "")
+            college_node = _college_name_to_id.get(college_name, "")
+            if college_node and G.has_node(college_node):
+                G.add_edge(college_node, pid, relation="HAS_CREDIT_PROGRAM")
 
             # 一般必修課程
             for c in prog.get("required_courses", []):
