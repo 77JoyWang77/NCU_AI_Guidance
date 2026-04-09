@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
-from app.routes import assessment, courses, projects, course_search
+from app.routes import assessment, courses, projects, course_search, graph
 
 app = FastAPI(
     title="NCU High School Student Portal API",
@@ -24,6 +24,7 @@ app.include_router(assessment.router, prefix="/api/assessment", tags=["assessmen
 app.include_router(courses.router, prefix="/api/courses", tags=["courses"])
 app.include_router(projects.router, prefix="/api/projects", tags=["projects"])
 app.include_router(course_search.router, prefix="/api/course-search", tags=["course-search"])
+app.include_router(graph.router, prefix="/api/graph", tags=["graph"])
 
 # 掛載 PDF 靜態文件服務
 pdf_directory = Path(__file__).parent.parent.parent / "data" / "raw" / "projects" / "104-114"
