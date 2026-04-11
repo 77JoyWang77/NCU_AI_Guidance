@@ -19,20 +19,16 @@ run_agent3_topics.py  —  Agent 3：通識課程主題分類與核心議題萃�
   }
 }
 
-模型：Qwen3-14B (Q8_0)，via Ollama openai-compatible API
+模型：Qwen3-14B，via vLLM openai-compatible API
+      預設端點：http://localhost:8000/v1
+      啟動指令：vllm serve Qwen/Qwen3-14B-AWQ --max-model-len 8192 --gpu-memory-utilization 0.8
 """
 
 import json
 import re
-import sys
-import time
 from pathlib import Path
 
-try:
-    from openai import OpenAI
-except ImportError:
-    print("請先安裝 openai：pip install openai")
-    sys.exit(1)
+from openai import OpenAI
 
 BASE     = Path(__file__).parent.parent.parent
 RAW_DIRS = [
@@ -40,27 +36,23 @@ RAW_DIRS = [
 ]
 OUT_PATH = BASE / "data" / "processed" / "nlp_topic_tags.json"
 
-sys.path.insert(0, str(BASE / "scripts" / "nlp"))
-from course_classifier import classify_course  # noqa: E402
-
-# ── 後端設定（擇一）─────────────────────────────────────────
-MODEL    = "qwen3:14b"
-API_BASE = "http://localhost:11434/v1"
-API_KEY  = "ollama"
-BACKEND  = "ollama"   # "ollama" | "vllm"
-
-# vLLM FP8：
-# MODEL    = "Qwen/Qwen3-14B-FP8"
-# API_BASE = "http://localhost:8000/v1"
-# API_KEY  = "token-abc"
-# BACKEND  = "vllm"
+# ── 後端設定（vLLM）─────────────────────────────────────────
+# 啟動：vllm serve Qwen/Qwen3-14B-AWQ --max-model-len 8192 --gpu-memory-utilization 0.8
+MODEL    = "Qwen/Qwen3-14B-AWQ"
+API_BASE = "http://localhost:8000/v1"
+API_KEY  = "token-abc"
+BACKEND  = "vllm"
 # ─────────────────────────────────────────────────────────────
 
 NUM_CTX       = 8192
 BOOKS_MAX_LEN = 2000
 
+# 通識課程的系所關鍵字
+TOPICS_ONLY_KW = ["通識", "核心通識"]
+
 PROMPT_TEMPLATE = """\
 請分析以下通識課程，萃取出主題分類與核心議題。
+所有輸出的文字必須使用繁體中文，不得使用簡體中文。
 
 開課系所：{dept}
 課程名稱：{course_name}
@@ -85,6 +77,7 @@ PROMPT_TEMPLATE = """\
 - topic_tags：從上方可選標籤中選 1-3 個，只選最符合的
 - core_questions：用一句問句描述這門課的核心探討問題，2-4 個，要具體不要太抽象
 - 若課程目標太短或不足以判斷，topic_tags 仍要填，core_questions 可為 []
+- 所有輸出的文字必須使用繁體中文，不得使用簡體中文
 
 core_questions 範例：
 - 「什麼是幸福？幸福能被追求嗎？」（哲學課）
@@ -92,6 +85,9 @@ core_questions 範例：
 - 「氣候變遷對台灣生態系有哪些具體衝擊？」（環境課）
 - 「人工智慧的發展會帶來哪些倫理困境？」（科技倫理課）"""
 
+
+def is_topics_only(dept: str) -> bool:
+    return any(kw in dept for kw in TOPICS_ONLY_KW)
 
 
 def load_courses() -> dict:
@@ -135,19 +131,25 @@ def extract_topics(client: OpenAI, course: dict) -> dict | None:
 
     try:
         kwargs = {"model": MODEL, "messages": [{"role": "user", "content": prompt}],
-                  "temperature": 0.1}
+                  "temperature": 0}
         if BACKEND == "ollama":
             kwargs["extra_body"] = {"options": {"num_ctx": NUM_CTX}}
         resp = client.chat.completions.create(**kwargs)
         raw = resp.choices[0].message.content.strip()
+        # 寫入 debug log
+        with open(BASE / "logs" / "agent3_llm_debug.txt", "a", encoding="utf-8") as dbg:
+            dbg.write(f"\n{'='*60}\n[{course.get('課程名稱(中文)','')}]\n{raw}\n")
+        # 移除 Qwen3 thinking block
+        raw = re.sub(r"<think>.*?</think>", "", raw, flags=re.DOTALL).strip()
         raw = re.sub(r"^```[a-z]*\n?", "", raw)
         raw = re.sub(r"\n?```$", "", raw)
         return json.loads(raw)
-    except json.JSONDecodeError:
-        return None
+    except json.JSONDecodeError as e:
+        print(f"  JSON 解析失敗：{e}，raw={repr(raw[:100])}")
+        return {"topic_tags": [], "core_questions": [], "error": True}
     except Exception as e:
         print(f"  LLM 錯誤：{e}")
-        return None
+        return {"topic_tags": [], "core_questions": [], "error": True}
 
 
 def main():
@@ -168,8 +170,8 @@ def main():
 
     to_process = [
         (code, c) for code, c in courses.items()
-        if code not in results
-        and classify_course(c) == "TOPICS_ONLY"
+        if (code not in results or results[code].get("error"))
+        and is_topics_only(c.get("系所", c.get("department", "")))
     ]
     print(f"待處理通識課程：{len(to_process)} 門")
 
@@ -181,6 +183,8 @@ def main():
 
         if result is None:
             results[code] = {"topic_tags": [], "core_questions": [], "skipped": True}
+        elif result.get("error"):
+            results[code] = {"topic_tags": [], "core_questions": [], "error": True}
         else:
             results[code] = {
                 "topic_tags": result.get("topic_tags", []),
@@ -194,8 +198,6 @@ def main():
 
         if i % 5 == 0:
             print(f"  [{i}/{len(to_process)}] {name[:30]}")
-
-        time.sleep(0.05)
 
     with open(OUT_PATH, "w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=2)

@@ -15,20 +15,17 @@ LLM 只輸出「領域名稱 + 關聯強度」，不需要輸出教授姓名。
   data/processed/nlp_domain_tags.json
   data/processed/nlp_professor_links.json       （後處理：領域 → 相關教授）
 
-模型：Qwen3-14B (Q8_0)，via Ollama openai-compatible API
+模型：Qwen3-14B，via vLLM openai-compatible API
+      預設端點：http://localhost:8000/v1
+      啟動指令：vllm serve Qwen/Qwen3-14B-AWQ --max-model-len 8192 --gpu-memory-utilization 0.8
 """
 
 import json
 import re
 import sys
-import time
 from pathlib import Path
 
-try:
-    from openai import OpenAI
-except ImportError:
-    print("請先安裝 openai：pip install openai")
-    sys.exit(1)
+from openai import OpenAI
 
 BASE          = Path(__file__).parent.parent.parent
 RAW_DIRS      = [
@@ -40,17 +37,12 @@ TECH_NODES_PATH = BASE / "data" / "processed" / "nlp_tech_nodes.json"
 OUT_TAGS       = BASE / "data" / "processed" / "nlp_domain_tags.json"
 OUT_LINKS      = BASE / "data" / "processed" / "nlp_professor_links.json"
 
-# ── 後端設定（擇一）─────────────────────────────────────────
-MODEL    = "qwen3:14b"
-API_BASE = "http://localhost:11434/v1"
-API_KEY  = "ollama"
-BACKEND  = "ollama"   # "ollama" | "vllm"
-
-# vLLM FP8：
-# MODEL    = "Qwen/Qwen3-14B-FP8"
-# API_BASE = "http://localhost:8000/v1"
-# API_KEY  = "token-abc"
-# BACKEND  = "vllm"
+# ── 後端設定（vLLM）─────────────────────────────────────────
+# 啟動：vllm serve Qwen/Qwen3-14B-AWQ --max-model-len 8192 --gpu-memory-utilization 0.8
+MODEL    = "Qwen/Qwen3-14B-AWQ"
+API_BASE = "http://localhost:8000/v1"
+API_KEY  = "token-abc"
+BACKEND  = "vllm"
 # ─────────────────────────────────────────────────────────────
 
 NUM_CTX  = 8192   # Ollama 用；vLLM 由 --max-model-len 8192 決定
@@ -59,13 +51,14 @@ NUM_CTX  = 8192   # Ollama 用；vLLM 由 --max-model-len 8192 決定
 # p99 正常課程約 2000 字元，2000 已足夠
 BOOKS_MAX_LEN = 2000
 
-import sys
-sys.path.insert(0, str(BASE / "scripts" / "nlp"))
-from course_classifier import classify_course  # noqa: E402
+SKIP_KW          = ["體育", "軍訓"]
+SEQUENCE_ONLY_KW = ["語言中心", "服務學習", "職涯"]
+TOPICS_ONLY_KW   = ["通識", "核心通識"]
 
 PROMPT_TEMPLATE = """\
 你是一個課程分析助手。
 請根據課程資訊，從以下「可選領域詞彙表」中挑選最符合的領域標籤。
+所有輸出的文字必須使用繁體中文，不得使用簡體中文。
 
 開課系所：{dept}
 課程名稱：{course_name}
@@ -77,7 +70,7 @@ PROMPT_TEMPLATE = """\
 {vocab}
 
 請先思考：這門課用到哪些技術/工具/概念？這些技術屬於哪些學術研究領域？詞彙表中哪些領域和這些技術最相關？
-然後選出 1-5 個最相關的領域，並為每個領域標記關聯強度。
+然後選出 1-15 個最相關的領域，並為每個領域標記關聯強度。
 
 輸出格式（只輸出 JSON，不要有其他文字，不要有 markdown）：
 {{
@@ -93,10 +86,19 @@ PROMPT_TEMPLATE = """\
 
 規則：
 - 只從詞彙表中選，不要自己創造新詞
-- 不確定時寧可少選，不要強行填滿 5 個
-- 若詞彙表中沒有符合的，輸出 {{"domain_tags": []}}"""
+- 不確定時寧可少選，不要強行填滿 15 個
+- 若詞彙表中沒有符合的，輸出 {{"domain_tags": []}}
+- 所有輸出的文字必須使用繁體中文，不得使用簡體中文，請務必確認輸出 JSON 中的領域名稱與詞彙表完全一致（不需要自己翻譯或改寫）"""
 
 
+def classify_course(dept: str) -> str:
+    if any(kw in dept for kw in SKIP_KW):
+        return "SKIP"
+    if any(kw in dept for kw in SEQUENCE_ONLY_KW):
+        return "SEQUENCE_ONLY"
+    if any(kw in dept for kw in TOPICS_ONLY_KW):
+        return "TOPICS_ONLY"
+    return "FULL"
 
 
 def load_courses() -> dict:
@@ -180,20 +182,26 @@ def match_domains(client: OpenAI, course: dict, vocab: list[str],
 
     try:
         kwargs = {"model": MODEL, "messages": [{"role": "user", "content": prompt}],
-                  "temperature": 0.1}
+                  "temperature": 0}
         if BACKEND == "ollama":
             kwargs["extra_body"] = {"options": {"num_ctx": NUM_CTX}}
         resp = client.chat.completions.create(**kwargs)
         raw = resp.choices[0].message.content.strip()
+        # 寫入 debug log
+        with open(BASE / "logs" / "agent2_llm_debug.txt", "a", encoding="utf-8") as dbg:
+            dbg.write(f"\n{'='*60}\n[{course.get('課程名稱(中文)','')}]\n{raw}\n")
+        # 移除 Qwen3 thinking block
+        raw = re.sub(r"<think>.*?</think>", "", raw, flags=re.DOTALL).strip()
         raw = re.sub(r"^```[a-z]*\n?", "", raw)
         raw = re.sub(r"\n?```$", "", raw)
         parsed = json.loads(raw)
         return parsed.get("domain_tags", [])
-    except json.JSONDecodeError:
-        return None
+    except json.JSONDecodeError as e:
+        print(f"  JSON 解析失敗：{e}，raw={repr(raw[:100])}")
+        return "error"
     except Exception as e:
         print(f"  LLM 錯誤：{e}")
-        return None
+        return "error"
 
 
 def find_related_professors(domain_tags: list[dict], course: dict, dept_map: dict) -> list[dict]:
@@ -262,8 +270,8 @@ def main():
 
     to_process = [
         (code, c) for code, c in courses.items()
-        if code not in domain_results
-        and classify_course(c) == "FULL"
+        if (code not in domain_results or domain_results[code].get("error"))
+        and classify_course(c.get("系所", c.get("department", ""))) in ("FULL", "PARTIAL")
     ]
     print(f"待處理：{len(to_process)} 門")
 
@@ -277,6 +285,8 @@ def main():
 
         if tags is None:
             domain_results[code] = {"domain_tags": [], "skipped": True}
+        elif tags == "error":
+            domain_results[code] = {"domain_tags": [], "error": True}
         else:
             domain_results[code] = {"domain_tags": tags}
 
@@ -288,8 +298,6 @@ def main():
         if i % 10 == 0:
             print(f"  [{i}/{len(to_process)}] {name[:30]}")
 
-        time.sleep(0.05)
-
     # 最終存檔 domain_tags
     with open(OUT_TAGS, "w", encoding="utf-8") as f:
         json.dump(domain_results, f, ensure_ascii=False, indent=2)
@@ -297,19 +305,29 @@ def main():
     # 後處理：帶入教授資訊
     print("\n後處理：帶入相關教授...")
     professor_links: dict = {}
+    prof_error_count = 0
     for code, data in domain_results.items():
-        if data.get("skipped"):
+        if data.get("skipped") or data.get("error"):
             continue
         course = courses.get(code, {})
         links = find_related_professors(data["domain_tags"], course, dept_map)
         if links:
             professor_links[code] = links
+        elif data.get("domain_tags"):
+            # 有領域標籤但完全沒匹配到教授 → 標記 error 讓下次重跑
+            domain_results[code]["error"] = True
+            prof_error_count += 1
+
+    # 後處理後重新存檔（含 error 標記）
+    with open(OUT_TAGS, "w", encoding="utf-8") as f:
+        json.dump(domain_results, f, ensure_ascii=False, indent=2)
 
     with open(OUT_LINKS, "w", encoding="utf-8") as f:
         json.dump(professor_links, f, ensure_ascii=False, indent=2)
 
     non_empty = sum(1 for v in domain_results.values() if v.get("domain_tags"))
     print(f"\n完成：{len(domain_results)} 筆，其中 {non_empty} 筆有領域標籤")
+    print(f"標記為 error（無教授匹配）：{prof_error_count} 筆，下次重跑時會重試")
     print(f"相關教授連結：{len(professor_links)} 門課有對應教授")
     print(f"輸出：{OUT_TAGS}")
     print(f"輸出：{OUT_LINKS}")

@@ -13,21 +13,17 @@ run_agent1_tech.py  —  Agent 1：技術節點萃取
 輸出：
   data/processed/nlp_tech_nodes.json
 
-模型：Qwen3-14B (Q8_0)，via Ollama openai-compatible API
-      預設端點：http://localhost:11434/v1
+模型：Qwen3-8B，via vLLM openai-compatible API
+      預設端點：http://localhost:8000/v1
+      啟動指令：vllm serve Qwen/Qwen3-14B-AWQ --max-model-len 8192 --gpu-memory-utilization 0.8
 """
 
 import json
 import re
 import sys
-import time
 from pathlib import Path
 
-try:
-    from openai import OpenAI
-except ImportError:
-    print("請先安裝 openai：pip install openai")
-    sys.exit(1)
+from openai import OpenAI
 
 BASE      = Path(__file__).parent.parent.parent
 RAW_DIRS  = [
@@ -39,21 +35,12 @@ OUT_PATH  = BASE / "data" / "processed" / "nlp_tech_nodes.json"
 sys.path.insert(0, str(BASE / "scripts" / "nlp"))
 from course_classifier import classify_course  # noqa: E402
 
-# ── 後端設定（擇一）─────────────────────────────────────────
-# Ollama（Q8_0，GGUF）：
-#   ollama pull qwen3:14b
-MODEL    = "qwen3:14b"
-API_BASE = "http://localhost:11434/v1"
-API_KEY  = "ollama"
-BACKEND  = "ollama"   # "ollama" | "vllm"
-
-# vLLM（FP8，速度約快 1.5-2x，需 Ada Lovelace GPU）：
-#   pip install vllm
-#   vllm serve Qwen/Qwen3-14B-FP8 --max-model-len 8192 --gpu-memory-utilization 0.9
-# MODEL    = "Qwen/Qwen3-14B-FP8"
-# API_BASE = "http://localhost:8000/v1"
-# API_KEY  = "token-abc"
-# BACKEND  = "vllm"
+# ── 後端設定（vLLM）─────────────────────────────────────────
+# 啟動：vllm serve Qwen/Qwen3-14B-AWQ --max-model-len 8192 --gpu-memory-utilization 0.8
+MODEL    = "Qwen/Qwen3-14B-AWQ"
+API_BASE = "http://localhost:8000/v1"
+API_KEY  = "token-abc"
+BACKEND  = "vllm"
 # ─────────────────────────────────────────────────────────────
 
 # Ollama 需在每次 request 帶入 num_ctx；vLLM 於啟動時由 --max-model-len 決定
@@ -63,6 +50,7 @@ BOOKS_MAX_LEN = 2000
 PROMPT_TEMPLATE = """\
 你是一個課程資訊萃取助手。
 請從以下課程資料中，找出技術名詞，分成三類輸出 JSON。
+所有輸出的文字必須使用繁體中文，不得使用簡體中文。
 
 開課系所：{dept}
 課程名稱：{course_name}
@@ -83,7 +71,8 @@ PROMPT_TEMPLATE = """\
 - concepts：核心學科概念，例如 資料結構, 微積分, 傅立葉變換, 機率統計, 熱力學, 數值方法
 - 教科書書名本身不算技術名詞，但書中提到的技術/語言/工具可以算
 - 如果某一類沒有，輸出空陣列 []
-- 不要包含人名、機構名、課程名"""
+- 不要包含人名、機構名、課程名
+- 所有輸出的文字必須使用繁體中文，不得使用簡體中文"""
 
 
 
@@ -144,20 +133,26 @@ def extract_tech(client: OpenAI, course: dict) -> dict | None:
 
     try:
         kwargs = {"model": MODEL, "messages": [{"role": "user", "content": prompt}],
-                  "temperature": 0.1}
+                  "temperature": 0}
         if BACKEND == "ollama":
             kwargs["extra_body"] = {"options": {"num_ctx": NUM_CTX}}
         resp = client.chat.completions.create(**kwargs)
         raw = resp.choices[0].message.content.strip()
+        # 寫入 debug log
+        with open(BASE / "logs" / "agent1_llm_debug.txt", "a", encoding="utf-8") as dbg:
+            dbg.write(f"\n{'='*60}\n[{course.get('課程名稱(中文)','')}]\n{raw}\n")
+        # 移除 Qwen3 thinking block
+        raw = re.sub(r"<think>.*?</think>", "", raw, flags=re.DOTALL).strip()
         # 移除可能的 markdown code block
         raw = re.sub(r"^```[a-z]*\n?", "", raw)
         raw = re.sub(r"\n?```$", "", raw)
         return json.loads(raw)
-    except json.JSONDecodeError:
-        return None
+    except json.JSONDecodeError as e:
+        print(f"  JSON 解析失敗：{e}，raw={repr(raw[:100])}")
+        return {"languages": [], "tools": [], "concepts": [], "error": True}
     except Exception as e:
         print(f"  LLM 錯誤：{e}")
-        return None
+        return {"languages": [], "tools": [], "concepts": [], "error": True}
 
 
 def main():
@@ -179,7 +174,7 @@ def main():
 
     to_process = [
         (code, c) for code, c in courses.items()
-        if code not in results
+        if (code not in results or results[code].get("error"))
         and classify_course(c) == "FULL"
     ]
     print(f"待處理：{len(to_process)} 門（已跳過 SKIP/SEQUENCE_ONLY/TOPICS_ONLY 與已完成）")
@@ -204,7 +199,6 @@ def main():
         if i % 10 == 0:
             print(f"  [{i}/{len(to_process)}] {name[:30]}")
 
-        time.sleep(0.05)  # 避免過快打爆 Ollama
 
     # 最終存檔
     with open(OUT_PATH, "w", encoding="utf-8") as f:
