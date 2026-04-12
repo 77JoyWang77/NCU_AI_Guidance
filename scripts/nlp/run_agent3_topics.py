@@ -61,11 +61,14 @@ PROMPT_TEMPLATE = """\
 教科書/參考書：{books}
 
 可選主題標籤（最多選 3 個）：
-人文領域：哲學、歷史、文學、語言學、藝術、音樂
-社會領域：社會學、心理學、法律、政治、經濟
-自然科學：物理、化學、生物、環境科學、數學
-應用科技：資訊科技、工程、醫學
-跨域通識：倫理學、性別研究、族群文化、全球化、永續發展
+以下左側為分組說明，不是可選標籤；右側「、」分隔的才是可以選的標籤：
+  人文領域（分組）→ 哲學、歷史、文學、語言學、藝術、音樂
+  社會領域（分組）→ 社會學、心理學、法律、政治、經濟、宗教
+  自然科學（分組）→ 物理、化學、生物、環境科學、數學
+  應用科技（分組）→ 資訊科技、工程、醫學
+  跨域通識（分組）→ 倫理學、性別研究、族群文化、全球化、永續發展
+
+注意：「人文領域」、「社會領域」、「自然科學」、「應用科技」、「跨域通識」這五個詞是分組名稱，絕對不可以出現在 topic_tags 中。
 
 輸出格式（只輸出 JSON，不要有其他文字，不要有 markdown）：
 {{
@@ -74,7 +77,7 @@ PROMPT_TEMPLATE = """\
 }}
 
 說明：
-- topic_tags：從上方可選標籤中選 1-3 個，只選最符合的
+- topic_tags：只能從右側細標籤中選 1-3 個（例如「哲學」、「法律」、「永續發展」），不得填入分組名稱
 - core_questions：用一句問句描述這門課的核心探討問題，2-4 個，要具體不要太抽象
 - 若課程目標太短或不足以判斷，topic_tags 仍要填，core_questions 可為 []
 - 所有輸出的文字必須使用繁體中文，不得使用簡體中文
@@ -84,6 +87,15 @@ core_questions 範例：
 - 「全球化如何影響在地文化認同？」（社會學課）
 - 「氣候變遷對台灣生態系有哪些具體衝擊？」（環境課）
 - 「人工智慧的發展會帶來哪些倫理困境？」（科技倫理課）"""
+
+# 所有合法的細標籤（供後處理驗證用）
+VALID_TOPIC_TAGS = {
+    "哲學", "歷史", "文學", "語言學", "藝術", "音樂",
+    "社會學", "心理學", "法律", "政治", "經濟", "宗教",
+    "物理", "化學", "生物", "環境科學", "數學",
+    "資訊科技", "工程", "醫學",
+    "倫理學", "性別研究", "族群文化", "全球化", "永續發展",
+}
 
 
 def is_topics_only(dept: str) -> bool:
@@ -131,7 +143,7 @@ def extract_topics(client: OpenAI, course: dict) -> dict | None:
 
     try:
         kwargs = {"model": MODEL, "messages": [{"role": "user", "content": prompt}],
-                  "temperature": 0}
+                  "temperature": 0.6}
         if BACKEND == "ollama":
             kwargs["extra_body"] = {"options": {"num_ctx": NUM_CTX}}
         resp = client.chat.completions.create(**kwargs)
@@ -143,7 +155,14 @@ def extract_topics(client: OpenAI, course: dict) -> dict | None:
         raw = re.sub(r"<think>.*?</think>", "", raw, flags=re.DOTALL).strip()
         raw = re.sub(r"^```[a-z]*\n?", "", raw)
         raw = re.sub(r"\n?```$", "", raw)
-        return json.loads(raw)
+        parsed = json.loads(raw)
+        # 驗證：所有 topic_tags 必須完全在合法細標籤集合內
+        tags = parsed.get("topic_tags", [])
+        invalid = [t for t in tags if t not in VALID_TOPIC_TAGS]
+        if invalid:
+            print(f"  標籤驗證失敗，非法標籤：{invalid}")
+            return {"topic_tags": [], "core_questions": [], "error": True}
+        return parsed
     except json.JSONDecodeError as e:
         print(f"  JSON 解析失敗：{e}，raw={repr(raw[:100])}")
         return {"topic_tags": [], "core_questions": [], "error": True}

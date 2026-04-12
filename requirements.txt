@@ -19,6 +19,9 @@ qdrant-client>=1.7.0
 # Knowledge Graph
 networkx>=3.0
 
+# Chinese Text Processing
+opencc-python-reimplemented>=0.1.7
+
 # Data Processing
 pandas>=2.0.0
 numpy>=1.24.0
