@@ -26,7 +26,6 @@ export default function AssessmentPage() {
   const [mode, setMode] = useState<AssessmentMode>('grade1');
   const [trackType, setTrackType] = useState<'liberal' | 'science' | null>(null); // 高二模式的文理分組
   const [selectedSubjects, setSelectedSubjects] = useState<string[]>([]); // 高三模式的學測科目選擇
-  const [availableDepartments, setAvailableDepartments] = useState<string[]>([]); // 高三模式符合的科系
   const [started, setStarted] = useState(false);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -107,7 +106,6 @@ export default function AssessmentPage() {
       try {
         setLoading(true);
         const result = await assessmentAPI.filterBySubjects(selectedSubjects);
-        setAvailableDepartments(result.departments);
         setStarted(true);
         // 將篩選後的科系列表直接傳遞給 loadQuestions
         await loadQuestions(result.departments);

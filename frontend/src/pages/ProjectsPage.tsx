@@ -1,12 +1,11 @@
 import { useState, useEffect, useMemo } from 'react';
 import { projectAPI } from '../api/services';
 import type { Project } from '../types';
-import { HiAcademicCap, HiUser, HiCalendar, HiChat, HiX, HiPaperAirplane, HiArrowLeft } from 'react-icons/hi';
+import { HiAcademicCap, HiUser, HiChat, HiPaperAirplane, HiArrowLeft } from 'react-icons/hi';
 import PdfViewer from '../components/PdfViewer';
 
 export default function ProjectsPage() {
   const [projects, setProjects] = useState<Project[]>([]);
-  const [loading, setLoading] = useState(true);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [viewMode, setViewMode] = useState<'outline' | 'pdf-chat'>('outline'); // 新增：視圖模式
   const [chatMessages, setChatMessages] = useState<Array<{role: 'user' | 'assistant'; content: string}>>([]);
@@ -39,13 +38,10 @@ export default function ProjectsPage() {
 
   const loadProjects = async () => {
     try {
-      setLoading(true);
       const data = await projectAPI.getProjects();
       setProjects(data);
     } catch (error) {
       console.error('載入計畫失敗:', error);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -273,7 +269,7 @@ export default function ProjectsPage() {
           )}
         </div>
       </div>
-      ) : viewMode === 'pdf-chat' ? (
+      ) : viewMode === 'pdf-chat' && selectedProject ? (
         // PDF + 對話視圖（全高，不帶外部間距）
         <div className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-2 gap-4">
             {/* PDF Viewer */}
