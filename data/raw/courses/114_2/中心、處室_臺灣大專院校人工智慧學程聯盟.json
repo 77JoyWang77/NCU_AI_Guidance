@@ -1,0 +1,385 @@
+[
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "中心、處室",
+    "系所": "臺灣大專院校人工智慧學程聯盟",
+    "流水號": "10001",
+    "課號-班別": "TC5011-*",
+    "課程名稱(中文)": "智慧製造執行系統",
+    "課程名稱(英文)": "Intelligent Manufacturing Execution Systems",
+    "備註": "開課學校/教師：成功大學/陳裕民，上課時間：週一14:10-17:00，課程資訊：https://sites.google.com/view/taica-ncu\n[不開放初選]",
+    "授課教師": "各校教師",
+    "學分": "3",
+    "上課時間": "Mon678",
+    "教室": "*-***",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "35",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=10001&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限學士班。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=10001&outline=10001&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "臺灣大專院校人工智慧學程聯盟",
+      "流水號": "10001",
+      "課號": "TC5011-*",
+      "授課教師": "各校教師",
+      "課程名稱(中文)": "智慧製造執行系統",
+      "課程名稱(英文)": "Intelligent Manufacturing Execution Systems",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "https://sites.google.com/view/taica-ncu",
+      "授課內容": "https://sites.google.com/view/taica-ncu",
+      "自編教材比例": "0",
+      "授課方式": "講授"
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "中心、處室",
+    "系所": "臺灣大專院校人工智慧學程聯盟",
+    "流水號": "10002",
+    "課號-班別": "TC5012-*",
+    "課程名稱(中文)": "大型語言模型與資訊安全系統",
+    "課程名稱(英文)": "Applying Large Language Models in Cybersecurity Systems",
+    "備註": "開課學校/教師：國立台灣科技大學/林俊叡，上課時間：週一 09:20-12:20，課程資訊：https://sites.google.com/view/taica-ncu\n[不開放初選]",
+    "授課教師": "各校教師",
+    "學分": "3",
+    "上課時間": "Mon234",
+    "教室": "*-***",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "55",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=10002&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限學士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=10002&outline=10002&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "臺灣大專院校人工智慧學程聯盟",
+      "流水號": "10002",
+      "課號": "TC5012-*",
+      "授課教師": "各校教師",
+      "課程名稱(中文)": "大型語言模型與資訊安全系統",
+      "課程名稱(英文)": "Applying Large Language Models in Cybersecurity Systems",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "https://sites.google.com/view/taica-ncu",
+      "授課內容": "https://sites.google.com/view/taica-ncu",
+      "自編教材比例": "0",
+      "授課方式": "講授"
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "中心、處室",
+    "系所": "臺灣大專院校人工智慧學程聯盟",
+    "流水號": "10003",
+    "課號-班別": "TC5013-*",
+    "課程名稱(中文)": "生成式AI應用系統與工程",
+    "課程名稱(英文)": "Generative AI Application Systems and Engineering",
+    "備註": "開課學校/教師：成功大學/莊坤達，上課時間：週三 14:00-17:00，課程資訊：https://sites.google.com/view/taica-ncu\n[不開放初選]",
+    "授課教師": "各校教師",
+    "學分": "3",
+    "上課時間": "Wed678",
+    "教室": "*-***",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "55",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=10003&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限學士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=10003&outline=10003&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "臺灣大專院校人工智慧學程聯盟",
+      "流水號": "10003",
+      "課號": "TC5013-*",
+      "授課教師": "各校教師",
+      "課程名稱(中文)": "生成式AI應用系統與工程",
+      "課程名稱(英文)": "Generative AI Application Systems and Engineering",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "https://sites.google.com/view/taica-ncu",
+      "授課內容": "https://sites.google.com/view/taica-ncu",
+      "自編教材比例": "0",
+      "授課方式": "講授"
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "中心、處室",
+    "系所": "臺灣大專院校人工智慧學程聯盟",
+    "流水號": "10004",
+    "課號-班別": "TC1002-*",
+    "課程名稱(中文)": "機率與統計",
+    "課程名稱(英文)": "Probability and Statistics",
+    "備註": "開課學校/教師：臺灣大學/葉丙成，上課時間：週四14:30-17:30、週四20:00-22:00，同步遠距上課時間:2/26 20:00-22:00、3/12、3/26、4/9、4/30、5/14、6/4 20:00-21:00，遠距上課位置: https://meet.google.com/ipj-iqku-idj\n[不開放初選]",
+    "授課教師": "各校教師",
+    "學分": "3",
+    "上課時間": "Thu678CD",
+    "教室": "*-***",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "35",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=10004&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限學士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=10004&outline=10004&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "臺灣大專院校人工智慧學程聯盟",
+      "流水號": "10004",
+      "課號": "TC1002-*",
+      "授課教師": "各校教師",
+      "課程名稱(中文)": "機率與統計",
+      "課程名稱(英文)": "Probability and Statistics",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "https://sites.google.com/view/taica-ncu",
+      "授課內容": "https://sites.google.com/view/taica-ncu",
+      "自編教材比例": "0",
+      "授課方式": "講授"
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "中心、處室",
+    "系所": "臺灣大專院校人工智慧學程聯盟",
+    "流水號": "10005",
+    "課號-班別": "TC5007-*",
+    "課程名稱(中文)": "深度學習",
+    "課程名稱(英文)": "Deep Learning",
+    "備註": "開課學校/教師：陽明交通大學/彭文孝、陳永昇、謝秉均，上課時間：週四 12:20-15:10，課程資訊：https://sites.google.com/view/taica-ncu，遠距上課位置:https://meet.google.com/enc-fvqf-iie\n[不開放初選]",
+    "授課教師": "各校教師",
+    "學分": "3",
+    "上課時間": "ThuZ56",
+    "教室": "*-***",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "35",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=10005&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限學士班。年級:限四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=10005&outline=10005&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "臺灣大專院校人工智慧學程聯盟",
+      "流水號": "10005",
+      "課號": "TC5007-*",
+      "授課教師": "各校教師",
+      "課程名稱(中文)": "深度學習",
+      "課程名稱(英文)": "Deep Learning",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "https://sites.google.com/view/taica-ncu",
+      "授課內容": "https://sites.google.com/view/taica-ncu",
+      "自編教材比例": "0",
+      "授課方式": "講授"
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "中心、處室",
+    "系所": "臺灣大專院校人工智慧學程聯盟",
+    "流水號": "10006",
+    "課號-班別": "TC1003-*",
+    "課程名稱(中文)": "人工智慧倫理",
+    "課程名稱(英文)": "AI Ethics",
+    "備註": "開課學校/教師：東海大學/甘偵蓉，上課時間：週二15:20~18:10，本課程需實體至TR-A204教室上課，課程詳細資訊:https://sites.google.com/go.thu.edu.tw/aiethics\n[不開放初選]",
+    "授課教師": "鄭揚宜",
+    "學分": "3",
+    "上課時間": "Tue789",
+    "教室": "TR-A204",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=10006&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限學士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=10006&outline=10006&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "臺灣大專院校人工智慧學程聯盟",
+      "流水號": "10006",
+      "課號": "TC1003-*",
+      "授課教師": "鄭揚宜",
+      "課程名稱(中文)": "人工智慧倫理",
+      "課程名稱(英文)": "AI Ethics",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "https://sites.google.com/view/taica-ncu",
+      "授課內容": "https://sites.google.com/view/taica-ncu",
+      "教科書/參考書": "自編講義",
+      "自編教材比例": "70",
+      "授課方式": "講授 研討",
+      "評量配分比重": "課堂參與討論50% 作業20% 期末分組報告30%",
+      "辦公時間": "與教師另外預約",
+      "授課週數": "16",
+      "彈性教學說明": "編輯作業"
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "中心、處室",
+    "系所": "臺灣大專院校人工智慧學程聯盟",
+    "流水號": "10007",
+    "課號-班別": "TC5008-*",
+    "課程名稱(中文)": "機器導航與探索",
+    "課程名稱(英文)": "Robotic Navigation and Exploration",
+    "備註": "開課學校/教師：清華大學/胡敏君，上課時間：週一18:30~21:20，課程資訊：https://sites.google.com/view/taica-ncu，遠距上課位置:https://www.youtube.com/@NTHURNE-l9v\n[不開放初選]",
+    "授課教師": "鍾佳儒",
+    "學分": "3",
+    "上課時間": "MonABCD",
+    "教室": "*-***",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "35",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=10007&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限學士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=10007&outline=10007&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "臺灣大專院校人工智慧學程聯盟",
+      "流水號": "10007",
+      "課號": "TC5008-*",
+      "授課教師": "鍾佳儒",
+      "課程名稱(中文)": "機器導航與探索",
+      "課程名稱(英文)": "Robotic Navigation and Exploration",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "https://sites.google.com/view/taica-ncu",
+      "授課內容": "https://sites.google.com/view/taica-ncu",
+      "教科書/參考書": "● Richard S. Sutton and Andrew G. Barto, Reinforcement Learning: An Introduction, Second Edition, MIT Press, Cambridge, MA, 2018 ● Sebastian Thrun, Wolfram Burgard, and Dieter Fox , Probabilistic Robotics,2005. (Intelligent Robotics and Autonomous Agents series) ● Xiang Gao , Tao Zhang: Introduction to Visual SLAM - From Theory to Practice, 2021. ● Gang Peng , Tin Lun LAM , Chunxu Hu , Yu Yao , Jintao Liu , Fan Yang: Introduction to Intelligent Robot System Design - Application Development with ROS, 2023.",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "● 4次作業: 60% (15% for each HW) ● 論文閱讀報告(10%) ● 期末專題(含實作、書面報告、口頭報告): 30%",
+      "辦公時間": "Mon. 10:00-12:00, or by appointment",
+      "授課週數": "16",
+      "彈性教學說明": "-"
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "中心、處室",
+    "系所": "臺灣大專院校人工智慧學程聯盟",
+    "流水號": "10008",
+    "課號-班別": "TC5005-*",
+    "課程名稱(中文)": "生成式AI的人文導論",
+    "課程名稱(英文)": "Introducing Generative AI for Humanities",
+    "備註": "開課學校/教師：臺灣大學/謝舒凱，上課時間：週五 10:20-13:10，課程資訊：https://sites.google.com/view/taica-ncu，遠距上課位置：https://www.youtube.com/@GenAI4Humanities，課程網頁：https://lopentu.github.io/genai4humanities\n[不開放初選]",
+    "授課教師": "廖長彥",
+    "學分": "3",
+    "上課時間": "Fri34Z",
+    "教室": "*-***",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "45",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=10008&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限學士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=10008&outline=10008&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "臺灣大專院校人工智慧學程聯盟",
+      "流水號": "10008",
+      "課號": "TC5005-*",
+      "授課教師": "廖長彥",
+      "課程名稱(中文)": "生成式AI的人文導論",
+      "課程名稱(英文)": "Introducing Generative AI for Humanities",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "https://sites.google.com/view/taica-ncu",
+      "授課內容": "https://sites.google.com/view/taica-ncu",
+      "教科書/參考書": "https://sites.google.com/view/taica-ncu",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "課堂參與（20%） 每週課後作業（40%） 期末專案展演（40% ）",
+      "辦公時間": "每週五早上九點至十點，請事先預約",
+      "授課週數": "16",
+      "彈性教學說明": "本課程的作業與練習,從傳統偏重工程或程式碼的細節,轉向以直覺、風格和語義驅動 的「Vibe Coding」實踐。不具備 python 程式知識亦可。但是要具有開放、樂於學習新 事物的精神與毅力,才能有所收穫。"
+    }
+  }
+]

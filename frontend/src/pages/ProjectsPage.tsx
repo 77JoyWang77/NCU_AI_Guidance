@@ -101,6 +101,7 @@ export default function ProjectsPage() {
   };
 
   const getPdfUrl = (project: Project): string => {
+    if (project.pdfUrl) return project.pdfUrl;
     if (!project.pdfPath) return '';
     const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
     const baseUrl = apiUrl.replace('/api', '');

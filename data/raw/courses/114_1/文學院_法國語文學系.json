@@ -1,0 +1,4244 @@
+[
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13001",
+    "課號-班別": "FR0001-*",
+    "課程名稱(中文)": "科技法文 Ｉ",
+    "課程名稱(英文)": "Scientific French I",
+    "備註": "",
+    "授課教師": "許樂山",
+    "學分": "2",
+    "上課時間": "Wed78",
+    "教室": "A-226",
+    "選修別": "選修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13001&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13001&outline=13001&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13001",
+      "課號": "FR0001-*",
+      "授課教師": "許樂山",
+      "課程名稱(中文)": "科技法文 Ｉ",
+      "課程名稱(英文)": "Scientific French I",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "Les étudiants renforceront leur pratique du français (production orale, compréhension orale, grammaire et vocabulaire) en découvrant quelques-unes des grandes avancées scientifiques d'origine française, les domaines technologiques dans lesquels la France excelle et des grandes figures des sciences et inventions françaises. Les domaines abordés sont en autres : les transports (trains, automobiles, aviation), l'énergie, les machines-outils, les télécommunications, le multimédia (sons, images et vidéos), l'architecture verte et l'intelligence artificielle. Les étudiants acquerront de solides bases pour parler et discuter technologie et science en français. Les étudiants pourront approfondir un domaine technique de leur choix tout au long du semestre. Les étudiants auront une première vision historique et actuelle de la riche histoire des sciences et techniques de la France. Les étudiants connaitront les grands noms des fleurons de l'industrie et de la science françaises et leurs réalisations ce qui leur ouvrira des perspectives professionnelles dans de nombreux secteurs.",
+      "授課內容": "La France a été à l'origine de nombreuses découvertes scientifiques et d'avancées techniques/technologiques importantes.\nCe cours plongera dans l'histoire de quelques-unes des plus belles réussites françaises scientifiques et technologiques.\nLes exemples seront pris dans de nombreux secteurs importants de l'économie : les transports, l'énergie, les machines-outils, les télécommunications, le multimédia, l'architecture verte et pour finir l'intelligence artificielle.\nLes étudiants découvriront le riche héritage de la science française et ses multiples applications dans la vie quotidienne.\nLes étudiants découvriront ainsi la France sous un nouvel angle : celle d'une nation de pionniers technologiques et d'inventeurs audacieux.",
+      "教科書/參考書": "Le français scientifique et technique. Masselin. Delsol. Duchaingne. Hatier. Histoire générale des techniques. Maurice Daumas. Quadrige. PUF. Guide des collections. Le musée des arts et métiers. Le CNAM.",
+      "自編教材比例": "90",
+      "授課方式": "講授 個別指導 其他",
+      "評量配分比重": "Présence et participation : 20% Devoirs et QCM : 25% Examen de mi-semestre : 25 % Présentation finale et mini-rapport : 30 %",
+      "辦公時間": "Mercredi 13h-15h",
+      "授課週數": "16",
+      "彈性教學說明": "4 hours of teaching video materials will be recorded and given to students before the final week.",
+      "課程領域": "應用語言 、 文化",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13002",
+    "課號-班別": "FR1019-A",
+    "課程名稱(中文)": "口語表達（一）",
+    "課程名稱(英文)": "Oral Expression Ⅰ",
+    "備註": "",
+    "授課教師": "邱惠佩",
+    "學分": "2",
+    "上課時間": "Thu78",
+    "教室": "A-226",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13002&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限一年級。學號:限單號。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13002&outline=13002&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13002",
+      "課號": "FR1019-A",
+      "授課教師": "邱惠佩",
+      "課程名稱(中文)": "口語表達（一）",
+      "課程名稱(英文)": "Oral Expression Ⅰ",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "透過發音及對話練習，讓學習者具有表達和日常生活相關主題的基礎能力。",
+      "授課內容": "上學期 : 基礎發音學習\n下學期 : 課程以雙向主軸進行：法語基本生活會話與法文時事新聞。\n—法語基本生活會話是透過不同情境的主題短篇對話文章，先學習基本固定句型，進而自我學習模仿並延伸。",
+      "教科書/參考書": "口語表達發音課程教材 Claire Miquel, Communication progressive du francais, niveau debutant, Cle international.",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "1. 課堂參與表現(出席、討論、發言、回答問題) : 20％ 2. 作業 : 20％ 3. 期中考: 30％ 4. 期末考: 30％",
+      "辦公時間": "週一13h-15h, 週四13h-15h",
+      "授課週數": "16",
+      "彈性教學說明": "提供非同步線上自學教材",
+      "課程領域": "語言訓練",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(2) 低",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(2) 低",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13003",
+    "課號-班別": "FR1019-B",
+    "課程名稱(中文)": "口語表達（一）",
+    "課程名稱(英文)": "Oral Expression Ⅰ",
+    "備註": "",
+    "授課教師": "甘佳平",
+    "學分": "2",
+    "上課時間": "Thu78",
+    "教室": "C2-216",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13003&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限一年級。學號:限雙號。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13003&outline=13003&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13003",
+      "課號": "FR1019-B",
+      "授課教師": "甘佳平",
+      "課程名稱(中文)": "口語表達（一）",
+      "課程名稱(英文)": "Oral Expression Ⅰ",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "本課程旨在培養大一同學掌握法語發音技巧，並具備基礎日常生活表達能力。課程結合科技與影音素材，提升教學的活潑性與多元性，進而有效促進學習動機，培養正確的語言學習態度，奠定穩固的語言表達基礎，並提升跨領域學習的能力。",
+      "授課內容": "本課程分為上下兩學期進行，逐步培養學生的法語發音技巧與基礎會話能力，並融合科技與多媒體資源，提升自主學習的動機與效能。\n上學期：法語發音基礎\n本學期聚焦於法語的基礎發音訓練，內容涵蓋 19 個母音、18 個子音以及3 個半母音，協助學生建立正確的發音觀念與發音技巧。\n課程中安排了小組報告活動：學生在學習完母音後，將分組挑選一首喜愛的法語歌曲進行介紹，內容可包括歌曲主題與意義解析、詞彙與文法重點說明、歌手背景介紹等，藉由音樂融入語言學習，提升學習興趣與文化理解。\n下學期：生活情境會話與創意應用\n本學期以法語生活會話為核心，透過不同情境主題的短篇對話文章，引導學生掌握常見句型與基本溝通能力，進一步培養模仿力與延伸應用能力。\n課程設計包含尋找復活節彩蛋活動（任務導向學習）、對話練習與報告 （對話演出與AI學習心得分享、利用AI工具自主學習法語多媒體資源的實作報告）、以期末創作任務（ＡI主題短片製作）等。",
+      "教科書/參考書": "口語表達發音課程教材 Claire Miquel, Communication progressive du francais, niveau debutant, Cle international.",
+      "自編教材比例": "20",
+      "授課方式": "講授",
+      "評量配分比重": "平時表現 ：20 ％ 期中考：20 ％ 報告 : 30 ％ 期末作業 : 30 ％ **提醒同學, 學則第三十一條相相關規定 : 「學生凡一學期中某科目請假（含曠課）逾三分之一者，不得參與該科目之學期考試，該科目學期成績以零分計算。」請同學記得不要請假／缺席超過5次，否則會扣考喔！",
+      "辦公時間": "星期三 : 10-12點。星期四 : 13-15點。",
+      "授課週數": "16",
+      "彈性教學說明": "1. 學生須於繳交報告或進行對話演出前，將內容先行寄給授課教師審閱，並主動與教師約時間個別討論修改建議與原因，以強化語言表達的準確度與學習成效。 2. 學生需至少參加一場由本系主辦之職涯講座，以增進對法語相關職場或跨領域專業發展的理解與認識。",
+      "課程領域": "語言訓練",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(1) 非常低",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(1) 非常低",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13004",
+    "課號-班別": "FR1023-A",
+    "課程名稱(中文)": "讀本",
+    "課程名稱(英文)": "Reading",
+    "備註": "",
+    "授課教師": "史惟筑",
+    "學分": "4",
+    "上課時間": "Wed56",
+    "教室": "C2-201\nFri34",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13004&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限一年級。學號:限單號。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13004&outline=13004&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13004",
+      "課號": "FR1023-A",
+      "授課教師": "史惟筑",
+      "課程名稱(中文)": "讀本",
+      "課程名稱(英文)": "Reading",
+      "課程學制": "學士班",
+      "學分": "4",
+      "課程目標": "1 法文基礎詞彙與文法，句型結構的學習與運用。 2 利用豐富之練習題，加強口語和書寫訓練，提升法文的表達能力。 3 每課設計與該課文相關主題的文化延伸，增進學習語文的興趣與在地化。 4 本教材附有CD，加強聽力和發音的能力。",
+      "授課內容": "本教材共有三大單元，每單元有四課，各為不同主題。每單元後各有總複習並包含語言檢定習題。每學期上六課。\n本教材重點：\n1 法文基礎詞彙與文法，句型結構的學習與運用。\n2 利用豐富之練習題，加強口語和書寫訓練，提升法文的表達能力。\n3 每課設計與該課文相關主題的文化延伸，增進學習語文的興趣與在地化。\n4 本教材附有CD，加強聽力和發音的能力。",
+      "教科書/參考書": "Echo A1, CLE.",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "10％出席率及課堂表現﹐ 40％小考+期中考﹐ 50％期末考試“ ＊缺席次數至多五堂，超過五堂不給予學分。 ＊上課遲到至多十五分鐘，超過時間算缺課一堂。 ＊上課禁止使用3C產品上網。 ＊上課不准飲食。",
+      "辦公時間": "週三（10h-11h50）、週四(13h-14h50)",
+      "授課週數": "16",
+      "彈性教學說明": "第17、18週為期末評量",
+      "課程領域": "語言訓練",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(4) 高",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(3) 普通",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(2) 低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(2) 低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(3) 普通",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(2) 低",
+          "評量方式": "無"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13005",
+    "課號-班別": "FR1023-B",
+    "課程名稱(中文)": "讀本",
+    "課程名稱(英文)": "Reading",
+    "備註": "",
+    "授課教師": "陳志明",
+    "學分": "4",
+    "上課時間": "Wed56",
+    "教室": "C2-103\nFri34",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13005&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限一年級。學號:限雙號。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13005&outline=13005&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13005",
+      "課號": "FR1023-B",
+      "授課教師": "陳志明",
+      "課程名稱(中文)": "讀本",
+      "課程名稱(英文)": "Reading",
+      "課程學制": "學士班",
+      "學分": "4",
+      "課程目標": "1 法文基礎詞彙與文法，句型結構的學習與運用。 2 利用豐富之練習題，加強口語和書寫訓練，提升法文的表達能力。 3 每課設計與該課文相關主題的文化延伸，增進學習語文的興趣與在地化。 4 本教材附有CD，加強聽力和發音的能力。",
+      "授課內容": "本教材共有三大單元，每單元有四課，各為不同主題。每單元後各有總複習並包含語言檢定習題。每學期上六課。\n本教材重點：\n1 法文基礎詞彙與文法，句型結構的學習與運用。\n2 利用豐富之練習題，加強口語和書寫訓練，提升法文的表達能力。\n3 每課設計與該課文相關主題的文化延伸，增進學習語文的興趣與在地化。\n4 本教材附有CD，加強聽力和發音的能力。",
+      "教科書/參考書": "Echo A1",
+      "自編教材比例": "0",
+      "授課方式": "講授 其他",
+      "評量配分比重": "平常考核 /期中考試 期末考試",
+      "辦公時間": "每周/三 : 13-15點",
+      "授課週數": "16",
+      "彈性教學說明": "堤供非同步線上教材",
+      "課程領域": "語言訓練",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現 ， 學習檔案評量 ， 無"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現 ， 自我評量/同儕互評 ， 無"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評 ， 無"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 無"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 無"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 無"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 無"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13006",
+    "課號-班別": "FR1033-A",
+    "課程名稱(中文)": "文法與寫作",
+    "課程名稱(英文)": "Grammar and Composition",
+    "備註": "",
+    "授課教師": "徐佳華",
+    "學分": "4",
+    "上課時間": "Mon34",
+    "教室": "C2-103\nThu34",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13006&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限一年級。學號:限單號。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13006&outline=13006&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13006",
+      "課號": "FR1033-A",
+      "授課教師": "徐佳華",
+      "課程名稱(中文)": "文法與寫作",
+      "課程名稱(英文)": "Grammar and Composition",
+      "課程學制": "學士班",
+      "學分": "4",
+      "課程目標": "介紹基本文法及其應用，使初學者掌握法語最基本的規範，得以造出簡單、正確的句子。",
+      "授課內容": "一、文法部分\n上學期各單元依序分別為: le pronom sujet / les verbes être et avoir, les constructions il y a, c’est, ce sont / le nom / l’article / l’interrogation / la negation / l’adjectif (I) – masculin et féminin, singulier et pluriel / les verbes en er au present, les verbes suivis d’une preposition / l’adjectif (II) – l’accord de l’adj. / les verbes en ir au present / les possessifs – adjectif et pronom / les verbes irréguliers au present (I) / les démonstratifs – adjectif et pronom / l’adjectif (III) – la place de l’adjectif / les adverbes / les verbes irréguliers au present (II) / Quelques constructions verbales et les auxiliaires / le futur / le participe passe et le passe compose / les indéfinis / le conditionnel.\n下學期各單元依序分別為: le comparatif et le superlatif / l’imperatif / les pronoms complements / les pronoms y et en / l’ordre des pronoms complements / les verbes pronominaux / / l’imperatif et les pronoms / l’imparfait / le plus-que-parfait / le futur antérieur / la voix passive / le pronom relatif / le participe et le gérondif / le conditionnel.\n二、寫作部分\n配合文法進度，讓學生運用所學之文法觀念與規則，透過翻譯、造句、短文之寫作練習、字彙運用練習達到寫作基本簡單句及複雜句之能力。",
+      "教科書/參考書": "* Nouvelle Grammaire du francais, Hachette. *Nouvelle Grammaire du francais (cours de civilisation francaise de la Sorbonne), edition Hachette. * 350 exercices (niveau debutant), Hachette. * 岳家君，《法語語法詳解》，敦煌書局。 * Claire Leroy-Miquel et Anne Goliot-Lete, Vocabulaire progressif du francais, CLE international. * Grammaire progressive du Francais, Cle international. * Le Premier Livre de francais, methode Marchand, F.E.L.F. *法語簡易文法與練習 Premiers pas en grammaire du francais, 中央圖書出版社。",
+      "自編教材比例": "50",
+      "授課方式": "講授",
+      "評量配分比重": "平時成績（作業與小考）占總成績百分之五十，期中及期末考各占總成績百分之五十。保留微調可能。",
+      "辦公時間": "週一9-10時, 15-16時；週三13-14時；週四9-10時",
+      "授課週數": "16",
+      "彈性教學說明": "課外內容自主學習、習題實作、線上影音課程",
+      "課程領域": "語言訓練",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(2) 低",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(1) 非常低",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(1) 非常低",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13007",
+    "課號-班別": "FR1033-B",
+    "課程名稱(中文)": "文法與寫作",
+    "課程名稱(英文)": "Grammar and Composition",
+    "備註": "",
+    "授課教師": "邱惠佩",
+    "學分": "4",
+    "上課時間": "Mon34",
+    "教室": "C2-112\nThu34",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13007&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限一年級。學號:限雙號。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13007&outline=13007&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13007",
+      "課號": "FR1033-B",
+      "授課教師": "邱惠佩",
+      "課程名稱(中文)": "文法與寫作",
+      "課程名稱(英文)": "Grammar and Composition",
+      "課程學制": "學士班",
+      "學分": "4",
+      "課程目標": "介紹基本文法及其應用，從最基礎的概念學起，再運用到簡單造句、寫作。",
+      "授課內容": "le pronom sujet\nles verbes: etre et avoir\nles constructions: il y a, c’est, ce sont\nle nom et l’article\nl’interrogation et la negation\nl’adjectif (I): masculin et feminin, singulier et pluriel\nles verbes en er au present, les verbes suivis d’une preposition\nl’adjectif (II): l’accord de l’adj.\nles verbes en ir au present\nles possessifs: adjectif et pronom\nles verbes irreguliers au present (I)\nles demonstratifs: adjectif et pronom\nl’adjectif (III): la place de l’adjectif\nles adverbes\nles verbes irreguliers au present (II)\nQuelques constructions verbales et les auxiliaires\nle futur\nle participe passe et le passe compose\nles indefinis\nle comparatif et le superlatif\nl’imperatif",
+      "教科書/參考書": "1. Nouvelle Grammaire du Français 2. Grammaire 350 exercices Niveau Débutant",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "1. 課堂出席與作業: 15％ 2. 小考 : 25％ 3. 期中考: 30％ 4. 期末考: 30％",
+      "辦公時間": "週一13h-15h, 週四13h-15h",
+      "授課週數": "16",
+      "彈性教學說明": "提供非同步線上自學教材",
+      "課程領域": "語言訓練",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13008",
+    "課號-班別": "FR1039-*",
+    "課程名稱(中文)": "法文文選(一)",
+    "課程名稱(英文)": "French Selected Readings I",
+    "備註": "",
+    "授課教師": "翁振盛",
+    "學分": "2",
+    "上課時間": "Wed12",
+    "教室": "C2-112",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13008&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限一年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13008&outline=13008&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13008",
+      "課號": "FR1039-*",
+      "授課教師": "翁振盛",
+      "課程名稱(中文)": "法文文選(一)",
+      "課程名稱(英文)": "French Selected Readings I",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "本課程的宗旨在於增進初學者的法文字彙，提昇其理解與分析能力，加強基本的文法觀念。",
+      "授課內容": "除了有一固定的基礎法文教本之外，另外廣泛閱讀各類型(文學與非文學)的作品。大致涵蓋詩歌、寓言、童話、童謠、漫畫、格言、諺語、笑話、謎語、日記、書信、遊記、訪談、新聞時事、體育報導、分類廣告、觀光導覽等不同類別。\n課程進行一方面解釋文意，釐清艱深字句、文法；另一方面扼要地說明各種類型之主要特徵。",
+      "教科書/參考書": "1.APOLLINAIRE Guillaume, Calligrammes. 2.BAUDELAIRE Charles, Le Spleen de Paris. 3.BRASSENS Georges, Poemes et chansons. 4.COLUCHE, Et vous trouvez ca drole ? 5.HERGE, Les Aventures de Tintin, volume 5 : Le Lotus bleu. 6.IONESCO Eugene, La Lecon. 7.LA FONTAINE Jean de, Fables. 8.PEREC Georges, Je me souviens. 9.PEREC Georges, Nouveaux jeux interessants. 10.PREVERT Jacques, Paroles. 11.RENARD Jules, Histoires naturelles. 12.SAINT-EXUPERY Antoine de, Lettres a sa mere. 13.SOLLERS Philippe, L’Annee du Tigre. 14.TISSERON Serge, Journal d’un psychanalyste.",
+      "自編教材比例": "25",
+      "授課方式": "講授",
+      "評量配分比重": "1.出席率，課堂表現。 2.平時測驗，期中考，期末考。",
+      "辦公時間": "週二13h-15h, 週五12h-14h",
+      "授課週數": "16",
+      "彈性教學說明": "為鼓勵自主學習，學期初會發放課外閱讀的文本，並與修課學生約定好時間討論，解答其困惑與問題。",
+      "課程領域": "文學",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(2) 低",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13009",
+    "課號-班別": "FR1041-*",
+    "課程名稱(中文)": "初級法語視聽I",
+    "課程名稱(英文)": "French Lab I",
+    "備註": "",
+    "授課教師": "邱惠佩",
+    "學分": "2",
+    "上課時間": "Mon78",
+    "教室": "C2-201",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13009&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限一年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13009&outline=13009&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13009",
+      "課號": "FR1041-*",
+      "授課教師": "邱惠佩",
+      "課程名稱(中文)": "初級法語視聽I",
+      "課程名稱(英文)": "French Lab I",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "考量上課學生是初學法語者，本學期授課重點是: -法文發音規則的講解 -發音的校正 -短句語調的訓練。 透過上述口語訓練的加強，以期達到學生法語發音正確與流暢之教學目標。",
+      "授課內容": "- 26個字母和法文重音標符號之介紹\n- 一般母音音標介紹\n- 鼻腔母音介紹\n- 半母音介紹\n- 利用學過的母音做斷音節練習\n- 子音之介紹\n- 連音規則說明\n- 簡單句型的單句練習\n- 肯定句語調練習\n- 疑問句語調練習\n- 命令句語調練習\n- 否定句語調練習\n上課方式：\n1) 上傳剪輯完成的讀本練習音檔至BB教學平台，供學生做課前預習。\n2) 課堂時，先播放預習音檔，然後請學生複誦聽到的音檔。若有狀況，隨即解說發音技巧，並訂正之，然後再解說法文發音規則。\n3) 將學生按發音準確性分組。問題少的學生，隨下放至其機座的音檔，做聆聽和模仿之練習；狀況不佳的學生，由老師親自指導糾正發音。\n5) 下課前10分鐘，自習組和正音組都須將該次課堂所做的練習內容錄音或聽寫，教師收回錄音檔或聽寫卷，批改後，將結果列入平時成績考核。",
+      "教科書/參考書": "TextoA1 作者 : Jean-Thierry Le Bougnec, Marie-Jose Lopes, Gil Rabier 出 版 社： Hachette ISBN： 9782014015850 法語發音入門 Les cles du francais 1 Bases Phonetiques-Corriges des Exercices 作 者： Eliane Desfosses(戴莉安) 出 版 社： 敦煌書局",
+      "自編教材比例": "0",
+      "授課方式": "講授 其他",
+      "評量配分比重": "1. 課堂參與表現(出席、討論、發言、回答問題) : 20％ 2. 作業 : 40％ 3. 期中考: 20％ 4. 期末考: 20％",
+      "辦公時間": "週一13h-15h, 週四13h-15h",
+      "授課週數": "16",
+      "彈性教學說明": "提供非同步線上自學教材",
+      "課程領域": "語言訓練",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(2) 低",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(1) 非常低",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(1) 非常低",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(1) 非常低",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(1) 非常低",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13010",
+    "課號-班別": "FR2017-*",
+    "課程名稱(中文)": "現代散文（一）",
+    "課程名稱(英文)": "Contemporary Prose (I)",
+    "備註": "",
+    "授課教師": "翁振盛",
+    "學分": "2",
+    "上課時間": "Tue12",
+    "教室": "C2-112",
+    "選修別": "選修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13010&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限一年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13010&outline=13010&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13010",
+      "課號": "FR2017-*",
+      "授課教師": "翁振盛",
+      "課程名稱(中文)": "現代散文（一）",
+      "課程名稱(英文)": "Contemporary Prose (I)",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "帶領法文初學者閱讀一定長度的敘事文本，培養其賞析能力和對於法國文學的興趣。",
+      "授課內容": "上學期以簡易的故事和文章為主，下學期以十九世紀經典文學名著的改編為主，並不時穿插對照原典。",
+      "教科書/參考書": "1. BERTRAND Marie-Claire, Le secret de Louise 2. DUMAS Alexandre, Le comte de Monte-Cristo 3. HUGO Victor, Les Miserables 4. SAND George, La Petite Fadette",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "出席率、課堂表現、期中考(口試)、期末考(筆試)。",
+      "辦公時間": "週二13h-15h, 週五12h-14h",
+      "授課週數": "16",
+      "彈性教學說明": "為鼓勵自主學習，學期初會發放課外閱讀的文本，並與修課學生約定好時間討論，解答其困惑與問題。",
+      "課程領域": "文學",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(2) 低",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13011",
+    "課號-班別": "FR2019-*",
+    "課程名稱(中文)": "法文視聽會話（一）",
+    "課程名稱(英文)": "French Conver. Audio-Visual (I)",
+    "備註": "",
+    "授課教師": "邱惠佩",
+    "學分": "2",
+    "上課時間": "Tue78",
+    "教室": "C2-201",
+    "選修別": "選修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13011&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限二年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13011&outline=13011&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13011",
+      "課號": "FR2019-*",
+      "授課教師": "邱惠佩",
+      "課程名稱(中文)": "法文視聽會話（一）",
+      "課程名稱(英文)": "French Conver. Audio-Visual (I)",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "本課程旨在提升學生的聽力理解能力，課堂上會使用不同主題的音檔、影片，幫助學生理解在日常與工作環境中，會使用的字彙與語句。",
+      "授課內容": "教學內容以生活會話為主，每周會有不同主題。透過歌曲，新聞時事，影片等不同媒介密集訓練並提升學生在聽力方面的能力。",
+      "教科書/參考書": "-www.rfi.fr -www.francetvinfo.fr -www.tv5.fr -youtube -DELF A2, CLE",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "1. 課堂參與表現(出席、討論、發言、回答問題) : 20％ 2. 作業 : 20％ 3. 期中考: 30％ 4. 期末考: 30％",
+      "辦公時間": "週一13h-15h, 週四13h-15h",
+      "授課週數": "16",
+      "彈性教學說明": "提供非同步線上自學教材",
+      "課程領域": "語言訓練",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13012",
+    "課號-班別": "FR2029-A",
+    "課程名稱(中文)": "口語表達(二)",
+    "課程名稱(英文)": "Oral Expression (II)",
+    "備註": "",
+    "授課教師": "薛鎵鋐",
+    "學分": "2",
+    "上課時間": "Mon56",
+    "教室": "C2-216",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13012&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限二年級。指定課程:必須先修FR1019、先修FR1020。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13012&outline=13012&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13012",
+      "課號": "FR2029-A",
+      "授課教師": "薛鎵鋐",
+      "課程名稱(中文)": "口語表達(二)",
+      "課程名稱(英文)": "Oral Expression (II)",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "詳參外文說明。",
+      "授課內容": "詳參外文說明。",
+      "教科書/參考書": "詳參外文說明。",
+      "自編教材比例": "100",
+      "授課方式": "講授 實習/實驗 個別指導",
+      "評量配分比重": "詳參外文說明。 根據校務章則，無合理事由及正式請假的缺席，達5次扣考。",
+      "辦公時間": "郵件預約",
+      "授課週數": "16",
+      "彈性教學說明": "每堂需準備對話講稿",
+      "課程領域": "語言訓練 、 應用語言 、 文學 、 文化",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13013",
+    "課號-班別": "FR2029-B",
+    "課程名稱(中文)": "口語表達(二)",
+    "課程名稱(英文)": "Oral Expression (II)",
+    "備註": "",
+    "授課教師": "徐佳華",
+    "學分": "2",
+    "上課時間": "Mon56",
+    "教室": "C2-217",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13013&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限二年級。指定課程:必須先修FR1019、先修FR1020。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13013&outline=13013&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13013",
+      "課號": "FR2029-B",
+      "授課教師": "徐佳華",
+      "課程名稱(中文)": "口語表達(二)",
+      "課程名稱(英文)": "Oral Expression (II)",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "Les étudiants doivent pouvoir produire des discours simples sur des sujets courants (experience, projet ou opinion personnels ; description ou récit simples). Il n’est pas exigé à ce stade de produire des enchainements de phrases parfaitement fluides et entièrement corrects aux niveaux grammatical et lexical, mais plutôt d’arriver a se faire comprendre en respectant le rythme d’une conversation informelle et l’ordre logique de la pensée courante.",
+      "授課內容": "Le but de ce cours est de permettre aux étudiants de développer leur capacité à produire des discours suivis. Pour cela ils seront exercés a bien maitriser les structures grammaticales de base de la langue française, et notamment :\n- les subordonnées consécutives\n- les conjonctions de subordination\n- les questions indirectes\n- les phrases relatives\n- les agents de liaison\nAu niveau lexical ils devront acquérir les principaux mots clés de la langue française, qui leur permettront de se faire comprendre dans la plupart des situations de la vie courante mais aussi d’exprimer d’une manière générale leurs idées.",
+      "教科書/參考書": "Polycopies fournis en classe par la professeur",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "出席、作業與參與(20%) 期中各項報告(50%) 期末評量(30%)",
+      "辦公時間": "週一9-10時, 15-16時；週三13-14時；週四9-10時",
+      "授課週數": "16",
+      "彈性教學說明": "自主學習、報告及期末專題準備",
+      "課程領域": "語言訓練",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(2) 低",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(2) 低",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13014",
+    "課號-班別": "FR2029-C",
+    "課程名稱(中文)": "口語表達(二)",
+    "課程名稱(英文)": "Oral Expression (II)",
+    "備註": "",
+    "授課教師": "張雅婷",
+    "學分": "2",
+    "上課時間": "Mon56",
+    "教室": "C2-103",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13014&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限二年級。指定課程:必須先修FR1019、先修FR1020。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13014&outline=13014&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13014",
+      "課號": "FR2029-C",
+      "授課教師": "張雅婷",
+      "課程名稱(中文)": "口語表達(二)",
+      "課程名稱(英文)": "Oral Expression (II)",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "Les étudiants doivent être capables de produire des discours simples sur des sujets courants, tels que des expériences personnelles, des projets ou des opinions, ainsi que des descriptions ou des récits simples. À ce stade, il n’est pas exigé de maîtriser parfaitement l’enchaînement des phrases ni d’assurer une correction grammaticale et lexicale totale. L’objectif principal est de parvenir à se faire comprendre, en respectant le rythme d’une conversation informelle et la logique de la pensée courante. Les thèmes abordés en classe sont, pour la plupart, liés à la culture des pays francophones.",
+      "授課內容": "Le but de ce cours est de permettre aux étudiants de développer leur capacité à produire des discours suivis. Pour cela, ils s’exerceront à maîtriser les structures grammaticales de base de la langue française, notamment :\n- les subordonnées consécutives,\n- les conjonctions de subordination,\n- les questions indirectes,\n- les phrases relatives,\n- les agents de liaison.\nSur le plan lexical, ils devront acquérir les principaux mots-clés de la langue française, afin de pouvoir se faire comprendre dans la plupart des situations de la vie courante et d’exprimer, de manière générale, leurs idées.",
+      "教科書/參考書": "Des documents fournis par le professeur",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "La participation en cours 25％ Le devoir 25％ L‘examen de mi-trimestre 25 ％ L‘évaluation finale 25％",
+      "辦公時間": "週一(9h-12h), 週二(16h-17h)- Email預約",
+      "授課週數": "16",
+      "彈性教學說明": "自主學習,期末呈現準備",
+      "課程領域": "語言訓練 、 文化",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 自我評量/同儕互評 ， 作品/創作展演"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13015",
+    "課號-班別": "FR2031-A",
+    "課程名稱(中文)": "寫作(二)",
+    "課程名稱(英文)": "Writing (II)",
+    "備註": "",
+    "授課教師": "何玉清",
+    "學分": "2",
+    "上課時間": "Thu56",
+    "教室": "C2-217",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13015&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限二年級。學號:限單號。指定課程:必須先修FR1033、先修FR1034。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限輔系-法國語文學系、雙主修-法國語文學系。指定課程:必須先修FR1033、先修FR1034。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13015&outline=13015&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13015",
+      "課號": "FR2031-A",
+      "授課教師": "何玉清",
+      "課程名稱(中文)": "寫作(二)",
+      "課程名稱(英文)": "Writing (II)",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "Objectif du cours : Développer les compétences de production écrite des étudiants. Dans ce cours, les étudiants seront amenés à produire des textes simples, mais structurés, répondant progressivement aux objectifs du niveau A2. Ce cours permettra aux étudiants de consolider et d‘approfondir leurs compétences lexicales et syntaxiques, tout en acquérant progressivement la maîtrise des différents types de texte, ainsi que les aspects formels de la production écrite.",
+      "授課內容": "Contenu du cours :\nDurant ce premier semestre, les étudiants seront amenés à rédiger des textes descriptifs, narratifs, informatifs, ou argumentatifs, sous la forme de présentations écrites, récits, lettres, commentaires, petits articles ou essais argumentés, autour de thèmes tels que parler de soi, l’amitié, la famille, les lieux de vie, et la vie en société.\nOrganisation du cours :\nDans un premier temps, le thème du cours sera abordé par le biais de discussions en groupe, ainsi que d‘exercices de compréhension écrite et de grammaire.\nDans un deuxième temps, une fois les étudiants familiarisés avec le contenu et les objectifs de la leçon, il leur sera demandé de produire un texte sur le même thème en répondant à des consignes données.",
+      "教科書/參考書": "參考書： Mon alter ego 2, Méthode de français A2, Hachette, 2023. Inspire 2, Méthode de français A2, Hachette, 2020.",
+      "自編教材比例": "100",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "Présence et participation : 10％ Devoirs en classe : 30％ Examen de mi-semestre : 30％ Examen final : 30％ 缺課6次，扣考",
+      "辦公時間": "Mercredi 13:00 - 14:50 / Jeudi 10:00 - 11:50",
+      "授課週數": "16",
+      "彈性教學說明": "En plus du cours, les étudiants devront conduire une enquête sur un sujet en lien avec le cours, puis présenter les résultats et écrire un article qui décrit ce qu'ils ont trouvé lors de leur enquête. (自主學習與實作)",
+      "課程領域": "語言訓練 、 應用語言",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 實作/實驗 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 實作/實驗 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13016",
+    "課號-班別": "FR2031-B",
+    "課程名稱(中文)": "寫作(二)",
+    "課程名稱(英文)": "Writing (II)",
+    "備註": "",
+    "授課教師": "陳尚培",
+    "學分": "2",
+    "上課時間": "Thu56",
+    "教室": "C2-216",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13016&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限二年級。學號:限雙號。指定課程:必須先修FR1033、先修FR1034。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限輔系-法國語文學系、雙主修-法國語文學系。指定課程:必須先修FR1033、先修FR1034。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13016&outline=13016&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13016",
+      "課號": "FR2031-B",
+      "授課教師": "陳尚培",
+      "課程名稱(中文)": "寫作(二)",
+      "課程名稱(英文)": "Writing (II)",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "Ce cours a pour objectif de développer les compétences en production écrite des étudiant·e·s, afin de les amener progressivement au niveau A2 du CECRL (Cadre Européen Commun de Référence pour les Langues).",
+      "授課內容": "À l’issue de ce cours, les étudiant·e·s seront capables de :\n- Produire des textes simples, structurés et variés sur des sujets du quotidien.\n- Consolider et approfondir leurs compétences lexicales et syntaxiques.\n- Renforcer leur culture générale sur le monde français et francophone.\nLes étudiant·e·s s’exerceront individuellement ou en groupe à travers différents types de textes (descriptifs, narratifs, argumentatifs) portant sur des sujets du quotidien et des situations pouvant se produire dans des environnements francophones.\nPour enrichir les compétences culturelles, le cours s'appuiera sur des documents authentiques issus du monde francophone : textes, photographies, iconographies, vidéos, etc.",
+      "教科書/參考書": "Les documents et supports seront fournis par le professeur au cours du semestre.",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "Assiduité : 10% Exercices en classe : 40% Examen de mi-semestre : 20% Examen de fin de semestre : 30%",
+      "辦公時間": "Jeudi : 10h-12h; Vendredi : 13h-15h",
+      "授課週數": "16",
+      "彈性教學說明": "Préparation au DELF A2",
+      "課程領域": "語言訓練 、 應用語言 、 文化",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13017",
+    "課號-班別": "FR2035-*",
+    "課程名稱(中文)": "中譯法(一)",
+    "課程名稱(英文)": "Chinese-French Translation (I)",
+    "備註": "",
+    "授課教師": "甘佳平",
+    "學分": "2",
+    "上課時間": "Wed78",
+    "教室": "C2-216",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13017&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限二年級。學號:限單號。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限輔系-法國語文學系、雙主修-法國語文學系。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限學士班、碩士班、博士班。身份:限交換生。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13017&outline=13017&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13017",
+      "課號": "FR2035-*",
+      "授課教師": "甘佳平",
+      "課程名稱(中文)": "中譯法(一)",
+      "課程名稱(英文)": "Chinese-French Translation (I)",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "本課程旨在提升學生對法語文法的掌握能力，並透過多元、實用的對話情境，引導學生培養以下能力： 1. 基礎法語表達能力：透過情境對話練習，建立學生在日常生活中使用法語的基本溝通技巧。 2. 中法語言轉換能力：引導學生從實際語境中學習翻譯技巧，了解翻譯不只是字詞的轉換，更須掌握語用與文化的差異。 3. 詞彙量與語感的提升：課程將安排學生接觸各式簡單且具趣味性的法語短片，從中擴充詞彙、培養語感，並學習法語中常見且道地的表達方式。 4. 翻譯觀念的建立：幫助學生認識翻譯的核心價值——信、達、雅，並理解語言背後所承載的文化意涵與表達邏輯。",
+      "授課內容": "本課程主要進行兩種不同形式的練習：日常生活對話的翻譯與討論，以及法語短片的翻譯。\n在日常生活對話練習中，將聚焦外國學生在法國求學時所需掌握的基本對話內容，幫助學生熟悉不同層次的法語表達，包括口語（familier）、標準語（standard）及正式語（soutenu）。\n短片翻譯則採小組報告形式進行，學生需從聽寫開始，逐步完成內容翻譯，最後進行句型分析與討論。此項作業旨在鼓勵學生主動接觸與體驗可觸及的法國文化，豐富其法文字彙與文化知識，並提升語言敏感度與跨語言轉換能力。",
+      "教科書/參考書": "講義",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "平時表現 : 30％ 作業 (影片+報告) : 40％ 考試 : 30％ **提醒同學, 學則第三十一條相相關規定 : 「學生凡一學期中某科目請假（含曠課）逾三分之一者，不得參與該科目之學期考試，該科目學期成績以零分計算。」請同學記得不要請假／缺席超過5次，否則會扣考喔！",
+      "辦公時間": "星期三, 10-12h / 星期四, 13-15h",
+      "授課週數": "16",
+      "彈性教學說明": "1. 學生須將法文影片逐字稿及中文譯文寄給授課教師審閱，並主動與教師約時間個別討論修改建議與原因，以強化語言表達的準確度與學習成效。 2. 學生需至少參加一場由本系主辦之職涯講座，以增進對法語相關職場或跨領域專業發展的理解與認識。",
+      "課程領域": "語言訓練",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(1) 非常低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13018",
+    "課號-班別": "FR2036-*",
+    "課程名稱(中文)": "法譯中(一)",
+    "課程名稱(英文)": "French-Chinese Translation (I)",
+    "備註": "",
+    "授課教師": "劉順一",
+    "學分": "2",
+    "上課時間": "Wed78",
+    "教室": "C2-112",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13018&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限二年級。學號:限雙號。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限輔系-法國語文學系、雙主修-法國語文學系。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13018&outline=13018&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13018",
+      "課號": "FR2036-*",
+      "授課教師": "劉順一",
+      "課程名稱(中文)": "法譯中(一)",
+      "課程名稱(英文)": "French-Chinese Translation (I)",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "讓學生了解基本的翻譯理論，並透過實際筆譯練習，了解翻譯的機制與技巧，反思譯出語與譯入語的差異，及背後隱含的思維邏輯。",
+      "授課內容": "1. 翻譯理論與語意理論的介紹；\n2. 翻譯的技巧；\n3. 以各種類型文本（文學、新聞、論證、廣告等），進行實際筆譯練習。",
+      "教科書/參考書": "1. 黃宣範，翻譯與語意之間，聯經，1982。 2. 思果，翻譯研究，大地，1985。 3. 法國作家之短篇小說及名家精闢短文。 4. 劉宓慶，《當代翻譯理論》，台北：書林出版社，1993年。 5. 劉宓慶，《翻譯美學導論》，台北：書林出版社，1995。 6. 劉宓慶，《文體與翻譯》，台北：書林出版社，1997年。",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "平時作業、期中考與期末考各佔三分之一。",
+      "辦公時間": "星期三 14：00 - 15：00",
+      "授課週數": "16",
+      "彈性教學說明": "發文本給同學們在家翻譯練習。",
+      "課程領域": "語言訓練",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(3) 普通",
+          "評量方式": "其他"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 其他"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13019",
+    "課號-班別": "FR2039-A",
+    "課程名稱(中文)": "法文文選(二)",
+    "課程名稱(英文)": "French Selected Readings II",
+    "備註": "本課程僅提供法文系同學修課，作為華語文學分學程課程抵修，非法文系同學請勿修此門課",
+    "授課教師": "翁振盛",
+    "學分": "2",
+    "上課時間": "Wed34",
+    "教室": "C2-112",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13019&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限二年級。學號:限單號。指定課程:必須先修FR1023、先修FR1024。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限輔系-法國語文學系、雙主修-法國語文學系。指定課程:必須先修FR1023、先修FR1024。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限三年級、四年級。指定課程:必須先修FR1023、先修FR1024。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13019&outline=13019&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13019",
+      "課號": "FR2039-A",
+      "授課教師": "翁振盛",
+      "課程名稱(中文)": "法文文選(二)",
+      "課程名稱(英文)": "French Selected Readings II",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "在大一法文課程所奠定的基礎上，持續累積字彙，建立法文進階閱讀的基礎，進而培養文本的解析能力，使學生能夠在法文辭典的輔助下理解較為艱深的字句和文法，剖析文本的組織結構，解讀具備一定難度的文章和作品。",
+      "授課內容": "A組：\n延續大一法文文選課程，廣泛介紹各類型作品，上學期以青少年與兒童文學和童話故事為主，下學期以短篇小說為主。除艱難句意與文法結構的解析外，特別側重以下三個層面：文類特徵、修辭策略與敘述建構。\nB組：\n選文主要取自十九、二十世紀的法語文學文本。\n--上學期將選讀各類型文本，如抒情文、描寫文、敘事文、隨筆或雜感文、劇本，等名家作品選，以增進閱讀能力、充實詞彙、並經由文章多方接觸法國文化的各種面向。\n--下學期則以一個專題為中心，選不同作家的同主題文本，以進行主旨、書寫、觀點等各方面的文本分析和比較。",
+      "教科書/參考書": "1. DAUDET Alphonse, Lettres de mon moulin 2. FLAUBERT Gustave, Dictionnaire des idees recues 3. LA ROCHEFOUCAULD, Reflexions ou sentences et maximes morales 4. LE CLEZIO Jean-Marie Gustave, Voyage au pays des arbres 5. LEIRIS Michel, Nuits sans nuit et quelques jours sans jour 6. MAUPASSANT Guy de, Mademoiselle Fifi 7. PERRAULT Charles, Contes 8. RENARD Jules, Poil de Carotte 9. TOURNIER Michel, Pierrot ou les secrets de la nuit 10. YOURCENAR Marguerite, Comment Wang-Fo fut sauve",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "課堂表現，期中考(口試)、期末考(筆試)。",
+      "辦公時間": "週二13h-15h, 週五12h-14h",
+      "授課週數": "16",
+      "彈性教學說明": "為鼓勵自主學習，學期初會發放課外閱讀的文本，並與修課學生約定好時間討論，解答其困惑與問題。",
+      "課程領域": "文學",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現 ， 作品/創作展演"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13020",
+    "課號-班別": "FR2039-B",
+    "課程名稱(中文)": "法文文選(二)",
+    "課程名稱(英文)": "French Selected Readings II",
+    "備註": "本課程僅提供法文系同學修課，作為華語文學分學程課程抵修，非法文系同學請勿修此門課",
+    "授課教師": "薛鎵鋐",
+    "學分": "2",
+    "上課時間": "Wed34",
+    "教室": "C2-217",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13020&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限二年級。學號:限雙號。指定課程:必須先修FR1023、先修FR1024。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限輔系-法國語文學系、雙主修-法國語文學系。指定課程:必須先修FR1023、先修FR1024。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限三年級、四年級。指定課程:必須先修FR1023、先修FR1024。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13020&outline=13020&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13020",
+      "課號": "FR2039-B",
+      "授課教師": "薛鎵鋐",
+      "課程名稱(中文)": "法文文選(二)",
+      "課程名稱(英文)": "French Selected Readings II",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "學生將在已有的法語基礎上，繼續豐富詞彙量，發展進階法語閱讀的技能，獲得分析更複雜文本的能力。借助字典，學生可以理解具有一定難度的文章和作品。",
+      "授課內容": "選讀當代人文社會科學經典 Sur La Télévision: Suivi de L’emprise Du Journalisme。作者布赫迪厄（Pierre Bourdieu, 1930-2002）是法國當代重要的社會學家。這本著作談論電視與新聞，提供我們思考如何在社群時代的今天思考媒體。因此，除了文本閱讀，同學在分組報告需要提出自己的媒體觀察加以探討。",
+      "教科書/參考書": "Bourdieu, Pierre. Sur La Télévision: Suivi de L’emprise Du Journalisme. Raisons d’agir. Paris: Liber éditions, 1996. Bourdieu, Pierre。《布赫迪厄論電視》。譯：林志明。臺北市：麥田出版。2016。",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "期中期末評量（「專題探討」或「學期筆記」）為主，50％。 出席狀況、課堂表現、學習態度…等為輔，50％。 根據校務章則，無合理事由及正式請假的缺席，達5次扣考。",
+      "辦公時間": "郵件預約",
+      "授課週數": "16",
+      "彈性教學說明": "分組報告時，須投入一定程度的自主學習，以便提出經過老師核可的報告題綱。",
+      "課程領域": "語言訓練 、 應用語言 、 文學 、 文化",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13021",
+    "課號-班別": "FR2043-A",
+    "課程名稱(中文)": "文法(二)",
+    "課程名稱(英文)": "Grammar II",
+    "備註": "",
+    "授課教師": "林德祐",
+    "學分": "2",
+    "上課時間": "Mon78",
+    "教室": "A-226",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13021&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限二年級。學號:限單號。指定課程:必須先修FR1033、先修FR1034。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13021&outline=13021&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13021",
+      "課號": "FR2043-A",
+      "授課教師": "林德祐",
+      "課程名稱(中文)": "文法(二)",
+      "課程名稱(英文)": "Grammar II",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "1. 熟悉中級法語語法、語態，細部的文法規則。 2. 熟悉法文各式情狀子句的使用方式與句型結構。 3. 辨析各類動詞時態的使用，培養精確的文法觀。 4. 彈性運用連接詞變換句型，學習多元的表達方式。",
+      "授課內容": "上學期的內容包括：\n1. 直接引語、見接引語(Le discours rapporté)\n2. 指示代名詞與關係代名詞綜合使用(Le pronom relatif composé + pronoms démonstratifs )\n3. 虛擬式(Le subjonctif)\n4. 過去時態(Les temps du passe)\n下學期各單元共計:\n1. 表原因子句(L‘expression de la cause)\n2. 表結果子句(L‘expression de la conséquence)\n3. 表目的子句(L‘expression du but)\n4. 表時間子句(L‘expression du temps)\n5.表對立子句( L‘expression de l‘opposition)\n6. 表臆測與條件子句(L‘expression de la condition et de l’hypothèse)。\n各單元循序漸進，照課本及自編講義講解基本原則，輔以例句，再透過練習題的設計，讓同學能夠熟練各式文法規則。",
+      "教科書/參考書": "Nouvelle Grammaire du Francais. Hachette. 2004. 350 exercices, Hachette. (niveaux moyen, superieur I et II) L’Exercisier, l’expression francaise pour le niveau intermediaire. PUG. L’Expression Francaise, ecrite et orale. PUG. Grammaire expliquee du francais, CLE international, 2013. 楊淑娟，侯義如，法文文法瑰寶：自主學習進階版：2021",
+      "自編教材比例": "30",
+      "授課方式": "講授",
+      "評量配分比重": "平時成績佔總成績百分之三十，期中考及期末考佔總成績百分之三十五。",
+      "辦公時間": "星期一13:00-15:00 星期三13:00-15:00",
+      "授課週數": "16",
+      "彈性教學說明": "預計於十六週以內將授課進度補齊，其餘兩週安排線上學習、自主學習。",
+      "課程領域": "語言訓練",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(2) 低",
+          "評量方式": "出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(2) 低",
+          "評量方式": "出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(2) 低",
+          "評量方式": "出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(2) 低",
+          "評量方式": "出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13022",
+    "課號-班別": "FR2043-B",
+    "課程名稱(中文)": "文法(二)",
+    "課程名稱(英文)": "Grammar II",
+    "備註": "",
+    "授課教師": "張雅婷",
+    "學分": "2",
+    "上課時間": "Mon78",
+    "教室": "C2-112",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13022&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限二年級。學號:限雙號。指定課程:必須先修FR1033、先修FR1034。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13022&outline=13022&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13022",
+      "課號": "FR2043-B",
+      "授課教師": "張雅婷",
+      "課程名稱(中文)": "文法(二)",
+      "課程名稱(英文)": "Grammar II",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "1. 熟悉中級法語語法、語態，細部的文法規則。 2. 熟悉法文各式情狀子句的使用方式與句型結構。 3. 辨析各類動詞時態的使用，培養精確的文法觀。 4. 彈性運用連接詞變換句型，學習多元的表達方式。",
+      "授課內容": "上學期的內容包括：\n1. 直接引語、見接引語(Le discours rapporté)\n2. 指示代名詞與關係代名詞綜合使用(Le pronom relatif composé + pronoms démonstratifs )\n3. 虛擬式(Le subjonctif)\n4. 過去時態(Les temps du passe)\n下學期各單元共計:\n1. 表原因子句(L‘expression de la cause)\n2. 表結果子句(L‘expression de la conséquence)\n3. 表目的子句(L‘expression du but)\n4. 表時間子句(L‘expression du temps)\n5.表對立子句( L‘expression de l‘opposition)\n6. 表臆測與條件子句(L‘expression de la condition et de l’hypothèse)。\n各單元循序漸進，照課本及自編講義講解基本原則，輔以例句，再透過練習題的設計，讓同學能夠熟練各式文法規則。",
+      "教科書/參考書": "- Dominique Jennepin, Yvonne Delatour, Brigitte Teyssier, Maylis Léon-Dufour, Nouvelle Grammaire du Français, Paris, Hachette, 2004. -350 exercices , Hachette. (niveaux moyen, superieur I et II) -La Grammaire progressive du français, niveau avancé, CLE international. -Grammmaire en dialogues, niveau intermédiaire et avancé, CLE international. -D’autres documents fournis par le professeur.",
+      "自編教材比例": "30",
+      "授課方式": "講授",
+      "評量配分比重": "1.課堂參與 (出席、參與、作業) ：25％ 2.平時考：25％ 3.期中評量：25％ 4.期末評量：25％",
+      "辦公時間": "週一(9h-12h), 週二(16h-17h)- Email預約",
+      "授課週數": "16",
+      "彈性教學說明": "安排相關自主學習活動。",
+      "課程領域": "語言訓練",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(1) 非常低",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(1) 非常低",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(1) 非常低",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(1) 非常低",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13023",
+    "課號-班別": "FR2045-*",
+    "課程名稱(中文)": "實用法文I",
+    "課程名稱(英文)": "Practical French I",
+    "備註": "",
+    "授課教師": "甘佳平",
+    "學分": "2",
+    "上課時間": "Thu34",
+    "教室": "C2-216",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13023&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限二年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13023&outline=13023&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13023",
+      "課號": "FR2045-*",
+      "授課教師": "甘佳平",
+      "課程名稱(中文)": "實用法文I",
+      "課程名稱(英文)": "Practical French I",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "本課程旨在增進學生對法國「日常生活文化」的理解與認識。有效的溝通不僅仰賴語言能力，如文法、詞彙和發音的掌握，更需要學習者熟悉受話者的生活習慣與文化背景。因此，本課程所設計的「實用法文」與一般語言訓練課程有所不同，主題廣泛且多元，透過數個核心主題，讓學生對法國的生活方式與文化有更深刻且具體的體會。無論學生未來是否計劃出國交換、實習或自助旅行，本課程皆提供與法國人有效溝通所需的基本文化知識。此外，透過相關議題的討論，我們期望實現課程教學目標──促進學生的反思能力，並培養對他人的關懷與理解。",
+      "授課內容": "本課程分為上、下學期進行，每學期安排六個主要討論主題，具體如下：\n上學期：\na. 法國行政系統概況與巴黎省介紹\nb. 法國年度行事曆與節慶\nc. 法國的工作狀況與勞動條件\nd. 法國大學與高等專業學院概述\ne. 法國飲食文化與飲食習慣\nf. 法國人的消費習慣\n下學期：\na. 法國主要交通方式\nb. 法國假期制度\nc. 法國休閒與文化活動\nd. 法國主要媒體介紹\ne. 法國的家庭與婚姻觀念\nf. 法國醫療體系\n除教師授課之外，為了深化文化學習，提升學生對法國文化特殊性的具體理解與整體學習品質，教師將要求學生完成一份報告。報告將引導學生運用法國特有的學術方法（la méthodologie française），學習如何處理及整合內容，包括問題意識（problématique）、架構規劃（plan）、引言（introduction）與結論（conclusion）。",
+      "教科書/參考書": "Civilisation en dialogues, niveau débutant, Clé International.",
+      "自編教材比例": "30",
+      "授課方式": "講授",
+      "評量配分比重": "出席率、課堂學習態度：20％ 口頭報告內容：30％ 三次小考：50％ **提醒同學, 學則第三十一條相相關規定 : 「學生凡一學期中某科目請假（含曠課）逾三分之一者，不得參與該科目之學期考試，該科目學期成績以零分計算。」請同學記得不要請假／缺席超過5次，否則會扣考喔！",
+      "辦公時間": "星期三 : 10-12點。星期四 : 13-15點。",
+      "授課週數": "16",
+      "彈性教學說明": "1. 學生須將報告內容先寄給授課教師審閱，並主動與教師約時間，個別討論修改建議與原因，從而提升資訊掌握能力與學習成效。 2. 學生需至少參加一場由本系主辦之職涯講座，以增進對法語相關職場或跨領域專業發展的理解與認識。",
+      "課程領域": "應用語言",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(1) 非常低",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(1) 非常低",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13024",
+    "課號-班別": "FR3013-*",
+    "課程名稱(中文)": "新聞法文(一) [已停開]",
+    "課程名稱(英文)": "Reading the French Newspapers I",
+    "備註": "",
+    "授課教師": "薩支遠",
+    "學分": "2",
+    "上課時間": "Thu56",
+    "教室": "C2-112",
+    "選修別": "選修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13024&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限三年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13024&outline=13024&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13024",
+      "課號": "FR3013-*",
+      "授課教師": "薩支遠",
+      "課程名稱(中文)": "新聞法文(一)",
+      "課程名稱(英文)": "Reading the French Newspapers I",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "1. 補充學生文學之外之字彙及概念。 2. 加強閱讀能力。",
+      "授課內容": "新聞用語較直接，著重報導、分析及評論。其中，字彙及概念，與各專業領域知識有關，將精簡介紹及說明。又分析及評論之文字，涉及各國、各地區之主觀看法，深入淺出之解說應有助建逐步建立同學們之國際觀。將以現代經濟、政治、社會議題為主，配合若干趣味性介紹文字，加強同學們對法語世界之敏感度。教學以循序漸進方式逐步加強。",
+      "教科書/參考書": "- 將訓練同學們使用法法字辭典，以Larousse de Poche 及 Le Robert Micro為主。 -法文報章雜誌甚多，將以Le Figaro及Le Monde為主。 -全年精選十至十五篇文章精讀並作中譯練習。",
+      "自編教材比例": "50",
+      "授課方式": "講授",
+      "評量配分比重": "期中及期末考以筆試為之。",
+      "辦公時間": "週四13h-15h",
+      "授課週數": "16",
+      "課程領域": "應用語言",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(1) 非常低",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13025",
+    "課號-班別": "FR3015-*",
+    "課程名稱(中文)": "法國文化史",
+    "課程名稱(英文)": "History of French Civilization",
+    "備註": "",
+    "授課教師": "薛鎵鋐",
+    "學分": "2",
+    "上課時間": "Wed56",
+    "教室": "A-226",
+    "選修別": "選修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13025&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限二年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13025&outline=13025&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13025",
+      "課號": "FR3015-*",
+      "授課教師": "薛鎵鋐",
+      "課程名稱(中文)": "法國文化史",
+      "課程名稱(英文)": "History of French Civilization",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "學生將獲得關於法國歷史的基本視野，並且領略法國史學在文化史的貢獻。",
+      "授課內容": "課程主要探討兩塊主題：\n1. 關於封建時代對於法國文化的諸多影響，比如，家族、宮廷、騎士精神、貴族等等。法蘭西王國從何時開始？如何閱讀君王世系表？貴族分哪幾類？騎士精神在什麼意義上結合了尚武部落與基督教文化？\n2. 關於資本主義與西方文明。法國年鑑學派第二代重要史學家布勞岱爾（Fernand Braudel, 1902-1985）的著作《資本主義的動力》（La dynamique du capitalisme）允許我們掌握「物質生活」、「資本」、「市場」等概念，窺見西方何以主導現代世界的秩序。",
+      "教科書/參考書": "陳秀鳳. “卡佩王朝建立時期封建領主之形成（The Formation of Feudal Lordship in the Early Capetian Dynasty）.” 臺灣師大歷史學報, no. 42 (December 1, 2009): 327–65. https://doi.org/10.6243/BHR.2009.042.327. 陳秀鳳. “法蘭西宣誓禮儀與王權意象（The Oath Ceremony and the Image of Kingship in Medieval France）.” 臺灣師大歷史學報, no. 65 (June 1, 2021): 113–56. https://doi.org/10.6243/BHR.202106_(65).0003. Braudel, Fernand. La dynamique du capitalisme. Champs 192. Paris: Flammarion, 1985. ———. 资本主义的动力 La Dynamique Du Capitalisme. Translated by 杨起. 社会与思想丛书. 生活·读书·新知三联书店, 1997. https://book.douban.com/subject/1002574/.",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "期中期末評量（「專題探討」或「學期筆記」）為主，50％。 出席狀況、課堂表現、學習態度…等為輔，50％。 根據校務章則，無合理事由及正式請假的缺席，達5次扣考。",
+      "辦公時間": "郵件預約",
+      "授課週數": "16",
+      "彈性教學說明": "分組報告時，須投入一定程度的自主學習，以便提出經過老師核可的報告題綱。",
+      "課程領域": "語言訓練 、 應用語言 、 文學 、 文化",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13026",
+    "課號-班別": "FR3041-A",
+    "課程名稱(中文)": "口語表達(三)",
+    "課程名稱(英文)": "Oral Expression (III)",
+    "備註": "",
+    "授課教師": "劉柏桑",
+    "學分": "2",
+    "上課時間": "Thu34",
+    "教室": "A-226",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13026&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限三年級。學號:限單號。指定課程:必須先修FR2029、先修FR2030。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限四年級。指定課程:必須先修FR2029、先修FR2030。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限雙主修-法國語文學系。指定課程:必須先修FR2029、先修FR2030。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13026&outline=13026&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13026",
+      "課號": "FR3041-A",
+      "授課教師": "劉柏桑",
+      "課程名稱(中文)": "口語表達(三)",
+      "課程名稱(英文)": "Oral Expression (III)",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "Ce cours a pour objectif de fournir aux etudiants une methode qui leur permettra d‘organiser leur reflexion personnelle sous la forme d‘une presentation orale structuree grace a la pratique de plusieurs exercices.",
+      "授課內容": "Ce cours s’inscrit dans la continuite des acquis de deuxieme annee. Il cherche a accroitre les capacites d’expression orale des etudiants par un travail centre sur cinq aspects :\n- la description a l’oral de documents visuels (photo d’actualite, dessins, etc.)\n- la capacité à raconter une histoire complète et cohérente en francais\n- le développement de capacités d’analyse et de construction d’une argumentation\n-la methodologie de construction d’une presentation orale (introduction, plan des idees, chaines argumentatives, transitions, conclusion)\n-la comprehension orale et la formulation de commentaires et de questions en reaction a un expose.",
+      "教科書/參考書": "Aucun manuel n‘est utilise pour ce cours. Les documents de methodologie, les documents visuels et les textes travailles sont selectionnes et fournis par le professeur.",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討",
+      "評量配分比重": "Les etudiants sont evalues sur les criteres suivants : -l’intelligibilite phonetique -la maitrise des techniques d’organisation d’un expose et d’une argumentation -les efforts effectues dans le choix du vocabulaire employe -la comprehension orale -la presence et la participation en cours La note attribuee pour chaque semestre est calculee de la facon suivante : - Exercices de présentation orale : 80％ - Presence et participation en classe : 20％",
+      "辦公時間": "禮拜二13：00 - 15：00， 禮拜四 13：00 - 15：00",
+      "授課週數": "16",
+      "彈性教學說明": "Les étudiants auront à réaliser des présentations vidéos en français sur un thème qui sera discuté au préalable en classe. Ces vidéos seront sous-titrées en mandarin et en français avec l'aide du professeur.",
+      "課程領域": "語言訓練 、 應用語言 、 文化",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(2) 低",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13027",
+    "課號-班別": "FR3041-B",
+    "課程名稱(中文)": "口語表達(三)",
+    "課程名稱(英文)": "Oral Expression (III)",
+    "備註": "",
+    "授課教師": "許樂山",
+    "學分": "2",
+    "上課時間": "Thu34",
+    "教室": "C2-217",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13027&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限三年級。學號:限雙號。指定課程:必須先修FR2029、先修FR2030。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限四年級。指定課程:必須先修FR2029、先修FR2030。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限雙主修-法國語文學系。指定課程:必須先修FR2029、先修FR2030。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13027&outline=13027&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13027",
+      "課號": "FR3041-B",
+      "授課教師": "許樂山",
+      "課程名稱(中文)": "口語表達(三)",
+      "課程名稱(英文)": "Oral Expression (III)",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "Ce cours a pour objectif de fournir aux étudiants une méthode qui leur permettra d‘organiser leur réflexion personnelle sous la forme d‘une présentation orale structurée autour d‘une problématique.",
+      "授課內容": "Ce cours vise à développer des compétences utiles à la production de discours en français : comment sélectionner des informations pertinentes, comment organiser ses arguments, comment exprimer de manière simple et claire ses idées, comment intéresser son public, etc. Pour cela, les étudiants seront appelés à présenter en classe de courts exposés sur des sujets en rapport avec la culture française.\nCe cours vise également à développer les facultés d’écoute et à initier à l’art de la conversation à travers des exercices de prise de note et des débats dirigés.",
+      "教科書/參考書": "Pas de manuel pour ce cours.",
+      "自編教材比例": "100",
+      "授課方式": "講授 其他",
+      "評量配分比重": "Examen partiel : 30 ％ Examen final : 30 ％ Présence et participation en classe : 20％ Devoirs : 20 ％",
+      "辦公時間": "Mercredi 10h-12h",
+      "授課週數": "16",
+      "彈性教學說明": "Les étudiants auront des présentations approfondies à préparer et à enregistrer et des documents à étudier.",
+      "課程領域": "語言訓練 、 應用語言 、 文化",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13028",
+    "課號-班別": "FR3043-A",
+    "課程名稱(中文)": "寫作(三)",
+    "課程名稱(英文)": "Writing (III)",
+    "備註": "",
+    "授課教師": "許樂山",
+    "學分": "2",
+    "上課時間": "Thu78",
+    "教室": "C2-217",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13028&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限三年級。學號:限單號。指定課程:必須先修FR2031、先修FR2032。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限四年級。指定課程:必須先修FR2031、先修FR2032。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限雙主修-法國語文學系。指定課程:必須先修FR2031、先修FR2032。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13028&outline=13028&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13028",
+      "課號": "FR3043-A",
+      "授課教師": "許樂山",
+      "課程名稱(中文)": "寫作(三)",
+      "課程名稱(英文)": "Writing (III)",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "Ce cours s‘attache à développer les capacités d‘expression écrite des étudiants à travers la formulation de textes structurés de niveaux simple et intermédiaire et le renforcement de la maîtrise des aspects lexicaux, syntaxiques, analytiques et formels. L‘utilisation des outils de l‘IA pour l‘expression écrite est abordée.",
+      "授課內容": "Groupe A:\nLe cours est construit autour de l‘analyse et la production de divers types de textes (descriptif, narratif, explicatif et argumentatif) et la maîtrise grammaticale et syntaxique du français écrit, notamment des connecteurs logiques. Les étudiants s‘exerceront à produire, selon un rythme progressif, les textes suivants : lettres de types divers (invitation, renseignement, correspondance, motivation), textes de présentation/description de faits et de nouvelles, textes de fiction, articles de journaux, et ébauche de composition argumentée.\nGroupe B:\nLes étudiants devront produire des énoncés construits de différentes : énoncés descriptifs (petite note de synthèse, résumé de documents, rédaction de portraits), énoncés narratifs (courts récits de fiction à partir de nouvelles littéraires simples), énoncés argumentatifs (recherche argumentaire et développement critique sur des sujets polémiques).",
+      "教科書/參考書": "Polycopiés préparés et distribués par le professeur",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "Participation en cours et attitude : 15 ％ Présentation en classe et interrogations écrites : 25 ％ Examens de mi-semestre et fin de semestre : 60 ％",
+      "辦公時間": "mercredi 10h-11h50 jeudi 13h-14:50",
+      "授課週數": "16",
+      "彈性教學說明": "Préparation au DELF et autres exercices à l'écrit",
+      "課程領域": "應用語言",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13029",
+    "課號-班別": "FR3043-B",
+    "課程名稱(中文)": "寫作(三)",
+    "課程名稱(英文)": "Writing (III)",
+    "備註": "",
+    "授課教師": "薛鎵鋐",
+    "學分": "2",
+    "上課時間": "Thu78",
+    "教室": "C2-103",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13029&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限三年級。學號:限雙號。指定課程:必須先修FR2031、先修FR2032。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限四年級。指定課程:必須先修FR2031、先修FR2032。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限雙主修-法國語文學系。指定課程:必須先修FR2031、先修FR2032。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13029&outline=13029&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13029",
+      "課號": "FR3043-B",
+      "授課教師": "薛鎵鋐",
+      "課程名稱(中文)": "寫作(三)",
+      "課程名稱(英文)": "Writing (III)",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "詳參外文說明。",
+      "授課內容": "詳參外文說明。",
+      "教科書/參考書": "詳參外文說明。",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 實習/實驗 個別指導",
+      "評量配分比重": "詳參外文說明。 根據校務章則，無合理事由及正式請假的缺席，達5次扣考。",
+      "辦公時間": "郵件預約",
+      "授課週數": "16",
+      "彈性教學說明": "每份作業的檢討須參加 TD (Travaux dirigés) ，檢討訂正並整理要點分享",
+      "課程領域": "語言訓練 、 應用語言 、 文學 、 文化",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13030",
+    "課號-班別": "FR3047-*",
+    "課程名稱(中文)": "中譯法(二)",
+    "課程名稱(英文)": "Chinese-French Translation (II)",
+    "備註": "本課程僅提供法文系同學修課，作為華語文學分學程課程抵修，非法文系同學請勿修此門課",
+    "授課教師": "何玉清",
+    "學分": "2",
+    "上課時間": "Wed34",
+    "教室": "C2-216",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13030&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限三年級。學號:限單號。指定課程:必須先修FR2035、先修FR2036。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限四年級。指定課程:必須先修FR2035、先修FR2036。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限雙主修-法國語文學系。指定課程:必須先修FR2035、先修FR2036。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限學士班、碩士班、博士班。身份:限交換生。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13030&outline=13030&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13030",
+      "課號": "FR3047-*",
+      "授課教師": "何玉清",
+      "課程名稱(中文)": "中譯法(二)",
+      "課程名稱(英文)": "Chinese-French Translation (II)",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "Objectif du cours : Ce cours a pour objectif de développer, par la pratique et en donnant les outils nécessaires à cette pratique, les compétences en traduction des étudiants. Traduire demande d’appréhender un texte dans sa globalité pour en restituer le plus précisément possible le sens et la logique dans une autre langue. Néanmoins, l‘aspect interprétatif étant inhérent à la traduction, plusieurs traductions d‘un même texte sont souvent possibles (tant sur le fond que sur la forme). La pratique de la traduction permettra donc aux étudiants d‘être plus à même de discerner les différences entre les langues source et cible, ainsi que de développer et affiner leurs compétences lexicales, syntaxiques, sémantiques, interculturelles, et rédactionnelles.",
+      "授課內容": "Contenu :\nDurant ce premier semestre, les étudiants seront amenés à traduire des textes qui retracent des trajectoires de vie d‘artistes, d‘écrivains ou d‘acteurs culturels. Ces textes prennent la forme d‘entretiens, de biographies ou d‘autobiographies, et abordent, pour certains, le processus de création artistique, ou de création d‘entreprise dans le secteur culturel.\nLa nature narrative, et parfois dialogale, de ces textes permettra aux étudiants d’acquérir une meilleure maîtrise de l’emploi des temps, et d‘aborder, au sein d‘un même texte, différents registres de langue.",
+      "教科書/參考書": "參考書目： 《故事的開始 – 創作10年特別企劃》，幾米著，大塊文化出版股份有限公司 ，2011 （第六刷） 《我在法國做圖畫書》，葉俊良著 ，臺北市：玉山社，2017 （初版） 《巴黎上車，台北到站》，周品慧著，臺北市：時報文化，2015 （初版） 《羅曼菲 – 紅塵舞者》，徐開塵著，臺北市：聯合文學，2017 （二版） 《你走慢了我的時間》，張西著，臺北市：三采文化，2021 （初版） 《巴黎人要件》，姚筱涵著，臺北市：健行文化，2016 （初版）",
+      "自編教材比例": "100",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "Présence et participation : 10％ Devoirs en classe : 20％ Examen de mi-semestre : 35％ Examen final : 35％ 缺課6次，扣考",
+      "辦公時間": "Mercredi 13:00 - 14:50 / Jeudi 10:00 - 11:50",
+      "授課週數": "16",
+      "彈性教學說明": "Les étudiants devront choisir un texte qui les intéresse et devront le traduire. Les étudiants devront expliquer pourquoi ils ont choisi ce texte ainsi que décrire le processus de traduction et les difficultés qu'ils auront rencontrées lors de la traduction de ce texte. (自主學習與實作)",
+      "課程領域": "語言訓練 、 應用語言 、 文化",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 實作/實驗 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 實作/實驗"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13031",
+    "課號-班別": "FR3048-*",
+    "課程名稱(中文)": "法譯中(二)",
+    "課程名稱(英文)": "French-Chinese Translation (II)",
+    "備註": "",
+    "授課教師": "林德祐",
+    "學分": "2",
+    "上課時間": "Wed34",
+    "教室": "A-226",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13031&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限三年級。學號:限雙號。指定課程:必須先修FR2035、先修FR2036。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限四年級。指定課程:必須先修FR2035、先修FR2036。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限雙主修-法國語文學系。指定課程:必須先修FR2035、先修FR2036。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13031&outline=13031&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13031",
+      "課號": "FR3048-*",
+      "授課教師": "林德祐",
+      "課程名稱(中文)": "法譯中(二)",
+      "課程名稱(英文)": "French-Chinese Translation (II)",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "1. 提升雙語翻跨能力 法語理解能力：加強學生的法語聽說讀寫能力，特別是理解和解釋不同語境下的法語文本。 中文表達能力：提高學生在中文表達中的流暢度和準確度，特別是在轉換語言結構和表達方式時的靈活性。 2. 掌握法語與中文的語言特徵 語法與語言結構：幫助學生理解法語和中文在語法結構上的差異，如語序、時態、語氣等，並學會如何進行恰當的調整。 詞彙選擇與語境適配：指導學生選擇適合的詞彙，尤其是在專業術語或口語表達中的選擇，保證翻譯既準確又符合目標語言的語境",
+      "授課內容": "1. 翻譯技巧與策略\n字面翻譯與自由翻譯：介紹字面翻譯和自由翻譯的區別，討論何時選擇直譯、何時選擇意譯。\n補充、刪減與調整：學習如何在翻譯過程中對語言進行適當的補充、刪減或調整，使翻譯更流暢並符合目標語言的表達習慣。\n2. 文化適配：討論如何處理語言和文化之間的差異，尤其是在跨文化翻譯中，如何將法語中的文化元素適配為中文，使目標語言讀者能夠理解和接受。\n3. 逐段翻譯練習：針對不同的文本類型進行逐段翻譯。\n4. 小組討論與案例分析：小組討論翻譯中的挑戰，討論不同翻譯策略的適用性，並分析成功的翻譯案例。\n5. 翻譯批評與修訂：學會如何對自己的翻譯進行批評和修訂，幫助學生理解翻譯質量的提高過程。",
+      "教科書/參考書": "馬彥華，羅順江編著，《法漢翻譯新教程》，北京大學，2008 年。 黃孟蘭，〈法漢翻譯語言的顯化問題探討〉，《漢法研究》，NO. 11，2019 年 12 月，頁 95-112。 呂玉冬主編，《法語習語中的動物世界》，東華大學出版社，2017 年。 POP, Mirela, modèles d’analyse des textes à traduire (tat), appliqués dans l’enseignement de la traduction, Professional communication and translation studies, 4 (1-2) / 2011.",
+      "自編教材比例": "50",
+      "授課方式": "講授",
+      "評量配分比重": "期中期末考各佔30％ 課堂表現、出席情況、課堂參與度佔40％",
+      "辦公時間": "星期一13:00-15:00 星期五15:00-17:00",
+      "授課週數": "16",
+      "彈性教學說明": "授課十六週，另外兩週安排線上學習、自主學習，教師提供學生諮詢與討論。",
+      "課程領域": "語言訓練",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(2) 低",
+          "評量方式": "出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13032",
+    "課號-班別": "FR3072-*",
+    "課程名稱(中文)": "DELF B1法語檢定考演練",
+    "課程名稱(英文)": "Training of the DELF B1 Exam",
+    "備註": "",
+    "授課教師": "洪婕",
+    "學分": "2",
+    "上課時間": "Mon78",
+    "教室": "C2-103",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13032&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限三年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13032&outline=13032&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13032",
+      "課號": "FR3072-*",
+      "授課教師": "洪婕",
+      "課程名稱(中文)": "DELF B1法語檢定考演練",
+      "課程名稱(英文)": "Training of the DELF B1 Exam",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "本課程旨在協助學習者培養以下核心語言能力，以順利應對 DELF B1 等級的各項評量： • 敘述一段經歷、事件或夢想（例如：旅行回憶、特別的生活片段）； • 表達與說明個人想法、計畫、目標或希望，同時能清楚傳達情緒（如開心、生氣、失望等）； • 發表個人意見，並能以具體的例子或理由進行支持與說明； • 參與討論，清楚表達贊同或反對的立場，並加以解釋； • 理解來自媒體的主要資訊與觀點，如報紙文章、電視新聞或廣播節目； • 針對特定情境提出建議、假設或可能的解決方式； • 以適當的語言進行說服，表達觀點並嘗試影響對方； • 應對生活中或旅行中可能出現的突發情境（例如：詢問方向、訂房、處理遺失物等）； • 有條理地組織演說或簡報內容，使其具備清楚的開場、發展與結尾。 (Source : France Éducation international. DELF tout public – niveau B1 : https://www.france-education-international.fr/diplome/delf-tout-public/niveau-b1)",
+      "授課內容": "本課程將循序漸進地探討DELF B1考試的主題與核心能力，協助學習者掌握有效的學習與組織方法，並提供聽說讀寫的全面訓練。課程亦將提供多樣化的資源與策略，幫助學習者培養自主學習的能力。透過模擬考試，學習者將熟悉考試格式與評分標準，提升應試信心。\n一、主題與詞彙範疇\n• 習俗與文化傳統\n• 職場與工作生活\n• 家庭與社交關係\n• 外貌描述、性格與個性\n• 情感與情緒\n• 健康與醫療\n• 日常活動\n• 休閒與運動\n• 假期與旅行\n• 住房：家具與設備\n• 消費與購物\n• 時尚\n• 文化主題：電影、文學、繪畫、音樂、表演藝術\n• 媒體與時事\n• 資訊與通訊科技\n• 環境、氣候與生態\n• 教育制度、學業與培訓\n二、重要語法點\n• 時態：未完成過去式、複合過去式、過去完成式、現在與過去條件式。\n• 虛擬語氣：現在式形式、虛擬與直述語氣的對比。\n• 複合否定：ne... que、ni... ni 等。\n• 代詞使用：雙重代詞（直接受詞/間接受詞）、關係代詞與複合關係代詞。\n• 假設語氣：確定的假設（si + 現在式）、不確定的假設（si + 未完成過去式 + 條件式）。\n• 名詞化與形容詞：不定形容詞、比較級、最高級。\n• 副詞與介詞：數量、方式、地點、時間。\n• 邏輯關係與連接詞：原因、結果、讓步、對立、目的、時間順序等。\n三、溝通能力和聽力訓練\n• 詢問與提供關於日常生活、行程安排、他人近況的資訊。\n• 討論個人喜好、計畫、工作經驗及職場環境。\n• 電話溝通：提出建議、回應提案（同意、接受、道歉、確認或請求確認、表達遺憾或猶豫）。\n• 表達意願、主動提供協助、提出警告或提醒。\n• 敘述過去事件、趣聞、新聞；描述假設情境。\n• 表達情感、願望、意圖與抱負。\n• 說明理由、解釋選擇、表達保留意見或反對立場。\n• 組織活動、提出與接受建議。\n• 提出問題並提供解決方案、進行假設推論。\n• 轉述他人言論、進行簡報、摘要故事或文章。\n• 表達觀點、為意見提供理由、說明原因與結果、表達滿意或不滿。\n• 表達義務、可能性或機率。\n• 開始與結束對話、表示想要發言。\n• 確認對方理解、重述以釐清、請求重複或重新表達。\n• 開啟、組織與結束討論。\n• 引入主題、轉換話題。\n• 使用指代詞。\n• 鼓勵他人發言，推進討論。\n• 清楚表達期望、滿意或不滿、提出抱怨。\n四、文化與職場面向\n• 正式與商業書信的格式與禮儀。\n• 會議簡報的慣例。\n• 電話中的常用表達與行為。\n• 金錢相關行為、企業內部的書面溝通。\n• 職場中的正式語言使用。",
+      "教科書/參考書": "Bredelet, A., C. Kober‑Kleinert, M.-L. Parizet, J. Untereiner, et C. Vial. (2025). ABC DELF – Tout public Niveau B1. 3ᵉ éd. Paris : CLE International. ISBN 978‑2‑09‑039804‑5. Crépieux, G., Lions Oliviéri, M.-L., Mensdorff‑Pouilly, L., et Spérandio, C. (2023). 100% FLE – Vocabulaire essentiel du français B1. Paris : Didier. ISBN 978‑2‑278‑10929‑6. Gainza, A., Godard, E., Loiseau, Y., Mistichelli, M., et Sigé, J.-P. (2024). Les clés du DELF B1 : Édition actualisée – Livre de l'élève. Maison des Langues. ISBN 978-84-1157-167-8. Loiseau, Y., Glaud, L., et Merlet, E. (2022). 100 % FLE – Grammaire essentielle du français B1. Paris : Didier. ISBN 978‑2‑278‑10489‑5. France Éducation international. (2021). Manuel du candidat DELF B1 : Versions tout public, scolaire, junior. Département Évaluation et Certifications. https://www.france-education-international.fr/document/manuel-candidat-delf-b1 Inglada, S. (2025, février). Ressources pour se préparer aux diplômes DELF et DALF. France Éducation international. https://liseo.france-education-international.fr/site/bibliographies/bibliographie-ressources-preparation-delf-dalf.pdf TV5MONDE : https://www.tv5monde.com/ Le français facile avec RFI : https://francaisfacile.rfi.fr/fr/ French School TV - YouTube : https://www.youtube.com/@FrenchSchoolTV/videos 其他資源和參考資料將於第一堂課及整個學期中陸續提供。",
+      "自編教材比例": "75",
+      "授課方式": "其他",
+      "評量配分比重": "30%：課堂作業、測試、與持續評量 25%：期中考試 25%：期末考試 20%：學期結業報告 /!\\ 缺席規定 缺席3次以內：若能事先、當天或事後盡快告知，則不予處罰。 缺席4–5 次：參與成績將被扣分，除非有正當理由並附上正式證明文件（如醫院證明、交通事故、強制性官方考試等）。 缺席超過5次：不給予學分，除非有正當理由並附上正式證明文件（如醫院證明、交通事故、強制性官方考試等）。",
+      "辦公時間": "禮拜一：下午2點～3點，5點～6點",
+      "授課週數": "16",
+      "彈性教學說明": "自主專案：記錄你整學期的法語學習歷程，結合課堂學習與自主使用法語媒體。 作業可個人或小組完成：每週學習日記（書面或錄音）、學期反思報告或創意作品（簡報、影片、播客等）。 目標：反思學習方法、探索感興趣的法語媒體、連結課堂與實際語言使用、提升自主學習與自評能力。 詳細指引課堂說明。",
+      "課程領域": "語言訓練 、 應用語言",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(3) 普通",
+          "評量方式": "專題研究報告(書面) ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13033",
+    "課號-班別": "FR3079-*",
+    "課程名稱(中文)": "國際現勢I [已停開]",
+    "課程名稱(英文)": "Basic International Studies in French I",
+    "備註": "",
+    "授課教師": "薩支遠",
+    "學分": "2",
+    "上課時間": "Thu78",
+    "教室": "C2-112",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13033&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限二年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13033&outline=13033&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13033",
+      "課號": "FR3079-*",
+      "授課教師": "薩支遠",
+      "課程名稱(中文)": "國際現勢I",
+      "課程名稱(英文)": "Basic International Studies in French I",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "1. 培養學生固定閱讀國際新聞之習性。 2. 提供基本字彙、觀念，並引發興趣。",
+      "授課內容": "本課程先以共同討論『何謂世界觀』為入題。上學期課程以當今國際間重要的組織，如：聯合國、國際貨幣基金會、世貿組織、歐盟、北約等為主，視同學吸收情形逐增。下學期將以國際當今重要議題為主，如：重要經濟形勢之變遷、貧窮及糧食問題、水資源、能源、非政府組織等為主，視情形逐增。教學以中文為主，法文為輔。教材力求簡要。",
+      "教科書/參考書": "取材以法文資料為主，逐步提供同學們預、複習",
+      "自編教材比例": "50",
+      "授課方式": "講授",
+      "評量配分比重": "暫定以期末口試為主。",
+      "辦公時間": "週四15h-17h",
+      "授課週數": "16",
+      "課程領域": "文化",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 自我評量/同儕互評 ， 其他"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 作品/創作展演 ， 其他"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13034",
+    "課號-班別": "FR3087-*",
+    "課程名稱(中文)": "思潮選讀",
+    "課程名稱(英文)": "Introduction to Contemporary French Thoughts",
+    "備註": "",
+    "授課教師": "薛鎵鋐",
+    "學分": "3",
+    "上課時間": "Mon234",
+    "教室": "C2-216",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13034&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限二年級、三年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13034&outline=13034&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13034",
+      "課號": "FR3087-*",
+      "授課教師": "薛鎵鋐",
+      "課程名稱(中文)": "思潮選讀",
+      "課程名稱(英文)": "Introduction to Contemporary French Thoughts",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "1. 培養學生從自身／在地經驗出發，逐漸懂得查閱「法國高中哲學教材」，進而組織並評估相關的觀點表述。 2. 引發興趣，自主學習，探討本地／我們與西方之間某些觀念的異同。",
+      "授課內容": "這門課一方面引介法國高中哲學教材，另一方面關注大學生／網路／躺平等（次）文化，雙軌並行。我們將選讀「主體／主觀」（le sujet）相關的單元，包括「意識與無意識」（la conscience, l’inconscient）、「感知」（la perception）與「慾望」（le désir）等，同時探討「廢片日常」、「『非主流』的遷移」與「黑色」等課題。選課時，務必想好一部以上相關的、喜歡的、想要藉助課程深入探討的藝文、影視或電玩作品，並且點擊參考資料中的連結（就像你挑電影會先看過預告片吧）。第一堂課會仔細地問同學，以便梳理「專題探討」的可能方向。\n不管是英文 “(a) thought”或法文 « (une) pensée » 都是源自過去分詞的形式（le participe passé）。可否說，「思想」就是想過一遍的過程，或是遺留下來的副產品、痕跡？課名「當代思潮」，不是因為所選讀文本的作者很「潮」然後拿來「灌輸」或「輸入」，而是意味著「跟著學生一起『思』考是一件很『潮』的事」。重要的是，同學能夠清楚地組織自己的觀點或立場表述，「是自己想的」（先這樣直白領會笛卡爾的 « Cogito ergo sum » 吧）。\n第1週　概述法國高中哲學課綱，包括「技藝」（l’art）、「正義」（la justice）、「自由」（la liberté）、「自然」（la nature）、「宗教」（la religion）、「技術」（la technique）、「真理／真相」（la vérité）。我們將花時間耐心地確立教學目標：「這堂課是為你們及你們的好奇心而開的。你們的想法將決定選讀的走向。同時，請同學在課前蒐集兼具「廢片」與「值得思考玩味」兩種性質的影片。第一堂課的後半，會請同學學輪流上台撥放影片並說明想法（不超過2分鐘，長片需精選段落）。「專題探討」或「學期筆記」必須擇一實作。\n第2週到第4週　「意識與無意識」（la conscience, l’inconscient）。Youtube頻道「反正我很閒」，網路取代腦，低物慾與自由。芙莉蓮，千年的永恆視角，轉瞬的人間煙火，認真蒐集的無用魔法。「路上觀察」的興起。班雅明（Walter Benjamin）的《單行道》（Einbahnstraße 1928）就是他的社群動態？\n第5週到第7週　「感知」（la perception）。近年來的「非主流」及其遷移，音樂方面如龐克，嘻哈，獨立音樂。陪伴的各種形式（也算是工作型態的遷移），如直播主，聊天型的教練（不限於健身），戀愛或情感顧問，算命，以什麼事都不做的方式「出租自己」（森本庄司）或《寬鬆世代》的「出租大叔」。\n第8週　期中評量\n第9週到第11週　「慾望」（le désir）。「黑色」；黑色電影或影集如《星際效應》、《愛x死x機器人》（Love, Death and Robots）、《黑鏡》等；許多末世題材的動漫也可以算是，包括《新世紀福音戰士》、《進擊的巨人》、《鏈鋸人》等；音樂如宋岳庭〈Life‘s a struggle〉（2003）、蛋堡〈內部整修（Intro）〉（2013）、艾怡良〈夜晚出生的小孩〉（2018）、魏如萱〈陪著你〉（2019）等；賽博龐克、地獄哏、“emo” tag …\n第12週到第15週　原則上希望和同學一起決定最後一批閱讀的主題。\n第16週　期末評量\n本課程要求自學能力，也以此為教學目標。",
+      "教科書/參考書": "《EVA 新劇場版 終》正式預告影片 Neon Genesis Evangelion Official Trailer. Directed by IGN China, 2020. YouTube, https://www.youtube.com/watch?v=Kd7kSEHVEuo. 《愛 x 死 x 機器人》第 3 輯 | 正式預告 | Netflix. Directed by Netflix Asia, 2022. YouTube, https://www.youtube.com/watch?v=YDSicU5YfqM. 《鏈鋸人》90秒完整版預告 (繁中字幕)【Ani-One】. Directed by Ani-One中文官方動畫頻道, 2022. YouTube, https://www.youtube.com/watch?v=LQhhgMl5utg. Black Mirror | Welcome to the Darkness | Netflix. Directed by Netflix, 2016. YouTube, https://www.youtube.com/watch?v=di6emt8_ie8. Chaumié, Jean-Baptiste, et Claire Delnatte. Philosophie: Terminale, Voie technologique. Paris : Delagrave, 2020. Rombaut, Karine Tordo, Matthieu Lahure, Dimitri Derat, Frédéric Manzini, Larissa Paulin, et Alexis Michaut. Passerelles Philosophie Terminale séries technologiques - Livre élève - Ed. 2020. Sous la direction de Blanche Robert et David Larre. Illustrated édition. Hachette Éducation, 2020. 一口氣看完神作《EVA》！人類大戰使徒！改變整個日本動漫界的超現實巨作！. Directed by 魔人小白, 2022. YouTube, https://www.youtube.com/watch?v=99dKV1moqXY. 中央通訊社. “日本男子「出租自己」每次收費1萬日元什麼事都不用做，4年來提供約4000次陪伴服務.” The News Lens 關鍵評論網, 7 Sept. 2022, https://www.thenewslens.com/article/172908. 宋岳庭, Life’s a Struggle. 2003. YouTube, https://www.youtube.com/watch?v=dN3fFYGmEyk. 艾怡良, 夜晚出生的小孩（Dressed Up Kids）. 2018. YouTube, https://www.youtube.com/watch?v=t28oML_li18. 華特·班雅明. 單行道. Translated by 姜雪, 方舟文化, 2022. 蛋堡, 內部整修（Intro）. 2013. YouTube, https://www.youtube.com/watch?v=l2S-7qrG-Nw. 赤瀬川原平, 藤森照信. 路上觀察學入門. Edited by 南伸坊, Translated by 嚴可婷 et al., 行人文化實驗室, 2014. 進擊的巨人S1 第01話【給二千年後的你】｜Muse木棉花 動畫 線上看. Directed by Muse木棉花-TW, 2019. YouTube, https://www.youtube.com/watch?v=NS5pn6Y2L1s. 魏如萱, 陪著你（Be There for You）. 2019. YouTube, https://www.youtube.com/watch?v=TD_fXVcLK4k.",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "期中期末評量（「專題探討」或「學期筆記」）為主，50％。 出席狀況、課堂表現、學習態度…等為輔，50％。 根據校務章則，無合理事由及正式請假的缺席，達5次扣考。",
+      "辦公時間": "郵件預約",
+      "授課週數": "16",
+      "彈性教學說明": "分組報告時，須投入一定程度的自主學習，以便提出經過老師核可的報告題綱。",
+      "課程領域": "語言訓練 、 應用語言 、 文學 、 文化",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13035",
+    "課號-班別": "FR3089-*",
+    "課程名稱(中文)": "法文科教材教法",
+    "課程名稱(英文)": "Teaching Materials and Methods of French",
+    "備註": "",
+    "授課教師": "邱惠佩",
+    "學分": "3",
+    "上課時間": "Fri567",
+    "教室": "C2-217",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13035&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限三年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13035&outline=13035&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13035",
+      "課號": "FR3089-*",
+      "授課教師": "邱惠佩",
+      "課程名稱(中文)": "法文科教材教法",
+      "課程名稱(英文)": "Teaching Materials and Methods of French",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "課程目標： -外語教學理論介紹 -法語教材的分析與設計 -教學技巧的學習",
+      "授課內容": "本課程分上、下兩學期，兩學期皆採理論與實作並重方式進行課程。\n上學期授課內容：\n以中法出版社編輯的各類法語教材分析為主，並以網路影片、教學平台為輔，引導學生掌握教學技巧以及教材設計，學生需在上課過程中運用所學的教學原理進行教學演示。\n教學各單元分別為：\n-分析法國各大學FLE課程內容與歐洲共同語言參考標準（CEFR）相對應之語言能力介紹\n-台灣高中第二外語實際情況與108課綱多元選修課程的探討\n-各法語教材（A1程度）內容設計、學習總時數、各單元目標與學習總目標之分析\n-網路教學平台、相關影片介紹\n-輔助法語教學之各類遊戲、活動探討\n-教案設計\n-上台教學模擬與高中實際教學演示",
+      "教科書/參考書": "中法各類法語教材",
+      "自編教材比例": "0",
+      "授課方式": "講授 其他",
+      "評量配分比重": "1. 課堂參與：30％ 2. 作業：30％ 3. 教學演示：40％",
+      "辦公時間": "週一13h-15h, 週四13h-15h",
+      "授課週數": "16",
+      "彈性教學說明": "實作 : 高中試教",
+      "課程領域": "應用語言",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13036",
+    "課號-班別": "FR3090-*",
+    "課程名稱(中文)": "十九世紀法文文選",
+    "課程名稱(英文)": "French selected readings--Nineteenth century",
+    "備註": "",
+    "授課教師": "甘佳平",
+    "學分": "2",
+    "上課時間": "Mon56",
+    "教室": "A-226",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13036&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13036&outline=13036&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13036",
+      "課號": "FR3090-*",
+      "授課教師": "甘佳平",
+      "課程名稱(中文)": "十九世紀法文文選",
+      "課程名稱(英文)": "French selected readings--Nineteenth century",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "十九世紀是法國「小說」興起的重要年代。在此之前，文學通常狹義地被界定為「詩詞」或「戲劇」，小說則受到一定的歧視。那麼，為什麼會有這麼多作家選擇背離傳統文學，改以「小說」的形式來創作並傳達自己的想法？他們的動機和理念是什麼？ 由於當時社會環境的變遷，加上小說不像傳統文學有既定的表現形態（forme），顯得更具彈性，使文學作品能更貼近時代需求。幾位作家因此發展出獨特的創作目標，並在小說的「序言」或「私人信件」等非正式作品中表達這些想法。 因此，為了深入了解十九世紀作家的創作動機，本課將選讀這些「非小說」的書寫，引導同學從作家的視角認識他們的自我定位，探討「小說」如何開啟了一條持續且不斷發展的新路。",
+      "授課內容": "本課程將選取六位十九世紀作家，他們均曾清楚闡述自己的寫作動機，分別是巴爾札克、福樓拜爾、雨果（兩篇）、龔古爾兄弟、左拉與莫泊桑。我們將探討在十九世紀這個革命後動盪的社會背景下，無論是浪漫主義、自然主義或寫實主義，每位作家皆有其獨特的寫作動機。雖然他們的目標一致，都是希望從文學角度盡一份力量，為法國文學史乃至國家穩定帶來貢獻。\n課程進度將依據作家作品的發表年份，依序安排研讀。由於選讀文章長短不一，且內容互相穿插，我們計劃在期中考前討論前三位作家（巴爾札克、福樓拜爾、雨果）的寫作思想，期中考後則討論後三位作家（龔古爾兄弟、左拉、莫泊桑）。篇幅較長的作品，如巴爾札克與左拉，將安排二至三週的研讀時間；其他篇幅較短的作品則分別安排一至二週。",
+      "教科書/參考書": "Hugo – Préface d‘Hernani (1830) Balzac - L’« Avant-propos » de La Comédie humaine (1842) Flaubert - Correspondance avec Louise Colet (pendant la rédaction de Madame Bovary, 1853-1855) Hugo – Note liminaire pour Les Misérables (1862) Les Goncourt – Préface à Germine Lacerteux (1864) Zola – Le Roman expérimental (1880) Maupassant - « Etude sur le roman ». Préface à Pierre et Jean (1888) Anthologie – des préfaces de romans français du XIXe siècle, éd. Julliard, coll. Littérature, 1964. Le Roman au XIXe siècle – l’explosion du genre, Colette Becker, Jean-Louis Cabanes, éd. Bréal, coll. « Amphi Lettres », 2001. Histoire de la littérature française, t. I, Daniel Couty, Bordas, 1988. Histoire de la littérature française, t. II, Axel Preiss, Bordas, 1988. Littérature française du XIXe siècle, t. I, Arlette Michel, PUF, 1993.",
+      "自編教材比例": "60",
+      "授課方式": "講授 研討",
+      "評量配分比重": "小考及平常表現：30％ 分組報告：30 ％ 期中、期末考 : 40％",
+      "辦公時間": "星期二10-12點 / 星期四13-15點",
+      "授課週數": "16",
+      "彈性教學說明": "1. 學生須將報告內容先行寄送給授課教師審閱，並主動與教師約定時間，進行個別討論，以了解修改建議及其原因，從而提升資訊掌握能力與學習成效。 2. 學生需至少參加一場由本系主辦的職涯講座，藉此增進對法語相關職場及跨領域專業發展的理解與認識。",
+      "課程領域": "應用語言 、 文學 、 文化",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13037",
+    "課號-班別": "FR3103-*",
+    "課程名稱(中文)": "法國文學史（17-18世紀）",
+    "課程名稱(英文)": "History of the French Literature (17-18centuries)",
+    "備註": "",
+    "授課教師": "張雅婷",
+    "學分": "3",
+    "上課時間": "Tue567",
+    "教室": "C2-216",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13037&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13037&outline=13037&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13037",
+      "課號": "FR3103-*",
+      "授課教師": "張雅婷",
+      "課程名稱(中文)": "法國文學史（17-18世紀）",
+      "課程名稱(英文)": "History of the French Literature (17-18centuries)",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "選讀法國十七、十八世紀具代表性的文學作品，認識當時文藝思潮概況，也從文學的流變來觀察和認識相關的社會歷史文化背景。",
+      "授課內容": "授課以選文賞析為主，介紹十七、十八世紀具代表性的文學作品，說明作品所屬的文學流派在風格、主題、文體等各方面的特色，也同時透過文學演變的脈絡來觀察和認識相關的社會歷史文化背景。",
+      "教科書/參考書": "【主要教材】 Français. Littérature ＆ Méthode, Paris, Nathan, 1995. Dix siècles de littérature française 1 : du Moyen Age aux XVIII siècle, Paris, Bordas, 1991. 【參考文獻】 - BURY, Emmanuel, et MORA, Francine, Du Roman courtois au roman baroque, Paris, Les Belles Lettres, 2004. -COULET, Henri, Le Roman jusqu’à la Révolution, Paris, Armand Colin, 2014 [rééd.] (la partie sur le XVIIIe siècle). -DELON, Michel, et MALANDAIN, Pierre, Littérature française du XVIIIe siècle, Paris, PUF, 1996. - FRANTZ, Pierre, et MARCHAND, Sophie, Le Théâtre français du XVIIIe siècle : histoire, textes choisis, mises en scène, Paris, Éd. l’Avant-scène théâtre, 2009. -MARTIN, Christophe. L’Esprit des Lumières. Histoire, littérature, philosophie, Paris, Armand Colin, 2017. -MARTIN, Henri-Jean, Livre, pouvoir et société en France au XVIIe siècle, Genève, Droz, 1969. -MESNARD, Jean, Précis de Litterature francaise du XVIIe siecle, PUF, 1990. - TADIE, Jean-Yves (Dir.), La Littérature française : Dynamique et histoire, T1, Paris, Gallimard, coll. « Folio essais », 2007. -TADIE, Jean-Yves (Dir.), La Littérature française : Dynamique et histoire, T2, Paris, Gallimard, coll. « Folio essais », 2007. -WALD LASOWSKI, Patrick, Le grand dérèglement. Le roman libertin du 18 e siècle, Paris, Gallimard, 2008.",
+      "自編教材比例": "80",
+      "授課方式": "講授 研討",
+      "評量配分比重": "平時表現（出席、參與、報告) 50％ 期中評量 25％ 期末評量 25％",
+      "辦公時間": "週一(9h-12h), 週二(16h-17h)- Email預約",
+      "授課週數": "16",
+      "彈性教學說明": "安排相關自主學習活動。",
+      "課程領域": "語言訓練 、 文學 、 文化",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13038",
+    "課號-班別": "FR4027-*",
+    "課程名稱(中文)": "戲劇演出",
+    "課程名稱(英文)": "Performing French Drama",
+    "備註": "",
+    "授課教師": "洪婕",
+    "學分": "2",
+    "上課時間": "Mon34",
+    "教室": "C2-217",
+    "選修別": "選修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13038&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限二年級、三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13038&outline=13038&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13038",
+      "課號": "FR4027-*",
+      "授課教師": "洪婕",
+      "課程名稱(中文)": "戲劇演出",
+      "課程名稱(英文)": "Performing French Drama",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "鞏固法語的發音、語調、語速與咬字的掌握能力。 了解戲劇的歷史、規則與專業詞彙。 在共同專案中提升溝通與合作能力。 熟悉戲劇表演技巧：肢體表達、手勢語言、聲音投射與定位、舞台存在感等。 學會在法語學習與使用的過程中運用這些技巧。 透過即興表演、短劇創作與舞台導演，培養跨領域的創意與語言能力。 透過學習詮釋戲劇文本、進行藝術選擇，以及從個人經驗中汲取靈感來豐富表演、建立角色、表達情感、創作與導演，強化批判思維與分析能力。 幫助學習者在法語表達中建立自信與流利度。",
+      "授課內容": "在第一學期，學生將認識戲劇寫作與表演的多樣形式與規則，特別是喜劇的風格與特點。到學期結束前，學生將在課堂上撰寫自己的短劇，靈感來自法語慣用語，例如tomber dans les pommes、raconter des salades、pousser mémé dans les orties等等。\n在第二學期，這些短劇將被排練並演出，可能包括一場或多場公開表演。學生可選擇參與製作的不同面向：劇本撰寫、演出、導演、音效管理、舞台設計、服裝、燈光等。\n透過小組討論與個人分析，學生將嘗試深化對劇本文本與角色的理解。即興表演與角色探索等練習將可作為靈感來源，有助於提升表演技巧與團隊合作，不論在劇本創作階段或在排練與演出階段。\n課程也將包含肢體意識的訓練，目的是提升姿勢、舞台存在感以及肢體語言的表達能力，並幫助學生在舞台上自在地活動與展現自己。\n此外，課程將提供聲音訓練，教導學生如何掌握與投射聲音，使其具有力量、表現力與清晰度，並根據所飾演的角色進行調整，同時學會保護嗓音。這包括呼吸與氣息的控制，以及為保護聲帶所需的重要發聲熱身活動。\n學生將練習發音與語調，並針對每位學生的困難給予個別化回饋與指導。\n在學年末，將舉辦公開演出活動，學生可選擇不同形式參與，包括：\n• 四月舉辦的 APFT 短劇比賽（影片或現場演出）；\n• 五月的 APFT 大學戲劇節；\n• 五月的系友回娘家。\n無法或不願參與上述活動的學生，需準備一份口頭進度報告，回顧與分享他們一整年的學習歷程與經驗。\n若有課外排練安排，將以學期末取消部分課程作為補償。",
+      "教科書/參考書": "以下參考資料僅供參考，課堂上將提供更多補充資料。 Abou Haidar, Laura, et Llorca, Régine. « L'oral par tous les sens : de la phonétique corrective à la didactique de la parole. » in Le Français dans le monde. Recherches et applications, 60, 2016. ⟨hal-03158678⟩ Brook, Peter. The Empty Space: A Book About the Theatre: Deadly, Holy, Rough, Immediate. Touchstone, 1995, 176 pages. ISBN 978-0684829579. 黃致凱. 李國修編導演教室. 平安文化, 2014, 328 pages. ISBN 978-957-803-928-5. Kelly, Thomas A. 舞台管理：從開排到中演的舞台管理寶典 (The Back Stage Guide to Stage Management: Traditional and New Methods for Running a Show from First Rehearsal to Last Performance). Translated by 楊淑雯. 台灣技術劇場協會, 2010, 328 pages. ISBN 978-986-82721-1-8. 姚坤君. 演員功課：《求證》的演繹過程. 書林出版有限公司, 2008, 270 pages. ISBN 978-957-445-190-6. 姚坤君. 表演必修課: 穿梭於角色與演員之間的探索. 書林出版有限公司, 2015, 272 pages. ISBN 978-957-445-648-2. 朱宏章. 演員筆記30篇. 國立臺北藝術大學, 2014, 240 pages. ISBN 978-986-041-953-5.",
+      "自編教材比例": "90",
+      "授課方式": "其他",
+      "評量配分比重": "50% 作業與課堂參與 50% 期末書面評量 /!\\ 缺席規定 缺席3次以內：若能事先、當天或事後盡快告知，則不予處罰。 缺席4–5 次：參與成績將被扣分，除非有正當理由並附上正式證明文件（如醫院證明、交通事故、強制性官方考試等）。 缺席超過5次：不給予學分，除非有正當理由並附上正式證明文件（如醫院證明、交通事故、強制性官方考試等）。",
+      "辦公時間": "禮拜一：下午2點～3點，5點～6點",
+      "授課週數": "16",
+      "彈性教學說明": "分析、咬字與自我評估的練習。 與角色相關的個人研究。 學年末的演出。／ 年度回顧報告（口試）。",
+      "課程領域": "語言訓練 、 應用語言 、 文學 、 文化",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 實作/實驗 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 實作/實驗 ， 出席/課堂表現 ， 作品/創作展演"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13039",
+    "課號-班別": "FR4053-*",
+    "課程名稱(中文)": "高級法文作文",
+    "課程名稱(英文)": "Advanced French Composition",
+    "備註": "",
+    "授課教師": "劉柏桑",
+    "學分": "2",
+    "上課時間": "Mon78",
+    "教室": "C2-216",
+    "選修別": "選修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13039&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13039&outline=13039&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13039",
+      "課號": "FR4053-*",
+      "授課教師": "劉柏桑",
+      "課程名稱(中文)": "高級法文作文",
+      "課程名稱(英文)": "Advanced French Composition",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "L‘objectif principal de ce cours est d‘ordre methodologique. Il fournit aux etudiants les outils qui permettent d‘organiser une argumentation claire a l‘ecrit, que ce soit dans le cadre d‘une note de synthese, d‘une prise de position dans un debat ou encore d‘une dissertation. Il insiste particulierement sur l‘importance fondamentale de la problematique comme element central de la structure d‘une argumentation.",
+      "授課內容": "Ce cours vise a doter l’etudiant des outils indispensables a une expression ecrite claire de ses idees. Dans un premier temps, un travail d’analyse de textes permettra de faire ressortir et de comprendre les mecanismes de la structuration et de la formulation du propos en francais. Les techniques syntaxiques feront l’objet d’une attention particuliere. Une fois expliquees et assimilees, ces techniques seront ensuite utilisees lors d’exercices ayant pour objectif de perfectionner le style de l’etudiant et de lui permettre d’organiser rapidement ses idees en une argumentation coherente, lineaire et fluide. Nous verrons comment construire une introduction, un plan detaille, des phrases de transition permettant l’enchainement des idees et une conclusion.\nAttention : pour atteindre les objectifs fixes, ce cours necessite un travail de correction approfondie et individualisee sur les questions de methode abordees. Ce travail de correction ne peut se faire correctement que dans le cadre d‘une classe comprenant autour de 25 etudiants. Les etudiants doivent par ailleurs etre essentiellement motives par l‘apprentissage de techniques d‘argumentation car ce cours n‘est pas centre sur le perfectionnement de la grammaire et de la syntaxe. C‘est pourquoi l‘inscription se fera apres distribution par le professeur de “carte a code secret“.",
+      "教科書/參考書": "1.Francine THYRION, La dissertation. Du lieu commun au texte de reflexion personnelle, Duculot, 1996. 2.Helene MERLIN-KAJMAN, La dissertation litteraire, Presses de la Sorbonne Nouvelle, 2009.",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "Devoirs divers : coefficient 1 pour chaque devoir Examen partiel : coefficient 2 Examen final : coefficient 2 Participation : coefficient 2 Chaque devoir non rendu entraine le retrait de 3 points sur la moyenne generale du semestre.",
+      "辦公時間": "禮拜二13：00 - 15：00， 禮拜四 13：00 - 15：00",
+      "授課週數": "16",
+      "彈性教學說明": "Les étudiants auront à écrire un rapport en partant de ce qu'ils ou elles auront observer lors de la participation à des activités et conférences extérieures au cours.",
+      "課程領域": "應用語言",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13040",
+    "課號-班別": "FR4055-*",
+    "課程名稱(中文)": "法文演說",
+    "課程名稱(英文)": "French Speech",
+    "備註": "",
+    "授課教師": "陳尚培",
+    "學分": "2",
+    "上課時間": "Fri34",
+    "教室": "C2-216",
+    "選修別": "選修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13040&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13040&outline=13040&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13040",
+      "課號": "FR4055-*",
+      "授課教師": "陳尚培",
+      "課程名稱(中文)": "法文演說",
+      "課程名稱(英文)": "French Speech",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "Ce cours a pour objectif de développer les compétences langagières et communicationnelles des étudiant-e-s relatives à la présentation orale en français. Il vise également à préparer les étudiant·e·s à la prise de parole en public dans différents contextes de communication.",
+      "授課內容": "A l'issus de ce cours, les étudiant·e·s seront capables de :\n- Produire un discours argumenté : rechercher et sélectionner des informations fiables, exploiter des données pertinentes, construire une argumentation cohérente et structurée\n- S’adapter au contexte et au public : respecter les consignes (durée, environnement, objectifs), adapter le contenu du discours et le niveau de langue en fonction du public ciblé, utiliser différentes techniques de communication verbale (intonation, fluctuation, débit de la voix), et non verbale (attitude corporelle, gestuelle)\n- Interagir avec le public : s’exprimer en public avec aisance, participer à des échanges argumentés, critiquer de manière constructive\nLes étudiant·e·s seront amenés à s’exercer seul ou en groupe à travers différents types d'exercices :\n- Discours préparé\n- Exposé argumenté sur un thème de société\n- Jeux de rôle : mise en situation, simulation, jeux\n- Débats sur des sujets d’actualité en lien avec le monde francophone\nLe cours s’appuie sur des documents authentiques issus du monde francophone afin de renforcer la culture générale des étudiant·e·s sur la France et le monde francophone.",
+      "教科書/參考書": "Les documents et les supports seront choisis, préparés et distribués par le professeur",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "Assiduité et comportement : 25% Contrôle continu : 75% La progression de l'étudiant sera également prise en compte dans la note finale",
+      "辦公時間": "Jeudi (10h-12h) ; Vendredi (13h-15h)",
+      "授課週數": "16",
+      "彈性教學說明": "Les étudiant·e·s devront produire un discours sous forme de video/représentation sur un sujet donné en classe.",
+      "課程領域": "語言訓練 、 應用語言",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13041",
+    "課號-班別": "FR4074-*",
+    "課程名稱(中文)": "法國文學史（20世紀）",
+    "課程名稱(英文)": "History of the French Literature (20th Century)",
+    "備註": "",
+    "授課教師": "徐佳華",
+    "學分": "3",
+    "上課時間": "Wed678",
+    "教室": "C2-217",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13041&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13041&outline=13041&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13041",
+      "課號": "FR4074-*",
+      "授課教師": "徐佳華",
+      "課程名稱(中文)": "法國文學史（20世紀）",
+      "課程名稱(英文)": "History of the French Literature (20th Century)",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "本課程將引導學生探索法國二十世紀文學的流變與脈絡，涵蓋主要思潮、美學流派、代表性作家與經典作品，以掌握這個時代的法國文學風貌。我們將透過精選文本，培養文學視野下的史觀、作品賞析能力與批判性思維，在閱讀與討論中，理解文學如何反映、挑戰或是形塑時代精神。",
+      "授課內容": "本課程將以二十世紀法國文學的主要流派與理論思潮為核心，介紹代表性作家及其重要作品，並探討文學與歷史社會背景的相互影響。課堂將透過選文精讀與賞析，輔以多元媒體學習，呈現重要事件、時代氛圍及文學與其他藝術形式的互文性詮釋。課程進行方式包括教師講授、學生報告及課堂討論。",
+      "教科書/參考書": "- Français Littérature & Méthodes (Nathan technique). - Littérature du Moyen Age au XXe siècle (Hachette) - Littérature française, Anthologie (Larousse) - Dix siècles de littérature française 2/ XIXe et XXe siècles (Bordas/ 冠唐國際圖書股份有限公司) - La littérature française II (Gallimard ; folio essais 496)",
+      "自編教材比例": "50",
+      "授課方式": "講授 研討",
+      "評量配分比重": "課程參與（20%）、口頭報告（30%）、期中末評量（50%）",
+      "辦公時間": "週一9-10時, 15-16時；週三13-14時；週四9-10時",
+      "授課週數": "16",
+      "彈性教學說明": "自主學習、課外補充資源、專題報告製作",
+      "課程領域": "文學 、 文化",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13042",
+    "課號-班別": "FR4079-*",
+    "課程名稱(中文)": "法國人文地理",
+    "課程名稱(英文)": "French Culture and Geography",
+    "備註": "",
+    "授課教師": "許樂山",
+    "學分": "2",
+    "上課時間": "Tue12",
+    "教室": "C2-216",
+    "選修別": "選修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13042&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13042&outline=13042&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13042",
+      "課號": "FR4079-*",
+      "授課教師": "許樂山",
+      "課程名稱(中文)": "法國人文地理",
+      "課程名稱(英文)": "French Culture and Geography",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "Nous étudierons la géographie de la France à travers ses différentes régions. Nous soulignerons les spécificités régionales (agricoles et industrielles, les attractions touristiques et culturelles) qui découlent de leur géographie/géologie. Nous découvrirons les territoires d'outre-mer (la Réunion, la Guyane, les Antilles,...) et nous verrons que certaines régions tropicales françaises présentent un intérêt certain et des pistes de réflexions pour les Taïwanais concernant le développement et l'aménagement territorial de Taïwan. Les étudiants acquerront une solide culture générale au sujet de la géographie française et la répartition des différents secteurs économiques sur le territoire. Les étudiants bénéficieront aussi d'une vision éclairée de la richesse culturelle régionale de la France, rompant avec certains clichés.",
+      "授課內容": "Nous couvrirons pour chaque région française : sa géographie, ses spécificités économiques (agricoles, industrielles, touristiques et culturelles).\nNous utiliserons un grand nombre de cartes qu'il faudra apprendre à lire et à analyser. Nous utiliserons aussi des outils modernes de visualisation (par exemple, Google Earth) pour une exploration à la fois globale et locale de l'espace territorial français.\nUn ou deux intervenants extérieurs viendront parler de leur région natale.\nDes notions élémentaires de géographie, géologie et des sciences agricoles (viticulture par exemple) seront définies et utilisées tout au long du cours.",
+      "教科書/參考書": "Atlas des régions de France. Patrick Mérienne. Éditions Ouest-France. 2022. Dictionnaire illustré de géologie. François Michel. Belin. 2022.",
+      "自編教材比例": "0",
+      "授課方式": "講授 個別指導 其他",
+      "評量配分比重": "Présence et participation : 20 % Présentations en classe : 20 % Examen de mi-semestre : 20 % Examen final : 20 % Devoirs : 20 %",
+      "辦公時間": "Mercredi 13h-15h",
+      "授課週數": "16",
+      "彈性教學說明": "4 hours of teaching video materials will be recorded for the students to watch before the final week.",
+      "課程領域": "應用語言 、 文化",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13043",
+    "課號-班別": "FR4099-*",
+    "課程名稱(中文)": "專業實習I",
+    "課程名稱(英文)": "Internship I",
+    "備註": "一學期實習時數應滿144小時，實習時間自訂",
+    "授課教師": "邱惠佩",
+    "學分": "2",
+    "上課時間": "ThuZ",
+    "教室": "*-***\nFriZ",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13043&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13043&outline=13043&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13043",
+      "課號": "FR4099-*",
+      "授課教師": "邱惠佩",
+      "課程名稱(中文)": "專業實習I",
+      "課程名稱(英文)": "Internship I",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "為減少學用落差，使法文系學生能在具體情境下確實運用課堂所學知識解決問題，進而提升其學習興趣與學習效果，以便為未來進入職場做準備，故開設實習課程。",
+      "授課內容": "實習單位需為「與本系簽訂實習合作協議書，並經本系課程委員會審查通過之單位」，學生於實習期間須撰寫2次工作報告交予實習單位導師評量，繳交時間分別為實習滿72小時及144小時後一週。\n1. 學生須於實習合作協議書所載明之實習期間完成實習時數達144小時以上。\n2. 由實習單位指派專人擔任實習導師，負責督導實習工作，以及給予專業指導。\n3. 本系校外實習課程之輔導教師由本系教師擔任，於實習期間將不定期拜訪實習單位及訪談實習學生，以了解學生實習工作現況與內容，並能適時協助學生解決專業知識與適應上之問題。\n4. 通過直接進入業界見習的方式，理解實習單位所屬產業現況、市場定位、內部文化等。\n5. 根據實習單位之工作性質，結合課堂所學知識與技能，從中精熟問題分析與策略選擇。",
+      "教科書/參考書": "自訂",
+      "自編教材比例": "0",
+      "授課方式": "其他",
+      "評量配分比重": "以實習單位導師考核成績佔70％，本系輔導教師考核成績佔30％，共同核計之。評分項目分別如下： 1. 實習工作報告 (30％) － 實習單位導師考核項目I 學生於實習期間須撰寫2次工作報告交予實習單位導師評量，繳交時間分別為實習滿72小時及144小時後一週。 2. 實習表現 (40％) － 實習單位導師考核項目II 實習單位導師就學生於實習期間之出缺勤、與同事互動狀況、工作態度與表現等予以考核評分。 3. 實習心得報告 (30％) － 學校輔導教師考核項目 學生須於實習結束後 1 個月內，繳交實習心得報告、實習滿意度調查予輔導教師以作為考核依據。",
+      "辦公時間": "星期三10 : 00-12 : 00 、星期四10 : 00-12 : 00",
+      "授課週數": "16",
+      "彈性教學說明": "參與系上舉辦職涯講座或增能工作坊",
+      "課程領域": "應用語言",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(4) 高",
+          "評量方式": "其他"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "其他"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(4) 高",
+          "評量方式": "其他"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(4) 高",
+          "評量方式": "其他"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(4) 高",
+          "評量方式": "其他"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(4) 高",
+          "評量方式": "其他"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(4) 高",
+          "評量方式": "其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13044",
+    "課號-班別": "FR5040-*",
+    "課程名稱(中文)": "敘事學導論",
+    "課程名稱(英文)": "Introduction to Narratology",
+    "備註": "",
+    "授課教師": "翁振盛",
+    "學分": "3",
+    "上課時間": "Fri678",
+    "教室": "C2-218",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13044&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系碩士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13044&outline=13044&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13044",
+      "課號": "FR5040-*",
+      "授課教師": "翁振盛",
+      "課程名稱(中文)": "敘事學導論",
+      "課程名稱(英文)": "Introduction to Narratology",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "本課程旨在引介敘事學的基本理論與概念，帶領學生閱讀古典敘事學的重要論著。",
+      "授課內容": "課程前兩週為敘事學的基本介紹。隨後我們將逐一檢視敘事構成的元素：敘事者、敘事觀點、時間(次序、延展、頻率)空間、情節、人物、對話等，並且介紹敘事分析經常出現的幾個模式：Sch?ma quinaire、sch?ma actanciel、sch?ma des possibles narratifs等。",
+      "教科書/參考書": "1. BARTHES (Roland), L'Aventure sémiologique, Paris, Seuil, 1991 (1985). 2. BREMOND (Claude), Logique du récit, Paris, Seuil, 1973. 3. DUCROT (Oswald) et TODOROV (Tzvetan), Dictionnaire encyclopédique du langage, Paris, Seuil, 1972. 4. GENETTE (Gérard), Figures III, Paris, Seuil, 1972. 5. GENETTE (Gérard), Nouveau discours du récit, Paris, Seuil, 1983.",
+      "自編教材比例": "20",
+      "授課方式": "講授 研討",
+      "評量配分比重": "課堂參與和討論20%;口頭報告40%;書面報告40%",
+      "辦公時間": "週二13h-15h, 週五12h-14h",
+      "授課週數": "16",
+      "彈性教學說明": "為鼓勵自主學習，學期初會發放課外閱讀的文本，並與修課學生約定好時間討論，解答其困惑與問題。",
+      "課程領域": "文學 、 文化",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13045",
+    "課號-班別": "FR5062-*",
+    "課程名稱(中文)": "法國二十世紀青春敘述研究 [已停開]",
+    "課程名稱(英文)": "Researches on 20th Century French Youth Narrative",
+    "備註": "大四學生欲上修請找授課老師索取密碼卡。",
+    "授課教師": "林德祐",
+    "學分": "3",
+    "上課時間": "Wed678",
+    "教室": "C2-218",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13045&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系碩士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13045&outline=13045&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13045",
+      "課號": "FR5062-*",
+      "授課教師": "林德祐",
+      "課程名稱(中文)": "法國二十世紀青春敘述研究",
+      "課程名稱(英文)": "Researches on 20th Century French Youth Narrative",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "本課程以主題收編的方式，引導學生探討法國二十世紀小說中一個獨特的文類：青春小說。課程的目標擬定如下： 1.了解青春敘述的特徵，其與成長小說或青少年小說等相近文類的差異性。 2.研究青春小說中的青少年文化、價值觀與社會背景之間的碰撞與衝突。 3.運用相關的文學理論，探討青春小說中的敘述風格與美學。 4.透過幾位經典作家的作品節錄細讀，重新界定青春敘述的文類邊界。 5.將法國青春敘述系統化整理，使學生獲得鑑賞準則與文學批評的施力點，進而觸類旁通，構思研究題材。",
+      "授課內容": "本課程以法國二十世紀青春小說為研究文本，透過敘述視角、敘事風格與主題蒐編等面向，界定青春敘述文類的邊界，另外亦探討該文類主要的癥結點與特徵，析論其與二十世紀社會、歷史與文化發展的密切性，以期進一步捕捉青春敘述的美學展演。主要研究的文本路線：從哈迪格（Raymond Radiguet）的《惡魔的軀體》（Le Diable au corps）出發，途經莎岡（Fran?oise Sagan）的《日安憂鬱》（Bonjour Tristesse），繞道莒哈絲（Marguerite Duras）的《情人》（L’Amant），最後則暫時停靠索萊爾斯（Philippe Sollers）的《奇特的孤獨》（Une Curieuse solitude）與勒．克萊喬（J.-M.-G. Le Cl?zio）的《春天故事集》（Le Printemps et autres saisons）。參與的同學必須透過青春文類的界定與劃分，繼續尋索相關的文本，進行延伸研究。可運用的子題列舉如下：\n1.青春敘述中的身體與慾望論述；\n2.個體性與集體價值觀的衝突；\n3.越界之戀中的主客體消長；\n4.青春文化中的愉悅與踰越；\n5. 小說中的「第一次」。",
+      "教科書/參考書": "Colette, Le Ble en herbe. Raymond Radiguet, Le Diable au corps. Alain Fournier, Le Grand Meaulnes. Andre Gide, Ramier. Julien Green, L‘Autre Sommeil. Francoise Sagan, Bonjour Tristesse. Francoise Sagan, La Chamade. Francoise Sagan, Le Garde du coeur. Marguerite Duras, L‘Amant. Marguerite Yourcenar, Alexis ou le traite du vain combat. Philippe Sollers, Une solitude Curieuse. J. M. G. Le Clezio, Printemps et autres saisons.",
+      "自編教材比例": "60",
+      "授課方式": "講授 研討",
+      "評量配分比重": "出席率與課堂表現：30% 課堂報告：30% 期末專題報告：40%",
+      "辦公時間": "星期一 13:00-15:00 星期三13:00-15:00",
+      "授課週數": "16",
+      "彈性教學說明": "授課十六週，另外兩週提供學生諮詢、討論，引導自主學習。",
+      "課程領域": "文學 、 文化",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13046",
+    "課號-班別": "FR5075-*",
+    "課程名稱(中文)": "電影是什麼？動態影像研究",
+    "課程名稱(英文)": "What is cinema ? Moving Image Study",
+    "備註": "",
+    "授課教師": "史惟筑",
+    "學分": "3",
+    "上課時間": "Thu567",
+    "教室": "C2-218",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13046&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系碩士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限亞際文化研究國際碩士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13046&outline=13046&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13046",
+      "課號": "FR5075-*",
+      "授課教師": "史惟筑",
+      "課程名稱(中文)": "電影是什麼？動態影像研究",
+      "課程名稱(英文)": "What is cinema ? Moving Image Study",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "思考電影，除了需理解巴贊電影本體論之外，也需要從認識論視角延展「電影」一詞的想像。本課程將分為兩部分：第一部分從歷史編篡學視角，思考電影經驗、電影與其他藝術媒介（劇場、攝影、繪畫、文學）的關係，並如何吸納、轉化為電影性。第二部分，則從現／當代影像作品中，一方面從認識論視角思考電影史的複數型態與經驗；另一方面，將聚焦在「政治」與「歷史記憶」，思考電影如何創造自身的「現代性」與「當代性」意義。",
+      "授課內容": "Semaine 1 導論：電影是什麼與電影經驗\nSemaine 2 初始電影：電影與吸引力\nSemaine 3 電影與劇場\nSemaine 4 電影與聲音\nSemaine 5 調課\nSemaine 6 電影與攝影\nSemaine 7 期中考\nSemaine 8 電影與文學\nSemaine 9 運動會停課一次\nSemaine 10 作者論與「我」的建構\nSemaine 11 電影與政治 I (瑪格麗特．莒哈絲)\nSemaine 12 電影與政治 II (香塔．阿克曼)\nSemaine 13 電影與記憶 I （拉斯洛・奈邁斯）\nSemaine 14 電影與記憶 II （潘禮德)\nSemaine 15 電影：一道認識論史觀\nSemaine 16 期末報告繳交",
+      "教科書/參考書": "Barthes Roland. \"En sortant du cinéma\". In: Communications, 23, 1975. Psychanalyse et cinéma. pp. 104-107. Barthes Roland, \"Le troisième sens\"dans Cahiers du cinima, N°222, 1970. Barthes Roland, \"Structure du fait divers\" dans Essais critiques,1964. Tom Gunning, « Le Cinéma d’attraction : le film des premiers temps, son spectateur, et l’avant-garde », 1895. Mille huit cent quatre-vingt-quinze [En ligne], 50 | 2006, mis en ligne le 01 décembre 2009. M. Chion, L'audio-vision-son et image au cinéma, Paris: Armand Collin, 2017. W. Benjamin, \"La petite histoire de la photographique\", 1931. Raymond Bellour; \"Le spectateur pensif\" dans L’Entre-Images. Photo, cinéma, vidéo, Paris: La Différence, 1990. André Bazin, Qu'est-ce que le cinéma,Paris: Cerf, 1975. Jacques Rancière, La fable cinématographique, ParisSeuil, 2001. Jacques Rancière, Le destin des images, Paris: La fabrique, 2003. Le cinéma amateur, Communications, Paris; Seui, 1999.",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討",
+      "評量配分比重": "出席與期中：50％、報告：50％ ＊缺席次數至多五堂，超過五堂不給予學分。 ＊上課遲到至多十五分鐘，超過時間算缺課一堂。",
+      "辦公時間": "週三（10h-11h50）、週四(10h-11h50)",
+      "授課週數": "16",
+      "彈性教學說明": "專題準備與實踐",
+      "課程領域": "文化",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13047",
+    "課號-班別": "FR5096-*",
+    "課程名稱(中文)": "法國現/當代電影研究III [已停開]",
+    "課程名稱(英文)": "Researches on French cinema III",
+    "備註": "",
+    "授課教師": "史惟筑",
+    "學分": "2",
+    "上課時間": "Wed34",
+    "教室": "C2-218",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13047&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系碩士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限法國語文學系。年級:限四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限亞際文化研究國際碩士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13047&outline=13047&semester=1141",
+    "課程綱要": {
+      "學期": "上課僅能至多五堂缺課（無論請假、缺席原因為何），缺課五堂以上，不給予學分。",
+      "開課單位": "法國語文學系",
+      "流水號": "13047",
+      "課號": "FR5096-*",
+      "授課教師": "史惟筑",
+      "課程名稱(中文)": "法國現/當代電影研究III",
+      "課程名稱(英文)": "Researches on French cinema III",
+      "課程學制": "碩士班",
+      "學分": "2",
+      "課程目標": "介紹法國當代電影創作者及理論，認識當代情境下電影得以擴延的範疇及條件，探討電影在產業、媒材與技術的跨境軌跡中，思考指認「電影」身份與部署組態之方法。",
+      "授課內容": "以法國當代電影為核心，介紹傳統電影部署之外的電影型態（業餘者電影、錄像、當代影像裝置等）；從產業及部署演化歷史理解「當代」與「電影」如何驗證電影一詞的多義性。\n本課程分為三部分：首先，先介紹認識論的理論基礎，瞭解何謂電影考古學，並以此為理論基底閱讀電影史的複數型態；再輔以部署理論，觀察自擴延電影以降電影在不同當代情境下的越界、變異與復返。其次，依循認識論視角，從法國的Pathé Baby與美國的Ciné-Kodak，梳理一段「正規」電影映演系統外的電影發展史，再從使用者與技術層面，將業餘者電影放在當代媒介景觀、使用方式中檢視，嘗試界定電影當代性的思考範疇。最後，觀察這道業餘者電影歷史如何直接、間接地推動錄像藝術的發展，後者又如何從業餘者電影與常規電影的技術、內容、部署汲取養分，重新組態放映與接收兩端的電影身份、而我們又能以何種研究方法進行指認。\n課程涉及的影片包含業餘者拍攝的影片、錄像藝術作品及360影像，期以這些不同裝置、部署型態的動態影像，帶領學生了解如何將「電影作為一種思考形式」。\nSemaine 1 Introduction: le Cinéma après l’époque du cinéma I\nSemaine 2 Penser le cinéma au pluriel\nSemaine 3 Le Cinéma après l’époque du cinéma II\nSemaine 4 Cinéma et vidéo I : image et plasticité\nSemaine 5 Cinéma et vidéo II : film mixte\nSemaine 6 Cinéma et vidéo III : effet-cinéma\nSemaine 7 Discussion d’œuvres vidéos\nSemaine 8 Cinéma et archéologie I Introduction\nSemaine 9 Cinéma et archéologie II\nSemaine 10 Cinéma et film 360° I Le cinéma au contact de la réalité virtuelle\nSemaine 12 Cinéma et film 360° II la transformation grammatique du cinéma\nSemaine 13 Discussion de film 360° et travail rédigé\nSemaine 14 Cinéma et Amateur I\nSemaine 15 Cinéma et Amateur II\nSemaine 16 Cinéma et Amateur III le cinéma amateur taïwanais pendant la colonisation japonaise",
+      "教科書/參考書": "Gilles Deleuze, « Qu’est-ce qu’un dispositif ? » dans Michel Foucault philosophe, rencontre internationale, Paris 9-11 janvier 1988, Paris: Seuil, 1989, pp. 185-198. Giorgio Agamben, Qu’est-ce que le contemporain, Paris : Payot ＆ Rivage, 2008. Qu’est-ce qu’un dispositf, le dispositif, Paris : Payot ＆ Rivage, 2014. Jussi Parikka, Qu’est-ce que l’archéologie des média, Grenoble : UGA, 2017. François Albera, Maria Tortajada, Ciné-Dispositives, Essays in Epistemology Across Media, Amsterdam: Amsterdam University Press, 2015. Benoît Turquety, Inventer le cinéma : Epistémologie : problèmes, machines, Lausanne : L’AGE D’HOMME, 2014. Thomas Elsaesser, Film History as Media Archeology, Amsterdam: Amsterdam University Press, 2016. Luc Vancheri, Cinema Contemporain, Lyon : Aleas, 2009. Le cinéma ou le dernier des arts, Lyon : PUR, 2018. Benoît Turquety et Valérie Vignaux (Coordination éditoriale de), L’amateur en cinéma. Un autre paradigme. Histoire, esthétique, marges et institutions, Paris: Association française de recherche sur l‘histoire du cinéma, 2017. Patricia Zimmermann, Reel Families: A Social History of Amateur Film, Bloomington: Indiana UniversityPress, 1995.",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討",
+      "評量配分比重": "出席：40％、報告：60％",
+      "辦公時間": "週三（10h-11h50）、週四(10h-11h50)",
+      "授課週數": "16",
+      "彈性教學說明": "1. 專題準備與實踐 2. 參訪展覽",
+      "課程領域": "文化",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(3) 普通",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(5) 非常高",
+          "評量方式": "專題研究報告(書面)"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "法國語文學系",
+    "流水號": "13048",
+    "課號-班別": "FR5101-*",
+    "課程名稱(中文)": "研究導論",
+    "課程名稱(英文)": "Introduction to Academic Research",
+    "備註": "",
+    "授課教師": "劉柏桑",
+    "學分": "3",
+    "上課時間": "Tue678",
+    "教室": "C2-217",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=13048&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限法國語文學系碩士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=13048&outline=13048&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "法國語文學系",
+      "流水號": "13048",
+      "課號": "FR5101-*",
+      "授課教師": "劉柏桑",
+      "課程名稱(中文)": "研究導論",
+      "課程名稱(英文)": "Introduction to Academic Research",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "很多剛進入本系碩士班就讀的學生對於「學術研究」到底是什麼、或是自己真正想研究的方向往往還不太清楚，這門課的設計就是為了引導他們釐清這些問題。本課程會介紹本系教授的專業領域，課程內容分成三部份：文學研究、視覺藝術，以及人文社會科學。透過這些介紹，學生可以接觸到各種不同的研究主題與方法，進而思考自己想研究的方向。這門課一方面幫助學生掌握本系碩士課程涵蓋的研究面向，另一方面也能更熟悉每位老師的專業與相關課程內容。",
+      "授課內容": "第1週：課程介紹\n第2週：語言學與16世紀文學導論\n第3週：19世紀文學導論\n第4週：20世紀文學導論\n第5週：文學與精神分析\n第6週：文學與科技現代性：從Oulipo到人工智慧\n第7週：文學批評理論\n第8週：翻譯與後殖民研究\n第9週：電影研究導論\n第10週：語言教學導論\n第11週：性別研究\n第12週：文化遺產與建築\n第13週：社會學分析導論\n第14週：人類學研究導論\n第15週：地理學分析導論\n第16週：教育哲學",
+      "教科書/參考書": "各學科領域對應的參考書（如文學研究、電影研究、語言學、精神分析、藝術史等），書目隨學期間每堂課開始時提供。",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討",
+      "評量配分比重": "課堂出席與參與：30% 期末書面報告：70%",
+      "辦公時間": "禮拜二13：00 - 15：00， 禮拜四 13：00 - 15：00",
+      "授課週數": "16",
+      "彈性教學說明": "學生需根據本學期所探討的主題之一進行個人反思，並與該領域的專業教授合作，撰寫期末報告。該報告將由相關教授評分。",
+      "課程領域": "文學 、 文化",
+      "核心能力": [
+        {
+          "能力名稱": "語言能力",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "自學能力",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "多元文化觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "審美欣賞",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創意思考",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "邏輯批判",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    }
+  }
+]

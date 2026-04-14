@@ -1,0 +1,3529 @@
+[
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94001",
+    "課號-班別": "MT1011-A",
+    "課程名稱(中文)": "經濟學",
+    "課程名稱(英文)": "Economics",
+    "備註": "",
+    "授課教師": "彭小萍",
+    "學分": "3",
+    "上課時間": "Wed234",
+    "教室": "I1-018",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94001&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限企業管理學系。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限企業管理學系。年級:限二年級、三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限輔系-企業管理學系、雙主修-企業管理學系、學分學程-企業管理。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94001&outline=94001&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94001",
+      "課號": "MT1011-A",
+      "授課教師": "彭小萍",
+      "課程名稱(中文)": "經濟學",
+      "課程名稱(英文)": "Economics",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "“本課程為經濟學的入門課程，旨在引發同學對經濟學這門學問的學習興趣，並讓同學體認到經濟學是一門非常實用的學問。本課程分為「個體經濟學」與「總體經濟學」兩個部份。「個體經濟學」主要在探討家計部門與廠商如何決策以及其決策合起來如何影響各式各樣的市場價格。「總體經濟學」主要在探討所得水準、一般物價水準、利率以及匯率等總體經濟變數如何決定，以及政府的財政與貨幣政策如何影響這些經濟變數。本課程上學期的課程內容主要以個體經濟學為主，涵蓋需求、供給、消費者行為、市場、國際貿易、廠商行為與產業組織。下學期的課程內容主要以總體經濟學為主，涵蓋國民所得、物價、失業率、財務基本分析工具、貨幣體系、國際金融、政府財政和貨幣政策效果、與景氣循環等問題。“",
+      "授課內容": "“Part 1: INTRODUCTION-Economists’ Ways of ThinkingPart 2: HOW MARKETS WORK-Supply and Demand-Elasticity and Its ApplicationsPart 3: EFFICIENCY-Government Policies-ExternalitiesPart 4: GLOBAL MARKETS-Gains from Trade-International EconomicsPart 5: FIRM BEHAVIOR AND THE ORGANIZATION OF INDUSTRY-The Costs of Production-Competitive Markets-Monopoly-Monopolistic Competition-OligopolyPart 6: INTRODUCTION TO MACRONOMICS-Macroeconomic TrendsPart 7:MONITORING MACRO- ECONOMIC PERFORMANCE-Measuring a Nation’s Income-Measuring the Cost of Living-Unemployment-Inflation-Production and GrowthPart 8: ECONOMIC FLUCTUATIONS-Aggregate Demand and Aggregate Supply-Business CyclePart 9: MACROECONOMIC POLICY-Financial System-Fiscal Policy-Monetary System-Monetary PolicyPart 10: TOPICS FOR FURTHER STUDY-Information Economics-Consumer Choice-Transaction Costs and Property RightsExamination“",
+      "教科書/參考書": "“N.G. Mankiw (2015), Principles of Economics, seventh edition, Cengage Learning Asia Pte Ltd, Taiwan Branch.“",
+      "自編教材比例": "20",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "課堂上提供",
+      "辦公時間": "週三 9:00-11:50",
+      "授課週數": "16",
+      "彈性教學說明": "自主學習",
+      "課程領域": "基礎知識",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 其他"
+        },
+        {
+          "能力名稱": "創新",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 其他"
+        },
+        {
+          "能力名稱": "領導",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 其他"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 其他"
+        },
+        {
+          "能力名稱": "企業倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 其他"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 其他"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94002",
+    "課號-班別": "MT1011-E",
+    "課程名稱(中文)": "經濟學",
+    "課程名稱(英文)": "Economics",
+    "備註": "",
+    "授課教師": "張李治華",
+    "學分": "3",
+    "上課時間": "Mon234",
+    "教室": "I-204",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "130",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94002&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限資訊管理學系。年級:限二年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限資訊管理學系。身份:限重修生。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限理學院學士班、輔系-資訊管理學系、雙主修-資訊管理學系、學分學程-電子商務(EC)、學分學程-創意與創業。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94002&outline=94002&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94002",
+      "課號": "MT1011-E",
+      "授課教師": "張李治華",
+      "課程名稱(中文)": "經濟學",
+      "課程名稱(英文)": "Economics",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "本課程為經濟學的入門課程，旨在引發同學對經濟學這門學問的學習興趣，並讓同學體認到經濟學是一門非常實用的學問。本課程分為「個體經濟學」與「總體經濟學」兩個部份。「個體經濟學」主要在探討家計部門與廠商如何決策以及其決策合起來如何影響各式各樣的市場價格。「總體經濟學」主要在探討所得水準、一般物價水準、利率以及匯率等總體經濟變數如何決定，以及政府的財政與貨幣政策如何影響這些經濟變數。 本課程上學期的課程內容主要以個體經濟學為主，涵蓋需求、供給、消費者行為、市場、國際貿易、廠商行為與產業組織。下學期的課程內容主要以總體經濟學為主，涵蓋國民所得、物價、失業率、財務基本分析工具、貨幣體系、國際金融、政府財政和貨幣政策效果、與景氣循環等問題。",
+      "授課內容": "Part 1: INTRODUCTION -Economists’ Ways of Thinking\nPart 2: HOW MARKETS WORK -Supply and Demand -Elasticity and Its Applications\nPart 3: EFFICIENCY -Government Policies -Externalities\nPart 4: GLOBAL MARKETS -Gains from Trade -International Economics\nPart 5: FIRM BEHAVIOR AND THE ORGANIZATION OF INDUSTRY -The Costs of Production -Competitive Markets -Monopoly -Monopolistic Competition -Oligopoly\nPart 6: INTRODUCTION TO MACRONOMICS -Macroeconomic Trends\nPart 7:MONITORING MACRO- ECONOMIC PERFORMANCE -Measuring a Nation’s Income -Measuring the Cost of Living -Unemployment -Inflation -Production and Growth\nPart 8: ECONOMIC FLUCTUATIONS -Aggregate Demand and Aggregate Supply -Business Cycle\nPart 9: MACROECONOMIC POLICY -Financial System -Fiscal Policy -Monetary System -Monetary Policy\nPart 10: TOPICS FOR FURTHER STUDY -Information Economics -Consumer Choice -Transaction Costs and Property Rights Examination",
+      "教科書/參考書": "“Mankiw, Principles of Economics, Cengage Learning.“",
+      "自編教材比例": "50",
+      "授課方式": "講授",
+      "評量配分比重": "作業擇優計分(30pt) 期中考(35pt) 期末考(35pt) 分數校正回歸後,最低及格分為55pt 期中考試時間：第8周 期末考試時間：第16週 密碼卡請向資管系辦索取",
+      "辦公時間": "星期二早上10:00-12:00",
+      "授課週數": "16",
+      "彈性教學說明": "討論期中期末考題,觀看線上預錄影片教學,或者閱讀指定教材並撰寫分析資料達六小時",
+      "課程領域": "基礎知識 、 基礎管理",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創新",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "領導",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "企業倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94003",
+    "課號-班別": "MT1011-F",
+    "課程名稱(中文)": "經濟學",
+    "課程名稱(英文)": "Economics",
+    "備註": "不開放初選，不在分發優先順序內或名額外學生請拿密碼卡。開學第一次上課時發放密碼卡，無須寫Email索取。",
+    "授課教師": "廖志興",
+    "學分": "3",
+    "上課時間": "Mon234",
+    "教室": "I1-004",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "80",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94003&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限財務金融學系。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限財務金融學系。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限雙主修-財務金融學系。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "系所:限輔系-財務金融學系。"
+        },
+        {
+          "優先順序": "5",
+          "相關條件限制說明": "學制:限學士班。學院:限管理學院。"
+        },
+        {
+          "優先順序": "6",
+          "相關條件限制說明": "學院:限非管理學院。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94003&outline=94003&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94003",
+      "課號": "MT1011-F",
+      "授課教師": "廖志興",
+      "課程名稱(中文)": "經濟學",
+      "課程名稱(英文)": "Economics",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "這門經濟學是一學年的課程, 這個課程提供學生關於經濟學的基本概念. 這學期我們將關注在個體經濟的部分, 內容包括:需求, 供給, 消費者行為, 市場, 國際貿易, 廠商行為與產業組織. 這門課程將提供一些基本的分析工具, 用他們來解釋一些個體經濟現象.",
+      "授課內容": "Week 01: Introduction, Ten Principles of Economics, Thinking Like an Economist\nWeek 02: Supply and Demand\nWeek 03: Elasticity and Its Application\nWeek 04: Supply, Demand and Government Policies\nWeek 05: Holiday (not yet confirmed)\nWeek 06: Holiday\nWeek 07: Consumer, Producers, and the Efficiency of Markets\nWeek 08: Midterm Examination\nWeek 09: The Costs of Taxation\nWeek 10: Gains from Trade, International Trade\nWeek 11: Externalities, Public Goods and Common Resources\nWeek 12: The Costs of Production\nWeek 13: Firms in Competitive Markets\nWeek 14: Monopoly, Monopolistic Competition\nWeek 15: The Markets for the Factors of Production\nWeek 16: Final Examination",
+      "教科書/參考書": "Mankiw, N.G., (2023). Principles of Economics, 10th edition, Asia Edition, Cengage Learning.",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "期中考 35％, 期末考 35％, 作業 20%, 出席 10％",
+      "辦公時間": "星期一 12:00 ~ 14:00",
+      "授課週數": "16",
+      "彈性教學說明": "自主學習",
+      "課程領域": "基礎知識",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創新",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "領導",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "企業倫理",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "思辨和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94004",
+    "課號-班別": "MT1011-G",
+    "課程名稱(中文)": "經濟學",
+    "課程名稱(英文)": "Economics",
+    "備註": "",
+    "授課教師": "王銘正",
+    "學分": "3",
+    "上課時間": "Mon234",
+    "教室": "I1-005",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "70",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94004&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限經濟學系。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限經濟學系。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限輔系-經濟學系、雙主修-經濟學系、第二專長-國際金融、第二專長-國際經貿。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "學院:限管理學院。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94004&outline=94004&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94004",
+      "課號": "MT1011-G",
+      "授課教師": "王銘正",
+      "課程名稱(中文)": "經濟學",
+      "課程名稱(英文)": "Economics",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "This is a two-semester introductory course of economics. The main objective of this course is to inspire students’interestin economics. The course includes two parts: microeconomics and macroeconomics. Microeconomics is the study ofhow households and firms make decisions and how they interact in specific markets. Macroeconomics is the study ofeconomy-wide phenomena and the effects of monetary and fiscal policies.Microeconomics is introduced in the first semester. The main topics include demand, supply, markets, internationaltrade, firm behavior and the organization of industry. Macroeconomics is introduced in the second semester. The maintopics include national income, general price level, unemployment, economic growth, monetary system, internationalfinance, short-run economic fluctuations, and the effects of monetary and fiscal policies.",
+      "授課內容": "Week (週次)/時間 Topic (單元與內容) Note (備註)\nWeek 01: Ten Principles of Economics\nWeek 02: Ten Principles of Economics, Thinking Like an Economist\nWeek 03: Gains from Trade\nWeek 04: Supply and Demand\nWeek 05: Holiday\nWeek 06: Holiday\nWeek 07: Supply, Demand and Government Policies\nWeek 08: Supply, Demand and Government Policies\nWeek 09: Midterm Examination\nWeek 10: The Efficiency of Markets\nWeek 11: The Efficiency of Markets/ The Costs of Taxation\nWeek 12: The Costs of Taxation\nWeek 13: International Trad\nWeek 14: Externalities\nWeek 15: The Costs of Production\nWeek 16: Final Examination",
+      "教科書/參考書": "N. Gregory Mankiw (2021), Principles of Economics, , 9th ed., Singapore: Cengage Learning.",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討",
+      "評量配分比重": "隨堂測試30％ 期中考試35％ 期末考試35％",
+      "辦公時間": "by appointment",
+      "授課週數": "16",
+      "彈性教學說明": "無",
+      "課程領域": "基礎知識",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "創新",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "領導",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "企業倫理",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "思辨和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94005",
+    "課號-班別": "MT1011-Z",
+    "課程名稱(中文)": "經濟學",
+    "課程名稱(英文)": "Economics",
+    "備註": "(1)密碼卡統一於第一周上課時發放，無須寫信給老師。 (2)第一次上課未出席，需事先跟老師請假，否則扣學期總成績。前兩週未出席者，老師有權退選該生",
+    "授課教師": "鄭保志",
+    "學分": "3",
+    "上課時間": "Fri234",
+    "教室": "I1-006",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "90",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94005&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限輔系-企業管理學系、輔系-資訊管理學系、輔系-財務金融學系、輔系-經濟學系、雙主修-企業管理學系、雙主修-資訊管理學系、雙主修-財務金融學系、雙主修-經濟學系、學分學程-電子商務(EC)、學分學程-創意與創業。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學院:限非管理學院。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94005&outline=94005&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94005",
+      "課號": "MT1011-Z",
+      "授課教師": "鄭保志",
+      "課程名稱(中文)": "經濟學",
+      "課程名稱(英文)": "Economics",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "本課程為經濟學的入門課程，旨在引發同學對經濟學這門學問的學習興趣，並讓同學體認到經濟學是一門非常實用的學問。本課程分為「個體經濟學」與「總體經濟學」兩個部份。「個體經濟學」主要在探討家計部門與廠商如何決策以及其決策合起來如何影響各式各樣的市場價格。「總體經濟學」主要在探討所得水準、一般物價水準、利率以及匯率等總體經濟變數如何決定，以及政府的財政與貨幣政策如何影響這些經濟變數。 本課程上學期的課程內容主要以個體經濟學為主，涵蓋需求、供給、消費者行為、市場、國際貿易、廠商行為與產業組織。下學期的課程內容主要以總體經濟學為主，涵蓋國民所得、物價、失業率、財務基本分析工具、貨幣體系、國際金融、政府財政和貨幣政策效果、與景氣循環等問題。",
+      "授課內容": "Part 1: INTRODUCTION -Economists’ Ways of Thinking Part 2: HOW MARKETS WORK -Supply and Demand -Elasticity and Its Applications Part 3: EFFICIENCY -Government Policies -Externalities Part 4: GLOBAL MARKETS -Gains from Trade -International Economics Part 5: FIRM BEHAVIOR AND THE ORGANIZATION OF INDUSTRY -The Costs of Production -Competitive Markets -Monopoly -Monopolistic Competition -Oligopoly Part 6: INTRODUCTION TO MACRONOMICS -Macroeconomic Trends Part 7:MONITORING MACRO- ECONOMIC PERFORMANCE -Measuring a Nation’s Income -Measuring the Cost of Living -Unemployment -Inflation -Production and Growth Part 8: ECONOMIC FLUCTUATIONS -Aggregate Demand and Aggregate Supply -Business Cycle Part 9: MACROECONOMIC POLICY -Financial System -Fiscal Policy -Monetary System -Monetary Policy Part 10: TOPICS FOR FURTHER STUDY -Information Economics -Consumer Choice -Transaction Costs and Property Rights Examination",
+      "教科書/參考書": "“Course Material (課程教材) N.G. Mankiw (2014), Principles of Economics, seventh edition. Other Material (其他參考書目) 聰明學經濟的12堂課“",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討 其他",
+      "評量配分比重": "“Midterm Test (期中考) 20％\nFinal Test (期末考) 10％\nPaper/Theses Writing (報告/論文) 30％\nPresentation (專題發表) 40％“",
+      "辦公時間": "\"Wednesday 12：10 - 13：00 (I1-212)\n\"",
+      "授課週數": "16",
+      "彈性教學說明": ".",
+      "課程領域": "基礎知識",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "創新",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "領導",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "企業倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "思辨和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94006",
+    "課號-班別": "MT1011-7",
+    "課程名稱(中文)": "經濟學",
+    "課程名稱(英文)": "Economics",
+    "備註": "準大一生暑期先修課程，限準大一生，暑期上課。",
+    "授課教師": "王銘正",
+    "學分": "3",
+    "上課時間": "",
+    "教室": "",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "75",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94006&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94006&outline=94006&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94006",
+      "課號": "MT1011-7",
+      "授課教師": "王銘正",
+      "課程名稱(中文)": "經濟學",
+      "課程名稱(英文)": "Economics",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "本課程為經濟學的入門課程，旨在引發同學對經濟學這門學問的學習興趣，並讓同學體認到經濟學是一門非常實用的學問。本課程分為「個體經濟學」與「總體經濟學」兩個部份。「個體經濟學」主要在探討家計部門與廠商如何決策以及其決策合起來如何影響各式各樣的市場價格。「總體經濟學」主要在探討所得水準、一般物價水準、利率以及匯率等總體經濟變數如何決定，以及政府的財政與貨幣政策如何影響這些經濟變數。 本課程上學期的課程內容主要以個體經濟學為主，涵蓋需求、供給、消費者行為、市場、國際貿易、廠商行為與產業組織。下學期的課程內容主要以總體經濟學為主，涵蓋國民所得、物價、失業率、財務基本分析工具、貨幣體系、國際金融、政府財政和貨幣政策效果、與景氣循環等問題。",
+      "授課內容": "Part 1: INTRODUCTION -Economists’ Ways of Thinking Part 2: HOW MARKETS WORK -Supply and Demand -Elasticity and Its Applications Part 3: EFFICIENCY -Government Policies -Externalities Part 4: GLOBAL MARKETS -Gains from Trade -International Economics Part 5: FIRM BEHAVIOR AND THE ORGANIZATION OF INDUSTRY -The Costs of Production -Competitive Markets -Monopoly -Monopolistic Competition -Oligopoly Part 6: INTRODUCTION TO MACRONOMICS -Macroeconomic Trends Part 7:MONITORING MACRO- ECONOMIC PERFORMANCE -Measuring a Nation’s Income -Measuring the Cost of Living -Unemployment -Inflation -Production and Growth Part 8: ECONOMIC FLUCTUATIONS -Aggregate Demand and Aggregate Supply -Business Cycle Part 9: MACROECONOMIC POLICY -Financial System -Fiscal Policy -Monetary System -Monetary Policy Part 10: TOPICS FOR FURTHER STUDY -Information Economics -Consumer Choice -Transaction Costs and Property Rights Examination",
+      "教科書/參考書": "“N.G. Mankiw (2017), Principles of Economics, 8th edition.“",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "“隨堂測試 40％ 期中考 30％ 期末考 30％“",
+      "辦公時間": "by appointment",
+      "授課週數": "16",
+      "彈性教學說明": "無",
+      "課程領域": "基礎知識 、 基礎管理",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "創新",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "領導",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "企業倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "思辨和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94007",
+    "課號-班別": "MT1021-A",
+    "課程名稱(中文)": "企業概論",
+    "課程名稱(英文)": "Introduction to Business",
+    "備註": "",
+    "授課教師": "何䓝涵",
+    "學分": "3",
+    "上課時間": "Thu234",
+    "教室": "I1-018",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94007&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限企業管理學系。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限企業管理學系。年級:限二年級、三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限輔系-企業管理學系、雙主修-企業管理學系、學分學程-企業管理。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94007&outline=94007&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94007",
+      "課號": "MT1021-A",
+      "授課教師": "何䓝涵",
+      "課程名稱(中文)": "企業概論",
+      "課程名稱(英文)": "Introduction to Business",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "This course is taught in English. Introduction to Business is a fundamental course in business and organizational management education. This course is offered by many departments in the management school. Although its contents may be varied due to the different professional focuses of the departments, the main teaching subjects and learning objectives (see below) of this course are maintained to be consistent among its instances. The major teaching subjects include global economic systems, organization structures, basic management functions (human resources, marketing, etc.), leadership ＆ teamwork, and business ethics.",
+      "授課內容": "Part 1: INTRODUCTION\n- Course introduction\nPart 2: THE CONTEMPORARY BUSINESS WORLD\n- Overview of contemporary business environment\n- Business ethics ＆ social responsibility\n- Entrepreneurship ＆ business ownership\n- The global context of business\nPart 3: THE BUSINESS OF MANAGING\n- Business management\n- Organizing the business\n- Operations management ＆ quality\nPart 4: PEOPLE IN ORGANIZATIONS\n- Employee behavior ＆ motivation\n- Term project proposal presentation: Selling your idea\n- Leadership and decision making\n- Human resource management ＆ labor relations\nPart 5: PRINCIPLES OF MARKETING\n- Marketing processes and consumer behavior\n- Pricing, distributing and promoting products\n- Term project final presentation: Showing your accomplishment",
+      "教科書/參考書": "鄭仁偉（2017）。企業概論。華泰文化。",
+      "自編教材比例": "50",
+      "授課方式": "講授 研討 其他",
+      "評量配分比重": "0％",
+      "辦公時間": "請先行預約",
+      "授課週數": "16",
+      "彈性教學說明": "無",
+      "課程領域": "基礎知識 、 基礎管理",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "創新",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "領導",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "企業倫理",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "思辨和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94008",
+    "課號-班別": "MT1021-E",
+    "課程名稱(中文)": "企業概論",
+    "課程名稱(英文)": "Introduction to Business",
+    "備註": "",
+    "授課教師": "周恩頤",
+    "學分": "3",
+    "上課時間": "Fri567",
+    "教室": "I-204",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "120",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94008&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限資訊管理學系。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限資訊管理學系。身份:限重修生。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限輔系-資訊管理學系、雙主修-資訊管理學系。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "系所:限學分學程-企業管理、學分學程-創意與創業。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94008&outline=94008&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94008",
+      "課號": "MT1021-E",
+      "授課教師": "周恩頤",
+      "課程名稱(中文)": "企業概論",
+      "課程名稱(英文)": "Introduction to Business",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "本課程為企業與組織管理的入門課程，管理學院各科系皆有提供本課程。雖然本課程會依各科系的專業差異而略有不同的專注，但架構及學習目標上是一致的，請見本表下方的『課程學習目標』部分。本課程的課程內容主要以基本的企業內功能與全球商業環境的介紹為主，因此課程涵蓋範圍包括創業特質、企業組織、商業道德、全球經濟體系、企業領導與團隊合作、以及企業內的基本功能，例如資訊科技、人力資源、行銷管理、生產管理等等。",
+      "授課內容": "Course Introduction (Basic concept of business)\nBusiness Environment (Chapter 1, 4)\nUnderstanding Business Ethics and Social Responsibility (Chapter 2)\nEntrepreneurship, New Ventures, and Business Ownership (Chapter 3)\nManaging the Business (Chapter 5)\nOrganizing the Business (Chapter 6)\nOperation Management and Quality (Chapter 7)\nEmployee Behavior and Motivation (Chapter 8)\nLeadership and Decision Making (Chapter 9)\nMarketing Processes and Consumer Behavior (Chapter 11)\nHuman Resource Management and Labor Relations (Chapter 10)\nDeveloping and Pricing Products (Chapter 12)\nDistributing and Promoting Products (Chapter 13)\nIntegrated Marketing Communications 16 Information Technology (IT) for Business (Chapter 14)",
+      "教科書/參考書": "Ebert, R.J. and Griffin, R.W. (2022). Business Essentials, 13th Edition, Pearson",
+      "自編教材比例": "50",
+      "授課方式": "講授",
+      "評量配分比重": "Class Attendance (Required) Midterm Exam (50％) Final Exam (50％)",
+      "辦公時間": "by appointment",
+      "授課週數": "16",
+      "彈性教學說明": "自主學習：通過分析營利（或非營利）組織的商業計畫，整合並反思本學期所學的管理理論與實務應用。",
+      "課程領域": "基礎知識 、 基礎管理 、 行銷管理 、 策略管理 、 人力資源管理",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "創新",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "領導",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "企業倫理",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "思辨和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94009",
+    "課號-班別": "MT1021-F",
+    "課程名稱(中文)": "企業概論",
+    "課程名稱(英文)": "Introduction to Business",
+    "備註": "",
+    "授課教師": "賴弘能",
+    "學分": "3",
+    "上課時間": "Thu234",
+    "教室": "I1-311",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "70",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94009&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學院:限管理學院。系所:限財務金融學系。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限財務金融學系。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限雙主修-財務金融學系。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "學院:限非管理學院。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94009&outline=94009&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94009",
+      "課號": "MT1021-F",
+      "授課教師": "賴弘能",
+      "課程名稱(中文)": "企業概論",
+      "課程名稱(英文)": "Introduction to Business",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "本課程為企業與組織管理的入門課程，管理學院各科系皆有提供本課程。雖然本課程會依各科系的專業差異而略有不同的專注，但架構及學習目標上是一致的，請見本表下方的『課程學習目標』部分。本課程的課程內容主要以基本的企業內功能與全球商業環境的介紹為主，因此課程涵蓋範圍包括創業特質、企業組織、商業道德、全球經濟體系、企業領導與團隊合作、以及企業內的基本功能，例如資訊科技、人力資源、行銷管理、生產管理等等。",
+      "授課內容": "“Part 1: INTRODUCTION-Course introductionPart 2: THE CONTEMPORARY BUSINESS WORLD-Overview of contemporary business environment-Business ethics ＆ social responsibility-Entrepreneurship ＆ business ownership-The global context of businessPart 3: THE BUSINESS OF MANAGING-Business management-Organizing the business-Operations management ＆ qualityPart 4: PEOPLE IN ORGANIZATIONS-Employee behavior ＆ motivation-Term project proposal presentation: Selling your idea-Leadership and decision making-Human resource management ＆ labor relationsPart 5: PRINCIPLES OF MARKETING-Marketing processes and consumer behavior-Pricing, distributing and promoting productsPart 6: MANAGING INFORMATION-Information technology for business-The role of accounting information-Term project final presentation: Showing your accomplishmentEXAMINATION“",
+      "教科書/參考書": "“教科書 Ebert, R.J. and Griffin, R.W., Business Essentials 12th Edition (2019) Person International.參考書 1. Oliver Gassmann, Karolin Frankenberger, Michaela Csik 著， 劉慧玉譯， 2017， 航向成功企業的55種商業模式， 橡實文化。2. 劉承慧、 沈婉霖， 2013， 報告好好寫 --- 科技報告寫作通用手冊， 國立清華大學出版社。3. 王若葉， 2015， 如何寫好報告， 城邦文化事業。“",
+      "自編教材比例": "30",
+      "授課方式": "講授 研討",
+      "評量配分比重": "未定。",
+      "辦公時間": "週三 09:30~11:30",
+      "授課週數": "16",
+      "彈性教學說明": "開學後公布。",
+      "課程領域": "基礎知識 、 基礎管理 、 行銷管理 、 策略管理 、 人力資源管理",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "創新",
+          "強度指數": "(1) 非常低",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "領導",
+          "強度指數": "(2) 低",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "企業倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(2) 低",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "思辨和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94010",
+    "課號-班別": "MT1031-A",
+    "課程名稱(中文)": "會計學",
+    "課程名稱(英文)": "Accounting",
+    "備註": "",
+    "授課教師": "曹壽民",
+    "學分": "3",
+    "上課時間": "Mon567",
+    "教室": "I1-018",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94010&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限企業管理學系。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限企業管理學系。年級:限二年級、三年級、四年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限企業管理學系碩士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94010&outline=94010&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94010",
+      "課號": "MT1031-A",
+      "授課教師": "曹壽民",
+      "課程名稱(中文)": "會計學",
+      "課程名稱(英文)": "Accounting",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "\"The courses Accounting I, II focus on ways in which accounting principles are used in business operations.\"",
+      "授課內容": "\"Students can learn the following topics.\nPart 1: ACCOUNTING in BUSINESS\nPart 2: ACCOUNTING PROCEDURES\nPart 3: ACCOUNTING for MERCHANDISING OPERATIONS\nPart 4: INVENTORIES and COST of SALES\nPart 5: ACCOUNTING for RECEIVABLES\nPart 6: ACCOUNTING for LONG-TERM ASSETS\nPart 7: CURRENT LIABILITIES\nPart 8: LONG-TERM LIABILITIES\nPart 9: ACCOUNTING for CORPORATIONS\nPart 10: REPORTING the STATEMENT of CASH FLOWS\nPart 11: TOPICS FOR FURTHER STUDY (optional)\nCash and Internal Controls\nFinancial Statement Analysis\nInvestments\nAccounting Ethics\nPart 12:Examination\"",
+      "教科書/參考書": "Text book: Fundamental Accounting Principles\nLarson Wild Chiappetta",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "\"上課參與 10% 小考 30％ 期中考 30％ 期末考 30%\"",
+      "辦公時間": "Mon. 12:00~12:30 / I1-719",
+      "授課週數": "16",
+      "課程領域": "",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創新",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "領導",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "企業倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94011",
+    "課號-班別": "MT1031-E",
+    "課程名稱(中文)": "會計學",
+    "課程名稱(英文)": "Accounting",
+    "備註": "若教室有空位，於第一週課堂上發放密碼卡。",
+    "授課教師": "謝依靜",
+    "學分": "3",
+    "上課時間": "Mon234",
+    "教室": "I1-017",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "120",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94011&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限資訊管理學系。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限資訊管理學系。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限雙主修-資訊管理學系。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "系所:限輔系-資訊管理學系。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94011&outline=94011&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94011",
+      "課號": "MT1031-E",
+      "授課教師": "謝依靜",
+      "課程名稱(中文)": "會計學",
+      "課程名稱(英文)": "Accounting",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "“The courses Accounting I, II focus on ways in which accounting principles are used in business operations.“",
+      "授課內容": "“Students can learn the following topics.\nPart 1: ACCOUNTING in BUSINESS\nPart 2: ACCOUNTING PROCEDURES\nPart 3: ACCOUNTING for MERCHANDISING OPERATIONS\nPart 4: INVENTORIES and COST of SALES\nPart 5: ACCOUNTING for RECEIVABLES\nPart 6: ACCOUNTING for LONG-TERM ASSETS\nPart 7: CURRENT LIABILITIES\nPart 8: LONG-TERM LIABILITIES\nPart 9: ACCOUNTING for CORPORATIONS\nPart 10: REPORTING the STATEMENT of CASH FLOWS\nPart 11: TOPICS FOR FURTHER STUDY (optional)\nCash and Internal Controls\nFinancial Statement Analysis\nInvestments\nAccounting Ethics\nPart 12:Examination“",
+      "教科書/參考書": "Jerry. J. Weygandt, and Paul D. Kimmel. Financial Accounting: Financial Accounting IFRS, custom edition, 5/e Wiley. 2023.",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "“出席率 ＆ 作業 25％ 期中＆ 期末考：75％“",
+      "辦公時間": "by appointment",
+      "授課週數": "16",
+      "彈性教學說明": "自主學習",
+      "課程領域": "基礎知識 、 基礎管理",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創新",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "領導",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "企業倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "思辨和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94012",
+    "課號-班別": "MT1031-F",
+    "課程名稱(中文)": "會計學",
+    "課程名稱(英文)": "Accounting",
+    "備註": "本課程密碼卡統一在第一周上課時發放，無須提前寫信給老師索取。如座位有限，大四及財金系雙主修同學優先發放密碼卡。",
+    "授課教師": "王曉雯",
+    "學分": "3",
+    "上課時間": "Wed789",
+    "教室": "I1-114",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "90",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94012&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限財務金融學系。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限財務金融學系。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94012&outline=94012&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94012",
+      "課號": "MT1031-F",
+      "授課教師": "王曉雯",
+      "課程名稱(中文)": "會計學",
+      "課程名稱(英文)": "Accounting",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "依授課教師上課發給同學的授課大綱規定",
+      "授課內容": "依授課教師上課發給同學的授課大綱規定",
+      "教科書/參考書": "依授課教師上課發給同學的授課大綱規定",
+      "自編教材比例": "30",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "依授課教師上課發給同學的授課大綱規定",
+      "辦公時間": "依授課教師上課發給同學的授課大綱規定",
+      "授課週數": "16",
+      "彈性教學說明": "第17-18週由修課學生搜集實務公司財務報表並完成教師指定的報告",
+      "課程領域": "基礎知識",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "創新",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "領導",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "企業倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94013",
+    "課號-班別": "MT1031-G",
+    "課程名稱(中文)": "會計學",
+    "課程名稱(英文)": "Accounting",
+    "備註": "修課同學必須安排周四晚上六點至七點實習。若教室有空位，於第一週課堂上發放密碼卡。",
+    "授課教師": "陳建中",
+    "學分": "3",
+    "上課時間": "Thu789",
+    "教室": "I1-308",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "75",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94013&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限經濟學系。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限經濟學系。年級:限非一年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限雙主修-經濟學系。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94013&outline=94013&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94013",
+      "課號": "MT1031-G",
+      "授課教師": "陳建中",
+      "課程名稱(中文)": "會計學",
+      "課程名稱(英文)": "Accounting",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "“The courses Accounting I, II focus on ways in which accounting principles are used in business operations.“",
+      "授課內容": "“Students can learn the following topics.\nPart 1: ACCOUNTING in BUSINESS\nPart 2: ACCOUNTING PROCEDURES\nPart 3: ACCOUNTING for MERCHANDISING OPERATIONS\nPart 4: INVENTORIES and COST of SALES\nPart 5: ACCOUNTING for RECEIVABLES\nPart 6: ACCOUNTING for LONG-TERM ASSETS\nPart 7: CURRENT LIABILITIES\nPart 8: LONG-TERM LIABILITIES\nPart 9: ACCOUNTING for CORPORATIONS\nPart 10: REPORTING the STATEMENT of CASH FLOWS\nPart 11: TOPICS FOR FURTHER STUDY (optional)\nCash and Internal Controls\nFinancial Statement Analysis\nInvestments\nAccounting Ethics\nPart 12:Examination“",
+      "教科書/參考書": "“Jerry. J. Weygandt, and Paul D. Kimmel, Financial Accounting with IFRS Wiley Custom Edition 5/e, 2023。 陳美娥等翻譯，財務會計，IFRS 5th Edition, 2023。“",
+      "自編教材比例": "10",
+      "授課方式": "講授 實習/實驗 其他",
+      "評量配分比重": "“Two midterm Tests (25％ for each)50％ Final Test (期末考) 30％ Role Playing 　　 (實做)　　20％“ 課堂參與 5％",
+      "辦公時間": "週四下午3:00-6:30或約定時間(I1-815)",
+      "授課週數": "16",
+      "彈性教學說明": "分配至1至16之實做時間",
+      "課程領域": "基礎知識",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "創新",
+          "強度指數": "(1) 非常低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "領導",
+          "強度指數": "(1) 非常低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "企業倫理",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(2) 低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "思辨和解決問題能力",
+          "強度指數": "(1) 非常低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 實作/實驗"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94014",
+    "課號-班別": "MT1051-A",
+    "課程名稱(中文)": "程式設計：Python",
+    "課程名稱(英文)": "An Introduction to Computing: Python",
+    "備註": "教室I1-405-1及I1-405-3",
+    "授課教師": "呂俊德",
+    "學分": "3",
+    "上課時間": "Mon234",
+    "教室": "I1-405-1",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94014&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限企業管理學系。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限企業管理學系。年級:限非一年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94014&outline=94014&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94014",
+      "課號": "MT1051-A",
+      "授課教師": "呂俊德",
+      "課程名稱(中文)": "程式設計：Python",
+      "課程名稱(英文)": "An Introduction to Computing: Python",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "The course covers all the basics of programming in Python, as well as general computer programming concepts and techniques. The main objective of this course is to inspire students’ interest in programming and equip them with the appropriate skills in analyzing and interpreting the data to come to a sound and reasonable decision. Each student has access to hands-on practice materials, labs, quizzes, and assessments to learn how to utilize the skills and knowledge gained on the course and interact with some real-life programming tasks and situations. Students who complete the course will be able to accomplish coding tasks related to the basics of programming in the Python language, and to understand the fundamental notions and techniques used in object-oriented programming.",
+      "授課內容": "01 甚麼是計算機程式?、Python 環境架設、第一個 Python 程式\n02 Python 基本語法、變數與資料型態、基本輸入與輸出\n03 Python 基本語法、運算思維的介紹\n04 程式流程的控制: if-else\n05 程式流程的控制: for, while\n06 串列, 集合, 矩陣\n07 串列, 集合, 矩陣\n08 函數\n09 期中考\n10 函數\n11 套件的應用: NumPy\n12 套件的應用: NumPy\n13 套件的應用: MatPlotlib\n14 套件的應用: MatPlotlib\n15 檔案處理\n16 期末考\n17 Python 程式設計競賽(Round 1)\n18 Python 程式設計競賽(Round 2)",
+      "教科書/參考書": "Python 程式設計學習經典, 吳翌禎與黃立政. 碁峯資訊 Python 程式設計入門指南, 蔡明志譯. 碁峯資訊",
+      "自編教材比例": "70%",
+      "授課方式": "講授 實習/實驗 個別指導",
+      "評量配分比重": "期中考(35％) + 期末考 (35％) + 作業與隨堂實作(30％)",
+      "辦公時間": "星期一, 13:30-15:30",
+      "授課週數": "16",
+      "彈性教學說明": "期末考後的兩週，於課程時間進行Python程式競賽",
+      "課程領域": "基礎知識",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "創新",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "領導",
+          "強度指數": "(2) 低",
+          "評量方式": "作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "企業倫理",
+          "強度指數": "(2) 低",
+          "評量方式": "作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(1) 非常低",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(2) 低",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "思辨和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "實作/實驗 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94015",
+    "課號-班別": "MT1051-F",
+    "課程名稱(中文)": "程式設計：Python",
+    "課程名稱(英文)": "An Introduction to Computing: Python",
+    "備註": "因需上機實作，教室座位有限，不在分發優先順序內或名額外學生，老師將視情況發給密碼卡。",
+    "授課教師": "張冠逸",
+    "學分": "3",
+    "上課時間": "Fri567",
+    "教室": "I1-405-1",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "71",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94015&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限財務金融學系。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限財務金融學系。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限雙主修-財務金融學系。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94015&outline=94015&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94015",
+      "課號": "MT1051-F",
+      "授課教師": "張冠逸",
+      "課程名稱(中文)": "程式設計：Python",
+      "課程名稱(英文)": "An Introduction to Computing: Python",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "本課程教導 Python 程式設計的基礎知識、概念和技術。本課程的主要目標是賦予學生透過程式設計分析和解釋數據的技能，並做出適當的決策。 修習本課程的學生將能夠完成與 Python 語言程式設計基本題目，並理解程式設計中使用的基本概念和技術。",
+      "授課內容": "Part 1: INTRODUCTION 6hr\n- 計概\n- Python介紹\n- Python環境架設、歷史簡介\n- Script Language介紹\nPart 2: Statements 6hr\n- Python 2 v.s Python 3\n- 執行第一個Python程式\n- Python資料型態\nPart 3: Variables 9hr\n- 變數應用\n- Tuple, Set, List, Dictionary, Arrays, Boolean\nPart 4: Loop 9hr\n- While Loop\n- For Loop\nPart 5:Modules ＆ Package 6hr\n- Python模組\n- module使用\n- package定義與使用\nPart 6: Data Analyzing 6hr\n- Matplotlib應用\n- 統計分析繪圖\n- Numpy ＆ Scipy\nPart 7: File Processing 9hr\n- Python檔案處理\n- 檔案讀取與編寫\n- 文件檔案的編寫\n- XML檔案編寫與讀取\n- 讀取和編寫熱門格式CSV or XML的python程式\n期末考 3hr",
+      "教科書/參考書": "自編講義",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 實習/實驗 個別指導",
+      "評量配分比重": "期末考 40％ 作業 40％ 平時成績 20％",
+      "辦公時間": "星期一 15:00~17:50",
+      "授課週數": "16",
+      "彈性教學說明": "期中考後將有兩週課程採線上教學，時間於之後宣布。期末考於第18週舉行，在實體教室採上機實作測驗。",
+      "課程領域": "基礎知識",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創新",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "領導",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "企業倫理",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "思辨和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(2) 低",
+          "評量方式": "實作/實驗 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94016",
+    "課號-班別": "MT1051-G",
+    "課程名稱(中文)": "程式設計：Python",
+    "課程名稱(英文)": "An Introduction to Computing: Python",
+    "備註": "因需上機實作，教室座位有限，不在分發優先順序內或名額外學生，老師將視情況發給密碼卡。",
+    "授課教師": "張慕平",
+    "學分": "3",
+    "上課時間": "Wed234",
+    "教室": "I1-405-1",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "68",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94016&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限經濟學系。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限經濟學系。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限雙主修-經濟學系。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94016&outline=94016&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94016",
+      "課號": "MT1051-G",
+      "授課教師": "張慕平",
+      "課程名稱(中文)": "程式設計：Python",
+      "課程名稱(英文)": "An Introduction to Computing: Python",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "本課程旨在使大學生具備使用 Python 撰寫程式的基礎能力，透過學習基本語法、流程控制、資料結構與常用模組，培養邏輯思維與問題解決能力。課程同時強調如何善用 AI 工具（如 GitHub Copilot、ChatGPT 等）來輔助程式開發，提升學習效率與開發品質。學生將能應用所學，撰寫簡單且實用的 Python 程式，並為後續進行資料分析、人工智慧、網頁開發等進階應用奠定良好基礎",
+      "授課內容": "(課程內容會動態調整)\nWeek 01 課程說明、計算機概論、Python環境\nWeek 02 Python初見、變數與資料型態、AI工具介紹\nWeek 03 數字與文字\nWeek 04 控制流程: 條件判斷與迴圈\nWeek 05 資料結構：Tuple與List\nWeek 06 資料結構：Dictionary與Set + 小考1\nWeek 07 Git與GitHub + 小考2\nWeek 08 期中考\nWeek 09 函數(Function)\nWeek 10 物件導向程式設計(Objects and Classes)\nWeek 11 模組(Module)、異常處理、檔案的讀寫與組織管理\nWeek 12 數值運算NumPy、資料分析Pandas、視覺化Matplotlib\nWeek 13 彈性上課\nWeek 14 期末考\nWeek 15 期末專題報告1\nWeek 16 期末專題報告2",
+      "教科書/參考書": "1. Introducing Python: Modern Computing in Simple Packages, 2/e 2. The Quick Python Book, 3/e",
+      "自編教材比例": "70",
+      "授課方式": "講授 實習/實驗 個別指導",
+      "評量配分比重": "■ 筆試+上機考 1. 小考 10% 2. 期中考 35% 3. 期末考 25% ■ 期末小專題 25% ■ 平時成績(出缺席, 作業, 課堂表現) 5%",
+      "辦公時間": "預約制(實體或線上)",
+      "授課週數": "16",
+      "彈性教學說明": "無",
+      "課程領域": "基礎知識",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "創新",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "領導",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "企業倫理",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "思辨和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94017",
+    "課號-班別": "MT2002-*",
+    "課程名稱(中文)": "網路使用者行為分析 [已停開]",
+    "課程名稱(英文)": "Analysis of Internet User Behavior",
+    "備註": "",
+    "授課教師": "陸艾妲",
+    "學分": "2",
+    "上課時間": "Mon67",
+    "教室": "I-315",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94017&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94017&outline=94017&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94017",
+      "課號": "MT2002-*",
+      "授課教師": "陸艾妲",
+      "課程名稱(中文)": "網路使用者行為分析",
+      "課程名稱(英文)": "Analysis of Internet User Behavior",
+      "課程學制": "學士班",
+      "學分": "2",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "授課週數": "16"
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94018",
+    "課號-班別": "MT2041-A",
+    "課程名稱(中文)": "統計學",
+    "課程名稱(英文)": "Statistics",
+    "備註": "老師授權系辦幫他代發第一週加選密碼，請欲申請同學從加退選第一日(8/27)到開學日前一日(8/30)填寫表單 https://forms.gle/eCTAq2nKkegPBpGi8",
+    "授課教師": "張東生",
+    "學分": "3",
+    "上課時間": "Mon234",
+    "教室": "I1-304",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "70",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94018&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限企業管理學系。年級:限二年級。班別:限A。身份:限非交換生。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限企業管理學系。年級:限三年級、四年級。班別:限A。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限企業管理學系碩士班。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限輔系-企業管理學系、雙主修-企業管理學系。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94018&outline=94018&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94018",
+      "課號": "MT2041-A",
+      "授課教師": "張東生",
+      "課程名稱(中文)": "統計學",
+      "課程名稱(英文)": "Statistics",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "(統計學加選密碼卡請到 企管系辦公室找陳家琪助教領取) 本課程旨在引導管院大二的同學建構社會科學中科學性論述 的基礎-統計分析。面對資訊紛沓雜陳的時代，如何將手邊既 有的資料轉化為可以利用的訊息，以輔助面對諸多不確定性 下的各種決策與判斷，我們需要一套可以幫助我們洞察資訊 內涵的工具與方法，統計分析恰如其份地扮演這樣角色。",
+      "授課內容": "本學期的課程初期我們將介紹一些現實世界所接觸實際資料的\n型態與特性，如何以科學性角度看待、觀察這些資料，並彙\n整出我們在決策時所需的資訊與洞見。課程接著鋪陳出機率\n觀念、何謂隨機變數?掌握的訊息集合與條件機率之關係、常\n見的分配型態、相關分析的範疇、統計檢定與推論的基本概\n念等。\n下學期的課程則延伸上學期的基礎至不同群體的比較、變異\n數分析與迴歸分析。我們亦將同時在課程中嘗試以不同的個\n案與實例，結合理論說明各個統計觀念與模型的所蘊含的直\n觀意義與操作，並透過實習讓學生實地操作演練套裝軟體\n如何輔助我們進行統計分析。祈能透過札實的統計基礎建構，\n厚植日後學生在高年級中對其他進階之專業課程乃至於未來\n在商業界求職或日後有志繼續深造時，掌握進行財務金融、\n經濟與行銷等商學管理領域所需的工具與分析方法，決勝於\n泛商學不同的專業領域。",
+      "教科書/參考書": "James T. McClave ＆ P. Georage Benson ＆ Terry Sincich, (2022) Statistics for Business and Economis,14th edition",
+      "自編教材比例": "50",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "三次考試60％, 作業25％，上課出席15％",
+      "辦公時間": "星期一234",
+      "授課週數": "16",
+      "課程領域": "基礎知識",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "N/A"
+        },
+        {
+          "能力名稱": "創新",
+          "強度指數": "(0) 無",
+          "評量方式": "N/A"
+        },
+        {
+          "能力名稱": "領導",
+          "強度指數": "(5) 非常高",
+          "評量方式": "N/A"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "N/A"
+        },
+        {
+          "能力名稱": "企業倫理",
+          "強度指數": "(2) 低",
+          "評量方式": "N/A"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(2) 低",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(5) 非常高",
+          "評量方式": "N/A"
+        },
+        {
+          "能力名稱": "思辨和解決問題能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(2) 低",
+          "評量方式": "口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94019",
+    "課號-班別": "MT2041-B",
+    "課程名稱(中文)": "統計學",
+    "課程名稱(英文)": "Statistics",
+    "備註": "",
+    "授課教師": "沈建文",
+    "學分": "3",
+    "上課時間": "Mon234",
+    "教室": "I1-007",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "65",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94019&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限企業管理學系。年級:限二年級。班別:限B。身份:限非交換生。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94019&outline=94019&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94019",
+      "課號": "MT2041-B",
+      "授課教師": "沈建文",
+      "課程名稱(中文)": "統計學",
+      "課程名稱(英文)": "Statistics",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "Introduce statistics in the context of contemporary business. Emphasizing statistical literacy in thinking and how to apply its concepts with real data and examples to develop a deeper conceptual understanding.",
+      "授課內容": "Statistics, Data, and Statistical Thinking (Chapter 1)\nMethods for Describing Sets of Data (Chapter 2)\nProbability (Chapter 3)\nMidterm Exam\nRandom Variables and Probability Distributions (Chapter 4)\nSampling Distributions (Chapter 5)\nInferences Based on a Single Sample: Estimation with Confidence Intervals (Chapter 6)",
+      "教科書/參考書": "Title: Statistics for Business and Economics (2022, 14th Edition) Author: James T. McClave , P. George Benson, Terry Sincich Publisher: Pearson",
+      "自編教材比例": "30",
+      "授課方式": "講授",
+      "評量配分比重": "Homework, Exercises, Participation, and Attendance: 35％ Midterm Exam: 30％ Final Exam: 35％",
+      "辦公時間": "17:00-18:00 on Monday @ I1-834-1",
+      "授課週數": "16",
+      "彈性教學說明": "We may offer additional computer-aided classes for statistical analysis training. Students will also have the opportunity to summarize what they’ve learned this semester and review their final exam scores.",
+      "課程領域": "基礎知識 、 基礎管理",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創新",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "領導",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "企業倫理",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "思辨和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94020",
+    "課號-班別": "MT2041-E",
+    "課程名稱(中文)": "統計學",
+    "課程名稱(英文)": "Statistics",
+    "備註": "",
+    "授課教師": "黃子菱",
+    "學分": "3",
+    "上課時間": "Wed234",
+    "教室": "I-204",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "120",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94020&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限資訊管理學系。年級:限二年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限資訊管理學系。身份:限重修生。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限輔系-資訊管理學系、雙主修-資訊管理學系、學分學程-電子商務(EC)、學分學程-統計。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94020&outline=94020&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94020",
+      "課號": "MT2041-E",
+      "授課教師": "黃子菱",
+      "課程名稱(中文)": "統計學",
+      "課程名稱(英文)": "Statistics",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "本課程旨在引導管院大二的同學建構社會科學中科學性論述的基礎 -- 統計分析。面對資訊紛沓雜陳的時代，如何將手邊既有的資料轉化為可以利用的訊息，以輔助面對諸多不確定性下的各種決策與判斷，我們需要一套可以幫助我們洞察資訊內涵的工具與方法，統計分析恰如其份地扮演這樣角色。祈能透過札實的統計基礎建構，厚植日後學生在高年級中對其他進階之專業課程乃至於未來在商業界求職或日後有志繼續深造時，能掌握管理領域所需的工具與分析方法。",
+      "授課內容": "資料與統計學（第一章）\n敘述統計：表格與圖形法（第二章）\n敘述統計：數值方法（第三章）\n機率導論（第四章）\n離散機率分配（第五章）\n連續機率分配（第六章）\n抽樣與抽樣分配（第七章）",
+      "教科書/參考書": "Statistics for Business and Economics (14th Edition)",
+      "自編教材比例": "10",
+      "授課方式": "講授 個別指導",
+      "評量配分比重": "作業: 30％ 期中考: 35％ 期末考: 35％",
+      "辦公時間": "個別約定",
+      "授課週數": "16",
+      "彈性教學說明": "第17-18週：彈性討論與成績檢閱",
+      "課程領域": "基礎知識",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創新",
+          "強度指數": "(2) 低",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "領導",
+          "強度指數": "(2) 低",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "企業倫理",
+          "強度指數": "(2) 低",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(2) 低",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(2) 低",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "思辨和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94021",
+    "課號-班別": "MT2041-F",
+    "課程名稱(中文)": "統計學",
+    "課程名稱(英文)": "Statistics",
+    "備註": "與MT2041-G合班授課。採英語授課，週四晚上實習課。",
+    "授課教師": "葉錦徽\n朱珊瑩",
+    "學分": "3",
+    "上課時間": "Tue678",
+    "教室": "I-204",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "64",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94021&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限財務金融學系。年級:限二年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限財務金融學系。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限雙主修-財務金融學系。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "系所:限輔系-財務金融學系。"
+        },
+        {
+          "優先順序": "5",
+          "相關條件限制說明": "學院:限管理學院。"
+        },
+        {
+          "優先順序": "6",
+          "相關條件限制說明": "學院:限非管理學院。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94021&outline=94021&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94021",
+      "課號": "MT2041-F",
+      "授課教師": "葉錦徽\n朱珊瑩",
+      "課程名稱(中文)": "統計學",
+      "課程名稱(英文)": "Statistics",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "課程目標 This course is devoted to introduce fundamental statistical concepts and methods to college level students in the School of Management. Statistics are used in a variety of contexts ranging from scientific experiments to political advertisements and beyond. This statistics course introduces the basic concepts of statistical analysis, with a focus on both univariate (single-variable) and bivariate (two-variable) data. The course starts with an introductory examination and display of data. Analysis of univariate/bivariate data by way of measures of central tendency (such as the mean or average), dispersion (such as the variance), asymmetry, and associations for both qualitative and quantitative data is presented. We then move to the probability theory and statistics terms. The relationship of probability to statistics is also discussed, providing students with the tools they need to understand how ``chance‘‘ plays a role in statistical analysis. Statistical distributions, with a focus on the normal distribution and its uses, are also considered next, followed by an introduction to various sampling theory and statistical testing. Some fundamental tests without parametric assumptions will be addressed. We continue to explore the conditional models from linear regression model via OLS, and analysis of variance. The student is provided with enough theory and sufficient practice to conduct statistical analyses for real life cases. This course is designed for anyone who desires to learn how statistics can produce better decisions and insights from the growing amount of data generated in modern business. 本課程旨在引導管院大二的同學建構社會科學中科學性論述的基礎 -- 統計分析。面對資訊紛沓雜陳的時代，如何將手邊既有的資料轉化為可以利用的訊息，以輔助面對諸多不確定性下的各種決策與判斷，我們需要一套可以幫助我們洞察資訊內涵的工具與方法，統計分析恰如其份地扮演這樣角色。上學期的課程初期我們將介紹一些現實世界所接觸實際資料的型態與特性，如何以科學性角度看待、觀察這些資料，並彙整出我們在決策時所需的資訊與洞見(insight)。課程接著鋪陳出機率觀念、何謂隨機變數?掌握的訊息集合與條件機率之關係、常見的分配型態、相關分析的範疇、統計檢定與推論的基本概念等。 下學期的課程則複習上學期習得的抽樣分配基礎後，將觀念延伸至不同群體的比較、變異數分析與迴歸分析、卡方檢定、非參數方法的應用。我們亦將同時在課程中嘗試以不同的個案與實例，結合理論說明各個統計觀念與模型的所蘊含的直觀意義與操作，並透過實習讓學生實地操作演練套裝軟體 (如 Excel 或 Python或 R 等) 如何輔助我們進行統計分析。祈能透過札實的統計基礎建構，厚植日後學生在高年級中對其他進階之專業課程乃至於未來在商業界求職或日後有志繼續深造時，掌握進行財務金融、經濟與行銷等商學管理領域所需的工具與分析方法，輔助智慧決策分析，決勝於泛商學不同的專業領域。",
+      "授課內容": "CH1 統計學、資料科學與統計思維\nCH2 呈現資料的方法與資料視覺化\nCH3 機率論\nCH4 隨機變數與機率分佈函數\nCH5 抽樣分佈函數\nCH6 單樣本的統計推論: 估計與信賴區間",
+      "教科書/參考書": "McClave, P. George Benson, ＆ Terry Sincich (2018), Statistics for Business and Economics, 13th edition. (ISBN: 9781292227085), 華泰文化",
+      "自編教材比例": "10 %~15 %",
+      "授課方式": "講授 研討 實習/實驗 其他",
+      "評量配分比重": "作業 (write, correct, photo, submit) 與課堂參與: 20％ 測驗 (課本內題目與課本外題目）: 20％ 案例分析 (Making Business Decisions): 20％ 期中考: 20％ 期末考: 20％",
+      "辦公時間": "週五早晨 8:30~9:45 或電郵預約 葉錦徽老師: jhyeh@ncu.edu.tw 朱珊瑩老師: sychu2024@gmail.com",
+      "授課週數": "16",
+      "彈性教學說明": "Week 17-18: # TA 問答時間。 # 透過撰寫個人反思日誌或獨立摘要報告，總結統計學的學習成果 # Case analysis presentation competition # Guest Speaker Invited Talk from Data Analytical Industries # Autonomous Learning and Testing in Statistics via Online Materials",
+      "課程領域": "基礎知識",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "創新",
+          "強度指數": "(2) 低",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "領導",
+          "強度指數": "(2) 低",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "企業倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "思辨和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94022",
+    "課號-班別": "MT2041-G",
+    "課程名稱(中文)": "統計學",
+    "課程名稱(英文)": "Statistics",
+    "備註": "與MT2041-F合班授課。採英語授課，週四晚上實習課。",
+    "授課教師": "葉錦徽\n朱珊瑩",
+    "學分": "3",
+    "上課時間": "Tue678",
+    "教室": "I-204",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "65",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94022&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限經濟學系。年級:限二年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限經濟學系。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限輔系-經濟學系、雙主修-經濟學系。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "學院:限管理學院。年級:限非一年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94022&outline=94022&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94022",
+      "課號": "MT2041-G",
+      "授課教師": "葉錦徽\n朱珊瑩",
+      "課程名稱(中文)": "統計學",
+      "課程名稱(英文)": "Statistics",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "本課程旨在引導管院大二的同學建構社會科學中科學性論述的基礎統計分析。面對資訊紛沓雜陳的時代，如何將手邊既有的資料轉化為可以利用的訊息，以輔助面對諸多不確定性下的各種決策與判斷，我們需要一套可以幫助我們洞察資訊內涵的工具與方法，統計分析恰如其份地扮演這樣角色。本學期的課程初期我們將介紹一些現實世界所接觸實際資料的型態與特性，如何以科學角度看待 與 觀察這些資料，並彙整出我們在決策時所需的資訊與 內涵 。課程接著鋪陳 機率 之 觀念 與 隨機變數 。討論 訊息集合與條件機率之關係、常見的分配型態、相關分析的範疇、統計檢定與推 論 等 基本統計概念。課程中藉由不同的個案與實例，結合理論說明各個統計觀念與模型 所蘊含的直觀意義與操作， 輔助 同學對於統計學的了解，以及進行統計分析。 經由資料整理、敘述統計與機率與統計分配 的統計基礎建構， 為下學期的統計學課程建立基礎，並 厚植日後學生在高年級 對其他進階專業課 程 與 未來在商業界求職或日後有志繼續深造時， 厚植 經濟 金融或行銷等商學 管理 領域所需的 分析 工具與方法。",
+      "授課內容": "Introduction to Probability, Discrete Probability Distributions, Continuous Probability Distributions, Sampling Distribution, Interval Estimation",
+      "教科書/參考書": "陳旭昇, 機率與統計推論：R語言的應用,2019, 東華 Anderson, D., D.J. Sweeney, T.A. Williams, J.D. Camm, J.J. Cochran (2016), Statistics for Business and Economics, 13th edition, Thomson (ISBN-10: 1-305-58531-3 | ISBN-13: 978-1-305-58531-7)",
+      "自編教材比例": "80",
+      "授課方式": "講授",
+      "評量配分比重": "Assignment (作業) 15% Midterm Test (期中考)*2 50% Final Test (期末考) 35%",
+      "辦公時間": "Wednesday 11:00 a.m. ~12:00 a.m. or by appointment",
+      "授課週數": "16",
+      "彈性教學說明": "TBA",
+      "課程領域": "基礎知識",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "創新",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "領導",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "企業倫理",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "思辨和解決問題能力",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94023",
+    "課號-班別": "MT3001-*",
+    "課程名稱(中文)": "當代政經哲思大師論壇 [已停開]",
+    "課程名稱(英文)": "Master Forum of Contemporary Thinking and Critiques",
+    "備註": "",
+    "授課教師": "",
+    "學分": "1",
+    "上課時間": "Tue34",
+    "教室": "*-***",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "60",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94023&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限學士班。年級:限非一年級、非二年級。身份:限非交換生。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94023&outline=94023&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94023",
+      "課號": "MT3001-*",
+      "課程名稱(中文)": "當代政經哲思大師論壇",
+      "課程名稱(英文)": "Master Forum of Contemporary Thinking and Critiques",
+      "課程學制": "學士班",
+      "學分": "1",
+      "課程目標": "-",
+      "授課內容": "-",
+      "教科書/參考書": "-",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討",
+      "評量配分比重": "-",
+      "辦公時間": "-",
+      "授課週數": "16",
+      "彈性教學說明": "-",
+      "課程領域": "基礎知識 、 基礎管理 、 策略管理",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "創新",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "領導",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "企業倫理",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "思辨和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94024",
+    "課號-班別": "MT3003-*",
+    "課程名稱(中文)": "哲學批判與政治經濟分析",
+    "課程名稱(英文)": "Critical Thinking and Analysis in Philosophy, Politics and Economics",
+    "備註": "",
+    "授課教師": "許雲翔\n陸敬忠\n葉錦徽",
+    "學分": "3",
+    "上課時間": "Mon234",
+    "教室": "I-303",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "30",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94024&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限學士班。年級:限非一年級、非二年級。身份:限非交換生。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94024&outline=94024&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94024",
+      "課號": "MT3003-*",
+      "授課教師": "許雲翔\n陸敬忠\n葉錦徽",
+      "課程名稱(中文)": "哲學批判與政治經濟分析",
+      "課程名稱(英文)": "Critical Thinking and Analysis in Philosophy, Politics and Economics",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "當代全球在政治、經濟、科技、社會與文化等領域進展雖然快速，但也造成諸多問題與挑戰。這些問題與挑戰的議題看似分別屬於獨立的領域，卻也互相關聯，要面對並成功地解決這些問題與挑戰，未來新世代的菁英需要了解並植基於哲學、政治、經濟三方面的知識架構與前瞻思維，整合並且據以調整人類的價值與行為。 本課程由哲學所、法政所、經濟系共同開設經濟分析、哲學批判、政治學分析三個領域課程內容，規劃五週個別課程及一週整合課程，由三位教授共授。",
+      "授課內容": "1 (9/9 ) 課程導論 理性個人、廠商最適決策與市場供需形成 經濟分析 (I)\n2 (9/16 ) 市場均衡、彈性與市場結構 經濟分析 (II)\n3 (9/23 ) 定價、賽局、競爭策略與行為經濟 經濟分析 (III)\n4 (9/30 ) 外部性、公共財 宏觀總體經濟 (物價、所得、就業、利率、匯率) 經濟分析 (IV)\n5 ( 10/7 ) 隨堂測試 經濟分析\n6 (10/14 ) 邏輯與哲思辯證方法 哲學批判\n7 (10/21) 形上學與世界觀省思 哲學批判\n8 (10/28 ) 隨堂測試 哲學批判\n9 (11/4 ) 知識論與真理觀問題 哲學批判\n10 (11/11) 倫理學與價值觀批判 哲學批判\n11 (11/18) 憲政機關與政黨政治 政治學分析\n12 (11/25 ) 國會與民主參與 政治學分析\n13 (12/2 ) 正義與差異政治 政治學分析\n14 ( 12/9 ) 地方政府與公共治理 政治學分析\n15 (12/16) 隨堂測試 政治學分析\n16 (12/23) 綜合討論 (授課時間改為中午12:00-13:00)\n17 (12/30 ) 不授課，期末報告繳交截止期限。\n18 (1/6 ) 不授課",
+      "教科書/參考書": "自編教材",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討",
+      "評量配分比重": "▓Class Participation (出席率) 15％ ▓Paper/Theses Writing (報告/論文)40％ ▓Quiz (隨堂測試) 45％",
+      "辦公時間": "TBA",
+      "授課週數": "16",
+      "彈性教學說明": "-",
+      "課程領域": "基礎知識 、 基礎管理 、 策略管理",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "創新",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "領導",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "企業倫理",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "思辨和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94025",
+    "課號-班別": "MT4002-A",
+    "課程名稱(中文)": "管院碩士班進修英文",
+    "課程名稱(英文)": "Workplace English for SoM Graduates",
+    "備註": "1.未達英語檢測標準管院碩生應修一學年進修英文（0學分），兩學期至少選修一門多益測驗，另一門可為本課程（TOEIC Alternative）:多益聽講 2.出勤記錄始自第一週，未出席需向學校請假以免扣分。老師有權退選頭兩次上課未參與的學生 3. 重修請至志希館608索取密碼卡",
+    "授課教師": "胡佳毓",
+    "學分": "0",
+    "上課時間": "Tue34",
+    "教室": "I1-310",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94025&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。學院:限管理學院。指定課程:必須禁修MT4002。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94025&outline=94025&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94025",
+      "課號": "MT4002-A",
+      "授課教師": "胡佳毓",
+      "課程名稱(中文)": "管院碩士班進修英文",
+      "課程名稱(英文)": "Workplace English for SoM Graduates",
+      "課程學制": "學士班",
+      "學分": "0",
+      "課程目標": "This is the first course in a two-part series aimed at enhancing business-minded learners’ workplace English proficiency. This semester, the class emphasizes vocabulary development, listening comprehension, and effective speaking techniques. To practice these skills, students will work with materials primarily drawn from TED and MyET, focusing on TOEIC-related themes relevant to international communication. By the end of the course, students will be able to apply functional language to everyday workplace scenarios, communicating with greater effectiveness & diplomacy.",
+      "授課內容": "**語言學習需要定期付出時間與努力才易有成效。\n**課程內容與評量始自第一週，有選上或有興趣加選的同學，都請準時到課，避免成績損失。\n**課程須知會陸續公告於新ee-class系統: https://ncueeclass.ncu.edu.tw/，請同學每週追蹤網站上的注意事項。\n(Tentative Weekly Class Schedule)\nWeek 1\nOrientation\nTED: Attitude Matters\nWeek 2\nTED: Listening & Questioning Matters\nMyET: Registering for the New Semester\nWeek 3\nTED: Entertaining Matters\nMyET: Food + Class Experience\nWeek 4\nTED: Pronunciation Matters\nMyET: Having One's Own Vehicle\nWeek 5\nTED: Explaining Matters\nMyET: Living with Roommates\nWeek 6\nTED: Describing Matters\nMyET: General Chatting Topics\nWeek 7\nListening & Vocabulary Achievement Test 1\nWeek 8 Review of Listening & Vocabulary Achievement Test 1\nTED: Paraphrasing / Recapping Matters\nMyET: Is this meeting necessary? (Conversation 1)\nIntroduction to Term Project\nWeek 9\nTED: Stressing Matters\nMyET: Is this meeting necessary? (Conversation 2)\nWeek 10\nTED: Pausing Matters\nMyET: Is this meeting necessary? (Conversation 3)\nWeek 11\nTED: Chunking / Linking / Omission Matters\nMyET: Is this meeting necessary? (Conversation 4)\nWeek 12\nTED: Accent / Clarity Matters\nMyET: Is this meeting necessary? (Conversation 5)\nWeek 13\nTED: Diplomacy / Formality Matters\nMyET: Is this meeting necessary? (Conversation 6)\nWeek 14\nListening & Vocabulary Achievement Test 2\nTerm Project: Task 1 Due\nWeek 15\nReview of Listening & Vocabulary Achievement Test 2\nSupplementary Lesson for Term Project\nWeek 16\nTerm Project: Task 2 Due\nBonus / School Approval for Absence Due",
+      "教科書/參考書": "(to be finalized) 1. TED: https://www.ted.com/ 2. MyET: https://tw.myet.com/ 3. Additional Materials will be distributed in class or on Google Drive.",
+      "自編教材比例": "30",
+      "授課方式": "講授 研討 個別指導 其他",
+      "評量配分比重": "(tentative grading scheme) 1. Attendance / Activity / Attitude – 15% 2. Vocabulary Builders & Speaking Assignments – 25% 3. Listening & Vocabulary Achievement Tests – 30% 4. Term Project – 25% 5. Bonuses – 15%",
+      "辦公時間": "By appointment: E-mail the instructor at jojojiayuhu@gmail.com.",
+      "授課週數": "16",
+      "彈性教學說明": "No recess scheduled in-between class hours.",
+      "課程領域": "基礎知識 、 基礎管理",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 無 ， 其他"
+        },
+        {
+          "能力名稱": "創新",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 無 ， 其他"
+        },
+        {
+          "能力名稱": "領導",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 無 ， 其他"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 無 ， 其他"
+        },
+        {
+          "能力名稱": "企業倫理",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 無 ， 其他"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 無 ， 其他"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 無 ， 其他"
+        },
+        {
+          "能力名稱": "思辨和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 無 ， 其他"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 無 ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94026",
+    "課號-班別": "MT4002-B",
+    "課程名稱(中文)": "管院碩士班進修英文 [已停開]",
+    "課程名稱(英文)": "Workplace English for SoM Graduates",
+    "備註": "1.未達英語檢測標準管院碩一新生，應修一學年進修英文（0學分），兩學期至少選修一門多益測驗。 2.出勤記錄始自第一週，未出席者皆需向學校請假以免扣缺席分數。老師有權退選頭兩次上課皆未參與的學生 3.重修請至志希館608索取密碼卡",
+    "授課教師": "胡佳毓",
+    "學分": "0",
+    "上課時間": "Mon34",
+    "教室": "I1-509",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94026&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。學院:限管理學院。指定課程:必須禁修MT4002。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94026&outline=94026&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94026",
+      "課號": "MT4002-B",
+      "授課教師": "胡佳毓",
+      "課程名稱(中文)": "管院碩士班進修英文",
+      "課程名稱(英文)": "Workplace English for SoM Graduates",
+      "課程學制": "學士班",
+      "學分": "0",
+      "課程目標": "This course is the second in a series of two, devised to develop students’ English proficiency in the general context of the workplace with a focus on five aspects of the language: vocabulary knowledge, grammar acquisition, listening competency, reading comprehension, and test-taking strategies. To be precise, it aims to advance students’ fundamentals and tactics required for TOEIC (Test of English for International Communication), which can officially certify their workplace English level and appreciably enhance their employment profile.",
+      "授課內容": "**課程內容與評量始自第一週，有選上或有興趣加選的同學，都請準時到課，避免成績損失。\n**語言學習需要定期付出時間與努力才易有成效。\n**課程須知會陸續公告於新ee-class系統: https://ncueeclass.ncu.edu.tw/，同學要每週追蹤網站上的注意事項。\n(tentative weekly class schedule)\nWeek 1 Orientation + Listening Diagnostic Test\nWeek 2 TOEIC Test Part 1: Photographs\nWeek 3 TOEIC Test Part 2: Question ＆ Response\nWeek 4 TOEIC Test Part 3: Conversations\nWeek 5 TOEIC Test Part 4: Talks\nWeek 6 TOEIC Test Part 5: Incomplete Sentences\nWeek 7 TOEIC Test Part 5: Incomplete Sentences\nWeek 8 TOEIC Test Part 7: Reading Comprehension\nWeek 9 TOEIC Test Part 5: Incomplete Sentences\nWeek 10 TOEIC Test Part 6: Text Completion\nWeek 11 TOEIC Test Part 6: Text Completion\nWeek 12 TOEIC Test Part 7: Reading Comprehension\nWeek 13 TOEIC Test Part 1: Photographs + TOEIC Test Part 3: Conversations\nWeek 14 TOEIC Test Part 2: Question ＆ Response + TOEIC Test Part 4: Talks\nWeek 15 (Bonus 1) Grammar ＆ Vocabulary Achievement Test + (Bonus 2) Easy test’s 4 Mixed Tests Due\nWeek 16 Final Exam: TOEIC Listening ＆ Reading Test, being non-substitutable, lasting from 10:00 to 12:30 + (Bonus 3) Official TOEIC L＆R Test Due + School Approval for Absence Due",
+      "教科書/參考書": "(to be finalized) 1. Taking the TOEIC: Skills and Strategies 2 (Intermediate Level, 2nd Edition). Compass (2018). ISBN: 9-781640-150720. (for coursebook) 2. Cambridge Business English Dictionary 3. Additional Materials will be distributed in class.",
+      "自編教材比例": "30%",
+      "授課方式": "講授 研討 個別指導 其他",
+      "評量配分比重": "(tentative grading scheme) 1. Attendance / Activity / Attitude – 20％ 2. Grammar and Vocabulary Builders – 30％ (non-substitutable) 3. Final Exam – 50％ (non-substitutable) 4. (Bonus 1) Grammar ＆ Vocabulary Achievement Test – 5％ 5. (Bonus 2) Easy test – 5％ (Only the mixed tests count.) 6. (Bonus 3) Official TOEIC L＆R Test – 5％ 7. (Bonus 4) Teaching Assistant – 5％",
+      "辦公時間": "By appointment: E-mail the instructor at jojojiayuhu@gmail.com.",
+      "授課週數": "16",
+      "彈性教學說明": "1. 每週上課增加10分鐘：一般上課時間為 10:00 ~ 11:50，中間不下課。 2. 考試週 (第16週）增加50分鐘：考試時間為 10:00 ~ 12:30，中間不休息。",
+      "課程領域": "基礎知識 、 基礎管理",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 無 ， 其他"
+        },
+        {
+          "能力名稱": "創新",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 無 ， 其他"
+        },
+        {
+          "能力名稱": "領導",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 無 ， 其他"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 無 ， 其他"
+        },
+        {
+          "能力名稱": "企業倫理",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 無 ， 其他"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 無 ， 其他"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 無 ， 其他"
+        },
+        {
+          "能力名稱": "思辨和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 無 ， 其他"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 無 ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94027",
+    "課號-班別": "MT4003-*",
+    "課程名稱(中文)": "英語溝通力：從職場影集學商務表達技巧 [已停開]",
+    "課程名稱(英文)": "English at Work: Learning Communication Skills Through Business TV Shows",
+    "備註": "1.出勤記錄始自第一週，未出席者皆需向學校請假以免扣缺席分數。2.建議多益成績達600分以上者選修",
+    "授課教師": "胡佳毓",
+    "學分": "2",
+    "上課時間": "Tue78",
+    "教室": "I1-310",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "30",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94027&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限學士班。學院:限管理學院。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限碩士班、博士班。學院:限管理學院。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限學士班。學院:限非管理學院。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "學制:限碩士班、博士班。學院:限非管理學院。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94027&outline=94027&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94027",
+      "課號": "MT4003-*",
+      "授課教師": "胡佳毓",
+      "課程名稱(中文)": "英語溝通力：從職場影集學商務表達技巧",
+      "課程名稱(英文)": "English at Work: Learning Communication Skills Through Business TV Shows",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "Mission statement: To help learners acquire key business communication skills through a dynamic and immersive English learning experience using various modern workplace TV series, plus corresponding book titles and case studies. Objective Methods: This course focuses on four aspects of the English language: speaking eloquence, listening competency, vocabulary variety, and communication technology and it aims to help students 1. Use business TV shows to understand real-life English usage in workplace scenarios. 2. Apply knowledge from business books and case studies to analyze show scenarios to boost critical-thinking skills for professional purpose. 3. Simulate or improve how show characters handle challenges at work to enhance problem-solving abilities. 4. Present themselves in practical tasks such as the term project “Business Pitch” to manifest what they have learned. Expected Outcome: Upon completing the course, students will be prepared to advance their business English communication skills to CEFR Level B2 or higher, as can be verified by official TOEIC or Linguaskill Business test certifications, which will significantly enhance their job prospects.",
+      "授課內容": "**語言學習需要定期付出時間與努力才易有成效。\n**課程內容與評量始自第一週，有選上或有興趣加選的同學，都請準時到課，避免成績損失。\n**課程須知會陸續公告於新ee-class系統: https://ncueeclass.ncu.edu.tw/，請同學每週追蹤網站上的注意事項。\n(tentative weekly class schedule)\nWeek 1\nOrientation\nTheme: Job Interview (Regular vs Extreme)\nFood for Thought: Questions or Answers?\nWeek 2\nTheme: Team-building (Small Talk vs Big Talk)\nFood for Thought: Small Talk or Big Talk?\nWeek 3\nTheme: Office Politics & Conducting Mediation\nFood for Thought: Neutrality or involvement?\nWeek 4\nTheme: Teleworking & Teamwork\nFood for Thought: Remote Work or In-office Jobs?\nWeek 5\nTheme: Customer Service & Handling Complaints\nFood for Thought: Customers or Employees?\nWeek 6\nTheme: Elevator Pitch\nFood for Thought: Verbal vs Visual?\nWeek 7\nTheme: Business Presentation\nFood for Thought: Structure or Rhetoric?\nIntroduction to Term Project\nWeek 8\nTerm Project: Business Pitch 1 on Shark Tank\nWeek 9\nTheme: Negotiation by Typical Procedure\nFood for Thought: Transparency or Opacity?\nWeek 10\nTheme: Negotiation with High-pressure Tactics\nFood for Thought: Hard Bargaining or Soft Stance?\nWeek 11\nTheme: Meetings on the Go (MBWA)\nFood for Thought: Short or Long? Rare or Often? In-person or Virtual?\nWeek 12\nTheme: Business Roundtable\nFood for Thought: Wrong or No? Quick or Slow? Individual or Collaborative?\nWeek 13\nTheme: Performance Appraisal\nFood for Thought: Regularly or Randomly? by Seniority or Merit; from Within or Outside?\nWeek 14\nSupplementary Lesson for Term Project & LV Achievement Test\nWeek 15\nTerm Project: Business Pitch 2 on Shark Tank\nWeek 16\nListening & Vocabulary Achievement Test\nBonus / Make-ups for Absenteeism / School Approval for Absence Due",
+      "教科書/參考書": "(to be finalized) 1. From business TV shows: Shark Tank, Emily in Paris, Suits, Superstore, Glamorous, The Office, Billions, Mythic Quest, Ted Lasso, The Lincoln Lawyer, Brooklyn Nine-Nine, Selling Sunset, etc. 2. From business book titles: English for Key Business Skills: Networking, Presentations, Meetings, and Negotiations, Business Result series, Market Leader series, In Company 3.0 series, etc. (Note: Materials above, but not limited to, will be distributed in class or posted on ee-class or Google Drive.)",
+      "自編教材比例": "10",
+      "授課方式": "講授 研討 實習/實驗 個別指導 其他",
+      "評量配分比重": "(tentative grading scheme) 1. Attendance & Attitude – 15% 2. Show Scrutiny – 15% 3. Term Project – 30% (Business Pitch on Shark Tank) 4. Vocabulary Builders & Mimicking Assignments – 20% 5. Listening & Vocabulary Achievement Test – 20% 6. Bonus 1 – 5% (Options to be announced) 7. Bonus 2 – 5% Teaching Assistant 8. Make-ups for Absenteeism – 0% (Options to be announced)",
+      "辦公時間": "By appointment: E-mail the instructor at jojojiayuhu@gmail.com.",
+      "授課週數": "16",
+      "彈性教學說明": "1. No recess scheduled in-between class hours. 2. One additional activity (Toastmasters) to be assigned.",
+      "課程領域": "基礎知識 、 基礎管理",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演 ， 其他"
+        },
+        {
+          "能力名稱": "創新",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演 ， 其他"
+        },
+        {
+          "能力名稱": "領導",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演 ， 其他"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演 ， 其他"
+        },
+        {
+          "能力名稱": "企業倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演 ， 其他"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演 ， 其他"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演 ， 其他"
+        },
+        {
+          "能力名稱": "思辨和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演 ， 其他"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演 ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94028",
+    "課號-班別": "MT5001-*",
+    "課程名稱(中文)": "菁英數智研究坊 [已停開]",
+    "課程名稱(英文)": "Talent Data-driven Workshop",
+    "備註": "老師有權退選頭次上課未參與的學生。 分發條件:(1)管理學院學士班三、四年級(1)管理學院碩士班 (2)非管理學院學士班三、四年級(2)非管理學院碩士班 身分：限非交換生",
+    "授課教師": "柳?怡",
+    "學分": "3",
+    "上課時間": "Thu678",
+    "教室": "I1-310",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "18",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94028&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限學士班、碩士班。學院:限管理學院。年級:限非一年級、非二年級。身份:限非交換生。"
+        },
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限學士班、碩士班。學院:限非管理學院。年級:限非一年級、非二年級。身份:限非交換生。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94028&outline=94028&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94028",
+      "課號": "MT5001-*",
+      "授課教師": "柳?怡",
+      "課程名稱(中文)": "菁英數智研究坊",
+      "課程名稱(英文)": "Talent Data-driven Workshop",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "打開數據思維、探索企業真實挑戰！ 培養未來企業數據人才的實戰課程! 課程特色 🔍 深入企業實務，培養問題解決力 由業界頂尖顧問授課，透過實際案例分析，掌握企業運營流程，從中找出問題根因，系統性培養「看見問題、解決問題」的能力。 🗣 強化簡報技巧，提升邏輯表達力 透過密集上台報告練習，學員將學會快速聚焦問題、提出解決方案，在短時間內有邏輯地清晰表達想法。 課中&課後由顧問團隊給予一對一指導與回饋，幫助持續進步。",
+      "授課內容": "課程重點\n趨勢議題探索:\nESG 永續經營策略\nAIOT 數位轉型關鍵\nAI Agent 應用與 Indepth AI 平台展示\n數據驅動實作:\n客戶實際案例研討\n高價值數據應用邏輯\n數據探勘與分析技術\n企業參訪:\n前進台中 5G IOT 軟體園區，近距離觀摩智慧產業應用\n工具與語言學習:\n掌握實用數據探勘工具與語言，應用於真實情境中",
+      "教科書/參考書": "企業流程管理",
+      "授課方式": "講授 研討 實習/實驗 個別指導",
+      "評量配分比重": "出席率 報告撰寫(實作營小組報告.個人期末報告) 無期中期末考",
+      "辦公時間": "14:00",
+      "授課週數": "16",
+      "彈性教學說明": "實際企業參訪(隔周停課)",
+      "課程領域": "基礎知識 、 基礎管理 、 策略管理",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "創新",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(4) 高",
+          "評量方式": "N/A"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(4) 高",
+          "評量方式": "N/A"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94029",
+    "課號-班別": "MT6012-*",
+    "課程名稱(中文)": "企業實習(二)",
+    "課程名稱(英文)": "Enterprise Internship II",
+    "備註": "1.欲選課同學請詳閱並依申請說明辦理 (https://www.mgt.ncu.edu.tw/zh-TW/article/2024-01-12%2014:39:48)。 2.限已錄取實習並於規定期間進行實習者。 3.須於規定期限繳交規劃書及用印完成之合約，經審核通過後核發密碼卡。",
+    "授課教師": "教授群",
+    "學分": "2",
+    "上課時間": "Sun9A",
+    "教室": "*-***",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94029&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94029&outline=94029&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94029",
+      "課號": "MT6012-*",
+      "授課教師": "教授群",
+      "課程名稱(中文)": "企業實習(二)",
+      "課程名稱(英文)": "Enterprise Internship II",
+      "課程學制": "碩博同修",
+      "學分": "2",
+      "課程目標": "為提升學生學習效果，培養實務致用的能力，體驗職場工作與環境，進而增進就業適應力與競爭力，本課程透過於各企業、學術、法人機構實習，提供學生多元學習環境，同時加強產學合作。",
+      "授課內容": "實習內容視個別學生與企業協議而定。",
+      "教科書/參考書": "無",
+      "自編教材比例": "0",
+      "授課方式": "實習/實驗 個別指導 其他",
+      "評量配分比重": "實習單位評分 70% 系所輔導老師評分 30%",
+      "辦公時間": "另行約定時間",
+      "授課週數": "16",
+      "彈性教學說明": "實習內容視個別學生與企業協議而定。",
+      "課程領域": "基礎知識 、 基礎管理 、 行銷管理 、 策略管理 、 人力資源管理",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "思辨和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(3) 普通",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(3) 普通",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94030",
+    "課號-班別": "MT6013-*",
+    "課程名稱(中文)": "企業實習(三)",
+    "課程名稱(英文)": "Enterprise Internship III",
+    "備註": "1.欲選課同學請詳閱並依申請說明辦理 (https://www.mgt.ncu.edu.tw/zh-TW/article/2024-01-12%2014:39:48)。 2.限已錄取實習並於規定期間進行實習者。 3.須於規定期限繳交規劃書及用印完成之合約，經審核通過後核發密碼卡。",
+    "授課教師": "鄭有為\n盧佳琪\n陳春希\n許秉瑜\n蕭義棋\n曾富祥\n黃子菱\n黃承祖\n陳炫碩\n曹壽民",
+    "學分": "3",
+    "上課時間": "Sun678",
+    "教室": "*-***",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94030&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94030&outline=94030&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94030",
+      "課號": "MT6013-*",
+      "授課教師": "鄭有為\n盧佳琪\n陳春希\n許秉瑜\n蕭義棋\n曾富祥\n黃子菱\n黃承祖\n陳炫碩\n曹壽民",
+      "課程名稱(中文)": "企業實習(三)",
+      "課程名稱(英文)": "Enterprise Internship III",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "為提升學生學習效果，培養實務致用的能力，體驗職場工作與環境，進而增進就業適應力與競爭力，本課程透過於各企業、學術、法人機構實習，提供學生多元學習環境，同時加強產學合作。",
+      "授課內容": "實習內容視個別學生與企業協議而定。",
+      "教科書/參考書": "無",
+      "自編教材比例": "0",
+      "授課方式": "實習/實驗 個別指導 其他",
+      "評量配分比重": "實習單位評分 70% 系所輔導老師評分 30%",
+      "辦公時間": "另行約定時間",
+      "授課週數": "16",
+      "彈性教學說明": "實習內容視個別學生與企業協議而定。",
+      "課程領域": "基礎知識 、 基礎管理 、 行銷管理 、 策略管理 、 人力資源管理",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "思辨和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(3) 普通",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(3) 普通",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94031",
+    "課號-班別": "MT6017-*",
+    "課程名稱(中文)": "暑期實習(一)",
+    "課程名稱(英文)": "Summer Internship I",
+    "備註": "1.欲選課同學請詳閱並依申請說明辦理 (https://www.mgt.ncu.edu.tw/zh-TW/article/2024-01-12%2014:39:48)。 2.限已錄取實習並於規定期間進行實習者。 3.須於規定期限繳交規劃書及用印完成之合約，經審核通過後核發密碼卡。",
+    "授課教師": "吳大任",
+    "學分": "1",
+    "上課時間": "Sun1",
+    "教室": "*-***",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94031&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94031&outline=94031&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94031",
+      "課號": "MT6017-*",
+      "授課教師": "吳大任",
+      "課程名稱(中文)": "暑期實習(一)",
+      "課程名稱(英文)": "Summer Internship I",
+      "課程學制": "碩博同修",
+      "學分": "1",
+      "課程目標": "為提升學生學習效果，培養實務致用的能力，體驗職場工作與環境，進而增進就業適應力與競爭力，本課程透過於各企業、學術、法人機構實習，提供學生多元學習環境，同時加強產學合作。",
+      "授課內容": "實習內容視個別學生與企業協議而定。",
+      "教科書/參考書": "無",
+      "自編教材比例": "0",
+      "授課方式": "實習/實驗 個別指導 其他",
+      "評量配分比重": "實習單位評分 70% 系所輔導老師評分 30%",
+      "辦公時間": "另行約定時間",
+      "授課週數": "16",
+      "彈性教學說明": "實習內容視個別學生與企業協議而定。",
+      "課程領域": "基礎知識 、 基礎管理 、 行銷管理 、 策略管理 、 人力資源管理",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "思辨和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(3) 普通",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(3) 普通",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94032",
+    "課號-班別": "MT6018-*",
+    "課程名稱(中文)": "暑期實習(二)",
+    "課程名稱(英文)": "Summer Internship II",
+    "備註": "1.欲選課同學請詳閱並依申請說明辦理 (https://www.mgt.ncu.edu.tw/zh-TW/article/2024-01-12%2014:39:48)。 2.限已錄取實習並於規定期間進行實習者。 3.須於規定期限繳交規劃書及用印完成之合約，經審核通過後核發密碼卡。",
+    "授課教師": "李憶萱",
+    "學分": "2",
+    "上課時間": "SunZ5",
+    "教室": "*-***",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94032&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94032&outline=94032&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94032",
+      "課號": "MT6018-*",
+      "授課教師": "李憶萱",
+      "課程名稱(中文)": "暑期實習(二)",
+      "課程名稱(英文)": "Summer Internship II",
+      "課程學制": "碩博同修",
+      "學分": "2",
+      "課程目標": "為提升學生學習效果，培養實務致用的能力，體驗職場工作與環境，進而增進就業適應力與競爭力，本課程透過於各企業、學術、法人機構實習，提供學生多元學習環境，同時加強產學合作。",
+      "授課內容": "實習內容視個別學生與企業協議而定。",
+      "教科書/參考書": "無",
+      "自編教材比例": "0",
+      "授課方式": "實習/實驗 個別指導 其他",
+      "評量配分比重": "實習單位評分 70% 系所輔導老師評分 30%",
+      "辦公時間": "另行約定時間",
+      "授課週數": "16",
+      "彈性教學說明": "實習內容視個別學生與企業協議而定。",
+      "課程領域": "基礎知識 、 基礎管理 、 行銷管理 、 策略管理 、 人力資源管理",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "思辨和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(3) 普通",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(3) 普通",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94033",
+    "課號-班別": "MT6019-*",
+    "課程名稱(中文)": "暑期實習(三)",
+    "課程名稱(英文)": "Summer Internship III",
+    "備註": "1.欲選課同學請詳閱並依申請說明辦理 (https://www.mgt.ncu.edu.tw/zh-TW/article/2024-01-12%2014:39:48)。 2.限已錄取實習並於規定期間進行實習者。 3.須於規定期限繳交規劃書及用印完成之合約，經審核通過後核發密碼卡。",
+    "授課教師": "盧佳琪\n王志瑋\n沈建文\n蕭義棋\n謝依靜\n黃子菱\n黃泓人\n黃承祖\n陳仲儼",
+    "學分": "3",
+    "上課時間": "Sun234",
+    "教室": "*-***",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94033&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94033&outline=94033&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94033",
+      "課號": "MT6019-*",
+      "授課教師": "盧佳琪\n王志瑋\n沈建文\n蕭義棋\n謝依靜\n黃子菱\n黃泓人\n黃承祖\n陳仲儼",
+      "課程名稱(中文)": "暑期實習(三)",
+      "課程名稱(英文)": "Summer Internship III",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "為提升學生學習效果，培養實務致用的能力，體驗職場工作與環境，進而增進就業適應力與競爭力，本課程透過於各企業、學術、法人機構實習，提供學生多元學習環境，同時加強產學合作。",
+      "授課內容": "實習內容視個別學生與企業協議而定。",
+      "教科書/參考書": "無",
+      "自編教材比例": "0",
+      "授課方式": "實習/實驗 個別指導 其他",
+      "評量配分比重": "實習單位評分 70% 系所輔導老師評分 30%",
+      "辦公時間": "另行約定時間",
+      "授課週數": "16",
+      "彈性教學說明": "實習內容視個別學生與企業協議而定。",
+      "課程領域": "基礎知識 、 基礎管理 、 行銷管理 、 策略管理 、 人力資源管理",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "思辨和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(3) 普通",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(3) 普通",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94034",
+    "課號-班別": "MT7001-*",
+    "課程名稱(中文)": "企業優質人才學用培育課程",
+    "課程名稱(英文)": "Talent Optimization Program",
+    "備註": "",
+    "授課教師": "黃承祖",
+    "學分": "3",
+    "上課時間": "Wed678",
+    "教室": "I1-117",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "75",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94034&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限學士班。學院:限管理學院。年級:限四年級。身份:限非交換生。"
+        },
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。學院:限管理學院。身份:限非交換生。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限學士班。學院:限管理學院。年級:限三年級。身份:限非交換生。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限學士班、碩士班、博士班。身份:限非交換生。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94034&outline=94034&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94034",
+      "課號": "MT7001-*",
+      "授課教師": "黃承祖",
+      "課程名稱(中文)": "企業優質人才學用培育課程",
+      "課程名稱(英文)": "Talent Optimization Program",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "本課程是一門專為管理學院學生設計。課程結合理論與實務，結合企業資源，以104人力銀行線上職涯服務和實體的Giver服務，讓學生從瞭解自己、認識職場、培養能力、職場實作、求職技巧到企業邀約媒合，為一站式的課程設計，是適性揚才的職涯教育訓練課程。 本課程之教學目標如下： 1.以實習或正職為目標的學習：協助學生認清自身求職目標，確認適性的職務內容，並培養良好的工作態度和職場倫理概念。 2.培育即戰力的授課內容，區分為四大類別: 職場探索、職場技能、企業職能、求職技能等一系列嚴謹課程。 3.學校與企業間之共創課程：課程將由業師、學校及104共同討論適合學生之課程，並於期末進行產學專案研究，以實踐大學社會責任、善盡企業社會責任。 4.修課並完成課程同學，有優先參與104人力銀行為本課程所媒合企業之實習機會。",
+      "授課內容": "以課程第一天的說明為主（以下僅供參考）\nW01 職場探索：課程說明/職涯探索工作坊 (上)\nW02 職場探索：職場實習常見勞資爭議法律實務\nW03 職場探索：職涯探索工作坊 (下)\nW04 職場技能：數位力_數位行銷與社群運用\nW05 企業職能：管理顧問業_勤業眾信(風險諮詢服務)\nW06 企業職能：資訊科技_LINE Taiwan\nW07 求職技能：如何撰寫履歷＆準備面試(線上自主學習)\nW08 企業職能：金融業_永豐銀行\nW09 企業職能：服飾零售業_Uniqlo\nW10 企業職能：零售業_IKEA\nW11 職場技能：專案管理思維\nW12 職場技能：簡報提案技巧(1)：課程講解實作\nW13 求職技能：履歷面試及期末報告準備(自主學習）\nW14 職場技能：簡報提案技巧(2)：期末報告演練\nW15 求職技能：一對一模擬面試\nW16 期末發表會：分組專案提報",
+      "教科書/參考書": "自編教材",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 其他",
+      "評量配分比重": "▲指定作業 20％ 。 ▲期末報告 50％ 。 ▲課程出席 10％ 。 ▲課後問卷填寫(含課後作業單) 20％。 ★ 額外加分 。",
+      "辦公時間": "週四 1:00 p.m.-2:00 p.m.",
+      "授課週數": "16",
+      "彈性教學說明": "1.履歷自傳撰寫＆面試準備 2.期末報告資料討論與簡報製作準備",
+      "課程領域": "基礎知識 、 基礎管理 、 人力資源管理",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "思辨和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94035",
+    "課號-班別": "MT3002-*",
+    "課程名稱(中文)": "政經哲思小論文",
+    "課程名稱(英文)": "Thesis of Contemporary Thinking and Critiques",
+    "備註": "",
+    "授課教師": "許雲翔\n陸敬忠\n葉錦徽",
+    "學分": "2",
+    "上課時間": "Sun678",
+    "教室": "I1-117",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "30",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94035&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限學士班。年級:限三年級、四年級。身份:限非交換生。"
+        },
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班。年級:限一年級、二年級。身份:限非交換生。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94035&outline=94035&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94035",
+      "課號": "MT3002-00",
+      "授課教師": "許雲翔\n陸敬忠\n葉錦徽",
+      "課程名稱(中文)": "政經哲思小論文",
+      "課程名稱(英文)": "Thesis of Contemporary Thinking and Critiques",
+      "課程學制": "學士班",
+      "學分": "2",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "授課週數": "16"
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94036",
+    "課號-班別": "MT4013-*",
+    "課程名稱(中文)": "企業實習(三)",
+    "課程名稱(英文)": "Enterprise Internship III",
+    "備註": "1.欲選課同學請詳閱並依申請說明辦理 (https://www.mgt.ncu.edu.tw/zh-TW/article/2024-01-12%2014:39:48)。 2.限已錄取實習並於規定期間進行實習者。 3.須於規定期限繳交規劃書及用印完成之合約，經審核通過後核發密碼卡。",
+    "授課教師": "王志瑋\n何柏欣\n許秉瑜\n柯士文\n李憶萱\n曾富祥\n廖志興\n黃承祖\n何䓝涵\n曹壽民",
+    "學分": "3",
+    "上課時間": "Sun678",
+    "教室": "*-***",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94036&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94036&outline=94036&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94036",
+      "課號": "MT4013-*",
+      "授課教師": "王志瑋\n何柏欣\n許秉瑜\n柯士文\n李憶萱\n曾富祥\n廖志興\n黃承祖\n何䓝涵\n曹壽民",
+      "課程名稱(中文)": "企業實習(三)",
+      "課程名稱(英文)": "Enterprise Internship III",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "為提升學生學習效果，培養實務致用的能力，體驗職場工作與環境，進而增進就業適應力與競爭力，本課程透過於各企業、學術、法人機構實習，提供學生多元學習環境，同時加強產學合作。",
+      "授課內容": "實習內容視個別學生與企業協議而定。",
+      "教科書/參考書": "無",
+      "自編教材比例": "0",
+      "授課方式": "實習/實驗 個別指導 其他",
+      "評量配分比重": "實習單位評分 70% 系所輔導老師評分 30%",
+      "辦公時間": "另行約定時間",
+      "授課週數": "16",
+      "彈性教學說明": "實習內容視個別學生與企業協議而定。",
+      "課程領域": "基礎知識 、 基礎管理 、 行銷管理 、 策略管理 、 人力資源管理",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "創新",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "領導",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "企業倫理",
+          "強度指數": "(5) 非常高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "思辨和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94037",
+    "課號-班別": "MT4019-*",
+    "課程名稱(中文)": "暑期實習(三)",
+    "課程名稱(英文)": "Summer Internship III",
+    "備註": "1.欲選課同學請詳閱並依申請說明辦理 (https://www.mgt.ncu.edu.tw/zh-TW/article/2024-01-12%2014:39:48)。 2.限已錄取實習並於規定期間進行實習者。 3.須於規定期限繳交規劃書及用印完成之合約，經審核通過後核發密碼卡。",
+    "授課教師": "陳永儀\n黃依潔\n許秉瑜\n李憶萱\n曾富祥\n陳韻旻\n何䓝涵\n曹壽民",
+    "學分": "3",
+    "上課時間": "Sun234",
+    "教室": "*-***",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94037&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94037&outline=94037&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94037",
+      "課號": "MT4019-*",
+      "授課教師": "陳永儀\n黃依潔\n許秉瑜\n李憶萱\n曾富祥\n陳韻旻\n何䓝涵\n曹壽民",
+      "課程名稱(中文)": "暑期實習(三)",
+      "課程名稱(英文)": "Summer Internship III",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "為提升學生學習效果，培養實務致用的能力，體驗職場工作與環境，進而增進就業適應力與競爭力，本課程透過於各企業、學術、法人機構實習，提供學生多元學習環境，同時加強產學合作。",
+      "授課內容": "實習內容視個別學生與企業協議而定。",
+      "教科書/參考書": "無",
+      "自編教材比例": "0",
+      "授課方式": "實習/實驗 個別指導 其他",
+      "評量配分比重": "實習單位評分 70% 系所輔導老師評分 30%",
+      "辦公時間": "另行約定時間",
+      "授課週數": "16",
+      "彈性教學說明": "實習內容視個別學生與企業協議而定。",
+      "課程領域": "基礎知識 、 基礎管理 、 行銷管理 、 策略管理 、 人力資源管理",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "創新",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "領導",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "企業倫理",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "思辨和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現 ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "管理學院",
+    "流水號": "94038",
+    "課號-班別": "MT9980-*",
+    "課程名稱(中文)": "管理學院自主學習微課程(一)",
+    "課程名稱(英文)": "School of Management Independent Microcredit course I",
+    "備註": "銜接EMI英語微課程",
+    "授課教師": "許文錦",
+    "學分": "1",
+    "上課時間": "",
+    "教室": "",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=94038&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=94038&outline=94038&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "管理學院",
+      "流水號": "94038",
+      "課號": "MT6017-00",
+      "授課教師": "許文錦",
+      "課程名稱(中文)": "管理學院自主學習微課程(一)",
+      "課程名稱(英文)": "School of Management Independent Microcredit course I",
+      "課程學制": "學士班",
+      "學分": "1",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "授課週數": "16"
+    }
+  }
+]

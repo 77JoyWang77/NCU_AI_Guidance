@@ -2,7 +2,19 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
+from dotenv import load_dotenv
 from app.routes import assessment, courses, projects, course_search, graph
+import os
+
+load_dotenv(Path(__file__).parent.parent.parent / ".env")
+
+
+def get_allowed_origins() -> list[str]:
+    origins = os.getenv(
+        "ALLOWED_ORIGINS",
+        "http://localhost:5173,http://localhost:5174,http://localhost:3000",
+    )
+    return [origin.strip() for origin in origins.split(",") if origin.strip()]
 
 app = FastAPI(
     title="NCU High School Student Portal API",
@@ -13,7 +25,7 @@ app = FastAPI(
 # CORS configuration
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:5174", "http://localhost:3000"],  # Vite 預設埠號和 React 常用埠號
+    allow_origins=get_allowed_origins(),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
