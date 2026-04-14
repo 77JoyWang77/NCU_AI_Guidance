@@ -1,6 +1,17 @@
 # NCU Course Advisor
 
-中央大學 AI 科系探索系統，提供高中生課程查詢、能力評估與專題瀏覽功能。
+中央大學 AI 科系探索系統，提供高中生課程查詢、能力評估與大專生研究計畫瀏覽功能。
+
+---
+
+## 架構
+
+- 前端：React + Vite
+- 前端部署：Firebase Hosting
+- 後端：FastAPI
+- 後端部署：Render Web Service
+- PDF Storage：Cloudinary
+- 小型資料：隨後端一起部署在 repo 中的 `data/`
 
 ---
 
@@ -12,120 +23,178 @@
 
 ---
 
-## 環境變數設定
+## 環境變數
 
-### 後端（根目錄 `.env`）
+### 根目錄 `.env`
 
-複製範本並填入金鑰：
-
-```
-copy .env.example .env
-```
-
-編輯 `.env`，填入必要欄位（擇一）：
+給本地後端與工具腳本使用：
 
 ```env
-# Azure OpenAI
-AZURE_OPENAI_API_KEY=your-key-here
-AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
-AZURE_OPENAI_DEPLOYMENT_NAME=gpt-4
-AZURE_OPENAI_EMBEDDING_DEPLOYMENT=text-embedding-ada-002
+APP_ENV=development
+APP_PORT=8000
+DATA_DIR=data
+COURSE_JSON_PATH=data/processed/courses.json
+ALLOWED_ORIGINS=http://localhost:5173,http://localhost:5174,http://localhost:3000
 
-# 或標準 OpenAI
-OPENAI_API_KEY=your-key-here
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
+CLOUDINARY_PROJECT_FOLDER=ncu-ai-guidance/data/raw/projects
 ```
 
-其餘欄位保留預設值即可正常啟動。
+說明：
+- 本地 FastAPI 會讀根目錄 `.env`
+- `ALLOWED_ORIGINS` 在本地通常只需要 localhost
+- 正式站的 CORS 請在 Render 後台設定
 
-### 前端（`frontend/.env`）
+### 前端環境變數
 
-預設內容如下，如後端跑在不同 port 再修改：
+- `frontend/.env.example`
+  本地範例
+- `frontend/.env.production`
+  正式 build 會使用的 API 網址
+
+正式環境目前設定為：
 
 ```env
-VITE_API_URL=http://localhost:8000/api
+VITE_API_URL=https://ncu-ai-guidance.onrender.com/api
 ```
 
 ---
 
-## 啟動方式（Windows）
+## 本地開發
 
 ### 後端
 
-開啟終端機（Command Prompt 或 PowerShell），擇一方式建立虛擬環境：
-
-**venv（Python 內建）**
-
 ```bash
 cd backend
-
-# 建立虛擬環境（第一次）
 python -m venv venv
-
-# 啟動虛擬環境
 venv\Scripts\activate
-
-# 安裝依賴（第一次）
 pip install -r requirements.txt
-
-# 啟動伺服器
 uvicorn app.main:app --reload
 ```
 
-**conda**
+後端預設跑在：
 
-```bash
-cd backend
-
-# 建立虛擬環境（第一次）
-conda create -n ncu-advisor python=3.10 -y
-
-# 啟動虛擬環境
-conda activate ncu-advisor
-
-# 安裝依賴（第一次）
-pip install -r requirements.txt
-
-# 啟動伺服器
-uvicorn app.main:app --reload
-```
-
-後端跑在 `http://localhost:8000`，API 文件：`http://localhost:8000/docs`
-
----
+- API：`http://localhost:8000`
+- 文件：`http://localhost:8000/docs`
 
 ### 前端
 
-另開一個終端機：
-
 ```bash
 cd frontend
-
-# 安裝依賴（第一次）
 npm install
-
-# 啟動開發伺服器
 npm run dev
 ```
 
-前端跑在 `http://localhost:5173`
+前端預設跑在：
+
+- `http://localhost:5173`
+
+前端若未額外設定 `VITE_API_URL`，會 fallback 到：
+
+```text
+http://localhost:8000/api
+```
+
+---
+
+## 部署流程
+
+### 1. 前端部署到 Firebase Hosting
+
+目前 repo 已包含 Firebase Hosting workflow：
+
+- `.github/workflows/firebase-hosting-merge.yml`
+- `.github/workflows/firebase-hosting-pull-request.yml`
+
+規則：
+- push 到 fork repo 的 `main`：自動部署正式站
+- fork repo 內部 PR：自動建立 preview deploy
+- workflow 已限制只在 `ChiJiun/ncu_ai_guidance` 執行
+
+### 2. 後端部署到 Render
+
+Render 設定建議：
+
+- Runtime：`Python 3`
+- Build Command：
+
+```bash
+pip install -r backend/requirements.txt
+```
+
+- Start Command：
+
+```bash
+cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+```
+
+Render 後台至少需要這些 environment variables：
+
+```env
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_PROJECT_FOLDER=ncu-ai-guidance/data/raw/projects
+ALLOWED_ORIGINS=http://localhost:5173,https://ncu-ai-guidance.web.app,https://ncu-ai-guidance.firebaseapp.com
+```
+
+部署後請確認：
+
+- `https://ncu-ai-guidance.onrender.com/health`
+- `https://ncu-ai-guidance.onrender.com/docs`
+- `https://ncu-ai-guidance.onrender.com/api/projects`
+
+### 3. PDF 部署到 Cloudinary
+
+專題 PDF 不再跟後端一起部署，改由 Cloudinary 提供公開連結。
+
+上傳腳本：
+
+- `scripts/storage/upload_pdfs_to_cloudinary.py`
+
+使用方式：
+
+```bash
+pip install cloudinary python-dotenv
+python scripts/storage/upload_pdfs_to_cloudinary.py --dry-run
+python scripts/storage/upload_pdfs_to_cloudinary.py
+```
+
+---
+
+## 資料部署原則
+
+### 應該留在 repo / 隨後端部署
+
+- `data/processed/assessment_questions.json`
+- `data/processed/projects.json`
+- `data/processed/courses.json`
+- `data/processed/graph/knowledge_graph.json`
+- `data/raw/admission/ncu_caac.csv`
+- `data/raw/courses/...`（若後端仍直接讀這些原始課程檔）
+
+### 不建議跟後端一起部署
+
+- `data/raw/projects/104-114/**/*.pdf`
+
+這些 PDF 已改由 Cloudinary 提供。
 
 ---
 
 ## 專案結構
 
-```
+```text
 project/
-├── backend/         # FastAPI 後端
-│   ├── app/
-│   │   ├── main.py
-│   │   ├── routes/
-│   │   └── models/
-│   └── requirements.txt
-├── frontend/        # React + Vite 前端
-│   ├── src/
-│   ├── .env
-│   └── package.json
-├── data/            # 資料目錄（不納入版控）
-├── scripts/         # 資料處理腳本
-└── .env             # 環境變數（不納入版控）
+├── backend/                     # FastAPI 後端
+├── frontend/                    # React + Vite 前端
+├── data/
+│   ├── processed/               # 可隨後端部署的小型資料
+│   └── raw/
+│       ├── admission/
+│       ├── courses/
+│       └── projects/104-114/    # 原始 PDF，建議同步到 Cloudinary
+├── scripts/
+│   └── storage/
+│       └── upload_pdfs_to_cloudinary.py
+└── .github/workflows/           # Firebase Hosting 自動部署
 ```
