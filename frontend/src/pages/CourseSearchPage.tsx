@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { HiChat, HiPlus, HiTrash, HiPaperAirplane, HiX } from 'react-icons/hi';
+import { HiChat, HiPlus, HiTrash, HiPaperAirplane } from 'react-icons/hi';
 
 interface Message {
   role: 'user' | 'assistant';
