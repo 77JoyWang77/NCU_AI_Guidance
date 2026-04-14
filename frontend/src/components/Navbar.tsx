@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { HiMenu } from 'react-icons/hi';
+import logo from '../assets/NCULogo.png';
 
 export default function Navbar() {
   const location = useLocation();
@@ -18,9 +19,11 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-primary-700 rounded flex items-center justify-center">
-              <span className="text-lg font-bold text-white">NCU</span>
-            </div>
+            <img
+              src={logo}
+              alt="中央大學校徽"
+              className="w-10 h-10 object-contain"
+            />
             <div className="hidden sm:block">
               <div className="text-sm font-bold text-primary-900">國立中央大學</div>
               <div className="text-xs text-gray-600">科系探索平台</div>
