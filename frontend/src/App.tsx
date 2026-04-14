@@ -6,10 +6,13 @@ import AssessmentPage from './pages/AssessmentPage';
 import ProjectsPage from './pages/ProjectsPage';
 import CoursesPage from './pages/CoursesPage';
 import CourseSearchPage from './pages/CourseSearchPage';
+import ResourcesPage from './pages/ResourcesPage';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
-  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return null;
 }
 
@@ -18,12 +21,11 @@ function App() {
     <Router>
       <ScrollToTop />
       <Routes>
-        {/* 一般佈局：有 padding 和 footer */}
         <Route element={<Layout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/assessment" element={<AssessmentPage />} />
+          <Route path="/resources" element={<ResourcesPage />} />
         </Route>
-        {/* 全高佈局：無 padding、無 footer、無外層捲動 */}
         <Route element={<Layout fullHeight />}>
           <Route path="/courses" element={<CoursesPage />} />
           <Route path="/course-search" element={<CourseSearchPage />} />
