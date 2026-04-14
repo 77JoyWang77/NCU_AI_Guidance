@@ -86,6 +86,7 @@ export interface Project {
   studentName: string;
   title: string;
   pdfPath?: string;
+  pdfUrl?: string;
 }
 
 // 学测科目

@@ -2,7 +2,10 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
+from dotenv import load_dotenv
 from app.routes import assessment, courses, projects, course_search, graph
+
+load_dotenv(Path(__file__).parent.parent.parent / ".env")
 
 app = FastAPI(
     title="NCU High School Student Portal API",

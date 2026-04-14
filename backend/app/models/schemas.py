@@ -100,6 +100,7 @@ class Project(BaseModel):
     studentName: str
     title: str
     pdfPath: Optional[str] = None
+    pdfUrl: Optional[str] = None
 
 class ChatRequest(BaseModel):
     message: str

@@ -1,0 +1,6215 @@
+[
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51001",
+    "課號-班別": "EE1003-*",
+    "課程名稱(中文)": "計算機概論 I",
+    "課程名稱(英文)": "Introduction to Computer I",
+    "備註": "僅供電機系大一學生選課，電機系大二(含)以上及外系學生若欲選課，一律需參與第一堂課程後，以密碼卡選課。",
+    "授課教師": "陳聿廣",
+    "學分": "3",
+    "上課時間": "Wed6",
+    "教室": "E1-102\nThu56",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "120",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51001&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限一年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51001&outline=51001&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51001",
+      "課號": "EE1003-*",
+      "授課教師": "陳聿廣",
+      "課程名稱(中文)": "計算機概論 I",
+      "課程名稱(英文)": "Introduction to Computer I",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "Course Introduction Programming is one of the most essential skills for EE/CS students, enabling them to tackle complex engineering problems. This course provides in-depth knowledge of C++ programming alongside systematic problem-solving skills. We anticipate that most students will have little to no prior programming experience. Therefore, the course begins with the fundamentals of C++ syntax and programming concepts, followed by detailed explanations of the underlying principles. Students will not only learn the theory but also practice implementation through individual programming assignments. Special Notes for Students This course is designed primarily for first-year EE students and has strong connections with other EE courses. Please expect to spend a significant amount of time on programming practice and reading supplementary materials. We strongly recommend taking the Introduction to Computer Science Laboratory course concurrently, as its exercises will directly support your programming assignments. Students from other departments should carefully consider enrolling, as this is a heavy-loaded course. You may need to acquire relevant EE domain knowledge on your own. Why Programming Matters for AI and IC Design In technology landscape nowadays, programming is a cornerstone skill for rapidly growing fields such as artificial intelligence (AI) and integrated circuit (IC) design. In AI, programming is essential for implementing algorithms, training and optimizing models, and processing massive datasets efficiently. In IC and computer-aided design (CAD) for circuits, programming enables the development of simulation tools, automated design flows, and hardware–software co-optimization. By mastering C++, a language widely used in high-performance computing, you will gain a solid foundation to handle computationally intensive tasks and develop tools for both AI applications and chip design automation. These skills are critical for staying competitive in modern engineering careers. Learning Outcomes By the end of the course, you will: - Understand how a program works and what constitutes good coding style and habits. - Be able to derive algorithms and implement them in C++ to solve complex problems. - Recognize how programming can be applied to other EE domains, including AI and IC design. - Gain deeper insights into programming concepts, which will benefit you when learning other languages such as Python or Java. - Develop strong self-learning skills to help you solve problems independently in the future. Note that this is an in-depth course, so you will be expected to engage with the material at a deeper level than in standard C++ courses. The additional details and concepts covered here will serve as a valuable foundation for your future programming and engineering endeavors.",
+      "授課內容": "Chapter 1 - Introduction to Computers\nChapter 2 - Introduction to C++ Programming\nChapter 3 - Control Statement: Part 1\nChapter 4 - Control Statement: Part 2\nChapter 5 – Functions and Recursion\nChapter 6 - Arrays and Vectors\nChapter 7 - Pointers\nChapter 8 - Sequential-Access Files\nChapter 22 - Bits, Characters, C Strings and structs\nChapter 9 - Classes\nChapter 10 - Classes: A Deeper Look",
+      "教科書/參考書": "Textbook“C++ How to Program - Late Objects Version, By P. J. Deitel and H. M. Deitel, 7th Edition (2011)Pearson Education Inc,ISBN: 0-13-248458-7“Reference books“C++ How to Program“, by By P. J. Deitel and H. M. Deitel, 10th Edition, Pearson Education Inc, ISBN-10: 013444888XC++ 教學手冊 第三版, 洪維恩, 旗標出版, ISBN：9789577179371",
+      "自編教材比例": "70",
+      "授課方式": "講授 實習/實驗 個別指導",
+      "評量配分比重": "Homework Assignment 30％ Quizzes and Attendance 15％ Midterm Exam 15％ Final Exam 20％ Final Project 20％ Bonus Points ??％",
+      "辦公時間": "TBD",
+      "授課週數": "16",
+      "彈性教學說明": "This course will provide additional time for students to complete their final projects and will incorporate innovative teaching methods to offer diverse learning opportunities.",
+      "課程領域": "基礎核心 、 IC設計",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 專題研究報告(書面) ， 實作/實驗 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "使用工程工具",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 實作/實驗 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "應用工程設計",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 實作/實驗 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "多元化團隊合作",
+          "強度指數": "(2) 低",
+          "評量方式": "作業練習 ， 實作/實驗 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "理解分析能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 實作/實驗 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(2) 低",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "工程倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 實作/實驗 ， 作品/創作展演"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51002",
+    "課號-班別": "EE1007-A",
+    "課程名稱(中文)": "計算機概論實習",
+    "課程名稱(英文)": "Introduction to Computer Science Laboratory",
+    "備註": "與EE1007-B合班上課。不開放初選。僅供電機系大一學生選課，電機系大二(含)以上及外系學生若欲選課，一律需參與第一堂課程後，以密碼卡選課。 第一週(9/1)上課地點:E1-102教室。",
+    "授課教師": "陳聿廣",
+    "學分": "1",
+    "上課時間": "ThuABC",
+    "教室": "I-002",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "60",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51002&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限一年級。班別:限A。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51002&outline=51002&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51002",
+      "課號": "EE1007-A",
+      "授課教師": "陳聿廣",
+      "課程名稱(中文)": "計算機概論實習",
+      "課程名稱(英文)": "Introduction to Computer Science Laboratory",
+      "課程學制": "學士班",
+      "學分": "1",
+      "課程目標": "本課程是” 計算機概論 I”的實習課程. 本課程將提供學生練習及精進C++程式設計的機會. 本課程之主要進行方式為在課堂上或課後完成指定的程式設計練習題, 並使用C++語言進行實作. 本課程之練習題將有助於學生完成” 計算機概論 I”的程式作業.本課程”不會”大量的講述程式設計理論,因此強烈建議選修此課程同學同時選修” 計算機概論 I”課程. 修習此課程的學生將預期花費”極大量”時間進行解題思考,程式撰寫,程式問題修正,以及尋找/閱讀相關補充資料. 本課程是為了電機系的大一新生所設計的,loading繁重,且會需要電機系大一其他必修課程的相關知識,對於非電機系但想選修此課程的同學,請務必謹慎思考,同時亦需要自行補足本課程所用到的電機相關基礎知識.在修習完此課程後,同學的問題解決與程式實作能力將會有顯著的提升. 你將預期能擁有獨立設計小型系統的程式撰寫能力.",
+      "授課內容": "Chapter 1 - Introduction to Computers\nChapter 2 - Introduction to C++ Programming\nChapter 3 - Control Statement: Part 1\nChapter 4 - Control Statement: Part 2\nChapter 5 - Functions\nChapter 6 - Arrays and Vectors\nChapter 7 - Pointers\nChapter 8 - Sequential-Access Files\nChapter 22 - Bits, Characters, C Strings and structs s\nChapter 9 - Classes\nChapter 10 - Classes: A Deeper Look",
+      "教科書/參考書": "Paul Deitel and Harvey Deitel. C++ How to Program. Tenth Edition. 2017.",
+      "自編教材比例": "100",
+      "授課方式": "講授 實習/實驗 個別指導 其他",
+      "評量配分比重": "Lab Assignment 60％\nMidterm Exam 10％\nFinal Exam 20％\nAttendance 10％\nBonus Points ??％",
+      "辦公時間": "TBD",
+      "授課週數": "16",
+      "彈性教學說明": "Provide bonus lab opportunities for students",
+      "課程領域": "基礎核心 、 IC設計",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "使用工程工具",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "應用工程設計",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "多元化團隊合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "理解分析能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(2) 低",
+          "評量方式": "作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51003",
+    "課號-班別": "EE1007-B",
+    "課程名稱(中文)": "計算機概論實習",
+    "課程名稱(英文)": "Introduction to Computer Science Laboratory",
+    "備註": "與EE1007-A合班上課。不開放初選。僅供電機系大一學生選課，電機系大二(含)以上及外系學生若欲選課，一律需參與第一堂課程後，以密碼卡選課。 第一週(9/1)上課地點:E1-102教室。",
+    "授課教師": "陳聿廣",
+    "學分": "1",
+    "上課時間": "ThuABC",
+    "教室": "I-202",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "60",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51003&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限一年級。班別:限B。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51003&outline=51003&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51003",
+      "課號": "EE1007-B",
+      "授課教師": "陳聿廣",
+      "課程名稱(中文)": "計算機概論實習",
+      "課程名稱(英文)": "Introduction to Computer Science Laboratory",
+      "課程學制": "學士班",
+      "學分": "1",
+      "課程目標": "本課程是” 計算機概論 I”的實習課程. 本課程將提供學生練習及精進C++程式設計的機會. 本課程之主要進行方式為在課堂上或課後完成指定的程式設計練習題, 並使用C++語言進行實作. 本課程之練習題將有助於學生完成” 計算機概論 I”的程式作業.本課程”不會”大量的講述程式設計理論,因此強烈建議選修此課程同學同時選修” 計算機概論 I”課程. 修習此課程的學生將預期花費”極大量”時間進行解題思考,程式撰寫,程式問題修正,以及尋找/閱讀相關補充資料. 本課程是為了電機系的大一新生所設計的,loading繁重,且會需要電機系大一其他必修課程的相關知識,對於非電機系但想選修此課程的同學,請務必謹慎思考,同時亦需要自行補足本課程所用到的電機相關基礎知識.在修習完此課程後,同學的問題解決與程式實作能力將會有顯著的提升. 你將預期能擁有獨立設計小型系統的程式撰寫能力.",
+      "授課內容": "Course Introduction\nLab 1: Your first program\nLab 2: Variables and arithmetic\nLab 3: Control statement I (flow control)\nLab 4: Control statement II (repeat control)\nLab 5: Control statement II (repeat control)\nLab 6: Functions\nLab 7: Recursion\nLab 8: Arrays\nLab 9: Vector and string\nLab 10: Pointer I\nLab 11: Pointer II\nLab 12: Files and parser\nLab 13: Bits, Characters, C Strings and structs",
+      "教科書/參考書": "Paul Deitel and Harvey Deitel. C++ How to Program. Tenth Edition. 2017.",
+      "自編教材比例": "100",
+      "授課方式": "講授 實習/實驗 個別指導 其他",
+      "評量配分比重": "Lab Assignment 60％\nMidterm Exam 10％\nFinal Exam 20％\nAttendance 10％\nBonus Points ??％",
+      "辦公時間": "TBD",
+      "授課週數": "16",
+      "彈性教學說明": "17-18週提供額外練習提供學生練習",
+      "課程領域": "基礎核心 、 IC設計",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "使用工程工具",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "應用工程設計",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "多元化團隊合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "理解分析能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(2) 低",
+          "評量方式": "作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51004",
+    "課號-班別": "EE1009-A",
+    "課程名稱(中文)": "工程數學-線性代數",
+    "課程名稱(英文)": "Engineering Mathematics-Linear Algebra",
+    "備註": "與EE1009-B合班上課",
+    "授課教師": "王文俊",
+    "學分": "3",
+    "上課時間": "Tue2",
+    "教室": "E1-124\nFri56",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51004&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限學士班。學院:限資訊電機學院。系所:限電機工程學系。年級:限一年級。班別:限A。"
+        },
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限學士班。學院:限資訊電機學院。系所:限資訊電機學院學士班。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限學士班。學院:限資訊電機學院。系所:限電機工程學系、資訊電機學院學士班。年級:限二年級、三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51004&outline=51004&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51004",
+      "課號": "EE1009-A",
+      "授課教師": "王文俊",
+      "課程名稱(中文)": "工程數學-線性代數",
+      "課程名稱(英文)": "Engineering Mathematics-Linear Algebra",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "學習電機領域內必要的數學基礎，已備未來電機專業所需。",
+      "授課內容": "1.矩陣及方程式系統\n2. 行列式\n3. 向量空間\n4. 線性轉換\n5. 正交性\n6. 特徵值與特徵向量",
+      "教科書/參考書": "Linear Algebra with Applications (10th edition) (Written by S.J. Leon and L.d. Pillis；滄海書局出版)",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討",
+      "評量配分比重": "三次考試各佔 30％, 上課表現 10％ .",
+      "辦公時間": "週二 9:00-10:00 and 周五 13:00-15:00。",
+      "授課週數": "16",
+      "彈性教學說明": "2 周共六小時時間給學生發問討論，或成績修正。",
+      "課程領域": "基礎核心",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "使用工程工具",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "應用工程設計",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "多元化團隊合作",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "理解分析能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51005",
+    "課號-班別": "EE1009-B",
+    "課程名稱(中文)": "工程數學-線性代數",
+    "課程名稱(英文)": "Engineering Mathematics-Linear Algebra",
+    "備註": "與EE1009-A合班上課",
+    "授課教師": "王文俊",
+    "學分": "3",
+    "上課時間": "Tue2",
+    "教室": "E1-124\nFri56",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51005&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限學士班。學院:限資訊電機學院。系所:限電機工程學系。年級:限一年級。班別:限B。"
+        },
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限學士班。學院:限資訊電機學院。系所:限資訊電機學院學士班。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限學士班。學院:限資訊電機學院。系所:限電機工程學系、資訊電機學院學士班。年級:限二年級、三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51005&outline=51005&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51005",
+      "課號": "EE1009-B",
+      "授課教師": "王文俊",
+      "課程名稱(中文)": "工程數學-線性代數",
+      "課程名稱(英文)": "Engineering Mathematics-Linear Algebra",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "學習電機領域內必要的數學基礎，已備未來電機專業所需。",
+      "授課內容": "1.矩陣及方程式系統\n2. 行列式\n3. 向量空間\n4. 線性轉換\n5. 正交性\n6. 特徵值與特徵向量",
+      "教科書/參考書": "Linear Algebra with Applications (10th edition) (Written by S.J. Leon and L.d. Pillis；滄海書局出版)",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "三次考試各佔30％,上課表現 10％ .",
+      "辦公時間": "周一14:00-16:00",
+      "授課週數": "16",
+      "彈性教學說明": "2 周共六小時時間給學生發問討論，或成績修正。",
+      "課程領域": "基礎核心",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "使用工程工具",
+          "強度指數": "(3) 普通",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "應用工程設計",
+          "強度指數": "(3) 普通",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "多元化團隊合作",
+          "強度指數": "(2) 低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "理解分析能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(2) 低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(1) 非常低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "工程倫理",
+          "強度指數": "(4) 高",
+          "評量方式": "自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51006",
+    "課號-班別": "EE2001-A",
+    "課程名稱(中文)": "電子學 Ｉ",
+    "課程名稱(英文)": "Electronics Ⅰ",
+    "備註": "",
+    "授課教師": "許晉瑋",
+    "學分": "3",
+    "上課時間": "Mon78",
+    "教室": "E1-123\nThu5",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "100",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51006&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限二年級。班別:限A。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限資訊電機學院學士班、輔系-電機工程學系、雙主修-電機工程學系。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "學制:限學士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51006&outline=51006&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51006",
+      "課號": "EE2001-A",
+      "授課教師": "許晉瑋",
+      "課程名稱(中文)": "電子學 Ｉ",
+      "課程名稱(英文)": "Electronics Ⅰ",
+      "課程學制": "學士班",
+      "學分": "3",
+      "自編教材比例": "0",
+      "授課週數": "16"
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51007",
+    "課號-班別": "EE2001-B",
+    "課程名稱(中文)": "電子學 Ｉ",
+    "課程名稱(英文)": "Electronics Ⅰ",
+    "備註": "",
+    "授課教師": "鄭國興",
+    "學分": "3",
+    "上課時間": "Wed2",
+    "教室": "E1-124\nFri34",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "80",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51007&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限二年級。班別:限B。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限資訊電機學院學士班、輔系-電機工程學系、雙主修-電機工程學系。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51007&outline=51007&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51007",
+      "課號": "EE2001-B",
+      "授課教師": "鄭國興",
+      "課程名稱(中文)": "電子學 Ｉ",
+      "課程名稱(英文)": "Electronics Ⅰ",
+      "課程學制": "學士班",
+      "學分": "3",
+      "自編教材比例": "0",
+      "授課週數": "16"
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51008",
+    "課號-班別": "EE2004-A",
+    "課程名稱(中文)": "電磁學 Ｉ",
+    "課程名稱(英文)": "Electromagnetics Ⅰ",
+    "備註": "與CO2003合班授課。",
+    "授課教師": "傅家相",
+    "學分": "3",
+    "上課時間": "Mon5",
+    "教室": "E1-124\nTue56",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51008&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限二年級。班別:限A。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限通訊工程學系、資訊電機學院學士班。年級:限二年級、三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限輔系-電機工程學系、雙主修-電機工程學系。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51008&outline=51008&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51008",
+      "課號": "EE2004-A",
+      "授課教師": "傅家相",
+      "課程名稱(中文)": "電磁學 Ｉ",
+      "課程名稱(英文)": "Electromagnetics Ⅰ",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "學習電荷在靜止時或移動中所造成的效應。瞭解基礎電磁原理與應用，建立繼續修習如微波工程及天線工程相關專業課程之根基。",
+      "授課內容": "1. The Electromagnetic Model; 2. Vector Analysis; 3. Static Electric Fields; 4. Solutions of Electrostatic Problems (Optional); 5. Steady Electric Currents; 6. Static Magnetic Fields; 7. Time-Varying Fields and Maxwell’s Equations",
+      "教科書/參考書": "David K. Cheng, Field and Wave Electromagnetics,2nd edition, Addison-Wesley, 1989",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討",
+      "評量配分比重": "見開學後公布之 Syllabus",
+      "辦公時間": "make appointment",
+      "授課週數": "16",
+      "彈性教學說明": "課程僅 16 週。第 17 及 18 週鼓勵學生觀看線上教學影片。",
+      "課程領域": "基礎核心 、 電波工程",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(1) 非常低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "使用工程工具",
+          "強度指數": "(1) 非常低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "應用工程設計",
+          "強度指數": "(1) 非常低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "多元化團隊合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "理解分析能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(1) 非常低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "工程倫理",
+          "強度指數": "(1) 非常低",
+          "評量方式": "無"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51009",
+    "課號-班別": "EE2004-B",
+    "課程名稱(中文)": "電磁學 Ｉ",
+    "課程名稱(英文)": "Electromagnetics Ⅰ",
+    "備註": "",
+    "授課教師": "丘增杰",
+    "學分": "3",
+    "上課時間": "Mon5",
+    "教室": "E1-120\nTue56",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "100",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51009&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限二年級。班別:限B。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限資訊電機學院學士班、輔系-電機工程學系、雙主修-電機工程學系。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51009&outline=51009&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51009",
+      "課號": "EE2004-B",
+      "授課教師": "丘增杰",
+      "課程名稱(中文)": "電磁學 Ｉ",
+      "課程名稱(英文)": "Electromagnetics Ⅰ",
+      "課程學制": "學士班",
+      "學分": "3",
+      "自編教材比例": "0",
+      "授課週數": "16"
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51010",
+    "課號-班別": "EE2011-A",
+    "課程名稱(中文)": "電路學 Ⅱ",
+    "課程名稱(英文)": "Electrical Circuits Ⅱ",
+    "備註": "與EE2011-B合班上課",
+    "授課教師": "杜長慶",
+    "學分": "3",
+    "上課時間": "Tue7",
+    "教室": "E1-124\nWed34",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51010&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限學士班。學院:限資訊電機學院。系所:限電機工程學系。年級:限二年級。班別:限A。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限學士班。學院:限資訊電機學院。系所:限電機工程學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學院:限資訊電機學院。系所:限電機工程學系、資訊電機學院學士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51010&outline=51010&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51010",
+      "課號": "EE2011-A",
+      "授課教師": "杜長慶",
+      "課程名稱(中文)": "電路學 Ⅱ",
+      "課程名稱(英文)": "Electrical Circuits Ⅱ",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "電路 I 和 II 的主要目標是讓學生掌握分析由被動元件（例如: 電阻器、電容器、電感器和變壓器）和主動元件（例如: 運算放大器）組成的電路的基本知識和技能。",
+      "授課內容": "在電路 I 中，當訊號為直流或階躍函數時，我們將學習如何計算流經每個元件的電流和每個節點的電壓，所使用的電路分析技巧包括: KCL/KVL、current/voltage dividers、Wheatstone bridges、delta-to-wye equivalent circuits、node-voltage、mesh-current、Thevenin/Norton equivalent circuits、superposition、virtual short of OP amp、natural/step responses of RLC circuits等。在電路 II 中，當訊號變為交流電時，我們將首先學習如何使用Phasor（即僅考慮振幅和相位），同時搭配在電路 I 中所學習的技巧來分析特定頻率下的電路。接下來，當訊號是頻率變化的正弦波時，我們將學習如何使用Laplace轉換來獲得頻率響應，以及如何建立低通、高通和帶通濾波器。",
+      "教科書/參考書": "Electronic Circuits, 11th edition, J. W. Nilsson and S. A. Riedel",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "Midterm: 30% Final: 40% Homework: 20% Attendance: 10%",
+      "辦公時間": "週二上午9:00-10:00",
+      "授課週數": "16",
+      "彈性教學說明": "無",
+      "課程領域": "基礎核心 、 IC設計",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "使用工程工具",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "應用工程設計",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "多元化團隊合作",
+          "強度指數": "(0) 無",
+          "評量方式": "N/A"
+        },
+        {
+          "能力名稱": "理解分析能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(0) 無",
+          "評量方式": "N/A"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(0) 無",
+          "評量方式": "N/A"
+        },
+        {
+          "能力名稱": "工程倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51011",
+    "課號-班別": "EE2011-B",
+    "課程名稱(中文)": "電路學 Ⅱ",
+    "課程名稱(英文)": "Electrical Circuits Ⅱ",
+    "備註": "與EE2011-A合班上課",
+    "授課教師": "杜長慶",
+    "學分": "3",
+    "上課時間": "Tue7",
+    "教室": "E1-124\nWed34",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51011&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限學士班。學院:限資訊電機學院。系所:限電機工程學系。年級:限二年級。班別:限B。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限學士班。學院:限資訊電機學院。系所:限電機工程學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限學士班。學院:限資訊電機學院。系所:限電機工程學系、資訊電機學院學士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51011&outline=51011&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51011",
+      "課號": "EE2011-B",
+      "授課教師": "杜長慶",
+      "課程名稱(中文)": "電路學 Ⅱ",
+      "課程名稱(英文)": "Electrical Circuits Ⅱ",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "電路 I 和 II 的主要目標是讓學生掌握分析由被動元件（例如: 電阻器、電容器、電感器和變壓器）和主動元件（例如: 運算放大器）組成的電路的基本知識和技能。",
+      "授課內容": "在電路 I 中，當訊號為直流或階躍函數時，我們將學習如何計算流經每個元件的電流和每個節點的電壓，所使用的電路分析技巧包括: KCL/KVL、current/voltage dividers、Wheatstone bridges、delta-to-wye equivalent circuits、node-voltage、mesh-current、Thevenin/Norton equivalent circuits、superposition、virtual short of OP amp、natural/step responses of RLC circuits等。在電路 II 中，當訊號變為交流電時，我們將首先學習如何使用Phasor（即僅考慮振幅和相位），同時搭配在電路 I 中所學習的技巧來分析特定頻率下的電路。接下來，當訊號是頻率變化的正弦波時，我們將學習如何使用Laplace轉換來獲得頻率響應，以及如何建立低通、高通和帶通濾波器。",
+      "教科書/參考書": "Electronic Circuits, 11th edition, J. W. Nilsson and S. A. Riedel",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "Midterm: 30% Final: 40% Homework: 20% Attendance: 10%",
+      "辦公時間": "週二上午9:00-10:00",
+      "授課週數": "16",
+      "彈性教學說明": "無",
+      "課程領域": "基礎核心 、 IC設計",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "使用工程工具",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "應用工程設計",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "多元化團隊合作",
+          "強度指數": "(0) 無",
+          "評量方式": "N/A"
+        },
+        {
+          "能力名稱": "理解分析能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(0) 無",
+          "評量方式": "N/A"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(0) 無",
+          "評量方式": "N/A"
+        },
+        {
+          "能力名稱": "工程倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51012",
+    "課號-班別": "EE2016-A",
+    "課程名稱(中文)": "數位系統導論",
+    "課程名稱(英文)": "Introduction to Digital Systems",
+    "備註": "",
+    "授課教師": "許鈞瓏",
+    "學分": "3",
+    "上課時間": "Wed2",
+    "教室": "E1-120\nFri78",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "80",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51012&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限一年級。班別:限A。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限二年級、三年級、四年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限資訊電機學院學士班。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限輔系-電機工程學系、雙主修-電機工程學系。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51012&outline=51012&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51012",
+      "課號": "EE2016-A",
+      "授課教師": "許鈞瓏",
+      "課程名稱(中文)": "數位系統導論",
+      "課程名稱(英文)": "Introduction to Digital Systems",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "建立學生數位電子電路之基礎概念，讓學生從數字系統、邏輯函數、邏輯電路至硬體描述語言，深入淺出的了解數位電路設計的重要性。",
+      "授課內容": "第 1 章：數字系統與表示法\n第 2 章：邏輯閘\n第 3 章：布林代數\n第 4 章：邏輯閘級簡化\n第 5 章：組合邏輯電路\n第 6 章：序列邏輯電路\n第 7 章：暫存器與計數器\n第 8 章：硬體描述語言（HDLs）",
+      "教科書/參考書": "自編教材",
+      "自編教材比例": "60",
+      "授課方式": "講授 個別指導",
+      "評量配分比重": "1. 作業（20%） 2. 期中考試（40%） 3. 期末考試（40%）",
+      "辦公時間": "每週四 10:00-12:00",
+      "授課週數": "16",
+      "彈性教學說明": "整學期課程之複習與檢討",
+      "課程領域": "基礎核心 、 IC設計",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "使用工程工具",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "應用工程設計",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "多元化團隊合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "理解分析能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程倫理",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51013",
+    "課號-班別": "EE2016-B",
+    "課程名稱(中文)": "數位系統導論",
+    "課程名稱(英文)": "Introduction to Digital Systems",
+    "備註": "",
+    "授課教師": "周求致",
+    "學分": "3",
+    "上課時間": "Wed2",
+    "教室": "E1-121\nFri78",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "80",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51013&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限一年級。班別:限B。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限二年級、三年級、四年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限資訊電機學院學士班。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限輔系-電機工程學系、雙主修-電機工程學系。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51013&outline=51013&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51013",
+      "課號": "EE2016-B",
+      "授課教師": "周求致",
+      "課程名稱(中文)": "數位系統導論",
+      "課程名稱(英文)": "Introduction to Digital Systems",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "介紹數位系統之基礎概念，利用各種實例，對相關主題作深入淺出之說明，期能使學生瞭解數位電路的基本組成元件、及數位電路設計的方法。",
+      "授課內容": "◎ Introduction to digital systems\n◎ Binary numbers\n◎ Boolean algebra\n◎ Combinational logic\n◎ Combinational building blocks\n◎ Combinational examples\n◎ Arithmetic circuits\n◎ Synchronous sequential logic\n◎ Sequential logic example\n◎ Datapath sequential circuits\n◎ Datapath circuit examples\n◎ Flip-flops\n◎ Timing constraints\n◎ Asynchronous sequential logic",
+      "教科書/參考書": "(1) William J. Dally and R. Curtis Harting, “Digital Design: A Systems Approach, 2012, Cambridge University Press. (2) Morris Mano and Michael Ciletti, “Digital Design: With An Introduction to The Verilog HDL, VHDL, and System Verilog,“ 6th Edition, Pearson Education ISBN 978-1-292-23116-7 (3) Charles Roth and Larry Kinney, “Fundamentals of Logic Design,“ 7th Edition, Cengage Learning ISBN-13: 978-1133628477",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "Project 1: 25％ Project 2: 35％ Final exam: 40％ Attendance: -5% each Homework: +5% each max 70 (will be explained in the first class)",
+      "辦公時間": "By appointment",
+      "授課週數": "16",
+      "彈性教學說明": "Read textbook for advanced topics.",
+      "課程領域": "基礎核心",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "使用工程工具",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 無"
+        },
+        {
+          "能力名稱": "應用工程設計",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "多元化團隊合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 無"
+        },
+        {
+          "能力名稱": "理解分析能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 無"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "工程倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51014",
+    "課號-班別": "EE2027-A",
+    "課程名稱(中文)": "電子電路實驗Ⅰ",
+    "課程名稱(英文)": "Electronic Circuits Laboratory I",
+    "備註": "",
+    "授課教師": "薛木添",
+    "學分": "1",
+    "上課時間": "Thu789",
+    "教室": "E1-223",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "70",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51014&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限二年級。班別:限A。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限資訊電機學院學士班、輔系-電機工程學系、雙主修-電機工程學系。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51014&outline=51014&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51014",
+      "課號": "EE2027-A",
+      "授課教師": "薛木添",
+      "課程名稱(中文)": "電子電路實驗Ⅰ",
+      "課程名稱(英文)": "Electronic Circuits Laboratory I",
+      "課程學制": "學士班",
+      "學分": "1",
+      "課程目標": "學習使用基本的電子電路儀器，培養對電子電路分析和偵錯的基本能力。",
+      "授課內容": "◎認識實驗設備( Introduction to Experiments )\n1、專業倫理、實驗及儀器介紹( Professional Ethics and Introduction to the Experiments and the Instruments )\n◎基本電路學( Basic Circuit Theory )\n2、歐姆定律及電錶量測 ( Ohm’s Law and Multimeter )\n3、Kirchhoff電壓及電流定律 ( Kirchhoff’s Voltage Law and Kirchhoff’s Current Law )\n4、戴維寧、諾頓與重疊定理 ( Thevenin‘s Theorem, Norton‘s Theorem and the Principle of Superposition )\n5、RC電路的暫態響應 ( Transient Response of RC Circuits)\n6、RC、RL、RLC之線路響應 ( Response of RC, RL and RLC Circuits )\n7、相位量測及頻率響應 ( Phase Measure and Frequency Response )\n◎基本電子元件及電路( Basic Electronic Devices and Circuits )\n8、二極體的特性曲線及整流電路 ( Diode characteristics and Diode Circuits )\n9、二極體的應用電路 ( Advanced Diode circuits )\n10、電晶體的特性曲線 ( Junction Transistor characteristics )",
+      "教科書/參考書": "講義",
+      "自編教材比例": "100",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "Reports & Experiments 60% Final operation test 20% Final examination 20%",
+      "辦公時間": "星期四15:00-16:00",
+      "授課週數": "16",
+      "彈性教學說明": "期末成績評量",
+      "課程領域": "基礎核心",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "使用工程工具",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "應用工程設計",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "多元化團隊合作",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "理解分析能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "工程倫理",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 專題研究報告(書面)"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51015",
+    "課號-班別": "EE2027-B",
+    "課程名稱(中文)": "電子電路實驗Ⅰ",
+    "課程名稱(英文)": "Electronic Circuits Laboratory I",
+    "備註": "",
+    "授課教師": "薛木添",
+    "學分": "1",
+    "上課時間": "Mon789",
+    "教室": "E1-223",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "70",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51015&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限二年級。班別:限B。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限資訊電機學院學士班、輔系-電機工程學系、雙主修-電機工程學系。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51015&outline=51015&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51015",
+      "課號": "EE2027-B",
+      "授課教師": "薛木添",
+      "課程名稱(中文)": "電子電路實驗Ⅰ",
+      "課程名稱(英文)": "Electronic Circuits Laboratory I",
+      "課程學制": "學士班",
+      "學分": "1",
+      "課程目標": "學習使用基本的電子電路儀器，培養對電子電路分析和偵錯的基本能力。",
+      "授課內容": "◎認識實驗設備( Introduction to Experiments )\n1、專業倫理、實驗及儀器介紹( Professional Ethics and Introduction to the Experiments and the Instruments )\n◎基本電路學( Basic Circuit Theory )\n2、歐姆定律及電錶量測 ( Ohm’s Law and Multimeter )\n3、Kirchhoff電壓及電流定律 ( Kirchhoff’s Voltage Law and Kirchhoff’s Current Law )\n4、戴維寧、諾頓與重疊定理 ( Thevenin‘s Theorem, Norton‘s Theorem and the Principle of Superposition )\n5、RC電路的暫態響應 ( Transient Response of RC Circuits)\n6、RC、RL、RLC之線路響應 ( Response of RC, RL and RLC Circuits )\n7、相位量測及頻率響應 ( Phase Measure and Frequency Response )\n◎基本電子元件及電路( Basic Electronic Devices and Circuits )\n8、二極體的特性曲線及整流電路 ( Diode characteristics and Diode Circuits )\n9、二極體的應用電路 ( Advanced Diode circuits )\n10、電晶體的特性曲線 ( Junction Transistor characteristics )",
+      "教科書/參考書": "講義",
+      "自編教材比例": "100",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "Reports & Experiments 60% Final operation test 20% Final examination 20%",
+      "辦公時間": "星期四15:00-16:00",
+      "授課週數": "16",
+      "彈性教學說明": "期末成績評量",
+      "課程領域": "基礎核心",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "使用工程工具",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "應用工程設計",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "多元化團隊合作",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "理解分析能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "工程倫理",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 專題研究報告(書面)"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51016",
+    "課號-班別": "EE2030-A",
+    "課程名稱(中文)": "工程數學-複變",
+    "課程名稱(英文)": "Engineering Mathematics-Complex Variables",
+    "備註": "",
+    "授課教師": "歐陽良昱",
+    "學分": "3",
+    "上課時間": "Wed6",
+    "教室": "E1-120\nThu34",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "80",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51016&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限二年級。班別:限A。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限資訊電機學院學士班、輔系-電機工程學系、雙主修-電機工程學系。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51016&outline=51016&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51016",
+      "課號": "EE2030-A",
+      "授課教師": "歐陽良昱",
+      "課程名稱(中文)": "工程數學-複變",
+      "課程名稱(英文)": "Engineering Mathematics-Complex Variables",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "“工程數學-複變”之主要課程內容為”複變函數分析”。複變函數為一種很特殊，亦很有用的函數。它具有純量值函數及向量值函數之雙重性，亦就是說複變函數可視為如實數般的純量，亦可視為如二維向量般的向量。因此我們在學過“實變函數分析”及“向量函數的分析”後，須再學習複變函數的分析，包括其微分與積分。在電機工程的許多基礎課程中，如電路學、電磁學、控制系統與通訊系統等課程均涉及複變函數的應用，例如可藉由複變函數簡便地表示交流電壓、電流與頻域阻抗等，從而降低問題分析的複雜度。因此，複變函數分析對於電機工程系的學生而言是重要的基礎。",
+      "授課內容": "“課程大綱：\nUnit 0: Introduction\nUnit 1: Complex Numbers and Functions. Complex Differentiation\nUnit 2: Complex Integration\nUnit 3: Power Series. Taylor Series\nUnit 4: Laurent Series. Residue Integration\nUnit 5: Conformal Mapping\nUnit 6: Complex Analysis Applied to Potential Theory“",
+      "教科書/參考書": "“Reference: Kreyszig, Advanced Engineering Mathematics, 10e., Wiley. Advanced Engineering Mathematics, 6th ed. by D. G. Zill and W. S. Wright. Brown and Churchill, Complex Variables and Applications, 8th ed., McGraw Hill“",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "“Midterm exam 30％; Final exam: 30％; Else (report and homework): 40％“",
+      "辦公時間": "週四下午14:00~16:00",
+      "授課週數": "16",
+      "課程領域": "基礎核心",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "使用工程工具",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "應用工程設計",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "多元化團隊合作",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "理解分析能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "工程倫理",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51017",
+    "課號-班別": "EE2030-B",
+    "課程名稱(中文)": "工程數學-複變",
+    "課程名稱(英文)": "Engineering Mathematics-Complex Variables",
+    "備註": "",
+    "授課教師": "林祐生",
+    "學分": "3",
+    "上課時間": "Wed6",
+    "教室": "E1-121\nThu34",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "80",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51017&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限二年級。班別:限B。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限資訊電機學院學士班、輔系-電機工程學系、雙主修-電機工程學系。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51017&outline=51017&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51017",
+      "課號": "EE2030-B",
+      "授課教師": "林祐生",
+      "課程名稱(中文)": "工程數學-複變",
+      "課程名稱(英文)": "Engineering Mathematics-Complex Variables",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "“工程數學-複變”之主要課程內容為”複變函數分析”。複變函數為一種很特殊，亦很有用的函數。它具有純量值函數及向量值函數之雙重性，亦就是說複變函數可視為如實數般的純量，亦可視為如二維向量般的向量。因此我們在學過“實變函數分析”及“向量函數的分析”後，須再學習複變函數的分析，包括其微分與積分。在電機工程的許多基礎課程中，如電路學、電磁學、控制系統與通訊系統等課程均涉及複變函數的應用，例如可藉由複變函數簡便地表示交流電壓、電流與頻域阻抗等，從而降低問題分析的複雜度。因此，複變函數分析對於電機工程系的學生而言是重要的基礎。",
+      "授課內容": "“課程大綱：\nUnit 0: Introduction\nUnit 1: Complex Numbers and Functions. Complex Differentiation\nUnit 2: Complex Integration\nUnit 3: Power Series. Taylor Series\nUnit 4: Laurent Series. Residue Integration\nUnit 5: Conformal Mapping\nUnit 6: Complex Analysis Applied to Potential Theory“",
+      "教科書/參考書": "“Erwin Kreyszig, Advanced Engineering Mathematics, 10th Edition, Wiley“",
+      "自編教材比例": "50",
+      "授課方式": "講授",
+      "評量配分比重": "“Midterm Exam: 50％, Final Exam: 50％“",
+      "辦公時間": "Wed. 3:00~4:00pm",
+      "授課週數": "16",
+      "彈性教學說明": "提供網路學習資源供自主學習如下：https://ocw.aca.ntu.edu.tw/courses/101S209 https://www.youtube.com/playlist?list=PLNb1tM5_yV5KFGynm-z1HYHUI-ZJ0xv7S",
+      "課程領域": "基礎核心",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "使用工程工具",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "應用工程設計",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "多元化團隊合作",
+          "強度指數": "(1) 非常低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "理解分析能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(1) 非常低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "工程倫理",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51018",
+    "課號-班別": "EE3001-*",
+    "課程名稱(中文)": "電子學 Ⅲ",
+    "課程名稱(英文)": "Electronics Ⅲ",
+    "備註": "",
+    "授課教師": "邱煥凱",
+    "學分": "3",
+    "上課時間": "Mon234",
+    "教室": "E1-124",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "120",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51018&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限四年級。"
+        },
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限三年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限通訊工程學系、資訊電機學院學士班。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51018&outline=51018&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51018",
+      "課號": "EE3001-*",
+      "授課教師": "邱煥凱",
+      "課程名稱(中文)": "電子學 Ⅲ",
+      "課程名稱(英文)": "Electronics Ⅲ",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "訓練學生具備積體電路設計之基礎。",
+      "授課內容": "Chapter 10.7 回授放大器之穩定性分析與頻頻補償 Chapter 11 輸出級與功率放大器 Chapter 12 運算放大器電路 Chapter 13 濾波器與諧振放大器",
+      "教科書/參考書": "教科書Adel S. Sedra and Kenneth C. Smith “”Microelectric Circuits”” 8th. ed",
+      "自編教材比例": "20",
+      "授課方式": "講授",
+      "評量配分比重": "依學校行事曆舉行三次考試 (close book) 每次含簡答觀念題與 計算題6-8題; 總分每次100分; 平均60分及格。 如需要線上測驗，考試方式另外說明。",
+      "辦公時間": "12:00 -14:00 星期三",
+      "授課週數": "16",
+      "彈性教學說明": "規劃6小時線上非同步課程,請修課同學至數位學習平台觀看。",
+      "課程領域": "基礎核心",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "使用工程工具",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "應用工程設計",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "多元化團隊合作",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "理解分析能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51019",
+    "課號-班別": "EE3003-*",
+    "課程名稱(中文)": "控制系統",
+    "課程名稱(英文)": "Control System",
+    "備註": "",
+    "授課教師": "吳俊緯",
+    "學分": "3",
+    "上課時間": "Tue56",
+    "教室": "E1-124\nWed5",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "140",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51019&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限通訊工程學系、資訊電機學院學士班。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限學士班。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51019&outline=51019&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51019",
+      "課號": "EE3003-*",
+      "授課教師": "吳俊緯",
+      "課程名稱(中文)": "控制系統",
+      "課程名稱(英文)": "Control System",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "控制系統理論基礎之學習，讓修課學生了解什麼是控制系統，使其後續能對系統做基本的控制設計與效能分析。修習本課程後學生會了解如何描述線性系統的動態方程，判斷系統的穩定性，同時了解時域、S域、頻域，極點與頻率響應分析等技術。",
+      "授課內容": "1. Introduce to Control Systems\n2. Modeling of Dynamic Systems\n3.Solution of Differential Equations of Dynamic Systems\n4.Block Diagrams and Signal-Flow Graphs\n5.Stability of Linear Control Systems\n6.Important Components of Feedback Control Systems\n7.Time-Domain Performance of Control Systems\n8.State-Space Analysis and Control Design\n9.Root-Locus Analysis",
+      "教科書/參考書": "Automatic Control Systems, by Farid Golnaraghi, Benjamin C. Kuo, 10th Edition, 2017.",
+      "自編教材比例": "100",
+      "授課方式": "講授 其他",
+      "評量配分比重": "1. 出席＆討論 (10％) 2. 期中考 (45％) 3. 期末報告 (45％)",
+      "辦公時間": "星期三 14:00-16:00",
+      "授課週數": "16",
+      "彈性教學說明": "依學生學習狀況作適當調整。",
+      "課程領域": "基礎核心",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 其他"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 其他"
+        },
+        {
+          "能力名稱": "使用工程工具",
+          "強度指數": "(3) 普通",
+          "評量方式": "其他"
+        },
+        {
+          "能力名稱": "應用工程設計",
+          "強度指數": "(3) 普通",
+          "評量方式": "其他"
+        },
+        {
+          "能力名稱": "多元化團隊合作",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 其他"
+        },
+        {
+          "能力名稱": "理解分析能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 其他"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 其他"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 其他"
+        },
+        {
+          "能力名稱": "工程倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51020",
+    "課號-班別": "EE3004-*",
+    "課程名稱(中文)": "通訊原理",
+    "課程名稱(英文)": "Communication Theory",
+    "備註": "電機三、四年級可選修，與CO3007通訊原理Ｉ合班授課",
+    "授課教師": "魏瑞益",
+    "學分": "3",
+    "上課時間": "Thu2",
+    "教室": "E1-102\nFri34",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "70",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51020&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限輔系-電機工程學系、雙主修-電機工程學系、第二專長-智慧電子。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51020&outline=51020&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51020",
+      "課號": "EE3004-*",
+      "授課教師": "魏瑞益",
+      "課程名稱(中文)": "通訊原理",
+      "課程名稱(英文)": "Communication Theory",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "了解類比通訊系統的調變與解調變，和雜訊及干擾對其所造成的影響。",
+      "授課內容": "週次 內容\n1 介紹、訊號模型和分類\n2 傅立葉級數和傅立葉轉換\n3 傅立葉轉換和功率頻譜密度\n4 訊號和線性系統和取樣理論\n5 雙邊帶調變、振幅調變和單邊帶調變\n6 殘邊帶調變、線性調變之干擾和脈衝調變\n7 角度調變訊號之調變\n8 期中考\n9 角度調變訊號之解調變\n10 迴受解調變和角度調變之干擾\n11 隨機程序\n12 隨機程序和線性系統\n13 線性調變之雜訊\n14 角度調變之雜訊\n15 線碼、符元間干擾和等化\n16 期末考",
+      "教科書/參考書": "教科書(英文)： Principles of Communications: Systems, Modulation, and Noise, 7th edition, R. E. Ziemer and W. H. Tranter, John Wiley ＆Sons, Inc., 2014 參考書(英文)： Communication Systems, 4th edition, Simon Haykin, John Wiley ＆Sons, Inc., 2001“",
+      "自編教材比例": "10",
+      "授課方式": "講授",
+      "評量配分比重": "Midterm exam. 40％ Final exam. 40％ Homework 20％",
+      "辦公時間": "週四 10:00-11:50",
+      "授課週數": "16",
+      "彈性教學說明": "第17週：自主學習：脈衝調變之雜訊 第18週：自主學習：眼圖和同步",
+      "課程領域": "多媒體通訊",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "使用工程工具",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "應用工程設計",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "多元化團隊合作",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "理解分析能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "工程倫理",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51021",
+    "課號-班別": "EE3010-*",
+    "課程名稱(中文)": "電機機械",
+    "課程名稱(英文)": "Electrical Machines",
+    "備註": "",
+    "授課教師": "廖益弘",
+    "學分": "3",
+    "上課時間": "Mon678",
+    "教室": "E6-B518",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51021&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限資訊工程學系、通訊工程學系、資訊電機學院學士班。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51021&outline=51021&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51021",
+      "課號": "EE3010-*",
+      "授課教師": "廖益弘",
+      "課程名稱(中文)": "電機機械",
+      "課程名稱(英文)": "Electrical Machines",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "建立學生對電機機械磁能轉換的概念，瞭解如何分析磁能轉換裝置之動作原理，並將此原理應用至電動機、發電機與變壓器。同時，基於電路學與電磁學的概念，建立磁能轉換裝置之等效電路模型，更進一步瞭解如何運用與控制磁能轉換裝置。",
+      "授課內容": "主要介紹電機機械的基本原理，包括磁能轉換、變壓器、電動機與發電機等裝置，並瞭解如何運用這些裝置在日常生活中。",
+      "教科書/參考書": "“教科書：”PRINCIPLE OF ELECTRONIC MACHINES and POWER ELECTRONICS”-By P. C. SEN 參考書：”ELECTRIC MACHINERY FUNDEMENTAL” –By STEPHEN J. CHAPMAN“",
+      "自編教材比例": "50",
+      "授課方式": "講授",
+      "評量配分比重": "“作業成績 30％ 期中考 35％ 期末考 35％“",
+      "辦公時間": "星期三 3-4 節",
+      "授課週數": "16",
+      "彈性教學說明": "自主學習",
+      "課程領域": "電力電子 、 智慧型電機控制",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "使用工程工具",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "應用工程設計",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "多元化團隊合作",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "理解分析能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程倫理",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51022",
+    "課號-班別": "EE3032-*",
+    "課程名稱(中文)": "超大型積體電路導論",
+    "課程名稱(英文)": "Introduction to VLSI",
+    "備註": "資訊電機學院大學部三、四年級可選修",
+    "授課教師": "李進福",
+    "學分": "3",
+    "上課時間": "Thu234",
+    "教室": "E1-124",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "120",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51022&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限三年級。"
+        },
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限四年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限通訊工程學系、資訊電機學院學士班。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51022&outline=51022&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51022",
+      "課號": "EE3032-*",
+      "授課教師": "李進福",
+      "課程名稱(中文)": "超大型積體電路導論",
+      "課程名稱(英文)": "Introduction to VLSI",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "學生可以學到VLSI （IC）設計之基礎知識，以輔助學生未來學習進階之VLSI（IC）設計技術。",
+      "授課內容": "\"Prerquisite:\nDigital Logic Design,Microelectrionics\ncourse contents:\n1. Introduction to CMOS Circuits\n2. MOSFET and FinFET Transistor Theory\n3. Fabrication of CMOS Integrated Circuits\n4. Circuits Characterization of CMOS Circuits\n5. Variability, Reliability, and Scaling\n6. Physical Design Elements\n7. Combinational Circuits Design\n8. Sequential Circuits Design\"",
+      "教科書/參考書": "\"1. Textbook: N. H. E. Weste and D. Harris, “Integrated Circuit Design”, Fourth Edition, Pearson, 2011. 2. 自編教材\"",
+      "自編教材比例": "30",
+      "授課方式": "講授",
+      "評量配分比重": "\"Homework: 35%\n[Max(Mid, Final)x0.6+Min(Mid, Final)x0.4]: 65%\"",
+      "辦公時間": "13:00~14:00 Tue. 13:00~14:00 Thu.",
+      "授課週數": "16",
+      "課程領域": "IC設計",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "使用工程工具",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "應用工程設計",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "多元化團隊合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "理解分析能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "工程倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51023",
+    "課號-班別": "EE3042-*",
+    "課程名稱(中文)": "生醫工程導論",
+    "課程名稱(英文)": "Introduction of Biomedical Engineering",
+    "備註": "電機四年級可選修",
+    "授課教師": "龔存雄",
+    "學分": "3",
+    "上課時間": "Fri567",
+    "教室": "E1-019",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "80",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51023&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51023&outline=51023&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51023",
+      "課號": "EE3042-*",
+      "授課教師": "龔存雄",
+      "課程名稱(中文)": "生醫工程導論",
+      "課程名稱(英文)": "Introduction of Biomedical Engineering",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "培育學生具有生醫工程的學理背景與實際應用之衍伸能力。",
+      "授課內容": "建立學生生醫工程的相關知識，了解其中所需之生理背景與的應用端的設計考量、進而促使學生聯結所習得之基礎知識去具有設計其中關鍵系統技術之能力。",
+      "教科書/參考書": "教科書: 自編教材 參考書: 1.生醫工程導論 2.MATLAB 程式設計與應用",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 實習/實驗 個別指導",
+      "評量配分比重": "I.平時+期中報告+演練- 佔80% (非專題類分組) II.期末演示+結報- 佔20% (專題類分組)",
+      "辦公時間": "星期五11：00-13：00",
+      "授課週數": "16",
+      "彈性教學說明": "為能啟發學生養成積極主動的學習態度與互動式的課堂參與模式，將於學期的最後安排線上學習、自主學習、專題、實作，以達彈性教學之目標。",
+      "課程領域": "基礎核心 、 系統生醫工程",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "使用工程工具",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "應用工程設計",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "多元化團隊合作",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "理解分析能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "工程倫理",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51024",
+    "課號-班別": "EE3045-*",
+    "課程名稱(中文)": "專題實作III [已停開]",
+    "課程名稱(英文)": "Independent study III",
+    "備註": "電機系三四年級可修。選修此門課同學請務必填寫「專題指導教師同意書」並於加退選期間交回系辦領取密碼卡",
+    "授課教師": "教授群",
+    "學分": "3",
+    "上課時間": "Sat234",
+    "教室": "E1-019",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51024&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51024&outline=51024&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51024",
+      "課號": "EE3045-*",
+      "授課教師": "教授群",
+      "課程名稱(中文)": "專題實作III",
+      "課程名稱(英文)": "Independent study III",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "本課程設計得讓學生自行尋找專題指導教授，針對積體電路設計相關主題進行研究與實作，使學生瞭解相關主題知識以及專題研究方法與步驟，同時培養學生實作的能力。",
+      "授課內容": "本課程設計得讓學生自行尋找專題指導教授，針對積體電路設計相關主題進行研究與實作，使學生瞭解相關主題知識以及專題研究方法與步驟，同時培養學生實作的能力。",
+      "教科書/參考書": "無",
+      "自編教材比例": "0",
+      "授課方式": "講授 實習/實驗 個別指導",
+      "評量配分比重": "依其指導教師的執行方式及規定。",
+      "辦公時間": "由各指導老師自訂",
+      "授課週數": "16",
+      "課程領域": "IC設計 、 多媒體通訊",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "使用工程工具",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "應用工程設計",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "多元化團隊合作",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "理解分析能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "工程倫理",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51025",
+    "課號-班別": "EE3046-*",
+    "課程名稱(中文)": "微算機原理與實作",
+    "課程名稱(英文)": "Microcomputer Theory and Laboratory",
+    "備註": "資訊電機學院大學部二、三、四年級可選修",
+    "授課教師": "蔡章仁",
+    "學分": "3",
+    "上課時間": "Fri234",
+    "教室": "E1-223",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "70",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51025&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限二年級、三年級、四年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學院:限資訊電機學院。年級:限二年級、三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限學士班。年級:限二年級、三年級、四年級、五年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51025&outline=51025&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51025",
+      "課號": "EE3046-*",
+      "授課教師": "蔡章仁",
+      "課程名稱(中文)": "微算機原理與實作",
+      "課程名稱(英文)": "Microcomputer Theory and Laboratory",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "課程目標：經由教師課堂講解及學生動手實習，讓學生建立在個人電腦的架構、運作、設計等方面的知識和能力，做為進一步學習相關課程的基礎並可助益於未來專業職涯發展。",
+      "授課內容": "微處理機硬體(Microprocessor hardware)：\n微處理機硬體架構 (Hardware architecture)\n微處理機工作原理 (Operation principle)\n微處理機輸出入介面 (Input and output interface)\n微處理機記憶體介面 (Memory interface)\n微處理機匯流排介面 (Bus interface)\n微處理機中斷介面 (Interrupt interface)\n組合語言 (Assembly languages)：\n組合語言指令集 (Instruction set)\n組合語言機器碼 (Machine code)\n組合語言定址法 (Addressing modes)\n組合語言程式結構 (Program structure)\n組合語言程式工具 (Programming and debugging tools)\n實作 (Laboratory)：\n微算機模擬器之操作演練 (Practice the microprocessor simulator)\n組合語言程式之設計、撰寫、驗證 (Design and verification of assembly programs)\n組合語言組譯程式之撰寫 (Assembler programming)\n中央處理器邏輯電路設計 (Logic circuit design of CPU)",
+      "教科書/參考書": "教科書：無 參考書：http://www.edsim51.com/",
+      "自編教材比例": "100",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "50％ 考試 (期中考與期末考) 30％ 實作展演 (組合語言程式撰寫及驗證、微處理器CPU設計) 10％ 組合語言轉譯程式設計 10％ 課程參與和貢獻",
+      "辦公時間": "星期四 17:00-18:00, 星期五 12:00-13:00",
+      "授課週數": "16",
+      "彈性教學說明": "正式授課和考試進行16週。 另外2週是課程內容及考試的複習或預習，進行方式是雙方向的問答。",
+      "課程領域": "基礎核心",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 專題研究報告(書面) ， 實作/實驗 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 專題研究報告(書面) ， 實作/實驗 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "使用工程工具",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "應用工程設計",
+          "強度指數": "(5) 非常高",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "多元化團隊合作",
+          "強度指數": "(2) 低",
+          "評量方式": "作業練習 ， 實作/實驗 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "理解分析能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(2) 低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "工程倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51026",
+    "課號-班別": "EE3047-A",
+    "課程名稱(中文)": "電子電路實驗Ⅲ",
+    "課程名稱(英文)": "Electronical Circuits Laboratory Ⅲ",
+    "備註": "",
+    "授課教師": "許晉瑋",
+    "學分": "1",
+    "上課時間": "Wed789",
+    "教室": "E1-223",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "70",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51026&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限三年級。班別:限A。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限資訊電機學院學士班。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "系所:限輔系-電機工程學系、雙主修-電機工程學系。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51026&outline=51026&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51026",
+      "課號": "EE3047-A",
+      "授課教師": "許晉瑋",
+      "課程名稱(中文)": "電子電路實驗Ⅲ",
+      "課程名稱(英文)": "Electronical Circuits Laboratory Ⅲ",
+      "課程學制": "學士班",
+      "學分": "1",
+      "課程目標": "訓練學生由實作電路中去印證電子學理論，並學會電路除錯能力。",
+      "授課內容": "運算放大器介紹\n比較器實驗\n積分器實驗\n共振電路實驗\n震盪器實驗\n計時器實驗\n頻率響應實驗\n波形處理實驗\n限制器實驗\n低通濾波器\n高通濾波器\nCMOS 運算放大器：(I)直流分析\nCMOS 運算放大器：(II)交流分析",
+      "教科書/參考書": "自編講義",
+      "自編教材比例": "0",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "預、結報、電路實作、期末筆試、期末專題",
+      "辦公時間": "星期三11～12 、星期四11～12",
+      "授課週數": "16",
+      "課程領域": "基礎核心",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "使用工程工具",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "應用工程設計",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "多元化團隊合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "理解分析能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "工程倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51027",
+    "課號-班別": "EE3047-B",
+    "課程名稱(中文)": "電子電路實驗Ⅲ",
+    "課程名稱(英文)": "Electronical Circuits Laboratory Ⅲ",
+    "備註": "",
+    "授課教師": "許晉瑋",
+    "學分": "1",
+    "上課時間": "Tue789",
+    "教室": "E1-223",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "70",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51027&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限三年級。班別:限B。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限資訊電機學院學士班。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "系所:限輔系-電機工程學系、雙主修-電機工程學系。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51027&outline=51027&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51027",
+      "課號": "EE3047-B",
+      "授課教師": "許晉瑋",
+      "課程名稱(中文)": "電子電路實驗Ⅲ",
+      "課程名稱(英文)": "Electronical Circuits Laboratory Ⅲ",
+      "課程學制": "學士班",
+      "學分": "1",
+      "課程目標": "訓練學生由實作電路中去印證電子學理論，並學會電路除錯能力。",
+      "授課內容": "運算放大器介紹\n比較器實驗\n積分器實驗\n共振電路實驗\n震盪器實驗\n計時器實驗\n頻率響應實驗\n波形處理實驗\n限制器實驗\n低通濾波器\n高通濾波器\nCMOS 運算放大器：(I)直流分析\nCMOS 運算放大器：(II)交流分析",
+      "教科書/參考書": "自編講義",
+      "自編教材比例": "0",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "預、結報、電路實作、期末筆試、期末專題",
+      "辦公時間": "星期三11～12 、星期四11～12",
+      "授課週數": "16",
+      "課程領域": "基礎核心",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "使用工程工具",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "應用工程設計",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "多元化團隊合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "理解分析能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "工程倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51028",
+    "課號-班別": "EE3053-*",
+    "課程名稱(中文)": "電子專題",
+    "課程名稱(英文)": "Special Project of Circuit Design Techniques",
+    "備註": "電機系三四年級可修。選修此門課限專題指導老師為電子組教師，同學請務必填寫「專題指導教師同意書」並於加退選期間交回系辦領取密碼卡",
+    "授課教師": "陳聿廣\n許鈞瓏\n鄭國興\n李進福",
+    "學分": "3",
+    "上課時間": "SatABC",
+    "教室": "E1-121",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51028&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51028&outline=51028&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51028",
+      "課號": "EE3053-*",
+      "授課教師": "陳聿廣\n許鈞瓏\n鄭國興\n李進福",
+      "課程名稱(中文)": "電子專題",
+      "課程名稱(英文)": "Special Project of Circuit Design Techniques",
+      "課程學制": "學士班",
+      "學分": "3",
+      "自編教材比例": "0",
+      "授課週數": "16"
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51029",
+    "課號-班別": "EE4004-*",
+    "課程名稱(中文)": "專題實作",
+    "課程名稱(英文)": "Independent Study",
+    "備註": "電機系三四年級可修。選修此門課同學請務必填寫「專題指導教師同意書」並於加退選期間交回系辦領取密碼卡",
+    "授課教師": "李柏磊\n辛裕明\n杜長慶\n周求致\n王文俊\n廖益弘\n郭明庭\n李進福\n綦振瀛",
+    "學分": "3",
+    "上課時間": "Sat567",
+    "教室": "E1-120",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51029&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51029&outline=51029&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51029",
+      "課號": "EE4004-*",
+      "授課教師": "李柏磊\n辛裕明\n杜長慶\n周求致\n王文俊\n廖益弘\n郭明庭\n李進福\n綦振瀛",
+      "課程名稱(中文)": "專題實作",
+      "課程名稱(英文)": "Independent Study",
+      "課程學制": "學士班",
+      "學分": "3",
+      "自編教材比例": "0",
+      "授課週數": "16"
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51030",
+    "課號-班別": "EE4023-*",
+    "課程名稱(中文)": "專題實作II",
+    "課程名稱(英文)": "Independent Study II",
+    "備註": "電機系三四年級可修。選修此門課同學請務必填寫「專題指導教師同意書」並於加退選期間交回系辦領取密碼卡",
+    "授課教師": "杜長慶\n綦振瀛",
+    "學分": "3",
+    "上課時間": "Sat567",
+    "教室": "E1-124",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51030&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51030&outline=51030&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51030",
+      "課號": "EE4023-*",
+      "授課教師": "杜長慶\n綦振瀛",
+      "課程名稱(中文)": "專題實作II",
+      "課程名稱(英文)": "Independent Study II",
+      "課程學制": "學士班",
+      "學分": "3",
+      "自編教材比例": "0",
+      "授課週數": "16"
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51031",
+    "課號-班別": "EE4036-*",
+    "課程名稱(中文)": "電磁波實驗",
+    "課程名稱(英文)": "Electromagnetics Laboratories",
+    "備註": "建議須修過電磁學Ⅰ、電磁學Ⅱ，星期一第8、9節:維持在實驗教室(E6-B518)上課",
+    "授課教師": "傅家相\n凃文化\n張鴻埜",
+    "學分": "3",
+    "上課時間": "Mon789",
+    "教室": "E1-102",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51031&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51031&outline=51031&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51031",
+      "課號": "EE4036-*",
+      "授課教師": "傅家相\n凃文化\n張鴻埜",
+      "課程名稱(中文)": "電磁波實驗",
+      "課程名稱(英文)": "Electromagnetics Laboratories",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "使大學部學生對電磁學具有實際應用概念",
+      "授課內容": "“◎Power meter and attenuator\n-Discussions on Ethics for Engineers\n-Power meter\n-Attenuator\n-S-parameters\n-Transmission line\n◎Network analyzer\n-S-parameters\n-Smith chart\n-Passive components\n-Active components\n◎Rectangular waveguide\n-Waveguide\n-Directional coupler\n-Magic-T\n-Cavity\n◎Impedance match\n-Measurement\n-EDA tool simulation\n-PCB fabrication\n-Single-section match\n◎Wireless communication\n-Satellite communication\n-Broadcast\n-Wireless LNA\n-Mobile communication“",
+      "教科書/參考書": "“教科書：自編講義 參考書：David M. Pozar, Microwave Engineering, John Wiley ＆ Sons, Inc.“",
+      "自編教材比例": "0",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "“Lab 100％“",
+      "辦公時間": "\"Tue, 9 - 10 am, and Wed, 2 - 3 pm\"",
+      "授課週數": "16",
+      "課程領域": "電波工程",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "使用工程工具",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "應用工程設計",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "多元化團隊合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "理解分析能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "工程倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51032",
+    "課號-班別": "EE4038-*",
+    "課程名稱(中文)": "天線工程導論",
+    "課程名稱(英文)": "Introduction to Antenna Engineering",
+    "備註": "資訊電機學院大學部四年級可選修",
+    "授課教師": "凃文化",
+    "學分": "3",
+    "上課時間": "Mon34",
+    "教室": "E1-123\nWed5",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "40",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51032&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限學士班。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51032&outline=51032&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51032",
+      "課號": "EE4038-*",
+      "授課教師": "凃文化",
+      "課程名稱(中文)": "天線工程導論",
+      "課程名稱(英文)": "Introduction to Antenna Engineering",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "天線是無線系統中，重要的元件之一，將電訊號轉化為電磁波或反向將電磁波轉化為電訊號。本課程主要目標為介紹天線，以深入淺出的方式，讓修課學生認識天線。",
+      "授課內容": "簡介\n天線基礎參數\n偶極天線\n陣列\n自主學習",
+      "教科書/參考書": "無中文教科書",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "期中考 45% 期末考55%",
+      "辦公時間": "周一 1300-1400",
+      "授課週數": "16",
+      "彈性教學說明": "自主學習",
+      "課程領域": "電波工程",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "使用工程工具",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "應用工程設計",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "多元化團隊合作",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "理解分析能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "工程倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "無"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51033",
+    "課號-班別": "EE4042-*",
+    "課程名稱(中文)": "光電元件專題實驗",
+    "課程名稱(英文)": "Special Topics on Optoelectronic Experiments",
+    "備註": "",
+    "授課教師": "辛正倫",
+    "學分": "3",
+    "上課時間": "Fri567",
+    "教室": "E1-107",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "20",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51033&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系、資訊電機學院學士班。年級:限四年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限電機工程學系、資訊電機學院學士班。年級:限三年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51033&outline=51033&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51033",
+      "課號": "EE4042-*",
+      "授課教師": "辛正倫",
+      "課程名稱(中文)": "光電元件專題實驗",
+      "課程名稱(英文)": "Special Topics on Optoelectronic Experiments",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "“This course is intend to integrate various technologies in characterizing semiconductor materials as well as devices.\nIt presents more 10 characterization techniques and related theories whose contents composes a wide spectrum of knowledge including electrical, optical, chemical, and physical.\nThe course is particularly useful for senior undergraduate and graduate students who intend to join the semiconductor industry.“",
+      "授課內容": "0. 課程介紹 (1週)\n1.電學特性量測分析 (3週)\n原理介紹: Resistivity and concentration\n實驗: 霍爾效應 (Hall Effect) / 四點探針 (4 point measurement)\n2.半導體光學量測分析 (4週)?\n原理介紹??實驗: 量子井光激光譜 (Photoluminescence)?\n?3.太陽電池與光偵測器 (5 週)?\n原理介紹??太陽電池製程與光偵測器製程?\n實驗: 光偵測器量測 (光電流/響應度)\n4. 熱傳播量測分析(3週)\n原理介紹\n實驗: 薄膜熱傳導係數量測",
+      "教科書/參考書": "Class slides will be sent to you by email/blackboard before each class.",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 實習/實驗",
+      "評量配分比重": "Grading (成績、計分方式)\nMidterm: 40％\nTerm papers : 15％ * 4 = 60％ or 12％ * 5 = 60％ : 4*word+1*poster\nBonus if needed: 5％",
+      "辦公時間": "\"12:00 am to 13:00 pm, Tuesday.\"",
+      "授課週數": "16",
+      "彈性教學說明": "將進行分組報告、 心得分享、或相關知識補充等課程.",
+      "課程領域": "基礎核心 、 半導體元件物理 、 光電子元件",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "使用工程工具",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "應用工程設計",
+          "強度指數": "(3) 普通",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "多元化團隊合作",
+          "強度指數": "(5) 非常高",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "理解分析能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "工程倫理",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面)"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51034",
+    "課號-班別": "EE5006-*",
+    "課程名稱(中文)": "天線",
+    "課程名稱(英文)": "Antennas",
+    "備註": "資訊電機學院大學部四年級可選修",
+    "授課教師": "丘增杰",
+    "學分": "3",
+    "上課時間": "Mon6",
+    "教室": "E1-107\nWed56",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "40",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51034&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系碩士班、電機工程學系博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51034&outline=51034&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51034",
+      "課號": "EE5006-*",
+      "授課教師": "丘增杰",
+      "課程名稱(中文)": "天線",
+      "課程名稱(英文)": "Antennas",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "使學生了解電磁輻射的基本原理，使其具備在天線設計上研究或就業的能力。",
+      "授課內容": "1.Basic Antenna Concepts\n2.Far-Field Integrals and Reciprocity\n3.Rodiation of Dipoles\n4.Array Analysis and Synthesis\n5.Introduction to Many Antennas",
+      "教科書/參考書": "\"教科書：\nAnnounced in class\n參考書：\n1.John D.Kraus,Antennas,McGraw-Hill Book ompany ,second edition ,1988\n2.R.S.Elliott, Antenna Theory and Design,Prentie-Hall ,Inc.1981\"",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "期中考 50%\n期未報告 50%",
+      "辦公時間": "星期二15：00～17：00",
+      "授課週數": "16",
+      "課程領域": "電波工程",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51035",
+    "課號-班別": "EE5019-*",
+    "課程名稱(中文)": "信號完整度與電磁相容專題",
+    "課程名稱(英文)": "Special Topics in Signal Integrity and Electromagnetic Compatibility",
+    "備註": "資電院大四、碩博同修",
+    "授課教師": "周求致",
+    "學分": "3",
+    "上課時間": "Thu234",
+    "教室": "E1-123",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51035&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51035&outline=51035&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51035",
+      "課號": "EE5019-*",
+      "授課教師": "周求致",
+      "課程名稱(中文)": "信號完整度與電磁相容專題",
+      "課程名稱(英文)": "Special Topics in Signal Integrity and Electromagnetic Compatibility",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "This class will cover some special topics in the field of signal integrity (SI) and electromagnetic compatibility (EMC), including transmission line theory, causality theory, and power integrity, as detailed in the course content below. While transmission line and power integrity are important subjects specific for SI engineers, causality is a topic that also finds broad applications in other branches of physics. The theories of these topics will be introduced in class, and students are required to complete several homework which are mostly Python-coding problems (but not exclusively). This course is not a sequel of the course Signal Integrity and Electromagnetic Compatibility of the spring semester, so students are welcome to take this course even if you have not taken the spring-semester one. Undergraduates are also welcome to take this course as long as you have studied 電磁學, 複變, and 信號與系統.",
+      "授課內容": "1. Numerical inverse Fourier transform\n2. Transmission line theory\n* Exact TEM mode\n* Dielectric model\n* Quasi-TEM mode\n* Conductor model\n* TDR\n* Surface roughness\n* Multi-conductor line\n* Modal decomposition\n* Crosstalk\n3. Causality\n* Causality theorems\n* Causality assessment\n4. Power integrity\n* Power delivery framework\n* Buck converter analysis and design\n* PDN analysis and design",
+      "教科書/參考書": "1. Stephen Hall and Howard Heck, Advanced Signal Integrity for High Speed Digital Designs, Wiley-IEEE Press, 2009. ( https://ieeexplore.ieee.org/book/5361024 ) 2. Clayton Paul, Introduction to Electromagnetic Compatibility, Wiley, 2005. ( https://onlinelibrary.wiley.com/doi/book/10.1002/0471758159 ) Both books can be downloaded if you are within NCU‘s ip. 3. M. Swaminathan and A. Engin, Power Integrity Modeling and Design for Semiconductors and Systems, Prentice Hall, 2008. (Available at library) 4. Eric Bogatin, Signal and Power Integrity – Simplified, 2nd ed., Prentice Hall, 2010, Ch 13. (Available at library) 5. S. Grivet-Talocia and B. Gustavsen, Passive macromodeling: Theory and applications, John Wiley ＆ Sons, 2016. (https://onlinelibrary.wiley.com/doi/book/10.1002/9781119140931)",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "Homework 100％, which includes: (1) about 14 homework, each accounts for about 7~12％ of the final grade, depending on the complexity of the problem; (2) homework presentation: each week we will randomly select a few students to briefly describe their homework report in class. The report of the selected students will be displayed to the whole class, and I will ask some questions for the presenters regarding their results. If the selected students are absent, they will get 0 score for that homework. Also note that the reports of all students of all homework will be open for every one in class to view, in the eeclass system.",
+      "辦公時間": "Contact me by eeclass message",
+      "授課週數": "16",
+      "彈性教學說明": "Homework",
+      "課程領域": "電波工程",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(3) 普通",
+          "評量方式": "無"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51036",
+    "課號-班別": "EE6009-*",
+    "課程名稱(中文)": "數位信號處理",
+    "課程名稱(英文)": "Digital Signal Processing",
+    "備註": "資訊電機學院大學部四年級可選修",
+    "授課教師": "李柏磊",
+    "學分": "3",
+    "上課時間": "Tue567",
+    "教室": "E1-121",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "120",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51036&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系碩士班、電機工程學系博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限電機工程學系。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學院:限資訊電機學院。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51036&outline=51036&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51036",
+      "課號": "EE6009-*",
+      "授課教師": "李柏磊",
+      "課程名稱(中文)": "數位信號處理",
+      "課程名稱(英文)": "Digital Signal Processing",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "教導學員離散時間域的觀念、傅立葉轉換分析、頻譜分析能力、濾波器設計等能力，以實際的案例學習如何上手實際分析訊號，讓學員能夠獲得實務與理論的結合應用。",
+      "授課內容": "◎線性時不變離散時間系統(Linear-Time Invariant DSP systems) ◎Ｚ-轉換 (Z-transform) ◎離散時間數位濾波器設計(Filter Design of Discrete-Time Systems) ◎ 類比數位轉換 (analog-to-digital conversion) ◎數位濾波器設計 (Digital Filter Design) ◎離散傅立葉轉換 (Discrete-time Fourier Transform) ◎頻譜分析(Spectral Analysis)",
+      "教科書/參考書": "\"教科書：Alan V. Oppenheim, Ronald W. Schafer, and John R. Buck: \"\"Discrete-Time Signal Processing\"(Second Edition), Prentice Hall, 1999. 參考書：\"Peyton Z. Peebles. “Probability, Random Variables, and Random Signal Principles” (Third Edition), McGraw-Hill, 1993.\"",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "期中考佔45%，期末考佔45%，其他佔10%",
+      "辦公時間": "星期二16：00～17：00",
+      "授課週數": "16",
+      "彈性教學說明": "使用錄影教學課程補充教材",
+      "課程領域": "基礎核心 、 多媒體通訊 、 系統生醫工程 、 智慧型電機控制",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 實作/實驗 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51037",
+    "課號-班別": "EE6010-*",
+    "課程名稱(中文)": "線性系統",
+    "課程名稱(英文)": "Linear System",
+    "備註": "資訊電機學院大學部四年級可選修",
+    "授課教師": "徐國鎧",
+    "學分": "3",
+    "上課時間": "Mon234",
+    "教室": "E1-120",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "90",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51037&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51037&outline=51037&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51037",
+      "課號": "EE6010-*",
+      "授課教師": "徐國鎧",
+      "課程名稱(中文)": "線性系統",
+      "課程名稱(英文)": "Linear System",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "瞭解控制理論基本理論奠定理論發展基礎。",
+      "授課內容": "1.線性狀態方程式表示 2.線性狀態方程式解 3.轉移矩陣性質 4.兩種重要狀況 5. 可控性 與可觀性 6.可控 與可觀型態 7.線性狀態回授 8.線性觀測器 9.線性狀態回授與觀測器整合",
+      "教科書/參考書": "教科書：線性系統理論 作者：Wilson J.Rugh",
+      "自編教材比例": "50",
+      "授課方式": "講授",
+      "評量配分比重": "\"考試 (midterm and final exams) 60%\n報告 (oral presentation and written report) 30%\n出席 (attitude, attendance, asking questions, answering questions, helping, and other possible contributions) 10%\"",
+      "辦公時間": "星期一8～10",
+      "授課週數": "16",
+      "彈性教學說明": "問題討論",
+      "課程領域": "基礎核心",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(1) 非常低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51038",
+    "課號-班別": "EE6013-*",
+    "課程名稱(中文)": "超大型積體電路設計",
+    "課程名稱(英文)": "VLSI Design",
+    "備註": "資訊電機學院大學部四年級可選修",
+    "授課教師": "鄭國興",
+    "學分": "3",
+    "上課時間": "Tue567",
+    "教室": "E1-109",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "70",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51038&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系碩士班、電機工程學系博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限人工智慧國際碩士學位學程。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限資訊電機學院學士班。年級:限四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限輔系-電機工程學系、雙主修-電機工程學系。年級:限四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51038&outline=51038&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51038",
+      "課號": "EE6013-*",
+      "授課教師": "鄭國興",
+      "課程名稱(中文)": "超大型積體電路設計",
+      "課程名稱(英文)": "VLSI Design",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "辦公時間": "0",
+      "授課週數": "16",
+      "課程領域": "IC設計 、 半導體元件物理",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(4) 高",
+          "評量方式": "N/A"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(0) 無",
+          "評量方式": "N/A"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(4) 高",
+          "評量方式": "N/A"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(4) 高",
+          "評量方式": "N/A"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(1) 非常低",
+          "評量方式": "N/A"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(2) 低",
+          "評量方式": "N/A"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "N/A"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(3) 普通",
+          "評量方式": "N/A"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51039",
+    "課號-班別": "EE6033-*",
+    "課程名稱(中文)": "固態工程 [已停開]",
+    "課程名稱(英文)": "Solid State Engineering",
+    "備註": "電機系四年級可選修，114/7/21~114/8/29 每週一三五下午13-16時，上課地點：E1-120教室。未於暑假期間上過此課的同學請勿選課",
+    "授課教師": "辛正倫",
+    "學分": "3",
+    "上課時間": "",
+    "教室": "",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51039&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51039&outline=51039&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51039",
+      "課號": "EE6033-*",
+      "授課教師": "辛正倫",
+      "課程名稱(中文)": "固態工程",
+      "課程名稱(英文)": "Solid State Engineering",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "認識固態工程技術的基本原理、實務及模型",
+      "授課內容": "“◎Introduction\nDiscussions on Ethics for Engineers.\n1. Introduction and Historical Perspective\n2. Modern CMOS Technology\n◎Semiconductor Material and Manufacturing\n1. Crystal Growth, Wafer Fabrication and Basic Properties of Silicon Wafers\n2. Semiconductor Manufacturing-Clean Rooms, Wafer Cleaning, and Gettering\n◎Films and Pattern Transfer\n1. Lithography\n2. Thermal Oxidation and the Si/SiO2 Interface\n3. Thin-Film Deposition\n4. Etching\n◎Doping\n1. Dopant Diffusion\n2. Ion Implanation\n◎Back-End Process\n1. Back-End Technology“",
+      "教科書/參考書": "“教科書：“Silicon VLSI Technology: Fundamentals, Practice and Modeling” “J.D. Plummer, M. Deal, P.B. Griffin ”\n參考書：“Semiconductor Manufacturing Technology” M. Quirk, J. Serda“",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "期末考 100％",
+      "辦公時間": "星期二、三19：30～21：30",
+      "授課週數": "18",
+      "課程領域": "基礎核心 、 奈米電子元件",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(3) 普通",
+          "評量方式": "實作/實驗"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51040",
+    "課號-班別": "EE6044-*",
+    "課程名稱(中文)": "半導體元件",
+    "課程名稱(英文)": "Semiconductor Devices",
+    "備註": "資訊電機學院大學部限四年級可選修，光電科學與工程學系：限四年級和碩博可選修。",
+    "授課教師": "辛裕明",
+    "學分": "3",
+    "上課時間": "Wed34Z",
+    "教室": "E1-121",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "30",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51040&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系碩士班、電機工程學系博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限學士班。學院:限資訊電機學院。系所:限電機工程學系。年級:限四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限光電科學與工程學系。年級:限四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限光電科學與工程學系碩士班、光電科學與工程學系博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51040&outline=51040&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51040",
+      "課號": "EE6044-*",
+      "授課教師": "辛裕明",
+      "課程名稱(中文)": "半導體元件",
+      "課程名稱(英文)": "Semiconductor Devices",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "認識半導體元件的基本原理",
+      "授課內容": ".Electrons and holes in Semiconductors\n.Motion and Recombination of Electrons and Holes\n.PN and Metal-Semiconductor Junctions\n.MOS Capacitor\n.MOS Transistor\n.Bipolar Transistor",
+      "教科書/參考書": "1. Semiconductor Physics and Devices: Basic Principles, 4th edition DONALD A. NEAMEN 2. “Fundamentals of Semiconductor Devices““, Anderson, 2005, McGraw-Hill Education.",
+      "自編教材比例": "10",
+      "授課方式": "講授",
+      "評量配分比重": "考試 70％ 作業/報告/小考30％ (確切百分比將在 上課時公布)",
+      "辦公時間": "暫定每周星期三和四下午2:30 到3: 30請先email確認",
+      "授課週數": "16",
+      "彈性教學說明": "彈性教學，使用Webex上課",
+      "課程領域": "IC設計 、 半導體元件物理 、 奈米電子元件 、 光電子元件 、 電力電子",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(2) 低",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51041",
+    "課號-班別": "EE6054-A",
+    "課程名稱(中文)": "書報討論",
+    "課程名稱(英文)": "Seminar",
+    "備註": "限電機系研究生選修",
+    "授課教師": "陳正一",
+    "學分": "0",
+    "上課時間": "Wed78",
+    "教室": "E1-124",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51041&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系產業博士班。"
+        },
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系碩士班、電機工程學系博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51041&outline=51041&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51041",
+      "課號": "EE6054-A",
+      "授課教師": "陳正一",
+      "課程名稱(中文)": "書報討論",
+      "課程名稱(英文)": "Seminar",
+      "課程學制": "碩博同修",
+      "學分": "0",
+      "課程目標": "1.邀請電機工程相關領域之傑出人士與各方賢達，進行兩小時的專題演講，藉此開拓研究生的視野，掌握科技發展的趨勢與脈動。 2.安排研究生上台專題報告",
+      "授課內容": "分組討論報告、演講",
+      "教科書/參考書": "無",
+      "自編教材比例": "0",
+      "授課方式": "研討",
+      "評量配分比重": "出席、報告",
+      "辦公時間": "星期三3～5",
+      "授課週數": "16",
+      "彈性教學說明": "安排線上課程相關技術資源與影片協助學生自主學習",
+      "課程領域": "IC設計 、 多媒體通訊 、 半導體元件物理 、 奈米電子元件 、 光電子元件 、 電力電子 、 智慧型電機控制 、 電波工程",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51042",
+    "課號-班別": "EE6054-B",
+    "課程名稱(中文)": "書報討論",
+    "課程名稱(英文)": "Seminar",
+    "備註": "限該授課教授所指導之研究生選修",
+    "授課教師": "李柏磊",
+    "學分": "0",
+    "上課時間": "Wed78",
+    "教室": "E1-234",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51042&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51042&outline=51042&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51042",
+      "課號": "EE6054-B",
+      "授課教師": "李柏磊",
+      "課程名稱(中文)": "書報討論",
+      "課程名稱(英文)": "Seminar",
+      "課程學制": "碩博同修",
+      "學分": "0",
+      "課程目標": "1.邀請電機工程相關領域之傑出人士與各方賢達，進行兩小時的專題演講，藉此開拓研究生的視野，掌握科技發展的趨勢與脈動。 2.安排研究生上台專題報告",
+      "授課內容": "學員選擇專題研究題目進行報告、實作、以及論文寫作，並且需要研究成果認證，考驗學員的組織能力、研究能力、實驗嚴謹度、以及論文撰寫能力。",
+      "教科書/參考書": "Creswell, J. W. & Creswell, J. D. (2018). Research Design: Qualitative, Quantitative, and Mixed Methods Approaches (5th ed.). SAGE Publications. A classic, widely cited reference on designing and conducting research. Kothari, C. R. (2004). Research Methodology: Methods and Techniques (2nd ed.). New Age International.",
+      "自編教材比例": "100",
+      "授課方式": "研討 實習/實驗 個別指導",
+      "評量配分比重": "出席、報告",
+      "辦公時間": "星期三3～5",
+      "授課週數": "16",
+      "彈性教學說明": "採用遠距教學或是數位影片",
+      "課程領域": "IC設計 、 多媒體通訊 、 半導體元件物理 、 奈米電子元件 、 光電子元件 、 電力電子 、 智慧型電機控制 、 電波工程",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(5) 非常高",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(5) 非常高",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51043",
+    "課號-班別": "EE6054-C",
+    "課程名稱(中文)": "書報討論",
+    "課程名稱(英文)": "Seminar",
+    "備註": "限該授課教授所指導之研究生選修",
+    "授課教師": "林法正",
+    "學分": "0",
+    "上課時間": "Wed78",
+    "教室": "E1-123",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51043&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系碩士班、電機工程學系博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51043&outline=51043&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51043",
+      "課號": "EE6054-C",
+      "授課教師": "林法正",
+      "課程名稱(中文)": "書報討論",
+      "課程名稱(英文)": "Seminar",
+      "課程學制": "碩博同修",
+      "學分": "0",
+      "課程目標": "1.分組討論報告 2.安排研究生上台專題報告",
+      "授課內容": "電力電子、電機控制、智慧型控制、微電網",
+      "教科書/參考書": "無",
+      "自編教材比例": "50",
+      "授課方式": "研討",
+      "評量配分比重": "出席、報告",
+      "辦公時間": "星期二早上10～12點",
+      "授課週數": "18",
+      "課程領域": "電力電子 、 智慧型電機控制",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51044",
+    "課號-班別": "EE6054-D",
+    "課程名稱(中文)": "書報討論",
+    "課程名稱(英文)": "Seminar",
+    "備註": "限該授課教授所指導之研究生選修",
+    "授課教師": "唐英瓚",
+    "學分": "0",
+    "上課時間": "Wed78",
+    "教室": "E1-121",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51044&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51044&outline=51044&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51044",
+      "課號": "EE6054-D",
+      "授課教師": "唐英瓚",
+      "課程名稱(中文)": "書報討論",
+      "課程名稱(英文)": "Seminar",
+      "課程學制": "碩博同修",
+      "學分": "0",
+      "課程目標": "本研討課程將系統性介紹半導體記憶體與邏輯元件的微縮，內容涵蓋基礎概念與先進技術。主題專注FeFET/FeRAM近期發展。學生將學習這些元件的運作原理，理解電路設計如何因應變異性、穩定性與可靠度挑戰，並掌握製程技術對效能與微縮的影響。協助學生將學術知識轉化為企業應用。課程最終期望學生能培養跨領域思維、問題解決能力，並深刻認識記憶體與邏輯元件如何形塑人工智慧與半導體產業的未來。",
+      "授課內容": "the recent development of FeFET and FeRAM",
+      "教科書/參考書": "NA, paper report",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "0",
+      "辦公時間": "wed. 4pm",
+      "授課週數": "16",
+      "彈性教學說明": "逢運動會與考試周或出國開會調整",
+      "課程領域": "基礎核心 、 IC設計 、 半導體元件物理 、 奈米電子元件",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(1) 非常低",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(0) 無",
+          "評量方式": "出席/課堂表現 ， 無"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51045",
+    "課號-班別": "EE6054-E",
+    "課程名稱(中文)": "書報討論",
+    "課程名稱(英文)": "Seminar",
+    "備註": "限電波組研究生 。碩博同修。",
+    "授課教師": "周求致",
+    "學分": "0",
+    "上課時間": "Wed78",
+    "教室": "E1-120",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51045&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系碩士班、電機工程學系博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51045&outline=51045&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51045",
+      "課號": "EE6054-E",
+      "授課教師": "周求致",
+      "課程名稱(中文)": "書報討論",
+      "課程名稱(英文)": "Seminar",
+      "課程學制": "碩博同修",
+      "學分": "0",
+      "課程目標": "Exchange ideas. Professional talks. Lifelong learning.",
+      "授課內容": "Invited speech. Research presentation by students.",
+      "教科書/參考書": "None",
+      "自編教材比例": "0",
+      "授課方式": "其他",
+      "評量配分比重": "TBA",
+      "辦公時間": "TBD",
+      "授課週數": "16",
+      "彈性教學說明": "None",
+      "課程領域": "基礎核心",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51046",
+    "課號-班別": "EE6054-F",
+    "課程名稱(中文)": "書報討論",
+    "課程名稱(英文)": "Seminar",
+    "備註": "限該授課教授所指導之研究生選修。",
+    "授課教師": "張鴻埜",
+    "學分": "0",
+    "上課時間": "Wed78",
+    "教室": "E1-019",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51046&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51046&outline=51046&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51046",
+      "課號": "EE6054-F",
+      "授課教師": "張鴻埜",
+      "課程名稱(中文)": "書報討論",
+      "課程名稱(英文)": "Seminar",
+      "課程學制": "碩博同修",
+      "學分": "0",
+      "自編教材比例": "0",
+      "授課週數": "16"
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51047",
+    "課號-班別": "EE6054-G",
+    "課程名稱(中文)": "書報討論",
+    "課程名稱(英文)": "Seminar",
+    "備註": "限該授課教授所指導之研究生選修",
+    "授課教師": "徐國鎧",
+    "學分": "0",
+    "上課時間": "Wed78",
+    "教室": "E1-123",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51047&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51047&outline=51047&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51047",
+      "課號": "EE6054-G",
+      "授課教師": "徐國鎧",
+      "課程名稱(中文)": "書報討論",
+      "課程名稱(英文)": "Seminar",
+      "課程學制": "碩博同修",
+      "學分": "0",
+      "自編教材比例": "0",
+      "授課週數": "16"
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51048",
+    "課號-班別": "EE6054-H",
+    "課程名稱(中文)": "書報討論",
+    "課程名稱(英文)": "Seminar",
+    "備註": "限固態組研究生。碩博同修。",
+    "授課教師": "郭明庭",
+    "學分": "0",
+    "上課時間": "Wed78",
+    "教室": "E1-121",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51048&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51048&outline=51048&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51048",
+      "課號": "EE6054-H",
+      "授課教師": "郭明庭",
+      "課程名稱(中文)": "書報討論",
+      "課程名稱(英文)": "Seminar",
+      "課程學制": "碩博同修",
+      "學分": "0",
+      "課程目標": "This course provide the progress of advanced researches for graduate students",
+      "授課內容": "We invite scholars, professors and searchers to give talks, sharing the progress of technology and science on materials, devices .",
+      "教科書/參考書": "published articles in web of science",
+      "自編教材比例": "10",
+      "授課方式": "講授 研討",
+      "評量配分比重": "100",
+      "辦公時間": "Wed:15:00-17:00",
+      "授課週數": "16",
+      "彈性教學說明": "articles published in SCI",
+      "課程領域": "半導體元件物理 、 奈米電子元件",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(1) 非常低",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(0) 無",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51049",
+    "課號-班別": "EE6057-*",
+    "課程名稱(中文)": "類比積體電路",
+    "課程名稱(英文)": "Analog Integrated Circuits",
+    "備註": "資訊電機學院大學部四年級可選修",
+    "授課教師": "薛木添",
+    "學分": "3",
+    "上課時間": "Mon5",
+    "教室": "E1-019\nThu56",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "70",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51049&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51049&outline=51049&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51049",
+      "課號": "EE6057-*",
+      "授課教師": "薛木添",
+      "課程名稱(中文)": "類比積體電路",
+      "課程名稱(英文)": "Analog Integrated Circuits",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "建立類比積體電路之分析與設計能力",
+      "授課內容": "1. Introduction\n2. Basic MOS device Physics\n3. Single-Stage Amplifiers\n4. Differential Amplifiers\n5. Passive and Active Current Mirrors\n6. Frequency Response of Amplifiers\n7. Noise\n8. Feedback\n9. Operational Amplifiers\n10. Stability and Frequency Compensation",
+      "教科書/參考書": "\"教科書: B. Razavi, “Design of Analog CMOS Integrated Circuits,” McGraw Hill, 2001. ISBN 0-07-238032-2 參考書目: [1]. Paul R. Gray, Paul J. Hurst, Stephen H. Lewis, and Robert G. Meyer, “Analysis and Design ofAnalog Integrated Circuits,” 5th Edition, John Wiley & Sons, Inc. 2009. ISBN: 978-0-470-24599-6 [2]. Phillip E. Allen and Douglas R. Holberg, “CMOS Analog Circuit Design,” Oxford University Press, 2nd edition, 2002. ISBN: 0-19-511644-5\n[3]. David Johns and Ken Martin, “Analog CMOS Integrated Circuit Design,” John Wiley and Sons, 1997. ISBN: 0-471-14448-7\"",
+      "自編教材比例": "20",
+      "授課方式": "講授",
+      "評量配分比重": "\"作業： 40%, 期中考： 30%, 期末考：30%\"",
+      "辦公時間": "週一, 14:00~15:00",
+      "授課週數": "16",
+      "彈性教學說明": "期末成績評量",
+      "課程領域": "IC設計",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(2) 低",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(2) 低",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(1) 非常低",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(2) 低",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 作品/創作展演"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51050",
+    "課號-班別": "EE6083-*",
+    "課程名稱(中文)": "超大型積體電路測試",
+    "課程名稱(英文)": "VLSI Testing",
+    "備註": "資訊電機學院大學部四年級可選修",
+    "授課教師": "李進福",
+    "學分": "3",
+    "上課時間": "Mon234",
+    "教室": "E1-121",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "90",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51050&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51050&outline=51050&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51050",
+      "課號": "EE6083-*",
+      "授課教師": "李進福",
+      "課程名稱(中文)": "超大型積體電路測試",
+      "課程名稱(英文)": "VLSI Testing",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "學生可以學到VLSI測試及可測性之觀念，以幫助學生未來晶片設計之需求。",
+      "授課內容": "1.Introduction\n2.Fault Modeling\n3.Testability Measures\n4.Fault Simulation\n5.Test Generation for Combinationa and Sequential Circuits\n6.Design for Testability (DFT) and Built-In Self-Test (BIST)\n7.Test Standards: IEEE 1149.1/1500/1687/1838\n8.Memory Testing and Repair",
+      "教科書/參考書": "\"Textbook:Bushnell and Agrawal ,\"\"Essentials of Electronic Testing for Digital , Memory & Mixed-Signal VLSI Circuits\"\",Kluwer Academic Pubishers,2000\nReference:Abramovici,Breuer,& Friedman,Digital Systems Testing and Testable Design ,Revised Printing ,IEEE Press,1995(IEEE Order No. PC4186,isbn0-7803-1062-4)\"",
+      "授課方式": "講授",
+      "評量配分比重": "\"homework35%, (Midterm+Final) 65%\"",
+      "辦公時間": "依系辦公布時間",
+      "授課週數": "16",
+      "彈性教學說明": "部分章節採非同步教學及自學",
+      "課程領域": "IC設計",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51051",
+    "課號-班別": "EE7039-*",
+    "課程名稱(中文)": "化合物半導體",
+    "課程名稱(英文)": "Compound Semiconductors",
+    "備註": "資訊電機學院大學部四年級可選修",
+    "授課教師": "綦振瀛",
+    "學分": "3",
+    "上課時間": "Tue2",
+    "教室": "E1-105\nThu23",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "40",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51051&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51051&outline=51051&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51051",
+      "課號": "EE7039-*",
+      "授課教師": "綦振瀛",
+      "課程名稱(中文)": "化合物半導體",
+      "課程名稱(英文)": "Compound Semiconductors",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "修習者能了解化合物半導體材料之製備技術，特有之光電特性，掌握現有化合物半導體元件之工作原理，並據此可以發展元件結構設計之能力。",
+      "授課內容": "CH 0 Introduction\n- Typical compound semiconductors and their applications\n- Market trend and perspectives\nCH 1 Structural properties of semiconductors\n- Crystal growth – bulk growth and epitaxy\n- Crystal structure\nCH 2 Semiconductor band structure\n- Block theorem and crystal momentum\n- Selected band structures\n- Intrinsic carriers and doping\nCH 3 Band structure modifications\n- Semiconductor alloys\n- Heterostructures\n- Strain effect\n- Polar heterostructures\nCH 4 Transport properties\n- Defect and carrier-carrier scattering\n- Alloy scattering\n- Phonon scattering\nCH 5 Optical properties\n- Interband and intraband transitions\n- Radiative and nonradiative recombination\n- Excitonic effects and modulation of optical properties\nCH 6 Devices\n- Optical devices\n- Electronic devices\nCH 7 Characterization techniques\n- Hall effect, Photoluminescence, X-ray diffraction",
+      "教科書/參考書": "教科書: 1. III–V Compound Semiconductors and Devices, An Introduction to Fundamentals, by Keh Yung Cheng, Springer, 2021. ISBN 978-3-030-51903-2 2. Semiconductor Material and Device Characterization, 3rd ed, by D. K Schroder, John Wiley and Sons, 2006",
+      "自編教材比例": "80",
+      "授課方式": "講授 研討 實習/實驗",
+      "評量配分比重": "作業(20％)，期中考(2x25％)，報告(30％)",
+      "辦公時間": "星期四　9:00 ~ 10:00",
+      "授課週數": "16",
+      "彈性教學說明": "二週進行非講課方式授課，two weeks for non-lecturing activities",
+      "課程領域": "半導體元件物理 、 奈米電子元件 、 光電子元件 、 電力電子",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 其他"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51052",
+    "課號-班別": "EE8026-*",
+    "課程名稱(中文)": "微波電路",
+    "課程名稱(英文)": "Microwave Circuits",
+    "備註": "資訊電機學院大學部四年級可選修；建議須修過電磁學Ｉ﹑電磁學Ⅱ。",
+    "授課教師": "林祐生",
+    "學分": "3",
+    "上課時間": "Thu6",
+    "教室": "E1-123\nFri67",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51052&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51052&outline=51052&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51052",
+      "課號": "EE8026-*",
+      "授課教師": "林祐生",
+      "課程名稱(中文)": "微波電路",
+      "課程名稱(英文)": "Microwave Circuits",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "“Understanding the theory behind the operation of microwave circuits, and having the ability to design and analysis microwave passive circuits with the aid of modern CAD tools.“",
+      "授課內容": "1. Introduction to microwave engineering\n2. Transmission line theory\n3. Transmission lines and waveguides\n4. Microwave network analysis\n5. Impedance matching and tuning\n6. Microwave resonators\n7. Power dividers and directional couplers\n8. Microwave filters and slow-wave structures",
+      "教科書/參考書": "“David. M. Pozar, “Microwave Engineering,” 4th Edition, John Wiley ＆ Sons, Inc., 2011.“",
+      "自編教材比例": "50",
+      "授課方式": "講授",
+      "評量配分比重": "“Homework: 30％, Midterm Exam: 35％, Final Exam: 35％“",
+      "辦公時間": "Thur. 3:00~4:00pm",
+      "授課週數": "16",
+      "彈性教學說明": "提供網路學習資源供自主學習。 Steer, Michael. Microwave and RF Design (Third Edition, 2019). NC State University, 2019. Available for free at: https://repository.lib.ncsu.edu/items/c920fb47-8458-433e-9cd8-b5cacf70e859",
+      "課程領域": "電波工程",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(2) 低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51053",
+    "課號-班別": "EE8027-*",
+    "課程名稱(中文)": "射頻積體電路設計",
+    "課程名稱(英文)": "Radio Frequency Integrated Circuit",
+    "備註": "資訊電機學院大學部四年級可選修",
+    "授課教師": "邱煥凱",
+    "學分": "3",
+    "上課時間": "Wed234",
+    "教室": "E1-123",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "30",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51053&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系碩士班、電機工程學系博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51053&outline=51053&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51053",
+      "課號": "EE8027-*",
+      "授課教師": "邱煥凱",
+      "課程名稱(中文)": "射頻積體電路設計",
+      "課程名稱(英文)": "Radio Frequency Integrated Circuit",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "課程將透過深入淺出的理論講解與實務經驗分享，使學生瞭解射頻積體電路原理及設計方法。",
+      "授課內容": "Ch 1. 射頻積體電路設計簡介與專業倫理及社會責任之宣導\nChap. 2 射頻設計之基本概念與問題\nChap. 4 收發機架構\nChap. 5 低雜訊放大器\nChap. 6 混頻器\nChap. 7 被動元件\nChap. 8 振盪器",
+      "教科書/參考書": "“教科書：Behzad Razavi, “RF Microelectronics 2ed”, Prentice-Hall Inc., 2012“",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "依學校行事曆舉行“期中考試 (每次含簡答觀念題,計算題6-10題) 50％\n期末考試50％“ 1. Midterm (50％) /Final term Examination (50％) 2. 不定期隨堂測驗10％ (2-4次) 3. 簽准教育性晶片條件: (1) 修課及格，(2)申請前需寄下線報告",
+      "辦公時間": "12:00 - 14:00 PM 星期三",
+      "授課週數": "16",
+      "彈性教學說明": "規劃6小時線上非同步課程,請修課同學至數位學習平台觀看。",
+      "課程領域": "IC設計",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51054",
+    "課號-班別": "EE8035-*",
+    "課程名稱(中文)": "固態物理",
+    "課程名稱(英文)": "Solid State Physics",
+    "備註": "資訊電機學院大學部四年級可選修",
+    "授課教師": "郭明庭",
+    "學分": "3",
+    "上課時間": "Fri234",
+    "教室": "E1-123",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "40",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51054&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51054&outline=51054&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51054",
+      "課號": "EE8035-*",
+      "授課教師": "郭明庭",
+      "課程名稱(中文)": "固態物理",
+      "課程名稱(英文)": "Solid State Physics",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "對材料科學基本瞭解",
+      "授課內容": "\"1. Basic Quantum Mechanics\n1.1Schrodinger Equation\n1.2The Square Well\n1.3The Harmonic Oscillator (Phonon and Photon)\n1.4 The Hydrogen Atom (3D and 2D exciton Bound and Contiuum States)\n1.5Time-Independent Perturbation Theory\n1.6Time-Dependent Perturbation Theory\n2. Periodic Lattice of Atoms\n2.1 Reciprocal Lattice, Bloch Theorem\n2.2Tight Binding Approximation\n2.3 K．p Theory\n2.4Degenerate Valence Bands\n3. Mesoscopic Semiconductor Structure\n3.1 Envelope Function Approximation\n3.2Conduction Band Electrons in Quantum Wells\n3.3Degenerate Hole Bands in Quantum Wells\n4. Phonons, Crystal Vibrations and Thermal Physics\n4.1 Vibration of Crystals with Monatomic basis\n4.2Two Atoms per Primitive Basis\n4.3 Phonon Heat Capacity\n5. Free Carrier Transitions\n5.1Optical Dipole Transitions\n5.2Kinetics of Optical Interband Transitions\n5.3Coherent Regime: Optical Bloch equations\n5.4Quasi-Equilibrium Regime: Free Carrier Absorption\n6. Ideal Quantum Gases\n6.1 The Ideal Fermi Gas\n6.2The Ideal Bose Gas\n6.3 Ideal Quantum Gases in d Dimensions\"",
+      "教科書/參考書": "\"教科書：\nTextbook:Introduction to Solid State Physics (Charles Kittel)\n參考書：\nReferences:\n(1)Quantum Theory of the Optical and Electronic Properties\nof Semiconductor (H. Haug and S. W. koch)\n(2)Solid State Physics (N. W. Ashcroft, and N. DavidMermin)\n(3)Physics of optoelectronic Devices ( S. L. Chuang)\n(4)Semiconductor-Laser Physics(W. W. Chow, S. W. Koch and M. Sargent III)\"",
+      "自編教材比例": "50",
+      "授課方式": "講授",
+      "評量配分比重": "平常30％ 、期中30％、期末40％",
+      "辦公時間": "\"星期5. 9：00～12：00\"",
+      "授課週數": "16",
+      "彈性教學說明": "published articles",
+      "課程領域": "半導體元件物理 、 奈米電子元件",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(1) 非常低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(1) 非常低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51055",
+    "課號-班別": "EE8043-*",
+    "課程名稱(中文)": "生醫統計學",
+    "課程名稱(英文)": "Biomedical Statistics",
+    "備註": "資訊電機學院大學部四年級可選修",
+    "授課教師": "蔡章仁",
+    "學分": "3",
+    "上課時間": "Thu678",
+    "教室": "E1-121",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51055&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51055&outline=51055&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51055",
+      "課號": "EE8043-*",
+      "授課教師": "蔡章仁",
+      "課程名稱(中文)": "生醫統計學",
+      "課程名稱(英文)": "Biomedical Statistics",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "幫助工程領域的學生建立統計思維，學習實用的統計方法，以應用於其在生醫相關之研究和實驗中所遇到的統計問題，並建立未來進一步學習的基礎。",
+      "授課內容": "基本統計觀念\n取樣分佈\n統計估計\n假設檢定\n變異分析\n相關與回歸\n類別資料分析\n無母數統計\n實證方法\n貝氏估計與推論",
+      "教科書/參考書": "書名: Mathematical Statistics with Applications in R 作者: Kandethody M. Ramachandran, Chris P. Tsokos 出版者: London, UK; Waltham, MA: Academic Press (an imprint of Elsevier) 版本: 3rd edition (2020) 國際標準書號: Paperback ISBN: 9780128178157; eBook ISBN: 9780128178164 備註: 本電子書可由國立中央大學圖書館網站下載。",
+      "自編教材比例": "50",
+      "授課方式": "講授 其他",
+      "評量配分比重": "期中考和期末考 70％ 作業和小計畫 10％ 參與和貢獻 20%",
+      "辦公時間": "星期四 17:00-18:00, 星期五 12:00-13:00",
+      "授課週數": "16",
+      "彈性教學說明": "六小時非同步自主學習：每位學生必須完成指定的作業，其份量相當於六小時的課堂學習(例如觀賞6小時補充教學影片)；作業完成後必須回答線上問題以評量其學習成效。",
+      "課程領域": "系統生醫工程",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(2) 低",
+          "評量方式": "其他"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(3) 普通",
+          "評量方式": "其他"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51056",
+    "課號-班別": "EE8053-*",
+    "課程名稱(中文)": "微波及毫米波頻率合成器",
+    "課程名稱(英文)": "Microwave and Millimeter-wave Frequency Synthesizers",
+    "備註": "資訊電機學院大學部四年級可選修",
+    "授課教師": "張鴻埜",
+    "學分": "3",
+    "上課時間": "Tue7",
+    "教室": "E1-123\nThu78",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "40",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51056&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51056&outline=51056&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51056",
+      "課號": "EE8053-*",
+      "授課教師": "張鴻埜",
+      "課程名稱(中文)": "微波及毫米波頻率合成器",
+      "課程名稱(英文)": "Microwave and Millimeter-wave Frequency Synthesizers",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "訓練研究生具獨立研究之能力",
+      "授課內容": "◎Analysis of phase locked loop\n-Blocks of phase locked loop\n-Order of the PLL system\n-Design procedure for PLL\n-PLL applications\n◎Microwave & Millimeter-wave oscillators design\n-Oscillation conditions\n-Two-port oscillators\n-Oscillator design and analysis\n-Oscillator configurations\n◎Microwave & Millimeter-wave frequency divider circuit\n-Analog divider\n-Digital divider\n-Design of the frequency divider\n-Low power design\n◎Other building blocks in PLLs\n-Phase frequency detector\n-Charge pumping\n-Programming counter\n-Control interface\n◎Phase noise\n-Phase noise in PLL\n-Phase noise characteristics\n-Analysis of the phase noise\n-Phase noise measurement",
+      "教科書/參考書": "\"教科書 U. Rohde, Microwave and wireless synthesizers: theory and design, John Wiley & Sons, Inc., 1997.\n參考書 R. E. Best, Phase-locked loops, McGraw-Hill, 1997\"",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討 實習/實驗 個別指導",
+      "評量配分比重": "Midterm 30%\nTerm Project 40%\nHomework 30%",
+      "辦公時間": "星期三＆五 13～15",
+      "授課週數": "16",
+      "課程領域": "電波工程",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 實作/實驗 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(3) 普通",
+          "評量方式": "自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現 ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51057",
+    "課號-班別": "EE8058-*",
+    "課程名稱(中文)": "智慧型控制系統設計與應用",
+    "課程名稱(英文)": "Design and Applications of Intelligent Control Systems",
+    "備註": "資訊電機學院大學部四年級可選修，與SG5005合班授課。",
+    "授課教師": "林法正",
+    "學分": "3",
+    "上課時間": "Fri234",
+    "教室": "E1-120",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "90",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51057&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51057&outline=51057&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51057",
+      "課號": "EE8058-*",
+      "授課教師": "林法正",
+      "課程名稱(中文)": "智慧型控制系統設計與應用",
+      "課程名稱(英文)": "Design and Applications of Intelligent Control Systems",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "\"Assure students have the fundamental knowledge of fuzzy logic, neural networks, genetic algorithms and intelligent control applications.\"",
+      "授課內容": "◎Fuzzy Logic Control\nDiscussions on Ethics for Engineers.\n1. Fuzzy logic and approximate reasoning\n2. Fuzzy logic control system\n◎Artificial Neural Networks\n3. Feedforward neural networks and supervised learning\n4. Recurrent neural networks and supervised learning\n5. Self-organized neural networks\n◎Advanced Intelligent Control\n6 Genetic algorithms\n7 Integrating fuzzy systems and neural networks\n8 Lyapunov stability and intelligent control systems\n9 Applications of fuzzy and neural networks in control\n◎Paper Study\n10. Final Presentation",
+      "教科書/參考書": "\"教科書：\n1. C. T. Lin and C. S. G. Lee, Neural Fuzzy Systems. Prentice-Hall, 1996\n2. M. Negnevitsky, Artificial Intelligence. Addison Wesley, 2002\n參考書：\nRelated papers in intelligent control techniques for motor drives, 2001-2007\"",
+      "自編教材比例": "50",
+      "授課方式": "講授",
+      "評量配分比重": "成績計算：\n1. Midterm examination: 35%\n2. Computer simulation home works: 20%\n3. Final report and presentation: 40%\n4. Learning attitude: 5%",
+      "辦公時間": "星期二早上10～12點",
+      "授課週數": "18",
+      "課程領域": "智慧型電機控制",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51058",
+    "課號-班別": "EE8070-*",
+    "課程名稱(中文)": "電力系統故障分析",
+    "課程名稱(英文)": "Power System Fault Analysis",
+    "備註": "資訊電機學院大學部四年級可選修，與SG5002合班授課。",
+    "授課教師": "陳正一",
+    "學分": "3",
+    "上課時間": "Mon234",
+    "教室": "E1-223",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "66",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51058&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51058&outline=51058&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51058",
+      "課號": "EE8070-*",
+      "授課教師": "陳正一",
+      "課程名稱(中文)": "電力系統故障分析",
+      "課程名稱(英文)": "Power System Fault Analysis",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "“This course would help students to realize the following concepts: characteristics of power system faults, effects of short-circuit currents, practical per-unit analysis, theory of symmetrical components and sequence networks, three-phase and sequence modelling of multi-conductor multi-circuit overhead lines, multi-conductor cables, transformers, quadrature boosters, phase shifters, reactors and capacitors, modelling of ac rotating machines including wind turbine generators, computer calculation and measurement of the electrical parameters of power system equipment, analysis techniques of ac and dc short-circuit currents and multi-phase fault analysis.“",
+      "授課內容": "“- Characteristics of power system faults\n- Effects of short-circuit currents\n- Practical per-unit analysis\n- Theory of symmetrical components and sequence networks\n- Three-phase and sequence modelling of multi-conductor multi-circuit overhead lines, multi-conductor cables, transformers, quadrature boosters, phase shifters, reactors and capacitors\n- Modelling of ac rotating machines including wind turbine generators\n- Computer calculation and measurement of the electrical parameters of power system equipment\n- Analysis techniques of ac and dc short-circuit currents and multi-phase fault analysis“",
+      "教科書/參考書": "“Textbook: Nasser Tleis, Power Systems Modelling and Fault Analysis, 1st Edition\nReferences: Grainger and Stevenson, Power System Analysis“",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "“1. Midterm and Final Presentation: 60％ 2. Assignments: 20％ 3. Class Participation: 20％“",
+      "辦公時間": "Tuesday and Thursday 9～12 AM",
+      "授課週數": "16",
+      "彈性教學說明": "安排線上課程相關技術資源與影片協助學生自主學習，並於課程中導入課程實作及企業參訪，促進學生了解電力工程實務問題。",
+      "課程領域": "電力電子",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(1) 非常低",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51059",
+    "課號-班別": "EE8077-*",
+    "課程名稱(中文)": "電力品質訊號處理",
+    "課程名稱(英文)": "Signal Processing of Power Quality Disturbances",
+    "備註": "資訊電機學院大學部四年級可選修，與SG5004合班授課。",
+    "授課教師": "陳正一",
+    "學分": "3",
+    "上課時間": "Wed234",
+    "教室": "E1-223",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "66",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51059&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51059&outline=51059&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51059",
+      "課號": "EE8077-*",
+      "授課教師": "陳正一",
+      "課程名稱(中文)": "電力品質訊號處理",
+      "課程名稱(英文)": "Signal Processing of Power Quality Disturbances",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "This course allows students to develop abilities for information analysis and measurement of power and energy problems with the advanced signal processing.",
+      "授課內容": "1. Introduction to Power System\n2. Introduction to Power Quality Disturbances and Energy Problems\n3. Signal Processing for Power Quality Disturbances - Harmonics\n4. Signal Processing for Power Quality Disturbances - Flickers\n5. Signal Processing for Power Quality Disturbances - Power Events\n6. International Standards for Power Measurement\n7. Design of Power Analyzer",
+      "教科書/參考書": "“M. H. J. Bollen and I. Y. H. Gu, Signal Processing of Power Quality Disturbances, John Wiley ＆ Sons, Inc., 2006.“",
+      "自編教材比例": "100",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "1. Midterm and Final Presentation: 60％\n2. Assignments: 20％\n3. Class Participation: 20％",
+      "辦公時間": "星期二　09:00 ~ 12:00",
+      "授課週數": "16",
+      "彈性教學說明": "安排線上課程相關技術資源與影片協助學生自主學習，並於課程中導入課程實作及企業參訪，促進學生了解電力工程實務問題。",
+      "課程領域": "電力電子",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51060",
+    "課號-班別": "EE8079-*",
+    "課程名稱(中文)": "功率電子元件",
+    "課程名稱(英文)": "Power Semiconductor Devices",
+    "備註": "資訊電機學院大學部限四年級可選修，光電科學與工程學系：限四年級和碩博可選修。",
+    "授課教師": "辛裕明",
+    "學分": "3",
+    "上課時間": "TueZ56",
+    "教室": "E1-101",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "30",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51060&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系碩士班、電機工程學系博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限光電科學與工程學系、資訊電機學院學士班。年級:限四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限光電科學與工程學系碩士班、光電科學與工程學系博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51060&outline=51060&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51060",
+      "課號": "EE8079-*",
+      "授課教師": "辛裕明",
+      "課程名稱(中文)": "功率電子元件",
+      "課程名稱(英文)": "Power Semiconductor Devices",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "功率電子元件應用和基礎介紹",
+      "授課內容": "“針對新興綠色能源(如電動車、太陽能、風力發電)等應用，功率電子元件扮演的角色日趨重要，傳統功率電子電路的效率提升有待核心功率電子元件(電晶體、二極體等)的深入了解和新世代的技術介紹。授課內容將包括但不限定於(1)功率元件基本介紹,(2)電子元件崩潰電壓原理, (3)蕭特機二極體原理與功率應用, (4)金氧半場效電晶體原理, (5)金氧半場效電晶體功率應用, (6)絕緣閘極電晶體原理, (7)絕緣閘極電晶體功率應用“",
+      "教科書/參考書": "B. Jayant Baliga: Fundamentals of Power Semiconductor Devices",
+      "自編教材比例": "20",
+      "授課方式": "講授",
+      "評量配分比重": "“考試 70％ 作業/報告/小考30％ (確切百分比將在 上課時公布)“",
+      "辦公時間": "\"暫定每周星期三和四下午2:30 到3: 30請先email確認\"",
+      "授課週數": "16",
+      "彈性教學說明": "使用Webex上課",
+      "課程領域": "基礎核心 、 IC設計 、 半導體元件物理 、 電力電子",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51061",
+    "課號-班別": "EE8083-*",
+    "課程名稱(中文)": "先進奈米電子元件",
+    "課程名稱(英文)": "Advanced Nanoelectronic Devices",
+    "備註": "大三、大四、碩博同修",
+    "授課教師": "唐英瓚",
+    "學分": "3",
+    "上課時間": "ThuZ56",
+    "教室": "E1-120",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "90",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51061&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51061&outline=51061&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51061",
+      "課號": "EE8083-*",
+      "授課教師": "唐英瓚",
+      "課程名稱(中文)": "先進奈米電子元件",
+      "課程名稱(英文)": "Advanced Nanoelectronic Devices",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "本課程旨在系統性介紹半導體記憶體與邏輯元件的基本原理、架構演進與微縮挑戰。內容涵蓋從傳統的SRAM、DRAM到快閃記憶體，再延伸至新興記憶體如RRAM、PCM與FeFET/FeRAM，讓同學能全面理解不同技術的運作模式、電路設計方法以及在可靠度、變異性與製程微縮下所面臨的問題。同時，本課程將協助同學由基礎物理認知逐步過渡到電路學應用，建立從材料、元件到系統的完整觀念。透過案例探討與技術比較，學生不僅能掌握各類記憶體的特性與應用場域，亦能理解其在高效能運算、人工智慧與資料密集型服務中的關鍵角色。課程也將強調新興技術在企業研發與產業升級中的重要性，使同學能將學術知識與實務需求相互連結。最終目標是培養學生具備跨領域思維與創新解決問題的能力，能面對未來半導體產業快速變動的挑戰，並為人工智慧應用及企業需求提供前瞻性的專業基礎。",
+      "授課內容": "1. 半導體記憶體與邏輯元件物理回顧\n2. SRAM\n-6T 單元操作\n-雜訊容限、穩定性與設計\n-變異性、微縮與可靠度問題\n3. DRAM\n-1T-1C 物理與單元操作\n-製程技術與電容結構\n-HBM 與三維堆疊式 DRAM\n-嵌入式 DRAM (eDRAM)\n4. 快閃記憶體 (FLASH)\n-Flash 元件物理與機制\n-NAND 與 NOR 架構與機制\n-可靠度物理與微縮問題\n5. 新興記憶體\n-3D XPoint 概念\n-電阻式記憶體 (RRAM)\n-相變化記憶體 (PCM)\n-鐵電電晶體/鐵電記憶體 (FeFET/FeRAM)",
+      "教科書/參考書": "半導體記憶體元件物理與電路設計導論",
+      "自編教材比例": "100",
+      "授課方式": "講授 其他",
+      "評量配分比重": "20",
+      "辦公時間": "禮拜二4pm-5pm",
+      "授課週數": "16",
+      "彈性教學說明": "逢假日、國際會議或校慶適時調整與補課",
+      "課程領域": "基礎核心 、 IC設計 、 半導體元件物理 、 奈米電子元件",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51062",
+    "課號-班別": "EE8089-*",
+    "課程名稱(中文)": "雷達訊號處理與系統工程",
+    "課程名稱(英文)": "Radar Signal Processing and System Engineering",
+    "備註": "資訊電機學院大學部四年級可選修",
+    "授課教師": "歐陽良昱",
+    "學分": "3",
+    "上課時間": "Thu5",
+    "教室": "E1-121\nFri34",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "40",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51062&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系產業博士班。"
+        },
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系碩士班、電機工程學系博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限電機工程學系。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限資訊電機學院學士班。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限輔系-電機工程學系、雙主修-電機工程學系。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51062&outline=51062&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51062",
+      "課號": "EE8089-*",
+      "授課教師": "歐陽良昱",
+      "課程名稱(中文)": "雷達訊號處理與系統工程",
+      "課程名稱(英文)": "Radar Signal Processing and System Engineering",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "引導學生建立瞭解雷達系統設計與運作所需的基礎概念 引導學生瞭解雷達訊號處理與系統工程",
+      "授課內容": "雷達系統綜述\n(簡化)雷達方程式\n陣列天線分析、設計、與合成\n雷達目標特徵\n雷達波形\n雷達接收機\n雷達信號處理與完整雷達方程式\n系統級雷達模擬簡介",
+      "教科書/參考書": "1. M. I. Skolnik, Introduction to Radar Systems, 3rd Ed., New York, NY, USA: McGraw-Hill Education, 2002. 2. M. I. Skolnik (Editor), Radar Handbook, 3rd Ed., New York, NY, USA: McGraw-Hill Education, 2008. 3. M. Richards, Fundamentals of Radar Signal Processing, 2nd Ed., New York, NY, USA: McGraw-Hill Education, 2014. 4. R. O‘Donnell. RES.LL-001 Introduction to Radar Systems. Spring 2007. ( MIT OpenCourseWare)",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "作業 (30％) 期中考 (30％) 期末報告 (40％)",
+      "辦公時間": "星期三下午1點到3點",
+      "授課週數": "16",
+      "課程領域": "電波工程",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(3) 普通",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51063",
+    "課號-班別": "EE8090-*",
+    "課程名稱(中文)": "電力電子電路分析與設計",
+    "課程名稱(英文)": "Analysis and Design of Power Electronics",
+    "備註": "與SG5001合班授課。",
+    "授課教師": "廖益弘",
+    "學分": "3",
+    "上課時間": "Thu234",
+    "教室": "E6-B518",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51063&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系碩士班、電機工程學系博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51063&outline=51063&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51063",
+      "課號": "EE8090-*",
+      "授課教師": "廖益弘",
+      "課程名稱(中文)": "電力電子電路分析與設計",
+      "課程名稱(英文)": "Analysis and Design of Power Electronics",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "建立學生對電力電子電路的概念，瞭解如何分析電能轉換之動作原理，並將此原理應用至各種不同的電能轉換器。同時，基於電路學、電子學與控制理論的概念，建立電能轉換器之等效電路模型，並學習電能轉換器控制器之基本設計原理。",
+      "授課內容": "主要介紹電力電子電路的基本原理，包括功率半導體元件、穩態等效電路模型之建置、電能轉換器之轉移函數，與控制器之設計。",
+      "教科書/參考書": "教科書：Fundamentals of Power Electronics/ Robert W. Erickson, Dragan Maksimovic/ Springer International Publishing 參考書：Power Electronics/ Ned Mohan/ John Wiley.",
+      "自編教材比例": "50",
+      "授課方式": "講授",
+      "評量配分比重": "作業成績 30％ 期中考試 35％ 期末考試 35％",
+      "辦公時間": "星期三 3-4 節",
+      "授課週數": "16",
+      "彈性教學說明": "自主學習",
+      "課程領域": "基礎核心 、 電力電子",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51064",
+    "課號-班別": "EE8093-*",
+    "課程名稱(中文)": "半導體封測實務",
+    "課程名稱(英文)": "Semiconductor Packaging and Testing",
+    "備註": "",
+    "授課教師": "陳正一",
+    "學分": "3",
+    "上課時間": "Fri678",
+    "教室": "E1-123",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "70",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51064&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系碩士班、電機工程學系博士班。"
+        },
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限電機工程學系產業博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限電機工程學系。年級:限四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限資訊電機學院學士班。年級:限四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限輔系-電機工程學系、雙主修-電機工程學系。年級:限四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51064&outline=51064&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51064",
+      "課號": "EE8093-*",
+      "授課教師": "陳正一",
+      "課程名稱(中文)": "半導體封測實務",
+      "課程名稱(英文)": "Semiconductor Packaging and Testing",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "培養學生對半導體相關產業有一相當程度的概括性認識與瞭解",
+      "授課內容": "IC Package Introduction -\n1.Purpose of IC Assembly\n2.IC Package Overview\n3.Wafer Level - Bumping ＆ Flip Chip / WLCSP\nAssy Process (I-F/E)-\n1.Wafer Gringing Process\n2.Wafer Saw Process\n3.Die Bonding Process\n4.Wire Bonding Process\nAssy Process (II-B/E)-\n1.Molding Process\n2.Marking Process\n3.Plating Process\n4.DDTF Process\n5.Singulation Process\nBumping/WCLSP Process-\n1.封裝技術的演進\n2.Wafer Bumping製程簡介\nFilp Chip Process (I-FCB)-\n1.What is Flip Chip\n2.Why FC\n3.Applications\nIC Testing-\n1.Test Flow Introduction\n2.Test Technique and methodology\n3.Test Facility and roadmap“\nSiP Product Introduction-\n1.What is SiP?\n2.The Advantages of SiP\n3.SiP Package Roadmap\nMEMS ＆ Optical Sensor Application-\n1.Optical Sensor Application\n2.Optical Sensor Standard Package Introduction\n3.MEMS sensor Application\n4.MEMS Sensor Package Introduction\nQFN/QFP Introduction-\n1. QFP Development\n2. QFN Development\n3. QFN/QFP Process flow\n4. Big QFN ＆ MRFQN Solution\n5. Wettable QFN (Automotive)“\nBGA Introduction-\n1. BGA Package Introduction\n2. BGA Process Flow Introduction\n3. Wire Bonding BGA Package Solution“\nAI in Semicondutor-\n1.半導體製造流程\n2.工業4.0智慧製造\n3.AI＆大數據應用“\nCIM and Automation-\n1.CIM 系統架構\n2.MES 系統介紹\n3.Automation 系統介紹\nAPQP-\n先期(新)產品驗證程序\n1.General APQP Introduction\n2.APQP System\n3.NPI Introduction\n8D report-\n1.What topic of 8D\n2.8D Report architecture\nReliability-\n半導體製造與應用流程\n1.IC 可靠度介紹\n2.IC 可靠度計劃\n3.IC 可靠度結果驗證\n4.IC 可靠度失效分析\nQC 7 Tools-\n1.何謂問題？如何管理異常？\n2.What‘s QC 7 tools？",
+      "教科書/參考書": "N/A",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "總分=出席率(35％)+期中考(30％)+期末考(35％)",
+      "辦公時間": "Tuesday and Thursday 9～12 AM",
+      "授課週數": "16",
+      "彈性教學說明": "安排線上課程相關技術資源與影片協助學生自主學習",
+      "課程領域": "半導體元件物理",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51065",
+    "課號-班別": "EE8094-*",
+    "課程名稱(中文)": "深度學習系統設計與應用",
+    "課程名稱(英文)": "Deep Learning System Design and Applications",
+    "備註": "電機四年級可選修",
+    "授課教師": "許鈞瓏",
+    "學分": "3",
+    "上課時間": "Tue234",
+    "教室": "E1-102",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "120",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51065&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51065&outline=51065&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51065",
+      "課號": "EE8094-*",
+      "授課教師": "許鈞瓏",
+      "課程名稱(中文)": "深度學習系統設計與應用",
+      "課程名稱(英文)": "Deep Learning System Design and Applications",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "培養學生具備 AI 晶片設計系統整合之能力與其終端應用",
+      "授課內容": "1. Overview of DNN\n1.1 Background of DNN\n1.2 Popular DNNs and Datasets\n2. DNN Kernel for Design Process\n2.1 Benchmarking Metrics for DNN Hardware\n2.2 DNN Kernel Computation\n3. DNN Accelerator Architecture\n3.1 DNN Inference Accelerator Design\n3.2 Sparse DNN Accelerator Design\n3.3 In/Near Memory Accelerator Design\n4. DNN Accelerator Synthesis\n4.1 DNN Model and Hardware Co-Design\n4.2 DFT and reliability for DNN accelerator",
+      "教科書/參考書": "Design Deep Learning System Deep Learning Systems, Algorithms, Compilers, and Processors for Large-Scale Production",
+      "自編教材比例": "80",
+      "授課方式": "講授 研討",
+      "評量配分比重": "期中考 30％ 期末考 40％ 作業 30％",
+      "辦公時間": "每週四 10:00 - 12:00",
+      "授課週數": "16",
+      "彈性教學說明": "學生作業討論與報告",
+      "課程領域": "基礎核心 、 IC設計",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51066",
+    "課號-班別": "EE8095-*",
+    "課程名稱(中文)": "能源工程實務",
+    "課程名稱(英文)": "Energy Engineering Seminar",
+    "備註": "",
+    "授課教師": "陳正一",
+    "學分": "3",
+    "上課時間": "Wed678",
+    "教室": "E1-110",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "40",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51066&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51066&outline=51066&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51066",
+      "課號": "EE8095-*",
+      "授課教師": "陳正一",
+      "課程名稱(中文)": "能源工程實務",
+      "課程名稱(英文)": "Energy Engineering Seminar",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "本課程以能源系統與儲能技術為核心，結合微電網、智慧電網、能源管理及IoT應用，透過產業專家授課與實務案例導入，培養學生掌握能源工程實務操作與未來產業趨勢，強化就業與研發實力。 1. 使學生瞭解能源系統之整體架構與運作。 2. 培養學生對儲能、電網調度、再生能源整合等議題的實務理解。 3. 與產業接軌，提升就業與實作能力。",
+      "授課內容": "能源工程導論與產業趨勢\n電力系統與調度基礎\n再生能源技術應用\n儲能系統技術與應用\n微電網與能源管理系統(EMS)\n電力電子與能源轉換技術\n智慧電網與通訊整合\n能源IoT與邊緣運算\n能源資料分析與預測\n產業案例導入與實務操作\n能源專案規劃與實作",
+      "教科書/參考書": "Nasser Tleis, Power Systems Modelling and Fault Analysis, 1st Edition Grainger and Stevenson, Power System Analysis M. H. J. Bollen and I. Y. H. Gu, Signal Processing of Power Quality Disturbances, John Wiley ＆ Sons, Inc. Robert W. Erickson and Dragan Maksimovic, Fundamentals of Power Electronics, Springer International Publishing",
+      "自編教材比例": "80",
+      "授課方式": "講授",
+      "評量配分比重": "1. 期中考試: 30％ 2. 期末考試: 40％ 3. 課堂參與: 30％",
+      "辦公時間": "Tuesday and Thursday 9～12 AM",
+      "授課週數": "16",
+      "彈性教學說明": "安排線上課程相關技術資源與影片協助學生自主學習，並於課程中導入課程實作及企業參訪，促進學生了解電力工程實務問題。",
+      "課程領域": "電力電子",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "領導管理",
+          "強度指數": "(1) 非常低",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "分析/獨立解決能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程整合能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通/協調/團隊合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程倫理/尊重智產",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51067",
+    "課號-班別": "EE4030-*",
+    "課程名稱(中文)": "光纖通訊系統",
+    "課程名稱(英文)": "Introduction to Optical Communications",
+    "備註": "",
+    "授課教師": "廖原煌",
+    "學分": "3",
+    "上課時間": "Mon89A",
+    "教室": "E1-107",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51067&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51067&outline=51067&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51067",
+      "課號": "EE4030-*",
+      "授課教師": "廖原煌",
+      "課程名稱(中文)": "光纖通訊系統",
+      "課程名稱(英文)": "Introduction to Optical Communications",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "現階段光纖通信技術已蓬勃發展，光纖具有體積小、衰減低、傳播距離遠、不易受干擾等諸多優點，本課程提供電子電機領域學生於光纖通信相關之專業知識，首先由光纖材質、製造、種類，與傳播之波導理論導入，繼而介紹光纖通信系統之各項次系統，包括光源部分之LED(Light Emitting Diode)、LD(Laser Diode)等，與接收端之各類型檢知器，如PIN Photodiode、Avalanche Photodiode 等，光纖通信之網路調變技術，亦會加以介紹，而針對光纖傳播之色散、衰減，甚至非線性效應亦會有所涉獵，整體而言，希望學生透過本課程，除建立了對光纖通信系統之基本知識外，更可延伸至系統之運用層面，未來無論續做研究，或職場上有機會接觸，均可得心應手，順利銜接。",
+      "授課內容": "光纖通信系統基本架構介紹 I\n光纖通信系統基本架構介紹 II\n光纖材質、製造與種類介紹\n光纖傳播之波導理論 I\n光纖傳播之波導理論 II\n光纖之衰減、色散介紹 I\n光纖之衰減、色散介紹 II\n光纖通信光源特性介紹\n發光二極體介紹\n雷射二極體介紹\n光源線寬、線性度等介紹\n光纖通信偵檢器運作原理介紹PIN光電偵檢器介紹\n雪崩光電偵檢器介紹\n光纖通信調變技術介紹I\n光纖通信調變技術介紹II",
+      "教科書/參考書": "教科書: 1.Optical Fiber Communications, Gerd Keiser 2021版本，電子書；或 2.Optical Fiber Communications, Gerd Keiser 5th Ed. 2015版本，東華書局/新月圖書 參考書:當代光纖通信 廖顯奎主編 高立圖書",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "第一次作業 10% 期中考 35% 第二次作業 10% 期末考 40% 平時成績 5%",
+      "辦公時間": "上課前與下課後均可",
+      "授課週數": "16",
+      "彈性教學說明": "無",
+      "課程領域": "基礎核心 、 半導體元件物理 、 光電子元件",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(2) 低",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(2) 低",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "使用工程工具",
+          "強度指數": "(2) 低",
+          "評量方式": "作業練習 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "應用工程設計",
+          "強度指數": "(2) 低",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "多元化團隊合作",
+          "強度指數": "(2) 低",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "理解分析能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(2) 低",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程倫理",
+          "強度指數": "(2) 低",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "資訊電機學院",
+    "系所": "電機工程學系",
+    "流水號": "51068",
+    "課號-班別": "EE3034-*",
+    "課程名稱(中文)": "固態電子元件",
+    "課程名稱(英文)": "Solid State Electronic Devices",
+    "備註": "",
+    "授課教師": "姚毓峰",
+    "學分": "3",
+    "上課時間": "Wed234",
+    "教室": "E1-019",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "75",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=51068&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=51068&outline=51068&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "電機工程學系",
+      "流水號": "51068",
+      "課號": "EE3034-*",
+      "授課教師": "姚毓峰",
+      "課程名稱(中文)": "固態電子元件",
+      "課程名稱(英文)": "Solid State Electronic Devices",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "這門課程將探討固態電子元件的基本工作原理。你將會學習包括 pn 二極體、MOSFET (金氧半場效電晶體) 和 BJT (雙極性接面電晶體) 在內的關鍵半導體元件是如何運作的以及它們的應用。",
+      "授課內容": "這門課程涵蓋了主要的半導體元件。我們將從pn接面和pn接面二極體開始。接著，我們會探討金屬-半導體和半導體異質接面。我們還會深入研究金屬氧化物半導體場效電晶體(MOSFET)和雙極性電晶(BJT)\nCHAPTER 7: The pn Junction\nCHAPTER 8: The pn Junction Diode\nCHAPTER 9: Metal-Semiconductor and Semiconductor Heterojunctions\nCHAPTER 10: Fundamentals of the Metal-Oxide-Semiconductor Field-Effect Transistor\nCHAPTER 12: The Bipolar Transistor\nTextbook:\nDonald A. Neamen,“SEMICONDUCTOR PHYSICS AND DEVICES, Basic Principles,4th Edition",
+      "教科書/參考書": "Textbook: Donald A. Neamen, SEMICONDUCTOR PHYSICS AND DEVICES, Basic Principles 4th Edition, Mc Graw Hill, International Edition 2012.",
+      "自編教材比例": "50",
+      "授課方式": "講授",
+      "評量配分比重": "課程參與(Attendance): 20% 期中考(Midterm Exam): 40% 期末考(Final Exam): 40%",
+      "辦公時間": "星期三 14:00~15:00 星期四 10:00~11:00",
+      "授課週數": "16",
+      "彈性教學說明": "1. 利用投影片教學，提高上課效率 2. 提供線上補充資料學習",
+      "課程領域": "半導體元件物理 、 奈米電子元件",
+      "核心能力": [
+        {
+          "能力名稱": "運用工程知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實作能力",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "使用工程工具",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "應用工程設計",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "多元化團隊合作",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "理解分析能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "論文寫作/語文表達",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "環境影響/終生學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        }
+      ]
+    }
+  }
+]
