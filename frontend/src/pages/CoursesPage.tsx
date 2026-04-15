@@ -22,7 +22,8 @@ import type { Course } from '../types';
 
 const COLLEGE_ORDER = ['文學院', '理學院', '工學院', '管理學院', '資訊電機學院', '地球科學學院', '客家學院', '生醫理工學院', '中心、處室'] as const;
 const FALLBACK_COLLEGE = '中心、處室';
-const FALLBACK_DEPARTMENT = '未分類系所';
+const FALLBACK_DEPARTMENT = '未分類單位';
+
 const COLLEGE_CONFIG: Record<string, { icon: ComponentType<{ className?: string }>; gradient: string }> = {
   文學院: { icon: HiBookOpen, gradient: 'from-blue-400 to-violet-500' },
   理學院: { icon: HiBeaker, gradient: 'from-cyan-400 to-blue-500' },
@@ -71,6 +72,7 @@ function FilterPill({ label, active, onClick }: { label: string; active: boolean
 export default function CoursesPage() {
   const [courses, setCourses] = useState<Course[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isMobileNavigatorOpen, setIsMobileNavigatorOpen] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [selectedCredits, setSelectedCredits] = useState<string[]>([]);
@@ -129,6 +131,7 @@ export default function CoursesPage() {
     () => (!selectedCollege ? [] : Object.keys(groupedCourses[selectedCollege] || {}).sort((a, b) => a.localeCompare(b, 'zh-Hant'))),
     [groupedCourses, selectedCollege]
   );
+
   const departmentCourses = useMemo(
     () => (!selectedCollege || !selectedDepartment ? [] : groupedCourses[selectedCollege]?.[selectedDepartment] || []),
     [groupedCourses, selectedCollege, selectedDepartment]
@@ -141,30 +144,14 @@ export default function CoursesPage() {
   const searchableFields = (course: Course) =>
     resultTab === 'course_name'
       ? [course.course_name_zh, course.course_name_en]
-      : [
-          course.course_name_zh,
-          course.course_name_en,
-          course.course_objective,
-          course.course_content,
-          course.course_field,
-          course.textbooks,
-          course.grading,
-          course.note,
-          course.instructor,
-          course.department,
-          course.college,
-        ];
+      : [course.course_name_zh, course.course_name_en, course.course_objective, course.course_content, course.course_field, course.textbooks, course.grading, course.note, course.instructor, course.department, course.college];
 
   const matchesFilters = (course: Course) => {
     const query = searchQuery.trim().toLowerCase();
     const matchesType = selectedTypes.length === 0 || selectedTypes.includes(normalize(course.required_elective));
     const matchesCredits = selectedCredits.length === 0 || selectedCredits.includes(String(course.credits));
     const matchesSemester = selectedSemesters.length === 0 || selectedSemesters.includes(normalize(course.semester_display));
-    const matchesQuery =
-      !query ||
-      searchableFields(course)
-        .filter(Boolean)
-        .some((value) => value!.toLowerCase().includes(query));
+    const matchesQuery = !query || searchableFields(course).filter(Boolean).some((value) => value!.toLowerCase().includes(query));
     return matchesType && matchesCredits && matchesSemester && matchesQuery;
   };
 
@@ -172,6 +159,7 @@ export default function CoursesPage() {
     () => departmentCourses.filter(matchesFilters),
     [departmentCourses, searchQuery, selectedTypes, selectedCredits, selectedSemesters, resultTab]
   );
+
   const filteredCourses = useMemo(
     () => courses.filter(matchesFilters),
     [courses, searchQuery, selectedTypes, selectedCredits, selectedSemesters, resultTab]
@@ -187,6 +175,7 @@ export default function CoursesPage() {
       if (!deptMap.has(department)) deptMap.set(department, []);
       deptMap.get(department)!.push(course);
     });
+
     return Array.from(map.entries())
       .sort((a, b) => {
         const ai = COLLEGE_ORDER.indexOf(a[0] as (typeof COLLEGE_ORDER)[number]);
@@ -209,10 +198,12 @@ export default function CoursesPage() {
     () => Array.from(new Set(courses.map((course) => normalize(course.required_elective)).filter(Boolean))).sort((a, b) => a.localeCompare(b, 'zh-Hant')),
     [courses]
   );
+
   const creditOptions = useMemo(
     () => Array.from(new Set(courses.map((course) => String(course.credits)).filter(Boolean))).sort((a, b) => Number(a) - Number(b)),
     [courses]
   );
+
   const semesterOptions = useMemo(
     () => Array.from(new Set(courses.map((course) => normalize(course.semester_display)).filter(Boolean))).sort((a, b) => a.localeCompare(b, 'zh-Hant')),
     [courses]
@@ -225,7 +216,10 @@ export default function CoursesPage() {
   useEffect(() => {
     if (!selectedCollege) return;
     const departments = Object.keys(groupedCourses[selectedCollege] || {});
-    if (!departments.length) return setSelectedDepartment(null);
+    if (!departments.length) {
+      setSelectedDepartment(null);
+      return;
+    }
     if (selectedDepartment && departments.includes(selectedDepartment)) return;
     setSelectedDepartment(null);
     setSelectedCourse(null);
@@ -233,9 +227,15 @@ export default function CoursesPage() {
 
   useEffect(() => {
     const source = hasActiveFilters ? filteredCourses : currentCourses;
-    if (source.length === 0) return setSelectedCourse(null);
+    if (source.length === 0) {
+      setSelectedCourse(null);
+      return;
+    }
     if (selectedCourse && source.some((course) => courseKey(course) === courseKey(selectedCourse))) return;
-    if (hasActiveFilters) return setSelectedCourse(null);
+    if (hasActiveFilters) {
+      setSelectedCourse(null);
+      return;
+    }
     setSelectedCourse(source[0]);
   }, [currentCourses, filteredCourses, hasActiveFilters, selectedCourse]);
 
@@ -261,7 +261,38 @@ export default function CoursesPage() {
   ];
 
   const navigationTitle = navigationLevel === 'colleges' ? '選擇學院' : navigationLevel === 'departments' ? selectedCollege || '選擇系所' : selectedDepartment || '選擇課程';
-  const navigationHint = navigationLevel === 'colleges' ? '從學院開始瀏覽' : navigationLevel === 'departments' ? '查看各系所課程' : '選擇一門課程';
+  const navigationHint = navigationLevel === 'colleges' ? '從學院開始瀏覽' : navigationLevel === 'departments' ? '查看各系所課程' : '選擇一門課程查看詳情';
+  const closeMobileNavigator = () => setIsMobileNavigatorOpen(false);
+  const openMobileNavigator = () => setIsMobileNavigatorOpen(true);
+
+  const handleSelectSearchResult = (college: string, department: string, course: Course) => {
+    setSelectedCollege(college);
+    setSelectedDepartment(department);
+    setSelectedCourse(course);
+    setNavigationLevel('courses');
+    closeMobileNavigator();
+  };
+
+  const handleSelectCollege = (college: string) => {
+    setSelectedCollege(college);
+    setSelectedDepartment(null);
+    setSelectedCourse(null);
+    setNavigationLevel('departments');
+    openMobileNavigator();
+  };
+
+  const handleSelectDepartment = (department: string) => {
+    const nextCourses = groupedCourses[selectedCollege || '']?.[department] || [];
+    setSelectedDepartment(department);
+    setSelectedCourse(nextCourses[0] ?? null);
+    setNavigationLevel('courses');
+    if (nextCourses[0]) closeMobileNavigator();
+  };
+
+  const handleSelectCourse = (course: Course) => {
+    setSelectedCourse(course);
+    closeMobileNavigator();
+  };
 
   return (
     <>
@@ -275,13 +306,18 @@ export default function CoursesPage() {
           </div>
         ) : (
           <div className="flex h-full min-h-0 flex-col md:flex-row">
-            <aside className="relative z-10 flex w-full shrink-0 flex-col overflow-hidden border-r border-slate-200 bg-white md:min-h-0 md:w-[24rem] md:min-w-[24rem] md:max-w-[24rem]">
+            <aside className={`relative z-10 min-h-0 w-full flex-col overflow-hidden border-r border-slate-200 bg-white ${isMobileNavigatorOpen ? 'flex flex-1' : 'hidden'} md:flex md:w-[24rem] md:min-w-[24rem] md:max-w-[24rem] md:flex-none`}>
               <div className="sticky top-0 z-10 border-b border-slate-200 bg-white">
                 <div className="flex items-center justify-between gap-3 px-4 py-3">
                   <h2 className="text-sm font-bold tracking-wide text-slate-900">課程導航</h2>
-                  <button type="button" onClick={() => setShowSearchPanel(true)} className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-300 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50" aria-label="開啟搜尋與篩選">
-                    <HiSearch className="h-5 w-5" />
-                  </button>
+                  <div className="flex items-center gap-2">
+                    <button type="button" onClick={() => setShowSearchPanel(true)} className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-300 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50" aria-label="開啟課程搜尋">
+                      <HiSearch className="h-5 w-5" />
+                    </button>
+                    <button type="button" onClick={closeMobileNavigator} className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-300 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 md:hidden" aria-label="收起課程導航">
+                      <HiChevronLeft className="h-5 w-5" />
+                    </button>
+                  </div>
                 </div>
 
                 {hasActiveFilters ? (
@@ -299,23 +335,11 @@ export default function CoursesPage() {
 
                     {hasSearchQuery ? (
                       <div className="flex w-full overflow-hidden rounded-lg border border-slate-300 bg-white shadow-sm">
-                        <button
-                          type="button"
-                          onClick={() => setResultTab('course_name')}
-                          className={`min-w-0 flex-1 px-4 py-2 text-sm font-medium leading-none transition ${
-                            resultTab === 'course_name' ? 'bg-slate-600 text-white' : 'text-slate-600 hover:bg-slate-50'
-                          }`}
-                        >
-                          課程名稱
+                        <button type="button" onClick={() => setResultTab('course_name')} className={`min-w-0 flex-1 px-4 py-2 text-sm font-medium leading-none transition ${resultTab === 'course_name' ? 'bg-slate-600 text-white' : 'text-slate-600 hover:bg-slate-50'}`}>
+                          課名
                         </button>
-                        <button
-                          type="button"
-                          onClick={() => setResultTab('detail_info')}
-                          className={`min-w-0 flex-1 border-l border-slate-200 px-4 py-2 text-sm font-medium leading-none transition ${
-                            resultTab === 'detail_info' ? 'bg-slate-600 text-white border-l-slate-600' : 'text-slate-600 hover:bg-slate-50'
-                          }`}
-                        >
-                          詳細資訊
+                        <button type="button" onClick={() => setResultTab('detail_info')} className={`min-w-0 flex-1 border-l border-slate-200 px-4 py-2 text-sm font-medium leading-none transition ${resultTab === 'detail_info' ? 'border-l-slate-600 bg-slate-600 text-white' : 'text-slate-600 hover:bg-slate-50'}`}>
+                          詳細內容
                         </button>
                       </div>
                     ) : null}
@@ -324,16 +348,21 @@ export default function CoursesPage() {
                   <div className="border-t border-slate-200 bg-gradient-to-r from-primary-50 to-primary-100 px-4 py-3">
                     <div className="flex items-center gap-2">
                       {navigationLevel !== 'colleges' ? (
-                        <button type="button" onClick={() => {
-                          if (navigationLevel === 'courses') {
+                        <button
+                          type="button"
+                          onClick={() => {
+                            if (navigationLevel === 'courses') {
+                              setSelectedCourse(null);
+                              setNavigationLevel('departments');
+                              return;
+                            }
+                            setSelectedDepartment(null);
                             setSelectedCourse(null);
-                            setNavigationLevel('departments');
-                            return;
-                          }
-                          setSelectedDepartment(null);
-                          setSelectedCourse(null);
-                          setNavigationLevel('colleges');
-                        }} className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-slate-600 shadow-sm" aria-label="返回上一層">
+                            setNavigationLevel('colleges');
+                          }}
+                          className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-slate-600 shadow-sm"
+                          aria-label="返回上一層"
+                        >
                           <HiChevronLeft className="h-5 w-5" />
                         </button>
                       ) : null}
@@ -352,7 +381,7 @@ export default function CoursesPage() {
                     {groupedSearchResults.length > 0 ? (
                       groupedSearchResults.map((group) => (
                         <div key={group.college} className="border-b border-slate-200">
-                          <div className="bg-slate-50 px-4 py-2 text-sm text-slate-500">{group.college} · {group.count} 門</div>
+                          <div className="bg-slate-50 px-4 py-2 text-sm text-slate-500">{group.college}．{group.count} 門</div>
                           {group.departments.map((department) => {
                             const departmentKey = `${group.college}-${department.name}`;
                             const isExpanded = expandedDepartments.includes(departmentKey);
@@ -372,16 +401,7 @@ export default function CoursesPage() {
                                       const isRequired = normalize(course.required_elective) === '必修';
                                       const preview = getDetailPreview(course, searchQuery);
                                       return (
-                                        <button
-                                          key={courseKey(course)}
-                                          type="button"
-                                          onClick={() => {
-                                            setSelectedCollege(group.college);
-                                            setSelectedDepartment(department.name);
-                                            setSelectedCourse(course);
-                                          }}
-                                          className={`w-full border-t border-slate-100 px-4 py-3 text-left transition hover:bg-primary-50 ${isSelected ? 'border-l-4 border-primary-600 bg-primary-50' : ''}`}
-                                        >
+                                        <button key={courseKey(course)} type="button" onClick={() => handleSelectSearchResult(group.college, department.name, course)} className={`w-full border-t border-slate-100 px-4 py-3 text-left transition hover:bg-primary-50 ${isSelected ? 'border-l-4 border-primary-600 bg-primary-50' : ''}`}>
                                           <div className="text-sm font-semibold leading-snug text-slate-900">
                                             <HighlightText text={course.course_name_zh} keyword={searchQuery} />
                                           </div>
@@ -416,7 +436,7 @@ export default function CoursesPage() {
                         </div>
                       ))
                     ) : (
-                      <div className="p-8 text-center text-sm text-slate-500">目前沒有符合條件的課程，請調整搜尋或篩選。</div>
+                      <div className="p-8 text-center text-sm text-slate-500">找不到符合條件的課程。</div>
                     )}
                   </div>
                 ) : navigationLevel === 'colleges' ? (
@@ -425,7 +445,7 @@ export default function CoursesPage() {
                       const config = COLLEGE_CONFIG[college] || COLLEGE_CONFIG[FALLBACK_COLLEGE];
                       const Icon = config.icon;
                       return (
-                        <button key={college} type="button" onClick={() => { setSelectedCollege(college); setSelectedDepartment(null); setSelectedCourse(null); setNavigationLevel('departments'); }} className="flex w-full items-center gap-3 border-b border-slate-200 px-4 py-3 text-left transition hover:bg-slate-50">
+                        <button key={college} type="button" onClick={() => handleSelectCollege(college)} className="flex w-full items-center gap-3 border-b border-slate-200 px-4 py-3 text-left transition hover:bg-slate-50">
                           <div className={`flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br ${config.gradient} shadow-sm`}>
                             <Icon className="h-5 w-5 text-white" />
                           </div>
@@ -443,17 +463,17 @@ export default function CoursesPage() {
                       currentDepartments.map((department) => {
                         const departmentCount = (groupedCourses[selectedCollege!]?.[department] || []).length;
                         return (
-                          <button key={department} type="button" onClick={() => { const nextCourses = groupedCourses[selectedCollege || '']?.[department] || []; setSelectedDepartment(department); setSelectedCourse(nextCourses[0] ?? null); setNavigationLevel('courses'); }} className="flex w-full items-center justify-between border-b border-slate-200 px-4 py-3 text-left transition hover:bg-primary-50">
+                          <button key={department} type="button" onClick={() => handleSelectDepartment(department)} className="flex w-full items-center justify-between border-b border-slate-200 px-4 py-3 text-left transition hover:bg-primary-50">
                             <div className="min-w-0">
                               <div className="truncate text-sm font-medium text-slate-900">{department}</div>
-                              <div className="text-xs text-slate-500">{departmentCount} 門課程</div>
+                              <div className="text-xs text-slate-500">{departmentCount} 門課</div>
                             </div>
                             <HiChevronRight className="h-5 w-5 shrink-0 text-slate-400" />
                           </button>
                         );
                       })
                     ) : (
-                      <div className="px-4 py-6 text-sm text-slate-500">目前沒有可瀏覽的系所。</div>
+                      <div className="px-4 py-6 text-sm text-slate-500">這個學院目前沒有可顯示的系所。</div>
                     )}
                   </div>
                 ) : (
@@ -464,7 +484,7 @@ export default function CoursesPage() {
                           const isSelected = selectedCourse ? courseKey(selectedCourse) === courseKey(course) : false;
                           const isRequired = normalize(course.required_elective) === '必修';
                           return (
-                            <button key={courseKey(course)} type="button" onClick={() => setSelectedCourse(course)} className={`w-full px-4 py-3 text-left transition hover:bg-primary-50 ${isSelected ? 'border-l-4 border-primary-600 bg-primary-50' : ''}`}>
+                            <button key={courseKey(course)} type="button" onClick={() => handleSelectCourse(course)} className={`w-full px-4 py-3 text-left transition hover:bg-primary-50 ${isSelected ? 'border-l-4 border-primary-600 bg-primary-50' : ''}`}>
                               <div className="mb-1 text-sm font-semibold leading-snug text-slate-900">
                                 <HighlightText text={course.course_name_zh} keyword={searchQuery} />
                               </div>
@@ -480,15 +500,34 @@ export default function CoursesPage() {
                     ) : (
                       <div className="p-8 text-center text-slate-500">
                         <HiSearch className="mx-auto mb-3 h-10 w-10 text-slate-400" />
-                        <p className="text-sm font-medium">這個系所目前沒有符合條件的課程</p>
-                        <p className="mt-1 text-sm text-slate-400">你可以回上一層重新選擇，或打開搜尋與篩選。</p>
+                        <p className="text-sm font-medium">目前找不到符合條件的課程。</p>
+                        <p className="mt-1 text-sm text-slate-400">試著返回上一層，或調整搜尋與篩選條件。</p>
                       </div>
                     )}
                   </div>
                 )}
               </div>
             </aside>
-            <div className="relative z-0 min-w-0 flex-1 overflow-y-auto bg-gray-50 p-4">
+
+            <div className={`relative z-0 min-h-0 min-w-0 flex-1 overflow-y-auto bg-gray-50 p-4 ${isMobileNavigatorOpen ? 'hidden md:block' : 'block'}`}>
+              {!isMobileNavigatorOpen ? (
+                <button
+                  type="button"
+                  onClick={openMobileNavigator}
+                  className="fixed right-4 top-24 z-30 inline-flex h-11 items-center gap-2 rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-700 shadow-lg transition hover:bg-slate-50 md:hidden"
+                >
+                  <HiChevronRight className="h-4 w-4" />
+                  課程導航
+                </button>
+              ) : null}
+
+              <div className="mb-3 flex items-center justify-between md:hidden">
+                <button type="button" onClick={openMobileNavigator} className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-50">
+                  <HiChevronRight className="h-4 w-4" />
+                  課程導航
+                </button>
+                {selectedCourse ? <span className="truncate pl-3 text-xs text-slate-500">{selectedCourse.course_name_zh}</span> : null}
+              </div>
               <CourseDetailPanel course={selectedCourse} searchKeyword={searchQuery} />
             </div>
           </div>
@@ -501,30 +540,60 @@ export default function CoursesPage() {
             <div className="flex items-start justify-between gap-4">
               <div>
                 <h3 className="text-lg font-semibold text-slate-950">搜尋與篩選課程</h3>
-                <p className="mt-1 text-sm text-slate-500">輸入關鍵字，或用按鈕快速縮小課程範圍。</p>
+                <p className="mt-1 text-sm text-slate-500">輸入關鍵字，並搭配學分、修別與學期條件快速找到課程。</p>
               </div>
-              <button type="button" onClick={() => setShowSearchPanel(false)} className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition hover:bg-slate-200" aria-label="關閉搜尋與篩選">
+              <button type="button" onClick={() => setShowSearchPanel(false)} className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition hover:bg-slate-200" aria-label="關閉搜尋面板">
                 <HiX className="h-5 w-5" />
               </button>
             </div>
-
             <div className="mt-5">
               <label className="mb-2 block text-sm font-medium text-slate-700">搜尋關鍵字</label>
               <div className="relative">
                 <HiSearch className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
-                <input type="text" value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} placeholder="輸入課名、教師、課程內容或系所" className="w-full rounded-xl border border-slate-300 bg-white py-3 pl-10 pr-4 text-sm shadow-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-500" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(event) => setSearchQuery(event.target.value)}
+                  placeholder="輸入課名、教師、內容或系所名稱"
+                  className="w-full rounded-xl border border-slate-300 bg-white py-3 pl-10 pr-4 text-sm shadow-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-500"
+                />
               </div>
             </div>
 
             <div className="mt-5 space-y-5">
-              <div><label className="mb-2 block text-sm font-medium text-slate-700">類型</label><div className="flex flex-wrap gap-2">{typeOptions.map((option) => <FilterPill key={option} label={option} active={selectedTypes.includes(option)} onClick={() => toggleValue(option, setSelectedTypes)} />)}</div></div>
-              <div><label className="mb-2 block text-sm font-medium text-slate-700">學分</label><div className="flex flex-wrap gap-2">{creditOptions.map((option) => <FilterPill key={option} label={`${option} 學分`} active={selectedCredits.includes(option)} onClick={() => toggleValue(option, setSelectedCredits)} />)}</div></div>
-              <div><label className="mb-2 block text-sm font-medium text-slate-700">學期</label><div className="flex flex-wrap gap-2">{semesterOptions.map((option) => <FilterPill key={option} label={option} active={selectedSemesters.includes(option)} onClick={() => toggleValue(option, setSelectedSemesters)} />)}</div></div>
+              <div>
+                <label className="mb-2 block text-sm font-medium text-slate-700">修別</label>
+                <div className="flex flex-wrap gap-2">
+                  {typeOptions.map((option) => (
+                    <FilterPill key={option} label={option} active={selectedTypes.includes(option)} onClick={() => toggleValue(option, setSelectedTypes)} />
+                  ))}
+                </div>
+              </div>
+              <div>
+                <label className="mb-2 block text-sm font-medium text-slate-700">學分</label>
+                <div className="flex flex-wrap gap-2">
+                  {creditOptions.map((option) => (
+                    <FilterPill key={option} label={`${option} 學分`} active={selectedCredits.includes(option)} onClick={() => toggleValue(option, setSelectedCredits)} />
+                  ))}
+                </div>
+              </div>
+              <div>
+                <label className="mb-2 block text-sm font-medium text-slate-700">學期</label>
+                <div className="flex flex-wrap gap-2">
+                  {semesterOptions.map((option) => (
+                    <FilterPill key={option} label={option} active={selectedSemesters.includes(option)} onClick={() => toggleValue(option, setSelectedSemesters)} />
+                  ))}
+                </div>
+              </div>
             </div>
 
             <div className="mt-6 flex gap-3">
-              <button type="button" onClick={clearAllFilters} className="flex-1 rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50">清除全部</button>
-              <button type="button" onClick={() => setShowSearchPanel(false)} className="flex-1 rounded-xl bg-primary-900 px-4 py-3 text-sm font-medium text-white transition hover:bg-primary-800">套用條件</button>
+              <button type="button" onClick={clearAllFilters} className="flex-1 rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50">
+                清除篩選
+              </button>
+              <button type="button" onClick={() => setShowSearchPanel(false)} className="flex-1 rounded-xl bg-primary-900 px-4 py-3 text-sm font-medium text-white transition hover:bg-primary-800">
+                套用條件
+              </button>
             </div>
           </div>
         </div>
