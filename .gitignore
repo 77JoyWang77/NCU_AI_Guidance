@@ -87,7 +87,7 @@ backups/
 *.onnx
 
 # 資料目錄
-data/
+data/raw/projects/
 
 # 大型資料檔案
 *.csv.gz

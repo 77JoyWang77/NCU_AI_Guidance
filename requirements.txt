@@ -1,5 +1,8 @@
-# Azure OpenAI
+# OpenAI-compatible client (用於 vLLM / Azure OpenAI)
 openai>=1.12.0
+
+# Local LLM inference
+vllm>=0.9.0
 
 # PDF Extraction
 pymupdf>=1.24.0
@@ -16,12 +19,16 @@ qdrant-client>=1.7.0
 # Knowledge Graph
 networkx>=3.0
 
+# Chinese Text Processing
+opencc-python-reimplemented>=0.1.7
+
 # Data Processing
 pandas>=2.0.0
 numpy>=1.24.0
 
 # Environment Variables
 python-dotenv>=1.0.0
+cloudinary>=1.40.0
 
 # Utilities
 tqdm>=4.65.0

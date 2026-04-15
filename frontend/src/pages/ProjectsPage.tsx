@@ -219,11 +219,32 @@ export default function ProjectsPage() {
                   </button>
                 </div>
               </div>
-            ) : (
-              <div className="card flex h-full flex-col items-center justify-center">
-                <HiChat className="mb-4 h-16 w-16 text-gray-300" />
-                <p className="mb-2 text-gray-600">請先從左側選擇一項研究計畫。</p>
-                <p className="text-sm text-gray-500">選擇後即可查看計畫介紹，並進一步進入 PDF 與對話模式。</p>
+            </div>
+          ) : (
+            <div className="card h-full flex flex-col items-center justify-center">
+              <HiChat className="w-16 h-16 text-gray-300 mb-4" />
+              <p className="text-gray-600 mb-2">選擇一個計畫查看大綱</p>
+              <p className="text-sm text-gray-500">點擊左側的計畫卡片</p>
+            </div>
+          )}
+        </div>
+      </div>
+      ) : viewMode === 'pdf-chat' && selectedProject ? (
+        // PDF + 對話視圖（全高，不帶外部間距）
+        <div className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-2 gap-4">
+            {/* PDF Viewer */}
+            <div className="card overflow-hidden flex flex-col h-full">
+              {/* PDF 面板 header：含返回按鈕 */}
+              <div className="px-4 py-2.5 border-b border-gray-200 flex-shrink-0 flex items-center gap-2">
+                <button
+                  onClick={handleBackToOutline}
+                  className="flex items-center gap-1 text-sm text-primary-600 hover:text-primary-800 transition-colors"
+                >
+                  <HiArrowLeft className="w-4 h-4" />
+                  返回大綱
+                </button>
+                <span className="text-gray-300">|</span>
+                <span className="text-sm font-medium text-gray-700 truncate">{selectedProject.title}</span>
               </div>
             )}
           </div>

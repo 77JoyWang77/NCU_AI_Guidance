@@ -2,6 +2,7 @@ from fastapi import APIRouter, Query
 from typing import List, Optional
 import json
 import os
+from urllib.parse import quote
 from app.models.schemas import Project, ChatRequest, ChatResponse
 
 router = APIRouter()
@@ -10,7 +11,28 @@ router = APIRouter()
 def load_projects():
     data_path = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'data', 'processed', 'projects.json')
     with open(data_path, 'r', encoding='utf-8') as f:
-        return json.load(f)
+        projects = json.load(f)
+
+    for project in projects:
+        pdf_path = project.get('pdfPath')
+        if pdf_path:
+            project['pdfUrl'] = build_pdf_url(pdf_path)
+
+    return projects
+
+
+def build_pdf_url(pdf_path: str) -> str:
+    cloud_name = os.getenv("CLOUDINARY_CLOUD_NAME")
+    project_folder = os.getenv("CLOUDINARY_PROJECT_FOLDER")
+
+    if cloud_name and project_folder:
+        encoded_parts = [quote(part, safe="") for part in pdf_path.split("\\")]
+        encoded_path = "/".join(encoded_parts)
+        encoded_folder = "/".join(quote(part, safe="") for part in project_folder.strip("/").split("/"))
+        return f"https://res.cloudinary.com/{cloud_name}/raw/upload/{encoded_folder}/{encoded_path}"
+
+    encoded_path = "/".join(quote(part, safe="") for part in pdf_path.split("\\"))
+    return f"/pdfs/{encoded_path}"
 
 @router.get("", response_model=List[Project])
 async def get_projects(

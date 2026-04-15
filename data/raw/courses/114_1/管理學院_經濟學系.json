@@ -1,0 +1,1872 @@
+[
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "經濟學系",
+    "流水號": "44001",
+    "課號-班別": "EC2003-*",
+    "課程名稱(中文)": "個體經濟學",
+    "課程名稱(英文)": "Microeconomics",
+    "備註": "本課程為英語授課，(1)密碼卡統一於第一周上課時發放，無須提前寫信給老師。 (2)第一次上課未出席，需事先跟老師請假，否則扣學期總成績。前兩週未出席者，老師有權退選該生",
+    "授課教師": "鄭保志",
+    "學分": "3",
+    "上課時間": "Thu234",
+    "教室": "I1-005",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "100",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=44001&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限經濟學系。年級:限二年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限經濟學系。年級:限非一年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限輔系-經濟學系、雙主修-經濟學系、第二專長-國際金融、第二專長-國際經貿。指定課程:必須先修MT1011。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "學院:限管理學院。指定課程:必須先修MT1011。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "系所:限數學系。年級:限非一年級。指定課程:必須先修MT1011。"
+        },
+        {
+          "優先順序": "5",
+          "相關條件限制說明": "學院:限非管理學院。指定課程:必須先修MT1011。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=44001&outline=44001&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "經濟學系",
+      "流水號": "44001",
+      "課號": "EC2003-*",
+      "授課教師": "鄭保志",
+      "課程名稱(中文)": "個體經濟學",
+      "課程名稱(英文)": "Microeconomics",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "“Economics is the social science of choices, and the primary objective of this course is to introduce students to the way that economists build mathematical models to understand these choices. Our goal is to help students understand the motivation of individual economic agents – person, household, firm or government – and how they interact in various market structures. We address these questions through stories, graphs, and mathematical models. Mathematics allows us to build much more precise models and to master the most important core components. But more importantly, we want our student to be able to impart economic meaning and conclusions to the equations, derivatives and graphs.“",
+      "授課內容": "“1 Moon Festival\n2 Introduction\n3 Supply and Demand\n4 Consumer Theory I\n5 Consumer Theory II\n6 Demand\n7 Midterm I\n8 Consumer Welfare and Policy Analysis\n9 Firms and Production\n10 Costs\n11 Competitive Firms and Markets I\n12 Competitive Firms and Markets II\n13 Midterm II\n14 Applications of the Competitive Model\n15 General Equilibrium and Economic Welfare\n16 Monopoly and Monopsony I\n17 Monopoly and Monopsony II\n18 Final Exam“",
+      "教科書/參考書": "“Course Material (課程教材) Jeffrey M. Perloff, Microeconomics with Calculus, 3rd ed., 2014.“",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "“▓Midterm Test (期中考) 60％ ▓Final Test (期末考) 40％“",
+      "辦公時間": "\"13:30-15:00, Monday @ Economics Department Office I1-212\"",
+      "授課週數": "16",
+      "彈性教學說明": "無",
+      "課程領域": "基礎學科",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "經濟學系",
+    "流水號": "44002",
+    "課號-班別": "EC2005-*",
+    "課程名稱(中文)": "總體經濟學",
+    "課程名稱(英文)": "Macroeconomics",
+    "備註": "",
+    "授課教師": "曹真睿",
+    "學分": "3",
+    "上課時間": "Fri234",
+    "教室": "I1-005",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "100",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=44002&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限經濟學系。年級:限二年級。指定課程:必須先修MT1011、先修MT1012。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限經濟學系、第二專長-國際金融。年級:限非二年級。指定課程:必須先修MT1011、先修MT1012。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限輔系-經濟學系、雙主修-經濟學系。指定課程:必須先修MT1011、先修MT1012。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "學院:限管理學院。指定課程:必須先修MT1011、先修MT1012。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "系所:限數學系。指定課程:必須先修MT1011、先修MT1012。"
+        },
+        {
+          "優先順序": "5",
+          "相關條件限制說明": "學院:限非管理學院。指定課程:必須先修MT1011、先修MT1012。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=44002&outline=44002&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "經濟學系",
+      "流水號": "44002",
+      "課號": "EC2005-*",
+      "授課教師": "曹真睿",
+      "課程名稱(中文)": "總體經濟學",
+      "課程名稱(英文)": "Macroeconomics",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "本課程介紹基本的總體經濟理論與應用，希望修習者能理解台灣及世界重要的總體經濟現象，與政府的總體經濟政策效果，並奠下未來研讀進階總體經濟學的基礎。為達成這些目標，本課程除了介紹理論外，也會介紹與台灣總體經濟表現相關的議題，包括：台灣的實質薪資走勢、台灣的失業現象、台灣的貨幣供給年增率、GDP平減指數年增率與貨幣流通速度等，希望讓修習者對總體經濟理論與台灣總體經濟現象能有深刻的瞭解。",
+      "授課內容": "1 ( 9 /5 ) 導論\n(Ch. 1：The Science of Macroeconomics)\n(Ch. 2：The Data of Macroeconomics)\n2 ( 9/12 ) 國民所得的衡量 (Ch. 3：National Income)\n3 ( 9/19 ) 貨幣體系 (Ch. 4：The Monetary System)\n4 ( 9/26 ) 通貨膨脹 (Ch. 5：Inflation)\n5 ( 10/3 ) 開放體系的總體經濟學 (Ch. 6：The Open Economy)\n6 ( 10/10 ) 國慶日放假1日\n7 ( 10/17 ) 失業與勞動市場\n(Ch. 7：Unemployment and the Labor Market)\n8 ( 10/24 ) 臺灣光復暨金門古寧頭大捷紀念日補假1日\n9 ( 10/31 ) 期中考 (Midterm Exam)\n10 ( 11/7 ) 檢討考卷\n11 ( 11/14 ) 經濟成長 (Ch. 8：Economic Growth I)\n12 ( 11/21 ) 經濟成長 (Ch. 9：Economic Growth II)\n13 ( 11/28 ) 經濟波動 (Ch. 10：Introduction to Economic Fluctuations)\n14 ( 12/5 ) 總合需求 (Ch. 11：Aggregate Demand I)\n15 ( 12/12 ) 總合需求 (Ch. 12：Aggregate Demand II)\n16 ( 12/19 ) 期末考 (Final Exam)",
+      "教科書/參考書": "(課程教材) Mankiw (2025)，Macroeconomics (12th edition)，Macmillan Learning",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "▓Assignment (作業) 9％ ▓Quiz 21％ ▓Midterm Test (期中考) 30％ ▓Final Test (期末考) 40％",
+      "辦公時間": "By appointment",
+      "授課週數": "16",
+      "彈性教學說明": "提供線上學習資源",
+      "課程領域": "基礎學科 、 總體經濟理論",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 其他"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 其他"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 其他"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 其他"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "經濟學系",
+    "流水號": "44003",
+    "課號-班別": "EC2063-*",
+    "課程名稱(中文)": "法律與經濟學(一)",
+    "課程名稱(英文)": "Law and Economics I",
+    "備註": "",
+    "授課教師": "張鈞綸",
+    "學分": "2",
+    "上課時間": "ThuAB",
+    "教室": "I1-306",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "60",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=44003&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限經濟學系。年級:限非一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限輔系-經濟學系、雙主修-經濟學系、第二專長-國際金融、第二專長-國際經貿。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學院:限管理學院。年級:限非一年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=44003&outline=44003&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "經濟學系",
+      "流水號": "44003",
+      "課號": "EC2063-*",
+      "授課教師": "張鈞綸",
+      "課程名稱(中文)": "法律與經濟學(一)",
+      "課程名稱(英文)": "Law and Economics I",
+      "課程學制": "學士班",
+      "學分": "2",
+      "授課內容": "反公地悲劇：公地與反公地，歷史與文化中的僵局。詞彙探究：過度使用與使用不足。藥方何在：專利權，專利制度的修正。對不起，電話無法接通：頻譜拍賣，監管僵局。釘子戶：不動產僵局，香蕉共和國。空空如也的莫斯科商店：體制轉型期，貪腐是解決方案嗎？世界是我的牡蠣：限制過度採收的方案。如何打破僵局：結論。",
+      "教科書/參考書": "\"本科無指定教科書，教材以本書為主： 1. Michael Heller著，許瑞宋 譯，僵局經濟，繁星多媒體，2010年11月。 參考書： 1. Brain Kahin等著，巫宗融 譯，數位法律，遠流，1999年12月。 2. Kevin G. Rivette等著，林柳君 譯，閣樓上的林布蘭－智慧財產e時代爆炸致富法則，經典傳訊，2000年。 3. Lester C. Thurow著，齊思賢 譯，知識經濟時代，時報，2000年。 4. Amartya Sen著，劉楚俊 譯，經濟發展與自由，先覺，2001年11月。 5. Hernando de Soto著，王曉冬 譯，資本的秘密：為什麼資本主義在西方成功，在其他地方失敗，經濟新潮，2001年12月。 6. Jeffrey Robinson著，廖月娟 譯，一顆價值十億的藥丸：人命與金錢的交易，2002年7月。 7. David D. Friedman著，徐源豐 譯，經濟學與法律的對話，先覺，2002年。 8. Todd Sandler著，葉家興 譯，經濟學與社會的對話（Economic Concepts for the Social Sciences），先覺，2003年。 9. Robert Cooter等著，溫麗琪 譯，法律經濟學，華泰，2003年。 10. Siva Vaidhyanathan著，陳宜君 譯，著作權保護了誰？商周，2003年7月。 11. John Gantz 等著，周曉琪 譯，數位海盜的正義，商周，2006年。 12. David Warsh著，周曉琪 譯，知識與國富論，時報，2008年1月。 13. Richard A. Posner著，蔣兆康 譯，法律經濟學，五南，2010年8月。 14. Jeremy Rifkin著，陳儀等 譯，物聯網革命：共享經濟與零邊際成本社會的崛起，商周，2015年8月。 15. Alvin Roth著，朱道凱 譯，創造金錢買不到的機會：諾貝爾經濟學獎突破市場經濟賽局的思維，商周，2015年10月。 16. Janice Murray等著，林隆全 譯，用經濟學改變世界：諾貝爾經濟學獎得主的12個思考題，商周，2015年10月。 17. Cory Doctorow著，朱怡康 譯，資訊分享，鎖得住？，行路，2015年11月。 18. Tom Slee著，李婉瑜 譯，分享經濟的華麗騙局：用科技收租的網路新地主，正如何危害人類社會？，大寫，2016年4月。 19. Douglass C. North著，劉瑞華 譯，制度、制度變遷與經濟成就，聯經，2017年3月。\"",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "■Class Participation (出席率) 20% ■Midterm Test (期中考) 30% ■Presentation (專題發表) 50%\"",
+      "辦公時間": "by appointment",
+      "授課週數": "16",
+      "彈性教學說明": "無",
+      "課程領域": "基礎學科",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "經濟學系",
+    "流水號": "44004",
+    "課號-班別": "EC3053-*",
+    "課程名稱(中文)": "商業英語溝通",
+    "課程名稱(英文)": "Business Communication in English",
+    "備註": "本課程上下學期授課內容不同",
+    "授課教師": "戎培芬",
+    "學分": "2",
+    "上課時間": "WedZ5",
+    "教室": "I1-310",
+    "選修別": "選修",
+    "全半年": "全",
+    "人數限制": "30",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=44004&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限經濟學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限經濟學系碩士班、經濟學系博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限輔系-經濟學系、雙主修-經濟學系。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限數學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限學士班。學院:限管理學院。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "學院:限非管理學院。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=44004&outline=44004&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "經濟學系",
+      "流水號": "44004",
+      "課號": "EC3053-*",
+      "授課教師": "戎培芬",
+      "課程名稱(中文)": "商業英語溝通",
+      "課程名稱(英文)": "Business Communication in English",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "Course Objective (課程目標) Course Objective : (課程目標) ◎Learners will understand and build critical thinking and problem solving skills. ◎Learners will be able to apply their business management theories to practice. ◎Learners will be able to take the challenges from the shifting global social, legal, economic, political, and technological conditions. ◎Learners will know the importance and the effective strategies of environmental stewardship. ◎Learners will be able to express personal opinions and interact with each other in the target language and make effective oral communications. Course Description and Format: This is a course devoted to developing learners’ Business English skills of listening and speaking. The topics selected from the textbook can be of interest to them. Other timely, authentic and insightful materials chosen from different sources will also be selected to provide opportunities for discussions and personalized practices in class. Learners will practice English through a series of collaborative activities, such as participating in group discussion and pair discussion, role-playing, presenting individual reports as well as team projects. The purpose of all the activities is to promote the development of the linguistic skills which students need to succeed in business communication.",
+      "授課內容": "Course Outline\n(課程進度)\n1 (9 /3)\n1. Breaking the Ice\n2. Introduction and Course Description\n3. Information sharing (Self-introduction)\n4. Public Speaking Tips for Beginners\n5. Q&A\n2 ( 9/10 )\n1. Discussion: Classroom Policies\n2. Starting up: What Makes a Good Communicator?\n3. Group Discussion: What Forms of Written and Spoken\nCommunication Do You Like Using? Why?\n4. Vocabulary Development: Good Communicators\nHW: 1.How Could Bad Communicators Improve Their Communication Skills?\n2. Is Communication Better These Days with All the New Technology?\n3 ( 9/17 )\n1. Starting Up: How Could Bad Communicators Improve Their Communication Skills?\n2. Discussion: What Are the Advantage and Disadvantage of Doing Web Presentation?\n3. Listening Practice: Improving Communications\n4. Discussion: Is Communication Better These Days with All the New Technology?\n5. Skills: Dealing with Communication Breakdown\nHW: 1.Language Review: Idioms (A+B)\n2. The Invented Slogans for the Brand Slogan Guessing Game\n4 ( 9/24 )\n1. Language Review: Idioms (C)\n2. Starting up: Do You Buy Brands?\n3. Discussion: Why Do People Like or Dislike Brands?\n4. Vocabulary: Marketing Word Partnership (A+B)\n5. Listening Practice: How to Maket Internationally?\n6. Discussion: Clever Slogans for Brand Products (the Slogan Guessing Game)\n7. Group discussion: Advertising Campaign for(a Taiwanese product) to Be Marketed Internationally\nHW: What Is Free Trade?\nNote: Advertising Campaign for (a Taiwanese product) to Be Marketed Internationally\n5 ( 10/01)\n1. Discussion: What Is Free Trade?\n2. Skills: Braining Storming\n3. The Quiz: Building Relationships\n4. Listening Practice: How Companies Building Strong Business Relationships\n5. Discussion: What are the Most Important Relationships for You?\n6. Vocabulary: Describing Relations (A+B)\nNote: Oral Presentation:Advertising Campaign for (a Taiwanese product) to Be Marketed Internationally\n6 (10 /08 )\n1. Oral Presentation: Advertising Campaign for (a Taiwanese product) to Be Marketed Internationally\n7 ( 10/15 )\n1. Vocabulary: Describing Relations (C+D)\n2. Listening Practice: Business Partnerships\n3. Reading and Discussion: Business Networks in China\n4. Language Review: Multi-word Verbs (A)\n5. Skills: Networking\n8 (10/22) Midterm Exam\n*Doing Business Internationally (Task 1&2)\nHW: Write a Response to Melissa’s Blog to Advise Her on the Best Way to Do Business in Russia.\n9 ( 10/29 )\n1. Discussion: The Response to Melissa’s Blog to Advise Her on the Best Way to Do Business in Russia.\n2. Business Skills: How to Make Great Small Talk(2:33-10:45)\n3. Discussion: What Makes People Successful?\n4. Vocabulary Development: Prefix (C+D)\n5. Listening Activities: Successful Businesses\nHW: What Makes a Successful Business Person\n10 ( 11/05 ) *No Class\n11 ( 11/12 )\n1.Discussion: What Makes a Successful Business Person\n1. Reading and Discussion: Profile: Carlos Slim\n2. Skills: Negotiating\n3. Case Study--Kensington United: Negotiate a Sponsorship Deal for a Football Club\n4. Discussion: Job Satisfaction\nHW: 1.Case Study and the Role Playing.\n2. For What Reasons Might You Change Jobs?\nNote: 1. Case Study and the Role Playing\n2. Oral Presentation: The Most Successful Companies in Taiwan (including What Makes Them So Successful)\n12 (11 /19)\n1. Discussion: For What Reasons Might You Change Jobs?\n2. The Quiz: Are You in Danger of Burning Out?\n3. Vocabulary: Synonyms and Word-building\n4. Discussion: What Do You Find Frustrating/Satisfying about Your Studies or Work?\nNote: Case Study and the Role Playing\n13 (11 /26)\n1. Case Study and the Role Playing\n2. Listening Practice: Staff Motivation\n3. Reading and Discussion: Working for the Best Company(the Handout)\n4. Skills: Cold-calling\n5. Discussion: Are You a Risk-taker?\n6. Vocabulary: Describing Risk\nHW: 1. Which Company Would You Like to Work for and Why?\n2. Globalization-Risk or Opportunity?\nNote: Oral Presentation: The Most Successful Companies in Taiwan (including What Makes Them So Successful)\n14 ( 12/03 )\n1. Which Company Would You Like to Work for and Why?\n2. Listening Practice: Managing Risks\n3. Discussion: Globalization-Risk or Opportunity?\n4. Reading: Insurance Trade Risks\n5. Skills: Reaching Agreement\nNote: Oral Presentation: The Most Successful Companies in Taiwan (including What Makes Them So Successful)\n15 (12/10 )\n1. Oral Presentation: The Most Successful Companies in Taiwan (including What Makes Them So Successful)\n16 (12/17 )\n1. Final Exam\n2. Class Review & Evaluation\n17 (12 /24) Flex supplement teaching week教師彈性教學周\n18 ( 12/31) Flex supplement teaching week教師彈性教學周",
+      "教科書/參考書": "Course Material (課程教材) Market Leader: Upper Intermediate Business English Course Book(3rd Edition Extra),by David Cotton, David Falvey and Simon Kent.",
+      "自編教材比例": "30",
+      "授課方式": "講授 研討 個別指導 其他",
+      "評量配分比重": "Evaluation (評量方式) ■Class Participation (出席率) 20％ ■Midterm Test (期中考) 20％ ■Final Test (期末考) 20％ ■Presentation (專題發表) 40％",
+      "辦公時間": "Wed.14:00-15:00",
+      "授課週數": "16",
+      "彈性教學說明": "17 (1 /01) Flex supplement teaching week學生自主學習 18 ( 1/08) Flex supplement teaching week學生自主學習",
+      "課程領域": "國際經濟",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "經濟學系",
+    "流水號": "44005",
+    "課號-班別": "EC3071-*",
+    "課程名稱(中文)": "國際貿易",
+    "課程名稱(英文)": "International Trade",
+    "備註": "開學第二週考個體經濟學期初考",
+    "授課教師": "邱俊榮",
+    "學分": "3",
+    "上課時間": "Thu678",
+    "教室": "I1-114",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "80",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=44005&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限經濟學系。年級:限三年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限經濟學系。年級:限四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限輔系-經濟學系、雙主修-經濟學系、第二專長-國際經貿。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "學院:限管理學院。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "系所:限數學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "5",
+          "相關條件限制說明": "學院:限非管理學院。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=44005&outline=44005&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "經濟學系",
+      "流水號": "44005",
+      "課號": "EC3071-*",
+      "授課教師": "邱俊榮",
+      "課程名稱(中文)": "國際貿易",
+      "課程名稱(英文)": "International Trade",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "“The students should learn and understand the principle of international theories and policies. In addition, the ability to analyze the effects of international trade events is also required.“",
+      "授課內容": "“1 Course introduction\n2 The Ricardian model I, Beginning term test (期初考) LG 1(OBJ 1-1)\n3 The Ricardian model II 1 Course introduction\n2 The Ricardian model I, Beginning term test (期初考)\n3 The Ricardian model II\n4 The specific-factor model I\n5 The specific-factor model II\n6 The Hechscher-Ohlin model I\n7 The Hechscher-Ohlin model II\n8 Midterm Test (期中考)\n9 Movement of labor and capital I\n10 Movement of labor and capital II\n11 Increasing returns to scale and monopolistic competition\n12 Offshoring of goods and services\n13 Import tariff and quota under perfect competition\n14 Import tariff and quota under imperfect competition\n15 Export subsidies\n16 International agreements I\n17 International agreements II\n18 Final Test (期末考)“",
+      "教科書/參考書": "“Course Material (課程教材) Krugman,P., M. Obstfeld, and M. J. Melitz (2022) International Economics: Theory and Policy, 12th ed. Other Material (其他參考書目) 新聞報導與報告",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "“Class Participation (出席率) 20％ Beginning-term Test (期初考) 10％ Midterm Test (期中考) 35％ Final Test (期末考) 35％“",
+      "辦公時間": "Tuesday 09:00-12:00 (I1-811)",
+      "授課週數": "16",
+      "彈性教學說明": "1. 自主學習；2. 視全球貿易發展情勢彈性增補",
+      "課程領域": "國際經濟",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(2) 低",
+          "評量方式": "口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "經濟學系",
+    "流水號": "44006",
+    "課號-班別": "EC3077-*",
+    "課程名稱(中文)": "貨幣銀行學",
+    "課程名稱(英文)": "Money and Banking",
+    "備註": "",
+    "授課教師": "楊志海",
+    "學分": "3",
+    "上課時間": "Thu234",
+    "教室": "I1-308",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "70",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=44006&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限經濟學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限輔系-經濟學系、雙主修-經濟學系、第二專長-國際金融。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限數學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學院:限管理學院。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "學院:限非管理學院。年級:限三年級、四年級。指定課程:必須先修MT1011、先修MT1012。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=44006&outline=44006&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "經濟學系",
+      "流水號": "44006",
+      "課號": "EC3077-*",
+      "授課教師": "楊志海",
+      "課程名稱(中文)": "貨幣銀行學",
+      "課程名稱(英文)": "Money and Banking",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "“Purpose of the course: The course of Money and Banking covers three main themes. First, we introduce the structure, instruments, operation, and regulations of the financial markets. Their relationship with and impacts on the economy will be emphasized in particular. Second, we will introduce the roles, operation, management, and supervision of the banking system. Its potential problems and relationship with the economy are the focuses of discussion. Last, we will introduce the central banks, monetary policies, and the international financial system. Generally speaking, this course provides a broad view of the monetary and financial sectors of an economy, and how they interact with the economy to affect its performance.“",
+      "授課內容": "1 9/4 課程介紹 and Ch1 貨幣的本質與功能\n2 9/11 Ch2 貨幣的演進 (I)\n3 9/18 Ch2 貨幣的演進 (II)\nCh3 金融體系簡介\n4 9/25 Ch4 金融市場工具\n5 10/2 Ch5 利率的行為暨利率期限結構理論\n6. 10/9 資本市場(股票市場)介紹 , 資產需求理論 (本週可能出國開會, 後續課程略有調整)\n7. 10/16 報告: 投資簡報\n8. 10/23 Mid-term exam\n9. 10/30 Ch6 外匯市場的基本概念\n10. 11/6 全校運動會 (停課)\n11. 11/13 Ch7 銀行業\n12. 11/20 Ch8 其他的金融中介機構 (其它版本)\n13 11/27 Ch8金融科技與未來的銀行業\n14. 12/4 Ch10 我國的金融改革\n15. 12/11 Term Exam\n16. 12/18 股市投資報告\n課程可能因應教學需要而有所微調“",
+      "教科書/參考書": "“Course Material 李榮謙, 2023, 貨幣銀行學 (十四版), 智勝文化 Other Material Mishkin, F.S., 2019, The Economics of Money, Banking, and Financial Markets, 12th edition, Addison-Wesley.",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "“■Class Participation (出席率) 5％ ■Midterm Test (期中考) 40％ ■Final Test (期末考) 40％ ■Presentation 15％“",
+      "辦公時間": "PM1:00-3:00 Thursday/ department meeting room (2F)",
+      "授課週數": "16",
+      "彈性教學說明": "學生投資報告與安排銀行業系友演講",
+      "課程領域": "財政金融",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "經濟學系",
+    "流水號": "44007",
+    "課號-班別": "EC3089-*",
+    "課程名稱(中文)": "進階總體經濟學",
+    "課程名稱(英文)": "Advanced Macroeconomics",
+    "備註": "",
+    "授課教師": "陳韻旻",
+    "學分": "3",
+    "上課時間": "Fri234",
+    "教室": "I1-306",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "60",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=44007&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限經濟學系。年級:限三年級、四年級。指定課程:必須先修EC2005、先修EC2006。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限輔系-經濟學系、雙主修-經濟學系。年級:限三年級、四年級。指定課程:必須先修EC2005、先修EC2006。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學院:限管理學院。年級:限三年級、四年級。指定課程:必須先修EC2005、先修EC2006。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=44007&outline=44007&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "經濟學系",
+      "流水號": "44007",
+      "課號": "EC3089-*",
+      "授課教師": "陳韻旻",
+      "課程名稱(中文)": "進階總體經濟學",
+      "課程名稱(英文)": "Advanced Macroeconomics",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "Course Objective This course aims to teach students intermediate-level macroeconomic tools and apply them to real-world economic policy issues. Macroeconomics is concerned with the behavior of the aggregate economy. We will be examining macroeconomic data and studying models designed to help us comprehend it. We will pay attention to the role of policymakers in shaping macroeconomic outcomes. In this course, we will be employing graphs primarily with basic level of calculus.",
+      "授課內容": "Course Outline Week Topic Note\n1 The basic Solow model\n2 Understanding cross-country income differences\n3 Overlapping generation model\n4 Overlapping generation model\n5 A dynamic consumption-saving model\n6 A dynamic consumption-saving model\n7 A dynamic consumption-saving model\n8 Midterm exam\n9 Production, labor demand, investment, and labor supply\n10 Production, labor demand, investment, and labor supply\n11 Fiscal policy\n12 Equilibrium efficiency\n13 Equilibrium efficiency\n14 Search, matching, and unemployment\n15 Search, matching, and unemployment\n16 Final Exam",
+      "教科書/參考書": "Course Material Garin-Lester-Sims, Intermediate Macroeconomics, 2021, by Julio Garin, Robert Lester and Eric Sims. The pdf copy of this book can be found on the authors’ website (https://www3.nd.edu/~esims1/gls_textbook.html). Other Material Charles I. Jones, Macroeconomics, 2017 (4th edition), W.W. Norton. Olivier Blanchard and David R. Johnson, Macroeconomics, 2017 (7th edition), Pearson.",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "出席率20％ 期中考40％ 期末考40％",
+      "辦公時間": "by appointment",
+      "授課週數": "16",
+      "彈性教學說明": "自主學習",
+      "課程領域": "總體經濟理論 、 總體經濟實證",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "經濟學系",
+    "流水號": "44008",
+    "課號-班別": "EC3098-*",
+    "課程名稱(中文)": "國際財經新聞",
+    "課程名稱(英文)": "Journalism and International Economics",
+    "備註": "",
+    "授課教師": "陳碧芬",
+    "學分": "2",
+    "上課時間": "Mon56",
+    "教室": "I1-306",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=44008&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限經濟學系。年級:限非一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限輔系-經濟學系、雙主修-經濟學系。年級:限非一年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限數學系。年級:限非一年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學院:限管理學院。年級:限非一年級。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "學院:限非管理學院。年級:限非一年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=44008&outline=44008&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "經濟學系",
+      "流水號": "44008",
+      "課號": "EC3098-*",
+      "授課教師": "陳碧芬",
+      "課程名稱(中文)": "國際財經新聞",
+      "課程名稱(英文)": "Journalism and International Economics",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "“　　《國際財經新聞》授課內容，對於商管學院高年級生具有3大價值、4大意義：　價值一：政府當前財經政策的觀察與分析，是研究所考試與國家考試的時事必考範圍。　價值二：大數據分析之專家解讀能力的培養，深度運用新聞資訊的多面向價值　價值三：資深財經記者帶領同學在課堂上，有序學習財經時事的熱情辯論，掌握理性判斷的成熟態度。　意義一：算術公式和經濟理論連結財經新聞的敘事論述；　意義二：從新聞線索跨進各式各樣的資料庫和統計資料，掌握研究分析的工具；　意義三：探索新媒體之忠實兼顧創新的表達模式；　意義四：從台灣經濟放眼全球脈動，培養國際視野。　新聞意在傳達動態的訊息，而涵蓋經濟、財金等在內的財經議題，不僅有理論根基，每天、每季、每年都可能因為生成要素的改變，影響到結果的表現，符合新聞形成的條件。國際財經新聞課程，奠基在經濟社會學和國際經濟的基礎之上，經過大眾傳播媒體的傳遞載具(transit tools)，依不同的速度及解讀方式，印刷出版品、社群媒體、網路媒介，呈現在身為閱聽受眾者的我們面前。　然而，每天市場上充斥無數的資訊，哪些是真正影響交易？哪些又是決定趨勢的關鍵？哪些實在必須完全忽略它？2013年諾貝爾經濟學獎得主Robert J. Shiller 最新發表在AER的期刊論文，為這堂課的重要性，作了清楚的論述。　一學期的財經新聞課程，將選擇人均所得、物價、國際貿易、財政、貨幣金融、產業發展、科技整合等時事議題，分為三階段學習：第一階段以新聞時事為教材閱讀素材，老師解說、同學延伸；第二階段採議題式認知學習，由同學小組資料搜集與分析，第三階段為統計資料庫心練習、網路扒文與視覺分析，敘事新聞的深度練習，進而撰寫成報導的文章。同學在課堂上的參與討論，以及新聞雛型的撰寫，將實際反應在學期成績上。“",
+      "授課內容": "“1 課程介紹 introduction經濟學系開設的國際財經新聞課程，奠基在經濟社會學的基礎之上，透過專業媒體的報導學習總體經濟的運作，及全球化政經的趨勢觀察。 2 認識媒體：新聞、數據big data and analysis新聞資訊裡的數據，可以如何解讀？系統性的學習是關鍵 3 敘事經濟與新聞：經濟社會學與敘事傳播輕新聞與重議題 確定分組4 圖書館、新聞資料庫使用與應用財經資料庫的類別與推介 焦點新聞5 新聞與總體經濟 (3-1) macroeconomics (3-1)經濟成長率、物價指數、景氣燈號 (I) GDP growth, inflation, lights 焦點新聞6 新聞與總體經濟 (3-2) macroeconomics (3-2)經濟成長率、物價指數、景氣燈號 (I) GDP growth, inflation, lights 新聞閱讀7 新聞與總體經濟 (3-3) macroeconomics (3-3)中央銀行的雙率政策與貨幣政策 Central bank and monetary policies 新聞判讀8 期中 review／專題演講：產業經濟與議題研究 9 政策與新聞 government policies and news產業政策與前瞻計畫 10 政策與新聞 government policies and news全球紓困政策與新聞 小組報告11 國際財經新聞(I) intl. news I國際財經媒體簡介與媒體對政策的報導態樣12 國際財經新聞 (II) intl. news II國際財經新聞之重要議題解讀13 財經與網紅影音在財經資訊上的表達與呈現14) 新聞與投資人(I) stock market I大盤與類股的新聞認知15 新聞與投資人(II) stock market II國際股市與匯市的新聞分析16 新聞與寫作 (I)媒體近用－摸擬記者會的問與答17 新聞與寫作(II)國際財經專家觀點之閱讀18 期末報告分享 新聞與寫作 (III)",
+      "教科書/參考書": "“Course Material(課程教材) 講義Other Material(其他參考書目) ★ Textbooks 教材(以下書籍, 挑選部份章節)‧經濟日報新聞部，《解讀財經新聞的18堂課（2017增訂版）》。經濟日報：新北市。2017/03/13。‧張順教，《投資人不可不知的經濟指標全圖解：100張圖讀懂經濟指標、判讀景氣走勢、精準掌握投資情勢！》財經傳訊：台北市。2016/07/15。‧《經濟學人》編輯團隊The Economist，張淑芳譯，《一口氣讀懂經濟指標：《經濟學人》教你看懂所有財經資訊》（Guide to Economic Indicators: Making Sense of Economics）臉譜出版社：台北。2016/07/30。‧梁亦鴻，《3天搞懂財經資訊：看懂財經新聞、企業財報不求人，找出年年下蛋的金雞母！》。寶鼎：台北。2016/09/08。‧Sylvain Baillehache, Yann Tamp?reau, C?dric Thellier，陳郁雯譯，《經濟學．視覺資訊全解讀 Economics Infographics》（L’?conomie en infographies）。野人：台北。2020/04/01。‧梁國源，《當世界正在質變：梁國源帶你迎向全球經濟重整之路》。天下文化：台北市。2014年04月。‧張真卿，《財經記者也搞不懂的股市密碼：大師教你解讀新聞賺大錢》。財經傳訊：台北，2012/10/11。‧成露茜‧羅曉南主編，《批判的媒體識讀》第二版。台北，正中書局出版，2009。‧彼得‧肯尼迪（Peter Kennedy），《新聞學中的經濟學（Macroeconomic Essentials Understanding Economics in the News）》。北京，中信出版社，2005。‧陶德‧桑德勒(Todd Sandler)著, 葉家興譯，《經濟學與社會的對話》，台北市：先覺，2003。‧芭芭拉．明托（Barbara Minto）著，陳筱黠、羅若蘋譯，《金字塔原理:思考、寫作、解決問題的邏輯方法》，台北，經濟新潮社，2007★ 參考資料：工商時報／經濟日報／自由時報等六大報、財經M次方、鉅亨網等五大新聞網站Business Week／Economist／Financial Times／New York Times圖書館提供之財經資料庫，含官方、研究智庫經濟報告“",
+      "自編教材比例": "50",
+      "授課方式": "講授 研討",
+      "評量配分比重": "“█Class Participation (出席率) 30％ █Paper/Theses Writing (報告/論文) 10％ █Quiz (隨堂測試) 10％ █Team Presentation (專題發表) 20％ █Assignment (作業) 10％ █Final Team Report (期末報告) 20％“",
+      "辦公時間": "每周一下午上課時間",
+      "授課週數": "16",
+      "彈性教學說明": "本課程的學習包含實作部份，計畫包含同學們親臨實鏡的可能",
+      "課程領域": "國際經濟 、 產業經濟 、 總體經濟實證",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "經濟學系",
+    "流水號": "44009",
+    "課號-班別": "EC3112-*",
+    "課程名稱(中文)": "公共經濟學",
+    "課程名稱(英文)": "Public Economics",
+    "備註": "",
+    "授課教師": "陳韻旻",
+    "學分": "3",
+    "上課時間": "Wed234",
+    "教室": "I1-306",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "70",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=44009&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限經濟學系。指定課程:必須先修EC2003、先修EC2004。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限輔系-經濟學系、雙主修-經濟學系。指定課程:必須先修EC2003、先修EC2004。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學院:限管理學院。指定課程:必須先修EC2003、先修EC2004。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限數學系。指定課程:必須先修EC2003、先修EC2004。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=44009&outline=44009&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "經濟學系",
+      "流水號": "44009",
+      "課號": "EC3112-*",
+      "授課教師": "陳韻旻",
+      "課程名稱(中文)": "公共經濟學",
+      "課程名稱(英文)": "Public Economics",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "財政學是一門研究政府經濟行為的學科，分析政府的支出與收入政策對經濟體系所產生的效果，並加以評估政策的有效性。本學期的課程先從討論政府角色與政府的配置功能出發，其中涵蓋市場失靈、公共財的提供以及矯正外部效果等主題。接著進一步說明公共選擇理論，了解利益團體對政策的影響。最後介紹公共支出的計畫評估方法、現況以及政府如何透過公共支出發揮分配功能，其中包含針對所得重分配、社會福利、社會保險等政策議題。",
+      "授課內容": "1 福利經濟學的回顧──效率與公平概念的介紹\n2 市場失靈\n3 聯合消費\n4 聯合消費\n5 外部效果\n6 外部效果\n7 公共選擇\n8 公共選擇\n9 期中考\n10 公營事業與非營利事業組織\n11 公共支出計畫評估\n12 公共支出計畫評估\n13 公共支出分析\n14 所得重分配的支出政策\n15 社會福利與社會保險支出\n16 期末考",
+      "教科書/參考書": "Course Material 徐偉初、歐俊男、謝文盛，2020，財政學（5版），台北：華泰。 Other Material Rosen,Harvey S. and Ted Gayer, Public Finance,10th Edition,2014 Gruber, Jonathan, Public Finance and Public Policy, 5th Edition, 2015",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "出席率 20％ 期中考 40％ 期末考 40％",
+      "辦公時間": "週三 13:00-15:00",
+      "授課週數": "16",
+      "彈性教學說明": "自主學習",
+      "課程領域": "基礎學科 、 財政金融",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "經濟學系",
+    "流水號": "44010",
+    "課號-班別": "EC3121-*",
+    "課程名稱(中文)": "企業金融實務、演練與大數據之相關應用",
+    "課程名稱(英文)": "Corporate Banking Practice, Exercise and the application of BIG DATA",
+    "備註": "上課時間為18:30~21:30。「智慧數據分析與應用」微學程之課程。",
+    "授課教師": "王偉芳\n蔡明熹",
+    "學分": "3",
+    "上課時間": "TueABC",
+    "教室": "I1-310",
+    "選修別": "選修",
+    "全半年": "全",
+    "人數限制": "30",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=44010&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限經濟學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限輔系-經濟學系、雙主修-經濟學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限第二專長-國際金融、第二專長-國際經貿。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=44010&outline=44010&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "經濟學系",
+      "流水號": "44010",
+      "課號": "EC3121-*",
+      "授課教師": "王偉芳\n蔡明熹",
+      "課程名稱(中文)": "企業金融實務、演練與大數據之相關應用",
+      "課程名稱(英文)": "Corporate Banking Practice, Exercise and the application of BIG DATA",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "The program is designed to deliver the ideas of what is corporate banking and how it works through basic industrial knowledge sharing and case study. Role playing is the core of this program which could bring the student into the real work environment then realize soft skill matters. In addition, the application of BIG DATA in Corporate banking is the field we want to cover to bring the concept to students in this course.",
+      "授課內容": "Course Outline Week Topic Note\n1 -2 Introduction of Banking Industry and Corporate Banking\n3 -10 What is credit and how to do credit analysis plus real case study:\nPeople, purpose, protection, payment, perspective\n1. Group discussion and presentation: People and Payment\n2. Write up a Credit Analysis\n11-12 1. Non Performing loan recovery and credit rating\n2. Introduction of Trade Finance\n13-23 BIG DATA in Corporate banking:\n1. 大數據與FinTech於金融業應用介紹\n2. 如何成為大數據潮流下所需的人才\n3. Python程式介紹與基礎語法\n4. 網路爬蟲與資料爬取實作練習\n5. 大數據於企業金融實務應用(一) -信用審查因子分析為例\n6. 大數據於企業金融實務應用(二) -信用審查因子分析為例\n7. 大數據於企業金融實務應用(三) -信用審查因子分析為例\n8. 輿情分析專題演講\n9. 使用者經驗分享與實作\n24-29 Learning by doing: an opportunity to interview corporate senior management.\n30 Evaluation of Relationship Manager and the model",
+      "教科書/參考書": "無",
+      "自編教材比例": "100",
+      "授課方式": "講授 個別指導",
+      "評量配分比重": "Assignment (作業) 32％ Class Participation (出席率) 8％ Presentation (專題發表) 30％ Role Playing (角色扮演) 30％",
+      "辦公時間": "不適用",
+      "授課週數": "16",
+      "彈性教學說明": "無",
+      "課程領域": "企業策略 、 數量分析 、 財政金融",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(2) 低",
+          "評量方式": "作業練習 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 專題研究報告(書面)"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "經濟學系",
+    "流水號": "44011",
+    "課號-班別": "EC4018-*",
+    "課程名稱(中文)": "當前經濟議題",
+    "課程名稱(英文)": "Current Economic Issues",
+    "備註": "",
+    "授課教師": "王銘正",
+    "學分": "3",
+    "上課時間": "Tue789",
+    "教室": "I1-308",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "40",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=44011&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限經濟學系。年級:限四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限雙主修-經濟學系。年級:限四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=44011&outline=44011&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "經濟學系",
+      "流水號": "44011",
+      "課號": "EC4018-*",
+      "授課教師": "王銘正",
+      "課程名稱(中文)": "當前經濟議題",
+      "課程名稱(英文)": "Current Economic Issues",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "“本課程為經濟系的總整課程，其教學目標在於協助認真修課的同學能符合管院「學習目標 (learning goals)」的要求。修課同學須上台進行一篇「口語報告」(PPT頁數為28 ~ 32 頁，其中至少 4 頁為數值資料的圖或表)，以及一篇期末報告 (2,400 ~ 3,000字)。這兩篇報告的主題須從國際觀、永續發展與管理知識這三項學習目標中擇二。另外，還有一篇第三個學習目標的學習心得報告 (600 ~ 1,000字)。“",
+      "授課內容": "“1 ( / ) 課程說明2 ( / ) 同學說明「口語報告」的大綱 (每人8分鐘)3 ( / ) 同學說明「口語報告」的大綱 (每人8分鐘)4 ( / ) 同學說明「口語報告」的大綱 (每人8分鐘)5 ( / ) 口語報告 (每人50分鐘)6 ( / ) 口語報告 (每人50分鐘)7 ( / ) 口語報告 (每人50分鐘)8 ( / ) 口語報告 (每人50分鐘)9 ( / ) 口語報告 (每人50分鐘)10 ( / ) 口語報告 (每人50分鐘)11 ( / ) 口語報告 (每人50分鐘)12 ( / ) 口語報告 (每人50分鐘)13 ( / ) 口語報告 (每人50分鐘)14 ( / ) 口語報告 (每人50分鐘)15 ( / ) 口語報告 (每人50分鐘)16 ( / ) 口語報告 (每人50分鐘)17 ( / ) 「期末報告」答辯 (每人8分鐘)18 ( / ) 「期末報告」答辯 (每人8分鐘)“",
+      "教科書/參考書": "N/A",
+      "自編教材比例": "0",
+      "授課方式": "研討 個別指導",
+      "評量配分比重": "Paper/Theses Writing (報告/論文) 40 ％ Presentation (專題發表) 55 ％ Others 第三個學習目標的學習心得報告 5％",
+      "辦公時間": "Monday：15:30 ~ 17: 30 / 管二館 212 室",
+      "授課週數": "16",
+      "彈性教學說明": "無",
+      "課程領域": "基礎學科",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "經濟學系",
+    "流水號": "44012",
+    "課號-班別": "EC4053-*",
+    "課程名稱(中文)": "經濟預測",
+    "課程名稱(英文)": "Economic Forecasting",
+    "備註": "",
+    "授課教師": "姚睿",
+    "學分": "3",
+    "上課時間": "Thu234",
+    "教室": "I1-306",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=44012&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限經濟學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限輔系-經濟學系、雙主修-經濟學系、第二專長-國際金融。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學院:限管理學院。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "學院:限非管理學院。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=44012&outline=44012&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "經濟學系",
+      "流水號": "44012",
+      "課號": "EC4053-*",
+      "授課教師": "姚睿",
+      "課程名稱(中文)": "經濟預測",
+      "課程名稱(英文)": "Economic Forecasting",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "本課程的主要目標是介紹經濟預測方法, 學習基本的時間序列計量模型, 以及如何分析資料,將其應用於商業和經濟議題。學生將從本課程中學習的基本技能包括： 1) 以圖形和統計方法分析數據資料; 2) 了解經濟預測方法的基礎知識, 學習建模技術; 3) 估計預測模型; 4) 解釋估計結果或形成政策意涵。",
+      "授課內容": "Course Outline:\n- Linear Regression Model and Hypothesis Testing\n- Dynamic Regression Models (Forecasting Models)\n- Forecasting Evaluation\n- What to Forecast? How to Forecast?\nThe specific contents that will be instructed include:\n Data collection, organization, and basic analysis (e.g.主計總處資料庫, 美國聯準會資料FRED)\n Fundamental statistical and regression concepts (線性迴歸模型複習)\n The formulation and specification of forecasting models (時間序列預測模型, 預測評估)\n Intuition training (預測直覺訓練) (Judgment in forecasting involves analytic and intuitive processes.)",
+      "教科書/參考書": "Suggested Reference Book: 1) Hill, R.C., Griffiths, W.E. and Lim, G.C. Principles of Econometrics, fourth edition, John Wiley & Sons, Inc., 2011. 2) P.H. Franses, D. van Dijk, and A. Opschoor, Time Series Models for Business and Economic Forecasting, 2nd edition, Cambridge University Press, 2014. 3) Diebold, F.X. Elements of Forecasting with Economic Applications, , 4th edition, Cengage Learning Pub, 2006. 4) Baumohl, Bernard, The Secret of Economic Indicators: Hidden Clues to Future Economic Trends and Investment Opportunities, third edition, FT Press, 2012. Free-access Open Textbooks: (advanced level) Diebold, Francis .X. (2017), Forecasting: in Economics, Business, Finance and Beyond, Department of Economics, University of Pennsylvania. https://www.sas.upenn.edu/~fdiebold/Textbooks.html",
+      "自編教材比例": "60",
+      "授課方式": "講授 研討 實習/實驗 個別指導",
+      "評量配分比重": "1) 作業與隨堂測驗 (30%): 2) 出席率(20%) 每次缺課扣10分,ie. 10% 3) Forecast Project (total 50%): Each student is required to carry out a forecast project and report the results in a written paper. - Project proposal (5%) - In-class presentation of forecasting result (25%) - Term paper (20%) 期末書面報告: about 8-15 pages",
+      "辦公時間": "by appointment",
+      "授課週數": "16",
+      "彈性教學說明": "補充教學安排自主學習（數位學習影片將另行公告給學生）。",
+      "課程領域": "基礎學科 、 數量分析 、 總體經濟實證",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(2) 低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(1) 非常低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "經濟學系",
+    "流水號": "44013",
+    "課號-班別": "EC4081-*",
+    "課程名稱(中文)": "知行合一：AI的應用與實踐 [已停開]",
+    "課程名稱(英文)": "Unity of thought and Action: the implication and implementation of AI.",
+    "備註": "客座講者:阮榮裕",
+    "授課教師": "王偉芳\n蔡明熹",
+    "學分": "3",
+    "上課時間": "WedABC",
+    "教室": "I1-310",
+    "選修別": "選修",
+    "全半年": "全",
+    "人數限制": "30",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=44013&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限經濟學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限雙主修-經濟學系。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=44013&outline=44013&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "經濟學系",
+      "流水號": "44013",
+      "課號": "EC4081-*",
+      "授課教師": "王偉芳\n蔡明熹",
+      "課程名稱(中文)": "知行合一：AI的應用與實踐",
+      "課程名稱(英文)": "Unity of thought and Action: the implication and implementation of AI.",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "Unity of thought and Action: the implication and implementation of AI. The Objective of this course provides students a logical thinking of the nature of AI, the introductory of various tools, the implementation of AI in real life. Students are required to attend one of AI related competitions then might be granted credit accordingly. 知：清楚掌握 AI 的本質與可能的發展趨勢，並在使用 AI 工具時明確了解其方向與用途。 行：讓 AI 工具能夠實現具體的想法，尤其是能夠與社區和社會互動的創新想法。 智：除了追求效能中應用工具，也必須堅持人的意義與價值，避免工具化時代的人性異化。",
+      "授課內容": "1 ( / ) 經濟發展與科技工具時代\n2 ( / ) 導論 - AI時代與人才定義的改變\n3 ( / ) 實作 - Colab 與 Python 入門、Python 初學語法的應用\n4 ( / ) 實作 -安裝與使用 AI 工具、AI 工具應用練習\n5 ( / ) 實作 - Python 資料型態與條件控制\n6 ( / ) 漫談 – AI興起與商業化的啟發\n7 ( / ) 漫談 – AI 對於非資工科系學生的衝擊\n8 ( / ) 專題講座 - 設計思考、美學與 CLD 介紹\n9 ( / ) 實作 - Python Pandas 與視覺化工具\n10 ( / ) Kaggle 競賽\n11 ( / ) 實作 - 深度學習基礎與 MNIST\n12 ( / ) 實作 - 貓狗分類與腦瘤影像語義分割\n13 ( / ) 專題分組討論\n14 ( / ) 實作 - Llama聊天機器人開發與 Multi-Agent 系統設計\n15 ( / ) 科技哲學與人文討論\n16 ( / ) 期末專題報告與展示",
+      "教科書/參考書": "暫不提供",
+      "自編教材比例": "0",
+      "授課方式": "講授 實習/實驗 個別指導",
+      "評量配分比重": "■Assignment (作業) 50% ■Presentation (專題發表) 50%",
+      "辦公時間": "自行與任課老師預約時間",
+      "授課週數": "16",
+      "彈性教學說明": "無",
+      "課程領域": "數量分析",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "永續發展",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 專題研究報告(書面)"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "經濟學系",
+    "流水號": "44014",
+    "課號-班別": "EC5003-*",
+    "課程名稱(中文)": "總體經濟理論",
+    "課程名稱(英文)": "Macroeconomic Theory",
+    "備註": "",
+    "授課教師": "廖志興",
+    "學分": "3",
+    "上課時間": "Wed567",
+    "教室": "I1-306",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "20",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=44014&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限經濟學系碩士班。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限經濟學系碩士班。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限經濟學系。年級:限四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=44014&outline=44014&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "經濟學系",
+      "流水號": "44014",
+      "課號": "EC5003-*",
+      "授課教師": "廖志興",
+      "課程名稱(中文)": "總體經濟理論",
+      "課程名稱(英文)": "Macroeconomic Theory",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "This course is designed to give students a variety of modern macroeconomic theories which help students to hold the current macroeconomic issues and train students’ thinking and logic ability. The course concentrates on short-run fluctuations with an emphasis on the roles of fiscal policy and monetary policy. It then turns to the models of economic growth in the long-run.",
+      "授課內容": "1 Introduction\n2 Dynamics\n3 Investment\n4 New Keynesian Economics I\n5 New Keynesian Economics II\n6 Review\n7 Midterm Exam\n8 The Solow Growth Model\n9 Endogenous Growth I\n10 Endogenous Growth II\n11 R＆D I\n12 R＆D II\n13 Real Business Cycles I\n14 Real Business Cycles II\n15 Review\n16 Final Exam",
+      "教科書/參考書": "B. J. Heijdra (2009), The Foundations of Modern Macroeconomics, 3rd edition. N. G. Mankiw (2016), Macroecnomics, 9th edition. D. Romer (2019), Advanced Macroeconomics, 5th edition.",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "Assignment (作業)30 ％ Midterm Test (期中考)35 ％ Final Test (期末考)35 ％",
+      "辦公時間": "by appointment",
+      "授課週數": "16",
+      "彈性教學說明": "習題寫作",
+      "課程領域": "總體經濟理論",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現 ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "經濟學系",
+    "流水號": "44015",
+    "課號-班別": "EC5005-*",
+    "課程名稱(中文)": "數量方法",
+    "課程名稱(英文)": "Quantitative Methods",
+    "備註": "IE6005、FM6005合班上課",
+    "授課教師": "徐之強",
+    "學分": "3",
+    "上課時間": "Thu567",
+    "教室": "I1-306",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=44015&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限經濟學系碩士班。年級:限一年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限經濟學系碩士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=44015&outline=44015&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "經濟學系",
+      "流水號": "44015",
+      "課號": "EC5005-*",
+      "授課教師": "徐之強",
+      "課程名稱(中文)": "數量方法",
+      "課程名稱(英文)": "Quantitative Methods",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "“Econometrics is the set of tools by which economists analyze data. The objective of the course is for the student to learn how to estimate economic relationships, test economic theories, and evaluate government and business policy. Some computational problems may be assigned to solve by using statistical software package, such as R and STATA.“",
+      "授課內容": "“1 Simple Regression\n2 Multiple Regression\n3 Inference for Multiple Regression\n4 Dummy Variables in Multiple Regression\n5 Further Issues in Multiple Regression\n6 Regularization\n7 Heteroskedasticity\n8 Midterm\n9 Time Series Regression I\n10 Time Series Regression II\n11 Endogeneity and Instrumental Variables Estimation\n12 Panel Data\n13 Binary Choice Models\n14 Censoring, Truncation, and Selection\n15 Experiments and Quasi-Experiments\n16 Final\n17 Self-Directed Learning\n18 Self-Directed Learning“",
+      "教科書/參考書": "“Introductory Econometrics: A Modern Approach, Jeffrey M. Wooldridge, 7th edition, 2019.“",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "“▓Class Participation (出席率) 5％ ▓Paper/Theses Writing (報告/論文) 10％ ▓Midterm Test (期中考) 40％ ▓Final Test (期末考) 45％“",
+      "辦公時間": "\"I1 Room 812, Tuesday 15:30 - 17:30\"",
+      "授課週數": "16",
+      "彈性教學說明": "電腦程式與報告",
+      "課程領域": "基礎學科 、 數量分析",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面) ， 其他"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面) ， 其他"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面) ， 其他"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面) ， 其他"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面) ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "經濟學系",
+    "流水號": "44016",
+    "課號-班別": "EC5006-*",
+    "課程名稱(中文)": "口語表達",
+    "課程名稱(英文)": "Oral Presentation",
+    "備註": "本課程的實際上課週次與小時數會在第一週宣布",
+    "授課教師": "廖志興",
+    "學分": "1",
+    "上課時間": "Thu23",
+    "教室": "I1-526",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "16",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=44016&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限經濟學系碩士班。年級:限一年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=44016&outline=44016&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "經濟學系",
+      "流水號": "44016",
+      "課號": "EC5006-*",
+      "授課教師": "廖志興",
+      "課程名稱(中文)": "口語表達",
+      "課程名稱(英文)": "Oral Presentation",
+      "課程學制": "碩士班",
+      "學分": "1",
+      "課程目標": "本課程旨在提升修課同學的口語與文字表達能力。",
+      "授課內容": "1 課程說明 1小時\n2\n3\n4 課堂說明口語報告大綱 2小時\n5\n6\n7\n8\n9 課堂口語報告 3小時\n10 課堂口語報告 3小時\n11 課堂口語報告 3小時\n12 課堂口語報告 3小時\n13\n14\n15 期末報告答辯 3小時\n16",
+      "教科書/參考書": "Course Material: 修課學生的PPT與期末報告 Other Material: 網路資源",
+      "自編教材比例": "0",
+      "授課方式": "講授 個別指導",
+      "評量配分比重": "報告: 40％ 專題發表: 60％",
+      "辦公時間": "星期一 12:00 ~ 14:00",
+      "授課週數": "16",
+      "彈性教學說明": "自主學習",
+      "課程領域": "基礎學科",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "經濟學系",
+    "流水號": "44017",
+    "課號-班別": "EC5027-*",
+    "課程名稱(中文)": "金融科技專題(一)",
+    "課程名稱(英文)": "Topics on Financial Technology (I)",
+    "備註": "本門課每隔三週上課3小時,第一堂必會上課",
+    "授課教師": "楊瑞芬",
+    "學分": "1",
+    "上課時間": "Wed9AB",
+    "教室": "I1-306",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=44017&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限經濟學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限經濟學系碩士班。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限財務金融學系、財務金融學系碩士班、輔系-經濟學系、雙主修-經濟學系、第二專長-國際金融、第二專長-國際經貿。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "學制:限學士班。學院:限管理學院。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "系所:限數學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "5",
+          "相關條件限制說明": "學制:限碩士班。學院:限管理學院。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=44017&outline=44017&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "經濟學系",
+      "流水號": "44017",
+      "課號": "EC5027-*",
+      "授課教師": "楊瑞芬",
+      "課程名稱(中文)": "金融科技專題(一)",
+      "課程名稱(英文)": "Topics on Financial Technology (I)",
+      "課程學制": "碩士班",
+      "學分": "1",
+      "課程目標": "“The course covers the fundamentals and applications of FinTech (financial technology). The goal is to facilitate the students with the basic understanding of FinTech (financial technology). In addition, with the arrangement of industry companies’ site visits or industry leaders’ guest speaking, it will enhance the students understanding on Taiwan Market’s development.“",
+      "授課內容": "“1 ( / ) Introduction of general consumer banking activities ＆ Why there is FinTech\n2 ( / )\n3 ( / )\n4 ( / )\n5 ( / ) Credit Card Payment/Asset Product\n6 ( / )\n7 ( / )\n8 ( / ) P2P Payment 介紹\n9 ( / )\n10 ( / )\n11 ( / ) Alternative Finance: Crowd Funding/P2P Lending介紹\n12 ( / )\n13 ( / )\n14 ( / ) FinTech company Visit or Guest Speaker\n15 ( / )\n16 ( / )\n17 ( / ) Year End report presentation\n18 ( / )“",
+      "教科書/參考書": "“Course Material 1. ‘銀行轉型未來式 Bank 3.0: Why Banking Is No Longer Somewhere You Go But Something You Do,’ Brett King 出版社：財團法人台灣金融研訓院出版日期：2015/07/14 2. ‘Breaking Banks: The Innovators, Rogues, and Strategists Rebooting Banking,’ Brett King 原文出版社：John Wiley ＆ Sons Inc 出版日期：2014/05/05 3. 數位銀行：銀行數位轉型策略指南‘Digital Bank: Strategies to Launch or Become a Digital Bank,’ Chris Skinner 中文翻譯： 孫一仕 ， 財團法人台灣金融研訓院 ，出版日期：2014-10-23 4. ‘The End of Banking: Money, Credit, and the Digital Revolution,’ Jonathan McMillan，Publisher： Zero/One Economics GmbH 5. ‘Bye Bye Banks?: How Retail Banks are Being Displaced, Diminished and Disintermediated by Tech Startups and What They Can Do to Survive,’ James Haycock, Shane Richmond, Publisher: Wunderkammer“",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討",
+      "評量配分比重": "“Class Participation (課堂互動參與) 30％ Assignment (作業) 40％ Presentation (專題發表) 30％“",
+      "辦公時間": "\"With Line or Email, Anytime\"",
+      "授課週數": "16",
+      "彈性教學說明": "依課綱安排",
+      "課程領域": "企業策略",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "經濟學系",
+    "流水號": "44018",
+    "課號-班別": "EC5034-*",
+    "課程名稱(中文)": "AI深度學習理論與實務 [已停開]",
+    "課程名稱(英文)": "AI Deep Learning Algorithms and Applications",
+    "備註": "IA7054、BA7127、FM5006、EC5034、IE8012合班上課",
+    "授課教師": "胡中興",
+    "學分": "3",
+    "上課時間": "Wed567",
+    "教室": "I1-504",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "3",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=44018&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限經濟學系碩士班、經濟學系博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限經濟學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "指定課程:必須先修EC5033。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=44018&outline=44018&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "經濟學系",
+      "流水號": "44018",
+      "課號": "EC5034-*",
+      "授課教師": "胡中興",
+      "課程名稱(中文)": "AI深度學習理論與實務",
+      "課程名稱(英文)": "AI Deep Learning Algorithms and Applications",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "Cloud Computing adopts the techniques of Big Data Analytics in order to do data manipulation. Since the conventional machine-learning algorithms can not fulfill the computing complexity due to dramatically increasing amounts of data, it is necessary to employ Deep Learning algorithms to process the big data for building the predictive models. Currently, for implementing the Deep Learning algorithms, the Python-based programming language — TensorFlow/Keras — is a de facto standard in industry. Hence, the objective of this course focuses on teaching students the TensorFlow/Keras programming language and Deep Learning algorithms, and, via the hands-on workshops, the students will learn how to build the predictive models as well as their applications.",
+      "授課內容": "1 Intro to AI Deep Learning\n2 Intro to TensorFlow/Keras Programming and Environment Setup\n3 Fully-connected Deep Networks by Keras\n4 TensorBoard Workflow Visualization\n5 Convolutional Neural Networks (CNNs) - Concepts and Algorithms\n6 CNN Workshop 1: Basics of Image Processing with CNNs\n7 CNN Workshop 2: Advanced Topics of Image Processing with CNNs\n8 Transfer Learning with ImageNet\n9 Midterm Project (Individual)\n10 Recurrent Neural Networks (RNNs) - Concepts and Algorithms\n11 NLP Workshop 1: Sentiment Analysis by One-hot Encoding\n12 NLP Workshop 2: Sentiment Analysis by Word Embedding\n13 NLP Workshop 3: Sentiment Analysis with RNN / LSTM\n14 NLP Workshop 4: Sentiment Analysis with Bidirectional and GRU\n15 Time-Series Workshop 1: Weather Forecasting\n16 Time-Series Workshop 2: Stock-Price Prediction\n17 Final Project — Turn-in\n18 [Online Learning]: Intro to Attention and Transformers",
+      "教科書/參考書": "[References] : 1. Francois Chollet, “Deep Learning with Python”, Manning, 2018 [ PDF ] : https://tanthiamhuat.files.wordpress.com/2018/03/deeplearningwithpython.pdf [ Code ] : https://github.com/fchollet/deep-learning-with-python-notebooks 2. Kevin P. Murphy, “Probabilistic Machine Learning: An Introduction”, MIT Press, 2022 [ Link ] : https://github.com/probml/pml-book/releases/latest/download/book1.pdf 3. Kevin P. Murphy, “Probabilistic Machine Learning: Advanced Topics”, MIT Press, 2022 [ PDF ＆ Code ] : https://github.com/probml/pml2-book/releases/tag/2022-07-29",
+      "自編教材比例": "100",
+      "授課方式": "講授 其他",
+      "評量配分比重": "HW & Assignments (作業) : 30％ Midterm Project (Individual) : 20％ Final Project ＆ Presentation (Group) : 50％",
+      "辦公時間": "TBA",
+      "授課週數": "16",
+      "彈性教學說明": "彈性教學採行 「期末專案提交」 以及 「線上學習」 方式進行。",
+      "課程領域": "企業策略 、 數量分析",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "經濟學系",
+    "流水號": "44019",
+    "課號-班別": "EC7008-*",
+    "課程名稱(中文)": "經濟專題討論(二)",
+    "課程名稱(英文)": "Seminar in Economics II",
+    "備註": "",
+    "授課教師": "徐之強",
+    "學分": "1",
+    "上課時間": "TueZ56",
+    "教室": "I1-306",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "30",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=44019&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限經濟學系碩士班。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限經濟學系碩士班。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限經濟學系博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=44019&outline=44019&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "經濟學系",
+      "流水號": "44019",
+      "課號": "EC7008-*",
+      "授課教師": "徐之強",
+      "課程名稱(中文)": "經濟專題討論(二)",
+      "課程名稱(英文)": "Seminar in Economics II",
+      "課程學制": "碩博同修",
+      "學分": "1",
+      "課程目標": "促進學生接觸更多經濟相關領域的最新研究課題。",
+      "授課內容": "各領域學者的最新研究議題",
+      "教科書/參考書": "無",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討",
+      "評量配分比重": "1. 基本分數：出席10場次(不含心理座談與適性測驗)且提問3次者，學期成績為80分。 2. 出席少於10場次，每少1場次，扣學期成績5分。 3. 提問多於3次者，每多1次，學期成績加3分；提問少於3次者，每少1次，學期成績扣3分。 4. 上課遲到10分鐘以上者視同未到。 5. 只出席10場次且未提問者，學期成績為69分 (不及格)。",
+      "辦公時間": "by appointment",
+      "授課週數": "16",
+      "彈性教學說明": ".",
+      "課程領域": "個體經濟理論 、 個體經濟實證 、 總體經濟理論 、 總體經濟實證",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面)"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "經濟學系",
+    "流水號": "44020",
+    "課號-班別": "EC7033-*",
+    "課程名稱(中文)": "教育經濟學",
+    "課程名稱(英文)": "Economics of Education",
+    "備註": "",
+    "授課教師": "曹真睿",
+    "學分": "3",
+    "上課時間": "Mon234",
+    "教室": "I1-526",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "10",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=44020&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限經濟學系碩士班、經濟學系博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=44020&outline=44020&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "經濟學系",
+      "流水號": "44020",
+      "課號": "EC7033-*",
+      "授課教師": "曹真睿",
+      "課程名稱(中文)": "教育經濟學",
+      "課程名稱(英文)": "Economics of Education",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "“By the time students graduate from college most will have spent 16 years in school. Given the many years we devote to it, this course begins by asking “what is education for?” Does schooling impart human capital that can be sold on the labor market later in life? Does it provide a signal of ability to potential employers but otherwise add little? Or does it simply socialize students to fit into modern society? What are the pecuniary and non-pecuniary returns to individuals and society? After covering these basic issues, this course explores the meaning and empirics of non-mainstream education. In particular, we study the Waldorf education. This course will focus primarily on articles from academic journals. Students will not be expected to understand all the mathematics or econometrics. Instead, our focus will be on grappling with the author’s key insights. We will read for enlightenment and entertainment rather than regurgitation and recitation.  Human capital and signaling theories of education  Estimating the returns to education  Are returns due to signaling or human capital?  Some critiques of the standard view  Non-pecuniary benefits of education  Are there social returns to education?  Education and economic growth  Current issues  Waldorf education“",
+      "授課內容": "“1 ( 2/15 ) Get to know the students / Go through the syllabus / Different types of human capital\n2 ( 2/22 ) 圖書館利用教育\n3 ( 3/1 ) Assign papers and dates for presentations\nHuman capital and signaling theories of education:\n1. Becker, G. (1962). Investment in human capital: A theoretical analysis. The Journal of Political Economy, 70(5), pp. 9–49.\n2. Spence, M. (1972). Job Market Signaling. The Quarterly Journal of Economics, 87(3), pp. 355–374.\n4 ( 3/8 ) Estimating the returns to education:\n1. Angrist, J. and A. Krueger (1991). Does Compulsory School Attendance Affect Schooling and Earnings? The Quarterly Journal of Economics, 106(4), pp. 979–1014.\n2. Duflo, E. (2001). Schooling and Labor Market Consequences of School Construction in Indonesia: Evidence from an Unusual Policy Experiment. The American Economic Review, 91(4), pp. 795–813.\n5 ( 3/15 ) Are returns due to signaling or human capital?\n1. Lindsay, C. M. (1971). Measuring Human Capital Returns. The Journal of Political Economy, 79(6), pp.1195–1215.\n2. Weiss, A. (1995). Human Capital vs. Signaling Explanations of Wages. The Journal of Economic Perspectives, 9(4), pp.133–154.\n6 ( 3/22 ) Are returns due to signaling or human capital?\n3. Murnane, R., J. Willett, and F. Levy (1995). The Growing Importance of Cognitive Skills in Wage Determination. Review of Economics and Statistics, 77(2), pp. 251–66.\n4. Tyler, J., R. Murnane, and J. Willett (2000). Estimating the Labor Market Signaling Value of the GED. The Quarterly Journal of Economics, 115(2), pp. 431–468.\n7 ( 3/29 ) Some critiques of the standard view:\n1. Goldsmith, A. H., J. R. Veum, and W. Darity (1997). The Impact of Psychological and Human Capital on Wages. Economics of Inquiry, 35(4), pp. 815–829.\n2. Blaug, M. (1985). Where Are We Now in the Economics of Education? Economics of Education Review, 4(1), pp. 17–28.\n8 ( 4/5 ) 本校職工共同暑休日放假1日\n9 ( 4/12 ) Some critiques of the standard view:\n3. Bowles, S., H. Gintis, and M. Osborne (2001). The determinants of earnings: A behavioral approach.Journal of Economic Literature, 39(4), pp. 1137–1176.\n4. Bowles, S. and H. Gintis (2002). Schooling in Capitalist America Revisited. Sociology of Education, 75(1), pp. 1–18.\n10 ( 4/19 ) Non-pecuniary benefits of education:\n1. Haveman, R. and B. Wolfe (1984). Schooling and Economic Well-Being: The Role of Nonmarket Effects. The Journal of Human Resources, 19(3), pp. 377–407.\n2. Oreopoulos, P. and K. G. Salvanes (2011). Priceless: The Nonpecuniary Benefits of Schooling, The Journal of Economic Perspectives, 25(1), pp. 159–184.\n11 ( 4/26 ) Are there social returns to education?\n1. Moretti, E. (2004). Estimating the social return to higher education: evidence from longitudinal and repeated cross-sectional data. Journal of Econometrics, 121(1-2), pp. 175–212.\n2. Sand, B. M. (2013). A Re-examination of the Social Returns to Education: Evidence from U.S. Cities. Labour Economics, 24, 97-106.\n12 ( 5/3 ) Education and economic growth:\n1. Woo, J. H. (1991). Education and Economic Growth in Taiwan: A Case of Successful Planning. World Development, 19 (8), pp. 1029-1044.\n2. Krueger, A. and M. Lindahl (2001). Education for Growth: Why and For Whom? Journal of Economic Literature, 39(4), pp. 1101–1136.\n3. Pritchett, L. (2001). Where Has All the Education Gone? The World Bank Economic Review, 15(3), pp. 367–391.\n4. Cohen, D. and M. Soto (2007). Growth and human capital: good data, good results. Journal of Economic Growth, 12(1), pp. 51–76.\n13 ( 5/10 ) Current issues\n14 ( 5/17 ) Current issues\n15 ( 5/24) Speaker\n16 ( 5/31 ) Waldorf education\n1. Easton, Freda (1997). Educating the Whole Child, “Head, Heart, and Hands”: Learning from the Waldorf Experience. Theory into Practice, 36 (1), pp. 87-94.\n2. Nicholson, David W. (2000). Layers of Experience: Forms of Representation in a Waldorf School Classroom. Journal of Education Curriculum Studies, 32 (4), pp. 575-587.\n17 ( 6/7 ) Waldorf education\n1. Dahlin, Bo (2010). A State-Independent Education for Citizenship? Comparing Beliefs and Values Related to Civic and Moral Issues among Students in Swedish Mainstream and Steiner Waldorf Schools. Journal of Beliefs ＆ Values: Studies in Religion ＆ Education, 31 (2), pp. 165-180.\n2. Paschen, H (2014). Waldorf Education and Rudolf Steiner School as a Topic of Educational Science. Croatian Journal of Education, 16 (1), pp. 191–215.\n3. Martzog, P., S. Kuttner, and G. Pollak (2016). A Comparison of Waldorf and Non-Waldorf Student-Teachers’ Social-Emotional Competencies: Can Arts Engagement Explain Differences? Journal of Education for Teaching: International Research and Pedagogy, 42 (1), pp. 66–79.\n18 ( 6/14 ) Final Exam“",
+      "教科書/參考書": "“Course Material (課程教材) Journal articles Other Material (其他參考書目) Checchi, D. 2008. The Economics of Education: Human Capital, Family Background and Inequality. Becker, G. 1993. Human Capital: A Theoretical and Empirical Analysis, with Special Reference to Education. 3rd edition.“",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討",
+      "評量配分比重": "“■Final Test (期末考) 30％ ■Presentations (專題發表) 30％ ■Others 1 (其他1)_Written Reports 30％ ■Others 2 (其他2) _Discussions / Q ＆ A 10％“",
+      "辦公時間": "Wednesday 13:00-14:00 (or by appointment)(I1-835)",
+      "授課週數": "16",
+      "彈性教學說明": ".",
+      "課程領域": "人力資源與經濟發展",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "經濟學系",
+    "流水號": "44021",
+    "課號-班別": "EC7051-*",
+    "課程名稱(中文)": "全球化與創新",
+    "課程名稱(英文)": "Globalization and Innovation",
+    "備註": "",
+    "授課教師": "楊志海",
+    "學分": "2",
+    "上課時間": "Tue34",
+    "教室": "I1-526",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "10",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=44021&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限經濟學系碩士班、經濟學系博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=44021&outline=44021&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "經濟學系",
+      "流水號": "44021",
+      "課號": "EC7051-*",
+      "授課教師": "楊志海",
+      "課程名稱(中文)": "全球化與創新",
+      "課程名稱(英文)": "Globalization and Innovation",
+      "課程學制": "碩博同修",
+      "學分": "2",
+      "授課內容": "第一週 9/2 Export (I)\n第二週 9/9 Export (II)\n第三週 9/16 FDI (I)\n第四週 9/23 FDI (II)\n第五週 9/30 Productivity\n第六週 10/7 Globalization and Firm performance (local and home)\n第七週 10/14 學生報告一\n第八週 10/21 期中考週\n第九週 10/28 Introduction of Innovation Economics\n第十週 11/4 R&D and patent\n第十一週 11/11 Innovation and firm performance\n第十二週 11/18 Innovation and Employment\n第十三週 11/25 IPRs and Globalization (I)\n第十四週 12/2 IPRs and Globalization (II)\n第十五週 12/9 學生報告一\n第十六週 12/16 期末考週",
+      "教科書/參考書": "\"Course Material Journal articles Other Material Handouts\"",
+      "自編教材比例": "50",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "\"Class Participation (出席率) 20% Paper/Theses Writing (報告/論文) 60% Presentation (專題發表) 20%\"",
+      "辦公時間": "PM1:00-PM3:00 Tuesday",
+      "授課週數": "16",
+      "彈性教學說明": "無",
+      "課程領域": "國際經濟 、 產業經濟",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(2) 低",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "經濟學系",
+    "流水號": "44022",
+    "課號-班別": "EC7056-*",
+    "課程名稱(中文)": "計算總體經濟學",
+    "課程名稱(英文)": "Computational Macroeconomics",
+    "備註": "",
+    "授課教師": "姚睿",
+    "學分": "3",
+    "上課時間": "Wed234",
+    "教室": "I1-526",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "15",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=44022&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限經濟學系碩士班、經濟學系博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限經濟學系。年級:限四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=44022&outline=44022&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "經濟學系",
+      "流水號": "44022",
+      "課號": "EC7056-*",
+      "授課教師": "姚睿",
+      "課程名稱(中文)": "計算總體經濟學",
+      "課程名稱(英文)": "Computational Macroeconomics",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "這門課程專為有志於研究總體經濟議題的碩博士生所設計, 課程內容介紹如何利用電腦軟體的數值分析方法, 來研究各種總體經濟議題，例如計算最佳貨幣政策、財政政策和環境政策。應用主題還可延伸至量化寬鬆 (QE)、罕見災害以及零利率下限貨幣政策效果等議題。這些數量方法牽涉到使用最適控制演算法, 在總體經濟結構模型的架構之下, 模擬試算總體變數 (如經濟成長率、失業率和通貨膨脹率) 的動態。使用的軟體包括 MATLAB 和 Dynare。",
+      "授課內容": "結合經濟理論與數值分析方法, 訓練未來有志於在政府單位或智庫工作的學生, 設算模擬政策效果, 與分析重大罕見經濟事件對主要經濟變數的影響。",
+      "教科書/參考書": "Recommended Macroeconomics Books: Canova, Fabio (2007). Methods for Applied Macroeconomic Research, Princeton Universit Press. DeJong, David and Chetan Dave (2007). Structural Macroeconometrics, Princeton University Press. Heer, Burkhard and Alfred Maussner (2009). Dynamic General Equilibrium Modeling: Computational Methods and Applications, 2nd ed., Springer. Lim, G.C. and P.D. McNelis (2008). Computational Macroeconomics for the Open Economy, MIT Press. McCandless, George (2008). The ABCs of RBCs: An Introduction to Dynamic Macroeconomic Models. Harvard University Press.",
+      "自編教材比例": "80",
+      "授課方式": "講授 研討 實習/實驗",
+      "評量配分比重": " Midterm (50%)  Project and Oral presentation (50%)",
+      "辦公時間": "by appointment",
+      "授課週數": "16",
+      "彈性教學說明": "彈性補充教學安排自主學習（數位學習影片將另行公告給學生）。",
+      "課程領域": "數量分析 、 總體經濟理論",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    }
+  }
+]
