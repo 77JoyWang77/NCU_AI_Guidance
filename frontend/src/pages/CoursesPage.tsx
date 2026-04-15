@@ -1,625 +1,534 @@
-import { useState, useEffect, useMemo, useRef } from 'react';
-import { courseAPI } from '../api/services';
-import type { Course } from '../types';
-import CourseDetailPanel from '../components/CourseDetailPanel';
-import HighlightText from '../components/HighlightText';
+import { useEffect, useMemo, useState } from 'react';
+import type { ComponentType, Dispatch, SetStateAction } from 'react';
 import {
-  HiMenu,
-  HiSearch,
-  HiChevronRight,
-  HiChevronLeft,
-  HiBookOpen,
   HiBeaker,
-  HiCog,
+  HiBookOpen,
   HiBriefcase,
+  HiChevronLeft,
+  HiChevronRight,
   HiChip,
+  HiCog,
   HiGlobeAlt,
-  HiLibrary,
   HiHeart,
+  HiLibrary,
   HiOfficeBuilding,
-  HiFilter,
+  HiSearch,
   HiX,
 } from 'react-icons/hi';
+import { courseAPI } from '../api/services';
+import CourseDetailPanel from '../components/CourseDetailPanel';
+import HighlightText from '../components/HighlightText';
+import type { Course } from '../types';
 
-// 學院排序（按重要性）
-const COLLEGE_ORDER = [
-  '文學院',
-  '理學院',
-  '工學院',
-  '管理學院',
-  '資訊電機學院',
-  '地球科學學院',
-  '客家學院',
-  '生醫理工學院',
-  '中心、處室',
-];
-
-// 學院圖示和顏色配置
-const COLLEGE_CONFIG: Record<string, { icon: any; gradient: string; color: string }> = {
-  '文學院': { icon: HiBookOpen, gradient: 'from-blue-400 to-purple-500', color: 'text-blue-600' },
-  '理學院': { icon: HiBeaker, gradient: 'from-cyan-400 to-blue-500', color: 'text-cyan-600' },
-  '工學院': { icon: HiCog, gradient: 'from-orange-400 to-red-500', color: 'text-orange-600' },
-  '管理學院': { icon: HiBriefcase, gradient: 'from-green-400 to-emerald-500', color: 'text-green-600' },
-  '資訊電機學院': { icon: HiChip, gradient: 'from-indigo-400 to-purple-600', color: 'text-indigo-600' },
-  '地球科學學院': { icon: HiGlobeAlt, gradient: 'from-teal-400 to-cyan-500', color: 'text-teal-600' },
-  '客家學院': { icon: HiLibrary, gradient: 'from-red-400 to-pink-500', color: 'text-red-600' },
-  '生醫理工學院': { icon: HiHeart, gradient: 'from-pink-400 to-rose-500', color: 'text-pink-600' },
-  '中心、處室': { icon: HiOfficeBuilding, gradient: 'from-gray-400 to-gray-500', color: 'text-gray-600' },
+const COLLEGE_ORDER = ['文學院', '理學院', '工學院', '管理學院', '資訊電機學院', '地球科學學院', '客家學院', '生醫理工學院', '中心、處室'] as const;
+const FALLBACK_COLLEGE = '中心、處室';
+const FALLBACK_DEPARTMENT = '未分類系所';
+const COLLEGE_CONFIG: Record<string, { icon: ComponentType<{ className?: string }>; gradient: string }> = {
+  文學院: { icon: HiBookOpen, gradient: 'from-blue-400 to-violet-500' },
+  理學院: { icon: HiBeaker, gradient: 'from-cyan-400 to-blue-500' },
+  工學院: { icon: HiCog, gradient: 'from-orange-400 to-red-500' },
+  管理學院: { icon: HiBriefcase, gradient: 'from-green-400 to-emerald-500' },
+  資訊電機學院: { icon: HiChip, gradient: 'from-indigo-400 to-purple-600' },
+  地球科學學院: { icon: HiGlobeAlt, gradient: 'from-teal-400 to-cyan-500' },
+  客家學院: { icon: HiLibrary, gradient: 'from-rose-400 to-pink-500' },
+  生醫理工學院: { icon: HiHeart, gradient: 'from-pink-400 to-rose-500' },
+  '中心、處室': { icon: HiOfficeBuilding, gradient: 'from-slate-400 to-slate-500' },
 };
 
-interface GroupedCourses {
-  [college: string]: {
-    [department: string]: Course[];
-  };
+type NavigationLevel = 'colleges' | 'departments' | 'courses';
+type ResultTab = 'course_name' | 'detail_info';
+type GroupedCourses = Record<string, Record<string, Course[]>>;
+
+const normalize = (value?: string | null) => (value ?? '').trim();
+const courseKey = (course: Course) => `${course.serial_no}-${course.course_id}`;
+
+const getDetailPreview = (course: Course, keyword: string) => {
+  const text = [course.course_objective, course.course_content, course.course_field, course.textbooks, course.note, course.instructor].filter(Boolean).join(' ');
+  if (!text) return '';
+  const query = keyword.trim().toLowerCase();
+  if (!query) return text.slice(0, 80);
+  const hit = text.toLowerCase().indexOf(query);
+  if (hit === -1) return text.slice(0, 80);
+  const start = Math.max(0, hit - 18);
+  const end = Math.min(text.length, hit + query.length + 36);
+  return `${start > 0 ? '...' : ''}${text.slice(start, end)}${end < text.length ? '...' : ''}`;
+};
+
+function FilterPill({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`rounded-full border px-3 py-2 text-sm font-medium transition ${
+        active ? 'border-primary-700 bg-primary-900 text-white' : 'border-slate-300 bg-white text-slate-700 hover:bg-slate-50'
+      }`}
+    >
+      {label}
+    </button>
+  );
 }
 
 export default function CoursesPage() {
   const [courses, setCourses] = useState<Course[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedType, setSelectedType] = useState<string>('');
-  const [selectedCredits, setSelectedCredits] = useState<string>('');
-  const [selectedSemester, setSelectedSemester] = useState<string>('');
-  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
-
-  // 導航狀態
-  const [showNavigation, setShowNavigation] = useState(true); // 顯示導航還是課程列表
+  const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
+  const [selectedCredits, setSelectedCredits] = useState<string[]>([]);
+  const [selectedSemesters, setSelectedSemesters] = useState<string[]>([]);
   const [selectedCollege, setSelectedCollege] = useState<string | null>(null);
   const [selectedDepartment, setSelectedDepartment] = useState<string | null>(null);
-
-  // 搜尋/篩選面板狀態
+  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [showSearchPanel, setShowSearchPanel] = useState(false);
-  const [searchMode, setSearchMode] = useState<'name' | 'detail'>('name');
-  const [searchExpandedDepts, setSearchExpandedDepts] = useState<Set<string>>(new Set());
-
-  // 右側面板 ref，切換課程時滾回頂端
-  const rightPanelRef = useRef<HTMLDivElement>(null);
+  const [navigationLevel, setNavigationLevel] = useState<NavigationLevel>('colleges');
+  const [resultTab, setResultTab] = useState<ResultTab>('course_name');
+  const [expandedDepartments, setExpandedDepartments] = useState<string[]>([]);
 
   useEffect(() => {
-    loadCourses();
+    courseAPI
+      .getCourses()
+      .then(setCourses)
+      .catch((error) => console.error('Failed to load courses:', error))
+      .finally(() => setLoading(false));
   }, []);
 
-  // 切換課程時右側面板滾回頂端
   useEffect(() => {
-    if (rightPanelRef.current) {
-      rightPanelRef.current.scrollTop = 0;
-    }
-  }, [selectedCourse]);
+    if (!showSearchPanel) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [showSearchPanel]);
 
-  const loadCourses = async () => {
-    try {
-      setLoading(true);
-      const data = await courseAPI.getCourses();
-      setCourses(data);
-    } catch (error) {
-      console.error('載入課程失敗:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // 按學院和系所分組
   const groupedCourses = useMemo(() => {
     const grouped: GroupedCourses = {};
     courses.forEach((course) => {
-      const college = course.college || '其他';
-      const department = course.department || '未分類';
-      if (!grouped[college]) grouped[college] = {};
-      if (!grouped[college][department]) grouped[college][department] = [];
+      const college = normalize(course.college) || FALLBACK_COLLEGE;
+      const department = normalize(course.department) || FALLBACK_DEPARTMENT;
+      grouped[college] ??= {};
+      grouped[college][department] ??= [];
       grouped[college][department].push(course);
     });
     return grouped;
   }, [courses]);
 
-  // 排序學院
-  const sortedColleges = useMemo(() => {
-    const colleges = Object.keys(groupedCourses);
-    return colleges.sort((a, b) => {
-      const indexA = COLLEGE_ORDER.indexOf(a);
-      const indexB = COLLEGE_ORDER.indexOf(b);
-      if (indexA === -1 && indexB === -1) return a.localeCompare(b);
-      if (indexA === -1) return 1;
-      if (indexB === -1) return -1;
-      return indexA - indexB;
+  const sortedColleges = useMemo(
+    () =>
+      Object.keys(groupedCourses).sort((a, b) => {
+        const ai = COLLEGE_ORDER.indexOf(a as (typeof COLLEGE_ORDER)[number]);
+        const bi = COLLEGE_ORDER.indexOf(b as (typeof COLLEGE_ORDER)[number]);
+        if (ai === -1 && bi === -1) return a.localeCompare(b, 'zh-Hant');
+        if (ai === -1) return 1;
+        if (bi === -1) return -1;
+        return ai - bi;
+      }),
+    [groupedCourses]
+  );
+
+  const currentDepartments = useMemo(
+    () => (!selectedCollege ? [] : Object.keys(groupedCourses[selectedCollege] || {}).sort((a, b) => a.localeCompare(b, 'zh-Hant'))),
+    [groupedCourses, selectedCollege]
+  );
+  const departmentCourses = useMemo(
+    () => (!selectedCollege || !selectedDepartment ? [] : groupedCourses[selectedCollege]?.[selectedDepartment] || []),
+    [groupedCourses, selectedCollege, selectedDepartment]
+  );
+
+  const hasActiveFilters =
+    Boolean(searchQuery.trim()) || selectedTypes.length > 0 || selectedCredits.length > 0 || selectedSemesters.length > 0;
+  const hasSearchQuery = Boolean(searchQuery.trim());
+
+  const searchableFields = (course: Course) =>
+    resultTab === 'course_name'
+      ? [course.course_name_zh, course.course_name_en]
+      : [
+          course.course_name_zh,
+          course.course_name_en,
+          course.course_objective,
+          course.course_content,
+          course.course_field,
+          course.textbooks,
+          course.grading,
+          course.note,
+          course.instructor,
+          course.department,
+          course.college,
+        ];
+
+  const matchesFilters = (course: Course) => {
+    const query = searchQuery.trim().toLowerCase();
+    const matchesType = selectedTypes.length === 0 || selectedTypes.includes(normalize(course.required_elective));
+    const matchesCredits = selectedCredits.length === 0 || selectedCredits.includes(String(course.credits));
+    const matchesSemester = selectedSemesters.length === 0 || selectedSemesters.includes(normalize(course.semester_display));
+    const matchesQuery =
+      !query ||
+      searchableFields(course)
+        .filter(Boolean)
+        .some((value) => value!.toLowerCase().includes(query));
+    return matchesType && matchesCredits && matchesSemester && matchesQuery;
+  };
+
+  const currentCourses = useMemo(
+    () => departmentCourses.filter(matchesFilters),
+    [departmentCourses, searchQuery, selectedTypes, selectedCredits, selectedSemesters, resultTab]
+  );
+  const filteredCourses = useMemo(
+    () => courses.filter(matchesFilters),
+    [courses, searchQuery, selectedTypes, selectedCredits, selectedSemesters, resultTab]
+  );
+
+  const groupedSearchResults = useMemo(() => {
+    const map = new Map<string, Map<string, Course[]>>();
+    filteredCourses.forEach((course) => {
+      const college = normalize(course.college) || FALLBACK_COLLEGE;
+      const department = normalize(course.department) || FALLBACK_DEPARTMENT;
+      if (!map.has(college)) map.set(college, new Map<string, Course[]>());
+      const deptMap = map.get(college)!;
+      if (!deptMap.has(department)) deptMap.set(department, []);
+      deptMap.get(department)!.push(course);
     });
-  }, [groupedCourses]);
+    return Array.from(map.entries())
+      .sort((a, b) => {
+        const ai = COLLEGE_ORDER.indexOf(a[0] as (typeof COLLEGE_ORDER)[number]);
+        const bi = COLLEGE_ORDER.indexOf(b[0] as (typeof COLLEGE_ORDER)[number]);
+        if (ai === -1 && bi === -1) return a[0].localeCompare(b[0], 'zh-Hant');
+        if (ai === -1) return 1;
+        if (bi === -1) return -1;
+        return ai - bi;
+      })
+      .map(([college, departments]) => ({
+        college,
+        count: Array.from(departments.values()).reduce((sum, list) => sum + list.length, 0),
+        departments: Array.from(departments.entries())
+          .sort((a, b) => a[0].localeCompare(b[0], 'zh-Hant'))
+          .map(([name, list]) => ({ name, count: list.length, courses: list })),
+      }));
+  }, [filteredCourses]);
 
-  // 當前學院的系所列表
-  const currentDepartments = useMemo(() => {
-    if (!selectedCollege || !groupedCourses[selectedCollege]) return [];
-    return Object.keys(groupedCourses[selectedCollege]).sort();
-  }, [selectedCollege, groupedCourses]);
+  const typeOptions = useMemo(
+    () => Array.from(new Set(courses.map((course) => normalize(course.required_elective)).filter(Boolean))).sort((a, b) => a.localeCompare(b, 'zh-Hant')),
+    [courses]
+  );
+  const creditOptions = useMemo(
+    () => Array.from(new Set(courses.map((course) => String(course.credits)).filter(Boolean))).sort((a, b) => Number(a) - Number(b)),
+    [courses]
+  );
+  const semesterOptions = useMemo(
+    () => Array.from(new Set(courses.map((course) => normalize(course.semester_display)).filter(Boolean))).sort((a, b) => a.localeCompare(b, 'zh-Hant')),
+    [courses]
+  );
 
-  // 當前系所的課程列表（受搜尋和篩選影響）
-  const currentCourses = useMemo(() => {
-    if (!selectedCollege || !selectedDepartment) return [];
-    const allDeptCourses = groupedCourses[selectedCollege]?.[selectedDepartment] || [];
+  useEffect(() => {
+    if (!selectedCollege && sortedColleges.length > 0) setSelectedCollege(sortedColleges[0]);
+  }, [sortedColleges, selectedCollege]);
 
-    let result = [...allDeptCourses];
-
-    // 必修/選修篩選
-    if (selectedType) {
-      result = result.filter((c) => c.required_elective === selectedType);
-    }
-
-    // 學分數篩選
-    if (selectedCredits) {
-      result = result.filter((c) => c.credits === parseInt(selectedCredits));
-    }
-
-    // 學期篩選
-    if (selectedSemester) {
-      result = result.filter((c) => c.semester_display === selectedSemester);
-    }
-
-    // 搜尋
-    if (searchQuery) {
-      const query = searchQuery.toLowerCase();
-      result = result.filter(
-        (course) =>
-          course.course_name_zh?.toLowerCase().includes(query) ||
-          course.course_name_en?.toLowerCase().includes(query) ||
-          course.instructor?.toLowerCase().includes(query) ||
-          course.course_objective?.toLowerCase().includes(query) ||
-          course.course_content?.toLowerCase().includes(query) ||
-          course.course_field?.toLowerCase().includes(query)
-      );
-    }
-
-    return result;
-  }, [selectedCollege, selectedDepartment, groupedCourses, selectedType, selectedCredits, selectedSemester, searchQuery]);
-
-  const handleCollegeClick = (college: string) => {
-    setSelectedCollege(college);
+  useEffect(() => {
+    if (!selectedCollege) return;
+    const departments = Object.keys(groupedCourses[selectedCollege] || {});
+    if (!departments.length) return setSelectedDepartment(null);
+    if (selectedDepartment && departments.includes(selectedDepartment)) return;
     setSelectedDepartment(null);
     setSelectedCourse(null);
+  }, [groupedCourses, selectedCollege, selectedDepartment]);
+
+  useEffect(() => {
+    const source = hasActiveFilters ? filteredCourses : currentCourses;
+    if (source.length === 0) return setSelectedCourse(null);
+    if (selectedCourse && source.some((course) => courseKey(course) === courseKey(selectedCourse))) return;
+    if (hasActiveFilters) return setSelectedCourse(null);
+    setSelectedCourse(source[0]);
+  }, [currentCourses, filteredCourses, hasActiveFilters, selectedCourse]);
+
+  const toggleValue = (value: string, setter: Dispatch<SetStateAction<string[]>>) =>
+    setter((current) => (current.includes(value) ? current.filter((item) => item !== value) : [...current, value]));
+
+  const clearAllFilters = () => {
+    setSearchQuery('');
+    setSelectedTypes([]);
+    setSelectedCredits([]);
+    setSelectedSemesters([]);
   };
 
-  const handleDepartmentClick = (department: string) => {
-    setSelectedDepartment(department);
-    setSelectedCourse(null);
-    setShowNavigation(false); // 切換到課程列表視圖
+  const toggleExpandedDepartment = (key: string) => {
+    setExpandedDepartments((current) => (current.includes(key) ? current.filter((item) => item !== key) : [...current, key]));
   };
 
-  const handleCourseClick = (course: Course) => {
-    setSelectedCourse(course);
-  };
+  const activeTags = [
+    ...(searchQuery.trim() ? [{ key: `search-${searchQuery}`, label: `搜尋：${searchQuery.trim()}`, onRemove: () => setSearchQuery('') }] : []),
+    ...selectedTypes.map((value) => ({ key: `type-${value}`, label: value, onRemove: () => setSelectedTypes((current) => current.filter((item) => item !== value)) })),
+    ...selectedCredits.map((value) => ({ key: `credit-${value}`, label: `${value} 學分`, onRemove: () => setSelectedCredits((current) => current.filter((item) => item !== value)) })),
+    ...selectedSemesters.map((value) => ({ key: `semester-${value}`, label: value, onRemove: () => setSelectedSemesters((current) => current.filter((item) => item !== value)) })),
+  ];
 
-  const handleBackToNavigation = () => {
-    setShowNavigation(true);
-    setSelectedCourse(null);
-  };
-
-  const handleNavigationBack = () => {
-    if (selectedDepartment) {
-      setSelectedDepartment(null);
-      setSelectedCourse(null);
-    } else if (selectedCollege) {
-      setSelectedCollege(null);
-    }
-  };
-
-  const toggleDeptExpansion = (key: string) => {
-    setSearchExpandedDepts(prev => {
-      const next = new Set(prev);
-      if (next.has(key)) next.delete(key);
-      else next.add(key);
-      return next;
-    });
-  };
-
-  const handleSearchCourseClick = (course: Course) => {
-    setSelectedCourse(course);
-  };
-
-  // 全域搜尋結果（跨所有課程）
-  const globalSearchResults = useMemo(() => {
-    if (!searchQuery.trim()) return null;
-    const query = searchQuery.toLowerCase();
-    const grouped: GroupedCourses = {};
-    let total = 0;
-    courses.forEach(course => {
-      const match = searchMode === 'name'
-        ? !!(course.course_name_zh?.toLowerCase().includes(query) || course.course_name_en?.toLowerCase().includes(query))
-        : !!(course.course_name_zh?.toLowerCase().includes(query) ||
-             course.course_name_en?.toLowerCase().includes(query) ||
-             course.instructor?.toLowerCase().includes(query) ||
-             course.course_objective?.toLowerCase().includes(query) ||
-             course.course_content?.toLowerCase().includes(query) ||
-             course.course_field?.toLowerCase().includes(query));
-      if (match) {
-        const college = course.college || '其他';
-        const dept = course.department || '未分類';
-        if (!grouped[college]) grouped[college] = {};
-        if (!grouped[college][dept]) grouped[college][dept] = [];
-        grouped[college][dept].push(course);
-        total++;
-      }
-    });
-    return { grouped, total };
-  }, [courses, searchQuery, searchMode]);
+  const navigationTitle = navigationLevel === 'colleges' ? '選擇學院' : navigationLevel === 'departments' ? selectedCollege || '選擇系所' : selectedDepartment || '選擇課程';
+  const navigationHint = navigationLevel === 'colleges' ? '從學院開始瀏覽' : navigationLevel === 'departments' ? '查看各系所課程' : '選擇一門課程';
 
   return (
-    <div className="h-full bg-gray-50">
-      {loading ? (
-        <div className="flex items-center justify-center h-full">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto mb-4"></div>
-            <p className="text-gray-600">載入中...</p>
+    <>
+      <div className="h-full bg-gray-50">
+        {loading ? (
+          <div className="flex h-full items-center justify-center">
+            <div className="text-center">
+              <div className="mx-auto mb-4 h-12 w-12 animate-spin rounded-full border-b-2 border-primary-600"></div>
+              <p className="text-gray-600">正在載入課程資料...</p>
+            </div>
           </div>
-        </div>
-      ) : (
-        <div className="flex gap-0 h-full">
-          {/* 左側區域 (40%) - 導航或課程列表 */}
-          <div className="w-96 shrink-0 border-r bg-white overflow-y-auto">
-            {showNavigation ? (
-              // ===== 導航視圖 =====
-              <div className="h-full flex flex-col">
-                {/* 導航 Header */}
-                <div className="flex items-center gap-3 px-3 py-2.5 border-b bg-gray-50">
-                  <h2 className="text-sm font-bold text-gray-800 shrink-0">課程導航</h2>
-                  <div className="relative flex-1 ml-2">
-                    <HiSearch className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                    <input
-                      type="text"
-                      value={searchQuery}
-                      onChange={(e) => { setSearchQuery(e.target.value); setSearchExpandedDepts(new Set()); }}
-                      placeholder="搜尋課程..."
-                      className="w-full pl-8 pr-7 py-1.5 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                    />
-                    {searchQuery && (
-                      <button
-                        onClick={() => { setSearchQuery(''); setSearchExpandedDepts(new Set()); }}
-                        className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-                      >
-                        <HiX className="w-4 h-4" />
-                      </button>
-                    )}
-                  </div>
-                  <button
-                    onClick={() => setShowSearchPanel(!showSearchPanel)}
-                    className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-sm transition-colors shrink-0 ${
-                      showSearchPanel || selectedType || selectedCredits || selectedSemester
-                        ? 'bg-primary-100 text-primary-700'
-                        : 'hover:bg-gray-200 text-gray-600'
-                    }`}
-                  >
-                    <HiFilter className="w-4 h-4" />
-                    篩選
+        ) : (
+          <div className="flex h-full min-h-0 flex-col md:flex-row">
+            <aside className="relative z-10 flex w-full shrink-0 flex-col overflow-hidden border-r border-slate-200 bg-white md:min-h-0 md:w-[24rem] md:min-w-[24rem] md:max-w-[24rem]">
+              <div className="sticky top-0 z-10 border-b border-slate-200 bg-white">
+                <div className="flex items-center justify-between gap-3 px-4 py-3">
+                  <h2 className="text-sm font-bold tracking-wide text-slate-900">課程導航</h2>
+                  <button type="button" onClick={() => setShowSearchPanel(true)} className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-300 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50" aria-label="開啟搜尋與篩選">
+                    <HiSearch className="h-5 w-5" />
                   </button>
-                  {(selectedCollege || selectedDepartment) && !searchQuery && (
-                    <button
-                      onClick={handleNavigationBack}
-                      className="flex items-center gap-1 text-sm text-primary-600 hover:text-primary-700 shrink-0"
-                    >
-                      <HiChevronLeft className="w-4 h-4" />
-                      返回
-                    </button>
-                  )}
                 </div>
 
-                {/* 篩選選項 - 可展開/收合 */}
-                {showSearchPanel && (
-                  <div className="px-3 py-2.5 border-b bg-gray-50 space-y-2">
-                    <div className="grid grid-cols-3 gap-2">
-                      <select
-                        value={selectedType}
-                        onChange={(e) => setSelectedType(e.target.value)}
-                        className="px-2 py-1.5 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-primary-500"
-                      >
-                        <option value="">全部類型</option>
-                        <option value="必修">必修</option>
-                        <option value="選修">選修</option>
-                      </select>
-                      <select
-                        value={selectedCredits}
-                        onChange={(e) => setSelectedCredits(e.target.value)}
-                        className="px-2 py-1.5 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-primary-500"
-                      >
-                        <option value="">全部學分</option>
-                        <option value="0">0 學分</option>
-                        <option value="1">1 學分</option>
-                        <option value="2">2 學分</option>
-                        <option value="3">3 學分</option>
-                        <option value="4">4 學分</option>
-                      </select>
-                      <select
-                        value={selectedSemester}
-                        onChange={(e) => setSelectedSemester(e.target.value)}
-                        className="px-2 py-1.5 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-primary-500"
-                      >
-                        <option value="">全部學期</option>
-                        <option value="上學期">上學期</option>
-                        <option value="下學期">下學期</option>
-                        <option value="全年">全年</option>
-                      </select>
-                    </div>
-                    {(selectedType || selectedCredits || selectedSemester) && (
-                      <button
-                        onClick={() => { setSelectedType(''); setSelectedCredits(''); setSelectedSemester(''); }}
-                        className="text-sm text-primary-600 hover:text-primary-700 font-medium"
-                      >
-                        清除篩選
-                      </button>
-                    )}
-                  </div>
-                )}
-
-                {/* 搜尋結果視圖 */}
-                {searchQuery && (
-                  <div className="flex-1 overflow-y-auto">
-                    {/* 搜尋模式切換 + 總數 */}
-                    <div className="flex items-center justify-between px-3 py-2 bg-gray-100 border-b">
-                      <div className="flex text-sm border border-gray-300 rounded overflow-hidden">
-                        <button
-                          onClick={() => setSearchMode('name')}
-                          className={`px-3 py-1 ${searchMode === 'name' ? 'bg-primary-600 text-white' : 'text-gray-600 hover:bg-gray-200'}`}
-                        >課程名稱</button>
-                        <button
-                          onClick={() => setSearchMode('detail')}
-                          className={`px-3 py-1 border-l border-gray-300 ${searchMode === 'detail' ? 'bg-primary-600 text-white' : 'text-gray-600 hover:bg-gray-200'}`}
-                        >詳細資訊</button>
+                {hasActiveFilters ? (
+                  <div className="space-y-3 border-t border-slate-200 px-4 py-3">
+                    {activeTags.length > 0 ? (
+                      <div className="flex flex-wrap gap-2">
+                        {activeTags.map((tag) => (
+                          <button key={tag.key} type="button" onClick={tag.onRemove} className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-700 transition hover:bg-slate-100">
+                            <span>{tag.label}</span>
+                            <HiX className="h-3.5 w-3.5" />
+                          </button>
+                        ))}
                       </div>
-                      <span className="text-sm text-gray-500">
-                        共 <span className="font-semibold text-primary-700">{globalSearchResults?.total ?? 0}</span> 門
-                      </span>
-                    </div>
-                    {globalSearchResults && globalSearchResults.total === 0 ? (
-                      <div className="p-6 text-center text-gray-400 text-sm">找不到符合的課程</div>
-                    ) : globalSearchResults && sortedColleges
-                        .filter(c => globalSearchResults.grouped[c])
-                        .map(college => {
-                          const depts = globalSearchResults.grouped[college];
-                          const collegeTotalCnt = Object.values(depts).reduce((s, arr) => s + arr.length, 0);
-                          return (
-                            <div key={college}>
-                              <div className="px-3 py-1.5 bg-gray-50 border-b text-xs font-semibold text-gray-500 uppercase tracking-wide">
-                                {college} · {collegeTotalCnt} 門
-                              </div>
-                              {Object.keys(depts).sort().map(dept => {
-                                const deptCourses = depts[dept];
-                                const key = `${college}::${dept}`;
-                                const isExpanded = searchExpandedDepts.has(key);
-                                return (
-                                  <div key={dept}>
-                                    <button
-                                      onClick={() => toggleDeptExpansion(key)}
-                                      className="w-full flex items-center justify-between px-4 py-2.5 hover:bg-gray-50 border-b text-left"
-                                    >
-                                      <span className="text-sm text-gray-800">{dept}</span>
-                                      <div className="flex items-center gap-2 shrink-0">
-                                        <span className="text-sm text-gray-400">{deptCourses.length} 門</span>
-                                        <HiChevronRight className={`w-4 h-4 text-gray-400 transition-transform ${isExpanded ? 'rotate-90' : ''}`} />
-                                      </div>
-                                    </button>
-                                    {isExpanded && (
-                                      <div className="divide-y bg-white">
-                                        {deptCourses.map(course => (
-                                          <button
-                                            key={`${course.serial_no}-${course.course_id}`}
-                                            onClick={() => handleSearchCourseClick(course)}
-                                            className={`w-full px-5 py-2.5 text-left hover:bg-primary-50 transition-colors ${selectedCourse === course ? 'bg-primary-50 border-l-2 border-primary-600' : ''}`}
-                                          >
-                                            <div className="text-sm font-medium text-gray-900 leading-snug">
-                                              <HighlightText text={course.course_name_zh} keyword={searchQuery} />
-                                            </div>
-                                            <div className="flex items-center gap-2 mt-0.5">
-                                              <span className={`text-xs ${course.required_elective === '必修' ? 'text-red-500' : 'text-green-600'}`}>{course.required_elective}</span>
-                                              <span className="text-xs text-gray-400">{course.credits} 學分</span>
-                                              {course.instructor && <span className="text-xs text-gray-400 truncate">{course.instructor}</span>}
-                                            </div>
-                                          </button>
-                                        ))}
-                                      </div>
-                                    )}
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          );
-                        })
-                    }
-                  </div>
-                )}
+                    ) : null}
 
-                {/* 學院列表 */}
-                {!selectedCollege && !searchQuery && (
-                  <div className="flex-1 overflow-y-auto">
-                    {sortedColleges.map((college) => {
-                      const config = COLLEGE_CONFIG[college] || COLLEGE_CONFIG['中心、處室'];
-                      const Icon = config.icon;
-                      const deptCount = Object.keys(groupedCourses[college] || {}).length;
-                      const courseCount = Object.values(groupedCourses[college] || {}).reduce(
-                        (sum, courses) => sum + courses.length,
-                        0
-                      );
-
-                      return (
+                    {hasSearchQuery ? (
+                      <div className="flex w-full overflow-hidden rounded-lg border border-slate-300 bg-white shadow-sm">
                         <button
-                          key={college}
-                          onClick={() => handleCollegeClick(college)}
-                          className="w-full px-4 py-3 flex items-center justify-between hover:bg-gray-50 transition-colors text-left border-b"
+                          type="button"
+                          onClick={() => setResultTab('course_name')}
+                          className={`min-w-0 flex-1 px-4 py-2 text-sm font-medium leading-none transition ${
+                            resultTab === 'course_name' ? 'bg-slate-600 text-white' : 'text-slate-600 hover:bg-slate-50'
+                          }`}
                         >
-                          <div className="flex items-center gap-3">
-                            <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${config.gradient} flex items-center justify-center shadow-md`}>
-                              <Icon className="w-5 h-5 text-white" />
-                            </div>
-                            <div>
-                              <div className="font-semibold text-gray-900 text-sm">{college}</div>
-                              <div className="text-xs text-gray-500">
-                                {deptCount} 系所 · {courseCount} 課程
-                              </div>
-                            </div>
-                          </div>
-                          <HiChevronRight className="w-5 h-5 text-gray-400" />
+                          課程名稱
                         </button>
-                      );
-                    })}
-                  </div>
-                )}
-
-                {/* 系所列表 */}
-                {selectedCollege && !searchQuery && (
-                  <div className="flex-1 overflow-y-auto">
-                    <div className="px-4 py-3 bg-gradient-to-r from-primary-50 to-primary-100 border-b">
-                      <div className="flex items-center gap-3">
-                        {(() => {
-                          const config = COLLEGE_CONFIG[selectedCollege] || COLLEGE_CONFIG['中心、處室'];
-                          const Icon = config.icon;
-                          return (
-                            <div className={`w-8 h-8 rounded-full bg-gradient-to-br ${config.gradient} flex items-center justify-center shadow-md`}>
-                              <Icon className="w-4 h-4 text-white" />
-                            </div>
-                          );
-                        })()}
-                        <span className="font-bold text-gray-900 text-sm">{selectedCollege}</span>
+                        <button
+                          type="button"
+                          onClick={() => setResultTab('detail_info')}
+                          className={`min-w-0 flex-1 border-l border-slate-200 px-4 py-2 text-sm font-medium leading-none transition ${
+                            resultTab === 'detail_info' ? 'bg-slate-600 text-white border-l-slate-600' : 'text-slate-600 hover:bg-slate-50'
+                          }`}
+                        >
+                          詳細資訊
+                        </button>
                       </div>
-                    </div>
-                    {currentDepartments.map((department) => {
-                      const courseCount = groupedCourses[selectedCollege][department].length;
-                      return (
-                        <button
-                          key={department}
-                          onClick={() => handleDepartmentClick(department)}
-                          className="w-full px-4 py-3 flex items-center justify-between hover:bg-primary-50 transition-colors text-left border-b"
-                        >
-                          <div>
-                            <div className="text-sm font-medium text-gray-900">{department}</div>
-                            <div className="text-xs text-gray-500">{courseCount} 門課程</div>
-                          </div>
-                          <HiChevronRight className="w-5 h-5 text-gray-400" />
-                        </button>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-            ) : (
-              // ===== 課程列表視圖 =====
-              <div className="h-full flex flex-col">
-                {/* 課程列表 Header */}
-                <div className="px-4 py-3 border-b bg-gray-50 flex items-center justify-between gap-2">
-                  <div className="flex items-center gap-2 min-w-0">
-                    <h2 className="text-base font-bold text-gray-900 truncate">{selectedDepartment}</h2>
-                    <span className="text-sm text-gray-400 shrink-0">{currentCourses.length} 門</span>
-                  </div>
-                  <div className="flex items-center gap-2 shrink-0">
-                    <button
-                      onClick={() => setShowSearchPanel(!showSearchPanel)}
-                      className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-sm transition-colors ${
-                        showSearchPanel || selectedType || selectedCredits || selectedSemester
-                          ? 'bg-primary-100 text-primary-700'
-                          : 'hover:bg-gray-200 text-gray-600'
-                      }`}
-                    >
-                      <HiFilter className="w-4 h-4" />
-                      篩選
-                    </button>
-                    <button
-                      onClick={handleBackToNavigation}
-                      className="flex items-center gap-1.5 px-2.5 py-1.5 text-sm text-primary-600 hover:bg-primary-50 rounded-md transition-colors"
-                    >
-                      <HiMenu className="w-4 h-4" />
-                      導航
-                    </button>
-                  </div>
-                </div>
-
-                {/* 篩選面板（課程列表視圖） */}
-                {showSearchPanel && (
-                  <div className="px-3 py-2.5 border-b bg-gray-50 space-y-2">
-                    <div className="grid grid-cols-3 gap-2">
-                      <select
-                        value={selectedType}
-                        onChange={(e) => setSelectedType(e.target.value)}
-                        className="px-2 py-1.5 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-primary-500"
-                      >
-                        <option value="">全部類型</option>
-                        <option value="必修">必修</option>
-                        <option value="選修">選修</option>
-                      </select>
-                      <select
-                        value={selectedCredits}
-                        onChange={(e) => setSelectedCredits(e.target.value)}
-                        className="px-2 py-1.5 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-primary-500"
-                      >
-                        <option value="">全部學分</option>
-                        <option value="0">0 學分</option>
-                        <option value="1">1 學分</option>
-                        <option value="2">2 學分</option>
-                        <option value="3">3 學分</option>
-                        <option value="4">4 學分</option>
-                      </select>
-                      <select
-                        value={selectedSemester}
-                        onChange={(e) => setSelectedSemester(e.target.value)}
-                        className="px-2 py-1.5 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-primary-500"
-                      >
-                        <option value="">全部學期</option>
-                        <option value="上學期">上學期</option>
-                        <option value="下學期">下學期</option>
-                        <option value="全年">全年</option>
-                      </select>
-                    </div>
-                    {(selectedType || selectedCredits || selectedSemester) && (
-                      <button
-                        onClick={() => { setSelectedType(''); setSelectedCredits(''); setSelectedSemester(''); }}
-                        className="text-sm text-primary-600 hover:text-primary-700 font-medium"
-                      >
-                        清除篩選
-                      </button>
-                    )}
-                  </div>
-                )}
-
-                {/* 課程列表內容 */}
-                {currentCourses.length === 0 ? (
-                  <div className="p-8 text-center text-gray-500">
-                    <HiSearch className="w-10 h-10 mx-auto mb-3 text-gray-400" />
-                    <p className="text-sm font-medium">找不到符合條件的課程</p>
-                    <p className="text-sm mt-1 text-gray-400">請調整篩選條件</p>
+                    ) : null}
                   </div>
                 ) : (
-                  <div className="flex-1 overflow-y-auto divide-y">
-                    {currentCourses.map((course) => (
-                      <button
-                        key={`${course.serial_no}-${course.course_id}`}
-                        onClick={() => handleCourseClick(course)}
-                        className={`w-full px-4 py-3 text-left hover:bg-primary-50 transition-colors ${
-                          selectedCourse === course ? 'bg-primary-50 border-l-4 border-primary-600' : ''
-                        }`}
-                      >
-                        <div className="text-sm font-semibold text-gray-900 leading-snug mb-1">
-                          <HighlightText text={course.course_name_zh} keyword={searchQuery} />
-                        </div>
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <span
-                            className={`px-2 py-0.5 rounded-full text-xs font-medium ${
-                              course.required_elective === '必修'
-                                ? 'bg-red-100 text-red-700'
-                                : 'bg-green-100 text-green-700'
-                            }`}
-                          >
-                            {course.required_elective}
-                          </span>
-                          <span className="text-xs text-gray-500">{course.credits} 學分</span>
-                          <span className="text-xs text-gray-500">{course.instructor}</span>
-                        </div>
-                      </button>
-                    ))}
+                  <div className="border-t border-slate-200 bg-gradient-to-r from-primary-50 to-primary-100 px-4 py-3">
+                    <div className="flex items-center gap-2">
+                      {navigationLevel !== 'colleges' ? (
+                        <button type="button" onClick={() => {
+                          if (navigationLevel === 'courses') {
+                            setSelectedCourse(null);
+                            setNavigationLevel('departments');
+                            return;
+                          }
+                          setSelectedDepartment(null);
+                          setSelectedCourse(null);
+                          setNavigationLevel('colleges');
+                        }} className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-slate-600 shadow-sm" aria-label="返回上一層">
+                          <HiChevronLeft className="h-5 w-5" />
+                        </button>
+                      ) : null}
+                      <div className="min-w-0">
+                        <div className="text-sm font-bold text-slate-900">{navigationTitle}</div>
+                        <div className="mt-0.5 text-xs text-slate-500">{navigationHint}</div>
+                      </div>
+                    </div>
                   </div>
                 )}
               </div>
-            )}
-          </div>
 
-          {/* 右側：課程詳情 (60%) */}
-          <div ref={rightPanelRef} className="flex-1 overflow-y-auto bg-gray-50 p-4">
-            <CourseDetailPanel course={selectedCourse} searchKeyword={searchQuery} />
+              <div className="flex-1 overflow-y-auto">
+                {hasActiveFilters ? (
+                  <div className="bg-white">
+                    {groupedSearchResults.length > 0 ? (
+                      groupedSearchResults.map((group) => (
+                        <div key={group.college} className="border-b border-slate-200">
+                          <div className="bg-slate-50 px-4 py-2 text-sm text-slate-500">{group.college} · {group.count} 門</div>
+                          {group.departments.map((department) => {
+                            const departmentKey = `${group.college}-${department.name}`;
+                            const isExpanded = expandedDepartments.includes(departmentKey);
+                            return (
+                              <div key={departmentKey} className="border-t border-slate-100">
+                                <button type="button" onClick={() => toggleExpandedDepartment(departmentKey)} className="flex w-full items-center justify-between px-4 py-3 text-left transition hover:bg-slate-50">
+                                  <div className="truncate text-sm font-medium text-slate-900">{department.name}</div>
+                                  <div className="ml-3 flex items-center gap-3 text-sm text-slate-400">
+                                    <span>{department.count} 門</span>
+                                    <HiChevronRight className={`h-4 w-4 transition ${isExpanded ? 'rotate-90' : ''}`} />
+                                  </div>
+                                </button>
+                                {isExpanded ? (
+                                  <div className="border-t border-slate-100">
+                                    {department.courses.map((course) => {
+                                      const isSelected = selectedCourse ? courseKey(selectedCourse) === courseKey(course) : false;
+                                      const isRequired = normalize(course.required_elective) === '必修';
+                                      const preview = getDetailPreview(course, searchQuery);
+                                      return (
+                                        <button
+                                          key={courseKey(course)}
+                                          type="button"
+                                          onClick={() => {
+                                            setSelectedCollege(group.college);
+                                            setSelectedDepartment(department.name);
+                                            setSelectedCourse(course);
+                                          }}
+                                          className={`w-full border-t border-slate-100 px-4 py-3 text-left transition hover:bg-primary-50 ${isSelected ? 'border-l-4 border-primary-600 bg-primary-50' : ''}`}
+                                        >
+                                          <div className="text-sm font-semibold leading-snug text-slate-900">
+                                            <HighlightText text={course.course_name_zh} keyword={searchQuery} />
+                                          </div>
+                                          {resultTab === 'course_name' ? (
+                                            <div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-slate-500">
+                                              {course.required_elective ? <span className={`rounded-full px-2 py-0.5 font-medium ${isRequired ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>{course.required_elective}</span> : null}
+                                              <span>{course.credits} 學分</span>
+                                              {course.instructor ? <span>{course.instructor}</span> : null}
+                                            </div>
+                                          ) : (
+                                            <div className="mt-1 space-y-1 text-xs text-slate-500">
+                                              <div className="flex flex-wrap items-center gap-2">
+                                                {course.required_elective ? <span className={`rounded-full px-2 py-0.5 font-medium ${isRequired ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>{course.required_elective}</span> : null}
+                                                <span>{course.credits} 學分</span>
+                                                {course.instructor ? <span>{course.instructor}</span> : null}
+                                              </div>
+                                              {preview ? (
+                                                <p className="line-clamp-2 leading-5 text-slate-500">
+                                                  <HighlightText text={preview} keyword={searchQuery} />
+                                                </p>
+                                              ) : null}
+                                            </div>
+                                          )}
+                                        </button>
+                                      );
+                                    })}
+                                  </div>
+                                ) : null}
+                              </div>
+                            );
+                          })}
+                        </div>
+                      ))
+                    ) : (
+                      <div className="p-8 text-center text-sm text-slate-500">目前沒有符合條件的課程，請調整搜尋或篩選。</div>
+                    )}
+                  </div>
+                ) : navigationLevel === 'colleges' ? (
+                  <div className="bg-white">
+                    {sortedColleges.map((college) => {
+                      const config = COLLEGE_CONFIG[college] || COLLEGE_CONFIG[FALLBACK_COLLEGE];
+                      const Icon = config.icon;
+                      return (
+                        <button key={college} type="button" onClick={() => { setSelectedCollege(college); setSelectedDepartment(null); setSelectedCourse(null); setNavigationLevel('departments'); }} className="flex w-full items-center gap-3 border-b border-slate-200 px-4 py-3 text-left transition hover:bg-slate-50">
+                          <div className={`flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br ${config.gradient} shadow-sm`}>
+                            <Icon className="h-5 w-5 text-white" />
+                          </div>
+                          <div className="min-w-0">
+                            <div className="truncate text-sm font-medium text-slate-900">{college}</div>
+                            <div className="text-xs text-slate-500">{Object.keys(groupedCourses[college] || {}).length} 系所</div>
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+                ) : navigationLevel === 'departments' ? (
+                  <div className="bg-white">
+                    {currentDepartments.length > 0 ? (
+                      currentDepartments.map((department) => {
+                        const departmentCount = (groupedCourses[selectedCollege!]?.[department] || []).length;
+                        return (
+                          <button key={department} type="button" onClick={() => { const nextCourses = groupedCourses[selectedCollege || '']?.[department] || []; setSelectedDepartment(department); setSelectedCourse(nextCourses[0] ?? null); setNavigationLevel('courses'); }} className="flex w-full items-center justify-between border-b border-slate-200 px-4 py-3 text-left transition hover:bg-primary-50">
+                            <div className="min-w-0">
+                              <div className="truncate text-sm font-medium text-slate-900">{department}</div>
+                              <div className="text-xs text-slate-500">{departmentCount} 門課程</div>
+                            </div>
+                            <HiChevronRight className="h-5 w-5 shrink-0 text-slate-400" />
+                          </button>
+                        );
+                      })
+                    ) : (
+                      <div className="px-4 py-6 text-sm text-slate-500">目前沒有可瀏覽的系所。</div>
+                    )}
+                  </div>
+                ) : (
+                  <div className="bg-white">
+                    {currentCourses.length > 0 ? (
+                      <div className="divide-y divide-slate-200">
+                        {currentCourses.map((course) => {
+                          const isSelected = selectedCourse ? courseKey(selectedCourse) === courseKey(course) : false;
+                          const isRequired = normalize(course.required_elective) === '必修';
+                          return (
+                            <button key={courseKey(course)} type="button" onClick={() => setSelectedCourse(course)} className={`w-full px-4 py-3 text-left transition hover:bg-primary-50 ${isSelected ? 'border-l-4 border-primary-600 bg-primary-50' : ''}`}>
+                              <div className="mb-1 text-sm font-semibold leading-snug text-slate-900">
+                                <HighlightText text={course.course_name_zh} keyword={searchQuery} />
+                              </div>
+                              <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500">
+                                {course.required_elective ? <span className={`rounded-full px-2 py-0.5 font-medium ${isRequired ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>{course.required_elective}</span> : null}
+                                <span>{course.credits} 學分</span>
+                                {course.instructor ? <span>{course.instructor}</span> : null}
+                              </div>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    ) : (
+                      <div className="p-8 text-center text-slate-500">
+                        <HiSearch className="mx-auto mb-3 h-10 w-10 text-slate-400" />
+                        <p className="text-sm font-medium">這個系所目前沒有符合條件的課程</p>
+                        <p className="mt-1 text-sm text-slate-400">你可以回上一層重新選擇，或打開搜尋與篩選。</p>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            </aside>
+            <div className="relative z-0 min-w-0 flex-1 overflow-y-auto bg-gray-50 p-4">
+              <CourseDetailPanel course={selectedCourse} searchKeyword={searchQuery} />
+            </div>
+          </div>
+        )}
+      </div>
+
+      {showSearchPanel ? (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/35 p-4" onClick={() => setShowSearchPanel(false)}>
+          <div className="w-full max-w-2xl rounded-[2rem] bg-white p-6 shadow-2xl" onClick={(event) => event.stopPropagation()}>
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <h3 className="text-lg font-semibold text-slate-950">搜尋與篩選課程</h3>
+                <p className="mt-1 text-sm text-slate-500">輸入關鍵字，或用按鈕快速縮小課程範圍。</p>
+              </div>
+              <button type="button" onClick={() => setShowSearchPanel(false)} className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition hover:bg-slate-200" aria-label="關閉搜尋與篩選">
+                <HiX className="h-5 w-5" />
+              </button>
+            </div>
+
+            <div className="mt-5">
+              <label className="mb-2 block text-sm font-medium text-slate-700">搜尋關鍵字</label>
+              <div className="relative">
+                <HiSearch className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                <input type="text" value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} placeholder="輸入課名、教師、課程內容或系所" className="w-full rounded-xl border border-slate-300 bg-white py-3 pl-10 pr-4 text-sm shadow-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-500" />
+              </div>
+            </div>
+
+            <div className="mt-5 space-y-5">
+              <div><label className="mb-2 block text-sm font-medium text-slate-700">類型</label><div className="flex flex-wrap gap-2">{typeOptions.map((option) => <FilterPill key={option} label={option} active={selectedTypes.includes(option)} onClick={() => toggleValue(option, setSelectedTypes)} />)}</div></div>
+              <div><label className="mb-2 block text-sm font-medium text-slate-700">學分</label><div className="flex flex-wrap gap-2">{creditOptions.map((option) => <FilterPill key={option} label={`${option} 學分`} active={selectedCredits.includes(option)} onClick={() => toggleValue(option, setSelectedCredits)} />)}</div></div>
+              <div><label className="mb-2 block text-sm font-medium text-slate-700">學期</label><div className="flex flex-wrap gap-2">{semesterOptions.map((option) => <FilterPill key={option} label={option} active={selectedSemesters.includes(option)} onClick={() => toggleValue(option, setSelectedSemesters)} />)}</div></div>
+            </div>
+
+            <div className="mt-6 flex gap-3">
+              <button type="button" onClick={clearAllFilters} className="flex-1 rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50">清除全部</button>
+              <button type="button" onClick={() => setShowSearchPanel(false)} className="flex-1 rounded-xl bg-primary-900 px-4 py-3 text-sm font-medium text-white transition hover:bg-primary-800">套用條件</button>
+            </div>
           </div>
         </div>
-      )}
-    </div>
+      ) : null}
+    </>
   );
 }
-

@@ -212,7 +212,7 @@ export default function AssessmentPage() {
 
         {/* 高二模式：文理分組選擇 */}
         {mode === 'grade2' && (
-          <div className="max-w-3xl mx-auto mb-12">
+          <div className="w-full max-w-5xl mx-auto mb-12">
             <div className="card p-8">
               <h3 className="text-lg font-bold text-primary-900 mb-4">請選擇你的類組</h3>
               <div className="grid grid-cols-2 gap-4">
@@ -251,7 +251,7 @@ export default function AssessmentPage() {
 
         {/* 高三模式：學測科目選擇 */}
         {mode === 'grade3' && (
-          <div className="max-w-3xl mx-auto mb-12">
+          <div className="w-full max-w-5xl mx-auto mb-12">
             <div className="card p-8">
               <h3 className="text-lg font-bold text-primary-900 mb-4">請選擇你的學測科目</h3>
               <p className="text-sm text-gray-600 mb-4">選擇你想要採計的學測科目，系統會篩選出符合的科系</p>
@@ -316,7 +316,7 @@ export default function AssessmentPage() {
           )}
         </div>
 
-        <div className="card p-8 max-w-3xl mx-auto">
+        <div className="card p-8 w-full max-w-5xl mx-auto">
           <div className="flex items-start space-x-3 mb-4">
             <HiLightBulb className="w-6 h-6 text-primary-600 flex-shrink-0 mt-1" />
             <div>

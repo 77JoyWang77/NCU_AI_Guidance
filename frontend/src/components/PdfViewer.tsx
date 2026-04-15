@@ -122,7 +122,7 @@ const PdfViewer: React.FC<PdfViewerProps> = ({ pdfUrl, projectTitle, hideTitle =
               error=""
               className="flex flex-col items-center"
             >
-              {Array.from(new Array(numPages), (_, index) => (
+              {Array.from({ length: numPages ?? 0 }, (_, index) => (
                 <div key={`page_${index + 1}`} className="pdf-page-container mb-6">
                   <Page
                     pageNumber={index + 1}
