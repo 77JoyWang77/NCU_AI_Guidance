@@ -13,12 +13,13 @@
   藍底 有值      = 實際內容
 """
 
-import pdfplumber, json
+import pdfplumber, json, re
 from pathlib import Path
 
 BASE_DIR = Path(__file__).parent.parent.parent
 PDF_DIR  = BASE_DIR / "data" / "raw" / "應修科目表"
 OUT_HTML = BASE_DIR / "tables_editor.html"
+SEMESTER_MAP_PATH = BASE_DIR / "data" / "processed" / "requirements_semester_map.json"
 
 PDFS = sorted(PDF_DIR.rglob("*.pdf"))
 
@@ -44,6 +45,43 @@ for pdf_path in PDFS:
     all_data[dept] = entries
 
 data_json = json.dumps(all_data, ensure_ascii=False)
+
+# ── 載入萃取結果（若已跑 extract_requirements_pdfplumber.py）────
+_semester_raw: dict = {}
+if SEMESTER_MAP_PATH.exists():
+    try:
+        _semester_raw = json.loads(SEMESTER_MAP_PATH.read_text(encoding="utf-8"))
+    except Exception:
+        pass
+
+# 建立快速查詢表：dept_stem → {課號/標準化課名 → {year_level, semester, low_confidence}}
+def _build_lookup(raw: dict) -> dict:
+    """raw key 是系所名稱（去掉 _114），value 含 courses 陣列。"""
+    lookup: dict[str, dict] = {}
+    for dept, info in raw.items():
+        entries: dict = {}
+        for c in (info.get("courses") or []):
+            entries[c["key"]] = {
+                "year_level": c.get("year_level"),
+                "semester":   c.get("semester"),
+                "low_confidence": c.get("low_confidence", False),
+            }
+        lookup[dept] = entries
+    return lookup
+
+_semester_lookup = _build_lookup(_semester_raw)
+
+# dept_stem（HTML sidebar 用的 key）→ 系所名稱（semester_map 的 key）
+# PDF stem 格式：系所名稱_114 → normalize 後去掉 _114
+def _stem_to_dept(stem: str) -> str:
+    return re.sub(r'_\d{3}$', '', stem)
+
+# 把 lookup 序列化進 HTML
+semester_lookup_json = json.dumps(
+    {_stem_to_dept(k) if re.search(r'_\d{3}$', k) else k: v
+     for k, v in _semester_lookup.items()},
+    ensure_ascii=False,
+)
 
 # ── HTML ────────────────────────────────────────────────────
 
@@ -95,6 +133,12 @@ td[data-type="merge"]  {{ background:#ffe0b2; color:#999; font-style:italic; fon
 td[data-type="empty"]  {{ background:#fafafa; color:#ddd; }}
 td[data-type="value"]  {{ background:#e3f2fd; }}
 td:focus               {{ outline:2px solid #1976d2; }}
+td.low-conf            {{ outline:2px solid #ef5350 !important; }}
+.ys-tag {{ position:absolute; top:1px; right:2px; font-size:9px;
+           background:#43a047; color:white; border-radius:2px;
+           padding:0 3px; pointer-events:none; z-index:1; }}
+.ys-tag.low {{ background:#ef5350; }}
+td {{ position:relative; }}
 
 /* ── context menu ── */
 #ctx-menu {{ position:fixed; background:white; border:1px solid #ccc;
@@ -134,6 +178,7 @@ td:focus               {{ outline:2px solid #1976d2; }}
     </div>
     <button id="btn-export-json">💾 存 JSON</button>
     <button id="btn-export-llm">🤖 看 LLM Markdown</button>
+    <button id="btn-export-verified">✅ 匯出年級資料</button>
     <button id="btn-reset">↩ 還原</button>
   </div>
   <div id="content">
@@ -162,11 +207,33 @@ td:focus               {{ outline:2px solid #1976d2; }}
 // ── 資料 ─────────────────────────────────────────────────
 const RAW = {data_json};
 
+// 萃取結果 lookup：系所名稱 → {{課號/課名 → {{year_level, semester, low_confidence}}}}
+const SEMESTER_LOOKUP = {semester_lookup_json};
+
 // working copy: deep clone so edits don't touch RAW
 let data = JSON.parse(JSON.stringify(RAW));
 
 let currentDept = null;
 let ctxTarget    = null;
+
+// ── 年級標籤輔助 ──────────────────────────────────────────
+const SEM_LABELS = ['一上','一下','二上','二下','三上','三下','四上','四下'];
+function ysLabel(year_level, semester) {{
+  return SEM_LABELS[(year_level - 1) * 2 + (semester - 1)] || `${{year_level}}-${{semester}}`;
+}}
+
+// 從文字中嘗試抓課號
+function extractCode(text) {{
+  const m = text && text.match(/[A-Z]{{2,4}}\\d{{4}}/);
+  return m ? m[0] : null;
+}}
+
+// 取得目前系所的 lookup（去掉 _114 後綴）
+function currentLookup() {{
+  if (!currentDept) return {{}};
+  const key = currentDept.replace(/_\\d{{3}}$/, '');
+  return SEMESTER_LOOKUP[key] || {{}};
+}}
 
 // ── sidebar ──────────────────────────────────────────────
 const deptList = document.getElementById('dept-list');
@@ -240,6 +307,26 @@ function buildTable(rows, eIdx) {{
         data[currentDept][eIdx].rows[rIdx][cIdx] = td.textContent;
       }});
 
+      // 年級標籤疊加（從 SEMESTER_LOOKUP 查詢）
+      if (type === 'value' && cell) {{
+        const lookup = currentLookup();
+        const code   = extractCode(String(cell));
+        let info = code ? lookup[code] : null;
+        // 若無課號，嘗試用標準化課名查（去掉課號、空白）
+        if (!info) {{
+          const norm = String(cell).replace(/[A-Z]{{2,4}}\\d{{4}}/g,'').replace(/[\\s\\-\\/]+/g,'');
+          if (norm.length >= 2) info = lookup[norm];
+        }}
+        if (info && info.year_level) {{
+          const tag = document.createElement('span');
+          tag.className = 'ys-tag' + (info.low_confidence ? ' low' : '');
+          tag.title = info.low_confidence ? '低可信度，建議確認' : '自動偵測';
+          tag.textContent = ysLabel(info.year_level, info.semester);
+          td.appendChild(tag);
+          if (info.low_confidence) td.classList.add('low-conf');
+        }}
+      }}
+
       // right-click context menu
       td.addEventListener('contextmenu', e => {{
         e.preventDefault();
@@ -283,6 +370,37 @@ document.getElementById('ctx-merge').onclick = () => {{ if(ctxTarget) applyType(
 document.getElementById('ctx-empty').onclick = () => {{ if(ctxTarget) applyType(ctxTarget,'empty'); hideMenu(); }};
 document.addEventListener('click', hideMenu);
 function hideMenu() {{ document.getElementById('ctx-menu').style.display = 'none'; }}
+
+// ── 匯出年級資料（人工確認後的版本）────────────────────────
+document.getElementById('btn-export-verified').onclick = () => {{
+  if (!currentDept) return alert('請先選擇系所');
+  const lookup = currentLookup();
+  const verified = {{}};
+  // 重新掃描當前系所的表格，抓所有有課號的格子
+  (data[currentDept] || []).forEach(entry => {{
+    (entry.rows || []).forEach(row => {{
+      row.forEach(cell => {{
+        if (!cell) return;
+        const code = extractCode(String(cell));
+        if (!code) return;
+        const info = lookup[code];
+        if (info && info.year_level) {{
+          verified[code] = {{
+            year_level: info.year_level,
+            semester:   info.semester,
+            low_confidence: info.low_confidence,
+          }};
+        }}
+      }});
+    }});
+  }});
+  const out = {{ [currentDept.replace(/_\\d{{3}}$/, '')]: verified }};
+  const blob = new Blob([JSON.stringify(out, null, 2)], {{type: 'application/json'}});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = currentDept + '_verified.json';
+  a.click();
+}};
 
 // ── export JSON ───────────────────────────────────────────
 document.getElementById('btn-export-json').onclick = () => {{
