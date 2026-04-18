@@ -294,7 +294,7 @@ def build_course_doc(
 
     code_raw = course.get("課號-班別", "")
     code = clean_code(code_raw)
-    semester = int(course.get("學期", 0))
+    semester = int(course.get("學期") or 0)
     year = course.get("學年度", "114")
     serial = course.get("流水號", "")
 
@@ -340,6 +340,19 @@ def build_course_doc(
     # core_questions（通識課，加入 embedding 文字提升語意命中率）
     core_qs = nlp_data.get("core_questions", [])
 
+    # 教授研究領域（從 prof_links 萃取，補充語意）
+    prof_links = nlp_data.get("prof_links", [])
+    prof_fields = list({
+        link["field"] for link in prof_links
+        if isinstance(link, dict) and link.get("field")
+    })[:5]
+
+    # 參考書目
+    textbook = syllabus.get("教科書/參考書", "") or ""
+    # 核心能力名稱列表
+    core_abilities = syllabus.get("核心能力", []) or []
+    ability_names = [a.get("能力名稱", "") for a in core_abilities if isinstance(a, dict) and a.get("能力名稱")]
+
     # ── document text ──
     parts = []
     if name_zh:
@@ -347,16 +360,36 @@ def build_course_doc(
         if name_en:
             header += f"（{name_en}）"
         parts.append(header)
+    if dept:
+        parts.append(f"開課系所：{dept}")
+    if teacher:
+        parts.append(f"授課教師：{teacher}")
+    if teacher_spec:
+        parts.append(f"教師專長：{teacher_spec}")
+    if type_:
+        parts.append(f"修課性質：{type_}")
+    if sched.get("when_raw"):
+        parts.append(f"建議修習：{sched['when_raw']}")
     if objective:
         parts.append(f"課程目標：{objective}")
     if content:
         parts.append(f"授課內容：{content}")
     if simplified_text:
         parts.append(f"相關概念：{simplified_text}")
+    if languages or tools:
+        parts.append(f"使用技術：{', '.join(languages + tools)}")
+    if domain_tags:
+        parts.append(f"課程領域：{', '.join(domain_tags)}")
     if topic_tags:
         parts.append(f"主題：{', '.join(topic_tags)}")
     if core_qs:
         parts.append(f"核心議題：{' '.join(core_qs[:3])}")
+    if prof_fields:
+        parts.append(f"相關研究領域：{', '.join(prof_fields)}")
+    if ability_names:
+        parts.append(f"核心能力：{', '.join(ability_names)}")
+    if textbook:
+        parts.append(f"參考書目：{textbook[:200]}")
     document = "\n".join(parts)
 
     # ── metadata（ChromaDB 只接受 str/int/float/bool）──
@@ -402,6 +435,10 @@ def build_course_doc(
         "when_sem_end":      sched.get("when_sem_end", 0),
         "when_semesters":    sched.get("when_semesters", ""),
         "schedule_verified": sched.get("verified", False),
+        # 課程附加資訊
+        "course_domain":     syllabus.get("課程領域", "") or "",
+        "class_time":        course.get("上課時間", "") or "",
+        "capacity":          int(course.get("人數限制", 0) or 0) if str(course.get("人數限制", "0") or "0").isdigit() else 0,
     }
 
     doc_id = f"{year}{semester}_{serial}_{code}"
