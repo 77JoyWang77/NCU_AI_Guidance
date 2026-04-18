@@ -36,8 +36,8 @@ from pathlib import Path
 from openai import OpenAI
 
 BASE      = Path(__file__).parent.parent.parent
-IN_PATH   = BASE / "data" / "processed" / "nlp_tech_nodes.json"
-OUT_PATH  = BASE / "data" / "processed" / "nlp_simplified_concepts.json"
+IN_PATH   = BASE / "data" / "processed" / "nlp" / "nlp_tech_nodes.json"
+OUT_PATH  = BASE / "data" / "processed" / "nlp" / "nlp_simplified_concepts.json"
 
 sys.path.insert(0, str(BASE / "scripts" / "nlp"))
 from course_classifier import classify_course  # noqa: E402

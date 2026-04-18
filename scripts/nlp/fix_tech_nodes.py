@@ -22,8 +22,8 @@ from pathlib import Path
 from openai import OpenAI
 
 BASE     = Path(__file__).parent.parent.parent
-IN_PATH  = BASE / "data" / "processed" / "nlp_tech_nodes.json"
-BAK_PATH = BASE / "data" / "processed" / "nlp_tech_nodes.bak.json"
+IN_PATH  = BASE / "data" / "processed" / "nlp" / "nlp_tech_nodes.json"
+BAK_PATH = BASE / "data" / "processed" / "nlp" / "nlp_tech_nodes.bak.json"
 
 # ── 後端設定（vLLM）─────────────────────────────────────────
 MODEL    = "Qwen/Qwen3-14B-AWQ"
