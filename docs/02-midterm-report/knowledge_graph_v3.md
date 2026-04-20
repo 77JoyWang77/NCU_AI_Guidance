@@ -2,7 +2,7 @@
 
 > 對應腳本：`scripts/graph/build_graph.py`  
 > 輸出：`data/processed/graph/knowledge_graph.gpickle` / `.json` / `_stats.json`  
-> 更新時間：2026-04-15
+> 更新時間：2026-04-19
 
 ---
 
@@ -18,9 +18,21 @@ Phase 1  基礎圖（結構化資料直接對應）
 
 Phase 2  語意豐富化（NLP 萃取結果 + 補充資料）
          data/processed/nlp/
+           ├─ nlp_domain_tags.json      → COVERS_FIELD 邊
+           ├─ nlp_tech_nodes.json       → TEACHES / COVERS 邊
+           ├─ nlp_topic_tags.json       → TAGGED_AS 邊
+           ├─ dept_professor_map.json   → RELEVANT_EXPERT 邊
+           └─ nlp_professor_links.json  → COURSE_EXPERT 邊（新）
          data/processed/course_eligibility.json
          data/processed/schedule_draft/
-         data/raw/114_ulistteacher.csv
+         data/raw/114_ulistteacher.csv  → 全量 Instructor 節點 + EXPERT_IN 邊
+
+Phase 2 執行順序（有依賴關係）：
+  2-a  enrich_teacher_csv     ← 先建立全量 1009 位 Instructor 節點
+  2-b  enrich_nlp             ← RELEVANT_EXPERT 需要 Instructor 節點先存在
+  2-c  enrich_professor_links ← COURSE_EXPERT 需要 Instructor 節點先存在
+  2-d  enrich_eligibility
+  2-e  enrich_schedule
 ```
 
 ---
@@ -44,7 +56,7 @@ Phase 2  語意豐富化（NLP 萃取結果 + 補充資料）
 | `Slot` | 等效課程群（擇一即可） | name, select, slot_rule | credit_programs |
 | `Certification` | 證照／認證要求 | name | curriculum |
 | `Course` | 課程 | code, name, credits, dept, college, level, semester, domains, source | raw |
-| `Instructor` | 授課教師 | name | raw/courses |
+| `Instructor` | 授課教師（課程授課欄反推） | name | raw/courses |
 | `Domain` | 課程領域 | name | raw/courses |
 | `Competency` | 核心能力 | name | raw/courses |
 
@@ -55,6 +67,10 @@ Phase 2  語意豐富化（NLP 萃取結果 + 補充資料）
 | `Field` | 學術研究領域（教師專長細分） | name, source | nlp_domain_tags / teacher_csv |
 | `Technology` | 程式語言 / 框架 / 工具 | name, source | nlp_tech_nodes |
 | `Concept` | 學術概念 | name, source | nlp_tech_nodes |
+
+> **Instructor 節點擴充說明**：Phase 1 只建立在課程授課欄出現過的教師節點（約 411 位）。  
+> Phase 2-a（`enrich_teacher_csv`）從 `114_ulistteacher.csv` 補充建立所有 1009 位教師節點，  
+> 同時為新增節點補上 `dept`、`rank`、`employment` 屬性。
 
 ---
 
@@ -102,13 +118,19 @@ Phase 2  語意豐富化（NLP 萃取結果 + 補充資料）
 | 邊 | 方向 | 說明 | 來源 |
 |----|------|------|------|
 | `COVERS_FIELD` | Course → Field | 課程涵蓋此研究領域（帶 `relevance`: high/medium/low） | nlp_domain_tags |
-| `RELEVANT_EXPERT` | Instructor → Field | 教師為此領域研究專家 | dept_professor_map |
-| `EXPERT_IN` | Instructor → Field | 教師官方申報專長 | 114_ulistteacher.csv |
+| `RELEVANT_EXPERT` | Instructor → Field | 教師為此領域研究專家（NLP 分析） | dept_professor_map |
+| `EXPERT_IN` | Instructor → Field | 教師官方申報專長（教育部 CSV） | 114_ulistteacher.csv |
+| `COURSE_EXPERT` | Instructor → Course | 教師專長與此課程領域直接相關（NLP 分析，帶 `field`、`relevance`） | nlp_professor_links |
 | `TAGGED_AS` | Course → Domain | 通識課主題標籤 | nlp_topic_tags |
 | `TEACHES` | Course → Technology | 課程使用此程式語言/工具 | nlp_tech_nodes |
 | `COVERS` | Course → Concept | 課程涵蓋此學術概念 | nlp_tech_nodes |
 | `PREREQUISITE_OF` | Course → Course | 為另一門課的先修課 | course_eligibility |
 | `COREQUISITE` | Course → Course | 須同學期一起修 | course_eligibility |
+
+> **`COURSE_EXPERT` 與 `RELEVANT_EXPERT` 的差異**  
+> `RELEVANT_EXPERT`：Instructor → Field（教師的研究方向屬於某領域）  
+> `COURSE_EXPERT`：Instructor → Course（NLP 分析認定此教師的專長與特定課程的教學內容高度相關）  
+> 後者可用於回答「誰應該是這門課的推薦顧問」或「這門課和哪位老師的研究最接近」。
 
 ---
 
@@ -126,6 +148,9 @@ Phase 2 會在既有節點上**新增屬性**，不建立新節點：
 | `Course` | `schedule_verified` | 學期資訊是否已人工驗證 (bool) | schedule_draft |
 | `Course` | `core_questions` | 通識課核心議題問句 list | nlp_topic_tags |
 | `Instructor` | `official_specialties` | 教育部申報的官方專長 list | 114_ulistteacher.csv |
+| `Instructor` | `dept` | 所屬系所名稱 | 114_ulistteacher.csv |
+| `Instructor` | `rank` | 職級（教授 / 副教授 / 助理教授 / 講師） | 114_ulistteacher.csv |
+| `Instructor` | `employment` | 專任 / 兼任 | 114_ulistteacher.csv |
 
 ---
 
@@ -196,18 +221,24 @@ python scripts/graph/build_graph.py --enrich-only
 
 ---
 
-## 十、預期統計（Phase 1 + Phase 2 完整執行後）
+## 十、實際統計（2026-04-19 重建後）
 
-| 類型 | Phase 1（基礎圖） | Phase 2 後（豐富化） |
+| 類型 | Phase 1（基礎圖） | Phase 2 後（實際值） |
 |------|-----------------|-------------------|
-| Course 節點 | ~3,039 | 同左（新增屬性） |
-| Instructor 節點 | ~1,039 | 同左（新增 official_specialties） |
-| Domain 節點 | ~202 | 略增（通識主題補充） |
-| **Field 節點** | 0 | ~2,500+ |
-| **Technology 節點** | 0 | ~數百 |
-| **Concept 節點** | 0 | ~數千 |
-| **TEACHES 邊** | 0 | ~數千 |
-| **COVERS_FIELD 邊** | 0 | ~數千 |
-| **PREREQUISITE_OF 邊** | 0 | ~142 |
-| DEVELOPS 邊 | ~15,242 | 同左 |
-| 總邊數 | ~26,985 | 估計 50,000+ |
+| Course 節點 | 1,475 | 1,475（新增屬性） |
+| Instructor 節點 | 411（課程授課欄反推） | **1,021**（全量 CSV 補建） |
+| Domain 節點 | 209 | 209（通識主題補充後） |
+| **Field 節點** | 0 | **3,594** |
+| **Technology 節點** | 0 | **390** |
+| **Concept 節點** | 0 | **6,938** |
+| **TEACHES 邊** | 0 | **633** |
+| **COVERS_FIELD 邊** | 0 | **3,720** |
+| **EXPERT_IN 邊** | 0 | **2,629** |
+| **COURSE_EXPERT 邊** | 0 | **3,522**（新） |
+| **PREREQUISITE_OF 邊** | 0 | **160** |
+| TAUGHT_BY 邊 | 897 | 897 |
+| DEVELOPS 邊 | 4,209 | 4,209 |
+| 總節點 | — | **14,602** |
+| 總邊 | — | **29,567** |
+
+> **Phase 1 Course 節點說明**：1,348 門有完整 raw 資料，127 門為 stub（只在課程計畫 JSON 中出現，無對應原始課程 JSON）。

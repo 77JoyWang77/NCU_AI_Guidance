@@ -106,6 +106,7 @@ EDGE_TYPES = {
     "COVERS_FIELD": "課程涵蓋研究領域", "RELEVANT_EXPERT": "教師為領域專家",
     "EXPERT_IN": "教師官方專長", "TAGGED_AS": "通識主題標籤",
     "TEACHES": "課程使用此技術", "COVERS": "課程涵蓋此概念",
+    "COURSE_EXPERT": "教師專長與此課程領域相關（NLP 分析）",
     # 先修關係
     "PREREQUISITE_OF": "為…的先修", "COREQUISITE": "同修",
 }
@@ -828,18 +829,40 @@ def enrich_schedule(G: nx.DiGraph) -> dict:
 
 
 def enrich_teacher_csv(G: nx.DiGraph) -> dict:
-    """Phase 2d：教師官方專長屬性 + EXPERT_IN 邊（from 114_ulistteacher.csv）"""
-    stats = {"specs_updated": 0, "expert_in": 0, "new_field_nodes": 0}
+    """Phase 2a：教師節點全量建立 + 官方專長 + EXPERT_IN 邊（from 114_ulistteacher.csv）
+
+    改版重點：
+    - 若教師尚未在圖中（未出現在任何課程的授課欄位），直接建立新 Instructor 節點
+    - 補充 dept / rank / employment 屬性
+    - 建立 Instructor --[EXPERT_IN]--> Field 邊
+    """
+    stats = {"specs_updated": 0, "expert_in": 0, "new_field_nodes": 0, "new_instructors": 0}
     if not TEACHER_CSV.exists():
         return stats
-    with open(TEACHER_CSV, encoding="utf-8") as f:
+    with open(TEACHER_CSV, encoding="utf-8-sig") as f:
         for row in csv.DictReader(f):
-            name = row["教師名稱"].strip()
+            name     = row["教師名稱"].strip()
             spec_str = row["教師專長"].strip()
-            if not name or not spec_str:
+            dept     = row["系所名稱"].strip()
+            rank     = row["聘書職級"].strip()
+            employ   = row["專兼任"].strip()
+            if not name:
                 continue
+
             iid = _find_instructor(G, name)
             if not iid:
+                # 建立新的 Instructor 節點（原本課程授課欄未收錄的教師）
+                iid = f"instructor::{name}"
+                G.add_node(iid, node_type="Instructor", name=name,
+                           dept=dept, rank=rank, employment=employ)
+                stats["new_instructors"] += 1
+            else:
+                # 補強現有節點屬性（課程授課欄只有名字，缺 dept/rank）
+                G.nodes[iid].setdefault("dept",       dept)
+                G.nodes[iid].setdefault("rank",       rank)
+                G.nodes[iid].setdefault("employment", employ)
+
+            if not spec_str:
                 continue
             specs = [s.strip() for s in re.split(r"[,，、]", spec_str) if s.strip()]
             G.nodes[iid]["official_specialties"] = specs
@@ -854,9 +877,62 @@ def enrich_teacher_csv(G: nx.DiGraph) -> dict:
     return stats
 
 
+def enrich_professor_links(G: nx.DiGraph) -> dict:
+    """Phase 2b：nlp_professor_links.json 補充 COURSE_EXPERT 邊
+
+    資料格式：course_code → [{field, professors: [name, ...], relevance}]
+    為每個（教師, 課程）對建立 COURSE_EXPERT 邊，
+    同時補強 Instructor --[RELEVANT_EXPERT]--> Field 邊（若該 Field 節點已存在）。
+    需在 enrich_teacher_csv 之後執行，確保所有教師節點已存在。
+    """
+    stats = {"course_expert": 0, "relevant_expert_added": 0, "skipped_no_instructor": 0}
+    prof_links_path = NLP_DIR / "nlp_professor_links.json"
+    if not prof_links_path.exists():
+        return stats
+
+    prof_links = load_json(prof_links_path)
+    for course_code, entries in prof_links.items():
+        cnid = _find_course(G, course_code)
+        if not cnid:
+            continue
+        for entry in entries:
+            field     = entry.get("field", "").strip()
+            relevance = entry.get("relevance", "medium")
+            fid       = f"field::{field}"
+            for prof_name in entry.get("professors", []):
+                iid = _find_instructor(G, prof_name)
+                if not iid:
+                    stats["skipped_no_instructor"] += 1
+                    continue
+                # Instructor --[COURSE_EXPERT]--> Course
+                if ensure_edge(G, iid, cnid, relation="COURSE_EXPERT",
+                               field=field, relevance=relevance, source="nlp_prof_links"):
+                    stats["course_expert"] += 1
+                # Instructor --[RELEVANT_EXPERT]--> Field（若 Field 已建立）
+                if G.has_node(fid):
+                    if ensure_edge(G, iid, fid, relation="RELEVANT_EXPERT",
+                                   source="nlp_prof_links"):
+                        stats["relevant_expert_added"] += 1
+    return stats
+
+
 def enrich_all(G: nx.DiGraph):
-    """執行所有 Phase 2 豐富化步驟。"""
-    print("\n  [Phase 2-a] NLP 豐富化（Field / Technology / Concept / TAGGED_AS）...")
+    """執行所有 Phase 2 豐富化步驟。
+
+    執行順序說明：
+    1. enrich_teacher_csv  先建立全量 1009 位 Instructor 節點 + EXPERT_IN 邊
+    2. enrich_nlp          現在能對所有教師建立 RELEVANT_EXPERT 邊
+    3. enrich_professor_links  利用完整教師節點建 COURSE_EXPERT 邊
+    4. enrich_eligibility / enrich_schedule（不依賴教師節點，順序無影響）
+    """
+    print("\n  [Phase 2-a] 教師全量節點 + 官方專長（from teacher CSV）...")
+    s = enrich_teacher_csv(G)
+    print(f"    新增 Instructor 節點：{s['new_instructors']}，"
+          f"專長已更新：{s['specs_updated']}，"
+          f"EXPERT_IN 邊：{s['expert_in']}，"
+          f"新 Field 節點：{s['new_field_nodes']}")
+
+    print("\n  [Phase 2-b] NLP 豐富化（Field / Technology / Concept / TAGGED_AS）...")
     s = enrich_nlp(G)
     print(f"    Field 節點：{s['field_nodes']}，Technology：{s['tech_nodes']}，"
           f"Concept：{s['concept_nodes']}")
@@ -864,18 +940,20 @@ def enrich_all(G: nx.DiGraph):
     print(f"    TEACHES：{s['teaches']}，COVERS：{s['covers']}")
     print(f"    TAGGED_AS：{s['tagged_as']}，core_questions 更新：{s['core_q_updated']}")
 
-    print("\n  [Phase 2-b] 修課條件（PREREQUISITE_OF / COREQUISITE / eligible_years）...")
+    print("\n  [Phase 2-c] 教授-課程領域關聯（from nlp_professor_links）...")
+    s = enrich_professor_links(G)
+    print(f"    COURSE_EXPERT 邊：{s['course_expert']}，"
+          f"RELEVANT_EXPERT 補強：{s['relevant_expert_added']}，"
+          f"略過（教師未在圖中）：{s['skipped_no_instructor']}")
+
+    print("\n  [Phase 2-d] 修課條件（PREREQUISITE_OF / COREQUISITE / eligible_years）...")
     s = enrich_eligibility(G)
     print(f"    PREREQUISITE_OF：{s['prereq']}，COREQUISITE：{s['coreq']}，"
           f"eligible_years 更新：{s['eligible_years_set']}")
 
-    print("\n  [Phase 2-c] 必修建議學期（from schedule_draft）...")
+    print("\n  [Phase 2-e] 必修建議學期（from schedule_draft）...")
     s = enrich_schedule(G)
     print(f"    suggested_year/semester 更新：{s['updated']} 筆")
-
-    print("\n  [Phase 2-d] 教師官方專長（from teacher CSV）...")
-    s = enrich_teacher_csv(G)
-    print(f"    Instructor 更新：{s['specs_updated']}，EXPERT_IN：{s['expert_in']}")
 
 
 # ══════════════════════════════════════════════════════════════════════════════

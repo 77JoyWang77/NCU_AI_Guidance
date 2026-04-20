@@ -129,6 +129,52 @@ def get_courses_by_code(code: str, collection: str = "ncu_courses_ug") -> list[d
     ]
 
 
+def get_courses_by_dept_type(
+    dept: str,
+    course_type: str = "選修",
+    collection: str = "ncu_courses_ug",
+    limit: int = 200,
+) -> list[dict]:
+    """直接用 dept + type 精確過濾，回傳全部課程（不走向量，不受 n_results 上限）。"""
+    res = _col(collection).get(
+        where={"$and": [{"dept": {"$eq": dept}}, {"type": {"$eq": course_type}}]},
+        include=["documents", "metadatas"],
+        limit=limit,
+    )
+    docs   = res.get("documents") or []
+    metas  = res.get("metadatas") or []
+    ids    = res.get("ids") or []
+    return [
+        {"id": ids[i], "document": docs[i], "metadata": metas[i], "distance": 0.0}
+        for i in range(len(ids))
+    ]
+
+
+def get_courses_by_name(
+    name: str,
+    collection: str = "ncu_courses_ug",
+    also_grad: bool = True,
+) -> list[dict]:
+    """用課程名稱精確比對，同時搜大學部與研究所（供課程消歧義用）。"""
+    results = []
+    cols = [collection]
+    if also_grad and collection == "ncu_courses_ug":
+        cols.append("ncu_courses_grad")
+    for col_name in cols:
+        res = _col(col_name).get(
+            where={"name_zh": {"$eq": name}},
+            include=["documents", "metadatas"],
+        )
+        docs  = res.get("documents") or []
+        metas = res.get("metadatas") or []
+        ids   = res.get("ids") or []
+        results.extend(
+            {"id": ids[i], "document": docs[i], "metadata": metas[i], "distance": 0.0}
+            for i in range(len(ids))
+        )
+    return results
+
+
 # ── 格式化輸出 ───────────────────────────────────────────────────────────────
 
 def _format(res: dict) -> list[dict]:

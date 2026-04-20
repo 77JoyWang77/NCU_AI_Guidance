@@ -158,12 +158,26 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--url", default="http://localhost:8000")
     parser.add_argument("--questions", default=None, help="每行一題的 txt 檔（不填則用內建題目）")
+    parser.add_argument("--nos", default=None,
+                        help="只跑指定題號（逗號分隔，例如 --nos 3,4,6,7,10）")
+    parser.add_argument("--cats", default=None,
+                        help="只跑指定類別（逗號分隔，例如 --cats dept_req,program,teacher）")
     args = parser.parse_args()
 
     questions = DEFAULT_QUESTIONS
     if args.questions:
         txt = Path(args.questions).read_text(encoding="utf-8")
         questions = [("custom", line.strip()) for line in txt.splitlines() if line.strip()]
+
+    # 依題號篩選（1-based，對應 DEFAULT_QUESTIONS 的順序）
+    if args.nos:
+        nos = {int(x.strip()) for x in args.nos.split(",")}
+        questions = [(cat, q) for i, (cat, q) in enumerate(questions, 1) if i in nos]
+
+    # 依類別篩選
+    if args.cats:
+        cats = {c.strip() for c in args.cats.split(",")}
+        questions = [(cat, q) for cat, q in questions if cat in cats]
 
     print(f"目標：{args.url}")
     print(f"題數：{len(questions)}\n")
