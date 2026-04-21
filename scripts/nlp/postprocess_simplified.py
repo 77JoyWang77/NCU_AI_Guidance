@@ -28,8 +28,8 @@ except ImportError:
     print("未安裝 opencc，僅用字典修正（建議：pip install opencc-python-reimplemented）")
 
 BASE     = Path(__file__).parent.parent.parent
-IN_PATH  = BASE / "data" / "processed" / "nlp_simplified_concepts.json"
-BAK_PATH = BASE / "data" / "processed" / "nlp_simplified_concepts.bak.json"
+IN_PATH  = BASE / "data" / "processed" / "nlp" / "nlp_simplified_concepts.json"
+BAK_PATH = BASE / "data" / "processed" / "nlp" / "nlp_simplified_concepts.bak.json"
 
 # ── 移除高中標籤的 regex ─────────────────────────────────────
 # 匹配：（高中XX）、(高中XX)、（高中XX、XX）等變體

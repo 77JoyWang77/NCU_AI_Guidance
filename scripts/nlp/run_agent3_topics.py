@@ -34,7 +34,7 @@ BASE     = Path(__file__).parent.parent.parent
 RAW_DIRS = [
     BASE / "data" / "raw" / "courses",
 ]
-OUT_PATH = BASE / "data" / "processed" / "nlp_topic_tags.json"
+OUT_PATH = BASE / "data" / "processed" / "nlp" / "nlp_topic_tags.json"
 
 # ── 後端設定（vLLM）─────────────────────────────────────────
 # 啟動：vllm serve Qwen/Qwen3-14B-AWQ --max-model-len 8192 --gpu-memory-utilization 0.8

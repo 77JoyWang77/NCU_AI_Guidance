@@ -1,0 +1,475 @@
+{
+  "id": "dept_electrical_engineering",
+  "name": "電機工程學系",
+  "program_type": "traditional_dept",
+  "min_credits": 132,
+  "graduation_rules": [
+    {
+      "type": "credit_minimum",
+      "credits": 132,
+      "description": "最低畢業學分數 132 學分"
+    },
+    {
+      "type": "dept_required",
+      "description": "系訂必修課程須全部修畢"
+    },
+    {
+      "type": "star_elective_min",
+      "credits": 18,
+      "categories_min": 3,
+      "description": "「★」課程至少選修 18 學分，且跨至少 3 個類別（智慧系統、電波、電子、電通訊、資通訊）"
+    },
+    {
+      "type": "triangle_elective_min",
+      "credits": 9,
+      "categories_min": 3,
+      "description": "「△」實驗課程至少選修 9 學分，且跨至少 3 個類別"
+    },
+    {
+      "type": "dept_school_elective_min",
+      "credits": 12,
+      "description": "本系或資電學院課程至少選修 12 學分（不含已計入★與△之學分）"
+    },
+    {
+      "type": "capstone_credit_limit",
+      "credits_max": 6,
+      "courses": [
+        "EE4004",
+        "EE4023",
+        "EE3045"
+      ],
+      "description": "EE4004/EE4023/EE3045 等專題類課程合計最多抵 6 學分畢業學分"
+    },
+    {
+      "type": "equivalent_course_note",
+      "description": "依本院各系等同課程對照表，等同課程重複修讀者不列入畢業學分"
+    },
+    {
+      "type": "early_graduation",
+      "rank_top_pct": 20,
+      "gpa_min": 75,
+      "description": "學業成績排名前 20%、平均 75 分以上者，可申請提前一學期或一學年畢業"
+    },
+    {
+      "type": "academic_ethics_course",
+      "credits": 0,
+      "description": "修習畢業專題課程當學期須至「臺灣學術倫理教育資源中心」線上平台修習「學術倫理教育課程」（0學分），並通過線上課程測驗達及格標準"
+    },
+    {
+      "type": "foreign_language",
+      "credits": 6,
+      "description": "外文課程一律必修「大一英文」工程課群 6 學分；進修英文學分不列入畢業學分"
+    }
+  ],
+  "required_courses": [
+    {
+      "code": "MA1003",
+      "name": "微積分上",
+      "credits": 3,
+      "when": "大一上~大一下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "MA1004",
+      "name": "微積分下",
+      "credits": 3,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "PH1031",
+      "name": "普通物理A上",
+      "credits": 3,
+      "when": "大一上~大一下",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "PH1032",
+      "name": "普通物理A下",
+      "credits": 3,
+      "when": "大一下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "PH1003",
+      "name": "普物實驗上",
+      "credits": 1,
+      "when": "大一上",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "PH1004",
+      "name": "普物實驗下",
+      "credits": 1,
+      "when": "大一下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "EE1003",
+      "name": "計算機概論I",
+      "credits": 3,
+      "when": "大一上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "EE1007",
+      "name": "計算機概論實習",
+      "credits": 1,
+      "when": "大一上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "EE2016",
+      "name": "數位系統導論",
+      "credits": 3,
+      "when": "大一上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "EE1009",
+      "name": "工程數學-線性代數",
+      "credits": 3,
+      "when": "大一上~大一下",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "EE1006",
+      "name": "數位邏輯實驗",
+      "credits": 1,
+      "when": "大一上",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "EE1010",
+      "name": "工程數學-微分方程",
+      "credits": 3,
+      "when": "大一下~大二上",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "EE2002",
+      "name": "電路學I",
+      "credits": 3,
+      "when": "大一下~大二上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "EE2011",
+      "name": "電路學II",
+      "credits": 3,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "EE2001",
+      "name": "電子學I",
+      "credits": 3,
+      "when": "大二上~大二下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "EE2009",
+      "name": "電子學II",
+      "credits": 3,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "EE2027",
+      "name": "電子電路實驗I",
+      "credits": 1,
+      "when": "大二上~大三上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "EE2028",
+      "name": "電子電路實驗II",
+      "credits": 1,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "EE3047",
+      "name": "電子電路實驗III",
+      "credits": 1,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "EE2004",
+      "name": "電磁學I",
+      "credits": 3,
+      "when": "大二上~大二下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "EE2015",
+      "name": "電磁學II",
+      "credits": 3,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "EE2030",
+      "name": "工程數學-複變",
+      "credits": 3,
+      "when": "大二上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "EE3009",
+      "name": "信號與系統",
+      "credits": 3,
+      "when": "大一上",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "EE4044",
+      "name": "畢業專題",
+      "credits": 3,
+      "when": "大三上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    }
+  ],
+  "elective_groups": [
+    {
+      "name": "實驗群組（△）—電子類別",
+      "category": "triangle_electronics",
+      "note": "「△」實驗群組，須至少跨3類別共選9學分",
+      "courses": [
+        { "code": "EE3044", "name": "數位系統設計與實作", "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" },
+        { "code": "EE3053", "name": "電子專題",           "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" }
+      ]
+    },
+    {
+      "name": "實驗群組（△）—固態類別",
+      "category": "triangle_solid_state",
+      "note": "「△」實驗群組，須至少跨3類別共選9學分",
+      "courses": [
+        { "code": "EE4027", "name": "奈米電子專題實驗", "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" },
+        { "code": "EE4042", "name": "光電元件專題實驗", "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" }
+      ]
+    },
+    {
+      "name": "實驗群組（△）—智慧系統類別",
+      "category": "triangle_smart_systems",
+      "note": "「△」實驗群組，須至少跨3類別共選9學分",
+      "courses": [
+        { "code": "EE3046", "name": "微算機原理與實作",   "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" },
+        { "code": "EE3055", "name": "控制工程實驗",       "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" },
+        { "code": "EE8023", "name": "生醫工程原理與實驗", "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" }
+      ]
+    },
+    {
+      "name": "實驗群組（△）—電波類別",
+      "category": "triangle_rf_wave",
+      "note": "「△」實驗群組，須至少跨3類別共選9學分",
+      "courses": [
+        { "code": "EE4036", "name": "電磁波實驗", "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" }
+      ]
+    },
+    {
+      "name": "實驗群組（△）—電通訊類別",
+      "category": "triangle_electrical_comm",
+      "note": "「△」實驗群組，須至少跨3類別共選9學分",
+      "courses": [
+        { "code": "CO4009", "name": "通訊傳輸系統實驗", "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" },
+        { "code": "CO6061", "name": "MIMO無線通訊",     "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" }
+      ]
+    },
+    {
+      "name": "實驗群組（△）—資通訊類別",
+      "category": "triangle_data_comm",
+      "note": "「△」實驗群組，須至少跨3類別共選9學分",
+      "courses": [
+        { "code": "CO3024", "name": "通訊網路實驗", "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" },
+        { "code": "CO4010", "name": "物聯網技術",   "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" }
+      ]
+    },
+    {
+      "name": "「★」記號課程—電子類別",
+      "category": "star_electronics",
+      "note": "「★」記號課程，須至少跨3類別共選18學分",
+      "courses": [
+        { "code": "EE2007", "name": "資料結構",           "credits": 3, "when": "",      "when_auto": false, "verified": false, "note": "" },
+        { "code": "EE3001", "name": "電子學III",          "credits": 3, "when": "大三上", "when_auto": true,  "verified": false, "note": "" },
+        { "code": "EE3004", "name": "通訊原理",           "credits": 3, "when": "",      "when_auto": false, "verified": false, "note": "" },
+        { "code": "EE3032", "name": "超大型積體電路導論", "credits": 3, "when": "大三上", "when_auto": true,  "verified": false, "note": "" },
+        { "code": "EE3035", "name": "計算機組織",         "credits": 3, "when": "",      "when_auto": false, "verified": false, "note": "" },
+        { "code": "EE4032", "name": "類比積體電路導論",   "credits": 3, "when": "大三上", "when_auto": true,  "verified": false, "note": "" }
+      ]
+    },
+    {
+      "name": "「★」記號課程—固態類別",
+      "category": "star_solid_state",
+      "note": "「★」記號課程，須至少跨3類別共選18學分",
+      "courses": [
+        { "code": "EE2023", "name": "近代物理",       "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" },
+        { "code": "EE3001", "name": "電子學III",      "credits": 3, "when": "大三上", "when_auto": true,  "verified": false, "note": "" },
+        { "code": "EE3029", "name": "固態電子學導論", "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" },
+        { "code": "EE3034", "name": "固態電子元件",   "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" }
+      ]
+    },
+    {
+      "name": "「★」記號課程—智慧系統類別",
+      "category": "star_smart_systems",
+      "note": "「★」記號課程，須至少跨3類別共選18學分",
+      "courses": [
+        { "code": "EE3003", "name": "控制系統",         "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" },
+        { "code": "EE3010", "name": "電機機械",         "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" },
+        { "code": "EE3014", "name": "電力系統",         "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" },
+        { "code": "EE3042", "name": "生醫工程導論",     "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" },
+        { "code": "EE3054", "name": "深度學習程式設計", "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" }
+      ]
+    },
+    {
+      "name": "「★」記號課程—電波類別",
+      "category": "star_rf_wave",
+      "note": "「★」記號課程，須至少跨3類別共選18學分",
+      "courses": [
+        { "code": "EE3001", "name": "電子學III",    "credits": 3, "when": "大三上", "when_auto": true,  "verified": false, "note": "" },
+        { "code": "EE3038", "name": "微波工程",     "credits": 3, "when": "",       "when_auto": false, "verified": false, "note": "" },
+        { "code": "EE4034", "name": "微波系統導論", "credits": 3, "when": "大三上", "when_auto": true,  "verified": false, "note": "" },
+        { "code": "EE4038", "name": "天線工程導論", "credits": 3, "when": "大三上", "when_auto": true,  "verified": false, "note": "" }
+      ],
+      "slots": [
+        {
+          "slot_id": "ee3004_co3007",
+          "slot_name": "通訊原理（EE3004 / CO3007）",
+          "select": 1,
+          "courses": [
+            { "code": "EE3004", "name": "通訊原理",  "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" },
+            { "code": "CO3007", "name": "通訊原理I", "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" }
+          ]
+        },
+        {
+          "slot_id": "ee4013_co3008",
+          "slot_name": "通訊原理II（EE4013 / CO3008）",
+          "select": 1,
+          "courses": [
+            { "code": "EE4013", "name": "通訊原理II",         "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" },
+            { "code": "CO3008", "name": "通訊原理II（通訊系）", "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "「★」記號課程—電通訊類別",
+      "category": "star_electrical_comm",
+      "note": "「★」記號課程，須至少跨3類別共選18學分",
+      "courses": [
+        { "code": "EE3001", "name": "電子學III",          "credits": 3, "when": "大三上", "when_auto": true,  "verified": false, "note": "" },
+        { "code": "EE3032", "name": "超大型積體電路導論", "credits": 3, "when": "大三上", "when_auto": true,  "verified": false, "note": "" },
+        { "code": "EE4032", "name": "類比積體電路導論",   "credits": 3, "when": "大三上", "when_auto": true,  "verified": false, "note": "" },
+        { "code": "EE4034", "name": "微波系統導論",       "credits": 3, "when": "大三上", "when_auto": true,  "verified": false, "note": "" },
+        { "code": "EE4038", "name": "天線工程導論",       "credits": 3, "when": "大三上", "when_auto": true,  "verified": false, "note": "" },
+        { "code": "CO4003", "name": "數位訊號處理概論",   "credits": 3, "when": "",       "when_auto": false, "verified": false, "note": "" },
+        { "code": "CO6005", "name": "調適性通訊訊號處理", "credits": 3, "when": "",       "when_auto": false, "verified": false, "note": "" },
+        { "code": "CO6019", "name": "數位通訊",           "credits": 3, "when": "",       "when_auto": false, "verified": false, "note": "" },
+        { "code": "CO6025", "name": "隨機程序",           "credits": 3, "when": "",       "when_auto": false, "verified": false, "note": "" },
+        { "code": "CO6041", "name": "數位影像處理",       "credits": 3, "when": "",       "when_auto": false, "verified": false, "note": "" },
+        { "code": "CO6048", "name": "檢測與估計理論",     "credits": 3, "when": "",       "when_auto": false, "verified": false, "note": "" }
+      ]
+    },
+    {
+      "name": "「★」記號課程—資通訊類別",
+      "category": "star_data_comm",
+      "note": "「★」記號課程，須至少跨3類別共選18學分",
+      "courses": [
+        { "code": "CO3006", "name": "微算機原理",       "credits": 3, "when": "",       "when_auto": false, "verified": false, "note": "" },
+        { "code": "CO3005", "name": "網路概論",         "credits": 3, "when": "",       "when_auto": false, "verified": false, "note": "" },
+        { "code": "EE3054", "name": "深度學習程式設計", "credits": 3, "when": "",       "when_auto": false, "verified": false, "note": "" },
+        { "code": "CO6032", "name": "排隊原理",         "credits": 3, "when": "",       "when_auto": false, "verified": false, "note": "" },
+        { "code": "CO6063", "name": "資料科學",         "credits": 3, "when": "",       "when_auto": false, "verified": false, "note": "" }
+      ],
+      "slots": [
+        {
+          "slot_id": "co3019_ce2003",
+          "slot_name": "離散數學（CO3019 / CE2003）",
+          "select": 1,
+          "courses": [
+            { "code": "CO3019", "name": "離散數學", "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" },
+            { "code": "CE2003", "name": "離散數學", "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" }
+          ]
+        },
+        {
+          "slot_id": "co2012_ce2002_ee2007",
+          "slot_name": "資料結構（CO2012 / CE2002 / EE2007）",
+          "select": 1,
+          "courses": [
+            { "code": "CO2012", "name": "資料結構", "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" },
+            { "code": "CE2002", "name": "資料結構", "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" },
+            { "code": "EE2007", "name": "資料結構", "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" }
+          ]
+        },
+        {
+          "slot_id": "co2014_ce3005",
+          "slot_name": "演算法（CO2014 / CE3005）",
+          "select": 1,
+          "courses": [
+            { "code": "CO2014", "name": "演算法", "credits": 3, "when": "大二下", "when_auto": true,  "verified": false, "note": "" },
+            { "code": "CE3005", "name": "演算法", "credits": 3, "when": "",       "when_auto": false, "verified": false, "note": "" }
+          ]
+        },
+        {
+          "slot_id": "co3020_ce3001_ee3035",
+          "slot_name": "計算機組織（CO3020 / CE3001 / EE3035）",
+          "select": 1,
+          "courses": [
+            { "code": "CO3020", "name": "計算機組織", "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" },
+            { "code": "CE3001", "name": "計算機組織", "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" },
+            { "code": "EE3035", "name": "計算機組織", "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,189 @@
+{
+  "id": "dept_space_science",
+  "name": "太空科學與工程學系",
+  "program_type": "traditional_dept",
+  "min_credits": 128,
+  "required_credits": 75,
+  "graduation_rules": [
+    {
+      "type": "credit_minimum",
+      "credits": 128,
+      "description": "最低畢業學分數 128 學分"
+    },
+    {
+      "type": "dept_required",
+      "credits": 75,
+      "description": "必修科目共 75 學分（共同必修25＋院訂必修12＋系訂必修26＋四擇二必選12）"
+    },
+    {
+      "type": "elective_min",
+      "credits": 16,
+      "description": "本系選修課程至少 16 學分"
+    },
+    {
+      "type": "outside_elective_max",
+      "credits_max": 12,
+      "description": "校外課程最多 12 學分計入系最低畢業學分"
+    },
+    {
+      "type": "required_elective",
+      "description": "修業期間內必須選修「地球系統科學概論」2 學分"
+    },
+    {
+      "type": "prerequisite_note",
+      "description": "力學(SS2001)及電磁學I(SS2003)之先修課程為微積分上下，成績須達50分以上"
+    },
+    {
+      "type": "general_education",
+      "domains_min": 1,
+      "description": "通識核心必修四大領域至少修習一個領域"
+    }
+  ],
+  "required_courses": [
+    {
+      "code": "MA1003",
+      "name": "微積分上",
+      "credits": 3
+    },
+    {
+      "code": "MA1004",
+      "name": "微積分下",
+      "credits": 3
+    },
+    {
+      "code": "PH1031",
+      "name": "普通物理A上",
+      "credits": 3
+    },
+    {
+      "code": "PH1032",
+      "name": "普通物理A下",
+      "credits": 3
+    },
+    {
+      "code": "SS1001",
+      "name": "工程實習",
+      "credits": 1
+    },
+    {
+      "code": "SS1002",
+      "name": "太空科學與工程導論",
+      "credits": 2
+    },
+    {
+      "code": "PH1004",
+      "name": "普物實驗",
+      "credits": 1
+    },
+    {
+      "code": "SS1003",
+      "name": "程式語言與繪圖",
+      "credits": 2
+    },
+    {
+      "code": "SS2001",
+      "name": "力學",
+      "credits": 3
+    },
+    {
+      "code": "SS2003",
+      "name": "電磁學I",
+      "credits": 3
+    },
+    {
+      "code": "SS2004",
+      "name": "電磁學II",
+      "credits": 3
+    },
+    {
+      "code": "SS2005",
+      "name": "應用數學I",
+      "credits": 3
+    },
+    {
+      "code": "SS2006",
+      "name": "應用數學II",
+      "credits": 3
+    },
+    {
+      "code": "SS2007",
+      "name": "太空專題I",
+      "credits": 1
+    },
+    {
+      "code": "SS2008",
+      "name": "太空專題II",
+      "credits": 1
+    },
+    {
+      "code": "SS3001",
+      "name": "數據分析與處理",
+      "credits": 3
+    }
+  ],
+  "elective_groups": [
+    {
+      "name": "太空科學類四擇二",
+      "select": 2,
+      "courses": [
+        {
+          "code": "SS3002",
+          "name": "電漿物理導論",
+          "credits": 3
+        },
+        {
+          "code": "SS3003",
+          "name": "太陽物理",
+          "credits": 3
+        },
+        {
+          "code": "SS3004",
+          "name": "磁層物理",
+          "credits": 3
+        },
+        {
+          "code": "SS3005",
+          "name": "電離層物理",
+          "credits": 3
+        }
+      ]
+    },
+    {
+      "name": "太空工程類四擇二",
+      "select": 2,
+      "courses": [
+        {
+          "code": "SS3006",
+          "name": "太空酬載I",
+          "credits": 3
+        },
+        {
+          "code": "SS3008",
+          "name": "衛星系統工程I",
+          "credits": 3
+        },
+        {
+          "code": "SS3010",
+          "name": "雷達工程與實務",
+          "credits": 3
+        },
+        {
+          "code": "SS3011",
+          "name": "遙測影像分析與應用",
+          "credits": 3
+        }
+      ]
+    },
+    {
+      "name": "地球系統科學概論（必選）",
+      "select_credits": 2,
+      "courses": [
+        {
+          "name": "地球系統科學概論",
+          "credits": 2,
+          "mandatory": true
+        }
+      ]
+    }
+  ]
+}

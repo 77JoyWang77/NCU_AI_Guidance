@@ -25,7 +25,7 @@ from pathlib import Path
 
 BASE = Path(__file__).parent.parent.parent
 CSV_PATH  = BASE / "data" / "raw" / "114_ulistteacher.csv"
-OUT_PATH  = BASE / "data" / "processed" / "dept_professor_map.json"
+OUT_PATH  = BASE / "data" / "processed" / "nlp" / "dept_professor_map.json"
 
 # 分隔符：逗號、頓號、分號、全形分號、斜線
 SEP = re.compile(r"[,，、；;/]+")

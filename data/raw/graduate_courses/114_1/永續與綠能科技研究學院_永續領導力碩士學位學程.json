@@ -1,0 +1,461 @@
+[
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "永續與綠能科技研究學院",
+    "系所": "永續領導力碩士學位學程",
+    "流水號": "99001",
+    "課號-班別": "SL5001-*",
+    "課程名稱(中文)": "永續發展專題探討",
+    "課程名稱(英文)": "Seminar on Sustainable Development",
+    "備註": "與MB5076合班授課",
+    "授課教師": "李河清",
+    "學分": "3",
+    "上課時間": "Tue567",
+    "教室": "TR-501",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "35",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=99001&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限永續領導力碩士學位學程、永續領導力博士學位學程。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學院:限永續與綠能科技研究學院。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限學士班、碩士班。學院:限管理學院。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=99001&outline=99001&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "永續領導力碩士學位學程",
+      "流水號": "99001",
+      "課號": "SL5001-*",
+      "授課教師": "李河清",
+      "課程名稱(中文)": "永續發展專題探討",
+      "課程名稱(英文)": "Seminar on Sustainable Development",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "授課內容": "1 (09/10) Class Overview\n2 (09/17) Moon Festival- No Class\n3 (09/24) From Millennium Development Goals to Sustainable Development Goals\n4 (10/01) State Actors, Sub-state Actors, and Civil Society Actors\n5 (10/8) NGO Approach to Influence Policymaking\n6 (10/15) Climate Change Negotiation Process Consensus (SDG2, 3, 4, 7, 11, 12, 13, 14, 17)\n7 (10/22) From Kyoto Protocol to Paris Agreement (SDG13, 6, 7)\n8 (10/29) 2023 COP28 Dubai Consensus\n9 (11/05) Cities as Non-Party Stakeholders (SDG11, 17)\n10 (11/12) Human Rights and Gender Equality (SDG5, 10)\n11 (11/19) Sustainable Consumption and Production (SDG12)\n12 (11/26) Case Study- Race to Net Zero by 2050\n13 (12/03) Case Study- Universities Pledging Carbon Neutral\n14 (12/10) Case Study-RE 100 (Business Perspectives)\n15 (12/17) Assessing Sustainable Development Goals\n16 (12/24) Final Report and Oral Presentation\n17 (12/31) Optional\n18 (01/07) Optional",
+      "教科書/參考書": "Sachs, Jeffrey D. 2015. The Age of Sustainable Development. Columbia University Press. What the World Learned Setting Development Goals? (IISD Brief #10, 2021) https://www.iisd.org/articles/deep-dive/what-world-learned-setting-development-goals",
+      "自編教材比例": "0",
+      "授課方式": "講授 個別指導",
+      "評量配分比重": "Class Participation (出席率): 10％ Assignment (作業) times 2: 40％ Paper/Theses Writing (期末論文): 30％Presentation (課程單元報告): 20％",
+      "辦公時間": "周二上課前和下課後",
+      "授課週數": "16",
+      "彈性教學說明": "Self-study",
+      "核心能力": []
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "永續與綠能科技研究學院",
+    "系所": "永續領導力碩士學位學程",
+    "流水號": "99002",
+    "課號-班別": "SL5002-*",
+    "課程名稱(中文)": "永續製造與企業資源規劃",
+    "課程名稱(英文)": "Sustainable Manufacturing and ERP",
+    "備註": "與MB5064合班授課",
+    "授課教師": "雷鴻村",
+    "學分": "3",
+    "上課時間": "Mon234",
+    "教室": "I1-002",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "35",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=99002&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限永續領導力碩士學位學程、永續領導力博士學位學程。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學院:限永續與綠能科技研究學院。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限學士班、碩士班。學院:限管理學院。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=99002&outline=99002&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "永續領導力碩士學位學程",
+      "流水號": "99002",
+      "課號": "SL5002-*",
+      "授課教師": "雷鴻村",
+      "課程名稱(中文)": "永續製造與企業資源規劃",
+      "課程名稱(英文)": "Sustainable Manufacturing and ERP",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "Teaching Goal This course syllabus aims to provide a comprehensive overview of sustainable manufacturing and ERP, covering all aspects from basic concepts to practical applications, and combining theory and practice to enable students to have an in-depth understanding of all aspects and aspects of sustainable manufacturing and ERP. Management applications. 這個課程大綱旨在提供一個全面的永續製造與 ERP 概述，涵蓋從基本概念到實踐應用的各個方面，並以理論與實踐相結合的方式，使學生深入理解永續製造與 ERP 的各個層面及管理上的應用。",
+      "授課內容": "Teaching Content Due to the impact of climate change, issues of sustainable manufacturing and energy management, the ERP database has the richest historical data of enterprises. How to use AI to extract useful information to assist enterprises in data driven improvement and achieve efficient manufacturing The purpose is a very important topic in the future. This course covers all aspects from basic concepts to practical applications, and combines theory and practice to enable students to have an in-depth understanding of sustainable manufacturing and ERP at all levels and management applications. 由於氣候變遷的影響, 永續製造與能源管理的議題; ERP 資料庫擁有企業最豐富的歷史資料, 如何利用 AI 萃取出有用的資訊, 協助企業以 data driven 為導向的改善，達成綠色永續製造的目的, 是未來很重要的課題. 本課程從基本概念到實踐應用的各個方面，並以理論與實踐相結合的方式，使學生深入理解永續製造與 ERP 的各個層面及管理上的應用。\n1 (09/01) Basic concepts of sustainable manufacturing\n2 (09/08) Sustainable manufacturing strategies and frameworks\n3 (09/15) Lean production management\n4 (09/22) Resource efficiency and circular economy\n5 (09/29) Energy efficiency management and energy saving technology\n6 (10/06) Challenges and opportunities of sustainable manufacturing\n7 (10/13) AI in Manufacturing/MES\n8 (10/20) ERP/SCM System Overview\n9 (1027) The combination of sustainable manufacturing and ERP\n10 (11/03) Data Management and ERP\n11 (11/10) ERP operation, maintenance and continuous improvement\n12 (11/17) Digital transformation of the supply chain\n13 (11/24) AI in ERP/SCM\n14 (12/01) AI in CRM\n15 (12/08) Case study and practical application\n16 (12/15) Course Summary and Future Outlook",
+      "教科書/參考書": "1. Green anufacturing-Fundamental and applications 2. ERP企業資源規劃導論(第六版)",
+      "自編教材比例": "30",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "Class Participation (出席率) 20％ Paper/Theses Writing (報告/論文) 30％ Presentation (專題發表) 30％ Assignment (作業) 20％",
+      "辦公時間": "Monday 09AM~12AM, I1-002",
+      "授課週數": "16",
+      "彈性教學說明": "線上學習、自主學習、專題",
+      "核心能力": []
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "永續與綠能科技研究學院",
+    "系所": "永續領導力碩士學位學程",
+    "流水號": "99003",
+    "課號-班別": "SL5004-*",
+    "課程名稱(中文)": "企業社會責任",
+    "課程名稱(英文)": "Corporate Social Responsibility",
+    "備註": "與MB5014、FM6113合班授課",
+    "授課教師": "彭淑卿",
+    "學分": "3",
+    "上課時間": "Tue234",
+    "教室": "I1-406",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "35",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=99003&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限永續領導力碩士學位學程、永續領導力博士學位學程。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學院:限永續與綠能科技研究學院。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=99003&outline=99003&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "永續領導力碩士學位學程",
+      "流水號": "99003",
+      "課號": "SL5004-*",
+      "授課教師": "彭淑卿",
+      "課程名稱(中文)": "企業社會責任",
+      "課程名稱(英文)": "Corporate Social Responsibility",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "This course provides essential Corporate Social Responsibility (CSR) knowledge. In addition to maximize shareholder value, we discuss how firms involve CSR activities to maximize stakeholder value. Specifically, you are expected to know (i) What drives corporate social responsibility? (ii) How does the top management team affect CSR? (iii) How does CSR reshape corporate investment decisions and financing decisions? (iv) Do firms with more CSR activities better weather negative shocks? (v) CSR and supply chain management, (vi) Does climate change have any real effect on firms? If yes, what can we do to mitigate the negative impact? and (vii) corporate governance in the world.",
+      "授課內容": "“Introduction of Corporate Social Responsibility (CSR)\nCSR: Legal origin, politics, and family environment\nCSR: Career concern and institutional investor\nCSR and investment decisions\nCSR: Capital structure, cost of debt, corporate liquidity management\nCSR and supply chain management\nCSR: Product market behavior, covid-19 and others\nCorporate governance: General/Survey\nCorporate governance: Compensation\nCorporate governance: Ownership structure\nCorporate governance: Board structure\nCorporate governance: Law and finance“",
+      "教科書/參考書": "“Academic journal articles from American Economic Review, Quarterly Journal of Economics, Journal of Political Economy, Journal of Finance, Journal of Financial Economics, Review of Financial Studies, Journal of Corporate Finance, Strategic Management Journal, Management Science, and so on.“",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "Academic paper presentation 40% Presentation note 15% Final-exam 45% *The instructor keeps the right to make any adjustments on course evaluation.",
+      "辦公時間": "By appointment",
+      "授課週數": "16",
+      "彈性教學說明": "Self-study",
+      "核心能力": []
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "永續與綠能科技研究學院",
+    "系所": "永續領導力碩士學位學程",
+    "流水號": "99004",
+    "課號-班別": "SL5010-*",
+    "課程名稱(中文)": "書報討論(國際瞭望大師講座)",
+    "課程名稱(英文)": "Global Master Lecture Series",
+    "備註": "實際課程時間將公告於院網頁 https://sage.ncu.edu.tw/",
+    "授課教師": "教授群",
+    "學分": "0",
+    "上課時間": "Thu1",
+    "教室": "TR-501\nFri1",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=99004&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限永續領導力碩士學位學程、永續領導力博士學位學程。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學院:限永續與綠能科技研究學院。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=99004&outline=99004&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "永續領導力碩士學位學程",
+      "流水號": "99004",
+      "課號": "SL5010-*",
+      "授課教師": "教授群",
+      "課程名稱(中文)": "書報討論(國際瞭望大師講座)",
+      "課程名稱(英文)": "Global Master Lecture Series",
+      "課程學制": "碩博同修",
+      "學分": "0",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "授課週數": "16",
+      "核心能力": []
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "永續與綠能科技研究學院",
+    "系所": "永續領導力碩士學位學程",
+    "流水號": "99005",
+    "課號-班別": "SL5011-*",
+    "課程名稱(中文)": "空間資訊數位研究",
+    "課程名稱(英文)": "Geospatial Digital Study",
+    "備註": "與RS5054、HP5054、MB5073合班授課",
+    "授課教師": "劉說安",
+    "學分": "3",
+    "上課時間": "Mon678",
+    "教室": "R2-203",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "30",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=99005&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限永續領導力碩士學位學程、永續領導力博士學位學程。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學院:限永續與綠能科技研究學院。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=99005&outline=99005&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "永續領導力碩士學位學程",
+      "流水號": "99005",
+      "課號": "SL5011-*",
+      "授課教師": "劉說安",
+      "課程名稱(中文)": "空間資訊數位研究",
+      "課程名稱(英文)": "Geospatial Digital Study",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "1. 運用所學的知識和批判性思維技能，結合適當的遙測數據與AI技術，應對水文氣象極端事件與環境問題。 2. 開發多步驟的工作流程，以解決水文氣象極端事件和環境問題。",
+      "授課內容": "本課程涵蓋氣候極端事件與環境問題的相關主題，並探討如何利用GIS、遙測和人工智慧工具對其進行評估和監測。課程將從遙測與GIS的簡介開始，包括GIS軟體使用的教程。課程的科學研究內容包括氣候變遷的監測與預測、針對乾旱和颱風等水文氣象極端事件的遙測光譜指數、生态环境脆弱性、空氣品質、城市綠地與城市熱島效應，以及機器學習技術。學生將有機會參與一個與氣候極端事件和環境問題相關的研究專題。在整個課程中，將展示科學研究領域中使用的分析技術，以供學生學習並應用於自己的工作中。這些技術包括使用光學、微波和雷達等衛星影像，分析地表水資源的新遙測指數，以及機器學習和AI算法。學生將提出一個研究主題，並在課程結束時運用所學知識和技術展示他們的研究成果。",
+      "教科書/參考書": "講義、指定文章及蒐集文獻",
+      "自編教材比例": "60",
+      "授課方式": "講授 研討",
+      "評量配分比重": "1.上課討論及書面摘要報告：40％ 2.出席率：10％ 3.期末作業：50％",
+      "辦公時間": "12:00-14:00 Monday",
+      "授課週數": "16",
+      "彈性教學說明": "學生自主學習、查找相關資料、獨立研究。",
+      "核心能力": []
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "永續與綠能科技研究學院",
+    "系所": "永續領導力碩士學位學程",
+    "流水號": "99006",
+    "課號-班別": "SL5012-*",
+    "課程名稱(中文)": "永續發展見習：企業與社會部門",
+    "課程名稱(英文)": "Sustainability in Practice: Corporate and Social Sector",
+    "備註": "",
+    "授課教師": "沈建文",
+    "學分": "3",
+    "上課時間": "Mon1",
+    "教室": "TR-503\nTue89",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "35",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=99006&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限永續領導力碩士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=99006&outline=99006&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "永續領導力碩士學位學程",
+      "流水號": "99006",
+      "課號": "SL5012-*",
+      "授課教師": "沈建文",
+      "課程名稱(中文)": "永續發展見習：企業與社會部門",
+      "課程名稱(英文)": "Sustainability in Practice: Corporate and Social Sector",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "自編教材比例": "0",
+      "授課週數": "16",
+      "核心能力": []
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "永續與綠能科技研究學院",
+    "系所": "永續領導力碩士學位學程",
+    "流水號": "99007",
+    "課號-班別": "SL5013-*",
+    "課程名稱(中文)": "永續發展社會實踐專題 [已停開]",
+    "課程名稱(英文)": "Field Projects in Sustainability",
+    "備註": "",
+    "授課教師": "謝尚伯",
+    "學分": "3",
+    "上課時間": "Mon1",
+    "教室": "TR-501\nTue89",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "35",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=99007&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限永續領導力碩士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=99007&outline=99007&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "永續領導力碩士學位學程",
+      "流水號": "99007",
+      "課號": "SL5013-*",
+      "授課教師": "謝尚伯",
+      "課程名稱(中文)": "永續發展社會實踐專題",
+      "課程名稱(英文)": "Field Projects in Sustainability",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "自編教材比例": "0",
+      "授課週數": "16",
+      "核心能力": []
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "永續與綠能科技研究學院",
+    "系所": "永續領導力碩士學位學程",
+    "流水號": "99008",
+    "課號-班別": "SL5014-*",
+    "課程名稱(中文)": "永續領導力基礎",
+    "課程名稱(英文)": "Sustainability Leadership Essentials",
+    "備註": "與MB5074合班",
+    "授課教師": "張詠晴\n王群孝\n阮美心\n連婉茜\n劉世慶",
+    "學分": "3",
+    "上課時間": "WedABC",
+    "教室": "TR-501",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "35",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=99008&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限永續領導力碩士學位學程、永續領導力博士學位學程。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學院:限永續與綠能科技研究學院。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=99008&outline=99008&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "永續領導力碩士學位學程",
+      "流水號": "99008",
+      "課號": "SL5014-*",
+      "授課教師": "張詠晴\n王群孝\n阮美心\n連婉茜\n劉世慶",
+      "課程名稱(中文)": "永續領導力基礎",
+      "課程名稱(英文)": "Sustainability Leadership Essentials",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "本課程將從不同角度培養學生對永續領導力的理解與應用能力。本課程融合人力資源管理、策略管理、社會企業、企業倫理與供應鏈管理等領域的觀點，具體學習目標如下： 1. 理解永續領導在組織功能與社會情境中的基本概念與原則。 2. 分析如何透過人力資源管理、企業策略與社會創新來發展與實踐永續領導力。 3. 探索永續領導的倫理與哲學基礎及其對長期價值創造的啟示。 4. 評估永續領導在供應鏈管理中所扮演的角色，以及其促進環境與社會責任的功能。 5. 結合理論知識與實務洞察，發展個人的永續領導思維與行動計畫。 6. 透過課堂討論與期末專題，展現批判性思維與團隊合作能力。",
+      "授課內容": "第 1–3 週：人力資源管理之永續領導\n• 授課教師：國立中央大學 王群孝 教授\n• 本單元探討人力資源實務如何培養永續領導，以支持組織長期目標及利害關係人的福祉。\n第 4–6 週：策略管理之永續領導\n• 授課教師：國立中央大學 連婉茜 教授\n• 本單元檢視如何將永續領導融入策略決策，於動態商業環境中兼顧獲利與環境及社會責任。\n第 7–9 週：社會創業之永續領導\n• 授課教師：輔仁大學 張詠晴 教授\n• 本單元強調社會企業家作為永續領導者的角色，如何推動創新以解決社會與環境挑戰。\n第 10–12 週：倫理管理之永續領導\n• 授課教師：逢甲大學 劉世慶 教授\n• 本單元聚焦於永續領導的倫理管理，涵蓋環境、社會與治理（ESG）面向。\n第 13–15 週：供應鏈管理之永續領導\n• 授課教師：元智大學 阮美心 教授\n• 本單元討論領導者如何建構永續且具韌性的供應鏈。\n第 16 週：期末專題報告發表",
+      "教科書/參考書": "本課程無指定教科書。授課教師將根據各單元主題提供學術閱讀資料、個案研究與相關文章。課堂講義與簡報（PPT）將由教師事先準備並提供給學生。",
+      "自編教材比例": "90",
+      "授課方式": "講授",
+      "評量配分比重": "Class Participation (課堂表現)：50 ％ Paper/Theses Writing & Presentation (期末論文/報告)：50％",
+      "辦公時間": "預約制",
+      "授課週數": "16",
+      "彈性教學說明": "不定期安排線上學習、自主學習、專題、實作、實習、企業參訪等學習活動",
+      "核心能力": []
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "永續與綠能科技研究學院",
+    "系所": "永續領導力碩士學位學程",
+    "流水號": "99009",
+    "課號-班別": "SL5015-*",
+    "課程名稱(中文)": "DEI多元平等共融概論",
+    "課程名稱(英文)": "Introduction to DEI: Diversity, Equity, and Inclusion",
+    "備註": "",
+    "授課教師": "許華倚",
+    "學分": "3",
+    "上課時間": "Thu234",
+    "教室": "TR-501",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "35",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=99009&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限永續領導力碩士學位學程、永續領導力博士學位學程。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學院:限永續與綠能科技研究學院。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限學士班、碩士班。學院:限管理學院。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=99009&outline=99009&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "永續領導力碩士學位學程",
+      "流水號": "99009",
+      "課號": "SL5015-*",
+      "授課教師": "許華倚",
+      "課程名稱(中文)": "DEI多元平等共融概論",
+      "課程名稱(英文)": "Introduction to DEI: Diversity, Equity, and Inclusion",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "This course is designed to help students understand and practice the core concepts and application strategies of Diversity, Equity, and Inclusion (DEI). Adopting a systems perspective, the course explores how DEI can be implemented in organizations, education, communities, and public policy. Integrating insights from psychology, social design, cultural studies, and sustainable development, students will be guided to reflect on their own social positions, identify societal biases, and design inclusive action plans. By the end of the course, students will be able to: • Understand the fundamental principles and global trends of DEI. • Analyze structural inequalities and cultural differences in society. • Examine the relationships between DEI and psychological safety, holistic well-being, and intergenerational inclusion. • Apply DEI concepts in educational, organizational, and community practices. • Develop self-awareness and cross-cultural communication skills to design inclusive initiatives or interventions.",
+      "授課內容": "Week/Topic/Key Content & Teaching Method\n1.Course Introduction & Personal Positioning: Understanding the context of DEI through personal narratives; life map drawing and self-narrative exercises\n2.Core Concepts and Frameworks of DEI: Distinctions and connections among diversity, equity, inclusion, and justice; DEI and SDGs\n3.Structural Inequality & Implicit Bias: Analyzing stereotypes, bias, and privilege through sociological and psychological lenses\n4.Gender & Sexual Orientation Equality : Gender mainstreaming, LGBTQIA+ issues, and cross-cultural dialogues\n5.Disability & Accessible Design: Universal design and real-world cases related to psychological safety\n6.Indigenous Peoples & Cultural Identity: Understanding Indigenous issues in Taiwan; cultural appropriation vs. cultural co-learning\n7.Intergenerational Inclusion & Aging: Exploring ageism and cross-generational communication; integrating experience from Yang Sheng Foundation\n8.Mental Health and DEI Psychological safety, mindfulness, and social support systems\n9.DEI in Organizations: Diversity in the workplace and ESG strategies; international cases (e.g., Google, Patagonia)\n10.DEI in NPOs and Social Innovation: DEI in nonprofit practices and social design, with case studies from Yang Sheng and other partners\n11.International DEI Comparison and Policy Comparative analysis of DEI policies and advancement strategies across countries\n12.International DEI Standards: Introduction to the Global Diversity, Equity & Inclusion Benchmarks (GDEIB), Part 1\n13.International DEI Standards: Deep dive into GDEIB framework, Part 2\n14.DEI Field Investigation: Conducting DEI audits using GDEIB tools\n15.Feedback and Reflection: Reporting and discussing findings from the DEI audit\n16.Final Presentation: Presentation of DEI audit results and reflection papers",
+      "教科書/參考書": "None",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "Class Participation and discussion ：20 ％ Assignment ： 20% Paper/Theses Writing ：30 ％ Presentation： 30 ％",
+      "辦公時間": "By appointment",
+      "授課週數": "16",
+      "核心能力": []
+    }
+  }
+]

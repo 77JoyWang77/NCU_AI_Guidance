@@ -1,0 +1,1393 @@
+[
+  {
+    "id": "ai_cross_domain",
+    "name": "「人工智慧跨域應用」學分學程",
+    "college": "通識中心",
+    "cross_school": false,
+    "min_credits": 15,
+    "description": "培育不同領域學生學習人工智慧的運用與分析技術，應用於原本專長並強化未來職場能力。本校學生均可申請，依所屬院別修習不同主軸課程。修畢者得抵免通識課程 14 學分。",
+    "required_courses": [],
+    "elective_groups": [],
+    "specialization_tracks": [
+      {
+        "name": "理工軌（理、工、資電、地科、生醫理工學院）",
+        "description": "依序完成程式語言入門→AI基礎→AI跨域應用→AI社會運用後，方可修習 AI 專題實作",
+        "required_courses": [
+          {
+            "code": "GS4719",
+            "name": "程式設計-Python",
+            "credits": 3,
+            "school": "NCU",
+            "description": "程式語言入門必修"
+          },
+          {
+            "code": "GS3073",
+            "name": "AI 人工智慧導論",
+            "credits": 3,
+            "school": "NCU",
+            "description": "AI基礎必修"
+          },
+          {
+            "code": "GS4519",
+            "name": "機器學習概論",
+            "credits": 2,
+            "school": "NCU",
+            "description": "AI基礎必修"
+          },
+          {
+            "code": "GS4524",
+            "name": "人工智慧跨域應用專題",
+            "credits": 3,
+            "school": "NCU",
+            "description": "AI專題實作必修，須先完成前四主軸"
+          }
+        ],
+        "elective_groups": [
+          {
+            "name": "AI 跨域應用",
+            "select_credits": 2,
+            "description": "至少選修 2 學分",
+            "courses": [
+              {
+                "code": "IM3078",
+                "name": "人工智慧與機器學習",
+                "credits": 3,
+                "school": "NCU"
+              },
+              {
+                "code": "GS4518",
+                "name": "自然語言處理",
+                "credits": 3,
+                "school": "NCU"
+              },
+              {
+                "code": "GS4514",
+                "name": "資料視覺化",
+                "credits": 2,
+                "school": "NCU"
+              },
+              {
+                "code": "GS4522",
+                "name": "圖像辨識的企業應用",
+                "credits": 2,
+                "school": "NCU"
+              },
+              {
+                "code": "GS4521",
+                "name": "人工智慧與商業運用",
+                "credits": 2,
+                "school": "NCU"
+              },
+              {
+                "code": "GS4541",
+                "name": "數據分析智慧",
+                "credits": 3,
+                "school": "NCU"
+              },
+              {
+                "code": "HK4034",
+                "name": "人工智慧與寫作",
+                "credits": 3,
+                "school": "NCU"
+              },
+              {
+                "code": "GS3711",
+                "name": "資料科學與人文社會應用",
+                "credits": 3,
+                "school": "NCU"
+              }
+            ]
+          },
+          {
+            "name": "AI 社會運用",
+            "select_credits": 2,
+            "description": "至少選修 2 學分",
+            "courses": [
+              {
+                "code": "GS4517",
+                "name": "人工智慧與社會創新",
+                "credits": 2,
+                "school": "NCU"
+              },
+              {
+                "code": "GS4525",
+                "name": "人工智慧社會影響力評估",
+                "credits": 2,
+                "school": "NCU"
+              },
+              {
+                "code": "GS4523",
+                "name": "人工智慧與永續發展",
+                "credits": 2,
+                "school": "NCU"
+              },
+              {
+                "code": "GS4528",
+                "name": "人工智慧與法律",
+                "credits": 2,
+                "school": "NCU"
+              },
+              {
+                "code": "GS4530",
+                "name": "人工智慧倫理導論",
+                "credits": 2,
+                "school": "NCU"
+              },
+              {
+                "code": "GS4543",
+                "name": "體驗設計",
+                "credits": 2,
+                "school": "NCU"
+              },
+              {
+                "code": "GS3709",
+                "name": "性別、科技與社會",
+                "credits": 2,
+                "school": "NCU"
+              },
+              {
+                "code": "GS3708",
+                "name": "人工智慧與文化內容產業",
+                "credits": 2,
+                "school": "NCU"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "文管軌（文、管理、客家學院）",
+        "description": "依序完成程式語言入門→AI基礎→AI跨域及社會應用後，方可修習 AI 專題實作",
+        "required_courses": [
+          {
+            "code": "GS3073",
+            "name": "AI 人工智慧導論",
+            "credits": 3,
+            "school": "NCU",
+            "description": "AI基礎必修"
+          },
+          {
+            "code": "GS4524",
+            "name": "人工智慧跨域應用專題",
+            "credits": 3,
+            "school": "NCU",
+            "description": "AI專題實作必修，須先完成前三主軸"
+          }
+        ],
+        "elective_groups": [
+          {
+            "name": "程式語言入門",
+            "select": 1,
+            "description": "三選一必修",
+            "courses": [
+              {
+                "code": "GS4504",
+                "name": "設計思考與行動 APP 程式設計應用",
+                "credits": 2,
+                "school": "NCU"
+              },
+              {
+                "code": "GS4502",
+                "name": "運算思維與程式應用初階課程（文客院班）",
+                "credits": 2,
+                "school": "NCU"
+              },
+              {
+                "code": "GS4719",
+                "name": "程式設計-Python",
+                "credits": 3,
+                "school": "NCU"
+              }
+            ]
+          },
+          {
+            "name": "AI 跨域及社會應用",
+            "select_credits": 2,
+            "description": "至少選修 2 學分（跨域與社會應用合併為單一選修池）",
+            "courses": [
+              {
+                "code": "IM3078",
+                "name": "人工智慧與機器學習",
+                "credits": 3,
+                "school": "NCU"
+              },
+              {
+                "code": "GS4517",
+                "name": "人工智慧與社會創新",
+                "credits": 2,
+                "school": "NCU"
+              },
+              {
+                "code": "GS4518",
+                "name": "自然語言處理",
+                "credits": 3,
+                "school": "NCU"
+              },
+              {
+                "code": "GS4514",
+                "name": "資料視覺化",
+                "credits": 2,
+                "school": "NCU"
+              },
+              {
+                "code": "GS4519",
+                "name": "機器學習概論",
+                "credits": 2,
+                "school": "NCU"
+              },
+              {
+                "code": "GS4522",
+                "name": "圖像辨識的企業應用",
+                "credits": 2,
+                "school": "NCU"
+              },
+              {
+                "code": "GS4525",
+                "name": "人工智慧社會影響力評估",
+                "credits": 2,
+                "school": "NCU"
+              },
+              {
+                "code": "GS4530",
+                "name": "人工智慧倫理導論",
+                "credits": 2,
+                "school": "NCU"
+              },
+              {
+                "code": "GS4521",
+                "name": "人工智慧與商業運用",
+                "credits": 2,
+                "school": "NCU"
+              },
+              {
+                "code": "GS4523",
+                "name": "人工智慧與永續發展",
+                "credits": 2,
+                "school": "NCU"
+              },
+              {
+                "code": "GS4528",
+                "name": "人工智慧與法律",
+                "credits": 2,
+                "school": "NCU"
+              },
+              {
+                "code": "GS4526",
+                "name": "人工智慧與社會企業實務",
+                "credits": 2,
+                "school": "NCU"
+              },
+              {
+                "code": "HK4034",
+                "name": "人工智慧與寫作",
+                "credits": 3,
+                "school": "NCU"
+              },
+              {
+                "code": "GS4541",
+                "name": "數據分析智慧",
+                "credits": 3,
+                "school": "NCU"
+              },
+              {
+                "code": "GS4543",
+                "name": "體驗設計",
+                "credits": 2,
+                "school": "NCU"
+              },
+              {
+                "code": "GS3711",
+                "name": "資料科學與人文社會應用",
+                "credits": 3,
+                "school": "NCU"
+              },
+              {
+                "code": "GS3709",
+                "name": "性別、科技與社會",
+                "credits": 2,
+                "school": "NCU"
+              },
+              {
+                "code": "GS3708",
+                "name": "人工智慧與文化內容產業",
+                "credits": 2,
+                "school": "NCU"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 15,
+        "description": "修得學程內課程 15 學分以上"
+      },
+      {
+        "type": "program_choice",
+        "description": "依所屬學院選擇修習軌道：理工資電地生學院適用理工軌；文學院、管理學院、客家學院適用文管軌"
+      },
+      {
+        "type": "prerequisite",
+        "description": "須依序修完程式語言入門、AI基礎課程、AI跨域應用、AI社會運用（或跨域及社會應用）四主軸後，方可修習 AI 專題實作（GS4524）"
+      },
+      {
+        "type": "elective_note",
+        "description": "修畢後所取得學分得抵免通識課程 14 學分（含核心必修及選修科目）"
+      },
+      {
+        "type": "substitution",
+        "description": "修習本校或他校與本學程課程名稱或內容相似之科目，可向通識教育中心或所屬院系提出抵免申請"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢人工智慧跨域應用學分學程」，並頒發學分學程證明書。適用至 108 學年度第 2 學期申請者。"
+  },
+  {
+    "id": "international_affairs",
+    "name": "「國際事務」學分學程",
+    "college": "通識中心",
+    "cross_school": false,
+    "min_credits": 16,
+    "description": "培養學生國際視野及專業能力，以強化學生從事教育學習、學術研究及相關實務工作之基礎。本校各學院學生均可選修，須向通識教育中心提出申請並與負責老師晤談。",
+    "required_courses": [],
+    "elective_groups": [
+      {
+        "name": "必修課程",
+        "select": 1,
+        "description": "至少選修 1 門，2 學分",
+        "courses": [
+          {
+            "code": "HK4008",
+            "name": "國際政治",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3083",
+            "name": "國際政治",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3074",
+            "name": "國際組織",
+            "credits": 2,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "外交決策領域",
+        "select_credits": 0,
+        "description": "選修，最多採計 8 學分",
+        "courses": [
+          {
+            "code": "CC0421",
+            "name": "環境外交",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "CC0418",
+            "name": "當代政治分析",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3126",
+            "name": "國際關係概論",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3224",
+            "name": "亞洲政經概論",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3225",
+            "name": "戰爭與和平：近代世界外交史概論",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3820",
+            "name": "認識世界",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3075",
+            "name": "國際法",
+            "credits": 2,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "經貿商務領域",
+        "select_credits": 0,
+        "description": "選修，最多採計 8 學分",
+        "courses": [
+          {
+            "code": "CC0413",
+            "name": "綠色經濟學",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "CC0414",
+            "name": "管理學",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "CC0419",
+            "name": "生活經濟學",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "CC0423",
+            "name": "企業概論",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "EC3071",
+            "name": "國際貿易",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "新聞參與領域",
+        "select_credits": 0,
+        "description": "選修，最多採計 8 學分",
+        "courses": [
+          {
+            "code": "GS3065",
+            "name": "數位傳播素養與批判思考",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3121",
+            "name": "電子治理與網路公民",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3509",
+            "name": "媒體素養：新聞與生活",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3510",
+            "name": "大眾傳播與生活",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3558",
+            "name": "資訊與網路素養",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3905",
+            "name": "影像紀錄製作基礎課程",
+            "credits": 2,
+            "school": "NCU"
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 16,
+        "description": "修得學程內課程 16 學分以上"
+      },
+      {
+        "type": "required_elective",
+        "description": "必修課程至少選修 1 門（至少 2 學分）"
+      },
+      {
+        "type": "outside_elective_max",
+        "credits": 8,
+        "description": "每個選修領域（外交決策、經貿商務、新聞參與）最多各採計 8 學分"
+      },
+      {
+        "type": "elective_note",
+        "description": "修畢後所取得學分得抵免通識課程 14 學分（含核心必修及選修科目）"
+      },
+      {
+        "type": "substitution",
+        "description": "台灣聯大四校所開課程名稱或內容相似科目，經通識教育中心認定後依學分抵免辦法辦理"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢國際事務學分學程」，並頒發學分學程證明書。"
+  },
+  {
+    "id": "narrative_digital_practice",
+    "name": "「敘事與數位實踐」學分學程",
+    "college": "通識中心",
+    "cross_school": false,
+    "min_credits": 16,
+    "description": "強化學生思考、寫作與自我表達的能力，整合科技與人文，達成多元智能的學習。本校學生均可選修，須向通識教育中心提出申請。",
+    "required_courses": [],
+    "elective_groups": [
+      {
+        "name": "類別一：多元智能與基礎思考",
+        "select_credits": 0,
+        "description": "三類別共同選修，累計達 16 學分即可，各類無個別最低限制",
+        "courses": [
+          {
+            "code": "GS4502",
+            "name": "運算思維與程式設計應用初階課程（文客院班）",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS4505",
+            "name": "知識寫作與思考",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3064",
+            "name": "設計思考",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3065",
+            "name": "數位傳播素養與批判思考",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS4715",
+            "name": "創意與創業",
+            "credits": 2,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "類別二：敘事能力的培養",
+        "select_credits": 0,
+        "description": "三類別共同選修，累計達 16 學分即可",
+        "courses": [
+          {
+            "code": "GS2137",
+            "name": "中國志怪敘事與人情百態",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS2142",
+            "name": "寫作與生活：新媒體採訪與寫作",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS4504",
+            "name": "設計思考與行動 APP 程式設計應用",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3905",
+            "name": "影像紀錄製作基礎課程",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS4720",
+            "name": "資訊圖表與視覺傳播",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3070",
+            "name": "數位敘事",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3071",
+            "name": "融媒體專題製作",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GS9802",
+            "name": "創業實務",
+            "credits": 2,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "類別三：敘事能力的實踐",
+        "select_credits": 0,
+        "description": "三類別共同選修，累計達 16 學分即可",
+        "courses": [
+          {
+            "code": "BA4001",
+            "name": "公益行銷電影實務專題",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA5065",
+            "name": "數位行銷與社會影響力專題",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 16,
+        "description": "三個類別合計修得 16 學分以上，各類別無個別最低學分限制"
+      },
+      {
+        "type": "elective_note",
+        "description": "修畢後所取得學分得抵免通識課程 14 學分（含核心必修及選修科目）"
+      },
+      {
+        "type": "substitution",
+        "description": "台灣聯大四校所開課程名稱或內容相似科目，經通識教育中心認定後依學分抵免辦法辦理"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢敘事與數位實踐學分學程」，並頒發學分學程證明書。適用至 108 學年度第 1 學期申請者。"
+  },
+  {
+    "id": "law_and_politics",
+    "name": "「法律與政治」學分學程",
+    "college": "通識中心",
+    "cross_school": false,
+    "min_credits": 18,
+    "description": "培養學生法律與政治之專業素養及跨領域解決問題能力，以強化學生從事學術研究與實務工作之基礎。本校各學院學生均可選修。",
+    "required_courses": [
+      {
+        "code": "CC0416",
+        "name": "法律的世界",
+        "credits": 2,
+        "school": "NCU"
+      },
+      {
+        "code": "CC0418",
+        "name": "當代政治分析",
+        "credits": 2,
+        "school": "NCU"
+      }
+    ],
+    "elective_groups": [
+      {
+        "name": "法律領域選修",
+        "select_credits": 4,
+        "description": "至少選修 4 學分；刑法概論/刑法總則二選一；智慧財產權法/智慧財產權概論二選一",
+        "courses": [
+          {
+            "code": "GS2175",
+            "name": "憲法",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3077",
+            "name": "行政法",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "LG0001",
+            "name": "民法總則",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "LG0010",
+            "name": "民法親屬",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS4528",
+            "name": "人工智慧與法律",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3075",
+            "name": "國際法",
+            "credits": 2,
+            "school": "NCU"
+          }
+        ],
+        "slots": [
+          {
+            "slot_id": "slot_GS3087",
+            "slot_name": "刑法概論",
+            "select": 1,
+            "credits_options": [
+              2
+            ],
+            "courses": [
+              {
+                "code": "GS3087",
+                "name": "刑法概論",
+                "credits": 2
+              },
+              {
+                "code": "GS3086",
+                "name": "刑法總則",
+                "credits": 2
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_GS3086",
+            "slot_name": "刑法總則",
+            "select": 1,
+            "credits_options": [
+              2
+            ],
+            "courses": [
+              {
+                "code": "GS3086",
+                "name": "刑法總則",
+                "credits": 2
+              },
+              {
+                "code": "GS3087",
+                "name": "刑法概論",
+                "credits": 2
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_GS3340",
+            "slot_name": "智慧財產權法",
+            "select": 1,
+            "credits_options": [
+              2
+            ],
+            "courses": [
+              {
+                "code": "GS3340",
+                "name": "智慧財產權法",
+                "credits": 2
+              },
+              {
+                "code": "GS3080",
+                "name": "智慧財產權概論",
+                "credits": 2
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_GS3080",
+            "slot_name": "智慧財產權概論",
+            "select": 1,
+            "credits_options": [
+              2
+            ],
+            "courses": [
+              {
+                "code": "GS3080",
+                "name": "智慧財產權概論",
+                "credits": 2
+              },
+              {
+                "code": "GS3340",
+                "name": "智慧財產權概論",
+                "credits": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "政治領域選修",
+        "select_credits": 4,
+        "description": "至少選修 4 學分；行政學導論/行政學二選一",
+        "courses": [
+          {
+            "code": "HK3026",
+            "name": "行政學",
+            "credits": 3,
+            "school": "NCU",
+            "description": "與 GS3132 行政學導論二選一"
+          },
+          {
+            "code": "GS3131",
+            "name": "公共政策導論",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "HK4033",
+            "name": "公共管理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3125",
+            "name": "公民社會與民主行政發展",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3121",
+            "name": "電子治理與網路公民",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3303",
+            "name": "國會改革與國家發展",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "HK2023",
+            "name": "地方政府與政治",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3126",
+            "name": "國際關係概論",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3038",
+            "name": "國際政治",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "HK4008",
+            "name": "國際政治",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3074",
+            "name": "國際組織",
+            "credits": 2,
+            "school": "NCU"
+          }
+        ],
+        "slots": [
+          {
+            "slot_id": "slot_GS3132",
+            "slot_name": "行政學導論",
+            "select": 1,
+            "credits_options": [
+              2
+            ],
+            "courses": [
+              {
+                "code": "GS3132",
+                "name": "行政學導論",
+                "credits": 2
+              },
+              {
+                "code": "HK3026",
+                "name": "行政學",
+                "credits": 3
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 18,
+        "description": "修得學程內課程 18 學分以上"
+      },
+      {
+        "type": "dept_required",
+        "credits": 4,
+        "description": "必修全修：法律的世界(2) + 當代政治分析(2)"
+      },
+      {
+        "type": "required_elective",
+        "description": "法律領域選修至少 4 學分；政治領域選修至少 4 學分"
+      },
+      {
+        "type": "elective_note",
+        "description": "刑法概論(GS3087)/刑法總則(GS3086) 二選一；智慧財產權法(GS3340)/智慧財產權概論(GS3080) 二選一"
+      },
+      {
+        "type": "elective_note",
+        "description": "修畢後含 8 學分以上通識課程者，可申請免修全部通識課程共 14 學分"
+      },
+      {
+        "type": "substitution",
+        "description": "台灣聯大四校所開課程名稱或內容相似科目，經通識教育中心認定後依學分抵免辦法辦理"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢法律與政治學分學程」，並頒發學分學程證明書。"
+  },
+  {
+    "id": "interdisciplinary_honors",
+    "name": "「跨領域榮譽學分學程」",
+    "college": "通識中心",
+    "cross_school": true,
+    "partner_schools": [
+      "TBD"
+    ],
+    "min_credits": 15,
+    "description": "因應新世代跨領域需求，招收具強烈創新動機與來自不同領域之優質學習者，深化與轉化既有專業訓練，養成連結不同專業並在師生同儕合作中產生創新解決方案之能力。接受各學院及台灣聯合大學系統大學部學生申請。",
+    "required_courses": [
+      {
+        "code": "GS4511",
+        "name": "頂石計畫寫作",
+        "credits": 1,
+        "school": "NCU",
+        "description": "頂石課程必修；修習前一學期需提出申請，審查通過後方得修課"
+      },
+      {
+        "code": "GS4512",
+        "name": "頂石專題 I",
+        "credits": 2,
+        "school": "NCU",
+        "description": "頂石課程必修；須先修畢至少一門探究課程"
+      },
+      {
+        "code": "GS4537",
+        "name": "頂石專題 II",
+        "credits": 2,
+        "school": "NCU",
+        "description": "頂石課程必修；須先修畢至少一門探究課程"
+      }
+    ],
+    "elective_groups": [
+      {
+        "name": "基礎課程（Foundation Courses）",
+        "select_credits": 0,
+        "description": "進入學程第一年內須修畢至少 1 門基礎課程；選修，學分累計計入 15 學分總數",
+        "courses": [
+          {
+            "code": "GS4513",
+            "name": "定量思考",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS4507",
+            "name": "科技閱讀與寫作",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS2154",
+            "name": "領導素養：跨領域閱讀思考與寫作（英語授課）",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS4505",
+            "name": "知識寫作與思考",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "IL1002",
+            "name": "人文與科技發展",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GS2161",
+            "name": "跨領域思辨",
+            "credits": 1,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "探究課程（Inquiry Courses）",
+        "select_credits": 0,
+        "description": "選修，學分累計計入 15 學分總數；修習頂石課程前須先修畢至少 1 門探究課程",
+        "courses": [
+          {
+            "code": "GS4508",
+            "name": "科學、科技、歷史",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3068",
+            "name": "永續發展與美好生活",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS4503",
+            "name": "跨領域的田野探究與實作",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS4509",
+            "name": "科學變、辨、辯",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS2158",
+            "name": "虛擬與實境",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS4536",
+            "name": "脈絡探究",
+            "credits": 2,
+            "school": "NCU"
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 15,
+        "description": "修得學程內課程 15 學分以上"
+      },
+      {
+        "type": "prerequisite",
+        "description": "進入學程第一年內須修畢至少 1 門基礎課程"
+      },
+      {
+        "type": "prerequisite",
+        "description": "選修頂石課程前，須先修畢至少 1 門探究課程"
+      },
+      {
+        "type": "dept_required",
+        "credits": 5,
+        "description": "頂石三門課（頂石計畫寫作 1 學分 + 頂石專題I 2 學分 + 頂石專題II 2 學分）全為必修，共 5 學分"
+      },
+      {
+        "type": "required_elective",
+        "description": "修習頂石課程前，需以「頂石課程申請表」向學程辦公室提出申請，審查通過後方得修課"
+      },
+      {
+        "type": "certification_required",
+        "description": "修畢頂石課程後，須參加本學程舉辦之期末成果發表會，或以經學程辦公室同意之方式公開呈現成果"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢跨領域榮譽學分學程」，並頒發學分學程證明書。申請須填寫申請表並檢附歷年成績單與申請動機/讀書計畫；大一學生可以經歷文件代替成績單。"
+  },
+  {
+    "id": "interdisciplinary_social_engagement",
+    "name": "「跨領域社會參與」學分學程",
+    "college": "通識中心",
+    "cross_school": false,
+    "min_credits": 15,
+    "description": "導引同學從社會實踐中進行自我探索，以跨領域合作與實作之自主學習模式，形成永續社會參與之學習模式。本校學生均可申請，經「導航課程」任課老師審查擇優錄取。",
+    "required_courses": [
+      {
+        "code": "GS3050",
+        "name": "社會參與之導航與探索",
+        "credits": 2,
+        "school": "NCU",
+        "description": "導航課程必修，建議一年級上學期修習"
+      },
+      {
+        "code": "GS3088",
+        "name": "社會參與議題工作坊(一)",
+        "credits": 2,
+        "school": "NCU",
+        "description": "社會參與跨域專題主軸，建議一年級下學期"
+      },
+      {
+        "code": "GS3089",
+        "name": "社會參與議題工作坊(二)",
+        "credits": 2,
+        "school": "NCU",
+        "description": "社會參與跨域專題主軸，建議二年級上學期"
+      },
+      {
+        "code": "GS3061",
+        "name": "社會參與議題工作坊(三)",
+        "credits": 2,
+        "school": "NCU",
+        "description": "社會參與跨域專題主軸，建議二年級下學期"
+      },
+      {
+        "code": "GS3090",
+        "name": "社會參與實作",
+        "credits": 2,
+        "school": "NCU",
+        "description": "成果展示課程必修，建議三年級上學期；為三大主軸之總整課程"
+      }
+    ],
+    "elective_groups": [
+      {
+        "name": "社會參與跨域專題認列課程",
+        "select_credits": 5,
+        "description": "至少選修 5 學分（認列課程均為 2 學分，至少修 3 門）",
+        "courses": [
+          {
+            "code": "CC0415",
+            "name": "性別社會學",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "CC0416",
+            "name": "法律的世界",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "CC0418",
+            "name": "當代政治分析",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "CC0417",
+            "name": "社會學的想像",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3056",
+            "name": "地方知識與社會",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3082",
+            "name": "身心障礙與台灣社會",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3632",
+            "name": "台灣社會與族群想像",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3638",
+            "name": "認識桃園與在地社會",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "CC0413",
+            "name": "綠色經濟學",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "CC0414",
+            "name": "管理學",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "CC0301",
+            "name": "工程與文明",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "CC0312",
+            "name": "材料改變我們的世界",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "CC0315",
+            "name": "化學與生活",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "CC0318",
+            "name": "電子科技與近代文明發展",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS4532",
+            "name": "當代科技的健康效應",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS4525",
+            "name": "人工智慧社會影響力評估",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS4258",
+            "name": "人工智慧與法律",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS4530",
+            "name": "人工智慧倫理導論",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS2157",
+            "name": "說一個良心的故事責任消費與生產",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS4713",
+            "name": "創造力與創意設計",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS4715",
+            "name": "創意與創業",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3064",
+            "name": "設計思考",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3065",
+            "name": "數位傳播素養與批判思考",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3216",
+            "name": "當代消費文化與社會",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3706",
+            "name": "動漫文化與性別",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3707",
+            "name": "動漫御宅學",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3819",
+            "name": "性別與大眾文化",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3121",
+            "name": "電子治理與網路公民",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3125",
+            "name": "公民社會與民主行政發展",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3080",
+            "name": "智慧財產權概論",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3024",
+            "name": "社會企業",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS4413",
+            "name": "全球氣候變遷－從危機到轉機",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS4508",
+            "name": "科學、科技、歷史",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3069",
+            "name": "桃園海洋環境變遷與人文視野",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3355",
+            "name": "環境倫理之實踐",
+            "credits": 2,
+            "school": "NCU"
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 15,
+        "description": "修得學程內課程 15 學分以上"
+      },
+      {
+        "type": "dept_required",
+        "credits": 10,
+        "description": "三大主軸全修：導航課程 GS3050(2) + 工作坊三門(2×3=6) + 成果展示 GS3090(2)，共 10 學分"
+      },
+      {
+        "type": "elective_minimum",
+        "credits": 5,
+        "description": "認列課程至少選修 5 學分（至少 3 門）"
+      },
+      {
+        "type": "elective_note",
+        "description": "完整修畢三大主軸者可抵免通識課程 14 學分（含核心必修及選修科目）"
+      },
+      {
+        "type": "elective_note",
+        "description": "申請須經「導航課程」任課老師審查，擇優錄取"
+      },
+      {
+        "type": "substitution",
+        "description": "修習本校或他校與本學程課程名稱或內容相似之科目，得向通識教育中心提出抵免申請"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢跨領域社會參與學分學程」，並頒發學分學程證明書。認列課程均為 2 學分通識課，共 35 門。"
+  }
+]

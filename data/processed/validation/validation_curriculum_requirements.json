@@ -1,0 +1,2944 @@
+{
+  "summary": {
+    "total_depts": 28,
+    "pdf_not_found": 0,
+    "has_json_only": 1,
+    "has_credit_mismatch": 1,
+    "fully_matched": 26
+  },
+  "results": [
+    {
+      "dept": "中國文學系",
+      "pdfs_found": [
+        "data\\raw\\應修科目表\\文學院\\中國文學系_114.pdf"
+      ],
+      "matched": [
+        {
+          "code": "CL1003",
+          "name": "國學導讀上",
+          "credits": 2
+        },
+        {
+          "code": "CL1004",
+          "name": "國學導讀下",
+          "credits": 2
+        },
+        {
+          "code": "CL1005",
+          "name": "文學概論上",
+          "credits": 2
+        },
+        {
+          "code": "CL1006",
+          "name": "文學概論下",
+          "credits": 2
+        },
+        {
+          "code": "CL1025",
+          "name": "古籍閱讀上",
+          "credits": 1
+        },
+        {
+          "code": "CL1026",
+          "name": "古籍閱讀下",
+          "credits": 1
+        },
+        {
+          "code": "CL2001",
+          "name": "歷代文選及習作上",
+          "credits": 3
+        },
+        {
+          "code": "CL2002",
+          "name": "歷代文選及習作下",
+          "credits": 3
+        },
+        {
+          "code": "CL2005",
+          "name": "中國文學史上",
+          "credits": 3
+        },
+        {
+          "code": "CL2006",
+          "name": "中國文學史下",
+          "credits": 3
+        },
+        {
+          "code": "CL2003",
+          "name": "文字學上",
+          "credits": 2
+        },
+        {
+          "code": "CL2004",
+          "name": "文字學下",
+          "credits": 2
+        },
+        {
+          "code": "CL2007",
+          "name": "詩選及習作上",
+          "credits": 2
+        },
+        {
+          "code": "CL2008",
+          "name": "詩選及習作下",
+          "credits": 2
+        },
+        {
+          "code": "CL4003",
+          "name": "中國思想史上",
+          "credits": 3
+        },
+        {
+          "code": "CL4004",
+          "name": "中國思想史下",
+          "credits": 3
+        },
+        {
+          "code": "CL2090",
+          "name": "詞選及習作",
+          "credits": 3
+        },
+        {
+          "code": "CL3161",
+          "name": "聲韻學",
+          "credits": 3
+        },
+        {
+          "code": "CL4104",
+          "name": "訓詁學",
+          "credits": 3
+        },
+        {
+          "code": "CL3160",
+          "name": "曲選及習作",
+          "credits": 3
+        }
+      ],
+      "json_only": [],
+      "credit_mismatch": [],
+      "no_code": []
+    },
+    {
+      "dept": "英美語文學系",
+      "pdfs_found": [
+        "data\\raw\\應修科目表\\文學院\\英美語文學系_114.pdf"
+      ],
+      "matched": [
+        {
+          "code": "EL1060",
+          "name": "影像分析寫作",
+          "credits": 3
+        },
+        {
+          "code": "EL1064",
+          "name": "英文口語訓練",
+          "credits": 3
+        },
+        {
+          "code": "EL1204",
+          "name": "文獻蒐集與論證寫作",
+          "credits": 3
+        },
+        {
+          "code": "EL2078",
+          "name": "文學分析寫作",
+          "credits": 3
+        },
+        {
+          "code": "EL2076",
+          "name": "演說與溝通I",
+          "credits": 3
+        },
+        {
+          "code": "EL1201",
+          "name": "比較觀念文化史",
+          "credits": 3
+        },
+        {
+          "code": "EL1202",
+          "name": "文學、歷史與哲思",
+          "credits": 3
+        }
+      ],
+      "json_only": [],
+      "credit_mismatch": [],
+      "no_code": []
+    },
+    {
+      "dept": "法國語文學系",
+      "pdfs_found": [
+        "data\\raw\\應修科目表\\文學院\\法國語文學系_114.pdf"
+      ],
+      "matched": [
+        {
+          "code": "FR1019",
+          "name": "口語表達一上",
+          "credits": 2
+        },
+        {
+          "code": "FR1020",
+          "name": "口語表達一下",
+          "credits": 2
+        },
+        {
+          "code": "FR1033",
+          "name": "文法與寫作上",
+          "credits": 4
+        },
+        {
+          "code": "FR1034",
+          "name": "文法與寫作下",
+          "credits": 4
+        },
+        {
+          "code": "FR1023",
+          "name": "讀本上",
+          "credits": 4
+        },
+        {
+          "code": "FR1024",
+          "name": "讀本下",
+          "credits": 4
+        },
+        {
+          "code": "FR1039",
+          "name": "法文文選一上",
+          "credits": 2
+        },
+        {
+          "code": "FR1040",
+          "name": "法文文選一下",
+          "credits": 2
+        },
+        {
+          "code": "FR2029",
+          "name": "口語表達二上",
+          "credits": 2
+        },
+        {
+          "code": "FR2030",
+          "name": "口語表達二下",
+          "credits": 2
+        },
+        {
+          "code": "FR2031",
+          "name": "寫作二上",
+          "credits": 2
+        },
+        {
+          "code": "FR2032",
+          "name": "寫作二下",
+          "credits": 2
+        },
+        {
+          "code": "FR2043",
+          "name": "文法二上",
+          "credits": 2
+        },
+        {
+          "code": "FR2044",
+          "name": "文法二下",
+          "credits": 2
+        },
+        {
+          "code": "FR2035",
+          "name": "中譯法上",
+          "credits": 2
+        },
+        {
+          "code": "FR3047",
+          "name": "中譯法下",
+          "credits": 2
+        },
+        {
+          "code": "FR2039",
+          "name": "法文文選二上",
+          "credits": 2
+        },
+        {
+          "code": "FR2040",
+          "name": "法文文選二下",
+          "credits": 2
+        },
+        {
+          "code": "FR2036",
+          "name": "法譯中上",
+          "credits": 2
+        },
+        {
+          "code": "FR3048",
+          "name": "法譯中下",
+          "credits": 2
+        },
+        {
+          "code": "FR3041",
+          "name": "口語表達三上",
+          "credits": 2
+        },
+        {
+          "code": "FR3042",
+          "name": "口語表達三下",
+          "credits": 2
+        },
+        {
+          "code": "FR3043",
+          "name": "寫作三上",
+          "credits": 2
+        },
+        {
+          "code": "FR3044",
+          "name": "寫作三下",
+          "credits": 2
+        }
+      ],
+      "json_only": [],
+      "credit_mismatch": [],
+      "no_code": []
+    },
+    {
+      "dept": "文學院學士班",
+      "pdfs_found": [
+        "data\\raw\\應修科目表\\文學院\\文學院學士班_114.pdf"
+      ],
+      "matched": [],
+      "json_only": [],
+      "credit_mismatch": [],
+      "no_code": []
+    },
+    {
+      "dept": "化學學系",
+      "pdfs_found": [
+        "data\\raw\\應修科目表\\理學院\\化學學系_114.pdf"
+      ],
+      "matched": [
+        {
+          "code": "MA1001",
+          "name": "微積分上",
+          "credits": 4
+        },
+        {
+          "code": "MA1002",
+          "name": "微積分下",
+          "credits": 4
+        },
+        {
+          "code": "CM1001",
+          "name": "普通化學I",
+          "credits": 3
+        },
+        {
+          "code": "CM1002",
+          "name": "普通化學II",
+          "credits": 3
+        },
+        {
+          "code": "CM1003",
+          "name": "普化實驗上",
+          "credits": 1
+        },
+        {
+          "code": "CM1004",
+          "name": "普化實驗下",
+          "credits": 1
+        },
+        {
+          "code": "PH1033",
+          "name": "普通物理B上",
+          "credits": 3
+        },
+        {
+          "code": "PH1034",
+          "name": "普通物理B下",
+          "credits": 3
+        },
+        {
+          "code": "PH1003",
+          "name": "普物實驗上",
+          "credits": 1
+        },
+        {
+          "code": "PH1004",
+          "name": "普物實驗下",
+          "credits": 1
+        },
+        {
+          "code": "CM2021",
+          "name": "分析化學上",
+          "credits": 3
+        },
+        {
+          "code": "CM2022",
+          "name": "分析化學下",
+          "credits": 4
+        },
+        {
+          "code": "CM2031",
+          "name": "有機化學上",
+          "credits": 4
+        },
+        {
+          "code": "CM2032",
+          "name": "有機化學下",
+          "credits": 4
+        },
+        {
+          "code": "CM2081",
+          "name": "分析與有機化學實驗上",
+          "credits": 3
+        },
+        {
+          "code": "CM2082",
+          "name": "分析與有機化學實驗下",
+          "credits": 3
+        },
+        {
+          "code": "CM3041",
+          "name": "物理化學上",
+          "credits": 4
+        },
+        {
+          "code": "CM3042",
+          "name": "物理化學下",
+          "credits": 4
+        },
+        {
+          "code": "CM3043",
+          "name": "物理化學實驗上",
+          "credits": 2
+        },
+        {
+          "code": "CM3044",
+          "name": "物理化學實驗下",
+          "credits": 2
+        },
+        {
+          "code": "CM3051",
+          "name": "無機化學上",
+          "credits": 3
+        },
+        {
+          "code": "CM3052",
+          "name": "無機化學下",
+          "credits": 3
+        },
+        {
+          "code": "CM3055",
+          "name": "無機化學實驗",
+          "credits": 2
+        },
+        {
+          "code": "CM4001",
+          "name": "書報討論上",
+          "credits": 1
+        },
+        {
+          "code": "CM4002",
+          "name": "書報討論下",
+          "credits": 1
+        }
+      ],
+      "json_only": [],
+      "credit_mismatch": [],
+      "no_code": []
+    },
+    {
+      "dept": "光電科學與工程學系",
+      "pdfs_found": [
+        "data\\raw\\應修科目表\\理學院\\光電科學與工程學系_114.pdf"
+      ],
+      "matched": [
+        {
+          "code": "MA1001",
+          "name": "微積分上",
+          "credits": 4
+        },
+        {
+          "code": "MA1002",
+          "name": "微積分下",
+          "credits": 4
+        },
+        {
+          "code": "PH1031",
+          "name": "普通物理A上",
+          "credits": 3
+        },
+        {
+          "code": "PH1032",
+          "name": "普通物理A下",
+          "credits": 3
+        },
+        {
+          "code": "PH1003",
+          "name": "普物實驗上",
+          "credits": 1
+        },
+        {
+          "code": "PH1004",
+          "name": "普物實驗下",
+          "credits": 1
+        },
+        {
+          "code": "CM1009",
+          "name": "普通化學I",
+          "credits": 3
+        },
+        {
+          "code": "CM1008",
+          "name": "普化實驗",
+          "credits": 1
+        },
+        {
+          "code": "OS1006",
+          "name": "光電科技概論上",
+          "credits": 1
+        },
+        {
+          "code": "OS1007",
+          "name": "光電科技概論下",
+          "credits": 1
+        },
+        {
+          "code": "OS1008",
+          "name": "計算機概論",
+          "credits": 3
+        },
+        {
+          "code": "OS2007",
+          "name": "工程數學I",
+          "credits": 3
+        },
+        {
+          "code": "OS2008",
+          "name": "工程數學II",
+          "credits": 3
+        },
+        {
+          "code": "OS2003",
+          "name": "電磁學I",
+          "credits": 3
+        },
+        {
+          "code": "OS2004",
+          "name": "電磁學II",
+          "credits": 3
+        },
+        {
+          "code": "OS2013",
+          "name": "基礎電學I",
+          "credits": 4
+        },
+        {
+          "code": "OS2014",
+          "name": "基礎電學II",
+          "credits": 4
+        },
+        {
+          "code": "OS2015",
+          "name": "電子實驗I",
+          "credits": 1
+        },
+        {
+          "code": "OS2016",
+          "name": "電子實驗II",
+          "credits": 1
+        },
+        {
+          "code": "OS2017",
+          "name": "基礎光學與幾何光學",
+          "credits": 3
+        },
+        {
+          "code": "OS2018",
+          "name": "波動光學",
+          "credits": 3
+        },
+        {
+          "code": "OS3016",
+          "name": "電磁光學",
+          "credits": 3
+        },
+        {
+          "code": "OS3011",
+          "name": "光學實驗",
+          "credits": 1
+        },
+        {
+          "code": "OS2001",
+          "name": "近代物理",
+          "credits": 3
+        },
+        {
+          "code": "OS3001",
+          "name": "光學系統",
+          "credits": 3
+        },
+        {
+          "code": "OS2011",
+          "name": "光電半導體物理",
+          "credits": 3
+        },
+        {
+          "code": "OS3002",
+          "name": "光電工程概論",
+          "credits": 3
+        },
+        {
+          "code": "OS3010",
+          "name": "光電實驗",
+          "credits": 1
+        }
+      ],
+      "json_only": [],
+      "credit_mismatch": [],
+      "no_code": []
+    },
+    {
+      "dept": "物理學系",
+      "pdfs_found": [
+        "data\\raw\\應修科目表\\理學院\\物理學系_114.pdf"
+      ],
+      "matched": [
+        {
+          "code": "MA1001",
+          "name": "微積分上",
+          "credits": 4
+        },
+        {
+          "code": "MA1002",
+          "name": "微積分下",
+          "credits": 4
+        },
+        {
+          "code": "PH1029",
+          "name": "實驗物理與方法I上",
+          "credits": 6
+        },
+        {
+          "code": "PH1030",
+          "name": "實驗物理與方法I下",
+          "credits": 6
+        },
+        {
+          "code": "PH1027",
+          "name": "力學",
+          "credits": 4
+        },
+        {
+          "code": "PH1028",
+          "name": "電磁學",
+          "credits": 4
+        },
+        {
+          "code": "PH2003",
+          "name": "應用數學上",
+          "credits": 3
+        },
+        {
+          "code": "PH2004",
+          "name": "應用數學下",
+          "credits": 3
+        },
+        {
+          "code": "PH3011",
+          "name": "熱物理",
+          "credits": 3
+        },
+        {
+          "code": "PH3009",
+          "name": "量子物理",
+          "credits": 3
+        },
+        {
+          "code": "PH2029",
+          "name": "實驗物理與方法II上",
+          "credits": 6
+        },
+        {
+          "code": "PH2030",
+          "name": "實驗物理與方法II下",
+          "credits": 6
+        }
+      ],
+      "json_only": [],
+      "credit_mismatch": [],
+      "no_code": []
+    },
+    {
+      "dept": "數學系",
+      "pdfs_found": [
+        "data\\raw\\應修科目表\\理學院\\數學系_數學科學組_114.pdf",
+        "data\\raw\\應修科目表\\理學院\\數學系_計算與資料科學組_114.pdf"
+      ],
+      "matched": [
+        {
+          "code": "MA1001",
+          "name": "微積分上",
+          "credits": 4
+        },
+        {
+          "code": "MA1002",
+          "name": "微積分下",
+          "credits": 4
+        },
+        {
+          "code": "MA1015",
+          "name": "基礎數學",
+          "credits": 3
+        },
+        {
+          "code": "MA1013",
+          "name": "計算機概論I",
+          "credits": 3
+        },
+        {
+          "code": "MA2007",
+          "name": "線性代數I",
+          "credits": 3
+        },
+        {
+          "code": "MA2008",
+          "name": "線性代數II",
+          "credits": 3
+        },
+        {
+          "code": "MA2045",
+          "name": "高等微積分I",
+          "credits": 4
+        },
+        {
+          "code": "MA2046",
+          "name": "高等微積分II",
+          "credits": 4
+        },
+        {
+          "code": "MA2025",
+          "name": "代數I",
+          "credits": 3
+        },
+        {
+          "code": "MA2041",
+          "name": "微分方程I",
+          "credits": 3
+        },
+        {
+          "code": "MA2021",
+          "name": "機率論",
+          "credits": 3
+        },
+        {
+          "code": "MA3015",
+          "name": "複變函數論I",
+          "credits": 3
+        },
+        {
+          "code": "MA1018",
+          "name": "科學計算導論",
+          "credits": 3
+        },
+        {
+          "code": "MA2049",
+          "name": "分析導論I",
+          "credits": 3
+        },
+        {
+          "code": "MA2050",
+          "name": "分析導論II",
+          "credits": 3
+        },
+        {
+          "code": "MA2030",
+          "name": "數值線性代數",
+          "credits": 3
+        },
+        {
+          "code": "MA3067",
+          "name": "數學建模",
+          "credits": 3
+        },
+        {
+          "code": "MA2011",
+          "name": "統計學",
+          "credits": 3
+        },
+        {
+          "code": "MA2044",
+          "name": "數值微分方程",
+          "credits": 3
+        },
+        {
+          "code": "MA2063",
+          "name": "最佳化方法與應用",
+          "credits": 3
+        }
+      ],
+      "json_only": [],
+      "credit_mismatch": [],
+      "no_code": []
+    },
+    {
+      "dept": "理學院學士班",
+      "pdfs_found": [
+        "data\\raw\\應修科目表\\理學院\\理學院學士班_114.pdf",
+        "data\\raw\\應修科目表\\理學院\\理學院學士班_化學領域專長_114.pdf",
+        "data\\raw\\應修科目表\\理學院\\理學院學士班_數學領域專長_114.pdf",
+        "data\\raw\\應修科目表\\理學院\\理學院學士班_物理領域專長_114.pdf",
+        "data\\raw\\應修科目表\\理學院\\理學院學士班_生醫領域專長_114.pdf",
+        "data\\raw\\應修科目表\\理學院\\理學院學士班_生命科學領域專長_114.pdf",
+        "data\\raw\\應修科目表\\理學院\\理學院學士班_光電科學與工程領域專長_114.pdf"
+      ],
+      "matched": [
+        {
+          "code": "MA1001",
+          "name": "微積分上",
+          "credits": 4
+        },
+        {
+          "code": "MA1002",
+          "name": "微積分下",
+          "credits": 4
+        },
+        {
+          "code": "JS1001",
+          "name": "跨領域書報討論上",
+          "credits": 1
+        },
+        {
+          "code": "JS1002",
+          "name": "跨領域書報討論下",
+          "credits": 1
+        },
+        {
+          "code": "JS4001",
+          "name": "跨領域成果展示",
+          "credits": 1
+        },
+        {
+          "code": "BM1011",
+          "name": "人工智慧程式入門",
+          "credits": 3
+        }
+      ],
+      "json_only": [],
+      "credit_mismatch": [],
+      "no_code": []
+    },
+    {
+      "dept": "土木工程學系",
+      "pdfs_found": [
+        "data\\raw\\應修科目表\\工學院\\土木工程學系_114.pdf"
+      ],
+      "matched": [
+        {
+          "code": "MA1003",
+          "name": "微積分上",
+          "credits": 3
+        },
+        {
+          "code": "MA1004",
+          "name": "微積分下",
+          "credits": 3
+        },
+        {
+          "code": "EG1001",
+          "name": "工程程式設計",
+          "credits": 3
+        },
+        {
+          "code": "PH1035",
+          "name": "普通物理A",
+          "credits": 3
+        },
+        {
+          "code": "CI1002",
+          "name": "土木工程概論",
+          "credits": 1
+        },
+        {
+          "code": "CI1009",
+          "name": "測量學",
+          "credits": 3
+        },
+        {
+          "code": "CI1010",
+          "name": "測量實習",
+          "credits": 1
+        },
+        {
+          "code": "PH1023",
+          "name": "普物實驗",
+          "credits": 1
+        },
+        {
+          "code": "CI1005",
+          "name": "應用力學",
+          "credits": 3
+        },
+        {
+          "code": "CI2005",
+          "name": "工程材料學",
+          "credits": 3
+        },
+        {
+          "code": "CI2017",
+          "name": "工程數學I",
+          "credits": 3
+        },
+        {
+          "code": "CI2018",
+          "name": "工程數學II",
+          "credits": 3
+        },
+        {
+          "code": "CI2004",
+          "name": "材料力學",
+          "credits": 3
+        },
+        {
+          "code": "CI2011",
+          "name": "流體力學",
+          "credits": 3
+        },
+        {
+          "code": "CI2019",
+          "name": "結構學I",
+          "credits": 3
+        },
+        {
+          "code": "CI3036",
+          "name": "土木工程實驗I",
+          "credits": 2
+        },
+        {
+          "code": "CI3037",
+          "name": "土木工程實驗II",
+          "credits": 2
+        },
+        {
+          "code": "CI3003",
+          "name": "土壤力學I",
+          "credits": 3
+        },
+        {
+          "code": "EG2001",
+          "name": "工程統計學",
+          "credits": 3
+        },
+        {
+          "code": "CI3005",
+          "name": "鋼筋混凝土學",
+          "credits": 3
+        },
+        {
+          "code": "CI3010",
+          "name": "基礎工程",
+          "credits": 3
+        },
+        {
+          "code": "CI2007",
+          "name": "工程圖學",
+          "credits": 1
+        },
+        {
+          "code": "CI4103",
+          "name": "土木實務專題",
+          "credits": 3
+        }
+      ],
+      "json_only": [],
+      "credit_mismatch": [],
+      "no_code": []
+    },
+    {
+      "dept": "化學工程與材料工程學系",
+      "pdfs_found": [
+        "data\\raw\\應修科目表\\工學院\\化學工程與材料工程學系_114.pdf"
+      ],
+      "matched": [
+        {
+          "code": "MA1003",
+          "name": "微積分上",
+          "credits": 3
+        },
+        {
+          "code": "MA1004",
+          "name": "微積分下",
+          "credits": 3
+        },
+        {
+          "code": "EG1001",
+          "name": "工程程式設計",
+          "credits": 3
+        },
+        {
+          "code": "PH1040",
+          "name": "普通物理C",
+          "credits": 3
+        },
+        {
+          "code": "EG1007",
+          "name": "普通化學",
+          "credits": 3
+        },
+        {
+          "code": "CH1023",
+          "name": "材料工程概論I",
+          "credits": 3
+        },
+        {
+          "code": "CH1024",
+          "name": "材料工程概論II",
+          "credits": 3
+        },
+        {
+          "code": "CH1012",
+          "name": "質能平衡與化工計算",
+          "credits": 3
+        },
+        {
+          "code": "PH1023",
+          "name": "普物實驗",
+          "credits": 1
+        },
+        {
+          "code": "CH1022",
+          "name": "基礎材料化學實驗I",
+          "credits": 1
+        },
+        {
+          "code": "CH2029",
+          "name": "基礎材料化學實驗II",
+          "credits": 1
+        },
+        {
+          "code": "CH2030",
+          "name": "基礎材料化學實驗III",
+          "credits": 1
+        },
+        {
+          "code": "CH2031",
+          "name": "材料化學",
+          "credits": 3
+        },
+        {
+          "code": "CH2001",
+          "name": "有機化學上",
+          "credits": 3
+        },
+        {
+          "code": "CH2002",
+          "name": "有機化學下",
+          "credits": 3
+        },
+        {
+          "code": "CH2005",
+          "name": "物理化學上",
+          "credits": 3
+        },
+        {
+          "code": "CH2006",
+          "name": "物理化學下",
+          "credits": 3
+        },
+        {
+          "code": "CH2009",
+          "name": "工程數學上",
+          "credits": 3
+        },
+        {
+          "code": "CH2010",
+          "name": "工程數學下",
+          "credits": 3
+        },
+        {
+          "code": "CH3059",
+          "name": "化工與材料熱力學I",
+          "credits": 3
+        },
+        {
+          "code": "CH3060",
+          "name": "化工與材料熱力學II",
+          "credits": 3
+        },
+        {
+          "code": "CH3011",
+          "name": "化學反應工程",
+          "credits": 3
+        },
+        {
+          "code": "CH3012",
+          "name": "儀器分析",
+          "credits": 3
+        },
+        {
+          "code": "CH2021",
+          "name": "輸送現象與單元操作I",
+          "credits": 3
+        },
+        {
+          "code": "CH3042",
+          "name": "輸送現象與單元操作II",
+          "credits": 3
+        },
+        {
+          "code": "CH3043",
+          "name": "輸送現象與單元操作III",
+          "credits": 3
+        },
+        {
+          "code": "CH3055",
+          "name": "固態物理導論",
+          "credits": 3
+        },
+        {
+          "code": "CH3058",
+          "name": "化工與材料實驗I",
+          "credits": 1
+        },
+        {
+          "code": "CH4059",
+          "name": "化工與材料實驗II",
+          "credits": 1
+        },
+        {
+          "code": "CH4060",
+          "name": "化工與材料實驗III",
+          "credits": 1
+        },
+        {
+          "code": "CH4042",
+          "name": "程序設計",
+          "credits": 4
+        }
+      ],
+      "json_only": [],
+      "credit_mismatch": [],
+      "no_code": []
+    },
+    {
+      "dept": "機械工程學系",
+      "pdfs_found": [
+        "data\\raw\\應修科目表\\工學院\\機械工程學系_光機電工程組_114.pdf",
+        "data\\raw\\應修科目表\\工學院\\機械工程學系_設計與分析組_114.pdf",
+        "data\\raw\\應修科目表\\工學院\\機械工程學系_先進材料與精密製造組_114.pdf"
+      ],
+      "matched": [
+        {
+          "code": "MA1003",
+          "name": "微積分上",
+          "credits": 3
+        },
+        {
+          "code": "MA1004",
+          "name": "微積分下",
+          "credits": 3
+        },
+        {
+          "code": "EG1001",
+          "name": "工程程式設計",
+          "credits": 3
+        },
+        {
+          "code": "PH1036",
+          "name": "普通物理A",
+          "credits": 3
+        },
+        {
+          "code": "PH1024",
+          "name": "普物實驗",
+          "credits": 1
+        },
+        {
+          "code": "ME1041",
+          "name": "製造工程實習I",
+          "credits": 1
+        },
+        {
+          "code": "ME2037",
+          "name": "機械製圖上",
+          "credits": 1
+        },
+        {
+          "code": "ME2038",
+          "name": "機械製圖下",
+          "credits": 1
+        },
+        {
+          "code": "ME1006",
+          "name": "靜力與材料力學",
+          "credits": 4
+        },
+        {
+          "code": "ME2001",
+          "name": "工程數學I",
+          "credits": 3
+        },
+        {
+          "code": "ME2002",
+          "name": "工程數學II",
+          "credits": 3
+        },
+        {
+          "code": "ME2035",
+          "name": "機構學",
+          "credits": 3
+        },
+        {
+          "code": "ME2065",
+          "name": "電路及電子學",
+          "credits": 3
+        },
+        {
+          "code": "ME2066",
+          "name": "電路及電子實驗",
+          "credits": 1
+        },
+        {
+          "code": "ME2013",
+          "name": "動力學",
+          "credits": 3
+        },
+        {
+          "code": "ME2051",
+          "name": "材料科學",
+          "credits": 3
+        },
+        {
+          "code": "ME2056",
+          "name": "精密機械製造I",
+          "credits": 3
+        },
+        {
+          "code": "ME3043",
+          "name": "精密機械設計I",
+          "credits": 3
+        },
+        {
+          "code": "ME3096",
+          "name": "量測實驗",
+          "credits": 1
+        },
+        {
+          "code": "ME4061",
+          "name": "自動控制I",
+          "credits": 3
+        },
+        {
+          "code": "ME2073",
+          "name": "熱力學I",
+          "credits": 3
+        },
+        {
+          "code": "ME3081",
+          "name": "流體力學",
+          "credits": 3
+        },
+        {
+          "code": "ME4075",
+          "name": "畢業專題",
+          "credits": 3
+        },
+        {
+          "code": "ME3048",
+          "name": "先進材料",
+          "credits": 3
+        },
+        {
+          "code": "ME3095",
+          "name": "材料實驗",
+          "credits": 1
+        },
+        {
+          "code": "ME3102",
+          "name": "熱流實驗",
+          "credits": 1
+        },
+        {
+          "code": "ME3072",
+          "name": "熱傳學",
+          "credits": 3
+        },
+        {
+          "code": "ME4096",
+          "name": "先進材料製程",
+          "credits": 3
+        },
+        {
+          "code": "ME3046",
+          "name": "物理冶金",
+          "credits": 3
+        },
+        {
+          "code": "ME1042",
+          "name": "製造工程實習II",
+          "credits": 1
+        },
+        {
+          "code": "ME1018",
+          "name": "微控制器",
+          "credits": 3
+        },
+        {
+          "code": "ME1055",
+          "name": "光機電工程概論",
+          "credits": 2
+        },
+        {
+          "code": "ME2003",
+          "name": "基礎工程光學I",
+          "credits": 3
+        },
+        {
+          "code": "ME2004",
+          "name": "基礎工程光學II",
+          "credits": 3
+        },
+        {
+          "code": "ME2023",
+          "name": "基礎工程光學實驗",
+          "credits": 1
+        },
+        {
+          "code": "ME2072",
+          "name": "熱力學II",
+          "credits": 2
+        },
+        {
+          "code": "ME3044",
+          "name": "精密機械設計II",
+          "credits": 3
+        },
+        {
+          "code": "ME3061",
+          "name": "電腦輔助工程",
+          "credits": 3
+        }
+      ],
+      "json_only": [],
+      "credit_mismatch": [],
+      "no_code": []
+    },
+    {
+      "dept": "工學院學士班",
+      "pdfs_found": [
+        "data\\raw\\應修科目表\\工學院\\工學院學士班_114.pdf",
+        "data\\raw\\應修科目表\\工學院\\工學院學士班_智慧機械專長_114.pdf",
+        "data\\raw\\應修科目表\\工學院\\工學院學士班_永續防災專長_114.pdf",
+        "data\\raw\\應修科目表\\工學院\\工學院學士班_綠色科技專長_114.pdf",
+        "data\\raw\\應修科目表\\工學院\\工學院學士班_能源材料專長_114.pdf"
+      ],
+      "matched": [
+        {
+          "code": "MA1003",
+          "name": "微積分上",
+          "credits": 3
+        },
+        {
+          "code": "MA1004",
+          "name": "微積分下",
+          "credits": 3
+        },
+        {
+          "code": "EG1003",
+          "name": "普通化學",
+          "credits": 3
+        },
+        {
+          "code": "EI1101",
+          "name": "工程科技導論",
+          "credits": 2
+        },
+        {
+          "code": "EG1001",
+          "name": "工程程式設計",
+          "credits": 3
+        },
+        {
+          "code": "PH1036",
+          "name": "普通物理A",
+          "credits": 3
+        },
+        {
+          "code": "PH1024",
+          "name": "普物實驗",
+          "credits": 1
+        },
+        {
+          "code": "EG2001",
+          "name": "工程統計學",
+          "credits": 3
+        },
+        {
+          "code": "EI2101",
+          "name": "專題製作I",
+          "credits": 1
+        },
+        {
+          "code": "EI2202",
+          "name": "專題製作II",
+          "credits": 1
+        },
+        {
+          "code": "EI3101",
+          "name": "專題製作III",
+          "credits": 1
+        },
+        {
+          "code": "EI3202",
+          "name": "專題製作IV",
+          "credits": 1
+        },
+        {
+          "code": "EI3103",
+          "name": "社會實踐專題上",
+          "credits": 3
+        },
+        {
+          "code": "EI3104",
+          "name": "社會實踐專題下",
+          "credits": 3
+        },
+        {
+          "code": "EI4301",
+          "name": "畢業專題",
+          "credits": 3
+        }
+      ],
+      "json_only": [],
+      "credit_mismatch": [],
+      "no_code": []
+    },
+    {
+      "dept": "企業管理學系",
+      "pdfs_found": [
+        "data\\raw\\應修科目表\\管理學院\\企業管理學系_114.pdf"
+      ],
+      "matched": [
+        {
+          "code": "MA1005",
+          "name": "微積分上",
+          "credits": 3
+        },
+        {
+          "code": "MA1006",
+          "name": "微積分下",
+          "credits": 3
+        },
+        {
+          "code": "BA1003",
+          "name": "管理學",
+          "credits": 3
+        },
+        {
+          "code": "BA2000",
+          "name": "財務管理",
+          "credits": 3
+        },
+        {
+          "code": "BA2030",
+          "name": "行銷管理",
+          "credits": 3
+        },
+        {
+          "code": "BA2004",
+          "name": "管理數學",
+          "credits": 3
+        },
+        {
+          "code": "BA2015",
+          "name": "組織行為",
+          "credits": 3
+        },
+        {
+          "code": "BA2014",
+          "name": "作業研究",
+          "credits": 3
+        },
+        {
+          "code": "BA3005",
+          "name": "人力資源管理",
+          "credits": 3
+        },
+        {
+          "code": "BA3004",
+          "name": "資訊管理",
+          "credits": 3
+        },
+        {
+          "code": "BA3001",
+          "name": "生產與作業管理",
+          "credits": 3
+        },
+        {
+          "code": "BA3000",
+          "name": "民法概要",
+          "credits": 3
+        },
+        {
+          "code": "BA2016",
+          "name": "成本會計",
+          "credits": 3
+        },
+        {
+          "code": "BA3003",
+          "name": "商事法",
+          "credits": 3
+        },
+        {
+          "code": "BA4002",
+          "name": "策略管理",
+          "credits": 3
+        },
+        {
+          "code": "BA4086",
+          "name": "企管專題",
+          "credits": 3
+        }
+      ],
+      "json_only": [],
+      "credit_mismatch": [],
+      "no_code": []
+    },
+    {
+      "dept": "財務金融學系",
+      "pdfs_found": [
+        "data\\raw\\應修科目表\\管理學院\\財務金融學系_114.pdf"
+      ],
+      "matched": [
+        {
+          "code": "MA1005",
+          "name": "微積分上",
+          "credits": 3
+        },
+        {
+          "code": "MA1006",
+          "name": "微積分下",
+          "credits": 3
+        },
+        {
+          "code": "FM1011",
+          "name": "財務金融概論",
+          "credits": 3
+        },
+        {
+          "code": "FM2031",
+          "name": "財務管理上",
+          "credits": 3
+        },
+        {
+          "code": "FM2032",
+          "name": "財務管理下",
+          "credits": 3
+        },
+        {
+          "code": "FM2003",
+          "name": "個體經濟學",
+          "credits": 3
+        },
+        {
+          "code": "FM2004",
+          "name": "總體經濟學",
+          "credits": 3
+        },
+        {
+          "code": "FM3017",
+          "name": "投資學",
+          "credits": 3
+        },
+        {
+          "code": "FM3002",
+          "name": "期貨與選擇權",
+          "credits": 3
+        },
+        {
+          "code": "FM4001",
+          "name": "國際財務管理",
+          "credits": 3
+        },
+        {
+          "code": "FM3036",
+          "name": "金融機構與市場",
+          "credits": 3
+        },
+        {
+          "code": "FM3001",
+          "name": "財務報表分析",
+          "credits": 3
+        }
+      ],
+      "json_only": [],
+      "credit_mismatch": [],
+      "no_code": []
+    },
+    {
+      "dept": "經濟學系",
+      "pdfs_found": [
+        "data\\raw\\應修科目表\\管理學院\\經濟學系_114.pdf"
+      ],
+      "matched": [
+        {
+          "code": "MA1005",
+          "name": "微積分上",
+          "credits": 3
+        },
+        {
+          "code": "MA1006",
+          "name": "微積分下",
+          "credits": 3
+        },
+        {
+          "code": "EC2003",
+          "name": "個體經濟學上",
+          "credits": 3
+        },
+        {
+          "code": "EC2004",
+          "name": "個體經濟學下",
+          "credits": 3
+        },
+        {
+          "code": "EC2005",
+          "name": "總體經濟學上",
+          "credits": 3
+        },
+        {
+          "code": "EC2006",
+          "name": "總體經濟學下",
+          "credits": 3
+        },
+        {
+          "code": "EC3072",
+          "name": "國際金融",
+          "credits": 3
+        },
+        {
+          "code": "EC3071",
+          "name": "國際貿易",
+          "credits": 3
+        },
+        {
+          "code": "EC4018",
+          "name": "當前經濟議題",
+          "credits": 3
+        }
+      ],
+      "json_only": [],
+      "credit_mismatch": [],
+      "no_code": []
+    },
+    {
+      "dept": "資訊管理學系",
+      "pdfs_found": [
+        "data\\raw\\應修科目表\\管理學院\\資訊管理學系_114.pdf"
+      ],
+      "matched": [
+        {
+          "code": "MA1005",
+          "name": "微積分上",
+          "credits": 3
+        },
+        {
+          "code": "IM1001",
+          "name": "計算機概論I",
+          "credits": 3
+        },
+        {
+          "code": "IM1023",
+          "name": "程式設計",
+          "credits": 3
+        },
+        {
+          "code": "IM1018",
+          "name": "資訊管理導論",
+          "credits": 3
+        },
+        {
+          "code": "IM2046",
+          "name": "作業系統",
+          "credits": 3
+        },
+        {
+          "code": "IM2011",
+          "name": "資料與檔案結構",
+          "credits": 3
+        },
+        {
+          "code": "IM2002",
+          "name": "資料庫管理",
+          "credits": 3
+        },
+        {
+          "code": "IM3061",
+          "name": "企業資料通訊",
+          "credits": 3
+        },
+        {
+          "code": "IM3059",
+          "name": "行銷學",
+          "credits": 3
+        },
+        {
+          "code": "IM3069",
+          "name": "系統分析與設計",
+          "credits": 3
+        },
+        {
+          "code": "IM3003",
+          "name": "作業研究I",
+          "credits": 3
+        },
+        {
+          "code": "IM3070",
+          "name": "組織行為",
+          "credits": 3
+        },
+        {
+          "code": "IM3078",
+          "name": "人工智慧與機器學習",
+          "credits": 3
+        },
+        {
+          "code": "IM2037",
+          "name": "演算法",
+          "credits": 3
+        },
+        {
+          "code": "IM3031",
+          "name": "電子商務",
+          "credits": 3
+        },
+        {
+          "code": "IM3028",
+          "name": "資訊系統發展專題I",
+          "credits": 3
+        },
+        {
+          "code": "IM4001",
+          "name": "資訊系統發展專題II",
+          "credits": 3
+        },
+        {
+          "code": "IM4048",
+          "name": "管理資訊系統",
+          "credits": 3
+        },
+        {
+          "code": "IM1013",
+          "name": "初階程式設計",
+          "credits": 3
+        },
+        {
+          "code": "IM3029",
+          "name": "網頁程式設計",
+          "credits": 3
+        },
+        {
+          "code": "MA1006",
+          "name": "微積分下",
+          "credits": 3
+        }
+      ],
+      "json_only": [],
+      "credit_mismatch": [],
+      "no_code": []
+    },
+    {
+      "dept": "客家語文暨社會科學學系",
+      "pdfs_found": [
+        "data\\raw\\應修科目表\\客家學院\\客家語文暨社會科學學系_社政組_114.pdf",
+        "data\\raw\\應修科目表\\客家學院\\客家語文暨社會科學學系_語文組_114.pdf"
+      ],
+      "matched": [
+        {
+          "code": "HK2025",
+          "name": "語言學概論",
+          "credits": 3
+        },
+        {
+          "code": "HK2027",
+          "name": "客語概論",
+          "credits": 3
+        },
+        {
+          "code": "HK2031",
+          "name": "傳播理論與數位行銷",
+          "credits": 3
+        },
+        {
+          "code": "HK2029",
+          "name": "文學概論與客家文學",
+          "credits": 3
+        },
+        {
+          "code": "HK2022",
+          "name": "客語數位學習與實作",
+          "credits": 3
+        },
+        {
+          "code": "HK2024",
+          "name": "客語閱讀與書寫",
+          "credits": 3
+        },
+        {
+          "code": "HK2035",
+          "name": "文化人類學",
+          "credits": 3
+        },
+        {
+          "code": "HK2039",
+          "name": "政治學",
+          "credits": 3
+        },
+        {
+          "code": "HK2033",
+          "name": "族群理論與關係",
+          "credits": 3
+        },
+        {
+          "code": "HK2037",
+          "name": "性別研究",
+          "credits": 3
+        },
+        {
+          "code": "HK3037",
+          "name": "社會調查與統計",
+          "credits": 3
+        },
+        {
+          "code": "HK3029",
+          "name": "社會科學研究法",
+          "credits": 3
+        }
+      ],
+      "json_only": [],
+      "credit_mismatch": [],
+      "no_code": []
+    },
+    {
+      "dept": "地球科學學系",
+      "pdfs_found": [
+        "data\\raw\\應修科目表\\地球科學學院\\地球科學學系_114.pdf"
+      ],
+      "matched": [
+        {
+          "code": "GP1017",
+          "name": "程式語言與應用",
+          "credits": 2
+        },
+        {
+          "code": "GP2031",
+          "name": "普通地質學上",
+          "credits": 2
+        },
+        {
+          "code": "GP2032",
+          "name": "普通地質學下",
+          "credits": 2
+        },
+        {
+          "code": "GP1019",
+          "name": "地球科學通論",
+          "credits": 1
+        },
+        {
+          "code": "GP1020",
+          "name": "地球科學的挑戰與機會",
+          "credits": 1
+        },
+        {
+          "code": "GP2019",
+          "name": "應用數學上",
+          "credits": 3
+        },
+        {
+          "code": "GP2020",
+          "name": "應用數學下",
+          "credits": 3
+        },
+        {
+          "code": "GP2038",
+          "name": "礦物學",
+          "credits": 2
+        },
+        {
+          "code": "GP2059",
+          "name": "地質材料力學",
+          "credits": 2
+        },
+        {
+          "code": "GP2065",
+          "name": "岩石學",
+          "credits": 2
+        },
+        {
+          "code": "GP3087",
+          "name": "沉積地質學",
+          "credits": 2
+        },
+        {
+          "code": "GP3026",
+          "name": "地震學",
+          "credits": 3
+        },
+        {
+          "code": "GP3011",
+          "name": "地球物理探勘上",
+          "credits": 3
+        },
+        {
+          "code": "GP3012",
+          "name": "地球物理探勘下",
+          "credits": 3
+        },
+        {
+          "code": "GP3034",
+          "name": "地球物理學",
+          "credits": 3
+        },
+        {
+          "code": "GP3019",
+          "name": "地球物理探勘實習上",
+          "credits": 1
+        },
+        {
+          "code": "GP3020",
+          "name": "地球物理探勘實習下",
+          "credits": 1
+        },
+        {
+          "code": "GP3024",
+          "name": "構造地質學",
+          "credits": 3
+        },
+        {
+          "code": "GP4031",
+          "name": "台灣地質",
+          "credits": 2
+        },
+        {
+          "code": "GP4087",
+          "name": "地球科學專題I",
+          "credits": 1
+        },
+        {
+          "code": "GP4088",
+          "name": "地球科學專題II",
+          "credits": 1
+        }
+      ],
+      "json_only": [],
+      "credit_mismatch": [
+        {
+          "code": "GP1010",
+          "name": "地球系統科學概論",
+          "credits": 2,
+          "pdf_credits": 1,
+          "json_credits": 2
+        }
+      ],
+      "no_code": []
+    },
+    {
+      "dept": "大氣科學學系",
+      "pdfs_found": [
+        "data\\raw\\應修科目表\\地球科學學院\\大氣科學學系_114.pdf"
+      ],
+      "matched": [
+        {
+          "code": "CM1009",
+          "name": "普通化學I",
+          "credits": 3
+        },
+        {
+          "code": "CM1008",
+          "name": "普化實驗",
+          "credits": 1
+        },
+        {
+          "code": "AP1002",
+          "name": "大氣科學通論",
+          "credits": 1
+        },
+        {
+          "code": "AP1001",
+          "name": "大氣科學概論",
+          "credits": 1
+        },
+        {
+          "code": "AP1006",
+          "name": "向量分析",
+          "credits": 2
+        },
+        {
+          "code": "AP2049",
+          "name": "程式語言與繪圖I",
+          "credits": 2
+        },
+        {
+          "code": "AP1015",
+          "name": "大氣研究專題導論",
+          "credits": 2
+        },
+        {
+          "code": "AP2007",
+          "name": "應用數學上",
+          "credits": 3
+        },
+        {
+          "code": "AP2008",
+          "name": "應用數學下",
+          "credits": 3
+        },
+        {
+          "code": "AP2039",
+          "name": "大氣測計及操作I",
+          "credits": 3
+        },
+        {
+          "code": "AP2011",
+          "name": "大氣熱力學",
+          "credits": 3
+        },
+        {
+          "code": "AP3001",
+          "name": "大氣動力學上",
+          "credits": 3
+        },
+        {
+          "code": "AP3002",
+          "name": "大氣動力學下",
+          "credits": 3
+        },
+        {
+          "code": "AP4015",
+          "name": "天氣學與天氣分析上",
+          "credits": 3
+        },
+        {
+          "code": "AP4016",
+          "name": "天氣學與天氣分析下",
+          "credits": 3
+        }
+      ],
+      "json_only": [
+        {
+          "code": "AP2050",
+          "name": "程式語言與繪圖II",
+          "credits": 2
+        },
+        {
+          "code": "AP2010",
+          "name": "流體力學",
+          "credits": 3
+        }
+      ],
+      "credit_mismatch": [],
+      "no_code": []
+    },
+    {
+      "dept": "太空科學與工程學系",
+      "pdfs_found": [
+        "data\\raw\\應修科目表\\地球科學學院\\太空科學與工程學系_114.pdf"
+      ],
+      "matched": [
+        {
+          "code": "SS1001",
+          "name": "工程實習",
+          "credits": 1
+        },
+        {
+          "code": "SS1002",
+          "name": "太空科學與工程導論",
+          "credits": 2
+        },
+        {
+          "code": "PH1004",
+          "name": "普物實驗",
+          "credits": 1
+        },
+        {
+          "code": "SS1003",
+          "name": "程式語言與繪圖",
+          "credits": 2
+        },
+        {
+          "code": "SS2001",
+          "name": "力學",
+          "credits": 3
+        },
+        {
+          "code": "SS2003",
+          "name": "電磁學I",
+          "credits": 3
+        },
+        {
+          "code": "SS2004",
+          "name": "電磁學II",
+          "credits": 3
+        },
+        {
+          "code": "SS2005",
+          "name": "應用數學I",
+          "credits": 3
+        },
+        {
+          "code": "SS2006",
+          "name": "應用數學II",
+          "credits": 3
+        },
+        {
+          "code": "SS2007",
+          "name": "太空專題I",
+          "credits": 1
+        },
+        {
+          "code": "SS2008",
+          "name": "太空專題II",
+          "credits": 1
+        },
+        {
+          "code": "SS3001",
+          "name": "數據分析與處理",
+          "credits": 3
+        }
+      ],
+      "json_only": [],
+      "credit_mismatch": [],
+      "no_code": []
+    },
+    {
+      "dept": "地科院學士班",
+      "pdfs_found": [
+        "data\\raw\\應修科目表\\地球科學學院\\地科院學士班_114.pdf"
+      ],
+      "matched": [
+        {
+          "code": "MA1003",
+          "name": "微積分上",
+          "credits": 3
+        },
+        {
+          "code": "MA1004",
+          "name": "微積分下",
+          "credits": 3
+        },
+        {
+          "code": "PH1031",
+          "name": "普通物理A上",
+          "credits": 3
+        },
+        {
+          "code": "PH1032",
+          "name": "普通物理A下",
+          "credits": 3
+        }
+      ],
+      "json_only": [],
+      "credit_mismatch": [],
+      "no_code": []
+    },
+    {
+      "dept": "通訊工程學系",
+      "pdfs_found": [
+        "data\\raw\\應修科目表\\資訊電機學院\\通訊工程學系_114.pdf"
+      ],
+      "matched": [
+        {
+          "code": "MA1003",
+          "name": "微積分上",
+          "credits": 3
+        },
+        {
+          "code": "MA1004",
+          "name": "微積分下",
+          "credits": 3
+        },
+        {
+          "code": "PH1031",
+          "name": "普通物理A上",
+          "credits": 3
+        },
+        {
+          "code": "PH1032",
+          "name": "普通物理A下",
+          "credits": 3
+        },
+        {
+          "code": "PH1003",
+          "name": "普物實驗上",
+          "credits": 1
+        },
+        {
+          "code": "PH1004",
+          "name": "普物實驗下",
+          "credits": 1
+        },
+        {
+          "code": "CO1001",
+          "name": "計算機概論I",
+          "credits": 3
+        },
+        {
+          "code": "CO1005",
+          "name": "計概實習",
+          "credits": 1
+        },
+        {
+          "code": "CO1002",
+          "name": "數位系統導論",
+          "credits": 3
+        },
+        {
+          "code": "CO1006",
+          "name": "數位邏輯實驗",
+          "credits": 1
+        },
+        {
+          "code": "CO1007",
+          "name": "工程數學-線性代數",
+          "credits": 3
+        },
+        {
+          "code": "CO2001",
+          "name": "電路學I",
+          "credits": 3
+        },
+        {
+          "code": "CO2005",
+          "name": "電子學I",
+          "credits": 3
+        },
+        {
+          "code": "CO2011",
+          "name": "工程數學-微分方程",
+          "credits": 3
+        },
+        {
+          "code": "CO2013",
+          "name": "工程數學-複變函數",
+          "credits": 3
+        },
+        {
+          "code": "CO2010",
+          "name": "電子電路實驗",
+          "credits": 1
+        },
+        {
+          "code": "CO3003",
+          "name": "機率",
+          "credits": 3
+        },
+        {
+          "code": "CO3004",
+          "name": "訊號與系統",
+          "credits": 3
+        },
+        {
+          "code": "CO3001",
+          "name": "通訊實驗I",
+          "credits": 1
+        },
+        {
+          "code": "CO3002",
+          "name": "通訊實驗II",
+          "credits": 1
+        },
+        {
+          "code": "CO3007",
+          "name": "通訊原理I",
+          "credits": 3
+        },
+        {
+          "code": "CO3008",
+          "name": "通訊原理II",
+          "credits": 3
+        },
+        {
+          "code": "CO3025",
+          "name": "專題實作I",
+          "credits": 3
+        },
+        {
+          "code": "CO3026",
+          "name": "專題實作II",
+          "credits": 3
+        },
+        {
+          "code": "CO2006",
+          "name": "電子學II",
+          "credits": 3
+        },
+        {
+          "code": "CO2003",
+          "name": "電磁學I",
+          "credits": 3
+        },
+        {
+          "code": "CO2004",
+          "name": "電磁學II",
+          "credits": 3
+        },
+        {
+          "code": "CO3005",
+          "name": "網路概論",
+          "credits": 3
+        },
+        {
+          "code": "CO2012",
+          "name": "資料結構",
+          "credits": 3
+        },
+        {
+          "code": "CO2014",
+          "name": "演算法",
+          "credits": 3
+        }
+      ],
+      "json_only": [],
+      "credit_mismatch": [],
+      "no_code": []
+    },
+    {
+      "dept": "資訊工程學系",
+      "pdfs_found": [
+        "data\\raw\\應修科目表\\資訊電機學院\\資訊工程學系_114.pdf"
+      ],
+      "matched": [
+        {
+          "code": "MA1003",
+          "name": "微積分上",
+          "credits": 3
+        },
+        {
+          "code": "MA1004",
+          "name": "微積分下",
+          "credits": 3
+        },
+        {
+          "code": "CE1001",
+          "name": "計算機概論I",
+          "credits": 3
+        },
+        {
+          "code": "CE1002",
+          "name": "計算機概論II",
+          "credits": 3
+        },
+        {
+          "code": "CE1003",
+          "name": "計算機實習I",
+          "credits": 1
+        },
+        {
+          "code": "CE1004",
+          "name": "計算機實習II",
+          "credits": 1
+        },
+        {
+          "code": "CE2003",
+          "name": "離散數學",
+          "credits": 3
+        },
+        {
+          "code": "CE1006",
+          "name": "工程數學",
+          "credits": 3
+        },
+        {
+          "code": "CE2008",
+          "name": "數位系統導論",
+          "credits": 3
+        },
+        {
+          "code": "CE2010",
+          "name": "數位系統實驗",
+          "credits": 1
+        },
+        {
+          "code": "CE2005",
+          "name": "線性代數",
+          "credits": 3
+        },
+        {
+          "code": "CE2002",
+          "name": "資料結構",
+          "credits": 3
+        },
+        {
+          "code": "CE2012",
+          "name": "組合語言與系統程式",
+          "credits": 3
+        },
+        {
+          "code": "CE2006",
+          "name": "機率與統計",
+          "credits": 3
+        },
+        {
+          "code": "CE2004",
+          "name": "程式語言",
+          "credits": 3
+        },
+        {
+          "code": "CE3002",
+          "name": "作業系統",
+          "credits": 3
+        },
+        {
+          "code": "CE3001",
+          "name": "計算機組織",
+          "credits": 3
+        },
+        {
+          "code": "CE3005",
+          "name": "演算法",
+          "credits": 3
+        },
+        {
+          "code": "CE3007",
+          "name": "計算機網路",
+          "credits": 3
+        },
+        {
+          "code": "CE3008",
+          "name": "專題實驗上",
+          "credits": 2
+        },
+        {
+          "code": "CE4001",
+          "name": "專題實驗下",
+          "credits": 2
+        },
+        {
+          "code": "CE3006",
+          "name": "編譯器",
+          "credits": 3
+        }
+      ],
+      "json_only": [],
+      "credit_mismatch": [],
+      "no_code": []
+    },
+    {
+      "dept": "電機工程學系",
+      "pdfs_found": [
+        "data\\raw\\應修科目表\\資訊電機學院\\電機工程學系_114.pdf"
+      ],
+      "matched": [
+        {
+          "code": "MA1003",
+          "name": "微積分上",
+          "credits": 3
+        },
+        {
+          "code": "MA1004",
+          "name": "微積分下",
+          "credits": 3
+        },
+        {
+          "code": "PH1031",
+          "name": "普通物理A上",
+          "credits": 3
+        },
+        {
+          "code": "PH1032",
+          "name": "普通物理A下",
+          "credits": 3
+        },
+        {
+          "code": "PH1003",
+          "name": "普物實驗上",
+          "credits": 1
+        },
+        {
+          "code": "PH1004",
+          "name": "普物實驗下",
+          "credits": 1
+        },
+        {
+          "code": "EE1003",
+          "name": "計算機概論I",
+          "credits": 3
+        },
+        {
+          "code": "EE1007",
+          "name": "計算機概論實習",
+          "credits": 1
+        },
+        {
+          "code": "EE2016",
+          "name": "數位系統導論",
+          "credits": 3
+        },
+        {
+          "code": "EE1009",
+          "name": "工程數學-線性代數",
+          "credits": 3
+        },
+        {
+          "code": "EE1006",
+          "name": "數位邏輯實驗",
+          "credits": 1
+        },
+        {
+          "code": "EE1010",
+          "name": "工程數學-微分方程",
+          "credits": 3
+        },
+        {
+          "code": "EE2002",
+          "name": "電路學I",
+          "credits": 3
+        },
+        {
+          "code": "EE2011",
+          "name": "電路學II",
+          "credits": 3
+        },
+        {
+          "code": "EE2001",
+          "name": "電子學I",
+          "credits": 3
+        },
+        {
+          "code": "EE2009",
+          "name": "電子學II",
+          "credits": 3
+        },
+        {
+          "code": "EE2027",
+          "name": "電子電路實驗I",
+          "credits": 1
+        },
+        {
+          "code": "EE2028",
+          "name": "電子電路實驗II",
+          "credits": 1
+        },
+        {
+          "code": "EE3047",
+          "name": "電子電路實驗III",
+          "credits": 1
+        },
+        {
+          "code": "EE2004",
+          "name": "電磁學I",
+          "credits": 3
+        },
+        {
+          "code": "EE2015",
+          "name": "電磁學II",
+          "credits": 3
+        },
+        {
+          "code": "EE2030",
+          "name": "工程數學-複變",
+          "credits": 3
+        },
+        {
+          "code": "EE3009",
+          "name": "信號與系統",
+          "credits": 3
+        },
+        {
+          "code": "EE4044",
+          "name": "畢業專題",
+          "credits": 3
+        }
+      ],
+      "json_only": [],
+      "credit_mismatch": [],
+      "no_code": []
+    },
+    {
+      "dept": "資訊電機學院學士班",
+      "pdfs_found": [
+        "data\\raw\\應修科目表\\資訊電機學院\\資訊電機學院學士班_114.pdf",
+        "data\\raw\\應修科目表\\資訊電機學院\\資訊電機學院學士班_網路工程專長_114.pdf",
+        "data\\raw\\應修科目表\\資訊電機學院\\資訊電機學院學士班_資訊工程專長_114.pdf",
+        "data\\raw\\應修科目表\\資訊電機學院\\資訊電機學院學士班_通訊工程專長_114.pdf",
+        "data\\raw\\應修科目表\\資訊電機學院\\資訊電機學院學士班_電機工程專長_114.pdf"
+      ],
+      "matched": [],
+      "json_only": [],
+      "credit_mismatch": [],
+      "no_code": []
+    },
+    {
+      "dept": "生命科學系",
+      "pdfs_found": [
+        "data\\raw\\應修科目表\\生醫理工學院\\生命科學系_114.pdf"
+      ],
+      "matched": [
+        {
+          "code": "MA1001",
+          "name": "微積分上",
+          "credits": 4
+        },
+        {
+          "code": "CM1009",
+          "name": "普通化學I",
+          "credits": 3
+        },
+        {
+          "code": "CM1010",
+          "name": "普通化學II",
+          "credits": 3
+        },
+        {
+          "code": "CM1008",
+          "name": "普化實驗",
+          "credits": 1
+        },
+        {
+          "code": "LS1001",
+          "name": "普通生物學上",
+          "credits": 3
+        },
+        {
+          "code": "LS1002",
+          "name": "普通生物學下",
+          "credits": 3
+        },
+        {
+          "code": "LS1003",
+          "name": "普通生物學實驗上",
+          "credits": 1
+        },
+        {
+          "code": "LS1004",
+          "name": "普通生物學實驗下",
+          "credits": 1
+        },
+        {
+          "code": "PH1038",
+          "name": "普通物理B",
+          "credits": 3
+        },
+        {
+          "code": "LS2005",
+          "name": "有機化學上",
+          "credits": 3
+        },
+        {
+          "code": "LS2006",
+          "name": "有機化學下",
+          "credits": 3
+        },
+        {
+          "code": "LS2001",
+          "name": "生物化學上",
+          "credits": 3
+        },
+        {
+          "code": "LS2002",
+          "name": "生物化學下",
+          "credits": 3
+        },
+        {
+          "code": "LS2003",
+          "name": "生物化學實驗上",
+          "credits": 1
+        },
+        {
+          "code": "LS2004",
+          "name": "生物化學實驗下",
+          "credits": 1
+        },
+        {
+          "code": "LS3003",
+          "name": "微生物學",
+          "credits": 3
+        },
+        {
+          "code": "LS3001",
+          "name": "植物生理學",
+          "credits": 3
+        },
+        {
+          "code": "LS2014",
+          "name": "植物生理學實驗",
+          "credits": 1
+        },
+        {
+          "code": "LS2019",
+          "name": "細胞學上",
+          "credits": 2
+        },
+        {
+          "code": "LS2020",
+          "name": "細胞學下",
+          "credits": 2
+        },
+        {
+          "code": "LS2010",
+          "name": "遺傳學",
+          "credits": 3
+        },
+        {
+          "code": "LS3035",
+          "name": "分子生物學上",
+          "credits": 2
+        },
+        {
+          "code": "LS3036",
+          "name": "分子生物學下",
+          "credits": 2
+        },
+        {
+          "code": "LS3018",
+          "name": "動物生理學",
+          "credits": 4
+        },
+        {
+          "code": "LS3020",
+          "name": "動物生理學實驗",
+          "credits": 1
+        },
+        {
+          "code": "LS4001",
+          "name": "書報討論I",
+          "credits": 1
+        },
+        {
+          "code": "LS4002",
+          "name": "書報討論II",
+          "credits": 1
+        },
+        {
+          "code": "LS4015",
+          "name": "生態學",
+          "credits": 3
+        },
+        {
+          "code": "HT3001",
+          "name": "生物統計學",
+          "credits": 3
+        }
+      ],
+      "json_only": [],
+      "credit_mismatch": [],
+      "no_code": []
+    },
+    {
+      "dept": "生醫科學與工程學系",
+      "pdfs_found": [
+        "data\\raw\\應修科目表\\生醫理工學院\\生醫科學與工程學系_114.pdf"
+      ],
+      "matched": [
+        {
+          "code": "HT3001",
+          "name": "生物統計學",
+          "credits": 3
+        },
+        {
+          "code": "MA1001",
+          "name": "微積分上",
+          "credits": 4
+        },
+        {
+          "code": "MA1002",
+          "name": "微積分下",
+          "credits": 4
+        },
+        {
+          "code": "PH1031",
+          "name": "普通物理A上",
+          "credits": 3
+        },
+        {
+          "code": "PH1023",
+          "name": "普物實驗",
+          "credits": 1
+        },
+        {
+          "code": "CM1009",
+          "name": "普通化學I",
+          "credits": 3
+        },
+        {
+          "code": "CM1008",
+          "name": "普化實驗",
+          "credits": 1
+        },
+        {
+          "code": "BM1004",
+          "name": "計算機概論",
+          "credits": 3
+        },
+        {
+          "code": "BM2031",
+          "name": "人體生理與解剖學",
+          "credits": 3
+        },
+        {
+          "code": "BM2012",
+          "name": "電子電路學",
+          "credits": 3
+        },
+        {
+          "code": "BM2013",
+          "name": "電子電路學實驗",
+          "credits": 1
+        },
+        {
+          "code": "BM2010",
+          "name": "工程數學上",
+          "credits": 3
+        },
+        {
+          "code": "BM2011",
+          "name": "工程數學下",
+          "credits": 3
+        },
+        {
+          "code": "BM2014",
+          "name": "醫療器材設計原理及其應用",
+          "credits": 3
+        },
+        {
+          "code": "BM2037",
+          "name": "專題研究上",
+          "credits": 1
+        },
+        {
+          "code": "BM2038",
+          "name": "專題研究下",
+          "credits": 1
+        },
+        {
+          "code": "BM3006",
+          "name": "材料科學導論",
+          "credits": 3
+        },
+        {
+          "code": "BM3029",
+          "name": "統計機器學習基礎",
+          "credits": 3
+        },
+        {
+          "code": "BM4003",
+          "name": "學士論文I",
+          "credits": 0
+        },
+        {
+          "code": "BM4004",
+          "name": "學士論文II",
+          "credits": 0
+        },
+        {
+          "code": "BM2039",
+          "name": "儀器分析",
+          "credits": 3
+        },
+        {
+          "code": "BM2028",
+          "name": "物理化學",
+          "credits": 3
+        },
+        {
+          "code": "BM1009",
+          "name": "普通生物學",
+          "credits": 3
+        },
+        {
+          "code": "PH1032",
+          "name": "普通物理A下",
+          "credits": 3
+        },
+        {
+          "code": "CM1010",
+          "name": "普通化學II",
+          "credits": 3
+        },
+        {
+          "code": "BM2036",
+          "name": "生物化學",
+          "credits": 3
+        },
+        {
+          "code": "BM2004",
+          "name": "程式語言",
+          "credits": 3
+        },
+        {
+          "code": "BM2045",
+          "name": "細胞分子生物學",
+          "credits": 2
+        },
+        {
+          "code": "BM3032",
+          "name": "分子醫學",
+          "credits": 2
+        },
+        {
+          "code": "BM3018",
+          "name": "數據科學導論",
+          "credits": 3
+        },
+        {
+          "code": "BM3033",
+          "name": "生醫技術暨微奈米晶片設計與應用",
+          "credits": 3
+        },
+        {
+          "code": "BM1010",
+          "name": "認知心理學概論",
+          "credits": 3
+        },
+        {
+          "code": "BM2005",
+          "name": "認知神經科學",
+          "credits": 3
+        },
+        {
+          "code": "BM1011",
+          "name": "人工智慧程式入門",
+          "credits": 3
+        },
+        {
+          "code": "BM3023",
+          "name": "線性代數",
+          "credits": 3
+        },
+        {
+          "code": "BM2040",
+          "name": "資料結構",
+          "credits": 3
+        },
+        {
+          "code": "BM2041",
+          "name": "作業系統概論",
+          "credits": 3
+        },
+        {
+          "code": "BM2042",
+          "name": "醫用物理",
+          "credits": 3
+        },
+        {
+          "code": "BM2043",
+          "name": "微電子學",
+          "credits": 3
+        },
+        {
+          "code": "BM3027",
+          "name": "訊號與系統",
+          "credits": 3
+        },
+        {
+          "code": "BM3028",
+          "name": "微處理器與嵌入式系統",
+          "credits": 3
+        },
+        {
+          "code": "BM3022",
+          "name": "演算法",
+          "credits": 3
+        }
+      ],
+      "json_only": [],
+      "credit_mismatch": [],
+      "no_code": []
+    }
+  ]
+}

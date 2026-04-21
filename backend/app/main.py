@@ -1,11 +1,12 @@
+import os
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
-from dotenv import load_dotenv
-from app.routes import assessment, courses, projects, course_search, graph
-import os
+from app.routes import assessment, courses, projects, course_search, graph, chat
 
+# 載入 .env（開發環境）
 load_dotenv(Path(__file__).parent.parent.parent / ".env")
 
 
@@ -15,6 +16,7 @@ def get_allowed_origins() -> list[str]:
         "http://localhost:5173,http://localhost:5174,http://localhost:3000",
     )
     return [origin.strip() for origin in origins.split(",") if origin.strip()]
+
 
 app = FastAPI(
     title="NCU High School Student Portal API",
@@ -37,6 +39,7 @@ app.include_router(courses.router, prefix="/api/courses", tags=["courses"])
 app.include_router(projects.router, prefix="/api/projects", tags=["projects"])
 app.include_router(course_search.router, prefix="/api/course-search", tags=["course-search"])
 app.include_router(graph.router, prefix="/api/graph", tags=["graph"])
+app.include_router(chat.router, prefix="/api/chat", tags=["chat"])
 
 # 掛載 PDF 靜態文件服務
 pdf_directory = Path(__file__).parent.parent.parent / "data" / "raw" / "projects" / "104-114"

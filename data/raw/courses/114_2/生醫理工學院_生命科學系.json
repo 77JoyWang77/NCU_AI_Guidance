@@ -2228,7 +2228,32 @@
     },
     "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24024&outline=24024&semester=1142",
     "課程綱要": {
-      "授課語言": "請選擇"
+      "授課語言": "請選擇",
+      "課程目標": "教導學生學習癌症研究的基本概念、臨床現況、治療選擇與最新發展的內容",
+      "授課內容": "周次 Topic 授課老師 /主播地點\n1 2/26 Introduction 褚志斌 /中央大學\n2 3/5 Introduction: the nature of cancer 褚志斌 /中央大學\n3 3/12 Tumor suppressor & Oncogene 褚志斌 /中央大學\n4 3/19 Invasion and metastasis 陳雅雯 /國衛院\n5 3/26 Genomic instability and cell cycle control in cancer 徐欣伶 /中央大學\n6 4/2 校際活動停課\n7 4/9 Receptor Tyrosine Kinase and cancer 李家惠 /國衛院\n8 4/16 Midterm Exam (期中考/期中報告繳交)\n9 4/23 Cancer Metabolism 郭呈欽 /國衛院\n10 4/30 NCU-NHRI Symposium 國衛院\n11 5/7 Cancer cell plasticity and EMT for immune evasion 林文傑 /中央大學\n12 5/14 Resistance of cancer therapy in the tumor microenvironment 張文祥 /中央大學\n13 5/21 Heterotypic interaction and angiogenesis 李岳倫 /中央大學\n14 5/28 Tumor immunology and immunotherapy 蘇郁文 /中央大學\n15 6/4 The evolution of cancer therapy 紀雅惠 /中央大學\n16 6/11 Bioinformatics in cancer research 江士昇 /中央大學\n17 6/18 Flexible course 學生自主學習\n18 6/25 Flexible course 學生自主學習\n說明:\n上課地點：中央大學科學五館 204會議室 & 國衛院行政大樓 B1 第 7 會議室",
+      "評量配分比重": "出席40%、期中考30%、期末考30%",
+      "核心能力": [
+        {
+          "能力名稱": "高等生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "創新及整合研究",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "專業寫作與表達",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考"
+        }
+      ]
     }
   },
   {

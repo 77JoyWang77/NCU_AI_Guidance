@@ -1,0 +1,436 @@
+[
+  {
+    "id": "mandarin_teaching",
+    "name": "「華語文教學」學分學程",
+    "college": "語言中心",
+    "cross_school": false,
+    "min_credits": 26,
+    "description": "增廣學生對華語文的認識並培養優秀華語文教學人才，依教育部辦理國內大學校院華語教學系所及學程評核作業要點辦理。各學院學生均可修習。",
+    "required_courses": [
+      {
+        "code": "LN0314",
+        "name": "華語文教學實習",
+        "credits": 2,
+        "school": "NCU"
+      }
+    ],
+    "elective_groups": [
+      {
+        "name": "必修選修：語言學概論",
+        "select": 1,
+        "description": "必修，二至三學分（因開課版本而異）",
+        "courses": [
+          {
+            "code": "LN0306",
+            "name": "語言學概論",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "CL2050",
+            "name": "語言學概論",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "EL2005",
+            "name": "語言學概論",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "HK1003",
+            "name": "語言學概論",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "HK1004",
+            "name": "語言學概論",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "FR4029",
+            "name": "語言學概論",
+            "credits": 2,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "群組一：漢語語言學",
+        "select": 2,
+        "description": "至少選修 2 門",
+        "courses": [
+          {
+            "code": "EL3071",
+            "name": "跨語言對比分析A",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "LN7007",
+            "name": "語料庫與華語教學",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ],
+        "slots": [
+          {
+            "slot_id": "slot_LN0309",
+            "slot_name": "漢語詞彙學",
+            "select": 1,
+            "credits_options": [
+              2
+            ],
+            "courses": [
+              {
+                "code": "LN0309",
+                "name": "漢語詞彙學",
+                "credits": 2
+              },
+              {
+                "code": "HL5004",
+                "name": "漢語詞彙學",
+                "credits": 2
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_LI7072",
+            "slot_name": "語義學",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "LI7072",
+                "name": "語義學",
+                "credits": 3
+              },
+              {
+                "code": "EL4069",
+                "name": "語言學專題I",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_CL2003",
+            "slot_name": "文字學",
+            "select": 1,
+            "credits_options": [
+              2
+            ],
+            "courses": [
+              {
+                "code": "CL2003",
+                "name": "文字學",
+                "credits": 2
+              },
+              {
+                "code": "CL2004",
+                "name": "文字學",
+                "credits": 2
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_LN0305",
+            "slot_name": "第二語言習得",
+            "select": 1,
+            "credits_options": [
+              2
+            ],
+            "courses": [
+              {
+                "code": "LN0305",
+                "name": "第二語言習得",
+                "credits": 2
+              },
+              {
+                "code": "EL2073",
+                "name": "第二語言習得",
+                "credits": 2
+              },
+              {
+                "code": "LI7065",
+                "name": "第二語言習得",
+                "credits": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "群組二：華語文教學",
+        "select": 2,
+        "description": "至少選修 2 門",
+        "courses": [
+          {
+            "code": "LN0313",
+            "name": "華語多媒體與電腦輔助教學",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "LN0304",
+            "name": "華語文測驗與評量",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "LN7008",
+            "name": "漢字教學專題",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "LN0318",
+            "name": "華語正音",
+            "credits": 2,
+            "school": "NCU"
+          }
+        ],
+        "slots": [
+          {
+            "slot_id": "slot_LN0316",
+            "slot_name": "華語語法教學專題",
+            "select": 1,
+            "credits_options": [
+              2
+            ],
+            "courses": [
+              {
+                "code": "LN0316",
+                "name": "華語語法教學專題",
+                "credits": 2
+              },
+              {
+                "code": "LN7006",
+                "name": "華語語法教學專題",
+                "credits": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "群組三：跨文化溝通",
+        "select": 1,
+        "description": "至少選修 1 門",
+        "courses": [],
+        "slots": [
+          {
+            "slot_id": "slot_LN0311",
+            "slot_name": "華人文化與社會",
+            "select": 1,
+            "credits_options": [
+              2
+            ],
+            "courses": [
+              {
+                "code": "LN0311",
+                "name": "華人文化與社會",
+                "credits": 2
+              },
+              {
+                "code": "GS2410",
+                "name": "華人文化與社會",
+                "credits": 2
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_LN0312",
+            "slot_name": "語言、文化與社會",
+            "select": 1,
+            "credits_options": [
+              2
+            ],
+            "courses": [
+              {
+                "code": "LN0312",
+                "name": "語言、文化與社會",
+                "credits": 2
+              },
+              {
+                "code": "GS2450",
+                "name": "語言、文化與社會",
+                "credits": 2
+              },
+              {
+                "code": "IH6024",
+                "name": "語言、文化與社會",
+                "credits": 2
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_EL3055",
+            "slot_name": "社會語言學",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "EL3055",
+                "name": "社會語言學",
+                "credits": 3
+              },
+              {
+                "code": "IH6045",
+                "name": "社會語言學",
+                "credits": 3
+              },
+              {
+                "code": "CL3097",
+                "name": "社會語言學",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_EL3057",
+            "slot_name": "翻譯類課程",
+            "select": 1,
+            "credits_options": [
+              2
+            ],
+            "courses": [
+              {
+                "code": "EL3057",
+                "name": "翻譯類課程",
+                "credits": 2
+              },
+              {
+                "code": "FR2039",
+                "name": "法文文選(二)",
+                "credits": 2
+              },
+              {
+                "code": "FR3047",
+                "name": "中譯法(二)",
+                "credits": 2
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 26,
+        "description": "修得學程內課程 26 學分以上，成績及格"
+      },
+      {
+        "type": "required_elective",
+        "description": "必修 6 科：華語文教學概論、華語文教材教法、語言學概論、國語語音學、漢語語法學、華語文教學實習"
+      },
+      {
+        "type": "required_elective",
+        "description": "群組一漢語語言學至少 2 門；群組二華語文教學至少 2 門；群組三跨文化溝通至少 1 門"
+      },
+      {
+        "type": "certification_required",
+        "description": "具各外語認證考試中高級以上能力合格證書之一，或修得英語以外任兩種外語 10 學分（含）以上"
+      },
+      {
+        "type": "elective_note",
+        "description": "學生選修本校所開其他與本學程名稱及內容相似之科目，經語言中心認定後可依學分抵免辦法辦理"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢華語文教學學分學程」，並頒發學分學程證明書。學生在碩、博士期間亦可繼續修習，但已採計為前一學位畢業學分之科目不得再採計。",
+    "required_slots": [
+      {
+        "slot_id": "req_LN0301",
+        "slot_name": "華語文教學概論",
+        "select": 1,
+        "credits_options": [
+          3
+        ],
+        "courses": [
+          {
+            "code": "LN0301",
+            "name": "華語文教學概論",
+            "credits": 3
+          },
+          {
+            "code": "LN7002",
+            "name": "華語文教學概論",
+            "credits": 3
+          }
+        ]
+      },
+      {
+        "slot_id": "req_LN0315",
+        "slot_name": "華語文教材教法",
+        "select": 1,
+        "credits_options": [
+          3
+        ],
+        "courses": [
+          {
+            "code": "LN0315",
+            "name": "華語文教材教法",
+            "credits": 3
+          },
+          {
+            "code": "LN7005",
+            "name": "華語文教材教法",
+            "credits": 3
+          }
+        ]
+      },
+      {
+        "slot_id": "req_LN0307",
+        "slot_name": "國語語音學",
+        "select": 1,
+        "credits_options": [
+          3
+        ],
+        "courses": [
+          {
+            "code": "LN0307",
+            "name": "國語語音學",
+            "credits": 3
+          },
+          {
+            "code": "LN7003",
+            "name": "國語語音學",
+            "credits": 3
+          },
+          {
+            "code": "CL1080",
+            "name": "國語語音學",
+            "credits": 3
+          }
+        ]
+      },
+      {
+        "slot_id": "req_LN0308",
+        "slot_name": "漢語語法學",
+        "select": 1,
+        "credits_options": [
+          3
+        ],
+        "courses": [
+          {
+            "code": "LN0308",
+            "name": "漢語語法學",
+            "credits": 3
+          },
+          {
+            "code": "LN7004",
+            "name": "漢語語法學",
+            "credits": 3
+          }
+        ]
+      }
+    ]
+  }
+]

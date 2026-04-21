@@ -1,0 +1,996 @@
+[
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "文學院",
+    "系所": "歷史研究所碩士班",
+    "流水號": "15001",
+    "課號-班別": "HI2902-*",
+    "課程名稱(中文)": "東亞區域史",
+    "課程名稱(英文)": "History of East Asia",
+    "備註": "[不開放初選]",
+    "授課教師": "李力庸",
+    "學分": "3",
+    "上課時間": "Wed678",
+    "教室": "A-104",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=15001&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限文學院學士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限學士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=15001&outline=15001&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "歷史研究所碩士班",
+      "流水號": "15001",
+      "課號": "HI2902-*",
+      "授課教師": "李力庸",
+      "課程名稱(中文)": "東亞區域史",
+      "課程名稱(英文)": "History of East Asia",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "東亞崛起是目前發展中的世界趨勢，二十一世紀的新東亞逐漸自成一格。現今的東亞非一日造成，過去東亞各區域大都因外力衝擊而產生內在的變動，各鄰之間激發出快速的競合關係，因而東亞的舞台上產生政治、經濟與思想文化等頻繁的互動。本課程的目的在透過大歷史的觀察，以課堂講授、討論與專題報告等課程設計，研討各地區從開發、政權建立與社會文化，外力衝擊與轉型，以及這段過程中的互動關係，進而瞭解瞭解東亞現狀之歷史淵源、各國的共通性與特殊性，與隱涵在傳統價值背後的發展潛力。",
+      "授課內容": "第一單元 導論(一週)2023.2.15\n第二單元 近代東亞各區開發與政權(一週)2023.2.22\n第三單元 大航海時代的東西交會(一週)2023.3.1\n第四單元 東亞區域現代化歷程 (一週)2023.3.8\n第五單元 近代東亞的跨境交流 (一週)2023.3.15\n第六單元 二戰中的東亞(一週)2023.3.22\n期中考 2023.3.29\n第七單元 戰後秩序重整(二週)2023.4.12-4.19\n第八單元 韓戰與越戰(一週)2023.4.26\n第九單元 戰後各國的競合(二週)2023.5.3-5.10\n第十單元 問題與討論(專題報告)2023.5.17-2023.5.24\n期末考 2023.5.31",
+      "教科書/參考書": "教科書/參考書： 1.陳國棟，《東亞海域一千年》，台北：遠流，2005年。 2.陳芳明、郝譽翔等著，《跨界東亞 : 現代性及其轉化》，台北市 : 國立政治大學，2020年。 3.宋念申，《發現東亞 : 現代東亞如何成形？全球視野下的關鍵大歷史》，臺北市 : 聯經， 2019年。 4.黃自進主編，《東亞世界中的日本與臺灣 》，臺北市 : 中央研究院人文社會科學研究中心亞太區域 研究專題中心，2013年。 5.鍾淑敏，《日治時期在南洋的台灣人》，台北:中央研究院台灣史研究所，2020年。 6.陳鴻瑜，《越南近現代史》，台北:編譯館，2009年。 7.朱立熙，《韓國史:悲劇的循環與宿命》，臺北 : 三民， 2017年。 8.天兒慧著，廖怡錚譯，《巨龍的胎動:毛澤東、鄧小平與中華人民共和國》，新北:台灣商務，2016年。 9.林孝庭，《蔣經國的台灣時代:中華民國與冷戰下的台灣》，台北:遠足文化，2021年。",
+      "自編教材比例": "60",
+      "授課方式": "講授 研討",
+      "評量配分比重": "(1) 平時成績(出席與專題報告)：50％ (2) 期中考：25％ (3) 期末考: 25％",
+      "辦公時間": "三:678",
+      "授課週數": "16",
+      "彈性教學說明": "彈性教學二週，安排研討會與演講",
+      "課程領域": "中國史 、 台灣史 、 兩岸發展史",
+      "核心能力": [
+        {
+          "能力名稱": "蒐集與解析資料能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "專題報告寫作能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考及批判能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "跨學科知識的整合與培養",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "報告討論與表達能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "文學院",
+    "系所": "歷史研究所碩士班",
+    "流水號": "15002",
+    "課號-班別": "HI5005-*",
+    "課程名稱(中文)": "中國社會史研究",
+    "課程名稱(英文)": "Seminar on Chinese Social History",
+    "備註": "[不開放初選]",
+    "授課教師": "賴澤涵",
+    "學分": "3",
+    "上課時間": "Mon789",
+    "教室": "C2-341",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "15",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=15002&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限歷史研究所碩士班、歷史研究所碩士在職專班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=15002&outline=15002&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "歷史研究所碩士班",
+      "流水號": "15002",
+      "課號": "HI5005-*",
+      "授課教師": "賴澤涵",
+      "課程名稱(中文)": "中國社會史研究",
+      "課程名稱(英文)": "Seminar on Chinese Social History",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "1. 使學生瞭解現代中國社會的演化由來\n2. 使學生能夠比較、分析台灣和中國社會的異同的能力",
+      "授課內容": "本課程將討論家庭制度變遷、人口、環境變遷、社會結構與社會流動、農業、商業、工業與近代化、宗教、祕密社會等課題。",
+      "教科書/參考書": "一、社會史的意義方法及研究工具書目 成漢昌、王秀美及何實，《中國現代史論文著作目錄索引(1982-1987)》，北京：北京大學出版社，1990年。 張美惠、王玉芝編，《建國以來中國史學論文集篇目索引(1949-1984)》，北京：中華書局，1992年(三冊)。F 高明士主編，《戰後的台灣歷史研究（1945－2000）》，台北：行政院國家科學委員會，2004年，共八冊。 余秉權，《中國史學論文引得，一九O二年～一九六二年》。香港：亞東學社，1963年。中國史學論文引得續編，Cambridge: Harvard-Yenching Library , Harvard University, 1970年。 京都大學人文社會科學研究所，《東洋學文獻類目》（1960年以前稱東洋史研究文獻類目），每年一冊。 胡平生，《中國現代史書籍論文資料舉要》，台北：學生書局，兩冊，1999年。 艾瑞克‧霍布斯邦，《論歷史》，台北：麥田出版，2002年。 ＊蔡少卿主編，《再現過去：社會史的理論視野》，浙江：浙江人民出版社，1988。 王先明，《中國近代社會文化使續編》，天津：南開大學出版社，2005年，pp.1-59。 周積明、宋德全主編，《中國社會史論》，武昌：湖北教育出版社，2001年。 ———，《中國社會史論》，武漢：湖北教育出版社，2 Vols.，2005年。 《歷史研究》編輯部編，《〈歷史研究〉五十年論文選》，北京：社會科學文獻出版社，2005年，3 Vols. 馮爾康，《中國社會史研究概述》，台北：谷風出版社，1988年。 ———，〈近年大陸中國社會史的研究趨勢：以明清時期的研究為例〉，《明代研究通訊》第五期（2002年12月），pp.1-9。 ———，〈邁向未來的社會史研究〉唐力行主編，《家庭、社區、大眾心態變遷：國際學術研討會論文集》，合肥：黃山書社，1999年，pp.26-47。 馮爾康、常建華，《清人社會生活》，瀋陽：瀋陽出版社，2001年。 喬志強主編，《中國近代社會史》，太原：太原人民出版社，1992年。 嚴昌洪，《中國近代社會風俗史》，杭州：浙江人民出版社，1992年。 鄒雍編著，《中國近代社會史》，合肥：合肥工業大學出版社，2008年。 仲富蘭主編，《圖說中國百年社會生活變遷：服飾、飲食、民居》，上海：學林出版社，2001年。 ———，《圖說中國百年社會變遷：禮儀、鄉情、宗教》，上海：學林出版社，2001年。 ———，《圖說中國百年社會變遷：文體、教育、衛生》，上海：學林出版社，2001年。 ———，《圖說中國百年社會變遷：市井、行旅、商稅》，上海：學林出版社，2001年。 嚴昌洪，《20世紀中國社會生活變遷史》，北京：人民出版社，2007年。 李文海主編，《民國時期社會調查叢編：婚姻家庭卷》，福州：福建教育出版社，2005年。 ———，《民國時期社會調查叢編：人口卷》，福州：福建教育出版社，2005年。 ———，《民國時期社會調查叢編：社會保障卷、社會組織卷、宗教民俗卷、底層社會卷、城市勞工卷、生活卷、鄉村社會卷、文教事業卷、少數民族卷》，福州：福建教育出版社，2005年。 中共中央黨校編，《中國工人階級歷史狀況》（第一卷：第一冊、第二冊），北京：中共中央黨校出版社，1993年。 劉志琴主編，《近代中國社會文化變遷錄》（第一、二、三卷），杭州：浙江人民出版社，1998年。 天津出版社編，《老新聞民國舊事（1912-1949）》，天津：人民出版社，1998年（11冊）。 呂思勉，《中國社會史》，上海：古籍出版社，2007年。 梁庚堯，《中國社會史》，上海：東方出版中心，2016年。 常建華，〈改革開放新時期中國社會史論研究詳述〉，《社會史研究通訊》，第六期（2003年7月），pp.19-31。 ———，《社會生活的歷史學──中國社會史研究新探》，北京：北京師範大學出版社，2004年。 張廣智主編，《西方史學通史》，第六卷：《現當代時期》，上海：復旦大學出版社，2011年。 瞿林東主編，《史學理論的世界視野：外國史學研究》，北京：北京師範大學出版社，2009年。 何茲全，《中國社會史研究導論》，北京：商務印書館，2010年，pp.1-58。 馬克思唯物主義觀點。 ———，〈歷史人類學的理論與在中國的實踐〉，《社會史研究通訊》，第五期（2002年7月），pp.19-38 行龍、楊念群主編，《區域社會史比較研究》，北京：社會科學文獻出版社，2006年。 翟學偉，《中國社會中的日常權威：關係與權力的歷史社會學研究》，北京：社會科學文獻出版社，2004年，pp.1-60。 蒲慕州，〈西方近年來的生活史研究〉，《新史學》，第三卷第四期（1992年12月），pp. 139-154。 夏伯嘉，〈戰後歐美史學發展趨勢〉，《新史學》，第三卷第二期（1992年6月），pp. 87-102。 蔣竹山，《當代歷史學新趨勢》，臺北：聯經出版事業股份有限公司，2019年。 高明士、古偉瀛編著，《戰後臺灣的歷史學研究(1945-2000)》，臺北：行政院國家科學委員會，2004年，第一冊，總論。 杜正勝，〈中國社會史研究的探索：特從理論、方法與資料課題論〉，《國立中興大學第三屆史學史國際研討會論文集》，台中：青峰出版社，1991年，pp.25-76。 ———，〈什麼是新社會史〉，《新史學》，第三卷第四期（1992年12月），pp, 95-116，收入杜氏著《新史學之路》，台北：三民書局，2004年，pp. 22-37。 龔書鐸總編，《中國社會通史》，太原：山西教育出版社，1996年。 許慶樸、張福記，《近現代中國社會》，濟南：齊魯書社，2000年。 趙世瑜，《小歷史與大歷史：區域社會史的理念、方法與實踐》，北京：生活、讀書、新知三聯書店，2006年，pp.3-72。 宋鎮豪等，《中國風俗通史》，上海：上海文藝出版社，2001年，共八冊。 黃寬重、柳立言編著，《中國社會史》，蘆洲市：國立空中大學，1996年。 黃寬重等，〈陶希聖與食貨雜誌〉，《歷史月刊》，第七期（1988），pp.24-25；杜正勝，〈貫通禮與律的社會史學：陶希聖先生學述〉，同上，pp.20-23；杜正勝、黃重寬訪談，〈風氣新開古代師：陶希聖先生與中國社會史研究〉，同上，pp.16-19；陶晉生、鮑家麟，〈中國社會史的奠基者陶希聖先生〉，《中國文化復興月刊》，第七卷第十一期（1974），pp. 4-8；陶晉生，〈陶希聖論中國社會史〉，《古今論衡》，第二期（1999年6月），pp. 32-43。 張玉法統編，《中國民國社會志（初稿）》（上下冊），台北：國史館，1998～1999年。 洪長泰，《新文化史與中國政治》，台北：一方出版有限公司，2003年。 Lynn Hunt, The New Cultural History, Berkeley: University of California, 1989. 姜進譯，《新文化史》，上海：華東師範大學出版社，2011年。 蘇志良、白華山，〈中國近代社會史專題研究述評〉，唐力行主編，《家庭、社區、大眾心態變遷：國際學術研討會論文集》，合肥：黃山書社，1999年，pp.73-89。 猶他家譜學會、沙其敏、錢正民，《中國族譜、地方志研究》，上海：上海科學技術文獻出版社，2003年。 格奧爾格．伊格斯（Georg G. Iggers著），《二十世紀的史學》（楊豫譯），臺北：昭明出版社，2003年，pp.67-222。 《歷史研究》編輯部編，《歷史研究》五十年文選：社會史》，北京：社會科學文獻出版社，2005年。 柯大衛，《明清社會和禮儀》，北京：北京師範大學出版社，2016年。 何兆武，陳啟能主編，《當代西方史學理論》，上海：上海社會院出版社，2003年，pp.51-59；432-477。 陳啟能主編，《二戰後歐美史學的新發展》，濟南：山東大學出版社，2005年。 劉新成，〈日常生活史與西歐中世紀日常生活〉、劉增洪〈社會史研究興起的史學背景及意義〉，劉新成主編，《西歐中世紀社會史研究》，北京：人民出版社，2006年，pp.1-55。 李伯重，《理論、方法、發展趨勢：中國經濟史研究新探》，北京：清華大學出版社，2002年。 王家範，〈社會結構與社會變遷〉，氏著《百年顛沛與千年往復》，上海：遠東出版社，2011年，pp.43-61。 楊念群主編，《空間、記憶、社會轉型：新社會史研究論文精選集》，上海：人民出版社，2001年。 侯建新，《社會轉型時期的西歐與中國》，濟南：濟南出版社，2001年 曹文柱、趙世瑜、李少兵，《一看就通的中國社會史》，台北：好讀出版有限公司，2008年。 王日根，〈族譜與社會史研究〉，《尋根》，2008年，第3期。 武新主，〈中國的家譜及其學術價值〉，《歷史研究》，第6期，（1988年）。 葛劍雄，〈家譜作為歷史文獻的價值與局限〉，《歷史教學問題》，第6期，（1997年）。 王鶴鳴，《中國家譜通論》，上海：上海古籍出版社，2010年。 瀨川昌久，《族譜：華南漢族的宗族，風水，移住》，日本風嚮社，1996年。（錢杭譯，《族譜：華南漢族的宗族、風水、移住》，上海：上海書店出版社，1999年。） 羅香林，《中國族譜研究》，香港：香港中國學社，1971年。 多賀秋五郎，《中國宗譜的研究》（上下卷），東京：日本學術振興會，1981年。 曾景忠，〈唐德剛錄張學良口述歷史之特色〉，《傳記文學》，第581期（2010.10），頁 46-54。 唐德剛，〈張學良自述的是是非非〉，《傳記文學》第491期（2003.04），頁4-20。 許雪姬，〈臺灣口述歷史的回顧與展望〉，《宜蘭文獻雜誌季刊》，第70-71期（2005.06），頁3-58。 定宜莊、汪潤主編，《口述歷史讀本》，北京：北京大學出版社，2011年。 Harriet T. Zurndorfer, China Bibliography: A Research Guide to Reference Works about China Past and Present, Honolulu: University of Hawaii Press, 1999. David Cannadine ed., What is History Now?（《今日，何謂歷史》），梁永安譯，London: Palgrave Macmillan Ltd., 2002, pp.57-90. Peter Burke, History and Social Theory, Ithaca: Cornell University, 1992.（有中譯本） Jerome M. Clubb, Erik W. Austin and Gordon N. Kirk, Jr., The Process of Historical Inquiry Everyday Lives of Working Americans, New York: Columbia University, 1989. G. William Skinner et al., Modern Chinese Society: An Analytical Bibliography, Stanford：Stanford University, 1973.（3 Vols）Journal of Asian Studies. Annual Bibliography. Charles O. Hucker, China: A Critical Bibliography, Tucson: The Univ. of Arizona Press, 1971. ———, Japan: A Critical Bibliography, Tucson: The Univ. of Arizona Press, 1971. ———, Korea: A Critical Bibliography, Tucson: The Univ. of Arizona Press, 1971. Yuan Tung-li, China in Western Literature, New Haven: Yale Univ. Press, 1958. Curtis W. Stucki, American Doctoral Dissertations on Asia,1933-1958, Ithaca: Cornell University Press, 1959. Dissertation Abstracts. Olivier Zunz ed., Reliving the Past: The Worlds of Social History, Chapel Hill：The University of North Carolina Press, 1985, pp.236-296. W. H. B. Court “Economic History,” H. J. Perkins, “Social History,”in H. P. R. Fingerg ed., Approaches to History, Toronto: University of Toronto Press, 1962, pp.17-82. E. J. Hobsbawm, “From Social History to the History of Society“ in Felix Gilbert and Stephen R. Graubard eds., Historical Studies Today, New York: W. W. Norton and Company Inc., 1972, pp.1-26. Juliet Gardiner ed., What is History Today? London: Macmillan Education, 1988, pp.31-68. J. Perkins，What is Social History？ Bulletin of the John Rylands Library, XXXVI (1953), pp. 56-75 Prasenjit Duara, （杜贊奇）, Culture, Power and the State: Rural North China, 1900-1942, Stanford University Press, 1988.（王福明譯，《文化、權力與國家，1900-1942年的華北農村》，江蘇：人民出版社，1996年，pp.246-251。） Gerard Noiriel, Introduction A La Socio-Histoire, Paris: La Découverte, 2006.（中譯本，王鯤譯，《社會歷史學導論》，上海：人民出版社，2009年。） 重要期刊： （1） 中文部分： 1. 《食貨》（台灣） 2. 《人口研究》（雙月刊）（大陸人民大學） 3. 《中國農村經濟》（大陸） 4. 《中國經濟史研究》（大陸） 5. 《中國社會經濟史研究》（廈門大學） 6. 《社會經濟史學》（日文） 7. 《華僑華人歷史研究》 8. 《農村》，江蘇：人民出版社，1996年。 9. 《婦女與兩性季刊》（台大） 10. 《近代中國婦女史研究》（台灣） 11. 《社會科學戰線》（吉林省社會科學院） 12. 《中共黨史研究》（大陸） 13. 《世界歷史》（大陸） 14. 《北京社會科學》（北京市社科學院） 15. 《史學理論研究》（中國社會科學院） 16. 《清史研究》（中國人民大學清史研究所） 17. 《南洋問題研究》（廈門大學南洋研究院） 18. 《中國農村經濟》（中國社會科學院農村發展研究所） 19. 《中國典籍與文化》（全國高等院校古籍整理研究工作委員會） 20. 《日本台灣學會報》（日本） 21. 《現代台灣研究》（日本） 22. 《台灣研究》（北京社科院台灣研究所） 23. 《城市史研究》（天津） 24. 《社會史研究通訊》（天津） 25. 《中國鄉村研究：歷史與現實》，2002~ 26. 《歷史人類學》（大陸中山大學人類學研究中心、香港科技大學華南研究中心主編），2003~ 27. 《歷史研究》（大陸） 28. 《社會學研究》（大陸） 29. 《新史學》（台灣） 30. 《台灣社會評論》（台灣） 31. 《中國人口科學》（大陸） 32. 《台灣文獻》（台灣） 33. 《台北文物》（台灣） 34. 《近代史研究》（北京） 35. 《東亞經濟研究》（日本） 36. 《東洋學報》（日本） 37. 《東方學報》（日本） 38. 《東亞經濟研究》（日本） 39. 《東洋史研究》（日本） 40. 《史林》(日本) 41. 《思與言》（台灣） 42. 《中國歷史地理論叢》 43. 《中國農史》 44. 《近代中國婦女研究》（台北） 45. 《經濟—社會史評論》（2005年- ） 46. 《中國飲食文化》（台北） 47. 《民俗曲藝》（台北） 48. 《臺灣風物》（台北） 49. 《臺灣人類學刊》（台北） 50. 《臺灣史研究》（台北） 51. 《臺灣史料研究》（台北） 52. 《世界近現代史研究》（大陸） （2） 英文部分： 1. Annales d´hitoire ´ecommique et Sociale 後來改: Annales: Histoire, Sciences ＆ Sociales 2. Environment and History 3. Environmental History Review 4. Environmental Review 5. Annual Review of Environment and Resources 6. The Journal of Interdisciplinary History 7. Journal of Historical Sociology 8. The Journal of Psychohistory 9. Economic Development and Cultural Change 10. History of Political Economy 11. History Workshop : Journal of Socialist and Feminist Historians 12. History of the Human Sciences 13. International Labor and Working- Class History 14. International Review of Social History 15. Labor History 16. International Journal of Sociology of the Family 17. International Journal of Social History 18. International Journal of Maritime History 19. Journal of Comparative Economics 20. The Journal of Development Studies 21. Peter Stearns, Encyclopedia of European Social History From 1350-2000(6vols), New York: Scribner´s, 2001. 22. Past and Present 23. The Journal of European Economic History (Rome) 24. Journal of Economic Literature 25. Journal of Family Issue 26. Journal of Family History (London) 27. Itinerario: European Journal of Overseas History 28. Continuity and Change: A Journal of Social Structure, Law and Demography in Past Societies 29. Comparative Studies in Society and History 30. The China Quarterly 31. Business History Review 32. Bulletin of Concerned Asian Scholars(現改為Critical Asian Studies) 33. The American Neptune : Maritime History and Arts 34. Radical History Review 35. New Left Review 36. Review: A Journal of the Fernand Braudel Center for the Study of Economics, Historical Systems and Civilizations 37. Rural Sociology 38. Signs: Journal of Women in Culture and Society 39. Nan Nü: Men, Women and Gender in Early and Imperial China 40. Social History (England) 41. Social History of Medicine 42. Journal of the History of Medicine and Allied Sciences 43. Social Science and Medicine 44. Social Science History 45. Theory, Culture and Society 46. Demography 47. Population and Development Review 48. Exploration in Economic History 49. The Journal of Peasant Studies (England) 50. Journal Social History (U.S.A.) 51. Armed Forces ＆ Society: An Interdisciplinary Journal 52. The Journal of Military History 53. Feminist Economics 54. Feminist Review 55. European Review of Economic History 56. Journal of Asian American Studies 57. Modern China: An International Quarterly of History and Social Sciences 58. Journal of Asia Pacific Economy 59. Positions: East Asia Cultures Critique Science and Society 60. American Historical Review 61. Journal of Modern History 62. Pacific Historical Review 63. Journal of Environmental Studies 64. Environmental Ethics 65. Journal of Leisure Research 66. The Ecologist 67. Human Ecology 68. Gender and History 69. Journal of Women’s History 70. Journal of Urban History 71. Late Imperial China 72. The Journal of Asian Studies 73. Urban Studies 74. Agricultural History Review 75. Journal ＆ Economic Growth 76. Woman of China 77. Bulletin of the Business Historical Society 78. Asian Studies Review (Nathan, Qed) 79. City and Society (Washington) 80. Critical Historical Studies (Chicago) 81. East Asian Journal of Popular Culture (Bristol) 82. Journal of Chinese Religions (Baltimore) 83. Modern Asian Studies (Cambridge, MA, USA) 84. Pacific Economic Review (Hoboken) 85. Modern Chinese Literature and Culture (Columbus, OH, USA) 86. East Asian History (Canberra) 87. Cross-Currents: East Asian History and Culture Review (Honolulu) 88. The International Journal of the History of Sport (Abingdon) 89. Climate and Change 90. East Asian Sciences, Technology, and Medicine 二、家庭變遷史研究 陳鵬，《中國婚姻史稿》，北京：中華書局，2005年。 張國剛主編，《家庭史研究的新視野》，北京：讀書、生活、新知三聯書店，2004年。 ———，《中國家庭史》，五冊，廣州：廣東人民出版社，2008年。 愛德華．衛斯特馬克 (Edward, Westermarck)，《人類婚姻史》，上海： 上海文藝出版社, 1988年。 Gary Stanley Becker, A Treaties on the Family, Cambridge：Harvard university press，1991。(王獻生、王宇澤，《家庭論》，北京：商務印書館，2005年。) F. 繆勒利爾，《家族論》，北京：商務印書館, 1990年。 摩根，《古代社會》，北京：商務印書館，1977年。 羅維（Robert H. Lowie）, Primitive Society（《初民社會》），南京：江蘇教育出版社，2006年。 陳其南，《家族與社會》，台北：聯經出版事業公司，1990年。 威廉‧古德，《家庭社會學》(魏章玲譯)，台北︰桂冠圖書公司，1988年。 潘允康，《家庭社會學》，重慶：重慶出版社，1986年。 莊華峰等，《中國社會生活史》，合肥：合肥工業大學出版社，2004年，pp.157-204。 張樹棟、李秀領，《中國婚姻家庭的嬗變》，台北：南天書局有限公司，1996年。 莊英章，《家族與婚姻:台灣北部兩個閩客村落之研究》，台北︰中央研究院民族學研究所，1994年。 朱鳳瀚，《商周家族型態研究》，天津：古籍出版社，2004年。 ———，《商周家族制研究》，上海：人民出版社，2005年。 李 卿，《秦漢魏晉南北朝時期家族、宗族關係研究》，上海：人民出版社，2005年。 周積明、宋德金主編《中國社會史論》（下卷），武漢：教育出版社，2005年。 閻愛民，《漢晉家族研究》，上海：人民出版社，2005年。 高世瑜，《唐代婦女》，三秦出版社，1988年。 張國剛，《唐代家族與社會》，上海：人民出版社，2005年。 刑鐵，《宋代家庭研究》，上海：人民出版社，2005年。 牧野巽，《中國家族研究》（兩冊），東京：禦茶の水書房，1979年。 常建華，《明代宗族研究》，上海：人民出版社，2005年。 馮爾康，《十八世紀以來中國家族的現代轉向》，上海：人民出版社，2005年。 ———，《中國社會結構的演變》，河南：人民出版社，1994年。 ———，《中國宗族社會》，杭州：浙江人民出版社，1994年。 ———，《中國古代宗族與祠堂》，北京：商務印書館國際有限公司，1996年(台灣版1998年)。 馮爾康、常建華，《清人社會生活》，天津：人民出版社，1990年，pp.135-241。 陳功，《家庭革命》，北京：中國社會出版社，2000年。 王躍生，《十八世紀中國婚姻家庭研究》，北京：法律出版社，2000年。 彭衛，《漢代婚姻型態》，北京：中國人民大學出版社，1988年。 李金河，《魏晉隋唐婚姻型態研究》，濟南：齊魯書社，2005年。 ＊劉翠溶，《明清時期家族人口與社會經濟變遷》，台北：中央研究院經濟研究所，1992年。 陳支平，《近五百年來福建的家族社會與文化》，上海：三聯書店上海分店，1991年。 鄭振滿，《明清福建家族組織與社會變遷》，北京：中國人民大學出版社，2009年。 安‧沃特納著，《煙火接續：明清的收繼與親族關係》（曹南來譯），杭州：浙江人民出版社，1999年。 王躍生，《清代中期婚姻衝突透析》，北京：社會科學文獻出版社，2003年。 陳昭南等編，《社會科學整合論文集》，台北：中央研究院中山人文社會科學研究所，1982年，pp.353-430。 伊慶春、呂玉瑕，〈台灣社會學研究中家庭和婦女研究之評介〉，蕭新煌、章英華主編，《兩岸三地社會學的發展與交流》，台北：台灣社會學社，1996年，pp.169-192。 陶毅，《中國家庭婚姻制度史》，東方出版社， 1994年。 林劍鳴，《秦漢社會文明》，西北大學出版社，1985年。 汪石滿主編，《中國婚姻家庭》，合肥：安徽教育出版社，2003年 雷潔琼，《改革以來中國農村婚姻家庭的新變化》，北京：北京大學出版社，1994年。 汪玢玲，《中國婚姻史》，上海：人民出版社，2001年。 陸學藝等，《社會結構的變遷》，北京：中國社會科學出版社，1997年，pp.31-61。 ＊賴澤涵、陳寬政，〈我國家庭形式的歷史與人口探討〉，《中國社會學刊》，第五期（1980年12月），頁25-39。 伊慶春、朱瑞玲編，《台灣社會現象的分析》，台北：中央研究院三民主義研究所，1989年，pp.1-56。 蘇冰、魏林，《中國婚姻史》，台北︰文津出版社，1994年。 ＊杜正勝，〈傳統家族試論〉（上、下），《大陸雜誌》，65：2（1982），57-84；65：3（1982），127-151。 柯大衛，〈家族與地方社會──華南研究的回顧與前瞻〉，（傅寶玉，訪談）《客家文化研究通訊》，第9期，（2007年10月），pp.114-131。 ———，《皇帝和祖宗：華南的國家與宗族》，南京：江蘇人民出版社，2010年。原書名：Emperor and Ancestor: State and Lineage in South China, Stanford: Stanford Univ. Press, 2007. 杜正勝主編，《吾土與吾民》，台北：聯經出版事業公司，1982年，pp.1-188。 張戎原著（張橫譯），《鴻：三代中國女人的故事》，台北：台灣中華書局股份有限公司，1992年。 杜正勝，〈傳統家族結構的典型〉，《古代社會與國家》，台北：允晨文化公司，1992年。 漢學研究中心主編，《中國家庭及其倫理》（研討會論文集），台北：漢學研究中心，1999年 顧鑑塘、顧鳴塘，《中國歷代婚姻與家庭》，台北：商務印書館，1994年。 上子武次、增田光吉，《理想家庭探索》，北京：國際文化出版公司，1987年。 李文治、江太新，《中國宗法宗族制和族田義莊》，北京：社會科學文獻出版社，2000年。 ＊邁克爾‧米特羅爾‧雷因哈德、西德爾著，《歐洲家庭史》(趙世玲.趙世瑜.周尚意譯)，北京：華夏出版社，1987年。 鄧偉志，《近代中國家庭的變革》，上海︰上海人民出版社，1994年。 沈崇麟、楊善華、李東山主編，《世紀之交的城鄉家庭》，北京：中國社會科學出版社，1999年。 王玉波，《中國家長家庭制度史》，天津：天津社會科學院出版社，1989年。 ———，《中國家庭的起源與演變》，河北科技出版社，1992年。 ———，《中國古代的家》，北京︰商務印書館國際有限公司，1996年(台灣版1998年)。 ———，《歷史上的家長制》，台北︰谷風出版社，1988年。 錢杭，《中國宗族制度新探》，香港：中華書局，1994年。 任寅虎，《中國古代婚姻》，北京：商務印書館國際有限公司，1986年(台灣版1998年)。 陳麗華，《婚姻、家庭、繼承》，北京：中國社會科學出版社，1999年。 徐揚杰，《中國家族制度史》，北京：人民出版社，1992年。 鄧小南、王政、游鑑明主編，《中國婦女史讀本》，北京：北京大學出版社，2011年。 游惠遠，《宋元之際婦女地位的變遷》，台北：新文豐出版股份有限公司，2003年。 李銀河，《女性權力的崛起》，北京：中國社會科學出版社，1997年。 趙鳳喈，《中國婦女在法律上之地位》，板橋：稻鄉出版社，1993年。 鮑家麟編，《中國婦女史論集》，續集，台北縣：稻鄉出版社，1991年。 劉德漢，《東周婦女生活》，台北：學生書局，1976年。 彭衡，《漢代婚姻型態》，西安：三秦出版社，1988年。 高世瑜，《唐代婦女》，西安：三秦出版社，1988年。 段塔麗，《唐代婦女地位研究》，北京：人民出版社，2000年。 史鳳儀，《中國古代婚姻與家庭》，長沙：湖北人民出版社，1987年。 ———，《中國古代的家族與身分》，北京：社會科學文獻出版社，1999年。 房學嘉等著，《客家婦女社會與文化》，廣州：華南理工大學出版社，2012年。 滋賀秀三，《中國家族法原理》（張建國、李力譯），北京：法律出版社，2003年。 衣若蘭，《三姑六婆：明代婦女與社會的探討》，板橋：稻鄉出版社，2002年。 ＊喬健主編，《中國的家庭及其變遷》，香港：中文大學出版，1991年。 李泳集，《性別與文化：客家婦女研究的新視野》，廣州：廣東人民出版社，1996年。 張典婉，《台灣客家女性》，台北：玉山社，2004年。 謝重光，《客家文化與婦女生活：12-20世紀客家婦女研究》，上海：古籍出版社，2005年。 陳貞臻，〈西方兒童史研究的回顧與展望—阿利斯（Aries）及其批評者〉，《新史學》，第15卷第1期（2004年3月），頁167-188。 熊秉貞，《幼幼—傳統中國襁褓之道》，台北：聯經文化出版事業有限公司，1995年。 ———，《童年憶往：中國孩子的歷史》，台北：麥田出版社，2000年。 王立民，《中國法律與社會》，北京：北京大學出版社，2006年。 程維榮，《中國繼承制度》，上海：東方出版中心，2006年。 程郁，《清至民國蓄妾習俗之研究》，上海：古籍出版社，2006年。 岳慶平，《中國的家與國》，長春：吉林文史出版社，1990年。 （日）山川麗（著），高大倫、范勇譯，《中國女性史》，西安：三秦出版社，1987年。 陳東原，《中國婦女生活史》，遼陽：中國社會科學出版社，1997年，pp.31-61。 劉士聖，《中國古代婦女史》，青島：青島出版社，1991年。 薛君度、劉志琴主編，《近代中國社會生活與觀念變遷》，北京：中國社會科學出版社，　2001年。 林耀華，《義序的宗教研究》，北京：三聯書店，2000年（原1935年）。 ———，《金翼》(莊孔韶、林宗成中譯)，北京：三聯書店，1989年。 莊孔韶，《銀翅：中國地方社會與文化變遷》，北京：三聯書店，2000年。 劉巨才，《中國近代婦女運動史》，遼陽：中國婦女出版社，1989年。 ＊羅蘇文，《女性與近代中國社會》，上海：人民出版社，1996年。 徐衍主編，《家庭革命》，北京：中國社會出版社，2000年。 丁文，《家庭學》，濟南：山東人民出版社，1997年。 丁文、徐泰玲，《當代中國家庭巨變》，濟南：山東大學出版社，1996年，pp58-92 陸學藝主編，《21世紀的中國社會》，昆明：雲南人民出版社, 1996年，pp.58-92。 ＊黃萍瑛，《台灣民間信仰『孤娘』的奉祀：一個台灣社會史的考察》，台北：國立編譯館，2008年。 郭松義，《倫理與生活：清代的婚姻關係》，北京：高務印書館，2000年。 陳三井主編，《近代中國婦女運動史》，台北：近代中國出版社，2000年。 李亦園，〈近代中國家庭的變遷：一個人類學的探討〉朱賜麟、袁世敏主編，《近代中國的變遷與發展：人文及社會科學的探討》，台北：時報文化出版企業股份有限公司，2002年，pp.394-428。 程郁，《清至民國蓄妾習俗之變遷》，上海：古籍出版社，2006年。 邵雍，《中國近代妓女史》，上海：人民出版社，2005年。 陸德陽、王乃寧，《社會的又一層面──中國近代女傭》，上海：學林出版社，2004年。 經軍健，《清代社會的賤民等級》，杭州：浙江人民出版社，1993年。 《文史精華》編輯部，《近代中國娼妓史料》，石家莊：河北人民出版社，1997年。 鄭永福、呂美頤，《近代中國婦女與社會》，鄭州：大象出版社，2013年。 佟新，《異化與抗爭：中國女工工作史研究》，北京：中國科學出版社，2003年。 李卓，《中日家族制度比較研究》，北京：人民出版社，2004年。 ＊William J. Goode, The Family, New Delhi : Prentice-Hall India, 1979. Maurice Freedman, “The Family in China, Past and Present”, in G. William Skinner ed., The Study of Chinese Family：Essays by Maurice Freedman, Stanford：Stanford Univ. Press, 1977, pp.248-254. Arthur P. Wolf ed.，Studies in Chinese Society, Stanford: Stanford University Press，1979. Feng Han-yi, The Chinese Kinship System, Cambridge: Harvard University, 1948. Maurice Freedman ed., Family and Kinship in Chinese Society, Stanford: Stanford University Press,1970. ———, Lineage Organization in Southeastern China, London: The Athlone, 1958. ———, Chinese Lineage and Society: Fukien and Kwangtung, New York: Humanities Press,1996. Arthur P. Wolf and Chieh-shan Huang, Marriage and Adoption in China, 1845-1945, Stanford University Press, 1993. ＊Olga Lang, Chinese Family and Society, New Haven: Yale Univ.，1946. Patricia Buckley Ebrey, “Women, Marriage, and the Family in Chinese History”, in Paul Ropp ed., Heritage of China: Contemporary perspective in Chinese Civilization, Berkeley: University of California Press, 1990. ———, The Inner Quarters: Marriage and the Lives of Chinese Women in Sung Period, Berkeley: University of California, 1993. Gary Becker，A Treatise on the Family，Cambridge：Harvard university press，1991。(中文由王文娟、李華夏、吳惠林、鄒繼礎合譯，《家庭論》，台北：立緒文化事業有限公司，1997年。) Richard Guisso and Stanley Johannesen, Women in China, New York: Philo Press, 1981. Kathryn Bernhardt, “A Ming-Qing Transition in Chinese Women’s History：The Perspective from Law,” Gail Hershatter and others ed，Remapping China：Fissures in Historical Terrain，Stanford：Stanford University Press，1996，pp.42-58. Yang Lien- sheng, “Female Rulers in Chinese History ”, Harvard Journal of Asiatic Studies 23(1960-61). ＊Marion J. Levy, The Family Revolution In Modern China, Cambridge: Harvard University Press，1949. Margery Wolf, Women and Family in Rural Taiwan, Stanford: Stanford University Press, 1972. Albert O’Hara, The Position of Women in Early China, Taipei: Mei Ya publications, 1971. ＊Lloyd E. Eastman, Family, Field, and Ancestors, New York: Oxford University Press.1988，pp.15-61. ＊C.K.Yang, Chinese Communist Society: The Family and the Village, Cambridge︰The M.I.T.Press，1959, 1972﹒ ＊———,The Chinese Family in the Communication Revolution, Mass: MIT Press, 1959. ＊Susan Mann, Precious Records: Women in China’s Long Eighteenth Century, Stanford: Stanford University Press, 1997.(中譯本，楊雅婷譯，《蘭閨寶錄，晚明至盛清時的中國婦女》，台北：左岸文化，2005年。) Deborah Daris and Stevan Harrell eds., Chinese Families in the Past- Mao Era, Berkeley: University of California, 1993. Susan B. Hanley and Arthur P. Wolf eds., Family and Population in East Asian History, Stanford, Calif : Stanford University Press, 1985. Jack Goody, The Development of the Family and Marriage in Europe, Cambridge: Cambridge University Press, 1976. ———, Production and Reproduction: A Comparative Study of the Domestic Domain, Cambridge: Cambridge University Press, 1976. ——— and S.J.Tambiah, Bridewealth and Dowry, New York: Cambridge University Press,1973. Harry Hendrick, Children, Childhood and English Society, 1880-1990, New York: Cambridge University Press, 1997. Colin Heywood, A History of Childhood: Children and Childhood in the West from Medieval to Modern Times, Malden, MA: Polity Press, 2001. Edward Shorter, The Making of Modern Family, New York: Basic Book, 1976. Lawrence Stone, The Family, Sex and Marriage in England, 1500-1800, New York: Harper ＆ Row, 1994. David I. Kertzer and Marzio Barbagli eds. The History of European Family, New Haven: Yale University Press, 2001. Steven Ozment, Ancestors: The Loving Family in Old Europe, Cambridge, MA: Harvard University Press, 2001. Ralph A. Houlbrooke, The English Family, 1450-1700, New York: Longman, 1984. James Walvin, A Child’s World: A Social History of English Childhood, 1800-1914, Harmondsworth, Middlesex, English: Penguin Books, 1982. John Sommerville, The Rise and Fall of Childhood, New York: Vintage Books, 1990. Shulamith Shahar, Childhood in the Middle Ages, New York: Routledge, 1990. Nicholas Orme, Medieval Children, London: Congress, 2001. Philippe Ariès, Centuries of Childhood, New York: Random House, 1962. Linda A. Pollock, Forgotten Children: Parent-child Relations from 1500 to 1900, Cambridge: Cambridge University Press, 1983. Anne Behnke Knney ed., Chinese Views of Childhood, Honolulu: University of Hawaii Press, 1995. Malcolm Hill and Kay Tisdall, Childhood and Society, New York: Longman, 1997. 三、人口問題 張敬原，《中國人口問題》，台北：中國人口學會，1959年。 陸學藝等，《社會結構的變遷》，北京：中國社會科學出版社，1997年，pp.1-30。 陸學藝主編，2《1世紀的中國社會》，昆明：雲南人民出版社, 1996年，pp.20-57。 ＊趙文林、謝淑君，《中國人口史》，北京：人民出版社，1988年。 葛劍雄，《中國人口發展史》，福州：福建人民出版社，1991年。 葛劍雄、侯楊方、張松福，《人口與中國的現代化（一八五Ο年以來）》，上海：學林出版社，1999年。 葛劍雄主編，《中國人口史》共六卷，第一卷：導論，先秦與南北朝時代（葛劍雄著）；第二卷：隋唐五代時期（凍國棟著）；第三卷：遼宋金元時期（吳松弟著）；第四卷：明時期（曹樹基著）；第五卷：清時期（曹樹基著）；第六卷，1910-1953年（侯楊方著）；上海：復旦大學出版社，2000-2001年。 葛劍雄、吳松第、曹樹基，《中國移民史》，福州：福建人民出版社，1997年。 路遇、滕澤之，《中國人口通史》（上下），濟南：山東人民出版社，2000年。 葉明德、劉長茂，《反貧困與人口問題》，杭州：杭州大學出版社，1998年。 孫常敏主編，《世紀轉變中的全球人口與發展》，上海：上海社會科學院出版，1999年。 梁方仲，《中國歷代戶口、田地、田賦統計》，上海：人民出版社，1980年。 劉克智、劉翠溶，《中國人口問題研究》，台北：中央文物供應社，1983年。 閻守誠，《中國人口史》，台北︰文津出版社，1997年。 曾毅，《中國人口分析》，北京：北京大學出版社，2004年。 吳建華，《明清江南人口社會史研究》，北京：群言出版社，2005年。 姜濤，《中國近代人口史》，台北：南天書局有限公司，1998年。 ———，《人口與歷史：中國傳統人口結構的研究》，北京：人民出版社，1998年。 國立台灣大學人口研究中心主編，《人口問題與研究》，台北：國立台灣大學人口研究中心，1976年。 ＊Ho Ping-ti, Studies on the Population of China, 1368-1953, Cambridge: Harvard University Press, 1959.（何炳棣，《一三六八～一九五三年中國人口研究》(中譯本，葛劍雄譯)，上海：上海古籍出版社，1989年） Chen Ta，Population in Modern China，Chicago︰University of Chicago，1959. 四、社會結構與社會流動 社會階層與社會流動研究規劃小組編，《社會階層與社會流動：論文及專書目錄》，台北：民七九年。 賀耀夫，《晚清身世與近代社會變遷—兼與日本士族比較》，廣東人民出版社，1994年。 ＊瞿同祖，〈清代的刑名幕友〉，《瞿同祖法學論著集》，北京：中國法政大學出版社，1989年。 ＊───，《中國封建社會：周代社會組織》，北京：中國法政大學出版社，1989年。 ＊───，《中國封建制度》，上海：人民出版社，2005年。 ＊───，《漢代社會結構》，上海：古籍出版社，2007年。 ＊───，《中國法律與中國社會》，台北：里仁書局，1984年。 徐茂明，〈六十年來明清士紳研究述評〉，《社會史研究通訊》，第六期（2003年7月）pp.32-51。 巴根，〈明清紳士研究綜述〉，《清史研究》，第八期（1996年）。 東洋史學彙編，《中國史研究的成果與展望》，北京：中國社會科學出版社，1991年。 王炳然、徐勇主編，《中國科舉制度研究》，石家莊：河北人民出版社，2002年。 王德昭，《清代科舉制度研究》，香港：中華書局，1984年。 董海、王鴻鵬主編，《中國歷代文狀元》，北京：解放軍出版社，2004年。 ———，《中國歷代榜眼》，北京：解放軍出版社，2004年。 ———，《中國歷代探花》，北京：解放軍出版社，2004年。 李潤強，《清代進士群體與學術文化》，北京：中國社會科學出版，2007年。 錢茂偉，《國家科舉與社會》，北京：北京圖書館出版社，2004年。 何懷宏，《選舉社會及其終結：秦漢至晚清歷史的一種社會學闡釋》，北京：三聯書店，1998年。 ＊喬志強主編，《中國近代社會史》，北京：人民出版社，1992年，pp.194-208。 吳宗國，《唐代科舉制度研究》，瀋陽：遼寧大學出版社，1992年。 陳東原，《中國教育史》，台北：商務印書館，1980年。 沈大德、吳延嘉，《中國傳統社會結構探析》，台北：南天書局有限公司，1998年。 朱光磊等著，《當代中國社會各階層分析》，天津：天津人民出版社，1998年。 王德昭，《清代科舉研究》，香港：香港中文大學出版社，1982年。 姜守鵬，《明清社會經濟結構》，長春：東北師範大學出版社，1992年。 陸學藝等，《社會結構的變遷》，北京：中國社會科學出版社，1997年。 陸學藝主編，《當代中國社會流動》，北京：社會科學文獻出版社，2004年。 楊雪峰，《明代的審判制度》，臺北：黎明文化事業公司，1979年。 那思陸，《清代州縣衙門審判制度》，臺北市：文史哲出版社，1982年。 唐瑞禎，《清代吏治掠微》，台北市：文史哲出版社，1978年。 蔡申之，《清代州縣故事》，臺北：文海出版社，1980年。 郭建，《衙門開幕》，臺北：實學社出版股份有限公司，2003年。 郭潤濤，《官府、幕友與書生：“紹興師爺“研究》，北京：中國社會科學出版社，1996年。 ＊鄭天挺，〈清代的幕府〉，氏著《清史探微》，北京：北京大學出版社，1997年，pp.271-309。 周榮德，《中國社會的階層流動：一個社區中士紳身份的研究》，上海：學林出版社，2000年。 王先明，《近代紳士：一個封建階層的歷史命運》，天津：天津人民出版社，1997年。 陳茂固，《中國歷代選官制度》，上海：華東師範大學出版社，1994年。 謝青、湯德用主編，《中國考試制度史》，黃山書社，1995年。 王亞南，《中國官僚政治研究》，北京：中國社會科學出版社，1981年。 張寶昆，《大規模教育考試的社會控制功能研究》，昆明：雲南大學出版社，1999年。 陳國慶主編，《中國近代社會轉型研究》，北京：社會科學文獻出版社，2005年，pp.82-137。 劉海峰、李兵，《中國科舉史》，上海：東方出版中心，2004年。 龔延明，《中國古代職官科舉研究》，北京：中華書局，2004年。 李世瑜，《中國歷代科舉生活掠影》，瀋陽：瀋陽出版社，2005年。 李春玲，《斷裂與碎片：當代中國社會階層分化實證分析》，北京：社會科學文獻出版社，2005年。 王曾瑜，《宋朝階級結構》，北京：中國人民大學出版社，1996。 經君健，《清代社會的賤民等級》，北京：中國人民大學出版社，2009。 ＊劉海峯編，《科舉制的終結與科舉學的興起》，武漢：華中師範大學出版社，2006年。 ＊劉海峯，《科舉學導論》，武漢：華中師範大學出版社，2005年。 ———，《科舉考試的教育視角》，湖北教育出版社，1996年。 ———，〈科舉：中國古代的高教自學考試〉，《高教自學考試》，1998年第1期。 何忠禮，〈科舉制度與宋代文化〉，《歷史研究》，1990年第5期。 何懷宏，〈人累科舉〉，《二十一世紀》，總第39期，1997年2月號。 商衍鎏，《清代科舉考試述錄》，北京：三聯書店，1958年。 王炳照、徐勇主編，《中國科舉制度研究》，石家莊：河北人民出版社，2002年。 王振忠，《紹興師爺》，福州：福州人民出版社，1997年。 李喬，《中國的師爺》，北京：商務印書館國際有限公司，1995年。 趙世瑜，《吏與中國傳統社會》，杭州：浙江人民出版社，1994年。 ＊復旦大學歷史系，《近代中國資產階級研究》，上海：復旦大學出版社，1984年。 李文治、江太新，《中國地主制經濟論：封建土地關係發展與變化》，北京：中國社會科學出版社，2005年。 章開沅、馬敏、朱英主編，《中國近代民族資產階級研究(1860-1919)》，武漢：華中師範大學出版社，2000年。 ＊奧崎裕司，《中國鄉紳地主的研究》，東京：汲古書院，1978年。 陳學藝主編，《廿一世紀的中國社會》，昆明：雲南人民出版社，1996年。 郭繼嚴主編，《中國社會發展藍皮書》，昆明：雲南人民出版社，1996年。 余英時，《士與中國文化》，上海：人民出版社，2003年。 張偉，《衝突與變數：中國社會中間階層政治分析》，北京：中國社會科學文獻出版社，2005年。 李強，《社會分層與貧富差別》，廈門：鷺江出版社，2003年。 李培林、李強、孫立平等，《中國社會分層》，北京：中國社會科學文獻出版社，2004年。 段若鵬、鍾聲、王心富、李拓，《中國現代化進程中的階層結構變動研究》，北京：人民出版社，2002年。 馮爾康主編，《中國社會結構的演變》，開封：河南人民出版社，1994年。 李明偉，《清末民初中國城市社會階層研究（1897－1927）》，北京：中國社會科學文獻出版社，2005年。 李強，《農民工與中國社會分層》，北京：中國社會科學文獻出版社，2005年。 周曉虹，《中國中產階級調查》，北京：中國社會科學文獻出版社，2005年。 朱光磊等著，《當代中國社會各階層分析》，天津：天津人民出版社，1998年。 厲以寧主編，《中國道路與藍領中產階級成長》，北京：商務印書館，2015年。 ＊宮崎市定，〈清代的胥吏和幕友〉，《日本學研究中史論著選譯》，第六冊，北京：中華書局，1993年。 朱志勇、李永鑫主編，《紹興師爺與中國幕府文化》，北京：人民出版社，2007年。 高浣月，《清代刑名幕友研究》，北京：中國政法大學出版社，2000年。 鮑永軍，《紹興師爺汪輝祖研究》，北京：人民出版社，2006年。 汪輝祖，《佐治藥言》，北京：中華書局，1985年。 ———，《續佐治藥言》，北京：中華書局，1985年。 ———，《學治臆說》，北京：中華書局，1985年。 ———，《學治續說》，北京：中華書局，1985年。 ———，《病榻夢痕錄》，《夢痕餘錄》，台北：台灣商務印書館，1980年。 汪繼培等編撰，《汪輝祖行述》，台北：廣文書局，1977年。 郭潤濤，〈汪輝祖與清代州縣幕府〉，《中國史研究》，1993年第1期。 陳覺民，〈紹興師爺的興衰〉，《浙江文史資料選輯》，第26輯（1984年）。 王建華主編，《浙學、秋瑾、紹興師爺研究》，北京：人民出版社，2008年。 朱波編譯，《中國官場學》，今日中國出版社，1997年。 趙子光注，《一個師爺的官場經》，北京：九州圖書出版社，1998年。 祁曉玲譯，《一個師爺的官場經》，台北：捷印出版社，1993年。 尚小明，《學人，游幕與清代學術》，北京：社會科學文獻出版社，1999年。 ———，《清代士人游幕表》，北京：中華書局，2005年。 繆全古，〈清代幕府人士述要〉，《中山學術文化集刊》，第五集，1970年。 ———，〈清代幕府館務述要〉，《中山學術文化集刊》，第七集，1971年。 ———，《清代幕府人事制度》，台北：人事行政月刊社，1971年。 李志茗《晚清四大幕府》，上海人民出版社，2002年。 王先明，《近代紳士—一個封建階層的歷史命運》，天津：天津人民出版社，1997年。 何淑宜，〈民代紳與通俗文化的關係〉，國立台灣師大歷史所碩士論文，1999年。 張維安，〈買辦商人與近代工業發展：以輪船據商局為例〉，《食貨月刊》16：9～10（1987年十二月） 邱澎生，〈以法律為名－訟師與幕友對明清法律的衝擊〉，《新史學》，第十五卷第四期，（2004年12月）。 戴炎輝，《清代台灣之鄉治》，台北：聯經文化事業出版有限公司，1984年。 陸平舟，〈官僚、幕友、胥吏：清代地方政府的三維體系〉，《南開學報》（哲學社會科學版），2005年第五期，pp.86-94。 鮮喬蓥，〈淺析買辦與中國早期現代化〉，《北京聯合大學學報》（人文社會科學版），第二卷第三期（2004年9月），pp.31-37。 謝俊貴，〈中國紳士研究述評〉，《史學月刊》，2002年第七期，pp.13-21。 祖慧，〈論宋代胥吏的作用及影響〉，《學術月刊》，2002年第六期，pp.79-85。 楊生祥，〈對近代中國買辦資本的再認識〉，《歷史教學》，1999年第五期，pp.10-14。 韓仕海，〈買辦的再界定〉，嘉應大學學報（哲學社會科學），1999年第二期，pp.84-88。 嚴中平，〈試論中國買辦資產階級的發生〉，《中國經濟史研究》，1986年第一期，pp.81-98。 ＊張萍，〈近代買辦研究綜述〉，《清史研究》，1996年第一期，pp.111-118。 黃逸峰，〈關於舊中國買辦資產階級的研究〉，《歷史研究》，1964年第一期，pp.21-32。 ＊黄逸峰、姜鐸、唐傳泗、陳絳，《舊中國的買辦階級》，上海：上海人民出版社，1979年。 徐鼎新，《舊中國民族資產階級》，南京：江蘇古籍出版社，1990年。 香港中文大學中國文化研究所文物館、香港中文大學歷史系合編，《買辦與近代中國》，香港：三聯書店，2009年 汪敬虞，〈試論近代中國的買辦階級〉，《歷史研究》，1990年第三期，pp.89-108。 ＊聶寶瑋，《中國買辦階級的發生》，北京：中國社會科學出版社，1979年。 許嘉猷，〈台灣的階級研究〉，蕭新煌、章英華主編，《兩岸三地社會學的發展與交流》，台北：台灣社會學社，1996年，pp.93-102。 袁方等著，《社會學家的眼光：中國社會結構轉型》，北京：中國社會出版社，1998年。 林育德，《一個臺灣太監之死》，台北：啟動文化，2014年。 冷東，《閹割現象》，台北：商務印書館，1991年。 余華清，《中國宦官制度史》，上海：上海人民出版社，1993年。 信修明等著，《太監談往錄》，北京：故宮出版社，2016年。 金易、沈義羚，《宮女談往錄》，北京：故宮出版社，2010年，2016年第6次印刷。 王壽南，《唐代宦官權勢之研究》，台北：正中書局，1971年。 黃宗羲，《明夷待訪錄》，台北：金楓出版社，1999年。 王春瑜、杜婉言，《明代宦官與經濟史料初探》，北京：中國科學出版社，1986年。 ———，《明代宦官》，北京：紫禁城出版社，1989年。 丁易，《明代特務政治》，貴州︰群眾出版社，1983年(原1950年)。 Chu T‘ung-twu, Local Government in China under the Ch‘ing, Cambridge: Harvard Univ. Press, 1962. Dennis C. Twitchett, “Economic and Social Changes in Tang and Sung China,” in Feuerwerker ed. 1964, pp.38-41. Hsiao Kung-chuan, Rural China: Imperial Control in Nineteenth Century, Seattle: Univ. of Washington Press, 1960. ＊Ping-ti Ho, The Ladder of Success in Imperial China, New York: Columbia University Press, 1960.（徐泓譯著，《明清社會史論》，台北：聯經出版事業股份有限公司，2013年） Franz Michael, “State and Society in Nineteenth-Century China,” in Feuerwerker ed., 1964, pp.57-69. ＊Chung-li Chang, The Chinese Gentry, Seattle: University of Washington Press, 1967. （中譯本，李榮昌譯，《中國紳士：關於其在十九世紀中國社會中作用的研究》，上海：上海社會科學院出版社，1991年。） ———, The Income of the Chinese Gentry, Seattle: Univ of Washington Press, 1962.（費成康、王寅通譯，《中國紳士的收入—《中國紳士》續篇》，上海：上海社會科學院出版社，2001年。） John R. Watt, The District Magistrate in Late Imperial China, New York: Columbia University Press, 1972. ＊Fei Hsiao-tung, “Peasantry and Gentry: An Interpretation of Chinese Social Structure and Its Changes, American Journal of Sociology, LII(1946-1947), 1-17;Reprinted in R. Bendix and S. M. Lipset, eds., Class, Status, and Power: A Reader in Social Stratification, Glencoe, Illinois: Free Press, 1953, pp.631-650. Fei Hsiao-tung, China‘s Gentry: Essays in Rural-Urban Relations, Chicago: University of Chicago, 1953. Marie-Claire Bergere, The Golden Age of the Chinese Bourgeoisie, 1911-1937,(translated by Janet Lloyd), Cambridge: Cambridge Univ. Press, 1989. Hsin-Huang Michael Hsiao, Discovery of the Middle Classes in East Asia, Taipei: Academic Sinica, 1993. Bradly W. Reed, Talons and Teeth: County Clerks and Runners in the Qing China, Stanford: Stanford University Press, 2000. Carter G. Stent, “Chinese Eunuchs,” Journal of North China Branch of Royal Asiatic Society, n.s.9(1877). Bernard Llewellyn, Chinas Court and Concubines, London, 1956. Richard Millent, Les Eunuyues: A Traverses Les Ages, Paris, 1908. Taisuke Mitamura, Kagan: Sokkin Seiji no Kogo（Chinese Eunuchs: The Structure of Intimate Politics）, Tokyo, 1963. Taisuke Mitamura, Chinese Eunuchs: The Structure of Intimate Politics, Tokyo: Chacles E. Tuttle Company Inc., 1970. Carter G. Stent, “Chinese Eunuchs,” Journal of North China Branch of Royal Asiatic Society, n.s.9(1877). Thomas H. C. Lee, Government Education and Examinations in Sung China, Hong Kong: The Chinese University press, 1985. Edward A. Kracke, Civil Service in Early Sung China, 960-1067, Cambridge: Haward University press, 1953. ───, “Family vs. Merit in Chinese Civil Service Exanimation System under the Empire”, Harvard Journal of Asiatic Studies Vol. 10 (1947), pp.103-123. Jonathan Porter, “The Mu-fu System: A Bibliographical Introduction”, Ch‘ing-shih wen-t‘i, May, 1972. Robert C. Crawford, “Eunuch Power in the Ming Dynasty,” T’oung Pao, 49 (1966). Shih-shan Henry Tsai, The Eunuchs in the Ming Dynasty, Albany: State Univ. of New York Press, 1996. Kenneth E. Folsom, Friends, Guests, and Colleagues: The Mu-fu System in the late Ching Period, Berkeley: University of California Press, 1996. （中譯本：劉悅斌、劉蘭芝譯，《朋友、客人、同事：晚清的幕府制度》，台北：知書房出版社，2003年。） 五、中國人的環境體系 王利華主編，《中國歷史上的環境與社會》，北京：生活、讀書、新知三聯書店，2007年。 賴澤涵，《中國人的環境價值體系之研究》，國科會研究計劃1991-1992年（手稿本）。 鈔曉鴻，《生態環境與明清社會經濟》，合肥：黃山書社，2004年。 ＊劉翠溶，〈中國歷史上關於山林川澤的觀念和制度〉。曹添旺、賴景昌、楊建成主編，《經濟成長、所得分配與制度演化》，台北：中央研究院中山人文社會科學研究所，1999年，pp.1-42。 ＊───，〈漢人拓墾與聚蔭之形成：台灣環境變之起始〉，劉翠溶、伊懋可編，《積漸所至：中國環境史論文集》，台北：中央研究院經濟研究所，1995年，pp.295-347，此書英文為Mark Elvin and Liu Ts’ui-jung eds，Sediment of Time : Environment and Society in Chinese History，Cambridge : Cambridge University Press，1998. ＊───，《台灣環境史》，台北：國立臺灣大學出版中心，2019年。 劉翠溶編，《自然與人為互動：環境史研究的視角》，台北：中央研究院，2008年。 田丰、李旭明主編，《環境史：從人與自然的關係敘述歷史》，北京：商務印書館，2011年。 李永展，《永續發展：大地反撲的省思》，台北：巨流出版社，2003年。 ───，《台灣環境史》，台北：國立臺灣大學出版中心，2019年。 汪榮祖，〈「天地之益」：明清帝國生態危機綜說〉，《中國文化研究所學報》，卷51（2010年），頁87-115。 邱仲麟，〈人口增長、森林砍伐與明代北京生活燃料的轉變〉，《中央研究院歷史研究所集刊》，71卷第1期（2003年），頁141-188。 大野和基（Ohno Kazumoto）採訪、編撰，《解讀大未來》（高詹燦譯），台北：城邦文化事業股份有限公司，商業週刊，2019年。 竺可楨，〈中國近五千年來氣候變遷的初步研究〉，《竺可楨文集》，北京：科學出版社，1979年，pp.475-498。 馮賢亮，《明清江南地區的環境變動與社會控制》，上海：上海人民出版社，2002年。 李根蟠等編，《中國經濟史的天人關係》，北京：中國農業出版社，2002年。 復旦大學歷史地理研究中心主編，《自然災害與中國社會歷史結構》，上海：復旦大學出版社，2001年。 季羨林，〈天人合一新解〉，李羨林、張光璘編選，《東西文化議論集》，北京：經濟日報出版社，1997年，pp.82-84。 漢寶德，《風水與環境》，台北：小異出版、大塊文化發行，2006年。 劉沛林，《風水──中國人的環境觀》，上海：三聯書店，1995年。 許靖華，《人與環境：台灣現代環境史論》，台北：正中書局，2000年。 ───，《氣候創造歷史》，台北：聯經出版事業公司，2013年。 袁清林編，《中國環境保護史話》，北京：中國環境科學出版社，1989年。 劉翠溶、伊懋可編，《積漸所至：中國環境史論文集》，台北：中央研究院經濟研究所，1995年。 李常井，〈環境倫理學研究取向之探討〉，錢永祥、戴華編，《哲學與公共規範》，台北：中央研究院中山人文社會科學研究所，1995年，pp.29-49。 曾華璧，《台灣的媒體與環境主義》，台北：國泰文化事業有限公司，1996年。 ───，《人與環境：台灣現代環境史論》，台北：正中書局，2001年。 段義孚，《段義孚博士論文集》，台北：國立台灣師範大學地理學系影印，1997年。 中研究院台灣史研究所主辦，兩次環境史國際學術研討會論文集 劉士永，〈人、環境與歷史：從「人定勝天」到「積漸所至」〉，《中央研究院週報》，第1189期，2008年。 汪榮祖，〈「天地之盜」：明清帝國生態危機綜說〉，《中國文化研究所學報》，第51期，2010年。 李丙寅、朱紅、楊建軍，《中國古代環境保護》，河南：河南大學出版社，2001年。 陳林博，〈威廉‧克羅農的環境史研究中的主要觀念探析〉，《遼寧大學學報》，第42卷第4期（2014年），pp.22-29。 李尚仁，〈歐洲擴張與生態決定論：大衛•阿諾論環境史〉，《當代》，第170期（2001年），pp. 18-29。 (美)威廉．H．麥克尼爾著，楊玉齡譯，陳建仁審定，《瘟疫與人》，台北：天下遠見出版股份有限公司，1998年。 (英)克萊夫．龐廷著，王毅、張學廣譯，《綠色世界史：環境與偉大文明的衰落》，上海：人民出版社，2002年。 J. Donald Hughes, What is Environmental History?, New York: John Wiley ＆ Sons, 2015. William Beinart, Environment and History: The Taming of Nature in the USA and South Africa, London: Routledge, 1995. 中譯本：包茂紅，《環境與歷史：美國和南非馴化自然的比較》，南京：譯林出版社，2008年。 Keith Thomas, Man and the Natural World: Changing Attitudes in England, 1500-1800, New York: Viking, 1983. 中譯本：宋麗麗譯，《人類與自然世界》，南京：譯林出版社，2008年。 Manfred Domrös and Pong Gongbing, The Climate of China, Berlin: Springer- Verlag, 1988. Alfred Crosby, The Columbian Exchange: Biological and Cultural Consequences of 1492, Westport, CT: Greenwood Press, 1972, 2003. ———, Germs, Seeds and Animals: Studies in Ecological History, New York: M. E. Sharpe, 1993. Robert B. Marks, The Origins of the Modern World: A Global and Ecological Narrative from the Fifteenth to the Twenty-first Century, Lanham: Rowman ＆ Littlefield Publishers, 2002. J. Donald Hughes, The Face of the Earth: Environment and World History, Armonk, NY: M. E. Sharpe, 1999. ———, What is Environmental History, Cambridge, U.K.: Polity Press, 2006. Joachim Radkau, Nature and Power：A Global History of the Environment，New York: Cambridge Univ. Press,2008 I.G. Simmons, Global Environmental History: 10,000 BC to AD 2000, Edinburgh: Edinburgh Univ. Press,2008. ———, Changing the Face of the Earth: Culture, Environment, History, Oxford: Blackwell, 1989 Sing C. Chew, World Ecological Degradation: Accumulation, Urbanization, and Deforestation, 3000 B.C.-2000 A.D., Walnut Creek, CA: Rowman ＆ Littlefield, 2001. ———, The Recurring Dark Ages: Ecological Stress, Climate Changes, and System Transformation, Lanham, MD: Rowman Altamira, 2007. John R McNeill, Something New Under the Sun: An Environmental History of the Twentieth-Century World, New York: W. W. Norton, 2000. Donald Worster ed, The Ends of the Earth: Perspectives on Modern Environmental History, Cambridge: Cambridge Univ. Press, 1988. Richard P. Tucker and John F. Richards, eds, Global Deforestation and the Nineteenth Century World Economy, Durham, NC: Duke Univ. 1983. J.R. McNeil and Verena Winiwarter, eds, Soils and Societies: Perspectives from Environmental History, U.K: White Horse Press，2006 Spencer R. Weart，The Discovery of Global Warming, Cambridge: Harvard Univ. Press, 2008. Alfred W. Crosby, Ecological Imperialism: The Biological Expansion of Europe, 900–1900, Cambridge: Harvard Univ. Press, 2004(1st edn, 1986) Richard H. Grove, Green Imperialism: Colonial Expansion, Tropical Island Edens and the Origins of Environmentalism, 1600-1860, Cambridge: Harvard Univ. Press, 1995. Peder Anker, Imperial Ecology: Environmental Order in the British Empire, 1895-1945, Cambridge: Harvard Univ. Press, 2001. Alf Hornborg, John R. McNeill and Juan Martínez-Alier, Rethinking Environmental History: World-system History and Global Environmental Change, Lanham, MD: Rowman Altamira, 2007. Jan Oosthoek and Barry K. Gills, eds, The Globalization of Environmental Crisis, London: Routledge, 2008. Mark Elvin, The Retreat of the Elephants: An Environmental History of China, New Haven: Yale Univ. Press, 2004. ───, “Three Thousand Years of Unsustainable Growth: China‘s Environment from Archaic Times to the Present,” East Asian History 6 (1993), pp. 7-46. Andrew Goudie, The Human Impact on the Natural Environment. Cambridge, MA: The MIT Press John Young, Sustaining the Earth: The Story of the Environmental Movement, Cambridge: Harvard Univ. Press, 1990. John McCormick, Reclaiming Paradise: The Global Environmental Movement, Bloomington: Indiana Univ. Press, 1989. Shepard Krech III, J.R. McNeill, Carolyn Merchant eds, Encyclopedia of World Environmental History, 3Vols, New York: Routledge, 2004. Mark Elvin，“The Environment History of China : An Agenda of Ideas,” Asian Studies Review 14(2)，1990，pp.39-53。 Mark Elvin and Liu Ts‘ui-jung eds., Sediments of Time : Environment and Society in Chinese History, Cambridge: Cambridge University Press, 1998. Brian M. Fagan, The little Ice Age: How Climate Make History, New York: Basic books, 2000. H.H. Lamb, Climatic: Past, Present and Future, London: Methuen, 1997. Yong-Tsu Wong(汪榮祖) “Reflections on the Ecological Crisis in Late Imperial China”（中華帝國晚期的生態危機） Robert B. Marks, Tigers, Rice, Silk, and Silt: Environment and Economy in Late Imperial South China, Cambridge: Cambridge University Press, 1998. Mark Elvin, The Retreat of the Elephants: An Environmental History of China, New Haven: Yale University Press, 2000. Mark Elvin, “Three Thousand Years of Unsustainable Growth: China’s Environment from Archaic Times to the Present,” East Asian History, No. 6 (1997), pp. 7-46. J. Donald Hughes, An Environmental History of the World, London: Routledge, 2009. D. E. Cooper ＆ S. P. James, Buddhism, Virtue and Environment (England: Ashgate Publishing Limited, 2005. M. E. Tucker and D. R. Williams eds., Buddhism and Ecology: The Interconnection of Dharma and Deeds, Cambridge: Harvard univ. Press, 1997. Helaine Selin ed., Nature Across Cultures: Views of Nature and The Environment in Non-Western Cultures, Netherlands: Kluwer Academic Publishers, 2003. Keith Buchanan, The Transformation of the Chinese Earth: Aspects of The Evaluation of The Chinese Earth From Earliest Times to Mao Tse-tung, New York: Praeger, 1970 Robert B. Marks, Tigers Rice, Silk, and Silt: Environment and Economy in Late Imperial South China, Cambridge: Cambridge Univ. Press, 1988. H. H. Lamb, Climate: Present, Past and Future, London: Methuen, 1977. Brian Fagan, The Little Ica Age: How Climate Made History 1300-1850, New York: Basic Book, 2000. 六、農民、農村和農業問題 桓寬，《鹽鐵論》，北京：華夏出版社，2004年。 李小雲，左停，葉敬忠主編，《2003-2004中國農村情況報告》，北京：社會科學文獻出版社，2004年。 陸學藝，《“三農”新論：當前中國農業、農村、農民問題研究》，北京：社會科學文獻出版社，2005年。 秦暉，《農民中國：歷史反思與現實選擇》，鄭州：河南人民出版社, 2003年。 張瑞德，〈民國時期的農民階層（1912-1937）〉，《思與言》，第卅二卷第二期（1996年6月），pp.259-292。 蘇雲峰，〈民初社會階層〉，教育部主編，《中華民國建國史》，台北：國立編譯館，1987年，pp.1543-1557。 趙岡、陳鍾毅，《中國農業經濟史》，台北：幼獅文化事業公司，1989年。 李伯重，《江南農業的發展1620-1850》，上海：古籍出版社，2007年。 傅依凌，《明清農村社會經濟、明清社會經濟變遷》，北京：中華書店，2007年。 費孝通，《江村經濟》，上海：人民出版社，2007年。 裴宜理，《華北的叛亂者與革命者》，北京：商務印書館，2007年。 ＊石錦，《中國近代社會研究》，台北：李敖出版社，1990年，pp.1-12，101-138。 ＊卜凱，《中國土地利用》，台北：學生書局，1971年。 ＊王業鍵，〈近代中國農業的成長及其危機〉，《中央研究院近代史研究所集刊》，第七期（1968），pp.355-370。 林文勛、張錦鵬主編，《中國古代農商、富民社會研究》，北京：人民出版社，2016年。 周远廉、谢肇华，《清代租佃制研究》，瀋陽：遼寧人民出版社，1986年。 喬啟明，《中國農村社會經濟學》，上海：商務印書館，1946年。 言心哲，《農村社會學概論》，北京：中華書局，1934年。 馬扎亞爾，《中國農村經濟研究》，上海：神州國光社，1930年。 許滌新，《現代中國經濟教程》，上海：新知書店，1947年。 陳翰笙，《帝國主義工業資本與中國農民》，上海：復旦大學出版社，1984年。 許滌新、吳承明主編，《中國資本主義發展史》，中和：谷風出版社，1987年(上下冊)。 谷風出版社編輯部編，《中國資本主義萌芽問題討論集》，中和：谷風出版社，1987年。 楊國楨，《明清土地契約文書研究》，北京：人民出版社，1988年。 孫津，《中國農民與中國現代化》，北京：中央編譯出版社，2004年。 李文治編，《中國近代農業史資料》，北京：三聯書店，1957年(三輯)。 馮和法編，《中國農村經濟資料》，台北︰華世出版社，1978年。 ———，《中國農村經濟資料續編》，台北：華世出版社，1978年。 曹貫一，《中國農業經濟史》，北京：中國社會科學出版社，1988年。 鄭慶平、岳琛，《中國近代農業經濟史概論》，北京：中國人民大學出版社，1987年。 章有義，《中國近代農業史資料》，北京：三聯書店，1957年。 薛暮橋，《舊中國的農村經濟》，北京：農業出版社，1980年。 嚴中平等，《中國近代經濟史統計資料選輯》，北京：科學出版社，1955年。 薛暮橋、馮和法編，《中國農村論文選》（2冊），北京：人民出版社，1983年。 郭漢鳴等，《四川租佃問題》，重慶：商務印書館，1944年。 長野郎，《中國土地制度的研究》，上海：新世紀書店，1933年。 陶真夫，《中國農村經濟論》，上海：黎明書局，1934年。 吳慧，《中國近代糧食畝產研究》，南京：農業出版社，1985年。 許道夫，《中國近代農業出產及貿易統計資料》，上海：上海人民出版社，1983年。 陈翰笙，《帝國主義工業資本與中國農民》，上海：復旦大學出版社，1983年。 傅衣凌，《明清農村社會經濟》，北京：三聯書店，1980年。 ———，《明清社會經濟論文集》，北京：人民出版社，1982年。 周遠廉、謝肇華，《清代租佃制度研究》，瀋陽：遼寧人民出版社，1986年。 李全錚，《民國鄉村借貸關係研究》，北京：人民出版社，2003年。 葉顯恩、卞恩才主編，《中國傳統社會經濟現代化》，廣州：廣東人民出版社，2001年。 程同順，《當代中國農村政治發展研究》，天津：天津人民出版社，2000年。 王春光，《中國農村社會變遷》，昆明：雲南人民出版社，1996年。 黃樹民，《林村的故事 : 一九四九年后的中國農村變革》，北京：生活‧讀書‧新知三聯書店，2002年。 周大鳴，鳳凰村的變遷：《華南的鄉村生活》追蹤研究，北京：社會科學文獻出版社，2006年。 丁抒，《人禍：「大躍進」與大饑荒》，香港：九十年代雜誌社，1991年。 費孝通，《江村經濟：中國農民的生活》，北京：商務印書館，2002年。 盧嘉瑞等，《中國農民消費結構研究》，石家莊：河北教育出版社，2002年。 徐勇，《中國農村研究》，北京：中國社會科學出版社，2003年。 Gake Johnson著，林毅夫、趙耀輝譯，《經濟發展中的農業、農村、農民問題》，北京：商務印書館，2004年。 ＊陳桂棣、春桃，《中國農民調查》，北京：人民文學出版社，2004年。 侯建新，《農民、市場與社會變遷：冀中11村透視並與英國鄉村比較》，北京：社會科學文獻出版社，2002年。 徐浩，《農民經濟的歷史變遷：中英鄉村社會區域發展比較》，北京：社會科學文獻出版社，2002年。 Chen Han-seng（陳翰笙）, Landlord and Peasant in China: A Study of the Agrarian Crisis in South China, New York: International Publishers, 1936. Ezra F.Vogel, “Land Reform in Kwangtung, 1951-1953,” China Quality, no.38(1969) pp.27-62. ———, One Step Ahead in China: Guangdong under Reform, Cambridge: Harvard Univ., 1989. Yu-kung Kao, “Peasant Rebellions in China.“ in Albert Feuerwerker ed., Modern China, Englewood, M.J.: Prentice-Hall, 1964, pp.355-370。 ＊Ramon H. Myers, The Chinese Peasant Economy: Agriculture Development in Hopei and Shangtung, 1890-1949,Cambridge: Harvard University Press, 1970.（有中譯本） ＊Dwight H. Perkins, Agricultural Development in China (1368-1968), Chicago: Aldine Publishing company, 1969.（有中譯本） Philp. C. C. Huang, The Peasant Economy and Social Change in North China, Stanford: Stanford Univ. 1985。（中譯本，《華北的小農經濟與社會變遷》，香港︰牛津大學出版社，1994年。） ———, The Peasant Family and Rural Development in the Yangzi Delta 1350-1988, Stanford: Stanford Univ. 1990。（中譯本，《長江三角洲小農家庭與鄉村發展一三五○～一九八八》，香港︰牛津大學出版社，1994年。） Elizabeth J. Perry, Rebels and Revolutionaries in North China, 1845-1945, Stanford: Stanford Univ., 1980. （有中譯本） James C. Scott, The Moral Economy of The Peasant: Rebellion and Subsistence in Southeast Asia, New Haven: Yale Univ., 1976. ———, Weapon of the Weak: Everyday Forms of Peasant Resistance, New Haven: Yale Univ. 1985. Arthur H. Smith, Village Life in China, Boston: Little, Brown and Company, (1899年) 1970年.（由午晴、唐鈞譯，《中國鄉村生活》，北京：時事出版社，1998年。） Daniel Harrison Kulp, Country Life in South China: the Sociology of Feminism, New York: Columbia Univ., 1925. Elizabeth J. Perry and Mark Selden eds., Chinese Society: Change, Conflict and James B Parsons, Peasant Rebellions of the Late Ming Dynasty, Tucson: University of Arizona Press, 1970. Hsiao Kung-Chuan, Rural China: Imperial Control in the Nineteenth Century, Seattle: University of Washington Press, 1960. 七、工業發展與現代化 ＊中央研究院近代史研究所編，《中國現代化論文集》，台北：該所，1991年。 田昌五、漆俠主編，《中國歷代經濟史》，台北：文津出版社，1998年（共四卷）。 ＊全漢昇，《中國經濟史研究》，香港：新亞研究所，1976年（台灣有翻印）。 全漢昇，《中國經濟史論叢》，香港：新亞研究所，1972年（台灣有翻印）。 趙岡、陳鐘毅，《中國棉業史》，台北：聯經出版事業公司，1977年。 ＊王爾敏，〈官督商辦觀念之形成及其意義〉，《香港中國文化研究所學報》，13卷（1982），pp.19-43。 嚴中平，《中國棉紡織史稿，1289-1937》，北京：科學出版社，1963年。 章開沅、朱英主編，《對外經濟關係與中國近代化》，武昌：華中師範大學出版社，1990年。 張維安，《政治與經濟: 中國近世兩個經濟組織之分析》,台北：桂冠圖書有限公司,1990年。 ＊Abert Feuerwerker, China Early Industrialization, Cambridge: Harvard University Press, 1958.(有中譯本) John Chang, Industrial Development in Pre-Communist China, Chicago: Aldine, 1969. 八、市鎮、城市和行會問題 楊寬，《中國古代都城制度史研究》，上海：古籍出版社，1993年。 斯波義信，《中國都市史》，東京：東京大學出版社，2002年。 傅衣凌，〈明清時代江南市鎮經濟的分析〉，《歷史教學》，1964：5。 許學強、伍宗唐、梁志強，《中國小市鎮的發展》，廣州：中山大學出版社，1987年。 劉澤華、汪茂和、王蘭仲，《專制權力與中國社會》，長春：吉林文史出版社，1988年，pp.149-223。。 顧朝林，《中國城鎮體系：歷史、現狀、展望》，北京：商務印書館，1988年。 周寶珠，《宋代東京研究》，開封：河南大學出版社，1992年。 龍登高，《中國傳統市場發展史》，北京：人民出版社，1997年。 ———，《宋代東南市場研究》，昆明：雲南大學出版社，1994年。 姜守鵬，《明清北方市場研究》，瀋陽：東北師大，1996年。 劉石吉，《明清時代江南市鎮研究》，北京：中國社會科學出版社，1987年。 樊樹志，《明清江南市鎮探微》，上海：復旦大學出版社，1990年。 陳學文，《明清時代杭嘉湖市鎮史研究》，北京：群言出版社，1993年。 徐小群，《民國時期的國家與社會：自由職業團體在上海的興起，1912-1937》，北京：新學出版社，2007年。 ＊王爾敏，《明清時代庶民文化生活》，台北：中央研究院近代史研究所，1996年。 ———，《明清社會文化生態》，台北：商務印書館，1997年。 包偉民主編，《江南市鎮及其近代命運，1840-1949》，北京：知識出版社，1998年。 林瑞穗，《台灣都市研究》，台北：協進圖書有限公司，1985年。 曹俊漢、柯瓊芳主編，《中西都會區之發展與面臨的問題》，台北：中央研究院歐美研究所，1995年。 ＊趙岡，《中國城市發展史論集》，台北：聯經出版事業公司，1995年。 ＊李孝悌編，《中國的城市生活》，台北：聯經出版事業公司，2005年。 劉澤華、汪茂和、王蘭仲，《專制權力與中國社會》，長春市：吉林文史出版社, 1988年，pp.193-223。 亨特，《舊中國雜記》，廣州：廣東人民出版社，1992年。 卜正民 (Timothy Brook)，《縱樂的困惑 : 明代的商業与文化》，台北：聯經出版事業公司，2004年。 何一民，《中國城市史綱》，成都：四川大學出版社，1994年。 葉驍軍，《中國都城發展史》，陜西人民出版社，1985年。 朱英主編，《中國近代同業公會與當代行業協會》，北京：中國人民出版社，2004年。 全漢昇，《中國行會制度史》，台北：食貨出版社，1986年。 漢寶德，《建築、社會與文化》，台北：境與象出版社，1990年。 王銘賢，〈城市的歷史與特徵：城市研究新動態〉，空間雜誌，第九十三年（1997年）。 梁其姿，《施善與教化》，台北：聯經文化出版事業有限公司，1997年。 張仲禮主編，《近代上海城市研究》，上海：人民出版社，1990年。 唐振常、沈恆春主編，《上海史》，台北：人民出版社，1989年。 熊月之主編，《上海通史》，上海：人民出版社，1999年。 于醒民、唐繼無，《上海：近代化的早產兒》，台北：久大文化股份有限公司》，1992年。 羅澍偉主編，《近代天津城市史》，北京：中國社會科學出版社，1993年。 張仲禮、熊月之、沈祖煒主編，《長江沿岸城市與中國近代化》，上海：人民出版社，2002年。 皮朋麻主編，《近代武漢城市史》，北京：中國社會科學出版社，1993年。 隗瀛濤主編，《近代重慶城市史》，重慶：四川大學出版社，1991年。 樂承耀，《寧波近代史綱》，寧波：寧波出版社，1999年。 吳建雍等，《北京城市生活史》，北京：開明出版社，1997年。 馬嘶，《百年冷暖：20世紀中國知識份子生活狀況》，北京：北京圖書館出版社，2003年。 王申，《中國近代律師制度與律師》，上海：上海社會科學出版社，1994年。 Myron L. Cohen, “Lineage Organization in North China”, The Journal of Asian Studies, 49:3(1990), pp.509-634. Hung Wu, Remaking Beijing: the Creation of Political Space, London, 1999. Jeffery F. Myer, The Dragons of Tiananmen: Beijing as a Sacred City, Columbia, S.C., 1991. ———，Old Peking: City of the Ruler of the World : An Anthology, Hong Kong, New York, 1997. Susan Narquin, Peking: Temples and City Life, 1500-1900, Princeton, N.J.: Princeton University Press, 2001. Bryan Goodman, Native Place, City and Nation: Regional Networks and Identifies in Shanghai, 1853-1937, Berkeley: University of California, 1995. Chang Sen-dou, “Some of Observation on the Morphology of Chinese Walled Cities,” Annals of the Association of American Geographers, vol.60 (1970). ———, “Some Aspects of the Urban Geography of the Chinese Hsien Capital,” AAAG, vol.51 (1961). ———, “The Historical Trend of Chinese Urbanization,” AAAG, vol.53 (1967). Linda C. Johnson, Shanghai: From Market Town to Treaty Port, 1074-1858, Stanford : Stanford University Press, 1995. William Rowe, Hankow: Commerce and Society in a Chinese City, 1796-1889, Stanford : Stanford University Press, 1989. ———, Hankow : Conflict and Community in a Chinese City, 1796-1895, Stanford : Stanford University Press, 1989. Philip M. Hauses ＆ Leo F. Schnore, The Study of Urbanization, New York︰John Wiley ＆ Sons Inc, 1967. Frederick W. Mote, “The City in Traditional Chinese Civilization,” in Feuerwerker ed. 1964, pp.42-49. ＊G. William Skinner ed., The City in Late Imperial China, Stanford: Stanford Univ. Press, 1977, pp.3-32, 253,555-580,609-650. Mark Elvin ＆ G.W.Skinner eds, The Chinese City between Two Worlds, Stanford: Stanford University Press, 1974. Rhoads Murphey, “The City as the Center of Change: Western Europe and China,” Annals of the Association of American Geographers, XLIV(1954), pp. 349-362. Glenn T. Trewartha, “Chinese Cities: Number and Distribution,” Annals of the Association of American Geographers, XLI(1951), pp. 331-347. ———, “Chinese Cities: Origins and Functions,” Ibid, XLII(1952), pp. 69-93. Leo A Orleans, “The Recent Growth of China‘s Urban Population,” Geographical Review, XLIX(1959), 43-57. Fenton Keyes, “Urbanism and Population Distribution in China,” American Journal of Sociology, LVI (1950-1951), 519-527. Y. K. Leong ＆ L. K. Tao, Village and Town Life in China, London: Allen ＆ Unwin, 1915. Rhoads Murphey, Shanghai, Key to Modern China, Cambridge: Harvard University, 1953. Sidney Gamble and J. S. Burgess, Peking: A Social Survey, New York: Doran, 1921. Johnson Linda, Cities of Jiangnan in Late Imperial China, Albany : University of New York Press, 1993. Gilbert Rozman, Urban Networks in Ching China and Tokugawa Japan, Princeton : Princeton University Press, 1973. ———, Population and Marketing Settlements in Ch’ing China, Cambridge : Cambridge University Press, 1982. Joseph W. Esherick ed., Remaking The Chinese City: Modernity and National Identity, 1900-1950, Honolulu: University of Hawaii, 1999. Michael Tsin, Nation Governance and Modernize in China：Canton, 1920-1927, Stanford: Stanford University Press, 1999. Gideon Sjoberg, The Pre-industrial City : Past and Present, New York : Free Press, 1960. Anthony M Orum ＆ Xiangming Chen, The World of Cities, Oxford : Blackwell Publishing, 2003. 九、企業精神與社會變遷及經濟發展 李伯重，《理論、方法、發展趨勢：中國經濟史發展新探》，北京：清華大學出版社，2001年。 侯建新，《社會轉型時期的西歐與中國》，濟南：濟南出版社，2001年。 張漢裕，〈論現代工業社會的企業家作風及職業倫理〉，〈西洋現代企業家精神及其成立之研究〉，張漢裕博士文集編纂委員會編，《經濟發展與經濟思想：張漢裕博士文集》（二），台北：張漢裕博士文集出版委員會，1974年，pp.47-56；285-322。 陳錦江，〈中國的企業精神與西方的影響〉，章開沅、朱英主編，《對外經濟關係與中國近代化》，頁121-130。 ＊Gilbert Rozman ed., The Modernization of China, New York: The Free Press, 1981. (有中譯本) ＊Habakkuk, J. “The Entrepreneur and Economic Development,” in I. Livingston ed., Economic Policy for Development, London: Penguin Books, 1971, pp. 37-52. Alexander Gerschenkron, Continuity in History and Other Essays, Cambridge: Harvard University Press, 1968, pp.458-139. 十、商業、商人、政府與近代經濟發展 吳慧，《中國古代商業》，台北：商務印書館，1994年。 ———，《中國商業政策史》，台北：文津出版社，1994年。 ———，《中國古代商業史》（1－2冊），北京：中國商業出版社，1983年。 曹天生，《中國商人》，合肥：安徽大學出版社，2001年。 傅主民、賀名倉主編，《中國商業文化大辭典》，北京：中國發展出版社，1994年。 曾兆祥，《中國封建社會的輕商思想和抑商政策》，北京：中國商業出版社，1983年。 黨誠恩，《中國商業史話》，北京：中國商業出版社，1986年。 李帆、黃海燕，《三十個富豪大賈》，長春：吉林文史出版社，1993年。 蔣建平等，《中國商業思想經濟史》，北京：中國財政經濟出版社，1990年。 張海鵬、張海瀛主編，《中國十大商幫》，合肥：黃山書社，1993年。 田兆元、田亮，《商賈史》，上海：上海文藝出版社，1997年。 陳承鑲、孫雲鵬、王素華，《商人學》，天津：天津人民出版社，1998年。 姜錫東，《宋代商人和商業資本》，北京：中華書店，2002年。 張正明、孫麗華、白雷主編，《晉商研究》，北京：人民出版社，2006年。 陳義初主編，《豫商發展史》，鄭州市：河南人民出版社，2007年。 王日根，《中國會館史》，上海：東方出版中心，2007年。 ＊何炳棣，《中國會館史概論》，台北：學生書局，1966年。 根岸佶，《支那のギルト》，東京：斯文書院，1932年。 ———,《上海のギルト》，東京：日本評論社，1951年。 ———,《中國のギルト》，東京：日本評論社，1953年。 仁井田陞《中國の社会とギルト》，東京：岩波書店，1951年 張海鵬、王廷光、唐力行、王世華編，《明清徽商資料選編》，合肥：黃山書社，1985年。 朱世良、張犁、金百川主編，《徽商史話》，合肥：黃山書社，1992年。 彭澤益主編，《中國工商行會史料集》（上下冊），北京：中華書局，1995年。 《徽商論文集》，合肥：人民出版社，1985年。 王世華，《富甲一方的徽商》，杭州：浙江人民出版社，1997年。 《江蘇省明清以來碑刻資料選集》，上海：三聯書店，1959年。 《明清蘇州工商業碑刻集》，南京：江蘇人民出版社，1981年。 胡春煥、白鶴群，《北京的會館》，北京：中國經濟出版社，1994年。 周昭京，《潮州會館史話》，上海：上海古籍出版社，1995年。 王日根，《鄉土之鏈：明清會館與社會變遷》，天津：天津人民出版社，1996年。 羅一星，《明清佛山經濟發展與社會變遷》，廣州：廣東人民出版社，1994年。 劉建生、劉鵬生、燕紅忠等，《明清晉商制度變遷》，太原：山西人民出版社，2005年。 劉秋根，《明清高利貸資本》，北京：社會科學文獻出版社，2000年。 ＊傅衣凌，《明清時代商人及商業資本》，北京市：人民出版社，1956年。 ＊王振忠，《明清徽商與淮揚社會變遷》，北京：生活‧讀書‧新知三聯書店，1996年。 Timothy Brook （卜正民），The Confusions of Pleasure: Commerce and Culture in Ming China（方駿等譯）《縱樂的困惑：明代的商業與文化》，北京：生活、讀書、新知三聯書店，2004年。 唐力行，《商人與中國近世社會》，台北：商務印書館，1997年。 ———，《商人與文化的雙重變奏：徽商與宗族社會的歷史考察》，武昌：華中理工大學出版社，1997年。 嚴昌洪，《在商業革命的大潮中：中國近代商事習慣的變遷》，武昌：華中理工大學出版社，1997年。 朱英，《商業革命中的文化變遷：近代上海商人與（海派）文化》，武昌：華中理工大學出版社，1996年。 韓大成，《明代城市研究》，北京：中國人民大學出版社，1991年。 馬敏，《官商之間：社會劇變中的近代紳商》，天津：天津人民出版社，1995年。 徐鼎新、錢小明，《上海總商會史》，上海：上海社會科學院，1991年。 張桓忠，《上海總商會研究（1902-1929）》，台北縣：知書房出版社，1996年。 虞和平，《商會與中國早期現代化》，上海：上海人民出版社，1993年。 ＊石錦，《中國近代社會研究》，台北：李敖出版社，1990年， pp13-46。 ＊徐潤，《徐愚齋自敘年譜》，台北：商務印書館，1981年。 寺田隆信，《山西商人研究》，（張正明、道豐、孫耀、閻守誠譯）京都，1972年；山西：人民出版社，1986年。 黃鑒暉，《山西商人研究》，太原：山西經濟出版社，2002年。 陶水木，《浙江商幫與上海經濟》，上海：上海三聯書店，2000年。 何一民主編，《近代中國衰落城市研究》，成都：四川出版集團巴蜀書社，2007年。 和田清，〈從歷史上看中國商人的地位〉，《史學》，29：2，1956年。 斯波義信，《宋代商業史研究》，東京：風間書店，1968年。 陳學文，《龍游商幫》，香港：中華書局；台灣：萬象出版公司，1995年 ———，《明清時期商業書及商人書之研究》，台北：洪葉文化事業有限公司，1997年。 余英時，《士與中國文化》，上海：上海人民出版社，2003年，pp.390—510；527—578。 《中國海關貿易報告》 劉澤華、汪茂和、王蘭仲，《專制權力與中國社會》，長春市：吉林文史出版社, 1988年，pp.149-192。 張國輝，〈19世紀後半期中錢莊的買辦化〉，《歷史研究》，第六期（1963年）年，pp.85-98.。 ———，《洋務運動與中國近代企業》，北京：中國社會科學出版社，1979年。 梁嘉彬，《廣東十三行考》，台中：東海大學，1960年。 ＊劉廣京，〈唐廷樞之買辦時代〉，《清華學報》，新第二期（1961年），pp.143-183.。 彭雨新，〈抗日戰爭前漢口的洋行和買辦〉，《理論戰線》，第十一期（1959年2月），p.28。 嚴中平，《中國棉紡織史稿》，北京市：科學出版社, 1955年。 古鴻廷、莊國土，《當代華商經貿網路：海峽兩岸與東南亞》，台中：東海大學通識教育中心，2003年。 內田直作，〈洋行制度研究〉，《支那研究》，第五十期（1939年3月），pp.187-221。 黃山書社，《中國十大商幫》，該社，1999年。 張海鵬、王廷元主編，《徽商研究》，合肥：安徽人民出版社，1995年。 張正明，《晉商興衰史》，太原：山西古籍出版社，1995年。 陳家豪，《近代台灣人資本與企業經營：以交通業為探討中心》，台北：政大出版社，2018年。 林建山，《台灣企業原理：觀念、經驗與現實》，台北：環球出版社，1991年。 王振寰、溫肇東主編，《百年企業、產業百年：台灣企業發展史》，高雄：巨流出版社，2011年。 黃富三、翁嘉音主編，《台灣商業傳統論文集》，台北：中央研究院台灣史研究所籌備處，1999年。 謝國興，〈企業發展與台灣經驗：一個歷史學的研究方法〉，《中央研究院近代史研究所集刊》，23(1994年6月)，頁333-351。 G. C. Allen And Audrey G. Donnithorne , Western Enterprise in Far Eastern Economic Development, China and Japan, London : Allen ＆ Unwin, 1954. Nathan Allen, The Opium Trade : Including a Sketch of Its History, Extent, Effects, etc., as Carried on in India and China, 2nd ec, Lowell, Mass, 1853 Arnold Julean , Commercial Handbook of China ,2vols. Washington D.C.: Government Printing Office, 1919,1920 Barlous, Violet, Capitalism in Amsterdam in the 17th Century, Baltimore: John Hopkins Press, 1950 Braudel, Fernand, Capitalism and Material life, 1400-1800 translated by Miriam Kochan, New York: Harper and Row, 1975. ———, The Mediterranean and the Mediterranean World in the Age of PhipП, New York, 1975. ———, Afterthoughts on Material Civilization and Capital, Baltimore: Johns Hopkins University Press, 1977. Brown, Shannon R. “The Transfer of Technology to China in the 19th Century: The Role of Direct Foreign Investment” Journal of Economic History, 39: 1(March, 1979), pp.181-197. Chang, Tien-tse, Sino-Portuguese Trade from 1514 to 1644: A Synthesis of Portuguese and Chinese Sources, Londen:E.J.Brill,1934. Chaudhuri K.N, “The East India Company and the Export of Treasure in the Early Seventeenth Century”, Economic History Review, 2nd for 16(August 1963), pp.23-38 ———, “Treasure and Trade Balance: The East India Company Export Trade, 1660-1720,” Economic History Review, 2nd series (Dec 1968), pp.480-502. ———, “The Economic and Monetary Problem of European Trade with Asia during the Seventeenth and Eighteen Century,” Economic History Review, 4 (Fall 1975), pp.480-502. Chang Yu-kuei, Foreign Trade and Industrial Development Of China: An Historical and Integrated Analysis Though 1948, Washington D.C.,1956. Cheong,Weng-Eang, The Hong Merchants of Canton : Chinese Merchants in Sino-Western trade, Richimord, Survey, Curzon, 1999. Chung, Po Yin Stephanie, 鍾寶賢, Chinese Business Groups in Hong Kong and Political Changes in South China, 1900-25, Houndmills, Basingstoke: Macmillan, 1998. Cochran Sheman, Big Business in China: Sino-Foreign Rivalry in the Cigarette Industry, 1890-1930, Cambridge, MA: Harvard University Press, 1980 Downs, Jacques M, “Americans Merchants and the China Opium Trade, 1800-1840”. Business History Review, 42 (Winter 1968), pp.418-442. Hao, Yen-ping, “Cheng Kuan-ying: The Comprador as Reformer,” Journal of Asian Studies, 29 (Nov,1969), pp.15-22. Hilton, Rodney ed, The Transition from Feudalism to Capitalism, London: New Left Books, 1976. ＊Ho, Poing-ti, The Ladders of Success in Imperial China: Aspects of Social mobility, 1368-1911, New York: Columbia University Press, 1962. ＊Hou, Chi-ming, Foreign Investment and Economic Development in China,1840-1937, Cambridge: Harvard University Press, 1965. Hsiao, Liang-lin, China‘s Foreign Trade Statistics, 1864-1949, Cambridge, Mass.: East Asian Research Center, Harvard University: distributed by Harvard University Press, Imperial Maritime Customs of China, 1974. William C. Hunter, The “Fan Kwae“ at Canton before Treaty Days, 1825-1844, London, 1882 Maggie Keswick ed., The Thistle and the Trade: A Celebration of 150 Years of Jardine, London : Octopus Books, 1982. Frank H. H. King, Money and Monetary Policy in China : 1845-1895, Cambridge, Mass: Harvard University Press, 1965 Edward Le Fevour, Western Enterprise in late Ching China : A Selective Survey of Jardine, Matheson and Company‘s Operations, 1842-1895, Cambridge, Mass Harvard Univ., 1968. Marion J. Levy, Jr. and Shih Kuo Heng, The Rise of the Modern Chinese Business Class: Two Introductory Essays, New York: Institute of Pacific Relations, 1949. Lillian M. Li , China‘s Silk Trade : Traditional Industry in the Modern World 1842-1937 , Cambridge, Mass : Harvard University Press, 1981. D. K. Lieu, The Growth and Industrialization of Shanghai, Shanghai: China Institute of Economic and Statistical Research, 1936 Stephen C. Lockwood, Augustine Heard and Company, 1858-1862: American Merchants in China, Cambridge, mass: Harvard Univ. Press, 1971. William F. Mayers, N. B. Dennys, and Chas. King. The Treaty Ports of China and Japan, London, 1867. Thomas Metyger, “The State and Commerce in Imperial China,” Asia and African Studies, no.6 (1970). H. B. Morse, Corrency, Weights and Measures in China, Shanghai,1906. ———, The International Relations of the Chinese Empire, 3vols, Shanghai,1910, London, 1918. ———, The Trade and Administration of China, New York: Longmans, Green, 1921. ———, The Chronicles of the East India Company: Trading to China, 1635-1834, 5 vols, Oxford: Oxford Univ. Press, 1926-29 Frances V. Moulder, Japan, China and the Modern World Economy: Toward a Reinterpretation of East Asian Development ca. 1600 to ca. 1918, Cambridge, England: Cambridge Univ. Press, 1977. David Edward Owen, British Opium Policy in China and India, New Haven: Yale Univ. Press, 1934. Laurence B. Packard, The Commercial Revolution, 1400-1776, New York : Hott, 1927. Dwight, H. Perkins, “Government as an Obstacle to Industrialization: The Case of Nineteenth Century China”, Journal of Economic History, 27(Dec.1967), pp.478-92. John C. Stanley, Late Ch‘ing Finance : Hu Kuang-yung as An Innovator, Cambridge, Mass: Harvard Univ., 1961. S. Wells Williams, The Chinese Commercial Guide, 5th ed., Hong Kong, 1863. Arnold Wright ed., Twentieth Century Impressions of Hong Kong, Shanghai, and Other Treaty Ports of China : Their History, People, Commerce, Industries, and Resources , London, 1908. Lien-sheng Yang, Money and Credit in China : A Short History, Cambridge, MA : Harvard University Press, 1952. ＊Ho Ping-ti, “The Salt Merchant of Yang-Chou: A Study of Commercial Capitalis in Eighteenth-Century China,“ 收入于宗先、王業建等編，《中國經濟發展史論文選集》，台北：聯經出版事業公司，1980年，下冊，pp. 1389-1451。 Timothy Brook, “The Merchant in 16th Century China: A Discussion of Translation of Zhang Han‘s(張翰)on Merchant,“ Journal of the Economic and Social History of the Orient, 24: Part II. (May 1981), pp.165-124. ———，Confusions of Pleasure：Commerce and Culture in Ming China（《縱樂的困惑：明朝的商業與文化，方駿、王秀麗、羅天佑譯》）台北：聯經出版事業公司，2004年。 Thomas Metzger, “The Organizational Capacities of Ch‘ing State in the Field of Commerce: The Liang-huai Salt Monopoly, 1740-1840,“ in W. E. Willmore ed., Economic Organization in Chinese Society, Stanford: Stanford University 1972, pp.9-46. ———, “The State and Commences in Imperial China,” Asian and African Studies, Vol.6, 1970, pp.23-46. H. T. Zurndorfer, “Chinese Merchants and Commerce in Sixteenth Century China: The Role of the State in Society,” W. L. Idema ed., Leyden Studies in Sinology, Papers Presented at the Conference Held in Celebration of the Fifteenth Anniversary, Dec. 8-12, 1980, Leiden: E. J. Brill, 1981, pp.75-86. Albert Feuerwerker, “China‘s Nineteenth Century Industrialization: The Case of Hanyeping Coal and Iron Limited,“ in C. D. Cowan ed., The Economic Development of China and Japan, London: George Allen and Unwin, 1964, pp.79-110. Liu Kwang-ching, “Tong King-sing: His Compradore Years,” Tsing Hua Journal of Chinese Studies, New Series, II: 2 (June 1961), pp.143-183. ＊Yen-p‘ing Hao, The Compradore in Nineteenth Century China, Cambridge: Harvard Univ. Press, 1970. ———, The Commercial Revolution in Nineteenth Century China: The Rise of Sino-Western Mercantile Capitalism, Berkeley: Univ. of California, 1986. (中譯本，陳潮、陳任譯，《中國近代商業革命》，上海：上海人民出版社，1991年) Robert F. Dernberger, “The Role of the Foreigner in China‘s Economic Development, 1840-1849,“ in Dwright H. Perkins ed., China‘s Modern Economy in Historical Perspective, Stanford: Stanford University Press, 1975, pp.19-48. ＊Dwinght H. Perkins, “Government as an Obstacle to Industrialization: The Case of 19th-Century China,“ Journal of Economic History, 27:4(Dec. 1967), pp.478-492. ＊Wellington K. K. Chan, Merchants, Mandarins, and Modern Enterprise in Late Ch‘ing China, Cambridge: Harvard Univ. Press, 1977. Bill Gates, How to Avoid a Climate Disaster: The Solutions We Have and the Breakthroughs We Need, New York: Alfred A. Knopf, 2021. 十一、宗教問題 增田福太郎，《台灣宗教信仰》（黃有興譯），台北：東大圖書有限公司，2005年。 康豹，《中國宗教及其現代命運》（陳亭佑譯），新北：博揚文化事業有限公司，2017年。 馬克斯‧韋伯，《新教倫理與資本主義精神》，台北：谷風出版社，1988年。 Mayfair Mei-hui Yang, Chinese Religiosities: Afflictions of Modernity and State Formation, Berkeley: University of California Press, 2008. Yoshiko Ashiwa and David L. Wank eds., Making Religion, Making the State: The Politics of Religion in Modern China, Stanford: Stanford University Press, 2009. Rebecca A. Nedostup, Superstitious Regimes: Religion and the Politics of Chinese Modernity, Cambridge, MA: Harvard University Press, 2009. John Lagerwey, China: A Religious State, Hong Kong: Hong Kong University Press, 2010. Adam Yuet Chau, Religion in Contemporary China: Revitalization and Innovation, London: Routledge, 2011. Yang Fenggang, Religion in China: Survival and Revival Under Communist Rule, New York: Oxford University Press, 2011. David A. Palmer, Glenn Shive, Philip L. Wickeri eds., Chinese Religious Life, Oxford: Oxford University Press, 2011. Vincent Goossaert and David A. Palmer, The Religious Question in Modern China, Chicago: University of Chicago Press, 2011. Susan Naquin, Peking: Temples and City Life, 1400-1900, Berkeley: University of California Press, 2000. Daniel H. Bays eds., Christianity in China: From the Eighteenth Century to the Present, Stanford: Stanford University Press, 1996. ———, A New History of Christianity in China, West ? : Wiley- Blackwell, 2012. Eugenio Menegon, Ancestors, Virgins, and Friars: Christianity as a Local Religion in Late Imperial China, Cambridge, MA: Harvard University Press, 2010. Steve Bruce eds., Religion and Modernization: Sociologists and Historians Debate the Secularization Thesis, Oxford and New York: Oxford University Press, 1992. Arthur. F. Wright, Buddhism in Chinese History, New York: Athenume, 1969. Kenneth K. S. Chên, Buddhism in China : A Historical Survey, Princeton: Princeton University Press, 1964 Henri Maspero, Taoism and Chinese Religion, (Translated by Frank A. Kierman, Jr) Amherst : The University of Massachusetts Press, 1981 Hudson Smith, “Transcendence in Traditional China,“ in Feuerwerker ed., pp.109-122. ＊Max Weber, The Religion of China, Glencoe, Ill: Free Press, 1961. ＊C. K. Yang, Religion in Chinese Society, Berkeley: Univ. of California Press, 1970. Wing-tsit Chan, Religious Trends in Modern China, New York: Columbia University Press, 1953. Jacques Jernet, China and the Christian Impact, Cambridge: Cambridge University Press, 1985. 十二、秘密會社 戴魏光，《洪門史》，？：和平出版社，1947年。 帥學富，《中國幫會史》，香港：現代出版公司，1969年。 劉聯珂，《中國幫會三百年革命史》，澳門：留園出版社，1941年。 連立昌，《福建秘密社會》，福州：福建人民出版社，1989年。 魏建猷主編，《中國會黨史論著匯要》，天津：南開大學出版社，1985年。 平山周，《中國秘密社會史》，台北：古亭書屋，1975年（原1912年）。 徐安琨，《哥老會的起源及其發展》，台北：台灣省立博物館，1989年。 赫治清，《天地會起源研究》，北京：社會科學文獻出版社，1996年。 秦寶琦，《清前期天地會研究》，北京：中國人民大學出版社，1988年。 ———，《中國地下社會》（兩卷），北京：學苑出版社，2005年。 莊吉發，〈四買之內皆兄弟：歷代的秘密社會〉杜正勝主編，《吾土於吾民》，台北：聯經出版事業公司，1982年，pp.283-334。 ———，《清代秘密會黨史研究》，台北：文史哲出版社，1994年。 ———，《清代天地會源流考》，台北：故宮博物院，1981年。 周育民、邵雍，《中國幫會史》，上海：人民出版社，1993年。 邵雍，《中國近代綠林史》，福州：福建人民出版社，2004年。 ＊蔡少卿，《中國秘密社會》，台北：南天書局有限公司，1996年。 ———，《中國近代會黨史研究》，北京：中華書局，1987年。 ＊戴玄之，《中國秘密宗教與秘密社會》，台北：商務印書館，1990年（兩冊）。 譚松林主編，《中國秘密社會（從元明到當代）》福州：福建人民出版社，2003年，共七冊。 陸寶千，《論晚清兩廣天地會政權》，台北：中央研究院近代史研究所，1975年。 Jean Chesneaux, Secret Societies in China: in the 19th and 20th Centuries, London: Heinemenne Educational Books, 1971. ———, Popular Movement and Secret Societies in China, 1840-1959, Stanford: Stanford University, 1972. Siang-tseh Chiang, The Nien Rebellion, Seattle: Univ. of Washington, 1954. S. Y. Teng, The Nien Army and Their Guerrilla Warfare, Paris: 1964. W. P. Morgan, Triad Societies in Hong-Kong, Hong Kong, 1960. L. Comber, Chinese Secret Societies in Malaya: A Survey of the Triad Society from 1800-1900, New York, 1959. V. Purcell, The Boxer Uprising: A Background Study, Cambridge: Cambridge Univ. Press, 1963. ＊Joseph Esherick, The Origins of the Boxer Uprising. Berkeley: University of California, 1987. 中文還有蕭一山（《近代秘密社會史料》，北平：國立北平研究院，1935年），羅爾綱（《天地會文獻錄》，重慶：正中書局，1943年），中國人民大學清史研究所，中國第一歷史檔案館合編，《天地會》，北京：中國人民大學出版社，1980年（共四冊），衛大法師（衛聚賢）編，《幫》，？：說文出版社，1946年；英文尚有Skinner, Susan Narquin等。 十三、社會救助 道端良秀，《中國佛教與社會福利事業》，京都：法藏館，1967年。 （日）夫馬進，《中國善會、善堂史研究》，北京商務印書館，2005年。 梁其姿，《施善與教化：明清的慈善組織》，台北：聯經出版事業公司，1997年。 （日）星斌夫，《中國社會福利史》，東京：山川出版社，1988年 陳寶良，《中國的社與會》杭州：浙江人民出版社，1996年。 鄧雲特，《中國救荒史》，台北：台灣商務印書館，1966年。 Leung, Angela K. “To Chasten Society: The Development of Widow Homes in the Qing, 1773-1911,” Late Imperial China 14:2（1993）. Mann, Susan “Widows in the Kinship, Class, and Community Structures of Qing Dynasty China”, The Journal of Asian Studies, 46:1(1987). Rowe, William T. Hankow: Conflict and Community in a Chinese City, 1796-1895, Stanford: Stanford Univ. Press, 1989. Smith, Joanna Handlin F. “Benevolent Societies: The Reshaping of Charity During the Late Ming and Early Ch‘ing,” The Journal of Asian Studies, 46:2（1987）. Will, Pierre-Etienne (Elborg Forster trans.), Bureaucracy and Famine in Eighteenth-Century China, Stanford: Stanford Univ. Press, 1990.（原為法文 1980年出版） ———,and R. Bin Wong, Nourish the People: The State Civilian Granary System in China, 1650-1850, Ann Arbor: Center for Chinese Studies, University of Michigan, 1991. 十四、法律與社會 瞿同祖，《中國法律與中國社會》，台北：里仁書局，1984，2000年。 ———，《瞿同祖法學論著集》，北京：中國政法大學出版社，1998年。 ———，Law and Society in Traditional China，Taipei：Rainbow-Bridge Book Co.，1969（Original 1961） ＊Derk Bodde and Clarence Morris,eds, Law in Imperial China, Cambridge: Harvard Univ. Press, 1973.(中文版由朱勇譯，《中華帝國的法律》，南京：江蘇人民出版社，1998年) 王民主編，《中國法制史》，北京：中國政法大學出版社，1998年。 陳鵬生、王立民、丁凌華主編，《走向二十一世紀的中國法文化》，上海：上海社會科學院出版社，2002年。 宋代官箴研讀會編，《宋代社會與法律》，台北：東大圖書股份有限公司，2006年。 懷效鋒，《明清法制初探》，北京：法律出版社，1998年。 張晉藩主編，《清朝法制史》，北京：中華書局，1998年。 ———主編，《清朝法制史》，北京：法律出版社，1993年。 梁治平，《清代習慣法：社會與國家》，北京：中國政法大學出版社，1996年。 ＊約翰‧羅爾斯（John Rawls），《正義論》（ A Theory of Justice）（何懷宏、何包鋼 、廖申白），北京：中國社會科學出版社，1988年。 高道蘊等編，《美國學者論中國法律傳統》，北京：中國政法大學出版社，1994年。 戴炎輝，《中國法制史》，台北：三民書局，1979年。 李志敏，《中國古代民法》，北京：法律出版社，1988年。 楊鴻烈，《中國法律發達史》，上海：商務印書館，1988年。 鄧秦，《清代司法審判制度研究》，長沙：湖南教育出版社，1988年。 朱勇，《清代宗族法研究》，長沙：湖南教育出版社，1989年。 Mark A. Allee, Law and Local Society in Late Imperial China, Stanford: Stanford Univ. Press, 1994 Kathryn Bernhardt and P C. C. Huang, Civil law in Qing and Republican China, Stanford: Stanford Univ. Press, 1994 Sybille Van der Sprenkel, Legal institutions in Manchu China, London: The Athlone Press, 1962.",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討",
+      "評量配分比重": "（一） 出席（全勤）10％ （無故缺課三次，本學期成績不及格。） （二） 討論 20％ （三） 期末考試 70％ （以下擇一） 1. 選擇考期末考者，由授課教師發給三個試題，學生全部作答，並於期末指定時間內繳交。 2. 選擇做專題研究者，對以下諸問題擇一作為研究題目，撰寫4000字以上之報告，並於期末繳交：封建制度、行會、農業變遷、中產階級、工廠制度、勞工階級、社會主義之比較。",
+      "辦公時間": "\"星期一16:00-17:00, 或與任課老師另約時間\"",
+      "授課週數": "16",
+      "彈性教學說明": "停課，撰寫課程論文",
+      "課程領域": "中國史",
+      "核心能力": [
+        {
+          "能力名稱": "培養外語閱讀能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "蒐集與解析史料能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "專題研究與論文寫作能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "平衡史觀及批判能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "跨學科知識的整合與培養",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "學術討論與表達能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "文學院",
+    "系所": "歷史研究所碩士班",
+    "流水號": "15003",
+    "課號-班別": "HI5082-*",
+    "課程名稱(中文)": "研究與實習",
+    "課程名稱(英文)": "Historiography Proseminar",
+    "備註": "[不開放初選]",
+    "授課教師": "皮國立",
+    "學分": "0",
+    "上課時間": "Mon56",
+    "教室": "LS-321",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "20",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=15003&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限歷史研究所碩士班。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限歷史研究所碩士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=15003&outline=15003&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "歷史研究所碩士班",
+      "流水號": "15003",
+      "課號": "HI5082-*",
+      "授課教師": "皮國立",
+      "課程名稱(中文)": "研究與實習",
+      "課程名稱(英文)": "Historiography Proseminar",
+      "課程學制": "碩士班",
+      "學分": "0",
+      "課程目標": "本課程是歷史所研一生必修，目的在於幫助學生更進一步了解研究生生涯與未來可能的生涯、職涯出路，並提供學生多樣化的思考，幫助學生順利進入研究領域並正式展開學位論文之撰寫。本課程部拘泥於每週課堂上課的型式，希望讓學生在各種時間、多元形式的聽講、參訪等等，理解歷史學的多元風貌。老師就是導師，更能兼顧同學解決研究生生涯之問題，是一門充滿彈性與多元學習的課程。",
+      "授課內容": "本學期採取彈性時間微課程型式授課\n一、過年後第二週，參與近代史研習營，共計18小時。\n二、安排演講：\n張隆志 博物館歷史學 2小時\n民國史大師講座 2小時\n三、國家檔案館參訪 2小時\n四、講述田野調查與口述歷史的訪談方法 4小時\n五、日記與歷史 2小時\n六、期末報告 2小時\n共計32小時，以符合16週上課時數",
+      "教科書/參考書": "1.畢恆達，《教授為什麼沒告訴我：論文寫作枕邊書》，臺北：法律出版社，2009。 2.Beth Luey，《學術寫作與出版：從期刊文章、專書、教科書到大眾書》，臺北：群學，2013。 3.陳美霞、徐畢卿、許甘霖，《研究的藝術》，臺北：巨流圖書公司，2009。 4.吳珮瑛，《老師在講你有在聽嗎？論文寫作之規範及格式》，臺北：翰蘆，2016。 5.吳鄭重，《研究研究論論文：研究歷程之科P解密與論文寫作SOP大公開》，臺北：遠流，2016。 6.周春塘，《撰寫論文的第一本書：一步步的教你如何寫，讓論文輕鬆過關》，臺北：五南，2016。王晴佳，《臺灣史學史：從戰後到當代》(上海：上海古籍出版社，2016)。 彭明輝，《台灣史學的中國纏結》(臺北：麥田出版社，2002)。 陳弱水，〈臺大歷史系與現代中國史學傳統（1950-1970）〉，《臺大歷史學報》，第45期（2010年6月），頁117-154。 張隆志，〈當代臺灣史學史論綱〉，《臺灣史研究》16卷4期(2009.12)，頁161-184。 王晴佳、李隆國，《外國史學史》(北京：北京大學出版社，2017)，第十四章。 賽巴斯蒂安•康拉德，《全球史的再思考》（臺北：八旗文化，2016）。 王晴佳，《新史學講演錄》(北京：中國人民大學出版社，2010)。 夏繼果、傑里．H. 本特利編，《全球史讀本》(北京：北京大學出版社，2010)。 柯嬌燕，劉文明譯，《什麼是全球史》（臺北：北京大學出版社，2009），「導言」。 沙培德(Peter Zarrow)著，洪靜宜譯，〈西方學界研究中國近代史的最新動向〉，《漢學研究通訊》，第22卷第4期(2003年11月)，頁1-12。 朱煜，《中國近現代歷史教育研究》(南京：江蘇人民出版社，2018)。 朱煜，《1921-1926五四新潮下的歷史教育：中華教育改進社與新學制歷史教育改革》(北京：社會科學文獻出版社，2016)。 曹小文，《20世紀以來中國的世界通史編纂研究》(北京：中國社會科學出版社，2015)。 尤學工 ，《20世紀中國歷史教育研究》(北京：中國社會科學出版社，2014)。 王正瀚，《民國時期中學歷史教科書研究》(上海：上海教育出版社，2013)。 鮑紹霖、周佳榮、區志堅 ，《第二屆廿一世紀華人地區歷史教育論文集》(香港：香港中華書局，2012)。 趙梅春，《二十世紀中國通史編纂研究》(北京：中國社會科學出版社，2007)。 李涵鈺、甄曉蘭，〈跨國形塑歷史知識的挑戰：以中日韓共構歷史教材為例〉，《課程與教學》19卷4期 (2016.10 )，頁131-158。 菊池一隆，《東亞歷史教科書問題面面觀：日本‧中國‧臺灣‧韓國‧在日朝鮮人學校》(新北：稻香，2015)。 《東亞三國的近現代史》共同編輯委員會，《東亞三國的近現代史》(香港：香港三聯書店，2005)。",
+      "自編教材比例": "50",
+      "授課方式": "講授 研討 實習/實驗 個別指導",
+      "評量配分比重": "整體參與的積極度：20％ 出席學習活動：30％ 期末正式研究計畫或論文之一章：40％",
+      "辦公時間": "週一下午15:00-17:00",
+      "授課週數": "16",
+      "彈性教學說明": "參加歷史所30年所慶研討會等相關活動",
+      "課程領域": "中國史 、 台灣史 、 史學史 、 研究方法",
+      "核心能力": [
+        {
+          "能力名稱": "培養外語閱讀能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "蒐集與解析史料能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "專題研究與論文寫作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "平衡史觀及批判能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "跨學科知識的整合與培養",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "學術討論與表達能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "文學院",
+    "系所": "歷史研究所碩士班",
+    "流水號": "15004",
+    "課號-班別": "HI6010-*",
+    "課程名稱(中文)": "近代臺灣與東亞專題",
+    "課程名稱(英文)": "Topics on Modern History of Taiwan and East Asia",
+    "備註": "[不開放初選]",
+    "授課教師": "李力庸",
+    "學分": "3",
+    "上課時間": "Tue678",
+    "教室": "LS-321",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "20",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=15004&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限歷史研究所碩士班、歷史研究所碩士在職專班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=15004&outline=15004&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "歷史研究所碩士班",
+      "流水號": "15004",
+      "課號": "HI6010-*",
+      "授課教師": "李力庸",
+      "課程名稱(中文)": "近代臺灣與東亞專題",
+      "課程名稱(英文)": "Topics on Modern History of Taiwan and East Asia",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "本課程旨在介紹台灣與東亞史之研究概況，並從環境，幾次關鍵的年代—─包括國際競逐、帝國殖民、大東亞戰爭、1950年代等使學生了解台灣在東亞歷史發展中的角色，並確切掌握向來的研究狀況，奠定學生具備研究東亞社會經濟史紮實的基礎。教學講述、討論並重，學習評量包括課堂參與、口頭報告及專題論文撰寫。",
+      "授課內容": "“一、導論\n二、季風與東亞\n三、國際競逐下的臺灣\n四、臺灣與東亞貿易\n五、帝國下的臺灣與朝鮮\n六、北進與南進\n七、關鍵1950\n八、臺灣人在東亞\n九、文化交流“",
+      "教科書/參考書": "“曹永和〈臺灣早期歷史研究的回顧與展望〉，《思與言》，第23卷第1期(1985）。 陳宗仁，《雞籠山與淡水洋──東亞海域與臺灣早期史研究》，聯經，2005。 蔡石山、黃中憲，《海洋臺灣：歷史上與東西洋的交接》，臺北：聯經出版公司，2011年 方真真，《華人與呂宋貿易（1657—1687）：史料分析與譯註》，新竹：清華大學，2012年。 朱德蘭編，《跨越海洋的交換：第四屆國際漢學會議論文集》，臺北：中央研究院，2013 朱德蘭編，《臺灣沖繩交流史論集》，臺北：遠流出版社，2016年。 林滿紅，《晚近史學與兩岸思維》（臺北：麥田出版，2002） 許雪姬，〈在中國東北的台灣人，1908-1945〉，中國社會科學院台灣史研究中心編，《日據時期台灣殖 民地史學術研討會論文集》，北京：九州出版社，2010，頁324-332。 許雪姬，〈滿洲國政府中的臺籍公務人員（1932-1945）〉，許雪姬編，《臺灣歷史的多元傳承與 鑲嵌》，臺北：中央研究院臺灣史研究所，2014年，頁15-67。 鍾淑敏，〈戰前臺灣人英屬北婆羅洲移民史〉，《臺灣史研究》，第22卷第1期，2015年，頁 25-80 鍾淑敏，〈日治時期臺灣人在廈門的活動及其相關問題〉，《走向近代》，臺北：東華書局，2004，頁399-452。 謝國興，《改革與改造：冷戰初期兩岸的糧食、土地與工商業變革》，台北市：中央研究院近代史研究所，2010。 中村哲編，林滿紅監譯，《近代東亞經濟的歷史結構》，南港：中研院，2007年。 陳姃湲，〈放眼帝國、伺機而動──在朝鮮學醫的臺灣人〉，《臺灣史研究》19-1，2012年3月，頁84-160。 陳姃湲，〈植民地??帝?史研究?可能性?再考????台?史????地方?????研究?中心???〉，收錄松田利彥、陳姃湲編，《地域社???見?帝?日本?植民地??朝鮮?台???州》（京都：思文閣，2013年4月），頁49-66。 林孝庭《台海?冷戰?蔣介石：解密檔案中消失的台灣史，1948-1988》台北：聯經出版公司，2015年。“",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "出席30％，課堂參與30％，報告40％",
+      "辦公時間": "二678",
+      "授課週數": "16",
+      "彈性教學說明": "彈性教學二週，安排研討會與演講",
+      "課程領域": "台灣史",
+      "核心能力": [
+        {
+          "能力名稱": "培養外語閱讀能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "蒐集與解析史料能力",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "專題研究與論文寫作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "平衡史觀及批判能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "跨學科知識的整合與培養",
+          "強度指數": "(3) 普通",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "學術討論與表達能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "文學院",
+    "系所": "歷史研究所碩士班",
+    "流水號": "15005",
+    "課號-班別": "HI6013-*",
+    "課程名稱(中文)": "當代兩岸關係史及相關人物專題研究 [已停開]",
+    "課程名稱(英文)": "Seminar on Cross-Strait Relations and Its Leading Figures",
+    "備註": "[不開放初選]",
+    "授課教師": "齊茂吉",
+    "學分": "3",
+    "上課時間": "Mon234",
+    "教室": "C2-341",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "12",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=15005&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限歷史研究所碩士班、歷史研究所碩士在職專班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=15005&outline=15005&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "歷史研究所碩士班",
+      "流水號": "15005",
+      "課號": "HI6013-*",
+      "授課教師": "齊茂吉",
+      "課程名稱(中文)": "當代兩岸關係史及相關人物專題研究",
+      "課程名稱(英文)": "Seminar on Cross-Strait Relations and Its Leading Figures",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "理解1949年後台灣為何能夠免於共產赤化命運的原因及兩岸衝突及競爭的始末，並探討八○年代以來兩岸關係之發展及其影響。",
+      "授課內容": "一、 兩岸關係與國際關係之比較\n二、 冷戰的形成與中國問題\n三、 古寧頭戰役與兩岸關係\n四、 韓戰與兩岸關係\n五、 臺海一次危機與兩岸關係\n六、 密使與兩岸關係\n七、 臺海二次危機與兩岸關係\n八、 中蘇分裂與兩岸關係\n九、 五十年代的兩岸經濟發展之比較\n十、 核子武器與兩岸關係\n十一、 聯合國中國代表權問題與兩岸關係\n十二、 中美關係解凍與兩岸關係\n十三、 八十年代兩岸關係的變遷\n十四、 〈國統綱領〉與兩岸關係\n十五、 臺海三次危機與兩岸關係",
+      "教科書/參考書": "“參考書目： 1.楊奎松，《中共與莫斯科的關係》（1920－1960）（台北：東大圖書公司，民國86年）。 2.陳一新， 《斷交後的中美關係》（台北：五南圖書出版有限公司，民國84年）。 3.石之瑜，《兩岸關係概論》（台北：揚智文化公司，民國87年）。 4.余克禮主編，《海峽兩岸關係概論》（武漢：武漢出版社，1998年）。 5.李潔明、唐思合編，張同瑩等譯，《台灣有沒有明天？》（台北：先覺出版社，民國88年）。 6.殷雄，《誰在威脅中國安全》（北京：新華出版社，1999年）。 7.蔡瑋，《中共的涉台決策與兩岸關係發展》（台北：風雲論壇出版社，民國89年）。 8.譚傳毅，《中國人民解放軍之攻與防》（台北：時英出版社，民國88年）。 9.蘇格，《美國對華政策與台灣問題》（北京：世界知識出版社，1998年）。 10.張亞中，《兩岸主權論》（台北：生智文化事業有限公司，1998年）。 11.張亞中，《兩岸統合論》（台北：生智文化事業有限公司，2000年）。 12.張亞中、李英明，《中國大陸與兩岸關係概論》（台北：生智文化事業有限公　　司，2000年）。 13.丘宏達，《現代國際法》（台北：三民書局，民國84年）。 14.林正義，《1958年台海危機期間美國對華政》（台北：商務公司，民國74年）。 15.林碧炤，《國際政治與外交政策》（台北：五南圖書出版公司，民國79年）。 16.傅啟學，《三十年來中美中俄關係的演變》（台北：商務公司，1986年）。 17.彭明敏、黃昭堂，蔡秋雄譯，《台灣在國際法上的地位》（台北：玉山社，2000年）。 18.張讚合，《兩岸關係變遷史》（台北：周知文化公司，1996年）。 19.克萊恩（Ray. Cline），聯合報國際新聞中心譯，《我所知道的蔣經國》（台北：聯經公司，1990 年）。 20.翁台生，《CIA在台活動秘辛》（台北：聯經公司，1991年）。 21.Nancy B. Tucker，新新聞編譯小組譯，《不確定的友情：台灣、香港與美國，1942-1992》（台北：新新聞公司，1995年）。 22.高郎，《中華民國外交關係之演變（1950-1972）》（台北：五南公司，1993年）。 23.張玉法，《中華民國史稿》（台北：聯經公司，1998年）。 24.張隆發，《史達林與冷戰（1945-1953）》（台北：淑馨公司，2000年）。 25.陳永發，《中國共產黨革命七十年》下冊（台北：聯經公司，1998年）。 26.徐焰，《台海大戰：中共觀點》（台北：風雲時代出版社，1992年）。 27.Jay Taylor，木添貴譯，《台灣現代化的推手－蔣經國傳》（台北：時報文化公司，2000年）。 28.葉飛，《葉飛回?錄》（北京：解放軍出版社，1998年）。 29.趙全勝，《解釋中國外交政策》（台北：月旦公司，1999年）。 30.國史館編，《一個中國論述史料彙編文件（一）》（台北：國史館，民國91年）。 31.國史館編，《台灣主權與一個中國論述大事記》（台北：國史館，民國91年）。 32.郭立民，《中共對台政策資料選輯（1949-1991）》上、下冊（台北：永業公司，1992年）。 33.張憲文、方慶秋主編，《蔣介石全傳》下冊（河南：河南人民出版社，1996年）。 34.陳孔立，《台灣歷史與兩岸關係》（廈門：台海出版社，1998年）。 35.師哲，《在歷史巨人身邊－師哲回憶錄》（北京：中央文獻出版社，1995年）。 36.陳漢文編著，《在國際舞台上》（台北：谷風出版社，1987年）。 37.中華人民共和國外交部、中共中央文獻研究室編，《毛澤東外交文選》（北京：中央文獻出版社1994年）。 38.Samuel P. Huntington 著，黃裕美譯，《文明衝突與世界秩序的重建》（台北：聯經公司，1997年）。 39.Patrick Tyler 著，《中美交鋒》（台北：聯經公司，2001年）。 40.楊奎松，《走向破裂-毛澤東與莫斯科的恩恩怨怨》（香港：三聯書店有限公司，1999年）。 41.蔡瑋，《新世紀的兩岸秩序》（台北：海峽學術出版社，2002年）。 42.黃修榮，《國共關係史》上、中、下卷（廣州：廣東教育出版社，2002年）。 43.《建國以來毛澤東文稿》第1-13冊（北京：中央文獻出版社，1998年）。 44.唐耐心(Nancy Bernkopf Tucker)著、林添貴譯，《一九四九年後的海峽風雲實錄 : 美中台三邊互動關係大揭秘》（台北：五南圖書出版有限公司，1995年）。 45.沈志華主編，《中蘇關係史綱(1917-1991)》（北京 : 新華出版社，2007年）。 46.沈志華主編，《中蘇關係史綱 : 1917～1991年中蘇關係若干問題再探討（增訂版）》（北京市:社會科學文獻，2011年）。 48.呂紹理、唐?華、沈志華主編，《冷戰與臺海危機》（台北:國立政治大學歷史學系，2010年）。 49.沈志華，《朝鮮戰爭 : 俄國檔案館的解密檔》（台北: 中研院近史所，2003年）。 50.沈志華，《毛澤東、史達林與朝鮮戰爭》（廣東: 廣東人民出版社， 2004年）。 51.沈志華、梁志主編，《窺視中國 : 美國情報機構眼中的紅色對手》（上海: 東方出版社，2011年）。 52.沈志華、楊奎松主編，《美國對華情報解密檔案：1948～1976》（上海: 東方出版社，2009年）。 53.沈志華、李濱(Douglas Stiffler)主編，《脆弱的聯盟 : 冷戰與中蘇關係》（北京:社會科學文獻出版社，2010年）。 54.沈志華、唐啟華主編，《金門 : 內戰與冷戰 : 美、蘇、中檔案解密與研究》（北京: 九州出版社，2010年）。 55. 馬耀邦(Mah, Ben)，《中美關係:透視大國隱形戰爭》（北京：當代中國出版社，2008年）。 56. 陶文釗、仲掌生主編，《中美關係100年》（北京：社會科學出版社，2001年）。 57. 胡禮忠,金光耀,顧關林著，《從望廈條約到克林頓訪華 : 中美關係1844-1996》（福州 : 福建人民出版社, 1996年）。 58. 熊志勇，《中美關係60年》（北京 : 人民出版社, 2009年）。 59. 王偉男，《中美關係中的臺灣問題. 1948-1982中》（濟南市 : 山東人民, 2007年）。 60. 馬耀邦(Mah, Ben)，《中美關係:透視大國隱形戰爭》（北京：當代中國出版社，2008年）。 61. 季鴻生編，《中美關係五十年》（上海 : 百家, 1993年）。 62. 梁敬錞，《史迪威事件》（台北: 台灣商務，1974年）。 63.梁敬錞，《開羅會議》（台北: 台灣商務,，1973年）。 64. 劉世忠，《歷史的糾結 : 台美關係的戰略合作與分歧(2000-2008)》（台北: 新臺灣國策智庫， 2010年）。 65. 林志昇，《台美關係關鍵報告 : 讓台灣定位回到歷史原點》（台北:展智出版社，2005年）。 66. 海峽兩岸關係協會主辦，《兩岸關係中美關係:透視大國隱形戰爭》（北京市 : 兩岸關係雜誌社,，1997年）。 67. 立法院國會圖書館編，《兩岸關係中美關係:透視大國隱形戰爭》（北市 : 國會圖書館，2001年）。 68.唐耐心著，《不確定的友情：臺灣、香港與美國，1945至1992》，臺北：新新聞文化，1995年。“",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討",
+      "評量配分比重": "一、 課堂表現（含口頭報告）70％\n二、 期末書面報告30％",
+      "辦公時間": "一59、三56",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "兩岸發展史",
+      "核心能力": [
+        {
+          "能力名稱": "培養外語閱讀能力",
+          "強度指數": "(2) 低",
+          "評量方式": "其他"
+        },
+        {
+          "能力名稱": "蒐集與解析史料能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "專題研究與論文寫作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "平衡史觀及批判能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "跨學科知識的整合與培養",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 其他"
+        },
+        {
+          "能力名稱": "學術討論與表達能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評 ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "文學院",
+    "系所": "歷史研究所碩士班",
+    "流水號": "15006",
+    "課號-班別": "HI6025-*",
+    "課程名稱(中文)": "日治時期檔案解讀與利用",
+    "課程名稱(英文)": "Reseach Guide on the Japanese Occupation on Taiwan Archives",
+    "備註": "[不開放初選]",
+    "授課教師": "陳家豪",
+    "學分": "3",
+    "上課時間": "Thu567",
+    "教室": "LS-321",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "20",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=15006&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限歷史研究所碩士班、歷史研究所碩士在職專班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=15006&outline=15006&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "歷史研究所碩士班",
+      "流水號": "15006",
+      "課號": "HI6025-*",
+      "授課教師": "陳家豪",
+      "課程名稱(中文)": "日治時期檔案解讀與利用",
+      "課程名稱(英文)": "Reseach Guide on the Japanese Occupation on Taiwan Archives",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "本教學目標旨在協助學生認識與解讀古典日文檔案文獻，培養學生解讀一手日文史料的能力，使學生能夠藉此擴展研究視野，進而對於近代東亞史與日本史產生研究興趣。",
+      "授課內容": "本課程以歷史研究的實際檔案運作軌跡為主軸，循序引導學生從學術成果反推檔案使用邏輯，進而掌握古典日文檔案文獻之閱讀方法與史料批判能力。課程內容涵蓋檔案類型辨識、文書生成脈絡、候文語法分析與數位工具運用，並透過實際文本拆解與朗讀訓練，使學生理解檔案如何在權力結構中形成，並如何轉化為歷史知識。\n1. 檔案類型學與文書屬性之辨識： 透過近代日本史（如：臺灣總督府官員紀錄、企業文書）之研究實例，引導學生認識日文檔案的分類體系（公文書、私文書、業務報告等），辨析文獻的「行政/物質屬性」，包含公文程式的位階（如：訓令、指令、通牒）及其在官僚體制中的流轉邏輯。\n2. 前人研究之「史料探索軌跡」逆向工程： 選讀具代表性的日文經濟史或交通史論文，拆解作者如何從問題意識出發，進而定位、調閱並運用特定檔案卷宗，重建史料從檔案館架上轉化為學術論證的動態過程。\n3. 數位檢索技術與檔案館實務（Digital Heuristics）： 系統化介紹 JACAR（亞洲歷史資料中心）、日本國立公文書館及臺灣相關館藏（如：國史館臺灣文獻館、臺大圖書館特藏）的檢索邏輯，藉以掌握關鍵字檢索與「分類目錄」瀏覽的差異，辨識數位化史料在詮釋資料（Metadata）建立過程中的潛在遺漏與偏差。\n4. 史料階層論：從二次文獻到一次史料的轉化邏輯：從如何查找日文檔案文獻切入，介紹時人論著、報刊報檔等二手史料到公文檔案等一手史料的解讀邏輯。\n5. 候文（Sorobun）語法邏輯與文體分析： 針對近代檔案最核心的文體「候文」進行系統化解析。拆解候文特有的「逆向語法」（如：動詞置後）、助動詞「候」的時態變化、以及接續詞（如：付、依之、於テハ）的特定語境涵義，建立精確的文本還原能力。\n6. 文獻拆解實作： 帶領學生進行「事前讀音標記（Furigana）」與「課中朗讀（Reading Aloud）」，並對各類型文本進行佈局拆解，體現文本的節奏與語氣，分析公文書之「起案、事由、申述、決策」等定型化結構，區分公文中的修辭與實質內容。\n7. 數位人文輔助（DH Tools）及其批判性運用： 介紹現代 AI 解讀工具（如：Kuzushiji OCR 辨識系統）的運作原理與應用範圍。",
+      "教科書/參考書": "本課程主要參考資料：台灣總督府公文類纂、臨時台灣舊慣調查台灣私法、台灣拓殖株式會社文書資料、台灣日日新報、泰益號商業文書等多種。參考論著：1.若尾俊平，《古文書?讀?方》，東京：柏書房，1988年。2.涂照彥，《日本帝國主義下?台灣》，東京：東京大學出版會，1975年。3.又吉盛清，《日本植民地下?台??沖?》，沖???書房，1990年。4.黃昭堂，《台灣總督府》，東京：教育社，1991年版。5.大江志乃夫等編著，《岩波講座近代日本?植民地》，東京：岩波書店，1992年。6.大石嘉一郎編，《日本帝國主義史》，東京：東京大學出版會，1994年。7.竹中信子，《植民地台??日本女性生活史》，東京：田?書店，1995-2001年。8.柯志明，《米糖相剋：日本殖民主義下台灣的發展與從屬》，台北：群學出版有限公司，2003年。",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討",
+      "評量配分比重": "出席率:20% 課程作業:80%",
+      "辦公時間": "週二　9:00~12:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "台灣史 、 研究方法",
+      "核心能力": [
+        {
+          "能力名稱": "培養外語閱讀能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "蒐集與解析史料能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "專題研究與論文寫作能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "平衡史觀及批判能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "跨學科知識的整合與培養",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "學術討論與表達能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "文學院",
+    "系所": "歷史研究所碩士班",
+    "流水號": "15007",
+    "課號-班別": "HI6035-*",
+    "課程名稱(中文)": "近代台灣史專題研究",
+    "課程名稱(英文)": "Seminar on Modern Taiwan History",
+    "備註": "[不開放初選]",
+    "授課教師": "鄭政誠",
+    "學分": "3",
+    "上課時間": "Wed678",
+    "教室": "LS-321",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "12",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=15007&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限歷史研究所碩士班、歷史研究所碩士在職專班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=15007&outline=15007&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "歷史研究所碩士班",
+      "流水號": "15007",
+      "課號": "HI6035-*",
+      "授課教師": "鄭政誠",
+      "課程名稱(中文)": "近代台灣史專題研究",
+      "課程名稱(英文)": "Seminar on Modern Taiwan History",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "就近代台灣史上重要課題加以論述，並針對各相關學術論著作一檢視與討論，期使閱聽者能以實證與客觀立場出發，重新看待近代台灣史實並具備該領域之學術研究能力。",
+      "授課內容": "\"1、導論\n2、近代臺灣史研究的機構與資源\n3、近代臺灣史研究概述\n4、臺灣近代化的起始\n5、無方針主義的統治政策\n6、蕃地探險—原住民的調查與活動\n7、大東亞共榮？南進政策的實現\n8、差別待遇的殖民地教育法則\n9、專題演講\n10、現代醫療衛生體系的建立\n11、交通網路的連結\n12、日常生活的改變與因應\n13、同化主義的再發揮—皇民化運動的發展與結果\n14、婦孺悲曲！戰時體制下的社會動員\n15、為何而戰？為誰而戰？臺籍日本兵的悲哀與矛盾\n16、影視史學：影像紀錄中的日治臺灣\n17、戰後的復員與接收\n18、期末報告\"",
+      "教科書/參考書": "\"一、專書 1、伊藤潔，《台灣：四百年的歷史與展望》(台北：新遠東出版社，1994年12月)。 2、呂紹理，《水螺響起～日治時期台灣社會的生活作息》(台北：遠流出版社，1998年3月)。 3、周婉窈，《台灣歷史圖說》(台北：聯經出版事業公司，1998年10月)。 4、林茂生，《日本統治下台灣的學校教育》(台北：新自然主義公司，2000年12月)。 5、若林正丈，《台灣：分裂國家與民主化》(台北：月旦出版社，1996年1月)。 6、若林正丈，《蔣經國與李登輝》(台北：遠流出版公司，1998年12月)。 7、涂照彥，《日本帝國主義下的台灣》(台北：人間出版社，1993年11月)。 8、張勝彥等編著，《台灣開發史》(台北：國立空中大學，1998年8月)。 9、許介麟，《戰後台灣史記》(台北：文英堂出版社，1997年3月)。 10、許極燉，《台灣近代發展史》(台北：前衛出版社，1996年9月)。 11、喜安幸夫，《臺灣》(台北：中天出版社，1999年8月)。 12、黃昭堂，《台灣民主國之研究》(台北：財團法人現代學術研究基金會，1993年12月)。 13、黃昭堂，《台灣總督府》(台北：前衛出版社，1995年6月)。 14、蔡慧玉編，《走過兩個時代的人—台籍日本兵》(台北：中央研究院台灣史研究所籌備處，1997年 11月)。 15、鄧相揚，《霧社事件》(台北：玉山社出版事業公司，1998年10月)。 16、賴澤涵等著，《悲劇性的開端》(台北：時報出版社，1996年1月)。 17、戴天昭著、李明峻譯，《台灣國際政治史》(台北：前衛出版社，1996年9月)。 18、周婉窈，《海行兮的年代—日本殖民統治末期台灣史論集》(台北；允晨文化公司，2003年2月)。 二、論文 1、李國祁，〈清季台灣的政治近代化—開山撫番與建省(1875~1894)〉，《中華文化復興月刊》，第 8卷第12期(1975年12月)，頁24~39。 2、張隆志，〈劉銘傳、後藤新平與台灣的近代化論爭—關於十九世紀台灣歷史轉型期研究的再思考〉，《中華民國史專題第四屆討論會—民國以來的史料與史學》(台北：國史館，1997年12月)，頁1~29。 3、吳文星，〈日本據台前對台灣之調查與研究〉，《第一屆台灣本土文化學術研討會論文集》(台北：國立台灣師範大學文學院、人文教育研究中心，1994年12月)，頁567~576。 4、洪秋芬，〈日據初期台灣的保甲制度(1895~1903)〉，《中央研究院近代史研究所集刊》，第21期 (1992年6月)，頁439~471。 5、吳文星，〈日據時期台灣的放足斷髮運動〉，《中央研究院民族學研究所專刊乙種之十六》(1986年 6月)，頁69~108。 6、唐立著、許進發譯，〈伊能嘉矩與台灣原住民研究的歷史學價值〉，收錄於《伊能嘉矩與台灣研究特展專刊》(台北：國立台灣大學圖書館，1998年11月)，頁65~98。 7、鄭麗玲，〈台北帝國大學與海南島—以海南島的學術調查為中心〉，《台灣風物》，第49卷第4期 (1999年12月)，頁19~60。 8、鍾淑敏，〈台灣總督府檔案與日治時期南進之研究〉，《中華民國史專題第四屆討論會—民國以來的史料與史學》(台北：國史館，1997年12月)，頁1~26。 9、吳文星，〈日據時期台灣教育史料及其研究之評介〉，《台灣史田野研究通訊》，第26期(1993年3月)，頁48~57。 10、劉書彥，〈探究日本語教科書中殖民統治者對台灣社會之觀點〉，《台灣風物》，第46卷第3期 (1996年9月)，頁15~71。 11、許佩賢，〈台灣近代學校的誕生—日治初期國語傳習所的成立〉，收錄於《回顧老台灣、展望新故鄉—台灣社會文化變遷學術研討會論文集》(台北：國立台灣師範大學歷史系，2000年9月)，頁195~224。 12、范燕秋，〈新醫學在台灣的實踐(1896~1906) —從後藤新平《國家衛生原理談起》〉，《新史學》，第9卷第3期(1998年9月)，頁49~85。 13、范燕秋，〈日據前期台灣之公共衛生—以防疫為中心之研究(1895~1920)〉(國立台灣師範大學歷史研究所碩士論文，1994年6月)，頁9~39。 14、溫振華，〈日本殖民統治下台北社會文化的變遷〉，《台灣風物》，第37卷第4期(1987年12月)，頁1~51。 15、蔡錦堂，〈日據時期台灣人宗教信仰之變遷—以「家庭正廳改善運動?為中心〉，《思與言》，第29卷第4期(1991年12月)，頁65~83。另收錄於《史聯雜誌》，19期(1991年12月)，頁37~46。 16、鄭麗玲，〈日治時期台灣戰時體制下(1937~1945)的保甲制度〉，《台北文獻》直字第116期(1996年 6月)，頁23~53。 17、林蘭芳，〈日據末期台灣「皇民奉公」運動(1937~1945)〉，收錄於《中華民國史專題論文集》(台北：國史館，1996年3月)，頁1193~1238。 18、蔡慧玉，〈台灣民間對日本索賠運動初探—「潘朵拉之箱」〉，《台灣史研究》，第3卷第1期 (1996年6月)，頁173~228。 19、鄭麗玲，〈不沈的航空母艦—台灣的軍事動員〉，《台灣風物》，第44卷第3期(1994年9月)，頁 51~89。 20、鄭梓，〈戰後台灣行政體系的接收與重建——以行政長官公署為中心之分析〉，《思與言》，第29卷第4期(1991年12月)，頁217~260。 21、簡笙簧，〈「光復」後政府接運旅日台胞返籍之探討〉，收錄於《中華民國史專題論文集》(台北：國史館，1996年3月)，頁1173~1191。 22、陳三井，〈台灣光復的序曲——復台接收與準備〉，收錄於《抗戰與台灣光復史料輯要》(南投：台灣省文獻委員會，1995年10月)，頁79~102。\"",
+      "自編教材比例": "80",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "上課表現與討論(20%)、指定文章閱讀(20%)、期末報告(60%)。",
+      "辦公時間": "週一、二上午10點到下午5點",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "台灣史",
+      "核心能力": [
+        {
+          "能力名稱": "培養外語閱讀能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "蒐集與解析史料能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "專題研究與論文寫作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "平衡史觀及批判能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "跨學科知識的整合與培養",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "學術討論與表達能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "文學院",
+    "系所": "歷史研究所碩士班",
+    "流水號": "15008",
+    "課號-班別": "HI6058-*",
+    "課程名稱(中文)": "公眾史學的理論與實作",
+    "課程名稱(英文)": "The theory and practice of public history",
+    "備註": "[不開放初選]",
+    "授課教師": "皮國立",
+    "學分": "3",
+    "上課時間": "Wed234",
+    "教室": "LS-321",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "20",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=15008&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限歷史研究所碩士班、歷史研究所碩士在職專班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=15008&outline=15008&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "歷史研究所碩士班",
+      "流水號": "15008",
+      "課號": "HI6058-*",
+      "授課教師": "皮國立",
+      "課程名稱(中文)": "公眾史學的理論與實作",
+      "課程名稱(英文)": "The theory and practice of public history",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "公眾史學(又稱大眾史學)的範疇，其囊括之呈現方式非常多元，包括歷史扮演、電玩遊戲、影視史學、數位人文，但大體總須符合「大眾的歷史」、「歷史是寫給大眾的」、「歷史是由大眾來書寫」三種意涵，而這些歷史之展現，往往就是閱讀寫作之後所呈現之多元成果。在台灣，因為面臨畢業生就業之問題，大學歷史教育也開始注意到大眾市場或與就業相關，故有時也以應用史學、實作史學、應用哲學等課程為名來框定學程，大眾史學的幾個領域則被植入其中，成為一種綜合之發展規劃，大概是現代台灣非常流行的新式課程設計，今後應該會持續拓展。美國自1970年代開始出現傳統歷史學博士的就業危機，逐步發展下，羅伯•凱利(Robert Kelley)和威斯利•強森(Wesley Johnson)於1976年開始發展公眾史學課程，要求學生針對機構、公司、企業、社區等領域進行具職業性的「任務導向」，還需要到機構內進行解決問題式的實作課程。這一領域發展到後來，已成為眾多歷史系畢業生的就業訓練，包括設計博物館的展覽、保護與解是過去的物質遺產，包括歷史建物和檔案；或是提供政策與研究成果、運用新媒體與歷史元素行銷和廣泛的歷史教育等等，這些其實都是大眾史學之範疇。但還須注意，高等教育不能只是意識到這種改變，還要幫學生規劃未來實作的場域，以及成果和就業之間的關係。這當中的擔憂還是有的，桑兵就指出，要把史學跟旅遊、影視、電視等大眾文化結合，就必須提高影響力和能見度，終將依靠不擇手段與行銷；而史學研究必須嚴格遵守學科戒律，訓練過程中必先耗費大量心力與時間，非長時間訓練難以見到成果，若學生已不能自持自律，一旦墜入流行文化，則想盡辦法與熱門科系掛勾，撰寫的文字不具客觀立場，也無法檢覈是非對錯，則對史學的專業化將產生重大傷害，實已脫離了「史學」的範疇，更重要的事，淺談一點應用，恐怕還是得不到業界的認可，又將落入低薪的惡性循環。所以，在應用與專業化之間，這兩種教學研究取徑如何妥善調和融通，增加史學方法的附加價值，取其利而去其弊，實考驗著未來文史科系師生的智慧與抉擇。",
+      "授課內容": "一、導言\n二、歷史學者的創新與撰寫能力\n三、公眾史學的理論與發展\n三、臺灣公眾史學的面向\n四、歷史漫畫與漫畫歷史\n五、影視史學\n六、普及化書寫\n七、教科書與公眾記憶\n八、地方創生與書寫\n九、學術出版與商業出版\n十、與同學商議作品\n十一、與同學商議作品\n十二、成果發表",
+      "教科書/參考書": "(僅供參考，上課還會發詳細的書目) 皮國立，《跟史家一起創作：近代史學的閱讀方法與寫作技藝》，臺北：遠足，2020。 王希，〈誰擁有歷史：美國公共史學的起源、發展與挑戰〉，《歷史研究》，2010年3期，頁34-47。 周樑楷編，《人人都是史家：大眾史學論集》，第一冊，台中：采玉出版社，2004。 周樑楷，〈影視史學：理論基礎及課程主旨的反思》，《臺大歷史學報》，23 期 (1999/06)，頁445-470。 陳新，〈「公眾史學」的理論基礎與學術框架〉，《史學月刊》，2012年3月。 張隆志主編，《歷史臺灣：國立臺灣歷史博物館館刊》第八期，「大眾史學專題」，台南：國立臺灣歷史博物館，2014。 錢茂偉，《中國公眾史學通論》，中國社會科學出版社，2015。",
+      "自編教材比例": "70",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "\"指定書評報告與撰寫 30% 口頭討論、評論表現 20% 期末報告與成果展演 50%\"",
+      "辦公時間": "週二 14:00-17:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "中國史 、 台灣史 、 研究方法",
+      "核心能力": [
+        {
+          "能力名稱": "培養外語閱讀能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "蒐集與解析史料能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "專題研究與論文寫作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "平衡史觀及批判能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "跨學科知識的整合與培養",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "學術討論與表達能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "文學院",
+    "系所": "歷史研究所碩士班",
+    "流水號": "15009",
+    "課號-班別": "HI6060-*",
+    "課程名稱(中文)": "明清社會文化史專題研究 [已停開]",
+    "課程名稱(英文)": "Special Research on the Social and Cultural History of Ming and Qing Dynasties",
+    "備註": "[不開放初選]",
+    "授課教師": "李孝悌",
+    "學分": "3",
+    "上課時間": "Wed678",
+    "教室": "LS-321",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "20",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=15009&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限歷史研究所碩士班、歷史研究所碩士在職專班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=15009&outline=15009&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "歷史研究所碩士班",
+      "流水號": "15009",
+      "課號": "HI6060-*",
+      "授課教師": "李孝悌",
+      "課程名稱(中文)": "明清社會文化史專題研究",
+      "課程名稱(英文)": "Special Research on the Social and Cultural History of Ming and Qing Dynasties",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "學習明清史社會與文化史的相關課題，閱讀相關經典與當代研究，認識當代明清文化史研究者，並能透過閱讀與寫作，開展出相關研究課題。",
+      "授課內容": "第一部分：明清新文化史的理論與方法\n第二部分：研究課題\n1物質與消費\n*Timothy Brook, Vermeer’s Hat: The Seventeenth Century and the Dawn of the Global World (Bloomsbury Press, 2008). 譯本見《維梅爾的帽子：從一幅畫看十七世紀全球貿易》(台北：遠流，2009)。\n王鴻泰，〈明清感官世界的開發與欲望的商品化〉，《明代研究》18 (2012.6)：103-141。\n巫仁恕，〈一几一榻見風致：晚明傢俱的消費文化〉，台灣師範大學歷史系及研究所編，《近世中國的社會與文化(960-1800)論文集》(台北：台灣師範大學歷史系及研究所，2007)，頁509-549\n2傳播與公眾社會\n王鴻泰，〈社會的想像與想像的社會——明清的資訊傳播與「公眾社會」〉，收入陳平原、王德威、商偉編，《晚明與晚清：歷史傳承與文化創新》（武漢：湖北教育出版社，2001），頁133-147。\n3商業與文化\nTimothy Brook，《縱樂的困惑：明朝的商業與文化》。\n4身體、醫療與社會\n李孝悌，〈十八世紀中國社會中的情慾與身體——禮教世界外的嘉年華會〉，《中央研究院歷史語言研究所集刊》72.3 (2001)：543-595。\n5城市、空間與日常生活\n[澳]安東離，《說揚州：1550-1850年的一座中國城市》(中華書局，2007)。\n王笛著、李德英等譯，《街頭文化：成都公共空間、下層民眾與地方政治，1870-1930》(北京：中國人民大學出版社，2006)。\n6族群、認同與國家\n7書籍與出版文化\n李仁淵，〈閱讀史的課題與觀點：實踐、過程、效應〉，收入復旦大學歷史學系、復旦大學中外現代化進程研究中心編，《新文化史與中國近代史研究——近代中國研究集刊》（上海：上海古籍出版社，2009），第4輯，頁213-254。另見蔣竹山編，《當代歷史學新趨勢》，聯經，2019。\n8感官與飲食文化\n巫仁恕，2006年，〈明清飲食文化中的感官演化與品味塑造──以飲膳書籍與食譜為中心的探討〉，《中國飲食文化》20.2(2006): 45-95。\n9性別與社會\n巫仁恕，〈消費與性別：明清士商的休閑購物與男性特質〉，《明清史研究》36(2011.10): 1-36。\n巫仁恕，《奢侈的女人：明清時期江南的消費文化》(台北：三民書局，2005)。\n衣若蘭，《「三姑六婆」——明代婦女與社會的探索》(臺北：稻鄉出版社，2006.5再版)。\n10文化相遇\n[美]何偉亞，《懷柔遠人：馬戞爾尼使華的中英禮儀衝突》(社會科學文獻出版社，1995)。\n11政治文化\n王汎森，〈從曾靜案看十八世紀前期的社會心態〉，《大陸雜誌》85.4 (1992)：1-22。\n呂妙芬，《孝治天下：孝經與近世中國的政治與文化》(臺北：聯經出版公司，2011)。\n12思想與文化\n王汎森，〈日譜與明末清初思想家——以顏李學派為主的討論〉，《中央研究院歷史語言研究所集刊》69.2 (1998)：245-294。\n王汎森，〈明代心學家的社會角色——以顏鈞的「急救心火」為例〉，《鄭欽仁教授榮退紀念論文集》（臺北：稻鄉出版社，1999），頁249-266。\n王汎森，〈明末清初的人譜與省過會〉，《中央研究院歷史語言研究所集刊》63.3 (1993)：679-712。\n13旅遊與書寫\n巫仁恕、狄雅斯，《游道：明清旅遊文化》(台北：三民書局，2010)。\n巫仁恕，〈清代士大夫的旅遊活動與論述──以江南為討論中心──〉，《中央研究院近代史研究所集刊》50(2005.12): 235-285。\n巫仁恕，〈晚明的旅遊風氣與士大夫心態── 以江南為討論中心〉，《明清以來江南社會與文化論集》2004。\n14法律文化\n邱澎生，〈18世紀蘇松棉布業的管理架構與法律文化〉，《江海學刊》2012.2 (2012)：143-157。\n邱澎生，〈明清訟師的興起及其官司致勝術〉，《歷史人類學學刊》（香港）7.2 (2009.10)：31-7\n邱澎生，〈有資用世或福祚子孫：晚明有關法律知識的兩種價值觀〉，《清華學報》33.1 (2004)：1-43。\n15娛樂與大眾文化\n李孝悌，〈桃花扇底送南朝——斷裂的逸樂〉，《新史學》17.3 (2006)：1-59。\n16雅俗與士庶文化\n王鴻泰，〈名士值幾文錢？——明清間士人的挾藝交游與名利經營〉，收入王璦玲編，《跨界想像與文化書寫——近代文人生活的道與藝》（臺北：中央研究院中國文哲研究所，出版中）。\n王鴻泰，〈雅俗的辯證——明代賞玩文化的流行與士商關係的錯雜〉，《新史學》7.4 (2006.12)：73-143。\n李孝悌，〈上層文化與民間文化——兼論中國史在這方面的研究〉，《近代中國史研究通訊》8 (1989)：95-104。\n*李孝悌，〈冒辟疆與水繪園中的遺民世界〉，收入氏著，《戀戀紅塵：中國的城市、欲望與生活》（上海：上海人民出版社，2007），頁54-102。",
+      "教科書/參考書": "Paul Ropp著，梁其姿譯，〈明清婦女研究——評介最近有關之英文著作〉2.4（1991）。 *王鴻泰，〈社會圖像的建構——百年來明清社會史研究的透視〉，《東吳歷史學報》22 (2009)：73-130。 王鴻泰，〈從經國濟民到聲色犬馬——二十年來臺灣社會文化史研究的回顧與展望〉，Ming Studies 63 (April 2011): 18-37。 巫仁恕，2010年3月，〈導論〉，巫仁恕、康豹、林美莉編，《從城市看中國的現代性》，頁i-xv，台北：中央研究院近代史研究所。 *李孝悌，〈序──明清文化史研究的一些新課題〉，《中國的城市生活》(臺北：聯經，2005)。 邱仲麟，〈從文化史、社會風俗到生活——《中國史新論: 文化與生活分冊》導論〉，收入同前書。 葛兆光，〈「唐宋」抑或「宋明」：文化史和思想史研究視域變化的意義〉，《歷史研究》2004年第一期，頁18-32。 趙世瑜，〈從明清史看宋元史：倡導一種「連續遞進」的思考方法〉，《清華歷史講堂續編》(三聯書店，2008)，頁219-250。",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討",
+      "評量配分比重": "評量配分比重： (1) 平時成績：40％ (2) 期中計畫：30％ (3) 期末報告:30％",
+      "辦公時間": "週三14:00-1700",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "中國史",
+      "核心能力": [
+        {
+          "能力名稱": "培養外語閱讀能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "蒐集與解析史料能力",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "專題研究與論文寫作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "平衡史觀及批判能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "跨學科知識的整合與培養",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "學術討論與表達能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "文學院",
+    "系所": "歷史研究所碩士班",
+    "流水號": "15010",
+    "課號-班別": "HIA002-*",
+    "課程名稱(中文)": "論文寫作指導(Ⅱ)",
+    "課程名稱(英文)": "Thesis Writing Ⅱ",
+    "備註": "[不開放初選]",
+    "授課教師": "指導教授",
+    "學分": "3",
+    "上課時間": "FriABC",
+    "教室": "A-311",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=15010&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限歷史研究所碩士在職專班。年級:限二年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限歷史研究所碩士在職專班。年級:限三年級、四年級、五年級、六年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=15010&outline=15010&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "歷史研究所碩士班",
+      "流水號": "15010",
+      "課號": "HIA002-*",
+      "授課教師": "指導教授",
+      "課程名稱(中文)": "論文寫作指導(Ⅱ)",
+      "課程名稱(英文)": "Thesis Writing Ⅱ",
+      "課程學制": "碩士在職專班",
+      "學分": "3",
+      "課程目標": "一、課程目標：本課程著重於史學觀念、文獻、方法與實務操作的探討與傳授，期許學生在接受基礎訓練後，對歷史學的內涵、應用有所認知，並能撰寫合乎學術規格的書評或論文。",
+      "授課內容": "“1、歷史的價值與功用\n2、工具書、網際網路資源與文獻的介紹\n3、一、二手資料的判讀與運用\n4、研究計劃的撰寫\n5、書評及報告的撰寫\n6、口述歷史的作法及應用\n7、影視史學的運用與侷限\n8、歷史研究與歷史解釋\n9、史學研究法與史家應有的態度\n10、史學研究的科際整合\n11、台灣歷史學的發展趨勢\n12、當前台灣的歷史教育\n13、歷史研究與歷史教學\n14、期末報告“",
+      "教科書/參考書": "“1. 汪榮祖,《史學九章》,(台北:麥田出版社,2002) 2. 陳建守主編,《史家的誕生:探訪西方史學殿堂的十扇窗》,(台北:時英出版社,2008) 3. Peter Burke, New Perspectives on Historical Writing, (University Park: the Pennsylvania State University Press, 1991) 4. Marnie Hughes-Warrington, Fifty Key Thinkers on History, (London: Routledge, 2000)“",
+      "自編教材比例": "25",
+      "授課方式": "研討 個別指導",
+      "評量配分比重": "期末論文60％；課堂研討30％；全勤10％",
+      "辦公時間": "三 125",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "史學史 、 研究方法",
+      "核心能力": [
+        {
+          "能力名稱": "培養外語閱讀能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "蒐集與解析史料能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "專題研究與論文寫作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "平衡史觀及批判能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "跨學科知識的整合與培養",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "學術討論與表達能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "歷史教學的思考與設計",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 學習檔案評量"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "文學院",
+    "系所": "歷史研究所碩士班",
+    "流水號": "15011",
+    "課號-班別": "HIA010-*",
+    "課程名稱(中文)": "史學方法",
+    "課程名稱(英文)": "Historical Methodology",
+    "備註": "[不開放初選]",
+    "授課教師": "陳家豪",
+    "學分": "3",
+    "上課時間": "MonABC",
+    "教室": "LS-321",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "20",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=15011&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限歷史研究所碩士在職專班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=15011&outline=15011&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "歷史研究所碩士班",
+      "流水號": "15011",
+      "課號": "HIA010-*",
+      "授課教師": "陳家豪",
+      "課程名稱(中文)": "史學方法",
+      "課程名稱(英文)": "Historical Methodology",
+      "課程學制": "碩士在職專班",
+      "學分": "3",
+      "課程目標": "一、 課程目標（Course Objectives） 本課程旨在協助社會人士完成「從歷史愛好者到歷史研究者」的轉型，達成以下目標： 1、建立批判性思維：培養「懷疑而審慎」的史學態度，學會辨識史料的生產語境與意識形態，而不盲從官方檔案或大眾敘事。 2、掌握考證技術：理解史料內外部考證的邏輯，掌握「孤證不立」與「互證法」等核心技術，具備判別歷史真實與詮釋界線的能力。 3、對接專業學術規範：協助非本科學生克服學術寫作障礙，從排版格式（Chicago Style）到資料庫檢索，建立標準的學術生產流程。 4、因應數位時代挑戰：正確認識 AI 工具（如 Perplexity, ChatGPT）在歷史研究中的輔助地位及其局限性，學習在資訊爆炸時代進行「有權重」的資料篩選。 二、教學目的（Teaching Goals） • 理解歷史學的認識論基礎：「真相」與「客觀性」的辯證、史料的有限性、孤證問題。 • 認識不同史料類型的特性：國家檔案的權威性與侷限、個人記憶的主觀性與價值。 • 掌握學術研究的技術規範：中英文學術格式、文獻檢索策略、AI工具的輔助功能與限制。",
+      "授課內容": "本課程採「理論—方法—實踐」三層遞進結構：\n第1-3週建立認識論基礎（歷史思維、史料限制、真相問題）\n第4-10週深化方法論訓練（考證技術、倫理問題、史料類型、公共介入）\n第11-16週強化實務操作（個案與結構、學術規範、文獻檢索與判讀）\n1、什麼叫做歷史思維：長時段與歷史同情理解\n2、上窮碧落下黃泉、動手動腳找資料：史料總是有限\n3、歷史學有所謂真相與客觀嗎？\n4、史料的內部考證與外部考證\n5、歷史學的素養與道德：隱惡揚善（跟新聞記者不同之處）\n6、孤證不能成立：跟法官判案不一樣\n7、國家檔案是否比較「可信」？\n8、個人記憶能否成為歷史？所謂口述歷史的運用\n9、歷史能否「中立」？\n10、歷史如何介入公共議題？公共史學、社會記憶、歷史政治\n11、小歷史與大結構:個案研究如何連結結構分析？\n12、Word排版、中英文學術格式：AI是學術排版的好幫手\n13、如何查找學術論著：專書與論文誰比較重要？\n14、學術資料庫在那邊？如何下關鍵字？\n15、搜尋引擎：google搜尋與Perplexity(AI)搜尋的差異\n16、「這篇文章值不值得看？」——學術文獻快速判讀",
+      "教科書/參考書": "1、Keith Jenkins著，賈士蘅譯，《歷史的再思考》，臺北：麥田，2011。 2、Marc Bloch著，周婉窈譯，《史家的技藝》，臺北：遠流，2020。 3、Sam Wineburg, Daisy Martin, Chauncey Monte-San著，宋家復譯，《像史家一般閱讀：在課堂裡教歷史閱讀素養》，臺北：國立臺灣大學出版中心，2016。 4、Sarah Maza著，陳建元譯，《想想歷史》，臺北：時報出版，2018。 5、王晴佳，《台灣史學五十年(1950-2000)：傳承、方法、趨向》，臺北：麥田，2002。 6、皮國立，《跟史家一起創作：近代史學的閱讀方法與寫作技藝》，新北：遠足文化，2020。 7、余英時著，李彤譯，《十字路口的中國史學》，臺北：聯經出版，2008。 8、杜正勝，〈新史學之路──兼論臺灣五十年來的史學發展〉，《新史學》第13卷第3期（2002年），頁21-42。 9、杜維運，《史學方法論》，臺北：三民書局，2021。 10、周兵，《新文化史：歷史學的「文化轉向」》，上海：復旦大學出版社，2012。",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討",
+      "評量配分比重": "出席率：20％ 課堂成績：80％",
+      "辦公時間": "週二　9:00~12:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "中國史 、 台灣史 、 史學史 、 研究方法 、 歐洲史",
+      "核心能力": [
+        {
+          "能力名稱": "培養外語閱讀能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "蒐集與解析史料能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "專題研究與論文寫作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "平衡史觀及批判能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "跨學科知識的整合與培養",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "學術討論與表達能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "歷史教學的思考與設計",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "文學院",
+    "系所": "歷史研究所碩士班",
+    "流水號": "15012",
+    "課號-班別": "HIA017-*",
+    "課程名稱(中文)": "近代台灣教育史研究",
+    "課程名稱(英文)": "Seminar on Modern Taiwan Education History",
+    "備註": "[不開放初選]",
+    "授課教師": "鄭政誠",
+    "學分": "3",
+    "上課時間": "TueABC",
+    "教室": "LS-321",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "20",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=15012&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限歷史研究所碩士在職專班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=15012&outline=15012&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "歷史研究所碩士班",
+      "流水號": "15012",
+      "課號": "HIA017-*",
+      "授課教師": "鄭政誠",
+      "課程名稱(中文)": "近代台灣教育史研究",
+      "課程名稱(英文)": "Seminar on Modern Taiwan Education History",
+      "課程學制": "碩士在職專班",
+      "學分": "3",
+      "課程目標": "就近代臺灣教育史發展擇重要課題加以論述，並針對各相關學術論著進行閱讀檢視與討論，期許學習者能以實證角度與客觀立場重新評價日治時期，並希望透過對學術論著的閱讀與討論，使學習者瞭解該領域之學術研究行情，並能有效評論與習作，增進自我歷史研究之能力。",
+      "授課內容": "一、導論\n二、教育史研究與史料概論\n三、教育政策制度概論\n四、初等教育（一）：學制\n五、初等教育（二）：學科\n六、初等教育（三）：教材\n七、初等教育（四）：教材II\n八、初等教育（五）：活動\n九、專題演講\n十、中學教育\n十一、實業教育\n十二、高等教育\n十三、師範教育\n十四、女子教育\n十五、原住民教育\n十六、校史研究\n十七、期末報告I\n十八、期末報告II",
+      "教科書/參考書": "E. Patricia Tsurumi著、林正芳譯，《日治時期臺灣教育史》（宜蘭：財團法人仰山文教基金會，1999年6月）。\n林茂生著、林詠梅譯，《日本統治下臺灣的學校教育—其發展及有關文化之歷史分析與探討》（臺北：新自然主義股份公司，2000年12月）。\n周婉窈，《海行兮的年代—日本殖民統治末期臺灣史論集》（臺北：允晨文化公司，2003年2月）。\n許佩賢，《殖民地臺灣的近代學校》（臺北：遠流出版公司，2005年3月）。\n葉碧苓，《學術先鋒—臺北帝國大學與日本南進政策之研究》（臺北：稻鄉出版社，2010年6月）。\n吳文星，《日據時期臺灣師範教育之研究》，國立臺灣師範大學歷史研究所專刊（8）（1983年1月）。游鑑明，《日據時期臺灣的女子教育》，國立臺灣師範大學歷史研究所專刊（20），（1988年12月）。\n張耀宗，《國家與部落的對峙：日治時期臺灣的原住民教育》（臺北：華騰文化股份有限公司，2009年3月）。\n鄭政誠，《日治時期臺灣原住民的觀光行旅》（臺北：博揚文化事業公司，2005年12月）。\n謝濟全，《山子頂上的草根小紳士—日治時期嘉義農林學校之發展》，（臺北：稻鄉出版社，2012年3月）。\n徐聖凱，《日治時期臺北高等學校與菁英養成》（臺北：國立臺灣師範大學出版中心，2012年10月）。\n鄭麗玲，《臺灣第一所工業學校—從臺北工業學校到臺北工專（1912-1968）》（臺北：稻鄉出版社，2012年3月）。\n鄭政誠，《南臺灣的師培搖籃—殖民地時期的臺南師範學校研究（1919-1945）》（臺北：博揚文化事業公司，2010年12月）。\n朱佩琪，《臺籍菁英的搖籃—臺中一中》（臺北：向日葵文化，2005年5月）。\n楊孟哲，《日治時代臺灣美術教育》（臺北：前衛出版社，1999年6月）。\n蔡禎雄，《日據時代臺灣初等學校體育發展史》（臺北：師大書苑，1997年4月）。",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討 其他",
+      "評量配分比重": "1、上課表現：選課同學就各週主題分配之文章進行摘要與心得報告，其他同學則需進行討論，依每位同學表現給分，佔學期總成績40％。 2、期末報告：選課同學擇一主題撰寫報告，並於期末報告大要，繳交時間另訂，佔學期總成績60％。",
+      "辦公時間": "星期一13:00-14:50, 星期二13:00-13:50",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "台灣史",
+      "核心能力": [
+        {
+          "能力名稱": "培養外語閱讀能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "蒐集與解析史料能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "專題研究與論文寫作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "平衡史觀及批判能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "跨學科知識的整合與培養",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "學術討論與表達能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "歷史教學的思考與設計",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  }
+]

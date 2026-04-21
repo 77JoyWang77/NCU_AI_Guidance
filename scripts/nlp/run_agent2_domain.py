@@ -32,10 +32,10 @@ RAW_DIRS      = [
     BASE / "data" / "raw" / "courses",
     BASE / "data" / "raw" / "graduate_courses",
 ]
-DEPT_MAP_PATH  = BASE / "data" / "processed" / "dept_professor_map.json"
-TECH_NODES_PATH = BASE / "data" / "processed" / "nlp_tech_nodes.json"
-OUT_TAGS       = BASE / "data" / "processed" / "nlp_domain_tags.json"
-OUT_LINKS      = BASE / "data" / "processed" / "nlp_professor_links.json"
+DEPT_MAP_PATH  = BASE / "data" / "processed" / "nlp" / "dept_professor_map.json"
+TECH_NODES_PATH = BASE / "data" / "processed" / "nlp" / "nlp_tech_nodes.json"
+OUT_TAGS       = BASE / "data" / "processed" / "nlp" / "nlp_domain_tags.json"
+OUT_LINKS      = BASE / "data" / "processed" / "nlp" / "nlp_professor_links.json"
 
 # ── 後端設定（vLLM）─────────────────────────────────────────
 # 啟動：vllm serve Qwen/Qwen3-14B-AWQ --max-model-len 8192 --gpu-memory-utilization 0.8

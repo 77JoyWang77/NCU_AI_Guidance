@@ -1,0 +1,151 @@
+{
+  "id": "dept_hakka",
+  "name": "客家語文暨社會科學學系",
+  "program_type": "dept_with_groups",
+  "dept_required_courses": [
+    { "code": "HK1001", "name": "基礎客語I",          "credits": 2 },
+    { "code": "HK1002", "name": "基礎客語II",         "credits": 2 },
+    { "code": "HK1005", "name": "社會學（上）",       "credits": 2 },
+    { "code": "HK1006", "name": "社會學（下）",       "credits": 2 },
+    { "code": "HK1009", "name": "客家文化概論（上）", "credits": 2 },
+    { "code": "HK1010", "name": "客家文化概論（下）", "credits": 2 },
+    { "code": "HK1015", "name": "臺灣客家移墾史",     "credits": 3 },
+    { "code": "HK2001", "name": "進階客語I",          "credits": 2 },
+    { "code": "HK2002", "name": "進階客語II",         "credits": 2 },
+    { "code": "HK4021", "name": "專題製作與實習",     "credits": 2 }
+  ],
+  "groups": [
+    {
+      "id": "dept_hakka_language",
+      "name": "客家語文暨社會科學學系_客家語文及傳播組",
+      "group_label": "客家語文及傳播組",
+      "program_type": "dept_group",
+      "min_credits": 128,
+      "required_credits": 70,
+      "graduation_rules": [
+        {
+          "type": "credit_minimum",
+          "credits": 128,
+          "description": "最低畢業學分 128 學分"
+        },
+        {
+          "type": "dept_required",
+          "credits": 70,
+          "description": "必修科目 70 學分（共同必修25＋系訂必修21＋組訂必修18＋跨組必修6）"
+        },
+        {
+          "type": "elective_min",
+          "credits": 24,
+          "description": "選修科目至少修習並通過組訂選修 24 學分；跨院和校際選修以 17 學分為上限"
+        },
+        {
+          "type": "cross_group_elective",
+          "credits": 6,
+          "select": 2,
+          "description": "跨組必修：從客家社會及政策組課程中選修 2 門（6 學分）"
+        },
+        {
+          "type": "certification_required",
+          "cert": "客語能力認證初級",
+          "description": "須通過客家委員會客語能力認證初級方可畢業"
+        },
+        {
+          "type": "certification_waiver",
+          "description": "入學前已取得客語能力認證中高級證書者，得申請免修基礎客語，惟缺少學分須加修選修課程補足"
+        }
+      ],
+      "certifications": [
+        "客語能力認證初級"
+      ],
+      "required_courses": [
+        { "code": "HK2025", "name": "語言學概論",          "credits": 3 },
+        { "code": "HK2027", "name": "客語概論",            "credits": 3 },
+        { "code": "HK2031", "name": "傳播理論與數位行銷",  "credits": 3 },
+        { "code": "HK2029", "name": "文學概論與客家文學",  "credits": 3 },
+        { "code": "HK2022", "name": "客語數位學習與實作",  "credits": 3 },
+        { "code": "HK2024", "name": "客語閱讀與書寫",      "credits": 3 }
+      ],
+      "elective_groups": [
+        {
+          "name": "跨組必修（客家社會及政策組，選2門，至少6學分）",
+          "select": 2,
+          "min_credits": 6,
+          "courses": [
+            { "code": "HK2035", "name": "文化人類學",      "credits": 3 },
+            { "code": "HK2039", "name": "政治學",          "credits": 3 },
+            { "code": "HK2033", "name": "族群理論與關係",  "credits": 3 },
+            { "code": "HK2037", "name": "性別研究",        "credits": 3 },
+            { "code": "HK3037", "name": "社會調查與統計",  "credits": 3 },
+            { "code": "HK3029", "name": "社會科學研究法",  "credits": 3 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dept_hakka_social_policy",
+      "name": "客家語文暨社會科學學系_客家社會及政策組",
+      "group_label": "客家社會及政策組",
+      "program_type": "dept_group",
+      "min_credits": 128,
+      "required_credits": 70,
+      "graduation_rules": [
+        {
+          "type": "credit_minimum",
+          "credits": 128,
+          "description": "最低畢業學分 128 學分"
+        },
+        {
+          "type": "dept_required",
+          "credits": 70,
+          "description": "必修科目 70 學分（共同必修25＋系訂必修21＋組訂必修18＋跨組必修6）"
+        },
+        {
+          "type": "elective_min",
+          "credits": 24,
+          "description": "選修科目至少修習並通過組訂選修 24 學分；跨院和校際選修以 17 學分為上限"
+        },
+        {
+          "type": "cross_group_elective",
+          "credits": 6,
+          "select": 2,
+          "description": "跨組必修：從客家語文及傳播組課程中選修 2 門（6 學分）"
+        },
+        {
+          "type": "certification_required",
+          "cert": "客語能力認證初級",
+          "description": "須通過客家委員會客語能力認證初級方可畢業"
+        },
+        {
+          "type": "certification_waiver",
+          "description": "入學前已取得客語能力認證中高級證書者，得申請免修基礎客語，惟缺少學分須加修選修課程補足"
+        }
+      ],
+      "certifications": [
+        "客語能力認證初級"
+      ],
+      "required_courses": [
+        { "code": "HK2035", "name": "文化人類學",      "credits": 3 },
+        { "code": "HK2039", "name": "政治學",          "credits": 3 },
+        { "code": "HK2033", "name": "族群理論與關係",  "credits": 3 },
+        { "code": "HK2037", "name": "性別研究",        "credits": 3 },
+        { "code": "HK3037", "name": "社會調查與統計",  "credits": 3 },
+        { "code": "HK3029", "name": "社會科學研究法",  "credits": 3 }
+      ],
+      "elective_groups": [
+        {
+          "name": "跨組必修（客家語文及傳播組，選2門，至少6學分）",
+          "select": 2,
+          "min_credits": 6,
+          "courses": [
+            { "code": "HK2025", "name": "語言學概論",         "credits": 3 },
+            { "code": "HK2027", "name": "客語概論",           "credits": 3 },
+            { "code": "HK2031", "name": "傳播理論與數位行銷", "credits": 3 },
+            { "code": "HK2029", "name": "文學概論與客家文學", "credits": 3 },
+            { "code": "HK2022", "name": "客語數位學習與實作", "credits": 3 },
+            { "code": "HK2024", "name": "客語閱讀與書寫",     "credits": 3 }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1142 @@
+{
+  "summary": {
+    "raw_courses_total": 3803,
+    "curriculum_total": 458,
+    "credit_programs_total": 998,
+    "curriculum_vs_raw": {
+      "code_match": 455,
+      "code_match_pct": 99.3,
+      "code_only_in_curriculum": 3,
+      "name_diff_count": 11
+    },
+    "credit_programs_vs_raw": {
+      "code_match": 932,
+      "code_match_pct": 93.4,
+      "code_only_in_cp": 66,
+      "name_diff_count": 39,
+      "cp_only_name_match_same_prefix": 11,
+      "cp_only_name_match_any_prefix": 7,
+      "cp_only_non_standard_code": 27,
+      "cp_only_name_no_match_grad": 9,
+      "cp_only_name_no_match_undergrad": 12,
+      "total_matchable": 950,
+      "total_matchable_pct": 95.2
+    }
+  },
+  "curriculum_name_diff": [
+    {
+      "code": "CM1003",
+      "curriculum_name": "普化實驗上",
+      "raw_name": "普通化學實驗",
+      "source_dept": "化學學系",
+      "source_college": "理學院"
+    },
+    {
+      "code": "CM1004",
+      "curriculum_name": "普化實驗下",
+      "raw_name": "普通化學實驗",
+      "source_dept": "化學學系",
+      "source_college": "理學院"
+    },
+    {
+      "code": "CM1008",
+      "curriculum_name": "普化實驗",
+      "raw_name": "普通化學實驗",
+      "source_dept": "光電科學與工程學系",
+      "source_college": "理學院"
+    },
+    {
+      "code": "GP3011",
+      "curriculum_name": "地球物理探勘上",
+      "raw_name": "地球物理探勘學",
+      "source_dept": "地球科學學系",
+      "source_college": "地球科學學院"
+    },
+    {
+      "code": "GP3012",
+      "curriculum_name": "地球物理探勘下",
+      "raw_name": "地球物理探勘學",
+      "source_dept": "地球科學學系",
+      "source_college": "地球科學學院"
+    },
+    {
+      "code": "HT3001",
+      "curriculum_name": "生物統計學",
+      "raw_name": "生物統計學-R語言應用",
+      "source_dept": "生命科學系",
+      "source_college": "生醫理工學院"
+    },
+    {
+      "code": "OS3016",
+      "curriculum_name": "電磁光學",
+      "raw_name": "電磁學III",
+      "source_dept": "光電科學與工程學系",
+      "source_college": "理學院"
+    },
+    {
+      "code": "PH1003",
+      "curriculum_name": "普物實驗上",
+      "raw_name": "普通物理實驗",
+      "source_dept": "化學學系",
+      "source_college": "理學院"
+    },
+    {
+      "code": "PH1004",
+      "curriculum_name": "普物實驗下",
+      "raw_name": "普通物理實驗",
+      "source_dept": "化學學系",
+      "source_college": "理學院"
+    },
+    {
+      "code": "PH1023",
+      "curriculum_name": "普物實驗",
+      "raw_name": "普通物理實驗",
+      "source_dept": "土木工程學系",
+      "source_college": "工學院"
+    },
+    {
+      "code": "PH1024",
+      "curriculum_name": "普物實驗",
+      "raw_name": "普通物理實驗",
+      "source_dept": "機械工程學系",
+      "source_college": "工學院"
+    }
+  ],
+  "cp_name_diff": [
+    {
+      "code": "AP4020",
+      "cp_name": "空氣汙染控制理論",
+      "raw_name": "空氣污染控制理論",
+      "source_program": "「氣候與環境變遷」學分學程",
+      "source_college": "地科學院"
+    },
+    {
+      "code": "BA4100",
+      "cp_name": "ERP 系統實施顧問服務",
+      "raw_name": "ERP系統實施顧問實務",
+      "source_program": "「企業資源規劃」學分學程",
+      "source_college": "管理學院"
+    },
+    {
+      "code": "BA5003",
+      "cp_name": "ERP 會計模組討論",
+      "raw_name": "ERP─會計模組專題",
+      "source_program": "「會計」學分學程",
+      "source_college": "管理學院"
+    },
+    {
+      "code": "BA5005",
+      "cp_name": "當代財務問題討論 (Seminar on Modern Financial Issues)",
+      "raw_name": "當代財務問題討論",
+      "source_program": "「英文 MBA」學分學程",
+      "source_college": "管理學院"
+    },
+    {
+      "code": "BA5009",
+      "cp_name": "財務報表分析與科技評價 (Financial Statement Analysis & Valuation)",
+      "raw_name": "財務報表分析與科技評價",
+      "source_program": "「英文 MBA」學分學程",
+      "source_college": "管理學院"
+    },
+    {
+      "code": "BA5023",
+      "cp_name": "品牌管理 (Brand Management)",
+      "raw_name": "品牌管理",
+      "source_program": "「英文 MBA」學分學程",
+      "source_college": "管理學院"
+    },
+    {
+      "code": "BA5024",
+      "cp_name": "管理心理學 (Managerial Psychology)",
+      "raw_name": "管理心理學",
+      "source_program": "「英文 MBA」學分學程",
+      "source_college": "管理學院"
+    },
+    {
+      "code": "BA7006",
+      "cp_name": "公司理財專題研討 (Seminar on Corporate Finance)",
+      "raw_name": "公司理財專題研討",
+      "source_program": "「英文 MBA」學分學程",
+      "source_college": "管理學院"
+    },
+    {
+      "code": "BA7067",
+      "cp_name": "決策支援系統 (Decision Support Systems)",
+      "raw_name": "決策支援系統",
+      "source_program": "「英文 MBA」學分學程",
+      "source_college": "管理學院"
+    },
+    {
+      "code": "BM2032",
+      "cp_name": "分子醫學",
+      "raw_name": "細胞分子生物學(上) [已停開]",
+      "source_program": "「智慧生醫晶片」學分學程",
+      "source_college": "生醫理工學院"
+    },
+    {
+      "code": "CC0312",
+      "cp_name": "材料改變我們的世界",
+      "raw_name": "材料，改變我們的世界",
+      "source_program": "「跨領域社會參與」學分學程",
+      "source_college": "通識中心"
+    },
+    {
+      "code": "CH2021",
+      "cp_name": "輸送現象及單元操作 I",
+      "raw_name": "輸送現象與單元操作Ｉ",
+      "source_program": "「前瞻半導體」學分學程",
+      "source_college": "教務處"
+    },
+    {
+      "code": "CH3042",
+      "cp_name": "輸送現象及單元操作 II",
+      "raw_name": "輸送現象與單元操作(Ⅱ)",
+      "source_program": "「前瞻半導體」學分學程",
+      "source_college": "教務處"
+    },
+    {
+      "code": "EL2005",
+      "cp_name": "語言學概論",
+      "raw_name": "英語語言學概論",
+      "source_program": "「華語文教學」學分學程",
+      "source_college": "語言中心"
+    },
+    {
+      "code": "EL3057",
+      "cp_name": "翻譯類課程",
+      "raw_name": "翻譯與習作",
+      "source_program": "「華語文教學」學分學程",
+      "source_college": "語言中心"
+    },
+    {
+      "code": "FM3014",
+      "cp_name": "成本會計",
+      "raw_name": "成本會計學",
+      "source_program": "「會計」學分學程",
+      "source_college": "管理學院"
+    },
+    {
+      "code": "FM6011",
+      "cp_name": "財務報表分析 (Financial Statement Analysis)",
+      "raw_name": "財務報表分析",
+      "source_program": "「英文 MBA」學分學程",
+      "source_college": "管理學院"
+    },
+    {
+      "code": "FM6090",
+      "cp_name": "固定收益證券專題 (Advanced Topic in Fixed-Income Securities)",
+      "raw_name": "固定收益證券專題 [已停開]",
+      "source_program": "「英文 MBA」學分學程",
+      "source_college": "管理學院"
+    },
+    {
+      "code": "FR4029",
+      "cp_name": "語言學概論",
+      "raw_name": "語言與語言學",
+      "source_program": "「華語文教學」學分學程",
+      "source_college": "語言中心"
+    },
+    {
+      "code": "GS0076",
+      "cp_name": "自主微課程（尤努斯社會企業中心）",
+      "raw_name": "自主學習微學分(一)",
+      "source_program": "「社會企業與社會創新」學分學程",
+      "source_college": "管理學院"
+    },
+    {
+      "code": "GS0077",
+      "cp_name": "自主微課程（尤努斯社會企業中心）",
+      "raw_name": "自主學習微學分(二)",
+      "source_program": "「社會企業與社會創新」學分學程",
+      "source_college": "管理學院"
+    },
+    {
+      "code": "GS2154",
+      "cp_name": "領導素養：跨領域閱讀思考與寫作（英語授課）",
+      "raw_name": "領導素養:跨領域閱讀思考與寫作",
+      "source_program": "「跨領域榮譽學分學程」",
+      "source_college": "通識中心"
+    },
+    {
+      "code": "HK2023",
+      "cp_name": "地方政府與政治",
+      "raw_name": "地方政府與自治",
+      "source_program": "「法律與政治」學分學程",
+      "source_college": "通識中心"
+    },
+    {
+      "code": "HK3014",
+      "cp_name": "社區組織與發展之實務",
+      "raw_name": "社區組織與發展之實作",
+      "source_program": "「社會企業」學分學程",
+      "source_college": "客家學院"
+    },
+    {
+      "code": "HR6002",
+      "cp_name": "人力資源管理 (Human Resource Management)",
+      "raw_name": "人力資源管理",
+      "source_program": "「英文 MBA」學分學程",
+      "source_college": "管理學院"
+    },
+    {
+      "code": "IA5001",
+      "cp_name": "作業研究一 (Operations Research I)",
+      "raw_name": "作業研究一",
+      "source_program": "「英文 MBA」學分學程",
+      "source_college": "管理學院"
+    },
+    {
+      "code": "IA5005",
+      "cp_name": "迴歸分析 (Regression Analysis)",
+      "raw_name": "迴歸分析",
+      "source_program": "「英文 MBA」學分學程",
+      "source_college": "管理學院"
+    },
+    {
+      "code": "IA5039",
+      "cp_name": "產銷模式 (Production and Distribution Models)",
+      "raw_name": "產銷模式",
+      "source_program": "「英文 MBA」學分學程",
+      "source_college": "管理學院"
+    },
+    {
+      "code": "IA7026",
+      "cp_name": "供應鏈管理系統設計 (Design of Advanced Supply Chain Management Systems)",
+      "raw_name": "供應鏈管理系統設計",
+      "source_program": "「英文 MBA」學分學程",
+      "source_college": "管理學院"
+    },
+    {
+      "code": "IA7031",
+      "cp_name": "大規模最佳化 (Large-scale Optimization)",
+      "raw_name": "大規模最佳化",
+      "source_program": "「英文 MBA」學分學程",
+      "source_college": "管理學院"
+    },
+    {
+      "code": "IA7039",
+      "cp_name": "自動化物料搬運系統 (Automated Material Handling System)",
+      "raw_name": "自動化物料搬運系統",
+      "source_program": "「英文 MBA」學分學程",
+      "source_college": "管理學院"
+    },
+    {
+      "code": "IM3059",
+      "cp_name": "行銷學或行銷管理",
+      "raw_name": "行銷學",
+      "source_program": "「電子商務(EC)」學分學程",
+      "source_college": "管理學院"
+    },
+    {
+      "code": "IM5032",
+      "cp_name": "物聯網",
+      "raw_name": "物聯網實務應用",
+      "source_program": "「商業智慧與分析」學分學程",
+      "source_college": "管理學院"
+    },
+    {
+      "code": "LI7072",
+      "cp_name": "語義學",
+      "raw_name": "語意概論與語言教學",
+      "source_program": "「華語文教學」學分學程",
+      "source_college": "語言中心"
+    },
+    {
+      "code": "LN0306",
+      "cp_name": "語言學概論",
+      "raw_name": "漢語語言學概論",
+      "source_program": "「華語文教學」學分學程",
+      "source_college": "語言中心"
+    },
+    {
+      "code": "ME3043",
+      "cp_name": "機密機械設計 I",
+      "raw_name": "精密機械設計(I)",
+      "source_program": "「前瞻半導體」學分學程",
+      "source_college": "教務處"
+    },
+    {
+      "code": "ME3044",
+      "cp_name": "機密機械設計 II",
+      "raw_name": "精密機械設計II",
+      "source_program": "「前瞻半導體」學分學程",
+      "source_college": "教務處"
+    },
+    {
+      "code": "SA5009",
+      "cp_name": "氣候變遷與風險評估",
+      "raw_name": "氣候變遷風險與評估",
+      "source_program": "「氣候與環境變遷」學分學程",
+      "source_college": "地科學院"
+    },
+    {
+      "code": "TC5005",
+      "cp_name": "生成式人工智慧的人文導論",
+      "raw_name": "生成式AI的人文導論",
+      "source_program": "人工智慧自然語言技術學分學程",
+      "source_college": "臺灣大專院校人工智慧學程聯盟TAICA"
+    }
+  ],
+  "curriculum_only": [
+    {
+      "code": "BA4002",
+      "name": "策略管理",
+      "level": "undergrad",
+      "name_match": "same_prefix",
+      "name_match_codes": [
+        "BA5035"
+      ],
+      "source_dept": "企業管理學系",
+      "source_college": "管理學院"
+    },
+    {
+      "code": "EE4044",
+      "name": "畢業專題",
+      "level": "undergrad",
+      "name_match": "any_prefix",
+      "name_match_codes": [
+        "EI4301",
+        "ME4075"
+      ],
+      "source_dept": "電機工程學系",
+      "source_college": "資訊電機學院"
+    },
+    {
+      "code": "EI3104",
+      "name": "社會實踐專題下",
+      "level": "undergrad",
+      "name_match": "same_prefix",
+      "name_match_codes": [
+        "EI3103"
+      ],
+      "source_dept": "工學院學士班",
+      "source_college": "工學院"
+    }
+  ],
+  "cp_only_name_matched_same_prefix": [
+    {
+      "code": "BA4002",
+      "name": "策略管理",
+      "level": "undergrad",
+      "name_match": "same_prefix",
+      "name_match_codes": [
+        "BA5035"
+      ],
+      "source_program": "「企業管理」學分學程",
+      "source_college": "管理學院"
+    },
+    {
+      "code": "EE3510",
+      "name": "控制系統",
+      "level": "undergrad",
+      "name_match": "same_prefix",
+      "name_match_codes": [
+        "EE3003"
+      ],
+      "source_program": "台灣聯合大學系統「太空科技與工程」學分學程",
+      "source_college": "地科學院",
+      "source_group": "太空電機"
+    },
+    {
+      "code": "GS3038",
+      "name": "國際政治",
+      "level": "undergrad",
+      "name_match": "same_prefix",
+      "name_match_codes": [
+        "GS3083"
+      ],
+      "source_program": "「法律與政治」學分學程",
+      "source_college": "通識中心",
+      "source_group": "政治領域選修"
+    },
+    {
+      "code": "GS4258",
+      "name": "人工智慧與法律",
+      "level": "undergrad",
+      "name_match": "same_prefix",
+      "name_match_codes": [
+        "GS4528"
+      ],
+      "source_program": "「跨領域社會參與」學分學程",
+      "source_college": "通識中心",
+      "source_group": "社會參與跨域專題認列課程"
+    },
+    {
+      "code": "LN0307",
+      "name": "國語語音學",
+      "level": "undergrad",
+      "name_match": "same_prefix",
+      "name_match_codes": [
+        "LN7003"
+      ],
+      "source_program": "「華語文教學」學分學程",
+      "source_college": "語言中心"
+    },
+    {
+      "code": "ME602",
+      "name": "機器人學",
+      "level": "undergrad",
+      "name_match": "same_prefix",
+      "name_match_codes": [
+        "ME6061"
+      ],
+      "source_program": "國立中央大學跨校「智慧製造」學分學程",
+      "source_college": "工學院",
+      "source_group": "特色類別"
+    },
+    {
+      "code": "ME613",
+      "name": "人工智慧",
+      "level": "undergrad",
+      "name_match": "same_prefix",
+      "name_match_codes": [
+        "ME5302"
+      ],
+      "source_program": "國立中央大學跨校「智慧製造」學分學程",
+      "source_college": "工學院",
+      "source_group": "特色類別"
+    },
+    {
+      "code": "MT4011",
+      "name": "企業實習(一)",
+      "level": "undergrad",
+      "name_match": "same_prefix",
+      "name_match_codes": [
+        "MT6012",
+        "MT6013",
+        "MT4013",
+        "MT4016",
+        "MT6014",
+        "MT6015",
+        "MT6016"
+      ],
+      "source_program": "「企業資源規劃」學分學程",
+      "source_college": "管理學院",
+      "source_group": "選修課程"
+    },
+    {
+      "code": "MT4012",
+      "name": "企業實習(二)",
+      "level": "undergrad",
+      "name_match": "same_prefix",
+      "name_match_codes": [
+        "MT6012",
+        "MT6013",
+        "MT4013",
+        "MT4016",
+        "MT6014",
+        "MT6015",
+        "MT6016"
+      ],
+      "source_program": "「企業資源規劃」學分學程",
+      "source_college": "管理學院",
+      "source_group": "選修課程"
+    },
+    {
+      "code": "MT4017",
+      "name": "暑期實習(一)",
+      "level": "undergrad",
+      "name_match": "same_prefix",
+      "name_match_codes": [
+        "MT6017",
+        "MT6018",
+        "MT6019",
+        "MT4019"
+      ],
+      "source_program": "「企業資源規劃」學分學程",
+      "source_college": "管理學院",
+      "source_group": "選修課程"
+    },
+    {
+      "code": "MT4018",
+      "name": "暑期實習(二)",
+      "level": "undergrad",
+      "name_match": "same_prefix",
+      "name_match_codes": [
+        "MT6017",
+        "MT6018",
+        "MT6019",
+        "MT4019"
+      ],
+      "source_program": "「企業資源規劃」學分學程",
+      "source_college": "管理學院",
+      "source_group": "選修課程"
+    }
+  ],
+  "cp_only_name_matched_any_prefix": [
+    {
+      "code": "DEO1603",
+      "name": "訊號與系統",
+      "level": "undergrad",
+      "name_match": "any_prefix",
+      "name_match_codes": [
+        "BM3027",
+        "CO3004"
+      ],
+      "source_program": "台灣聯合大學系統「太空科技與工程」學分學程",
+      "source_college": "地科學院",
+      "source_group": "太空遙測"
+    },
+    {
+      "code": "ICN5611",
+      "name": "數位訊號處理",
+      "level": "grad",
+      "name_match": "any_prefix",
+      "name_match_codes": [
+        "RS7012"
+      ],
+      "source_program": "台灣聯合大學系統「太空科技與工程」學分學程",
+      "source_college": "地科學院",
+      "source_group": "太空電機"
+    },
+    {
+      "code": "IPT5340",
+      "name": "量子光學",
+      "level": "grad",
+      "name_match": "any_prefix",
+      "name_match_codes": [
+        "OS7009",
+        "PH7064"
+      ],
+      "source_program": "台灣聯合大學系統「太空科技與工程」學分學程",
+      "source_college": "地科學院",
+      "source_group": "太空遙測"
+    },
+    {
+      "code": "LG0003",
+      "name": "刑法總則",
+      "level": "undergrad",
+      "name_match": "any_prefix",
+      "name_match_codes": [
+        "GS3086"
+      ],
+      "source_program": "「法律」學分學程",
+      "source_college": "客家學院"
+    },
+    {
+      "code": "LG0005",
+      "name": "憲法",
+      "level": "undergrad",
+      "name_match": "any_prefix",
+      "name_match_codes": [
+        "GS2175"
+      ],
+      "source_program": "「法律」學分學程",
+      "source_college": "客家學院"
+    },
+    {
+      "code": "LG0013",
+      "name": "智慧財產權法",
+      "level": "undergrad",
+      "name_match": "any_prefix",
+      "name_match_codes": [
+        "IE5016",
+        "GS3340"
+      ],
+      "source_program": "「法律」學分學程",
+      "source_college": "客家學院",
+      "source_group": "進階選修課程"
+    },
+    {
+      "code": "SC421",
+      "name": "企業社會責任",
+      "level": "undergrad",
+      "name_match": "any_prefix",
+      "name_match_codes": [
+        "FM6113",
+        "FMA108",
+        "SL5004",
+        "MB5014"
+      ],
+      "source_program": "「社會企業」學分學程",
+      "source_college": "客家學院",
+      "source_group": "選修課程"
+    }
+  ],
+  "cp_only_non_standard_code": [
+    {
+      "code": "CM232",
+      "name": "創意思考與問題解決",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "「社會企業」學分學程",
+      "source_college": "客家學院",
+      "source_group": "選修課程"
+    },
+    {
+      "code": "CM235",
+      "name": "創業管理與實務",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "「社會企業」學分學程",
+      "source_college": "客家學院",
+      "source_group": "基礎課程"
+    },
+    {
+      "code": "CM244",
+      "name": "品牌管理與社群經營",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "「社會企業」學分學程",
+      "source_college": "客家學院",
+      "source_group": "選修課程"
+    },
+    {
+      "code": "CM348",
+      "name": "領導才能發展",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "「社會企業」學分學程",
+      "source_college": "客家學院",
+      "source_group": "實作課程"
+    },
+    {
+      "code": "CM366",
+      "name": "前瞻產業實務研究",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "「社會企業」學分學程",
+      "source_college": "客家學院",
+      "source_group": "選修課程"
+    },
+    {
+      "code": "CM372",
+      "name": "創業行銷",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "「社會企業」學分學程",
+      "source_college": "客家學院",
+      "source_group": "選修課程"
+    },
+    {
+      "code": "CM467",
+      "name": "領導與創新專題",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "「社會企業」學分學程",
+      "source_college": "客家學院",
+      "source_group": "實作課程"
+    },
+    {
+      "code": "ME123",
+      "name": "基礎程式設計與實驗(一)",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "國立中央大學跨校「智慧製造」學分學程",
+      "source_college": "工學院",
+      "source_group": "基礎類別"
+    },
+    {
+      "code": "ME124",
+      "name": "基礎程式設計與實驗(二)",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "國立中央大學跨校「智慧製造」學分學程",
+      "source_college": "工學院",
+      "source_group": "基礎類別"
+    },
+    {
+      "code": "ME303",
+      "name": "機械製造",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "國立中央大學跨校「智慧製造」學分學程",
+      "source_college": "工學院",
+      "source_group": "特色類別"
+    },
+    {
+      "code": "ME386",
+      "name": "機械系統分析",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "國立中央大學跨校「智慧製造」學分學程",
+      "source_college": "工學院",
+      "source_group": "PBL 類別"
+    },
+    {
+      "code": "ME411",
+      "name": "機電整合",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "國立中央大學跨校「智慧製造」學分學程",
+      "source_college": "工學院",
+      "source_group": "特色類別"
+    },
+    {
+      "code": "ME415",
+      "name": "可程式控制",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "國立中央大學跨校「智慧製造」學分學程",
+      "source_college": "工學院",
+      "source_group": "特色類別"
+    },
+    {
+      "code": "ME471",
+      "name": "微機電製程與設備概論",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "國立中央大學跨校「智慧製造」學分學程",
+      "source_college": "工學院",
+      "source_group": "特色類別"
+    },
+    {
+      "code": "ME533R",
+      "name": "工具機系統設計分析",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "國立中央大學跨校「智慧製造」學分學程",
+      "source_college": "工學院",
+      "source_group": "特色類別"
+    },
+    {
+      "code": "ME606",
+      "name": "智慧製造",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "國立中央大學跨校「智慧製造」學分學程",
+      "source_college": "工學院",
+      "source_group": "特色類別"
+    },
+    {
+      "code": "ME679R",
+      "name": "Python 程式語言",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "國立中央大學跨校「智慧製造」學分學程",
+      "source_college": "工學院",
+      "source_group": "基礎類別"
+    },
+    {
+      "code": "ME693R",
+      "name": "工業大數據",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "國立中央大學跨校「智慧製造」學分學程",
+      "source_college": "工學院",
+      "source_group": "基礎類別"
+    },
+    {
+      "code": "ME711R",
+      "name": "工業 4.0 概論",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "國立中央大學跨校「智慧製造」學分學程",
+      "source_college": "工學院",
+      "source_group": "特色類別"
+    },
+    {
+      "code": "ME731R",
+      "name": "射出成型整廠聯網整合技術",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "國立中央大學跨校「智慧製造」學分學程",
+      "source_college": "工學院",
+      "source_group": "特色類別"
+    },
+    {
+      "code": "ME733R",
+      "name": "RL 增強式學習在智慧製造的實作應用",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "國立中央大學跨校「智慧製造」學分學程",
+      "source_college": "工學院",
+      "source_group": "特色類別"
+    },
+    {
+      "code": "ME789R",
+      "name": "工業物聯網",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "國立中央大學跨校「智慧製造」學分學程",
+      "source_college": "工學院",
+      "source_group": "PBL 類別"
+    },
+    {
+      "code": "SC116",
+      "name": "台灣社會問題",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "「社會企業」學分學程",
+      "source_college": "客家學院",
+      "source_group": "選修課程"
+    },
+    {
+      "code": "SC334",
+      "name": "非營利組織管理",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "「社會企業」學分學程",
+      "source_college": "客家學院",
+      "source_group": "基礎課程"
+    },
+    {
+      "code": "SC341",
+      "name": "社區組織與發展",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "「社會企業」學分學程",
+      "source_college": "客家學院",
+      "source_group": "選修課程"
+    },
+    {
+      "code": "SC342",
+      "name": "社會關懷與實踐",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "「社會企業」學分學程",
+      "source_college": "客家學院",
+      "source_group": "選修課程"
+    },
+    {
+      "code": "SC427",
+      "name": "社會企業與社會創新",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "「社會企業」學分學程",
+      "source_college": "客家學院",
+      "source_group": "基礎課程"
+    }
+  ],
+  "cp_only_no_match_grad": [
+    {
+      "code": "AC6019",
+      "name": "ERP－會計模組",
+      "level": "grad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "「企業資源規劃」學分學程",
+      "source_college": "管理學院",
+      "source_group": "必修多選二（指定課群選 2 門）"
+    },
+    {
+      "code": "BA5069",
+      "name": "人才分析與管理",
+      "level": "grad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "「商業智慧與分析」學分學程",
+      "source_college": "管理學院",
+      "source_group": "選修課程"
+    },
+    {
+      "code": "BA7120",
+      "name": "綠色工業理論與政策",
+      "level": "grad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "「永續企業」學分學程",
+      "source_college": "管理學院",
+      "source_group": "選修課程"
+    },
+    {
+      "code": "ICN5320",
+      "name": "嵌入式作業系統",
+      "level": "grad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "台灣聯合大學系統「太空科技與工程」學分學程",
+      "source_college": "地科學院",
+      "source_group": "太空電機"
+    },
+    {
+      "code": "ICV5666",
+      "name": "衛星大地測量",
+      "level": "grad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "台灣聯合大學系統「太空科技與工程」學分學程",
+      "source_college": "地科學院",
+      "source_group": "太空遙測"
+    },
+    {
+      "code": "IEO5701",
+      "name": "光纖通訊",
+      "level": "grad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "台灣聯合大學系統「太空科技與工程」學分學程",
+      "source_college": "地科學院",
+      "source_group": "太空遙測"
+    },
+    {
+      "code": "IME5340",
+      "name": "太空動力學導論",
+      "level": "grad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "台灣聯合大學系統「太空科技與工程」學分學程",
+      "source_college": "地科學院",
+      "source_group": "太空動力"
+    },
+    {
+      "code": "OS7208",
+      "name": "基礎量子通訊與協議",
+      "level": "grad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "「量子技術」學分學程",
+      "source_college": "理學院",
+      "source_group": "進階必選修"
+    },
+    {
+      "code": "PME5203",
+      "name": "數位控制系統",
+      "level": "grad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "台灣聯合大學系統「太空科技與工程」學分學程",
+      "source_college": "地科學院",
+      "source_group": "太空電機"
+    }
+  ],
+  "cp_only_no_match_undergrad": [
+    {
+      "code": "BA2006",
+      "name": "機率與統計/統計學",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "「統計」學分學程",
+      "source_college": "理學院",
+      "source_group": "必修核心課程"
+    },
+    {
+      "code": "CS4101",
+      "name": "嵌入式系統概論",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "台灣聯合大學系統「太空科技與工程」學分學程",
+      "source_college": "地科學院",
+      "source_group": "太空電機"
+    },
+    {
+      "code": "DEO1606",
+      "name": "光學設計、製作與量測",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "台灣聯合大學系統「太空科技與工程」學分學程",
+      "source_college": "地科學院",
+      "source_group": "太空遙測"
+    },
+    {
+      "code": "DME3301",
+      "name": "機械設計原理(一)",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "台灣聯合大學系統「太空科技與工程」學分學程",
+      "source_college": "地科學院",
+      "source_group": "太空機械"
+    },
+    {
+      "code": "DME3329",
+      "name": "感測器原理與量測系統",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "台灣聯合大學系統「太空科技與工程」學分學程",
+      "source_college": "地科學院",
+      "source_group": "太空電機"
+    },
+    {
+      "code": "DME3335",
+      "name": "火箭設計與實作",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "台灣聯合大學系統「太空科技與工程」學分學程",
+      "source_college": "地科學院",
+      "source_group": "必選修課程"
+    },
+    {
+      "code": "GS4536",
+      "name": "脈絡探究",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "「跨領域榮譽學分學程」",
+      "source_college": "通識中心",
+      "source_group": "探究課程（Inquiry Courses）"
+    },
+    {
+      "code": "LG0014",
+      "name": "法學方法論",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "「法律」學分學程",
+      "source_college": "客家學院",
+      "source_group": "進階選修課程"
+    },
+    {
+      "code": "LG0015",
+      "name": "勞動法",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "「法律」學分學程",
+      "source_college": "客家學院",
+      "source_group": "進階選修課程"
+    },
+    {
+      "code": "MA4093",
+      "name": "隨機模型",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "「統計」學分學程",
+      "source_college": "理學院",
+      "source_group": "選修課程"
+    },
+    {
+      "code": "PD2203",
+      "name": "哲思方法",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "「菁英領導 elite」學分學程",
+      "source_college": "管理學院",
+      "source_group": "哲學課程"
+    },
+    {
+      "code": "PME4432",
+      "name": "電腦輔助設計與製造",
+      "level": "undergrad",
+      "name_match": "none",
+      "name_match_codes": [],
+      "source_program": "台灣聯合大學系統「太空科技與工程」學分學程",
+      "source_college": "地科學院",
+      "source_group": "太空機械"
+    }
+  ]
+}

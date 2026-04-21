@@ -30,7 +30,7 @@ RAW_DIRS  = [
     BASE / "data" / "raw" / "courses",
     BASE / "data" / "raw" / "graduate_courses",
 ]
-OUT_PATH  = BASE / "data" / "processed" / "nlp_tech_nodes.json"
+OUT_PATH  = BASE / "data" / "processed" / "nlp" / "nlp_tech_nodes.json"
 
 sys.path.insert(0, str(BASE / "scripts" / "nlp"))
 from course_classifier import classify_course  # noqa: E402
