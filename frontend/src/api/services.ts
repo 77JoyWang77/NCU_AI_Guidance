@@ -5,7 +5,8 @@ import type {
   Answer,
   AssessmentResult,
   Course,
-  Project
+  Project,
+  ChatApiResponse,
 } from '../types';
 
 // 科系兴趣量表 API
@@ -45,6 +46,24 @@ export const courseAPI = {
   searchCourses: async (query: string): Promise<Course[]> => {
     const response = await apiClient.post('/course-search', { query });
     return response.data;
+  },
+};
+
+// 聊天 API
+export const chatAPI = {
+  send: async (
+    question: string,
+    session_id?: string,
+    college?: string,
+    dept?: string,
+  ): Promise<ChatApiResponse> => {
+    const response = await apiClient.post('/chat', {
+      question, session_id, college, dept,
+    });
+    return response.data;
+  },
+  clearSession: async (session_id: string): Promise<void> => {
+    await apiClient.delete(`/chat/session/${session_id}`);
   },
 };
 
