@@ -1,0 +1,1628 @@
+[
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "國際經營管理碩士學位學程",
+    "流水號": "42001",
+    "課號-班別": "MB5014-*",
+    "課程名稱(中文)": "企業社會責任",
+    "課程名稱(英文)": "Corporate Social Responsibility",
+    "備註": "與FM6113、SL5004合班",
+    "授課教師": "彭淑卿",
+    "學分": "3",
+    "上課時間": "Tue234",
+    "教室": "I1-406",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=42001&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限國際經營管理碩士學位學程。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限國際經營管理碩士學位學程。年級:限二年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=42001&outline=42001&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "國際經營管理碩士學位學程",
+      "流水號": "42001",
+      "課號": "MB5014-*",
+      "授課教師": "彭淑卿",
+      "課程名稱(中文)": "企業社會責任",
+      "課程名稱(英文)": "Corporate Social Responsibility",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "This course provides essential Corporate Social Responsibility (CSR) knowledge. In addition to maximize shareholder value, we discuss how firms involve CSR activities to maximize stakeholder value. Specifically, you are expected to know (i) What drives corporate social responsibility? (ii) How does the top management team affect CSR? (iii) How does CSR reshape corporate investment decisions and financing decisions? (iv) Do firms with more CSR activities better weather negative shocks? (v) CSR and supply chain management, (vi) Does climate change have any real effect on firms? If yes, what can we do to mitigate the negative impact? and (vii) corporate governance in the world.",
+      "授課內容": "“Introduction of Corporate Social Responsibility (CSR)\nCSR: Legal origin, politics, and family environment\nCSR: Career concern and institutional investor\nCSR and investment decisions\nCSR: Capital structure, cost of debt, corporate liquidity management\nCSR and supply chain management\nCSR: Product market behavior, covid-19 and others\nCorporate governance: General/Survey\nCorporate governance: Compensation\nCorporate governance: Ownership structure\nCorporate governance: Board structure\nCorporate governance: Law and finance“",
+      "教科書/參考書": "Academic journal articles from American Economic Review, Quarterly Journal of Economics, Journal of Political Economy, Journal of Finance, Journal of Financial Economics, Review of Financial Studies, Journal of Corporate Finance, Strategic Management Journal, Management Science, and so on.",
+      "自編教材比例": "50",
+      "授課方式": "講授 研討",
+      "評量配分比重": "Academic paper presentation 40% Presentation note 15% Final-exam 45% *The instructor keeps the right to make any adjustments on course evaluation.",
+      "辦公時間": "Wednesday 09:10~12:00",
+      "授課週數": "16",
+      "彈性教學說明": "Self-study.",
+      "課程領域": "永續發展",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "國際經營管理碩士學位學程",
+    "流水號": "42002",
+    "課號-班別": "MB5015-*",
+    "課程名稱(中文)": "商業研究方法",
+    "課程名稱(英文)": "Business Research Methods",
+    "備註": "",
+    "授課教師": "邱信瑜\n陸艾妲",
+    "學分": "3",
+    "上課時間": "Tue678",
+    "教室": "I-402",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=42002&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限國際經營管理碩士學位學程。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限國際經營管理碩士學位學程。年級:限二年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=42002&outline=42002&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "國際經營管理碩士學位學程",
+      "流水號": "42002",
+      "課號": "MB5015-*",
+      "授課教師": "邱信瑜\n陸艾妲",
+      "課程名稱(中文)": "商業研究方法",
+      "課程名稱(英文)": "Business Research Methods",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "本課程的主要目標是培養研究取向，並使學生熟悉研究方法的基本原理。特別是，本課程旨在引導學生了解研究中使用的基本概念，以及科學化的社會研究方法與途徑。課程內容涵蓋抽樣技術、研究設計與分析方法的討論。其他課程目標包括： 建立對研究流程基本架構的理解。 建立對各種研究設計與技術的理解。 辨識文獻回顧與資料蒐集的各種來源。 理解研究及其方法論的一些基本概念。 更恰當地組織與進行研究。 撰寫研究報告與論文。 撰寫研究計畫書。 本課程同時設計用來提供並強化學生掌握現代分析與商業決策所需的最新技術。其目標是縮短學生在商學、財務與經濟所學知識，與真實世界及市場資料之間的落差。在前幾週的統計概念回顧之後，課程將涵蓋最佳化、抽樣、迴歸設計、質性反應模型、時間序列，以及部分新近發展的方法工具，並著重於其方法論價值與實際應用，透過商業案例研究進行探討。每一種模型、技術或方法，都會搭配至少一個正式的資料分析應用。 最終目標是提升學生閱讀學術研究論文的能力，掌握並實踐現代模型，並能進行具備強實證基礎的高品質分析，以支援在行銷、經濟與財務等商業領域中的決策。修課學生在課程結束時預期能夠： 理解當代計量經濟模型與商業應用及研究中的分析工具。 將學過的財務、經濟、商業與行銷理論與相關知識，連結至實際應用。 正確運用 R 統計與計量經濟軟體，提供具說服力的證據以支援論點與科學溝通。 批判性地分析研究，並學習創新構想以供進一步探索。 以團隊合作方式，完成運用迴歸分析的正式商業案例簡報。 以專業口頭簡報，有效且簡明地傳達研究設計與研究發現。",
+      "授課內容": "1 (9/02)　課程介紹\n2 (09/09)　第一章：研究的基礎與基本原理\n3 (09/16)　第一章：研究的基礎與基本原理\n4 (09/23)　第二章：明確化研究問題\n5 (09/30)　第二章：明確化研究問題\n6 (10/07)　第三章：研究設計概論\n7 (10/14)　第四章：資料收集設計：質性研究\n8 (10/21)　第四章：資料收集設計：質性研究\n9 (10/28)　第五章：資料收集設計：問卷調查研究\n10 (11/04)　第五章：資料收集設計：問卷調查研究\n11 (11/11)　第五章：資料收集設計：問卷調查研究",
+      "教科書/參考書": "Pamela Schindler，（2022），《商業研究方法》，第14版。 Jeffrey M. Wooldridge，（2019），《計量經濟學導論：現代方法》，第7版，Cengage 出版。 Subhashini Sharma Tripathi，（2020），《用 SAS 與 R 六步學會商業分析：一步一步的實務學習指南》，Apress 出版。（中央大學圖書館可取得） Florian Heiss，（2020），《R 語言在計量經濟學入門中的應用》。（網路可取得）",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "☑Class Participation (出席率) 30% ☑Presentation (專題發表) 20%",
+      "辦公時間": "無",
+      "授課週數": "16",
+      "彈性教學說明": "無",
+      "課程領域": "資料與決策",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "國際經營管理碩士學位學程",
+    "流水號": "42003",
+    "課號-班別": "MB5017-*",
+    "課程名稱(中文)": "財務管理",
+    "課程名稱(英文)": "Financial Management",
+    "備註": "FM6056合班",
+    "授課教師": "王志瑋",
+    "學分": "3",
+    "上課時間": "Mon678",
+    "教室": "I1-311",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=42003&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限國際經營管理碩士學位學程。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限國際經營管理碩士學位學程。年級:限二年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=42003&outline=42003&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "國際經營管理碩士學位學程",
+      "流水號": "42003",
+      "課號": "MB5017-*",
+      "授課教師": "王志瑋",
+      "課程名稱(中文)": "財務管理",
+      "課程名稱(英文)": "Financial Management",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "This course will be divided into two parts: (1) The review of corporate finance (2) Selected papers presentation",
+      "授課內容": "The review of corporate finance\nWe will review the fundamental theory of corporate finance, which includes Basic Quantitative Analysis, risk profile, present and future value, NPV (IRR), risk and return, portfolio theory, CAPM, and bond pricing. So, I will adopt the slides to do the teaching and provide some practical problems (for the exam)\nSelected papers presentation\nPresentation and Written Report (Selected papers presentation)\nFinal report",
+      "教科書/參考書": "CORPORATE FINANCE, Allen Brealey Myers",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "will be announced in the first class.",
+      "辦公時間": "Tuesday 13:00 ~ 16:30",
+      "授課週數": "16",
+      "彈性教學說明": "自主學習",
+      "課程領域": "財務金融",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "國際經營管理碩士學位學程",
+    "流水號": "42004",
+    "課號-班別": "MB5019-*",
+    "課程名稱(中文)": "行銷理論與實務",
+    "課程名稱(英文)": "Marketing Theory and Practice",
+    "備註": "與BA5078合班授課",
+    "授課教師": "何䓝涵",
+    "學分": "3",
+    "上課時間": "Wed789",
+    "教室": "I1-111",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=42004&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限國際經營管理碩士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=42004&outline=42004&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "國際經營管理碩士學位學程",
+      "流水號": "42004",
+      "課號": "MB5019-*",
+      "授課教師": "何䓝涵",
+      "課程名稱(中文)": "行銷理論與實務",
+      "課程名稱(英文)": "Marketing Theory and Practice",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "This course is taught in English. Throughout this course, students will develop a robust understanding of core marketing concepts including the marketing mix, market segmentation, targeting, positioning, consumer behavior, and marketing research, through the pressbook's comprehensive content, academic journal articles, and real-world examples. They will learn to critically analyze various marketing strategies, identify factors influencing strategic decisions, and apply marketing principles to practical scenarios, enhancing problem-solving skills and developing tailored marketing plans. Students will assess their implications for businesses and consumers by exploring contemporary marketing trends such as digital marketing, social media, content marketing, and sustainability. Additionally, through group discussions, presentations, and assignments, students will hone their communication and presentation skills, effectively articulating marketing concepts and strategies with persuasiveness and professionalism.",
+      "授課內容": "Week 1: Introduction\nWeek 2: What is Marketing?\nWeek 3: Strategic Planning\nWeek 4: Consumer Behavior: How People Make Buying Decisions\nWeek 5: Market Segmenting, Targeting, and Positioning\nWeek 6: Creating, Developing, and Managing Offerings: Consumers\nWeek 7: Using Marketing Channels to Create Value for Customers\nWeek 8: Gathering and Using Information: Marketing Research and Market Intelligence\nWeek 9: Integrated Marketing Communications and the Changing Media Landscape\nWeek 10: Customer Satisfaction, Loyalty, and Empowerment\nWeek 11: Price, the Only Revenue Generator\nWeek 12: The Marketing Plan\nWeek 13-16: Group Projects and Final Presentations",
+      "教科書/參考書": "N/A",
+      "自編教材比例": "50",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "0%",
+      "辦公時間": "請先行預約",
+      "授課週數": "16",
+      "彈性教學說明": "無",
+      "課程領域": "經營管理 、 永續發展",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "國際經營管理碩士學位學程",
+    "流水號": "42005",
+    "課號-班別": "MB5023-*",
+    "課程名稱(中文)": "跨文化管理",
+    "課程名稱(英文)": "Cross-cultural Management",
+    "備註": "HR6094合班",
+    "授課教師": "杜可婷",
+    "學分": "3",
+    "上課時間": "Wed234",
+    "教室": "I1-410",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=42005&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限國際經營管理碩士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=42005&outline=42005&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "國際經營管理碩士學位學程",
+      "流水號": "42005",
+      "課號": "MB5023-*",
+      "授課教師": "杜可婷",
+      "課程名稱(中文)": "跨文化管理",
+      "課程名稱(英文)": "Cross-cultural Management",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "The objective of this course is to familiarize students with various cross-cultural management perspectives. This course is employing a participative and case teaching method in which learning will be centered on the analysis of cases concerning the different management issues that may emerge in a cross-cultural organization. The key issues for each case should be developed through further study. Presentations, small group discussions, and case writing are used to encourage advanced learning experience.",
+      "授課內容": "1 (9/4) Class Introduction\n2 (9/11) Introduction: Culture\nCase 1: Negotiating with Chinese Business Partners: What are you going to give us?\n3 (9/18) Oral Report 1: Hofstede’s National Culture Framework\nCase 2: The Khus Project: Cultural Conflict\n4 (9/25) Oral Report 2: Edward Hall’s Framework of Context, Space, and Time\nCase 3: LG Display Wroclaw: Creating a Workplace of Joy\n5 (10/2) Oral Report 3: Trompenaars and Hampden-Turner’s Societal Culture\nCase 4: Rebuilding a Global Team: Tariq Khan at Tek\n6 (10/9) Oral Report 4: GLOBE Study\nCase 5: East versus West: Armada India’s Ingenious Approach to HRM\n7 (10/16) Oral Report 5: Schwartz’s Cultural Orientations Framework and Values Theory\nCase 6: Medical Equipment Inc. in Saudi Arabia\n8 (10/23) Oral Report 6: Cross-cultural Communication\nCase 7: Office Design Partners (Thailand) Ltd.\n9 (10/30) Oral Report 7: Cross-cultural Negotiation\nCase 8: Yahoo: Relationship Crisis with Alibaba in China\n10 (11/6) Sports Day (No Class)\n11 (11/13) Oral Report 8: Patterns of Cross-cultural Business Behaviors\nCase 9: Leadership Crisis at Steelworks’ Xiamen Plant\n12 (11/20) Oral Report 9: International HR Practices and Management\nCase 10: Toivonen Paper in the U.S.: Human Resource Implications of Foreign Corporate Ownership\n13 (11/27) Oral Report 10: South East Asian Economies and Management\nCase 11: Lundbeck Korea: Managing an International Growth Engine\n14 (12/4) Case 12: Lenovo: Is the Cultural Integration Template Reusable?\n15 (12/11) Case Writing Project/Cultural Exchange Event\n16 (12/18) Case Writing Project Deadline",
+      "教科書/參考書": "12 Harvard/Ivey Cases Cross-cultural Management books",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 其他",
+      "評量配分比重": "Class Participation (出席率) 30％ Paper/Theses Writing (報告/論文) 20％ Presentation (專題發表) 10％ Others Group Case Analysis_ 40％",
+      "辦公時間": "Wednesdays 13:00-14:30; Thursdays 10:30-11:30; by appointment",
+      "授課週數": "16",
+      "彈性教學說明": "Case writing",
+      "課程領域": "經營管理",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "國際經營管理碩士學位學程",
+    "流水號": "42006",
+    "課號-班別": "MB5025-*",
+    "課程名稱(中文)": "賽局理論(一) [已停開]",
+    "課程名稱(英文)": "Game Theory Ⅰ",
+    "備註": "IE6064合班",
+    "授課教師": "蔡栢昇",
+    "學分": "3",
+    "上課時間": "Wed234",
+    "教室": "I-406",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=42006&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限國際經營管理碩士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=42006&outline=42006&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "國際經營管理碩士學位學程",
+      "流水號": "42006",
+      "課號": "MB5025-*",
+      "授課教師": "蔡栢昇",
+      "課程名稱(中文)": "賽局理論(一)",
+      "課程名稱(英文)": "Game Theory Ⅰ",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "This course introduces students to the strategic interactions of economic agents, such as consumers, firms, and regulators, with a focus on business applications and managerial decision-making process that enable students to understand, formulate, and solve games systematically. Some basic understanding of calculus and probability is expected.",
+      "授課內容": "This course will cover the following content.1. Sequential move games2. Dominance solvable games3. Pure strategy Nash equilibrium4. Mixed strategy Nash equilibrium5. Subgame perfect Nash equilibrium6. Games of repeated interactions7. Bayesian Nash equilibrium8. Perfect Bayesian equilibrium9. Semi-separating equilibrium10. Intuitive and Divinity Criterion11. Signaling games12. Screening games13. Cheap talk games14. Evolutionary games",
+      "教科書/參考書": "\"Required (please go to Caves Books on campus to get an original copy):1. Watson, Joel (2013). Strategy – An Introduction to Game Theory, 3rd Edition. Singapore: World Scientific Publishing Company.2. Tadelis, Steven (2013). Game Theory: An Introduction. Princeton, NJ: Princeton University Press.Recommended (I will use some chapters from the following textbooks):3. Harrington, Joseph E. (2015). Games, Strategies and Decision Making, 2nd Edition. New York, NY: Worth Publishers.4. Dixit A., Skeath S., and Reiley D. (2015). Games of Strategy, 4th Edition. New York, NY: W.W. Norton and Company.藍兆杰、徐偉傑、陳怡君（譯）。策略的賽局。新北市：弘智文化。(Chinese version is also accepted as an alternative)Optional:5. Brandenburger A.M. and Nalebuff B.J. (2011). Co-Opetition. New York, NY: Penguin Random House. (if you are interested in business applications of game theory)許恩得（譯）。競合策略 。台北市：培生。6. 張振華 (2009)。賽局好好玩。台北市：博雅書屋。(a beginner’s guide to game theory)\"",
+      "自編教材比例": "50",
+      "授課方式": "講授",
+      "評量配分比重": "Problem Sets (5% each): 30% Exams (20% each): 60% Class participation: 10%",
+      "辦公時間": "Thursday, 9 to 11 am, or by appointment.",
+      "授課週數": "16",
+      "彈性教學說明": "Individual consultation on final exam",
+      "課程領域": "資料與決策",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(2) 低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(1) 非常低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "國際經營管理碩士學位學程",
+    "流水號": "42007",
+    "課號-班別": "MB5031-*",
+    "課程名稱(中文)": "商業實務專題研討I",
+    "課程名稱(英文)": "Seminar in Business Management Practices I",
+    "備註": "與MB5033合班上課",
+    "授課教師": "教授群",
+    "學分": "0",
+    "上課時間": "Thu234",
+    "教室": "I1-504",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=42007&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限國際經營管理碩士學位學程。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限國際經營管理碩士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=42007&outline=42007&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "國際經營管理碩士學位學程",
+      "流水號": "42007",
+      "課號": "MB5031-*",
+      "授課教師": "教授群",
+      "課程名稱(中文)": "商業實務專題研討I",
+      "課程名稱(英文)": "Seminar in Business Management Practices I",
+      "課程學制": "碩士班",
+      "學分": "0",
+      "課程目標": "為促使IMBA學生於就讀時期，能與當前各種知名國際產業及管院學長姐資源接軌，特別開設本專題必修課程，同學必須於碩一、碩二上學期共三學期修讀。本學程將特邀各行業前沿分享經驗，或前往企業參訪，期望拓展同學視野及跨界知識，促使同學將所學與產業界需求結合，未來能成為具實務概念的管理領導人才。",
+      "授課內容": "結合產業實務經驗、高階主管資源與學術訓練的洞見，持續精進學生的專業能力。",
+      "教科書/參考書": "N/A",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "Class Participation 80% Bonus Marks 20%",
+      "辦公時間": "N/A",
+      "授課週數": "16",
+      "彈性教學說明": "N/A",
+      "課程領域": "永續發展",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "國際經營管理碩士學位學程",
+    "流水號": "42008",
+    "課號-班別": "MB5033-*",
+    "課程名稱(中文)": "商業實務專題研討III",
+    "課程名稱(英文)": "Seminar in Business Management Practices III",
+    "備註": "與MB5031合班上課",
+    "授課教師": "教授群",
+    "學分": "0",
+    "上課時間": "Thu234",
+    "教室": "I1-504",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=42008&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限國際經營管理碩士學位學程。年級:限二年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限國際經營管理碩士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=42008&outline=42008&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "國際經營管理碩士學位學程",
+      "流水號": "42008",
+      "課號": "MB5033-*",
+      "授課教師": "教授群",
+      "課程名稱(中文)": "商業實務專題研討III",
+      "課程名稱(英文)": "Seminar in Business Management Practices III",
+      "課程學制": "碩士班",
+      "學分": "0",
+      "課程目標": "To synergize industrial practices/ experiences, resources from senior executives, insights from academic trainings, to sharpen the saw of the students.",
+      "授課內容": "This course will incorporate the following contents, for example,\n1. Talks of IMBA mentors and senior executives.\n2. Corporate visits and networking opportunities.\n3. Career planning and development.\nThis course is aiming to expand students’ horizons and enhance interdisciplinary learning, instilling professionalism in future career by discerning, identifying, and following the trends to become an all-rounded leader with creativity, innovation, versatility, and ethical values.\nIMBA students have to take Seminar in Business Management Practices I, II, III separately in 3 semesters of the study.",
+      "教科書/參考書": "N/A",
+      "自編教材比例": "0",
+      "授課方式": "其他",
+      "評量配分比重": "Class Participation 80% Bonus Marks 20%",
+      "辦公時間": "N/A",
+      "授課週數": "16",
+      "彈性教學說明": "無",
+      "課程領域": "永續發展",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "國際經營管理碩士學位學程",
+    "流水號": "42009",
+    "課號-班別": "MB5043-*",
+    "課程名稱(中文)": "商業模式與價值創造",
+    "課程名稱(英文)": "Business Model and Value Creation",
+    "備註": "與AC6015合班上課",
+    "授課教師": "劉乃熒",
+    "學分": "3",
+    "上課時間": "Thu567",
+    "教室": "I1-509",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=42009&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限國際經營管理碩士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=42009&outline=42009&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "國際經營管理碩士學位學程",
+      "流水號": "42009",
+      "課號": "MB5043-*",
+      "授課教師": "劉乃熒",
+      "課程名稱(中文)": "商業模式與價值創造",
+      "課程名稱(英文)": "Business Model and Value Creation",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "成功修完本課程之同學應具備: 1. 商業模型學術理論的基本概念 2. 了解良好的商業模式應具備那些要素 3. 設計商業模型",
+      "授課內容": "本課程中我們將探討三種不同的商業模型，以及如何透過這些商業模型來創造價值。",
+      "教科書/參考書": "“Text: A.J.Bock and G.George. 2018. ““The Business Model Book: Design, Build and Adapt Business that Thrive““ Pearson: 1st ed. Recommended",
+      "自編教材比例": "40",
+      "授課方式": "講授",
+      "評量配分比重": "Participation 30％ Individual project 1 35％ Individual Project 2 35％",
+      "辦公時間": "by appointment",
+      "授課週數": "16",
+      "彈性教學說明": "Students are required to find and study cases related to the subject of this course.",
+      "課程領域": "永續發展",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "國際經營管理碩士學位學程",
+    "流水號": "42010",
+    "課號-班別": "MB5046-*",
+    "課程名稱(中文)": "投資學 [已停開]",
+    "課程名稱(英文)": "Investment",
+    "備註": "",
+    "授課教師": "",
+    "學分": "3",
+    "上課時間": "",
+    "教室": "",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=42010&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=42010&outline=42010&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "國際經營管理碩士學位學程",
+      "流水號": "42010",
+      "課號": "MB5046-*",
+      "課程名稱(中文)": "投資學",
+      "課程名稱(英文)": "Investment",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "本課程主要針對碩士班以上之學生設計，著重投資學核心理論介紹、期刊文獻閱讀以及討論。學生可透過此課程獲得投資學之核心與進階知識，以及透過閱讀相關期刊文獻了解其應用，另外也可進一步嘗試從中尋找論文研究方向。",
+      "授課內容": "1.核心與進階投資學理論介紹：風險與報酬、多元投資、資本資產定價模型、套利定價理論、效率市場假說、行為財務學以及投資績效衡量。\n2.相關期刊文獻閱讀與討論。",
+      "教科書/參考書": "1. Zvi Bodie, Alan J. Marcus, and Alex Kane, “Essentials of Investments”, 2022 (12e), McGraw Hill Education (華泰文化代理). 2. Zvi Bodie, Alan J. Marcus, and Alex Kane, “Investments”, 2021 (12e), McGraw Hill Education (華泰文化代理). 3. 相關期刊文獻。",
+      "自編教材比例": "30",
+      "授課方式": "講授 研討",
+      "評量配分比重": "期中報告：30％; 期末報告：40％; 課堂參與: 30％ (討論：20％、出席：10％)。",
+      "辦公時間": "週四 11:00-11:50 (請來信預約)",
+      "授課週數": "16",
+      "彈性教學說明": "視課程進度需要，安排額外課程討論或報告。",
+      "課程領域": "財務金融",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "國際經營管理碩士學位學程",
+    "流水號": "42011",
+    "課號-班別": "MB5052-*",
+    "課程名稱(中文)": "ERP全球運籌管理",
+    "課程名稱(英文)": "ERP-Global Logistics",
+    "備註": "與BA7042合班授課",
+    "授課教師": "呂俊德",
+    "學分": "3",
+    "上課時間": "MonABC",
+    "教室": "I-304",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=42011&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限國際經營管理碩士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=42011&outline=42011&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "國際經營管理碩士學位學程",
+      "流水號": "42011",
+      "課號": "MB5052-*",
+      "授課教師": "呂俊德",
+      "課程名稱(中文)": "ERP全球運籌管理",
+      "課程名稱(英文)": "ERP-Global Logistics",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "本課程旨在以企業國際化的觀點介紹全球運籌體系的規劃與建置，期使同學能具有由產業特性及個別企業特性著手，應用「佈局-營運-IT」的架構對企業的運籌與供應鏈體系進行營運機制的設計及資訊方案規劃的能力。",
+      "授課內容": "“第一單元 【導引案例】\n第二單元【全球運籌管理的相關理論】\n2.1 運籌管理的觀念\n2.2 GLM: 國際企業/國際貿易的觀點\n2.3 GLM: 產業體系競爭的觀點\n2.4 GLM: 經濟體系的觀點 (EU, WTO)\n2.5 GLM 體系建構的步驟、要件、績效評估模式\n第三單元【全球運籌管理：佈局】\n第四單元【全球運籌管理：模型建構的方法論】\n第五單元【全球運籌管理：營運模式】\n5.1 生產導向的運籌管理模式\n5.2 資材導向的運籌管理模式\n5.3 市場通路為導向的運籌管理模式\n第六單元【全球運籌管理：3PL/4PL】\n第七單元 【全球運籌管理：考慮金流的全球運籌模式】\n7.1 模式 A\n7.2 模式 B\n7.3 模式 C\n第八單元【全球運籌管理： 資訊方案】\n第九單元【SAP-APO 資訊方案】\n第十單元【自由貿易港區 (FTZ) 的應用】\n第十一單元【全球運籌管理體系的建構+績效評估】\n第十二單元【全球運籌管理：組織與人力資源的觀點】\n【案例研討】“",
+      "教科書/參考書": "“編有專用講義 Supply Chain Management and Advanced Planning: Concepts, Models, Software and Case Studies. H. Stadtler and Kilger, C. (Eds.), 3ed., Springer-Verlag, 2004. Supply Chain Management with APO. J. T. Dickersbach, 2ed. Springer-Verlag, 2005. Real Optimization with SAP?APO. J. Kallrath and T. I. Maindl, Springer-Verlag, 2006. Service Parts Planning with mySAP SCM. J. T. Dickersbach, Springer-Verlag, 2006. Advanced Planning in Supply Chains: Illustrating the Concepts Using an SAP?APO Case Studies. H. Stadtler, B. Fleischmann, M. Grunow, H. Meyer and C. S ?rie, Springer-Verlag, 2011. Production Planning with SAP?APO –PP/DS. J. Balla and F. Layer, SAP Press, 2007. Modeling the Supply Chain. J. Shapiro, 2ed. Thomson Learning, 2007. Introduction to Computational Optimization Models for Production Planning in a Supply Chain. S. Vo? and D. L. Woodruff, 2ed., Springer-Verlag, 2006. Logistik: Wege zur Optimierung der Supply Chain. C. Schulte, 5ed. Vahlen-Verlag. 2009. Supply Chain Management auf Basis von SAP-Systemen, G. Knolmayer, P. Mertens, A. Zeier, Springer-Verlag, 2013. Transport und Versand mit SAP?LES. O. Gau, SAP Press, 2007 Material-Logistik: Modelle und Algorithmen f?r die Produktionsplanung und -steuerung und das Supply Chain Management. H. Tempelmeier, 4ed., Springer-Verlag, 1995.“",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討",
+      "評量配分比重": "1. 期中考 (35％)\n2. 期末考 (30％)\n3. 文獻閱讀與評析 (35％)",
+      "辦公時間": "\"Tuesday, 16:00-18:00\"",
+      "授課週數": "16",
+      "彈性教學說明": "個案研究",
+      "課程領域": "經營管理 、 資料與決策",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 實作/實驗"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "國際經營管理碩士學位學程",
+    "流水號": "42012",
+    "課號-班別": "MB5053-*",
+    "課程名稱(中文)": "生產與作業管理",
+    "課程名稱(英文)": "Production & Operations Management",
+    "備註": "BA6030合班上課",
+    "授課教師": "何應欽",
+    "學分": "3",
+    "上課時間": "Thu678",
+    "教室": "I-204",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=42012&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限國際經營管理碩士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=42012&outline=42012&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "國際經營管理碩士學位學程",
+      "流水號": "42012",
+      "課號": "MB5053-*",
+      "授課教師": "何應欽",
+      "課程名稱(中文)": "生產與作業管理",
+      "課程名稱(英文)": "Production & Operations Management",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "To help students understand the important issues in production and operation management and learn the necessary methods for solving the related problems.",
+      "授課內容": "1 Introduction to Operations and Supply Chain Management: Introduction of Different Production Systems\n2 Introduction to Operations and Supply Chain Management: Strategy\n3 Introduction to Operations and Supply Chain Management: Quantitative Methods, e.g. methods for Decision Making, Forecasting and Optimization Methods\n4 Introduction to Operations and Supply Chain Management: Quantitative Methods, e.g. methods for Decision Making, Forecasting and Optimization Methods. Supply Chain Operations and Quality Issues: Quality Philosophy. Harvard Business Review Supply Chain Paper (The Triple A Supply Chain)\n5 Supply Chain Operations and Quality Issues: (Quality Philosophy) Harvard Business Review Supply Chain Paper (Leading-A-Supply-Chain-Turnaround)\n6 Supply Chain Operations and Quality Issues: (Quality Control Methods) Harvard Business Review Supply Chain Paper (Aligning Incentives in Supply Chains)\n7 Supply Chain Operations and Quality Issues: (Quality Control Methods), Supply Chain Design: (Lean System) Harvard Business Review Supply Chain Paper (Rapid Fire Fulfillment)\n8 期中考試\n9 Supply Chain Design: (Lean System) Harvard Business Review Supply Chain Paper (Building Deep Supplier Relationships)\n10 Supply Chain Design: (Lean System) Harvard Business Review Supply Chain Paper (We Are in This Together)\n11 Supply Chain Management Issues: (Inventory Control, Supply and Demand Management) Harvard Business Review Toyota Production System Paper (Learning to Lead at Toyota)\n12 Supply Chain Management Issues: (Inventory Control, Supply and Demand Management)\n13 Supply Chain Management Issues: (Inventory Control, Supply and Demand Management)\n14 Logistics Management, Planning, and Scheduling: (Layout, Location and Transportation)\n15 Logistics Management, Planning, and Scheduling: (Production Planning and Scheduling)\n16 Information Technology and Applications: (MRP, ERP and Information System) Harvard Business Review RFID Paper (Have Your Object Call My Object)\n17 Information Technology and Applications: (MRP, ERP and Information System)\n18 期末考",
+      "教科書/參考書": "作業管理 第十四版 全譯版 (Operations Management，14/e) W. J. Stevenson原著 (何應欽 譯) (McGraw-Hill)",
+      "自編教材比例": "55",
+      "授課方式": "講授 研討",
+      "評量配分比重": "Mid-Term Exam 30％ Final-Exam 30％ Attendance 20％ Report 20％",
+      "辦公時間": "Wed. 5:00pm to 6:00pm Thursday 5:00pm to 6:00pm",
+      "授課週數": "16",
+      "彈性教學說明": "學生的個人專題報告評量與討論",
+      "課程領域": "經營管理",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "國際經營管理碩士學位學程",
+    "流水號": "42013",
+    "課號-班別": "MB5059-*",
+    "課程名稱(中文)": "人力資源管理",
+    "課程名稱(英文)": "Human Resource Management",
+    "備註": "與HR6002合班上課",
+    "授課教師": "杜可婷",
+    "學分": "3",
+    "上課時間": "Thu567",
+    "教室": "I1-505",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=42013&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限國際經營管理碩士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=42013&outline=42013&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "國際經營管理碩士學位學程",
+      "流水號": "42013",
+      "課號": "MB5059-*",
+      "授課教師": "杜可婷",
+      "課程名稱(中文)": "人力資源管理",
+      "課程名稱(英文)": "Human Resource Management",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "The objective of this course is for students to appreciate and understand the elements, principles, and roles of human resource management in the organization. Theories and practices are equally emphasized in this class to give an adequate foundation to HRM. This course employs lectures and participative and case teaching method in which learning will be centered on class discussions about the key concepts of HRM and the analysis of cases concerning the topics covered. Presentations, small group discussions, participation, and final exam are required.",
+      "授課內容": "1 (9/4) Class Introduction\n2 (9/11) Introduction to Human Resource Management and Strategic HRM\nSuggested reading: Malik, A., Budhwar, P., & Srikanth, N. R. (2020). McDonnell, A., Carbery, R., Burgess, J., & Sherman, U. (2023). Technologically mediated human resource management in the gig economy. The International Journal of Human Resource Management, 32(19) 3995–4015.\n3 (9/18) Case 1: People Transformation: the UOB Way\n4 (9/25) The Legal Environment; Job Analysis and Design\nSuggested reading: Clement, T., Ingham, G., & Willems, J. (2022). Demerouti, E., & Bakker, A. B. (2023). Job demands-resources theory in times of crises: New propositions. Organizational Psychology Review, 13(3), 209-236.\n5 (10/2) HR Planning and Recruitment; Selection and Placement\nSuggested reading: Horodyski, P. (2023). Applicants' perception of artificial intelligence in the recruitment process. Computers in Human Behavior Reports, 11, 100303.\n6 (10/9) Case 2: Recruitment of a Star\n7 (10/16) Training; Performance Management\nSuggested reading: Fernandes, C., Veiga, P. M., Lobo, C. A., & Raposo, M. (2023). Global talent management during the COVID‐19 pandemic? The Gods must be crazy!. Thunderbird International Business Review, 65(1), 9-19.\n8 (10/23) Case 3: Performance Management at Vitality Health Enterprises, Inc.\n9 (10/30) Employee Development; Employee Separation and Retention\nSuggested reading: Jamal, M. T., Anwar, I., Khan, N. A., & Ahmad, G. (2024). How do teleworkers escape burnout? A moderated-mediation model of the job demands and turnover intention. International Journal of Manpower, 45(1), 169-199.\n10 (11/6) Sports Day (No Class)\n11 (11/13) Pay Structure Decisions and Recognizing Employee Contributions with Pay\n12 (11/20) Employee Benefits\nSuggested reading: Jolly, P. M., McDowell, C., Dawson, M., & Abbott, J. (2021). Pay and benefit satisfaction, perceived organizational support, and turnover intentions: The moderating role of job variety. International Journal of Hospitality Management, 95, 102921.\n13 (11/27) Case 4: Name Your Price: Compensation Negotiation at Whole Health Management\n14 (12/4) Collective Bargaining; Managing HR Globally\nSuggested reading: Horak, S., & Paik, Y. (2023). Informal network context: deepening the knowledge and extending the boundaries of social network research in international human resource management. The International Journal of Human Resource Management, 34(12), 2367-2403.\n15 (12/11) Review\n16 (12/18) Final Exam",
+      "教科書/參考書": "Textbook: Noe R.A., Hollenbeck, J.R., Gerhart, B., & Wright, P.M. (2022). Human Resource Management: Gaining a Competitive Advantage (13th edition). McGraw-Hill Companies, Inc. *4 Harvard/Ivey cases *7 journal articles",
+      "自編教材比例": "40",
+      "授課方式": "講授 其他",
+      "評量配分比重": "Class Participation: 35％ Final Exam: 20％ Group Presentations: 20％ Case Analyses: 25％",
+      "辦公時間": "Wednesdays 13:00-14:30; Thursdays 10:30-11:30",
+      "授課週數": "16",
+      "彈性教學說明": "Preparation of final report and exam, Readings",
+      "課程領域": "經營管理",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現 ， 學習檔案評量"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "國際經營管理碩士學位學程",
+    "流水號": "42014",
+    "課號-班別": "MB5061-*",
+    "課程名稱(中文)": "會計資訊系統",
+    "課程名稱(英文)": "Accounting Information Systems",
+    "備註": "與AC6032合班上課",
+    "授課教師": "顏如君",
+    "學分": "3",
+    "上課時間": "Wed567",
+    "教室": "I1-509",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=42014&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限國際經營管理碩士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=42014&outline=42014&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "國際經營管理碩士學位學程",
+      "流水號": "42014",
+      "課號": "MB5061-*",
+      "授課教師": "顏如君",
+      "課程名稱(中文)": "會計資訊系統",
+      "課程名稱(英文)": "Accounting Information Systems",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "**Mandory prerequisites: Financial Accounting; Suggested prerequisites: Auditing This course consists of two parts. The first part introduces the database structure usually used in accounting information systems and basic skills of data retrieval and analytics. The second part is designed to introduce and discuss various tools in accounting and auditing. Students are expected to obtain related knowledge for serving as auditors or system consultants in the information era. This course aims to1. provide students with concepts of relational database and SQL.2. prepare students with basic skills of data analytics in business and auditing.3. provide students with basic knowledge and skills in visualization and 4. provide students with the basic skills in robotic process automation (RPA).“",
+      "授課內容": "(subject to change)1. Introduction to accounting information systems2. Relational database and accounting information systems3. SQL4. Data analytics and visualization 5.RPA",
+      "教科書/參考書": "To be assigned in class",
+      "自編教材比例": "100",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "Attendance ＆ participation 30％ Midterm 25％ Tableau case 15％ Final term project and presentation 30％",
+      "辦公時間": "by appointment",
+      "授課週數": "16",
+      "彈性教學說明": "Self learning and practice",
+      "課程領域": "資料與決策",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "國際經營管理碩士學位學程",
+    "流水號": "42015",
+    "課號-班別": "MB5062-*",
+    "課程名稱(中文)": "產業經濟學（一） [已停開]",
+    "課程名稱(英文)": "Industrial Economics I",
+    "備註": "與IE6001合班授課",
+    "授課教師": "蔡栢昇",
+    "學分": "3",
+    "上課時間": "Mon567",
+    "教室": "I-406",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=42015&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限國際經營管理碩士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=42015&outline=42015&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "國際經營管理碩士學位學程",
+      "流水號": "42015",
+      "課號": "MB5062-*",
+      "授課教師": "蔡栢昇",
+      "課程名稱(中文)": "產業經濟學（一）",
+      "課程名稱(英文)": "Industrial Economics I",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "Students are expected to gain a concrete understanding of the way industrial organizations operate and apply economic models to analyze competition, market power, regulation, and social welfare.",
+      "授課內容": "A basic understanding of calculus and probability theory is expected.",
+      "教科書/參考書": "Our lectures closely follow Paul Belleflamme and Martin Peitz (2015), Industrial Organization – Markets and Strategies, 2nd Edition, Cambridge, UK: Cambridge University Press (denoted “BP“). Please obtain a copyright version of this textbook, and supplementary learning materials, such as journal articles, will be disseminated in class. You may also consult the following textbook to better your understanding of industrial economics. On the more theoretical side, Jean Tirole (1988)‘s The Theory of Industrial Organization, 1st Edition, published by the MIT Press would be a very good reference for model-builders. On the more intuitive side, Lynne Pepall, Dan Richards, George Norman (2014)‘s Industrial Organization: Contemporary Theory and Empirical Applications, 5th Edition, published by John Wiley ＆ Sons, Inc. would help you put the economic models in context. Other good references which I also recommend are Dennis W. Carlton and Jeffrey M. Perloff (2005)‘s Modern Industrial Organization, Global Edition, 4th Edition, published by Pearson PLC, for you to derive insights from simplified models that I present in class. You may also read Luis M. B. Cabral (2000)‘s Introduction to Industrial Organization, 2nd Edition, published by The MIT Press for you to frame your ideas from different perspectives.",
+      "自編教材比例": "10",
+      "授課方式": "講授",
+      "評量配分比重": "30％ Problem Sets, 20％ Mid-term Exam, 20％ Final Exam, 30％ Term Project",
+      "辦公時間": "Thursday, 9am – 11am, or by appointment",
+      "授課週數": "17",
+      "彈性教學說明": "Week 17 on oral presentation Week 18 for overall consultation",
+      "課程領域": "經營管理",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(2) 低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(1) 非常低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "國際經營管理碩士學位學程",
+    "流水號": "42016",
+    "課號-班別": "MB5064-*",
+    "課程名稱(中文)": "永續製造與企業資源規劃",
+    "課程名稱(英文)": "Sustainable Manufacturing and ERP",
+    "備註": "授課教師：雷鴻村 與SL5002合班授課",
+    "授課教師": "雷鴻村",
+    "學分": "3",
+    "上課時間": "Mon234",
+    "教室": "I1-002",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=42016&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限國際經營管理碩士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=42016&outline=42016&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "國際經營管理碩士學位學程",
+      "流水號": "42016",
+      "課號": "MB5064-*",
+      "授課教師": "雷鴻村",
+      "課程名稱(中文)": "永續製造與企業資源規劃",
+      "課程名稱(英文)": "Sustainable Manufacturing and ERP",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "這個課程大綱旨在提供一個全面的永續製造與 ERP 概述，涵蓋從基本概念到實踐應用的各個方面，並以理論與實踐相結合的方式，使學生深入理解永續製造與 ERP 的各個層面及管理上的應用。",
+      "授課內容": "由於氣候變遷的影響, 永續製造與能源管理的議題; ERP 資料庫擁有企業最豐富的歷史資料, 如何利用 AI 萃取出有用的資訊, 協助企業以 data driven 為導向的改善，達成綠色永續製造的目的, 是未來很重要的課題. 本課程從基本概念到實踐應用的各個方面，並以理論與實踐相結合的方式，使學生深入理解永續製造與 ERP 的各個層面及管理上的應用。",
+      "教科書/參考書": "1. Green manufacturing-Fundamental and applications 2. ERP企業資源規劃導論(第六版)",
+      "自編教材比例": "30",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "Class Participation (出席率) 20％ V Assignment (作業) 20％ VPaper/Theses Writing (報告/論文) 30％ VPresentation (專題發表) 30％",
+      "辦公時間": "週一 09AM~12AM, 管二館 : 002室",
+      "授課週數": "16",
+      "彈性教學說明": "線上學習、自主學習、專題",
+      "課程領域": "經營管理 、 永續發展 、 資料與決策",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 其他"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "國際經營管理碩士學位學程",
+    "流水號": "42017",
+    "課號-班別": "MB5071-*",
+    "課程名稱(中文)": "公司理財專題 [已停開]",
+    "課程名稱(英文)": "Topics in Corporate Finance",
+    "備註": "FM8011合班",
+    "授課教師": "林基財",
+    "學分": "3",
+    "上課時間": "Wed678",
+    "教室": "I1-408",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=42017&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限國際經營管理碩士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=42017&outline=42017&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "國際經營管理碩士學位學程",
+      "流水號": "42017",
+      "課號": "MB5071-*",
+      "授課教師": "林基財",
+      "課程名稱(中文)": "公司理財專題",
+      "課程名稱(英文)": "Topics in Corporate Finance",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "自編教材比例": "0",
+      "授課週數": "16",
+      "核心能力": []
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "國際經營管理碩士學位學程",
+    "流水號": "42018",
+    "課號-班別": "MB5072-*",
+    "課程名稱(中文)": "財務理論I [已停開]",
+    "課程名稱(英文)": "Financial Theory Ⅰ",
+    "備註": "FM8001合班",
+    "授課教師": "黃瑞卿",
+    "學分": "3",
+    "上課時間": "Wed234",
+    "教室": "I1-408",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=42018&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限國際經營管理碩士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=42018&outline=42018&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "國際經營管理碩士學位學程",
+      "流水號": "42018",
+      "課號": "MB5072-*",
+      "授課教師": "黃瑞卿",
+      "課程名稱(中文)": "財務理論I",
+      "課程名稱(英文)": "Financial Theory Ⅰ",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "自編教材比例": "0",
+      "授課週數": "16",
+      "核心能力": []
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "國際經營管理碩士學位學程",
+    "流水號": "42019",
+    "課號-班別": "MB5073-*",
+    "課程名稱(中文)": "空間資訊數位研究 [已停開]",
+    "課程名稱(英文)": "Geospatial Digital Study",
+    "備註": "RS5054、SK5011、HP5054合班",
+    "授課教師": "劉說安",
+    "學分": "3",
+    "上課時間": "Mon678",
+    "教室": "R2-203",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=42019&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限國際經營管理碩士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=42019&outline=42019&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "國際經營管理碩士學位學程",
+      "流水號": "42019",
+      "課號": "MB5073-*",
+      "授課教師": "劉說安",
+      "課程名稱(中文)": "空間資訊數位研究",
+      "課程名稱(英文)": "Geospatial Digital Study",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "1. 運⽤所學的知識和批判性思維技能， 結合適當的遙測數據與AI技術， 應對⽔文氣象極端事件與環境問題。 2. 開發多步驟的⼯作流程， 以解決⽔文氣象極端事件和環境問題。",
+      "授課內容": "本課程涵蓋氣候極端事件與環境問題的相關主題，並探討如何利用GIS、遙測和人工智慧工具對其進行評估和監測。課程將從遙測與GIS的簡介開始，包括GIS軟體使用的教程。課程的科學研究內容包括氣候變遷的監測與預測、針對乾旱和颱風等水文氣象極端事件的遙測光譜指數、生态环境脆弱性、空氣品質、城市綠地與城市熱島效應，以及機器學習技術。學生將有機會參與一個與氣候極端事件和環境問題相關的研究專題。在整個課程中，將展示科學研究領域中使用的分析技術，以供學生學習並應用於自己的工作中。這些技術包括使用光學、微波和雷達等衛星影像，分析地表水資源的新遙測指數，以及機器學習和AI算法。學生將提出一個研究主題，並在課程結束時運用所學知識和技術展示他們的研究成果。",
+      "教科書/參考書": "講義、 指定文章及蒐集文獻",
+      "自編教材比例": "60",
+      "授課方式": "講授 研討",
+      "評量配分比重": "1.上課討論及書⾯摘要報告： 40％ 2.出席率： 10％ 3.期末作業： 50％",
+      "辦公時間": "12:00-14:00 Monday",
+      "授課週數": "16",
+      "彈性教學說明": "學生自主學習、查找相關資料、獨立研究。",
+      "課程領域": "永續發展",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(2) 低",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "國際經營管理碩士學位學程",
+    "流水號": "42020",
+    "課號-班別": "MB5074-*",
+    "課程名稱(中文)": "永續領導力基礎",
+    "課程名稱(英文)": "Sustainability Leadership Essentials",
+    "備註": "SL5014合班",
+    "授課教師": "張詠晴\n王群孝\n阮美心\n連婉茜\n劉世慶",
+    "學分": "3",
+    "上課時間": "WedABC",
+    "教室": "TR-503",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=42020&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限國際經營管理碩士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=42020&outline=42020&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "國際經營管理碩士學位學程",
+      "流水號": "42020",
+      "課號": "MB5074-*",
+      "授課教師": "張詠晴\n王群孝\n阮美心\n連婉茜\n劉世慶",
+      "課程名稱(中文)": "永續領導力基礎",
+      "課程名稱(英文)": "Sustainability Leadership Essentials",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "本課程將從不同角度培養學生對永續領導力的理解與應用能力。本課程融合人力資源管理、策略管理、社會企業、企業倫理與供應鏈管理等領域的觀點，具體學習目標如下： 1. 理解永續領導在組織功能與社會情境中的基本概念與原則。 2. 分析如何透過人力資源管理、企業策略與社會創新來發展與實踐永續領導力。 3. 探索永續領導的倫理與哲學基礎及其對長期價值創造的啟示。 4. 評估永續領導在供應鏈管理中所扮演的角色，以及其促進環境與社會責任的功能。 5. 結合理論知識與實務洞察，發展個人的永續領導思維與行動計畫。 6. 透過課堂討論與期末專題，展現批判性思維與團隊合作能力。",
+      "授課內容": "本課程將從不同角度培養學生對永續領導力的理解與應用能力。本課程融合人力資源管理、策略管理、社會企業、企業倫理與供應鏈管理等領域的觀點，具體學習目標如下：\n1. 理解永續領導在組織功能與社會情境中的基本概念與原則。\n2. 分析如何透過人力資源管理、企業策略與社會創新來發展與實踐永續領導力。\n3. 探索永續領導的倫理與哲學基礎及其對長期價值創造的啟示。\n4. 評估永續領導在供應鏈管理中所扮演的角色，以及其促進環境與社會責任的功能。\n5. 結合理論知識與實務洞察，發展個人的永續領導思維與行動計畫。\n6. 透過課堂討論與期末專題，展現批判性思維與團隊合作能力。",
+      "教科書/參考書": "本課程無指定教科書。授課教師將根據各單元主題提供學術閱讀資料、個案研究與相關文章。課堂講義與簡報（PPT）將由教師事先準備並提供給學生。",
+      "自編教材比例": "90",
+      "授課方式": "講授",
+      "評量配分比重": "Class Participation (課堂表現)：50 ％ Paper/Theses Writing & Presentation (期末論文/報告)：50％",
+      "辦公時間": "預約制",
+      "授課週數": "16",
+      "彈性教學說明": "不定期安排線上學習、自主學習、專題、實作、實習、企業參訪等學習活動",
+      "課程領域": "永續發展",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "國際經營管理碩士學位學程",
+    "流水號": "42021",
+    "課號-班別": "MB5075-*",
+    "課程名稱(中文)": "社會網路分析 [已停開]",
+    "課程名稱(英文)": "Social Network Analysis",
+    "備註": "與IM5001合班授課",
+    "授課教師": "曾筱珽",
+    "學分": "3",
+    "上課時間": "Fri234",
+    "教室": "I1-002",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=42021&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限國際經營管理碩士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=42021&outline=42021&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "國際經營管理碩士學位學程",
+      "流水號": "42021",
+      "課號": "MB5075-*",
+      "授課教師": "曾筱珽",
+      "課程名稱(中文)": "社會網路分析",
+      "課程名稱(英文)": "Social Network Analysis",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "自編教材比例": "0",
+      "授課週數": "16",
+      "核心能力": []
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "國際經營管理碩士學位學程",
+    "流水號": "42022",
+    "課號-班別": "MB5076-*",
+    "課程名稱(中文)": "永續發展專題探討 [已停開]",
+    "課程名稱(英文)": "Seminar on Sustainable Development",
+    "備註": "與SL5001合班",
+    "授課教師": "李河清",
+    "學分": "3",
+    "上課時間": "Tue567",
+    "教室": "TR-501",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=42022&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限國際經營管理碩士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=42022&outline=42022&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "國際經營管理碩士學位學程",
+      "流水號": "42022",
+      "課號": "MB5076-*",
+      "授課教師": "李河清",
+      "課程名稱(中文)": "永續發展專題探討",
+      "課程名稱(英文)": "Seminar on Sustainable Development",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "自編教材比例": "0",
+      "授課週數": "16",
+      "核心能力": []
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "國際經營管理碩士學位學程",
+    "流水號": "42023",
+    "課號-班別": "MB5077-*",
+    "課程名稱(中文)": "人工智慧 [已停開]",
+    "課程名稱(英文)": "Artificial Intelligence",
+    "備註": "與CE6020、SG5006合班授課",
+    "授課教師": "張嘉惠",
+    "學分": "3",
+    "上課時間": "Thu234",
+    "教室": "E6-A306",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=42023&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限國際經營管理碩士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=42023&outline=42023&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "國際經營管理碩士學位學程",
+      "流水號": "42023",
+      "課號": "MB5077-*",
+      "授課教師": "張嘉惠",
+      "課程名稱(中文)": "人工智慧",
+      "課程名稱(英文)": "Artificial Intelligence",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "這不是典型的人工智慧課程，而是一個快速了解當代人工智慧發展的特快列車。課程的目標是快速了解最先進的技術，以及他們發展的軌跡，從人工編程的專家系統、到模型建構的機器學習、以及透過奬勵回饋的強化式學習。課程內容將涵蓋向量支持機、類神經網路、語言模型、對話系統等技術，並以語音辨識結果分類、序列標記、模擬器控制等應用主題做為作業。課程結束時，學生將深入了解機器如何學習預測、語言模型如何生成推理，以及如何透過提示工程讓大型語言模型來解決現實世界的問題。課程也將延伸至數位世界行動代理、以及實體機器人的發展。通過這門課學生可以對現今人工智慧的發展有縱觀的視野，了解那些是已經成熟落地的技術、那些是當前及未來5~10年的發展趨勢。 ● 提供學生對當前人工智慧發展現況的全面性概觀與了解 ● 讓學生理解機器如何學習預測以及語言模型如何生成推理 ● 透過語音輸入分類、序列標記、模擬器控制等實際應用培養實作技能 ● 教授提示工程技術，讓學生能運用大型語言模型解決現實世界問題 ● 幫助學生區分已成熟落地的技術與未來5-10年的新興發展趨勢",
+      "授課內容": "( 9/ 4 )人工智慧課程簡介-什麼是智慧型代理人？AI和機器學習, 資料探勘, 最佳化的關係\n( 9/11 )機器學習：分類+迴歸-人類和機器如何學習？\n( 9/18 )人工神經網絡-機器如何透過提取隱藏特徵來學習？\n( 9/25 )LSTM 和 Transformer 及AutoEncoder-機器如何做連續決策？\n(10/2 )強化學習 I-我們如何做出順序決策？MDP\n(10/ 9 )強化學習 II\n(10/16 )期中考\n(10/23 )生成式AI - 機器如何產生回答？\n(10/30 )語言模型+編碼器+解碼器-機器如何產生回答？\n(11/ 6 )運動會\n(11/13 )Prompt Engineering-機器如何遵守指令?\n(11/20 )專案提案 + 相關工作調查\n(11/27 )Agentic AI 對話代理 -如何建構對話系統？\n(12/ 4 )Physical AI -What Physical APIs do LLM-Brained Agents need?\n( 12/11)Invited Talk\n( 12/18)最終專案報告 & Demo",
+      "教科書/參考書": "- Stuart Russell and Peter Norvig, Artificial Intelligence: A Modern Approach 4th edition, Pearson, 2020. - Ian Goodfellow and Yoshua Bengio and Aaron Courville, Deep Learning, An MIT Press book, 2016 - Richard S. Sutton and Andrew G. Barto, Reinforcement Learning: An Introduction, Second Edition, MIT Press, Cambridge, MA, 2018 - ACL, AAAI, ICAIF papers",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "●Midterm Test (期中考)(20%) ●Assignment (作業)(45%) ●Presentation (專題發表)(15%) ●Others proposal + related work survey(10%) ●Others involvement(10%)",
+      "辦公時間": "週一上午9:00-10:00; 下午4:00-5:00",
+      "授課週數": "16",
+      "彈性教學說明": "無",
+      "課程領域": "資料與決策",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "N/A"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "N/A"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "N/A"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(4) 高",
+          "評量方式": "N/A"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "N/A"
+        }
+      ]
+    }
+  }
+]

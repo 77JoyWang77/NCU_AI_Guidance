@@ -1,0 +1,458 @@
+[
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "生醫理工學院",
+    "系所": "跨領域神經科學國際研究生博士學位學程",
+    "流水號": "82001",
+    "課號-班別": "NI5001-*",
+    "課程名稱(中文)": "基礎神經科學入門",
+    "課程名稱(英文)": "Introduction to Neuroscience",
+    "備註": "教室：中研院跨領域研究大樓C101",
+    "授課教師": "陳志成",
+    "學分": "3",
+    "上課時間": "Wed5",
+    "教室": "*-中7 *\nWed6",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=82001&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限跨領域神經科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=82001&outline=82001&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "跨領域神經科學國際研究生博士學位學程",
+      "流水號": "82001",
+      "課號": "NI5001-*",
+      "授課教師": "陳志成",
+      "課程名稱(中文)": "基礎神經科學入門",
+      "課程名稱(英文)": "Introduction to Neuroscience",
+      "課程學制": "博士班",
+      "學分": "3",
+      "課程目標": "This course intends to introduce the basic neuroscience.",
+      "授課內容": "The course is designed for students without Neuroscience background, or even without Biology\nbackground, or even without Biology background. The scope of the course covers the basic structure and sensory and motor function of the nervous system, as well as the high function of the brain and related diseases. Students are expected to gain a broad perspective of how neural information is processed in the brain, and how brain activity determines individual behaviors in response to environmental stress.",
+      "教科書/參考書": "Exploring the Brain, 4TH edition, 2015, edited by Mark Bear, Barry Connors, and Michael Paradiso, Lippincott, Williams ＆ Wilkins, Baltimore, Maryland, USA",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "期中+期末考",
+      "辦公時間": "13:30-16:30, Wednesdays",
+      "授課週數": "16",
+      "彈性教學說明": "指定閱讀書目，並繳交書面報告或心得。",
+      "課程領域": "基礎認知神經科學理論",
+      "核心能力": [
+        {
+          "能力名稱": "整合專業知能",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立設計與執行研究計畫",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "精熟及整合研究工具",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "研究倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通、表達與團隊合作能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "生醫理工學院",
+    "系所": "跨領域神經科學國際研究生博士學位學程",
+    "流水號": "82002",
+    "課號-班別": "NI5003-*",
+    "課程名稱(中文)": "跨領域神經科學講座(一)",
+    "課程名稱(英文)": "Interdisciplinary Lecture I",
+    "備註": "教室：中研院跨領域研究大樓B100",
+    "授課教師": "郭紘志",
+    "學分": "1",
+    "上課時間": "Fri6",
+    "教室": "*-中7 *\nFri7",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=82002&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限跨領域神經科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=82002&outline=82002&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "跨領域神經科學國際研究生博士學位學程",
+      "流水號": "82002",
+      "課號": "NI5003-*",
+      "授課教師": "郭紘志",
+      "課程名稱(中文)": "跨領域神經科學講座(一)",
+      "課程名稱(英文)": "Interdisciplinary Lecture I",
+      "課程學制": "博士班",
+      "學分": "1",
+      "課程目標": "The aim is to provide our first-year students an opportunity to broaden their vision to research areas of nature science and bioengineering that could be potentially incorporated into their neuroscience research.",
+      "授課內容": "Each group will choose 3-4 labs for lecture/visit (like one hour lecture and two hour experiment demonstration).\nEach lab/PI will provide a 3-hour lecture/open lab visit to the group of students.",
+      "教科書/參考書": "無",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "課堂表現",
+      "辦公時間": "TBA",
+      "授課週數": "16",
+      "彈性教學說明": "指定閱讀書目，並繳交書面報告或心得。",
+      "課程領域": "基礎認知神經科學理論",
+      "核心能力": [
+        {
+          "能力名稱": "整合專業知能",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立設計與執行研究計畫",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "精熟及整合研究工具",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "研究倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通、表達與團隊合作能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "生醫理工學院",
+    "系所": "跨領域神經科學國際研究生博士學位學程",
+    "流水號": "82003",
+    "課號-班別": "NI5005-*",
+    "課程名稱(中文)": "專題討論(一)",
+    "課程名稱(英文)": "Neuroscience Seminar I",
+    "備註": "教室：中研院跨領域研究大樓B100",
+    "授課教師": "黃怡萱",
+    "學分": "1",
+    "上課時間": "Mon5",
+    "教室": "*-中7 *\nMon6",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=82003&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限跨領域神經科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=82003&outline=82003&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "跨領域神經科學國際研究生博士學位學程",
+      "流水號": "82003",
+      "課號": "NI5005-*",
+      "授課教師": "黃怡萱",
+      "課程名稱(中文)": "專題討論(一)",
+      "課程名稱(英文)": "Neuroscience Seminar I",
+      "課程學制": "博士班",
+      "學分": "1",
+      "課程目標": "‧ To bridge the gap between the theory and breakthrough discovery you hear from the course and the original experiments to derive the axiomatic knowledge in the seminar discussion. ‧ To train student’s Q ＆ A ability and critical thinking. ‧ To develop student’s discussion skill, especially encouraging them to express their personal views about the papers with the guidance from the coaching PI.",
+      "授課內容": "For all students: you are required to read the papers prior to the class. Each one of you will be randomly assigned to explain one or two figures in the papers by the coaching PI. You need to: correct wrongful interpretation by your classmate, raise thoughtful questions regarding the experimental design and interpretation of the papers (questions such as “how did the authors perform this experiment?” are considered as you did not read the papers at all because most of classic papers contain detailed material and methods, which is your responsibility to read it thoroughly).\nFor the designated student: you will be assigned in the first class by random drawing. You are responsible to make Powerpoint slides containing two parts: first, a few introduction slides, presented by you with the time limit of 10 min; second, figures of the papers with clear visibility (please break down the multi-panel figures into 2-3 slides for all small fonts to be visible by the audience), you are responsible to operate the computer to change the slide.\nGrading:\nActive participation in the discussion is the key to pass the class. Each coaching PI will be provided with a grading sheet to document your performance during the class, and the course organizer will summarize your performance after the final class and assign grades accordingly.\nRules:\nStudents are allowed to be absent for only one time with prior notification (at least 30 min before class) to TIGP-INS office. Absence due to sickness or unforeseeable accident requires hospital official document or written proof of accident. Late for the class for more than 10 min is considered as absence without notice.",
+      "教科書/參考書": "無",
+      "自編教材比例": "100",
+      "授課方式": "研討",
+      "評量配分比重": "課堂表現",
+      "辦公時間": "13:30-16:30, Mondays",
+      "授課週數": "16",
+      "彈性教學說明": "指定閱讀書目，並繳交書面報告或心得。",
+      "課程領域": "基礎認知神經科學理論",
+      "核心能力": [
+        {
+          "能力名稱": "整合專業知能",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立設計與執行研究計畫",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "精熟及整合研究工具",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "研究倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通、表達與團隊合作能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "生醫理工學院",
+    "系所": "跨領域神經科學國際研究生博士學位學程",
+    "流水號": "82004",
+    "課號-班別": "NI5009-*",
+    "課程名稱(中文)": "神經科學研究技術 [已停開]",
+    "課程名稱(英文)": "Introduction of Research Techniques in Neuroscience",
+    "備註": "教室：中研院跨領域研究大樓C101",
+    "授課教師": "教授群\n周雅惠\n陳韻如",
+    "學分": "2",
+    "上課時間": "Fri3",
+    "教室": "*-中7 *\nFri4",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=82004&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限跨領域神經科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=82004&outline=82004&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "跨領域神經科學國際研究生博士學位學程",
+      "流水號": "82004",
+      "課號": "NI5009-*",
+      "授課教師": "教授群\n周雅惠\n陳韻如",
+      "課程名稱(中文)": "神經科學研究技術",
+      "課程名稱(英文)": "Introduction of Research Techniques in Neuroscience",
+      "課程學制": "博士班",
+      "學分": "2",
+      "課程目標": "Daunting and versatile techniques have been developed and employed in neuroscience researches to explore how nerve systems work and, in some cases, get pathogenesis. The prerequisite of working on neuroscience researches then is to understand how these methodologies work.",
+      "授課內容": "This lecture introduces the concept, theory and applications of current neuroscience techniques used, ranging from basic to advanced, to address questions covering genes, molecules, cellular pathologies, brain functions and animal behaviors.",
+      "教科書/參考書": "N/A",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "Exams (take-home midterm & final exams), questions from each lecturer",
+      "辦公時間": "N/A",
+      "授課週數": "16",
+      "彈性教學說明": "指定閱讀書目，並繳交書面報告或心得。",
+      "課程領域": "認知實驗方法學",
+      "核心能力": [
+        {
+          "能力名稱": "整合專業知能",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立設計與執行研究計畫",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "精熟及整合研究工具",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "研究倫理",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "溝通、表達與團隊合作能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "生醫理工學院",
+    "系所": "跨領域神經科學國際研究生博士學位學程",
+    "流水號": "82005",
+    "課號-班別": "NI5011-*",
+    "課程名稱(中文)": "進階專題討論(一)",
+    "課程名稱(英文)": "Neuroscience Seminar",
+    "備註": "教室：中研院跨領域研究大樓C101",
+    "授課教師": "郭紘志",
+    "學分": "1",
+    "上課時間": "Tue5",
+    "教室": "*-中7 *\nTue6",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=82005&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限跨領域神經科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=82005&outline=82005&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "跨領域神經科學國際研究生博士學位學程",
+      "流水號": "82005",
+      "課號": "NI5011-*",
+      "授課教師": "郭紘志",
+      "課程名稱(中文)": "進階專題討論(一)",
+      "課程名稱(英文)": "Neuroscience Seminar",
+      "課程學制": "博士班",
+      "學分": "1",
+      "課程目標": "To train student’s Q & A ability and critical thinking.",
+      "授課內容": "Students will choose the research articles provided by INS faculty. Faculty who provide the\npapers and chosen by the students will be the coach PIs. Each student should present ~30\nmin for the chosen paper, and the coach PIs are encouraged to discuss with students\nbefore the seminar. All students are required to read the designated papers before class.",
+      "教科書/參考書": "無",
+      "自編教材比例": "100",
+      "授課方式": "研討",
+      "評量配分比重": "課堂表現",
+      "辦公時間": "13:30-15:30 pm, Tuesday",
+      "授課週數": "16",
+      "彈性教學說明": "指定閱讀書目，並繳交書面報告或心得。",
+      "課程領域": "認知神經科學與物理學的跨領域研究",
+      "核心能力": [
+        {
+          "能力名稱": "整合專業知能",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立設計與執行研究計畫",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "精熟及整合研究工具",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "研究倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通、表達與團隊合作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "生醫理工學院",
+    "系所": "跨領域神經科學國際研究生博士學位學程",
+    "流水號": "82006",
+    "課號-班別": "NI5017-*",
+    "課程名稱(中文)": "神經科學前沿 [已停開]",
+    "課程名稱(英文)": "Neuroscience Frontiers",
+    "備註": "中研院跨領域研究大樓C101",
+    "授課教師": "林書葦",
+    "學分": "1",
+    "上課時間": "Mon7",
+    "教室": "*-中7 *\nMon8",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=82006&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限跨領域神經科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=82006&outline=82006&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "跨領域神經科學國際研究生博士學位學程",
+      "流水號": "82006",
+      "課號": "NI5017-*",
+      "授課教師": "林書葦",
+      "課程名稱(中文)": "神經科學前沿",
+      "課程名稱(英文)": "Neuroscience Frontiers",
+      "課程學制": "博士班",
+      "學分": "1",
+      "課程目標": "The Neuroscience Frontier course, offered by the TIGP-INS program, is designed to immerse students in the cutting-edge research and evolving theories that define contemporary neuroscience. The course will cover a wide range of topics from the fundamentals of neural development to the frontiers of neurological disease.",
+      "授課內容": "Students will choose the research articles provided by INS faculty. Faculty who provide the\npapers and chosen by the students will be the coach PIs. Each student should present ~30\nmin for the chosen paper, and the coach PIs are encouraged to discuss with students\nbefore the seminar. All students are required to read the designated papers before class.",
+      "教科書/參考書": "無",
+      "自編教材比例": "100",
+      "授課方式": "實習/實驗",
+      "評量配分比重": "課堂表現",
+      "辦公時間": "TBA",
+      "授課週數": "16",
+      "彈性教學說明": "指定閱讀書目，並繳交書面報告或心得。",
+      "課程領域": "認知神經科學與物理學的跨領域研究",
+      "核心能力": [
+        {
+          "能力名稱": "整合專業知能",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立設計與執行研究計畫",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "精熟及整合研究工具",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "研究倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通、表達與團隊合作能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        }
+      ]
+    }
+  }
+]

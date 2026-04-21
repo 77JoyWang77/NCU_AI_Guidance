@@ -1,0 +1,273 @@
+{
+  "id": "dept_atmospheric_sciences",
+  "name": "大氣科學學系",
+  "program_type": "traditional_dept",
+  "min_credits": 128,
+  "required_credits": 79,
+  "graduation_rules": [
+    {
+      "type": "credit_minimum",
+      "credits": 128,
+      "description": "最低畢業學分數 128 學分"
+    },
+    {
+      "type": "dept_required",
+      "credits": 79,
+      "description": "必修科目共 79 學分（共同必修25＋院訂必修12＋系訂必修42）"
+    },
+    {
+      "type": "elective_min",
+      "credits": 21,
+      "description": "選修科目至少 21 學分"
+    },
+    {
+      "type": "outside_elective_max",
+      "credits_max": 12,
+      "description": "校外課程最多 12 學分計入本系最低畢業學分"
+    },
+    {
+      "type": "required_elective",
+      "description": "修業期間內必須選修「地球系統科學概論」2 學分"
+    },
+    {
+      "type": "program_choice",
+      "select": 1,
+      "options": [
+        {
+          "name": "地球科學資訊學分學程",
+          "credits": 15
+        },
+        {
+          "name": "氣候與環境變遷學分學程",
+          "credits": 18
+        },
+        {
+          "name": "地科/理/工/資電/生醫理工/遙測學程相關領域課程",
+          "credits_min": 10
+        }
+      ],
+      "description": "須完成下列三者之一：地球科學資訊學分學程15學分、氣候與環境變遷學程18學分、或相關領域課程至少10學分"
+    },
+    {
+      "type": "prerequisite_note",
+      "description": "應用數學(AP2007/AP2008)及天氣學與天氣分析(AP4015/AP4016)之先修課程為微積分上下，且成績須達50分以上"
+    },
+    {
+      "type": "general_education",
+      "domains_min": 1,
+      "description": "通識核心必修四大領域至少修習一個領域"
+    }
+  ],
+  "required_courses": [
+    {
+      "code": "MA1003",
+      "name": "微積分上",
+      "credits": 3,
+      "when": "大一上",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "MA1004",
+      "name": "微積分下",
+      "credits": 3,
+      "when": "大一下",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "PH1031",
+      "name": "普通物理A上",
+      "credits": 3,
+      "when": "大一上",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "PH1032",
+      "name": "普通物理A下",
+      "credits": 3,
+      "when": "大一下",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CM1009",
+      "name": "普通化學I",
+      "credits": 3,
+      "when": "大一上",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CM1008",
+      "name": "普化實驗",
+      "credits": 1,
+      "when": "大一下",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "AP1002",
+      "name": "大氣科學通論",
+      "credits": 1,
+      "when": "大一上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "AP1001",
+      "name": "大氣科學概論",
+      "credits": 1,
+      "when": "大一下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "AP1006",
+      "name": "向量分析",
+      "credits": 2,
+      "when": "大一下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "AP2049",
+      "name": "程式語言與繪圖I",
+      "credits": 2,
+      "when": "大一上~大一下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "AP2050",
+      "name": "程式語言與繪圖II",
+      "credits": 2,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "AP1015",
+      "name": "大氣研究專題導論",
+      "credits": 2,
+      "when": "大一上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "AP2007",
+      "name": "應用數學上",
+      "credits": 3,
+      "when": "大二上~大二下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "AP2008",
+      "name": "應用數學下",
+      "credits": 3,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "AP2039",
+      "name": "大氣測計及操作I",
+      "credits": 3,
+      "when": "大二上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "AP2010",
+      "name": "流體力學",
+      "credits": 3,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "AP2011",
+      "name": "大氣熱力學",
+      "credits": 3,
+      "when": "大二下",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "AP3001",
+      "name": "大氣動力學上",
+      "credits": 3,
+      "when": "大三上~大三下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "AP3002",
+      "name": "大氣動力學下",
+      "credits": 3,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "AP4015",
+      "name": "天氣學與天氣分析上",
+      "credits": 3,
+      "when": "大三下~大四上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "AP4016",
+      "name": "天氣學與天氣分析下",
+      "credits": 3,
+      "when": "大四上~大四下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    }
+  ],
+  "elective_groups": [
+    {
+      "name": "地球系統科學概論（必選）",
+      "select_credits": 2,
+      "description": "修業期間內必須選修「地球系統科學概論」2 學分",
+      "courses": [
+        {
+          "name": "地球系統科學概論",
+          "credits": 2,
+          "mandatory": true
+        }
+      ]
+    },
+    {
+      "name": "學分學程三選一",
+      "select": 1,
+      "select_type": "programs",
+      "description": "須完成三者之一：地球科學資訊學分學程(15學分)、氣候與環境變遷學程(18學分)、或地科/理/工/資電/生醫/遙測相關領域課程(10學分)",
+      "courses": []
+    }
+  ]
+}

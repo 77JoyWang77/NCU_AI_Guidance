@@ -1,0 +1,323 @@
+{
+  "id": "dept_information_management",
+  "name": "資訊管理學系",
+  "program_type": "traditional_dept",
+  "min_credits": 128,
+  "required_credits": 100,
+  "graduation_rules": [
+    {
+      "type": "credit_minimum",
+      "credits": 128,
+      "description": "最低畢業學分數 128 學分"
+    },
+    {
+      "type": "dept_required",
+      "credits": 100,
+      "description": "必修科目共 100 學分（共同必修25＋院訂必修21＋系訂必修54）；院訂必修不含 MT1051（資管系另有程式設計課程）"
+    },
+    {
+      "type": "required_elective",
+      "courses": [
+        "IM1013",
+        "IM3029",
+        "MA1006"
+      ],
+      "description": "三門必選課：初階程式設計(IM1013)、網頁程式設計(IM3029)、微積分下(MA1006)，須全部修習"
+    },
+    {
+      "type": "cross_dept_elective_limit",
+      "credits_max": 12,
+      "description": "外系課程最多 12 學分計入畢業學分"
+    },
+    {
+      "type": "general_education_limit",
+      "credits_max": 4,
+      "description": "通識課程計入外系 12 學分上限中，至多 4 學分"
+    },
+    {
+      "type": "internship_limit",
+      "credits_max": 3,
+      "courses": [
+        "MT企業實習"
+      ],
+      "description": "管院企業實習課程計入外系 12 學分上限中，至多 3 學分"
+    },
+    {
+      "type": "foreign_language",
+      "credits": 6,
+      "description": "外文課程可修大一英文管理課群 6 學分，或英文系之其他課程；不得以第二外語課程抵免大一英文學分；進修英文學分不列入畢業學分"
+    },
+    {
+      "type": "general_education",
+      "domains_min": 1,
+      "description": "通識核心必修四大領域至少修習一個領域"
+    }
+  ],
+  "college_required_courses": [
+    {
+      "code": "MT1011",
+      "name": "經濟學",
+      "credits": 3,
+      "when": "大二上",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "MT1012",
+      "name": "經濟學（下）",
+      "credits": 3,
+      "when": "大一下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "MT1021",
+      "name": "企業概論",
+      "credits": 3,
+      "when": "大一上",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "MT1031",
+      "name": "會計學",
+      "credits": 3,
+      "when": "大一上",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "MT1032",
+      "name": "會計學（下）",
+      "credits": 3,
+      "when": "大一下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "MT2041",
+      "name": "統計學",
+      "credits": 3,
+      "when": "大二上",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "MT2042",
+      "name": "統計學（下）",
+      "credits": 3,
+      "when": "大二下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    }
+  ],
+  "required_courses": [
+    {
+      "code": "MA1005",
+      "name": "微積分上",
+      "credits": 3,
+      "when": "大一上~大一下",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "MT1051",
+      "name": "程式設計：Python",
+      "credits": 3,
+      "when": "大一上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "IM1001",
+      "name": "計算機概論I",
+      "credits": 3,
+      "when": "大一上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "IM1023",
+      "name": "程式設計",
+      "credits": 3,
+      "when": "大一下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "IM1018",
+      "name": "資訊管理導論",
+      "credits": 3,
+      "when": "大一下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "IM2046",
+      "name": "作業系統",
+      "credits": 3,
+      "when": "大二上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "IM2011",
+      "name": "資料與檔案結構",
+      "credits": 3,
+      "when": "大二上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "IM2002",
+      "name": "資料庫管理",
+      "credits": 3,
+      "when": "大二下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "IM3061",
+      "name": "企業資料通訊",
+      "credits": 3,
+      "when": "大二下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "IM3059",
+      "name": "行銷學",
+      "credits": 3,
+      "when": "大三上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "IM3069",
+      "name": "系統分析與設計",
+      "credits": 3,
+      "when": "大三上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "IM3003",
+      "name": "作業研究I",
+      "credits": 3,
+      "when": "大三上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "IM3070",
+      "name": "組織行為",
+      "credits": 3,
+      "when": "大三上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "IM3078",
+      "name": "人工智慧與機器學習",
+      "credits": 3,
+      "when": "大三下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "IM2037",
+      "name": "演算法",
+      "credits": 3,
+      "when": "大三下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "IM3031",
+      "name": "電子商務",
+      "credits": 3,
+      "when": "大三下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "IM3028",
+      "name": "資訊系統發展專題I",
+      "credits": 3,
+      "when": "大三下~大四上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "IM4001",
+      "name": "資訊系統發展專題II",
+      "credits": 3,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "IM4048",
+      "name": "管理資訊系統",
+      "credits": 3,
+      "when": "大四上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    }
+  ],
+  "required_electives": [
+    {
+      "code": "IM1013",
+      "name": "初階程式設計",
+      "credits": 3,
+      "note": "",
+      "when": "",
+      "when_auto": false,
+      "verified": false
+    },
+    {
+      "code": "IM3029",
+      "name": "網頁程式設計",
+      "credits": 3,
+      "note": "",
+      "when": "",
+      "when_auto": false,
+      "verified": false
+    },
+    {
+      "code": "MA1006",
+      "name": "微積分下",
+      "credits": 3,
+      "note": "",
+      "when": "",
+      "when_auto": false,
+      "verified": false
+    }
+  ]
+}

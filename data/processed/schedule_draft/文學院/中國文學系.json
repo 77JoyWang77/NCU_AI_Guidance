@@ -1,0 +1,224 @@
+{
+  "id": "dept_chinese_literature",
+  "name": "中國文學系",
+  "program_type": "traditional_dept",
+  "min_credits": 128,
+  "required_credits": 48,
+  "elective_credits": 32,
+  "total_structured_credits": 73,
+  "graduation_rules": [
+    {
+      "type": "credit_minimum",
+      "credits": 128,
+      "description": "最低畢業學分數 128 學分"
+    },
+    {
+      "type": "total_required",
+      "credits": 73,
+      "description": "必修科目共 73 學分（共同必修25＋系訂必修48）"
+    },
+    {
+      "type": "elective_minimum",
+      "credits": 32,
+      "description": "在校四年至少選修並通過本系選修科目 32 學分"
+    },
+    {
+      "type": "classics_reading",
+      "books": 2,
+      "double_major_books": 1,
+      "description": "畢業前須點畢二部古籍（依本系「大學生點書辦法」辦理）；雙主修學生須點畢一部"
+    },
+    {
+      "type": "general_education",
+      "domains_min": 1,
+      "description": "通識核心必修四大領域至少修習一個領域"
+    },
+    {
+      "type": "foreign_language",
+      "credits": 6,
+      "description": "外文 6 學分（大一英文人文社會課群、英文系課程或語言中心第二外語擇一）；進修英文學分不列入畢業學分"
+    }
+  ],
+  "required_courses": [
+    {
+      "code": "CL1003",
+      "name": "國學導讀上",
+      "credits": 2,
+      "when": "大一上~大一下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CL1004",
+      "name": "國學導讀下",
+      "credits": 2,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CL1005",
+      "name": "文學概論上",
+      "credits": 2,
+      "when": "大一上~大一下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CL1006",
+      "name": "文學概論下",
+      "credits": 2,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CL1025",
+      "name": "古籍閱讀上",
+      "credits": 1,
+      "when": "大一上~大一下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CL1026",
+      "name": "古籍閱讀下",
+      "credits": 1,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CL2001",
+      "name": "歷代文選及習作上",
+      "credits": 3,
+      "when": "大二上~大二下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CL2002",
+      "name": "歷代文選及習作下",
+      "credits": 3,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CL2005",
+      "name": "中國文學史上",
+      "credits": 3,
+      "when": "大二上~大二下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CL2006",
+      "name": "中國文學史下",
+      "credits": 3,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CL2003",
+      "name": "文字學上",
+      "credits": 2,
+      "when": "大二上~大二下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CL2004",
+      "name": "文字學下",
+      "credits": 2,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CL2007",
+      "name": "詩選及習作上",
+      "credits": 2,
+      "when": "大二上~大二下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CL2008",
+      "name": "詩選及習作下",
+      "credits": 2,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CL4003",
+      "name": "中國思想史上",
+      "credits": 3,
+      "when": "大三上~大三下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CL4004",
+      "name": "中國思想史下",
+      "credits": 3,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CL2090",
+      "name": "詞選及習作",
+      "credits": 3,
+      "when": "大三上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CL3161",
+      "name": "聲韻學",
+      "credits": 3,
+      "when": "大三上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CL4104",
+      "name": "訓詁學",
+      "credits": 3,
+      "when": "大三下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CL3160",
+      "name": "曲選及習作",
+      "credits": 3,
+      "when": "大三下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    }
+  ]
+}

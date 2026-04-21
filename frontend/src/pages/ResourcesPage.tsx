@@ -2,18 +2,18 @@ import { HiAcademicCap, HiCollection, HiExternalLink } from 'react-icons/hi';
 
 const scoreResources = [
   {
-    title: '大學問落點分析',
-    description: '查看學測成績、落點預估與校系資訊，快速掌握申請方向。',
+    title: '大學考試入學分發委員會',
+    description: '查看各校系分發資訊、歷年錄取結果與招生相關公告。',
     href: 'https://www.com.tw/cross/',
   },
   {
     title: '大學甄選入學委員會',
-    description: '查詢繁星、申請與各項招生資訊，是最重要的官方入口。',
+    description: '查詢申請入學、繁星推薦與各項招生時程及簡章資訊。',
     href: 'https://www.uac.edu.tw/',
   },
   {
     title: 'TUN 大學網',
-    description: '瀏覽校系介紹、課程資訊與學長姐經驗，補足選系觀察角度。',
+    description: '整合校系介紹、課程內容與升學資訊，方便快速比較不同學系。',
     href: 'https://university.1111.com.tw/',
   },
 ];
@@ -43,7 +43,7 @@ const departmentGroups = [
     links: [
       ['工學院學士班', 'https://ipe.ec.ncu.edu.tw/'],
       ['土木工程學系', 'https://www.cv.ncu.edu.tw/'],
-      ['機械工程學系光機電工程組', 'https://www.cme.ncu.edu.tw/'],
+      ['機械工程學系光機電工程碩士班', 'https://www.cme.ncu.edu.tw/'],
       ['機械工程學系', 'https://www.me.ncu.edu.tw/'],
     ],
   },
@@ -71,7 +71,7 @@ const departmentGroups = [
       ['地球科學學院學士班', 'https://escollege.ncu.edu.tw/'],
       ['地球科學學系', 'https://www.gep.ncu.edu.tw/'],
       ['大氣科學學系', 'https://www.atm.ncu.edu.tw/'],
-      ['太空及遙測研究中心', 'https://www.ss.ncu.edu.tw/'],
+      ['太空科學與工程學系', 'https://www.ss.ncu.edu.tw/'],
     ],
   },
   {
@@ -82,7 +82,7 @@ const departmentGroups = [
     college: '生醫理工學院',
     links: [
       ['生命科學系', 'https://nculs.in.ncu.edu.tw/'],
-      ['認知神經科學研究所', 'https://dbse.ncu.edu.tw/'],
+      ['生醫科學與工程學系', 'https://dbse.ncu.edu.tw/'],
     ],
   },
 ];
@@ -110,12 +110,11 @@ export default function ResourcesPage() {
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-4 py-2 text-sm font-medium text-slate-700 shadow-soft">
             <HiCollection className="h-4 w-4 text-primary-700" />
-            資源連結頁面
+            資源整理
           </div>
-          <h1 className="mt-6 text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">中央大學選系資源整理</h1>
+          <h1 className="mt-6 text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">升學與校系資源</h1>
           <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600 md:text-lg">
-            這裡整理了落點分析、官方招生資訊，以及中央大學各學系網站，
-            方便你快速比對資料、延伸查詢並建立自己的探索路徑。
+            這裡整理了常用的升學平台與中央大學各學院、系所官方網站，方便你快速查詢校系資訊與延伸閱讀。
           </p>
         </div>
       </section>
@@ -126,8 +125,8 @@ export default function ResourcesPage() {
             <HiExternalLink className="h-5 w-5" />
           </div>
           <div>
-            <h2 className="text-2xl font-semibold text-slate-950">外部參考資源</h2>
-            <p className="text-sm text-slate-500">快速前往常用的升學與落點分析網站。</p>
+            <h2 className="text-2xl font-semibold text-slate-950">升學參考平台</h2>
+            <p className="text-sm text-slate-500">快速前往常用的升學資訊網站與分發查詢平台。</p>
           </div>
         </div>
         <div className="grid gap-5 md:grid-cols-3">
@@ -143,8 +142,8 @@ export default function ResourcesPage() {
             <HiAcademicCap className="h-5 w-5" />
           </div>
           <div>
-            <h2 className="text-2xl font-semibold text-slate-950">中央大學各學系網站</h2>
-            <p className="text-sm text-slate-500">依學院分類整理，方便你直接前往各系所查看資訊。</p>
+            <h2 className="text-2xl font-semibold text-slate-950">中央大學學院與系所</h2>
+            <p className="text-sm text-slate-500">點選下方連結可前往各學院與系所官方網站。</p>
           </div>
         </div>
 

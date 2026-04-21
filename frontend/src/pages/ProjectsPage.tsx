@@ -1,34 +1,59 @@
 import { useEffect, useMemo, useState } from 'react';
+import type { FormEvent, ReactNode } from 'react';
+import {
+  HiAcademicCap,
+  HiArrowLeft,
+  HiChat,
+  HiChevronLeft,
+  HiChevronRight,
+  HiPaperAirplane,
+  HiUser,
+} from 'react-icons/hi';
 import { projectAPI } from '../api/services';
-import type { Project } from '../types';
-import { HiAcademicCap, HiArrowLeft, HiChat, HiPaperAirplane, HiUser } from 'react-icons/hi';
 import PdfViewer from '../components/PdfViewer';
+import type { Project } from '../types';
+
+type ChatMessage = {
+  role: 'user' | 'assistant';
+  content: string;
+};
+
+type MobileOutlineView = 'list' | 'detail';
 
 export default function ProjectsPage() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [viewMode, setViewMode] = useState<'outline' | 'pdf-chat'>('outline');
-  const [chatMessages, setChatMessages] = useState<Array<{ role: 'user' | 'assistant'; content: string }>>([]);
+  const [mobileOutlineView, setMobileOutlineView] = useState<MobileOutlineView>('list');
+  const [isMobileChatOpen, setIsMobileChatOpen] = useState(false);
+  const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
   const [inputMessage, setInputMessage] = useState('');
   const [chatLoading, setChatLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [filterYear, setFilterYear] = useState('');
   const [filterDept, setFilterDept] = useState('');
 
   useEffect(() => {
-    const loadProjects = async () => {
-      try {
-        const data = await projectAPI.getProjects();
+    projectAPI
+      .getProjects()
+      .then((data) => {
         setProjects(data);
-      } catch (error) {
+      })
+      .catch((error) => {
         console.error('Failed to load projects:', error);
-      }
-    };
-
-    loadProjects();
+      })
+      .finally(() => setLoading(false));
   }, []);
 
-  const years = useMemo(() => [...new Set(projects.map((project) => project.year))].sort((a, b) => b.localeCompare(a)), [projects]);
-  const departments = useMemo(() => [...new Set(projects.map((project) => project.department))].sort((a, b) => a.localeCompare(b, 'zh-Hant')), [projects]);
+  const years = useMemo(
+    () => [...new Set(projects.map((project) => project.year))].sort((a, b) => b.localeCompare(a)),
+    [projects]
+  );
+
+  const departments = useMemo(
+    () => [...new Set(projects.map((project) => project.department))].sort((a, b) => a.localeCompare(b, 'zh-Hant')),
+    [projects]
+  );
 
   const filteredProjects = useMemo(
     () =>
@@ -38,17 +63,48 @@ export default function ProjectsPage() {
     [projects, filterYear, filterDept]
   );
 
+  useEffect(() => {
+    if (!selectedProject) return;
+    const stillExists = filteredProjects.some((project) => project.id === selectedProject.id);
+    if (stillExists) return;
+
+    setSelectedProject(null);
+    setChatMessages([]);
+    setInputMessage('');
+    setViewMode('outline');
+    setMobileOutlineView('list');
+    setIsMobileChatOpen(false);
+  }, [filteredProjects, selectedProject]);
+
   const handleSelectProject = (project: Project) => {
     setSelectedProject(project);
-    setChatMessages([
-      {
-        role: 'assistant',
-        content: `你現在正在查看「${project.title}」。如果你想了解研究方向、內容重點或延伸問題，可以直接在右側對話。`,
-      },
-    ]);
+    setChatMessages([createWelcomeMessage(project)]);
+    setInputMessage('');
+    setViewMode('outline');
+    setMobileOutlineView('detail');
+    setIsMobileChatOpen(false);
   };
 
-  const handleSendMessage = async (event: React.FormEvent) => {
+  const handleBackToOutline = () => {
+    setViewMode('outline');
+    setMobileOutlineView('detail');
+    setIsMobileChatOpen(false);
+  };
+
+  const handleBackToProjectList = () => {
+    setMobileOutlineView('list');
+  };
+
+  const handleOpenPdfChat = () => {
+    if (!selectedProject) return;
+    setViewMode('pdf-chat');
+    setIsMobileChatOpen(false);
+    if (chatMessages.length === 0) {
+      setChatMessages([createWelcomeMessage(selectedProject)]);
+    }
+  };
+
+  const handleSendMessage = async (event: FormEvent) => {
     event.preventDefault();
     if (!inputMessage.trim() || !selectedProject) return;
 
@@ -62,7 +118,10 @@ export default function ProjectsPage() {
       setChatMessages((prev) => [...prev, { role: 'assistant', content: reply }]);
     } catch (error) {
       console.error('Project chat failed:', error);
-      setChatMessages((prev) => [...prev, { role: 'assistant', content: '目前無法取得回覆，請稍後再試一次。' }]);
+      setChatMessages((prev) => [
+        ...prev,
+        { role: 'assistant', content: '目前暫時無法回應，請稍後再試一次。' },
+      ]);
     } finally {
       setChatLoading(false);
     }
@@ -71,13 +130,13 @@ export default function ProjectsPage() {
   const getTypeLabel = (type: string) => {
     switch (type) {
       case 'E':
-        return '工程';
+        return '文學院';
       case 'H':
-        return '人文';
+        return '客家學院';
       case 'M':
-        return '管理';
+        return '管理學院';
       case 'B':
-        return '生醫';
+        return '生醫理工';
       default:
         return type;
     }
@@ -98,31 +157,52 @@ export default function ProjectsPage() {
     }
   };
 
-  const getPdfUrl = (project: Project): string => {
-    if (project.pdfUrl) return project.pdfUrl;
-    if (!project.pdfPath) return '';
+  const getPdfUrl = (project: Project) => {
     const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
     const baseUrl = apiUrl.replace('/api', '');
+
+    if (project.pdfUrl) {
+      if (project.pdfUrl.startsWith('http://') || project.pdfUrl.startsWith('https://')) {
+        return project.pdfUrl;
+      }
+      if (project.pdfUrl.startsWith('/')) {
+        return `${baseUrl}${project.pdfUrl}`;
+      }
+      return project.pdfUrl;
+    }
+
+    if (!project.pdfPath) return '';
     const encodedPath = project.pdfPath.split('\\').map(encodeURIComponent).join('/');
     return `${baseUrl}/pdfs/${encodedPath}`;
   };
 
+  if (loading) {
+    return (
+      <div className="flex h-full items-center justify-center">
+        <div className="text-center">
+          <div className="mx-auto mb-4 h-12 w-12 animate-spin rounded-full border-b-2 border-primary-600"></div>
+          <p className="text-gray-600">正在載入研究計畫...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="page-container flex h-full flex-col py-3">
       {viewMode !== 'pdf-chat' ? (
-        <div className="mb-3 flex flex-shrink-0 items-center justify-between">
-          <div className="flex items-center gap-2">
-            <h1 className="text-base font-bold text-primary-900">研究計畫</h1>
+        <div className="mb-3 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex min-w-0 items-center gap-2">
+            <h1 className="text-base font-bold text-primary-900">專題成果</h1>
             <span className="text-sm text-gray-400">/</span>
-            <span className="text-sm text-gray-500">探索歷年專題成果，並進一步查看 PDF 或進行 AI 對話</span>
+            <span className="text-sm text-gray-500">瀏覽歷年專題，並可進一步開啟 PDF 與 AI 問答。</span>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <select
               value={filterYear}
               onChange={(event) => setFilterYear(event.target.value)}
               className="rounded-md border border-gray-300 px-2 py-1.5 text-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-500"
             >
-              <option value="">全部年度</option>
+              <option value="">全部年份</option>
               {years.map((year) => (
                 <option key={year} value={year}>
                   {year}
@@ -149,167 +229,375 @@ export default function ProjectsPage() {
       ) : null}
 
       {viewMode === 'outline' ? (
-        <div className="grid min-h-0 flex-1 grid-cols-1 gap-4 lg:grid-cols-3">
-          <div className="flex min-h-0 flex-col">
-            <div className="flex-1 space-y-2 overflow-y-auto">
-              {filteredProjects.map((project) => (
-                <div
-                  key={project.id}
-                  className={`card-interactive cursor-pointer p-4 ${
-                    selectedProject?.id === project.id ? 'ring-2 ring-primary-600' : ''
-                  }`}
-                  onClick={() => handleSelectProject(project)}
-                >
-                  <div className="mb-2 flex items-start justify-between">
-                    <span className={`badge text-xs ${getTypeBadgeClass(project.type)}`}>{getTypeLabel(project.type)}</span>
-                    <span className="text-xs text-gray-500">{project.year}</span>
-                  </div>
-                  <h3 className="mb-2 line-clamp-2 text-sm font-semibold leading-tight text-primary-900">{project.title}</h3>
-                  <div className="space-y-1 text-xs text-gray-600">
-                    <div className="flex items-center">
-                      <HiUser className="mr-1 h-3 w-3" />
-                      <span>{project.studentName}</span>
-                    </div>
-                    <div className="flex items-center">
-                      <HiAcademicCap className="mr-1 h-3 w-3" />
-                      <span className="line-clamp-1">{project.department}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="min-h-0 overflow-y-auto lg:col-span-2">
-            {selectedProject ? (
-              <div className="card relative p-8">
-                <div className="mb-6">
-                  <div className="mb-4 flex items-start justify-between">
-                    <span className={`badge ${getTypeBadgeClass(selectedProject.type)}`}>{getTypeLabel(selectedProject.type)}</span>
-                    <span className="text-sm text-gray-500">{selectedProject.year}</span>
-                  </div>
-                  <h2 className="mb-3 text-2xl font-bold text-primary-900">{selectedProject.title}</h2>
-                  <div className="flex items-center gap-4 text-sm text-gray-600">
-                    <div className="flex items-center">
-                      <HiUser className="mr-1 h-4 w-4" />
-                      <span>{selectedProject.studentName}</span>
-                    </div>
-                    <div className="flex items-center">
-                      <HiAcademicCap className="mr-1 h-4 w-4" />
-                      <span>{selectedProject.department}</span>
-                    </div>
-                  </div>
+        <>
+          <div className="flex min-h-0 flex-1 flex-col lg:hidden">
+            {mobileOutlineView === 'detail' && selectedProject ? (
+              <div className="card flex-1 overflow-y-auto p-6">
+                <div className="mb-4">
+                  <button
+                    type="button"
+                    onClick={handleBackToProjectList}
+                    className="flex items-center gap-1 text-sm text-primary-600 transition-colors hover:text-primary-800"
+                  >
+                    <HiArrowLeft className="h-4 w-4" />
+                    返回專題列表
+                  </button>
                 </div>
 
-                <div className="mb-8 space-y-6">
-                  <SectionBlock title="研究方向說明">
-                    這份研究計畫來自「{selectedProject.department}」相關領域，內容可作為理解學系專業方向、問題意識與實作成果的參考。
-                  </SectionBlock>
-                  <SectionBlock title="閱讀方式建議">
-                    建議先看題目與研究摘要，再留意方法、資料來源與結論。這樣可以更快掌握該學系在大學端可能接觸的研究形式。
-                  </SectionBlock>
-                  <SectionBlock title="延伸提問方向">
-                    你可以進一步問 AI：「這份研究偏哪個領域？」「適合對哪些主題有興趣的人？」「和某個學系的課程有什麼關聯？」。
-                  </SectionBlock>
-                </div>
+                <ProjectSummary
+                  project={selectedProject}
+                  getTypeLabel={getTypeLabel}
+                  getTypeBadgeClass={getTypeBadgeClass}
+                />
 
-                <div className="flex justify-end">
-                  <button onClick={() => setViewMode('pdf-chat')} className="btn-primary flex items-center gap-2">
+                <div className="mt-8 flex justify-end">
+                  <button type="button" onClick={handleOpenPdfChat} className="btn-primary flex items-center gap-2">
                     <HiChat className="h-5 w-5" />
                     查看 PDF 與 AI 對話
                   </button>
                 </div>
               </div>
             ) : (
-              <div className="card flex h-full flex-col items-center justify-center">
-                <HiChat className="mb-4 h-16 w-16 text-gray-300" />
-                <p className="mb-2 text-gray-600">請先從左側選擇一項研究計畫。</p>
-                <p className="text-sm text-gray-500">選擇後即可查看計畫介紹，並進一步進入 PDF 與對話模式。</p>
+              <div className="flex min-h-0 flex-1 flex-col">
+                <div className="flex-1 overflow-y-auto overflow-x-hidden [scrollbar-gutter:stable_both-edges]">
+                  <div className="space-y-3 px-1 pt-2 pb-2 pr-4">
+                    {filteredProjects.map((project) => (
+                      <div
+                        key={project.id}
+                        className={`card cursor-pointer p-4 transition duration-200 ease-out hover:border-primary-200 hover:shadow-medium active:scale-[0.99] ${
+                          selectedProject?.id === project.id ? 'border-primary-500 shadow-medium' : ''
+                        }`}
+                        onClick={() => handleSelectProject(project)}
+                      >
+                        <ProjectCardContent
+                          project={project}
+                          getTypeLabel={getTypeLabel}
+                          getTypeBadgeClass={getTypeBadgeClass}
+                        />
+                      </div>
+                    ))}
+                    {filteredProjects.length === 0 ? (
+                      <div className="card p-6 text-center text-sm text-gray-500">目前沒有符合條件的研究計畫。</div>
+                    ) : null}
+                  </div>
+                </div>
               </div>
             )}
           </div>
-        </div>
-      ) : (
-        <div className="grid min-h-0 flex-1 grid-cols-1 gap-4 lg:grid-cols-2">
-          <div className="card flex h-full flex-col overflow-hidden">
-            <div className="flex flex-shrink-0 items-center gap-2 border-b border-gray-200 px-4 py-2.5">
-              <button
-                onClick={() => setViewMode('outline')}
-                className="flex items-center gap-1 text-sm text-primary-600 transition-colors hover:text-primary-800"
-              >
-                <HiArrowLeft className="h-4 w-4" />
-                返回介紹
-              </button>
-              <span className="text-gray-300">|</span>
-              <span className="truncate text-sm font-medium text-gray-700">{selectedProject?.title}</span>
+
+          <div className="hidden min-h-0 flex-1 lg:grid lg:grid-cols-3 lg:gap-4">
+            <div className="flex min-h-0 flex-col">
+              <div className="flex-1 overflow-y-auto overflow-x-hidden [scrollbar-gutter:stable_both-edges]">
+                <div className="space-y-3 px-1 pt-2 pb-2 pr-4">
+                  {filteredProjects.map((project) => (
+                    <div
+                      key={project.id}
+                      className={`card cursor-pointer p-4 transition duration-200 ease-out hover:border-primary-200 hover:shadow-medium active:scale-[0.99] ${
+                        selectedProject?.id === project.id ? 'border-primary-500 shadow-medium' : ''
+                      }`}
+                      onClick={() => handleSelectProject(project)}
+                    >
+                      <ProjectCardContent
+                        project={project}
+                        getTypeLabel={getTypeLabel}
+                        getTypeBadgeClass={getTypeBadgeClass}
+                      />
+                    </div>
+                  ))}
+                  {filteredProjects.length === 0 ? (
+                    <div className="card p-6 text-center text-sm text-gray-500">目前沒有符合條件的研究計畫。</div>
+                  ) : null}
+                </div>
+              </div>
             </div>
-            <div className="flex-1 overflow-hidden">
-              {selectedProject?.pdfPath ? (
-                <PdfViewer pdfUrl={getPdfUrl(selectedProject)} projectTitle={selectedProject.title} hideTitle />
-              ) : (
-                <div className="flex h-full items-center justify-center">
-                  <div className="text-center text-gray-500">
-                    <p className="mb-2 text-lg">目前沒有可顯示的 PDF</p>
-                    <p className="text-sm">這份研究計畫尚未提供 PDF 檔案。</p>
+
+            <div className="min-h-0 overflow-y-auto lg:col-span-2">
+              {selectedProject ? (
+                <div className="card relative p-8">
+                  <ProjectSummary
+                    project={selectedProject}
+                    getTypeLabel={getTypeLabel}
+                    getTypeBadgeClass={getTypeBadgeClass}
+                  />
+
+                  <div className="flex justify-end">
+                    <button type="button" onClick={handleOpenPdfChat} className="btn-primary flex items-center gap-2">
+                      <HiChat className="h-5 w-5" />
+                      查看 PDF 與 AI 對話
+                    </button>
                   </div>
+                </div>
+              ) : (
+                <div className="card flex h-full min-h-[32rem] flex-col items-center justify-center">
+                  <HiChat className="mb-4 h-16 w-16 text-gray-300" />
+                  <p className="mb-2 text-gray-600">選擇一筆研究計畫即可查看詳細介紹。</p>
+                  <p className="text-sm text-gray-500">接著可進一步開啟 PDF 與 AI 問答模式。</p>
                 </div>
               )}
             </div>
           </div>
-
-          <div className="card flex h-full flex-col">
-            <div className="flex flex-shrink-0 items-center gap-2 border-b border-gray-200 px-4 py-2.5">
-              <h2 className="text-sm font-semibold text-gray-800">AI 對話區</h2>
-              <span className="text-xs text-gray-400">你可以針對這份研究計畫提出問題</span>
+        </>
+      ) : (
+        <>
+          <div className="relative min-h-0 flex-1 lg:hidden">
+            <div className="card flex h-full flex-col overflow-hidden">
+              <PdfPanel
+                project={selectedProject}
+                pdfUrl={selectedProject ? getPdfUrl(selectedProject) : ''}
+                onBack={handleBackToOutline}
+              />
             </div>
 
-            <div className="flex-1 space-y-3 overflow-y-auto p-4">
-              {chatMessages.map((message, index) => (
-                <div key={index} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                  <div
-                    className={`max-w-[80%] rounded-lg p-4 ${
-                      message.role === 'user' ? 'bg-primary-700 text-white' : 'bg-gray-100 text-gray-900'
-                    }`}
-                  >
-                    <p className="text-sm leading-relaxed">{message.content}</p>
-                  </div>
-                </div>
-              ))}
-              {chatLoading ? (
-                <div className="flex justify-start">
-                  <div className="rounded-lg bg-gray-100 p-4 text-gray-900">
-                    <div className="flex space-x-2">
-                      <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400"></div>
-                      <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400 delay-100"></div>
-                      <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400 delay-200"></div>
-                    </div>
-                  </div>
-                </div>
-              ) : null}
-            </div>
-
-            <form onSubmit={handleSendMessage} className="border-t border-gray-200 p-3">
-              <div className="flex gap-3">
-                <input
-                  type="text"
-                  value={inputMessage}
-                  onChange={(event) => setInputMessage(event.target.value)}
-                  placeholder="輸入你想了解的研究問題..."
-                  className="flex-1 rounded-md border border-gray-300 px-4 py-3 transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500"
+            <div
+              className={`absolute inset-y-0 left-0 z-20 w-[min(22rem,calc(100vw-3rem))] transition-transform duration-300 ${
+                isMobileChatOpen ? 'translate-x-0' : '-translate-x-[calc(100%-2.75rem)]'
+              }`}
+            >
+              <div className="flex h-full">
+                <ChatPanel
+                  compact
+                  messages={chatMessages}
+                  inputMessage={inputMessage}
+                  chatLoading={chatLoading}
+                  onInputChange={setInputMessage}
+                  onSubmit={handleSendMessage}
+                  onClose={() => setIsMobileChatOpen(false)}
                 />
-                <button type="submit" disabled={chatLoading || !inputMessage.trim()} className="btn-primary">
-                  <HiPaperAirplane className="h-5 w-5" />
-                </button>
+
+                <div className="flex w-11 items-center justify-center pl-2">
+                  <button
+                    type="button"
+                    onClick={() => setIsMobileChatOpen((prev) => !prev)}
+                    className="flex h-28 w-10 flex-col items-center justify-center gap-2 rounded-r-2xl bg-primary-900 px-2 text-white shadow-lg transition hover:bg-primary-800"
+                    aria-label={isMobileChatOpen ? '收起 AI 對話框' : '展開 AI 對話框'}
+                  >
+                    {isMobileChatOpen ? <HiChevronLeft className="h-5 w-5" /> : <HiChevronRight className="h-5 w-5" />}
+                    <span className="[writing-mode:vertical-rl] text-xs tracking-[0.2em]">AI 對話</span>
+                  </button>
+                </div>
               </div>
-            </form>
+            </div>
           </div>
-        </div>
+
+          <div className="hidden min-h-0 flex-1 lg:grid lg:grid-cols-2 lg:gap-4">
+            <div className="card flex h-full flex-col overflow-hidden">
+              <PdfPanel
+                project={selectedProject}
+                pdfUrl={selectedProject ? getPdfUrl(selectedProject) : ''}
+                onBack={handleBackToOutline}
+              />
+            </div>
+
+            <ChatPanel
+              messages={chatMessages}
+              inputMessage={inputMessage}
+              chatLoading={chatLoading}
+              onInputChange={setInputMessage}
+              onSubmit={handleSendMessage}
+            />
+          </div>
+        </>
       )}
     </div>
   );
 }
 
-function SectionBlock({ title, children }: { title: string; children: React.ReactNode }) {
+function PdfPanel({
+  project,
+  pdfUrl,
+  onBack,
+}: {
+  project: Project | null;
+  pdfUrl: string;
+  onBack: () => void;
+}) {
+  return (
+    <>
+      <div className="flex flex-shrink-0 items-center gap-3 border-b border-gray-200 px-4 py-2.5">
+        <button
+          type="button"
+          onClick={onBack}
+          className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap text-sm text-primary-600 transition-colors hover:text-primary-800"
+        >
+          <HiArrowLeft className="h-4 w-4" />
+          返回介紹
+        </button>
+        <span className="shrink-0 text-gray-300">|</span>
+        <div className="min-w-0 flex-1">
+          <span className="block truncate text-sm font-medium text-gray-700">{project?.title}</span>
+        </div>
+      </div>
+      <div className="flex-1 overflow-hidden">
+        {project?.pdfPath ? (
+          <PdfViewer pdfUrl={pdfUrl} projectTitle={project.title} hideTitle />
+        ) : (
+          <div className="flex h-full items-center justify-center">
+            <div className="text-center text-gray-500">
+              <p className="mb-2 text-lg">目前沒有可顯示的 PDF</p>
+              <p className="text-sm">這份研究計畫尚未提供 PDF 檔案。</p>
+            </div>
+          </div>
+        )}
+      </div>
+    </>
+  );
+}
+
+function ChatPanel({
+  messages,
+  inputMessage,
+  chatLoading,
+  onInputChange,
+  onSubmit,
+  onClose,
+  compact = false,
+}: {
+  messages: ChatMessage[];
+  inputMessage: string;
+  chatLoading: boolean;
+  onInputChange: (value: string) => void;
+  onSubmit: (event: FormEvent) => void;
+  onClose?: () => void;
+  compact?: boolean;
+}) {
+  return (
+    <div className="card flex h-full flex-col overflow-hidden">
+      <div className="flex flex-shrink-0 items-center justify-between gap-3 border-b border-gray-200 px-4 py-2.5">
+        <div className="min-w-0">
+          <h2 className="text-sm font-semibold text-gray-800">AI 對話區</h2>
+          <p className="truncate text-xs text-gray-400">可針對研究主題、內容重點與延伸問題進行提問</p>
+        </div>
+        {onClose ? (
+          <button
+            type="button"
+            onClick={onClose}
+            className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-gray-200 text-gray-500 transition hover:bg-gray-50"
+            aria-label="收起 AI 對話框"
+          >
+            <HiChevronLeft className="h-5 w-5" />
+          </button>
+        ) : null}
+      </div>
+
+      <div className={`flex-1 space-y-3 overflow-y-auto p-4 ${compact ? 'bg-white' : ''}`}>
+        {messages.map((message, index) => (
+          <div key={index} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+            <div
+              className={`rounded-lg p-4 ${
+                message.role === 'user' ? 'max-w-[80%] bg-primary-700 text-white' : 'max-w-[85%] bg-gray-100 text-gray-900'
+              }`}
+            >
+              <p className="text-sm leading-relaxed">{message.content}</p>
+            </div>
+          </div>
+        ))}
+
+        {chatLoading ? (
+          <div className="flex justify-start">
+            <div className="rounded-lg bg-gray-100 p-4 text-gray-900">
+              <div className="flex space-x-2">
+                <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400"></div>
+                <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400 delay-100"></div>
+                <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400 delay-200"></div>
+              </div>
+            </div>
+          </div>
+        ) : null}
+      </div>
+
+      <form onSubmit={onSubmit} className="border-t border-gray-200 p-3">
+        <div className="flex gap-3">
+          <input
+            type="text"
+            value={inputMessage}
+            onChange={(event) => onInputChange(event.target.value)}
+            placeholder="輸入你想了解的研究問題..."
+            className="min-w-0 flex-1 rounded-md border border-gray-300 px-4 py-3 transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500"
+          />
+          <button type="submit" disabled={chatLoading || !inputMessage.trim()} className="btn-primary">
+            <HiPaperAirplane className="h-5 w-5" />
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+function ProjectCardContent({
+  project,
+  getTypeLabel,
+  getTypeBadgeClass,
+}: {
+  project: Project;
+  getTypeLabel: (type: string) => string;
+  getTypeBadgeClass: (type: string) => string;
+}) {
+  return (
+    <>
+      <div className="mb-2 flex items-start justify-between">
+        <span className={`badge text-xs ${getTypeBadgeClass(project.type)}`}>{getTypeLabel(project.type)}</span>
+        <span className="text-xs text-gray-500">{project.year}</span>
+      </div>
+      <h3 className="mb-2 line-clamp-2 text-sm font-semibold leading-tight text-primary-900">{project.title}</h3>
+      <div className="space-y-1 text-xs text-gray-600">
+        <div className="flex items-center">
+          <HiUser className="mr-1 h-3 w-3" />
+          <span>{project.studentName}</span>
+        </div>
+        <div className="flex items-center">
+          <HiAcademicCap className="mr-1 h-3 w-3" />
+          <span className="line-clamp-1">{project.department}</span>
+        </div>
+      </div>
+    </>
+  );
+}
+
+function ProjectSummary({
+  project,
+  getTypeLabel,
+  getTypeBadgeClass,
+}: {
+  project: Project;
+  getTypeLabel: (type: string) => string;
+  getTypeBadgeClass: (type: string) => string;
+}) {
+  return (
+    <>
+      <div className="mb-6">
+        <div className="mb-4 flex items-start justify-between">
+          <span className={`badge ${getTypeBadgeClass(project.type)}`}>{getTypeLabel(project.type)}</span>
+          <span className="text-sm text-gray-500">{project.year}</span>
+        </div>
+        <h2 className="mb-3 text-2xl font-bold text-primary-900">{project.title}</h2>
+        <div className="flex items-center gap-4 text-sm text-gray-600">
+          <div className="flex items-center">
+            <HiUser className="mr-1 h-4 w-4" />
+            <span>{project.studentName}</span>
+          </div>
+          <div className="flex items-center">
+            <HiAcademicCap className="mr-1 h-4 w-4" />
+            <span>{project.department}</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="mb-8 space-y-6">
+        <SectionBlock title="專題摘要">
+          這份研究計畫來自 {project.department}，可作為了解研究主題、作品方向與成果呈現方式的參考。
+        </SectionBlock>
+        <SectionBlock title="閱讀建議">
+          建議先查看 PDF 原文掌握研究架構，再透過 AI 問答快速整理重點、釐清術語與延伸討論方向。
+        </SectionBlock>
+        <SectionBlock title="AI 對話提示">
+          你可以直接詢問研究方法、實作內容、成果特色，或請系統幫你整理摘要、列出重點與延伸問題。
+        </SectionBlock>
+      </div>
+    </>
+  );
+}
+
+function SectionBlock({ title, children }: { title: string; children: ReactNode }) {
   return (
     <div>
       <h3 className="mb-3 flex items-center text-lg font-semibold text-primary-900">
@@ -319,4 +607,11 @@ function SectionBlock({ title, children }: { title: string; children: React.Reac
       <p className="pl-4 leading-relaxed text-gray-700">{children}</p>
     </div>
   );
+}
+
+function createWelcomeMessage(project: Project): ChatMessage {
+  return {
+    role: 'assistant',
+    content: `你現在正在查看「${project.title}」這份研究計畫。如果你想了解研究方向、內容重點或延伸問題，可以直接在這裡提問。`,
+  };
 }

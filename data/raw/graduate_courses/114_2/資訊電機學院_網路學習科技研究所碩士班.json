@@ -1,0 +1,1215 @@
+[
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "資訊電機學院",
+    "系所": "網路學習科技研究所碩士班",
+    "流水號": "54001",
+    "課號-班別": "NL6001-*",
+    "課程名稱(中文)": "書報討論",
+    "課程名稱(英文)": "Seminar",
+    "備註": "[不開放初選]",
+    "授課教師": "楊接期",
+    "學分": "0",
+    "上課時間": "Thu56",
+    "教室": "E6-A406",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=54001&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限網路學習科技研究所碩士班、網路學習科技研究所博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=54001&outline=54001&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "網路學習科技研究所碩士班",
+      "流水號": "54001",
+      "課號": "NL6001-*",
+      "授課教師": "楊接期",
+      "課程名稱(中文)": "書報討論",
+      "課程名稱(英文)": "Seminar",
+      "課程學制": "碩博同修",
+      "學分": "0",
+      "課程目標": "本課程的教學目標在使學生：一、掌握數位學習發展趨勢；二、培養數位學習領域專業素養與跨領域整合能力；三、瞭解數位學習相關產業發展現況；四、加強未來數位創新能力與數位實踐能力",
+      "授課內容": "本課程的教學目標在使學生：一、掌握數位學習發展趨勢；二、培養數位學習領域專業素養與跨領域整合能力；三、瞭解數位學習相關產業發展現況；四、加強未來數位創新能力與數位實踐能力",
+      "教科書/參考書": "N/A",
+      "自編教材比例": "20",
+      "授課方式": "講授 研討 其他",
+      "評量配分比重": "一、 課堂出席與提問 (20％) 課堂出席及參與提問，若無法出席，請與老師及助教請假。 二、 個人心得報告 (40％) 針對每週演講撰寫個人心得報告，心得報告內容不需詳述演講內容，請多著墨個人心得與跟自己研究的關係。報告需於每週四演講結束後至該週日午夜前繳交。 三、個人期末口頭簡報 (40％) 在課程最後兩週安排個人期末口頭簡報，且需於口頭簡報前繳交簡報檔，簡報內容包含：對數位學習領域的了解、演講心得、研究方向規劃、課程收獲等，每人報告(含討論)時間約10分鐘。",
+      "辦公時間": "三 5.6",
+      "授課週數": "16",
+      "彈性教學說明": "自主學習",
+      "課程領域": "理論基礎課程 、 應用實務課程",
+      "核心能力": [
+        {
+          "能力名稱": "認識數位學習之發展歷史與趨勢",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "培養數位學習之理論素養",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "培養數位學習所需之科技能力",
+          "強度指數": "(2) 低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "培養數位學習研究方法與推廣應用之能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 無"
+        },
+        {
+          "能力名稱": "培養創新設計與協調整合之能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "培養具國際觀之跨領域人才",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "資訊電機學院",
+    "系所": "網路學習科技研究所碩士班",
+    "流水號": "54002",
+    "課號-班別": "NL6012-*",
+    "課程名稱(中文)": "專題討論",
+    "課程名稱(英文)": "Special Topics in Learning Technology",
+    "備註": "[不開放初選]",
+    "授課教師": "教授群",
+    "學分": "0",
+    "上課時間": "",
+    "教室": "",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=54002&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限網路學習科技研究所碩士班、網路學習科技研究所博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=54002&outline=54002&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "網路學習科技研究所碩士班",
+      "流水號": "54002",
+      "課號": "NL6012-*",
+      "授課教師": "教授群",
+      "課程名稱(中文)": "專題討論",
+      "課程名稱(英文)": "Special Topics in Learning Technology",
+      "課程學制": "碩博同修",
+      "學分": "0",
+      "課程目標": "“本課程的主要目標是讓學生了解數位學習研究領域的發展, 並指導研究生撰寫論文.“",
+      "授課內容": "研究生論文指導",
+      "教科書/參考書": "論文集",
+      "自編教材比例": "100",
+      "授課方式": "研討 個別指導",
+      "評量配分比重": "“報告60％ 出席20％ 小組討論20％“",
+      "辦公時間": "2",
+      "授課週數": "16",
+      "彈性教學說明": "自主學習",
+      "課程領域": "專題課程",
+      "核心能力": [
+        {
+          "能力名稱": "認識數位學習之發展歷史與趨勢",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "培養數位學習之理論素養",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "培養數位學習所需之科技能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "培養數位學習研究方法與推廣應用之能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "培養創新設計與協調整合之能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "培養具國際觀之跨領域人才",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 作品/創作展演"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "資訊電機學院",
+    "系所": "網路學習科技研究所碩士班",
+    "流水號": "54003",
+    "課號-班別": "NL7030-*",
+    "課程名稱(中文)": "數位學習量化研究",
+    "課程名稱(英文)": "Quantitative Research Methods in e-Learning",
+    "備註": "[不開放初選]",
+    "授課教師": "洪暉鈞",
+    "學分": "3",
+    "上課時間": "Wed234",
+    "教室": "E6-A406",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "30",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=54003&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。學院:限資訊電機學院。系所:限網路學習科技研究所碩士班、網路學習科技研究所博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=54003&outline=54003&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "網路學習科技研究所碩士班",
+      "流水號": "54003",
+      "課號": "NL7030-*",
+      "授課教師": "洪暉鈞",
+      "課程名稱(中文)": "數位學習量化研究",
+      "課程名稱(英文)": "Quantitative Research Methods in e-Learning",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "【本課程為英文授課】 本課程專為研究所學生設計，旨在全面介紹數位學習（e-learning）領域中常用之教育研究方法。課程內容將深入探討教育研究的基本概念及其在數位學習情境中的應用，涵蓋量化研究與混合研究法等主要研究取向。課程將系統性介紹數位學習研究之完整流程，包括：研究問題的提出、文獻探討的進行、研究問題與假設的建構、研究設計的規劃、資料的蒐集與分析，以及研究結果的詮釋與結論的推論。此外，修課學生需於學期末完成一份具備研究問題、理論架構與方法設計的研究計畫書，以實踐所學研究能力。",
+      "授課內容": "授課內容：\nWeek 1：課程介紹\nWeek 2：教育研究與數位學習研究的基本概念\nWeek 3：數位學習研究的模式與類別\nWeek 4：研究主題與其概念化\nWeek 5：理論與文獻探討\nWeek 6：研究問題的操作化\nWeek 7：研究群體與樣本選取\nWeek 8：描述性研究：調查研究法、發展研究法、相關研究法\nWeek 9：期中考週\nWeek 10：因果性研究：實驗研究法（一）\nWeek 11：因果性研究：實驗研究法（二）\nWeek 12：詮釋性研究：質性研究（一）\nWeek 13：詮釋性研究：質性研究（二）\nWeek 14：混合研究方法\nWeek 15：研究工具的發展與使用\nWeek 16：期刊論文基本評析與報告\nWeek 17：期末報告\nWeek 18：期末報告",
+      "教科書/參考書": "1.林生傳（2003）。教育研究法：全方位的統整與分析。台北：心理。 2. Ary, D., Jacobs, L. C., ＆ Sorensen, C. (2010). Introduction to research in education (8th ed.). Belmont, CA: Wadsworth, Cengage Learning. 3.王文科、王智弘（2009）。教育研究法（第13 版）。台北：五南圖書出版公司。 4.潘中道、胡龍騰譯（2010）。研究方法：步驟化學習指南（第2版）。台北：學富。 5.謝志偉、王慧玉譯（2010）。混合方法研究導論。台北：心理。",
+      "自編教材比例": "80",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "Class participation (10％) Homework (40％) Midterm Report (20％) Proposal report (30％)",
+      "辦公時間": "週一 15:00-17:50",
+      "授課週數": "16",
+      "彈性教學說明": "The flipped learning method with the project will be conducted online in 1-2 weeks. By utilizing online educational resources, along with post-class reflections and hands-on activities, students are encouraged to engage in self-directed learning and explore interdisciplinary knowledge.",
+      "課程領域": "應用實務課程",
+      "核心能力": [
+        {
+          "能力名稱": "認識數位學習之發展歷史與趨勢",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "培養數位學習之理論素養",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "培養數位學習所需之科技能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "培養數位學習研究方法與推廣應用之能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "培養創新設計與協調整合之能力",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "培養具國際觀之跨領域人才",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "資訊電機學院",
+    "系所": "網路學習科技研究所碩士班",
+    "流水號": "54004",
+    "課號-班別": "NL7041-*",
+    "課程名稱(中文)": "科技輔助知識創新教育",
+    "課程名稱(英文)": "Technology-Supported Education for Knowledge Creation and Innovation",
+    "備註": "[不開放初選]",
+    "授課教師": "吳穎沺",
+    "學分": "3",
+    "上課時間": "Thu789",
+    "教室": "E6-A406",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "30",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=54004&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。學院:限文學院、資訊電機學院。系所:限網路學習科技研究所碩士班、人工智慧國際碩士學位學程、網路學習科技研究所博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=54004&outline=54004&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "網路學習科技研究所碩士班",
+      "流水號": "54004",
+      "課號": "NL7041-*",
+      "授課教師": "吳穎沺",
+      "課程名稱(中文)": "科技輔助知識創新教育",
+      "課程名稱(英文)": "Technology-Supported Education for Knowledge Creation and Innovation",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "在課程結束時，參與者將能夠： 認識到協作知識創造與創新的重要性，了解在現代社會中協作知識創造與創新的需求，並且能夠欣賞知識創造的成果，認同自己也是知識創造的參與者。 充分理解知識建構（Knowledge Building）的概念，以及其在教育中如何被應用於知識創造與創新。 積極參與知識建構社群，並培養作為知識創造者與創新者的素養。 協同設計以技術支援的未來學習原型，專注於在各種教育情境中推動知識建構。",
+      "授課內容": "\"Week 1 1. Course Introduction\nWeek 2 1. Introducing basic functions in KF (0.5 hour)\n2. Experiencing co-design activity on KF (1 hour): Designing classroom for learning in the future\n3. Group to whole class discussion on KF (1 hour)\n4. Further exploration activity (0.5 hour)\n5. After class activity\nWeek 3 1. Oral group report (1) (0.5 hour)\n2. Provide Feedbacks by group on KF (0.5 hour)\n3. Redesign (1 hour)\n4. Group to whole class discussion (1 hour)\n5. After class activity\nWeek 4 1. Oral group report (2) (0.5 hour)\n2. Provide feedbacks individually on KF (0.5 hour)\n3. Reflection (0.5 hour)\n4. Introduction to Knowledge Building (2 hour)\n5. After class\nReflection on their Knowledge Building practice during design process\nWeek 5 Discussion and reflection on Knowledge Building and Knowledge Building practice\nAfter class\nWeek 6 1. Assessment in Knowledge Building\n2. Assessments tools in KF\nAfter class\nWeek 7 Empirical Knowledge Building cases (KB Gallery + online resources + journal papers)\nAfter class\nWeek 8-10 (3 weeks) Co-design activity\nAfter class\nWeek 11 Design report\nWeek 12-14 Re-design activity\nAfter class\nWeek 15 Group final report and reflection\nWeek 16 Individual reflection and conclusion\"",
+      "教科書/參考書": "自編教材",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 其他",
+      "評量配分比重": "\"Course Evaluation 1. Process: a. Participation (10%): Classroom participation (5%) online community participation (5%; writing and reading notes) b. Individual self-reflection (5 reflection notes on week 2, 4, 6, 11, and 16 + final report on week 18) (30%): ● Understanding regarding collaborative knowledge creation and innovation and KB theory ● Sense of community or community identity ● How did you work with ideas? ● How did you contribute to the community? ● How did you co-work with my peers? c. Collective reflection on Community KB practice (5 reflection notes on week 2, 4, 6, 11, and 16 + final report on week 17) (40%): based on KB principles and the CTL 1603- Course Syllabus ● Are your ideas advanced? If yes, what was the original idea? What is the refined idea? How did it grow? What is the evidence of advance? How did you advance your ideas? Please provide detailed description and examples. If not, why? How will you advance the idea(s) further? ● Did you evaluate the promisingness of your ideas or design? If yes, how did you do and what are your evaluative standards? ● Do you have your community goal and community norms (i.e., the set of behaviors expected in your community)? If yes, did you achieve your community goal? Did most of you work with the community norms? Did the community norms help you advance your ideas? Did you want to modify your community goals and community norms? If not, please discuss on and write down your community goals and your community norms. 2. Outcomes: Prototype design for technology-supported future learning focus on Knowledge Building: (20%) (peer evaluation and expert evaluation)\"",
+      "辦公時間": "星期五7.8.9",
+      "授課週數": "16",
+      "彈性教學說明": "無",
+      "課程領域": "應用實務課程 、 專題課程",
+      "核心能力": [
+        {
+          "能力名稱": "認識數位學習之發展歷史與趨勢",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "培養數位學習之理論素養",
+          "強度指數": "(4) 高",
+          "評量方式": "學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "培養數位學習所需之科技能力",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "培養數位學習研究方法與推廣應用之能力",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "培養創新設計與協調整合之能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "培養具國際觀之跨領域人才",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "資訊電機學院",
+    "系所": "網路學習科技研究所碩士班",
+    "流水號": "54005",
+    "課號-班別": "NL7052-*",
+    "課程名稱(中文)": "數位學習質性研究",
+    "課程名稱(英文)": "Qualitative Research of Digital Learning",
+    "備註": "他系學生請上課時索取密碼卡，第一節課務必9:00前進教室。\n[不開放初選]",
+    "授課教師": "施如齡",
+    "學分": "3",
+    "上課時間": "Mon234",
+    "教室": "E6-A406",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "30",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=54005&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。學院:限資訊電機學院。系所:限網路學習科技研究所碩士班、人工智慧國際碩士學位學程、網路學習科技研究所博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=54005&outline=54005&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "網路學習科技研究所碩士班",
+      "流水號": "54005",
+      "課號": "NL7052-*",
+      "授課教師": "施如齡",
+      "課程名稱(中文)": "數位學習質性研究",
+      "課程名稱(英文)": "Qualitative Research of Digital Learning",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "本課程從數位學習科技的應用範疇與角度，介紹質性研究方法，從研究典範、研究設計、資料收集技巧、資料分析、研究倫理、信效度的掌握、以及研究報告書寫等，帶領學生深入質量並重的研究概念。課程從方法論的議題開始討論，包括民族誌、傳記史、詮釋學、現象學、個案研究、行動研究、紮根理論等，至研究方法的操作，包括田野調查、深度訪談、焦點團體、參與觀察等，將理論與實務的結合，期望建立學生完整的質化研究概念，並提供學習者在進行數位學習科技的設計與實驗操作實，能有進行質性研究的行動依據。",
+      "授課內容": "本課程之教學目標在於：\n（一） 比較質化與量化研究的差異\n（二） 說明質化研究法之類型\n（三） 探討質化研究進行的步驟與相關考量的因素\n（四） 指導並演練質化研究資料蒐集的技巧\n（五） 分析質化研究資料\n（六） 書寫並報告質化研究結果",
+      "自編教材比例": "80",
+      "授課方式": "講授 研討 個別指導 其他",
+      "評量配分比重": "課程參與：50％ 課程習作：30％ 期末報告：20％",
+      "辦公時間": "週四 8am-12pm",
+      "授課週數": "16",
+      "彈性教學說明": "自主學習，繳交期末論文分析報告",
+      "課程領域": "理論基礎課程 、 學習科技研究領域課程 、 應用實務課程 、 專題課程",
+      "核心能力": [
+        {
+          "能力名稱": "認識數位學習之發展歷史與趨勢",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "培養數位學習之理論素養",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "培養數位學習所需之科技能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "培養數位學習研究方法與推廣應用之能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "培養創新設計與協調整合之能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "培養具國際觀之跨領域人才",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "資訊電機學院",
+    "系所": "網路學習科技研究所碩士班",
+    "流水號": "54006",
+    "課號-班別": "NL7068-*",
+    "課程名稱(中文)": "人工智慧與學習科技",
+    "課程名稱(英文)": "Artificial Intelligence and Learning Technology",
+    "備註": "[不開放初選]",
+    "授課教師": "吳穎沺",
+    "學分": "3",
+    "上課時間": "Thu234",
+    "教室": "E6-A406",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "30",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=54006&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。學院:限文學院、資訊電機學院。系所:限網路學習科技研究所碩士班、人工智慧國際碩士學位學程、網路學習科技研究所博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=54006&outline=54006&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "網路學習科技研究所碩士班",
+      "流水號": "54006",
+      "課號": "NL7068-*",
+      "授課教師": "吳穎沺",
+      "課程名稱(中文)": "人工智慧與學習科技",
+      "課程名稱(英文)": "Artificial Intelligence and Learning Technology",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "This course is especially designed for graduate students who major in learning technology. This course aims to gain participants’ understanding of nature of learning technology, design thinking, and the core concepts of Generative AI (GenAI). Moreover, this course will explore potential applications of Generative AI in education. This course is designed to provide participants with deep insights into GenAI-based learning technology by combining conceptual understanding with hands-on design practice. Through literature reviews, group discussions, and project-based activities, the course focuses equally on the fundamental understanding of GenAI and applying the fundamental understanding of GenAI to design and validate learning technology prototypes, such as a learning website, system, or app.",
+      "授課內容": "By the end of the course, participants will be able to:\n1.be aware of the nature of learning technology\n2.have sufficient understanding of the nature of learning technology, the fundamental principles and historical development of Generative AI (e.g., from Transformer architecture to ChatGPT), and design thinking\n3.Gain proficiency in key Generative AI applications, including API integration, Prompt Engineering, and Multi-Agent Systems.",
+      "教科書/參考書": "Self-edited teaching materials",
+      "自編教材比例": "100%",
+      "授課方式": "講授",
+      "評量配分比重": "1.Process: *Participation (30％): a. Classroom participation (10％) b. Online community participation (20％; writing and reading notes) *Outcomes: a.Individual understanding on digital learning understanding of the nature of learning technology, learner-centered design (LCD), and design thinking (30％) b.Prototype design: (40％) (peer evaluation and expert evaluation)",
+      "辦公時間": "15:00-18:00 Fir",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "學習科技研究領域課程",
+      "核心能力": [
+        {
+          "能力名稱": "認識數位學習之發展歷史與趨勢",
+          "強度指數": "(1) 非常低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "培養數位學習之理論素養",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "培養數位學習所需之科技能力",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "培養數位學習研究方法與推廣應用之能力",
+          "強度指數": "(2) 低",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "培養創新設計與協調整合之能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "培養具國際觀之跨領域人才",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "資訊電機學院",
+    "系所": "網路學習科技研究所碩士班",
+    "流水號": "54007",
+    "課號-班別": "NL7072-*",
+    "課程名稱(中文)": "議題實境遊戲設計",
+    "課程名稱(英文)": "Issue-Based Reality Games Design",
+    "備註": "[不開放初選]",
+    "授課教師": "廖長彥",
+    "學分": "3",
+    "上課時間": "Tue567",
+    "教室": "E6-A408",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "30",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=54007&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。學院:限文學院、資訊電機學院。系所:限網路學習科技研究所碩士班、人工智慧國際碩士學位學程、網路學習科技研究所博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=54007&outline=54007&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "網路學習科技研究所碩士班",
+      "流水號": "54007",
+      "課號": "NL7072-*",
+      "授課教師": "廖長彥",
+      "課程名稱(中文)": "議題實境遊戲設計",
+      "課程名稱(英文)": "Issue-Based Reality Games Design",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "本課程教導學生將能夠熟練運用數位工具平台設計具社會、文化或環境議題的實境遊戲，並掌握提示詞工程與思考鏈技巧，提升與AI同伴的互動效果。學生將能夠進行實地調查與需求分析，將場域需求有效轉化為遊戲設計元素，並具備設計並迭代遊戲機制與故事情節的能力，從而提升遊戲的互動性與玩家體驗。此外，學生將能夠進行遊戲測試與反饋收集，並根據回饋優化遊戲設計。在專題展示中，學生將能夠清晰地展示其遊戲設計成果，並進行深入的反思與總結，為未來的教學設計工作打下堅實的基礎。 1. 培養學生運用數位工具平台設計具社會、文化或環境議題的實境遊戲能力。 2. 教授學生有效利用AI同伴進行設計輔助，提升創意思維與技術應用能力。 3. 透過實地調查與需求分析，讓學生理解並應用場域需求於遊戲設計中。",
+      "授課內容": "專題目標：本專題旨在讓學生運用所學的遊戲設計理論與實務技能，結合特定的社會、文化或環境議題，設計並開發具教育意義與互動性的實境遊戲。透過實地調查、需求分析、遊戲機制與故事情節設計、測試與反饋收集，學生將完成一個完整的遊戲設計專案，提升其創意思維、技術應用能力及跨領域協作能力。",
+      "教科書/參考書": "Barab, S., ＆ Squire, K. (2004). Design-based research: Putting a stake in the ground. The Journal of the Learning Sciences, 13(1), 1-14. Bonsignore, E., Hansen, D., Kraus, K., ＆ Ruppel, M. (2013). Alternate reality games as platforms for practicing 21st-century literacies. Bonsignore, E., Hansen, D., Kraus, K., Ahn, J., Visconti, A., Fraistat, A., ＆ Druin, A. (2012). Alternate Reality Games: platforms for collaborative learning. Bonsignore, E., Hansen, D., Kraus, K., Visconti, A., Ahn, J., ＆ Druin, A. (2013, June). Playing for real: designing alternate reality games for teenagers in learning contexts. In Proceedings of the 12th International Conference on Interaction Design and Children (pp. 237-246). Connolly, T. M., Stansfield, M., ＆ Hainey, T. (2011). An alternate reality game for language learning: ARGuing for multilingual motivation. Computers ＆ Education, 57(1), 1389-1415. Dena, C. (2008). Emerging participatory culture practices: Player-created tiers in alternate reality games. Convergence, 14(1), 41-57. Ducheneaut, N., ＆ Moore, R. J. (2005). More than just ‘XP’: Learning social skills in massively multiplayer online games. Interactive Technology and Smart Education, 2(2), 89–100. Fellows, S. (2011). Elementary, my dear visitor: How puzzles, mysteries and challenges can create memorable learning experience. In K. Beale (Ed.), Museums at Play: Games, Interaction and Learning (pp. 128–139). MuseumsEtc. Flushman, T., Gondree, M., ＆ Peterson, Z. N. (2015). This is not a game: Early observations on using alternate reality games for teaching security concepts to {First-Year} undergraduates. In 8th Workshop on Cyber Security Experimentation and Test (CSET 15). Giboney, J. S., Bonsignore, E. M., McDonald, J. K., Hansen, D. L., Mata, L., ＆ Balzotti, J. (2024). Perception of “this is not a game”: Definition and measurement. International Journal of Human–Computer Interaction, 40(17), 4725-4744. Hansen, D., Bonsignore, E., Ruppel, M., Visconti, A., ＆ Kraus, K. (2013, April). Designing reusable alternate reality games. In Proceedings of the SIGCHI conference on human factors in computing systems (pp. 1529-1538). Huber, S. E., Kiili, K., Nebel, S., Ryan, R. M., Sailer, M., ＆ Ninaus, M. (2024). Leveraging the potential of large language models in education through playful and game-based learning. Educational Psychology Review, 36(1), 25. Kapp, K. M. (2012). The gamification of learning and instruction: Game-based methods and strategies for training and education. John Wiley ＆ Sons. Kim, J. Y., Allen, J. P., ＆ Lee, E. (2008). Alternate reality gaming. Communications of the ACM, 51(2), 36-42. Kim, J., Lee, E., Thomas, T., ＆ Dombrowski, C. (2009). Storytelling in new media: The case of alternate reality games, 2001–2009. First Monday. Lin, T.-Y. (2022). Exploring museum reality games: Applications of escape room elements for exhibition education. Museum Studies Quarterly, 36(1), 5–27. Nicholson, S. (2016). The state of escape: Escape room design and facilities. Paper presented at Meaningful Play 2016. Lansing, MI. Örnebring, H. (2007). Alternate reality gaming and convergence culture: The case of Alias. International Journal of Cultural Studies, 10(4), 445-462. Whitton, N. (2008, October). Alternate reality games for developing student autonomy and peer learning. In Proceedings of the LICK 2008 Symposium (pp. 32-40). Wiemker, M., Elumir, E., ＆ Clare, A. (2015). Escape room games: “Can you transform an unpleasant situation into a pleasant one?“ In J. Haag, J. Weißenböck, W. Gruber, ＆ C. F. Freisleben-Teutscher (Eds.), Game Based Learning: Dialogorientierung ＆ Spielerisches Lernen Digital und Analog (pp. 55–68). Ikon Verlags Gmbh.",
+      "自編教材比例": "100%",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "1. 上課參與、課程討論(含出席率) (20％) 2. 個人作業： (20％) 3. 專題設計(包括提案、專題實作、錄制影片) (20％ + 30％ + 10％)",
+      "辦公時間": "週二12:00-13:00 (請先預約)",
+      "授課週數": "16",
+      "彈性教學說明": "鼓勵學生進行測試，以收集相關使用者的回饋並能修改",
+      "課程領域": "學習科技研究領域課程 、 專題課程",
+      "核心能力": [
+        {
+          "能力名稱": "認識數位學習之發展歷史與趨勢",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "培養數位學習之理論素養",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "培養數位學習所需之科技能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "培養數位學習研究方法與推廣應用之能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "培養創新設計與協調整合之能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "培養具國際觀之跨領域人才",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "資訊電機學院",
+    "系所": "網路學習科技研究所碩士班",
+    "流水號": "54008",
+    "課號-班別": "NL7074-*",
+    "課程名稱(中文)": "生成式人工智慧與可擴展與可延續的創意學習",
+    "課程名稱(英文)": "Generative AI and creative learning with scalability and sustainability",
+    "備註": "[不開放初選]",
+    "授課教師": "黃武元",
+    "學分": "3",
+    "上課時間": "Fri789",
+    "教室": "E6-A408",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "30",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=54008&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。學院:限文學院、資訊電機學院。系所:限網路學習科技研究所碩士班、人工智慧國際碩士學位學程、網路學習科技研究所博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=54008&outline=54008&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "網路學習科技研究所碩士班",
+      "流水號": "54008",
+      "課號": "NL7074-*",
+      "授課教師": "黃武元",
+      "課程名稱(中文)": "生成式人工智慧與可擴展與可延續的創意學習",
+      "課程名稱(英文)": "Generative AI and creative learning with scalability and sustainability",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "課程目標: 生成式人工智慧（GAI）已經盛行並應用於教育領域，特別是基於學習者的需求和環境的個人化學習。因此，如何促進真實情境中的學習並幫助學習者反映他們在現實世界中所做的活動變得非常關鍵。因此，在課程中，GAI 支援的真實情境學習至關重要，並且與學習者的學習過程相關。在本課程中，我們將重點放在真實環境中的數位學習，利用 GAI 和真實情境辨識等先進技術，幫助學生發展具有永續性的創造力等高階認知。 創造力是學生運用知識、想像和判斷力，以創新、高品質和適當的方式解決問題。 Clarke、Dede、Ketelhut 和 Nelson（2006）將永續性定義為學習程式以保持使用的能力，而可擴展性是指學習程式和設計以適應各種環境的能力。 因此，如何運用GAI幫助學習者實現數位化學習設計的上述能力，成為教育成功的關鍵。這是因為在 GAI 等先進技術的幫助下，在真實的環境中學習可以潛在地實現上述能力，並互補課堂/學校的傳統學習。  Clarke, J., Dede, C., Ketelhut, D. J., ＆ Nelson, B. (2006) A design-based research strategy to promote scalability for educational innovations. Educational Technology, 46(3), 27–36.",
+      "授課內容": "Schedules of course:\nCreative learning with sustainability\nPart I EFL Speaking in Authentic Contexts\n1. Collaborative Kinesthetic English Learning With Recognition Technology.\n2. Collaborative Drama-Based EFL Learning in Familiar Contexts\n3. Collaborative Kinesthetic EFL Learning with Collaborative Total Physical Response\n4. Investigating the effectiveness of a learning activity supported by a mobile multimedia learning system to enhance autonomous EFL learning in authentic contexts\n5. Facilitating the application of language skills in authentic environments with a mobile learning system\n6. A Study of the Cognitive Diffusion Model: Facilitating Students‘ High-Level Cognitive\nProcesses with Authentic Support\n7. Cognitive Diffusion Model: Facilitating EFL learning in an authentic environment\n8. Evaluating Listening and Speaking Skills in a Mobile Game-Based Learning\nEnvironment with Situational Contexts\n9. Effects of Storytelling to Facilitate EFL Speaking Using Web-Based Multimedia System\n10. Review of research on mobile language learning in authentic environments\n11. Recognition-based physical response to facilitate EFL learning\n12. Cognitive Diffusion Model with User-Oriented Context-to-Text Recognition for\nLearning to Promote High Level Cognitive Processes\n13. Effects of using mobile devices on English listening diversity and speaking for EFL elementary students\n14. Users’ Familiar Situational Contexts Facilitate the Practice of EFL in Elementary Schools with Mobile Devices\nPart II EFL Writing in Authentic contexts\n15. Self-experienced storytelling in an authentic context to facilitate EFL writing\n16. Improving English as a Foreign Language Writing in Elementary Schools Using\nMobile Devices in Familiar Situational Contexts\nMid-term Presentation(Summary ＆ Reflection＆ Proposal)\nPart III Math Learning in Authentic Contexts\n17. An Investigation of the Effects of Measuring Authentic Contexts on Geometry\nLearning Achievement\n18. Exploring Authentic Contexts with Ubiquitous Geometry to Facilitate Elementary\nSchool Students‘ Geometry Learning\n19. Effect of Ubiquitous Fraction App on Mathematics Learning Achievements and\nLearning Behaviors of Taiwanese Students in Authentic Contexts 20. Ubiquitous\nGeometry: Measuring Authentic Surroundings to Support Geometry Learning of the Sixth Grade Students\nPart IV Physics Learning in Authentic contexts\n21. Investigation of Inquiry Behaviors and Learning Achievement in Authentic Contexts with the Ubiquitous-Physics App\n22. Investigation of Learning Behaviors of Simple Pendulum and Their Effects to\nLearning Achievement of Vocational High School Students Using Ubiquitous Physics App\n23. Investigation of Learning Behaviors and Achievement of Vocational High School Students Using a Ubiquitous Physics Tablet PC App\nFinal Presentation(Summary ＆ Reflection ＆ Proposal)",
+      "教科書/參考書": "自編教材與期刊文章",
+      "自編教材比例": "90",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "Grading Policy Presentations ＆ reports (2-3 presentations) 80％ Formative assessment (Report, attendance and Q＆A) 20％",
+      "辦公時間": "1-3pm, Friday.",
+      "授課週數": "16",
+      "彈性教學說明": "In the last two weeks, students will learn through projects or field study to consolidate the concepts and ideas by applying them into real-world problems using generative ＡＩ",
+      "課程領域": "學習科技研究領域課程 、 應用實務課程 、 專題課程",
+      "核心能力": [
+        {
+          "能力名稱": "認識數位學習之發展歷史與趨勢",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "培養數位學習之理論素養",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "培養數位學習所需之科技能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "培養數位學習研究方法與推廣應用之能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 實作/實驗 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "培養創新設計與協調整合之能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "培養具國際觀之跨領域人才",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "資訊電機學院",
+    "系所": "網路學習科技研究所碩士班",
+    "流水號": "54009",
+    "課號-班別": "NLA008-*",
+    "課程名稱(中文)": "論文研究（Ⅱ）",
+    "課程名稱(英文)": "Thesis Study（Ⅱ）",
+    "備註": "[不開放初選]",
+    "授課教師": "各教授",
+    "學分": "3",
+    "上課時間": "",
+    "教室": "",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=54009&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限網路學習科技研究所碩士在職專班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=54009&outline=54009&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "網路學習科技研究所碩士班",
+      "流水號": "54009",
+      "課號": "NLA008-*",
+      "授課教師": "各教授",
+      "課程名稱(中文)": "論文研究（Ⅱ）",
+      "課程名稱(英文)": "Thesis Study（Ⅱ）",
+      "課程學制": "碩士在職專班",
+      "學分": "3",
+      "課程目標": "透過小組的討論，增進學生們有撰寫論文及執行計畫的能力。",
+      "授課內容": "研究生論文指導",
+      "教科書/參考書": "論文集",
+      "自編教材比例": "30",
+      "授課方式": "研討 個別指導",
+      "評量配分比重": "“報告60％ 出席20％ 小組討論20％“",
+      "辦公時間": "各教授自訂",
+      "授課週數": "16",
+      "彈性教學說明": "自主學習",
+      "課程領域": "專題課程",
+      "核心能力": [
+        {
+          "能力名稱": "認識數位學習之發展歷史與趨勢",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "培養數位學習之理論素養",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "培養數位學習所需之科技能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "培養數位學習研究方法與推廣應用之能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "培養創新設計與協調整合之能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "培養具國際觀之跨領域人才",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "資訊電機學院",
+    "系所": "網路學習科技研究所碩士班",
+    "流水號": "54010",
+    "課號-班別": "NLA016-*",
+    "課程名稱(中文)": "論文研究（Ⅰ）",
+    "課程名稱(英文)": "Thesis Study（Ⅰ）",
+    "備註": "[不開放初選]",
+    "授課教師": "各教授",
+    "學分": "3",
+    "上課時間": "",
+    "教室": "",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=54010&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限網路學習科技研究所碩士在職專班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=54010&outline=54010&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "網路學習科技研究所碩士班",
+      "流水號": "54010",
+      "課號": "NLA016-*",
+      "授課教師": "各教授",
+      "課程名稱(中文)": "論文研究（Ⅰ）",
+      "課程名稱(英文)": "Thesis Study（Ⅰ）",
+      "課程學制": "碩士在職專班",
+      "學分": "3",
+      "課程目標": "透過小組的討論，增進學生們有撰寫論文及執行計畫的能力。",
+      "授課內容": "研究生論文指導",
+      "教科書/參考書": "論文集",
+      "自編教材比例": "30",
+      "授課方式": "研討 個別指導",
+      "評量配分比重": "“報告60％ 出席20％ 小組討論20％“",
+      "辦公時間": "各教授自訂",
+      "授課週數": "16",
+      "彈性教學說明": "自主學習",
+      "課程領域": "專題課程",
+      "核心能力": [
+        {
+          "能力名稱": "認識數位學習之發展歷史與趨勢",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "培養數位學習之理論素養",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "培養數位學習所需之科技能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "培養數位學習研究方法與推廣應用之能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "培養創新設計與協調整合之能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "培養具國際觀之跨領域人才",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "資訊電機學院",
+    "系所": "網路學習科技研究所碩士班",
+    "流水號": "54011",
+    "課號-班別": "NLA018-*",
+    "課程名稱(中文)": "數位學習研究方法",
+    "課程名稱(英文)": "Research methods of e-learning",
+    "備註": "[不開放初選]",
+    "授課教師": "吳穎沺",
+    "學分": "3",
+    "上課時間": "ThuABC",
+    "教室": "E6-A406",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=54011&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限網路學習科技研究所碩士在職專班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=54011&outline=54011&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "網路學習科技研究所碩士班",
+      "流水號": "54011",
+      "課號": "NLA018-*",
+      "授課教師": "吳穎沺",
+      "課程名稱(中文)": "數位學習研究方法",
+      "課程名稱(英文)": "Research methods of e-learning",
+      "課程學制": "碩士在職專班",
+      "學分": "3",
+      "課程目標": "“Course Overview: This course is designed for graduate students to provide an introduction to research methods in e-learning. In this course, we will discuss basic conception of educational research and e-learning. Also, important research methods frequently used in e-learning research (including qualitative, quantitative, and mixed research methods) will be introduced. Moreover, the students who take this course will learn about each step in the process of educational research in e-learning, including formulating research problem, literature review, generating research questions and hypotheses, research design, data collection and analyses, drawing findings and conclusions, and they are expected to complete a research proposal at the end of the semester.“",
+      "授課內容": "“Course Overview:\nThis course is designed for graduate students to provide an introduction to research methods in e-learning. In this course, we will discuss basic conception of educational research and e-learning. Also, important research methods frequently used in e-learning research (including qualitative, quantitative, and mixed research methods) will be introduced. Moreover, the students who take this course will learn about each step in the process of educational research in e-learning, including formulating research problem, literature review, generating research questions and hypotheses, research design, data collection and analyses, drawing findings and conclusions, and they are expected to complete a research proposal at the end of the semester.\nCourse Objectives:\n1. Gain an understanding of basic conception of educational research and e-learning.\n2. Gain an understanding of the research methods frequently used in e-learning research.\n3. Develop the ability to propose a research proposal in e-learning.\n4. Develop basic skills to review a research paper and evaluate the quality of the research.\n授課內容：\nWeek 1：課程介紹\nWeek 2：教育研究與數位學習研究的基本概念\nWeek 3：數位學習研究的模式與類別\nWeek 4：研究主題與其概念化\nWeek 5：理論與文獻探討\nWeek 6：研究問題的操作化\nWeek 7：研究群體與樣本選取\nWeek 8：描述性研究：調查研究法、發展研究法、相關研究法\nWeek 9：期中考週\nWeek 10：因果性研究：實驗研究法（一）\nWeek 11：因果性研究：實驗研究法（二）\nWeek 12：詮釋性研究：質性研究（一）\nWeek 13：詮釋性研究：質性研究（二）\nWeek 14：混合研究方法\nWeek 15：研究工具的發展與使用\nWeek 16：期刊論文基本評析與報告\nWeek 17：期末報告\nWeek 18：期末報告“",
+      "教科書/參考書": "“Textbooks: 1.林生傳（2003）。教育研究法：全方位的統整與分析。台北：心理。 2. Ary, D., Jacobs, L. C., ＆ Sorensen, C. (2010). Introduction to research in education (8th ed.). Belmont, CA: Wadsworth, Cengage Learning. Suggested references: 1.王文科、王智弘（2009）。教育研究法（第13 版）。台北：五南圖書出版公司。 2.潘中道、胡龍騰譯（2010）。研究方法：步驟化學習指南（第2版）。台北：學富。 3.謝志偉、王慧玉譯（2010）。混合方法研究導論。台北：心理。“",
+      "自編教材比例": "80",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "“Class participation (10％) Homework (20％) Exam (20％) Proposal presentation (20％) Proposal report (30％)“",
+      "辦公時間": "三10.11.12",
+      "授課週數": "16",
+      "彈性教學說明": "自主學習",
+      "課程領域": "應用實務課程",
+      "核心能力": [
+        {
+          "能力名稱": "認識數位學習之發展歷史與趨勢",
+          "強度指數": "(1) 非常低",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "培養數位學習之理論素養",
+          "強度指數": "(3) 普通",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "培養數位學習所需之科技能力",
+          "強度指數": "(1) 非常低",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "培養數位學習研究方法與推廣應用之能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "培養創新設計與協調整合之能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "培養具國際觀之跨領域人才",
+          "強度指數": "(1) 非常低",
+          "評量方式": "出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "資訊電機學院",
+    "系所": "網路學習科技研究所碩士班",
+    "流水號": "54012",
+    "課號-班別": "NLA028-*",
+    "課程名稱(中文)": "視覺化分析系統實作",
+    "課程名稱(英文)": "Visual Analytics Techniques and Applications",
+    "備註": "[不開放初選]",
+    "授課教師": "洪暉鈞",
+    "學分": "3",
+    "上課時間": "WedABC",
+    "教室": "E6-A406",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=54012&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限網路學習科技研究所碩士在職專班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=54012&outline=54012&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "網路學習科技研究所碩士班",
+      "流水號": "54012",
+      "課號": "NLA028-*",
+      "授課教師": "洪暉鈞",
+      "課程名稱(中文)": "視覺化分析系統實作",
+      "課程名稱(英文)": "Visual Analytics Techniques and Applications",
+      "課程學制": "碩士在職專班",
+      "學分": "3",
+      "課程目標": "在本課程中，學生將學習如何製作基於資料進行視覺化，以達到資料探勘和溝通的目的，並且根據不同類型的資料、視覺化目標和任務進行選擇。透過實際案例的探討，他們將學會辨識並避免誤導性的視覺呈現。同時，他們將學習如何透過數據敘事（data stories）傳達他們的見解。本課程透過資料視覺化和資料探勘工具，提升學生在企業資料處理與分析方面的實際應用能力，包括資料視覺化創新主題開發、從平面到多維度視覺化階段情境、視覺化介面和人機互動，以及Tableau資料視覺化加值應用專案的開發，探討資料視覺化創新主題開發和透過視覺化進行探索性分析。 **為保障同學權益，請務必參加第一堂課，了解相關修課規定。 **本課程結合數位學習和實作，為照顧同學學習進度，部分實作週次將進行調整，請留意課程進度表。 **開課後可能因上課人數、邀請講者、上課內容等因素視情況調整上課教室。 **有筆電的同學可以自備筆電上課，也可以使用電腦教室的設備完成各項作業。 **同學需配合線上練習和相關作業要求，並製作期末小組專題實作。 **為即時了解同學線上學習情形，本課程需要收集修課同學的線上學習記錄進行分析研究，並會在課堂中適時拍照、錄影紀錄。",
+      "授課內容": "資料探勘實作的目的在研究應用資料探勘技術、資料倉儲技術及知識發現技術，在大數據時代中從資料庫探勘出對挖掘出潛在而有用之資訊，並且轉化成明確之知識，本課程介紹視覺化資料探勘之重要概念與常用技術與機上相關實作。並從資料視覺化應用培養資料探勘及知識發現之具體能力，同學將學習到不同的視覺化的工具及應用方式，並且探討其優缺點及使用時機。本課程以創新思考為主軸，探討與以往傳統資料分析思路不同的技術，透過視覺化理論與專題實作來熟悉流程和反思設計。本課程帶領學生實踐構思資料視覺化技術，並了解在團隊中提出想法、如何建立視覺化互動模型的開發過程，透過專題創作過程實踐資料視覺化加值應用服務，發揮群體動力和創造性。\n課程大綱如下\n1.資料視覺化理論與背景：\n大數據時代中的資料探勘、資料倉儲、知識發現技術應用\n資料視覺化基本概念\n2.資料視覺化的必要性與目的：\n整合統計數據與視覺化提升理解與溝通能力\n探索性資料分析\n3.探索性資料分析的方法與應用：\n資料類型引介不同類型的資料，包括類別、數值、層次、網路、時間和空間資料\n基本圖表詳述廣泛使用的圖表及其變化，如長條圖、折線圖、直方圖、點狀圖、箱型圖、散點圖、氣泡圖、地圖、樹狀圖、網路圖和熱圖\n展示優良和不良的範例，討論常見錯誤和誤導性的視覺化\n4.資料視覺化任務與互動性：\n資料視覺化任務描述如何選擇適當的視覺化方法，取決於資料類型和視覺化任務的組合，例如擷取數值、篩選、計算派生值、尋找極值、排序、確定範圍、描述分佈、尋找異常值、分群和相關性\n探討在某些情況下單一視覺化是不足夠的，並探索如何結合視覺化以實現探索或溝通目標\n5.資料的互動呈現與視覺化儀表板：\n創建資料互動呈現的技巧\n視覺化儀表板的設計\n視覺化系統與互動系統設計\n視覺化系統實際應用\n6.資料視覺化中的敘事：\n以數據講故事討論如何在敘事中使用視覺化來傳達數據驅動的見解\n由於人們通過故事更易學習，數據故事可能創造共鳴，比孤立的數據事實和視覺化更具有記憶性\n備註：出於教學目的，這些主題將不嚴格按照順序呈現。",
+      "教科書/參考書": "Visual Insights: A Practical Guide to Making Sense of Data (MIT Press) Chen, C., H?rdle, W., ＆Unwin, A. (2008). Handbook of Data Visualization. Berlin, Heidelberg: Springer Berlin Heidelberg. https://doi.org/10.1007/978-3-540-33037-0 Anouncia, S. M., Gohel, H. A., ＆ Vairamuthu, S. (2020). Data Visualization. Springer Singapore. https://doi.org/10.1007/978-981-15-2282-6 Beautiful Visualization: Looking at Data through the Eyes of Experts Julie Steele and Noah Iliinsky, O‘Reilly Media",
+      "自編教材比例": "0",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "個人技術實作30％ 課堂小組討論18％ 視覺化論文研討17％ 視覺化專題報告25％ 期末視覺化分析技能測驗10％",
+      "辦公時間": "周一 1400-1600 周二 1000-1200 (請提前預約)",
+      "授課週數": "16",
+      "彈性教學說明": "有兩周內容以實體或線上參與研討會報告、線上演講、課程實作討論形式進行。",
+      "課程領域": "學習科技研究領域課程 、 應用實務課程",
+      "核心能力": [
+        {
+          "能力名稱": "認識數位學習之發展歷史與趨勢",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗 ， 學習檔案評量 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "培養數位學習之理論素養",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "培養數位學習所需之科技能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "培養數位學習研究方法與推廣應用之能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "培養創新設計與協調整合之能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "培養具國際觀之跨領域人才",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "資訊電機學院",
+    "系所": "網路學習科技研究所碩士班",
+    "流水號": "54013",
+    "課號-班別": "NLA040-*",
+    "課程名稱(中文)": "數位學習質性研究",
+    "課程名稱(英文)": "Qualitative Research of Digital Learning",
+    "備註": "[不開放初選]",
+    "授課教師": "施如齡",
+    "學分": "3",
+    "上課時間": "MonABC",
+    "教室": "E6-A406",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=54013&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限網路學習科技研究所碩士在職專班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=54013&outline=54013&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "網路學習科技研究所碩士班",
+      "流水號": "54013",
+      "課號": "NLA040-*",
+      "授課教師": "施如齡",
+      "課程名稱(中文)": "數位學習質性研究",
+      "課程名稱(英文)": "Qualitative Research of Digital Learning",
+      "課程學制": "碩士在職專班",
+      "學分": "3",
+      "課程目標": "本課程從數位學習科技的應用範疇與角度，介紹質性研究方法，從研究典範、研究設計、資料收集技巧、資料分析、研究倫理、信效度的掌握、以及研究報告書寫等，帶領學生深入質量並重的研究概念。課程從方法論的議題開始討論，包括民族誌、傳記史、詮釋學、現象學、個案研究、行動研究、紮根理論等，至研究方法的操作，包括田野調查、深度訪談、焦點團體、參與觀察等，將理論與實務的結合，期望建立學生完整的質化研究概念，並提供學習者在進行數位學習科技的設計與實驗操作實，能有進行質性研究的行動依據。",
+      "授課內容": "本課程之教學目標在於：\n（一） 比較質化與量化研究的差異\n（二） 說明質化研究法之類型\n（三） 探討質化研究進行的步驟與相關考量的因素\n（四） 指導並演練質化研究資料蒐集的技巧\n（五） 分析質化研究資料\n（六） 書寫並報告質化研究結果",
+      "自編教材比例": "80",
+      "授課方式": "講授 研討 個別指導 其他",
+      "評量配分比重": "課程參與：50％ 課程習作：30％ 期末報告：20％",
+      "辦公時間": "週四 18：00～20：50",
+      "授課週數": "16",
+      "彈性教學說明": "自主學習, 繳交期末論文分析報告",
+      "課程領域": "理論基礎課程 、 學習科技研究領域課程 、 應用實務課程 、 專題課程",
+      "核心能力": [
+        {
+          "能力名稱": "認識數位學習之發展歷史與趨勢",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "培養數位學習之理論素養",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "培養數位學習所需之科技能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "培養數位學習研究方法與推廣應用之能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "培養創新設計與協調整合之能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "培養具國際觀之跨領域人才",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "資訊電機學院",
+    "系所": "網路學習科技研究所碩士班",
+    "流水號": "54014",
+    "課號-班別": "NLA044-*",
+    "課程名稱(中文)": "生成式人工智慧與可擴展與可延續的創意學習 [已停開]",
+    "課程名稱(英文)": "Generative AI and creative learning with scalability and sustainability",
+    "備註": "[不開放初選]",
+    "授課教師": "黃武元",
+    "學分": "3",
+    "上課時間": "FriABC",
+    "教室": "E6-A408",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=54014&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限網路學習科技研究所碩士在職專班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=54014&outline=54014&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "網路學習科技研究所碩士班",
+      "流水號": "54014",
+      "課號": "NLA044-*",
+      "授課教師": "黃武元",
+      "課程名稱(中文)": "生成式人工智慧與可擴展與可延續的創意學習",
+      "課程名稱(英文)": "Generative AI and creative learning with scalability and sustainability",
+      "課程學制": "碩士在職專班",
+      "學分": "3",
+      "課程目標": "生成式人工智慧（GAI）已經盛行並應用於教育領域，特別是基於學習者的需求和環境的個人化學習。因此，如何促進真實情境中的學習並幫助學習者反映他們在現實世界中所做的活動變得非常關鍵。因此，在課程中，GAI 支援的真實情境學習至關重要，並且與學習者的學習過程相關。在本課程中，我們將重點放在真實環境中的數位學習，利用 GAI 和真實情境辨識等先進技術，幫助學生發展具有永續性的創造力等高階認知。 創造力是學生運用知識、想像和判斷力，以創新、高品質和適當的方式解決問題。 Clarke、Dede、Ketelhut 和 Nelson（2006）將永續性定義為學習程式以保持使用的能力，而可擴展性是指學習程式和設計以適應各種環境的能力。 因此，如何運用GAI幫助學習者實現數位化學習設計的上述能力，成為教育成功的關鍵。這是因為在 GAI 等先進技術的幫助下，在真實的環境中學習可以潛在地實現上述能力，並互補課堂/學校的傳統學習。  Clarke, J., Dede, C., Ketelhut, D. J., ＆ Nelson, B. (2006) A design-based research strategy to promote scalability for educational innovations. Educational Technology, 46(3), 27–36.",
+      "授課內容": "Schedules of course:\nCreative learning with sustainability\nPart I EFL Speaking in Authentic Contexts\n1. Collaborative Kinesthetic English Learning With Recognition Technology.\n2. Collaborative Drama-Based EFL Learning in Familiar Contexts\n3. Collaborative Kinesthetic EFL Learning with Collaborative Total Physical Response\n4. Investigating the effectiveness of a learning activity supported by a mobile multimedia learning system to enhance autonomous EFL learning in authentic contexts\n5. Facilitating the application of language skills in authentic environments with a mobile learning system\n6. A Study of the Cognitive Diffusion Model: Facilitating Students‘ High-Level Cognitive\nProcesses with Authentic Support\n7. Cognitive Diffusion Model: Facilitating EFL learning in an authentic environment\n8. Evaluating Listening and Speaking Skills in a Mobile Game-Based Learning\nEnvironment with Situational Contexts\n9. Effects of Storytelling to Facilitate EFL Speaking Using Web-Based Multimedia System\n10. Review of research on mobile language learning in authentic environments\n11. Recognition-based physical response to facilitate EFL learning\n12. Cognitive Diffusion Model with User-Oriented Context-to-Text Recognition for\nLearning to Promote High Level Cognitive Processes\n13. Effects of using mobile devices on English listening diversity and speaking for EFL elementary students\n14. Users’ Familiar Situational Contexts Facilitate the Practice of EFL in Elementary Schools with Mobile Devices\nPart II EFL Writing in Authentic contexts\n15. Self-experienced storytelling in an authentic context to facilitate EFL writing\n16. Improving English as a Foreign Language Writing in Elementary Schools Using\nMobile Devices in Familiar Situational Contexts\nMid-term Presentation(Summary ＆ Reflection＆ Proposal)\nPart III Math Learning in Authentic Contexts\n17. An Investigation of the Effects of Measuring Authentic Contexts on Geometry\nLearning Achievement\n18. Exploring Authentic Contexts with Ubiquitous Geometry to Facilitate Elementary\nSchool Students‘ Geometry Learning\n19. Effect of Ubiquitous Fraction App on Mathematics Learning Achievements and\nLearning Behaviors of Taiwanese Students in Authentic Contexts 20. Ubiquitous\nGeometry: Measuring Authentic Surroundings to Support Geometry Learning of the Sixth Grade Students\nPart IV Physics Learning in Authentic contexts\n21. Investigation of Inquiry Behaviors and Learning Achievement in Authentic Contexts with the Ubiquitous-Physics App\n22. Investigation of Learning Behaviors of Simple Pendulum and Their Effects to\nLearning Achievement of Vocational High School Students Using Ubiquitous Physics App\n23. Investigation of Learning Behaviors and Achievement of Vocational High School Students Using a Ubiquitous Physics Tablet PC App\nFinal Presentation(Summary ＆ Reflection ＆ Proposal)",
+      "教科書/參考書": "自編教材與期刊文章",
+      "自編教材比例": "90",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "Grading Policy Presentations ＆ reports (2-3 presentations) 80％ Formative assessment (Report, attendance and Q＆A) 20％",
+      "辦公時間": "五10.11.12",
+      "授課週數": "16",
+      "彈性教學說明": "In the last two weeks, students will learn through projects or field study to consolidate the concepts and ideas by applying them into real-world problems using generative ＡＩ",
+      "課程領域": "學習科技研究領域課程 、 應用實務課程 、 專題課程",
+      "核心能力": [
+        {
+          "能力名稱": "認識數位學習之發展歷史與趨勢",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "培養數位學習之理論素養",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "培養數位學習所需之科技能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "培養數位學習研究方法與推廣應用之能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 實作/實驗 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "培養創新設計與協調整合之能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "培養具國際觀之跨領域人才",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "資訊電機學院",
+    "系所": "網路學習科技研究所碩士班",
+    "流水號": "54015",
+    "課號-班別": "NLA046-*",
+    "課程名稱(中文)": "議題實境遊戲設計",
+    "課程名稱(英文)": "Issue-Based Reality Games Design",
+    "備註": "[不開放初選]",
+    "授課教師": "廖長彥",
+    "學分": "3",
+    "上課時間": "TueABC",
+    "教室": "E6-A408",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=54015&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限網路學習科技研究所碩士在職專班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=54015&outline=54015&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "網路學習科技研究所碩士班",
+      "流水號": "54015",
+      "課號": "NLA046-*",
+      "授課教師": "廖長彥",
+      "課程名稱(中文)": "議題實境遊戲設計",
+      "課程名稱(英文)": "Issue-Based Reality Games Design",
+      "課程學制": "碩士在職專班",
+      "學分": "3",
+      "課程目標": "本課程教導學生將能夠熟練運用數位工具平台設計具社會、文化或環境議題的實境遊戲，並掌握提示詞工程與思考鏈技巧，提升與AI同伴的互動效果。學生將能夠進行實地調查與需求分析，將場域需求有效轉化為遊戲設計元素，並具備設計並迭代遊戲機制與故事情節的能力，從而提升遊戲的互動性與玩家體驗。此外，學生將能夠進行遊戲測試與反饋收集，並根據回饋優化遊戲設計。在專題展示中，學生將能夠清晰地展示其遊戲設計成果，並進行深入的反思與總結，為未來的教學設計工作打下堅實的基礎。 1. 培養學生運用數位工具平台設計具社會、文化或環境議題的實境遊戲能力。 2. 教授學生有效利用AI同伴進行設計輔助，提升創意思維與技術應用能力。 3. 透過實地調查與需求分析，讓學生理解並應用場域需求於遊戲設計中。",
+      "授課內容": "專題目標：本專題旨在讓學生運用所學的遊戲設計理論與實務技能，結合特定的社會、文化或環境議題，設計並開發具教育意義與互動性的實境遊戲。透過實地調查、需求分析、遊戲機制與故事情節設計、測試與反饋收集，學生將完成一個完整的遊戲設計專案，提升其創意思維、技術應用能力及跨領域協作能力。",
+      "教科書/參考書": "Barab, S., ＆ Squire, K. (2004). Design-based research: Putting a stake in the ground. The Journal of the Learning Sciences, 13(1), 1-14. Bonsignore, E., Hansen, D., Kraus, K., ＆ Ruppel, M. (2013). Alternate reality games as platforms for practicing 21st-century literacies. Bonsignore, E., Hansen, D., Kraus, K., Ahn, J., Visconti, A., Fraistat, A., ＆ Druin, A. (2012). Alternate Reality Games: platforms for collaborative learning. Bonsignore, E., Hansen, D., Kraus, K., Visconti, A., Ahn, J., ＆ Druin, A. (2013, June). Playing for real: designing alternate reality games for teenagers in learning contexts. In Proceedings of the 12th International Conference on Interaction Design and Children (pp. 237-246). Connolly, T. M., Stansfield, M., ＆ Hainey, T. (2011). An alternate reality game for language learning: ARGuing for multilingual motivation. Computers ＆ Education, 57(1), 1389-1415. Dena, C. (2008). Emerging participatory culture practices: Player-created tiers in alternate reality games. Convergence, 14(1), 41-57. Ducheneaut, N., ＆ Moore, R. J. (2005). More than just ‘XP’: Learning social skills in massively multiplayer online games. Interactive Technology and Smart Education, 2(2), 89–100. Fellows, S. (2011). Elementary, my dear visitor: How puzzles, mysteries and challenges can create memorable learning experience. In K. Beale (Ed.), Museums at Play: Games, Interaction and Learning (pp. 128–139). MuseumsEtc. Flushman, T., Gondree, M., ＆ Peterson, Z. N. (2015). This is not a game: Early observations on using alternate reality games for teaching security concepts to {First-Year} undergraduates. In 8th Workshop on Cyber Security Experimentation and Test (CSET 15). Giboney, J. S., Bonsignore, E. M., McDonald, J. K., Hansen, D. L., Mata, L., ＆ Balzotti, J. (2024). Perception of “this is not a game”: Definition and measurement. International Journal of Human–Computer Interaction, 40(17), 4725-4744. Hansen, D., Bonsignore, E., Ruppel, M., Visconti, A., ＆ Kraus, K. (2013, April). Designing reusable alternate reality games. In Proceedings of the SIGCHI conference on human factors in computing systems (pp. 1529-1538). Huber, S. E., Kiili, K., Nebel, S., Ryan, R. M., Sailer, M., ＆ Ninaus, M. (2024). Leveraging the potential of large language models in education through playful and game-based learning. Educational Psychology Review, 36(1), 25. Kapp, K. M. (2012). The gamification of learning and instruction: Game-based methods and strategies for training and education. John Wiley ＆ Sons. Kim, J. Y., Allen, J. P., ＆ Lee, E. (2008). Alternate reality gaming. Communications of the ACM, 51(2), 36-42. Kim, J., Lee, E., Thomas, T., ＆ Dombrowski, C. (2009). Storytelling in new media: The case of alternate reality games, 2001–2009. First Monday. Lin, T.-Y. (2022). Exploring museum reality games: Applications of escape room elements for exhibition education. Museum Studies Quarterly, 36(1), 5–27. Nicholson, S. (2016). The state of escape: Escape room design and facilities. Paper presented at Meaningful Play 2016. Lansing, MI. Örnebring, H. (2007). Alternate reality gaming and convergence culture: The case of Alias. International Journal of Cultural Studies, 10(4), 445-462. Whitton, N. (2008, October). Alternate reality games for developing student autonomy and peer learning. In Proceedings of the LICK 2008 Symposium (pp. 32-40). Wiemker, M., Elumir, E., ＆ Clare, A. (2015). Escape room games: “Can you transform an unpleasant situation into a pleasant one?“ In J. Haag, J. Weißenböck, W. Gruber, ＆ C. F. Freisleben-Teutscher (Eds.), Game Based Learning: Dialogorientierung ＆ Spielerisches Lernen Digital und Analog (pp. 55–68). Ikon Verlags Gmbh.",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 實習/實驗",
+      "評量配分比重": "1. 上課參與、課程討論(含出席率) (20％) 2. 個人作業： (20％) 3. 專題設計(包括提案、專題實作、錄制影片) (20％ + 30％ + 10％)",
+      "辦公時間": "週二17:00-18:00 (請先預約)",
+      "授課週數": "16",
+      "彈性教學說明": "鼓勵學生進行測試，以收集相關使用者的回饋並能修改",
+      "課程領域": "應用實務課程 、 專題課程",
+      "核心能力": [
+        {
+          "能力名稱": "認識數位學習之發展歷史與趨勢",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "培養數位學習之理論素養",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "培養數位學習所需之科技能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "培養數位學習研究方法與推廣應用之能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "培養創新設計與協調整合之能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "培養具國際觀之跨領域人才",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演"
+        }
+      ]
+    }
+  }
+]

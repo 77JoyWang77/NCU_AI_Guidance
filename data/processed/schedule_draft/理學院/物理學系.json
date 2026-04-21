@@ -1,0 +1,155 @@
+{
+  "id": "dept_physics",
+  "name": "物理學系",
+  "program_type": "traditional_dept",
+  "min_credits": 128,
+  "required_credits": 83,
+  "graduation_rules": [
+    {
+      "type": "credit_minimum",
+      "credits": 128,
+      "description": "最低畢業學分 128 學分（共同必修 25＋系必修 58）"
+    },
+    {
+      "type": "cross_dept_elective_required",
+      "credits": 6,
+      "description": "修業期限內須選修並通過非通識、非物理系之外系課程至少 6 學分（課程名稱或內容與物理系相近者不予採認）"
+    },
+    {
+      "type": "specialization_track",
+      "tracks_min": 1,
+      "description": "須任選甲類或乙類修習：甲類—擇二科共 6 學分（計算物理導論、近代物理實驗、電子學I/II、物理專題、業界實習擇二）；乙類—擇二組共 12 學分（物理專題＋論文研習與撰寫，每組各 2 門成對選修）"
+    },
+    {
+      "type": "ph_elective_min",
+      "credits_alpha": 15,
+      "credits_beta": 9,
+      "description": "系訂（PH開頭）選修學分：甲類至少 15 學分，乙類至少 9 學分（專題類課程除外）"
+    },
+    {
+      "type": "thesis_requirement",
+      "tracks": ["乙類"],
+      "description": "乙類學生須：(1)參加物理小年會壁報展並報告；(2)完成畢業論文（格式比照碩士論文）並繳交 PDF 至系辦；(3)通過至少二位委員組成之論文口試"
+    },
+    {
+      "type": "foreign_language",
+      "credits": 6,
+      "description": "外文三種擇一修習 6 學分：大一英文科學課群、英文系其他英文課程、語言中心第二外語（同一外語須修滿 6 學分）"
+    },
+    {
+      "type": "general_education",
+      "domains_min": 1,
+      "description": "通識核心必修：人文與思想、應用科學、社會思潮與現象三大領域中至少修習一個領域"
+    }
+  ],
+  "required_courses": [
+    {
+      "code": "MA1001",
+      "name": "微積分上",
+      "credits": 4,
+      "when": "大一上~大一下",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "MA1002",
+      "name": "微積分下",
+      "credits": 4,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "PH1029",
+      "name": "實驗物理與方法I上",
+      "credits": 6,
+      "when": "大一上~大一下",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "PH1030",
+      "name": "實驗物理與方法I下",
+      "credits": 6,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "PH1027",
+      "name": "力學",
+      "credits": 4,
+      "when": "大一上",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "PH1028",
+      "name": "電磁學",
+      "credits": 4,
+      "when": "大一下",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "PH2003",
+      "name": "應用數學上",
+      "credits": 3,
+      "when": "大二上~大二下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "PH2004",
+      "name": "應用數學下",
+      "credits": 3,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "PH3011",
+      "name": "熱物理",
+      "credits": 3,
+      "when": "大二上",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "PH3009",
+      "name": "量子物理",
+      "credits": 3,
+      "when": "大二下",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "PH2029",
+      "name": "實驗物理與方法II上",
+      "credits": 6,
+      "when": "大二上~大二下",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "PH2030",
+      "name": "實驗物理與方法II下",
+      "credits": 6,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    }
+  ]
+}

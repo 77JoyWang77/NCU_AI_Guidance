@@ -1,0 +1,350 @@
+{
+  "id": "dept_geoscience",
+  "name": "地球科學學系",
+  "program_type": "traditional_dept",
+  "min_credits": 128,
+  "required_credits": 78,
+  "graduation_rules": [
+    {
+      "type": "credit_minimum",
+      "credits": 128,
+      "description": "最低畢業學分 128 學分"
+    },
+    {
+      "type": "dept_required",
+      "credits": 78,
+      "description": "必修科目 78 學分"
+    },
+    {
+      "type": "core_elective_each_group",
+      "credits_min": 7,
+      "groups": 3,
+      "description": "系訂核心選修三組（分析數學與物理、地質、水文與海洋）各選一門，合計至少 7 學分"
+    },
+    {
+      "type": "dept_elective_gp",
+      "credits": 10,
+      "description": "另選修並通過本系（課號GP）科目 10 學分"
+    },
+    {
+      "type": "special_requirement_one_of",
+      "description": "修業期間通過下列之一：(1)地球科學資訊學分學程15學分 (2)氣候與環境變遷學分學程18學分 (3)地科院或理/工/資電/生醫理工/遙測課程16學分"
+    },
+    {
+      "type": "foreign_language",
+      "credits": 6,
+      "description": "外文三種課程擇一修習 6 學分"
+    },
+    {
+      "type": "general_education",
+      "credits": 14,
+      "domains_min": 1,
+      "description": "通識課程 14 學分，核心必修四大領域至少修習一個領域"
+    }
+  ],
+  "required_courses": [
+    {
+      "code": "MA1003",
+      "name": "微積分上",
+      "credits": 3,
+      "when": "大一上",
+      "when_auto": false
+    },
+    {
+      "code": "MA1004",
+      "name": "微積分下",
+      "credits": 3,
+      "when": "大一下",
+      "when_auto": false
+    },
+    {
+      "code": "PH1031",
+      "name": "普通物理A上",
+      "credits": 3,
+      "when": "大一上",
+      "when_auto": false
+    },
+    {
+      "code": "PH1032",
+      "name": "普通物理A下",
+      "credits": 3,
+      "when": "大一下",
+      "when_auto": false
+    },
+    {
+      "code": "GP1017",
+      "name": "程式語言與應用",
+      "credits": 2,
+      "when": "大一下",
+      "when_auto": false
+    },
+    {
+      "code": "GP2031",
+      "name": "普通地質學上",
+      "credits": 2,
+      "when": "大一上",
+      "when_auto": false
+    },
+    {
+      "code": "GP2032",
+      "name": "普通地質學下",
+      "credits": 2,
+      "when": "大一下",
+      "when_auto": false
+    },
+    {
+      "code": "GP1019",
+      "name": "地球科學通論",
+      "credits": 1,
+      "when": "大一上",
+      "when_auto": false
+    },
+    {
+      "code": "GP1020",
+      "name": "地球科學的挑戰與機會",
+      "credits": 1,
+      "when": "大一下",
+      "when_auto": false
+    },
+    {
+      "code": "GP2019",
+      "name": "應用數學上",
+      "credits": 3,
+      "when": "大二上",
+      "when_auto": false
+    },
+    {
+      "code": "GP2020",
+      "name": "應用數學下",
+      "credits": 3,
+      "when": "大二下",
+      "when_auto": false
+    },
+    {
+      "code": "GP2038",
+      "name": "礦物學",
+      "credits": 2,
+      "when": "大二上",
+      "when_auto": false
+    },
+    {
+      "code": "GP2059",
+      "name": "地質材料力學",
+      "credits": 2,
+      "when": "大二下",
+      "when_auto": false
+    },
+    {
+      "code": "GP2065",
+      "name": "岩石學",
+      "credits": 2,
+      "when": "大二下",
+      "when_auto": false
+    },
+    {
+      "code": "GP3087",
+      "name": "沉積地質學",
+      "credits": 2,
+      "when": "大二下",
+      "when_auto": false
+    },
+    {
+      "code": "GP3026",
+      "name": "地震學",
+      "credits": 3,
+      "when": "大三上",
+      "when_auto": false
+    },
+    {
+      "code": "GP3011",
+      "name": "地球物理探勘上",
+      "credits": 3,
+      "when": "大三上",
+      "when_auto": false
+    },
+    {
+      "code": "GP3012",
+      "name": "地球物理探勘下",
+      "credits": 3,
+      "when": "大三下",
+      "when_auto": false
+    },
+    {
+      "code": "GP3034",
+      "name": "地球物理學",
+      "credits": 3,
+      "when": "大三下",
+      "when_auto": false
+    },
+    {
+      "code": "GP3019",
+      "name": "地球物理探勘實習上",
+      "credits": 1,
+      "when": "大三上",
+      "when_auto": false
+    },
+    {
+      "code": "GP3020",
+      "name": "地球物理探勘實習下",
+      "credits": 1,
+      "when": "大三下",
+      "when_auto": false
+    },
+    {
+      "code": "GP3024",
+      "name": "構造地質學",
+      "credits": 3,
+      "when": "大三下",
+      "when_auto": false
+    },
+    {
+      "code": "GP1010",
+      "name": "地球系統科學概論",
+      "credits": 2,
+      "when": "大一下",
+      "when_auto": false
+    },
+    {
+      "code": "GP4031",
+      "name": "台灣地質",
+      "credits": 2,
+      "when": "大四下",
+      "when_auto": false
+    },
+    {
+      "code": "GP4087",
+      "name": "地球科學專題I",
+      "credits": 1,
+      "when": "大四上",
+      "when_auto": false
+    },
+    {
+      "code": "GP4088",
+      "name": "地球科學專題II",
+      "credits": 1,
+      "when": "大四下",
+      "when_auto": false
+    }
+  ],
+  "core_elective_groups": [
+    {
+      "name": "分析數學與物理（六擇一）",
+      "select": 1,
+      "min_credits": 3,
+      "courses": [
+        {
+          "code": "GP3052",
+          "name": "時序分析",
+          "credits": 3
+        },
+        {
+          "code": "GP3053",
+          "name": "數值分析",
+          "credits": 3
+        },
+        {
+          "code": "GP3072",
+          "name": "統計學",
+          "credits": 3
+        },
+        {
+          "code": "GP4024",
+          "name": "地球科學資料處理",
+          "credits": 3
+        },
+        {
+          "code": "GP2002",
+          "name": "力學",
+          "credits": 3
+        },
+        {
+          "code": "GP2014",
+          "name": "電磁學",
+          "credits": 3
+        }
+      ]
+    },
+    {
+      "name": "地質（七擇一）",
+      "select": 1,
+      "min_credits": 2,
+      "courses": [
+        {
+          "code": "GP3013",
+          "name": "野外地質學",
+          "credits": 3
+        },
+        {
+          "code": "GP5068",
+          "name": "地形學",
+          "credits": 2
+        },
+        {
+          "code": "GP7048",
+          "name": "層序地層學",
+          "credits": 2
+        },
+        {
+          "code": "GP4065",
+          "name": "工程地質學",
+          "credits": 3
+        },
+        {
+          "code": "GP4008",
+          "name": "地下水及土壤污染控制",
+          "credits": 3
+        },
+        {
+          "code": "GP3085",
+          "name": "基礎大地工程學",
+          "credits": 3
+        },
+        {
+          "code": "GP4010",
+          "name": "水文地質學",
+          "credits": 2
+        }
+      ]
+    },
+    {
+      "name": "水文與海洋（四擇一）",
+      "select": 1,
+      "min_credits": 2,
+      "courses": [
+        {
+          "code": "GP3039",
+          "name": "海洋學導論",
+          "credits": 2
+        },
+        {
+          "code": "HS6063",
+          "name": "海洋學概論",
+          "credits": 3
+        },
+        {
+          "code": "GP3096",
+          "name": "流體力學概論",
+          "credits": 2
+        },
+        {
+          "code": "GP4070",
+          "name": "水文學",
+          "credits": 3
+        }
+      ]
+    }
+  ],
+  "graduation_notes": {
+    "共同必修": [
+      "共同科目修習及其他畢業條件，請見應修科目表注意事項。",
+      "本系新生外文課程可從三種外文課程中任選一種：(1)修讀「大一英文」科學課群6學分；(2)修讀英文之其他英文課程，通過且取得6學分；(3)修讀語言中心開設或認定之第二外語課程，但同一外語課程必須修讀並通過取得6學分。",
+      "選修「進修英文」取得之學分，不列入本系之畢業學分總數。",
+      "通識核心必修四大領域中至少須修習一個領域。"
+    ],
+    "系訂必修及選修": [
+      "最低畢業學分128學分：包括必修科目78學分、系訂核心必選及系訂核心選修（分析數學與物理、地質、水文與海洋）各需一門並通過至少7學分。另選修並通過本系（課號GP）科目10學分。",
+      "除第1項規定外，修業期間內並通過下列三者之一：(1)地球科學資訊學分學程15學分；(2)氣候與環境變遷學分學程18學分；(3)地科院或理、工、資電學院、生醫理工學院、遙測學程開設之課程16學分。"
+    ],
+    "雙主修": "依本校「學生修讀雙主修辦法」辦理。"
+  }
+}

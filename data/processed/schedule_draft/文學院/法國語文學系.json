@@ -1,0 +1,283 @@
+{
+  "id": "dept_french",
+  "name": "法國語文學系",
+  "program_type": "traditional_dept",
+  "min_credits": 128,
+  "required_credits": 56,
+  "elective_credits": 47,
+  "graduation_rules": [
+    {
+      "type": "credit_minimum",
+      "credits": 128,
+      "description": "最低畢業學分數 128 學分"
+    },
+    {
+      "type": "dept_required",
+      "credits": 56,
+      "description": "系訂必修課程共 56 學分（須全部修畢）"
+    },
+    {
+      "type": "dept_elective_min",
+      "credits": 35,
+      "description": "選修課程中至少須包含本系選修課程 35 學分"
+    },
+    {
+      "type": "elective_total_min",
+      "credits": 47,
+      "description": "選修課程共至少 47 學分（含本系35學分＋其餘可選校內外課程，不含語言中心法文課及進修英文）"
+    },
+    {
+      "type": "certification_required",
+      "cert": "DELF B1",
+      "applies_to": [
+        "regular",
+        "double_major"
+      ],
+      "description": "須通過並取得「法語鑑定文憑 B1」（DELF B1）方可畢業；雙主修學生同樣須取得 DELF B1"
+    },
+    {
+      "type": "certification_waiver",
+      "cert_threshold": "DELF A2",
+      "description": "入學前已取得 DELF A2（含）以上證書者，可申請免修部分基礎必修課程，免修學分須加修本系選修補足"
+    },
+    {
+      "type": "double_major_extra_elective",
+      "credits": 8,
+      "description": "外系學生修讀本系雙主修，除必修外另須於本系選修課中任選 8 學分"
+    },
+    {
+      "type": "general_education",
+      "domains_min": 1,
+      "description": "通識核心必修四大領域至少修習一個領域"
+    }
+  ],
+  "certifications": [
+    "DELF B1（法語鑑定文憑，畢業必備，雙主修亦適用）"
+  ],
+  "required_courses": [
+    {
+      "code": "FR1019",
+      "name": "口語表達一上",
+      "credits": 2,
+      "when": "大一上~大一下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FR1020",
+      "name": "口語表達一下",
+      "credits": 2,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FR1033",
+      "name": "文法與寫作上",
+      "credits": 4,
+      "when": "大一上~大一下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FR1034",
+      "name": "文法與寫作下",
+      "credits": 4,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FR1023",
+      "name": "讀本上",
+      "credits": 4,
+      "when": "大一上~大一下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FR1024",
+      "name": "讀本下",
+      "credits": 4,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FR1039",
+      "name": "法文文選一上",
+      "credits": 2,
+      "when": "大一上~大一下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FR1040",
+      "name": "法文文選一下",
+      "credits": 2,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FR2029",
+      "name": "口語表達二上",
+      "credits": 2,
+      "when": "大二上~大二下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FR2030",
+      "name": "口語表達二下",
+      "credits": 2,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FR2031",
+      "name": "寫作二上",
+      "credits": 2,
+      "when": "大二上~大二下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FR2032",
+      "name": "寫作二下",
+      "credits": 2,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FR2043",
+      "name": "文法二上",
+      "credits": 2,
+      "when": "大二上~大二下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FR2044",
+      "name": "文法二下",
+      "credits": 2,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FR2035",
+      "name": "中譯法上",
+      "credits": 2,
+      "when": "大二上~大三下",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FR3047",
+      "name": "中譯法下",
+      "credits": 2,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FR2039",
+      "name": "法文文選二上",
+      "credits": 2,
+      "when": "大二上~大二下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FR2040",
+      "name": "法文文選二下",
+      "credits": 2,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FR2036",
+      "name": "法譯中上",
+      "credits": 2,
+      "when": "大二上~大三下",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FR3048",
+      "name": "法譯中下",
+      "credits": 2,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FR3041",
+      "name": "口語表達三上",
+      "credits": 2,
+      "when": "大三上~大三下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FR3042",
+      "name": "口語表達三下",
+      "credits": 2,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FR3043",
+      "name": "寫作三上",
+      "credits": 2,
+      "when": "大三上~大三下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FR3044",
+      "name": "寫作三下",
+      "credits": 2,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    }
+  ],
+  "elective_groups": [
+    {
+      "name": "系訂選修",
+      "select_credits": 35,
+      "description": "本系開設之選修課程，至少選修 35 學分；不含語言中心開設之法文課程",
+      "courses": []
+    }
+  ]
+}

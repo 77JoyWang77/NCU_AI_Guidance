@@ -1,0 +1,710 @@
+[
+  {
+    "id": "taica_ai_exploration",
+    "name": "人工智慧探索應用學分學程",
+    "college": "臺灣大專院校人工智慧學程聯盟TAICA",
+    "cross_school": true,
+    "partner_schools": [
+      "TAICA"
+    ],
+    "min_credits": 15,
+    "description": "TAICA 聯盟四類學分學程之一（代碼 72）。旨在培育人工智慧領域及相關產業所需之專業人才，提供學生跨校學習機會。各學院學士班及碩士班學生均可選修。",
+    "required_courses": [],
+    "elective_groups": [
+      {
+        "name": "學群一：程式設計",
+        "select": 1,
+        "description": "每學群至多承認一門",
+        "courses": [
+          {
+            "code": "TC1004",
+            "name": "基礎程式設計(C++)",
+            "credits": 3,
+            "school": "TAICA"
+          },
+          {
+            "code": "ME4301",
+            "name": "Python 程式設計",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MT1051",
+            "name": "程式設計：Python",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM2038",
+            "name": "Python",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM1023",
+            "name": "程式設計",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "學群二：機率",
+        "select": 1,
+        "description": "每學群至多承認一門",
+        "courses": [
+          {
+            "code": "TC1002",
+            "name": "機率與統計",
+            "credits": 3,
+            "school": "TAICA"
+          },
+          {
+            "code": "MA2022",
+            "name": "機率與統計",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CE2006",
+            "name": "機率與統計",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MA2021",
+            "name": "機率論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE4020",
+            "name": "機率",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CO3003",
+            "name": "機率",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "學群三：人工智慧導論",
+        "select": 1,
+        "description": "每學群至多承認一門",
+        "courses": [
+          {
+            "code": "TC1001",
+            "name": "人工智慧導論",
+            "credits": 3,
+            "school": "TAICA"
+          },
+          {
+            "code": "ME5209",
+            "name": "人工智慧與設計思考",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME5302",
+            "name": "人工智慧",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BM1011",
+            "name": "人工智慧程式入門",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CE6020",
+            "name": "人工智慧",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM3078",
+            "name": "人工智慧與機器學習",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3073",
+            "name": "AI 人工智慧導論",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "學群四：人工智慧倫理",
+        "select": 1,
+        "description": "每學群至多承認一門",
+        "courses": [
+          {
+            "code": "TC1003",
+            "name": "人工智慧倫理",
+            "credits": 3,
+            "school": "TAICA"
+          }
+        ]
+      },
+      {
+        "name": "學群五：人工智慧應用課程",
+        "select": 1,
+        "description": "每學群至多承認一門",
+        "courses": [
+          {
+            "code": "TC5002",
+            "name": "金融科技導論",
+            "credits": 3,
+            "school": "TAICA"
+          },
+          {
+            "code": "TC5008",
+            "name": "機器導航與探索",
+            "credits": 3,
+            "school": "TAICA"
+          },
+          {
+            "code": "FM6108",
+            "name": "金融科技應用與創新",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IE5044",
+            "name": "金融科技法制與監理專題",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM5021",
+            "name": "智慧醫療",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BE5017",
+            "name": "醫學影像處理",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 15,
+        "description": "修滿 15 學分，每學群至多承認一門"
+      },
+      {
+        "type": "required_elective",
+        "description": "至少 8 學分須為 TAICA 聯盟認定課程（TC 開頭課號）"
+      },
+      {
+        "type": "outside_elective_max",
+        "credits": 6,
+        "description": "TAICA 四類學程間課程相互抵免上限 6 學分"
+      }
+    ],
+    "notes": "完成後憑 TAICA 聯盟核發學程證明。TC 開頭課號為 TAICA 聯盟認定跨校課程，其餘為中央大學開設課程。"
+  },
+  {
+    "id": "taica_ai_industrial",
+    "name": "人工智慧工業應用學分學程",
+    "college": "臺灣大專院校人工智慧學程聯盟TAICA",
+    "cross_school": true,
+    "partner_schools": [
+      "TAICA"
+    ],
+    "min_credits": 15,
+    "description": "TAICA 聯盟四類學分學程之一（代碼 73）。旨在培育人工智慧工業應用領域專業人才，各學院學士班及碩士班學生均可選修。",
+    "required_courses": [],
+    "elective_groups": [
+      {
+        "name": "學群一：統計",
+        "select": 1,
+        "description": "每學群至多承認一門",
+        "courses": [
+          {
+            "code": "TC1005",
+            "name": "統計學暨實習",
+            "credits": 4,
+            "school": "TAICA"
+          },
+          {
+            "code": "ME5096",
+            "name": "統計學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MA2011",
+            "name": "統計學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MT2041",
+            "name": "統計學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MT2042",
+            "name": "統計學",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "學群二：機器學習",
+        "select": 1,
+        "description": "每學群至多承認一門",
+        "courses": [
+          {
+            "code": "TC5001",
+            "name": "機器學習",
+            "credits": 3,
+            "school": "TAICA"
+          },
+          {
+            "code": "TC1006",
+            "name": "生成式人工智慧與機器學習導論",
+            "credits": 3,
+            "school": "TAICA"
+          },
+          {
+            "code": "CE6102",
+            "name": "機器學習",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CO6062",
+            "name": "機器學習演算法",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM3078",
+            "name": "人工智慧與機器學習",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM5033",
+            "name": "資料科學與機器學習",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME6104",
+            "name": "Python 與機器學習",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "學群三：人工智慧倫理",
+        "select": 1,
+        "description": "每學群至多承認一門",
+        "courses": [
+          {
+            "code": "TC1003",
+            "name": "人工智慧倫理",
+            "credits": 3,
+            "school": "TAICA"
+          }
+        ]
+      },
+      {
+        "name": "學群四：智慧製造",
+        "select": 1,
+        "description": "每學群至多承認一門",
+        "courses": [
+          {
+            "code": "ME5202",
+            "name": "智慧製造技術",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "學群五：機器人專題",
+        "select": 1,
+        "description": "每學群至多承認一門",
+        "courses": [
+          {
+            "code": "TC5008",
+            "name": "機器導航與探索",
+            "credits": 3,
+            "school": "TAICA"
+          },
+          {
+            "code": "ME6061",
+            "name": "機器人學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME8002",
+            "name": "移動式機器人",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 15,
+        "description": "修滿 15 學分，每學群至多承認一門"
+      },
+      {
+        "type": "required_elective",
+        "description": "至少 8 學分須為 TAICA 聯盟認定課程（TC 開頭課號）"
+      },
+      {
+        "type": "outside_elective_max",
+        "credits": 6,
+        "description": "TAICA 四類學程間課程相互抵免上限 6 學分"
+      }
+    ],
+    "notes": "完成後憑 TAICA 聯盟核發學程證明。TC 開頭課號為 TAICA 聯盟認定跨校課程，其餘為中央大學開設課程。"
+  },
+  {
+    "id": "taica_ai_nlp",
+    "name": "人工智慧自然語言技術學分學程",
+    "college": "臺灣大專院校人工智慧學程聯盟TAICA",
+    "cross_school": true,
+    "partner_schools": [
+      "TAICA"
+    ],
+    "min_credits": 15,
+    "description": "TAICA 聯盟四類學分學程之一（代碼 74）。旨在培育人工智慧自然語言技術領域專業人才，各學院學士班及碩士班學生均可選修。",
+    "required_courses": [],
+    "elective_groups": [
+      {
+        "name": "學群一：生成式人工智慧導論",
+        "select": 1,
+        "description": "每學群至多承認一門",
+        "courses": [
+          {
+            "code": "TC5005",
+            "name": "生成式人工智慧的人文導論",
+            "credits": 3,
+            "school": "TAICA"
+          },
+          {
+            "code": "TC5006",
+            "name": "生成式 AI：文字與圖像生成的原理與實務",
+            "credits": 3,
+            "school": "TAICA"
+          }
+        ]
+      },
+      {
+        "name": "學群二：人工智慧倫理",
+        "select": 1,
+        "description": "每學群至多承認一門",
+        "courses": [
+          {
+            "code": "TC1003",
+            "name": "人工智慧倫理",
+            "credits": 3,
+            "school": "TAICA"
+          }
+        ]
+      },
+      {
+        "name": "學群三：智慧人機互動",
+        "select": 1,
+        "description": "每學群至多承認一門",
+        "courses": [
+          {
+            "code": "TC5009",
+            "name": "智慧人機互動",
+            "credits": 3,
+            "school": "TAICA"
+          }
+        ]
+      },
+      {
+        "name": "學群四：資料探勘與應用",
+        "select": 1,
+        "description": "每學群至多承認一門",
+        "courses": [
+          {
+            "code": "TC5003",
+            "name": "資料探勘與應用",
+            "credits": 3,
+            "school": "TAICA"
+          },
+          {
+            "code": "IM3078",
+            "name": "人工智慧與機器學習",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM5033",
+            "name": "資料科學與機器學習",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CE6143",
+            "name": "資料科學導論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CO6063",
+            "name": "資料科學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM2045",
+            "name": "資料科學和大數據應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SE6032",
+            "name": "資料科學實務",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM5021",
+            "name": "智慧醫療",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "學群五：自然語言處理",
+        "select": 1,
+        "description": "每學群至多承認一門",
+        "courses": [
+          {
+            "code": "TC5004",
+            "name": "自然語言處理",
+            "credits": 3,
+            "school": "TAICA"
+          },
+          {
+            "code": "EE8094",
+            "name": "深度學習系統設計與應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CE6146",
+            "name": "深度學習介紹",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CO3027",
+            "name": "深度學習程式設計",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 15,
+        "description": "修滿 15 學分，每學群至多承認一門"
+      },
+      {
+        "type": "required_elective",
+        "description": "至少 8 學分須為 TAICA 聯盟認定課程（TC 開頭課號）"
+      },
+      {
+        "type": "outside_elective_max",
+        "credits": 6,
+        "description": "TAICA 四類學程間課程相互抵免上限 6 學分"
+      }
+    ],
+    "notes": "完成後憑 TAICA 聯盟核發學程證明。TC 開頭課號為 TAICA 聯盟認定跨校課程，其餘為中央大學開設課程。"
+  },
+  {
+    "id": "taica_ai_vision",
+    "name": "人工智慧視覺技術應用學分學程",
+    "college": "臺灣大專院校人工智慧學程聯盟TAICA",
+    "cross_school": true,
+    "partner_schools": [
+      "TAICA"
+    ],
+    "min_credits": 15,
+    "description": "TAICA 聯盟四類學分學程之一（代碼 75）。旨在培育人工智慧視覺技術領域專業人才，各學院學士班及碩士班學生均可選修。",
+    "required_courses": [],
+    "elective_groups": [
+      {
+        "name": "學群一：機器學習",
+        "select": 1,
+        "description": "每學群至多承認一門",
+        "courses": [
+          {
+            "code": "TC5001",
+            "name": "機器學習",
+            "credits": 3,
+            "school": "TAICA"
+          },
+          {
+            "code": "TC1006",
+            "name": "生成式人工智慧與機器學習導論",
+            "credits": 3,
+            "school": "TAICA"
+          },
+          {
+            "code": "CE6102",
+            "name": "機器學習",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM3078",
+            "name": "人工智慧與機器學習",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM5033",
+            "name": "資料科學與機器學習",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "學群二：人工智慧倫理",
+        "select": 1,
+        "description": "每學群至多承認一門",
+        "courses": [
+          {
+            "code": "TC1003",
+            "name": "人工智慧倫理",
+            "credits": 3,
+            "school": "TAICA"
+          }
+        ]
+      },
+      {
+        "name": "學群三：深度學習",
+        "select": 1,
+        "description": "每學群至多承認一門",
+        "courses": [
+          {
+            "code": "TC5007",
+            "name": "深度學習",
+            "credits": 3,
+            "school": "TAICA"
+          },
+          {
+            "code": "EE8094",
+            "name": "深度學習系統設計與應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CE6146",
+            "name": "深度學習介紹",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CO3027",
+            "name": "深度學習程式設計",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "學群四：電腦視覺",
+        "select": 1,
+        "description": "每學群至多承認一門",
+        "courses": [
+          {
+            "code": "TC5010",
+            "name": "電腦視覺實務與深度學習",
+            "credits": 3,
+            "school": "TAICA"
+          },
+          {
+            "code": "CE3060",
+            "name": "電腦視覺原理及應用簡介",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CE6032",
+            "name": "電腦視覺",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CO6041",
+            "name": "數位影像處理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME5208",
+            "name": "深度學習與電腦視覺應用",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "學群五：人工智慧影像應用課程",
+        "select": 1,
+        "description": "每學群至多承認一門",
+        "courses": [
+          {
+            "code": "BE5017",
+            "name": "醫學影像處理",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 15,
+        "description": "修滿 15 學分，每學群至多承認一門"
+      },
+      {
+        "type": "required_elective",
+        "description": "至少 8 學分須為 TAICA 聯盟認定課程（TC 開頭課號）"
+      },
+      {
+        "type": "outside_elective_max",
+        "credits": 6,
+        "description": "TAICA 四類學程間課程相互抵免上限 6 學分"
+      }
+    ],
+    "notes": "完成後憑 TAICA 聯盟核發學程證明。TC 開頭課號為 TAICA 聯盟認定跨校課程，其餘為中央大學開設課程。"
+  }
+]

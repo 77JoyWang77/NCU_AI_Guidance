@@ -1,0 +1,299 @@
+{
+  "id": "dept_chemistry",
+  "name": "化學學系",
+  "program_type": "traditional_dept",
+  "min_credits": 128,
+  "required_credits": 92,
+  "graduation_rules": [
+    {
+      "type": "credit_minimum",
+      "credits": 128,
+      "description": "最低畢業學分數 128 學分"
+    },
+    {
+      "type": "dept_required",
+      "credits": 92,
+      "description": "必修科目共 92 學分（共同必修25＋系訂必修67）"
+    },
+    {
+      "type": "dept_elective_min",
+      "credits": 10,
+      "description": "系訂選修至少 10 學分，其中 CM2011 化學數學、CM2012 化學動力學為必選"
+    },
+    {
+      "type": "outside_elective_min",
+      "credits": 6,
+      "description": "系外選修至少 6 學分，須來自理學院、工學院、資電學院、生醫理工學院或地球科學學院"
+    },
+    {
+      "type": "elective_fail_note",
+      "description": "選修課程不及格之學分不列入畢業學分總數"
+    },
+    {
+      "type": "general_education",
+      "domains_min": 1,
+      "description": "通識核心必修四大領域至少修習一個領域"
+    }
+  ],
+  "required_courses": [
+    {
+      "code": "MA1001",
+      "name": "微積分上",
+      "credits": 4,
+      "when": "大一上~大一下",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "MA1002",
+      "name": "微積分下",
+      "credits": 4,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CM1001",
+      "name": "普通化學I",
+      "credits": 3,
+      "when": "大一上~大一下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CM1002",
+      "name": "普通化學II",
+      "credits": 3,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CM1003",
+      "name": "普化實驗上",
+      "credits": 1,
+      "when": "大一上~大一下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CM1004",
+      "name": "普化實驗下",
+      "credits": 1,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "PH1033",
+      "name": "普通物理B上",
+      "credits": 3,
+      "when": "大一上~大一下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "PH1034",
+      "name": "普通物理B下",
+      "credits": 3,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "PH1003",
+      "name": "普物實驗上",
+      "credits": 1,
+      "when": "大一上",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "PH1004",
+      "name": "普物實驗下",
+      "credits": 1,
+      "when": "大一下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CM2021",
+      "name": "分析化學上",
+      "credits": 3,
+      "when": "大二上~大二下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CM2022",
+      "name": "分析化學下",
+      "credits": 4,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CM2031",
+      "name": "有機化學上",
+      "credits": 4,
+      "when": "大二上~大二下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CM2032",
+      "name": "有機化學下",
+      "credits": 4,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CM2081",
+      "name": "分析與有機化學實驗上",
+      "credits": 3,
+      "when": "大二上~大二下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CM2082",
+      "name": "分析與有機化學實驗下",
+      "credits": 3,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CM3041",
+      "name": "物理化學上",
+      "credits": 4,
+      "when": "大三上~大三下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CM3042",
+      "name": "物理化學下",
+      "credits": 4,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CM3043",
+      "name": "物理化學實驗上",
+      "credits": 2,
+      "when": "大三上~大三下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CM3044",
+      "name": "物理化學實驗下",
+      "credits": 2,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CM3051",
+      "name": "無機化學上",
+      "credits": 3,
+      "when": "大三上~大三下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CM3052",
+      "name": "無機化學下",
+      "credits": 3,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CM3055",
+      "name": "無機化學實驗",
+      "credits": 2,
+      "when": "大三上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CM4001",
+      "name": "書報討論上",
+      "credits": 1,
+      "when": "大四上~大四下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "CM4002",
+      "name": "書報討論下",
+      "credits": 1,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    }
+  ],
+  "elective_groups": [
+    {
+      "name": "系訂選修（含必選）",
+      "select_credits": 10,
+      "courses": [
+        {
+          "code": "CM2011",
+          "name": "化學數學",
+          "credits": 3,
+          "mandatory": true,
+          "when": "",
+          "when_auto": false,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "CM2012",
+          "name": "化學動力學",
+          "credits": 3,
+          "mandatory": true,
+          "when": "",
+          "when_auto": false,
+          "verified": false,
+          "note": ""
+        }
+      ]
+    },
+    {
+      "name": "系外選修",
+      "select_credits": 6,
+      "description": "須從理學院、工學院、資電學院、生醫理工學院、地球科學學院課程中選修",
+      "courses": []
+    }
+  ]
+}

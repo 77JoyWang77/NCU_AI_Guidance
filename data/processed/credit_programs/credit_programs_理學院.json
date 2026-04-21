@@ -1,0 +1,987 @@
+[
+  {
+    "id": "astronomy",
+    "name": "「天文」學分學程",
+    "college": "理學院",
+    "cross_school": false,
+    "min_credits": 15,
+    "description": "培養天文專業人員之基礎，以便未來從事相關教育與研究工作。本校各學院各學系學生均可選修。",
+    "required_courses": [
+      {
+        "code": "PH2033",
+        "name": "普通天文學Ⅰ",
+        "credits": 3,
+        "school": "NCU"
+      },
+      {
+        "code": "PH2034",
+        "name": "普通天文學Ⅱ",
+        "credits": 3,
+        "school": "NCU"
+      }
+    ],
+    "elective_groups": [
+      {
+        "name": "必修二選一",
+        "select": 1,
+        "description": "天文觀測Ⅰ 和 天文物理導論 二選一，計入必修 9 學分",
+        "courses": [
+          {
+            "code": "PH3045",
+            "name": "天文觀測Ⅰ",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "PH3054",
+            "name": "天文物理導論",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "選修科目－天文進階及太陽系相關",
+        "select_credits": 6,
+        "description": "與基礎學科合計至少 6 學分",
+        "courses": [
+          {
+            "code": "PH3046",
+            "name": "天文觀測Ⅱ",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "PH3066",
+            "name": "用 Python 做天文物理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SS3025",
+            "name": "行星科學導論",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "SS3026",
+            "name": "月球科學導論",
+            "credits": 2,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "選修科目－基礎學科",
+        "select_credits": 6,
+        "description": "與天文進階合計至少 6 學分；各科目多個課號為跨系等效課程",
+        "courses": [],
+        "slots": [
+          {
+            "slot_id": "slot_PH1030",
+            "slot_name": "普通物理 A/B/C",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "PH1030",
+                "name": "普通物理 A/B/C",
+                "credits": 3
+              },
+              {
+                "code": "PH1031",
+                "name": "普通物理A",
+                "credits": 3
+              },
+              {
+                "code": "PH1032",
+                "name": "普通物理A",
+                "credits": 3
+              },
+              {
+                "code": "PH1033",
+                "name": "普通物理B",
+                "credits": 3
+              },
+              {
+                "code": "PH1034",
+                "name": "普通物理B",
+                "credits": 3
+              },
+              {
+                "code": "PH1035",
+                "name": "普通物理A",
+                "credits": 3
+              },
+              {
+                "code": "PH1036",
+                "name": "普通物理A",
+                "credits": 3
+              },
+              {
+                "code": "PH1038",
+                "name": "普通物理B",
+                "credits": 3
+              },
+              {
+                "code": "PH1040",
+                "name": "普通物理C",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_PH2003",
+            "slot_name": "應用數學",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "PH2003",
+                "name": "應用數學",
+                "credits": 3
+              },
+              {
+                "code": "PH2004",
+                "name": "應用數學",
+                "credits": 3
+              },
+              {
+                "code": "AP2007",
+                "name": "應用數學",
+                "credits": 3
+              },
+              {
+                "code": "AP2008",
+                "name": "應用數學",
+                "credits": 3
+              },
+              {
+                "code": "GP2019",
+                "name": "應用數學",
+                "credits": 3
+              },
+              {
+                "code": "GP2020",
+                "name": "應用數學",
+                "credits": 3
+              },
+              {
+                "code": "SS2005",
+                "name": "應用數學 I",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_CI2017",
+            "slot_name": "工程數學",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "CI2017",
+                "name": "工程數學",
+                "credits": 3
+              },
+              {
+                "code": "CI2018",
+                "name": "工程數學Ⅱ",
+                "credits": 3
+              },
+              {
+                "code": "ME2001",
+                "name": "工程數學 Ｉ",
+                "credits": 3
+              },
+              {
+                "code": "ME2002",
+                "name": "工程數學 II",
+                "credits": 3
+              },
+              {
+                "code": "CH2009",
+                "name": "工程數學",
+                "credits": 3
+              },
+              {
+                "code": "CH2010",
+                "name": "工程數學",
+                "credits": 3
+              },
+              {
+                "code": "EE1009",
+                "name": "工程數學-線性代數",
+                "credits": 3
+              },
+              {
+                "code": "EE1010",
+                "name": "工程數學-微分方程",
+                "credits": 3
+              },
+              {
+                "code": "CE1006",
+                "name": "工程數學",
+                "credits": 3
+              },
+              {
+                "code": "CO1007",
+                "name": "工程數學-線性代數",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_MA1013",
+            "slot_name": "計算機概論Ⅰ",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "MA1013",
+                "name": "計算機概論Ⅰ",
+                "credits": 3
+              },
+              {
+                "code": "CE1001",
+                "name": "計算機概論 Ⅰ",
+                "credits": 3
+              },
+              {
+                "code": "EE1003",
+                "name": "計算機概論 I",
+                "credits": 3
+              },
+              {
+                "code": "CO1001",
+                "name": "計算機概論Ⅰ",
+                "credits": 3
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "dept_required",
+        "credits": 9,
+        "description": "必修 9 學分：普通天文學Ⅰ(3) + 普通天文學Ⅱ(3) + 天文觀測Ⅰ或天文物理導論二選一(3)"
+      },
+      {
+        "type": "elective_minimum",
+        "credits": 6,
+        "description": "選修至少 6 學分，可來自天文進階及太陽系相關或基礎學科"
+      },
+      {
+        "type": "substitution",
+        "description": "曾在本校其他系所及他校修過與上述課程內容類似之課程，抵免由天文所課程委員會認定；全年課程僅通過一學期者得以採計"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢天文學分學程」，並頒發學分學程證明書。追溯至 112 學年度申請者適用。"
+  },
+  {
+    "id": "statistics",
+    "name": "「統計」學分學程",
+    "college": "理學院",
+    "cross_school": false,
+    "min_credits": 18,
+    "description": "培養學生統計專業能力，以奠定學生未來從事相關工作或學術研究之基礎。本校各學院學生均可選修。",
+    "required_courses": [],
+    "elective_groups": [
+      {
+        "name": "必修核心課程",
+        "group_rule": "7選3",
+        "select_slots": 3,
+        "total_slots": 7,
+        "note": "從下方 7 個課程槽中選 3 個完成；同一槽的多個課號為跨系等效課程（N選1）",
+        "slots": [
+          {
+            "slot_id": 1,
+            "slot_name": "機率與統計 / 統計學",
+            "slot_rule": "20選1",
+            "select": 1,
+            "credits_options": [
+              3,
+              4
+            ],
+            "note": "各系統計/機率課程皆等效",
+            "courses": [
+              {
+                "code": "MA2011",
+                "name": "統計學",
+                "credits": 3
+              },
+              {
+                "code": "MA2022",
+                "name": "機率與統計",
+                "credits": 3
+              },
+              {
+                "code": "CE2006",
+                "name": "機率與統計",
+                "credits": 3
+              },
+              {
+                "code": "CO3003",
+                "name": "機率",
+                "credits": 3
+              },
+              {
+                "code": "EE3018",
+                "name": "機率與統計",
+                "credits": 3
+              },
+              {
+                "code": "EE4020",
+                "name": "機率",
+                "credits": 3
+              },
+              {
+                "code": "OS7150",
+                "name": "機率與統計",
+                "credits": 3
+              },
+              {
+                "code": "EC2001",
+                "name": "統計學",
+                "credits": 3
+              },
+              {
+                "code": "EC2002",
+                "name": "統計學",
+                "credits": 3
+              },
+              {
+                "code": "BA2005",
+                "name": "統計學",
+                "credits": 3
+              },
+              {
+                "code": "BA2006",
+                "name": "機率與統計/統計學",
+                "credits": 3
+              },
+              {
+                "code": "FM2005",
+                "name": "統計學",
+                "credits": 3
+              },
+              {
+                "code": "FM2006",
+                "name": "統計學",
+                "credits": 3
+              },
+              {
+                "code": "IM2007",
+                "name": "統計學",
+                "credits": 3
+              },
+              {
+                "code": "IM2008",
+                "name": "統計學",
+                "credits": 3
+              },
+              {
+                "code": "MT2041",
+                "name": "統計學",
+                "credits": 3
+              },
+              {
+                "code": "MT2042",
+                "name": "統計學",
+                "credits": 3
+              },
+              {
+                "code": "AP3020",
+                "name": "統計學",
+                "credits": 3
+              },
+              {
+                "code": "GP3072",
+                "name": "統計學",
+                "credits": 3
+              },
+              {
+                "code": "EG2001",
+                "name": "工程統計學",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": 2,
+            "slot_name": "數理統計Ⅰ",
+            "slot_rule": "1選1",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "MA3025",
+                "name": "數理統計Ⅰ",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": 3,
+            "slot_name": "應用統計",
+            "slot_rule": "1選1",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "MA4094",
+                "name": "應用統計",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": 4,
+            "slot_name": "線性代數Ⅰ / 線性代數",
+            "slot_rule": "8選1",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "note": "各系線性代數課程皆等效",
+            "courses": [
+              {
+                "code": "MA2007",
+                "name": "線性代數Ⅰ",
+                "credits": 3
+              },
+              {
+                "code": "CE2005",
+                "name": "線性代數",
+                "credits": 3
+              },
+              {
+                "code": "AP2044",
+                "name": "線性代數",
+                "credits": 3
+              },
+              {
+                "code": "GP2061",
+                "name": "線性代數",
+                "credits": 3
+              },
+              {
+                "code": "ME4055",
+                "name": "線性代數",
+                "credits": 3
+              },
+              {
+                "code": "IM2005",
+                "name": "線性代數",
+                "credits": 3
+              },
+              {
+                "code": "EE1009",
+                "name": "工程數學-線性代數",
+                "credits": 3
+              },
+              {
+                "code": "CO1007",
+                "name": "工程數學-線性代數",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": 5,
+            "slot_name": "隨機模擬Ⅰ / 程式語言及其應用",
+            "slot_rule": "5選1",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "note": "隨機模擬(MA4017/IA7032) 或 程式語言及其應用(MA2051/CE2004/MA5021) 皆等效",
+            "courses": [
+              {
+                "code": "MA4017",
+                "name": "隨機模擬Ⅰ",
+                "credits": 3
+              },
+              {
+                "code": "IA7032",
+                "name": "隨機模擬",
+                "credits": 3
+              },
+              {
+                "code": "MA2051",
+                "name": "程式語言及其應用",
+                "credits": 3
+              },
+              {
+                "code": "CE2004",
+                "name": "程式語言",
+                "credits": 3
+              },
+              {
+                "code": "MA5021",
+                "name": "程式語言及其應用",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": 6,
+            "slot_name": "應用機率Ⅰ",
+            "slot_rule": "1選1",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "MA3071",
+                "name": "應用機率Ⅰ",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": 7,
+            "slot_name": "數理統計Ⅰ（統計所版）/ 數理統計",
+            "slot_rule": "2選1",
+            "select": 1,
+            "credits_options": [
+              3,
+              4
+            ],
+            "note": "ST6001 數理統計Ⅰ(3學分) 或 ST6038 數理統計(4學分)，二者等效",
+            "courses": [
+              {
+                "code": "ST6001",
+                "name": "數理統計Ｉ",
+                "credits": 3
+              },
+              {
+                "code": "ST6038",
+                "name": "數理統計",
+                "credits": 4
+              }
+            ]
+          }
+        ],
+        "courses": []
+      },
+      {
+        "name": "選修課程",
+        "group_rule": "自由選修",
+        "select_slots": null,
+        "note": "選修須至少包含 1 門統計所（ST* 課號）開設課程；與必修核心合計達 18 學分即修畢",
+        "constraint": "至少1門ST*課號",
+        "slots": [
+          {
+            "slot_id": 8,
+            "slot_name": "數理統計Ⅱ",
+            "slot_rule": "2選1",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "MA3026",
+                "name": "數理統計Ⅱ",
+                "credits": 3
+              },
+              {
+                "code": "ST6002",
+                "name": "數理統計Ⅱ",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": 9,
+            "slot_name": "隨機模型",
+            "slot_rule": "1選1",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "MA4093",
+                "name": "隨機模型",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": 10,
+            "slot_name": "迴歸分析",
+            "slot_rule": "1選1",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "ST6021",
+                "name": "迴歸分析",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": 11,
+            "slot_name": "統計計算Ⅰ",
+            "slot_rule": "1選1",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "ST6005",
+                "name": "統計計算Ⅰ",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": 12,
+            "slot_name": "離散資料分析Ⅰ",
+            "slot_rule": "1選1",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "ST6064",
+                "name": "離散資料分析Ｉ",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": 13,
+            "slot_name": "時間數列Ⅰ / 財務時間數列Ⅰ",
+            "slot_rule": "2選1",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "note": "ST6047 時間數列Ⅰ 或 ST7061 財務時間數列Ⅰ，二者等效",
+            "courses": [
+              {
+                "code": "ST6047",
+                "name": "時間數列Ｉ",
+                "credits": 3
+              },
+              {
+                "code": "ST7061",
+                "name": "財務時間數列(I)",
+                "credits": 3
+              }
+            ]
+          }
+        ],
+        "courses": []
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 18,
+        "description": "修得學程內課程 18 學分以上"
+      },
+      {
+        "type": "required_slots",
+        "description": "修習通過 3 門必修核心課程槽（7選3）"
+      },
+      {
+        "type": "elective_constraint",
+        "description": "選修課程須至少包含 1 門統計所（ST* 課號）開設課程"
+      },
+      {
+        "type": "substitution",
+        "description": "本校所開其他與本學程課程名稱或內容相似之科目，經向本學程之開課單位申請認定後，依本校學分抵免辦法辦理"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢統計學分學程」，並頒發學分學程證明書。"
+  },
+  {
+    "id": "quantum_technology",
+    "name": "「量子技術」學分學程",
+    "college": "理學院",
+    "cross_school": false,
+    "min_credits": 15,
+    "description": "培養學生量子之概念與思維，提升學生跨領域知識之能力，奠定學生未來從事相關工作或學術研究之基礎。本校各學院學生均可選修。",
+    "required_courses": [
+      {
+        "code": "SH5005",
+        "name": "量子科技概論",
+        "credits": 3,
+        "school": "NCU"
+      },
+      {
+        "code": "SH5004",
+        "name": "量子實驗與實作",
+        "credits": 3,
+        "school": "NCU"
+      }
+    ],
+    "elective_groups": [
+      {
+        "name": "基礎必選修",
+        "select": 1,
+        "description": "此類別必選修 1 門",
+        "courses": [],
+        "slots": [
+          {
+            "slot_id": "slot_PH3009",
+            "slot_name": "量子物理",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "PH3009",
+                "name": "量子物理",
+                "credits": 3
+              },
+              {
+                "code": "OS2012",
+                "name": "量子物理",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_PH7064",
+            "slot_name": "量子光學",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "PH7064",
+                "name": "量子光學",
+                "credits": 3
+              },
+              {
+                "code": "OS7009",
+                "name": "量子光學",
+                "credits": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "進階必選修",
+        "select": 1,
+        "description": "此類別必選修 1 門",
+        "courses": [
+          {
+            "code": "OS7208",
+            "name": "基礎量子通訊與協議",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "OS7209",
+            "name": "量子光電元件",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ],
+        "slots": [
+          {
+            "slot_id": "slot_SH5002",
+            "slot_name": "量子計算",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "SH5002",
+                "name": "量子計算",
+                "credits": 3
+              },
+              {
+                "code": "CE5082",
+                "name": "量子計算",
+                "credits": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "選修課程",
+        "select_credits": 9,
+        "description": "除必修課程外，修習通過其他課程至少 9 學分（含基礎必選修與進階必選修）；線性代數五門等效課程合計最多只採計 3 學分",
+        "courses": [
+          {
+            "code": "MA1018",
+            "name": "科學計算導論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MA3099",
+            "name": "密碼學導論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MA5501",
+            "name": "量子計算的數學基礎",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "PH3008",
+            "name": "量子力學導論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "PH6003",
+            "name": "量子力學Ⅰ",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "PH6004",
+            "name": "量子力學Ⅱ",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "OS2011",
+            "name": "光電半導體物理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "OS3005",
+            "name": "雷射光學概論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "OS6064",
+            "name": "非線性光學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "OS7162",
+            "name": "超快光學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME5090",
+            "name": "矽晶材料及其應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CO6020",
+            "name": "消息理論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CO6023",
+            "name": "編碼理論",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ],
+        "slots": [
+          {
+            "slot_id": "slot_MA2007",
+            "slot_name": "線性代數Ⅰ / 線性代數 / 工程數學-線性代數",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "MA2007",
+                "name": "線性代數Ⅰ / 線性代數 / 工程數學-線性代數",
+                "credits": 3
+              },
+              {
+                "code": "CE2005",
+                "name": "線性代數",
+                "credits": 3
+              },
+              {
+                "code": "IM2005",
+                "name": "線性代數",
+                "credits": 3
+              },
+              {
+                "code": "CO1007",
+                "name": "工程數學-線性代數",
+                "credits": 3
+              },
+              {
+                "code": "EE1009",
+                "name": "工程數學-線性代數",
+                "credits": 3
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 15,
+        "description": "修得學程內課程 15 學分以上"
+      },
+      {
+        "type": "dept_required",
+        "credits": 6,
+        "description": "必修課程 6 學分（量子科技概論 + 量子實驗與實作）"
+      },
+      {
+        "type": "required_elective",
+        "description": "基礎必選修及進階必選修各至少選修 1 門"
+      },
+      {
+        "type": "elective_minimum",
+        "credits": 9,
+        "description": "除必修課程外，修習通過其他課程至少 9 學分"
+      },
+      {
+        "type": "elective_note",
+        "description": "線性代數類五門等效課程（MA2007/CE2005/IM2005/CO1007/EE1009）合計最多只採計 3 學分"
+      },
+      {
+        "type": "substitution",
+        "description": "本校所開其他與本學程課程名稱或內容相似之科目，經向本學程之開課單位申請認定後，依本校學分抵免辦法辦理"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢理學院量子技術學分學程」，並頒發學分學程證明書。"
+  }
+]

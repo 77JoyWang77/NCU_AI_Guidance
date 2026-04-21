@@ -1,0 +1,836 @@
+[
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "學習與教學研究所碩士班",
+    "流水號": "17001",
+    "課號-班別": "LI6014-*",
+    "課程名稱(中文)": "教育研究法",
+    "課程名稱(英文)": "Methods of Educational Research",
+    "備註": "學習所碩一生預選",
+    "授課教師": "辜玉旻",
+    "學分": "3",
+    "上課時間": "Wed567",
+    "教室": "LS-519",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=17001&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限學習與教學研究所碩士班。年級:限一年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=17001&outline=17001&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "學習與教學研究所碩士班",
+      "流水號": "17001",
+      "課號": "LI6014-*",
+      "授課教師": "辜玉旻",
+      "課程名稱(中文)": "教育研究法",
+      "課程名稱(英文)": "Methods of Educational Research",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "\"本基礎課程的目標主要在協助學生 (1)認識教育領域中常用的研究方法 (2)了解碩士論文的基本組織與架構 (3)熟悉執行教育研究的歷程與步驟 (4)具備依循論文寫作格式的能力 (5)培養遵守研究倫理規範的態度\"",
+      "授課內容": "\"課程內容與評量方式說明\n教育研究概述、論文的組織與架構\n研究問題的選擇與定義\n尋找與探討文獻I\n尋找與探討文獻II\n論文寫作格式\n變項與假設\n研究工具的使用\n信度與效度、內部效度\n研究倫理原則與規範\n量化方法I：實驗研究法與相關研究法\n量化方法II：因果比較研究法與調查研究法\n質性研究的性質；質的研究法：觀察與訪談\n期末報告\n課程總結\"",
+      "教科書/參考書": "\"1.American Psychological Association （2011）。美國心理協會出版手冊：論文寫作格式（陳玉玲、王明傑編譯，第六版）。台北市：雙葉（原著出版年：2010）。 2.王文科（1998）。教育研究法。台北：五南。 3.畢恆達 （2010）。教授為什麼沒有告訴我 （2010 全見版）。新北市：小畢空間。 4.楊孟麗、謝水南(譯)(2013)。教育研究法—研究設計實務(第二版)(原作者: J. R. Fraenkel, N. E. Wallen, & H. H. Hyun)。臺北市:心理出版社。 5.葉重新（2004）。教育研究法（2 版）。台北：心理。 6.其他課堂講義或期刊文章。\"",
+      "自編教材比例": "50",
+      "授課方式": "講授 研討",
+      "評量配分比重": "\"1. 課堂出席、完成作業及參與討論(10%) 2. 分析常見的論文架構及其優缺點(10%) 3. 針對一主題進行文獻的搜索，並依參考文獻格式條列中英文參考文獻各20篇(含期刊論文、專書論文、碩博士論文、網路資源等) (20%) 4. 依研究倫理規範撰寫一份研究說明及知情同意書 (15%) 5. 期末報告：選擇一量化或質化的研究方法，並以兩篇論文為例說明其研究方法使用的適切性(30%)(兩人一組) 6. 學習札記(15%)\"",
+      "辦公時間": "與教師另行預約",
+      "授課週數": "16",
+      "課程領域": "讀寫素養",
+      "核心能力": [
+        {
+          "能力名稱": "專業知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "學術研究",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "整合創新",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "獨立思考",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "終身學習",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "學習與教學研究所碩士班",
+    "流水號": "17002",
+    "課號-班別": "LI6040-*",
+    "課程名稱(中文)": "書報討論",
+    "課程名稱(英文)": "Seminar",
+    "備註": "學習所學生優先",
+    "授課教師": "陳斐卿",
+    "學分": "0",
+    "上課時間": "Wed89",
+    "教室": "LS-502",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=17002&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限學習與教學研究所碩士班、學習與教學研究所博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=17002&outline=17002&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "學習與教學研究所碩士班",
+      "流水號": "17002",
+      "課號": "LI6040-*",
+      "授課教師": "陳斐卿",
+      "課程名稱(中文)": "書報討論",
+      "課程名稱(英文)": "Seminar",
+      "課程學制": "碩博同修",
+      "學分": "0",
+      "課程目標": "對於如何畢業感到些許的焦慮茫然嗎？修課是考驗一種「吸收」的能力，研究生都很老練了；但是學位論文與期刊文章則是一種「產出」的能力，研究生多半感到陌生。於是，本課程定位為輔導研究生產出的「機制」，針對產出的能力，提供全面周延的介紹與討論，積極地導引研究生在一二年級有個健全的認知與行動，並探討難產、休學、退學等種種拖延問題如何避免。 本課程用於銜接研究生已知、辨識迷思、落實期待。活動包括本所畢業的每一個檢核點之介紹與探討，如：選課、尋覓指導教授、撰寫計畫書、準備資格考、發表期刊、完成學位論文、每個階段的書面作品與口試準備等。期間安排聆聽過來人演講、見習碩班計畫書公聽會、從而逐漸建立社群互助與歸屬感，為自己的畢業大事發展更務實可行的規劃。",
+      "授課內容": "課程有4個元素組成：\n（一） 指認本所學生畢業所需知識：各個檢核點的why/what/how之探討，包括事前由學生輪值蒐集，上課前由每位學生提問，上課時聚焦並連結到本所學生的脈絡與問題。\n（二） 專題演講：由本所碩博班各一位校友，以及他校指導教授師生一組現身說法，為畢業事業提供更清晰的參考圖像。\n（三） 社群動力：如何讓一群人的力量，確實大於一個人？我們一起構想如何讓學習所社群師生為學生的畢業事業，產生更大的能量，可以發展哪些作法與活動？\n（四） 個人規劃力檢核：期末每位同學任選研究生之旅的一個檢核點（可以僅是其中一個部分），具體規劃自己將如何執行。以海報板的形式，相互觀摩，進行可行性討論。\n行事曆\n1 Proposal hearing 1\n2 Proposal hearing 2、課程介紹、學生查找參考教材之安排\n3 【發動力】（碩）學位計畫書公聽會、選題目\n4* 【規劃力】修課、尋覓指導教授、合夥事業\n5* 【書寫力】學位計畫書/學位論文撰寫（written）\n6* 【口說力】學位計畫書/論文口試（oral）\n7 現身說法：碩士怎麼畢業的\n8 現身說法：研究的後台\n9* 期中小組討論：許一個增益彼此的學習所社群\n10 校運停課\n11* 【學術座落力】（博）資格考\n12 現身說法：博士怎麼畢業的\n13* 【知己知彼力】（博）兩篇期刊選擇、撰寫\n14* 【自律堅忍力】（博）期刊投稿、修改\n15 期末海報展：自己的一段學術事業規劃\n16 本門課程回顧、全所課程檢討與建議",
+      "教科書/參考書": "網頁資訊",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討",
+      "評量配分比重": "（一）出席率：10% 請假者須以E-mail方式聯繫老師與助教，不要由同學代為請假。 （二）參考教材之貢獻品質：15%【學術研究】 有1次搜尋相關文章上傳雲端、提供全班上課前閱讀的任務。每次上課前一週有3篇此一議題之參考文章，由修課學生輪值貢獻（有＊的週次），於週日睡前上傳雲端，若所張貼之文章重複，後貼的同學需提供不同文章。（檔名：作者_年份_題目_提供之學生名字） （三）個人發言：25%【學術研究】 週二睡前每位同學針對本週主題（有＊的週次），張貼一則提問於臉書。 上課時能勇於勤於發言，增益社群學習品質與氛圍。 （四）期中/群體活動可行性：20% 【學術研究】 分組討論並口頭報告。學習所學會成員如何共同促進這個社群的學術能量，透過相互投入共同事業的經營，共享資源、如願好好畢業。 （五）期末/個人規劃可行性：30%【終身學習】 每個人對於一學期所學所感，提出一段具體的學術生活規劃，相互參考，共享資源、如願好好畢業。",
+      "辦公時間": "週三 34",
+      "授課週數": "16",
+      "彈性教學說明": "若教師參加國際研討會，則使用第十七週",
+      "課程領域": "研究法",
+      "核心能力": [
+        {
+          "能力名稱": "專業知識",
+          "強度指數": "(1) 非常低",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "學術研究",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "整合創新",
+          "強度指數": "(1) 非常低",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "獨立思考",
+          "強度指數": "(2) 低",
+          "評量方式": "口頭報告/口試 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(1) 非常低",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "終身學習",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 作品/創作展演"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "學習與教學研究所碩士班",
+    "流水號": "17003",
+    "課號-班別": "LI6042-*",
+    "課程名稱(中文)": "認知心理學總論",
+    "課程名稱(英文)": "General Cognitive Psychology",
+    "備註": "學習所學生優先",
+    "授課教師": "趙子揚",
+    "學分": "3",
+    "上課時間": "Thu567",
+    "教室": "LS-519",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=17003&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限學習與教學研究所碩士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限學習與教學研究所博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=17003&outline=17003&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "學習與教學研究所碩士班",
+      "流水號": "17003",
+      "課號": "LI6042-*",
+      "授課教師": "趙子揚",
+      "課程名稱(中文)": "認知心理學總論",
+      "課程名稱(英文)": "General Cognitive Psychology",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "本課程為碩博班層級的認知心理學課程，著重於認知心理學在教育上的重要研究議題及發現。在課程之中，老師會帶同學一同閱讀認知心理學在教育方面現有研究成果，其中包含理論、研究方法及研究發現。同時，老師期望同學能夠在章節閱讀上提出你的觀點及批判。修課同學需要先深思熟慮及做好心理準備：每週花大量時間閱讀、摘要及心得。課程預計讓同學了解認知心理學的研究成果，以及如何運用於教育領域；而在教育領域內的研究，如何回饋到認知心理學的理論上。修課同學應先修習過大學部普通心理學、實驗研究法及認知心理學等課程為佳。若修課同學無相關背景知識，請先自行閱讀參考教科書。 ※本門課對應學習所最相關之能力指標：專業知識、學術研究、獨立思考。",
+      "授課內容": "教學進度與主題\n週次 上課進度與內容 章節\n一(9/4) 緒論：認知心理學與教育\n二(9/11) 學習科學與認知心理學的關係？ Ch1\n三(9/18) 教育研究的方法及推論方式為何？ Ch2\n四(9/25) 何為批判思考？ Ch3\n五(10/2) 何為科學思考？ Ch4\n六(10/9) 如何應用記憶的特點？ Ch22\n七(10/16) 跨單元跨科學習有什麼效果？ Ch16\n八(10/23) 合作學習如何有效？ Ch20\n九 (10/30) 如何選擇學習策略？ Ch27\n十 (11/6) 運動會停課\n十一(11/13) 用多媒體有效嗎？ Ch18\n十二(11/20) 電腦如何輔助學習？ Ch23\n十三(11/27) 何謂閱讀理解？ Ch10\n十四(12/4) 讀寫如何幫助語言學習？ Ch11\n十五(12/11) 閱讀的教學介入是否有效？ Ch15\n十六(12/18) 數學怎麼教與學？ Ch6\n十七(12/25) 繳交期末報告",
+      "教科書/參考書": "Dunlosky, J., Rawson, K. A. (2019). The Cambridge Handbook of Cognition and Education. Cambridge University Press",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討",
+      "評量配分比重": "評量成績方式： 課堂導讀與討論30％ 章節整理與心得40％ 期末報告30％",
+      "辦公時間": "另約",
+      "授課週數": "16",
+      "彈性教學說明": "課程在第16週結束，第17週為同學繳交期末報告之期限。",
+      "課程領域": "學習學 、 研究法",
+      "核心能力": [
+        {
+          "能力名稱": "專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "學術研究",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "整合創新",
+          "強度指數": "(1) 非常低",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "獨立思考",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "終身學習",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面)"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "學習與教學研究所碩士班",
+    "流水號": "17004",
+    "課號-班別": "LI6044-*",
+    "課程名稱(中文)": "學習與教學導論",
+    "課程名稱(英文)": "Introduction to learning and instruction",
+    "備註": "學習所碩一生預選",
+    "授課教師": "張佩芬",
+    "學分": "3",
+    "上課時間": "Wed234",
+    "教室": "LS-419",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=17004&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限學習與教學研究所碩士班。年級:限一年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=17004&outline=17004&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "學習與教學研究所碩士班",
+      "流水號": "17004",
+      "課號": "LI6044-*",
+      "授課教師": "張佩芬",
+      "課程名稱(中文)": "學習與教學導論",
+      "課程名稱(英文)": "Introduction to learning and instruction",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "教育目標： 1.培養學習與教學等領域之熱衷投入人才 2. 培養熱衷於創新整合學習與教學等理論之熱衷人才 3. 本課程先以漫畫融入心理學，帶起學習動機，理解本學科之內涵，並能選擇適當的理論融入應用，隨後並以協同教學的方式，將理論融入各種教學的情境中。 課程目標： 先以漫畫融入心理學，帶起學習動機，理解本學科之內涵，並能選擇適當的理論融入應用，隨後並以協同教學的方式，將理論融入各種教學的情境中。",
+      "授課內容": "週次 日期 課程進度\n1 9/14 課程內容介紹與說明\n2 9/21 學習與教學概論I\n3 9/28 小組成員至總圖閱讀「東大特訓班」全套漫畫\n4 10/5 學習與教學概論II\n5＊ 10/12 認知發展與教育\n6＊ 10/19 社會發展、行為主義\n7＊ 10/26 認知心理學、人本心理學\n8＊ 11 /2 動機理論、個別差異\n9＊ 11/9 教學設計、教學取向\n10 11/16 全校運動會停課一週\n11 11/23 以學生為中心的創意思考歷程、Case Study\n12＊ 11/30 ch.11〈Learning from presentations〉、ch.12〈Partners in learning〉\n13＊ 12/7 ch.5〈Learning to think inductively〉、ch.6〈Attaining concepts〉\n14＊ 12/14 ch.7〈Picture-word inductive model〉、chap 15 < Developing Positive Self-Concepts>\n15＊ 12/21 ch.9〈Memorization〉、ch.10〈Synectics〉\n16＊ 12/27 ch.13〈Role playing〉、chap 14 < The Learner at the Center >、Topics for reflection and Stone of Gratitude\n17 1/3 在家自主學習：\n期末歷程檔案的省思撰寫與最後殺青\n18 1/10 繳交期末歷程檔案\n＊ 為小組報告",
+      "教科書/參考書": "1. 張春興(2007)。教育心理學─ 三化取向的理論與實踐。台北：東華。 2. Bruce R. Joyce, Marsha Weil, ＆ Emily Calhoun (2008). Models of Teaching. Allyn＆ Bacon 3. 三田紀房(2005)。東大特訓班。 4. 隨堂講義",
+      "自編教材比例": "40",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "評量標準： 1. 課堂體驗活動參與度與學習單 30％ 2. 專題報告 (小組2次) 40％ 3. 觀察者的隨堂評論與個人省思(個人) 30％ 評量尺規： A級分 (90-99分) 專業知識 - 能靈活運用學習與教學之概念與方法，並展現對理論深度的掌握 整合創新 - 能展現積極創新與整合之能力，並能在同儕合作中，展現學習方法與教學工具整合之創新能力 B級分 (80 - 89分) 專業知識 - 對學習與教學之概念與方法有良好的理解，但在特定理論應用上仍有些許不足 整合創新 - 具備基本學習與教學理論之理解能力，惟學習方法與教學之整合能力與創新思維須提升 C級分 (70-79分) 專業知識 - 僅達到課程最低要求，理解侷限於部分基礎概念，難以應用與延伸學習與教學的理論 整合創新 - 僅達到課程最低要求，缺乏與小組同學間的同儕合作與整合",
+      "辦公時間": "\"課後與教師另行預約\"",
+      "授課週數": "16",
+      "課程領域": "教學創新 、 數位學習",
+      "核心能力": [
+        {
+          "能力名稱": "專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "學術研究",
+          "強度指數": "(2) 低",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "整合創新",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "獨立思考",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(2) 低",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "終身學習",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "學習與教學研究所碩士班",
+    "流水號": "17005",
+    "課號-班別": "LI7030-*",
+    "課程名稱(中文)": "科技與教學創新整合專題研究",
+    "課程名稱(英文)": "Teaching Innovation Through Integration of Technology and Teaching Innovation",
+    "備註": "學習所學生優先",
+    "授課教師": "張立杰",
+    "學分": "3",
+    "上課時間": "Fri234",
+    "教室": "LS-405",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=17005&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班。系所:限學習與教學研究所碩士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限。系所:限學習與教學研究所博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=17005&outline=17005&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "學習與教學研究所碩士班",
+      "流水號": "17005",
+      "課號": "LI7030-*",
+      "授課教師": "張立杰",
+      "課程名稱(中文)": "科技與教學創新整合專題研究",
+      "課程名稱(英文)": "Teaching Innovation Through Integration of Technology and Teaching Innovation",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "本課程，預計討論底下幾個課題: 1. 數位學習概論 2. 教育地平線報告 3. 電腦輔助教學 (CAI) 4. 電腦支援合作學習 (CSCL) 5. 學習標準與平台 6. 學習社群 7. 行動學習 8. 遊戲式學習 9. 創新的教學模式 (可汗學院、MOOCs、明日學校)",
+      "授課內容": "採用 Learning by Elaborating 的學習方式，進行課堂教學\n透過本課程，學生可以了解科技如何與教學整合\n透過小組論文研習、小寫作與合作系統製作，了解這些科技如何整合到教學場域",
+      "教科書/參考書": "自編教材",
+      "自編教材比例": "70",
+      "授課方式": "講授 個別指導",
+      "評量配分比重": "寫作一：25% 寫作二：25% 寫作三：投稿 50%",
+      "辦公時間": "禮拜一上午 10:00-12:00",
+      "授課週數": "16",
+      "彈性教學說明": ".",
+      "課程領域": "教學創新",
+      "核心能力": [
+        {
+          "能力名稱": "專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "學術研究",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "整合創新",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "獨立思考",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "終身學習",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面)"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "學習與教學研究所碩士班",
+    "流水號": "17006",
+    "課號-班別": "LI7032-*",
+    "課程名稱(中文)": "資訊科技在教育運用之理論與實際",
+    "課程名稱(英文)": "Theory and Practice of Integrating Information Technology in Education",
+    "備註": "學習所學生優先",
+    "授課教師": "劉旨峯",
+    "學分": "3",
+    "上課時間": "Tue567",
+    "教室": "LS-519",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=17006&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限學習與教學研究所碩士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限學習與教學研究所博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=17006&outline=17006&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "學習與教學研究所碩士班",
+      "流水號": "17006",
+      "課號": "LI7032-*",
+      "授課教師": "劉旨峯",
+      "課程名稱(中文)": "資訊科技在教育運用之理論與實際",
+      "課程名稱(英文)": "Theory and Practice of Integrating Information Technology in Education",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "“介紹資訊科技融入學科教學的理論、實務、教學設計，透過閱讀相關文章來了解教育科技於現場實務的意涵。修課同學將能具備以下知能： (1) 透過深度閱讀與實務討論來了解實際教學現場的科技應用與整合。 (2) 培養對於科技融入教育現場的先備知識、方法設計以及議題探討的敏銳度及思考深度。“",
+      "授課內容": "“週次 日期 課程進度 Homework\n1 9/13 向助教索取密碼卡 N/A\n2 9/20 課程介紹、分組 N/A\n3 9/27 主題1：科技整合教育現場-理論與架構\n1. (IETT) Ch2. Foundations of effective technology integration models: theory and practice.\n2. Design exemplars for synchronous e-learning: A design theory approach 影片分享\n課堂討論\n4 10/4 中秋節放假一次 N/A\n5 10/11 主題2：軟體與平台工具的應用1\n1. Microblogging for strengthening a virtual learning community in an online course\n2. How teachers use and manage their blogs? - A cluster analysis of teachers’ blogs in Taiwan 影片分享\n課堂討論\n6 10/18 主題3：軟體與平台工具的應用2\n1. The effects of using online Q＆A discussion forums with different characteristics as a learning resource.\n2. Do Web 2.0 tools really open the door to learning? Practices, perceptions and profiles of 11-16-year-old students. 影片分享\n課堂討論\n7 10/25 主題4：軟體與平台工具的應用3\n1. Asynchronous computer-mediated communication versus face-to-face collaboration: Results on student learning, quality and satisfaction\n2. Gender differences in college students’ behaviors in an online question-answer discussion activity 影片分享\n課堂討論\n8 11/1 主題5：軟體與平台工具的應用4\n1. Surface and deep learning processes in distance education: Synchronous versus asynchronous systems.\n2. 明日閱讀與塗鴉寫作應用於閱讀與寫作課程：以中平國民小學低年級為例 影片分享\n課堂討論\n9 11/8 期中考週 (停課一次) N/A\n10 11/15 主題6：教育科技之研究方法設計\n1. [如何評鑑計畫?]Program and project evaluation. (Spector, 2013)\n2. [行動研究]\nAction research for educational communications and technology. (Manfra ＆ Bullock, 2013) 影片分享\n課堂討論\n11 11/22 演講:家教的資訊融入科技與心法 N/A\n12 11/29 主題7：數位評量方法\n1. 學習歷程檔案評量的介紹與發展\n2. 同儕評量於學習評量與教學評鑑之運用 影片分享\n課堂討論\n13 12/6 主題8：理論於學科教學之應用-語言學習領域\n1. (IETT)Ch10. Technology in English language learning and foreign 2.language instruction.\n2. [語文教育]\nTechnologies that support students’ literacy development 影片分享\n課堂討論\n14 12/13 主題9：理論於學科教學之應用2-STEM領域\n1. [科學教育]\nTechnology-enhanced, modeling-based instruction in Science Education.\n2. [工程教育]\nInnovation and research on engineering education 影片分享\n課堂討論\n15 12/20 主題10：Web 2.0之部落格下的社會文化研究\n1. [青少年的次文化]\nCluster analysis of adolescent blogs. (Liu, Lin, Chen, ＆ Peng, 2012)\n2. [客家媽媽文化]\nDiscovering the life stories of modern Hakka mothers in a classroom. (Chen, Liu, Wu, ＆ Lin, 2011) 影片分享\n課堂討論\n16 12/27 主題11：網路心理學\n1. 網路世界的團體動力。載於陳美靜翻譯，網路心理講義（原作者：W. Patricia）（65-101頁）。\n2. [網路霸凌與網路色情]\n火爆論戰與爭鬥。載於陳美靜翻譯，網路心理講義（原作者：W. Patricia）（127-153頁）。 影片分享\n課堂討論\n17 1/3 主題12：網路沉癮與網路霸凌的預防與輔導\n1. [網路沉癮的預防]\nAvoiding internet addiction when integrating digital games into teaching. (Liu, 2011)\n2. [網路霸凌的情理課程]\nEffects of an online rational emotive curriculum on primary school students’ tendencies for online and real-world aggression. (Liu, Ho, ＆ Song, 2011) 影片分享\n課堂討論\n主題13：Game-based learning-遊戲式教養\n1. [遊戲式教養]進入孩子的世界。載於林意雪翻譯，遊戲力：陪孩子一起玩出學習的熱情與自信（原作者：J. C. Lawrence）（41-64頁）。\n2. 建立連結、修補關係。載於林意雪翻譯，遊戲力：陪孩子一起玩出學習的熱情與自信（原作者：J. C. Lawrence）（65-84頁）。\n3. 運輸工具 Go! 教育桌遊介紹 影片分享\n課堂討論\n18 1/10 期末報告(各組影片觀賞)“",
+      "教科書/參考書": "“林意雪（譯）（2007）。進入孩子的世界。載於林意雪翻譯，遊戲力：陪孩子一起玩出學習的熱情與自信（原作者：J. C. Lawrence）（41-64頁）。台北市：遠流。（原著出版年：2001） 林意雪（譯）（2007）。建立連結、修補關係。載於林意雪翻譯，遊戲力：陪孩子一起玩出學習的熱情與自信（原作者：J. C. Lawrence）（65-84頁）。台北市：遠流。（原著出版年：2001） 陳美靜（譯）（2001）。網路世界的團體動力。載於陳美靜翻譯，網路心理講義（原作者：W. Patricia）（65-101頁）。台北市：天下文化。（原著出版年：1999） 陳美靜（譯）（2001）。火爆論戰與爭鬥：網路攻擊心理學。載於陳美靜翻譯，網路心理講義（原作者：W. Patricia）（127-153頁）。台北市：天下文化。（原著出版年：1999） 謝智妃、劉旨峰（2016）。明日閱讀與塗鴉寫作應用於閱讀與寫作課程：以中平國民小學低年級為例。第二十屆全球華人計算機教育應用大會（GCCCE 2016）。香港:香港教育學院。 劉旨峰(2016)。學習歷程檔案評量的介紹與發展。T＆D 飛訊，217，1-16。 劉旨峰(2016)。運輸工具 Go! 教育桌遊介紹。科學教育實作學門電子期刊，2。 劉旨峰(2009)。同儕評量於學習評量與教學評鑑之運用。教育資料與研究雙月刊，89，119-140。“",
+      "自編教材比例": "50",
+      "授課方式": "講授 研討 個別指導 其他",
+      "評量配分比重": "“1. 閱讀文章報告(以影片方式呈現) 40％ (評量項目:內容正確性、影片呈現方式) 2. 每週的課堂提問 10％ 3. 期末影片40％ 4. 出席 10％“",
+      "辦公時間": "星期三 中午12點 Office：LS-417",
+      "授課週數": "16",
+      "課程領域": "教學創新",
+      "核心能力": [
+        {
+          "能力名稱": "專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "學術研究",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "整合創新",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "獨立思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "終身學習",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現 ， 作品/創作展演"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "學習與教學研究所碩士班",
+    "流水號": "17007",
+    "課號-班別": "LI7061-*",
+    "課程名稱(中文)": "課程設計與評鑑",
+    "課程名稱(英文)": "The Framework of Instructional Design",
+    "備註": "學習所學生優先",
+    "授課教師": "張佩芬",
+    "學分": "3",
+    "上課時間": "Mon567",
+    "教室": "LS-420",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=17007&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限學習與教學研究所碩士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限學習與教學研究所博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=17007&outline=17007&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "學習與教學研究所碩士班",
+      "流水號": "17007",
+      "課號": "LI7061-*",
+      "授課教師": "張佩芬",
+      "課程名稱(中文)": "課程設計與評鑑",
+      "課程名稱(英文)": "The Framework of Instructional Design",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "教育目標： 具備課程設計與多元評量之專業知識，並能應用所學理論分析教育現象。 課程目標： 1.瞭解課程設計的重要理論基礎與教學效果。 2.實際演練「課程發展」所需的步驟與教學計畫。",
+      "授課內容": "1.教育心理學融入課程與教學\n2.博物館參訪與各式教學法結合之跨領域課程設計\n3.學習目標之訂定\n4.課程發展的層級與模式\n5.課程組織與課程實施之概要\n6.教學目標、教學策略與評量工具之契合\n7.兩性教育融入課程模式的設計概要\n8.拼圖式合作學習法\n9.十二種評量工具\n10.情意教學的設計概要與體驗\n11.學習歷程檔案之內在價值與典範呈現",
+      "教科書/參考書": "1. Brookfield, S. D. and Preskill, S. (1999). Discussion as A Way of Teaching: Tools and Techniques for Democratic Classrooms. San Francisco: Jossey-Bass Higher and Adult Education Series. 2. Davis, B. G. (2001). Tools for Teaching. San Francisco: Jossey-Bass Higher and Adult Education Series. 3. McKeachie, W. J. and Svinicki, M. (2006) Teaching Tips. Ma: Houghton Mifflin Co. 4. 自編講義",
+      "自編教材比例": "10",
+      "授課方式": "講授 個別指導",
+      "評量配分比重": "評量分配比重： 1. 每週閱讀指定教材與書面報告 50％ 2. 口頭專題報告 40％ 3. 期末主題工作坊 10％ (+bonus) 本課程的評量尺規： A級分 (90-99分) 學術研究 - 能綜合運用課程設計與評鑑之相關理論，清晰提出具原創性的研究問題與完整設計，論述嚴謹，能連結教育現場脈絡，並展現高度資料分析與詮釋能力 整合創新 - 能展現積極創新與整合之能力，並能在同儕合作中，展現教學目標與評量工具整合之創新能力 獨立思考 - 能展現高度批判與反思能力，並能對課程設計與評鑑方法提供深度建議 B級分 (80 - 89) 學術研究 - 能掌握基本研究方法與邏輯，能提出具體研究問題與設計，論述尚屬完整，惟資料分析與理論連結仍有待深化 整合創新 - 具備基本課程設計能力，惟教學目標與評量方式創新整合之深度與廣度需要提升 獨立思考 - 具備基本思考與反思能力，惟表現較為被動，批判思考的深度與廣度均須提升 C級分 (70 - 79) 學術研究 - 僅能提出初步研究構想，理論與方法掌握薄弱，資料處理與論述缺乏深度，未能展現系統性研究能力 整合創新 - 僅達到課程最低要求，缺乏教學目標與評量工具之整合能力 獨立思考 - 批判思考僅限於表面層次，作業中對關鍵議題的思考與論證相對薄弱",
+      "辦公時間": "課後與教師另行預約",
+      "授課週數": "16",
+      "課程領域": "數位學習",
+      "核心能力": [
+        {
+          "能力名稱": "專業知識",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "學術研究",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "整合創新",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "獨立思考",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "終身學習",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "學習與教學研究所碩士班",
+    "流水號": "17008",
+    "課號-班別": "LI7082-*",
+    "課程名稱(中文)": "另類教育研究",
+    "課程名稱(英文)": "Study on alternative education",
+    "備註": "學習所學生優先",
+    "授課教師": "許宏儒",
+    "學分": "3",
+    "上課時間": "Mon234",
+    "教室": "LS-502",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=17008&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限學習與教學研究所碩士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限學習與教學研究所博士班。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限亞際文化研究國際碩士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=17008&outline=17008&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "學習與教學研究所碩士班",
+      "流水號": "17008",
+      "課號": "LI7082-*",
+      "授課教師": "許宏儒",
+      "課程名稱(中文)": "另類教育研究",
+      "課程名稱(英文)": "Study on alternative education",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "請見授課內容",
+      "授課內容": "（本課程「視當學期狀況」，可能安排實驗教育教師或學生來課程中與修課師生對話，或赴實驗教育學校現場參訪）\n學習，是一條離家的旅程；教學，是幫助別人回家的旅程。\n我們的這堂課起於下列對於教育與生命的提問：\n在這過度換氣的社會呼吸之中，在這塞的幾乎要溢出學生的喉嚨的滿滿的學科知識的學習制度之下，在這強調要不斷地在踩著別人的失敗往上爬競爭之中勝出的學習道路上，\n有沒有可能從教育上，構築一個能稍稍減速的，讓人可以喘口氣的吐納空間，讓學生能夠真真正正的，按照自己的學習節奏與個人的脾性，去經歷自己的學習歷程，去好好的探究一件事物、一個道理與一門學問。讓學生可以真真切切的與他人的生命經驗相互對話，並在主體與主體之間的詮釋循環之中，彼此理解，彼此友愛，彼此合作。\n有沒有一個教育的想像，是能夠真切切的面對當代人類文明與地球的困境，並構築一個可能的解決的途徑？\n有沒有一個對於學校的圖像，是能夠深入人類世界外在的環境問題，以及內在的心理（靈）健康的問題，並以一種更為整全完善的、整體論/全人式（holistic）的教育歷程，來幫助在教育當中的每一個人，能夠朝向一個更為安適其所、更為平安喜樂、更能喜愛關懷他人、更願意為了地球的未來盡一份心力的道路上前行？\n我們似乎已經不敢想像一個「自發-互動-共好」的教室的氛圍與學習的圖像。\n但是，當您在過度換氣的紛嚷中，靜下心來，聆聽來自世界各地那些不一樣的教育實踐，您會發現，世界中，早已有許多許多不一樣的另類/實驗教育，他們的歌曲正在唱和著：\n華德福學校的創辦人Rudolf Steiner,\n台灣已熟知的Maria Montessori,\n英國夏山學校的創辦人Alexander Sutherland Neill，\n還包括法國著名的20多間的公立佛賀內（Freinet）學校。\n還包括影響台灣主流教育體制甚深的日本左藤學教授的學習共同體。\n台灣也不能妄自菲薄。當您停下腳步，駐足台灣這片美麗的島嶼的一草一木、一人一物時，您會驚訝的發現，這十多年來，在台灣這片土地上，早已誕生了許多令人驚喜的教育實踐：\n台灣自2014年年底的實驗教育法通過之後，2017年，台灣有61間公立實驗學校。\n細看臺灣發展許久的另類學校與實驗學校與團體方面：\n臺灣有著民主學校的苗栗卓蘭全人中學；\n在台灣多處已經紮根許久的華德福教育與學校體系；\n更有奠基於東方的文化脈絡、生命哲思與百工實踐，從耕讀生態村落出發，配合著大自然與節氣生活的道禾實驗教育學校；\n公立偏鄉學校轉型（如雲林樟湖生態國中小學等等等等）；\n原住民族實驗教育（如屏東地磨兒國小與台中普瑪實驗小學等等等）；\n在家自學與共學。\n更有許多體制內優秀又具有創意的教師，對於教育的本質不斷地進行深思，並植基於自己豐富且深厚的教學經驗，勇敢地開創出許多令人驚喜的、具有革新意義的教育方法。\n這些「不一樣」的教育方法，也激起了許多體制內學校的教師，已經開始在他們的班級，或向上述這些新式教學法取經，或是自己小規模的實行許多的創新性的教學方法。\n台灣的另類/實驗教育更是亞洲許多國家取經的對象。\n然而，沒有任何一（多）種教育的形式、模式、革新與運動，可以不被拿來不斷檢視、反思與批判，可以放諸四海皆準。\n若要深化台灣這經歷20多年來，由許多人篳路藍縷所成就的另類/實驗教育的藍天，我們需要更為深入理解這些世界當中與台灣本土的另類/實驗教育，背後所蘊含的教育學思維與理論，並帶著研究的分析與批判性的角度，深入瞭解這些教育實踐的現況、展望與限制。這也是本課程的核心價值與意義。",
+      "教科書/參考書": "指定教科書與參考書： 主要閱讀書目請詳見每週進度。 另參考書目如下： 中文文獻 中國教育學會(編)(1988)。現代教育思潮。台北：師苑。 方永泉(2002)。當代思潮與比較教育研究。台北：師苑。 徐南號(1978)。當代教育思潮。台北：三民。 王俊斌 (2011)。另類教育即人性涵養－Dewey實驗學校簡史回顧 (1896-1903)。載於馮朝霖 (主 編)，漂流，陶養與另類教育 (177-207頁)。臺北市：政大出版社。 李崇健（2006）。流動的學校—體制外的學習天空。台北：寶瓶文化。 李雅卿（2004）。乖孩子的傷，最重: 你有個自主學習的孩子嗎?台北 : 遠流。 邱兆偉(編)(2003)。當代教育哲學。台北：師苑。 徐宗林(2005)。現代教育思潮。台北：五南。 佐藤學（2012）。學習的革命：從教室出發的改革。天下雜誌 李崇健（2006）。移動的學校：體制外的學習天空。台北：寶瓶文化。 馮朝霖（2001），另類教育與全球思考，刊於＜教育研究月刊＞第92期，2001年3月。台北：高等 教育文化。 馮朝霖、許宏儒（2014）。村中自有讀書聲—全球生態村運動中的另類教育展望。教育研究月刊，241， 139-156。 馮朝霖(2013/05)。善變。載於林逢祺&洪仁進主編(頁105-118)，教育哲學--隱喻篇。台北: 學富。 許宏儒（2013）。法國教育學家塞勒斯坦‧佛賀內（Célestin Freinet）教育學信念研究。另類教育， 2，61-91。 許宏儒（2017）。寧靜自主‧協同合作‧樂活共生： 法國佛賀內（Célestin Freinet）教育學與公立佛賀內學校。教育研究集刊，63（2）。出刊中(TSSCI) 許宏儒（2017）。共和學家VS教育學家：法國近30年來教育思想的論戰，教育學刊。出刊中。（TSSCI） 許宏儒（2017）。協同合作—論法國教育學家Roger Cousinet之教育學思想。收錄於李崗（2016）主編教育美學—靈性觀點的藝術與教學（頁333-370，頁數暫訂）。台北：五南出版社。 許宏儒（2017年05月）。實驗教育之精進：由法國教育學家Roger Cousinet 的新教育思想分析。教育研究月刊，277，34-47。 許宏儒（2017年02月）。協同合作—論法國教育學家Roger Cousinet之教育 學思想。。教育美學—靈性觀點的藝術與教學。（333-370） 許宏儒（2010）。吟遊者：Michel Serres 的教育思想初探。載於馮朝霖 （主編） 漂流、陶養與教育（頁：21-60）。台北：政大出版社。 薛雅慈(2011)。另類教育的理念溯源及其與當代新興教育思潮的邂逅--兼論對台灣中小學體制化教育 現場的反思。載於馮朝霖主編之漂流‧陶養與另類教育，頁237-258。臺北: 政大出版社 蘇永明(2015)《當代教育思潮》。台北市：學富文化事業有限公司。 蘇永明. (2012) 杜威美學及其在教學美學上的主張與蘊義。刊於陳伯璋主編，中華民國課程與教學學 會策劃 課程美學。台北:五南，1-27頁。 蘇永明. (2012) 人權的概念與學生權的商榷。刊於徐光台等著 教育學與比較教育研究—楊深坑 國家 講座 教授六秩晉六祝壽論文集。台北:高教，63-83頁。 蘇永明著. (2011) 百年來的教育思潮之演變。刊於中國教育學會主編，財團法人台北市賈馥茗教授基 金會、國立臺灣師範大學教育學系、教育政策與行政研究所、課程與教學研究所共同策劃 ，方永泉、陳佩英執行主編 百年教育的回顧—傳承與創新。台北：學富。301-325頁。 蘇永明 (2009) 面對未來的教育發展：緒論。刊於中國教育學會、財團法人台北市賈馥茗教授基金會共同策劃 ，蘇永明、方永泉執行主編 面對未來挑戰的教育發展。台北：學富。1-12頁。 蘇永明（2000）。杜威的教育理論有多「實用」。初等教育學報，7，167-184。 Neill, Alexander Sutherland著。王克難譯（2003），夏山學校，台北：遠流。 Frans Carlgren原著; 鄧麗君，廖玉儀譯（1998）邁向自由的教育 : 全球華德福教育報告書。光佑文化。 盧梭(J. J. Rousseau)。愛彌兒(上下)。譯者：李平漚。台北：五南 英文文獻 Acker, V. (2007). The French Educator Célestin Freinet. An Inquiry into How his ideas shaped Education. Lanham, MD: Lexington Books Armon, J.（1997）.The waldorf curriculum as a framework for moral education: One dimension of a fourfold system. Paper presented at the Annual Meeting of American Educational Research Association (AERA), Chicago. Barnes, H.（1980） . An Introduction to Waldorf Education. Teachers College Record, 81 （3）, 36-323 . Barnes, H.（1991）. Learning That Grows with the Learner: An Introduction to Waldorf Education. Educational Leadership, 49（2）,52-54. Booyeun, L.（2004）. Aesthetic Discourses in Early Childhood Settings: Dewey, Steiner, and Vygotsky. Early Child Development and Care, 174（5）, 473-486. Chamberlin, C. (Ed) Don't tell us it can't be done: Alternative Classrooms in Canada and abroad. Toronto: Althouse & Our Schools/ Ourselves. Childs, G.（1998） .Steiner education in theory and practice. Cromwell Press, Trowbridge, Wilts. Couler, D. J.（2003）.Montessori and Steiner: A Pattern of Reverse Symmetries. Montessori Life , 15（1）, 24. Dahlin, B. （2009）. On the Path Towards Thinking: Learning from Martin Heidegger and Rudolf Steiner. Studies in Philosophy & Education, 28 (6), 537-554. Dahlin, B. （2010） . A state-independent education for citizenship? Comparing beliefs and values related to civic and moral issues among students in Swedish mainstream and Steiner Waldorf schools. Journal of Beliefs & Values: Studies in Religion & Education, 31 (2), 165-180 Freire, P. ＆ Shor, I. (1998). The Dream of Social Transformation: How Do We Begin. In Freire, P. ＆ Shor, I. (1998). A Pedagogy For Liberation – Dialogues On Transforming Education. Massachusetts: Bergin＆Garvey Publishers, Inc. Freinet. C., Sivell, J. (Trans) (1990). Make the Sun Shine. In The Wisdom of Matthew : an Essay in Contemporary French Educational Theory. Lewiston: Edwin Mellen Press. Freinet. C., Sivell, J. (Trans) (1993). Education through work : a model for child-centered learning. Lewiston: Edwin Mellen Press. Freinet, C , David Clanfield (Trans), John Sivell (Trans)(1990) .Cooperative Learning & Social Change: Selected Writings of Célestin Freinet. Publisher: Our Schools Our Selves. Freinet, C.(1990) The wisdom of Matthew. (J.Sivell, Trans.) Lewiston, NY: Edwin Mellen Press. (Original work published in 1959). Freinet, C. (1993). Education through work : a model for child-centered learning. (J. Sivell Trans.) . Lewiston : Edwin Mellen. (Original work published 1967).Massachusetts: Bergin & Garvey. Gallagher, S.（1992）. Hermeneutics and Education, State University of New York Press. Greene, M.（1993）. Releasing the Imagination – Essays on Education, the Arts, and Social Chang. San Francisco：Jossey-Bass Publischers. Heyder, B.（1981）. Toward Wholeness－Rudolf Steiner Education in America－ Richards. International Review of Education, 27（3）, 374-376. Lee, W.B.(1993) Freinet Pedagogy: An Alternative Approach to Traditional Schools. Canadian Social Studies, 27 (4),146-151. Lee, W.B. (1994) John Dewey and Celestin Freinet: A Closer Look. In J. Sivell (Ed) Freinet Pedagogy Theory and Practice. (pp. 13-26) Lewiston, NY : Edwin Mellen Press. Lee, W.B. (1994). Freinet pedagogy. In C. Chamberlin (Ed) Don't tell us it can't be done: Alternative Classrooms in Canada and abroad. Toronto: Althouse & Our Schools/ Ourselves. Lee, W.B. & Kazlauskas, E. (1995) The Ecole Moderne: Another perspective on educational technology. Educational Technology, 35 (2), 14-20. Martusewicz, Rebecca A. （2001）.Seeking Passage：Post-Structuralism, Pedagogy, Ethics, London/New York：Teachers College, Columbia University. Marshak, D.（2003）. The Common Vision: Parenting and Educating for Wholeness. Montessori Life, 15（1）,21-23 , 25. Mclaren, P.（1997）. Revolutionary Multiculturalism – Pedagogies of Dissent for the New Millennium. Westview, a Division of Haroer Collins Publishers. Mclaren, P.（1995）. Critical Pedagogy and Predatory Culture – Oppositional Politics in a postmodern era. London/New York：Routledge. Mintz, Jerry et. al.（editor）（1994）, The Handbook of Alternative Education. New York：Simon＆Schuster Nicholson, D.W.（2000）. Layers of experience: forms of representation in a Waldorf school classroom. Journal of Curriculum Studies, 32（4）, 575-587. Oberman, I.（1997）. The Mystery of Waldorf: A Turn-of-the-Century German Experiment on Today's American Soil. Paper presented at the Annual Meeting of the American Education Research Association (AERA), Chicago. Oberman, I.（2007,April）. Learning From Rudolf Steiner: The Relevance of Waldorf Education for Urban Public School Reform. Paper presented at the Annual Meeting of the American Educational Research Assocation , Chicago, Illinois. Ogletree, E. J.（1974）. Rudolf Steiner: Unknown Educator. Elementary School Journal, 74,（6）, 344-352. Ogletree, E. J.（1975）. Waldorf Schools: A Child-Centered System. ( ERIC Document Reproduction Service No. ED 178188) Pain, J. (2007). Célestin Freinet. Retrieved April 3 2008, from: http://www.meirieu.com/PATRIMOINE/freinet_jacquespain.pdf Pasi Sahlberg （2011） Finnish Lessons：What can the world learn from educational change in Finland？Teachers College Press. Schilemminger, G (1997). History of Freinet Pedagogy. Retrieved Mars 3 2008, from: http://ecolesdifferentes.free.fr/SCHLEMMINGER.htm Sivell, J. (Ed) (1994). Freinet Pedagogy Theory and Practice. Lewiston, NY : Edwin Mellen Press. Usher, R./Edwards, R.（1994）. Postmodernism and Education. London/New York：Routledge. Wachterhauser, B.R.（editor）（1994）. Hermeneutics and Truth. Illinois：Northwestern University Press Woods, Philip A. (EDT)/ Woods, Glenys J. (EDT) (2008), Alternative Education in the 21st Century: Philosophies, Approaches, Visions. Palgrave Macmillan Pasi Sahlberg （2011） Finnish Lessons：What can the world learn from educational change in Finland？Teachers College Press.",
+      "自編教材比例": "60",
+      "授課方式": "講授 研討",
+      "評量配分比重": "（一） 上課表現（出席與參與活動及討論）：（5%） （二） 個人評析（25%）。 （三） 委員會呈現（30%） （四） 期末報告（30%）。 （五） 學習歷程反饋課堂書寫（10%）",
+      "辦公時間": "請與教師預約",
+      "授課週數": "16",
+      "彈性教學說明": "自主學習或線上非同步學習",
+      "課程領域": "教學創新",
+      "核心能力": [
+        {
+          "能力名稱": "專業知識",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "學術研究",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "整合創新",
+          "強度指數": "(2) 低",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "獨立思考",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 其他"
+        },
+        {
+          "能力名稱": "終身學習",
+          "強度指數": "(2) 低",
+          "評量方式": "無"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "學習與教學研究所碩士班",
+    "流水號": "17009",
+    "課號-班別": "LI8003-*",
+    "課程名稱(中文)": "高等學習深論",
+    "課程名稱(英文)": "Advanced Seminar in Cognition and Learning",
+    "備註": "學習所學生優先",
+    "授課教師": "詹明峰",
+    "學分": "3",
+    "上課時間": "Wed234",
+    "教室": "LS-519",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=17009&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限學習與教學研究所博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=17009&outline=17009&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "學習與教學研究所碩士班",
+      "流水號": "17009",
+      "課號": "LI8003-*",
+      "授課教師": "詹明峰",
+      "課程名稱(中文)": "高等學習深論",
+      "課程名稱(英文)": "Advanced Seminar in Cognition and Learning",
+      "課程學制": "博士班",
+      "學分": "3",
+      "課程目標": "學習目標： 1. 能理解、應用與批判主要學習理論（認知、情境、社會文化） 2. 能理解如何應用生成式人工智慧 (GenAI) 來促進學習 3. 能整合主要學習理論與生成式人工智慧(GenAI)來促進學習情境設計",
+      "授課內容": "課程簡介\n這是一門修練「學習理論內功」的課，不是「堆積學習理論知識」的課程。\n看過金庸的「倚天屠龍記」吧！故事的主角張無忌，在修練了乾坤大挪移之後，突然對於各個流派的武功有了進一步的體會。簡言之，他看到了武功的門道。武俠人物看到的門道，和研究學習理論的專家看到的門道當然不同，但其中有異曲同工之妙。\n學習專家可以看到更深層的結構，而非表象。他們看到一個學習現象 (比方說，一群兒童在庭院裡嬉戲) 的時候，可以從語言發展，遊戲，認知，或者社會文化各種不同的角度去詮釋這個現象，他們能夠選擇適切的理論角度來詮釋學習如何被設計與發生。\n某些研究學習的專家(如學習科學家)，還能夠「同時」從不同的學習觀點切入，設計學習情境。為學習者設計好的學習經驗(designing learning experience)，是目前教師最重要的能力。這門課，希望能夠讓修課的同學淺嚐學習專家看到的門道以及看門道的方法。\n我們要強調的是，目前看到的這個課綱在和修課同學討論以前，都只是計畫。我希望在第一堂課和同學討論與溝通，在 「不改變這門課的核心價值與理念下」，共同建構這門課的內容與形式。這門課的終極目標，不是拿學分，得到好成績。希望在這門課的過程中，你能發現你自己並培養看待學習的方法。\n修練內容：五大「學習單元」\n我們透過閱讀學習理論的經典來明暸看待學習的方法。本課並非介紹學習理論歷史的課，而是透過幾個和「專家與生手」的學習相關的主題與理論來學習如何看待學習。\n選定的主題包括五大「學習單元」，請參考下表：\n五大「學習單元」 核心閱讀文章\n1. 認知心理學 Anderson (1980)\nChapter 9 Development of Expertise\n2. 情境認知理論 Brown, Collins & Duguid (1989)\nSituated Cognition and the Culture of Learning\n3. 社會文化學習理論 Lave & Wenger (1991)\nChapter 1 Legitimate peripheral participation\nChapter 2 Practice, person, social world\n4. 學習情境設計 Brown et al. (1993) Distributed expertise\n5. AI融入教學 Miao & Cukurova (2024) UNESCO AI competency framework",
+      "授課方式": "講授 研討 個別指導",
+      "教科書/參考書": "Anderson, J. R. (1980). Cognitive psychology and its implications. San Francisco: Freeman. Brown, A. L., Ash, D., Rutherford, M., Nakagawa, K., Gordon, A., ＆ Campione, J. C. (1993). Distributed expertise in the classroom. In G. Salomon (Ed.), Distributed cognitions: Psychological and educational considerations (pp. 188-228). New York: Cambridge University Press. Brown, J. S., Collins, A., ＆ Duguid, P. (1989). Situated cognition and the culture of learning. Educational Researcher, 18 (1), 32-42. Collins, A., Brown, J. S., ＆ Holum, A. (1991). Cognitive apprenticeship: Making thinking visible. American educator, 15(3), 6-11. Dreyfus, H., Dreyfus, S. E., ＆ Athanasiou, T. (2000). Mind over machine. Simon and Schuster. Lave, J. (1991). Situating learning in communities of practice. In L. Resnick, J. Levine, and S. Teasley (Eds.), Perspectives on socially shared cognition (pages 63-82). Washington, DC: APA. Lave, J. ＆ Wenger, E. (1991). Situated Learning: Legitimate Peripheral Participation. Cambridge: Cambridge University Press.",
+      "自編教材比例": "100",
+      "評量配分比重": "1. 【指定閱讀文章摘要】 x 5 ( 20 ％ ) 2. 【學習現象觀察與反思】x 4 ( 15％ ) 3. 指定閱讀之【小組口頭報告】x 2 ( 20％ ) 4. 學期初與期末【學習現場分析報告】x 2 ( 25％ ) 5. 【我的改變】x 1 ( 10 ％ ) 6. 【學習歷程回顧】x 1 ( 10 ％ )",
+      "辦公時間": "星期二上午10-12AM",
+      "授課週數": "16",
+      "彈性教學說明": "彈性教學由學生針對期末作業的撰寫與教師個別討論，並根據教師指導完成「學習歷程檔案集」",
+      "課程領域": "學習學",
+      "核心能力": [
+        {
+          "能力名稱": "專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "學術研究",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "整合創新",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "獨立思考",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "終身學習",
+          "強度指數": "(2) 低",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 學習檔案評量"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "文學院",
+    "系所": "學習與教學研究所碩士班",
+    "流水號": "17010",
+    "課號-班別": "LI7044-*",
+    "課程名稱(中文)": "多元、平等、融合：理論與實務思辨",
+    "課程名稱(英文)": "Diversity, equity, and inclusive education: Theories and practices",
+    "備註": "學習所學生優先",
+    "授課教師": "呂依蓉",
+    "學分": "3",
+    "上課時間": "Wed567",
+    "教室": "LS-419",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=17010&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限學習與教學研究所碩士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限學習與教學研究所博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=17010&outline=17010&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "學習與教學研究所碩士班",
+      "流水號": "17010",
+      "課號": "LI7044-*",
+      "授課教師": "呂依蓉",
+      "課程名稱(中文)": "多元、平等、融合：理論與實務思辨",
+      "課程名稱(英文)": "Diversity, equity, and inclusive education: Theories and practices",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "理解多元與教育公平 學生將培養對教育環境中多元性的批判性理解，包括特殊需求、身心障礙、性別與社會背景。他們將能區分「公平」（equity）與「平等」（equality），並分析全球與臺灣在教育公平方面的政策。 探討融合教育 學生將探究融合教育的原則與發展歷史，包括國際趨勢及其對在地政策的影響。他們將理解融合如何促進永續且高品質的教育。 實踐融合策略 學習者將探索可應用於學校、家庭與社區等多元教育情境中的融合策略。他們將接觸如《融合指標》（Index for Inclusion）與「通用性設計學習」（Universal Design for Learning, UDL）等工具。 倡議與未來發展 學生將評估倡議、科技與社區參與在促進融合教育中的角色。他們也將反思自己在教育場域中推動多元與融合的角色。",
+      "授課內容": "本課程深入探討教育中的多元性、公平與融合議題。透過理論討論與實務應用，學生將分析融合教育的政策、歷史發展與全球趨勢。課程包含來自臺灣及其他國家的個案分析，聚焦於如何將融合實踐融入教育領導、師資培育與社區參與中。課程結束後，學生將具備知識與策略，以營造更具公平性的學習環境。",
+      "教科書/參考書": "教科書/參考書： Booth, T., & Ainscow, M. (2016). Index for inclusion: a guide to school development led by inclusive values. Index for Inclusion Network (也可以讀他2002的版本, 我覺得寫得比較清楚一點點) Ainscow, M. (2005). Developing inclusive education systems: What are the levers for change? Journal of Educational Change, 6(2), 109–124. https://doi.org/10.1007/s10833-005-1298-4 OECD. (2012). Equity and quality in education: Supporting disadvantaged students and schools. OECD Publishing. Kerr, K., & Ainscow, M. (2024). The development of a methodology for enhancing equity within education systems. International Journal of Research & Method in Education, 47(2), 99–113. https://doi.org/10.1080/1743727X.2023.2231862 其他資料依據課程補充",
+      "自編教材比例": "70",
+      "授課方式": "講授",
+      "評量配分比重": "課程參與小組討論 25% 個人分享 20% 小組報告 30% 反思心得 15% 出席率 10%",
+      "辦公時間": "星期三 早上10AM (請預約)",
+      "授課週數": "16",
+      "彈性教學說明": "線上課程：議題延伸之反思與討論",
+      "課程領域": "學習學",
+      "核心能力": [
+        {
+          "能力名稱": "專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "學術研究",
+          "強度指數": "(2) 低",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "整合創新",
+          "強度指數": "(2) 低",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "終身學習",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        }
+      ]
+    }
+  }
+]

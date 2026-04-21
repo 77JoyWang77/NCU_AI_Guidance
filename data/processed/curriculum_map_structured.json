@@ -1,0 +1,162 @@
+{
+  "資訊工程學系": {
+    "department": "資訊工程學系",
+    "map_type": "flowchart",
+    "semesters": [
+      {
+        "year": 1,
+        "semester": 1,
+        "courses": [
+          {
+            "name": "微積分(上)",
+            "credits": null,
+            "type": "必修",
+            "code": null
+          },
+          {
+            "name": "程式設計(上)",
+            "credits": null,
+            "type": "必修",
+            "code": null
+          },
+          {
+            "name": "計算機概論",
+            "credits": null,
+            "type": "必修",
+            "code": null
+          },
+          {
+            "name": "線性代數(上)",
+            "credits": null,
+            "type": "必修",
+            "code": null
+          }
+        ]
+      },
+      {
+        "year": 1,
+        "semester": 2,
+        "courses": [
+          {
+            "name": "微積分(下)",
+            "credits": null,
+            "type": "必修",
+            "code": null
+          },
+          {
+            "name": "程式設計(下)",
+            "credits": null,
+            "type": "必修",
+            "code": null
+          },
+          {
+            "name": "數位系統概論",
+            "credits": null,
+            "type": "必修",
+            "code": null
+          },
+          {
+            "name": "線性代數(下)",
+            "credits": null,
+            "type": "必修",
+            "code": null
+          }
+        ]
+      },
+      {
+        "year": 2,
+        "semester": 1,
+        "courses": [
+          {
+            "name": "資料結構(上)",
+            "credits": null,
+            "type": "必修",
+            "code": null
+          },
+          {
+            "name": "計算機組織(上)",
+            "credits": null,
+            "type": "必修",
+            "code": null
+          },
+          {
+            "name": "演算法(上)",
+            "credits": null,
+            "type": "必修",
+            "code": null
+          }
+        ]
+      },
+      {
+        "year": 2,
+        "semester": 2,
+        "courses": [
+          {
+            "name": "資料結構(下)",
+            "credits": null,
+            "type": "必修",
+            "code": null
+          },
+          {
+            "name": "計算機組織(下)",
+            "credits": null,
+            "type": "必修",
+            "code": null
+          },
+          {
+            "name": "演算法(下)",
+            "credits": null,
+            "type": "必修",
+            "code": null
+          }
+        ]
+      }
+    ],
+    "prerequisites": [
+      {
+        "from": "程式設計(上)",
+        "to": "程式設計(下)",
+        "confidence": 1.0
+      },
+      {
+        "from": "微積分(上)",
+        "to": "微積分(下)",
+        "confidence": 1.0
+      },
+      {
+        "from": "資料結構(上)",
+        "to": "資料結構(下)",
+        "confidence": 1.0
+      },
+      {
+        "from": "計算機組織(上)",
+        "to": "計算機組織(下)",
+        "confidence": 1.0
+      },
+      {
+        "from": "演算法(上)",
+        "to": "演算法(下)",
+        "confidence": 1.0
+      }
+    ],
+    "career_paths": {
+      "structured": [
+        "軟體工程師",
+        "系統分析師",
+        "網路管理員",
+        "資料科學家",
+        "人工智慧工程師",
+        "遊戲開發工程師"
+      ],
+      "description": "畢業生可從事軟體開發、資料分析、人工智慧、網路管理、遊戲開發等相關職業，並可進一步深造或進入研究所。",
+      "industries": [
+        "資訊科技產業",
+        "人工智慧產業",
+        "遊戲產業",
+        "網路安全產業",
+        "多媒體產業"
+      ]
+    },
+    "notes": "部分課程的學分數及課號未標示，無法確定。"
+  }
+}

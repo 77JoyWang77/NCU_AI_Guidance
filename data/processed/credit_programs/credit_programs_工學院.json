@@ -1,0 +1,229 @@
+[
+  {
+    "id": "smart_manufacturing",
+    "name": "國立中央大學跨校「智慧製造」學分學程",
+    "college": "工學院",
+    "cross_school": true,
+    "partner_schools": [
+      "CYCU",
+      "YZU"
+    ],
+    "min_credits": 15,
+    "description": "基於本校、中原大學及元智大學之跨校學術合作，結合三校師資提供多元課程，培養具智慧製造專業研究、多向思考、實作實驗能力之學生。本校學生均可選修。",
+    "required_courses": [],
+    "elective_groups": [
+      {
+        "name": "基礎類別",
+        "select": 1,
+        "select_credits": 3,
+        "description": "選修 1 門，3 學分",
+        "courses": [
+          {
+            "code": "EG1001",
+            "name": "工程程式設計",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME3099",
+            "name": "程式設計與應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME679R",
+            "name": "Python 程式語言",
+            "credits": 3,
+            "school": "CYCU"
+          },
+          {
+            "code": "ME693R",
+            "name": "工業大數據",
+            "credits": 3,
+            "school": "CYCU"
+          },
+          {
+            "code": "ME123",
+            "name": "基礎程式設計與實驗(一)",
+            "credits": 3,
+            "school": "YZU"
+          },
+          {
+            "code": "ME124",
+            "name": "基礎程式設計與實驗(二)",
+            "credits": 3,
+            "school": "YZU"
+          }
+        ]
+      },
+      {
+        "name": "特色類別",
+        "select": 3,
+        "select_credits": 9,
+        "description": "選修 3 門，9 學分",
+        "courses": [
+          {
+            "code": "CE5074",
+            "name": "物聯網",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME4202",
+            "name": "工業機器人原理與自動化應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME3063",
+            "name": "電腦輔助設計與製造整合",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME5202",
+            "name": "智慧製造技術",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME733R",
+            "name": "RL 增強式學習在智慧製造的實作應用",
+            "credits": 3,
+            "school": "CYCU"
+          },
+          {
+            "code": "ME731R",
+            "name": "射出成型整廠聯網整合技術",
+            "credits": 3,
+            "school": "CYCU"
+          },
+          {
+            "code": "ME533R",
+            "name": "工具機系統設計分析",
+            "credits": 3,
+            "school": "CYCU"
+          },
+          {
+            "code": "ME711R",
+            "name": "工業 4.0 概論",
+            "credits": 3,
+            "school": "CYCU"
+          },
+          {
+            "code": "ME411",
+            "name": "機電整合",
+            "credits": 3,
+            "school": "YZU"
+          },
+          {
+            "code": "ME471",
+            "name": "微機電製程與設備概論",
+            "credits": 3,
+            "school": "YZU"
+          },
+          {
+            "code": "ME415",
+            "name": "可程式控制",
+            "credits": 3,
+            "school": "YZU"
+          },
+          {
+            "code": "ME303",
+            "name": "機械製造",
+            "credits": 3,
+            "school": "YZU"
+          },
+          {
+            "code": "ME613",
+            "name": "人工智慧",
+            "credits": 3,
+            "school": "YZU"
+          },
+          {
+            "code": "ME606",
+            "name": "智慧製造",
+            "credits": 3,
+            "school": "YZU"
+          },
+          {
+            "code": "ME602",
+            "name": "機器人學",
+            "credits": 3,
+            "school": "YZU"
+          }
+        ]
+      },
+      {
+        "name": "PBL 類別",
+        "select": 1,
+        "select_credits": 3,
+        "description": "選修 1 門，3 學分",
+        "courses": [
+          {
+            "code": "ME5204",
+            "name": "製造聯網技術",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME5205",
+            "name": "智慧製造實作與專題(I)",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME5206",
+            "name": "智慧製造實作與專題(II)",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME5091",
+            "name": "半導體設備及製造整合 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME5092",
+            "name": "半導體設備及製造整合 II",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME789R",
+            "name": "工業物聯網",
+            "credits": 3,
+            "school": "CYCU"
+          },
+          {
+            "code": "ME386",
+            "name": "機械系統分析",
+            "credits": 3,
+            "school": "YZU"
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 15,
+        "description": "修得學程內課程 15 學分以上"
+      },
+      {
+        "type": "required_elective",
+        "description": "基礎類別選修 1 門（3 學分）、特色類別選修 3 門（9 學分）、PBL 類別選修 1 門（3 學分）"
+      },
+      {
+        "type": "certification_required",
+        "description": "須參加至少 1 場本學程舉辦之相關工作坊或演講活動"
+      },
+      {
+        "type": "elective_note",
+        "description": "學生選修對方學校開設之課程以本校未開之科目為原則，以開課學校學生優先選課"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢智慧製造學分學程」，並頒發學分學程證明書。大學部校際選課免繳開課學校學分費；研究所學生須按規定繳交原肄業學校學分費。"
+  }
+]
