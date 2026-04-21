@@ -14,13 +14,11 @@ const CoreAbilityTable: React.FC<CoreAbilityTableProps> = ({ abilities }) => {
     return null;
   }
 
-  // 解析強度指數，提取數值用於進度條
   const parseIntensity = (intensity: string): number => {
     const match = intensity.match(/\((\d+)\)/);
     return match ? parseInt(match[1]) : 0;
   };
 
-  // 獲取強度等級的顏色
   const getIntensityColor = (value: number): string => {
     if (value >= 5) return 'bg-red-500';
     if (value >= 4) return 'bg-orange-500';
@@ -30,58 +28,82 @@ const CoreAbilityTable: React.FC<CoreAbilityTableProps> = ({ abilities }) => {
   };
 
   return (
-    <div className="overflow-x-auto">
-      <table className="w-full table-fixed bg-white border border-gray-200 rounded-lg">
-        <colgroup>
-          <col className="w-2/5" />
-          <col className="w-1/5" />
-          <col className="w-2/5" />
-        </colgroup>
-        <thead className="bg-gray-50">
-          <tr>
-            <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 border-b">
-              核心能力
-            </th>
-            <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 border-b">
-              強度指數
-            </th>
-            <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 border-b">
-              評量方式
-            </th>
-          </tr>
-        </thead>
-        <tbody className="divide-y divide-gray-200">
-          {abilities.map((ability, index) => {
-            const intensityValue = parseIntensity(ability.intensity);
-            const colorClass = getIntensityColor(intensityValue);
+    <>
+      <div className="space-y-3 md:hidden">
+        {abilities.map((ability, index) => {
+          const intensityValue = parseIntensity(ability.intensity);
+          const colorClass = getIntensityColor(intensityValue);
 
-            return (
-              <tr key={index} className="hover:bg-gray-50 transition-colors">
-                <td className="px-4 py-3 text-sm text-gray-900 break-words">
-                  {ability.ability_name}
-                </td>
-                <td className="px-4 py-3 text-sm">
-                  <div className="flex items-center gap-2">
-                    <div className="w-24 shrink-0 bg-gray-200 rounded-full h-2.5 overflow-hidden">
-                      <div
-                        className={`h-full ${colorClass} transition-all duration-300`}
-                        style={{ width: `${intensityValue * 20}%` }}
-                      ></div>
-                    </div>
-                    <span className="text-xs text-gray-600 whitespace-nowrap">
-                      {ability.intensity}
-                    </span>
+          return (
+            <div key={`${ability.ability_name}-${index}`} className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+              <div className="space-y-1">
+                <div className="text-xs font-medium tracking-wide text-gray-500">核心能力</div>
+                <div className="text-sm font-semibold leading-6 text-gray-900 break-words">{ability.ability_name}</div>
+              </div>
+
+              <div className="mt-4 space-y-2">
+                <div className="text-xs font-medium tracking-wide text-gray-500">強度指數</div>
+                <div className="flex items-center gap-3">
+                  <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-gray-200">
+                    <div
+                      className={`h-full ${colorClass} transition-all duration-300`}
+                      style={{ width: `${intensityValue * 20}%` }}
+                    ></div>
                   </div>
-                </td>
-                <td className="px-4 py-3 text-sm text-gray-700">
-                  {ability.evaluation || '無'}
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
+                  <span className="shrink-0 text-xs font-medium text-gray-600 whitespace-nowrap">{ability.intensity}</span>
+                </div>
+              </div>
+
+              <div className="mt-4 space-y-1">
+                <div className="text-xs font-medium tracking-wide text-gray-500">評量方式</div>
+                <div className="text-sm leading-7 text-gray-700 break-words">{ability.evaluation || '無'}</div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="hidden overflow-x-auto md:block">
+        <table className="w-full table-fixed rounded-lg border border-gray-200 bg-white">
+          <colgroup>
+            <col className="w-2/5" />
+            <col className="w-1/5" />
+            <col className="w-2/5" />
+          </colgroup>
+          <thead className="bg-gray-50">
+            <tr>
+              <th className="border-b px-4 py-3 text-left text-sm font-semibold text-gray-700">核心能力</th>
+              <th className="border-b px-4 py-3 text-left text-sm font-semibold text-gray-700">強度指數</th>
+              <th className="border-b px-4 py-3 text-left text-sm font-semibold text-gray-700">評量方式</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-gray-200">
+            {abilities.map((ability, index) => {
+              const intensityValue = parseIntensity(ability.intensity);
+              const colorClass = getIntensityColor(intensityValue);
+
+              return (
+                <tr key={index} className="transition-colors hover:bg-gray-50">
+                  <td className="break-words px-4 py-3 text-sm text-gray-900">{ability.ability_name}</td>
+                  <td className="px-4 py-3 text-sm">
+                    <div className="flex items-center gap-2">
+                      <div className="h-2.5 w-24 shrink-0 overflow-hidden rounded-full bg-gray-200">
+                        <div
+                          className={`h-full ${colorClass} transition-all duration-300`}
+                          style={{ width: `${intensityValue * 20}%` }}
+                        ></div>
+                      </div>
+                      <span className="whitespace-nowrap text-xs text-gray-600">{ability.intensity}</span>
+                    </div>
+                  </td>
+                  <td className="px-4 py-3 text-sm text-gray-700">{ability.evaluation || '無'}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 };
 

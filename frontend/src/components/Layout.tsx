@@ -25,6 +25,7 @@ export default function Layout({ fullHeight = false }: LayoutProps) {
   const [backgroundIndex, setBackgroundIndex] = useState(0);
   const backgroundClass = useMemo(() => BACKGROUND_THEMES[backgroundIndex % BACKGROUND_THEMES.length], [backgroundIndex]);
   const isHome = location.pathname === '/';
+  const hideFloatingSearch = location.pathname === '/course-search';
 
   const handleBackgroundClick = (event: React.MouseEvent<HTMLElement>) => {
     if (event.target !== event.currentTarget) return;
@@ -49,7 +50,7 @@ export default function Layout({ fullHeight = false }: LayoutProps) {
           </div>
         </footer>
       ) : null}
-      <FloatingSearch />
+      {hideFloatingSearch ? null : <FloatingSearch />}
     </div>
   );
 }
