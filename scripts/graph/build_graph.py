@@ -109,6 +109,8 @@ EDGE_TYPES = {
     "COURSE_EXPERT": "教師專長與此課程領域相關（NLP 分析）",
     # 先修關係
     "PREREQUISITE_OF": "為…的先修", "COREQUISITE": "同修",
+    # 語意同義
+    "SIMILAR_TO": "語意相近（字串相似度）",
 }
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -916,6 +918,71 @@ def enrich_professor_links(G: nx.DiGraph) -> dict:
     return stats
 
 
+def enrich_concept_synonymy(G: nx.DiGraph) -> dict:
+    """Phase 2-f：字串相似度建立 Concept / Technology 同義邊 SIMILAR_TO（雙向）。
+
+    演算法：
+    1. 建立字元反向索引 {char → {node_id}} 作為 blocking，減少 O(n²) 比對
+    2. 候選對：共享字元 ≥ 2 個（中文字元只計非 ASCII）
+    3. 用 difflib.SequenceMatcher 計算字串相似度
+    4. 條件：ratio ≥ 0.70 且較長名稱 ≤ 2.5 倍較短名稱長度
+    5. 建立雙向 SIMILAR_TO 邊，weight = ratio
+    """
+    from difflib import SequenceMatcher
+    from collections import Counter as _Counter
+
+    stats = {"similar_to": 0, "candidates_checked": 0}
+
+    # 收集 Concept + Technology 節點（排除名稱過短者）
+    sem_nodes = [
+        (nid, data["name"])
+        for nid, data in G.nodes(data=True)
+        if data.get("node_type") in ("Concept", "Technology")
+        and len(data.get("name", "")) >= 2
+    ]
+
+    # 字元反向索引（只對中文字 / 非 ASCII 字元做 blocking）
+    char_index: dict[str, list] = {}
+    for nid, name in sem_nodes:
+        for ch in set(name):
+            if ord(ch) > 127:  # 中文及全形字元
+                char_index.setdefault(ch, []).append(nid)
+
+    id_to_name = {nid: name for nid, name in sem_nodes}
+    seen_pairs: set[tuple] = set()
+
+    for nid, name in sem_nodes:
+        # 候選：共享 ≥ 2 個非 ASCII 字元
+        overlap_cnt: _Counter = _Counter()
+        for ch in set(name):
+            if ord(ch) > 127:
+                for cid in char_index.get(ch, []):
+                    if cid != nid:
+                        overlap_cnt[cid] += 1
+
+        for cid, cnt in overlap_cnt.items():
+            if cnt < 2:
+                continue
+            pair = (nid, cid) if nid < cid else (cid, nid)
+            if pair in seen_pairs:
+                continue
+            seen_pairs.add(pair)
+            stats["candidates_checked"] += 1
+
+            cname = id_to_name[cid]
+            # 長度比過大則跳過（避免「學習」匹配「機器學習算法與實作」）
+            la, lb = len(name), len(cname)
+            if max(la, lb) > 2.5 * min(la, lb):
+                continue
+            ratio = SequenceMatcher(None, name, cname).ratio()
+            if ratio >= 0.70:
+                ensure_edge(G, nid, cid, relation="SIMILAR_TO", weight=round(ratio, 3))
+                ensure_edge(G, cid, nid, relation="SIMILAR_TO", weight=round(ratio, 3))
+                stats["similar_to"] += 1
+
+    return stats
+
+
 def enrich_all(G: nx.DiGraph):
     """執行所有 Phase 2 豐富化步驟。
 
@@ -954,6 +1021,11 @@ def enrich_all(G: nx.DiGraph):
     print("\n  [Phase 2-e] 必修建議學期（from schedule_draft）...")
     s = enrich_schedule(G)
     print(f"    suggested_year/semester 更新：{s['updated']} 筆")
+
+    print("\n  [Phase 2-f] Concept/Technology 同義邊（字串相似度）...")
+    s = enrich_concept_synonymy(G)
+    print(f"    候選配對檢查：{s['candidates_checked']}，"
+          f"SIMILAR_TO 邊（單方向計）：{s['similar_to']}")
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -1009,9 +1081,26 @@ def print_and_save_stats(G: nx.DiGraph):
 def main():
     parser = argparse.ArgumentParser(description="NCU 知識圖譜建置工具")
     group = parser.add_mutually_exclusive_group()
-    group.add_argument("--build-only",  action="store_true", help="只建基礎圖，跳過豐富化")
-    group.add_argument("--enrich-only", action="store_true", help="只豐富化現有圖，不重建")
+    group.add_argument("--build-only",    action="store_true", help="只建基礎圖，跳過豐富化")
+    group.add_argument("--enrich-only",  action="store_true", help="只豐富化現有圖，不重建")
+    group.add_argument("--synonymy-only", action="store_true", help="只補 SIMILAR_TO 邊（最快）")
     args = parser.parse_args()
+
+    if args.synonymy_only:
+        if not GRAPH_PKL.exists():
+            print(f"找不到現有圖譜：{GRAPH_PKL}")
+            return
+        print("載入現有圖譜（synonymy-only 模式）...")
+        with open(GRAPH_PKL, "rb") as f:
+            G = pickle.load(f)
+        print(f"  {G.number_of_nodes()} 節點，{G.number_of_edges()} 邊")
+        print("\n  [Phase 2-f] Concept/Technology 同義邊（字串相似度）...")
+        s = enrich_concept_synonymy(G)
+        print(f"    候選配對：{s['candidates_checked']}，SIMILAR_TO 邊：{s['similar_to']}")
+        save_graph(G)
+        print_and_save_stats(G)
+        print("\n✓ 完成")
+        return
 
     if args.enrich_only:
         # 載入現有圖

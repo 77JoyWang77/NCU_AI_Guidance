@@ -6,7 +6,29 @@ ReAct Tool-Use 工具定義與執行器。
 execute_tool() 依工具名稱分派執行。
 """
 
+import json
+from functools import lru_cache
+from pathlib import Path
+
 from app.services import retriever, graph_service
+
+ROOT = Path(__file__).parent.parent.parent.parent
+
+
+@lru_cache(maxsize=1)
+def _load_program_descriptions() -> dict:
+    path = ROOT / "data" / "processed" / "program_descriptions.json"
+    if path.exists():
+        return json.loads(path.read_text(encoding="utf-8"))
+    return {}
+
+
+@lru_cache(maxsize=1)
+def _load_requirements_notes() -> dict:
+    path = ROOT / "data" / "processed" / "requirements_notes.json"
+    if path.exists():
+        return json.loads(path.read_text(encoding="utf-8"))
+    return {}
 
 
 # ── 結果格式化 ────────────────────────────────────────────────────────────────
@@ -52,6 +74,11 @@ def tool_search_courses(
 ) -> list[dict]:
     """語意搜尋課程，組裝 ChromaDB filters 後呼叫 retriever。
     若 tech 有值，會先走 graph 精確查詢，再補上向量搜尋結果。
+
+    【Fallback】若回傳結果 < 3 筆，嘗試：
+    1. 移除 tech 參數，改用純語意搜尋
+    2. 換成更短的關鍵字（如只保留核心詞）
+    3. 改用 find_similar_courses 尋找概念相關課程
     """
     # Graph-first：tech 查詢先走圖，結果最精確
     if tech:
@@ -110,7 +137,12 @@ def tool_search_courses(
 
 
 def tool_get_dept_courses(dept_name: str, course_type: str = "required") -> dict:
-    """圖查詢系所必修或選修課程。圖缺資料時自動 fallback 至 ChromaDB 精確過濾。"""
+    """圖查詢系所必修或選修課程。圖缺資料時自動 fallback 至 ChromaDB 精確過濾。
+
+    【Fallback】若系所名稱找不到，嘗試：
+    1. 只用關鍵部分（如「資工」而非「資訊工程學系」）
+    2. 呼叫 search_courses(dept="...", n=20) 做向量補充
+    """
     if course_type == "required":
         courses = graph_service.get_dept_required_courses(dept_name)
     elif course_type == "elective":
@@ -275,18 +307,212 @@ def tool_get_course_eligibility(course_query: str) -> dict:
     }
 
 
+def tool_get_course_knowledge_map(course_name: str) -> str:
+    """回傳一門課的知識地圖：學什麼概念、用什麼技術、哪些課程與它概念重疊最高。
+
+    【使用時機】使用者問「演算法在學什麼？」「機器學習這門課教哪些東西？」
+    「有沒有和機器學習類似的課？」等探索式問題時使用。
+    比純語意搜尋更能呈現課程的完整知識結構。
+    """
+    result = graph_service.get_course_knowledge_map(course_name)
+    if not result:
+        return f"找不到「{course_name}」的課程資料（請嘗試更短的關鍵詞）。"
+
+    lines = []
+    c = result["course"]
+    lines.append(f"【{c['name']}】（{c['dept']}，{c.get('credits', '?')}學分）")
+
+    techs = result.get("technologies", [])
+    if techs:
+        lines.append(f"\n使用技術：{', '.join(t['name'] for t in techs[:10])}")
+
+    concepts = result.get("concepts", [])
+    if concepts:
+        lines.append(f"涵蓋概念（共 {len(concepts)} 個）：{', '.join(c['name'] for c in concepts[:15])}")
+        if len(concepts) > 15:
+            lines.append(f"  ...等 {len(concepts)} 個概念")
+
+    similar = result.get("similar_courses", [])
+    if similar:
+        lines.append(f"\n概念重疊最高的相關課程（可延伸學習）：")
+        for s in similar[:8]:
+            lines.append(f"  - {s['name']}（{s['dept']}）[共享 {s.get('shared_concepts', 0)} 個概念]")
+
+    return "\n".join(lines)
+
+
+def tool_get_depts_by_tech(tech_name: str) -> str:
+    """Multi-hop 查詢哪些系所的課程有教某技術或概念。
+
+    【使用時機】使用者問「什麼科系需要學 Python？」「哪些系有教機器學習？」
+    「哪個系所最重視 SQL 技術？」等問題時使用。
+    利用知識圖譜的多跳路徑，區分「必修」與「選修」含此技術的系所。
+    比向量搜尋更能呈現結構性的「哪些系重視這個技術」。
+    """
+    result = graph_service.get_depts_by_tech(tech_name)
+    if not result["courses"]:
+        return f"知識圖譜中找不到教「{tech_name}」的課程（請嘗試英文或其他名稱）。"
+
+    lines = [f"教「{tech_name}」的系所分布（共 {len(result['courses'])} 門相關課程）："]
+
+    req = result.get("required_depts", [])
+    if req:
+        lines.append(f"\n必修課含此技術的系所（{len(req)} 個）：")
+        for d in req[:12]:
+            lines.append(f"  - {d}")
+
+    elec = result.get("elective_depts", [])
+    if elec:
+        lines.append(f"\n選修課含此技術的系所（{len(elec)} 個）：")
+        for d in elec[:12]:
+            lines.append(f"  - {d}")
+
+    lines.append(f"\n相關課程（前 10 門）：")
+    for c in result["courses"][:10]:
+        lines.append(f"  - {c['name']}（{c.get('dept', '')}）")
+
+    return "\n".join(lines)
+
+
+def tool_ppr_explore(
+    seed: str,
+    focus: str = "all",
+    top_k: int = 15,
+) -> str:
+    """Personalized PageRank 探索：從種子概念出發，找整個知識圖譜中最相關的節點。
+
+    【使用時機】使用者想做廣泛探索時：
+    - 「和機器學習相關的一切有哪些？」
+    - 「我對 AI 有興趣，中央大學有什麼相關資源？」
+    - 「深度學習連結到哪些老師和系所？」
+    比 find_similar_courses 更廣，能跨越課程、老師、系所、概念等所有節點類型。
+
+    focus 參數：
+    - "all"：回傳所有節點類型
+    - "course"：只回傳課程
+    - "instructor"：只回傳教師
+    - "dept"：只回傳系所
+    - "concept"：只回傳概念/技術節點
+    """
+    focus_map = {
+        "course":     ["Course"],
+        "instructor": ["Instructor"],
+        "dept":       ["Department", "DeptGroup", "CollegeBachelorProgram"],
+        "concept":    ["Concept", "Technology", "Field"],
+    }
+    type_filter = focus_map.get(focus)
+    seed_list = [s.strip() for s in seed.replace("、", ",").replace("，", ",").split(",")]
+
+    results = graph_service.ppr_explore(
+        seed_names=seed_list,
+        top_k=top_k,
+        node_type_filter=type_filter,
+    )
+
+    if not results:
+        return f"找不到以「{seed}」為起點的相關節點（請確認概念名稱是否正確）。"
+
+    lines = [f"以「{seed}」為起點的 PPR 探索結果（{focus} 模式）："]
+    type_labels = {
+        "Course": "課程", "Instructor": "教師",
+        "Department": "系所", "DeptGroup": "系所分組",
+        "CollegeBachelorProgram": "學院學士班",
+        "Concept": "概念", "Technology": "技術", "Field": "研究領域",
+        "CreditProgram": "學分學程",
+    }
+    for r in results:
+        label = type_labels.get(r["node_type"], r["node_type"])
+        name = r["name"]
+        extra = ""
+        if r.get("dept"):
+            extra = f"（{r['dept']}）"
+        lines.append(f"  [{label}] {name}{extra}")
+
+    return "\n".join(lines)
+
+
+def tool_get_program_description(program_name: str) -> str:
+    """直接從 program_descriptions.json 取得學分學程的完整說明。
+
+    【使用時機】使用者詢問某學分學程的說明、目標、修課方式、學程內容時，
+    此工具比向量搜尋更完整，應優先使用。
+    若想同時取得課程清單，可搭配 get_program_courses 一起呼叫。
+    """
+    data = _load_program_descriptions()
+    if not data:
+        return "program_descriptions.json 資料尚未載入。"
+    # 精確 / 包含比對
+    for name, desc in data.items():
+        if program_name in name or name in program_name:
+            return f"【{name}】\n{desc}"
+    # 部分字元模糊比對（任一字元命中）
+    matches = [(k, v) for k, v in data.items()
+               if any(c in k for c in program_name if len(c.encode()) > 1)]
+    if matches:
+        return "\n\n".join(f"【{k}】\n{v}" for k, v in matches[:3])
+    return "找不到符合的學程說明。現有學程：\n" + "\n".join(f"- {k}" for k in data.keys())
+
+
+def tool_get_requirements_notes(dept_name: str) -> str:
+    """直接從 requirements_notes.json 取得系所畢業規定原文。
+
+    【使用時機】使用者詢問某系所畢業學分、修課規定、必選修要求、
+    修業規定細節時，此工具比 get_graduation_rules 更完整（含原始說明文字），
+    應優先使用。
+    """
+    data = _load_requirements_notes()
+    if not data:
+        return "requirements_notes.json 資料尚未載入。"
+    for dept, notes in data.items():
+        if dept_name in dept or dept in dept_name:
+            return f"【{dept} 畢業規定】\n{notes}"
+    # 模糊
+    matches = [(k, v) for k, v in data.items()
+               if any(c in k for c in dept_name if len(c.encode()) > 1)]
+    if matches:
+        return "\n\n".join(f"【{k}】\n{v}" for k, v in matches[:2])
+    return f"找不到「{dept_name}」的畢業規定資料。"
+
+
+def tool_find_similar_courses(course_name: str) -> str:
+    """找與指定課程有最多共同概念的相似課程（跨系所）。
+
+    【使用時機】使用者問「有沒有類似 OO 的課？」、「哪些課和 OO 有關？」、
+    「跨系有沒有教類似內容的課？」時使用。
+    利用知識圖譜的 Concept/Technology 節點做語意擴散，覆蓋比關鍵字搜尋更廣。
+    """
+    results = graph_service.search_courses_by_concept_cluster(course_name, top_n=15)
+    if not results:
+        return (f"找不到與「{course_name}」概念相近的課程（可能課程名稱不符，"
+                f"請嘗試更短的關鍵詞，如只輸入核心詞）。")
+    lines = [f"與「{course_name}」概念相近的課程（共 {len(results)} 門）："]
+    for r in results:
+        line = f"- {r['name']}（{r['dept']}，{r.get('credits', '?')}學分）"
+        cnt = r.get("shared_concepts", 0)
+        if cnt > 1:
+            line += f" [共享概念：{cnt} 個]"
+        lines.append(line)
+    return "\n".join(lines)
+
+
 # ── 分派表 ────────────────────────────────────────────────────────────────────
 
 _TOOL_MAP = {
-    "search_courses":          tool_search_courses,
-    "get_dept_courses":        tool_get_dept_courses,
-    "get_program_courses":     tool_get_program_courses,
-    "get_teacher_info":        tool_get_teacher_info,
-    "search_teachers":         tool_search_teachers,
-    "get_prereq_info":         tool_get_prereq_info,
-    "get_graduation_rules":    tool_get_graduation_rules,
-    "get_dept_info":           tool_get_dept_info,
-    "get_course_eligibility":  tool_get_course_eligibility,
+    "search_courses":            tool_search_courses,
+    "get_dept_courses":          tool_get_dept_courses,
+    "get_program_courses":       tool_get_program_courses,
+    "get_teacher_info":          tool_get_teacher_info,
+    "search_teachers":           tool_search_teachers,
+    "get_prereq_info":           tool_get_prereq_info,
+    "get_graduation_rules":      tool_get_graduation_rules,
+    "get_dept_info":             tool_get_dept_info,
+    "get_course_eligibility":    tool_get_course_eligibility,
+    "get_program_description":   tool_get_program_description,
+    "get_requirements_notes":    tool_get_requirements_notes,
+    "find_similar_courses":      tool_find_similar_courses,
+    "get_course_knowledge_map":  tool_get_course_knowledge_map,
+    "get_depts_by_tech":         tool_get_depts_by_tech,
+    "ppr_explore":               tool_ppr_explore,
 }
 
 
@@ -438,6 +664,93 @@ TOOLS = [
                     "course_query": {"type": "string", "description": "課程名稱或課號"},
                 },
                 "required": ["course_query"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "get_program_description",
+            "description": "直接取得學分學程的完整說明文字（目標、修課方式、學程特色）。【優先使用】比向量搜尋更完整，詢問學程說明時請優先呼叫此工具，可搭配 get_program_courses 同時取得課程清單。",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "program_name": {"type": "string", "description": "學程名稱，如「人工智慧技術應用」「資訊安全」"},
+                },
+                "required": ["program_name"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "get_requirements_notes",
+            "description": "直接取得系所畢業規定原文（含修課細節說明）。【優先使用】詢問畢業學分、修業規定、必選修要求時請優先呼叫此工具，比 get_graduation_rules 更完整。",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "dept_name": {"type": "string", "description": "系所名稱，如「資訊工程學系」「電機工程學系」"},
+                },
+                "required": ["dept_name"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "find_similar_courses",
+            "description": "透過知識圖譜 Concept 節點找與指定課程概念最相近的跨系課程。適合「有沒有類似 OO 的課」、「跨系有沒有教 OO 的課」等推薦類查詢。",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "course_name": {"type": "string", "description": "課程名稱，如「機器學習」「演算法」"},
+                },
+                "required": ["course_name"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "get_course_knowledge_map",
+            "description": "回傳一門課的知識地圖：它涵蓋的學術概念、使用的技術工具，以及概念重疊最高的跨系相似課程。適合「演算法在教什麼？」「機器學習和哪些課最像？」等探索式問題。",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "course_name": {"type": "string", "description": "課程名稱，如「演算法」「機器學習」「深度學習」"},
+                },
+                "required": ["course_name"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "get_depts_by_tech",
+            "description": "多跳圖查詢：哪些系所的課程有教某技術或概念？區分必修與選修。適合「什麼科系需要學 Python？」「哪些系重視機器學習？」等問題。",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "tech_name": {"type": "string", "description": "技術或概念名稱，如「Python」「機器學習」「SQL」"},
+                },
+                "required": ["tech_name"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "ppr_explore",
+            "description": "Personalized PageRank 廣泛探索：從概念/課程出發，找知識圖譜中最相關的節點（可跨課程、教師、系所、概念）。適合「和 AI 相關的一切有哪些？」「深度學習連結到哪些老師和系所？」等廣泛探索。",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "seed":  {"type": "string", "description": "起始概念或課程名稱，可用逗號分隔多個，如「機器學習」或「機器學習,深度學習」"},
+                    "focus": {"type": "string", "enum": ["all", "course", "instructor", "dept", "concept"],
+                              "description": "回傳節點類型：all=全部，course=課程，instructor=教師，dept=系所，concept=概念技術"},
+                    "top_k": {"type": "integer", "description": "回傳數量（預設 15）"},
+                },
+                "required": ["seed"],
             },
         },
     },
