@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import { assessmentAPI } from '../api/services';
 import type { Question, Answer, AssessmentResult, AssessmentMode } from '../types';
 import {
@@ -23,10 +23,11 @@ const SCIENCE_DEPARTMENTS = [
 ];
 
 export default function AssessmentPage() {
+  const pageTopRef = useRef<HTMLDivElement | null>(null);
+  const questionCardRef = useRef<HTMLDivElement | null>(null);
   const [mode, setMode] = useState<AssessmentMode>('grade1');
   const [trackType, setTrackType] = useState<'liberal' | 'science' | null>(null); // 高二模式的文理分組
   const [selectedSubjects, setSelectedSubjects] = useState<string[]>([]); // 高三模式的學測科目選擇
-  const [availableDepartments, setAvailableDepartments] = useState<string[]>([]); // 高三模式符合的科系
   const [started, setStarted] = useState(false);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -35,8 +36,42 @@ export default function AssessmentPage() {
   const [result, setResult] = useState<AssessmentResult | null>(null);
 
   // 換題時滾回頂端
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  useLayoutEffect(() => {
+    const scrollQuestionCardToTop = () => {
+      const card = questionCardRef.current;
+      const page = pageTopRef.current;
+      const anchor = card ?? page;
+      if (!anchor) return;
+
+      const nav = document.querySelector('nav');
+      const navHeight = nav instanceof HTMLElement ? nav.offsetHeight : 0;
+      const topOffset = navHeight + 12;
+
+      let parent = anchor.parentElement;
+      while (parent) {
+        const style = window.getComputedStyle(parent);
+        const isScrollable = /(auto|scroll)/.test(style.overflowY) && parent.scrollHeight > parent.clientHeight;
+        if (isScrollable) {
+          const parentRect = parent.getBoundingClientRect();
+          const anchorRect = anchor.getBoundingClientRect();
+          const delta = anchorRect.top - parentRect.top;
+          parent.scrollTop += delta - 12;
+          break;
+        }
+        parent = parent.parentElement;
+      }
+
+      const rect = anchor.getBoundingClientRect();
+      const absoluteTop = window.scrollY + rect.top - topOffset;
+      window.scrollTo({ top: Math.max(absoluteTop, 0) });
+    };
+
+    const rafId = window.requestAnimationFrame(scrollQuestionCardToTop);
+    const timeoutId = window.setTimeout(scrollQuestionCardToTop, 60);
+    return () => {
+      window.cancelAnimationFrame(rafId);
+      window.clearTimeout(timeoutId);
+    };
   }, [currentIndex]);
 
   const modes = [
@@ -107,7 +142,6 @@ export default function AssessmentPage() {
       try {
         setLoading(true);
         const result = await assessmentAPI.filterBySubjects(selectedSubjects);
-        setAvailableDepartments(result.departments);
         setStarted(true);
         // 將篩選後的科系列表直接傳遞給 loadQuestions
         await loadQuestions(result.departments);
@@ -175,7 +209,7 @@ export default function AssessmentPage() {
   // 選擇模式畫面
   if (!started) {
     return (
-      <div className="page-container py-8">
+      <div ref={pageTopRef} className="page-container py-8">
         <div className="text-center mb-8">
           <h1 className="text-2xl font-bold text-primary-900 mb-2">科系興趣量表</h1>
           <p className="text-sm text-gray-600">
@@ -214,7 +248,7 @@ export default function AssessmentPage() {
 
         {/* 高二模式：文理分組選擇 */}
         {mode === 'grade2' && (
-          <div className="max-w-3xl mx-auto mb-12">
+          <div className="w-full max-w-5xl mx-auto mb-12">
             <div className="card p-8">
               <h3 className="text-lg font-bold text-primary-900 mb-4">請選擇你的類組</h3>
               <div className="grid grid-cols-2 gap-4">
@@ -253,7 +287,7 @@ export default function AssessmentPage() {
 
         {/* 高三模式：學測科目選擇 */}
         {mode === 'grade3' && (
-          <div className="max-w-3xl mx-auto mb-12">
+          <div className="w-full max-w-5xl mx-auto mb-12">
             <div className="card p-8">
               <h3 className="text-lg font-bold text-primary-900 mb-4">請選擇你的學測科目</h3>
               <p className="text-sm text-gray-600 mb-4">選擇你想要採計的學測科目，系統會篩選出符合的科系</p>
@@ -318,7 +352,7 @@ export default function AssessmentPage() {
           )}
         </div>
 
-        <div className="card p-8 max-w-3xl mx-auto">
+        <div className="card p-8 w-full max-w-5xl mx-auto">
           <div className="flex items-start space-x-3 mb-4">
             <HiLightBulb className="w-6 h-6 text-primary-600 flex-shrink-0 mt-1" />
             <div>
@@ -351,7 +385,7 @@ export default function AssessmentPage() {
   // 載入中
   if (loading && questions.length === 0) {
     return (
-      <div className="page-container py-8 text-center">
+      <div ref={pageTopRef} className="page-container py-8 text-center">
         <div className="card p-16 max-w-md mx-auto">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-primary-700 mx-auto mb-4"></div>
           <p className="text-gray-600">載入題目中...</p>
@@ -365,7 +399,7 @@ export default function AssessmentPage() {
     const track = mode === 'grade1' ? determineTrack() : trackType;
 
     return (
-      <div className="page-container py-8">
+      <div ref={pageTopRef} className="page-container py-8">
         {/* 簡潔的標題 */}
         <div className="text-center mb-10">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
@@ -484,7 +518,7 @@ export default function AssessmentPage() {
 
   if (!current) {
     return (
-      <div className="page-container py-8 text-center">
+      <div ref={pageTopRef} className="page-container py-8 text-center">
         <div className="card p-16 max-w-md mx-auto">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-primary-700 mx-auto mb-4"></div>
           <p className="text-gray-600">載入中...</p>
@@ -503,9 +537,9 @@ export default function AssessmentPage() {
   const departmentCount = uniqueDepartments.size;
 
   return (
-    <div className="page-container py-8">
+    <div ref={pageTopRef} className="page-container py-8">
       {/* 題目卡片 */}
-      <div className="card p-8 mb-6 max-w-4xl mx-auto">
+      <div ref={questionCardRef} className="card p-8 mb-6 max-w-4xl mx-auto">
         <div className="flex items-start space-x-3 mb-6">
           <HiAcademicCap className="w-6 h-6 text-primary-600 flex-shrink-0 mt-1" />
           <h2 className="text-2xl font-bold text-primary-900">{current.title}</h2>

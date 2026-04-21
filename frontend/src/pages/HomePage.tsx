@@ -1,180 +1,300 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import { HiChartBar, HiBookOpen, HiSearch, HiAcademicCap, HiArrowRight } from 'react-icons/hi';
+import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import {
+  HiAcademicCap,
+  HiArrowRight,
+  HiBookOpen,
+  HiChartBar,
+  HiChevronLeft,
+  HiChevronRight,
+  HiCollection,
+  HiSearch,
+} from 'react-icons/hi';
+
+function CountUp({ value, suffix = '' }: { value: number; suffix?: string }) {
+  const [displayValue, setDisplayValue] = useState(0);
+
+  useEffect(() => {
+    let frameId = 0;
+    let start: number | null = null;
+    const duration = 1200;
+
+    const tick = (timestamp: number) => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setDisplayValue(Math.round(value * eased));
+      if (progress < 1) frameId = window.requestAnimationFrame(tick);
+    };
+
+    frameId = window.requestAnimationFrame(tick);
+    return () => window.cancelAnimationFrame(frameId);
+  }, [value]);
+
+  return (
+    <>
+      {displayValue.toLocaleString()}
+      {suffix}
+    </>
+  );
+}
+
+const stats = [
+  {
+    value: 28,
+    suffix: '',
+    label: '學系總覽',
+    description: '涵蓋中央大學主要學院與學系，幫助高中生快速建立完整的選系視野。',
+  },
+  {
+    value: 1300,
+    suffix: '+',
+    label: '課程資料',
+    description: '整理不同系所課程資訊，方便比較修課方向與學習內容差異。',
+  },
+  {
+    value: 459,
+    suffix: '',
+    label: '研究計畫',
+    description: '收錄歷年專題與研究成果，讓你提早看見大學端的學習樣貌。',
+  },
+];
+
+const features = [
+  {
+    title: '興趣測評',
+    description: '透過問答探索個人興趣與能力傾向，快速找到更適合自己的學系方向。',
+    icon: HiChartBar,
+    path: '/assessment',
+    tag: '40+ 題目',
+  },
+  {
+    title: '課程資訊',
+    description: '瀏覽各系課程內容、學分與授課資訊，建立對不同學群的具體想像。',
+    icon: HiBookOpen,
+    path: '/courses',
+    tag: '1,300+ 課程',
+  },
+  {
+    title: '課程搜尋',
+    description: '用關鍵字快速查找課程與教師資訊，縮短探索課程方向的時間。',
+    icon: HiSearch,
+    path: '/course-search',
+    tag: '快速查找',
+  },
+  {
+    title: '研究計畫',
+    description: '從歷年研究與專題成果中，看見不同學系的延伸發展與實作面向。',
+    icon: HiAcademicCap,
+    path: '/projects',
+    tag: '459 筆資料',
+  },
+  {
+    title: '資源連結',
+    description: '整合升學、學習與延伸閱讀資源，讓後續查找資訊更有效率。',
+    icon: HiCollection,
+    path: '/resources',
+    tag: '整合入口',
+  },
+];
 
 export default function HomePage() {
   const navigate = useNavigate();
-  const [exitEffect, setExitEffect] = useState<string | null>(null);
+  const [isLeaving, setIsLeaving] = useState(false);
+  const [activeFeatureIndex, setActiveFeatureIndex] = useState(0);
+  const featureSectionRef = useRef<HTMLElement | null>(null);
+  const dragStateRef = useRef({ isDown: false, startX: 0, moved: false });
 
-  const handleStartClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    setExitEffect('main');
-    setTimeout(() => {
-      navigate('/assessment');
-    }, 500);
+  const navigateWithAnimation = (path: string) => {
+    setIsLeaving(true);
+    window.setTimeout(() => {
+      navigate(path);
+      setIsLeaving(false);
+    }, 220);
   };
 
-  const handleFeatureClick = (e: React.MouseEvent, index: number, link: string) => {
-    e.preventDefault();
-    setExitEffect(`feature-${index}`);
-    setTimeout(() => {
-      navigate(link);
-    }, 500);
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      if (!dragStateRef.current.isDown) {
+        setActiveFeatureIndex((prev) => (prev + 1) % features.length);
+      }
+    }, 4500);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
+  const goToFeature = (index: number) => {
+    const total = features.length;
+    setActiveFeatureIndex((index + total) % total);
   };
 
-  let transitionClasses = 'opacity-100 scale-100 blur-none translate-x-0 translate-y-0 transform-gpu origin-center';
-  if (exitEffect === 'main') {
-    transitionClasses = 'opacity-0 scale-95 blur-sm translate-y-4 transform-gpu origin-center';
-  } else if (exitEffect === 'feature-0') {
-    transitionClasses = 'opacity-100 scale-0 blur-md transform-gpu origin-top-left';
-  } else if (exitEffect === 'feature-1') {
-    transitionClasses = 'opacity-100 scale-0 blur-md transform-gpu origin-top-right';
-  } else if (exitEffect === 'feature-2') {
-    transitionClasses = 'opacity-100 scale-0 blur-md transform-gpu origin-bottom-left';
-  } else if (exitEffect === 'feature-3') {
-    transitionClasses = 'opacity-100 scale-0 blur-md transform-gpu origin-bottom-right';
-  }
+  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    dragStateRef.current = {
+      isDown: true,
+      startX: event.clientX,
+      moved: false,
+    };
+  };
 
-  const features = [
-    {
-      title: '科系興趣量表',
-      description: '透過專業測評，協助你探索適合的科系方向',
-      icon: HiChartBar,
-      link: '/assessment',
-      stats: '40+ 題目',
-    },
-    {
-      title: '課程資訊',
-      description: '完整的中央大學課程資料庫與詳細資訊',
-      icon: HiBookOpen,
-      link: '/courses',
-      stats: '1,300+ 課程',
-    },
-    {
-      title: '智慧搜尋',
-      description: '快速搜尋並找到感興趣的課程內容',
-      icon: HiSearch,
-      link: '/course-search',
-      stats: '即時搜尋',
-    },
-    {
-      title: '研究計畫',
-      description: '瀏覽歷年大專生研究計畫，了解科系研究方向',
-      icon: HiAcademicCap,
-      link: '/projects',
-      stats: '459 個計畫',
-    },
-  ];
+  const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (!dragStateRef.current.isDown) return;
+    const delta = event.clientX - dragStateRef.current.startX;
+    if (Math.abs(delta) > 20) dragStateRef.current.moved = true;
+  };
+
+  const handlePointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (!dragStateRef.current.isDown) return;
+    const delta = event.clientX - dragStateRef.current.startX;
+    const moved = dragStateRef.current.moved;
+    dragStateRef.current.isDown = false;
+
+    if (delta <= -40) goToFeature(activeFeatureIndex + 1);
+    if (delta >= 40) goToFeature(activeFeatureIndex - 1);
+
+    window.setTimeout(() => {
+      dragStateRef.current.moved = false;
+    }, 0);
+
+    if (!moved && Math.abs(delta) < 10) return;
+  };
+
+  const handleFeatureClick = (path: string) => {
+    if (dragStateRef.current.moved) return;
+    navigateWithAnimation(path);
+  };
 
   return (
-    <div className={`page-container transition-all duration-500 ease-in-out transform ${transitionClasses}`}>
-      {/* Hero Section */}
-      <section className="py-16 md:py-24">
-        <div className="text-center max-w-4xl mx-auto">
-          <div className="inline-block px-4 py-2 bg-primary-50 text-primary-700 rounded-full text-sm font-medium mb-6">
-            國立中央大學
+    <div className={`transition duration-300 ${isLeaving ? 'translate-y-2 opacity-0' : 'translate-y-0 opacity-100'}`}>
+      <section className="px-2 py-14 md:px-6 md:py-20">
+        <div className="mx-auto max-w-5xl text-center">
+          <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/90 px-4 py-2 text-sm font-medium text-slate-700 shadow-soft">
+            <HiCollection className="h-4 w-4 text-primary-700" />
+            國立中央大學科系探索平台
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-900 mb-6 leading-tight">
-            科系探索平台
+          <h1 className="mt-6 text-4xl font-bold tracking-tight text-slate-950 md:text-6xl">
+            用更清楚的資訊，
+            <br className="hidden sm:block" />
+            找到更適合你的科系方向。
           </h1>
-          <p className="text-lg md:text-xl text-gray-600 mb-10 leading-relaxed">
-            為高中生提供完整的科系資訊與測評工具<br className="hidden sm:block" />
-            協助你找到最適合的大學科系
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-slate-600 md:text-lg">
+            以簡潔、清楚的方式整合興趣測評、課程資料、研究計畫與升學資源，
+            幫助高中生更有方向地探索中央大學。
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button onClick={handleStartClick} className="btn-primary">
+          <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
+            <button type="button" onClick={() => navigateWithAnimation('/assessment')} className="btn-primary">
               開始測評
-              <HiArrowRight className="ml-2 w-5 h-5" />
+              <HiArrowRight className="ml-2 h-5 w-5" />
             </button>
-            <Link to="/courses" className="btn-secondary">
-              瀏覽課程
-            </Link>
+            <button
+              type="button"
+              onClick={() => featureSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+              className="btn-secondary"
+            >
+              查看平台功能
+            </button>
           </div>
         </div>
       </section>
 
-      {/* Features Grid */}
-      <section className="py-16 border-t border-gray-200">
-        <h2 className="section-title text-center">平台功能</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {features.map((feature, index) => {
-            const IconComponent = feature.icon;
-            return (
-              <a
-                key={feature.title}
-                href={feature.link}
-                onClick={(e) => handleFeatureClick(e, index, feature.link)}
-                className="card-interactive p-8 cursor-pointer"
-              >
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
-                      <IconComponent className="w-6 h-6 text-primary-700" />
-                    </div>
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-xl font-bold text-primary-900 mb-2">
-                      {feature.title}
-                    </h3>
-                    <p className="text-gray-600 mb-3 leading-relaxed">
-                      {feature.description}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-primary-600 font-medium">
-                        {feature.stats}
-                      </span>
-                      <HiArrowRight className="w-5 h-5 text-primary-600" />
-                    </div>
-                  </div>
-                </div>
-              </a>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-16">
-        <div className="card p-10">
-          <h2 className="text-2xl font-bold text-primary-900 text-center mb-10">
-            平台資料統計
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary-700 mb-2">38</div>
-              <div className="text-gray-600 font-medium">個科系</div>
-            </div>
-            <div className="text-center border-l border-r border-gray-200">
-              <div className="text-4xl font-bold text-primary-700 mb-2">1,300+</div>
-              <div className="text-gray-600 font-medium">門課程</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary-700 mb-2">459</div>
-              <div className="text-gray-600 font-medium">個研究計畫</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-primary-900 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 rounded-xl">
-        <div className="text-center max-w-2xl mx-auto">
-          <h2 className="text-3xl font-bold text-white mb-4">
-            準備好開始探索了嗎？
-          </h2>
-          <p className="text-primary-100 mb-8 text-lg">
-            透過科系興趣量表，找到最適合你的未來方向
+      <section ref={featureSectionRef} className="py-16">
+        <div className="mb-8 text-center">
+          <p className="text-sm font-medium uppercase tracking-[0.22em] text-slate-500">Core Modules</p>
+          <h2 className="mt-2 text-3xl font-semibold text-slate-950">平台功能</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-600">
+            你可以用滑鼠左右拖動切換卡片，也能直接點擊主卡跳轉到對應功能頁面。
           </p>
-          <button
-            onClick={handleStartClick}
-            className="group inline-flex items-center px-8 py-4 text-lg font-medium text-primary-900 bg-white rounded-md transition-all duration-300 hover:bg-gray-50 hover:-translate-y-1 hover:shadow-lg active:scale-95 active:-translate-y-0 active:shadow-md"
-          >
-            立即開始
-            <HiArrowRight className="ml-2 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-          </button>
+        </div>
+
+        <div
+          className="feature-coverflow"
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={handlePointerUp}
+          onPointerCancel={handlePointerUp}
+        >
+          <div className="feature-coverflow-stage">
+            {features.map((feature, index) => {
+              const Icon = feature.icon;
+              const offset = index - activeFeatureIndex;
+              const wrappedOffset =
+                offset > features.length / 2 ? offset - features.length : offset < -features.length / 2 ? offset + features.length : offset;
+
+              let positionClass = 'feature-coverflow-hidden';
+              if (wrappedOffset === 0) positionClass = 'feature-coverflow-center';
+              if (wrappedOffset === -1) positionClass = 'feature-coverflow-left';
+              if (wrappedOffset === 1) positionClass = 'feature-coverflow-right';
+              if (wrappedOffset === -2) positionClass = 'feature-coverflow-far-left';
+              if (wrappedOffset === 2) positionClass = 'feature-coverflow-far-right';
+
+              return (
+                <button
+                  key={feature.title}
+                  type="button"
+                  onClick={() => (wrappedOffset === 0 ? handleFeatureClick(feature.path) : goToFeature(index))}
+                  className={`feature-coverflow-card ${positionClass}`}
+                >
+                  <div className="card-interactive feature-coverflow-card-inner min-h-[232px] rounded-3xl p-6 text-left">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-100 text-primary-700">
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <div className="mt-5 flex items-center justify-between gap-4">
+                      <h3 className="text-lg font-semibold text-slate-950">{feature.title}</h3>
+                      <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">{feature.tag}</span>
+                    </div>
+                    <p className="feature-card-description mt-3 text-sm leading-6 text-slate-600">{feature.description}</p>
+                    <div className="mt-6 inline-flex items-center text-sm font-medium text-primary-700">
+                      前往功能
+                      <HiArrowRight className="ml-2 h-4 w-4" />
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="mt-[2px] flex items-center justify-center gap-2">
+            <button
+              type="button"
+              onClick={() => goToFeature(activeFeatureIndex - 1)}
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white/90 text-slate-600 shadow-soft transition hover:bg-white hover:text-slate-900"
+              aria-label="上一張"
+            >
+              <HiChevronLeft className="h-5 w-5" />
+            </button>
+            <button
+              type="button"
+              onClick={() => goToFeature(activeFeatureIndex + 1)}
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white/90 text-slate-600 shadow-soft transition hover:bg-white hover:text-slate-900"
+              aria-label="下一張"
+            >
+              <HiChevronRight className="h-5 w-5" />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section className="pb-6">
+        <div className="card rounded-[2rem] border-white/70 bg-white/78 p-8 shadow-soft backdrop-blur md:p-10">
+          <div className="flex flex-col items-center gap-4 text-center">
+            <div>
+              <p className="text-sm font-medium uppercase tracking-[0.22em] text-slate-500">Platform Data</p>
+              <h2 className="mt-2 text-3xl font-semibold text-slate-950">平台數據</h2>
+            </div>
+          </div>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {stats.map((stat) => (
+              <div key={stat.label} className="rounded-3xl border border-slate-200 bg-slate-50/70 p-6 text-center">
+                <div className="text-4xl font-bold tracking-tight text-primary-900 md:text-5xl">
+                  <CountUp value={stat.value} suffix={stat.suffix} />
+                </div>
+                <div className="mt-3 text-sm font-semibold text-slate-700">{stat.label}</div>
+                <p className="mt-2 text-sm leading-6 text-slate-500">{stat.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </div>
   );
 }
-

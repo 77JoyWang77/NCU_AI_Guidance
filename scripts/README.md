@@ -4,6 +4,29 @@
 
 ## 腳本列表
 
+### 0. `storage/upload_pdfs_to_cloudinary.py`
+**功能：** 批次上傳 `data/raw/projects/104-114/` 的 PDF 到 Cloudinary
+
+**使用方法：**
+```bash
+python scripts/storage/upload_pdfs_to_cloudinary.py --dry-run
+python scripts/storage/upload_pdfs_to_cloudinary.py
+```
+
+**需要環境變數：**
+```env
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
+CLOUDINARY_PROJECT_FOLDER=ncu-ai-guidance/data/raw/projects
+```
+
+**說明：**
+- `--dry-run` 只檢查檔案與產生 `public_id`，不會真的上傳
+- 正式上傳後，後端會依 `pdfPath` 組出 Cloudinary `pdfUrl`
+
+---
+
 ### 1. `1_extract_pdf_metadata.py`
 **功能：** 從 PDF 檔案提取研究計畫的 metadata
 

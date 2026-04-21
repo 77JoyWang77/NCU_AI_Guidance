@@ -1,5 +1,13 @@
-import { useState } from 'react';
-import { HiChat, HiPlus, HiTrash, HiPaperAirplane, HiX } from 'react-icons/hi';
+import { useMemo, useState } from 'react';
+import {
+  HiChat,
+  HiChevronLeft,
+  HiChevronRight,
+  HiMenu,
+  HiPaperAirplane,
+  HiPlus,
+  HiTrash,
+} from 'react-icons/hi';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -15,121 +23,136 @@ interface Conversation {
   updatedAt: Date;
 }
 
+const assistantGreeting = '你好，我是課程搜尋助理。你可以直接問我課程方向、學分安排，或想比較的學院特色。';
+
 export default function CourseSearchPage() {
-  // 模擬對話數據
   const [conversations, setConversations] = useState<Conversation[]>([
     {
       id: '1',
-      title: '資工系課程諮詢',
-      messages: [
-        { role: 'assistant', content: '您好！我是課程諮詢助手。請問有什麼關於課程的問題嗎？', timestamp: new Date() }
-      ],
+      title: '資訊工程課程方向',
+      messages: [{ role: 'assistant', content: assistantGreeting, timestamp: new Date() }],
       createdAt: new Date(Date.now() - 86400000 * 2),
-      updatedAt: new Date(Date.now() - 86400000 * 2)
+      updatedAt: new Date(Date.now() - 86400000 * 2),
     },
     {
       id: '2',
       title: '管理學院選課建議',
       messages: [
-        { role: 'assistant', content: '您好！我是課程諮詢助手。請問有什麼關於課程的問題嗎？', timestamp: new Date() },
-        { role: 'user', content: '管理學院有哪些熱門課程？', timestamp: new Date() },
-        { role: 'assistant', content: '管理學院的熱門課程包括：\n\n1. 企業管理學系：組織行為、策略管理、行銷管理\n2. 財務金融學系：投資學、財務管理、金融市場\n3. 資訊管理學系：資訊系統管理、資料庫系統、數據分析\n\n這些課程都是學生評價較高且對未來就業很有幫助的課程。', timestamp: new Date() }
+        { role: 'assistant', content: assistantGreeting, timestamp: new Date(Date.now() - 86400000) },
+        { role: 'user', content: '管理學院有哪些適合新生先了解的課程？', timestamp: new Date(Date.now() - 86400000) },
+        {
+          role: 'assistant',
+          content:
+            '如果你剛開始接觸管理學院，可以先從三個方向認識：\n\n1. 經濟學系，適合想理解市場分析與理論的人。\n2. 企業管理學系，會接觸組織、行銷與策略。\n3. 資訊管理學系，結合管理與資訊工具，實作面較高。\n\n如果你願意，我也可以再依照「偏商管」或「偏資料分析」幫你縮小範圍。',
+          timestamp: new Date(Date.now() - 86400000),
+        },
       ],
       createdAt: new Date(Date.now() - 86400000),
-      updatedAt: new Date(Date.now() - 86400000)
-    }
+      updatedAt: new Date(Date.now() - 86400000),
+    },
   ]);
-
-  const [selectedConversation, setSelectedConversation] = useState<Conversation | null>(null);
+  const [selectedConversationId, setSelectedConversationId] = useState<string>('1');
   const [inputMessage, setInputMessage] = useState('');
   const [chatLoading, setChatLoading] = useState(false);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [isMobileConversationOpen, setIsMobileConversationOpen] = useState(false);
+
+  const selectedConversation = useMemo(
+    () => conversations.find((conversation) => conversation.id === selectedConversationId) ?? null,
+    [conversations, selectedConversationId]
+  );
 
   const handleNewConversation = () => {
-    const newConv: Conversation = {
+    const newConversation: Conversation = {
       id: Date.now().toString(),
       title: '新對話',
-      messages: [
-        { role: 'assistant', content: '您好！我是課程諮詢助手。請問有什麼關於課程的問題嗎？', timestamp: new Date() }
-      ],
+      messages: [{ role: 'assistant', content: assistantGreeting, timestamp: new Date() }],
       createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date(),
     };
-    setConversations([newConv, ...conversations]);
-    setSelectedConversation(newConv);
+
+    setConversations((prev) => [newConversation, ...prev]);
+    setSelectedConversationId(newConversation.id);
+    setInputMessage('');
+    setIsMobileConversationOpen(false);
   };
 
   const handleDeleteConversation = (id: string) => {
-    setConversations(conversations.filter(conv => conv.id !== id));
-    if (selectedConversation?.id === id) {
-      setSelectedConversation(null);
+    const nextConversations = conversations.filter((conversation) => conversation.id !== id);
+    setConversations(nextConversations);
+    if (selectedConversationId === id) {
+      setSelectedConversationId(nextConversations[0]?.id ?? '');
+      setInputMessage('');
     }
   };
 
-  const handleSendMessage = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSelectConversation = (id: string) => {
+    setSelectedConversationId(id);
+    setIsMobileConversationOpen(false);
+  };
+
+  const handleSendMessage = (event: React.FormEvent) => {
+    event.preventDefault();
     if (!inputMessage.trim() || !selectedConversation) return;
 
+    const messageText = inputMessage.trim();
     const userMessage: Message = {
       role: 'user',
-      content: inputMessage,
-      timestamp: new Date()
+      content: messageText,
+      timestamp: new Date(),
     };
 
-    // 更新選中對話
-    const updatedConv = {
+    const updatedConversation: Conversation = {
       ...selectedConversation,
       messages: [...selectedConversation.messages, userMessage],
       updatedAt: new Date(),
-      // 如果是第一次用戶提問，更新對話標題
-      title: selectedConversation.messages.length === 1 ? inputMessage.slice(0, 20) + '...' : selectedConversation.title
+      title: selectedConversation.messages.length === 1 ? `${messageText.slice(0, 18)}...` : selectedConversation.title,
     };
 
-    setSelectedConversation(updatedConv);
-    setConversations(conversations.map(conv =>
-      conv.id === selectedConversation.id ? updatedConv : conv
-    ));
+    setConversations((prev) =>
+      prev.map((conversation) => (conversation.id === selectedConversation.id ? updatedConversation : conversation))
+    );
     setInputMessage('');
     setChatLoading(true);
 
-    // 模擬 AI 回應
-    setTimeout(() => {
-      const aiMessage: Message = {
+    window.setTimeout(() => {
+      const assistantMessage: Message = {
         role: 'assistant',
-        content: generateMockResponse(inputMessage),
-        timestamp: new Date()
+        content: generateMockResponse(messageText),
+        timestamp: new Date(),
       };
 
-      const finalConv = {
-        ...updatedConv,
-        messages: [...updatedConv.messages, aiMessage],
-        updatedAt: new Date()
-      };
-
-      setSelectedConversation(finalConv);
-      setConversations(conversations.map(conv =>
-        conv.id === selectedConversation.id ? finalConv : conv
-      ));
+      setConversations((prev) =>
+        prev.map((conversation) =>
+          conversation.id === selectedConversation.id
+            ? {
+                ...conversation,
+                messages: [...updatedConversation.messages, assistantMessage],
+                updatedAt: new Date(),
+              }
+            : conversation
+        )
+      );
       setChatLoading(false);
-    }, 1500);
+    }, 1000);
   };
 
   const generateMockResponse = (query: string): string => {
-    // 簡單的模擬回應邏輯
     const lowerQuery = query.toLowerCase();
 
     if (lowerQuery.includes('資工') || lowerQuery.includes('資訊工程')) {
-      return '資訊工程學系的核心課程包括：\n\n1. 程式設計（必修）\n2. 資料結構（必修）\n3. 演算法（必修）\n4. 作業系統（必修）\n5. 資料庫系統（選修）\n6. 人工智慧（選修）\n\n這些課程涵蓋了軟體開發的基礎知識，對未來從事軟體工程、AI 開發都很有幫助。';
+      return '資訊工程可以先從三塊理解：\n\n1. 程式設計與資料結構。\n2. 演算法、系統與計算機基礎。\n3. AI、資料科學與網路應用。\n\n如果你想，我可以再幫你分成「新手先看」和「進階延伸」兩組。';
     }
 
     if (lowerQuery.includes('學分') || lowerQuery.includes('必修')) {
-      return '大部分科系的必修學分約在 60-80 學分之間，選修學分約 40-60 學分。畢業總學分通常需要 128 學分。建議每學期修 15-18 學分，既不會太輕鬆也不會壓力太大。';
+      return '建議先區分必修、選修和通識來源，再看單學期學分是否平均。對大一學生來說，先用核心必修搭配 1 到 2 門探索型選修，通常會比較穩。';
     }
 
-    if (lowerQuery.includes('難') || lowerQuery.includes('容易')) {
-      return '課程難度因人而異，但一般來說：\n\n- 較容易：通識課程、體育課\n- 中等難度：專業選修、語言課\n- 較困難：微積分、物理、化學等基礎科學必修\n\n建議先從感興趣的領域入手，循序漸進地學習。';
+    if (lowerQuery.includes('管理') || lowerQuery.includes('商管')) {
+      return '管理學院可以先看三個方向：\n\n- 經濟偏分析與理論。\n- 企管偏組織、行銷與策略。\n- 資管偏系統、資料與管理整合。\n\n如果你願意，我可以再用「偏商業」或「偏資料」幫你縮小。';
     }
 
-    return '感謝您的提問！這是一個很好的問題。根據課程資料庫，我建議您可以從以下幾個方向來探索：\n\n1. 先確定感興趣的學院或科系\n2. 了解該科系的必修課程\n3. 查看課程的開課時間和授課教師\n4. 參考學長姐的選課經驗\n\n如果您有更具體的問題，歡迎隨時提問！';
+    return '我可以協助你從課程名稱、學分配置、學院特色和學習方向來整理課程線索。\n\n你可以試著問我：\n1. 某個學系大一適合先看哪些課。\n2. 想走 AI 或資料分析可以注意哪些課程。\n3. 某個學院的必修與選修差別。\n4. 如何依興趣篩選課程方向。';
   };
 
   const formatTime = (date: Date) => {
@@ -139,140 +162,283 @@ export default function CourseSearchPage() {
 
     if (days === 0) return '今天';
     if (days === 1) return '昨天';
-    if (days < 7) return `${days}天前`;
+    if (days < 7) return `${days} 天前`;
     return date.toLocaleDateString('zh-TW', { month: 'short', day: 'numeric' });
   };
 
   return (
-    <div className="h-full flex flex-col page-container py-3">
-      {/* 緊湊標題列 */}
-      <div className="flex items-center justify-between mb-3 flex-shrink-0">
+    <div className="page-container flex h-full flex-col py-3">
+      <div className="mb-3 flex flex-shrink-0 items-center justify-between">
         <div className="flex items-center gap-2">
-          <h1 className="text-base font-bold text-primary-900">課程諮詢助手</h1>
-          <span className="text-sm text-gray-400">·</span>
-          <span className="text-sm text-gray-500">透過 AI 助手快速找到你需要的課程資訊</span>
+          <h1 className="text-base font-bold text-primary-900">課程搜尋</h1>
+          <span className="text-sm text-gray-400">/</span>
+          <span className="text-sm text-gray-500">用 AI 對話方式快速整理課程方向與學習線索</span>
         </div>
-        <button
-          onClick={handleNewConversation}
-          className="btn-primary flex items-center gap-2 py-1.5 px-3 text-sm"
-        >
-          <HiPlus className="w-4 h-4" />
+        <button onClick={handleNewConversation} className="btn-primary flex items-center gap-2 px-3 py-1.5 text-sm">
+          <HiPlus className="h-4 w-4" />
           新對話
         </button>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 flex-1 min-h-0">
-        {/* 左側：對話列表 */}
-        <div className="lg:col-span-1 flex flex-col min-h-0">
-
-          {/* 對話列表 */}
-          <div className="space-y-2 overflow-y-auto flex-1">
-            {conversations.length === 0 ? (
-              <div className="card p-8 text-center text-gray-500">
-                <p>還沒有對話</p>
-                <p className="text-sm mt-2">點擊上方按鈕開始新對話</p>
-              </div>
-            ) : (
-              conversations.map((conv) => (
-                <div
-                  key={conv.id}
-                  className={`card-interactive p-4 cursor-pointer relative group ${
-                    selectedConversation?.id === conv.id
-                      ? 'ring-2 ring-primary-600'
-                      : ''
-                  }`}
-                  onClick={() => setSelectedConversation(conv)}
-                >
-                  <div className="flex items-start justify-between mb-2">
-                    <HiChat className="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" />
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleDeleteConversation(conv.id);
-                      }}
-                      className="opacity-0 group-hover:opacity-100 text-red-500 hover:text-red-700 transition-opacity"
-                    >
-                      <HiTrash className="w-4 h-4" />
-                    </button>
+      <div className="flex min-h-0 flex-1 gap-4">
+        {isMobileConversationOpen ? (
+          <div className="fixed inset-y-0 left-0 z-40 w-[min(20rem,calc(100vw-3rem))] lg:hidden">
+            <div className="flex h-full">
+              <div className="card flex min-w-0 flex-1 flex-col overflow-hidden rounded-l-none rounded-r-2xl border-l-0 shadow-xl">
+                <div className="flex items-center justify-between gap-2 border-b border-gray-200 p-3">
+                  <div className="flex items-center gap-2">
+                    <HiMenu className="h-5 w-5 text-primary-700" />
+                    <span className="text-sm font-semibold text-slate-800">對話列表</span>
                   </div>
-                  <h3 className="text-sm font-semibold text-primary-900 mb-1 line-clamp-2">
-                    {conv.title}
-                  </h3>
-                  <div className="text-xs text-gray-500">
-                    {formatTime(conv.updatedAt)}
-                  </div>
-                </div>
-              ))
-            )}
-          </div>
-        </div>
-
-        {/* 右側：對話內容 */}
-        <div className="lg:col-span-2 min-h-0">
-          {selectedConversation ? (
-            <div className="card h-full flex flex-col">
-              {/* 對話標題 - 緊湊版 */}
-              <div className="px-4 py-2.5 border-b border-gray-200 flex-shrink-0 flex items-center gap-2">
-                <h2 className="text-sm font-semibold text-gray-800">{selectedConversation.title}</h2>
-                <span className="text-xs text-gray-400">· 根據課程資料庫提供建議</span>
-              </div>
-
-              {/* 對話消息 */}
-              <div className="flex-1 overflow-y-auto p-4 space-y-3">
-                {selectedConversation.messages.map((msg, index) => (
-                  <div
-                    key={index}
-                    className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                  <button
+                    type="button"
+                    onClick={() => setIsMobileConversationOpen(false)}
+                    className="rounded-xl p-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
+                    aria-label="收起對話列表"
                   >
-                    <div
-                      className={`max-w-[80%] p-4 rounded-lg ${
-                        msg.role === 'user'
-                          ? 'bg-primary-700 text-white'
-                          : 'bg-gray-100 text-gray-900'
+                    <HiChevronLeft className="h-5 w-5" />
+                  </button>
+                </div>
+
+                <div className="border-b border-gray-200 p-3">
+                  <button
+                    type="button"
+                    onClick={handleNewConversation}
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary-900 px-4 py-3 text-sm font-medium text-white transition hover:bg-primary-800"
+                  >
+                    <HiPlus className="h-4 w-4" />
+                    新對話
+                  </button>
+                </div>
+
+                <div className="flex-1 space-y-2 overflow-y-auto p-3">
+                  {conversations.map((conversation) => (
+                    <button
+                      key={conversation.id}
+                      type="button"
+                      onClick={() => handleSelectConversation(conversation.id)}
+                      className={`w-full rounded-2xl border p-3 text-left transition ${
+                        selectedConversationId === conversation.id
+                          ? 'border-primary-300 bg-primary-50'
+                          : 'border-transparent bg-white hover:border-slate-200 hover:bg-slate-50'
                       }`}
                     >
-                      <p className="text-sm leading-relaxed whitespace-pre-line">{msg.content}</p>
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="min-w-0">
+                          <div className="flex items-center gap-2">
+                            <HiChat className="h-4 w-4 flex-shrink-0 text-primary-700" />
+                          </div>
+                          <h3 className="mt-2 line-clamp-2 text-sm font-semibold text-slate-900">{conversation.title}</h3>
+                          <p className="mt-2 text-xs text-slate-500">{formatTime(conversation.updatedAt)}</p>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            handleDeleteConversation(conversation.id);
+                          }}
+                          className="rounded-lg p-1 text-rose-500 transition hover:bg-rose-50 hover:text-rose-700"
+                          aria-label="刪除對話"
+                        >
+                          <HiTrash className="h-4 w-4" />
+                        </button>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex w-11 items-center justify-center pl-2">
+                <button
+                  type="button"
+                  onClick={() => setIsMobileConversationOpen(false)}
+                  className="flex h-28 w-10 flex-col items-center justify-center gap-2 rounded-r-2xl bg-primary-900 px-2 text-white shadow-lg transition hover:bg-primary-800"
+                  aria-label="收起對話列表"
+                >
+                  <HiChevronLeft className="h-5 w-5" />
+                  <span className="[writing-mode:vertical-rl] text-xs tracking-[0.2em]">對話列表</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        ) : null}
+
+        <aside
+          className={`card hidden min-h-0 flex-shrink-0 overflow-hidden transition-all duration-300 lg:flex ${
+            isSidebarCollapsed ? 'w-[88px]' : 'w-[320px]'
+          }`}
+        >
+          <div className="flex w-full flex-col">
+            <div className={`border-b border-gray-200 p-3 ${isSidebarCollapsed ? 'flex flex-col items-center gap-3' : 'flex items-center justify-between gap-2'}`}>
+              {isSidebarCollapsed ? (
+                <>
+                  <button
+                    type="button"
+                    onClick={() => setIsSidebarCollapsed(false)}
+                    className="rounded-xl p-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
+                    aria-label="展開側欄"
+                  >
+                    <HiChevronRight className="h-5 w-5" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleNewConversation}
+                    className="rounded-xl bg-primary-900 p-2 text-white transition hover:bg-primary-800"
+                    aria-label="新增對話"
+                  >
+                    <HiPlus className="h-5 w-5" />
+                  </button>
+                </>
+              ) : (
+                <>
+                  <div className="flex items-center gap-2">
+                    <HiMenu className="h-5 w-5 text-primary-700" />
+                    <span className="text-sm font-semibold text-slate-800">對話紀錄</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setIsSidebarCollapsed(true)}
+                    className="rounded-xl p-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
+                    aria-label="收合側欄"
+                  >
+                    <HiChevronLeft className="h-5 w-5" />
+                  </button>
+                </>
+              )}
+            </div>
+
+            <div className="flex-1 space-y-2 overflow-y-auto p-3">
+              {conversations.map((conversation) => (
+                <button
+                  key={conversation.id}
+                  type="button"
+                  onClick={() => setSelectedConversationId(conversation.id)}
+                  className={`w-full rounded-2xl border p-3 text-left transition ${
+                    selectedConversationId === conversation.id
+                      ? 'border-primary-300 bg-primary-50'
+                      : 'border-transparent bg-white hover:border-slate-200 hover:bg-slate-50'
+                  } ${isSidebarCollapsed ? 'flex justify-center' : ''}`}
+                >
+                  {isSidebarCollapsed ? (
+                    <HiChat className="h-5 w-5 text-primary-700" />
+                  ) : (
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-2">
+                          <HiChat className="h-4 w-4 flex-shrink-0 text-primary-700" />
+                        </div>
+                        <h3 className="mt-2 line-clamp-2 text-sm font-semibold text-slate-900">{conversation.title}</h3>
+                        <p className="mt-2 text-xs text-slate-500">{formatTime(conversation.updatedAt)}</p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          handleDeleteConversation(conversation.id);
+                        }}
+                        className="rounded-lg p-1 text-rose-500 transition hover:bg-rose-50 hover:text-rose-700"
+                        aria-label="刪除對話"
+                      >
+                        <HiTrash className="h-4 w-4" />
+                      </button>
+                    </div>
+                  )}
+                </button>
+              ))}
+            </div>
+          </div>
+        </aside>
+
+        <div className="flex min-h-0 flex-1 flex-col">
+          {selectedConversation ? (
+            <div className="relative h-full">
+              <button
+                type="button"
+                onClick={() => setIsMobileConversationOpen(true)}
+                className="fixed left-2 top-1/2 z-10 flex h-28 w-10 -translate-y-1/2 flex-col items-center justify-center gap-2 rounded-r-2xl bg-primary-900 px-2 text-white shadow-lg transition hover:bg-primary-800 lg:hidden"
+                aria-label="打開對話列表"
+              >
+                <HiChevronRight className="h-5 w-5" />
+                <span className="[writing-mode:vertical-rl] text-xs tracking-[0.2em]">對話列表</span>
+              </button>
+            <div className="card flex h-full flex-col">
+              <div className="flex flex-shrink-0 items-center justify-between gap-3 border-b border-gray-200 px-4 py-3">
+                <div className="flex min-w-0 items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setIsMobileConversationOpen(true)}
+                    className="hidden rounded-xl p-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 lg:hidden"
+                    aria-label="打開對話列表"
+                  >
+                    <HiMenu className="h-5 w-5" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setIsSidebarCollapsed((prev) => !prev)}
+                    className="hidden rounded-xl p-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 lg:inline-flex"
+                    aria-label="切換側欄"
+                  >
+                    {isSidebarCollapsed ? <HiChevronRight className="h-5 w-5" /> : <HiChevronLeft className="h-5 w-5" />}
+                  </button>
+                  <div className="min-w-0">
+                    <h2 className="truncate text-sm font-semibold text-gray-800">{selectedConversation.title}</h2>
+                    <span className="text-xs text-gray-400">可以持續追問課程方向、學分配置與學院特色</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex-1 space-y-3 overflow-y-auto p-4">
+                {selectedConversation.messages.map((message, index) => (
+                  <div key={index} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                    <div
+                      className={`max-w-[82%] rounded-2xl p-4 ${
+                        message.role === 'user' ? 'bg-primary-700 text-white' : 'bg-gray-100 text-gray-900'
+                      }`}
+                    >
+                      <p className="whitespace-pre-line text-sm leading-relaxed">{message.content}</p>
                     </div>
                   </div>
                 ))}
-                {chatLoading && (
+
+                {chatLoading ? (
                   <div className="flex justify-start">
-                    <div className="bg-gray-100 text-gray-900 p-4 rounded-lg">
+                    <div className="rounded-2xl bg-gray-100 p-4 text-gray-900">
                       <div className="flex space-x-2">
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-100"></div>
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-200"></div>
+                        <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400"></div>
+                        <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400 delay-100"></div>
+                        <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400 delay-200"></div>
                       </div>
                     </div>
                   </div>
-                )}
+                ) : null}
               </div>
 
-              {/* 輸入框 */}
-              <form onSubmit={handleSendMessage} className="p-3 border-t border-gray-200">
+              <form onSubmit={handleSendMessage} className="border-t border-gray-200 p-3">
                 <div className="flex gap-3">
                   <input
                     type="text"
                     value={inputMessage}
-                    onChange={(e) => setInputMessage(e.target.value)}
-                    placeholder="輸入你的問題..."
-                    className="flex-1 px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
+                    onChange={(event) => setInputMessage(event.target.value)}
+                    disabled={chatLoading}
+                    placeholder="輸入你想查詢的課程、學院或學習方向"
+                    className="flex-1 rounded-xl border border-gray-300 px-4 py-3 transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500 disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-400"
                   />
                   <button
                     type="submit"
                     disabled={chatLoading || !inputMessage.trim()}
-                    className="btn-primary"
+                    className="btn-primary disabled:cursor-not-allowed disabled:opacity-50"
                   >
-                    <HiPaperAirplane className="w-5 h-5" />
+                    <HiPaperAirplane className="h-5 w-5" />
                   </button>
                 </div>
               </form>
             </div>
+            </div>
           ) : (
-            <div className="card h-full flex flex-col items-center justify-center">
-              <HiChat className="w-16 h-16 text-gray-300 mb-4" />
-              <p className="text-gray-600 mb-2">選擇一個對話或開始新對話</p>
-              <p className="text-sm text-gray-500">AI 助手會根據課程資料庫回答你的問題</p>
+            <div className="card flex h-full flex-col items-center justify-center">
+              <HiChat className="mb-4 h-16 w-16 text-gray-300" />
+              <p className="mb-2 text-gray-600">請先選擇一個對話，或建立新的對話。</p>
+              <p className="text-sm text-gray-500">你可以用自然語言詢問課程方向、學分安排或學院特色。</p>
             </div>
           )}
         </div>

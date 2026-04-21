@@ -43,6 +43,7 @@ data/
 - **檔案命名：** `{學年度}{類型}{編號}_{學生姓名}_{研究題目}.pdf`
   - 類型：E (個人) / H (雙人) / M (多人) / B (跨領域)
 - **總計：** 約 459 個研究計畫
+- **部署策略：** 不建議隨後端一起部署，正式環境改上傳至 Cloudinary
 
 #### 3. `raw/admission/ncu_caac.csv`
 - **來源：** 大學甄選入學委員會
@@ -185,10 +186,10 @@ python 2_generate_questions.py
 3. 後端會自動讀取新的 `processed/courses.json`
 
 ### 當研究計畫更新時
-1. 將新的 PDF 檔案放入 `各系大專生計畫(104-114)/` 對應系所資料夾
-2. 執行 PDF 提取腳本
-3. 執行題目生成腳本
-4. 後端會自動讀取新的資料
+1. 將新的 PDF 檔案放入 `raw/projects/104-114/` 對應系所資料夾
+2. 執行 metadata 提取與題目生成腳本
+3. 執行 `scripts/storage/upload_pdfs_to_cloudinary.py`
+4. 後端讀取 `projects.json`，並依 `pdfPath` 組出 Cloudinary `pdfUrl`
 
 ## 注意事項
 
@@ -196,7 +197,8 @@ python 2_generate_questions.py
 2. **編碼格式**：所有文字檔案使用 UTF-8 編碼
 3. **CSV 編碼**：`ncu_caac.csv` 使用 UTF-8-BOM 編碼
 4. **檔案大小**：`courses.json` 約 12 MB，載入時注意記憶體
-5. **路徑引用**：後端程式碼使用相對路徑，移動檔案需同步更新
+5. **PDF 部署**：`raw/projects/104-114/` 主要作為原始資料來源，正式環境請使用 Cloudinary
+6. **路徑引用**：後端程式碼使用相對路徑，移動檔案需同步更新
 
 ## 相關腳本
 
