@@ -1,0 +1,1499 @@
+[
+  {
+    "id": "geoscience_informatics",
+    "name": "「地球科學資訊」學分學程",
+    "college": "地科學院",
+    "cross_school": false,
+    "min_credits": 15,
+    "description": "培養與地球科學資訊有關之跨領域專業人才，奠定地球科學資訊之處理、分析、研究與應用的能力。本校各學院學生均可選修。",
+    "required_courses": [],
+    "elective_groups": [
+      {
+        "name": "基礎科目",
+        "select": 2,
+        "description": "至少選修二門",
+        "courses": [
+          {
+            "code": "GP2004",
+            "name": "遙測科學導論",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GP3007",
+            "name": "地理資訊系統導論",
+            "credits": 2,
+            "school": "NCU"
+          }
+        ],
+        "slots": [
+          {
+            "slot_id": "slot_AP1010",
+            "slot_name": "地球系統科學概論",
+            "select": 1,
+            "credits_options": [
+              2
+            ],
+            "courses": [
+              {
+                "code": "AP1010",
+                "name": "地球系統科學概論",
+                "credits": 2
+              },
+              {
+                "code": "GP1010",
+                "name": "地球系統科學概論",
+                "credits": 2
+              },
+              {
+                "code": "SS1010",
+                "name": "地球系統科學概論",
+                "credits": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "數學類",
+        "select": 1,
+        "description": "至少選修一門；包含數值分析、線性代數、時序分析、統計學等課群",
+        "courses": [
+          {
+            "code": "AP3021",
+            "name": "數值分析Ⅰ",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GP3053",
+            "name": "數值分析",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "HS6048",
+            "name": "應用數值方法",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SS3001",
+            "name": "數據分析與處理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GP2061",
+            "name": "線性代數",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SS2013",
+            "name": "線性代數",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GP3052",
+            "name": "時序分析",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "AP3020",
+            "name": "統計學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GP3072",
+            "name": "統計學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "HS6074",
+            "name": "資料分析",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "程式語言類",
+        "select": 1,
+        "description": "至少選修一門；包含程式語言系列、科學計算與繪圖等課群",
+        "courses": [
+          {
+            "code": "GP2057",
+            "name": "程式語言 Fortran 系列",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "AP2049",
+            "name": "程式語言與繪圖Ⅰ",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "AP2050",
+            "name": "程式語言與繪圖Ⅱ",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GP2035",
+            "name": "程式語言 C 系列",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GP1017",
+            "name": "程式語言與應用",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS4719",
+            "name": "程式設計-Python",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GS4518",
+            "name": "自然語言處理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GA1002",
+            "name": "基礎程式語言",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "HS6091",
+            "name": "科學計算",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SS5007",
+            "name": "高等程式設計Ⅰ",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SS5008",
+            "name": "高等程式設計Ⅱ",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SS1003",
+            "name": "程式語言與繪圖",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "SS3037",
+            "name": "邏輯設計",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "地球科學資料處理與應用類",
+        "select": 1,
+        "description": "至少選修一門；包含資料庫系統、隨機過程與波譜分析、地球科學資料處理、數值預報、地理資訊系統應用、遙測影像處理等課群",
+        "courses": [
+          {
+            "code": "IM2002",
+            "name": "資料庫管理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CE6039",
+            "name": "資料庫系統",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SS6036",
+            "name": "隨機過程與波譜分析Ⅰ",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "HS6091",
+            "name": "科學計算",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GP4024",
+            "name": "地球科學資料處理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "AP2040",
+            "name": "大氣測計及操作Ⅱ",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "AP2054",
+            "name": "環境測計",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SS2011",
+            "name": "太空測計及操作",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SS2012",
+            "name": "IDL 程式語言",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SS3017",
+            "name": "太陽現象觀測與分析Ⅰ",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SS3018",
+            "name": "太陽現象觀測與分析Ⅱ",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GP3025",
+            "name": "Python 在地震學的應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "AP4024",
+            "name": "數值預報",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GP3008",
+            "name": "地理資訊系統應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SS6081",
+            "name": "遙測數據影像處理Ⅰ",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 15,
+        "description": "修得學程內課程 15 學分以上"
+      },
+      {
+        "type": "required_elective",
+        "description": "基礎科目至少選修二門"
+      },
+      {
+        "type": "required_elective",
+        "description": "選修科目各類別（數學類、程式語言類、地球科學資料處理與應用類）各至少選修一門"
+      },
+      {
+        "type": "substitution",
+        "description": "本校所開其他與本學程名稱及內容類似之科目由地球科學學院認定"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢地球科學資訊學分學程」，並頒發學分學程證明書。追溯至 111 學年度申請者適用。"
+  },
+  {
+    "id": "climate_environmental_change",
+    "name": "「氣候與環境變遷」學分學程",
+    "college": "地科學院",
+    "cross_school": false,
+    "min_credits": 18,
+    "description": "培養氣候變遷科學、氣候變遷衝擊與減緩相關之跨領域專業人才，以提升氣候變遷素養及專業知能。限本校學生。",
+    "required_courses": [],
+    "elective_groups": [
+      {
+        "name": "必修科目",
+        "select": 2,
+        "description": "至少選修二門",
+        "courses": [
+          {
+            "code": "AP3080",
+            "name": "氣候變遷與地球災害概論",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "CC0213",
+            "name": "全球環境變遷",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "AP3039",
+            "name": "環境科學導論",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ],
+        "slots": [
+          {
+            "slot_id": "slot_AP1010",
+            "slot_name": "地球系統科學概論",
+            "select": 1,
+            "credits_options": [
+              2
+            ],
+            "courses": [
+              {
+                "code": "AP1010",
+                "name": "地球系統科學概論",
+                "credits": 2
+              },
+              {
+                "code": "GP1010",
+                "name": "地球系統科學概論",
+                "credits": 2
+              },
+              {
+                "code": "SS1010",
+                "name": "地球系統科學概論",
+                "credits": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "地球系統科學類",
+        "select": 1,
+        "description": "至少選修一門；包含地圈、氣圈、水圈、交互作用等課群",
+        "courses": [
+          {
+            "code": "GP3088",
+            "name": "環境地球科學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "AP2042",
+            "name": "地球環境化學導論",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "AP1001",
+            "name": "大氣科學概論",
+            "credits": 1,
+            "school": "NCU"
+          },
+          {
+            "code": "AP1002",
+            "name": "大氣科學通論",
+            "credits": 1,
+            "school": "NCU"
+          },
+          {
+            "code": "AP3031",
+            "name": "氣候學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GP4070",
+            "name": "水文學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "HS6063",
+            "name": "海洋學概論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "HS6162",
+            "name": "波浪力學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "HS6028",
+            "name": "大氣海洋過程",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "HS6027",
+            "name": "陸地水文過程",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "AP6113",
+            "name": "洋流與氣候",
+            "credits": 2,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "氣候變遷衝擊與調適類",
+        "select": 1,
+        "description": "至少選修一門；包含衝擊與調適、環境災害等課群",
+        "courses": [
+          {
+            "code": "AP3081",
+            "name": "氣候變遷衝擊與調適",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "SA5009",
+            "name": "氣候變遷與風險評估",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "AP3082",
+            "name": "海岸環境變遷",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GP3088",
+            "name": "環境地球科學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GP5032",
+            "name": "地震危害分析",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "AP6115",
+            "name": "氣候模擬與氣候變遷",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "氣候變遷減緩與環境監測類",
+        "select": 1,
+        "description": "至少選修一門；包含氣候變遷減緩與綠色能源、環境監測等課群",
+        "courses": [
+          {
+            "code": "AP2019",
+            "name": "地球環境經營與管理",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "AP4020",
+            "name": "空氣汙染控制理論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GP5085",
+            "name": "應用井測與石油系統",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "AP3050",
+            "name": "空氣污染學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "AP4041",
+            "name": "環境檢測原理",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "AP2054",
+            "name": "環境測計",
+            "credits": 2,
+            "school": "NCU"
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 18,
+        "description": "修得學程內課程 18 學分以上（限本校學生）"
+      },
+      {
+        "type": "required_elective",
+        "description": "必修科目至少選修二門"
+      },
+      {
+        "type": "required_elective",
+        "description": "選修科目三類別（地球系統科學、氣候變遷衝擊與調適、氣候變遷減緩與環境監測）各至少選修一門"
+      },
+      {
+        "type": "elective_note",
+        "description": "修習 18 學分以上且符合環境部公告「環境教育人員認證得採計專業領域課程」者，再修畢環境教育、環境倫理及環境教育教材法三門課程，即可取得環境教育人員認證"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢氣候與環境變遷學分學程」，並頒發學分學程證明書。追溯至 111 學年度申請者適用。"
+  },
+  {
+    "id": "environmental_geoscience",
+    "name": "「環境地球科學」學分學程",
+    "college": "地科學院",
+    "cross_school": false,
+    "min_credits": 15,
+    "description": "培養不同領域同學地球環境之專業知識與能力，以便日後能應用在與環境以及地球科學有關的工作上。本校各學院學生均可選修。",
+    "required_courses": [],
+    "elective_groups": [
+      {
+        "name": "基礎科目",
+        "select": 2,
+        "description": "至少選修二門",
+        "courses": [
+          {
+            "code": "AP2042",
+            "name": "地球環境化學導論",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "AP2019",
+            "name": "地球環境經營與管理",
+            "credits": 2,
+            "school": "NCU"
+          }
+        ],
+        "slots": [
+          {
+            "slot_id": "slot_AP1010",
+            "slot_name": "地球系統科學概論",
+            "select": 1,
+            "credits_options": [
+              2
+            ],
+            "courses": [
+              {
+                "code": "AP1010",
+                "name": "地球系統科學概論",
+                "credits": 2
+              },
+              {
+                "code": "GP1010",
+                "name": "地球系統科學概論",
+                "credits": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "地球環境系統類",
+        "select": 1,
+        "description": "至少選修一門；包含氣候學、環境科學導論、水文學、海洋學、環境地質學等課群",
+        "courses": [
+          {
+            "code": "AP3031",
+            "name": "氣候學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "AP3039",
+            "name": "環境科學導論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GP4070",
+            "name": "水文學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GP3086",
+            "name": "地球水循環",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GP4095",
+            "name": "海洋學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "AP4037",
+            "name": "基礎海洋動力學",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "HS6063",
+            "name": "海洋學概論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "AG7025",
+            "name": "高等環境地質學",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GP4062",
+            "name": "環境地質學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GP3088",
+            "name": "環境地球科學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GP4010",
+            "name": "水文地質學",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GP4065",
+            "name": "工程地質學",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "地球環境監測技術類",
+        "select": 1,
+        "description": "至少選修一門；包含大氣測計、環境遙測、地球物理監測、地理資訊系統、環境檢測原理等課群",
+        "courses": [
+          {
+            "code": "AP2039",
+            "name": "大氣測計及操作Ⅰ",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "AP3048",
+            "name": "環境遙測學及實習",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "RS7032",
+            "name": "地質遙測學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GP3005",
+            "name": "地物監測技術及實習",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GP3007",
+            "name": "地理資訊系統導論",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "CI4050",
+            "name": "地理資訊系統通論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "HS6090",
+            "name": "空間分析與模型建立",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "AP4041",
+            "name": "環境檢測原理",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "EN6045",
+            "name": "環境檢測原理",
+            "credits": 2,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "地球環境汙染與天然災害防制類",
+        "select": 1,
+        "description": "至少選修一門；包含環境影響評估、空氣汙染控制、地下水及土壤汙染控制、環境災害學等課群",
+        "courses": [
+          {
+            "code": "AP4017",
+            "name": "環境影響評估技術",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EN6012",
+            "name": "環境影響評估",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "AP4020",
+            "name": "空氣污染控制理論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CH2019",
+            "name": "空氣污染與防治技術",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CI4011",
+            "name": "空氣污染學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CI3008",
+            "name": "污水工程",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GP4002",
+            "name": "土壤污染控制",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GP4008",
+            "name": "地下水及土壤污染控制",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "HS6061",
+            "name": "水化學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EN6023",
+            "name": "土壤污染",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "AP3019",
+            "name": "環境災害學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "AP2028",
+            "name": "環境災難傳播",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GP3092",
+            "name": "工程地震學及實習",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 15,
+        "description": "修得學程內課程 15 學分以上"
+      },
+      {
+        "type": "required_elective",
+        "description": "基礎科目至少選修二門"
+      },
+      {
+        "type": "required_elective",
+        "description": "選修科目三類別（地球環境系統、地球環境監測技術、地球環境汙染與天然災害防制）各至少選修一門"
+      },
+      {
+        "type": "substitution",
+        "description": "本校所開其他與本學程名稱及內容類似之科目由地球科學學院認定"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢環境地球科學學分學程」，並頒發學分學程證明書。追溯至 101 學年度申請者適用。"
+  },
+  {
+    "id": "space_technology_engineering",
+    "name": "台灣聯合大學系統「太空科技與工程」學分學程",
+    "college": "地科學院",
+    "cross_school": true,
+    "min_credits": 16,
+    "description": "跨校大學部與研究所學分學程，結合中央大學、交通大學、清華大學師資，在國家太空中心協助下培養太空科技人才。本校各學院大學及研究所學生均可選修。",
+    "required_courses": [],
+    "elective_groups": [
+      {
+        "name": "必選修課程",
+        "select_credits": 3,
+        "description": "至少選修 3 學分；最多僅承認 3 學分，超修不計算至其他選修類別。選修「專題研究」者須先選修「太空實作與應用」",
+        "courses": [
+          {
+            "code": "DME3335",
+            "name": "火箭設計與實作",
+            "credits": 3,
+            "school": "NCTU"
+          },
+          {
+            "code": "SS7023",
+            "name": "太空任務設計Ⅰ",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SS4012",
+            "name": "專題研究",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SS4013",
+            "name": "太空實作與應用",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "太空系統與實作",
+        "courses": [
+          {
+            "code": "SS7024",
+            "name": "太空任務設計Ⅱ",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SS3006",
+            "name": "太空酬載Ⅰ",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SS3008",
+            "name": "衛星系統工程Ⅰ",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ],
+        "slots": [
+          {
+            "slot_id": "slot_SS3029",
+            "slot_name": "太空科技應用",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "SS3029",
+                "name": "太空科技應用",
+                "credits": 3
+              },
+              {
+                "code": "DME4702",
+                "name": "太空科技應用",
+                "credits": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "太空動力",
+        "select": 1,
+        "description": "僅承認一門課程",
+        "courses": [
+          {
+            "code": "IME5340",
+            "name": "太空動力學導論",
+            "credits": 3,
+            "school": "NCTU"
+          },
+          {
+            "code": "AP2038/SS8070",
+            "name": "軌道運動學",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "太空科學與天文",
+        "description": "同類相近課程僅承認一門，各對等組合以 alias 標示",
+        "courses": [
+          {
+            "code": "SS3003",
+            "name": "太陽物理",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ],
+        "slots": [
+          {
+            "slot_id": "slot_AP2047",
+            "slot_name": "太空測計及操作Ⅰ",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "AP2047",
+                "name": "太空測計及操作Ⅰ",
+                "credits": 3
+              },
+              {
+                "code": "SS2011",
+                "name": "太空測計及操作",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_PH2033",
+            "slot_name": "普通天文學Ⅰ",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "PH2033",
+                "name": "普通天文學Ⅰ",
+                "credits": 3
+              },
+              {
+                "code": "PHYS2410",
+                "name": "普通天文學Ⅰ",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_PH2034",
+            "slot_name": "普通天文學Ⅱ",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "PH2034",
+                "name": "普通天文學Ⅱ",
+                "credits": 3
+              },
+              {
+                "code": "PHYS2420",
+                "name": "普通天文學Ⅱ",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_PH3045",
+            "slot_name": "天文觀測Ⅰ",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "PH3045",
+                "name": "天文觀測Ⅰ",
+                "credits": 3
+              },
+              {
+                "code": "PHYS3910",
+                "name": "天文觀測Ⅰ",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_AS6047",
+            "slot_name": "觀測天文學",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "AS6047",
+                "name": "觀測天文學",
+                "credits": 3
+              },
+              {
+                "code": "ASTR6100",
+                "name": "觀測天文學",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_AP3044",
+            "slot_name": "太空物理學Ⅰ",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "AP3044",
+                "name": "太空物理學Ⅰ",
+                "credits": 3
+              },
+              {
+                "code": "SS3004",
+                "name": "磁層物理",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_AP4013",
+            "slot_name": "太空物理學Ⅱ",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "AP4013",
+                "name": "太空物理學Ⅱ",
+                "credits": 3
+              },
+              {
+                "code": "SS3005",
+                "name": "電離層物理",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_AP3037",
+            "slot_name": "電漿物理導論Ⅰ",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "AP3037",
+                "name": "電漿物理導論Ⅰ",
+                "credits": 3
+              },
+              {
+                "code": "SS3002",
+                "name": "電漿物理導論",
+                "credits": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "太空遙測",
+        "description": "同類相近課程僅承認一門，各對等組合以 alias 標示",
+        "courses": [
+          {
+            "code": "GP2004",
+            "name": "遙測科學導論",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "DEO1606",
+            "name": "光學設計、製作與量測",
+            "credits": 3,
+            "school": "NCTU"
+          },
+          {
+            "code": "SS6081",
+            "name": "遙測數據影像處理Ⅰ",
+            "credits": 3,
+            "school": "NCU",
+            "description": "僅承認一門"
+          },
+          {
+            "code": "ICV5666",
+            "name": "衛星大地測量",
+            "credits": 3,
+            "school": "NCTU"
+          },
+          {
+            "code": "SS3011",
+            "name": "遙測影像分析與應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CE7065",
+            "name": "雷達影像處理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IPT5340",
+            "name": "量子光學",
+            "credits": 3,
+            "school": "NTHU"
+          },
+          {
+            "code": "DEO1603",
+            "name": "訊號與系統",
+            "credits": 3,
+            "school": "NCTU",
+            "description": "僅承認一門"
+          },
+          {
+            "code": "IEO5701",
+            "name": "光纖通訊",
+            "credits": 3,
+            "school": "NCTU"
+          },
+          {
+            "code": "SS3010",
+            "name": "雷達工程與實務",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ],
+        "slots": [
+          {
+            "slot_id": "slot_RS6053",
+            "slot_name": "太空遙測原理",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "RS6053",
+                "name": "太空遙測原理",
+                "credits": 3
+              },
+              {
+                "code": "SS6053",
+                "name": "太空遙測原理",
+                "credits": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "太空機械",
+        "courses": [
+          {
+            "code": "DME3301",
+            "name": "機械設計原理(一)",
+            "credits": 3,
+            "school": "NCTU",
+            "description": "僅承認一門"
+          },
+          {
+            "code": "PME4432",
+            "name": "電腦輔助設計與製造",
+            "credits": 3,
+            "school": "NTHU"
+          },
+          {
+            "code": "ME3061",
+            "name": "電腦輔助工程",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ],
+        "slots": [
+          {
+            "slot_id": "slot_SS5009",
+            "slot_name": "衛星機械系統設計",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "SS5009",
+                "name": "衛星機械系統設計",
+                "credits": 3
+              },
+              {
+                "code": "IME5466",
+                "name": "衛星機械系統設計",
+                "credits": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "太空電機",
+        "description": "同類相近課程僅承認一門，各對等組合以 alias 標示",
+        "courses": [
+          {
+            "code": "DME3329",
+            "name": "感測器原理與量測系統",
+            "credits": 3,
+            "school": "NCTU",
+            "description": "僅承認一門"
+          },
+          {
+            "code": "ME3056",
+            "name": "感測原理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ICN5611",
+            "name": "數位訊號處理",
+            "credits": 3,
+            "school": "NCTU"
+          },
+          {
+            "code": "ME7069",
+            "name": "數位控制",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ICN5320",
+            "name": "嵌入式作業系統",
+            "credits": 3,
+            "school": "NCTU",
+            "description": "僅承認一門"
+          },
+          {
+            "code": "CS4101",
+            "name": "嵌入式系統概論",
+            "credits": 3,
+            "school": "NTHU"
+          },
+          {
+            "code": "ME1018",
+            "name": "微控制器",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "AP3077",
+            "name": "微控制器應用Ⅰ",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ],
+        "slots": [
+          {
+            "slot_id": "slot_PME5203",
+            "slot_name": "數位控制系統",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "PME5203",
+                "name": "數位控制系統",
+                "credits": 3
+              },
+              {
+                "code": "IME5598",
+                "name": "數位控制系統",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_EE3510",
+            "slot_name": "控制系統",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "EE3510",
+                "name": "控制系統",
+                "credits": 3
+              },
+              {
+                "code": "ESS3250",
+                "name": "控制系統",
+                "credits": 3
+              },
+              {
+                "code": "PME3207",
+                "name": "控制系統",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_SS5010",
+            "slot_name": "衛星姿態判定與控制",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "SS5010",
+                "name": "衛星姿態判定與控制",
+                "credits": 3
+              },
+              {
+                "code": "IME5467",
+                "name": "衛星姿態判定與控制",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_EE4016",
+            "slot_name": "微電腦介面電路設計",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "EE4016",
+                "name": "微電腦介面電路設計",
+                "credits": 3
+              },
+              {
+                "code": "IME6543",
+                "name": "微電腦介面電路設計",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_AP3046",
+            "slot_name": "衛星電機系統設計",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "AP3046",
+                "name": "衛星電機系統設計",
+                "credits": 3
+              },
+              {
+                "code": "SS3035",
+                "name": "衛星電機系統設計",
+                "credits": 3
+              },
+              {
+                "code": "EECS3400",
+                "name": "衛星電機系統設計",
+                "credits": 3
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 16,
+        "description": "修畢本學程 16 學分以上"
+      },
+      {
+        "type": "dept_required",
+        "credits": 3,
+        "description": "必修「衛星科技與工程導論」3 學分"
+      },
+      {
+        "type": "required_elective",
+        "description": "必選修課程至少 3 學分（最多僅承認 3 學分）；選修「專題研究」者須先選修「太空實作與應用」"
+      },
+      {
+        "type": "outside_elective_max",
+        "credits_max": 9,
+        "description": "學生所屬系所課程經審核抵算跨校學程學分者，總數不得超過 9 學分（必修及必選修課程不在此限）"
+      },
+      {
+        "type": "elective_note",
+        "description": "不同校系所開設的相近課程，學程僅認定為一門；各校所開其他與本學程名稱及內容類似之課程，由本學程委員會認定"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢太空科技與工程學分學程」，並頒發學分學程證明書。合作學校：陽明交通大學(NCTU)、清華大學(NTHU)。課程表版本：112.08.03。",
+    "required_slots": [
+      {
+        "slot_id": "req_SS3030",
+        "slot_name": "衛星科技與工程導論",
+        "select": 1,
+        "credits_options": [
+          3
+        ],
+        "courses": [
+          {
+            "code": "SS3030",
+            "name": "衛星科技與工程導論",
+            "credits": 3
+          },
+          {
+            "code": "DME4701",
+            "name": "衛星科技與工程導論",
+            "credits": 3
+          }
+        ]
+      }
+    ]
+  }
+]

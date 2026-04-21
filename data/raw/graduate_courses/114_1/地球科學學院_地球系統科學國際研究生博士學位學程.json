@@ -1,0 +1,1217 @@
+[
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "地球科學學院",
+    "系所": "地球系統科學國際研究生博士學位學程",
+    "流水號": "60001",
+    "課號-班別": "ES7001-*",
+    "課程名稱(中文)": "地球系統科學通論",
+    "課程名稱(英文)": "Introductory Earth System Science",
+    "備註": "上課地點：中研院地球所305室",
+    "授課教師": "李時雨",
+    "學分": "3",
+    "上課時間": "Wed234",
+    "教室": "*-***",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=60001&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限地球系統科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=60001&outline=60001&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "地球系統科學國際研究生博士學位學程",
+      "流水號": "60001",
+      "課號": "ES7001-*",
+      "授課教師": "李時雨",
+      "課程名稱(中文)": "地球系統科學通論",
+      "課程名稱(英文)": "Introductory Earth System Science",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "預備來自不同領域的地球系統學程學生具備相當的跨學門知識背景。",
+      "授課內容": "依地球系統科學中的大分門(1)地球結構與起源，(2)板塊構造理論，(3)大氣海洋動力，(4)生物生態圈分別授課。並強調其與現今環境變遷與氣候變遷衝擊的連結。",
+      "教科書/參考書": "1.地球系統, 第三版 Lee R. Kump, James F. Kasting, Robert G. Crane 2. 藍色星球: 地球系統科學介紹, 第三版 Brian J. Skinner, Barbara W. Murck",
+      "自編教材比例": "75",
+      "授課方式": "講授 其他",
+      "評量配分比重": "期中考 50％ 期末考 25％ 學期報告 25％",
+      "辦公時間": "周三0900-1200",
+      "授課週數": "16",
+      "彈性教學說明": "彈性上課",
+      "課程領域": "基礎學科(共同)",
+      "核心能力": [
+        {
+          "能力名稱": "獨立思考與研究能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 無 ， 其他"
+        },
+        {
+          "能力名稱": "進階數理及專業知識能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 無 ， 其他"
+        },
+        {
+          "能力名稱": "觀測模擬及分析推理能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 無 ， 其他"
+        },
+        {
+          "能力名稱": "國際視野與語文溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 無 ， 其他"
+        },
+        {
+          "能力名稱": "專業倫理及服務學習之能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 無 ， 其他"
+        },
+        {
+          "能力名稱": "電腦及程式語言應用能力",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 無 ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "地球科學學院",
+    "系所": "地球系統科學國際研究生博士學位學程",
+    "流水號": "60002",
+    "課號-班別": "ES7013-*",
+    "課程名稱(中文)": "書報討論I",
+    "課程名稱(英文)": "SeminarI",
+    "備註": "上課地點：中研院地球所305室",
+    "授課教師": "劉千義",
+    "學分": "1",
+    "上課時間": "Wed5",
+    "教室": "*-***",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=60002&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限地球系統科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=60002&outline=60002&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "地球系統科學國際研究生博士學位學程",
+      "流水號": "60002",
+      "課號": "ES7013-*",
+      "授課教師": "劉千義",
+      "課程名稱(中文)": "書報討論I",
+      "課程名稱(英文)": "SeminarI",
+      "課程學制": "碩博同修",
+      "學分": "1",
+      "課程目標": "透過書報討論課程，學生習得研究參考論文之查找方式，經過研讀後之內容整理與分享。",
+      "授課內容": "1. 研究論文查找\n2. 論文研讀\n3. 口頭與文字分享研讀內容",
+      "教科書/參考書": "none, but mainly from major academic publishers.",
+      "自編教材比例": "80%",
+      "授課方式": "研討",
+      "評量配分比重": "課程出席與表現 (包含他人報告之提問) 50％，口頭報告40％，書面報告10％",
+      "辦公時間": "週三2:00pm~4:00pm",
+      "授課週數": "16",
+      "彈性教學說明": "彈性上課",
+      "課程領域": "基礎學科(共同)",
+      "核心能力": [
+        {
+          "能力名稱": "獨立思考與研究能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "進階數理及專業知識能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "觀測模擬及分析推理能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "國際視野與語文溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "專業倫理及服務學習之能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "電腦及程式語言應用能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "地球科學學院",
+    "系所": "地球系統科學國際研究生博士學位學程",
+    "流水號": "60003",
+    "課號-班別": "ES7059-*",
+    "課程名稱(中文)": "地震資料分析",
+    "課程名稱(英文)": "Seismic Data Analysis",
+    "備註": "上課地點：中研院地球所511室",
+    "授課教師": "戚務正",
+    "學分": "3",
+    "上課時間": "Tue234",
+    "教室": "*-***",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=60003&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限地球系統科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=60003&outline=60003&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "地球系統科學國際研究生博士學位學程",
+      "流水號": "60003",
+      "課號": "ES7059-*",
+      "授課教師": "戚務正",
+      "課程名稱(中文)": "地震資料分析",
+      "課程名稱(英文)": "Seismic Data Analysis",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "Help build student’s active and passive source waveform analysis capability",
+      "授課內容": "Preliminary analysis of seismic data\nDiscrete spectral analysis\nSeismic resolution and fidelity\nDigital filters\nDeconvolution\nPractical seismic migration\nPractical seismic velocity analysis\nData fitting and model inversion\nSpecial topics in seismic processing",
+      "教科書/參考書": "Practical Seismic Data Analysis by Hua-Wei Zhou https://doi.org/10.1017/CBO9781139027090",
+      "自編教材比例": "10",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "Homework: 40% Quiz: 20% Mid Term: 15% Finals: 25%",
+      "辦公時間": "Wed 3-5p.m. in IES R1510 or by appointment",
+      "授課週數": "16",
+      "彈性教學說明": "Flexible classes",
+      "課程領域": "固態地球科學",
+      "核心能力": [
+        {
+          "能力名稱": "獨立思考與研究能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "進階數理及專業知識能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "觀測模擬及分析推理能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際視野與語文溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "專業倫理及服務學習之能力",
+          "強度指數": "(1) 非常低",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "電腦及程式語言應用能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "地球科學學院",
+    "系所": "地球系統科學國際研究生博士學位學程",
+    "流水號": "60004",
+    "課號-班別": "ES7063-*",
+    "課程名稱(中文)": "初級中文(I)B",
+    "課程名稱(英文)": "Elementary Chinese I (B)",
+    "備註": "上課地點：中研院教研大樓204室,一年級外籍生必修",
+    "授課教師": "何東垣",
+    "學分": "0",
+    "上課時間": "TueABC",
+    "教室": "*-***",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=60004&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限地球系統科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=60004&outline=60004&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "地球系統科學國際研究生博士學位學程",
+      "流水號": "60004",
+      "課號": "ES7063-*",
+      "授課教師": "何東垣",
+      "課程名稱(中文)": "初級中文(I)B",
+      "課程名稱(英文)": "Elementary Chinese I (B)",
+      "課程學制": "碩博同修",
+      "學分": "0",
+      "課程目標": "強化日常華語聽說能力",
+      "授課內容": "課堂用語/生活用語/語言學習網站介紹、自我介紹、數字與生活、日用品、行為與事件、情緒和感覺、方位/位置、身體/看病",
+      "教科書/參考書": "遠東生活華語（一）",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "出席與課堂參與30％ 課堂表現與作業20％ 隨堂測驗30％ 期末考試30％",
+      "辦公時間": "預約制",
+      "授課週數": "16",
+      "彈性教學說明": "彈性上課",
+      "課程領域": "應用語言",
+      "核心能力": [
+        {
+          "能力名稱": "獨立思考與研究能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "進階數理及專業知識能力",
+          "強度指數": "(1) 非常低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "觀測模擬及分析推理能力",
+          "強度指數": "(1) 非常低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "國際視野與語文溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "專業倫理及服務學習之能力",
+          "強度指數": "(2) 低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "電腦及程式語言應用能力",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "地球科學學院",
+    "系所": "地球系統科學國際研究生博士學位學程",
+    "流水號": "60005",
+    "課號-班別": "ES7065-*",
+    "課程名稱(中文)": "初級中文(II)B [已停開]",
+    "課程名稱(英文)": "Elementary Chinese II (B)",
+    "備註": "上課地點：中研院教研大樓204室,一年級外籍生必修",
+    "授課教師": "何東垣",
+    "學分": "0",
+    "上課時間": "WedABC",
+    "教室": "*-***",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=60005&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限地球系統科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=60005&outline=60005&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "地球系統科學國際研究生博士學位學程",
+      "流水號": "60005",
+      "課號": "ES7065-*",
+      "授課教師": "何東垣",
+      "課程名稱(中文)": "初級中文(II)B",
+      "課程名稱(英文)": "Elementary Chinese II (B)",
+      "課程學制": "碩博同修",
+      "學分": "0",
+      "課程目標": "強化日常華語聽說能力",
+      "授課內容": "課堂用語/生活用語/語言學習網站介紹、自我介紹、數字與生活、日用品、行為與事件、情緒和感覺、方位/位置、身體/看病",
+      "教科書/參考書": "遠東生活華語（一）",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "出席與課堂參與30％ 課堂表現與作業20％ 隨堂測驗30％ 期末考試30％",
+      "辦公時間": "預約制",
+      "授課週數": "16",
+      "彈性教學說明": "彈性上課",
+      "課程領域": "應用語言",
+      "核心能力": [
+        {
+          "能力名稱": "獨立思考與研究能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "進階數理及專業知識能力",
+          "強度指數": "(1) 非常低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "觀測模擬及分析推理能力",
+          "強度指數": "(1) 非常低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "國際視野與語文溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "專業倫理及服務學習之能力",
+          "強度指數": "(2) 低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "電腦及程式語言應用能力",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "地球科學學院",
+    "系所": "地球系統科學國際研究生博士學位學程",
+    "流水號": "60006",
+    "課號-班別": "ES7079-*",
+    "課程名稱(中文)": "固體地球",
+    "課程名稱(英文)": "The Solid Earth",
+    "備註": "上課地點：中研院地球所3-303室",
+    "授課教師": "彭君能",
+    "學分": "3",
+    "上課時間": "Tue678",
+    "教室": "*-***",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=60006&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限地球系統科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=60006&outline=60006&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "地球系統科學國際研究生博士學位學程",
+      "流水號": "60006",
+      "課號": "ES7079-*",
+      "授課教師": "彭君能",
+      "課程名稱(中文)": "固體地球",
+      "課程名稱(英文)": "The Solid Earth",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "透過此課程，學生可以學習到基礎固體地球科學知識與技能，有助於深造地科相關之進階課程與建立研究題目。",
+      "授課內容": "此課程包括固體地球相關之主要子題，為中央研究院國際研究生學程(地球科學學程)的五大領域之一。子題計有地質學、地球物理學、地球化學等。課程的目的為學習基礎固體地球科學知識與技能，有助於深造地科相關之進階課程與建立研究題目。通過講授、實習與研討，學生將更了解地球系統的運作方式以及它們的關連性。",
+      "教科書/參考書": "1. Earle, S., 2019. Physical Geology – 2nd Edition. Victoria, B.C.: BCcampus. Retrieved from https://opentextbc.ca/physicalgeology2ed/. 2. Fowler, C.M.R., 2004. The Solid Earth – An Introduction to Global Geophysics – 2nd Edition. Cambridge University Press.",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "期末考100％",
+      "辦公時間": "每週二14:00-17:00",
+      "授課週數": "16",
+      "彈性教學說明": "彈性上課",
+      "課程領域": "固態地球科學",
+      "核心能力": [
+        {
+          "能力名稱": "獨立思考與研究能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "進階數理及專業知識能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "觀測模擬及分析推理能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "國際視野與語文溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "專業倫理及服務學習之能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "電腦及程式語言應用能力",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "地球科學學院",
+    "系所": "地球系統科學國際研究生博士學位學程",
+    "流水號": "60007",
+    "課號-班別": "ES7081-*",
+    "課程名稱(中文)": "全球水循環",
+    "課程名稱(英文)": "Global Hydrological Cycles",
+    "備註": "上課地點：中研院環變大樓2034會議室",
+    "授課教師": "李時雨",
+    "學分": "3",
+    "上課時間": "Thu234",
+    "教室": "*-***",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=60007&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限地球系統科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=60007&outline=60007&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "地球系統科學國際研究生博士學位學程",
+      "流水號": "60007",
+      "課號": "ES7081-*",
+      "授課教師": "李時雨",
+      "課程名稱(中文)": "全球水循環",
+      "課程名稱(英文)": "Global Hydrological Cycles",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "認識影響全球水循環的因子與其影響力",
+      "授課內容": "Introduction to Global Hydrological Cycles / term project intro\nWater Cycle in the Atmosphere\nWater Cycle in the Atmosphere\nWater Cycle in the Land\nWater Cycle in the Land\nWater Cycle in the Land / term project topic selection\nMid-term Exam\nOcean circulation - surface\nOcean circulation - deep\nClimate impact from ocean circulation\nLake environment\nSea level changes (past to present)\nBiogeochemistry in marine (carbon cycle focus)\nTrace element in the ocean ＆ implication\nTrace element in the land system\nTerm project presentation",
+      "教科書/參考書": "Hydrology in Practice by Elizabeth M. Shaw, 1994 (Third Ed.) Terrestrial Hydrometeorology by Shuttleworth, 2012",
+      "自編教材比例": "TBD",
+      "授課方式": "講授",
+      "評量配分比重": "1.課堂參與發問與討論class participation and discussion： 40 ％ 2.課堂書面報告assignments： 15 ％ 3.文獻口頭報告oral presentations： 15 ％ 4.期中考試mid-term exam：30 ％",
+      "辦公時間": "周四0900-1200",
+      "授課週數": "16",
+      "彈性教學說明": "主題討論或是參訪",
+      "課程領域": "基礎學科(共同) 、 大氣科學 、 水圈科學",
+      "核心能力": [
+        {
+          "能力名稱": "獨立思考與研究能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "進階數理及專業知識能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "觀測模擬及分析推理能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際視野與語文溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "專業倫理及服務學習之能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "電腦及程式語言應用能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "地球科學學院",
+    "系所": "地球系統科學國際研究生博士學位學程",
+    "流水號": "60008",
+    "課號-班別": "ES7085-*",
+    "課程名稱(中文)": "科學計算",
+    "課程名稱(英文)": "Scientific Programming",
+    "備註": "上課地點：中研院地球所311室",
+    "授課教師": "譚諤",
+    "學分": "3",
+    "上課時間": "Mon678",
+    "教室": "*-***",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=60008&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限地球系統科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=60008&outline=60008&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "地球系統科學國際研究生博士學位學程",
+      "流水號": "60008",
+      "課號": "ES7085-*",
+      "授課教師": "譚諤",
+      "課程名稱(中文)": "科學計算",
+      "課程名稱(英文)": "Scientific Programming",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "Teach students with no or limited programming experience about basic Python and how to use Python for various scientific tasks: curve fitting, numerical integration, and solving ordinary differential equations, etc ...",
+      "授課內容": "Setup Python environment, basic python, numpy, scipy, panda",
+      "教科書/參考書": "Scipy Lecture Note (https://scipy-lectures.org/)",
+      "自編教材比例": "10",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "60％ homework, 20％ midterm, 20％ final",
+      "辦公時間": "Thursday 11 AM - Noon",
+      "授課週數": "16",
+      "彈性教學說明": "Video watching",
+      "課程領域": "基礎學科(共同) 、 固態地球科學 、 大氣科學 、 水圈科學",
+      "核心能力": [
+        {
+          "能力名稱": "獨立思考與研究能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 實作/實驗 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "進階數理及專業知識能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 實作/實驗 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "觀測模擬及分析推理能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際視野與語文溝通能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "專業倫理及服務學習之能力",
+          "強度指數": "(2) 低",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "電腦及程式語言應用能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 作品/創作展演"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "地球科學學院",
+    "系所": "地球系統科學國際研究生博士學位學程",
+    "流水號": "60009",
+    "課號-班別": "ES7087-*",
+    "課程名稱(中文)": "火山作用導論 [已停開]",
+    "課程名稱(英文)": "Introduction to Volcanic Processes",
+    "備註": "上課地點：中研院環變大樓4031會議室。",
+    "授課教師": "柯士達",
+    "學分": "2",
+    "上課時間": "Mon34",
+    "教室": "*-***",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=60009&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限地球系統科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=60009&outline=60009&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "地球系統科學國際研究生博士學位學程",
+      "流水號": "60009",
+      "課號": "ES7087-*",
+      "授課教師": "柯士達",
+      "課程名稱(中文)": "火山作用導論",
+      "課程名稱(英文)": "Introduction to Volcanic Processes",
+      "課程學制": "碩博同修",
+      "學分": "2",
+      "課程目標": "In this course I introduce the basic concepts of how volcanoes work without assuming some prior knowledge of volcanology from the students. The only prior knowledge needed is some physics, calculus and the basics of seismology. The objective is to familiarize the students with how volcanoes work, how they erupt, what hazards these eruptions entail and how volcanoes can be monitored and studied using primarily seismology, but also other methods.",
+      "授課內容": "The course will start from recognizing the fact that volcanism is the direct consequence of plate tectonics and describe in more detail this relationship. This will be followed by a description of the plumbing system beneath volcanoes, why and how eruptions occur, what are their hazards. In the second part of the course emphasis will be given on the use of seismology for monitoring volcanoes and for probing their internal structure (i.e. seismic tomography).",
+      "教科書/參考書": "1. Parfitt E. A. and L. Wilson, 2008. Fundamentals of physical volcanology, Blackwell publishing, 230 pp. 2. Shearer P. M., 2018. Introduction to seismology, Cambridge University Press, 396 pp. 3. Zobin V. M., 2012. Introduction to volcanic seismology, Elsevier Ltd, 482 pp.",
+      "自編教材比例": "50",
+      "授課方式": "講授",
+      "評量配分比重": "Quiz → 40％ (after each class) Final → 60％",
+      "辦公時間": "週一到週五，上班時間10-17，其他時間請來信預約",
+      "授課週數": "16",
+      "彈性教學說明": "彈性上課",
+      "課程領域": "基礎學科(共同) 、 固態地球科學",
+      "核心能力": [
+        {
+          "能力名稱": "獨立思考與研究能力",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現 ， 學習檔案評量 ， 其他"
+        },
+        {
+          "能力名稱": "進階數理及專業知識能力",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現 ， 自我評量/同儕互評 ， 其他"
+        },
+        {
+          "能力名稱": "觀測模擬及分析推理能力",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現 ， 自我評量/同儕互評 ， 其他"
+        },
+        {
+          "能力名稱": "國際視野與語文溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現 ， 自我評量/同儕互評 ， 其他"
+        },
+        {
+          "能力名稱": "專業倫理及服務學習之能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "電腦及程式語言應用能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "地球科學學院",
+    "系所": "地球系統科學國際研究生博士學位學程",
+    "流水號": "60010",
+    "課號-班別": "ES7097-*",
+    "課程名稱(中文)": "高頻地震學",
+    "課程名稱(英文)": "High Frequency seismology",
+    "備註": "上課地點：中研院地球所314室",
+    "授課教師": "郭俊翔",
+    "學分": "3",
+    "上課時間": "Wed678",
+    "教室": "*-***",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=60010&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限地球系統科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=60010&outline=60010&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "地球系統科學國際研究生博士學位學程",
+      "流水號": "60010",
+      "課號": "ES7097-*",
+      "授課教師": "郭俊翔",
+      "課程名稱(中文)": "高頻地震學",
+      "課程名稱(英文)": "High Frequency seismology",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "地震學是探測地球結構和理解震源特性的關鍵工具，而大規模地震的強地動可能會導致嚴重的災損。\"高頻地震學\"的目標是教授地球物理學/地震學專業學生有關震波傳遞和震源特性的概念，這堂課也會傳達強地動和地震危害的概念。",
+      "授課內容": "這門課程將涵蓋以下主題：應力、應變、彈性張量、波動方程解算、體波傳播、反射、傳輸、衰減、體波在地球的傳播時間、地球模型、震源、格林函數、震矩張量、場址效應、強地動預估和地震危害。",
+      "教科書/參考書": "Modern global seismology, Lay and Wallace, Academic Press, 1995. 4.20 - Physical Processes That Control Strong Ground Motion, Anderson, J. G., 2015, Treatise on Geophysics (Second Edition), Elsevier.",
+      "自編教材比例": "20",
+      "授課方式": "講授",
+      "評量配分比重": "50% homework 25% mid-term 25% final",
+      "辦公時間": "郭俊翔老師：Monday and Tuesday 10 am – 4 pm, Room S306, Department of Earth Sciences, NCU.",
+      "授課週數": "16",
+      "彈性教學說明": "自主學習",
+      "課程領域": "固態地球科學",
+      "核心能力": [
+        {
+          "能力名稱": "獨立思考與研究能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "進階數理及專業知識能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "觀測模擬及分析推理能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "國際視野與語文溝通能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "專業倫理及服務學習之能力",
+          "強度指數": "(1) 非常低",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "電腦及程式語言應用能力",
+          "強度指數": "(2) 低",
+          "評量方式": "作業練習"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "地球科學學院",
+    "系所": "地球系統科學國際研究生博士學位學程",
+    "流水號": "60011",
+    "課號-班別": "ES7101-*",
+    "課程名稱(中文)": "地震預報",
+    "課程名稱(英文)": "Earthquake Forecasting",
+    "備註": "上課地點：中研院地球所414室",
+    "授課教師": "詹忠翰",
+    "學分": "2",
+    "上課時間": "Wed78",
+    "教室": "*-***",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=60011&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限地球系統科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=60011&outline=60011&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "地球系統科學國際研究生博士學位學程",
+      "流水號": "60011",
+      "課號": "ES7101-*",
+      "授課教師": "詹忠翰",
+      "課程名稱(中文)": "地震預報",
+      "課程名稱(英文)": "Earthquake Forecasting",
+      "課程學制": "碩博同修",
+      "學分": "2",
+      "課程目標": "- 取得世界及台灣地震目錄 - 了解地震預報方法 - 地震預報實作",
+      "授課內容": "- 課程簡介、大綱與分組\n- 地震與全球板塊構造\n- 地震資料與處理\n- 大地震預報方法\n- 全球地震深度分布\n- 小組報告\n- 地震學方法預報地震的限制\n- 活動斷層參數\n- 利用活動斷層參數預報地震\n- 台灣地震目錄\n- 期末考\n- 期末考檢討",
+      "教科書/參考書": "蔡義本，2019：The Next Big Ones: Forecasting the Probability of Large Earthquakes in the World。國立中央大學出版中心",
+      "自編教材比例": "70",
+      "授課方式": "講授 研討 實習/實驗",
+      "評量配分比重": "隨堂測驗：50 %; 期末考：50 %.",
+      "辦公時間": "與教授事前預約",
+      "授課週數": "16",
+      "彈性教學說明": "課後實作案例練習",
+      "課程領域": "固態地球科學 、 應用語言",
+      "核心能力": [
+        {
+          "能力名稱": "獨立思考與研究能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "進階數理及專業知識能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "觀測模擬及分析推理能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "國際視野與語文溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "專業倫理及服務學習之能力",
+          "強度指數": "(2) 低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "電腦及程式語言應用能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "地球科學學院",
+    "系所": "地球系統科學國際研究生博士學位學程",
+    "流水號": "60012",
+    "課號-班別": "ES7107-*",
+    "課程名稱(中文)": "同位素地球化學 [已停開]",
+    "課程名稱(英文)": "Isotope geochemistry",
+    "備註": "上課地點：中研院地球所611室",
+    "授課教師": "王國龍",
+    "學分": "3",
+    "上課時間": "Tue234",
+    "教室": "*-***",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=60012&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限地球系統科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=60012&outline=60012&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "地球系統科學國際研究生博士學位學程",
+      "流水號": "60012",
+      "課號": "ES7107-*",
+      "授課教師": "王國龍",
+      "課程名稱(中文)": "同位素地球化學",
+      "課程名稱(英文)": "Isotope geochemistry",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "Isotope geochemistry has grown over the last 50 years to become one of the most important fields in the earth sciences as well as in geochemistry. It has played an important role in transforming geology from a qualitative, observational science to a modern quantitative one. This course will start from fundamental principles then touch on many, though not all, of the applications of isotope geochemistry. We’ll focus first on geochronology will be focused first and then consider how radiogenic isotopes have been used to understand the origin and evolution of the Earth. Next, applications of stable isotope geochemistry to fields as diverse as paleoclimate, paleontology, archeology, ore genesis, and magmatic evolution will be examined. In addition, how the horizons of stable isotope geochemistry have broadened from a few light elements such as hydrogen, carbon, and oxygen to much of the periodic table will be shown. Finally, isotope geochemistry of the noble gases, whose isotopic variations are due to both nuclear and chemical processes and provide special insights into the origins and behavior of the Earth will be considered.",
+      "授課內容": "1. Introduction\n2. Decay systems and Geochronology I\n3. Geochronology II\n4. Mass spectrometry and analytical result assessment\n5. Radiogenic isotope geochemistry of the mantle\n6. Radiogenic isotope geochemistry of the lithosphere\n7. Radiogenic isotope geochemistry of the ocean\n8. Stable isotope geochemistry I-theory\n9. Stable isotope geochemistry II-appl.\n10. Stable isotope geochemistry III-appl.\n11. Stable isotope geochemistry IV (non-traditional)\n12. Noble gas isotope geochemistry",
+      "教科書/參考書": "1. Isotope Geochemistry, 2014. William M. White, John Wiley ＆ Sons (pub.), 495p. 2. Isotope Geology, 2008. Claude J. Allegre, Cambridge (pub.), 512p. 3. Principle of Isotope Geology, 2nd Edition, 1986. Gunter Faure, Wiley ＆ Sons (pub.), 589p.",
+      "自編教材比例": "80",
+      "授課方式": "講授 研討",
+      "評量配分比重": "Term presentation: 50％ Mid-term assignment: 30％ Performance in Class: 20％",
+      "辦公時間": "預約制",
+      "授課週數": "16",
+      "彈性教學說明": "彈性上課",
+      "課程領域": "基礎學科(共同) 、 固態地球科學",
+      "核心能力": [
+        {
+          "能力名稱": "獨立思考與研究能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "進階數理及專業知識能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "觀測模擬及分析推理能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際視野與語文溝通能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "專業倫理及服務學習之能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "電腦及程式語言應用能力",
+          "強度指數": "(2) 低",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "地球科學學院",
+    "系所": "地球系統科學國際研究生博士學位學程",
+    "流水號": "60013",
+    "課號-班別": "ES7109-*",
+    "課程名稱(中文)": "古海洋學導論 [已停開]",
+    "課程名稱(英文)": "Introduction to Paleoceanography",
+    "備註": "上課地點：中研院環變大樓4031會議室",
+    "授課教師": "羅立",
+    "學分": "3",
+    "上課時間": "Thu234",
+    "教室": "*-***",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=60013&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限地球系統科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=60013&outline=60013&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "地球系統科學國際研究生博士學位學程",
+      "流水號": "60013",
+      "課號": "ES7109-*",
+      "授課教師": "羅立",
+      "課程名稱(中文)": "古海洋學導論",
+      "課程名稱(英文)": "Introduction to Paleoceanography",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "Paper reading, discussion, presentation, proposal draft preparation.",
+      "授課內容": "Paper reading, discussion, presentation, proposal draft preparation.",
+      "教科書/參考書": "Compiled journal article and book chapters",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "Weekly summary abstract (40%), presentation (40%), proposal (20%)",
+      "辦公時間": "By email",
+      "授課週數": "16",
+      "彈性教學說明": "Flexible classes",
+      "課程領域": "大氣科學 、 水圈科學",
+      "核心能力": [
+        {
+          "能力名稱": "獨立思考與研究能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "進階數理及專業知識能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "觀測模擬及分析推理能力",
+          "強度指數": "(2) 低",
+          "評量方式": "實作/實驗"
+        },
+        {
+          "能力名稱": "國際視野與語文溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "專業倫理及服務學習之能力",
+          "強度指數": "(0) 無",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "電腦及程式語言應用能力",
+          "強度指數": "(2) 低",
+          "評量方式": "實作/實驗"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "地球科學學院",
+    "系所": "地球系統科學國際研究生博士學位學程",
+    "流水號": "60014",
+    "課號-班別": "ES7111-*",
+    "課程名稱(中文)": "空氣汙染模擬實作 [已停開]",
+    "課程名稱(英文)": "Practical Air Pollution Modeling",
+    "備註": "上課地點：中研院環變大樓3030會議室",
+    "授課教師": "蔡宜君",
+    "學分": "2",
+    "上課時間": "Mon9A",
+    "教室": "*-***",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=60014&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限地球系統科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=60014&outline=60014&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "地球系統科學國際研究生博士學位學程",
+      "流水號": "60014",
+      "課號": "ES7111-*",
+      "授課教師": "蔡宜君",
+      "課程名稱(中文)": "空氣汙染模擬實作",
+      "課程名稱(英文)": "Practical Air Pollution Modeling",
+      "課程學制": "碩博同修",
+      "學分": "2",
+      "課程目標": "理解不同複雜程度空氣污染模式的原理、架構及其適用情境累積模式模擬與結果分析的實務經驗 ",
+      "授課內容": "本課程介紹不同複雜程度之空氣污染模式，並強調其實務操作與應用。實作部分將透過三種具代表性的空氣污染模式進行教學，學習模式設定流程以及模式結果在空氣污染議題中的基本應用與分析技巧。\nNotes for Students\n1.Basic proficiency in using the Linux operating system and prior completion of an air pollution–related course are required.\n2.Ability to visualize model data (e.g., with Python, NCL, or similar tools) is required.\n3.Please bring a laptop to class.\n4.Due to TA and server arrangements, lectures and oral presentations will be held at the RCEC of Academia Sinica, while hands-on sessions will take place at NTU.",
+      "教科書/參考書": "1. Atmospheric Pollution, by Mark Z. Jacobson, Cambridge University Press (TD883 J37 2002) 2. Ministry of Environment's Air Quality Modeling Support Center Website：https://aqmc.epa.gov.tw/",
+      "自編教材比例": "0",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "平時成績10%，模式實作作業60%，期末報告30%",
+      "辦公時間": "by email",
+      "授課週數": "16",
+      "彈性教學說明": "Flexible classes",
+      "課程領域": "大氣科學",
+      "核心能力": [
+        {
+          "能力名稱": "獨立思考與研究能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 實作/實驗 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "進階數理及專業知識能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 實作/實驗 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "觀測模擬及分析推理能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 實作/實驗 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "國際視野與語文溝通能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "專業倫理及服務學習之能力",
+          "強度指數": "(2) 低",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "電腦及程式語言應用能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 實作/實驗"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "地球科學學院",
+    "系所": "地球系統科學國際研究生博士學位學程",
+    "流水號": "60015",
+    "課號-班別": "ES7113-*",
+    "課程名稱(中文)": "應用地質統計學",
+    "課程名稱(英文)": "Applied Geostatistics",
+    "備註": "上課地點：中研院環變大樓4032會議室",
+    "授課教師": "倪春發",
+    "學分": "3",
+    "上課時間": "Fri234",
+    "教室": "*-***",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=60015&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限地球系統科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=60015&outline=60015&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "地球系統科學國際研究生博士學位學程",
+      "流水號": "60015",
+      "課號": "ES7113-*",
+      "授課教師": "倪春發",
+      "課程名稱(中文)": "應用地質統計學",
+      "課程名稱(英文)": "Applied Geostatistics",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "Course Objectives This course aims to provide fundamental knowledge of geostatistics for describing and evaluating different types of Earth environmental data.",
+      "授課內容": "The topics will include:\n1. Exploratory data analysis\n2. Spatial data analysis and variogram fitting\n3. Regressions and geostatistical interpolations\n4. Geostatistical simulations for applications",
+      "教科書/參考書": "Isaaks Edward H. and R. Mohan Srivastava (1989), An Introduction to Applied Geostatistics, Oxford University Press, Inc. Kitanidis P.K. (1997), Introduction to Geostatistics – Applications in Hydrogeology, Cambridge University Press, Inc. Gelhar, Lynn W.(1993), Stochastic Subsurface Hydrology, Prentice-Hall, Inc. Goovaerts, Pierre. (1997), Geostatistics for Natural Resources Evaluation, Oxford Academic.",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討",
+      "評量配分比重": "Course Grade Homework/mini projects/presentations 60%, Midterm 20%, Final exam 20%",
+      "辦公時間": "By appointment",
+      "授課週數": "16",
+      "彈性教學說明": "Self-directed learning and independent research",
+      "課程領域": "基礎學科(共同) 、 固態地球科學",
+      "核心能力": [
+        {
+          "能力名稱": "獨立思考與研究能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "進階數理及專業知識能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "觀測模擬及分析推理能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "國際視野與語文溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "專業倫理及服務學習之能力",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "電腦及程式語言應用能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 作品/創作展演"
+        }
+      ]
+    }
+  }
+]

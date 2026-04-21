@@ -1,0 +1,3088 @@
+[
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63001",
+    "課號-班別": "SS1003-*",
+    "課程名稱(中文)": "程式語言與繪圖",
+    "課程名稱(英文)": "Computer Programming and Graphics",
+    "備註": "[不開放初選]",
+    "授課教師": "林映岑",
+    "學分": "2",
+    "上課時間": "Thu78",
+    "教室": "S4-815-1",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "40",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63001&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限太空科學與工程學系。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限太空科學與工程學系。年級:限二年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "身份:限申請校學士。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63001&outline=63001&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63001",
+      "課號": "SS1003-*",
+      "授課教師": "林映岑",
+      "課程名稱(中文)": "程式語言與繪圖",
+      "課程名稱(英文)": "Computer Programming and Graphics",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "課程結束後，能以Matlab進行簡單的資料處理、彙整及視覺化。",
+      "授課內容": "1. 認識Matlab\n2. Matlab 基本運算\n3. 資料型態與輸出控制\n4. 陣列的基本操作與運算\n5. 二維平面繪圖\n6. 三維空間繪圖\n7. 特殊圖形的繪製\n8. 使用M檔案與函數\n9. 程式控制流程\n10. 字串的處理\n11. 其它的資料型態\n12. 基礎數值分析\n13. 曲線擬合與插值法\n14. 微積分與常微分方程式\n15. Matlab的符號運算\n16. 進階符號運算\n17. 檔案的處理\n(提供延伸學習)\n18. GUI程式設計\n19. 進階GUI程式設計\n20. 使用SIMULINK\n21. 數位影像處理\n22. 使用Matlab呼叫C函數",
+      "教科書/參考書": "Matlab 程式設計(第2版), 洪維恩, ISBN：9789863121404 Online material",
+      "自編教材比例": "20",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "作業: 50％ 小組合作: 15％ 期中考: 15％ 期末考: 20％",
+      "辦公時間": "預約制",
+      "授課週數": "16",
+      "彈性教學說明": "複習所學內容、專題實作debug、Q&A",
+      "課程領域": "高層大氣科學與電離層物理 、 磁層物理 、 行星科學與太陽圈物理 、 太陽物理與日地關係 、 雷達與電磁波觀測 、 太空酬載 、 衛星遙測 、 電漿數值模擬 、 基礎學科",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(3) 普通",
+          "評量方式": "其他"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(3) 普通",
+          "評量方式": "其他"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "數值模式的應用",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63002",
+    "課號-班別": "SS1005-*",
+    "課程名稱(中文)": "衛星系統實作",
+    "課程名稱(英文)": "Hands-on Satellite System",
+    "備註": "一律採用密碼卡，第一堂測驗合格者將發放密碼卡。\n[不開放初選]",
+    "授課教師": "郭政靈",
+    "學分": "2",
+    "上課時間": "Tue56",
+    "教室": "S4-815-1",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63002&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "指定課程:必須先修SS1001。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63002&outline=63002&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63002",
+      "課號": "SS1005-*",
+      "授課教師": "郭政靈",
+      "課程名稱(中文)": "衛星系統實作",
+      "課程名稱(英文)": "Hands-on Satellite System",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "The course designs a CubeSat from concept to component selection with considering for their science mission and successful criterion.",
+      "授課內容": "Part I: System engineering applied to Cubesats\nPart II: Cubesat missions and design\nPart III: Cubesat subsystems design and modeling\nPart IV: Cubesat asssembly, integration, testing and verfication\nPart V: Cubesat ground segment and operations",
+      "教科書/參考書": "Textbook: CubeSat Handbook from mission design to operations, Academic Press, 2021 References: Spacecraft Systems Engineering, 4th Ed., Willey, 2011",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "第一堂課基本能力測驗，通過之後同意修課 個人分數 (40% HW+20% Final presentation) 團體分數 (40%) [6/3口試前繳交各組書面報告+5min介紹影片)",
+      "辦公時間": "Fri 2pm",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "太空酬載",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(1) 非常低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "實作/實驗 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "數值模式的應用",
+          "強度指數": "(2) 低",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63003",
+    "課號-班別": "SS1011-*",
+    "課程名稱(中文)": "向量分析",
+    "課程名稱(英文)": "Vector Analysis",
+    "備註": "[不開放初選]",
+    "授課教師": "楊雅惠",
+    "學分": "2",
+    "上課時間": "Mon78",
+    "教室": "S4-811",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63003&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限太空科學與工程學系。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限學士班。學院:限地球科學學院。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63003&outline=63003&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63003",
+      "課號": "SS1011-*",
+      "授課教師": "楊雅惠",
+      "課程名稱(中文)": "向量分析",
+      "課程名稱(英文)": "Vector Analysis",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "建立學生以向量描述各種物理量的觀念、熟悉向量運算，並了解其物理意義。訓練學生能應用各種定理，以作為日後修習力學、電磁學、電漿物理等重要課程的基礎。",
+      "授課內容": "內積、外積、微分\n梯度、散度、旋度\n極座標、圓柱座標、球座標\n線積分、面積分、體積分\nGreen's定理、Stokes'定理、Gauss's定理\n向量應用",
+      "教科書/參考書": "TBD",
+      "自編教材比例": "60",
+      "授課方式": "講授 研討",
+      "評量配分比重": "報告: 50% 期中考: 20% 期末考: 20% 上課表現: 10%",
+      "辦公時間": "請與老師約時間",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎學科",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(1) 非常低",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(1) 非常低",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "數值模式的應用",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63004",
+    "課號-班別": "SS1012-*",
+    "課程名稱(中文)": "科學英文閱讀與討論",
+    "課程名稱(英文)": "Scientific English Reading and Discussion",
+    "備註": "[不開放初選]",
+    "授課教師": "林佳賢",
+    "學分": "1",
+    "上課時間": "Wed6",
+    "教室": "S4-917",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63004&semester=1142",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63004&outline=63004&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63004",
+      "課號": "SS1012-*",
+      "授課教師": "林佳賢",
+      "課程名稱(中文)": "科學英文閱讀與討論",
+      "課程名稱(英文)": "Scientific English Reading and Discussion",
+      "課程學制": "學士班",
+      "學分": "1",
+      "課程目標": "To develop/train students skills in understanding and communicating scientific English in a relaxed and fun environment.",
+      "授課內容": "This is an EMI class. It will be completely conducted in English.\nThe class will consist of different activities involving reading, discussing, and explaining scientific topics and articles.\nparticipation (40%)\nhomeworks (30%)\npresentations (30%)",
+      "教科書/參考書": "none",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討",
+      "評量配分比重": "participation (40%) homeworks (30%) presentations (30%)",
+      "辦公時間": "N/A",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎學科",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(2) 低",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(2) 低",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(2) 低",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "數值模式的應用",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63005",
+    "課號-班別": "SS2004-*",
+    "課程名稱(中文)": "電磁學II",
+    "課程名稱(英文)": "Electromagnetism II",
+    "備註": "[不開放初選]",
+    "授課教師": "潘貞杰",
+    "學分": "3",
+    "上課時間": "Thu2",
+    "教室": "S4-811\nFri34",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63005&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限太空科學與工程學系。年級:限二年級。指定課程:必須先修MA1001、先修MA1004。且檢定指定課程平均成績達50分以上。"
+        },
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限太空科學與工程學系。年級:限二年級。指定課程:必須先修MA1003、先修MA1004。且檢定指定課程平均成績達50分以上。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限大氣科學學系。年級:限三年級、四年級。班別:限B。指定課程:必須先修MA1001、先修MA1004。且檢定指定課程平均成績達50分以上。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限大氣科學學系。年級:限三年級、四年級。班別:限B。指定課程:必須先修MA1003、先修MA1004。且檢定指定課程平均成績達50分以上。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限輔系-大氣科學系、輔系-太空科學與工程學系、雙主修-大氣科學系、雙主修-太空科學與工程學系。指定課程:必須先修MA1001、先修MA1004。且檢定指定課程平均成績達50分以上。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限輔系-大氣科學系、輔系-太空科學與工程學系、雙主修-大氣科學系、雙主修-太空科學與工程學系。指定課程:必須先修MA1003、先修MA1004。且檢定指定課程平均成績達50分以上。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "系所:限地球科學學院學士班。指定課程:必須先修MA1001、先修MA1004。且檢定指定課程平均成績達50分以上。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "系所:限地球科學學院學士班。指定課程:必須先修MA1003、先修MA1004。且檢定指定課程平均成績達50分以上。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63005&outline=63005&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63005",
+      "課號": "SS2004-*",
+      "授課教師": "潘貞杰",
+      "課程名稱(中文)": "電磁學II",
+      "課程名稱(英文)": "Electromagnetism II",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "由 基本靜電及靜磁場理論推演至隨時間變化之完整 Maxwell‘s方程式",
+      "授課內容": "The staticn magnetic field\nmagnetic materials and properties\nFaraday‘s law and induction\nMaxwell‘s equations",
+      "教科書/參考書": "Engineering Electromagnetics，Nathan Ida。 Electromagnetic field theory fundamentals, Guru and Hiziroglu.",
+      "自編教材比例": "90",
+      "授課方式": "講授 個別指導",
+      "評量配分比重": "Test 80％ Assignments 20％",
+      "辦公時間": "Tue 34",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎學科",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "數值模式的應用",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63006",
+    "課號-班別": "SS2006-*",
+    "課程名稱(中文)": "應用數學II",
+    "課程名稱(英文)": "Applied Mathematics II",
+    "備註": "[不開放初選]",
+    "授課教師": "郭政靈",
+    "學分": "3",
+    "上課時間": "Tue12",
+    "教室": "S4-811\nThu34",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63006&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限太空科學與工程學系。年級:限二年級。指定課程:必須先修MA1004。且檢定指定課程平均成績達60分以上。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限太空科學與工程學系。指定課程:必須先修MA1004。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限地球科學學院學士班、輔系-太空科學與工程學系、雙主修-太空科學與工程學系。指定課程:必須先修MA1004。且檢定指定課程平均成績達60分以上。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "身份:限申請校學士。指定課程:必須先修MA1004。且檢定指定課程平均成績達60分以上。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63006&outline=63006&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63006",
+      "課號": "SS2006-*",
+      "授課教師": "郭政靈",
+      "課程名稱(中文)": "應用數學II",
+      "課程名稱(英文)": "Applied Mathematics II",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "本課程提供工程數學所需要的預備知識，第一學期包含解常微分方程＆Laplace transform，第二學期包含傅立葉轉換、偏微分方程以及複變分析，需要預備基本函數微分與積分的技巧以及代數，相關的基礎數學知識應用於工程以及太空科學相關領域。",
+      "授課內容": "First semister include:\nP A R T A Ordinary Differential Equations (ODEs)\nCHAPTER 1 First-Order ODEs\nCHAPTER 2 Second-Order Linear ODEs\nCHAPTER 3 Higher Order Linear ODEs\nCHAPTER 4 Systems of ODEs. Phase Plane. Qualitative Methods\nCHAPTER 5 Series Solutions of ODEs. Special Functions\nSecond semister include:\nCHAPTER 6 Laplace Transforms\nP A R T C Fourier Analysis. Partial Differential Equations (PDEs)",
+      "教科書/參考書": "Advanced Engineering Mathematics 10th 版本 出版者 : Wiley; 第10版 (16 8 月 2011) 語言 : English Hardcover : 1280 頁 ISBN-10 : 0470458364 ISBN-13 : 978-0470458365 https://www.amazon.com/Advanced-Engineering-Mathematics-Erwin-Kreyszig/dp/0470458364",
+      "自編教材比例": "20",
+      "授課方式": "講授",
+      "評量配分比重": "Exams 100％",
+      "辦公時間": "Fri 2pm",
+      "授課週數": "16",
+      "彈性教學說明": "Final review for learning and math skill",
+      "課程領域": "基礎學科",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(1) 非常低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(1) 非常低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "數值模式的應用",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63007",
+    "課號-班別": "SS2008-*",
+    "課程名稱(中文)": "太空專題II",
+    "課程名稱(英文)": "Special Topics in Space II",
+    "備註": "[不開放初選]",
+    "授課教師": "任玄\n趙吉光\n蔡龍治\n張起維\n楊雅惠\n林佳賢\n林致宏\n葉永烜\n劉正彥\n林唐煌\n劉說安\n蔡華龍\n林映岑\n郭政靈",
+    "學分": "1",
+    "上課時間": "Sat78",
+    "教室": "*-***",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63007&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限太空科學與工程學系。年級:限二年級。指定課程:必須先修SS2007。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63007&outline=63007&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63007",
+      "課號": "SS2008-*",
+      "授課教師": "任玄\n趙吉光\n蔡龍治\n張起維\n楊雅惠\n林佳賢\n林致宏\n葉永烜\n劉正彥\n林唐煌\n劉說安\n蔡華龍\n林映岑\n郭政靈",
+      "課程名稱(中文)": "太空專題II",
+      "課程名稱(英文)": "Special Topics in Space II",
+      "課程學制": "學士班",
+      "學分": "1",
+      "課程目標": "The class is an EMI class. The objectives are 1. To develop students' research and presentation skills 2. To provide an environment for students to communicate their research subjects in English",
+      "授課內容": "1. The physics and mechanisms of solar magnetic flux emergence\n2. Numerical differentiation methods\n3. Compute different MHD quantities of solar pores",
+      "教科書/參考書": "Relevant research papers",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 實習/實驗 個別指導",
+      "評量配分比重": "The following is subject to change Formal reports: 80% weekly progress reports: 20%",
+      "辦公時間": "Wednesday 12-14, Friday 12-13",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "太陽物理與日地關係",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(3) 普通",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "數值模式的應用",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 作品/創作展演"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63008",
+    "課號-班別": "SS2013-*",
+    "課程名稱(中文)": "線性代數",
+    "課程名稱(英文)": "Linear Algebra",
+    "備註": "[不開放初選]",
+    "授課教師": "黃健民",
+    "學分": "3",
+    "上課時間": "Mon78",
+    "教室": "S4-807\nWed5",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "40",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63008&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "指定課程:必須先修MA1003。"
+        },
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "指定課程:必須先修MA1004。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63008&outline=63008&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63008",
+      "課號": "SS2013-*",
+      "授課教師": "黃健民",
+      "課程名稱(中文)": "線性代數",
+      "課程名稱(英文)": "Linear Algebra",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "此課程講授的是基本的線性代數, 主要目的除了建立必要的基礎外, 重要的是與各種科學應用的連結.",
+      "授課內容": "1. Systems of linear equations and matrices.\n2. Determinants.\n3. Euclidean vector spaces.\n4. General vector spaces.\n5. Eigenvalues and Eigenvectors.\n6. Inner product spaces.\n7. Diagonalization\n8. General linear transformations.",
+      "教科書/參考書": "Elementary Linear Algebra Authors: Howard Anton, Chris Rorres, and Anton Kaul Verson : Twelfth edition",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "考試(100％)",
+      "辦公時間": "星期一9:00-12:00, 星期二9:00-12:00, 星期三9:00-12:00, 星期四13:00-17:00, 星期五13:00-17:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "高層大氣科學與電離層物理 、 磁層物理 、 雷達與電磁波觀測 、 衛星遙測 、 電漿數值模擬",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "數值模式的應用",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63009",
+    "課號-班別": "SS2014-*",
+    "課程名稱(中文)": "熱力學",
+    "課程名稱(英文)": "Thermodynamics",
+    "備註": "[不開放初選]",
+    "授課教師": "林佳賢",
+    "學分": "3",
+    "上課時間": "Mon6",
+    "教室": "S4-807\nWed78",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63009&semester=1142",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63009&outline=63009&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63009",
+      "課號": "SS2014-*",
+      "授課教師": "林佳賢",
+      "課程名稱(中文)": "熱力學",
+      "課程名稱(英文)": "Thermodynamics",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "讓學生對熱力學有基本的了解，希望對他們選修較advanced 的課程有用。 涵蓋的主題包括 1.熱力學定律 2. 溫度 3.熱、能量和功及其關係 4. 經典統計",
+      "授課內容": "涵蓋的內容為教科書中以下章節\nChapter 1 Energy in Thermal Physics\nChapter 2 The Second Law\nChapter 3 Interactions and Implications\nChapter 4 Engines and Refrigerators\nChapter 5 Free Energy and Chemical Thermodynamics\nChapter 6 Boltzmann Statistics",
+      "教科書/參考書": "An Introduction to Thermal Physics by Daniel V. Schroeder",
+      "自編教材比例": "30",
+      "授課方式": "講授",
+      "評量配分比重": "作業: 60％ 期中考: 20％ 期末考: 20％",
+      "辦公時間": "right after each class",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎學科",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "數值模式的應用",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63010",
+    "課號-班別": "SS3004-*",
+    "課程名稱(中文)": "磁層物理",
+    "課程名稱(英文)": "Megnetospheric Physics",
+    "備註": "[不開放初選]",
+    "授課教師": "許志浤",
+    "學分": "3",
+    "上課時間": "Mon6",
+    "教室": "S4-811\nWed78",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63010&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "指定課程:必須先修SS3002。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63010&outline=63010&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63010",
+      "課號": "SS3004-*",
+      "授課教師": "許志浤",
+      "課程名稱(中文)": "磁層物理",
+      "課程名稱(英文)": "Megnetospheric Physics",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "This course will give students an introduction to Solar-Terrestrial Physics, a field that mainly studies the Sun-Earth connection. The Sun constantly releases charged particles into the interplanetary space and becomes the solar wind. The solar wind interacts with the Earth’s dipolar magnetosphere. The resulted magnetosphere has a configuration of being compressed on the dayside and stretched on the nightside. The bow shock is formed in front of the magnetosphere. The course will start with an introduction to Space Plasma, which is necessary for understandings of physical mechanism underlying space phenomena. The course covers different areas of Solar-Terrestrial Physics. The knowledge of these areas is necessary for academic research and practical applications.",
+      "授課內容": "History of Solar-Terrestrial Physics\nPhysics of Space Plasma\nSun and Solar Wind\nShocks and Magnetosheath\nMagnetosphere\nPlanetary Magnetospheres",
+      "教科書/參考書": "1. Course Web Site (http://www.ss.ncu.edu.tw/~jhshue/ss3004.html) 2. Introduction to Space Physics, Edited by M. G. Kivelson and C. T. Russell, Cambridge University Press, 1995. 3. Magnetosphere Online Seminar Series (https://msolss.github.io/MagSeminars/) are available on YouTube. 4. Space Physics Environment Data Analysis Software (SPEDAS), written in IDL (https://spedas.org/blog)",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討",
+      "評量配分比重": "Quiz 25％ Group Project 25％ Mid-term and Final Exam 30％ Participation 20％",
+      "辦公時間": "預約",
+      "授課週數": "16",
+      "彈性教學說明": "Self-direct Learning A preparation of group reports",
+      "課程領域": "高層大氣科學與電離層物理 、 磁層物理 、 行星科學與太陽圈物理 、 太陽物理與日地關係",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "數值模式的應用",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63011",
+    "課號-班別": "SS3005-*",
+    "課程名稱(中文)": "電離層物理",
+    "課程名稱(英文)": "Ionospheric Physics",
+    "備註": "[不開放初選]",
+    "授課教師": "潘貞杰",
+    "學分": "3",
+    "上課時間": "Mon34",
+    "教室": "S4-811\nWed6",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63011&semester=1142",
+    "分發條件": {
+      "限制說明": "An error occurred.\nSorry, the page you are looking for is currently unavailable.\nPlease try again later.\nIf you are the system administrator of this resource then you should check the error log for details.\nFaithfully yours, nginx."
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63011&outline=63011&semester=1142",
+    "課程綱要": {
+      "完整內容": "An error occurred.\nSorry, the page you are looking for is currently unavailable.\nPlease try again later.\nIf you are the system administrator of this resource then you should check the error log for details.\nFaithfully yours, nginx.",
+      "課程目標": "There are three introductory chapters that give basic physics and explain the principles of physical investigation. The principal material contained in the main part of the course covers the neutral and ionized upper atmosphere, the magnetosphere, and structures, dynamics, disturbances and irregularities. The concluding chapter deals with technological applications.",
+      "授課內容": "An Introduction to the Ionosphere\nElectrodynamic Processes In the Ionosphere\nIONOSPHERIC EFFECTS ON THE PROPAGATION OF ELECTROMAGNETIC WAVES\nProbing the Ionosphere",
+      "課程領域": "高層大氣科學與電離層物理",
+      "評量配分比重": "test 50% report 50%",
+      "教科書/參考書": "The solar-terrestrial environment An introduction to geospace - the science of the terrestrial upper atmosphere, ionosphere and magnetosphere. J. K. Hargreaves",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 其他"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 其他"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 其他"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 其他"
+        },
+        {
+          "能力名稱": "數值模式的應用",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63012",
+    "課號-班別": "SS3010-*",
+    "課程名稱(中文)": "雷達工程與實務",
+    "課程名稱(英文)": "Radar Engineering and Application",
+    "備註": "[不開放初選]",
+    "授課教師": "朱延祥\n蘇清論",
+    "學分": "3",
+    "上課時間": "Mon5",
+    "教室": "S4-811\nWed34",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63012&semester=1142",
+    "分發條件": {
+      "限制說明": "An error occurred.\nSorry, the page you are looking for is currently unavailable.\nPlease try again later.\nIf you are the system administrator of this resource then you should check the error log for details.\nFaithfully yours, nginx."
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63012&outline=63012&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63012",
+      "課號": "SS3010-*",
+      "授課教師": "朱延祥\n蘇清論",
+      "課程名稱(中文)": "雷達工程與實務",
+      "課程名稱(英文)": "Radar Engineering and Application",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "透過課堂講授與雷達站的實務操作，學生可以學習到不同雷達系統(包括脈波雷達與頻率調變連續波雷達)整體運作的概念原理，包括雷達發展過程、雷達波傳播原理、雷達方程式、八木天線基本概念、阻抗匹配原理、相位陣列雷達波束形成理論、雷達系統架構、匹配濾波器原理、雷達訊號處理過程、雷達回波偵測與分析、以及雷達應用實例等。對於未來有志於在雷達領域發展的同學，本門課將可提供同學所需的雷達系統基本知識與相關的理論基礎。修習本門課的同學應具備有大一微積分，以及大二程度應用數學中有關傅立葉轉換、摺積、相關函數等基礎知識，以及修過電磁學與統計學，才可以充分理解本門課的授課內容。",
+      "授課內容": "1.雷達系統概述\n2.雷達波傳播原理\n3.雷達方程式\n4.天線基本原理\n5.雷達訊號處理\n6.回波偵測與分析\n7.雷達脈波壓縮與加解碼原理\n8.雷達應用概述",
+      "教科書/參考書": "雷達英雄傳，1999年，布德瑞著，常雲惠、常雲鳳譯，天下遠見出版社，ISBN 957-621-555-2.",
+      "自編教材比例": "100",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "一、平時成績(20％) －出席率 －上課態度(聽講、發問) －隨堂提問回答 二、作業成績(40％) 三、期中期末考(各20％)",
+      "辦公時間": "每周五上午10-12點",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "雷達與電磁波觀測",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "數值模式的應用",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63013",
+    "課號-班別": "SS3011-*",
+    "課程名稱(中文)": "遙測影像分析與應用",
+    "課程名稱(英文)": "Remote Sensing Image Analysis and Application",
+    "備註": "[不開放初選]",
+    "授課教師": "任玄\n林唐煌",
+    "學分": "3",
+    "上課時間": "Tue5",
+    "教室": "S4-811\nThu56",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63013&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限太空科學與工程學系。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限地球科學學院學士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63013&outline=63013&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63013",
+      "課號": "SS3011-*",
+      "授課教師": "任玄\n林唐煌",
+      "課程名稱(中文)": "遙測影像分析與應用",
+      "課程名稱(英文)": "Remote Sensing Image Analysis and Application",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "光學影像遙測原理、特性及應用概念之簡介與培育",
+      "授課內容": "1. 輻射的基本觀念;\n2. 地球能量來源;\n3. 大氣的吸收、發射及散射;\n4. 輻射傳送方程 ;\n5. 遙測基本原理 ;\n6. 遙測儀器與感測器 ;\n7. 遙測光譜波段與特色 ;\n8. 衛星光學影像之簡介 ;\n9. 遙測應用與未來展望",
+      "教科書/參考書": "1. Grant W. Petty：A First Course In Atmospheric Radiation. 2nd Edition, Sundog publishing, Madison Wisconsin, 2006. 2. Kuo-Nan Liou：An Introduction to Atmospheric Radiation. Academic Press, 1980. 3. John R. Jensen: Remote Sensing of the Environment, Pearson, NJ, 2007.",
+      "自編教材比例": "95",
+      "授課方式": "講授 研討 實習/實驗",
+      "評量配分比重": "1.考試(Exams)：40％; 2.讀書心得報告(Report)：50％; 3.上課互動表現(Class activity)：10％",
+      "辦公時間": "預約",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "衛星遙測 、 基礎學科",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "數值模式的應用",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 實作/實驗"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63014",
+    "課號-班別": "SS3018-*",
+    "課程名稱(中文)": "太陽現象觀測與分析 II",
+    "課程名稱(英文)": "Solar Event Observation and Analysis II",
+    "備註": "[不開放初選]",
+    "授課教師": "林佳賢",
+    "學分": "3",
+    "上課時間": "WedZ5",
+    "教室": "S4-810\nFriZ",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63014&semester=1142",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63014&outline=63014&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63014",
+      "課號": "SS3018-*",
+      "授課教師": "林佳賢",
+      "課程名稱(中文)": "太陽現象觀測與分析 II",
+      "課程名稱(英文)": "Solar Event Observation and Analysis II",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "本課程的目的是教學生如何將已學過的數學和物理知識應用在進行真正的科學研究",
+      "授課內容": "本課程是設計為1年的課程。但學生也可只修一個學期。\n每年，一個太陽事件/現象將被選擇作為主題。該課程將包括授課，準備和研究三個部分:\n授課：\n1. An introduction about solar structure from the core to the corona\n2. An introduction about different techniques and instruments of the solar observation\n3. The properties and physics of the chosen solar event or phenomena\n4. Computation tools (e.g., IDL, matlab)\n5. Data downloading and processing procedures\n6. Analysis methods\n準備: (大約2個月)\n學生應完成以下幾點:\n1. 使用太陽的網站觀測盡可能多的所選擇太陽事件/現象以獲得初步的理解\n2. 每週討論科學論文以幫助理解所要研究的現象\n3. 練習IDL/matlab\n4. 開始下載數據\n研究：（直到學期結束）\n學生們開始採用不同的分析方法，檢查數據，並利用他們所學的物理和數學知識來理解結果",
+      "教科書/參考書": "to be determined",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 實習/實驗 個別指導",
+      "評量配分比重": "Formal oral report #1(20％) Formal oral report #2(20％) weekly progress reports (2 pts each): 10％ Final report (written 25％ + oral 25％)",
+      "辦公時間": "TBA",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "",
+      "核心能力": []
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63015",
+    "課號-班別": "SS3025-*",
+    "課程名稱(中文)": "行星科學導論",
+    "課程名稱(英文)": "Introduction to Planetary Science",
+    "備註": "[不開放初選]",
+    "授課教師": "葉永烜",
+    "學分": "2",
+    "上課時間": "Fri34",
+    "教室": "S4-807",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63015&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "年級:限非一年級、非二年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63015&outline=63015&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63015",
+      "課號": "SS3025-*",
+      "授課教師": "葉永烜",
+      "課程名稱(中文)": "行星科學導論",
+      "課程名稱(英文)": "Introduction to Planetary Science",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "瞭解太陽系的基本構造和普查各行星、衛星及小物體的來源、演化和物理性質。",
+      "授課內容": "1. 太陽系動力學\n2. 火星\n3. 金星\n4. 水星\n5. 小行星\n6. 彗星\n7. 木星和土星\n8. 天王星和海王星\n9. 冥王星和柯伊柏帶\n10. 系外行星\n11. 行星探測",
+      "教科書/參考書": "李春輝：行星科學導論",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "“Exams: There will be one mid-term exam and one final exam. About half of the questions will be conceptual essay questions, and the other half computational problems. Exams will constitute 40％ of the final grade.“",
+      "辦公時間": "星期五 12:00-13:00及預約",
+      "授課週數": "16",
+      "彈性教學說明": "hands-on exercise & review the materials",
+      "課程領域": "行星科學與太陽圈物理",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "數值模式的應用",
+          "強度指數": "(3) 普通",
+          "評量方式": "無"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63016",
+    "課號-班別": "SS3035-*",
+    "課程名稱(中文)": "衛星電機系統設計 [已停開]",
+    "課程名稱(英文)": "Satellite Electrical System Design",
+    "備註": "清大遠距教學(同清大EECS3400)，上課時間：四18:30-21:20\n[不開放初選]",
+    "授課教師": "林信嘉",
+    "學分": "3",
+    "上課時間": "ThuABC",
+    "教室": "S4-811",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "60",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63016&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限學分學程-太空科技與工程。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限太空科學與工程學系。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限學士班。學院:限理學院、工學院、資訊電機學院、地球科學學院。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63016&outline=63016&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63016",
+      "課號": "SS3035-*",
+      "授課教師": "林信嘉",
+      "課程名稱(中文)": "衛星電機系統設計",
+      "課程名稱(英文)": "Satellite Electrical System Design",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "本課程講解衛星的電機系統，包括指令與資料處理、電力、通訊、酬載電子、飛行軟體及電機整測等，以培養學生具有從事衛星電機系統設計之實務能力。",
+      "授課內容": "1.課程介紹及衛星電機系統設計編組\n2.衛星電機系統介紹及設計\n3.衛星指令與資料處理系統介紹及衛星電腦設計\n4.衛星指令與資料處理系統整合及測試\n5.衛星電力系統與電力元件介紹\n6.衛星電力控制元件設計\n7.衛星通訊系統與通訊元件介紹\n8.通訊衛星及設計\n9.衛星酬載電子元件設計\n10.太空規電子元件設計\n11.電子元件測試設備軟體設計\n12.衛星飛行軟體設計與驗證確認\n13.衛星電機地面支援設備\n14.衛星電機整合及測試",
+      "教科書/參考書": "Wiley J. Larson and James R. Wertz, “Space Mission Analysis and Design”",
+      "自編教材比例": "100%",
+      "授課方式": "講授",
+      "評量配分比重": "作業 40％, 期中考 30％, 期末報告30％",
+      "辦公時間": "與教授另行約定",
+      "授課週數": "16",
+      "彈性教學說明": "課堂專題簡報",
+      "課程領域": "太空酬載 、 衛星遙測",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(3) 普通",
+          "評量方式": "實作/實驗"
+        },
+        {
+          "能力名稱": "數值模式的應用",
+          "強度指數": "(3) 普通",
+          "評量方式": "實作/實驗"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63017",
+    "課號-班別": "SS4020-*",
+    "課程名稱(中文)": "通訊系統設計II",
+    "課程名稱(英文)": "Communication System Design II",
+    "備註": "[不開放初選]",
+    "授課教師": "林映岑",
+    "學分": "3",
+    "上課時間": "Tue34Z",
+    "教室": "S4-811",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63017&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "指定課程:必須先修SS4019。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63017&outline=63017&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63017",
+      "課號": "SS4020-*",
+      "授課教師": "林映岑",
+      "課程名稱(中文)": "通訊系統設計II",
+      "課程名稱(英文)": "Communication System Design II",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "修課的學生於學期末能夠針對有限的條件設計出一套基礎的通訊系統，並能指出一個通訊系統的利弊。",
+      "授課內容": "此門課將承接SS4019所學，基於無線電通訊理論，學習數位通訊系統、探討無線電通訊的應用。此門課首先概括地從其原理到應用，介紹無線電通訊系統和技術。鏈路預算的每一個環節，從無線電傳播、天線、噪音、無線電發送與接收器，也會逐步說明。通訊技術和寬頻技術的應用，會藉由地面和衛星通訊的例子得到闡述。每星期有一個小時的實驗課，讓學生透過實驗、親手操作或架構通訊系統中接收器元件，應用課程所學。",
+      "教科書/參考書": "Simon Haykin, Michael Moher, An Introduction to Analog and Digital Communications, Wiley, 2006, ISBN-13: 978-0471432227 Simon Haykin, Michael Moher, Modern Wireless Communications, John Wiley, 2003, ISBN 10 0130224723 B. P. Lathi, Z. Ding, Modern Digital and Analog Communication Systems 4th, Oxford, 2009, ISBN-13: 978-0195331455",
+      "自編教材比例": "30",
+      "授課方式": "講授 研討 實習/實驗",
+      "評量配分比重": "作業: 30％ 實驗: 30％ 期中考: 20％ 期末專題: 20％",
+      "辦公時間": "星期三14:00–15:00",
+      "授課週數": "16",
+      "彈性教學說明": "上課內容複習、專題實作、口頭報告",
+      "課程領域": "雷達與電磁波觀測 、 太空酬載 、 衛星遙測",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(3) 普通",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "數值模式的應用",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63018",
+    "課號-班別": "SS5009-*",
+    "課程名稱(中文)": "衛星機械系統設計",
+    "課程名稱(英文)": "Spacecraft Mechanical System Design",
+    "備註": "上課時間18:30~21:20，交大遠距教學 (同交大IME5466)\n[不開放初選]",
+    "授課教師": "郭添全",
+    "學分": "3",
+    "上課時間": "WedABC",
+    "教室": "S4-811",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "60",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63018&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限學分學程-太空科技與工程。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限太空科學與工程學系碩士班。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限學士班、碩士班。學院:限理學院、工學院、資訊電機學院、地球科學學院。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63018&outline=63018&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63018",
+      "課號": "SS5009-*",
+      "授課教師": "郭添全",
+      "課程名稱(中文)": "衛星機械系統設計",
+      "課程名稱(英文)": "Spacecraft Mechanical System Design",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "本課程介紹人造衛星機械工程系統的基本概念與設計原理，並透過進行衛星結構與機構系統、衛星熱控系統、衛星推進系統與衛星光學系統的設計、分析及驗證實際工程應用實例介紹，培養學生具備在衛星機械系統從理論到實務的應用能力。",
+      "授課內容": "1 衛星系統簡介\n2 衛星構型與結構設計導論\n3 衛星結構分析\n4 衛星轉動機構設計原理\n5 衛星動態環境測試\n6 衛星熱環境介紹\n7 衛星熱控設計與分析\n8 衛星熱控硬體\n9 衛星熱控測試驗證\n10 衛星推進系統介紹\n11 衛星推進系統設計與分析\n12 衛星推進系統驗證\n13 衛星光學酬載系統介紹\n14 衛星光學酬載系統設計與分析\n15 衛星光學酬載系統驗證\n16 太空機械材料的介紹與應用",
+      "教科書/參考書": "0",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "(1) 作業及專題報告：40% (2) 期中報告：30% (3) 期末報告：30%",
+      "辦公時間": "0",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "太空酬載",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(1) 非常低",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "數值模式的應用",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "研究結果的表達及呈現",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63019",
+    "課號-班別": "SS5010-*",
+    "課程名稱(中文)": "衛星姿態判定與控制",
+    "課程名稱(英文)": "Spacecraft Attitude Determination and Control",
+    "備註": "上課時間18:30~21:20，交大遠距教學 (同交大IME5467)\n[不開放初選]",
+    "授課教師": "詹鎮宇",
+    "學分": "3",
+    "上課時間": "TueABC",
+    "教室": "S4-811",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "60",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63019&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限學分學程-太空科技與工程。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限太空科學與工程學系碩士班。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限學士班、碩士班。學院:限理學院、工學院、資訊電機學院、地球科學學院。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63019&outline=63019&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63019",
+      "課號": "SS5010-*",
+      "授課教師": "詹鎮宇",
+      "課程名稱(中文)": "衛星姿態判定與控制",
+      "課程名稱(英文)": "Spacecraft Attitude Determination and Control",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "「衛星姿態判定與控制」課程系統地闡述人造衛星姿態控制的基本概念與數學模型，並且結合實際上工程應用來設計衛星的控制系統，並且透過 Matlab 軟體模擬來檢驗設計的結果，達到理論與實務的結合。",
+      "授課內容": "1.Introduction ( Architecture of spacecraft Attitude Control , Hardware of Attitude and Orbit Control Subsystem, Space Environments)\n2.Attitude Representations (I)\n3.Attitude Representations (II)\n4.Attitude Dynamics (I)\n5.Attitude Dynamics (II)\n6.Modeling and Simulation (magnetic control I)\n7.Modeling and Simulation (magnetic control II)\n8.Modeling and Simulation (magnetic control III)\n9.期中考週\n10.Automatic Attitude Control Theory (I)\n11.Automatic Attitude Control Theory (II)\n12.Automatic Attitude Control Theory (III)\n13.Automatic Attitude Control Theory (IV)\n14.Attitude Measurements and Attitude Determination (I)\n15.Attitude Measurements and Attitude Determination (II)\n16.Attitude Control verification and validation(I)\n17.Attitude Control verification and validation(II)\n18.期末考週",
+      "教科書/參考書": "Wiley J. Larson and James R. Wertz, “Space Mission Analysis and Design”, 3rd edition, Space Technology Library, 2005",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "(1) 作業及專題報告：40％ (2) 期中報告：30％ (3) 期末報告：30％",
+      "辦公時間": "請以電子郵件聯繫",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "太空酬載",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "數值模式的應用",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "研究結果的表達及呈現",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63020",
+    "課號-班別": "SS5014-*",
+    "課程名稱(中文)": "太空創業與商業模式基礎",
+    "課程名稱(英文)": "Foundations of Space Entrepreneurship and Business Models",
+    "備註": "[不開放初選]",
+    "授課教師": "張起維",
+    "學分": "3",
+    "上課時間": "Wed789",
+    "教室": "S4-917",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63020&semester=1142",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63020&outline=63020&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63020",
+      "課號": "SS5014-*",
+      "授課教師": "張起維",
+      "課程名稱(中文)": "太空創業與商業模式基礎",
+      "課程名稱(英文)": "Foundations of Space Entrepreneurship and Business Models",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "1.理解太空創業的獨特商業模式和挑戰，並掌握相關的理論知識。 2.探索太空產業中新興市場的機會，識別潛在的創業契機。 3.發展創業技能，設計並評估可行的太空創業商業計畫。",
+      "授課內容": "本課程將以太空創業專案為導向，專注於幫助學生將初步的創業構想發展成具體可行的商業計劃。\n課程的主要授課方式包括講授、個案研究、專題討論與小組協作。學生將在課程中進行大量的閱讀、研究及討論，並藉由這些活動，釐清和完善他們的創業構想。\n學生在課程開始前應有初步的太空創業構想，這將作為整個學期中研究和計劃的基礎。課程將引導學生深入探索太空產業的商業模式、風險管理、資金募集及市場進入策略，並針對創業計劃進行指導與回饋，幫助他們確立具體可行的方案。\n課程結束時，學生將具備：\n1.一個經過深思熟慮和優化的太空創業計劃。\n2.對太空產業中潛在機遇和挑戰的深刻理解。\n3.一份可用於吸引投資者的完整商業計劃書。\n課程最終目標是幫助學生將創業構想轉化為現實的創業行動方案，並為未來的實際創業做準備。",
+      "教科書/參考書": "● 艾胥黎．范思, 《太空商業時代》,2024 ● 查德・安德森,《太空投資》,2024 ● 提姆・馬歇爾, 《地理的未來：太空如何成為地緣政治的新戰場》, 2025 ● 鄭子真《咫尺光年：日本的新太空發展與戰略》, 2023",
+      "自編教材比例": "70",
+      "授課方式": "講授 研討 個別指導 其他",
+      "評量配分比重": "出席：25% 第1次專案報告（指定題）：15% 第2次專案報告（指定題）：20% 第3次專案報告（自選題）：25% 其他：15%：包含產業提案表現、募資簡報表現、競賽參與與跨領域協作貢獻。",
+      "辦公時間": "與教授另行約定",
+      "授課週數": "16",
+      "彈性教學說明": "彈性調整",
+      "課程領域": "基礎學科",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "數值模式的應用",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "研究結果的表達及呈現",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63021",
+    "課號-班別": "SS5016-*",
+    "課程名稱(中文)": "衛星產業基礎",
+    "課程名稱(英文)": "Basics of the Satellite Industry",
+    "備註": "[不開放初選]",
+    "授課教師": "張起維",
+    "學分": "3",
+    "上課時間": "Tue789",
+    "教室": "S4-811",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63021&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "指定課程:必須禁修SS5012。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63021&outline=63021&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63021",
+      "課號": "SS5016-*",
+      "授課教師": "張起維",
+      "課程名稱(中文)": "衛星產業基礎",
+      "課程名稱(英文)": "Basics of the Satellite Industry",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "衛星產業日益興盛，本校與經濟部產業發展署的太空產業供應鏈計畫團隊合作，由多間企業提出衛星地面終端、太空（衛星）相關研發專題，協助媒合大專校院學生到企業研習、研發衛星通訊相關產品與服務。本課程的授課目標為大專校院資通訊、太空科系或跨域(其他理工科系)等有意報名參加實習計畫的大三以上學生、碩博生的基礎先修課程。目標是集結參加實習計畫之企業業師，讓多元背景學生認識國內衛星通訊產業發展與需求。",
+      "授課內容": "本課程的授課目標為大專校院資通訊、太空科系或跨域(其他理工科系)等有意報名參加實習計畫的大三以上學生、碩博生的基礎先修課程。目標是集結參加實習計畫之企業業師，讓多元背景學生認識國內太空產業發展與需求。本課程分為五大單元與主題：\n1. 衛星通訊入門\na. 非地面通訊網路(NTN)簡介\nb. 低軌道衛星通訊系統之特性與應用\n2. 系統整合終端\na. 低軌道衛星地面站系統架構解析\nb. 低軌道衛星系統與地面行動通訊網路之整合\n3. 關鍵零組件\na. 高頻(高速)基板\nb. 基頻晶片、波束成形晶片應用實務\nc. 天線及射頻元件與模組之材料、製程與特性介紹\n4. 天線次系統\na. 天線原理與多輸入多輸出天線簡介\nb. 陣列天線系統於衛星通訊之應用\nc. 地面站天線追蹤技術\n5. 室內外設備連結次系統\na. 基頻軟體定義無線電數據機簡介\nb. 低軌道衛星地面站室內外設備次系統\n6. 企業衛星或太空專題分享與交流",
+      "教科書/參考書": "業師提供。",
+      "自編教材比例": "100%",
+      "授課方式": "講授",
+      "評量配分比重": "50％ 報告評分： • 完整度 • 正確性 • 專業呈現方式 50％ 出席",
+      "辦公時間": "星期二，1300-1400, S4-806，或個別約定。",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "太空酬載 、 衛星遙測",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(2) 低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(3) 普通",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(3) 普通",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "數值模式的應用",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "研究結果的表達及呈現",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63022",
+    "課號-班別": "SS6002-*",
+    "課程名稱(中文)": "書報討論 Ⅰ",
+    "課程名稱(英文)": "Seminar Ⅰ",
+    "備註": "與SS8003合班上課。\n[不開放初選]",
+    "授課教師": "林映岑",
+    "學分": "1",
+    "上課時間": "Thu34",
+    "教室": "S4-807",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63022&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限太空科學與工程學系碩士班。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限太空科學與工程學系碩士班。年級:限非一年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限大氣科學學系。年級:限四年級。班別:限B。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63022&outline=63022&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63022",
+      "課號": "SS6002-*",
+      "授課教師": "林映岑",
+      "課程名稱(中文)": "書報討論 Ⅰ",
+      "課程名稱(英文)": "Seminar Ⅰ",
+      "課程學制": "碩士班",
+      "學分": "1",
+      "課程目標": "本書報討論希望藉由學生分享各自專題或所讀文章，學習和練習邏輯思考、組織和報告能力。藉由在群體內分享，訓練學生的溝通及領導技巧。以英文報告及討論，讓學生面對現今或未來國際研討會上的挑戰更熟練。",
+      "授課內容": "本書報討論希望藉由學生分享各自專題或所讀文章，學習和練習邏輯思考、組織和報告能力。藉由在群體內分享，訓練學生的溝通及領導技巧。以英文報告及討論，讓學生面對現今或未來國際研討會上的挑戰更熟練。",
+      "教科書/參考書": "無",
+      "自編教材比例": "80",
+      "授課方式": "講授",
+      "評量配分比重": "報告:40％ 討論: 60％",
+      "辦公時間": "預約制",
+      "授課週數": "16",
+      "彈性教學說明": "專題進度報告、討論、實作",
+      "課程領域": "高層大氣科學與電離層物理 、 磁層物理 、 行星科學與太陽圈物理 、 太陽物理與日地關係 、 雷達與電磁波觀測 、 太空酬載 、 衛星遙測 、 電漿數值模擬 、 基礎學科",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "數值模式的應用",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "研究結果的表達及呈現",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63023",
+    "課號-班別": "SS6009-*",
+    "課程名稱(中文)": "高等應用數學 I",
+    "課程名稱(英文)": "Advanced Applied Mathematics I",
+    "備註": "[不開放初選]",
+    "授課教師": "林佳賢",
+    "學分": "3",
+    "上課時間": "Mon34Z",
+    "教室": "S4-807",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63023&semester=1142",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63023&outline=63023&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63023",
+      "課號": "SS6009-*",
+      "授課教師": "林佳賢",
+      "課程名稱(中文)": "高等應用數學 I",
+      "課程名稱(英文)": "Advanced Applied Mathematics I",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "This class is an EMI class. The objectives are 1. To provide an English learning environment for students to learn and communicate the subjects in English 2. To develop students' mathematical skills needed for their research. The class will cover three topics: Linear Algebra, Statistics, and Complex .",
+      "授課內容": "The following subjects will be taught in English:\nStatistics: including different statistical distributions, estimation of uncertainties, and Bayesian statistics\nLinear Algebra: including determination of eigenvalue and egenfunction, and different matrix inversion applications\nComplex Analysis: including different properties and applications of complex analysis",
+      "教科書/參考書": "Mathematical Methods for Physicists by Arfken & Weber Statistics: A guide to the use of statistical methods in the physical sciences, by R. J. Barlow Numerical Recipes by Press, Tuekolsky, Vetterling & Flannery",
+      "自編教材比例": "90",
+      "授課方式": "講授",
+      "評量配分比重": "Homework: 40% Exam: 50% Participation: 10%",
+      "辦公時間": "TBD",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎學科",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(2) 低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(2) 低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "數值模式的建立與應用",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "研究結果的表達及呈現",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "跨領域與團隊合作的能力",
+          "強度指數": "(2) 低",
+          "評量方式": "無"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63024",
+    "課號-班別": "SS6035-*",
+    "課程名稱(中文)": "資料收集、分析與應用",
+    "課程名稱(英文)": "Data Collection, Analyses & Applications",
+    "備註": "[不開放初選]",
+    "授課教師": "蔡龍治",
+    "學分": "3",
+    "上課時間": "Mon678",
+    "教室": "R2-223-1",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63024&semester=1142",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63024&outline=63024&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63024",
+      "課號": "SS6035-*",
+      "授課教師": "蔡龍治",
+      "課程名稱(中文)": "資料收集、分析與應用",
+      "課程名稱(英文)": "Data Collection, Analyses & Applications",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "GPS/GNSS掩星觀測與地面中高頻雷達(the ground-based MF/HF Radar)應用於電離層遙測的訊號處理",
+      "授課內容": "本課程是針對GPS/GNSS掩星觀測與地面中高頻雷達(the ground-based MF/HF Radar)應用於電離層遙測的訊號處理而設計的，內容包含基本電離層理論介紹，GPS掩星觀測原理，中高頻雷達系統遙測原理，系統發射及接收天線陣列設計，發射訊號型式設計，及電離層探回波訊號處理、自動化電離圖判讀電離層參數、電離層電子密度實高分析、電離層電子密度模式建立等都一一說明，另含重要相關論文研討。",
+      "教科書/參考書": "指定教材：上課筆記 (lectures ＆ notes) 參 考 書(Reference books)： 1. VIPIR manual (動態式電離層探測儀技術手冊與操作軟體手冊)。 2. Ionospheric Radio, Kenneth Davies, Peter Peregrinus Ltd., London, United Kingtom, 1990 3. Radio Techniques for Probing the Terrestrial Ionosphere, R. D. Hunsucker, Springer-Verlag. Berlin Heidelberg, New York, 1991.",
+      "自編教材比例": "80",
+      "授課方式": "講授 研討 實習/實驗 個別指導",
+      "評量配分比重": "學生成績以實際資料分析，繳交期中與期末報告為主，無期中考、期末考。",
+      "辦公時間": "Mon, Tue & Thu 2~4PM",
+      "授課週數": "16",
+      "彈性教學說明": "In-campus or out-of-campus workshop and/or conference",
+      "課程領域": "高層大氣科學與電離層物理 、 太陽物理與日地關係 、 雷達與電磁波觀測",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "數值模式的應用",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "研究結果的表達及呈現",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63025",
+    "課號-班別": "SS6036-*",
+    "課程名稱(中文)": "隨機過程與波譜分析Ⅰ",
+    "課程名稱(英文)": "Random Process and Spectral Analysis Ⅰ",
+    "備註": "[不開放初選]",
+    "授課教師": "黃健民",
+    "學分": "3",
+    "上課時間": "Tue678",
+    "教室": "S4-807",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63025&semester=1142",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63025&outline=63025&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63025",
+      "課號": "SS6036-*",
+      "授課教師": "黃健民",
+      "課程名稱(中文)": "隨機過程與波譜分析Ⅰ",
+      "課程名稱(英文)": "Random Process and Spectral Analysis Ⅰ",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "一. 機率，統計，及隨機過程知識的建立． 二. 隨機過程於雷達觀測上的應用． 三. 傅立葉轉換與波譜知識的建立． 四. 傅立葉轉換與波譜於資料分析上的應用．",
+      "授課內容": "本課程主要分為兩大部份，第一部份為隨機過程，第二部份則介紹波譜的形成及分析．第一部份當中介紹各種機率及統計獨立，隨機變數，隨機變數的獨立，及隨機過程的定義及要件．接著介紹統計平均，特徵函數，相關，相關函數及時間平均．第二個部份先介紹連續性傅立葉轉換及其相關特性，及相關函數和轉置函數的特性．接著衍生出不連續性的傅立葉轉換及相關函數和轉置函數的表示法，用法及特性．其中將論及波譜的形成，錯位，溢出，及如何解決．最後將討論能量密度波譜的形成及資料視窗的使用時機。",
+      "教科書/參考書": "An Introduction to the Theroy of Random signals and noise. The fast fourier transform.",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "Class discussion 40％ and Homework 60％",
+      "辦公時間": "0",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "雷達與電磁波觀測",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "數值模式的應用",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "研究結果的表達及呈現",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63026",
+    "課號-班別": "SS6051-*",
+    "課程名稱(中文)": "太陽圈物理Ⅰ [已停開]",
+    "課程名稱(英文)": "Heliospheric Physics I",
+    "備註": "[不開放初選]",
+    "授課教師": "楊雅惠",
+    "學分": "3",
+    "上課時間": "Tue34Z",
+    "教室": "S4-817-1",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63026&semester=1142",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63026&outline=63026&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63026",
+      "課號": "SS6051-*",
+      "授課教師": "楊雅惠",
+      "課程名稱(中文)": "太陽圈物理Ⅰ",
+      "課程名稱(英文)": "Heliospheric Physics I",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "使學生認識太陽圈構造，了解太陽及行星際空間中的電漿與磁場結構，及粒子加速與能量傳輸過程，並將所學應用於實際觀測事件的分析",
+      "授課內容": "太陽爆發及輻射\n太陽圈/日球層\n行星際空間中之大尺度結構\n高能粒子\n粒子加速\n能量轉換",
+      "教科書/參考書": "TBD",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討",
+      "評量配分比重": "平時表現10% 進度報告30% 期末報告30% 期末考試30%",
+      "辦公時間": "請與老師約時間",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "行星科學與太陽圈物理 、 太陽物理與日地關係",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "數值模式的建立與應用",
+          "強度指數": "(1) 非常低",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "研究結果的表達及呈現",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "跨領域與團隊合作的能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63027",
+    "課號-班別": "SS6066-*",
+    "課程名稱(中文)": "雷達系統工程設計與實務II",
+    "課程名稱(英文)": "Radar system engineering, design and practical Applications II",
+    "備註": "[不開放初選]",
+    "授課教師": "龔瑞鳴",
+    "學分": "3",
+    "上課時間": "Thu678",
+    "教室": "S4-810",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63027&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限學士班。年級:限四年級、五年級、六年級、七年級。"
+        },
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班。"
+        },
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63027&outline=63027&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63027",
+      "課號": "SS6066-*",
+      "授課教師": "龔瑞鳴",
+      "課程名稱(中文)": "雷達系統工程設計與實務II",
+      "課程名稱(英文)": "Radar system engineering, design and practical Applications II",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "培養學生雷達系統工程所需之理論基礎，建立雷達系統相關分析技術。",
+      "授課內容": "1. 雷達信號與匹配濾波器進階\n2. 雷達混淆方程式進階\n3. 電波傳播效應\n4. 雜訊與雜波中目標偵測技術\n5. 脈波壓縮技術\n6. 移動目標指示與脈波都卜勒技術\n7. 中壢52MHz特高頻雷達原理與應用\n8. 中央氣象局剖風儀雷達系統原理與應用\n9. 頻譜儀與示波器介紹",
+      "教科書/參考書": "1. 雷達訓練課程_MIT林肯實驗室 2. 雷達訓練課程_博士羅伯特·M·奧唐納 3. 雷達訓練課程_OHIO_State2013 4. 雷達系統設計的 MATLAB 仿真 5. 使用 Matlab 進行雷達系統分析與設計 6. 雷達訊號 7. 快速傅立葉變換及其應用",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "平時作業 30％ 期中 報告 30％ 期中 報告 40％",
+      "辦公時間": "每週四 0900~1700",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "雷達與電磁波觀測",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "數值模式的建立與應用",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "研究結果的表達及呈現",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "跨領域與團隊合作的能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63028",
+    "課號-班別": "SS7009-*",
+    "課程名稱(中文)": "偵測與估計",
+    "課程名稱(英文)": "Detection and Estimation",
+    "備註": "與RS7009合班上課\n[不開放初選]",
+    "授課教師": "任玄",
+    "學分": "3",
+    "上課時間": "Tue678",
+    "教室": "R2-203",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63028&semester=1142",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63028&outline=63028&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63028",
+      "課號": "SS7009-*",
+      "授課教師": "任玄",
+      "課程名稱(中文)": "偵測與估計",
+      "課程名稱(英文)": "Detection and Estimation",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "1. 培養資料分析能力，偵測目標及估計參數。 2. 分組專題建立跨領域與團隊合作的能力。 3. 口頭與書面報告表達及呈現研究結果的。",
+      "授課內容": "偵測:\n1. 假設檢定\n2. 決策準則: Bayesian, Minimax, Neyman-Pearson\n3. 多元量測\n4. 多重假設檢定\n估計:\n1. 估計參數\n2. 隨機參數估計\n3. 非隨機參數估計\n演算法:\n1. EM演算法 (Expectation-Maximization)\n2. 線性判別函數\n3. 類神經網路",
+      "教科書/參考書": "課本: Textbook: R.O. Duda, P.E. Hart and D.G. Stork, Pattern Classification, 2nd Edition, Wiley 參考書目 References: 1. T.A. Schonhoff and A.A. Giordano, Detection and Estimation Theory and Its Applications, Prentice Hall 2. M.D. Srinath, P.K. Rajasekaran and R. Viswanathan, Introduction to Statistical Signal Processing with Applications, Prentice Hall 電腦軟體 Software: MATLAB",
+      "自編教材比例": "90",
+      "授課方式": "講授 研討 實習/實驗",
+      "評量配分比重": "評分標準: 期中考(20％), 期末考(20％), 作業(20％), 電腦作業(25％)及分組作業(15％)",
+      "辦公時間": "週二13:00-14:00 或預約",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "衛星遙測",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "數值模式的建立與應用",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "研究結果的表達及呈現",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "跨領域與團隊合作的能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63029",
+    "課號-班別": "SS7018-*",
+    "課程名稱(中文)": "太空儀器校正與測試Ⅱ",
+    "課程名稱(英文)": "Calibration and Test for Space Instruments Ⅱ",
+    "備註": "[不開放初選]",
+    "授課教師": "趙吉光",
+    "學分": "3",
+    "上課時間": "Wed234",
+    "教室": "S4-917",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63029&semester=1142",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63029&outline=63029&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63029",
+      "課號": "SS7018-*",
+      "授課教師": "趙吉光",
+      "課程名稱(中文)": "太空儀器校正與測試Ⅱ",
+      "課程名稱(英文)": "Calibration and Test for Space Instruments Ⅱ",
+      "課程學制": "博士班",
+      "學分": "3",
+      "課程目標": "The course is designed for graduate students to learn how to calibrate and test the plasma instruments in laboratory and space.",
+      "授課內容": "Environmental tests and analysis\nTemperature cycling test\nThermal vacuum test\nVibration test\nEMC test\nAtomic oxygen analysis\nOutgassing analysis\nRadiation hardness analysis\nClean room",
+      "教科書/參考書": "Lecture notes only.",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "Oral presentation: 100％",
+      "辦公時間": "09:00-12:00 (WED)",
+      "授課週數": "16",
+      "彈性教學說明": "自主學習",
+      "課程領域": "太空酬載",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "數值模式的建立與應用",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "研究結果的表達及呈現",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "跨領域與團隊合作的能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63030",
+    "課號-班別": "SS7022-*",
+    "課程名稱(中文)": "太空光學儀器應用II",
+    "課程名稱(英文)": "Application for space optics instrument II",
+    "備註": "[不開放初選]",
+    "授課教師": "郭政靈",
+    "學分": "2",
+    "上課時間": "Wed34",
+    "教室": "S4-817-1",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63030&semester=1142",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63030&outline=63030&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63030",
+      "課號": "SS7022-*",
+      "授課教師": "郭政靈",
+      "課程名稱(中文)": "太空光學儀器應用II",
+      "課程名稱(英文)": "Application for space optics instrument II",
+      "課程學制": "碩博同修",
+      "學分": "2",
+      "課程目標": "This course provides a broad coverage of radar topics from basic concepts to recent developments in advanced waveforms, processing techniques and RF countermeasures. Besides, the examples provided in both MATLAB and Python are extremely beneficial and can form the basis for a suite of tools that are useful in the practical application of the concepts. The inclusion of Python is especially helpful as it provides an open source path to leverage the example code and to visualize the results.",
+      "授課內容": "History of Radar/EM fields and waves/Antenna Systems/Radar range equation/Target detection/Radar cross section/Pulse compression/Target tracking",
+      "教科書/參考書": "MIT Cantenna labs: https://ocw.mit.edu/courses/res-ll-003-build-a-small-radar-system-capable-ofsensing-range-doppler-and-synthetic-aperture-radar-imaging-january-iap-2011/ Small and Short-Range Radar Systems: https://a.co/d/h8UzIRr Introduction to Radar With Python and Matlab: https://a.co/d/j8LHwoB",
+      "自編教材比例": "80",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "HW 100%",
+      "辦公時間": "Fri 2pm",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "雷達與電磁波觀測 、 太空酬載",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(1) 非常低",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "數值模式的建立與應用",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "研究結果的表達及呈現",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "跨領域與團隊合作的能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63031",
+    "課號-班別": "SS7036-*",
+    "課程名稱(中文)": "氣膠遙測 [已停開]",
+    "課程名稱(英文)": "Aerosol Remote Sensing",
+    "備註": "與RS7036合班上課，碩博同修\n[不開放初選]",
+    "授課教師": "林唐煌",
+    "學分": "3",
+    "上課時間": "Wed678",
+    "教室": "R3-110",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63031&semester=1142",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63031&outline=63031&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63031",
+      "課號": "SS7036-*",
+      "授課教師": "林唐煌",
+      "課程名稱(中文)": "氣膠遙測",
+      "課程名稱(英文)": "Aerosol Remote Sensing",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "主要將藉由建立學生在大氣氣膠特性與其時空變化之基本認識，以及衛星遙測氣膠參數之方法，進而瞭解其在輻射能量收支與全球變遷之影響。",
+      "授課內容": "1.氣膠簡介，2. 氣膠種類與特性，3. 氣膠與氣候，4. 氣膠參數模式，5. 氣膠輻射特性之計算，6. 氣膠參數之遙測方法，7. 結果與討論",
+      "教科書/參考書": "參考書籍：1. Guillaume A. d‘ Almeida, K. Peter, and P. S. Eric, Atmospheric Aerosols, A. Deepak Publishing, Hampton USA, 1991.2. Alexander A. Kokhanovsky and Gerrit de Leeuw：Satellite Aerosol Remote Sensing over Land, Praxis Publishing Ltd, Chichester, UK, 2009. 3. Grant W. Petty, A First Course In Atmospheric Radiation. 2nd Edition, Sundog publishing, Madison Wisconsin, 2006.",
+      "自編教材比例": "16",
+      "授課方式": "講授",
+      "評量配分比重": "1.期中考試(30％) 2.期末考試(30％) 3.作業、心得報告、上課互動表現(40％)",
+      "辦公時間": "預約制",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "衛星遙測",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "數值模式的建立與應用",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "研究結果的表達及呈現",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "跨領域與團隊合作的能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 作品/創作展演"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63032",
+    "課號-班別": "SS8003-*",
+    "課程名稱(中文)": "書報討論Ⅱ",
+    "課程名稱(英文)": "Seminar Ⅱ",
+    "備註": "與SS6002合班上課。\n[不開放初選]",
+    "授課教師": "林映岑",
+    "學分": "1",
+    "上課時間": "Thu34",
+    "教室": "S4-807",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63032&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限太空科學與工程學系博士班。年級:限一年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63032&outline=63032&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63032",
+      "課號": "SS8003-*",
+      "授課教師": "林映岑",
+      "課程名稱(中文)": "書報討論Ⅱ",
+      "課程名稱(英文)": "Seminar Ⅱ",
+      "課程學制": "博士班",
+      "學分": "1",
+      "課程目標": "本書報討論希望藉由學生分享各自專題或所讀文章，學習和練習邏輯思考、組織和報告能力。藉由在群體內分享，訓練學生的溝通及領導技巧。以英文報告及討論，讓學生面對現今或未來國際研討會上的挑戰更熟練。",
+      "授課內容": "本書報討論希望藉由學生分享各自專題或所讀文章，學習和練習邏輯思考、組織和報告能力。藉由在群體內分享，訓練學生的溝通及領導技巧。以英文報告及討論，讓學生面對現今或未來國際研討會上的挑戰更熟練。",
+      "教科書/參考書": "無",
+      "自編教材比例": "80",
+      "授課方式": "研討",
+      "評量配分比重": "報告:40％ 討論: 60％",
+      "辦公時間": "預約制",
+      "授課週數": "16",
+      "彈性教學說明": "專題進度報告、討論、實作",
+      "課程領域": "高層大氣科學與電離層物理 、 磁層物理 、 行星科學與太陽圈物理 、 雷達與電磁波觀測 、 太空酬載 、 衛星遙測",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "數值模式的建立與應用",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "研究結果的表達及呈現",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "跨領域與團隊合作的能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63033",
+    "課號-班別": "SS8008-*",
+    "課程名稱(中文)": "專題研究IV",
+    "課程名稱(英文)": "Special Topics IV",
+    "備註": "[不開放初選]",
+    "授課教師": "潘貞杰",
+    "學分": "1",
+    "上課時間": "Wed34",
+    "教室": "S4-810",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63033&semester=1142",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63033&outline=63033&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63033",
+      "課號": "SS8008-*",
+      "授課教師": "潘貞杰",
+      "課程名稱(中文)": "專題研究IV",
+      "課程名稱(英文)": "Special Topics IV",
+      "課程學制": "博士班",
+      "學分": "1",
+      "課程目標": "investigation of the Climatology of the Atmospheric Boundary Layer Height Using ERA5",
+      "授課內容": "Geophysical processes within the atmospheric boundary layer (ABL) play impor\ntant roles in the energy, momentum, and particle exchanges in the lower atmosphere. The\nheight of the ABL top (ABL height; ABLH) decides the depth of these ABL processes. To\nbetter understand the spatio-temporal characteristics of the ABLH, the present study ana\nlyzed 45 years of global ABLH data retrieved from ERA5, in which the ABLH was defined\nusing the bulk Richardson number, and the climatology of the ABLH was investigated.\nFurther, the relationship between the ABLH and meteorological parameters was examined.\nHigh near-surface air temperature represents fair weather conditions that favor the ABL\nevolution, causing a high ABLH. In contrast, high precipitation represents bad weather\nconditions that restrain the ABL evolution, causing a low ABLH. The present study also\nstudied the effects of synoptic weather systems, ocean–atmosphere interactions, terrains,\nand monsoon systems on the ABLH. Multiple controlling factors, including synoptic sys\ntems, cold ocean currents, terrain, and monsoons, influence the weather conditions and the\ncomplicated spatio-temporal distribution of the ABLH.",
+      "教科書/參考書": "journal papers",
+      "自編教材比例": "0",
+      "授課方式": "個別指導",
+      "評量配分比重": "report 100%",
+      "辦公時間": "Tue 34",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "高層大氣科學與電離層物理",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 其他"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 其他"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 其他"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 其他"
+        },
+        {
+          "能力名稱": "數值模式的建立與應用",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 其他"
+        },
+        {
+          "能力名稱": "研究結果的表達及呈現",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 其他"
+        },
+        {
+          "能力名稱": "跨領域與團隊合作的能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63034",
+    "課號-班別": "SS8022-*",
+    "課程名稱(中文)": "太空電漿物理特論Ⅱ",
+    "課程名稱(英文)": "Special Topics on Space Plasma Physics Ⅱ",
+    "備註": "[不開放初選]",
+    "授課教師": "許志浤",
+    "學分": "3",
+    "上課時間": "Thu789",
+    "教室": "S4-807",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63034&semester=1142",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63034&outline=63034&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63034",
+      "課號": "SS8022-*",
+      "授課教師": "許志浤",
+      "課程名稱(中文)": "太空電漿物理特論Ⅱ",
+      "課程名稱(英文)": "Special Topics on Space Plasma Physics Ⅱ",
+      "課程學制": "博士班",
+      "學分": "3",
+      "課程目標": "此課程包括近地太空環境之資料分析和太空數值模擬二部分。透過資料分析和數值模擬方式來了解近地太空現象中的電漿物理，讓學生從實際的資料分析和模擬操作中加深對太空電漿物理的了解。另外需要定期上台報告期刊論文或自己模擬的內容，以訓練學生的製作簡報、口語表達以及隨機應變能力，這些能力是將來在職場或學術單位成功的必要條件。",
+      "授課內容": "第一部分：近地太空環境之資料分析\n1. 太陽風（驅動行星電磁環境）\n2. 行星磁層環境（水星、地球、木星、土星）\n3. 無磁層環境（月球、火星、金星）\n第二部分：太空數值模擬\n1. 數值模擬的基本原理和操作\n2. BATSRUS和PLUTO MHD，Multi-Fluid Hall-MHD、Vlasiator Hybrid-Vlasov、GCPIC PIC或Amitis Hybrid GPU模型實作\n3. 模擬數據的繪圖和應用",
+      "教科書/參考書": "自行上網尋找相關資訊和期刊論文",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "進度報告（口頭 70%，書面 30%）",
+      "辦公時間": "預約",
+      "授課週數": "16",
+      "彈性教學說明": "專題製作、自主學習",
+      "課程領域": "磁層物理 、 行星科學與太陽圈物理 、 太陽物理與日地關係 、 電漿數值模擬",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "數值模式的建立與應用",
+          "強度指數": "(5) 非常高",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "研究結果的表達及呈現",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "跨領域與團隊合作的能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63035",
+    "課號-班別": "SS8031-*",
+    "課程名稱(中文)": "電離層物理特論Ⅰ",
+    "課程名稱(英文)": "Special Topics on Ionospheric Physics Ⅰ",
+    "備註": "[不開放初選]",
+    "授課教師": "劉正彥",
+    "學分": "3",
+    "上課時間": "Mon678",
+    "教室": "S4-810",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63035&semester=1142",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63035&outline=63035&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63035",
+      "課號": "SS8031-*",
+      "授課教師": "劉正彥",
+      "課程名稱(中文)": "電離層物理特論Ⅰ",
+      "課程名稱(英文)": "Special Topics on Ionospheric Physics Ⅰ",
+      "課程學制": "博士班",
+      "學分": "3",
+      "課程目標": "利用全天影像儀觀測電離層赤道電漿匱乏",
+      "授課內容": "全天影像儀資料處理、電漿匱乏結構與動力",
+      "教科書/參考書": "學術期刊論文",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 實習/實驗 個別指導",
+      "評量配分比重": "實驗與操作60％ 期末報告40％",
+      "辦公時間": "與教師另行預約",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "高層大氣科學與電離層物理",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "數值模式的建立與應用",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "研究結果的表達及呈現",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "跨領域與團隊合作的能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63036",
+    "課號-班別": "SS8070-*",
+    "課程名稱(中文)": "軌道運動學",
+    "課程名稱(英文)": "Astrodynamics",
+    "備註": "[不開放初選]",
+    "授課教師": "張起維",
+    "學分": "3",
+    "上課時間": "Fri678",
+    "教室": "S4-807",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63036&semester=1142",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63036&outline=63036&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63036",
+      "課號": "SS8070-*",
+      "授課教師": "張起維",
+      "課程名稱(中文)": "軌道運動學",
+      "課程名稱(英文)": "Astrodynamics",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "天體的位置及速度統一稱為軌道狀態。衛星軌道狀態的量化、預測與推算對人造衛星作業及瞭解自然天體（如：衛星、行星、彗星、小行星）運動扮演極重要的角色。 本課程將介紹現代軌道運動學基礎概念，以及其對軌道預測、推算、衛星任務設計的應用。選生將學習如何以克卜勒軌道參數量化及推算衛星軌道狀態。另外也將學習如何以數值積分法量化軌道擾動的影響。",
+      "授課內容": "本課程的重點如下：\n- 時間、空間座標\n- 二體問題\n- 克卜勒方程式、二體軌道推算、定軌\n- 軌道變更\n- 軌道擾動\n- 數值積分推算\n必修條件：力學、Matlab或Python程式設計語言（本課將以Matlab為主）。",
+      "教科書/參考書": "Vallado, David A., Fundamentals of Astrodynamics and Applications, Hawthorne, CA : Microcosm Press ; New York : Springer, c2007.",
+      "自編教材比例": "20",
+      "授課方式": "講授 其他",
+      "評量配分比重": "作業、數值實驗、程式撰寫：60％ 期中考：20％ 期末考：20％“",
+      "辦公時間": "星期三，1000-1200, S4-806，或個別約定。",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "高層大氣科學與電離層物理 、 太空酬載",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "數值模式的建立與應用",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "研究結果的表達及呈現",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "跨領域與團隊合作的能力",
+          "強度指數": "(2) 低",
+          "評量方式": "無"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63037",
+    "課號-班別": "SS8080-*",
+    "課程名稱(中文)": "大氣微波遙測特論 Ⅱ [已停開]",
+    "課程名稱(英文)": "Special Topics on Microwave Remote Sensing of the Atmosphere Ⅱ",
+    "備註": "[不開放初選]",
+    "授課教師": "劉說安",
+    "學分": "3",
+    "上課時間": "Tue234",
+    "教室": "R2-223-2",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63037&semester=1142",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63037&outline=63037&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63037",
+      "課號": "SS8080-*",
+      "授課教師": "劉說安",
+      "課程名稱(中文)": "大氣微波遙測特論 Ⅱ",
+      "課程名稱(英文)": "Special Topics on Microwave Remote Sensing of the Atmosphere Ⅱ",
+      "課程學制": "博士班",
+      "學分": "3",
+      "課程目標": "本課程主要在介紹大氣和地表（被動和主動）微波遙測的最新技術和進展，本課程收集了涵蓋微波遙測理論的專著和最成熟和最具代表性的應用。另外在實際應用方面，包括在日常氣象和環境監測與預報活動中改善微波觀測和產品的應用和解釋。",
+      "授課內容": "1. 雷達系統簡介\n2. 目標雷達截面與噪聲和脈沖壓縮中的訊號檢測\n3. 雷達天線、雷達雜波和箔條\n4. 訊號處理 - MTI 和脈衝多普勒技術、跟蹤和參數估計、發射器和接收器\n5. 了解和使用合成孔徑雷達 (SAR) 資料\n6. 用於遙測大氣和電離層的無線電掩星 (RO) 方法",
+      "教科書/參考書": "1. Ulaby, F.T., R.K. Moore, and A. K. Fung, Microwave Remote Sensing – Active and Passive, Volumes 1 and 3, Artech House Inc., 2162 pp, 1981, ＆ 1986. 2. Woodhouse, I. H. (2017). Introduction to microwave remote sensing. CRC press. 3. Liou, Y.A., A.G. Pavelyev, S.S. Matugov, O.I. Yakovlev, and J. Wickert, 2010, Radio occultation method for remote sensing of the atmosphere and ionosphere. ISBN 978-953-7619-60-2, pp. 176, I-Tech Education and Publishing KG, Croatia. [http://sciyo.com/books/show/title/radio-occultation-method-for-remote-sensing-of-the-atmosphere-and-ionosphere]. 4. Skolnik, M., Introduction to Radar Systems, New York, McGraw-Hill, 3rd Edition, 2001. 5. Toomay, J. C., Radar Principles for the Non-Specialist, New York, Van Nostrand Reinhold, 1989. 6. Online course “SatFC-G: Basic Principles of Radiation”, University Corporation for Atmospheric Research. [https://www.meted.ucar.edu/education_training/lesson/1239#.WEcPZfkrKUl]. 7. Online course “Microwave Remote Sensing Topics Distance Learning Course”, University Corporation for Atmospheric Research. [https://www.meted.ucar.edu/education_training/course/15]. 8. Online course “Polar Satellite Products for the Operational Forecaster: Microwave Analysis of Tropical Cyclones”, University Corporation for Atmospheric Research. [https://www.meted.ucar.edu/education_training/course/159]. 9. Online STEM course “Radar: Introduction to Radar Systems”, Robert M. O‘Donnell, a former researcher at Massachusetts Institute of Technology Lincoln Laboratory. [https://www.ll.mit.edu/outreach/radar-introduction-radar-systems-online-course]. 10. Training course “Understanding and using Synthetic Aperture Radar (SAR) data - training sessions 2020”, Joint Nature Conservation Committee. [https://hub.jncc.gov.uk/assets/ceffe68b-4f06-4469-aa70-1dc9281c3b1f].",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "1. 期中25％ – 主題、架構、方法、挑戰 2. 期末50％– 進展、社會效益 3. 其他25％ – 參與、互動",
+      "辦公時間": "Tuesday 6-8節",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "衛星遙測",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "數值模式的建立與應用",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "研究結果的表達及呈現",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "跨領域與團隊合作的能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63038",
+    "課號-班別": "SS6052-*",
+    "課程名稱(中文)": "太陽圈物理Ⅱ",
+    "課程名稱(英文)": "Helispheric Physics Ⅱ",
+    "備註": "[不開放初選]",
+    "授課教師": "楊雅惠",
+    "學分": "3",
+    "上課時間": "Mon5",
+    "教室": "S4-817-1\nTue34",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63038&semester=1142",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63038&outline=63038&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63038",
+      "課號": "SS6052-*",
+      "授課教師": "楊雅惠",
+      "課程名稱(中文)": "太陽圈物理Ⅱ",
+      "課程名稱(英文)": "Helispheric Physics Ⅱ",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "課程目標": "使學生了解太陽圈的電漿與磁場結構，以及粒子加速與能量釋放和傳輸過程，並將所學應用於學術研究報告",
+      "授課內容": "太陽爆發及高能粒子\n太陽高能輻射\n磁重聯\n粒子加速及傳輸",
+      "課程領域": "行星科學與太陽圈物理 、 太陽物理與日地關係",
+      "評量配分比重": "作業: 20% 專題報告: 40% 期末考: 20% 上課表現: 20%",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "數值模式的建立與應用",
+          "強度指數": "(0) 無",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "研究結果的表達及呈現",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "跨領域與團隊合作的能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "地球科學學院",
+    "系所": "太空科學與工程學系",
+    "流水號": "63039",
+    "課號-班別": "SS2032-*",
+    "課程名稱(中文)": "太空科學專題II",
+    "課程名稱(英文)": "Special Topics in Space Science II",
+    "備註": "[不開放初選]",
+    "授課教師": "朱延祥\n劉正彥",
+    "學分": "1",
+    "上課時間": "Sat12",
+    "教室": "*-***",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=63039&semester=1142",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=63039&outline=63039&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "太空科學與工程學系",
+      "流水號": "63039",
+      "課號": "SS2032-*",
+      "授課教師": "朱延祥\n劉正彥",
+      "課程名稱(中文)": "太空科學專題II",
+      "課程名稱(英文)": "Special Topics in Space Science II",
+      "課程學制": "學士班",
+      "學分": "1",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討 實習/實驗 個別指導",
+      "課程目標": "特高頻雷達工程與科學、太空與天文觀測",
+      "授課內容": "雷達訊號、波譜分析、電離層物理、太空天氣",
+      "課程領域": "高層大氣科學與電離層物理 、 行星科學與太陽圈物理",
+      "核心能力": [
+        {
+          "能力名稱": "太空科學知識的建立",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 其他"
+        },
+        {
+          "能力名稱": "日地系統觀測技術的培養",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 其他"
+        },
+        {
+          "能力名稱": "整合創新與獨立思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 其他"
+        },
+        {
+          "能力名稱": "資料分析能力的養成",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 其他"
+        },
+        {
+          "能力名稱": "數值模式的應用",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演 ， 其他"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,163 @@
+{
+  "id": "dept_computer_science",
+  "name": "資訊工程學系",
+  "program_type": "traditional_dept",
+  "min_credits": 128,
+  "required_credits": 83,
+  "graduation_rules": [
+    {
+      "type": "credit_minimum",
+      "credits": 128,
+      "description": "最低畢業學分數 128 學分"
+    },
+    {
+      "type": "dept_required",
+      "credits": 83,
+      "description": "必修科目共 83 學分（共同必修25＋系訂必修58）"
+    },
+    {
+      "type": "school_elective_min",
+      "credits": 21,
+      "description": "本系或資訊電機學院各系所開授課程選修至少 21 學分始得畢業"
+    },
+    {
+      "type": "cpe_certification",
+      "cert": "CPE程式能力檢定",
+      "pass_criteria": "單次答對2題，或累計答對3題",
+      "description": "須參加大學程式能力檢定（CPE）：單次答對 2 題，或累計答對 3 題"
+    },
+    {
+      "type": "equivalent_course_note",
+      "description": "依資電學院各系等同課程對照表，等同課程重複修讀者不列入畢業學分"
+    },
+    {
+      "type": "early_graduation",
+      "rank_top_pct": 20,
+      "gpa_min": 75,
+      "description": "學業總平均成績名次在本系前 20% 且平均 75 分以上者，可申請提前一學期或一學年畢業"
+    }
+  ],
+  "certifications": [
+    "CPE程式能力檢定（單次答對2題或累計答對3題）"
+  ],
+  "required_courses": [
+    {
+      "code": "MA1003",
+      "name": "微積分上",
+      "credits": 3
+    },
+    {
+      "code": "MA1004",
+      "name": "微積分下",
+      "credits": 3
+    },
+    {
+      "code": "CE1001",
+      "name": "計算機概論I",
+      "credits": 3
+    },
+    {
+      "code": "CE1002",
+      "name": "計算機概論II",
+      "credits": 3
+    },
+    {
+      "code": "CE1003",
+      "name": "計算機實習I",
+      "credits": 1
+    },
+    {
+      "code": "CE1004",
+      "name": "計算機實習II",
+      "credits": 1
+    },
+    {
+      "code": "CE2003",
+      "name": "離散數學",
+      "credits": 3
+    },
+    {
+      "code": "CE1006",
+      "name": "工程數學",
+      "credits": 3
+    },
+    {
+      "code": "CE2008",
+      "name": "數位系統導論",
+      "credits": 3
+    },
+    {
+      "code": "CE2010",
+      "name": "數位系統實驗",
+      "credits": 1
+    },
+    {
+      "code": "CE2005",
+      "name": "線性代數",
+      "credits": 3
+    },
+    {
+      "code": "CE2002",
+      "name": "資料結構",
+      "credits": 3
+    },
+    {
+      "code": "CE2012",
+      "name": "組合語言與系統程式",
+      "credits": 3
+    },
+    {
+      "code": "CE2006",
+      "name": "機率與統計",
+      "credits": 3
+    },
+    {
+      "code": "CE2004",
+      "name": "程式語言",
+      "credits": 3
+    },
+    {
+      "code": "CE3002",
+      "name": "作業系統",
+      "credits": 3
+    },
+    {
+      "code": "CE3001",
+      "name": "計算機組織",
+      "credits": 3
+    },
+    {
+      "code": "CE3005",
+      "name": "演算法",
+      "credits": 3
+    },
+    {
+      "code": "CE3007",
+      "name": "計算機網路",
+      "credits": 3
+    },
+    {
+      "code": "CE3008",
+      "name": "專題實驗上",
+      "credits": 2
+    },
+    {
+      "code": "CE4001",
+      "name": "專題實驗下",
+      "credits": 2
+    },
+    {
+      "code": "CE3006",
+      "name": "編譯器",
+      "credits": 3
+    }
+  ],
+  "elective_groups": [
+    {
+      "name": "資電院選修",
+      "select_credits": 21,
+      "description": "本系或資訊電機學院各系所開授之課程，選修至少 21 學分",
+      "courses": []
+    }
+  ]
+}

@@ -1,0 +1,1827 @@
+[
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46001",
+    "課號-班別": "IA5001-*",
+    "課程名稱(中文)": "作業研究一",
+    "課程名稱(英文)": "Operations Research I",
+    "備註": "",
+    "授課教師": "王啟泰",
+    "學分": "3",
+    "上課時間": "Fri678",
+    "教室": "I1-504",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "35",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=46001&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限工業管理研究所碩士班。年級:限一年級。指定課程:必須同修(含先修)IA7027。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限碩士班、博士班。指定課程:必須同修(含先修)IA7027。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=46001&outline=46001&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46001",
+      "課號": "IA5001-*",
+      "授課教師": "王啟泰",
+      "課程名稱(中文)": "作業研究一",
+      "課程名稱(英文)": "Operations Research I",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "參見右方",
+      "授課內容": "參見右方",
+      "教科書/參考書": "參見右方",
+      "自編教材比例": "10",
+      "授課方式": "講授 實習/實驗 其他",
+      "評量配分比重": "參見右方",
+      "辦公時間": "參見右方",
+      "授課週數": "16",
+      "課程領域": "研究方法",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(3) 普通",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(2) 低",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46002",
+    "課號-班別": "IA5011-*",
+    "課程名稱(中文)": "作業管理",
+    "課程名稱(英文)": "Operations Management",
+    "備註": "",
+    "授課教師": "葉英傑",
+    "學分": "3",
+    "上課時間": "Wed234",
+    "教室": "I1-504",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "35",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=46002&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限工業管理研究所碩士班。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限碩士班、博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=46002&outline=46002&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46002",
+      "課號": "IA5011-*",
+      "授課教師": "葉英傑",
+      "課程名稱(中文)": "作業管理",
+      "課程名稱(英文)": "Operations Management",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "“The objective of this course is intended to develop student‘s intuition in operation management and serve as a fundation for students pursuing more advance topics in this field, such supply chain management.\nTopics includes Invnetory Control, MRP, JIT, and more.“",
+      "授課內容": "“Introduction\nEOQ model and its variants\nDynamic Lot Sizing\nStatistical Reorder Point Models: Newsvendor Model\nStatistical Reorder Point Models: Base Stock Model\nStatistical Reorder Point Models: (Q,r) Model\nStatistical Reorder Point Models: (Q,r) Model\nMyopic Approach for Multiple Period Problems\nBasic Factory Dynamics\nVariability Basics\nCorrupting Influence of Variability\nCorrupting Influence of Variability\nPush and Pull Production Systems\nPush and Pull Production Systems\nShop Floor Control\nAggregate Planning“",
+      "教科書/參考書": "“W.J. Hopp and M.L. Spearman. Factory Physics, 3rd edition. 2008. McGraw-Hill.“",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "作業與課堂表現 30％ 期中考 35％ 期末考 35％",
+      "辦公時間": "週一 09:00--12:00",
+      "授課週數": "16",
+      "彈性教學說明": "For Week 17 and 18, students have to read online materials and submit a summary report for the course.",
+      "課程領域": "規劃與控制",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46003",
+    "課號-班別": "IA5019-*",
+    "課程名稱(中文)": "製造系統設計與分析",
+    "課程名稱(英文)": "Design and Analysis of Manufacturing System",
+    "備註": "",
+    "授課教師": "何應欽",
+    "學分": "3",
+    "上課時間": "Wed789",
+    "教室": "I1-623",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=46003&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=46003&outline=46003&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46003",
+      "課號": "IA5019-*",
+      "授課教師": "何應欽",
+      "課程名稱(中文)": "製造系統設計與分析",
+      "課程名稱(英文)": "Design and Analysis of Manufacturing System",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "\"Students will learn the knowledge and skills in designing, modeling and analyzing various types of production and manufacturing systems.\"",
+      "授課內容": "本課程介紹製造系統之分析方法與模式設計。在此，一些有效且管用之模式方法與技巧將加以分紹。此外，有關於系統設計與操作之相關課題也將加以介紹。",
+      "教科書/參考書": "Modeling and Analysis of Manufacturing Systems (1993)\nRonald G. AskinCharles R. Standridge\n高立書局3615330\n學術期刊、研討會論文、研究報告、報紙、雜誌等",
+      "自編教材比例": "60",
+      "授課方式": "講授 個別指導 其他",
+      "評量配分比重": "\"Attendance 30% Discussion and Participation 20% Reports 50%\"",
+      "辦公時間": "Wednesday 5:00~6:00 and Thursday 5:00~6:00 (IM office).",
+      "授課週數": "16",
+      "彈性教學說明": "學生的個人專題報告評量與討論",
+      "課程領域": "供應鏈管理 、 規劃與控制",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(5) 非常高",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46004",
+    "課號-班別": "IA5051-*",
+    "課程名稱(中文)": "規劃與排程",
+    "課程名稱(英文)": "Planning and Scheduling",
+    "備註": "限同時選修IA5054",
+    "授課教師": "沈國基",
+    "學分": "3",
+    "上課時間": "Thu567",
+    "教室": "I1-506",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=46004&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=46004&outline=46004&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46004",
+      "課號": "IA5051-*",
+      "授課教師": "沈國基",
+      "課程名稱(中文)": "規劃與排程",
+      "課程名稱(英文)": "Planning and Scheduling",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "This course is to prepare students in Institute of Industrial Management (IM) for the research in the area of planning and scheduling. A student who has taken this course will be able to read scheduling literature, design the algorithms for solving the problems, and analyze the performance of the solving procedure. The content of this course is limited to the deterministic scheduling which accounts for only half of the textbook. Namely, the content regarding stochastic scheduling will not be covered in this course. Some typical scheduling problems in the environment of single machine, parallel machines, flow shop and job shop will be used to deliver the theory or concept in designing and analyzing the solving procedure/algorithm. General-purpose procedures such as Simulated Annealing, Tabu-Search and Genetic Algorithms will be introduced as well. This course will be lectured in Chinese. Homework assignment is usually due in one week after the announcement; each student also needs to take lab section (IA5054).",
+      "授課內容": "Week (週次/日期) Topic (單元/內容) Note (備註)\n1 Course introduction\n2 Deterministic models: Preliminaries\n- Framework and Notation, Class of Schedules\n3 - Complexity theory\n4 Single Machine Models (Deterministic)\n5 Single Machine Models (Deterministic)\n6 Single Machine Models (Deterministic)\n7 Parallel Machine Models (Deterministic)\n8 Parallel Machine Models\n9 Midterm exam\n10 Parallel Machine Models\n11 Flow Shops and Flexible Flow Shops (Deterministic)\n12 Flow Shops and Flexible Flow Shops (Deterministic)\n13 Job Shops (Deterministic)\n14 Job Shops (Deterministic)\n15 General Purpose Procedures for Deterministic Scheduling\n16 Final exam\nCoding project is required for this class and is accounted for 30％ of term grade. Each student will be asked to implement some algorithms in this class. The purpose of coding assignments is to provide students to get familiar with Python, data structures commonly used and the complexity of an algorithm. The coding assignment will depend on the background of students who register in this class; therefore, this will be decided during the class.",
+      "教科書/參考書": "“Textbook： Scheduling: Theory, Algorithms, and Systems (Springer, 2012) by Michael Pinedo Agent in Taiwan：新月 Tel: (02) 02311-4027“",
+      "自編教材比例": "20",
+      "授課方式": "講授 研討 實習/實驗",
+      "評量配分比重": "“Assignment 30％ Mid term test 35％ Final test 35％“",
+      "辦公時間": "Tue 01:00~03:00 am at I1-506",
+      "授課週數": "16",
+      "彈性教學說明": "Coding project assignment.",
+      "課程領域": "研究方法 、 供應鏈管理 、 規劃與控制",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46005",
+    "課號-班別": "IA5054-*",
+    "課程名稱(中文)": "規劃與排程實習",
+    "課程名稱(英文)": "Planning and Scheduling Lab",
+    "備註": "限同時選修IA5051",
+    "授課教師": "沈國基",
+    "學分": "0",
+    "上課時間": "Thu89",
+    "教室": "I1-506",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=46005&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=46005&outline=46005&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46005",
+      "課號": "IA5054-*",
+      "授課教師": "沈國基",
+      "課程名稱(中文)": "規劃與排程實習",
+      "課程名稱(英文)": "Planning and Scheduling Lab",
+      "課程學制": "碩博同修",
+      "學分": "0",
+      "課程目標": "This course will teach PP module under SAP S/4 HANA. In addition to this module, students will also have a Python coding assignment each week. Based on our past experience, coding work load is considered to be heavier than the PP module work load. Each student will be asked to implement two simple algorithms from the course textbook first – the first one is to implement a simple Genetic Algorithm and the second one is to implement a Branch-and-Bound Algorithm for a single machine scheduling problem. After these two simple assignments, two different sets of coding assignment will be given – one for scheduling coding track and another for data science coding track. For each coding assignment, this lab section will organize a discussion to assist students getting familiar with python and data structures for that assignment. Students will also be separated into two sub-sections for discussion – one for scheduling coding track and another one for data science coding track. These two sub-sections will be run in parallel. After this semester, students should know how to google possible coding answers over the Internet and have a limited coding experience which is required for the graduate study. 1 Course introduction (SAP / PyCharm installation) Coding project discussion 1: Project 1 2 Business Process Overview System-Wide Concepts Coding project discussion 2: Project 1   3 Manufacturing Planning and Execution SAP fundamental use Coding project discussion 3: Project 2 4 Material Master Data Coding project discussion 4: Project 2 5 Material Master Data Coding project discussion 5: Project 3 6 Bill of Material (BOM) Coding project discussion 6: Project 3 7 Bill of Material (BOM) 8 Work Center 9 Midterm exam 10 Routing Coding project discussion 7: Project 4 11 Routing Coding project discussion 8: Project 4 12 SOP Coding project discussion 9: Project 5 13 Planning strategies Demand Management Coding project discussion 10: Project 5 14 MRP Coding project discussion 11: Project 6 15 MRP Coding project discussion 12: Project 6 16 Production Order 17 Production Order 18 Role Playing Test/ Final exam",
+      "授課內容": "Course Outline\n(課程進度) Week Topic (單元/內容) Note (備註)\n1 Course introduction (SAP / PyCharm installation)\nCoding project discussion 1: Project 1\n2 Business Process Overview\nSystem-Wide Concepts\nCoding project discussion 2: Project 1\n3 Manufacturing Planning and Execution\nSAP fundamental use\nCoding project discussion 3: Project 2\n4 Material Master Data\nCoding project discussion 4: Project 2\n5 Material Master Data\nCoding project discussion 5: Project 3\n6 Bill of Material (BOM)\nCoding project discussion 6: Project 3\n7 Bill of Material (BOM)\n8 Work Center\n9 Midterm exam\n10 Routing\nCoding project discussion 7: Project 4\n11 Routing\nCoding project discussion 8: Project 4\n12 SOP\nCoding project discussion 9: Project 5\n13 Planning strategies\nDemand Management\nCoding project discussion 10: Project 5\n14 MRP\nCoding project discussion 11: Project 6\nCoding project discussion 12: Project 6\n15 Production Order\n16 Role Playing Test/ Final exam",
+      "教科書/參考書": "SAP S/4 HANA PP module",
+      "自編教材比例": "70",
+      "授課方式": "講授 研討 實習/實驗",
+      "評量配分比重": "出席率 30％ 期中考 25％ 期末考 25％ 課堂實作 20％“",
+      "辦公時間": "Tue 01:00~03:00 am at I1-506",
+      "授課週數": "16",
+      "彈性教學說明": "Coding project assignment.",
+      "課程領域": "供應鏈管理 、 規劃與控制",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46006",
+    "課號-班別": "IA5091-*",
+    "課程名稱(中文)": "書報討論一",
+    "課程名稱(英文)": "Seminar I",
+    "備註": "與IA5095合班上課",
+    "授課教師": "曾富祥",
+    "學分": "1",
+    "上課時間": "Fri34",
+    "教室": "I1-114",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=46006&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限工業管理研究所碩士班。年級:限一年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=46006&outline=46006&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46006",
+      "課號": "IA5091-*",
+      "授課教師": "曾富祥",
+      "課程名稱(中文)": "書報討論一",
+      "課程名稱(英文)": "Seminar I",
+      "課程學制": "碩士班",
+      "學分": "1",
+      "課程目標": "利用分享與討論的過程，增加學生在學術上，未來工作上，生活上，興趣上的眼界以及準備",
+      "授課內容": "預計安排七場專題演講與討論，以及一次的工廠參觀",
+      "教科書/參考書": "N/A",
+      "自編教材比例": "100",
+      "授課方式": "研討",
+      "評量配分比重": "出席與討論 100%",
+      "辦公時間": "Monday 3pm-5pm",
+      "授課週數": "16",
+      "彈性教學說明": "無",
+      "課程領域": "研究方法",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46007",
+    "課號-班別": "IA5095-*",
+    "課程名稱(中文)": "書報討論二",
+    "課程名稱(英文)": "Seminar Ⅱ",
+    "備註": "與IA5091合班上課",
+    "授課教師": "曾富祥",
+    "學分": "1",
+    "上課時間": "Fri34",
+    "教室": "I1-114",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=46007&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限工業管理研究所碩士班。年級:限二年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=46007&outline=46007&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46007",
+      "課號": "IA5095-*",
+      "授課教師": "曾富祥",
+      "課程名稱(中文)": "書報討論二",
+      "課程名稱(英文)": "Seminar Ⅱ",
+      "課程學制": "碩士班",
+      "學分": "1",
+      "課程目標": "利用分享與討論的過程，增加學生在學術上，未來工作上，生活上，興趣上的眼界以及準備",
+      "授課內容": "預計安排七場專題演講與討論，以及一次的工廠參觀",
+      "教科書/參考書": "N/A",
+      "自編教材比例": "100",
+      "授課方式": "研討",
+      "評量配分比重": "出席與討論 100%",
+      "辦公時間": "Monday 3pm-5pm",
+      "授課週數": "16",
+      "彈性教學說明": "無",
+      "課程領域": "研究方法",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46008",
+    "課號-班別": "IA6091-*",
+    "課程名稱(中文)": "書報研討一 [已停開]",
+    "課程名稱(英文)": "Seminar I",
+    "備註": "與IA6093合班",
+    "授課教師": "陳振明",
+    "學分": "1",
+    "上課時間": "Fri34",
+    "教室": "I1-506",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=46008&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限工業管理研究所博士班。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限工業管理研究所博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=46008&outline=46008&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46008",
+      "課號": "IA6091-*",
+      "授課教師": "陳振明",
+      "課程名稱(中文)": "書報研討一",
+      "課程名稱(英文)": "Seminar I",
+      "課程學制": "博士班",
+      "學分": "1",
+      "課程目標": "課程停開",
+      "授課內容": "課程停開",
+      "教科書/參考書": "課程停開",
+      "自編教材比例": "100",
+      "授課方式": "研討",
+      "評量配分比重": "課程停開",
+      "辦公時間": "課程停開",
+      "授課週數": "16",
+      "彈性教學說明": "課程停開",
+      "課程領域": "研究方法",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "學習檔案評量"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46009",
+    "課號-班別": "IA6093-*",
+    "課程名稱(中文)": "書報研討三 [已停開]",
+    "課程名稱(英文)": "Seminar Ⅲ",
+    "備註": "與IA6091合班",
+    "授課教師": "陳振明",
+    "學分": "1",
+    "上課時間": "Fri34",
+    "教室": "I1-506",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=46009&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限工業管理研究所博士班。年級:限二年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限工業管理研究所博士班。年級:限非一年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=46009&outline=46009&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46009",
+      "課號": "IA6093-*",
+      "授課教師": "陳振明",
+      "課程名稱(中文)": "書報研討三",
+      "課程名稱(英文)": "Seminar Ⅲ",
+      "課程學制": "博士班",
+      "學分": "1",
+      "課程目標": "課程停開",
+      "授課內容": "課程停開",
+      "教科書/參考書": "課程停開",
+      "自編教材比例": "100",
+      "授課方式": "研討",
+      "評量配分比重": "課程停開",
+      "辦公時間": "課程停開",
+      "授課週數": "16",
+      "彈性教學說明": "課程停開",
+      "課程領域": "研究方法",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(3) 普通",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "實作/實驗"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "學習檔案評量"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46010",
+    "課號-班別": "IA7027-*",
+    "課程名稱(中文)": "作業研究一實習",
+    "課程名稱(英文)": "Operations Research Ⅰ Lab",
+    "備註": "",
+    "授課教師": "王啟泰",
+    "學分": "0",
+    "上課時間": "Mon89",
+    "教室": "I1-405-1",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "35",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=46010&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限工業管理研究所碩士班。年級:限一年級。指定課程:必須同修(含先修)IA5001。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限碩士班、博士班。指定課程:必須同修(含先修)IA5001。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=46010&outline=46010&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46010",
+      "課號": "IA7027-*",
+      "授課教師": "王啟泰",
+      "課程名稱(中文)": "作業研究一實習",
+      "課程名稱(英文)": "Operations Research Ⅰ Lab",
+      "課程學制": "碩博同修",
+      "學分": "0",
+      "課程目標": "參見右方",
+      "授課內容": "參見右方",
+      "教科書/參考書": "參見右方",
+      "自編教材比例": "100",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "參見右方",
+      "辦公時間": "參見右方",
+      "授課週數": "16",
+      "課程領域": "研究方法",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(0) 無",
+          "評量方式": "其他"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(0) 無",
+          "評量方式": "其他"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 其他"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(0) 無",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46011",
+    "課號-班別": "IA7041-*",
+    "課程名稱(中文)": "永續供應鏈",
+    "課程名稱(英文)": "Sustainable Supply Chains",
+    "備註": "",
+    "授課教師": "陳振明",
+    "學分": "3",
+    "上課時間": "Mon678",
+    "教室": "I1-506",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "20",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=46011&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=46011&outline=46011&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46011",
+      "課號": "IA7041-*",
+      "授課教師": "陳振明",
+      "課程名稱(中文)": "永續供應鏈",
+      "課程名稱(英文)": "Sustainable Supply Chains",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "課程目標： 供應鏈可持續性(永續性)在實踐公平勞動、環境進步及包容性成長等方面可以產生巨大的影響。企業將可持續選項納入供應鏈管理的需求日益增長，對可持續性的日益關注正在改變企業開展業務的方式。無論是出於客戶要求、競爭壓力、法規遵循、企業價值觀或商業機會的激勵，品質、效率和成本等傳統優先事項已不能滿足企業對供應鏈績效的要求，可持續供應鏈掌握了價值鏈的機遇，併為早期採用者和流程創新者提供顯著的競爭優勢。本課程介紹可持續性供應鏈的基本概念，實際應用、典範個案以及規劃方法和控制活動，主要教學目標如下： 1.學習有關供應鏈管理中可持續性問題的最新知識。學生將通過廣泛的閱讀和課堂講授來瞭解最佳實踐； 2.培養供應鏈可持續性問題的洞察、分析及戰略思考能力。學生將通過一些特定主題進行研討、演示、專題報告等來實現； 3.通過閱讀著名期刊的精選評論和產業調查論文，向學生介紹可持續性供應鏈管理的研究議程與典範企業。",
+      "授課內容": "課程內容主要包含永續供應鏈管理之規劃、控制與執行、供應鏈之風險與韌性、運輸與物流、物料管理、倉儲、盤點、供應商管理庫存VMI、搜尋與採購、供應管理、供應商評選、供應鏈之賽局與合作、新科技(例如工業4.0相關技術)的應用對於改造永續供應鏈之機會與效益等議題。本課程將著重在可持續性的供應鏈活動之講授與探討，並兼顧本議題一般企業與國防產業的實際示例、應用與執行。",
+      "教科書/參考書": "期刊文獻、管理文獻、產業報告、網路資料",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 實習/實驗 個別指導",
+      "評量配分比重": "Class Engagement: 33% Written/Oral Report: 33% Exam: 33%",
+      "辦公時間": "Monday 12:00-14:00",
+      "授課週數": "16",
+      "彈性教學說明": "17-18週為個別指導週",
+      "課程領域": "供應鏈管理",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46012",
+    "課號-班別": "IA7042-*",
+    "課程名稱(中文)": "作業研究III",
+    "課程名稱(英文)": "Operations Research III",
+    "備註": "",
+    "授課教師": "葉英傑",
+    "學分": "3",
+    "上課時間": "Tue234",
+    "教室": "I1-506",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "20",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=46012&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=46012&outline=46012&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46012",
+      "課號": "IA7042-*",
+      "授課教師": "葉英傑",
+      "課程名稱(中文)": "作業研究III",
+      "課程名稱(英文)": "Operations Research III",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "本課程重點將著重於作業研究中隨機存貨理論、等候線理論、非線性規劃以及數值運算。藉由本課程將理論推導與電腦數值計算結合，期望修課同學運用課程中所教授之理論配合電腦程式之撰寫來了解如何將作業研究應用來解決實務上所面臨的問題。",
+      "授課內容": "“1 Review: Probability theory (I)2 Review: Probability theory (II)3 Transformations: Z-transform and Laplace Transform (I)4 Transformations: Z-transform and Laplace Transform (II)5 Inverse Transformations6 Stochastic Inventory Theory (I)7 Stochastic Inventory Theory (II)8 Queueing Theory (I)9 Queueing Theory (II)10 Midterm Exam11 Queueing Theory (III)12 Queueing Theory (IV)13 Dynamic Programming (I)14 Dynamic Programming (II)15 Nonlinear Programming (I)16 Nonlinear Programming (II)17 Nonlinear Programming (III)18 Final Project Presentation“",
+      "教科書/參考書": "“Papers from Management Science, Operations Research, INFORMS Journal on Computing“",
+      "自編教材比例": "80",
+      "授課方式": "講授",
+      "評量配分比重": "“Homework and class participation 30％ Midterm Exam 35％ Final Project 35％“",
+      "辦公時間": "Monday 10:00--12:00",
+      "授課週數": "16",
+      "彈性教學說明": "For Week 17 and 18, students have to read online materials and submit a summary report for the course.",
+      "課程領域": "研究方法",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46013",
+    "課號-班別": "IA7049-*",
+    "課程名稱(中文)": "專案管理與實務",
+    "課程名稱(英文)": "Project management and application cases",
+    "備註": "與BA7119合班上課",
+    "授課教師": "蒲澤春",
+    "學分": "3",
+    "上課時間": "Mon567",
+    "教室": "I1-114",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "35",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=46013&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限工業管理研究所碩士班、工業管理研究所博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限學士班。學院:限管理學院。系所:限非企業管理學系。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限碩士班、博士班。學院:限管理學院。系所:限非企業管理學系碩士班、非企業管理學系博士班。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限學士班、碩士班、博士班。學院:限非管理學院。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=46013&outline=46013&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46013",
+      "課號": "IA7049-*",
+      "授課教師": "蒲澤春",
+      "課程名稱(中文)": "專案管理與實務",
+      "課程名稱(英文)": "Project management and application cases",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "The KIDD class was a very powerful multi-purpose guided missile destroyer in the U.S. Navy in 1981-1999. The four ships of this class, originally designed for sale to the Iranian Navy, are unique among the U.S. Navy warships because it combines the combat system capability of the former Spruance class destroyer. The four KIDD class ships are similar to the Spruance class destroyers, but have greater displacement and an improved combat system. KIDD class combat system is the combination of weapons, electronic subsystem, and equipment, which collectively enables her to carry out combat missions (anti-air, anti-submarine, anti-surface, electronic, and communication warfare). The course objective is to introduce project management for the R.O.C. Navy through FMS (foreign military sales) and purchase process for the KIDD class guided missile destroyer.",
+      "授課內容": "week1 課程介紹\nweek2 軍購定義\nweek3 軍購定義\nweek4: 紀德級艦建案初期\nweek5 紀德級艦建案初期\nweek6 紀德級艦建案規劃\nweek7 紀德級艦建案規劃\nweek8 紀德級艦專案風險管控\nweek9 紀德級艦專案風險管控\nweek10 紀德級艦專案執行\nweek11 紀德級艦專案執行\nweek12 紀德級艦專案執行\nweek13 紀德級艦專案監控\nweek14 紀德級艦專案領導統御\nweek15 紀德級艦專案領導統御\nweek16 紀德級艦專案訓練\nweek17 紀德級艦專案整體後勤建立\nweek18 期末測驗",
+      "教科書/參考書": "自編教材",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "期末考:60% 報告/論文:40%",
+      "辦公時間": "Mon, 14:00-16:50",
+      "授課週數": "16",
+      "彈性教學說明": "額外6小時 校外實地教學",
+      "課程領域": "供應鏈管理",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46014",
+    "課號-班別": "IA7054-*",
+    "課程名稱(中文)": "AI深度學習理論與實務",
+    "課程名稱(英文)": "AI Deep Learning Algorithms and Applications",
+    "備註": "1.IA7054、BA7127、FM5006、EC5034、IE8012合班上課。 2.上課學生需自備筆電。",
+    "授課教師": "胡中興",
+    "學分": "3",
+    "上課時間": "Wed567",
+    "教室": "I1-504",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "19",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=46014&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限數學系碩士班、工業管理研究所碩士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "指定課程:必須擋修IA7057。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=46014&outline=46014&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46014",
+      "課號": "IA7054-*",
+      "授課教師": "胡中興",
+      "課程名稱(中文)": "AI深度學習理論與實務",
+      "課程名稱(英文)": "AI Deep Learning Algorithms and Applications",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "Cloud Computing adopts the techniques of Big Data Analytics in order to do data manipulation. Since the conventional machine-learning algorithms can not fulfill the computing complexity due to dramatically increasing amounts of data, it is necessary to employ Deep Learning algorithms to process the big data for building the predictive models. Currently, for implementing the Deep Learning algorithms, the Python-based programming language — TensorFlow/Keras — is a de facto standard in industry. Hence, the objective of this course focuses on teaching students the TensorFlow/Keras programming language and Deep Learning algorithms, and, via the hands-on workshops, the students will learn how to build the predictive models as well as their applications.",
+      "授課內容": "1 Intro to AI Deep Learning\n2 Intro to TensorFlow/Keras Programming and Environment Setup\n3 Fully-connected Deep Networks by Keras\n4 TensorBoard Workflow Visualization\n5 Convolutional Neural Networks (CNNs) - Concepts and Algorithms\n6 CNN Workshop 1: Basics of Image Processing with CNNs\n7 CNN Workshop 2: Advanced Topics of Image Processing with CNNs\n8 Transfer Learning with ImageNet\n9 Midterm Project (Individual)\n10 Recurrent Neural Networks (RNNs) - Concepts and Algorithms\n11 NLP Workshop 1: Sentiment Analysis by One-hot Encoding\n12 NLP Workshop 2: Sentiment Analysis by Word Embedding\n13 NLP Workshop 3: Sentiment Analysis with RNN / LSTM\n14 NLP Workshop 4: Sentiment Analysis with Bidirectional and GRU\n15 Time-Series Workshop 1: Weather Forecasting\n16 Time-Series Workshop 2: Stock-Price Prediction\n17 Final Project — Turn-in\n18 [Online Learning]: Intro to Attention and Transformers",
+      "教科書/參考書": "[References] : 1. Francois Chollet, “Deep Learning with Python”, Manning, 2018 [ PDF ] : https://tanthiamhuat.files.wordpress.com/2018/03/deeplearningwithpython.pdf [ Code ] : https://github.com/fchollet/deep-learning-with-python-notebooks 2. Kevin P. Murphy, “Probabilistic Machine Learning: An Introduction”, MIT Press, 2022 [ Link ] : https://github.com/probml/pml-book/releases/latest/download/book1.pdf 3. Kevin P. Murphy, “Probabilistic Machine Learning: Advanced Topics”, MIT Press, 2022 [ PDF ＆ Code ] : https://github.com/probml/pml2-book/releases/tag/2022-07-29",
+      "自編教材比例": "100",
+      "授課方式": "講授 其他",
+      "評量配分比重": "HW & Assignments (作業) : 30％ Midterm Project (Individual) : 20％ Final Project ＆ Presentation (Group) : 50％",
+      "辦公時間": "TBA",
+      "授課週數": "16",
+      "彈性教學說明": "彈性教學採行 「期末專案提交」 以及 「線上學習」 方式進行。",
+      "課程領域": "研究方法 、 規劃與控制",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46015",
+    "課號-班別": "IA7059-*",
+    "課程名稱(中文)": "AI深度學習專題研究",
+    "課程名稱(英文)": "Special Topic Research in AI Deep Learning",
+    "備註": "",
+    "授課教師": "胡中興",
+    "學分": "3",
+    "上課時間": "Wed234",
+    "教室": "I1-506",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "20",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=46015&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限數學系碩士班、工業管理研究所碩士班。年級:限二年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=46015&outline=46015&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46015",
+      "課號": "IA7059-*",
+      "授課教師": "胡中興",
+      "課程名稱(中文)": "AI深度學習專題研究",
+      "課程名稱(英文)": "Special Topic Research in AI Deep Learning",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "This course provides participating students an opportunity to study important research topics and use deep learning as a problem-solving methodology. The instructor will offer proper guidance to students, helping them to develop deep learning research and application skills for data-centric AI modeling in various businesses. Students will learn practical skills in using AI to solve problems in a real setting.",
+      "授課內容": "1 course introduction\n2 Attention/Transformer, Informer, iTransformer (1)\n3 Attention/Transformer, Informer, iTransformer (2)\n4 DeepSeek (1)\n5 DeepSeek (2)\n6 Deep Reinforcement Learning (1)\n7 Deep Reinforcement Learning (2)\n8 midterm presentation\n9 [manufacturing] preventive diagnostics and maintenance\n10 [manufacturing] wafer defect identification and categorization\n11 [multi-sectors] customer demand/sales/stock index forecast\n12 [routing] route planning for UAVs and EVs\n13 [routing/scheduling] optimization of wafer inter-fab transfer time\n14 [promising new research area] topics to be added\n15 final presentation (1)\n16 final presentation (2)\n17 [Online Learning]: latest/current key development issues in AI industry (1)\n18 [Online Learning]: latest/current key development issues in AI industry (2)",
+      "教科書/參考書": "[references]: 1. Vaswani, et al., “Attention Is All You Need” 2017. https://arxiv.org/abs/1706.03762. 2. Dzmitry Bahdanau, et al., “Neural Machine Translation by Jointly Learning to Align and Translate” 2016. https://arxiv.org/abs/1409.0473. 3. Sneha Chaudhari, et al., “An Attentive Survey of Attention Models” 2021. https://arxiv.org/abs/1904.02874. 4. Kelvin Xu, et al., “Show, Attend and Tell: Neural Image Caption Generation with Visual Attention” 2016. https://arxiv.org/abs/1502.03044. 5. Richard S. Sutton and Andrew G. Barto, “Reinforcement Learning – An Introduction” 2nd ed., 2018, The MIT Press. https://www.andrew.cmu.edu/course/10-703/textbook/BartoSutton.pdf. 6. Volodymyr Mnih, et al., “Playing Atari with Deep Reinforcement Learning” 2013. https://arxiv.org/abs/1312.5602. 7. Shervin Minaee, et al., “Large Language Models: A Survey” 2024. https://arxiv.org/abs/2402.06196. 8. Yunfan Gao, et al., “Retrieval-Augmented Generation for Large Language Models: A Survey” 2024. https://arxiv.org/abs/2312.10997. 9. Bernhard Haeupler, et al., “Universal Optimality of Dijkstra via Beyond-Worst-Case Heaps” 2024. https://arxiv.org/pdf/2311.11793.",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "1. Midterm Report ＆ Presentation - 50％ 2. Final Report ＆ Presentation - 50％",
+      "辦公時間": "TBA",
+      "授課週數": "16",
+      "彈性教學說明": "彈性教學採行 「線上學習」 方式進行。",
+      "課程領域": "研究方法 、 規劃與控制",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46016",
+    "課號-班別": "IA7060-*",
+    "課程名稱(中文)": "數據分析與建模",
+    "課程名稱(英文)": "Data Analysis and Modeling",
+    "備註": "",
+    "授課教師": "曾富祥",
+    "學分": "3",
+    "上課時間": "Tue678",
+    "教室": "I1-504",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "35",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=46016&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限工業管理研究所碩士班。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限工業管理研究所碩士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=46016&outline=46016&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46016",
+      "課號": "IA7060-*",
+      "授課教師": "曾富祥",
+      "課程名稱(中文)": "數據分析與建模",
+      "課程名稱(英文)": "Data Analysis and Modeling",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "This course consists of two parts, multivariate analysis and data mining. In this course, theoretical ideas are presented to the degree needed for good understanding in making sound application. If students feel interested in some certain topics and want to study further, they know where to find the advance materials. In other words, this course provides students a broad view of methodologies which are useful to their research and future professional works. The course includes the following topics: 1. Introduction to Multivariate Analysis: Multivariate Test, Linear Models, Classification and Clustering 2. Introduction to Data Mining: Decision Trees, Baysian Network, Association Rules, and etc. ** Learn how to organize multivariate data and identify situations where multivariate analysis is necessary and beneficial. ** Learn the terminology and mathematical notation used to describe multivariate techniques. ** Learn how to use computer software for multivariate methods ** Learn how to self-learn a particular topic with guided materials, and share and present it to the class. ** Maybe sparkle the interested research with some introduced ideas/topics in the class.",
+      "授課內容": "Course Introduction/Python Illustration\nData Collection, Sampling Methods, Data Preparation, Data Partition\nLinear Model/Linear Regression/Matrix Representation\nMultivariate T-test\nMANOVA\nPrinciple Component Analysis\nFactor Analysis\nDisciminant Analysis\nLogistic Regression\nNeural Networks\nDecision Trees and Refression Trees\nBayesian Classification\nModel Evaluation\nClustering\nAssociation Rules\nProject Presentations",
+      "教科書/參考書": "Applied Multivariare Statistical Analysis, by R. A. Johnson and D. W. Wichern Data Mining, by Jiawei Han and M. Kamber Decisions with Multiple Objectives, by R. Keeney and H. Raiffa",
+      "自編教材比例": "100",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "Project 40% Practicing/Exercise 25% Attendance and Discussion 10% Final Examination 25%",
+      "辦公時間": "星期一 10-12am",
+      "授課週數": "16",
+      "彈性教學說明": "無",
+      "課程領域": "研究方法",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46017",
+    "課號-班別": "IAA001-*",
+    "課程名稱(中文)": "作業研究",
+    "課程名稱(英文)": "Operations Reasearch",
+    "備註": "",
+    "授課教師": "葉英傑",
+    "學分": "3",
+    "上課時間": "WedABC",
+    "教室": "I1-504",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=46017&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限工業管理研究所碩士在職專班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=46017&outline=46017&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46017",
+      "課號": "IAA001-*",
+      "授課教師": "葉英傑",
+      "課程名稱(中文)": "作業研究",
+      "課程名稱(英文)": "Operations Reasearch",
+      "課程學制": "碩士在職專班",
+      "學分": "3",
+      "課程目標": "Develop and/or improve the abilities: to solve some classic OR models; to interpret conclusions drawn from models",
+      "授課內容": "Introduction\nLinear Programing: Formulation\nLinear Programing: Computer Solution\nLinear Programing: Simplex Method\nInteger Programing\nNetwork Flow Problem\nMulti-Criteria Decision Making\nNonlinear Programing",
+      "教科書/參考書": "“B. W. Taylor III. 2009. Intoduction to Management Science, 11th edition.“",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "期中考 35％ 期末考 35％ 平時成績(作業與上課表現) 30％",
+      "辦公時間": "Wednesday 17:00--18:30",
+      "授課週數": "16",
+      "彈性教學說明": "For Week 17 and 18, students have to read online materials and submit a summary report for the course.",
+      "課程領域": "研究方法 、 規劃與控制",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46018",
+    "課號-班別": "IAA003-*",
+    "課程名稱(中文)": "作業管理",
+    "課程名稱(英文)": "Operations Management",
+    "備註": "",
+    "授課教師": "何應欽",
+    "學分": "3",
+    "上課時間": "TueABC",
+    "教室": "I1-504",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=46018&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限工業管理研究所碩士在職專班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=46018&outline=46018&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46018",
+      "課號": "IAA003-*",
+      "授課教師": "何應欽",
+      "課程名稱(中文)": "作業管理",
+      "課程名稱(英文)": "Operations Management",
+      "課程學制": "碩士在職專班",
+      "學分": "3",
+      "課程目標": "主旨在提供一完整且進階的現代化生產與管理課程。本課程強調方法與理論的教授並重其應用性。本課程介紹生產規劃、控制與分析的基本概念與技術，以及服務系統的作業管理與策略。本課程主要以物流業及資訊、半導體等高科技產業為例證，說明在全球產銷結構快速變動之下，生產作業管理的未來發展趨勢與核心管理技術。課程內容包含以下主題:製造與服務系統簡介、生產力與成本、全面品質管理、統計製程品管、及時生產管理(JIT)、物料需求規劃(MRP)、企業資源規劃(ERP)、排程規劃、專案管理、設施規劃與佈置、製程策略與產能規劃、存貨控制與管理、供應鏈管理(SCM)、與物流管理等。",
+      "授課內容": "主旨在提供一完整且進階的現代化生產與管理課程。本課程強調方法與理論的教授並重其應用性。本課程介紹生產規劃、控制與分析的基本概念與技術，以及服務系統的作業管理與策略。本課程主要以物流業及資訊、半導體等高科技產業為例證，說明在全球產銷結構快速變動之下，生產作業管理的未來發展趨勢與核心管理技術。課程內容包含以下主題:製造與服務系統簡介、生產力與成本、全面品質管理、統計製程品管、及時生產管理(JIT)、物料需求規劃(MRP)、企業資源規劃(ERP)、排程規劃、專案管理、設施規劃與佈置、製程策略與產能規劃、存貨控制與管理、供應鏈管理(SCM)、與物流管理等。",
+      "教科書/參考書": "作業管理 第十四版 全譯版 (Operations Management，14/e) W. J. Stevenson原著 (何應欽 譯) (McGraw-Hill)",
+      "自編教材比例": "55",
+      "授課方式": "講授",
+      "評量配分比重": "平常參與 50％\n報告 50％",
+      "辦公時間": "Wed. 5:00pm to 6:00pm Thursday 5:00pm to 6:00pm",
+      "授課週數": "16",
+      "彈性教學說明": "學生的個人專題報告評量與討論",
+      "課程領域": "研究方法 、 供應鏈管理",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46019",
+    "課號-班別": "IAA005-*",
+    "課程名稱(中文)": "物流管理",
+    "課程名稱(英文)": "Logistics Management",
+    "備註": "",
+    "授課教師": "沈國基",
+    "學分": "3",
+    "上課時間": "ThuABC",
+    "教室": "I1-504",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=46019&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限工業管理研究所碩士在職專班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=46019&outline=46019&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46019",
+      "課號": "IAA005-*",
+      "授課教師": "沈國基",
+      "課程名稱(中文)": "物流管理",
+      "課程名稱(英文)": "Logistics Management",
+      "課程學制": "碩士在職專班",
+      "學分": "3",
+      "課程目標": "“本課程旨在以流通的角度來談論企業的相關作業流程，首先以SAP ERP的Logistics 模組來介紹一公司採購流程、生產規劃流程與銷售及配送流程三者間之互動關係，並介紹ERP系統內之組織架構，不同生產方式（例如接單生產、存貨生產等）對物的流動之驅動時間上之不同等等。為了讓同學能以更為完整的角度來看物流問題與探討可能對策，課程先以通路的角度切入，來說明通路結構、各通路成員所提供的功能與成員相互間的合夥關係等。接著介紹管理上，能由許多不同的角度來看待一公司的物流與供應鏈產品，不同角度往往引申出不同對策以解決問題。在市場導向的時代，相同的產品在不同的市場，常須有不同的顧客服務標準，對每一市場決定其顧客服務標準往往是一公司擬定此市場之庫存決策、運輸決策、位址決策前的重要工作。此四部分需同時被考慮且互相影響。本課程亦屬ERP學程課程，選修本課程同學必須另加選SAP MM 或SAP SD實習課程(專班同學請以生產規劃課程抵此實習課程要求)。修習本課程後，學生將能1. 了解通路流程之分工、成員運作關係等。2. 商業物流之範疇與目的。3. 相關物流策略（服務標準、庫存決策、運輸決策、物料搬運系統決策等）的選定與相互間之影響。4. 特殊採購協定。(時間允許時)“(備註：若任一盤點時點未達十五人修習此課程，授課老師將主動停開此課程；盤點人數之時間有二：開學週之週二早上9 am時以及次週週四上課時之實際人數）",
+      "授課內容": "“1 SAP logistics modules 介紹 補充資料 2 通路: 結構、功能與合夥關係 Coughlan 第1章3 通路: 結構、功能與合夥關係 Coughlan 第1章4 物流/供應鏈策略與規畫 Ballou 第2章5 物流/供應鏈策略與規畫 Ballou 第2章6 物流/供應鏈產品 Ballou 第3章7 物流/供應鏈產品 Ballou 第3章8 顧客服務 Ballou 第4章9 顧客服務 Ballou 第4章10 運輸基本理論/運輸決策 Ballou 第6~7章11 運輸基本理論/運輸決策 Ballou 第6~7章12 預測物流需求（簡介）/庫存決策 Ballou 第8~9章13 庫存決策 Ballou 第9章14 物料規劃程序與批量計算 沈國基 et al. 第2章15 特殊採購協定(時間允許時) 沈國基 et al. 第5章16 儲存與搬運系統/決策 Ballou 第11-12章17 儲存與搬運系統/決策 Ballou 第11-12章18 資料編譯(時間允許時) Ballou 第14章“",
+      "教科書/參考書": "“參考書:※ Marketing Channels (7th Edition, Prentice-Hall, 2006) by A. T. Coughlan , E. Anderson, L.W. Stern ＆ A. I. El-Ansary 代理商：華泰※ Business Logistics/Supply Chain Management (Fifth Edition, Prentice-Hall, 2004) by Ronald H. Ballou 代理商：華泰文化※ ERP 企業資源規劃導論 第三、四、五、六章 （國立中央大學ERP中心 著，旗標出版社）※ 進階ERP企業資源規劃-運籌管理 （沈國基、呂俊德、王福川著）。 補充資料:※ SAP logistics modules 介紹※ 上課投影片資料※ SAP MM or SD module 之資料請洽上課之助教“",
+      "自編教材比例": "80",
+      "授課方式": "講授 研討 其他",
+      "評量配分比重": "出席 30％ 期中考 35％ 期末考 35％",
+      "辦公時間": "Wed 09:30~11:30 am at I1-735",
+      "授課週數": "16",
+      "彈性教學說明": "Selected logistics related material on youTube.",
+      "課程領域": "供應鏈管理",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46020",
+    "課號-班別": "IAA007-*",
+    "課程名稱(中文)": "統計方法",
+    "課程名稱(英文)": "Statistical Methods",
+    "備註": "",
+    "授課教師": "曾富祥",
+    "學分": "3",
+    "上課時間": "MonABC",
+    "教室": "I1-504",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=46020&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限工業管理研究所碩士在職專班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=46020&outline=46020&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46020",
+      "課號": "IAA007-*",
+      "授課教師": "曾富祥",
+      "課程名稱(中文)": "統計方法",
+      "課程名稱(英文)": "Statistical Methods",
+      "課程學制": "碩士在職專班",
+      "學分": "3",
+      "課程目標": "“This course consists of four parts, multivariate analysis, data mining, optimization, and decision analysis. In this course, theoretical ideas are presented to the degree needed for good understanding in making sound application. If students feel interested in some certain topics and want to study further, they know where to find the advance materials. In other words, this course provides students a broad view of methodologies which are useful to their research and future professional works. The course includes the following topics:\n1. Introduction to Multivariate Analysis: Classification and Clustering\n2. Introduction to Data Mining: Decision Trees; Baysian Network\n3. Introduction to Decision Analysis: Risk Aversion; Utility Function\n4. Introduction to Optimization: Dynamic Programming\nClass Participation. Class participation is crucial for learning the course content and for keeping in pace with the class progress.\n1) You should be prepared for each class and should try to contribute to class discussions. Active and cooperative learning will be encouraged. During the lecture, you are expected to answer/raise questions, and participate in small-group activities such as modeling and solving problems, and interpreting solutions.\n2) You should read the assigned sections from the textbook and any other course material that is posted online.\nPresentation. Each student needs to choose one or two topics, and prepare an introduction presentation and discussion for each topic. The students can find aids of related materials from the instructor, the reference books, and even internet. Self-learning experiences and presenting skills are one of the objectives in this course.“",
+      "授課內容": "1. Descriptive Statistics\n2. Probability Distributions\n3. Sampling Distribution\n4. Estimation\n5. Hypothesis Testing\n6. Analysis of Variance\n7. Simple Linear Regression\n8. Multiple Regression",
+      "教科書/參考書": "“Statistics for Business and Economics by Anderson, Sweeney, Williams, Camm, and Cochran. 13e, 2016“",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "30％ Homework ＆ Quizzes\n10％ Class participation ＆ attendance\n30％ Exam\n30％ Final exam",
+      "辦公時間": "Mon. 2pm-5pm",
+      "授課週數": "16",
+      "彈性教學說明": "無",
+      "課程領域": "研究方法",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46021",
+    "課號-班別": "IAA008-*",
+    "課程名稱(中文)": "研究論文寫作Ⅰ",
+    "課程名稱(英文)": "Independent Study Ⅰ",
+    "備註": "",
+    "授課教師": "指導教授",
+    "學分": "3",
+    "上課時間": "Sat567",
+    "教室": "I1-506",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=46021&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限工業管理研究所碩士在職專班。年級:限二年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=46021&outline=46021&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46021",
+      "課號": "IAA008-*",
+      "授課教師": "指導教授",
+      "課程名稱(中文)": "研究論文寫作Ⅰ",
+      "課程名稱(英文)": "Independent Study Ⅰ",
+      "課程學制": "碩士在職專班",
+      "學分": "3",
+      "課程目標": "論文指導",
+      "授課內容": "指導論文",
+      "教科書/參考書": "無",
+      "自編教材比例": "0",
+      "授課方式": "講授 個別指導",
+      "評量配分比重": "口頭報告100％",
+      "辦公時間": "依各別指導教授而定",
+      "授課週數": "16",
+      "課程領域": "研究方法",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(2) 低",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(2) 低",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46022",
+    "課號-班別": "IAA010-*",
+    "課程名稱(中文)": "研究論文寫作Ⅱ",
+    "課程名稱(英文)": "Independent Study Ⅱ",
+    "備註": "",
+    "授課教師": "指導教授",
+    "學分": "3",
+    "上課時間": "SatABC",
+    "教室": "I1-506",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=46022&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限工業管理研究所碩士在職專班。年級:限二年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=46022&outline=46022&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46022",
+      "課號": "IAA010-*",
+      "授課教師": "指導教授",
+      "課程名稱(中文)": "研究論文寫作Ⅱ",
+      "課程名稱(英文)": "Independent Study Ⅱ",
+      "課程學制": "碩士在職專班",
+      "學分": "3",
+      "課程目標": "指導論文",
+      "授課內容": "指導論文",
+      "教科書/參考書": "無",
+      "自編教材比例": "100",
+      "授課方式": "講授 個別指導",
+      "評量配分比重": "口頭報告100％",
+      "辦公時間": "依各別指導教授而定",
+      "授課週數": "16",
+      "課程領域": "研究方法",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(2) 低",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(2) 低",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46023",
+    "課號-班別": "IAA020-*",
+    "課程名稱(中文)": "存貨管理與採購",
+    "課程名稱(英文)": "Inventory Management and Procurement",
+    "備註": "",
+    "授課教師": "陳振明",
+    "學分": "3",
+    "上課時間": "FriABC",
+    "教室": "I1-506",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=46023&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限工業管理研究所碩士在職專班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=46023&outline=46023&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46023",
+      "課號": "IAA020-*",
+      "授課教師": "陳振明",
+      "課程名稱(中文)": "存貨管理與採購",
+      "課程名稱(英文)": "Inventory Management and Procurement",
+      "課程學制": "碩士在職專班",
+      "學分": "3",
+      "課程目標": "“存貨管理與採購是生產管理、倉儲管理、供應鏈管理、零售管理及商業活動上最重要的管理技術與企業功能之一。本課程介紹存貨管理與採購之基本概念、系統操作、數學模式及相關管理意涵與應用，主要內容包含：\n- 存貨管理決策模式：經濟訂購量模型(EOQ)、經濟生產量模型(EPQ)、報童模式(Newsvendor)、數量折扣、採購與定價聯合決策、多階層產銷結構之策略聯盟與存貨模式、退貨模式、服務性商品(例如機位)之存貨管理、產品替代性與互補性模式、整合物流系統之存貨模式以及衰退性物品(Perishable item)之存貨管理；\n- 存貨管理與採購系統：SAP-R/3材料管理模組(MM module) 介紹、實習及上機；\n- 採購與外包：企業採購、B2B電子市集採購、競標採購(Auction)、採購合約設計(Contract design)、採購機制設計(Mechanism design; e.g., auction)、外包(outsourcing)、虛擬策略(Virtual Strategy)及供應商選擇決策。\n除了技術類與管理類的文獻研討之外，本課程將包含個案研究、產業應用及ERP的系統實習，介紹存貨管理、採購及外包相關經營管理的前瞻思維與系統操作，以達到實務與理論的平衡訓練。“",
+      "授課內容": "“存貨管理與採購是生產管理、倉儲管理、供應鏈管理、零售管理及商業活動上最重要的管理技術與企業功能之一。本課程介紹存貨管理與採購之基本概念、系統操作、數學模式及相關管理意涵與應用，主要內容包含：\n- 存貨管理決策模式：經濟訂購量模型(EOQ)、經濟生產量模型(EPQ)、報童模式(Newsvendor)、數量折扣、採購與定價聯合決策、多階層產銷結構之策略聯盟與存貨模式、退貨模式、服務性商品(例如機位)之存貨管理、產品替代性與互補性模式、整合物流系統之存貨模式以及衰退性物品(Perishable item)之存貨管理；\n- 存貨管理與採購系統：SAP-R/3材料管理模組(MM module) 介紹、實習及上機；\n- 採購與外包：企業採購、B2B電子市集採購、競標採購(Auction)、採購合約設計(Contract design)、採購機制設計(Mechanism design; e.g., auction)、外包(outsourcing)、虛擬策略(Virtual Strategy)及供應商選擇決策。\n除了技術類與管理類的文獻研討之外，本課程將包含個案研究、產業應用及ERP的系統實習，介紹存貨管理、採購及外包相關經營管理的前瞻思維與系統操作，以達到實務與理論的平衡訓練。“",
+      "教科書/參考書": "“1 P.H. Zipkin (2000), Foundations of Inventory Management 2 EA Silver, DF Pyke, and R Peterson (1998), Inventory Management and Production Planning and Scheduling 3 學術期刊(Management Science, Operations Research, Interface, Harvard Business Review, Sloan Management Review等)相關文獻 Inventory mgmt ＆ procurement 1. Abernathy, FH, JT Dunlop, JH Hammond, and D Weil (2000), Control your inventory in a world of lean retailing, Harvard Business Review, November-December, 169-176. 2. Friend, SC and PH Walker (2001), Welcome to the new world of merchandising, Harvard Business Review, November, 133-141. 3. Callioni, G, X de Montgros, R Slagmulder, LN Van Wassenhove, and L Wright (2005), Inventory-driven costs, Harvard Business Review, March, 135-141. 4. Chopra, S and MA Lariviere (2005), Managing service inventory to improve performance, Sloan Management Review, Fall, Vol.47, No.1, 56-63. 5. Gottfredson, M, R Puryear, and S Phillips (2005), Strategic sourcing from periphery to the core, Harvard Business Review, February, 132-139. 6. Kraljic, P (1983), Purchasing must become supply management, Harvard Business Review, September-October, 109-117. HBR forethought-INV. ＆ PROC. 1. Perkins, AG (1994), Maximizing service, minimizing inventory, Harvard Business Review, March-April, 13-14. 2. Conversation (2000), E-procurement at Schlumberger, Harvard Business Review, May-June, 21-22. 3. Degraeve, Z and F Roodhooft (2001), A smarter way to buy, Harvard Business Review, June, 22-23. 4. Morales, DK and S Geary (2003), Speed kills: supply chain lessons from the war in Iraq, Harvard Business Review, November, 16-17. 5. Corsten, D and T Gruen (2004), Stock-outs cause walkouts, Harvard Business Review, May, pp 26, 28. 6. Linder, JC (2005), Outsourcing integration, Harvard Business Review, June, p. 19. 7. Niezen, C and W Weller (2006), Procurement as strategy, Harvard Business Review, September, pp 22, 24. 8. McGoldrick, PJ and PM Barton (2007), High-tech ways to keep cupboards full, Harvard Business Review, March, 21-22. 9. Beck, A and C Peacock (2007), Lessons from the leaders of retail loss prevention, Harvard Business Review, November, p 34. 10. O’Connell, A (2007), Improve your return on returns, Harvard Business Review, November, pp 30, 34. 11. Amaral, J and G Parker (2008), Prevent disasters in design outsourcing, Harvard Business Review, September, pp 30, 34. 12. Davenport, T and B Iyer (2009), Should you outsource your brain? Harvard Business Review, February, p. 38. 13. O’Connell, A (2009), Using gifts and trees to make recyclers of Indian consumers, Harvard Business Review, September, p. 68. HBR forethought-Auction 14. Conversation (1999), Redesigning business, Harvard Business Review, November-December, 19-20. 15. van Heck, E (2000), The cutting edge in auctions, Harvard Business Review, March-April, 18-19. 16. Nunes, P, D Wilson, and A Kambil (2000), The all-in-one market, Harvard Business Review, May-June, 19-20. 17. Jap, S (2000), Going, going, gone, Harvard Business Review, November-December, p. 30. 18. McNealy, S (2001), Welcome to the bazaar, Harvard Business Review, March, 18-19. 19. Nissanoff, D (2006), Future shop, Harvard Business Review, March, p. 30.“",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 實習/實驗 個別指導",
+      "評量配分比重": "1 作業、小考 33％ 2 計畫、專題報告 33％ 3 ERP系統介紹與實習 33％",
+      "辦公時間": "12:00-02:00pm Tuesday; 12:00-01:00pm Friday",
+      "授課週數": "16",
+      "彈性教學說明": "17-18週為個別指導 (預約制)",
+      "課程領域": "供應鏈管理",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 自我評量/同儕互評 ， 作品/創作展演"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46024",
+    "課號-班別": "IAA024-*",
+    "課程名稱(中文)": "永續發展與企業社會責任",
+    "課程名稱(英文)": "Sustainable Development & Corporate Social Responsibility",
+    "備註": "",
+    "授課教師": "王啟泰",
+    "學分": "3",
+    "上課時間": "FriABC",
+    "教室": "I1-504",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=46024&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限工業管理研究所碩士在職專班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=46024&outline=46024&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46024",
+      "課號": "IAA024-*",
+      "授課教師": "王啟泰",
+      "課程名稱(中文)": "永續發展與企業社會責任",
+      "課程名稱(英文)": "Sustainable Development & Corporate Social Responsibility",
+      "課程學制": "碩士在職專班",
+      "學分": "3",
+      "課程目標": "經濟發展已對全球環境造成劇烈衝擊：天候日漸暖化，氣溫變化加劇，環境被破壞程度日益嚴重。吾人居住環境，正遭受前所未有的威脅。有鑑於此，世界各國均採取因應措施，針對能源使用、原物料及零組件來源、產品生產過程等，訂定相關法規（例如 ErP、RoHS、REACH、及WEEE），以兼顧經濟發展與環境維護。 「永續發展」已成為世界各主要國家重要之經濟發展方針。經濟要能永續發展，必須有明確政策並加以貫徹執行、發展可靠乾淨能源、提升能源利用率、降低環境汙染、減緩天候暖化速度、提倡產業生態（industrial ecology）及發展永續產業。在此市場導向下，企業必須同時考慮競爭力、市占及獲利率、股東利益、員工生活、社會公益道德、地球與下一代等諸多層面。員工、公益道德等，屬於「企業社會責任」之範疇。 現今「企業公民」必須積極將過去視為包袱的社會責任，轉為成長動能；以正面態度，將綠色及永續價值，深植公司長期發展策略、各決策層面及部門；積極建立綠色形象；開發綠色科技；拓展綠色新興市場。同時，企業必須建立綠色供應鏈管理系統，有效聯合各供應鏈夥伴，方能在成本考量、產品上市期限及市場競爭壓力下，獲得最大效益。",
+      "授課內容": "本課程將涵蓋下列主要議題：\n1. 綠色經濟與永續發展\n2. 經濟發展與地球資源、環境變遷\n3. 全球永續發展趨勢\n4. 永續發展策略與企業競爭優勢\n5. 綠色科技\n6. 永續發展最佳案例（best practice）\n7. 新興永續產業",
+      "教科書/參考書": "由授課教師自行編輯。",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "課堂參與 (20％) 二次專題報告 (各 40％)",
+      "辦公時間": "by appointment @ 管二館733-1",
+      "授課週數": "16",
+      "課程領域": "供應鏈管理",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "管理學院",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46025",
+    "課號-班別": "IAA091-*",
+    "課程名稱(中文)": "企業資源規劃 [已停開]",
+    "課程名稱(英文)": "Enterprise Resourse Planning",
+    "備註": "",
+    "授課教師": "",
+    "學分": "3",
+    "上課時間": "",
+    "教室": "",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=46025&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=46025&outline=46025&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46025",
+      "課號": "IAA091-*",
+      "課程名稱(中文)": "企業資源規劃",
+      "課程名稱(英文)": "Enterprise Resourse Planning",
+      "課程學制": "碩士在職專班",
+      "學分": "3",
+      "自編教材比例": "0",
+      "授課週數": "16",
+      "核心能力": []
+    }
+  }
+]

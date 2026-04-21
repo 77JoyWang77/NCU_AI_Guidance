@@ -1,0 +1,1478 @@
+[
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "認知神經科學研究所碩士班",
+    "流水號": "27001",
+    "課號-班別": "NS5003-*",
+    "課程名稱(中文)": "心理學實驗法",
+    "課程名稱(英文)": "Research Methods in Psychology",
+    "備註": "[不開放初選]",
+    "授課教師": "馬杰仁",
+    "學分": "3",
+    "上課時間": "Wed234",
+    "教室": "S5-607-1",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "20",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=27001&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限認知神經科學研究所碩士班。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限認知神經科學研究所碩士班。年級:限非一年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限理學院學士班、生醫科學與工程學系、認知神經科學研究所博士班、跨領域神經科學博士學位學程(台灣聯合大學系統)、跨領域神經科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=27001&outline=27001&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "認知神經科學研究所碩士班",
+      "流水號": "27001",
+      "課號": "NS5003-*",
+      "授課教師": "馬杰仁",
+      "課程名稱(中文)": "心理學實驗法",
+      "課程名稱(英文)": "Research Methods in Psychology",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "“This course aims to equip students with the following abilities: being able to think about research critically being able to conduct experiments with reliability and validity being able to collaborate with colleagues being knowledgeable in psychophysics and signal detection theory Emphasis will be placed on: (1) fundamental principles of experimental design (2) essential knowledge/skills of data acquisition, analysis, and interpretation (3) clear writing and critical reading of research reports (4) collaboration with colleagues It is expected that with these abilities students will appreciate how to explore human behavior and mental activities in a scientific way. In addition to lectures and discussions, students will get hand-on research experience by completing research projects.“",
+      "授課內容": "“1. Each week we will focus on a specific topic associated with a set of assigned readings. The readings should be completed before the class.\n2. Assignments (including critiques of research papers) will be given regularly and should be completed before the due dates.\n3. You will be divided into groups to complete a research project. A research topic should be chosen before the end of March. Literature review and experimental design should be completed before the end of April and you will make a proposal report in the class. Run the experiment in May with at least 8 participants. Poster presentations of your project will be arranged in June. In addition, you should write a research report (term-paper) based on the project.“",
+      "教科書/參考書": "“Required Reading 1. Stanovich, K. E. (2013). How to think straight about Psychology. Boston: Pearson. 2. Shaughnessy, J., Zechmeister, E., ＆ Zechmeister, J. (2011). Research methods in psychology. Boston: McGraw-Hill. (or any other textbook for experimental psychology) 3. Gescheider, G. A. (1997). Psychophysics: The Fundamentals. Mahwah, NJ: Lawrence Erlbaun Associates. Recommended Readings 1. 洪蘭、曾志朗(譯)(民78)。心理學實驗研究法 (原作者：B. J. Underwood ＆ J. J. Shaughnessy)。台北市：遠流出版公司。 2. 楊中芳等(譯)(民94)。這才是心理學！(原作者：K. E. Stanovich)。台北市：遠流出版公司。 3. Macmillan, N. A. ＆ Creelman, C. D. (2005). Detection Theory: A User’s Guide. Mahwah, NJ: Lawrence Erlbaun Associates.“",
+      "自編教材比例": "80",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "“Grades will be determined by performance on different aspects of the course: Course participation: 15％ Assignments: 15％ Mid-Term Exam: 15％ Final Exam: 15％ Project Proposal Report and Poster Presentation: 20％ Term Paper: 20％“",
+      "辦公時間": "Wednesday 2:00 PM - 3:00 PM",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "認知實驗方法學",
+      "核心能力": [
+        {
+          "能力名稱": "整合專業知能",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 作品/創作展演 ， 其他"
+        },
+        {
+          "能力名稱": "獨立設計與執行研究計畫",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 作品/創作展演 ， 其他"
+        },
+        {
+          "能力名稱": "精熟及整合研究工具",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 作品/創作展演 ， 其他"
+        },
+        {
+          "能力名稱": "研究倫理",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 作品/創作展演 ， 其他"
+        },
+        {
+          "能力名稱": "溝通、表達與團隊合作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 學習檔案評量 ， 作品/創作展演 ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "認知神經科學研究所碩士班",
+    "流水號": "27002",
+    "課號-班別": "NS5012-*",
+    "課程名稱(中文)": "專題討論II",
+    "課程名稱(英文)": "Special Topics II",
+    "備註": "與NS6002合班授課\n[不開放初選]",
+    "授課教師": "謝宜蕙",
+    "學分": "0",
+    "上課時間": "Tue78",
+    "教室": "S5-607-1",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=27002&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限認知神經科學研究所碩士班。年級:限一年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=27002&outline=27002&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "認知神經科學研究所碩士班",
+      "流水號": "27002",
+      "課號": "NS5012-*",
+      "授課教師": "謝宜蕙",
+      "課程名稱(中文)": "專題討論II",
+      "課程名稱(英文)": "Special Topics II",
+      "課程學制": "碩士班",
+      "學分": "0",
+      "課程目標": "本課程旨在透過邀請不同領域的認知神經科學專家進行專題演講，拓展學生對認知神經科學各項主題的理解與視野。課程鼓勵並要求學生積極參與討論與提問，培養批判性思考能力與跨領域整合的視角，並提升對相關研究議題與方法的掌握。透過與講者互動與同儕交流，學生將逐步建立對認知神經科學前沿議題的理解，並培養從神經科學角度探討心智運作的能力。此外，學生將在課程引導下學習認知神經科學相關議題研究問題的發想、研究設計與方法以規劃自己的專題研究計畫。",
+      "授課內容": "本課程透過邀請來自不同領域的認知神經科學專家進行系列專題演講，涵蓋認知神經科學中的多個核心領域，包括生物神經基礎、視覺與聽覺感知、動作控制、語言處理、記憶機制、情緒與社會認知、決策與執行功能等。課程旨在拓展學生對上述主題之理解與視野，並介紹各領域常用的研究方法與技術（如fMRI、EEG、TMS、行為實驗設計等）。\n課程設計強調學生的主動參與，鼓勵並要求學生在課堂中積極提問與討論，以培養批判性思考能力與跨領域整合的觀點。透過與講者的互動及同儕之間的交流，學生將逐步掌握前沿研究議題與方法，建立從神經科學角度探討心智與行為的能力，為未來進一步研究或跨領域應用奠定基礎。",
+      "教科書/參考書": "指定相關之研究論文作為閱讀資料。",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 實習/實驗",
+      "評量配分比重": "40% 出席與參與討論 60% 口頭報告",
+      "辦公時間": "週一11:00-12:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上指派線上學習認知神經科學議題並撰寫報告",
+      "課程領域": "基礎認知神經科學理論 、 認知實驗方法學 、 認知神經科學與物理學的跨領域研究",
+      "核心能力": [
+        {
+          "能力名稱": "基本知識與專業知能",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "實驗設計與資料分析",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "熟悉認知神經科學研究工具",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "研究倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "溝通與表達能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "認知神經科學研究所碩士班",
+    "流水號": "27003",
+    "課號-班別": "NS5014-*",
+    "課程名稱(中文)": "進階專題討論II",
+    "課程名稱(英文)": "Advanced Seminar II",
+    "備註": "與NS6004合班授課\n[不開放初選]",
+    "授課教師": "梁偉光",
+    "學分": "0",
+    "上課時間": "Tue78",
+    "教室": "S1-226",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=27003&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限認知神經科學研究所碩士班。年級:限二年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=27003&outline=27003&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "認知神經科學研究所碩士班",
+      "流水號": "27003",
+      "課號": "NS5014-*",
+      "授課教師": "梁偉光",
+      "課程名稱(中文)": "進階專題討論II",
+      "課程名稱(英文)": "Advanced Seminar II",
+      "課程學制": "碩士班",
+      "學分": "0",
+      "課程目標": "本課程旨在建立學生安排與組織學術會議的能力，以及培養學生在專業學術場合中準備資料並進行口頭報告的基礎能力",
+      "授課內容": "認知神經科學相關跨域演講 (校內) 6次\n認知神經科學相關跨域演講 (外校) 5次\n參加生醫理工學院傑出講座 3次\n學生報告 2次",
+      "教科書/參考書": "無",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討",
+      "評量配分比重": "參加: 60%; 實作: 40%",
+      "辦公時間": "每週三四10:00~12:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎認知神經科學理論 、 認知實驗方法學 、 認知神經科學與物理學的跨領域研究",
+      "核心能力": [
+        {
+          "能力名稱": "基本知識與專業知能",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實驗設計與資料分析",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "熟悉認知神經科學研究工具",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "研究倫理",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗"
+        },
+        {
+          "能力名稱": "溝通與表達能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "認知神經科學研究所碩士班",
+    "流水號": "27004",
+    "課號-班別": "NS5017-*",
+    "課程名稱(中文)": "認知電生理學",
+    "課程名稱(英文)": "Cognitive Electrophysiology",
+    "備註": "[不開放初選]",
+    "授課教師": "鄭仕坤\n徐峻賢",
+    "學分": "3",
+    "上課時間": "Thu234",
+    "教室": "S5-617",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=27004&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。系所:限認知神經科學研究所碩士班、認知神經科學研究所博士班、跨領域神經科學博士學位學程(台灣聯合大學系統)、跨領域神經科學國際研究生博士學位學程。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學院:限生醫理工學院。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=27004&outline=27004&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "認知神經科學研究所碩士班",
+      "流水號": "27004",
+      "課號": "NS5017-*",
+      "授課教師": "鄭仕坤\n徐峻賢",
+      "課程名稱(中文)": "認知電生理學",
+      "課程名稱(英文)": "Cognitive Electrophysiology",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "“This course is designed to provide a broad introduction to event-related brain potential (ERP) studies in cognition. Issues covered in this course include (1) the genesis of electroencephalography (EEG) and magnetoencephalography (MEG), (2) the recording of EEG/ERP, (3) design and analysis of ERP experiments, (4) ERP studies of human cognition. Students will also get hand-on experience by designing and conducting ERP experiments in their own projects. Each week we will focus on one specific discussion topic, which is associated with a set of assigned readings. In the class there will be a general introduction for each topic followed by the reports of the readings assigned to you. The readings should be completed before the class. Assignments will be given when necessary, and you should complete them before due dates. You will design and conduct an ERP experiment. The paradigm of the experiment will be discussed and decided by you and the instructor. There will be a project presentation in the last class.",
+      "授課內容": "22nd February, Course Orientation, Overview, History of EEG/ERPs, EEG/ERP Database\n29th February, Electrogenesis and Conceptual Issues of Cognitive ERP study\n1. Chapters 1 ＆ 2 of Luck (2014)\n2. Chapters 1 ＆ 2 of Rugg ＆ Coles (1995)\n3. Baillet, S. (2017). Magnetoencephalography for brain electrophysiology and imaging. Nature neuroscience, 20(3), 327.\n7th March, EEG/ERP Data Acquisition\n1. Keil, A. et al. (2014). Committee report: Publication guidelines and recommendations for studies using electroencephalography and magnetoencephalography. Psychophysiology, 51, 1-21.\n2. Chapters 5 ＆ 7 of Luck (2014)\n3. Chapter 2, p24-58 of Hansen, Kringelbach, ＆ Salmelin (2010)\n14th March, Design and Interpretation of ERP Experiments\n1. Chapters 2 ＆ 4 of Luck (2014)\n2. Chapter 1 of Luck ＆ Kappenman (2012)\n3. Examples of language effects on ERP components (N400 and P2)\n21st March, ERP Lab Practice\n28th March, April, Data Processing, Signal Extraction, and Waveform Analysis I\n1. Chapters 6,7,8,9 of Luck (2014)\n2. EEGLAB/ERPLAB for data analysis\nhttp://sccn.ucsd.edu/eeglab/\nhttp://erpinfo.org/erplab\n4th April, NO CLASS (Spring Break)\n11th April, Data Processing, Signal Extraction, and Waveform Analysis II\n18th April, Mid-term Exam\n25th April Topographic Analysis\n1. McCarthy, G. ＆ Wood, C. C. (1985). Scalp distributions of event-related potentials: An ambiguity associated with analysis of variance models. Electroencephalography and clinical Neurophysiology, 62, 203-208\n2. Urbach, T.P. ＆ Kutas, M. (2002). The intractability of scaling scalp distributions to infer neuroelectric sources. Psychophysiology 39, 791–808.\n3. Wilding, E. L. (2006). The practice of rescaling scalp-recorded event-related potentials. Biological Psychology 72, 325–332.\n4. Chapter 7 of Luck (2005)\n2nd May, Basics of Time-Frequency Analysis (I)\nBackground Readings:\n1. Chapter 7 of Luck ＆ Kappenman (2012)\nReadings for Discussion:\nChapter 3 of Kramer, M. A., ＆ Eden, U. T. (2016). Case studies in neural data analysis: A guide for the practicing neuroscientist. MIT Press.\n9th May, Basics of Time-Frequency Analysis (II)\nBackground Readings:\n1. Chapter 6 of Luck ＆ Kappenman (2012).\nReadings for Discussion:\n1. Jokisch, D., ＆ Jensen, O. (2007). Modulation of gamma and alpha activity during a working memory task engaging the dorsal or ventral stream. Journal of Neuroscience, 27(12), 3244-3251.\n2. Tallon-Baudry, C., ＆ Bertrand, O. (1999). Oscillatory gamma activity in humans and its role in object representation. Trends in cognitive sciences, 3(4), 151-162.\n3. Roach, B. J., ＆ Mathalon, D. H. (2008). Event-related EEG time-frequency analysis: an overview of measures and an analysis of early gamma band phase locking in schizophrenia. Schizophrenia bulletin, 34(5), 907-926.\n16th May Proposal Presentation\n23rd ~ 30th May, Paper Discussion\n6th June: Project Presentation\n22nd June: Term Paper Due (Please submit to ee-class before 11:00 PM)",
+      "教科書/參考書": "“Required Readings: 1. Luck, S. J. (2014). An introduction to the event-related potential technique. Cambridge, MA: MIT Press. https://www.amazon.com/Introduction-Event-Related-Potential-Technique-Press/dp/0262525852/ref=sr_1_1?ie=UTF8＆qid=1486354670＆sr=8-1＆keywords=an+introduction+to+the+event-related+potential+technique 2. Luck, S. J. ＆ Kappenman, E. S. (Eds.) (2012). The Oxford Handbook of Event-Related Potential Components, New York: Oxford University Press. http://www.amazon.com/Handbook-Event-Related-Potential-Components-Psychology/dp/0195374142 Supplementary Readings: 1. Handy, T. C. (Ed.) (2005). Event-related potentials: A methods handbook. Cambridge, MA: MIT Press. http://www.amazon.com/Event-Related-Potentials-Methods-Handbook-Bradford/dp/0262083337 2. Rugg, M. D. ＆ Coles, M. G. H. (Eds.) (1995) Electrophysiology of Mind: Event-Related Brain Potentials and Cognition. Oxford: Oxford University Press. http://www.amazon.com/Electrophysiology-Mind-Event-Related-Potentials-Psychology/dp/0198524161 3. Hansen, P. C., Kringelbach, M. L., ＆ Salmelin, R. (Eds.) (2010). MEG: An Introduction to Methods. Oxford: Oxford University Press. http://www.amazon.com/MEG-Introduction-Methods-Peter-Hansen/dp/0195307232“",
+      "自編教材比例": "30",
+      "授課方式": "講授 研討 實習/實驗 個別指導",
+      "評量配分比重": "“Discussion : 25％, Mid-Term Exam: 25％, Project: 25％, Review: 25％“",
+      "辦公時間": "by appointment",
+      "授課週數": "16",
+      "彈性教學說明": "project discussion",
+      "課程領域": "基礎認知神經科學理論 、 認知實驗方法學",
+      "核心能力": [
+        {
+          "能力名稱": "整合專業知能",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 實作/實驗 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "獨立設計與執行研究計畫",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "精熟及整合研究工具",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗"
+        },
+        {
+          "能力名稱": "研究倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "溝通、表達與團隊合作能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "認知神經科學研究所碩士班",
+    "流水號": "27005",
+    "課號-班別": "NS5025-*",
+    "課程名稱(中文)": "獨立研究：事件相關腦電位",
+    "課程名稱(英文)": "Independent Study: Event-Related Potentials",
+    "備註": "[不開放初選]",
+    "授課教師": "鄭仕坤",
+    "學分": "3",
+    "上課時間": "Thu567",
+    "教室": "S5-603",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=27005&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。學院:限生醫理工學院。系所:限認知神經科學研究所碩士班、認知神經科學研究所博士班、跨領域神經科學博士學位學程(台灣聯合大學系統)、跨領域神經科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=27005&outline=27005&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "認知神經科學研究所碩士班",
+      "流水號": "27005",
+      "課號": "NS5025-*",
+      "授課教師": "鄭仕坤",
+      "課程名稱(中文)": "獨立研究：事件相關腦電位",
+      "課程名稱(英文)": "Independent Study: Event-Related Potentials",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "This course aims to equip students with the capacity to design, conduct, and analyze EEG/ERP experiments. Students would acquire hand-on experiences on using non-invasive scalp-recorded electrophysiological signals to explore the underlying mechanisms of mental activities.",
+      "授課內容": "1. The genesis of EEG/ERPs.\n2. EEG/ERP recording procedure.\n3. Experimental Design.\n4. EEG/ERP data acquision.\n5. ERP data analysis.",
+      "教科書/參考書": "An Introduction to event-related brain potentials, by Steve Luck.",
+      "自編教材比例": "30",
+      "授課方式": "實習/實驗 個別指導",
+      "評量配分比重": "Course participation: 30% Project: 50% Term report: 20%",
+      "辦公時間": "by appointment",
+      "授課週數": "16",
+      "彈性教學說明": "Final exams and presentation reports will be arranged in the last two weeks.",
+      "課程領域": "認知實驗方法學 、 記憶與情緒",
+      "核心能力": [
+        {
+          "能力名稱": "整合專業知能",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立設計與執行研究計畫",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "精熟及整合研究工具",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "研究倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "溝通、表達與團隊合作能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "認知神經科學研究所碩士班",
+    "流水號": "27006",
+    "課號-班別": "NS5040-*",
+    "課程名稱(中文)": "獨立研究：運動控制與學習",
+    "課程名稱(英文)": "Independent Study:Motor Control and Learning",
+    "備註": "[不開放初選]",
+    "授課教師": "張智宏",
+    "學分": "3",
+    "上課時間": "Thu567",
+    "教室": "S5-601",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=27006&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學院:限生醫理工學院。系所:限認知神經科學研究所碩士班、認知神經科學研究所博士班、跨領域神經科學博士學位學程(台灣聯合大學系統)、跨領域神經科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=27006&outline=27006&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "認知神經科學研究所碩士班",
+      "流水號": "27006",
+      "課號": "NS5040-*",
+      "授課教師": "張智宏",
+      "課程名稱(中文)": "獨立研究：運動控制與學習",
+      "課程名稱(英文)": "Independent Study:Motor Control and Learning",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "這門課程旨在深入探討人類中樞神經系統如何規劃、執行及調整自願性運動的理論框架與生理機制。核心目標是橋接基礎神經科學原理與技能習得的實際應用。學生將檢視經典與當代的運動控制模型（如內部模型與最適回饋控制），同時研究與運動學習相關的階段及神經塑性。課程結束時，學生預期能批判性地評估各類研究方法（包括運動學分析與神經影像技術），並指出感覺資訊與練習結構如何影響人類在生命週期中對複雜運動作業的掌握程度。",
+      "授課內容": "週次,主題 (Topic),核心概念 (Core Concepts)\n1,課程導論,運動控制與學習的研究史、行為指標。\n2,神經生理基礎,皮質、基底核與小腦在運動系統的角色。\n3,感官回饋與處理,視覺、本體感覺在運動修正中的貢獻。\n4,動作計畫與開迴路控制,運動程式 (Motor Programs) 與廣義運動程式。\n5,閉迴路控制與回饋,最適回饋控制 (Optimal Feedback Control)。\n6,內部模型 (Internal Models),正向模型 (Forward) 與反向模型 (Inverse) 的運作。\n7,Fitts’s Law 與運動準確度,速度與準確度的權衡 (Speed-accuracy trade-off)。\n8,動作協調與自由度問題,Bernstein 的自由度問題與協同作用 (Synergies)。\n9,期中報告/文獻評論,針對特定運動障礙或技能進行深入分析。\n10,運動學習：階段與過程,Fitts & Posner 三階段模型與系統模型。\n11,練習結構 (Practice Schedule),變動練習 (Variable) vs. 固定練習；塊狀 vs. 隨機。\n12,脈絡干擾效應 (Contextual Interference),學習表現與長期保留的差異。\n13,擴增回饋 (Augmented Feedback),結果知曉 (KR) 與表現知曉 (KP) 的提供時機。\n14,神經塑性與運動學習,突觸變化與大腦功能性重組。\n15,動作記憶與保留,鞏固 (Consolidation) 與干擾 (Interference)。\n16,動作技能的轉移,相似性理論與雙側轉移 (Bilateral transfer)。\n17,運動學與神經影像分析,應用 fMRI、EEG 或穿戴式感測器進行研究。\n18,期末成果展示,獨立研究計畫提案或實驗數據發表。",
+      "教科書/參考書": "## 核心參考讀物 (Core References) ### 經典教材 * **Schmidt, R. A., Lee, T. D., Winstein, C., Wulf, G., & Zelaznik, H. N. (2018).** *Motor Control and Learning: A Behavioral Emphasis*. Human Kinetics. (此領域最權威的聖經級教材) * **Shumway-Cook, A., & Woollacott, M. H. (2022).** *Motor Control: Translating Research into Clinical Practice*. Wolters Kluwer. (著重於臨床應用與康復) ### 關鍵學術論文 (Foundational Papers) * **Wolpert, D. M., & Kawato, M. (1998).** Multiple paired forward and inverse sensorimotor models control and learn masked motor behavior. *Neural Networks*. (闡述**指出**內部模型如何運作的關鍵文獻) * **Todorov, E., & Jordan, M. I. (2002).** Optimal feedback control as a theory of motor coordination. *Nature Neuroscience*. (現代運動控制理論的基石) * **Krakauer, J. W., & Mazzoni, P. (2011).** Human sensorimotor learning: Adaptation, skill, and dynamic constraint. *Current Opinion in Neurobiology*. (區分適應與技能習得的綜述)",
+      "自編教材比例": "50",
+      "授課方式": "個別指導",
+      "評量配分比重": "## 評分項目與比重 (Grading Components) | 評分項目 | 比重 | 說明 | | --- | --- | --- | | **文獻評論 (Literature Review)** | 25% | 針對特定主題（如：內部模型、練習結構）撰寫兩篇關鍵論文的摘要與評析。 | | **課堂討論與參與** | 15% | 每週指定閱讀的提問、回答，以及對同儕觀點的反饋。 | | **期中研究提案 (Proposal)** | 20% | 擬定一個研究問題，並**指出**其理論重要性與初步實驗設計。 | | **期末口頭發表** | 15% | 以學術研討會形式 (Oral Presentation) 呈現研究進度或實驗結果。 | | **期末專題報告 (Final Paper)** | 25% | 完整的研究計畫書 (Grant Proposal) 或 實作數據分析報告。 | --- ## 詳細評分準則 (Rubric) ### 1. 文獻批判能力 (Critical Thinking) * **卓越 (90-100):** 能準確總結論文核心貢獻，並指出實驗設計的潛在偏差或未來改進方向。 * **良好 (80-89):** 能理解研究結果，並與課堂講授的運動控制模型（如 Optimal Feedback Control）進行連結。 * **待加強 (below 70):** 僅止於描述實驗流程，缺乏對理論含義的深入討論。 ### 2. 研究設計品質 (Research Design) * **科學性:** 實驗變數（Independent/Dependent Variables）定義是否明確？ * **技術應用:** 是否適當選擇研究工具？（例如：使用運動學指標分析動作軌跡，或利用 fMRI **指出**學習過程中的大腦活化變化）。 * **可行性:** 在現有實驗室設備（如您實驗室的相關器材）與學期時間內是否可達成。 ### 3. 表達與溝通 (Communication) * 能否將複雜的神經生理機制（如小腦與基底核的迴路功能）轉化為易懂的圖表或論述。 * 引用文獻格式是否符合 APA 或相關神經科學期刊規範。",
+      "辦公時間": "週一 12-1PM",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎認知神經科學理論 、 老化與運動訓練",
+      "核心能力": [
+        {
+          "能力名稱": "整合專業知能",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "獨立設計與執行研究計畫",
+          "強度指數": "(5) 非常高",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "精熟及整合研究工具",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "研究倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "溝通、表達與團隊合作能力",
+          "強度指數": "(0) 無",
+          "評量方式": "口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "認知神經科學研究所碩士班",
+    "流水號": "27007",
+    "課號-班別": "NS5060-*",
+    "課程名稱(中文)": "獨立研究：注意力的神經機制",
+    "課程名稱(英文)": "Independent Study：Neuromechanisms of Attention",
+    "備註": "[不開放初選]",
+    "授課教師": "阮啓弘",
+    "學分": "3",
+    "上課時間": "Mon678",
+    "教室": "S5-607-1",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=27007&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學院:限生醫理工學院。系所:限認知神經科學研究所碩士班、認知神經科學研究所博士班、跨領域神經科學博士學位學程(台灣聯合大學系統)、跨領域神經科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=27007&outline=27007&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "認知神經科學研究所碩士班",
+      "流水號": "27007",
+      "課號": "NS5060-*",
+      "授課教師": "阮啓弘",
+      "課程名稱(中文)": "獨立研究：注意力的神經機制",
+      "課程名稱(英文)": "Independent Study：Neuromechanisms of Attention",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "透過課程訓練，使學生深入了解視覺注意力的大腦神經機制以及最新的國內外研究成果與現況，培養其對於注意力相關理論、實驗設計與應用的專業知識及能力",
+      "授課內容": "研讀視覺注意力（含知覺、工作記憶、眼球運動等）相關學術論文與專書章節；主題簡報與交流",
+      "教科書/參考書": "國內外研究論文與主題專書",
+      "自編教材比例": "0",
+      "授課方式": "研討",
+      "評量配分比重": "\"出席狀況 20% 口頭報告 50% 課堂表現 30%\"",
+      "辦公時間": "星期一16:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎認知神經科學理論 、 知覺與行動 、 老化與運動訓練",
+      "核心能力": [
+        {
+          "能力名稱": "整合專業知能",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立設計與執行研究計畫",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "精熟及整合研究工具",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "研究倫理",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通、表達與團隊合作能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "認知神經科學研究所碩士班",
+    "流水號": "27008",
+    "課號-班別": "NS5066-*",
+    "課程名稱(中文)": "獨立研究：語言與聽覺",
+    "課程名稱(英文)": "Independent Study： Language and Hearing",
+    "備註": "[不開放初選]",
+    "授課教師": "謝宜蕙",
+    "學分": "3",
+    "上課時間": "Mon567",
+    "教室": "S5-602-2",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=27008&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學院:限生醫理工學院。系所:限認知神經科學研究所碩士班、認知神經科學研究所博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=27008&outline=27008&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "認知神經科學研究所碩士班",
+      "流水號": "27008",
+      "課號": "NS5066-*",
+      "授課教師": "謝宜蕙",
+      "課程名稱(中文)": "獨立研究：語言與聽覺",
+      "課程名稱(英文)": "Independent Study： Language and Hearing",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "這堂研究導向的課程主要在使修課學生能夠有機會在適當的指導下完成語言與聽覺的相關研究。目標在於訓練同學建立研究及獨立思考的能力，並透過聽覺心理物理學、行為與腦造影實驗獲得實際經驗。同學有機會探討目前語言和聽覺上的相關議題，包含語言感知、噪音環境中之語言處理、語言與音樂之相關處理及腦神經機制，以及語言中的情緒表達。在此課程中，同學會報告與討論相關文獻與目前正在進行的研究結果，並將成果寫成論文報告。",
+      "授課內容": "語言感知、噪音環境中之語言處理、語言與音樂之相關處理及腦神經機制，以及語言中的情緒表達",
+      "教科書/參考書": "依課程指派相關文獻",
+      "自編教材比例": "30",
+      "授課方式": "講授 實習/實驗 個別指導",
+      "評量配分比重": "“Attendance and participation 10％ Progress report 30％ Literature report 30％ Final report 30％“",
+      "辦公時間": "星期二 1:00-4:00 pm",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎認知神經科學理論 、 認知實驗方法學 、 語言神經機制學",
+      "核心能力": [
+        {
+          "能力名稱": "整合專業知能",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立設計與執行研究計畫",
+          "強度指數": "(5) 非常高",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "精熟及整合研究工具",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "研究倫理",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通、表達與團隊合作能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "認知神經科學研究所碩士班",
+    "流水號": "27009",
+    "課號-班別": "NS5104-*",
+    "課程名稱(中文)": "獨立研究：運動與認知科學 [已停開]",
+    "課程名稱(英文)": "Independent Study: Sports and Cognition",
+    "備註": "[不開放初選]",
+    "授課教師": "馬杰仁",
+    "學分": "3",
+    "上課時間": "Wed678",
+    "教室": "S5-604",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=27009&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限認知神經科學研究所碩士班、認知神經科學研究所博士班、跨領域神經科學博士學位學程(台灣聯合大學系統)、跨領域神經科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=27009&outline=27009&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "認知神經科學研究所碩士班",
+      "流水號": "27009",
+      "課號": "NS5104-*",
+      "授課教師": "馬杰仁",
+      "課程名稱(中文)": "獨立研究：運動與認知科學",
+      "課程名稱(英文)": "Independent Study: Sports and Cognition",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "To provide an overview of the current state of research relating to the interactions between cognition and sporting performance and in particular extending beyond the more obvious motor-skill performance links",
+      "授課內容": "“The course will primarily involve critical assessment of the expanding field of research in this area and cover:\n- The effects of sport participation on cognitive performance\n- The effects of sport skill on cognition and how this might be additive to the effects of fitness\n- The relationship between cognitive training and how this might benefit sporting performance\n- The strengths and weaknesses/limitations of the effects of sport on cognition\n- Possible mechanisms of effects that are seen\n- Possible utility of sports training in medical settings or in aging populations with the aim of providing cognitive benefits“",
+      "教科書/參考書": "Selected readings offered in class",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 實習/實驗 個別指導",
+      "評量配分比重": "Engaging in discussion and critique of research relating to the components of the course mentioned above will form the basis of grading on the course.",
+      "辦公時間": "By appointment",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎認知神經科學理論 、 知覺與行動 、 老化與運動訓練",
+      "核心能力": [
+        {
+          "能力名稱": "整合專業知能",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立設計與執行研究計畫",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "精熟及整合研究工具",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "研究倫理",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通、表達與團隊合作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "認知神經科學研究所碩士班",
+    "流水號": "27010",
+    "課號-班別": "NS5116-*",
+    "課程名稱(中文)": "電腦硬體與程式語言在行為科學實驗與大數據分析之應用",
+    "課程名稱(英文)": "The Applications of Computer Hardware and Programming Languages in Behavioral Experiments and Big-Data Analyses",
+    "備註": "[不開放初選]",
+    "授課教師": "張智宏",
+    "學分": "3",
+    "上課時間": "Thu234",
+    "教室": "S5-607-1",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "10",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=27010&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限非資訊管理學系、非資訊工程學系。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=27010&outline=27010&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "認知神經科學研究所碩士班",
+      "流水號": "27010",
+      "課號": "NS5116-*",
+      "授課教師": "張智宏",
+      "課程名稱(中文)": "電腦硬體與程式語言在行為科學實驗與大數據分析之應用",
+      "課程名稱(英文)": "The Applications of Computer Hardware and Programming Languages in Behavioral Experiments and Big-Data Analyses",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "本課程的目標在於將研究生從程式設計的門外漢轉化為具備「AI 協作開發」能力的跨領域研究者。透過從底層 Python 語法到高階 AI 代理工具的學習，本課程指出了現代行為科學研究者的必備技能：不僅要能設計嚴謹的認知實驗，更要具備處理大數據並將其轉化為互動式網頁應用的能力。最終，學生將能靈活運用 AI 工具解決研究中的技術瓶頸，並在行為科學與大數據分析的交界處實現創新。",
+      "授課內容": "## 每週課程進度\n### 第一部分：手動 Python (第 1–8 週)\n| 週次 | 日期 | 主題 | 工具 |\n| --- | --- | --- | --- |\n| **01** | 2026-02-26 | 環境設定、變數、型別、運算子 | Anaconda, VS Code, Jupyter |\n| **02** | 2026-03-05 | if/else、for/while 迴圈、函式、作用域、除錯 | Python |\n| **03** | 2026-03-12 | 列表 (Lists)、字典 (Dicts)、元組與集合；CSV 與文字檔讀寫 (**預錄教學**) | Python |\n| **04** | 2026-03-19 | NumPy 陣列、索引、向量化運算 | NumPy |\n| **05** | 2026-03-26 | 折線圖/散佈圖/長條圖/直方圖、子圖、標註 | Matplotlib |\n| **06** | 2026-04-02 | PsychoPy 安裝、視窗設定、視覺刺激、計時器、輸入 | PsychoPy |\n| **07** | 2026-04-09 | 事件迴圈、試次結構、反應記錄、資料儲存 | PsychoPy, Pavlovia |\n| **08** | 2026-04-16 | **里程碑：將認知實驗部署至 Pavlovia** | PsychoPy, Pavlovia |\n### 第二部分：氛圍編碼與代理人程式設計 (第 9–16 週)\n| 週次 | 日期 | 主題 | 工具 |\n| --- | --- | --- | --- |\n| **09** | 2026-04-23 | 氛圍/代理人編碼概念；Claude Code CLI 設定；提示詞工程 | Claude Code |\n| **10** | 2026-04-30 | 多步驟任務指派、Git 提交、GitHub Actions | Claude Code, GitHub |\n| **11** | 2026-05-07 | Streamlit 應用；版面配置、元件、圖表；部署至 Streamlit Cloud | Streamlit |\n| **12** | 2026-05-14 | 台灣政府開放資料平台 (data.gov.tw)、API 調用、資料清理 | pandas, requests |\n| **13** | 2026-05-21 | 互動式圖表、敘事化數據說故事 (Data Storytelling) | Plotly, Altair |\n| **14** | 2026-05-28 | Anthropic SDK；加入 AI 功能；負責任的 AI | Anthropic SDK |\n| **15** | 2026-06-04 | 同儕代碼審核；優化 UI/UX；文件撰寫；演練 (**預錄教學**) | Claude Code |\n| **16** | 2026-06-18* | **里程碑：發表使用台灣開放資料的線上應用程式** | 全體工具 |\n---\n## 修課條件\n* 具備基礎電腦操作能力；**無須**具備程式設計經驗。\n* 每堂課請務必攜帶筆電。\n## 課前需建立的帳號\n| 服務 | 用途 | 費用 |\n| --- | --- | --- |\n| **GitHub** | 版本控制 | 免費 |\n| **Pavlovia** | 線上實驗託管 | 學生免費 |\n| **Streamlit Cloud** | 網頁應用託管 | 免費 |",
+      "教科書/參考書": "笨方法學python3 (https://learncodethehardway.org/python/)",
+      "自編教材比例": "50",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "## 評分標準 | 項目 | 權重 | | --- | --- | | 每週作業（第 1–7 週、第 9–14 週） | 30% | | 期中專題 — Pavlovia 實驗（第 8 週） | 30% | | 期末專題 — 台灣開放資料網頁應用（第 16 週） | 35% | | 參與度與同儕審核 | 5% |",
+      "辦公時間": "週一12-1PM 或另約時間",
+      "授課週數": "16",
+      "彈性教學說明": "作為學生報告計畫成果及提出問題之彈性運用時間。",
+      "課程領域": "基礎認知神經科學理論 、 認知實驗方法學 、 老化與運動訓練",
+      "核心能力": [
+        {
+          "能力名稱": "整合專業知能",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立設計與執行研究計畫",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "精熟及整合研究工具",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "研究倫理",
+          "強度指數": "(1) 非常低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "溝通、表達與團隊合作能力",
+          "強度指數": "(2) 低",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "認知神經科學研究所碩士班",
+    "流水號": "27011",
+    "課號-班別": "NS5126-*",
+    "課程名稱(中文)": "腦影像數據分析專案與實務",
+    "課程名稱(英文)": "Brainhack projects in practice",
+    "備註": "[不開放初選]",
+    "授課教師": "徐峻賢\n徐慈妤",
+    "學分": "3",
+    "上課時間": "Mon89A",
+    "教室": "S5-617",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=27011&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限認知神經科學研究所碩士班、認知神經科學研究所博士班、跨領域神經科學博士學位學程(台灣聯合大學系統)、跨領域神經科學國際研究生博士學位學程。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學院:限生醫理工學院。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學院:限資訊電機學院。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=27011&outline=27011&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "認知神經科學研究所碩士班",
+      "流水號": "27011",
+      "課號": "NS5126-*",
+      "授課教師": "徐峻賢\n徐慈妤",
+      "課程名稱(中文)": "腦影像數據分析專案與實務",
+      "課程名稱(英文)": "Brainhack projects in practice",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "透過線上資源學習大腦數據分析方法，並且提出研究專案。",
+      "授課內容": "##### 本課程包含專案實作、成果報告。想要加選本課程的同學請先以email與授課老師聯繫，並且說明動機。\n這門課程課程與國際上的夥伴透過 BrainHack School（https://school.brainhackmtl.org/）聯合進行。我們將結\n合自學線上模組和助教諮詢的形式，進行教學和專案開發。助教將來自台灣本地以及國際地點（如 BrainHack\nSchool 網站所列），並帶來各種跨學科的觀點。課程學生將與來自不同背景的助教互動，探索相關主題，以進\n行實際項目。課程初期專注於人類大腦神經生理數據的進階分析技術，包括腦電波/事件相關電位、腦磁波和結\n構/功能性磁共振影像。這些內容包括使用 Python 分析大腦數據，以及進階方法，如功能性連接性、數據探\n磡、機械學習等。這門課適合對數據分析感興趣且希望處理認知神經科學數據的人，以及尋求良好平台的學習者。\n學生的專案開發將與助教共同確定，助教將提供可行/有意義目標的建議。我們對項目主題非常靈活，只要它們旨\n在讓學生學習新技術或在課程時間內完成公開數據的科學研究分析。學生需要以共享開源平台(Github)和影片演\n示的形式提交項目報告，這些成果的表現將會納入課程評分。",
+      "教科書/參考書": "無",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 實習/實驗 個別指導",
+      "評量配分比重": "TBA",
+      "辦公時間": "by appointment",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "認知實驗方法學",
+      "核心能力": [
+        {
+          "能力名稱": "整合專業知能",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "獨立設計與執行研究計畫",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "精熟及整合研究工具",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "研究倫理",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "溝通、表達與團隊合作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "認知神經科學研究所碩士班",
+    "流水號": "27012",
+    "課號-班別": "NS5127-*",
+    "課程名稱(中文)": "神經解碼與計算模型概論",
+    "課程名稱(英文)": "Introduction of Computational Methods of Neural Decoding",
+    "備註": "[不開放初選]",
+    "授課教師": "徐峻賢",
+    "學分": "3",
+    "上課時間": "Mon567",
+    "教室": "S1-226",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=27012&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。學院:限生醫理工學院。系所:限認知神經科學研究所碩士班、認知神經科學研究所博士班、跨領域神經科學博士學位學程(台灣聯合大學系統)、跨領域神經科學國際研究生博士學位學程。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學院:限資訊電機學院。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=27012&outline=27012&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "認知神經科學研究所碩士班",
+      "流水號": "27012",
+      "課號": "NS5127-*",
+      "授課教師": "徐峻賢",
+      "課程名稱(中文)": "神經解碼與計算模型概論",
+      "課程名稱(英文)": "Introduction of Computational Methods of Neural Decoding",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "「神經解碼」(neural decosing) 是近年來新興的腦科學研究取向，其內涵結合了機械學習、神經訊號分析、心智功能剖析。本課程將簡要的回顧腦科學研究的實驗設計與傳統的數值分析方法，而後說明機械學習的優點與使用範例。實作上將以腦科學的公開資料集，以及授課教師提供的數據演練神經解碼。本課程將使學生學習應用python套件 (e.g., mne-python) 分析數據，以提昇學生建立模型、檢驗時間序列數據之能力。修課同學請先事先學習 python ： Colab notebook: [English] https://www.youtube.com/watch?v=RLYoEyIHL6A [English] https://www.youtube.com/watch?v=agj3AxNPDWU programming in Python: [English] https://www.youtube.com/playlist?list=PLLAZ4kZ9dFpMMs5lskzBApYXn0bl7emsW [Chinese] https://www.youtube.com/watch?v=eJCXFIoOwdw&list=PLFLohUAPaW1M2kpKmDXqET_PTLKT4LE6_",
+      "授課內容": "第01週：課程簡介與導論\n第02週：Python 套件與使用說明\n第03週：開放資料集\n第04週：頻率學派取向2：多元回歸與變異數分析\n第05週：機械學習取向1：邏輯迴歸分析與 SVM\n第06週：廣義時間分類模型\n第07週：機械學習取向2：類神經網路\n第08週：模擬大腦活動特徵\n第09週：Nvidia DLI workshop (part 1)\n第10週：Nvidia DLI workshop (part 2)\n第11週：開放資料集: 自然口語理解\n第12週：頻譜特徵：傅立葉轉換與應用\n第13週：頻譜特徵：同調性\n第14週：腦波-環境同步化\n第15週：時序反應函數模型\n第16週：期末報告",
+      "教科書/參考書": "Rashid, T. (2016).Make your own neural network. CreateSpace Independent Publishing Platform. Kramer, M. A., & Eden, U. T. (2016). Case studies in neural data analysis: A guide for the practicing neuroscientist. MIT Press.",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "Rashid, T. (2016).Make your own neural network. CreateSpace Independent Publishing Platform. Kramer, M. A., & Eden, U. T. (2016). Case studies in neural data analysis: A guide for the practicing neuroscientist. MIT Press.",
+      "辦公時間": "making an appointment by email",
+      "授課週數": "16",
+      "彈性教學說明": "線上函授影片教學",
+      "課程領域": "基礎認知神經科學理論 、 認知實驗方法學 、 認知神經科學與物理學的跨領域研究",
+      "核心能力": [
+        {
+          "能力名稱": "基本知識與專業知能",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實驗設計與資料分析",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "熟悉認知神經科學研究工具",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "研究倫理",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通與表達能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "認知神經科學研究所碩士班",
+    "流水號": "27013",
+    "課號-班別": "NS5130-*",
+    "課程名稱(中文)": "非侵入性腦刺激概論",
+    "課程名稱(英文)": "Introduction to Non-Invasive Brain Stimulation",
+    "備註": "[不開放初選]",
+    "授課教師": "徐慈妤",
+    "學分": "3",
+    "上課時間": "Wed567",
+    "教室": "S5-607-1",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=27013&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。學院:限生醫理工學院。系所:限認知神經科學研究所碩士班、認知神經科學研究所博士班、跨領域神經科學博士學位學程(台灣聯合大學系統)、跨領域神經科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=27013&outline=27013&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "認知神經科學研究所碩士班",
+      "流水號": "27013",
+      "課號": "NS5130-*",
+      "授課教師": "徐慈妤",
+      "課程名稱(中文)": "非侵入性腦刺激概論",
+      "課程名稱(英文)": "Introduction to Non-Invasive Brain Stimulation",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "1）非侵入性腦刺激的原理與實驗方法 2）非侵入性腦刺激的實做 3）了解當代非侵入性腦刺激的研究趨勢",
+      "授課內容": "本課程主要提供非侵入性腦刺激的基礎，包括相關神經機制到實際應用，非侵入性磁和電刺激如何促進我們對大腦功能的理解，還有臨床如何用來治療大腦相關的疾病。",
+      "教科書/參考書": "Wassermann, Eric M., and others (eds), The Oxford Handbook of Transcranial Stimulation: Second Edition, 2nd edn, Oxford Handbooks. Vincent Walsh, Alvaro Pascual-Leone, Stephen M. Kosslyn (2005). Transcranial Magnetic Stimulation: A Neurochronometrics of Mind.",
+      "自編教材比例": "100",
+      "授課方式": "講授 實習/實驗 其他",
+      "評量配分比重": "個別報告50％ 期中考20％ 回家作業30％",
+      "辦公時間": "週三上午10-12點",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎認知神經科學理論 、 認知實驗方法學",
+      "核心能力": [
+        {
+          "能力名稱": "整合專業知能",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "獨立設計與執行研究計畫",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "精熟及整合研究工具",
+          "強度指數": "(5) 非常高",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "研究倫理",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "溝通、表達與團隊合作能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "認知神經科學研究所碩士班",
+    "流水號": "27014",
+    "課號-班別": "NS5132-*",
+    "課程名稱(中文)": "獨立研究：語言發展",
+    "課程名稱(英文)": "Independent Study: Linguistic Issues in Language Development",
+    "備註": "[不開放初選]",
+    "授課教師": "徐峻賢",
+    "學分": "3",
+    "上課時間": "Tue34Z",
+    "教室": "S5-617",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=27014&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。學院:限生醫理工學院。系所:限認知神經科學研究所碩士班、認知神經科學研究所博士班、跨領域神經科學博士學位學程(台灣聯合大學系統)、跨領域神經科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=27014&outline=27014&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "認知神經科學研究所碩士班",
+      "流水號": "27014",
+      "課號": "NS5132-*",
+      "授課教師": "徐峻賢",
+      "課程名稱(中文)": "獨立研究：語言發展",
+      "課程名稱(英文)": "Independent Study: Linguistic Issues in Language Development",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "本基礎課程的目標主要在協助學生 (1)認識語言習得的重要議題 (2)了解生成語法的基本架構 (3)認識語言資源 (4)具備依循論文寫作格式的能力。",
+      "授課內容": "概念和語言\n構詞覺知 (1)：詞綴\n構詞覺知 (2)：複合詞\n慣用語\n第二語言習得\n常見的發展型障礙\n失語症\n詞彙學習\nWord-Attack Skill\n間隔式回想學習\n期末報告",
+      "教科書/參考書": "無",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討",
+      "評量配分比重": "課堂討論 50% 學期報告 50%",
+      "辦公時間": "by appointment",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "記憶與情緒 、 語言神經機制學",
+      "核心能力": [
+        {
+          "能力名稱": "整合專業知能",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "獨立設計與執行研究計畫",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "精熟及整合研究工具",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "研究倫理",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "溝通、表達與團隊合作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "認知神經科學研究所碩士班",
+    "流水號": "27015",
+    "課號-班別": "NS5134-*",
+    "課程名稱(中文)": "進階腦訊號自適性特徵生成與統計分類",
+    "課程名稱(英文)": "Advanced Adaptive Data Analysis for Feature Formation and Statistical Classification in Neuroscience",
+    "備註": "[不開放初選]",
+    "授課教師": "梁偉光",
+    "學分": "3",
+    "上課時間": "Tue234",
+    "教室": "S5-606",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=27015&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限認知神經科學研究所碩士班、認知神經科學研究所博士班、跨領域神經科學博士學位學程(台灣聯合大學系統)、跨領域神經科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=27015&outline=27015&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "認知神經科學研究所碩士班",
+      "流水號": "27015",
+      "課號": "NS5134-*",
+      "授課教師": "梁偉光",
+      "課程名稱(中文)": "進階腦訊號自適性特徵生成與統計分類",
+      "課程名稱(英文)": "Advanced Adaptive Data Analysis for Feature Formation and Statistical Classification in Neuroscience",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "本課程為「認知神經科學腦訊號自適性特徵生成與統計分類」(課號NS5137)之進階課程。旨在使學生在已經認識以Hilbert-Huang Transform為基礎的Adaptive Data Analysis概念之後，深入探討相關方法的最新發展，以及如何應用這些方法擷取腦波訊號中與認知神經科學有關的特徵，並以這些特徵作為資料分類的依據",
+      "授課內容": "1. A Review of Adaptive Data Analysis (ADA)\n2. Current Developements of Empirical Mode Decomposition (EMD) and Hilber-Huang Transform (HHT)\n3. CEEMDAN and AceEMD, instantaneous phase, and instantaneous frequency (IF)\n4. Holo-Hilbert Spectral Analysis (HHSA) and its application to neuroscience\n5. Advanced EMD-based Connectivity Analysis\n6. Intrinsic Multiscale Entropy (iMSE)\n7. Intrinsic Probability Density Function (iPDF)\n8. Feature Formation and Statistical analyses for ADA data",
+      "教科書/參考書": "自編教材",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討 實習/實驗",
+      "評量配分比重": "出席：20%; 期中考：30%; 實作+期末考：50%",
+      "辦公時間": "每週三四10:00~12:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "認知神經科學與物理學的跨領域研究",
+      "核心能力": [
+        {
+          "能力名稱": "整合專業知能",
+          "強度指數": "(5) 非常高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立設計與執行研究計畫",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "精熟及整合研究工具",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "研究倫理",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "溝通、表達與團隊合作能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "認知神經科學研究所碩士班",
+    "流水號": "27016",
+    "課號-班別": "NS5136-*",
+    "課程名稱(中文)": "獨立研究：靜息態與認知作業的非線性腦波分析",
+    "課程名稱(英文)": "Independent Study: Nonlinear Analysis for Brain Signals from Resting States and Cognitive Tasks",
+    "備註": "[不開放初選]",
+    "授課教師": "梁偉光",
+    "學分": "3",
+    "上課時間": "Thu567",
+    "教室": "S5-606",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=27016&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限認知神經科學研究所碩士班、認知神經科學研究所博士班、跨領域神經科學博士學位學程(台灣聯合大學系統)、跨領域神經科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=27016&outline=27016&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "認知神經科學研究所碩士班",
+      "流水號": "27016",
+      "課號": "NS5136-*",
+      "授課教師": "梁偉光",
+      "課程名稱(中文)": "獨立研究：靜息態與認知作業的非線性腦波分析",
+      "課程名稱(英文)": "Independent Study: Nonlinear Analysis for Brain Signals from Resting States and Cognitive Tasks",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "本課程旨在建立學生對靜息態與認知作業腦訊號的非線性資料分析能力。讓學生了解靜息態與認知作業腦訊號的不同之處，以及如何採取適當的策略進行資料分析。",
+      "授課內容": "The course focuses on the following topics, each will be discussed throughout the entire semester\n1. Brain waves from resting states and from cognitive tasks\n2. Methods of Adaptive Data Analysis\n3. How to measure and quantify nonlinearity and complexity\n4. Brain connectivity\n5. ICA and Source Localization",
+      "教科書/參考書": "自編教材",
+      "自編教材比例": "50",
+      "授課方式": "講授 研討 實習/實驗",
+      "評量配分比重": "出席：20%; 文獻探討：40% ; 報告：40%",
+      "辦公時間": "每週三四10:00~12:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎認知神經科學理論 、 認知神經科學與物理學的跨領域研究",
+      "核心能力": [
+        {
+          "能力名稱": "整合專業知能",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "獨立設計與執行研究計畫",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "精熟及整合研究工具",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "研究倫理",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "溝通、表達與團隊合作能力",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "認知神經科學研究所碩士班",
+    "流水號": "27017",
+    "課號-班別": "NS5138-*",
+    "課程名稱(中文)": "獨立研究:非侵入式腦刺激的治療用途研究",
+    "課程名稱(英文)": "Independent Study: Therapeutic Application of Non-Invasive Brain Stimulation",
+    "備註": "[不開放初選]",
+    "授課教師": "馬杰仁",
+    "學分": "3",
+    "上課時間": "Wed567",
+    "教室": "S5-604",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=27017&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限認知神經科學研究所碩士班、認知神經科學研究所博士班、跨領域神經科學博士學位學程(台灣聯合大學系統)、跨領域神經科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=27017&outline=27017&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "認知神經科學研究所碩士班",
+      "流水號": "27017",
+      "課號": "NS5138-*",
+      "授課教師": "馬杰仁",
+      "課程名稱(中文)": "獨立研究:非侵入式腦刺激的治療用途研究",
+      "課程名稱(英文)": "Independent Study: Therapeutic Application of Non-Invasive Brain Stimulation",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "介紹非侵入性腦刺激（NIBS）技術的基本原理與治療應用，包括經顱磁刺激（TMS）、經顱直流電刺激（tDCS）以及經顱交流電刺激（tACS）。本課程旨在提升學生對 NIBS 如何促進轉譯神經科學與心理健康治療之理論理解與批判性評估能力。",
+      "授課內容": "本課程將概述非侵入性腦刺激（NIBS）在臨床與研究情境中的理論與應用。主題包括：\n介紹經顱磁刺激（TMS）、經顱直流電刺激（tDCS）與經顱交流電刺激（tACS）的基本原理\n作用機制與神經調控\n在精神疾病中的應用（例如：憂鬱症、強迫症、偏頭痛）\nNIBS 在成癮治療與復健中的應用\n以實證為基礎的療效評估與其限制\n研究與治療中的倫理與方法學考量\n未來發展方向與轉譯應用潛力",
+      "教科書/參考書": "自選教材",
+      "自編教材比例": "100",
+      "授課方式": "研討 個別指導",
+      "評量配分比重": "課堂報告與課堂參與佔 100%",
+      "辦公時間": "Wednesday 2:00 PM - 3:00 PM",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎認知神經科學理論 、 知覺與行動 、 老化與運動訓練",
+      "核心能力": [
+        {
+          "能力名稱": "整合專業知能",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立設計與執行研究計畫",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "精熟及整合研究工具",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "研究倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通、表達與團隊合作能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "認知神經科學研究所碩士班",
+    "流水號": "27018",
+    "課號-班別": "NS6002-*",
+    "課程名稱(中文)": "專題討論Ⅱ",
+    "課程名稱(英文)": "Special Topics Ⅱ",
+    "備註": "與NS5012合班授課\n[不開放初選]",
+    "授課教師": "謝宜蕙",
+    "學分": "1",
+    "上課時間": "Tue78",
+    "教室": "S5-607-1",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=27018&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限認知神經科學研究所博士班。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限認知神經科學研究所博士班、跨領域神經科學博士學位學程(台灣聯合大學系統)、跨領域神經科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=27018&outline=27018&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "認知神經科學研究所碩士班",
+      "流水號": "27018",
+      "課號": "NS6002-*",
+      "授課教師": "謝宜蕙",
+      "課程名稱(中文)": "專題討論Ⅱ",
+      "課程名稱(英文)": "Special Topics Ⅱ",
+      "課程學制": "博士班",
+      "學分": "1",
+      "課程目標": "本課程旨在透過邀請不同領域的認知神經科學專家進行專題演講，拓展學生對認知神經科學各項主題的理解與視野。課程鼓勵並要求學生積極參與討論與提問，培養批判性思考能力與跨領域整合的視角，並提升對相關研究議題與方法的掌握。透過與講者互動與同儕交流，學生將逐步建立對認知神經科學前沿議題的理解，並培養從神經科學角度探討心智運作的能力。此外，學生將在課程引導下學習認知神經科學相關議題研究問題的發想、研究設計與方法以規劃自己的專題研究計畫。",
+      "授課內容": "本課程透過邀請來自不同領域的認知神經科學專家進行系列專題演講，涵蓋認知神經科學中的多個核心領域，包括生物神經基礎、視覺與聽覺感知、動作控制、語言處理、記憶機制、情緒與社會認知、音樂認知、決策與執行功能等。課程旨在拓展學生對上述主題之理解與視野，並介紹各領域常用的研究方法與技術（如fMRI、EEG、TMS、行為實驗設計等）。\n課程設計強調學生的主動參與，鼓勵並要求學生在課堂中積極提問與討論，以培養批判性思考能力與跨領域整合的觀點。透過與講者的互動及同儕之間的交流，學生將逐步掌握前沿研究議題與方法，建立從神經科學角度探討心智與行為的能力，為未來進一步研究或跨領域應用奠定基礎。",
+      "教科書/參考書": "指定相關之研究論文作為閱讀資料。",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 實習/實驗",
+      "評量配分比重": "40% 出席與參與 60% 討論與口頭報告",
+      "辦公時間": "週一11:00-12:00",
+      "授課週數": "16",
+      "彈性教學說明": "線上學習認知神經科學議題並撰寫報告",
+      "課程領域": "基礎認知神經科學理論 、 認知實驗方法學 、 認知神經科學與物理學的跨領域研究",
+      "核心能力": [
+        {
+          "能力名稱": "整合專業知能",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "獨立設計與執行研究計畫",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "精熟及整合研究工具",
+          "強度指數": "(5) 非常高",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "研究倫理",
+          "強度指數": "(3) 普通",
+          "評量方式": "實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通、表達與團隊合作能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "認知神經科學研究所碩士班",
+    "流水號": "27019",
+    "課號-班別": "NS6004-*",
+    "課程名稱(中文)": "進階專題討論Ⅱ",
+    "課程名稱(英文)": "Advanced SeminarⅡ",
+    "備註": "與NS5014合班授課\n[不開放初選]",
+    "授課教師": "梁偉光",
+    "學分": "1",
+    "上課時間": "Tue78",
+    "教室": "S1-226",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=27019&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限認知神經科學研究所博士班。年級:限二年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限認知神經科學研究所博士班、跨領域神經科學博士學位學程(台灣聯合大學系統)、跨領域神經科學國際研究生博士學位學程。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=27019&outline=27019&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "認知神經科學研究所碩士班",
+      "流水號": "27019",
+      "課號": "NS6004-*",
+      "授課教師": "梁偉光",
+      "課程名稱(中文)": "進階專題討論Ⅱ",
+      "課程名稱(英文)": "Advanced SeminarⅡ",
+      "課程學制": "碩博同修",
+      "學分": "1",
+      "課程目標": "本課程旨在建立學生安排與組織學術會議的能力，以及培養學生在專業學術場合中準備資料並進行口頭報告的基礎能力",
+      "授課內容": "認知神經科學相關跨域演講 (校內) 6次\n認知神經科學相關跨域演講 (外校) 5次\n參加生醫理工學院傑出講座 3次\n學生報告 2次",
+      "教科書/參考書": "無",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討",
+      "評量配分比重": "參加: 60%; 實作: 40%",
+      "辦公時間": "每週三四10:00~12:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎認知神經科學理論 、 認知實驗方法學 、 認知神經科學與物理學的跨領域研究",
+      "核心能力": [
+        {
+          "能力名稱": "整合專業知能",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "獨立設計與執行研究計畫",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "精熟及整合研究工具",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "研究倫理",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "溝通、表達與團隊合作能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  }
+]

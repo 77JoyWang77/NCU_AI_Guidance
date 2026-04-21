@@ -1,0 +1,684 @@
+[
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "工學院",
+    "系所": "能源工程研究所碩士班",
+    "流水號": "38001",
+    "課號-班別": "ER5003-*",
+    "課程名稱(中文)": "專題討論(I)",
+    "課程名稱(英文)": "Seminar (I)",
+    "備註": "",
+    "授課教師": "邱德耀",
+    "學分": "0",
+    "上課時間": "Tue78",
+    "教室": "E4-251",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=38001&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限能源工程研究所碩士班。年級:限一年級。身份:限非外籍生。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限能源工程研究所碩士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=38001&outline=38001&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "能源工程研究所碩士班",
+      "流水號": "38001",
+      "課號": "ER5003-*",
+      "授課教師": "邱德耀",
+      "課程名稱(中文)": "專題討論(I)",
+      "課程名稱(英文)": "Seminar (I)",
+      "課程學制": "碩博同修",
+      "學分": "0",
+      "自編教材比例": "0",
+      "授課週數": "16",
+      "核心能力": []
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "工學院",
+    "系所": "能源工程研究所碩士班",
+    "流水號": "38002",
+    "課號-班別": "ER5007-*",
+    "課程名稱(中文)": "儲能原理與技術",
+    "課程名稱(英文)": "Theory and Technology of energy storage",
+    "備註": "與SD5003合班",
+    "授課教師": "蘇清源",
+    "學分": "3",
+    "上課時間": "TueZ56",
+    "教室": "E2-220",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "76",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=38002&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=38002&outline=38002&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "能源工程研究所碩士班",
+      "流水號": "38002",
+      "課號": "ER5007-*",
+      "授課教師": "蘇清源",
+      "課程名稱(中文)": "儲能原理與技術",
+      "課程名稱(英文)": "Theory and Technology of energy storage",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "本課程的目標是讓同學理解目前的各種儲能技術和背後的運作原理，同時也能了解全球與國內的儲能發展、市場概況、能源政策等議題。內容涵蓋電池、電容、機械儲能、除熱、儲冰、液流電池、電轉氣與燃料電池等。內容上會著重於近年較為重要的鋰電池的技術與實務與整合應用(如電動車、再生能源、微電網等範例)。",
+      "授課內容": "\"The development and marketing of energy storage.\nIntroduction of energy storage strategies.\nPumped hydroelectric energy storage.\nCompressed air energy storage.\nThermal energy storage.\nPower-to-fuel technology.\nHydrogen storage technologies.\nBattery energy storage.\nSupercapacitor energy storage.\nApplications\"",
+      "教科書/參考書": "\"鋰離子電池原理與技術, 五南書局. Large Energy Storage Systems Handbook, Frank S. Barnes and Jonah G. Levine, CRC Press. Energy Storage, Robert A. Huggins, Springer. Handbook of batteries, David Linden and Thomas B. Reddy, McGraw-Hill. Electrochemical Supercapacitors, B. E. Conway, Kluwer-Plenum.\"",
+      "自編教材比例": "80",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "Attendance or Quiz: 10 %. Midterm Exam.: 35 %. Final Exam.: 35 %. Final project report: 20%",
+      "辦公時間": "週二上午10點",
+      "授課週數": "16",
+      "彈性教學說明": "N/A",
+      "課程領域": "基礎學科 、 先進材料 、 熱流與能源科技",
+      "核心能力": [
+        {
+          "能力名稱": "專業知識與技能",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實驗規劃與資料分析",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程設計與整合",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "合作溝通與管理",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "專業倫理與社會責任",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "工學院",
+    "系所": "能源工程研究所碩士班",
+    "流水號": "38003",
+    "課號-班別": "ER5034-*",
+    "課程名稱(中文)": "太陽光電工程",
+    "課程名稱(英文)": "Photovoltaics Engineering",
+    "備註": "與SA5028合班",
+    "授課教師": "吳俊諆",
+    "學分": "3",
+    "上課時間": "Thu234",
+    "教室": "E2-306",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "25",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=38003&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限機械工程學系碩士班。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限學士班、碩士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=38003&outline=38003&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "能源工程研究所碩士班",
+      "流水號": "38003",
+      "課號": "ER5034-*",
+      "授課教師": "吳俊諆",
+      "課程名稱(中文)": "太陽光電工程",
+      "課程名稱(英文)": "Photovoltaics Engineering",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "本課程教學目標在於讓學生認識太陽電池的原理、太陽光電(photovoltaics)系統和太陽光電的應用。這門課在最初幾個章節將著重探討太陽光電過程中最重要的二個部分—作為能源來源的太陽光，以即將光能轉換為電能的太陽電池本身的性質。接下來則會提及太陽電池和模組的製造技術，其後是各類太楊光電系統的介紹，包括太陽能汽車、住宅的獨立型電源供給，以及大規模併網電廠等。",
+      "授課內容": "這門課是英語授課，授課內容請參考英文說明",
+      "教科書/參考書": "\"Smets A., J?ger K., Isabella O., van Swaaij R., Zeman M., Solar Energy: The physics and engineering of photovoltaic conversion, technologies and systems, UIT, 2016.\"",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "參考英文說明",
+      "辦公時間": "\"8:00-9:00, 週一至週五\"",
+      "授課週數": "16",
+      "課程領域": "熱流與能源科技",
+      "核心能力": [
+        {
+          "能力名稱": "專業知識與技能",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "實驗規劃與資料分析",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "工程設計與整合",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "合作溝通與管理",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "專業倫理與社會責任",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "工學院",
+    "系所": "能源工程研究所碩士班",
+    "流水號": "38004",
+    "課號-班別": "ER5042-*",
+    "課程名稱(中文)": "照明系統",
+    "課程名稱(英文)": "Lighting System",
+    "備註": "",
+    "授課教師": "韋安琪",
+    "學分": "3",
+    "上課時間": "Wed34Z",
+    "教室": "E2-410",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "40",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=38004&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限機械工程學系碩士班、機械工程學系光機電工程碩士班、能源工程研究所碩士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限機械工程學系。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=38004&outline=38004&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "能源工程研究所碩士班",
+      "流水號": "38004",
+      "課號": "ER5042-*",
+      "授課教師": "韋安琪",
+      "課程名稱(中文)": "照明系統",
+      "課程名稱(英文)": "Lighting System",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "本課程目標在於使同學們具備照明系統相關的知識，並習得照明分析與評價的技巧。",
+      "授課內容": "1. 照明目的\n2. 照明系統類型\n3. 照明系統評價原理\n4. 室內/外照明重要標準\n5. 照明設計考量\n6. 固態照明系統技術\n7. 照明系統未來發展",
+      "教科書/參考書": "1. Class notes 2. Selected papers",
+      "自編教材比例": "70",
+      "授課方式": "講授",
+      "評量配分比重": "\"Homework:40% Midterm exam:30% Final exam:30%\"",
+      "辦公時間": "週三 14:00-15:00",
+      "授課週數": "16",
+      "彈性教學說明": "NA",
+      "課程領域": "熱流與能源科技",
+      "核心能力": [
+        {
+          "能力名稱": "專業知識與技能",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實驗規劃與資料分析",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "工程設計與整合",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "合作溝通與管理",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "專業倫理與社會責任",
+          "強度指數": "(1) 非常低",
+          "評量方式": "無"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "工學院",
+    "系所": "能源工程研究所碩士班",
+    "流水號": "38005",
+    "課號-班別": "ER5050-*",
+    "課程名稱(中文)": "能源技術創意實作Ⅰ",
+    "課程名稱(英文)": "Research Project on Energy Technology Ⅰ",
+    "備註": "",
+    "授課教師": "詹佳樺",
+    "學分": "3",
+    "上課時間": "WedZ56",
+    "教室": "E2-307",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "25",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=38005&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限機械工程學系碩士班、機械工程學系光機電工程碩士班、能源工程研究所碩士班。"
+        },
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限機械工程學系博士班、機械工程學系光機電工程博士班、能源工程研究所博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限機械工程學系。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=38005&outline=38005&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "能源工程研究所碩士班",
+      "流水號": "38005",
+      "課號": "ER5050-*",
+      "授課教師": "詹佳樺",
+      "課程名稱(中文)": "能源技術創意實作Ⅰ",
+      "課程名稱(英文)": "Research Project on Energy Technology Ⅰ",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "本課程旨在培養學生們於 1. 修課同學將於本課程獲得能源相關領域產品實作之知識與經驗，並創意激發、簡報技巧等專題報告相關能力之訓練。 2.修課同學發揮工程領域的思考邏輯，基於基礎材料與元件理論，發揮創意進行能源議題的創新或是改善，並實際進行產品的製作、量測與分析，以及論文撰寫。 3. 專題實作相關之指導課程。",
+      "授課內容": "本課程主旨在培養學生們於\n新式節能、潔能與創能領域之興趣與素養。\n修課同學發揮工程領域的思考邏輯，基於基礎材料與元件理論，發揮創意進行能源議題的創新或是改善，並實際進行產品的製作、量測與分析，以及論文撰寫。\n修課同學以自主創意激發、結合簡報技巧以及實際執行等專題報告相關能力之訓練，將於本課程獲得節能、潔能與創能領域實作之知識與經驗。\n實作領域以節能、潔能與創能領域為主，屬於專題實作相關之指導課程。",
+      "教科書/參考書": "自編教材",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 實習/實驗",
+      "評量配分比重": "授課時講解",
+      "辦公時間": "週四 13:00-17:00",
+      "授課週數": "16",
+      "彈性教學說明": "第17週 期末書面報告撰寫與影片製作 第18週 期末書面報告與影片繳交評分",
+      "課程領域": "基礎學科 、 先進材料 、 熱流與能源科技",
+      "核心能力": [
+        {
+          "能力名稱": "專業知識與技能",
+          "強度指數": "(5) 非常高",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "實驗規劃與資料分析",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "工程設計與整合",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "合作溝通與管理",
+          "強度指數": "(4) 高",
+          "評量方式": "自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "專業倫理與社會責任",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "工學院",
+    "系所": "能源工程研究所碩士班",
+    "流水號": "38006",
+    "課號-班別": "ER6009-*",
+    "課程名稱(中文)": "高等熱力學",
+    "課程名稱(英文)": "Advanced and Statistical Thermodynamics",
+    "備註": "",
+    "授課教師": "陳冠廷",
+    "學分": "3",
+    "上課時間": "MonZ",
+    "教室": "E2-503\nThu34",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=38006&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限機械工程學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限機械工程學系碩士班、機械工程學系光機電工程碩士班、能源工程研究所碩士班。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限機械工程學系博士班、機械工程學系光機電工程博士班、能源工程研究所博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=38006&outline=38006&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "能源工程研究所碩士班",
+      "流水號": "38006",
+      "課號": "ER6009-*",
+      "授課教師": "陳冠廷",
+      "課程名稱(中文)": "高等熱力學",
+      "課程名稱(英文)": "Advanced and Statistical Thermodynamics",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "The goal of this course is to enhance the student‘s ability to utilize the knowledge learned in basic thermodynamics to analyze the practical problem.",
+      "授課內容": "A comprehensive introduction to the fundamental principles of thermodynamics will be introduced in the first few weeks.\nThe rest of the course will cover more advanced topics and concepts within the field of thermodynamics. The advanced cycles, non-ideal gases, statistical thermodynamics, and more specialized applications will be introduced.",
+      "教科書/參考書": "1. A. Bejan, Advanced Engineering Thermodynamics, 3rd Ed., 2006, John Wiley ＆ Sons. 2.H.B. Callen, Thermodynamics and Introduction to Thermostatistics, 2nd Ed., 1985, John Wiley and Sons, N.Y. 3. Yunus Cengel, Michael Boles and Mehmet Kanoglu, Thermodynamics: An Engineering Approach, 9th Ed., 2019, McGraw-Hill Higher Education (International)",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "Attendence: 10％ Homework: 30％ Midterm: 30％ Final: 30％",
+      "辦公時間": "Friday 1300~1700",
+      "授課週數": "16",
+      "彈性教學說明": "上課16週",
+      "課程領域": "熱流與能源科技",
+      "核心能力": [
+        {
+          "能力名稱": "專業知識與技能",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "實驗規劃與資料分析",
+          "強度指數": "(1) 非常低",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程設計與整合",
+          "強度指數": "(1) 非常低",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "合作溝通與管理",
+          "強度指數": "(1) 非常低",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "專業倫理與社會責任",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "工學院",
+    "系所": "能源工程研究所碩士班",
+    "流水號": "38007",
+    "課號-班別": "ER6010-*",
+    "課程名稱(中文)": "計算流體力學",
+    "課程名稱(英文)": "Computational Fluid Dynamics",
+    "備註": "",
+    "授課教師": "王淵弘",
+    "學分": "3",
+    "上課時間": "TueZ5",
+    "教室": "E2-410\nTue6",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "60",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=38007&semester=1141",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=38007&outline=38007&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "能源工程研究所碩士班",
+      "流水號": "38007",
+      "課號": "ER6010-*",
+      "授課教師": "王淵弘",
+      "課程名稱(中文)": "計算流體力學",
+      "課程名稱(英文)": "Computational Fluid Dynamics",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "\"This course is designed for senior and graduated students who are interested in computational fluid dynamics (CF). It provides a comprehensive understanding of solving the PDEs in fluid dynamics from physics, mathematics, and numerical technology perspectives. Programming practices are also required to further understand the numerical algorithms.\"",
+      "授課內容": "(1) Navier-Stokes Equations & and Reduced Equations\n(2) Model Equations: Diffusion Equation, Elliptic Equation, and Wave Equation\n(3) Discretization Methods: Finite Difference, Finite Volume, and spectral method\n(4) Taylor Series Expansion and Truncation Error Analysis\n(*) Higher Order scheme & Spectral like Scheme\n(5) Richardson Extrapolation\n(6) Stability, Consistency, and Convergence\n(7) Stability Analysis: Fourier (Von Neumann) & Spectral method\n(*) Enhancement of the Accuracy: Grid Refinement versus Higher Order Scheme\n(8) Explicit & Implicit Methods\n(9) Upwind and Flux Splitting Methods\n(10) Concepts of Artificial Dissipation\n(11) Solving Linear System of Equations:\nNarrow banded Matrix: Thomas Algorithm\nDifferent Preconditioning Techniques\n(12) Eigenvector Annihilation\n(13) Multigrid Method\n(14) PDE in curvilinear coordinate.\n(15) (Multi-block)-Structured & Unstructured Grids\n(16) Compressible Flow in Conservative Form",
+      "教科書/參考書": "Textbook: slices Require Knowledge: Differential Equation, Lineal Algebra, and Computer Programming References: (1) “Computational Techniques for Fluid Dynamics”, Vol I, II by C.A.J Fletcher (2) “Numerical Computation of Internal and External Flows”, Vol. I, II by C. Hirsch (3) “Computational Fluid Dynamics For Engineers” Vol. I by Klaus A. Hoffmann & Steve T. Chiang (4) “Computational Fluid Dynamics. The basics with Applications”, Jon D. Anderson Jr.",
+      "自編教材比例": "40",
+      "授課方式": "講授 研討 實習/實驗 個別指導",
+      "評量配分比重": "homework 40% project 60%",
+      "辦公時間": "Mon 15:00~17:00, Wed 13:00~14:00",
+      "授課週數": "16",
+      "課程領域": "熱流與能源科技",
+      "核心能力": [
+        {
+          "能力名稱": "專業知識與技能",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實驗規劃與資料分析",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程設計與整合",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "合作溝通與管理",
+          "強度指數": "(1) 非常低",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "專業倫理與社會責任",
+          "強度指數": "(2) 低",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "工學院",
+    "系所": "能源工程研究所碩士班",
+    "流水號": "38008",
+    "課號-班別": "ER6017-*",
+    "課程名稱(中文)": "氫能與燃料電池",
+    "課程名稱(英文)": "Hydrogen Energy and Fuel Cells",
+    "備註": "全部使用密碼卡，請於第一節上課領取。與SG5009合班",
+    "授課教師": "曾重仁",
+    "學分": "3",
+    "上課時間": "Mon567",
+    "教室": "E2-411",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "40",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=38008&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限機械工程學系。年級:限四年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限機械工程學系碩士班、機械工程學系光機電工程碩士班、能源工程研究所碩士班。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限機械工程學系博士班、機械工程學系光機電工程博士班、能源工程研究所博士班。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限工學院學士班。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限材料科學與工程研究所碩士班、材料科學與工程研究所博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=38008&outline=38008&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "能源工程研究所碩士班",
+      "流水號": "38008",
+      "課號": "ER6017-*",
+      "授課教師": "曾重仁",
+      "課程名稱(中文)": "氫能與燃料電池",
+      "課程名稱(英文)": "Hydrogen Energy and Fuel Cells",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "這門課旨在介紹氫能源包括氫之生產、儲存與數種燃料電池的基本原理與操作，包括熱力學分析、電化學原理、傳輸現象與平衡方程式、單電池之組成元件、電池堆與燃料電池系統。另外也會介紹燃料電池的發展歷史、研發現況與未來展望。",
+      "授課內容": "This course begins with an overview of hydrogen energy and the production and storage of hydrogen. Then it introduces the principle and operation of various types of fuel cells. Included are overview of fuel cell technology, the thermodynamics of fuel cells, introduction to electrochemical kinetics, transport-related phenomena and conservation equations for reacting multi-component systems, configuration of individual cell, stack and fuel cell system, fuel cell system design, and fuel cell performance modeling.\nCourse Contents:\nCh 1, Hydrogen Energy and Fossil Fuels\nCh 2, Introduction to Hydrogen Production Methods\nCh 3, Introduction to Hydrogen Storages\nCh 4, Basics of fuel cells\nCh 5, Thermodynamics of fuel cells\nCh 6, Introduction to electrochemical kinetics\nCh 7, Alkaline oxide fuel cells (AFCs)\nCh 8, Proton exchange membrane fuel cells (PEMFCs)\nCh 9, Direct methanol fuel cells (DMFCs)\nCh 10, Solid oxide fuel cells (SOFCs)\nLabs: PEM fuel cell operation and testing.",
+      "教科書/參考書": "Text: 1. Fuel Cell Fundamentals, 2nd Ed., O‘Hayre et al., John Wiley ＆ Sons, 2009. References: 1. Fuel Cell Systems Explained, 2nd Ed., Larminie and Dicks, Wiley, 2003. 2. Fuel Cells and their applications, Kordesch and Simader, VCH, 1996. 3. Fuel Cell Handbook, Appleby and Foulkes, Nostrand Reinhold, 1989. 4. 燃料電池，黃鎮江編著，全華科技，2003。 5. Journal of Power Sources. 6. International Journal of Hydrogen Energy",
+      "自編教材比例": "70",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "Grading: (Subject to change.) 1. Mid-term Exams 30 ％ 2. Homework ＆ Lab Report 30 ％ 3. Final (Exam or Report) 40 ％",
+      "辦公時間": "週三 10:00-12:00",
+      "授課週數": "16",
+      "彈性教學說明": "自主學習",
+      "課程領域": "熱流與能源科技",
+      "核心能力": [
+        {
+          "能力名稱": "專業知識與技能",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實驗規劃與資料分析",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "工程設計與整合",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "合作溝通與管理",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "專業倫理與社會責任",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "1",
+    "學院": "工學院",
+    "系所": "能源工程研究所碩士班",
+    "流水號": "38009",
+    "課號-班別": "ER6021-*",
+    "課程名稱(中文)": "微流體導論 [已停開]",
+    "課程名稱(英文)": "Introduction to Microfluidics",
+    "備註": "",
+    "授課教師": "曹嘉文",
+    "學分": "3",
+    "上課時間": "Fri234",
+    "教室": "E2-306",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "30",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=38009&semester=1141",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限機械工程學系碩士班、機械工程學系光機電工程碩士班、能源工程研究所碩士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=38009&outline=38009&semester=1141",
+    "課程綱要": {
+      "學期": "1141",
+      "開課單位": "能源工程研究所碩士班",
+      "流水號": "38009",
+      "課號": "ER6021-*",
+      "授課教師": "曹嘉文",
+      "課程名稱(中文)": "微流體導論",
+      "課程名稱(英文)": "Introduction to Microfluidics",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "This course target to teach you the fundamental knowledge of microfluidics including theoretical background and practice.",
+      "授課內容": "I. Fundamental backgrounds\nII Theoretical Background\nIII Microfabrication practice\n- Micromilling, power mill coding\n- Microchannel fabrication\nIV Microfluidic device ＆ application",
+      "教科書/參考書": "Patrick Tabeling “Introduction to microfluidics”Oxford university press 2005, ISBN:0-19-856864-9",
+      "自編教材比例": "80",
+      "授課方式": "講授 研討 實習/實驗 個別指導",
+      "評量配分比重": "Hands-on Practice, paper review report, and homework and 60％ Project report 20％ Final exam 15％ Class participation 5％",
+      "辦公時間": "By appointment or e email",
+      "授課週數": "16",
+      "彈性教學說明": "報告繳交與自習",
+      "課程領域": "熱流與能源科技",
+      "核心能力": [
+        {
+          "能力名稱": "專業知識與技能",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實驗規劃與資料分析",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "工程設計與整合",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "合作溝通與管理",
+          "強度指數": "(2) 低",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "專業倫理與社會責任",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        }
+      ]
+    }
+  }
+]

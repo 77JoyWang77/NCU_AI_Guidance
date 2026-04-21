@@ -1,0 +1,4656 @@
+[
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24001",
+    "課號-班別": "LS1002-*",
+    "課程名稱(中文)": "普通生物學",
+    "課程名稱(英文)": "General Biology",
+    "備註": "生物科技及生物多樣性第二專長\n[不開放初選]",
+    "授課教師": "黃佳瑜\n許斐婷\n葉淑丹",
+    "學分": "3",
+    "上課時間": "Mon234",
+    "教室": "S5-113",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24001&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系。年級:限非一年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限理學院學士班。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "系所:限輔系-生命科學系、雙主修-生命科學系、學分學程-生科職涯、第二專長-生物多樣性、第二專長-生物科技。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24001&outline=24001&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24001",
+      "課號": "LS1002-*",
+      "授課教師": "黃佳瑜\n許斐婷\n葉淑丹",
+      "課程名稱(中文)": "普通生物學",
+      "課程名稱(英文)": "General Biology",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "本課程用以增進學生基礎分子遺傳、植物生理、動物生理、神經生理與行為等學識素養，加強學生對專有名詞的理解，以利學生學習相關專業科目。",
+      "授課內容": "1. Molecular inheritance (DNA replication)\n2. Chromosomal inheritance\n3. Genomes structure (+ bioinformatics)\n4. Cell function unit-Gene regulation, RNA biology\n5. Cell function unit-- protein synthesis, folding, functionality\n6. Plant anatomy ＆ physiology\n7. Plant anatomy ＆ physiology\n8. Midterm exam\n9. Animal anatomy ＆ physiology\n10. Animal anatomy ＆ physiology\n11. Animal anatomy ＆ physiology\n12. Animal anatomy ＆ physiology\n13. Neuron function ＆ behavior\n14. Neuron function ＆ behavior\n15. Final Exam\n16. Discussion of the core concepts",
+      "教科書/參考書": "Campbell Biology, A global approach",
+      "自編教材比例": "50",
+      "授課方式": "講授 研討",
+      "評量配分比重": "1. Midterm Exam 30％ 2. Final Exam 30％ 3. Video Notes 15 ％ 4. Group activities 25％",
+      "辦公時間": "星期一14:00-17:00",
+      "授課週數": "16",
+      "彈性教學說明": "課外自習",
+      "課程領域": "基礎學科",
+      "核心能力": [
+        {
+          "能力名稱": "基礎生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "發掘問題及實驗能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "學習檔案評量 ， 無"
+        },
+        {
+          "能力名稱": "邏輯分析",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "網路學習及資料蒐集",
+          "強度指數": "(5) 非常高",
+          "評量方式": "學習檔案評量"
+        },
+        {
+          "能力名稱": "溝通技巧",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "獨立思考與自我學習",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "團隊合作",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "博雅通識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24002",
+    "課號-班別": "LS1004-*",
+    "課程名稱(中文)": "普通生物學實驗",
+    "課程名稱(英文)": "General Biology Laboratory",
+    "備註": "1.負責老師: 黃佳瑜/葉淑丹 2.如電腦選課之後還有名額，且開學第一週需來上課始可以密碼卡加選(限理學院學士班、生物科技及生物多樣性第二專長、輔系及雙主修加選者優先)。\n[不開放初選]",
+    "授課教師": "黃佳瑜\n許斐婷\n葉淑丹",
+    "學分": "1",
+    "上課時間": "Fri5",
+    "教室": "S5-113\nFri67",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24002&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系。年級:限二年級、三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限理學院學士班、輔系-生命科學系、雙主修-生命科學系、第二專長-生物多樣性、第二專長-生物科技。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24002&outline=24002&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24002",
+      "課號": "LS1004-*",
+      "授課教師": "黃佳瑜\n許斐婷\n葉淑丹",
+      "課程名稱(中文)": "普通生物學實驗",
+      "課程名稱(英文)": "General Biology Laboratory",
+      "課程學制": "學士班",
+      "學分": "1",
+      "課程目標": "此實驗課配合普通生物學正課進度，讓學生在操作過程中更了解正課所教授之生物學基本知識，並學習基本儀器如顯微鏡、電泳槽的使用及基本技巧如生物繪圖、實驗報告的練習。使學生具備基礎研究的能力。",
+      "授課內容": "1 實驗室安全講習及分組\n2 孢子印的觀察\n3 觀察植物氣孔\n4 植物組織水勢測量\n5 校際活動週\n6 觀察植物構造\n7 觀察動物組織\n8 校園植物認識\n9 期中考週\n10 校外參訪\n11 細胞計數與存活測試\n12 植物表皮細胞的滲透變化\n13 酵素\n14 線蟲與果蠅的生殖系統\n15 果蠅胚胎與一齡幼蟲表皮製備與觀察\n16 人類細胞核與果蠅唾液腺染色體之製備與觀察\n17 Check Out\n18 期末考",
+      "教科書/參考書": "普通生物學實驗講義",
+      "自編教材比例": "100",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "實驗報告佔50％，期末考佔30％，小考+平時成績佔20％",
+      "辦公時間": "wed 10:00～12:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎學科 、 實驗操作",
+      "核心能力": [
+        {
+          "能力名稱": "基礎生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "發掘問題及實驗能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "邏輯分析",
+          "強度指數": "(3) 普通",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "網路學習及資料蒐集",
+          "強度指數": "(2) 低",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通技巧",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考與自我學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "團隊合作",
+          "強度指數": "(5) 非常高",
+          "評量方式": "專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "博雅通識",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24003",
+    "課號-班別": "LS1006-*",
+    "課程名稱(中文)": "生命科學時事導讀",
+    "課程名稱(英文)": "News and perspectives in Life Science",
+    "備註": "[不開放初選]",
+    "授課教師": "黃佳瑜",
+    "學分": "1",
+    "上課時間": "Mon6",
+    "教室": "S5-112",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24003&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24003&outline=24003&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24003",
+      "課號": "LS1006-*",
+      "授課教師": "黃佳瑜",
+      "課程名稱(中文)": "生命科學時事導讀",
+      "課程名稱(英文)": "News and perspectives in Life Science",
+      "課程學制": "學士班",
+      "學分": "1",
+      "課程目標": "The course aims to enhance students‘ connection to and understanding of biological events in everyday life by reading biology-related news or short articles and engaging in class discussions. Through this approach, students will develop their ability to critically analyze contemporary life science topics and improve their oral communication skills. By linking biological concepts to real-world events, the course will inspire greater interest in the impact of life sciences on society and encourage thoughtful engagement with current biological issues. By the end of the course, students will be able to: • Demonstrate critical thinking skills by identifying and evaluating the scientific validity and relevance of the biological content presented in various news and articles. • Apply biological concepts and principles to explain real-world phenomena and contemporary life science issues covered in the media. • Communicate their insights and analyses effectively in both group discussions and oral presentations. • Engage thoughtfully in class discussions, providing evidence-based opinions and arguments on complex biological issues, demonstrating improved scientific literacy and oral communication.",
+      "授課內容": "週次week 課程內容Course topic\n1 Course introduction\n2 AI n protein structure\n3 AI in diseases\n4 Using DNA to store data\n5 Animals with virgin births\n6 Apple varieties\n7 Chimpanzees self-medicate with plants\n8 Species Evolution-Darwin‘s finches\n9 Oral presentation\n10 Explosive Pollen Wars: Plants Compete for Pollinator Space\n11 Protein interactions: party is on\n12 3D-printed using human cells\n13 The genome sequencing of yellow jacket\n14 Selfish DNA: early development\n15 Gut Health\n16 Oral presentation\n17 Student Self-directed Learning\n18 Student Self-directed Learning",
+      "教科書/參考書": "1. Phys.org, https://phys.org/biology-news/ 2. BBC-Biology , https://www.bbc.com/news/topics/cg41ylwvwy3t 3. National Geographic, https://www.nationalgeographic.com/ 4. Scientific American, https://www.scientificamerican.com/ 5. Science X, https://sciencex.com/ 6. Nature, https://www.nature.com/ 7. Science, https://www.science.org/",
+      "自編教材比例": "10",
+      "授課方式": "講授 研討",
+      "評量配分比重": "評分配分比重Grading： 上課討論 50％ 期中報告 25％ 期末報告 25％",
+      "辦公時間": "星期一14:00-17:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎學科 、 進階學科 、 生理 、 農業應用 、 微生物與免疫 、 生物科技 、 醫藥 、 環境生物 、 生態演化 、 生物資訊",
+      "核心能力": [
+        {
+          "能力名稱": "基礎生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "發掘問題及實驗能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "邏輯分析",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "網路學習及資料蒐集",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通技巧",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考與自我學習",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "團隊合作",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "博雅通識",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24004",
+    "課號-班別": "LS1014-*",
+    "課程名稱(中文)": "普通生物學Ⅱ",
+    "課程名稱(英文)": "General Biology Ⅱ",
+    "備註": "如電腦選課後還有餘額，可開放其他科系以密碼卡選課。電腦選課及密碼卡選課合計110名。電腦選課中選但第一次上課未到者，本系得以退課處置。生物科技及生物多樣性第二專長\n[不開放初選]",
+    "授課教師": "劉阜果\n陳宗祺\n吳沛翊",
+    "學分": "3",
+    "上課時間": "Fri567",
+    "教室": "S5-111",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "110",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24004&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限數學系、物理學系、理學院學士班。"
+        },
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限學分學程-生科職涯、第二專長-生物多樣性、第二專長-生物科技。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24004&outline=24004&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24004",
+      "課號": "LS1014-*",
+      "授課教師": "劉阜果\n陳宗祺\n吳沛翊",
+      "課程名稱(中文)": "普通生物學Ⅱ",
+      "課程名稱(英文)": "General Biology Ⅱ",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "生物學基本介紹。",
+      "授課內容": "週次 進度 任課教師\n1 Animals: Form and Function Chapter 20 Unifying concepts of aniaml structure and function 范世榮老師\n2 Chapter 21 Nutrition and digestion 范世榮老師\n3 Chapter 22/23 Gas exchange/ Circulation system 范世榮老師\n4 Chapter 24 The immune System 范世榮老師\n5 Chapter 25 Control of body temperture and water balance 范世榮老師\n6 期中考 Chapter 7 Photosynthesis 陳宗祺老師\n7 Chapter 7 Photosynthesis / Chapter 31 Plant structure, growth and Reproduction 陳宗祺老師\n8 Chapter 31 Plant structure, growth and Reproduction 葉陳宗祺老師\n9 Chapter 32 Plant Nutrition and transport 陳宗祺老師\n10 Chapter 33 control systems in plants 陳宗祺老師\n11 期中考\n12 Evolution ＆ Ecology Chapter 13 How Populations Evolve 劉阜果老師\n13 Chapter 34 The biosphere: An introduction to earth‘s diverse environment 劉阜果老師\n14 Chapter 35 behavioral adaptations to the environment 劉阜果老師\n15 Chapter 36 population ecology 劉阜果老師\n16 期末考",
+      "教科書/參考書": "Campbell Biology: Concepts ＆ Connections, Global Edition, By (author) Jane B. Reece , By (author) Jean L. Dickey , By (author) Martha R. Taylor , By (author) Eric J. Simon",
+      "自編教材比例": "50",
+      "授課方式": "講授 個別指導",
+      "評量配分比重": "第一次考試 (30％)+第二次考試 (30％)+ 第三次考試 (30％) +Attendance/participation (10％) =100％",
+      "辦公時間": "Monday 13:00-15:00",
+      "授課週數": "16",
+      "彈性教學說明": "2週安排學生自主學習課程",
+      "課程領域": "基礎學科 、 生理 、 農業應用 、 微生物與免疫 、 生物科技 、 醫藥 、 環境生物 、 生態演化 、 神經生物",
+      "核心能力": [
+        {
+          "能力名稱": "基礎生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "發掘問題及實驗能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "邏輯分析",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "網路學習及資料蒐集",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "溝通技巧",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "獨立思考與自我學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "團隊合作",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "博雅通識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24005",
+    "課號-班別": "LS1020-*",
+    "課程名稱(中文)": "偏鄉學校科學教案之發想、設計、規劃與執行(二)",
+    "課程名稱(英文)": "Initiative, design, planning and execution of scientific education projects for remote schools (II)",
+    "備註": "[不開放初選]",
+    "授課教師": "范世榮",
+    "學分": "2",
+    "上課時間": "Thu78",
+    "教室": "S5-113",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24005&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系。年級:限一年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24005&outline=24005&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24005",
+      "課號": "LS1020-*",
+      "授課教師": "范世榮",
+      "課程名稱(中文)": "偏鄉學校科學教案之發想、設計、規劃與執行(二)",
+      "課程名稱(英文)": "Initiative, design, planning and execution of scientific education projects for remote schools (II)",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "本課程的目標為 1. 促進學生關懷與了解偏鄉教育與學生 2. 增進學生與社會的互動 3. 建立發掘問題的能力與教案設計能力 4. 培養統籌組織能力、快捷變通能力、團隊運作能力、溝通能力與執行力 5. 養成取之社會用之社會的公民情懷",
+      "授課內容": "第一周：本學期課程計畫方向與目標之介紹\n第二周：如何說故事\n第三周：學童科學教育方法概論\n第四周：營隊活動執行方式與技巧\n第五周：如何建立社會(或環保)\n第六周：企業社會(或環保)企業參訪\n第七周：社會(或環保)企業參訪心得分享\n第八周：偏鄉科學教案之規劃--細部規劃(1)\n第九周：偏鄉科學教案之規劃--細部規劃(2)\n第十周：偏鄉科學教案之執行--行前準備與溝通(1)\n第十一周：偏鄉科學教案之執行--行前準備與溝通(2)\n第十二周：偏鄉科學教案之執行--教案執行(1)\n第十三周：偏鄉科學教案之執行--教案執行(2)\n第十四周：偏鄉科學教案執行之心得分享(1)\n第十五周：偏鄉科學教案執行之心得分享(2)\n第十六周：偏鄉科學教案執行之評析\n第十七周：偏鄉科學教案再進化\n第十八周：期末慶賀",
+      "教科書/參考書": "無",
+      "自編教材比例": "100%",
+      "授課方式": "講授 研討 實習/實驗 個別指導",
+      "評量配分比重": "出席：20％ 教案執行：50％ 心得分享：15％ 參與討論：15％",
+      "辦公時間": "10:00~12:00 週四",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎學科 、 實驗操作",
+      "核心能力": [
+        {
+          "能力名稱": "基礎生物專業知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "發掘問題及實驗能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "邏輯分析",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "網路學習及資料蒐集",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "溝通技巧",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "獨立思考與自我學習",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "團隊合作",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "博雅通識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24006",
+    "課號-班別": "LS2002-*",
+    "課程名稱(中文)": "生物化學",
+    "課程名稱(英文)": "Biochemistry",
+    "備註": "生物科技及生物多樣性第二專長\n[不開放初選]",
+    "授課教師": "吳沛翊\n粘仲毅",
+    "學分": "3",
+    "上課時間": "Wed567",
+    "教室": "S5-112",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "55",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24006&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系。年級:限二年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限理學院學士班、輔系-生命科學系、雙主修-生命科學系、學分學程-生科職涯、第二專長-生物多樣性、第二專長-生物科技。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24006&outline=24006&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24006",
+      "課號": "LS2002-*",
+      "授課教師": "吳沛翊\n粘仲毅",
+      "課程名稱(中文)": "生物化學",
+      "課程名稱(英文)": "Biochemistry",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "讓學生對於新陳代謝與脂質合成有更進一步的了解",
+      "授課內容": "Week Date Topics Instructors\n1 Introduction Chapter 12 Chemical Logic of Metabolism PY Wu\n2 Chapter 13 Carbohydrate Metabolism: Glycolysis, Gluconeogenesis, Glycogen Metabolism, and the Pentose Phosphate Pathway PY Wu\n3 Chapter 13 Carbohydrate Metabolism: Glycolysis, Gluconeogenesis, Glycogen Metabolism, and the Pentose Phosphate Pathway PY Wu\n4 Chapter 13 Carbohydrate Metabolism: Glycolysis, Gluconeogenesis, Glycogen Metabolism, and the Pentose Phosphate Pathway PY Wu\n5 Mid-term exam 1 PY Wu\n6 Chapter 14 Citric Acid Cycle and Glyoxylate Cycle PY Wu\n7 Holiday\n8 Chapter 14 Citric Acid Cycle and Glyoxylate Cycle PY Wu\n9 Chapter 15 Electron Transport, Oxidative Phosphorylation, and Oxygen Metabolism PY Wu\n10 Chapter 15 Electron Transport, Oxidative Phosphorylation, and Oxygen Metabolism PY Wu\n11 Mid-term exam 2 PY Wu\n12 Chapter 17 Lipid Metabolism I: Fatty Acids, Triacylglycerols, and Lipoproteins CY Nien\n13 Chapter 17 Lipid Metabolism I: Fatty Acids, Triacylglycerols, and Lipoproteins CY Nien\n14 Chapter 19 Lipid Metabolism II: Membrane Lipids, Steroids, Isoprenoids, and Eicosanoids CY Nien\n15 Chapter 19 Lipid Metabolism II: Membrane Lipids, Steroids, Isoprenoids, and Eicosanoids CY Nien\n16 Final exam CY Nien\n17 Self-directed Learning (Scientific article reading)\n18 Self-directed Learning (Scientific article reading)",
+      "教科書/參考書": "Biochemistry (4 th Ed) by Mathews, Van Holde, Appling, and Anthony-Cahill",
+      "自編教材比例": "30",
+      "授課方式": "講授",
+      "評量配分比重": "期中考-1 30％, 期中考-2 30％, 期末考 30％, 出席與回饋 10％ 期末總成績結算時，授課教師得視學生整體學習情況，統一酌予調整分數",
+      "辦公時間": "星期四早上8:00~10:00",
+      "授課週數": "16",
+      "彈性教學說明": "自主學習(相關科學文章閱讀)",
+      "課程領域": "基礎學科",
+      "核心能力": [
+        {
+          "能力名稱": "基礎生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "發掘問題及實驗能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "邏輯分析",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "網路學習及資料蒐集",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通技巧",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考與自我學習",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "團隊合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "博雅通識",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24007",
+    "課號-班別": "LS2004-*",
+    "課程名稱(中文)": "生物化學實驗",
+    "課程名稱(英文)": "Biochemistry Laboratory",
+    "備註": "如電腦選課之後還有名額，且開學第一週(2/24)需來上課始可以密碼卡加選(限理學院學士班、輔系、雙主修加選者)。\n[不開放初選]",
+    "授課教師": "吳沛翊\n粘仲毅",
+    "學分": "1",
+    "上課時間": "Tue5",
+    "教室": "S5-113\nTue67",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24007&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系。年級:限二年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限理學院學士班、輔系-生命科學系、雙主修-生命科學系、第二專長-生物多樣性、第二專長-生物科技。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24007&outline=24007&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24007",
+      "課號": "LS2004-*",
+      "授課教師": "吳沛翊\n粘仲毅",
+      "課程名稱(中文)": "生物化學實驗",
+      "課程名稱(英文)": "Biochemistry Laboratory",
+      "課程學制": "學士班",
+      "學分": "1",
+      "課程目標": "訓練學生培養生化實驗基礎技能，訓練實作經驗",
+      "授課內容": "課程準備週\n2 實驗安全講習與分組\n3 蛋白質純化\n4 蛋白質濃度測定─雙縮?法與OD280測定法 (A = abc)\n5 Western (Ⅰ)：SDS-PAGE\n6 Western (Ⅱ)：protein transfer to PVDF membrane\n7 Western (Ⅲ)：hybridization with antibody\n8 生技公司參訪\n9 期中考週\n10脂肪碘值的測定\n11植物DNA的提取\n12動物RNA的提取\n13香菇內多醣體萃取及含量測定(酚硫酸測定法)\n14脂肪分解?(Lipase)酵素之活性分析\n15生物資料庫搜尋及應用 (Expasy + NCBI + PubMed + Scopus)\n16質體的基本特性及應用\n17生醫黑科技創意期末競賽\n18期末考週",
+      "教科書/參考書": "教育部顧問室基礎科學前瞻性人才培育計畫生命科學實驗講義",
+      "自編教材比例": "100",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "學期評分：實驗報告佔50％，期末考佔30％，小考+平時成績佔20％。 2. 曠課採級距式扣分：第一次扣總成績十分，第二次扣總成績十五分，第三次則扣總成績二十分。 3. 遲到五分鐘(含)已上扣總成績三分。 4. 遲到十分鐘(含)以上者視同該次曠課，曠課次數累積超過三次請重修。 5. 實驗結報繳交日期為實驗課程結束後，隔週二13:00前繳交，報告繳交日過後一律為遲交不予計份。如有發現抄襲，則整份報告不予計分。 6. 值日組：值日表現列入平時成績計算，採輪流制，每次由一組擔任。值日人員應在星期二中午12:30於S5-214報到，若有遲到扣整組總成績三分，並在實驗結束後打掃環境，經助教同意後方可離開。 7. 各組每次實驗完畢後應確實清點實驗用品並打勾，經助教同意後方可離開。",
+      "辦公時間": "星期三上午11-12點",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎學科 、 實驗操作",
+      "核心能力": [
+        {
+          "能力名稱": "基礎生物專業知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "發掘問題及實驗能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "邏輯分析",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "網路學習及資料蒐集",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通技巧",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考與自我學習",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "團隊合作",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "博雅通識",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24008",
+    "課號-班別": "LS2006-*",
+    "課程名稱(中文)": "有機化學",
+    "課程名稱(英文)": "Organic Chemistry",
+    "備註": "外系欲選修此課程的同學，需修過兩學期普通化學與上學期有機化學，並請向廖康廩老師取得密碼卡\n[不開放初選]",
+    "授課教師": "廖康廩",
+    "學分": "3",
+    "上課時間": "Mon234",
+    "教室": "S5-112",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "60",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24008&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系。年級:限二年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限雙主修-生命科學系、學分學程-生科職涯、第二專長-生物多樣性、第二專長-生物科技。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24008&outline=24008&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24008",
+      "課號": "LS2006-*",
+      "授課教師": "廖康廩",
+      "課程名稱(中文)": "有機化學",
+      "課程名稱(英文)": "Organic Chemistry",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "基礎有機化學的學習",
+      "授課內容": "Chapter 12 Organohalides: Nucleophilic Substitutions and Eliminations\nChapter 13 Alcohols, Phenols, and Thiols; Ethers and Sulfides\nChapter 14 Aldehydes and Ketones: Nucleophilic Addition Reactions\nChapter 15 Carboxylic Acids and Nitriles\nChapter 16 Carboxylic Acid Derivatives: Nucleophilic Acyl Substitution Reactions\nChapter 17 Carbonyl Alpha-Substitution and Condensation Reactions\nChapter 18 Amines and Heterocycles\nChapter 10 Structure Determination: Mass Spectrometry, Infrared Spectroscopy, and Ultraviolet Spectroscopy\nChapter 11 Structure Determination: Nuclear Magnetic Resonance Spectroscopy",
+      "教科書/參考書": "Organic Chemistry with Biological Approach, Taiwan Ed, 2nd Print in 2019, by John McMurry",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "點名 10％ 小考 9％ 期中考 1 30％ 期中考 2 33％ 期末考 33％",
+      "辦公時間": "每星期二 10:30-12:00、14:00-16:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "進階學科",
+      "核心能力": [
+        {
+          "能力名稱": "基礎生物專業知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "發掘問題及實驗能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "邏輯分析",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "網路學習及資料蒐集",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通技巧",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考與自我學習",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "團隊合作",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "博雅通識",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24009",
+    "課號-班別": "LS2014-*",
+    "課程名稱(中文)": "植物生理學實驗",
+    "課程名稱(英文)": "Plant Physiology Laboratory",
+    "備註": "輔系、雙主修、及生物科技及生物多樣性第二專長加選者，開學第一週(2/26)需來上課，以密碼卡加選\n[不開放初選]",
+    "授課教師": "吳少傑\n葉靖輝",
+    "學分": "1",
+    "上課時間": "Thu2",
+    "教室": "S5-112\nThu34",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24009&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系。年級:限二年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系。年級:限非二年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24009&outline=24009&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24009",
+      "課號": "LS2014-*",
+      "授課教師": "吳少傑\n葉靖輝",
+      "課程名稱(中文)": "植物生理學實驗",
+      "課程名稱(英文)": "Plant Physiology Laboratory",
+      "課程學制": "學士班",
+      "學分": "1",
+      "課程目標": "1. 讓學生有更多的時間親自觀察與操作，印證課堂上的理論，以期對所得的知識獲得更明確深刻與具體的理解。 2. 加強同學對植物生理學的瞭解。 3. 藉由學習基本植物生理學的實驗技術，幫助同學建立最基本的認知，有助於未來的研究工作。",
+      "授課內容": "Week 1. Introduction\nWeek 2. Chemical and medium preparation I\nWeek 3. Separation of chloroplasts and Hill reaction\nWeek 4. Detection of products of photosynthesis\nWeek 5. Protoplast preparation and gene transformation\nWeek 6. Activity and effects of plant catalase\nWeek 7. Chemical and medium preparation II\nWeek 8. Detection of sugar types\nWeek 9. Mid-term exam\nWeek 10. Measurement of sugar content\nWeek 11. GA induce alpha amylase\nWeek 12. Effects of GA in seed germination\nWeek 13. Effects of Abscisic acid (ABA) in seed germination\nWeek 14. Effects of ethylene in seed germination\nWeek 15. Salinity and plant growth\nWeek 16. Detection of seed viability by TTC assay\nWeek 17. Chlorophyll and lipid peroxide contents in plants under heat stressWeek 18. Final exam",
+      "教科書/參考書": "實驗講義",
+      "自編教材比例": "0",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "1. 出席 (10％) 2. 課堂表現 (10％) 3. 作業與報告 (80％)",
+      "辦公時間": "13:00 ~ 14:00/星期四",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎學科 、 實驗操作",
+      "核心能力": [
+        {
+          "能力名稱": "基礎生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "發掘問題及實驗能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "邏輯分析",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "網路學習及資料蒐集",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通技巧",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考與自我學習",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "團隊合作",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "博雅通識",
+          "強度指數": "(2) 低",
+          "評量方式": "專題研究報告(書面)"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24010",
+    "課號-班別": "LS2016-*",
+    "課程名稱(中文)": "生物醫學影像",
+    "課程名稱(英文)": "Biomedical images",
+    "備註": "[不開放初選]",
+    "授課教師": "許斐婷",
+    "學分": "2",
+    "上課時間": "Tue78",
+    "教室": "S5-112",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24010&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24010&outline=24010&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24010",
+      "課號": "LS2016-*",
+      "授課教師": "許斐婷",
+      "課程名稱(中文)": "生物醫學影像",
+      "課程名稱(英文)": "Biomedical images",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "針對各類型生物醫學影像進行原理與應用介紹 Introduction to the Principles and Applications of Various Types of Biomedical Imaging 與學生進行互動，課前分組準備課程簡報，課程中教師會進行講課與討論 Engage with students through interactive sessions, with groups preparing course presentations before class. During the class, the instructor will deliver lectures and lead discussions.",
+      "授課內容": "1 課程簡介與大綱說明 Introduction\n2 一般x光影像成像原理介紹 Principle of x-ray\n3 電腦斷層影像成像原理介紹 Principle computer tomography\n4 核磁共振影像成像原理介紹 Principle of MRI\n5 核子醫學影像成像原理介紹—單光子造影 Principle of SPECT image\n6 核子醫學影像成像原理介紹—正子造影 Principle of PET image\n7 光學影像成像原理介紹 Principle of Optical image\n8 超音波影像成像原理介紹 Principle of Ultrasound\n9 期中報告 (不上課) Midterm report (no-course)\n10 腦部疾病相關分子影像的應用 Molecular image on brain disease\n11 腦癌相關分子影像的應用 Molecular image on brain tumor\n12 分子核磁共振影像應用 Principle and application of molecular MRI\n13 磁振基因圖譜原理與應用 Principle and application of radiogenomic\n14 免疫相關疾病分子影像的應用 Molecular image on immune-related disease\n15 轉譯醫學影像 Image application on Translational medicine\n16 期末紙本報告 Final report\n17 彈性上課時間 Flexible class time\n18 彈性上課時間 Flexible class time",
+      "教科書/參考書": "Sonography Principles and Instruments 9th Revised edition Nuclear Medicine: The Requisites 4th Revised edition Computed Tomography 3rd Edition Molecular Imaging: Principles and Practice",
+      "自編教材比例": "50",
+      "授課方式": "講授",
+      "評量配分比重": "出席(30％) / 期中口頭報告(40％) / 期末紙本報告 (40％)",
+      "辦公時間": "週二 15:00-17:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "生物科技 、 醫藥",
+      "核心能力": [
+        {
+          "能力名稱": "基礎生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "發掘問題及實驗能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "邏輯分析",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "網路學習及資料蒐集",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "溝通技巧",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考與自我學習",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 其他"
+        },
+        {
+          "能力名稱": "團隊合作",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 其他"
+        },
+        {
+          "能力名稱": "博雅通識",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24011",
+    "課號-班別": "LS2020-*",
+    "課程名稱(中文)": "細胞學",
+    "課程名稱(英文)": "Cell Biology",
+    "備註": "生物科技及生物多樣性第二專長\n[不開放初選]",
+    "授課教師": "陳盛良\n吳沛翊",
+    "學分": "2",
+    "上課時間": "Fri56",
+    "教室": "S5-112",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "55",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24011&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系。年級:限三年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系。年級:限非三年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限理學院學士班、輔系-生命科學系、雙主修-生命科學系、第二專長-生物多樣性、第二專長-生物科技。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24011&outline=24011&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24011",
+      "課號": "LS2020-*",
+      "授課教師": "陳盛良\n吳沛翊",
+      "課程名稱(中文)": "細胞學",
+      "課程名稱(英文)": "Cell Biology",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "This subject is a required course designed for undergraduate students with Life Sciences as their major. This subject is a one year course with two credits for each semester. Interested students should have basic knowledge in General Biology, and general Chemistry before they take this subject. The scope of this subject includes the basic nature of biological molecules, the construction of a cell, DNA replication and cell division, cell-cell communication, and the expression of genes and its regulation.",
+      "授課內容": "2/18 Chapter 11 Microtubules\n2/25 Chapter 11 Microtubules\n3/4 Chapter 12 Actin\n3/11 Chapter 12 Actin\n3/18 Chapter 13 Intermediate filaments\n3/25 Chapter 13 Intermediate filaments\n4/1 Chapter 19 The extracellular matrix and cell adhesion\n4/8 Chapter 19 The extracellular matrix and cell adhesion\n4/15 Mid-term exam\n4/22 Chapter 14 mitosis\n4/29 Chapter 14 mitosis\n5/6 Chapter 15 Cell cycle regulation\n5/13 Chapter 15 Cell cycle regulation\n5/20 Chapter 16 Apoptosis\n5/27 Chapter 16 Apoptosis\n6/3 Dragon boat holiday\n6/10 Chapter 17 Cancer-principles and over-view\n6/17 Final examination",
+      "教科書/參考書": "Textbook: Lewin‘s Cells, 4/5th edition.",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "Midterm exam (50％)+Final exam (50％)",
+      "辦公時間": "Wed. 9:00 ~ 12:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎學科 、 進階學科 、 醫藥",
+      "核心能力": [
+        {
+          "能力名稱": "基礎生物專業知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "發掘問題及實驗能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "邏輯分析",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "網路學習及資料蒐集",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "溝通技巧",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "獨立思考與自我學習",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "團隊合作",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "博雅通識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24012",
+    "課號-班別": "LS3001-*",
+    "課程名稱(中文)": "植物生理學",
+    "課程名稱(英文)": "Plant Physiology",
+    "備註": "生物科技及生物多樣性第二專長\n[不開放初選]",
+    "授課教師": "吳少傑\n葉靖輝",
+    "學分": "3",
+    "上課時間": "Thu678",
+    "教室": "S5-112",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "55",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24012&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系。年級:限二年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限理學院學士班。年級:限二年級、三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限輔系-生命科學系、雙主修-生命科學系、學分學程-生科職涯、第二專長-生物多樣性、第二專長-生物科技。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24012&outline=24012&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24012",
+      "課號": "LS3001-*",
+      "授課教師": "吳少傑\n葉靖輝",
+      "課程名稱(中文)": "植物生理學",
+      "課程名稱(英文)": "Plant Physiology",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "“The word ““physiology““ is derived from the Greek words physis (nature) and logos (discourse). Therefore, plant physiology is a discourse about the nature of plants. The topic it contains include how plants use energy of the sun, how they grow and develop, how they respond to their environment, how they react to stress and how they reporduce. In short, plant physiology is to understand how plants function.“",
+      "授課內容": "週次 授課主題 授課老師\n1 Plant Cells, tissues, organs; Water and Plants 吳少傑\n2 Water and Plants 吳少傑\n3 Inorganic nutrients 吳少傑\n4 Photosynthesis: Pigments and light reaction 吳少傑\n5 Photosynthesis: Dark reaction 吳少傑\n6 Signals form sunlight (phytochrom) 吳少傑\n7 The control of flowering 吳少傑\n8 Mid-term exam 吳少傑\n9 Signals and signal transduction 葉靖輝\n10 Embryogenesis 葉靖輝\n11 Vegetative growth (Auxin) 葉靖輝\n12 Organanogenesis (Cytokinin) 葉靖輝\n13 Seed dormancy (ABA) 葉靖輝\n14 Plant Senescence (Ethylene) 葉靖輝\n15 Biotic interactions (Brassinosterooids, Salicylic acid) 葉靖輝\n16 Responses and adaptations to abiotic stress 葉靖輝\n17 Home work 葉靖輝 吳少傑\n18 Home work 葉靖輝 吳少傑",
+      "教科書/參考書": "Plant Physiology and Development, 6th Edition. Taiz L and Zeiger E. Eds., Sinauer Associates.",
+      "自編教材比例": "80",
+      "授課方式": "講授 其他",
+      "評量配分比重": "筆試: 期中考(佔45％)，期末考(45％)，課堂問答與討論(10％)",
+      "辦公時間": "Thur 17:00~20:00",
+      "授課週數": "16",
+      "彈性教學說明": "期末報告",
+      "課程領域": "基礎學科 、 生理 、 農業應用 、 環境生物",
+      "核心能力": [
+        {
+          "能力名稱": "基礎生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "發掘問題及實驗能力",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "邏輯分析",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 其他"
+        },
+        {
+          "能力名稱": "網路學習及資料蒐集",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 其他"
+        },
+        {
+          "能力名稱": "溝通技巧",
+          "強度指數": "(1) 非常低",
+          "評量方式": "出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "獨立思考與自我學習",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "團隊合作",
+          "強度指數": "(1) 非常低",
+          "評量方式": "出席/課堂表現 ， 無"
+        },
+        {
+          "能力名稱": "博雅通識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現 ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24013",
+    "課號-班別": "LS3016-*",
+    "課程名稱(中文)": "海洋生物學",
+    "課程名稱(英文)": "Marine Biology",
+    "備註": "[不開放初選]",
+    "授課教師": "陳盛良",
+    "學分": "2",
+    "上課時間": "Tue78",
+    "教室": "S5-111",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "55",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24013&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限學士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24013&outline=24013&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24013",
+      "課號": "LS3016-*",
+      "授課教師": "陳盛良",
+      "課程名稱(中文)": "海洋生物學",
+      "課程名稱(英文)": "Marine Biology",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "介紹學生認識海洋環境與及生活其中的生物",
+      "授課內容": "“This subject is designed for undergraduate students who are interested in knowing marine organisms and their environment. This subject is an one semester course. Interested students should have basic knowledge in General Biology before they take this subject. Students taking this subject will be introduced with the following topics:\n1.Introduction to the ocean environment\n2.Water, Waves, and tides\n3.Marine Microbes\n4.Seaweeds and plants\n5.Lower Invertebrates\n6.Higer Invertebrates\n7.Marine Fishes\n8.Marine Reptiles and Birds\n9.Mid-term exam\n10.Marine Mammals\n11.Intertidal Communities\n12.Estuaries\n13.Coral Reef Communities\n14.Continental Shelves and Neritic Zone\n15.The Open Sea\n16.Life in the Ocean‘s Depths\n17.Field trip to the seaside\n18.Final examination“",
+      "教科書/參考書": "“Marine Biology, 4th edition 2006, by Peter Castro and Michael E. Huber.\nIntroduction to marine biology, third edition 2010, by Karleskint, Turner, and Small“",
+      "自編教材比例": "20",
+      "授課方式": "講授",
+      "評量配分比重": "Mid-term examination (45％)\nFinal Examination (45％)\nAttendance: (10％)",
+      "辦公時間": "\"WEEKDAYS, 8 am~5 pm\"",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎學科 、 環境生物",
+      "核心能力": [
+        {
+          "能力名稱": "基礎生物專業知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "發掘問題及實驗能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "邏輯分析",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "網路學習及資料蒐集",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "溝通技巧",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "獨立思考與自我學習",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "團隊合作",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "博雅通識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24014",
+    "課號-班別": "LS3018-*",
+    "課程名稱(中文)": "動物生理學",
+    "課程名稱(英文)": "Animal Physiology",
+    "備註": "生物科技及生物多樣性第二專長\n[不開放初選]",
+    "授課教師": "黃佳瑜\n羅月霞",
+    "學分": "4",
+    "上課時間": "Wed34",
+    "教室": "S5-111\nThu34",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "55",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24014&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系。年級:限三年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系。年級:限非三年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限理學院學士班、輔系-生命科學系、雙主修-生命科學系、學分學程-生科職涯、第二專長-生物多樣性、第二專長-生物科技。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24014&outline=24014&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24014",
+      "課號": "LS3018-*",
+      "授課教師": "黃佳瑜\n羅月霞",
+      "課程名稱(中文)": "動物生理學",
+      "課程名稱(英文)": "Animal Physiology",
+      "課程學制": "學士班",
+      "學分": "4",
+      "課程目標": "The main objective of this course is to introduce the functions and the underlying molecular and cellular mechanisms of different physiological systems in our body. The gross and/or detail structures of the tissues and organs involving in each system is also expounded.",
+      "授課內容": "Feb 15/16 The study of body function (1; 黃)\nFeb 22/23 Interactions between cells and the extracellular environment (6; 黃)\nMarch 1/2 Endocrine glands: secretion and action of hormones (11; 黃)\nMarch 8/9 Endocrine glands: secretion and action of hormones and The digestive system (11/18; 黃)\nMarch 15/16 The nervous system: neurons and synapses (7; 黃)\nMarch 22/23 The central nervous system (8; 黃)\nMarch 29/30 The autonomic nervous system (9; 黃)\nApril 5/6 No class\nApril 12/13 mid-exam/ Blood, heart, and circulation (13; 黃)\nApril 19/20 Cardiac output, blood flow, and blood pressure (13; 黃)\nApril 26/27 Cardiac output, blood flow, and blood pressure (14; 黃)\nMay 3/4 Reproduction (20; 黃)\nMay 10/11 Reproduction (20; 黃)\nMay 17/18 Immune system (15; 羅)\nMay 24/25 Respiratory physiology (16; 羅)\nMay 31/June 1 Physiology of the kidney (16/17; 羅)\nJune 7/8 Physiology of the kidney (16/17; 羅)\nJune 14/15 Final examination (羅)",
+      "教科書/參考書": "Stuart Ira Fox. Human Physiology, 15th Edition, McGraw Hill Co.",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "1st exam (ch 1, 6, 11, 18)+ midterm exam ( ch 7,8,9) + 3rd exam (ch13,14,20) + final exam(ch 15, 16, 17) = 92%; Participation/ Attendance/Discussion (8%); Office hours: After 2:00 pm on Monday 1st exam and 3rd exam: arrange schedules for test **Note**: (1)上課時請勿使用筆電、手機等電子產品，違規一次者，上面課堂參與成績分數以扣1分計算之，依此類推。(2)請勿翹課，翹課1次者，上面課堂參與成績分數以扣2分計算之，依此類推。(提醒: 請同學留意一下校方學則內第二篇與『學士班』相關之規定。)",
+      "辦公時間": "星期一下午2:00以後",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎學科 、 生理",
+      "核心能力": [
+        {
+          "能力名稱": "基礎生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "發掘問題及實驗能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "邏輯分析",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "網路學習及資料蒐集",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通技巧",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考與自我學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "團隊合作",
+          "強度指數": "(0) 無",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "博雅通識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24015",
+    "課號-班別": "LS3020-*",
+    "課程名稱(中文)": "動物生理學實驗",
+    "課程名稱(英文)": "Animal Physiology Laboratory",
+    "備註": "輔系、雙主修、及生物科技及生物多樣性第二專長加選者，開學第一週需來上課，以密碼卡加選\n[不開放初選]",
+    "授課教師": "黃佳瑜\n羅月霞",
+    "學分": "1",
+    "上課時間": "Mon5",
+    "教室": "S5-113\nMon67",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24015&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系。年級:限三年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系。年級:限四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限輔系-生命科學系、雙主修-生命科學系、第二專長-生物多樣性、第二專長-生物科技。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "系所:限理學院學士班。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24015&outline=24015&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24015",
+      "課號": "LS3020-*",
+      "授課教師": "黃佳瑜\n羅月霞",
+      "課程名稱(中文)": "動物生理學實驗",
+      "課程名稱(英文)": "Animal Physiology Laboratory",
+      "課程學制": "學士班",
+      "學分": "1",
+      "課程目標": "1 課程目標 此實驗課程配合生理學正課課程內容，使學生在實驗操作過程中更了解動物生理學的基本觀念，並具備照顧及操作實驗動物的能力；此外，配合生理記錄器(PowerLab)及血液生化分析儀的學習與操作，以及期末小組專題研究的練習，加強學生的創造力、整合能力及團隊溝通、討論及組織的能力。",
+      "授課內容": "此實驗課程配合生理學正課課程內容，使學生在實驗操作過程中更了解動物生理學的基本觀念，並具備照顧及操作實驗動物的能力；此外，配合生理記錄器(PowerLab)及血液生化分析儀的學習與操作，以及期末小組專題研究的練習，加強學生的創造力、整合能力及團隊溝通、討論及組織的能力。\n111/02/13 Check-in 課程說明及分組\n111/02/20 人體之反射動作及感覺生理\n111/02/27 228 連假\n111/03/06 細胞膜的滲透性及張力\n111/03/13 Powerlab 一介紹 & VR 虛擬實境設備教學訓練\n111/03/20 肌肉系統：以肌電圖檢視肌肉收縮/ VR 虛擬實境設備教學\n111/03/27 神經系統：眼動圖的測量/ VR 虛擬實境設備教學\n111/04/03 清明連假\n111/04/10 UCAN後測\n111/04/17 顯微觀察血球細胞及血液凝集系統\n111/04/24 企業參訪-國家實驗動物中心\n111/05/01 神經系統：腦電圖的測量(EEG)/ VR 虛擬實境設備教學\n111/05/08 循環系統：人體血壓之測定暨心電圖紀錄 (ECG)\n/ VR 虛擬實境設備教學\n111/05/15 小鼠保定及腹腔注射訓練\n111/05/22 血液生化分析儀教學訓練\n111/05/29 內分泌系統：鏈脲佐菌素影響血糖與胰島素含量\n111/06/05 實驗數據分析\n111/06/12 期末考週",
+      "教科書/參考書": "動物生理學實驗講義",
+      "自編教材比例": "0",
+      "授課方式": "實習/實驗 個別指導",
+      "評量配分比重": "實驗報告佔50%，期末考佔35%，小考+平時成績佔15%",
+      "辦公時間": "Thur 10:00~12:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎學科 、 生理 、 實驗操作",
+      "核心能力": [
+        {
+          "能力名稱": "基礎生物專業知識",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗"
+        },
+        {
+          "能力名稱": "發掘問題及實驗能力",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗"
+        },
+        {
+          "能力名稱": "邏輯分析",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗"
+        },
+        {
+          "能力名稱": "網路學習及資料蒐集",
+          "強度指數": "(3) 普通",
+          "評量方式": "實作/實驗"
+        },
+        {
+          "能力名稱": "溝通技巧",
+          "強度指數": "(3) 普通",
+          "評量方式": "實作/實驗"
+        },
+        {
+          "能力名稱": "獨立思考與自我學習",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗"
+        },
+        {
+          "能力名稱": "團隊合作",
+          "強度指數": "(5) 非常高",
+          "評量方式": "實作/實驗"
+        },
+        {
+          "能力名稱": "博雅通識",
+          "強度指數": "(3) 普通",
+          "評量方式": "實作/實驗"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24016",
+    "課號-班別": "LS3036-*",
+    "課程名稱(中文)": "分子生物學",
+    "課程名稱(英文)": "Molecular Biology",
+    "備註": "生物科技及生物多樣性第二專長\n[不開放初選]",
+    "授課教師": "許斐婷\n粘仲毅",
+    "學分": "2",
+    "上課時間": "Thu56",
+    "教室": "S5-111",
+    "選修別": "必修",
+    "全半年": "全",
+    "人數限制": "55",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24016&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系。年級:限三年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系。年級:限四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限輔系-生命科學系、雙主修-生命科學系、學分學程-生科職涯、第二專長-生物多樣性、第二專長-生物科技。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限理學院學士班。年級:限二年級、三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24016&outline=24016&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24016",
+      "課號": "LS3036-*",
+      "授課教師": "許斐婷\n粘仲毅",
+      "課程名稱(中文)": "分子生物學",
+      "課程名稱(英文)": "Molecular Biology",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "1. 以生物大分子結構與功能探來討生命現象之本質。2. 培養學生從不同角度及合理邏輯探討生命現象。",
+      "授課內容": "Week Topic\n1 Major Shifts in Bacterial Transcription Ch 8\n2 Major Shifts in Bacterial Transcription (Ch 8)\n3 Eukaryotic RNA Polymerases and Their Promoters (Ch 10)\n4 Eukaryotic RNA Polymerases and Their Promoters (Ch 10)\n5 General Transcription Factors in Eukaryotes (Ch 11)\n6 General Transcription Factors in Eukaryotes (Ch 11)\n7 Transcription Activators in Eukaryotes (Ch 12)\n8 Transcription Activators in Eukaryotes (Ch 12)\n9 Chromatin Structure and Its Effects (Ch 13)\n10 Chromatin Structure and Its Effects (Ch 13)\n11 RNA Processing I: Splicing (Ch 14)\n12 RNA Processing I: Splicing (Ch 14)\n13 RNA Processing II: Capping and Polyadenylation (Ch 15)\n14 RNA Processing II: Capping and Polyadenylation (Ch 15)\n15 Other RNA Processing Events and Post-Transcriptional\nControl of Gene Expression(Ch 16)\n16 Other RNA Processing Events and Post-Transcriptional\nControl of Gene Expression (Ch 16)",
+      "教科書/參考書": "Molecular Biology, Fifth Edition; Robert F. Weaver;University of Kansas; McGraw-Hill",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "Midterm 30％ (each) final exam 40％",
+      "辦公時間": "Wed 11:00~12:00",
+      "授課週數": "16",
+      "彈性教學說明": "paper reading and review",
+      "課程領域": "基礎學科 、 進階學科 、 生物科技",
+      "核心能力": [
+        {
+          "能力名稱": "基礎生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "發掘問題及實驗能力",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "邏輯分析",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "網路學習及資料蒐集",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "溝通技巧",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "獨立思考與自我學習",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "團隊合作",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "博雅通識",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24017",
+    "課號-班別": "LS4002-A",
+    "課程名稱(中文)": "書報討論Ⅱ",
+    "課程名稱(英文)": "Seminar Ⅱ",
+    "備註": "[不開放初選]",
+    "授課教師": "陳宗祺",
+    "學分": "1",
+    "上課時間": "Tue56",
+    "教室": "S5-111",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24017&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系。年級:限四年級。學號:限單號。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24017&outline=24017&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24017",
+      "課號": "LS4002-A",
+      "授課教師": "陳宗祺",
+      "課程名稱(中文)": "書報討論Ⅱ",
+      "課程名稱(英文)": "Seminar Ⅱ",
+      "課程學制": "學士班",
+      "學分": "1",
+      "課程目標": "本課程旨在訓練學生文獻之搜集及閱讀、整理與報告之能力、選修者必須選擇一至數篇最新發表之生命科學文章，課前仔細研讀、歸納整理 。本課程以訓練大四學生研讀及報告科學性文章(生命科學)的能力為主；課程內容以生命科學相關文獻為主，從文獻收集、管理開始，進而研讀、摘要文獻重點，最後訓練學生如何準備及作口頭報告。課程進行方式除老師講課外，主要由修課學生進行口頭報告、及討論。",
+      "授課內容": "1. 學期準備\n2. 口頭報告技巧\n3. 科學期刊與文獻性質\n4. 科學文獻報告與討論\n5. 科學文獻報告與討論\n6. 科學文獻報告與討論\n7. 科學文獻報告與討論\n8. 科學文獻報告與討論\n9. 科學文獻報告與討論\n10. 科學文獻報告與討論\n11. 科學文獻報告與討論\n12. 科學文獻報告與討論\n13. 科學文獻報告與討論\n14. 科學文獻報告與討論\n15. 科學文獻報告與討論\n16. 科學文獻報告與討論",
+      "教科書/參考書": "各期刊文獻、Nature、Science",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "口頭報告 60％ 問題與討論 30％ 摘要與反思10％",
+      "辦公時間": "星期一14:00-17:00",
+      "授課週數": "16",
+      "彈性教學說明": "課外資料蒐集、整理與口頭報告準備",
+      "課程領域": "進階學科 、 微生物與免疫 、 生物科技 、 生態演化 、 生物資訊 、 神經生物",
+      "核心能力": [
+        {
+          "能力名稱": "基礎生物專業知識",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "發掘問題及實驗能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "邏輯分析",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "網路學習及資料蒐集",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通技巧",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考與自我學習",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "團隊合作",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "博雅通識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24018",
+    "課號-班別": "LS4002-B",
+    "課程名稱(中文)": "書報討論Ⅱ",
+    "課程名稱(英文)": "Seminar Ⅱ",
+    "備註": "[不開放初選]",
+    "授課教師": "羅月霞",
+    "學分": "1",
+    "上課時間": "Tue56",
+    "教室": "S5-112",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24018&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系。年級:限四年級。學號:限雙號。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24018&outline=24018&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24018",
+      "課號": "LS4002-B",
+      "授課教師": "羅月霞",
+      "課程名稱(中文)": "書報討論Ⅱ",
+      "課程名稱(英文)": "Seminar Ⅱ",
+      "課程學制": "學士班",
+      "學分": "1",
+      "課程目標": "一般教科書或者講義內容是由他人的研究成果匯集整理而成的知識，除了課堂上在學到這些必要的知識外，培養學生建立自己的探索能力，能自動地進行自我學習，進而將自己的知識與能力擴大是相當重要的。書報討論課程的設計就是希望能培養學生這樣的能力。這門課著重培養學生以下的能力：\n（１）同學能探索自己的興趣，進而決定主題，蒐集資料，培養閱讀科學報告的能力\n（２）資料整合和口頭表達的能力\n（３）投影片的製作\n（４）學習研究如何著手和執行",
+      "授課內容": "每週由三位同學上台進行口頭報告２０～２５分鐘，而後與同學進行提問與回答，對報告者的議題進行充份的討論，討論時間１０～１０分鐘。本學期每位同學需進行兩次上台報告，課堂上無法回答的問題，課後找尋相關資料以書面或口頭的方式回覆。",
+      "教科書/參考書": "\"1. Journal of Biological Chemistry 2. Nature 3. Science 4. Proceed ings of the National Academy of Science USA 5. EMBO Journal 6. Genes and Dev elopment\"",
+      "自編教材比例": "0",
+      "授課方式": "研討 個別指導",
+      "評量配分比重": "\"1.口頭報告70% (包含paper與PPT slide部分) 2.課堂參與30%\"",
+      "辦公時間": "Thursday 13:00-15:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎學科",
+      "核心能力": [
+        {
+          "能力名稱": "基礎生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "發掘問題及實驗能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "邏輯分析",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "網路學習及資料蒐集",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "溝通技巧",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "獨立思考與自我學習",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "團隊合作",
+          "強度指數": "(2) 低",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "博雅通識",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 學習檔案評量"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24019",
+    "課號-班別": "LS4005-A",
+    "課程名稱(中文)": "專題研究B",
+    "課程名稱(英文)": "Thesis Research B",
+    "備註": "1.不參加初選，全部使用密碼卡2.限生科系大二、大三及大四3.理學院學士班大三以上4.雙主修5.必須先填本系專題研究申請表才可拿密碼卡6.必須參加本系公用儀器講習以及學校環安講習，講習時間另行公布。\n[不開放初選]",
+    "授課教師": "陳宗祺\n黃佳瑜\n王健家\n葉淑丹",
+    "學分": "2",
+    "上課時間": "MonZ",
+    "教室": "S5-214\nTueZ",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24019&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限理學院學士班。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限雙主修-生命科學系。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24019&outline=24019&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24019",
+      "課號": "LS4005-A",
+      "授課教師": "陳宗祺\n黃佳瑜\n王健家\n葉淑丹",
+      "課程名稱(中文)": "專題研究B",
+      "課程名稱(英文)": "Thesis Research B",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "文獻與專題報告",
+      "授課內容": "1. Introduction\n2. Seminar-1\n3. Seminar-2\n4. Seminar-3\n5. Seminar-4\n6. Seminar-5\n7. Seminar-6\n8. midterm\n9. Seminar-7\n10. Seminar-8\n11. Seminar-9\n12. Seminar-10\n13. Seminar-11\n14. Seminar-12\n15. Seminar-13\n16. Seminar-14\n17. self-learning-1\n18. self-learning-2",
+      "教科書/參考書": "根據同學自選文獻",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討",
+      "評量配分比重": "出席20％問題20％報告+回答80％",
+      "辦公時間": "週二 09:00-12:00",
+      "授課週數": "16",
+      "彈性教學說明": "self-learning",
+      "課程領域": "基礎學科 、 生理 、 微生物與免疫 、 生物科技 、 醫藥",
+      "核心能力": [
+        {
+          "能力名稱": "基礎生物專業知識",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "發掘問題及實驗能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "邏輯分析",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "網路學習及資料蒐集",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "溝通技巧",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "獨立思考與自我學習",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "團隊合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "博雅通識",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24020",
+    "課號-班別": "LS4005-B",
+    "課程名稱(中文)": "專題研究B",
+    "課程名稱(英文)": "Thesis Research B",
+    "備註": "1.不參加初選，全部使用密碼卡2.限生科系大二、大三及大四3.理學院學士班大三以上4.雙主修5.必須先填本系專題研究申請表才可拿密碼卡6.必須參加本系公用儀器講習以及學校環安講習，講習時間另行公布。\n[不開放初選]",
+    "授課教師": "劉阜果\n吳少傑\n范世榮\n陳盛良\n粘仲毅",
+    "學分": "2",
+    "上課時間": "MonZ",
+    "教室": "S5-203\nTueZ",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24020&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限理學院學士班。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限雙主修-生命科學系。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24020&outline=24020&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24020",
+      "課號": "LS4005-B",
+      "授課教師": "劉阜果\n吳少傑\n范世榮\n陳盛良\n粘仲毅",
+      "課程名稱(中文)": "專題研究B",
+      "課程名稱(英文)": "Thesis Research B",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "文獻與專題報告",
+      "授課內容": "1. Introduction\n2. Seminar-1\n3. Seminar-2\n4. Seminar-3\n5. Seminar-4\n6. Seminar-5\n7. Seminar-6\n8. midterm\n9. Seminar-7\n10. Seminar-8\n11. Seminar-9\n12. Seminar-10\n13. Seminar-11\n14. Seminar-12\n15. Seminar-13\n16. Seminar-14\n17. self-learning-1\n18. self-learning-2",
+      "教科書/參考書": "根據同學自選文獻",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討",
+      "評量配分比重": "出席20％問題20％報告+回答80％",
+      "辦公時間": "週二 09:00-12:00",
+      "授課週數": "16",
+      "彈性教學說明": "self-learning",
+      "課程領域": "基礎學科 、 生理 、 微生物與免疫 、 生物科技 、 醫藥 、 神經生物",
+      "核心能力": [
+        {
+          "能力名稱": "基礎生物專業知識",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "發掘問題及實驗能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "邏輯分析",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "網路學習及資料蒐集",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "溝通技巧",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "獨立思考與自我學習",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "團隊合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "博雅通識",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24021",
+    "課號-班別": "LS4005-C",
+    "課程名稱(中文)": "專題研究B",
+    "課程名稱(英文)": "Thesis Research B",
+    "備註": "1.不參加初選，全部使用密碼卡2.限生科系大二、大三及大四3.理學院學士班大三以上4.雙主修5.必須先填本系專題研究申請表才可拿密碼卡6.必須參加本系公用儀器講習以及學校環安講習，講習時間另行公布。\n[不開放初選]",
+    "授課教師": "許斐婷\n葉靖輝\n吳沛翊\n羅月霞",
+    "學分": "2",
+    "上課時間": "MonZ",
+    "教室": "S5-113\nTueZ",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24021&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限理學院學士班。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限雙主修-生命科學系。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24021&outline=24021&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24021",
+      "課號": "LS4005-C",
+      "授課教師": "許斐婷\n葉靖輝\n吳沛翊\n羅月霞",
+      "課程名稱(中文)": "專題研究B",
+      "課程名稱(英文)": "Thesis Research B",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "文獻與專題報告",
+      "授課內容": "1. Introduction\n2. Seminar-1\n3. Seminar-2\n4. Seminar-3\n5. Seminar-4\n6. Seminar-5\n7. Seminar-6\n8. midterm\n9. Seminar-7\n10. Seminar-8\n11. Seminar-9\n12. Seminar-10\n13. Seminar-11\n14. Seminar-12\n15. Seminar-13\n16. Seminar-14\n17. self-learning-1\n18. self-learning-2",
+      "教科書/參考書": "根據同學自選文獻",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討",
+      "評量配分比重": "出席20％問題20％報告+回答80％",
+      "辦公時間": "週二 09:00-12:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎學科 、 生物科技 、 醫藥",
+      "核心能力": [
+        {
+          "能力名稱": "基礎生物專業知識",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "發掘問題及實驗能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "邏輯分析",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "網路學習及資料蒐集",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "溝通技巧",
+          "強度指數": "(4) 高",
+          "評量方式": "自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "獨立思考與自我學習",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "團隊合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "博雅通識",
+          "強度指數": "(3) 普通",
+          "評量方式": "無"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24022",
+    "課號-班別": "LS5016-*",
+    "課程名稱(中文)": "分子演化及親源演化關係",
+    "課程名稱(英文)": "Molecular Evolution and Phylogenetics",
+    "備註": "生物多樣性第二專長\n[不開放初選]",
+    "授課教師": "劉阜果",
+    "學分": "3",
+    "上課時間": "Fri234",
+    "教室": "I-202",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24022&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限理學院學士班。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限生命科學系碩士班、生命科學系博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24022&outline=24022&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24022",
+      "課號": "LS5016-*",
+      "授課教師": "劉阜果",
+      "課程名稱(中文)": "分子演化及親源演化關係",
+      "課程名稱(英文)": "Molecular Evolution and Phylogenetics",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "“The aim of the course is to provide the student with broad knowledge in the field of molecular evolution (i.e., the evolution of DNA, RNA, and proteins), and with in-depth knowledge of model-based methods for phylogenetic tree reconstruction and hypothesis testing in an evolutionary context. Although the study of molecular evolution does require a certain level of mathematical understanding, the basic concepts are fairly easy to understand.“",
+      "授課內容": "1. Data and information resources.\n2. Hand-on section: Internet Data Base ＆ MEGA or DnaSP.\n3. Hand-on section: Internet Data Base ＆ MEGA or DnaSP.\n4. Nucleic acid, amino acid and protein variation.\n5. Phylogenetic analysis I: Distance, Parsimony, and Maximum Likelihood.\n6. Hand-on section: Analysis Software\n7. Hand-on section: Analysis Software\n8. Phylogenetic analysis II: Bayesian and Coalescence.\n9. The nature of the common ancestor.\n10. Natural selection.\n11. Models of Molecular evolution.\n12. Applications of Molecular Phylogenetics.\n13. Molecular evolution rate and molecular clock.\n14. Molecular evolution at population, species or higher level.\n15. Evolution in Gene regulation and expression.\n16. Microarray and other related modern technology in molecular evolution.\n17. Final oral report.\n18. Final oral report.",
+      "教科書/參考書": "“Li, W.-H., and D. Graur. 2000. Fundamentals of molecular evolution. 2nd Edition, Sinauer Associates, Massachussetts. Page, R. and E. Holmes. 1998. Molecular evolution: a phylogenetic approach. Blackwell, London.“",
+      "自編教材比例": "100",
+      "授課方式": "講授 實習/實驗 個別指導",
+      "評量配分比重": "“課後作業 (70％) 期末報告 (30％)“",
+      "辦公時間": "Monday 13:00~15:00 or e-mail to make an appointment at liur@cc.nuc.edu.tw",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎學科 、 進階學科 、 生態演化 、 生物資訊 、 實驗操作",
+      "核心能力": [
+        {
+          "能力名稱": "高等生物專業知識",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創新及整合研究",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "專業寫作與表達",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24023",
+    "課號-班別": "LS5024-*",
+    "課程名稱(中文)": "發育生物學",
+    "課程名稱(英文)": "Developmental Biology",
+    "備註": "[不開放初選]",
+    "授課教師": "陳盛良",
+    "學分": "2",
+    "上課時間": "Thu78",
+    "教室": "S5-105",
+    "選修別": "選修",
+    "全半年": "全",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24023&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系碩士班、生命科學系博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24023&outline=24023&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24023",
+      "課號": "LS5024-*",
+      "授課教師": "陳盛良",
+      "課程名稱(中文)": "發育生物學",
+      "課程名稱(英文)": "Developmental Biology",
+      "課程學制": "碩博同修",
+      "學分": "2",
+      "課程目標": "介紹學生認識模式生物的發育過程",
+      "授課內容": "“Developmental Biology\nThis subject is designed for undergraduate and postgraduate students who have no previous training in embryology and developmental biology related fields. This subject is a one year course with two credits for each semester. Interested students should have basic knowledge in Cell Biology, Biochemistry, and Molecular Biology, before they take this subject. Students taking this subject will be introduced with the early development of four model animals, including fruit fly, zebra fish, nematode, and mouse/human. The creation of organisms by the fertilization of sperms and eggs will also be discussed.\nText book: Developmental Biology, 8th edition 2006, by Scott F. Gilbert\nThe application of these knowledge in biomedical research and clinical therapy will be discussed at the end of each chapter.\nThe following is the syllabus for each semester:\nScheduals of Developmental Biology(I)\nIntroduction\nExperimental Embryology\nFertilization\nSex-determination\nThe saga of the germ line\nEarly development in invertebrates-Sea Urchin\nEarly development in invertebrates-C. elegans\nThe genetics of axis specification in Drosophila\nScheduals of Developmental Biology(II)\nEarly development in amphibians\nThe early development of vertebrates: Fish\nThe early development of vertebrates: Birds\nThe early development of vertebrates: Mammals\nThe emergence of the ectoderm-CNS, EYE. and neural crest cells\nParaxial mesoderm: the derivatives of somites\nIntermediate mesoderm: the urogenital system\nLateral plate mesoderm: the vascular system/blood\nThe development of endoderm derivatives\nMetamorphosis\nRegeneration and aging“",
+      "教科書/參考書": "“Developmental Biology, 8th edition 2006, by Scott F. Gilbert\nAnd\nPrinciples of Development: Lewis Wolpert\nPrinciples of Developmental Biology: F. H. Wilt ＆ S. C.Hake“",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "Written tests including mid-term (50％) and final(50％) tests.",
+      "辦公時間": "week days 0800-1800",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "醫藥",
+      "核心能力": [
+        {
+          "能力名稱": "高等生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "創新及整合研究",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "專業寫作與表達",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24024",
+    "課號-班別": "LS5038-*",
+    "課程名稱(中文)": "癌症生物學",
+    "課程名稱(英文)": "Cancer Biology",
+    "備註": "[不開放初選]",
+    "授課教師": "褚志斌\n李岳倫",
+    "學分": "3",
+    "上課時間": "Thu678",
+    "教室": "S5-204",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24024&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系碩士班、生命科學系博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限學士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24024&outline=24024&semester=1142",
+    "課程綱要": {
+      "授課語言": "請選擇",
+      "課程目標": "教導學生學習癌症研究的基本概念、臨床現況、治療選擇與最新發展的內容",
+      "授課內容": "周次 Topic 授課老師 /主播地點\n1 2/26 Introduction 褚志斌 /中央大學\n2 3/5 Introduction: the nature of cancer 褚志斌 /中央大學\n3 3/12 Tumor suppressor & Oncogene 褚志斌 /中央大學\n4 3/19 Invasion and metastasis 陳雅雯 /國衛院\n5 3/26 Genomic instability and cell cycle control in cancer 徐欣伶 /中央大學\n6 4/2 校際活動停課\n7 4/9 Receptor Tyrosine Kinase and cancer 李家惠 /國衛院\n8 4/16 Midterm Exam (期中考/期中報告繳交)\n9 4/23 Cancer Metabolism 郭呈欽 /國衛院\n10 4/30 NCU-NHRI Symposium 國衛院\n11 5/7 Cancer cell plasticity and EMT for immune evasion 林文傑 /中央大學\n12 5/14 Resistance of cancer therapy in the tumor microenvironment 張文祥 /中央大學\n13 5/21 Heterotypic interaction and angiogenesis 李岳倫 /中央大學\n14 5/28 Tumor immunology and immunotherapy 蘇郁文 /中央大學\n15 6/4 The evolution of cancer therapy 紀雅惠 /中央大學\n16 6/11 Bioinformatics in cancer research 江士昇 /中央大學\n17 6/18 Flexible course 學生自主學習\n18 6/25 Flexible course 學生自主學習\n說明:\n上課地點：中央大學科學五館 204會議室 & 國衛院行政大樓 B1 第 7 會議室",
+      "評量配分比重": "出席40%、期中考30%、期末考30%",
+      "核心能力": [
+        {
+          "能力名稱": "高等生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "創新及整合研究",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "專業寫作與表達",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24025",
+    "課號-班別": "LS5040-*",
+    "課程名稱(中文)": "細胞分子生物學",
+    "課程名稱(英文)": "Molecular Cell Biology",
+    "備註": "生醫組為三選二，植物暨微生物環境生物學組為四選一\n[不開放初選]",
+    "授課教師": "范世榮\n葉靖輝\n陳盛良\n吳沛翊\n羅月霞",
+    "學分": "3",
+    "上課時間": "Mon567",
+    "教室": "S5-111",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24025&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系碩士班、生命科學系博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24025&outline=24025&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24025",
+      "課號": "LS5040-*",
+      "授課教師": "范世榮\n葉靖輝\n陳盛良\n吳沛翊\n羅月霞",
+      "課程名稱(中文)": "細胞分子生物學",
+      "課程名稱(英文)": "Molecular Cell Biology",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "此課程主旨在以分子的層次解說細胞的生命現象及功能。課程目標：藉整合生命科學相關的生物化學、分子生物學、細胞學、遺傳學、生理學等基礎知識，以細胞的角度、分子的層次更深入探討生命現象及功能 ，同時增加學生在生命科學領域專業知識。",
+      "授課內容": "The Syllabus of Molecular Cell Biology\nWeek Date Topics Instructors\n1 2/23 Chapter 13 Intracellular vesicular traffic SJ Fan\n2 3/02 Chapter 14 Energy conversion: mitochondria and chloroplasts CH Yeh\n3 3/09 Chapter 14 Energy conversion: mitochondria and chloroplasts CH Yeh\n4 3/16 Chapter 15 mechanisms of cell communication CY Huang\n5 3/23 Chapter 15 mechanisms of cell communication CY Huang\n6 3/30 Chapter 16 Cytoskeleton SJ Fan\n6 3/30 The first examination (chapter 13, 14, 15)\n7 4/06 National holiday\n8 4/13 Chapter 19 Cell junctions, cell adhesion, and the extracellular matrix SL CHEN\n9 4/20 Chapter 17 The cell cycle PY WU\n10 4/27 Chapter 17 The cell cycle PY WU\n11 5/04 Chapter 18 Apoptosis PY WU\n12 5/11 Chapter 20 Cancer PY WU\n12 5/11 The second examination (chapter 16, 17, 18, 19)\n13 5/18 Chapter 24 Pathogens, infection, and innate immunity YH Luo\n14 5/25 Chapter 24 Pathogens, infection, and innate immunity / Chapter 25 The adaptive immunity YH Luo\n15 6/01 Chapter 25 The adaptive immunity YH Luo\n16 6/08 Final examination (chapter 20, 24, 25)",
+      "教科書/參考書": "Molecular Biology of the Cell, eds. Alberts et al., 5th ed.",
+      "自編教材比例": "10",
+      "授課方式": "講授",
+      "評量配分比重": "Attendance/Performance, Assignments, Tests and Three written exams 100％",
+      "辦公時間": "Tuesday 13:00-14:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎學科 、 進階學科",
+      "核心能力": [
+        {
+          "能力名稱": "高等生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "創新及整合研究",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "專業寫作與表達",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現 ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24026",
+    "課號-班別": "LS5055-*",
+    "課程名稱(中文)": "進階生物演化",
+    "課程名稱(英文)": "Advanced Evolutionary Biology",
+    "備註": "[不開放初選]",
+    "授課教師": "葉淑丹",
+    "學分": "3",
+    "上課時間": "Tue789",
+    "教室": "S5-106",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24026&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系碩士班、生命科學系博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24026&outline=24026&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24026",
+      "課號": "LS5055-*",
+      "授課教師": "葉淑丹",
+      "課程名稱(中文)": "進階生物演化",
+      "課程名稱(英文)": "Advanced Evolutionary Biology",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "Nothing in biology makes sense, except in the light of evolution—Theodosius Dobzhansky, 1973In this course, the students will learn1. The basic concepts and theories in science and evolutionary biology2. The research and evidence to support theories of evolutionary biology3. The application of evolutionary biology in human society4. Communication in English\"",
+      "授課內容": "1History and A Case for Evolutionary Thinking 2Mid-Autumn Festival3The Pattern of Evolution4Evolution by Natural Selection5National Holiday6Estimating Evolutionary Trees7Variation Among IndividualsMechanisms of Evolutionary Change8Mendelian Genetics in Populations I9Mendelian Genetics in Populations II 10Evolution at Multiple Loci: Linkage and Sex11Break (teach GB)12Evolution at Multiple Loci: Quantitative GeneticsAdaptation13Studying Adaptation14Sexual Selection 15Genome Evolution and the Molecular Basis of AdaptationThe History of Life16Mechanisms of Speciation",
+      "教科書/參考書": "Textbook: Herron, J.C. and S. Freeman. 2015. Evolutionary Analysis (5th edition). Pearson Education. Inc. ISBN 1-292-06127-8References: Futuyma, D. J. 2013. Evolution (3rd edition). Sinauer Associates Inc. ISBN 978-1-60535-115-5Other references: Scientific articles\"",
+      "自編教材比例": "50",
+      "授課方式": "講授 個別指導 其他",
+      "評量配分比重": "1. Assignments: 60% 2. In-class Discussion and Attendance: 40%",
+      "辦公時間": "星期二下午3:00-5:00",
+      "授課週數": "16",
+      "彈性教學說明": "線上自主學習和參訪",
+      "課程領域": "基礎學科 、 進階學科 、 農業應用 、 環境生物 、 生態演化 、 生物資訊",
+      "核心能力": [
+        {
+          "能力名稱": "高等生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創新及整合研究",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "專業寫作與表達",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24027",
+    "課號-班別": "LS5070-*",
+    "課程名稱(中文)": "生物大數據分析",
+    "課程名稱(英文)": "Big Data Processing in Biology",
+    "備註": "生物科技第二專長\n[不開放初選]",
+    "授課教師": "粘仲毅",
+    "學分": "3",
+    "上課時間": "Thu234",
+    "教室": "I-002",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24027&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系碩士班、生命科學系博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限第二專長-生物科技。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24027&outline=24027&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24027",
+      "課號": "LS5070-*",
+      "授課教師": "粘仲毅",
+      "課程名稱(中文)": "生物大數據分析",
+      "課程名稱(英文)": "Big Data Processing in Biology",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "本課程的目標是教導學生實際操做分析生物學上的大數據。學生將可學習大數分析之基本理論和所需的統計概念與電腦程式的編成。並運用所學之理論與技巧分析不同種類的高產量的基因體之數據。",
+      "授課內容": "“模組一：基因體注解與微陣列數據\n第一週 基因體注解概述\n第二週 基因體數據概述\n第三週 數據去背景與正常化\n第四週 全基因體瓦片陣列數據\n第五週 差異性表現分析\n第六週 主成分分析\n模組二：次世代定序數據\n第七週 次世代定序數據與品質控制\n第八週 次世代定序數據之基因體定位\n第九週 期中考\n第十週 RNA-seq 之數據分析\n第十一週 差異性表現分析\n第十二週 基因本體分析\n第十三週 染色質免疫沈澱概述\n第十四週 轉錄因子結合區域分析\n第十五週 轉錄因子結合區域整合分析\n第十六週 期末上台報告",
+      "教科書/參考書": "“R Programming Manual http://manuals.bioinformatics.ucr.edu/home/programming-in-r MatLab Programming Manual MACS manual Samtools manual Bowtie manual“",
+      "自編教材比例": "100",
+      "授課方式": "講授 實習/實驗 個別指導 其他",
+      "評量配分比重": "“期中考 Midterm 1: 25％ 期末報告 Final Project Presentations: 40％ 作業 Homework: 10％ 參與度 Participation: 25％“",
+      "辦公時間": "週三 13:00 ~ 14:00",
+      "授課週數": "16",
+      "彈性教學說明": "期未專題之討論與修改",
+      "課程領域": "基礎學科 、 進階學科 、 生物科技 、 生物資訊 、 實驗操作",
+      "核心能力": [
+        {
+          "能力名稱": "高等生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創新及整合研究",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "專業寫作與表達",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24028",
+    "課號-班別": "LS5073-*",
+    "課程名稱(中文)": "茶作基礎概論（二）",
+    "課程名稱(英文)": "Basics of Tea Processing Ⅱ",
+    "備註": "已修過LS5065初級茶葉感官品評、LS5088茶作學的同學，請勿再修此門課\n[不開放初選]",
+    "授課教師": "胡智益\n楊美珠",
+    "學分": "3",
+    "上課時間": "Fri678",
+    "教室": "S5-113",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "45",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24028&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系、生命科學系碩士班、生命科學系博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限學分學程-生科職涯。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限學士班、碩士班、博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24028&outline=24028&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24028",
+      "課號": "LS5073-*",
+      "授課教師": "胡智益\n楊美珠",
+      "課程名稱(中文)": "茶作基礎概論（二）",
+      "課程名稱(英文)": "Basics of Tea Processing Ⅱ",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "本課程延續上學期所開設的茶作基礎概論，課程大綱從茶葉起源與發展，其次探討基礎茶園栽培管理方法與臺灣主要茶類製造方法，接續瞭解臺灣茶類的品質特色，最後探討茶葉感官品評基本原理與操作，除了可讓同學認識臺灣茶外，也具備有對臺灣茶類別基礎辨識與透過品評初步辨別茶葉好壞的能力。課程結束後，若有興趣及意願，可報考由農業部茶及飲料作物改良場規劃的感官品評初級能力鑑定測驗（含學科與術科）。",
+      "授課內容": "1 228連假\n2 課程簡介/基礎泡茶理論與原則\n3 臺灣主要茶區茶葉品質特色I\n4 臺灣主要茶區茶葉品質特色II\n5 臺灣主要茶區茶葉品質特色III\n6 清明連假\n7 臺灣主要茶區茶葉品質特色IV\n8 茶葉多元化產品開發/期中考\n9 茶改場參訪\n10 51勞動節\n11 茶業產業鏈與各項分類\n12 茶業起源與發展\n13 臺灣茶樹品種演進、育種與繁殖\n14 茶樹田間栽培管理概論\n15 茶葉選購與品種鑑定技術與產地鑑別技術/期末個人報告繳交期限\n16 期末分組報告",
+      "教科書/參考書": "1.課程講義 2.臺灣茶葉感官品評實作手冊，茶及飲料作物改良場發行，五南出版社出版。 3.生態茶園有機友善栽培管理手冊，茶業改良場發行，五南出版社出版。 4.臺灣製茶學，茶及飲料作物改良場發行，五南出版社出版。 5.臺灣茶作學，茶及飲料作物改良場發行，五南出版社出版。",
+      "自編教材比例": "100",
+      "授課方式": "講授 其他",
+      "評量配分比重": "期中成績50％+期末成績50％。 期末成績：書面35％、分組報告35％，課堂實作或討論30％。",
+      "辦公時間": "星期五下午",
+      "授課週數": "16",
+      "彈性教學說明": "同學可利用最後2週進行茶葉消費市場實際訪查與驗證所學。",
+      "課程領域": "基礎學科 、 進階學科 、 生理 、 農業應用",
+      "核心能力": [
+        {
+          "能力名稱": "高等生物專業知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "創新及整合研究",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "專業寫作與表達",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24029",
+    "課號-班別": "LS5090-*",
+    "課程名稱(中文)": "生命與生活",
+    "課程名稱(英文)": "Life and living",
+    "備註": "[不開放初選]",
+    "授課教師": "吳少傑",
+    "學分": "2",
+    "上課時間": "Mon78",
+    "教室": "S5-113",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "30",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24029&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系碩士班、生命科學系博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24029&outline=24029&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24029",
+      "課號": "LS5090-*",
+      "授課教師": "吳少傑",
+      "課程名稱(中文)": "生命與生活",
+      "課程名稱(英文)": "Life and living",
+      "課程學制": "碩博同修",
+      "學分": "2",
+      "課程目標": "「生命」與「生活」本質上是兩個不同的主題。「生命」可以用科學去驗證，「生活」則需要融合知識與經驗去理解。就讀生命科學系的學生，對於生活的理解，在知識上具備了優勢。本課程的目標，在於啟發學生將所學的知識，結合經驗，用於對生活的理解。以期年輕學子，可以更真實的面對人生這個大哉問，也讓自己的人生更豐富精彩。",
+      "授課內容": "週次 內容\n1 人類大腦的演化 : 三重腦 (triune brain) 假說\n2 人、植物人、腦死之人\n3 時間與生命\n4 生命的有限性賦予生活的意義\n5 MBTI 性情分類\n6 問世間，情為何物？\n7 自由與命運—行動的自由與思考的自由\n8 笛卡爾的「我思故我在」vs存在主義的「我選擇故我在」\n9 期中考\n10 意向性、意志、行動\n11 焦慮vs 恐懼：焦慮的生物學詮釋\n12 創造力、智力與焦慮\n13 「人性」的定義\n14 論社會科學應以生物學為對手學科\n15 利他主義的生物學含意\n16 彈性授課\n17 彈性授課\n18 期末考",
+      "教科書/參考書": "書名：On Human Nature; 作者：Edward O. Wilson. ISBN: 9780553129434 書名：A General Theory of Love; 作者：Thomas Lewis, Richard Lannon,Fari Amini ISBN: 9780375503894 書名：Freedom and Destiny; 作者：Rollo May. ISBN: 9780393014778 書名：The Meaning of Anxiety; 作者：Rollo May. ISBN: 9780393350876 書名：Love and Will; 作者：Rollo May. ISBN: 9780393330052",
+      "自編教材比例": "100",
+      "授課方式": "講授 個別指導 其他",
+      "評量配分比重": "出席互動討論 20％ 期中報告(書面或口頭) 40％ 期末報告(書面或口頭) 40％",
+      "辦公時間": "週五15:00~17:00",
+      "授課週數": "16",
+      "彈性教學說明": "撰寫指定題目之期末報告",
+      "課程領域": "基礎學科 、 生理 、 神經生物",
+      "核心能力": [
+        {
+          "能力名稱": "高等生物專業知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "創新及整合研究",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "專業寫作與表達",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24030",
+    "課號-班別": "LS5094-*",
+    "課程名稱(中文)": "新穎替代測試方法(NAMs)於法規安全性評估之應用",
+    "課程名稱(英文)": "Using New Approach Methodologies (NAMs) in Regulatory Safety Assessment",
+    "備註": "[不開放初選]",
+    "授課教師": "鄭獻仁\n羅月霞",
+    "學分": "2",
+    "上課時間": "Wed78",
+    "教室": "S5-101",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "60",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24030&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限學士班。學院:限生醫理工學院。年級:限二年級、三年級、四年級。"
+        },
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。學院:限生醫理工學院。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限學士班。學院:限理學院。年級:限二年級、三年級、四年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限碩士班、博士班。學院:限理學院。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限學士班、碩士班、博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24030&outline=24030&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24030",
+      "課號": "LS5094-*",
+      "授課教師": "鄭獻仁\n羅月霞",
+      "課程名稱(中文)": "新穎替代測試方法(NAMs)於法規安全性評估之應用",
+      "課程名稱(英文)": "Using New Approach Methodologies (NAMs) in Regulatory Safety Assessment",
+      "課程學制": "碩博同修",
+      "學分": "2",
+      "課程目標": "1. 理解3Rs理念，符合動物福祉與倫理進行減少動物試驗 Understanding the 3R (Reduction, Refinement and Replacement) concept for more ethical use of animals in testing. 2. 認識安全性評估相關法規和新穎替代測試方法學(NAMs) Comprehensive studies on the regulations and development of new approach methodologies. 3. 學習毒性測試方法(OECD測試規範) Learning routine testing methods (with OECD testing guidelines) for toxicological and ecotoxicological endpoints.",
+      "授課內容": "1. 課程介紹 (鄭獻仁副研究員-國家實驗研究院 國家生物模式中心 ＆ 羅月霞副教授-國立中央大學生命科學系)\n2. 新穎測試方法、法規安全評估與OECD測試規範 (鄭獻仁副研究員-國家實驗研究院 國家生物模式中心)\n3. OECD測試規範：皮膚刺激/腐蝕與光毒性 (鄭獻仁副研究員-國家實驗研究院 國家生物模式中心)\n4. OECD測試規範：眼睛刺激和嚴重眼損害 (鄭獻仁副研究員-國家實驗研究院 國家生物模式中心)\n5. OECD測試規範：皮膚致敏 (王佳琪 教授 台灣大學獸醫專業學院)\n6. OECD測試規範：基因毒性 (林英琦 副教授 高雄醫學大學毒理學碩/博士學程)\n7. [校外參訪] 科技如何守護生活：解密日常用品背後的科技檢測 (劉錦誠博士 SGS化學實驗中心)\n8. 期中分組報告/學習評量\n9. 新穎替代方法於「化學品」安全評估的推展與應用 (崔君至 博士/高級環境技術師 環境部化學物質管理署)\n10. 新穎替代方法於「農藥」安全評估的推展與應用 (廖俊麟副研究員-農業部 農業藥物試驗所)\n11. 新穎替代方法於「化妝品」安全評估的推展與應用 (江秀梅 教授/系主任-中國醫藥大學 藥用化妝品系)\n12. 斑馬魚模型於「奈米材料」安全評估的應用 (王應然 特聘教授/理事長-國立成功大學工業衛生學科暨環境醫學研究所 /台灣毒物學學會)\n13. 新穎替代方法於「食品與環境」安全評估的推展與應用 (陳容甄 副教授 成功大學食品安全衛生暨風險管理研究所)\n14. [校外參訪] 如何保證動物用的藥安全？技術的推進與應用 (柯依廷 副研究員、詹勳隆 副研究員、洪鈴柱 助理研究員-農藥部 獸醫研究院 動物用藥檢定中心))\n15. 期末分組報告/學習評量\n16. 期末分組報告/學習評量\n* 其中兩週，與「從生活、法規到科技：認識動物實驗3Rs與替代方法」合併四小時，安排校外參訪。\n* 業師邀請將依實際情況調整",
+      "教科書/參考書": "講師演講",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "出席/表現 Attendance / Participation: 50% 期末評量/分組報告 Final EXam / Group Presentation: 50%",
+      "辦公時間": "三/7,8節",
+      "授課週數": "16",
+      "彈性教學說明": "彈性授課，安排分組討論或進行機構參訪",
+      "課程領域": "進階學科 、 生理 、 農業應用 、 生物科技 、 醫藥 、 環境生物 、 生物資訊 、 實驗操作",
+      "核心能力": [
+        {
+          "能力名稱": "高等生物專業知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創新及整合研究",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "專業寫作與表達",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24031",
+    "課號-班別": "LS5100-*",
+    "課程名稱(中文)": "從生活、法規到科技：認識動物實驗3Rs與替代方法",
+    "課程名稱(英文)": "From Life, Regulations to Technology: Exploring the 3Rs and Alternatives to Animal Testing",
+    "備註": "[不開放初選]",
+    "授課教師": "鄭獻仁\n羅月霞",
+    "學分": "2",
+    "上課時間": "Wed56",
+    "教室": "S5-101",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "60",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24031&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系。年級:限二年級、三年級、四年級。"
+        },
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系碩士班、生命科學系博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限輔系-生命科學系、雙主修-生命科學系、學分學程-生科職涯。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限生醫科學與工程學系。年級:限二年級、三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限生醫科學與工程學系系統生物與生物資訊碩士班、生醫科學與工程學系生物醫學工程碩士班、生醫科學與工程學系系統生物與生物資訊博士班、生醫科學與工程學系生物醫學工程博士班。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "系所:限理學院學士班。年級:限二年級、三年級、四年級。"
+        },
+        {
+          "優先順序": "5",
+          "相關條件限制說明": "學制:限學士班、碩士班、博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24031&outline=24031&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24031",
+      "課號": "LS5100-*",
+      "授課教師": "鄭獻仁\n羅月霞",
+      "課程名稱(中文)": "從生活、法規到科技：認識動物實驗3Rs與替代方法",
+      "課程名稱(英文)": "From Life, Regulations to Technology: Exploring the 3Rs and Alternatives to Animal Testing",
+      "課程學制": "碩博同修",
+      "學分": "2",
+      "課程目標": "1. 認識實驗動物3Rs（減量、替代、優化）的核心精神、發展脈絡與國際趨勢，理解其在科學研究與倫理實踐中的重要性。 2. 探討日常消費、醫療檢測、化妝品與食品安全等領域與動物實驗的關聯，理解3Rs理念如何影響個人選擇與社會決策。 3. 了解細胞與組織培養、器官晶片、電腦模擬等新興替代技術，掌握其在藥物開發、毒性檢測與生醫研究的實際應用。 4. 透過討論與多元觀點分析，培養學生對科學進步與動物福利之間平衡的批判性思考與道德判斷能力。 5. 建立尊重生命、善用資源與推動永續科研的觀念，鼓勵學生在未來學習、研究與生活中實踐3Rs精神。",
+      "授課內容": "第1周: 課程介紹―鄭獻仁副研究員 (國家實驗研究院 國家生物模式中心)\n第2周: 當科學遇見同理心：實驗動物福利與使用倫理的思考―饒心儀研究員 (台灣動物社會研究會)\n第3周: 國際科技新趨勢：避免犧牲動物的非動物性替代測試方法―林嬪嬪研究員 (國家衛生研究院 國家環境醫學研究所)\n第4周: 化學世界的數位預測：電腦是如何幫助我們預測毒性？―童俊維 研究員 (國家衛生研究院 生技與藥物研究所)\n第5周: 美容科技的祕密：妳的保養品是如何安全把關―高增婷資深研究員 (農業科技研究院 動物科技研究所)\n第6周: 動物實驗還不能完全被替代：動物研究為何重要，能為人類做些甚麼?―宋向軒 助理研究員 (國研院生物模式中心)\n第7周: 校外參訪1：科技如何守護生活：解密日常用品背後的科技檢測―劉錦誠 經理 (SGS台灣檢測科技)\n第8周: 期中分組報告―羅月霞副教授/鄭獻仁副研究員\n第9周: 從實驗室到藥櫃：3R創新科技確保新藥安全與動物倫理間的平衡―曾湘文博士 (進階生物科技 臨床前試驗中心)\n第10周: 不用實驗動物、改養細胞? 細胞資源庫建立與細胞培養技術應用―張育甄 博士/研究員 (食工所生資中心)\n第11周: 深度學習打擊超級細菌：AI如何發掘救命抗菌武器？蔡惠旭 教授/主任 (中央大學化學系)\n第12周: 如何進行功效益生菌之開發:多種實驗動物替代方案―蔡宛樺 研發長 (景岳生技公司)\n第13周: 滿足你我的醫療需求：醫療器材的誕生與新穎替代科技―李思元 副研究員 (國家實驗研究院 國家生物模式中心)\n第14周: 校外參訪2：如何保證動物用的藥安全？技術的推進與應用―柯依廷副研究員、詹勳隆副研究員、洪鈴柱助理研究員 (農藥部 獸醫研究院 動物用藥檢定中心)\n第15周: 期末分組報告―羅月霞 副教授鄭獻仁 副研究員\n第16周: 期末分組報告―羅月霞 副教授鄭獻仁 副研究員\n其中兩週，與「新穎替代測試方法(NAMs)於法規安全性評估之應用」合併四小時，安排校外參訪。\n* 業師邀請將依實際情況調整",
+      "教科書/參考書": "自編教材 、業師演講",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "Presentation/ Research Report (50%) +Attendance/participation (50%) =100%",
+      "辦公時間": "星期二3-4節",
+      "授課週數": "16",
+      "彈性教學說明": "體外細胞VR操作教學模組學習I 體外細胞VR操作教學模組學習II",
+      "課程領域": "基礎學科 、 生物科技 、 醫藥 、 生物資訊",
+      "核心能力": [
+        {
+          "能力名稱": "高等生物專業知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創新及整合研究",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "專業寫作與表達",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24032",
+    "課號-班別": "LS6006-A",
+    "課程名稱(中文)": "專題討論Ⅱ",
+    "課程名稱(英文)": "Seminar Ⅱ",
+    "備註": "1.限碩士班一年級，生物醫學組 2.生科系大四，限五年雙學位學生\n[不開放初選]",
+    "授課教師": "葉淑丹",
+    "學分": "1",
+    "上課時間": "Tue12",
+    "教室": "S5-112",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24032&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系碩士班。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系。年級:限四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24032&outline=24032&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24032",
+      "課號": "LS6006-A",
+      "授課教師": "葉淑丹",
+      "課程名稱(中文)": "專題討論Ⅱ",
+      "課程名稱(英文)": "Seminar Ⅱ",
+      "課程學制": "碩士班",
+      "學分": "1",
+      "課程目標": "培養學生閱讀專業科學研究文章、科學討論和辯證、口說技巧、簡報準備技巧、科學素養",
+      "授課內容": "Introducing the scientific journals, the format of scientific articles, and presentation skills. Students select articles, summarize their contents, deliver an oral presentation, and discuss the topics.",
+      "教科書/參考書": "無",
+      "自編教材比例": "100",
+      "授課方式": "研討 個別指導",
+      "評量配分比重": "Paper discussion and presentation 60%, Short talk 20%, Q&A 30%. Point deduction for non-excused absence and late attendance.",
+      "辦公時間": "Tuesdays 3-5 pm",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "進階學科 、 生物科技",
+      "核心能力": [
+        {
+          "能力名稱": "生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "科學問題解決",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "生物科學論文寫作",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "獨立思考與研究",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "專業表達",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24033",
+    "課號-班別": "LS6006-B",
+    "課程名稱(中文)": "專題討論Ⅱ",
+    "課程名稱(英文)": "Seminar Ⅱ",
+    "備註": "1.限碩士班，植物暨微生物環境生物學組 2.生科系大四，限五年雙學位學生 3.與LS6018B、LS7002B、LS7004B合併授課\n[不開放初選]",
+    "授課教師": "吳少傑",
+    "學分": "1",
+    "上課時間": "Tue78",
+    "教室": "S5-105",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24033&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系碩士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系。年級:限四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24033&outline=24033&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24033",
+      "課號": "LS6006-B",
+      "授課教師": "吳少傑",
+      "課程名稱(中文)": "專題討論Ⅱ",
+      "課程名稱(英文)": "Seminar Ⅱ",
+      "課程學制": "碩士班",
+      "學分": "1",
+      "課程目標": "This is a subject for master students of Institute of Life Science showing them how to organize and present their research works. Students of the first year are required to present recently published works of their interested fields. For senior students, they are required to review the works in their research fields and present it to the peers in a talk of about 30 min. They are also encouraged to present their own works. Students who fail to prepare their talks properly will be required to repeat their talks later in the semester.",
+      "授課內容": "\"1. 環境毒物\n2. 細胞與遺傳毒理\n3. 組織與細胞培養\n4. 細胞生物\n5.生物技術\n6. 基因調控\n7. 腸病毒誘導神經細胞死亡的機制\n8. 綠茶調節脂肪細胞的功能\n9. 荷爾蒙與營養物調節抗胰島素激素的基因表達\n10. 細胞分化的基因調控\n11.以功能性蛋白體學研究細菌降解有機毒性環境污染物的機制\n12. 多種亞型干擾素之純化及蛋白質體學\n13. 用功能性遺傳學及基因體定位的方法來株選及研究阿拉伯芥之抗熱基因\n14. 鈣離子訊號傳遞與氨基酪酸生合成對植物高溫逆境耐受度之影響\n15. 植物逆境生理學與基因調節\"",
+      "教科書/參考書": "各種生命科學期刊及光碟資料",
+      "自編教材比例": "10",
+      "授課方式": "講授 研討",
+      "評量配分比重": "\"評分方式： 1. 口頭報告(70%): 2. 課堂討論與參與度(30%)\"",
+      "辦公時間": "週二13:00 – 15:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "進階學科 、 生理 、 農業應用 、 微生物與免疫 、 生物科技 、 醫藥 、 環境生物 、 生態演化 、 生物資訊",
+      "核心能力": [
+        {
+          "能力名稱": "生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "科學問題解決",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "生物科學論文寫作",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考與研究",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "專業表達",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24034",
+    "課號-班別": "LS6018-A",
+    "課程名稱(中文)": "專題討論Ⅳ",
+    "課程名稱(英文)": "Seminar Ⅳ",
+    "備註": "1.限碩士班，生物醫學組\n[不開放初選]",
+    "授課教師": "劉阜果",
+    "學分": "1",
+    "上課時間": "Tue12",
+    "教室": "S5-113",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24034&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系碩士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24034&outline=24034&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24034",
+      "課號": "LS6018-A",
+      "授課教師": "劉阜果",
+      "課程名稱(中文)": "專題討論Ⅳ",
+      "課程名稱(英文)": "Seminar Ⅳ",
+      "課程學制": "碩士班",
+      "學分": "1",
+      "課程目標": "訓練學生表達技巧:自信的表達,清楚的溝通,簡潔的介紹,邏輯的思考.",
+      "授課內容": "1. Independent learning: Learning from the textbooks is no longer sufficient to lean the modern knowledge. Students need to learn how to search and absorb information with minimum help. Training on collecting, reading, understanding, and organizing information is one of the purposes in this class.\n2. Presentation: Self-expression is another training in this class. How to express what you know or learn for others to understand is a great challenge and necessity in this century.\n3. Discussion: How to respond questions is the other skill and the most informative part in the class. Not only about the scientific questions, but also the improvements for the presentation are great help to everyone in the class.\n4. Any article, report, or paper related to Life Science can be the subjects for the class.",
+      "教科書/參考書": "生命科學相關的文獻,報告",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 實習/實驗",
+      "評量配分比重": "口頭報告 (50%) 報告準備 (20%) 討論及發問 (30%)",
+      "辦公時間": "每週一上午10:00-12:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎學科 、 進階學科 、 生理 、 農業應用 、 微生物與免疫 、 生物科技 、 醫藥 、 環境生物 、 生態演化 、 生物資訊 、 神經生物",
+      "核心能力": [
+        {
+          "能力名稱": "生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "科學問題解決",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "生物科學論文寫作",
+          "強度指數": "(2) 低",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考與研究",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "專業表達",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24035",
+    "課號-班別": "LS6018-B",
+    "課程名稱(中文)": "專題討論Ⅳ",
+    "課程名稱(英文)": "Seminar Ⅳ",
+    "備註": "1.限生科碩士班植物暨微生物環境生物學組 2.與LS6006B、LS7002B、LS7004B合併上課\n[不開放初選]",
+    "授課教師": "吳少傑",
+    "學分": "1",
+    "上課時間": "Tue78",
+    "教室": "S5-105",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24035&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系碩士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24035&outline=24035&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24035",
+      "課號": "LS6018-B",
+      "授課教師": "吳少傑",
+      "課程名稱(中文)": "專題討論Ⅳ",
+      "課程名稱(英文)": "Seminar Ⅳ",
+      "課程學制": "碩士班",
+      "學分": "1",
+      "課程目標": "訓練學生從教課書的內容之外獨立思考的能力。自己發掘問(議)題、收集資料、吸收整理，然後以報告的方式呈現心得。",
+      "授課內容": "\"1. Global warming and its effects on living\norganism\n2. Plant heat tolerance\n3. Plant sugar sensing\n4. MYB transcription factors in plant responses to\nenvironmental\nstress\n5. RNA helicase and plant stress acclimation\n6. RNA silencing for crop improvement\n7. Signal transduction of neuron cells\n8. Water transport and aquaporin\n9. Mid-term discussion\n10. Microbial remediation\n11. Microbial bio-farming\n12. Environmental hormone\n13. Bio-fuel\n14. Detergent and environment\n15. Biological clock\n16. G protein coupled signal transduction\n17. Molecular pain\n18. Final conclusion and discussion\"",
+      "教科書/參考書": "各相關主題之國際學術期刊",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 其他",
+      "評量配分比重": "\"出席率 20% 報告主題深度 60% 課堂討論參與度 20%\"",
+      "辦公時間": "週五 15:00 - 17:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎學科",
+      "核心能力": [
+        {
+          "能力名稱": "生物專業知識",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評 ， 其他"
+        },
+        {
+          "能力名稱": "科學問題解決",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評 ， 其他"
+        },
+        {
+          "能力名稱": "生物科學論文寫作",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評 ， 其他"
+        },
+        {
+          "能力名稱": "獨立思考與研究",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評 ， 其他"
+        },
+        {
+          "能力名稱": "專業表達",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24036",
+    "課號-班別": "LS6024-*",
+    "課程名稱(中文)": "生物技術Ⅰ",
+    "課程名稱(英文)": "Biotechnology Ⅰ",
+    "備註": "生物科技第二專長\n[不開放初選]",
+    "授課教師": "劉阜果\n陳師慶\n黃佳瑜\n王健家\n粘仲毅\n葉淑丹\n羅月霞",
+    "學分": "3",
+    "上課時間": "Wed234",
+    "教室": "S5-113",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24036&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系碩士班、生命科學系博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限理學院學士班、學分學程-生科職涯、第二專長-生物科技。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24036&outline=24036&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24036",
+      "課號": "LS6024-*",
+      "授課教師": "劉阜果\n陳師慶\n黃佳瑜\n王健家\n粘仲毅\n葉淑丹\n羅月霞",
+      "課程名稱(中文)": "生物技術Ⅰ",
+      "課程名稱(英文)": "Biotechnology Ⅰ",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "這門課主要是介紹與生物相關的各種技術，讓學生能增進現在生物技術的知識。學生不但能學習到基礎生物技術也能了解最近的技術發展",
+      "授課內容": "Week Date 內容 任課教師\n1 2/19 Introduction of biotechnology 黃佳瑜老師\n2 2/26 Western blot 黃佳瑜老師\n3 3/5 Cloning /gene expression 王健家老師\n4 3/12 Whole genome next Generation Sequencing 葉淑丹老師\n5 3/19 Next Generation Sequencing 葉淑丹老師\n6 3/26 Functional genomics and hiPSC-based disease modeling 鄭亦棻博士/黃佳瑜老師\n7 4/2 校際活動週(No class)\n8 4/9 Primary Pyrosequencing (Bring your own laptop) 劉阜果老師\n9 4/16 Dry Biotechnology (Bring your own laptop) 劉阜果老師\n10 4/23 Hybridization 粘仲毅老師\n11 4/30 Mutagenesis 粘仲毅老師\n12 5/7 CRISPR technology (9:30-11:50) 周祐吉博士/黃佳瑜老師\n13 5/14 Microbiology and biotechnology 陳師慶老師\n14 5/21 Processing and production of exosomes or proteins 莊秉毅博士/黃佳瑜老師\n15 5/28 Monoclonal antibody 羅月霞老師\n16 6/4 Tissue transcriptomics 簡皎芸 博士/黃佳瑜老師\n17 6/11 Self-Directed learning (no class) 黃佳瑜老師\n18 6/18 Self-Directed learning (no class) 黃佳瑜老師",
+      "教科書/參考書": "依每位老師上課準備之教材",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討",
+      "評量配分比重": " Class reflection sheet (20%)  Midterm report (20%, the deadline is April 8th 2025)  Final report (20%, the deadline is June 11th 2025)  Discussion (40%, Q&A minimum 4 questions, each question is 10 points)",
+      "辦公時間": "每週一 上午9:00-12:00",
+      "授課週數": "16",
+      "彈性教學說明": "Self-Directed learning",
+      "課程領域": "基礎學科 、 進階學科 、 生物科技",
+      "核心能力": [
+        {
+          "能力名稱": "高等生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "創新及整合研究",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "專業寫作與表達",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24037",
+    "課號-班別": "LS6120-*",
+    "課程名稱(中文)": "植物與微生物交互作用之研究",
+    "課程名稱(英文)": "Study on Plant-Microbe Interactions",
+    "備註": "[不開放初選]",
+    "授課教師": "陳宗祺",
+    "學分": "3",
+    "上課時間": "Fri34Z",
+    "教室": "S5-106",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24037&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系碩士班、生命科學系博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24037&outline=24037&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24037",
+      "課號": "LS6120-*",
+      "授課教師": "陳宗祺",
+      "課程名稱(中文)": "植物與微生物交互作用之研究",
+      "課程名稱(英文)": "Study on Plant-Microbe Interactions",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "本課程聚焦於近期的科學研究文章進行討論，主題包含各類植物病害或是植物與病原微生物交互作用之分子機制，藉由閱讀與深入討論的方式了解植物病害的成因、植物抗病的分子機制、以及田間防治的應用。本課程將建立學生以下的能力: 1. 對植物與微生物交互作用的最新研究理解。 2. 培養學生閱讀、解析與評論原始文獻的能力。 3. 訓練學生以研究為導向的口頭與書面表達技巧。 4. 強化學生對植物病原菌與共生微生物分子機制的掌握，並能與自身研究題目結合。",
+      "授課內容": "1. 課程簡介與大綱說明\n2. 植物免疫系統總覽\n3. 植物與細菌病原的分子互動 I\n4. 植物與細菌病原的分子互動 II\n5. 植物與細菌病原的分子互動 III\n6. 植物與真菌病原的分子互動 I\n7. 植物與真菌病原的分子互動 II\n8. 植物與真菌病原的分子互動 III\n9. 植物與病毒病原的分子互動 I\n10. 植物與病毒病原的分子互動 II\n11. 植物與病毒病原的分子互動 III\n12. 植物與線蟲的分子互動\n13. 微生物群落與植物健康 I\n14. 微生物群落與植物健康 II\n15. 植物內生菌與誘導抗性\n16. 學生期末報告簡報與評論",
+      "教科書/參考書": "自編教材",
+      "自編教材比例": "50",
+      "授課方式": "研討 實習/實驗 個別指導",
+      "評量配分比重": "期末報告: 30％，口頭報告: 30％，討論與課堂參與:40%",
+      "辦公時間": "三56節",
+      "授課週數": "16",
+      "彈性教學說明": "學生自主學習與個別指導",
+      "課程領域": "基礎學科 、 進階學科 、 農業應用 、 微生物與免疫 、 環境生物 、 生物資訊",
+      "核心能力": [
+        {
+          "能力名稱": "高等生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創新及整合研究",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "專業寫作與表達",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24038",
+    "課號-班別": "LS6122-*",
+    "課程名稱(中文)": "細胞微環境壓力反應之研究",
+    "課程名稱(英文)": "Study on cellular responses to microenvironmental stress",
+    "備註": "[不開放初選]",
+    "授課教師": "范世榮",
+    "學分": "3",
+    "上課時間": "Mon189",
+    "教室": "S5-111",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24038&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系碩士班、生命科學系博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24038&outline=24038&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24038",
+      "課號": "LS6122-*",
+      "授課教師": "范世榮",
+      "課程名稱(中文)": "細胞微環境壓力反應之研究",
+      "課程名稱(英文)": "Study on cellular responses to microenvironmental stress",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "讓學生獲得微環境壓力生物學領域最新知識，並建立學生獨立與邏輯思考的能力。",
+      "授課內容": "第1至第16周：講授微環境壓力生物學最新研究論文及討論。",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "教科書/參考書": "自編教材比例 100 %",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "課堂表現(50%)，口頭報告(40%)，出席率(10%)",
+      "辦公時間": "週二 8:30~10:30",
+      "授課週數": "16",
+      "課程領域": "基礎學科 、 進階學科 、 生理 、 生物科技 、 醫藥",
+      "核心能力": [
+        {
+          "能力名稱": "高等生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創新及整合研究",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "專業寫作與表達",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24039",
+    "課號-班別": "LS6124-*",
+    "課程名稱(中文)": "利用生物分子進行邏輯運算之研究",
+    "課程名稱(英文)": "Study on Biomolecule computing",
+    "備註": "[不開放初選]",
+    "授課教師": "吳少傑",
+    "學分": "3",
+    "上課時間": "Fri789",
+    "教室": "S5-105",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24039&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系碩士班、生命科學系博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24039&outline=24039&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24039",
+      "課號": "LS6124-*",
+      "授課教師": "吳少傑",
+      "課程名稱(中文)": "利用生物分子進行邏輯運算之研究",
+      "課程名稱(英文)": "Study on Biomolecule computing",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "電腦已與人類的生活息息相關，密不可分。電腦的功能也是日新月異，一躍千里。然而，當碰上某些組合性問題時，即令是超級電腦，有著極快速的運算能力，也得耗時經年，方能解出答案。在尋找替代運算方法的努力過程中，DNA 序列的多樣性和專一性，以及其相關之分子生物技術，已被展現出具有解決該困境的潛力。本課程即在介紹此一新領域的發展起由，已知成果，還有未來方向。",
+      "授課內容": "1. What is computing? What is an algorithm?\n2. How algorithm affects computing time\n3. Questions without efficient computing time\n4. Hamiltonian path and the first DNA computing\n5. Traveling sale’s path and DNA computing\n6. Traveling sale’s cycle and DAN computing – weighted cycle problem\n7. DNA turing machines\n8. Programmable molecular computing machine\n9. DNA computer machine with input and output\n10. DNA computer for diagnosing cancer\n11. Enzyme-based AND/OR logic gate\n12. DNA simulates AND/OR/NOT logic system\n13. DNA arithmetic machine\n14. DNAzymes\n15. Toehold exchange\n16. Algorithmic self-assembly",
+      "教科書/參考書": "自編教材比例 100 %",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "Take home works (50％) and in class presentation (50％)",
+      "辦公時間": "週二 10:30~12:00",
+      "授課週數": "16",
+      "彈性教學說明": "Round table discussion",
+      "課程領域": "進階學科 、 農業應用 、 生物科技 、 環境生物",
+      "核心能力": [
+        {
+          "能力名稱": "高等生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創新及整合研究",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "專業寫作與表達",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24040",
+    "課號-班別": "LS6126-*",
+    "課程名稱(中文)": "tRNA的結構及功能之探索",
+    "課程名稱(英文)": "Study on structure and function of tRNA",
+    "備註": "[不開放初選]",
+    "授課教師": "王健家",
+    "學分": "3",
+    "上課時間": "WedZ89",
+    "教室": "S5-111",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24040&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系碩士班、生命科學系博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24040&outline=24040&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24040",
+      "課號": "LS6126-*",
+      "授課教師": "王健家",
+      "課程名稱(中文)": "tRNA的結構及功能之探索",
+      "課程名稱(英文)": "Study on structure and function of tRNA",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "Structural, functional, and activity assays for aminoacyl-tRNA synthetases.",
+      "授課內容": "1-2 DNA: Structure and function\n3-4 Basic Techniques in gene analysis\n5-6 Vectors\n7-8 Polymerase chain reaction\n9-10 Cloning a gene\n11-12 Gene identification\n13-14 Creating mutations\n15-16 Protein production and purification",
+      "教科書/參考書": "1.自編教材比例 50% 2. Textbook: Analysis of genes and genomes",
+      "自編教材比例": "50",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "Presentation 80% + Q&A 20%",
+      "辦公時間": "Monday 9:00-11:50",
+      "授課週數": "16",
+      "彈性教學說明": "Take-home work",
+      "課程領域": "進階學科 、 生物科技 、 生物資訊",
+      "核心能力": [
+        {
+          "能力名稱": "高等生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創新及整合研究",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "專業寫作與表達",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24041",
+    "課號-班別": "LS6128-*",
+    "課程名稱(中文)": "植物細胞培養與組織繁殖技術之研究",
+    "課程名稱(英文)": "Study on plant cell culture and tissue propagation techniques",
+    "備註": "[不開放初選]",
+    "授課教師": "葉靖輝",
+    "學分": "3",
+    "上課時間": "WedZ89",
+    "教室": "S5-105",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24041&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系碩士班、生命科學系博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24041&outline=24041&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24041",
+      "課號": "LS6128-*",
+      "授課教師": "葉靖輝",
+      "課程名稱(中文)": "植物細胞培養與組織繁殖技術之研究",
+      "課程名稱(英文)": "Study on plant cell culture and tissue propagation techniques",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "介紹癒合組織與細胞懸浮培養的生長、組織培養的再生、單倍體培養、原生質體培養、種質保存與冷凍保存、體細胞變異株的篩選、次級代謝產物的合成、園藝與作物改良中的組織繁殖技術、農作物的基因轉殖操作等技術",
+      "授課內容": "1. 簡介\n2~3. 癒合組織與細胞懸浮培養的生長\n4. 組織培養的再生\n5. 單倍體培養\n6. 原生質體培養\n7~8. 種質保存與冷凍保存\n9~10. 體細胞變異株的篩選\n11~12. 次級代謝產物的合成\n13~14. 園藝與作物改良中的組織繁殖技術\n15~16. 農作物的基因轉殖操作\n17~18學生自主研究學習與討論",
+      "教科書/參考書": "相關的期刊雜誌",
+      "自編教材比例": "0",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "書面報告100％",
+      "辦公時間": "星期一 13:00~15:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "進階學科 、 農業應用 、 生物科技 、 實驗操作",
+      "核心能力": [
+        {
+          "能力名稱": "高等生物專業知識",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "創新及整合研究",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "專業寫作與表達",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現 ， 學習檔案評量"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24042",
+    "課號-班別": "LS6130-*",
+    "課程名稱(中文)": "癌症分子機轉之研究",
+    "課程名稱(英文)": "Molecular Mechanisms of Cancer",
+    "備註": "[不開放初選]",
+    "授課教師": "吳沛翊",
+    "學分": "3",
+    "上課時間": "Mon189",
+    "教室": "S5-105",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24042&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系碩士班、生命科學系博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24042&outline=24042&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24042",
+      "課號": "LS6130-*",
+      "授課教師": "吳沛翊",
+      "課程名稱(中文)": "癌症分子機轉之研究",
+      "課程名稱(英文)": "Molecular Mechanisms of Cancer",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "癌症為當前威脅人類生命的最主要之疾病, 希望藉由此課程增進學生對於當代癌症科學進展之了解, 以啟發學生對於癌症研究之興趣, 並透過相關文獻之探討, 讓學生從中學習現代癌症生物學之研究概念與方法, 期待創新思維的產生。",
+      "授課內容": "1 Introduction\n2 The Nature of Cancer\n3 Oncogenes\n4 Oncogenes - Paper discussion\n5 Tumor Suppressor Genes\n6 Tumor Suppressor Genes - Paper discussion\n7 Growth Factors and Their Receptors\n8 Growth Factors and Their Receptors - Paper discussion\n9 pRb and Control of the Cell Cycle Clock\n10 pRb and Control of the Cell Cycle Clock - Paper discussion\n11 p53 and Apoptosis\n12 p53 and Apoptosis - Paper discussion\n13 Biology of Angiogenesis\n14 Biology of Angiogenesis - Paper discussion\n15 Moving Out : Invasion and Metastasis\n16 Moving Out : Invasion and Metastasis - Paper discussion\n17 Self-learning\n18 Self-learning",
+      "教科書/參考書": "1. The Biology of Cancer, 2nd edition, by Robert A. Weinberg, Robert A Weinberg 2. Scientific papers",
+      "自編教材比例": "30",
+      "授課方式": "講授 研討",
+      "評量配分比重": "1. 期中報告: 30% 2. 期末報告: 30% 3. 口頭報告與討論: 40%",
+      "辦公時間": "每周一 14:00-16:00",
+      "授課週數": "16",
+      "彈性教學說明": "由學生自學相關癌症治療策略",
+      "課程領域": "進階學科 、 醫藥",
+      "核心能力": [
+        {
+          "能力名稱": "高等生物專業知識",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創新及整合研究",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "專業寫作與表達",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24043",
+    "課號-班別": "LS6132-*",
+    "課程名稱(中文)": "免疫毒理的機制之研究",
+    "課程名稱(英文)": "Mechanistic Studies in Immunotoxicology",
+    "備註": "[不開放初選]",
+    "授課教師": "羅月霞",
+    "學分": "3",
+    "上課時間": "Wed1Z9",
+    "教室": "S5-106",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24043&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系碩士班、生命科學系博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24043&outline=24043&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24043",
+      "課號": "LS6132-*",
+      "授課教師": "羅月霞",
+      "課程名稱(中文)": "免疫毒理的機制之研究",
+      "課程名稱(英文)": "Mechanistic Studies in Immunotoxicology",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "1. 免疫毒理科學論文導讀。 2. 瞭解免疫毒理的學術研究方法，學術文獻資料收集。 3. 學習論文與報告格式與寫作技巧。",
+      "授課內容": "1. 科學論文種類與格式\n2. 科學論文種類與格式\n3. 文獻引用與文獻書目軟體應用\n4. 文獻回顧與資料收集\n5. 文獻回顧與資料收集\n6. 論文架構與實驗設計\n7. 論文架構與實驗設計\n8. 論文討論\n9. 論文討論\n10. 期中報告\n11. 論文討論\n12. 論文討論\n13. 論文討論\n14. 論文討論\n15. 論文討論\n16. 論文討論",
+      "教科書/參考書": "Newest scientific papers in immunotoxicology",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "出席: 50%、報告: 50%",
+      "辦公時間": "星期二3-4節",
+      "授課週數": "16",
+      "彈性教學說明": "17. 期末報告 18. 期末報告",
+      "課程領域": "基礎學科 、 進階學科 、 微生物與免疫 、 生物科技 、 醫藥",
+      "核心能力": [
+        {
+          "能力名稱": "高等生物專業知識",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "創新及整合研究",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "專業寫作與表達",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24044",
+    "課號-班別": "LS6134-*",
+    "課程名稱(中文)": "東亞及東南亞生物地理之研討",
+    "課程名稱(英文)": "Study of Biogeography in East and Southeast Asia",
+    "備註": "[不開放初選]",
+    "授課教師": "劉阜果",
+    "學分": "3",
+    "上課時間": "Wed789",
+    "教室": "S5-113",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24044&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系碩士班、生命科學系博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系。年級:限三年級、四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24044&outline=24044&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24044",
+      "課號": "LS6134-*",
+      "授課教師": "劉阜果",
+      "課程名稱(中文)": "東亞及東南亞生物地理之研討",
+      "課程名稱(英文)": "Study of Biogeography in East and Southeast Asia",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "讓學生了解生物地理學的基礎知識，包括其歷史、理論和研究方法。 分析生物在時間與空間上的分布現象及其形成原因。 理解地球環境變動與生物分布之間的關聯。 為保育生物多樣性提供科學基礎。",
+      "授課內容": "生物地理學歷史與理論：涵蓋生物地理學的發展史、主要理論和研究方法。\n地球環境與生物分布：探討板塊移動、洋流、氣候變遷等地球環境因素如何影響生物的地理分布。\n生物多樣性：研究生物多樣性的分布現況、歷史演變及其背後的機制。\n物種演化：從演化歷史的角度理解生物地理分布的形成。\n島嶼生物地理學：探討島嶼上生物的生態學和演化現象，這是一個專門的子領域。\n保育生物地理學：將生物地理學知識應用於生物多樣性的保育工作。\n研究方法與實例：介紹生物地理學的研究方法，並透過實際案例來說明。",
+      "教科書/參考書": "1. Cox et al., 2020. Biogeography: An Ecological and Evolutionary Approach. 10th edition. Blackwell Science Ltd, Oxford. 2. Lomolino et al., 2016. Biogeography. 5th edition. Sinauer, Sunderland, MA.",
+      "自編教材比例": "80",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "口頭報告60% 課堂討論40%",
+      "辦公時間": "每週一上午10:00-12:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎學科 、 進階學科 、 環境生物 、 生態演化 、 生物資訊",
+      "核心能力": [
+        {
+          "能力名稱": "高等生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創新及整合研究",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "專業寫作與表達",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24045",
+    "課號-班別": "LS7000-*",
+    "課程名稱(中文)": "專題演講",
+    "課程名稱(英文)": "Topic Seminar",
+    "備註": "[不開放初選]",
+    "授課教師": "劉阜果\n陳師慶\n黃佳瑜\n許斐婷\n陳盛良\n王健家\n粘仲毅\n葉淑丹\n羅月霞",
+    "學分": "0",
+    "上課時間": "Tue4",
+    "教室": "S5-101",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24045&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系碩士班、生命科學系博士班。年級:限一年級、二年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限理學院學士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24045&outline=24045&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24045",
+      "課號": "LS7000-*",
+      "授課教師": "劉阜果\n陳師慶\n黃佳瑜\n許斐婷\n陳盛良\n王健家\n粘仲毅\n葉淑丹\n羅月霞",
+      "課程名稱(中文)": "專題演講",
+      "課程名稱(英文)": "Topic Seminar",
+      "課程學制": "碩博同修",
+      "學分": "0",
+      "課程目標": "為了增加學生對生命科學研究的見聞，於每周二邀請專家學者蒞臨演講",
+      "授課內容": "1. Lecture -1\n2. Lecture -2\n3. Lecture -3\n4. Lecture -4\n5. Lecture -5\n6. Lecture -6\n7. Lecture -7\n8. Lecture -8\n9. Lecture -9\n10. Lecture -10\n11. Lecture -11\n12. Lecture -12\n13. Lecture -13\n14. Lecture -14\n15. Lecture -15\n16. Lecture -16\n17. self-learning\n18. self-learning",
+      "教科書/參考書": "No",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討",
+      "評量配分比重": "注意事項: 1. On-time attendance is required for all students Early dismissal or late arrival (10 minutes) equals to the unexcused absence (遲到或早退十分鐘（含）以上者視同該次曠課) 2. A written leave request signed by the supervisor is required for any leave of absence (請假假條需載明事由,經指導老師簽名後交給負責課程的老師) 3. Sick, maternity or bereavement leave: Request for leave in 7 days after the absence （喪病假七天內繳交假條） 4. Personal leave :Request for leave in 3 days before the absence （事假須於三天前繳交假條） 5. Pleases hand in the answer sheet for the assay question after the class. 6. The final grade point=65+ 5x (the number of questions raised in QA time)-5x (cumulative unexcused absences) (學期總成績 ＝ 65 +（發問次數）x 5 -（曠課次數）× 5) 7. 由專題演講小助教負責點名及登記發問次數 （課後發問或email發問不予計算） 8. 除非指導老師具名說明，否則不接受課後請『事假』（喪病假除外）。",
+      "辦公時間": "Thur 10:00~12:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎學科 、 進階學科 、 生理 、 農業應用 、 微生物與免疫 、 生物科技 、 醫藥 、 環境生物 、 生態演化 、 生物資訊 、 神經生物",
+      "核心能力": [
+        {
+          "能力名稱": "高等生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "創新及整合研究",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "專業寫作與表達",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現 ， 學習檔案評量"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24046",
+    "課號-班別": "LS7002-A",
+    "課程名稱(中文)": "專題討論Ⅱ",
+    "課程名稱(英文)": "Seminar Ⅱ",
+    "備註": "限生科系博士班一年級，生物醫學組課程\n[不開放初選]",
+    "授課教師": "許斐婷",
+    "學分": "2",
+    "上課時間": "Tue12",
+    "教室": "S5-106",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24046&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系博士班。年級:限一年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24046&outline=24046&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24046",
+      "課號": "LS7002-A",
+      "授課教師": "許斐婷",
+      "課程名稱(中文)": "專題討論Ⅱ",
+      "課程名稱(英文)": "Seminar Ⅱ",
+      "課程學制": "博士班",
+      "學分": "2",
+      "課程目標": "文獻與專題報告",
+      "授課內容": "1. Introduction\n2. Seminar-1\n3. Seminar-2\n4. Seminar-3\n5. Seminar-4\n6. Seminar-5\n7. Seminar-6\n8. midterm\n9. Seminar-7\n10. Seminar-8\n11. Seminar-9\n12. Seminar-10\n13. Seminar-11\n14. Seminar-12\n15. Seminar-13\n16. Seminar-14\n17. self-learning-1\n18. self-learning-2",
+      "教科書/參考書": "根據同學選擇文獻",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討",
+      "評量配分比重": "出席20％問題20％報告+回答80％",
+      "辦公時間": "週二 09:00-12:00",
+      "授課週數": "16",
+      "彈性教學說明": "第17周報告 第18周檢討",
+      "課程領域": "進階學科",
+      "核心能力": [
+        {
+          "能力名稱": "高等生物專業知識",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "創新及整合研究",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "專業寫作與表達",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24047",
+    "課號-班別": "LS7002-B",
+    "課程名稱(中文)": "專題討論Ⅱ [已停開]",
+    "課程名稱(英文)": "Seminar Ⅱ",
+    "備註": "限生科系博士班一年級，植物暨微生物環境生物組課程，與LS6006B、LS6018B、LS7004B合班上課\n[不開放初選]",
+    "授課教師": "吳少傑",
+    "學分": "2",
+    "上課時間": "Tue78",
+    "教室": "S5-105",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24047&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系博士班。年級:限一年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24047&outline=24047&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24047",
+      "課號": "LS7002-B",
+      "授課教師": "吳少傑",
+      "課程名稱(中文)": "專題討論Ⅱ",
+      "課程名稱(英文)": "Seminar Ⅱ",
+      "課程學制": "博士班",
+      "學分": "2",
+      "課程目標": "本課程旨在訓練學生文獻之搜集及閱讀、整理與報告之能力、選修者必須選擇一至數篇最新發表之生命科學文章，課前仔細研讀、歸納整理，並製作powerpoint檔案，於課堂上親自上台，就文章之實驗背景、目的、實驗方法、實驗結果，對全班學生進行口頭報告，並做討論。本課程不但要學生瞭解文章內容，更要會講述，讓聽講者瞭解，是一全方位之訓練課程。",
+      "授課內容": "本課程以訓練學生研讀及報告科學性文章(生命科學)的能力為主；課程內容以生命科學相關文獻為主，從文獻收集、管理開始，進而研讀、摘要文獻重點，最後訓練學生如何準備及作口頭報告。課程進行方式除老師講課外，主要由修課學生進行口頭報告、及討論。",
+      "教科書/參考書": "相關主題發表於SCI期刊之論文",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 其他",
+      "評量配分比重": "\"出席率 20% 報告內容之深度 60% 課堂討論參與度 20%\"",
+      "辦公時間": "Friday 15:00-17:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎學科 、 進階學科",
+      "核心能力": [
+        {
+          "能力名稱": "高等生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評 ， 其他"
+        },
+        {
+          "能力名稱": "創新及整合研究",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評 ， 其他"
+        },
+        {
+          "能力名稱": "專業寫作與表達",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評 ， 其他"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評 ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24048",
+    "課號-班別": "LS7004-A",
+    "課程名稱(中文)": "專題討論Ⅳ",
+    "課程名稱(英文)": "Seminar Ⅳ",
+    "備註": "1.限生科系生物醫學組博士班二年級\n[不開放初選]",
+    "授課教師": "許斐婷",
+    "學分": "2",
+    "上課時間": "Tue12",
+    "教室": "S5-106",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24048&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系博士班。年級:限二年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24048&outline=24048&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24048",
+      "課號": "LS7004-A",
+      "授課教師": "許斐婷",
+      "課程名稱(中文)": "專題討論Ⅳ",
+      "課程名稱(英文)": "Seminar Ⅳ",
+      "課程學制": "博士班",
+      "學分": "2",
+      "課程目標": "文獻與專題報告",
+      "授課內容": "1. Introduction\n2. Seminar-1\n3. Seminar-2\n4. Seminar-3\n5. Seminar-4\n6. Seminar-5\n7. Seminar-6\n8. midterm\n9. Seminar-7\n10. Seminar-8\n11. Seminar-9\n12. Seminar-10\n13. Seminar-11\n14. Seminar-12\n15. Seminar-13\n16. Seminar-14\n17. self-learning-1\n18. self-learning-2",
+      "教科書/參考書": "學生自選文獻",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討",
+      "評量配分比重": "出席20％問題20％報告+回答80％",
+      "辦公時間": "週二 09:00-12:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎學科 、 生物科技 、 醫藥",
+      "核心能力": [
+        {
+          "能力名稱": "高等生物專業知識",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "創新及整合研究",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "專業寫作與表達",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24049",
+    "課號-班別": "LS7004-B",
+    "課程名稱(中文)": "專題討論Ⅳ [已停開]",
+    "課程名稱(英文)": "Seminar Ⅳ",
+    "備註": "1.限生科系植物暨微生物環境生物組博士生二年級 2.與LS6006B、LS6018B、LS7002B合併上課\n[不開放初選]",
+    "授課教師": "吳少傑",
+    "學分": "2",
+    "上課時間": "Tue78",
+    "教室": "S5-105",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24049&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系博士班。年級:限二年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24049&outline=24049&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24049",
+      "課號": "LS7004-B",
+      "授課教師": "吳少傑",
+      "課程名稱(中文)": "專題討論Ⅳ",
+      "課程名稱(英文)": "Seminar Ⅳ",
+      "課程學制": "博士班",
+      "學分": "2",
+      "課程目標": "訓練學生從教課書的內容之外獨立思考的能力。自己發掘問(議)題、收集資料、吸收整理，然後以報告的方式呈現心得。",
+      "授課內容": "\"Week, Topic\n1. The nature of plant stress\n2. Environmental aspects of photosynthesis\n3. Stress responses in plants\n4. Signal transduction in plant stress responses\n5. Physiological aspects of plant response to stress\n6. Fundamental concepts in understanding biofuel/bioenergy production\n7. Renewable feedstocks and their production\n8. Feedstocks availability and attributes for biofuel/bioenergy production\n9. Mid-term discussion\n10. Various biofuels from biomass\n11. Biochemical conversion: anaerobic digestion\n12. Remediation practices and benefits of bioremediation\n13. The fate of contaminants in environment\n14. Biodegradaton of common contaminant compounds\n15. In situ bioremediation strategies\n16. How are our senses of pain controlled at the cellular and molecular levels?\n17. G-Protein coupled receptors and pain\n18. Final conclusion and discussion\"",
+      "教科書/參考書": "Literatures from the following journals:\nPlant Physiology\nCell\nScience\nNature\nJournal of Bacteriology\nPlant Journal\nNew Phytologist",
+      "自編教材比例": "0",
+      "授課方式": "研討 個別指導",
+      "評量配分比重": "口語報告 (75%)\n課堂討論 (25%)",
+      "辦公時間": "Tuesday 8:30 ~ 10:30 am",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "進階學科 、 生理 、 農業應用 、 微生物與免疫 、 生物科技 、 醫藥 、 環境生物 、 生態演化 、 生物資訊",
+      "核心能力": [
+        {
+          "能力名稱": "高等生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創新及整合研究",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "專業寫作與表達",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24050",
+    "課號-班別": "LS7015-*",
+    "課程名稱(中文)": "生命科學教學實習",
+    "課程名稱(英文)": "Life Science Teaching Training",
+    "備註": "限生科系博士班，且本學期擔任實驗課助教者\n[不開放初選]",
+    "授課教師": "吳少傑\n黃佳瑜\n許斐婷\n葉靖輝\n吳沛翊\n粘仲毅\n高永旭\n葉淑丹\n羅月霞",
+    "學分": "0",
+    "上課時間": "MonZ",
+    "教室": "S5-203\nFriZ",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24050&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24050&outline=24050&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24050",
+      "課號": "LS7015-*",
+      "授課教師": "吳少傑\n黃佳瑜\n許斐婷\n葉靖輝\n吳沛翊\n粘仲毅\n高永旭\n葉淑丹\n羅月霞",
+      "課程名稱(中文)": "生命科學教學實習",
+      "課程名稱(英文)": "Life Science Teaching Training",
+      "課程學制": "博士班",
+      "學分": "0",
+      "課程目標": "訓練博士生教學",
+      "授課內容": "1.準備授課講義教材，及授課PPT\n2.準備各大班實驗所需藥品之清點、採購\n3.配置各大班實驗所需培養基、試劑\n4.準備各大班實驗器具的清洗及滅菌\n5.協助上課時的秩序，隨時協助學生解答問題\n6.教學實習I：上台講習、指導實驗操作\n7.批閱學生所繳交的實驗報告I、並登記成績\n8.協助安排實驗課校外參訪行政工作\n9.教學實習II：上台講習、指導實驗操作\n10.批閱學生所繳交的實驗報告II、並登記成績\n11.期中考：印製考試卷、考試時監考\n12.配置各大班實驗所需培養基、試劑\n13.準備各大班實驗器具的清洗及滅菌\n14.教學實習III：上台講習、指導實驗操作\n15.批閱學生所繳交的實驗報告III、並登記成績\n16.教學實驗室清理、實驗器材清點及維護\n17.期末考：印製考試卷、考試時監考\n18.計算總成績",
+      "教科書/參考書": "普通生物學實驗本、生物化學實驗本、植物生理學實驗本、動物生理學實驗本",
+      "自編教材比例": "30",
+      "授課方式": "實習/實驗 個別指導",
+      "評量配分比重": "30％ reported three times, preparation and pre-made 30％, 20％ answered student questions the ability,correcting homework and exam 20％",
+      "辦公時間": "Tuesday 10-12 a.m.",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "實驗操作",
+      "核心能力": [
+        {
+          "能力名稱": "高等生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "創新及整合研究",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "專業寫作與表達",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24051",
+    "課號-班別": "LS7016-*",
+    "課程名稱(中文)": "生物資訊及應用",
+    "課程名稱(英文)": "Bioinformatics and Application",
+    "備註": "[不開放初選]",
+    "授課教師": "梁筱蘭",
+    "學分": "3",
+    "上課時間": "Tue567",
+    "教室": "I-002",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24051&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系碩士班、生命科學系博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限學士班。學院:限理學院、生醫理工學院。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限碩士班、博士班。學院:限理學院、生醫理工學院。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24051&outline=24051&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24051",
+      "課號": "LS7016-*",
+      "授課教師": "梁筱蘭",
+      "課程名稱(中文)": "生物資訊及應用",
+      "課程名稱(英文)": "Bioinformatics and Application",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "身處於 ”後基因體” 時代，大量的實驗數據與研究都發表與儲存在不同的數據庫中。如何利用已有的生物資訊的工具，取得與使用這些大量的資訊已成為今日從事生物醫學研究的人員所必備的能力。本課程將著重於手把手的運用現有且多樣的生物資訊工具，以幫助學生自身研究的進行。",
+      "授課內容": "1.Introduction to post genomics era\n2.NCBI genome project and PubMed\n3.Genome annotation\n4.Genome browser\n5.Sequence analysis tools, “Ape”, “VectorNTI”, etc\n6.PCR primer design, “Primer3”, “oligo”, etc\n7.Sequence alignment ＆ BLAST, “ClustalW”, “EMBL-EBI website”\n8.Microarray and tiling array\n9.MID-TERM EXAMINATION\n10.Next Generation Sequencing (I)\n11.Next Generation Sequencing (II)\n12.GO term analysis, “GORILLA”\n13.Motif analysis, “meme”, “HOMER”\n14.UCSC genomic database, and NCBI GEO database\n15.Model organism database: “FlyBase”, “WormBase”, “modENCODE”, “ZFIN”, “MGI”\n16 ＆ 17.Student’s practice\n18.Final test“",
+      "教科書/參考書": "User manuals on each web tools. NCBI BLAST documentation (https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs) Scientific papers",
+      "自編教材比例": "0",
+      "授課方式": "講授 實習/實驗 個別指導",
+      "評量配分比重": "Discussion 100％",
+      "辦公時間": "Tuesday 13:00-15:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "基礎學科 、 進階學科 、 生物資訊 、 實驗操作",
+      "核心能力": [
+        {
+          "能力名稱": "高等生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創新及整合研究",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "專業寫作與表達",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24052",
+    "課號-班別": "LS7021-*",
+    "課程名稱(中文)": "前瞻植物與微生物學",
+    "課程名稱(英文)": "Current Topics in Plant and Microbial Biology",
+    "備註": "[不開放初選]",
+    "授課教師": "吳少傑\n陳宗祺\n葉靖輝",
+    "學分": "3",
+    "上課時間": "Wed567",
+    "教室": "S5-111",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24052&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系碩士班、生命科學系博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限學士班。學院:限理學院、生醫理工學院。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限碩士班、博士班。學院:限理學院、生醫理工學院。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24052&outline=24052&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24052",
+      "課號": "LS7021-*",
+      "授課教師": "吳少傑\n陳宗祺\n葉靖輝",
+      "課程名稱(中文)": "前瞻植物與微生物學",
+      "課程名稱(英文)": "Current Topics in Plant and Microbial Biology",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "植物生理學乃植物學的一個子學門，內容主要探討植物體的各項功能，包括光合作用、呼吸作用、荷爾蒙、向性、趨性、光週期、光發育、環境逆境、種籽休眠、種籽萌芽、胚胎發育、氣孔開合、及水份利用等，內容豐富繁多，為植物學或農學相關研究的基礎，且不斷因研究技術的進步而有新發現。然本系(校)所開授之植物生理學課程僅一學期每週三小時，實難就植物生理學各個主題做深入介紹，學生也難體驗當代植物生理學的發展進度。此課程即在彌補此一缺憾，內容探討更多與植物生長發育有關的主題，包括營養成份的利用、植物與病害、植物與糧食供給、植物與植物間的交互感應、肉食植物，以及更深入的介紹植物荷爾蒙的作用。以期讓習修者有更廣範且充實的基礎，及應用本學科之能力。本課程亦將邀請中央研究院植物與微生物學研究所的研究員蒞臨講授植物生理學最前沿的研究發現與未來展望。",
+      "授課內容": "週次Week 授課老師Instructor 主題Topic\n1 吳少傑 Shaw-Jye Wu Introduction\n2 鄭惠國 Ooi-kock Teh Feeling the stress: How mechanosensing drives morphogenesis in plants.\n3 顧銓 Chuan Ku Microalgae: diversity and interactions\n4 吳亭穎 Ting-Ying Wu Systems biology in plant research\n5 葉靖輝 Ching-Hui Yeh Genetic engineering and mutation breeding for tolerance to stresses\n6 邱澗庚 Jian-Geng Chiou Pattern formation and the quantitative aspects of microbiology\n7 謝明勳 Ming-Hsiun Hsieh Vitamin B1 in plants: From biosynthesis to biofortification\n8 Exam Week\n9 何金敏 Chin-Min Ho Asymmetric cell division and leaf development\n10 郭志鴻 Chih-Horng Kuo Bacterial genomics Review of mid-term assignments\n11 涂世隆 Shih-Long Tu Post-transcriptional gene regulation in plant environmental responses\n12 趙光裕 Guang-Yuh Jauh Let‘s talk about the sex of plant\n13 馬麗珊 Lay-Sun Ma Plant-fungus interactions and fungal virulence\n14 吳志航 Chih-Hang Wu Plant-microbe interactions and plant immunity\n15 馬家威 Ka-Wai Ma Harnessing the beneficial services of the bacterial plant microbiota\n16 Final Exam Week",
+      "教科書/參考書": "The Arabidopsis Book by The American Society of Plant Biologists (http://www.arabidopsisbook.org/)",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "出席 (Attendance): 20％ 作業 (Assignment): 40％ * 2 =80％",
+      "辦公時間": "週三09:00 – 12:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "進階學科 、 生理 、 農業應用 、 微生物與免疫 、 生物科技 、 生態演化 、 生物資訊",
+      "核心能力": [
+        {
+          "能力名稱": "高等生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "創新及整合研究",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "專業寫作與表達",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24053",
+    "課號-班別": "LS9998-*",
+    "課程名稱(中文)": "研究實習",
+    "課程名稱(英文)": "Research Training",
+    "備註": "限生科系及生科所，其餘請拿密碼卡\n[不開放初選]",
+    "授課教師": "教授群",
+    "學分": "0",
+    "上課時間": "Sat1",
+    "教室": "*-老師 *\nSat2",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24053&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系碩士班、生命科學系博士班。年級:限一年級、二年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24053&outline=24053&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24053",
+      "課號": "LS9998-*",
+      "授課教師": "教授群",
+      "課程名稱(中文)": "研究實習",
+      "課程名稱(英文)": "Research Training",
+      "課程學制": "碩博同修",
+      "學分": "0",
+      "課程目標": "培育兼任研究助理研究能力，透過學習課程進行與研究相關之學習活動。",
+      "授課內容": "實習、儀器操作、實驗研究與進行、資料調查蒐集與統計分析、程式撰寫、模組建立、理論建立、及其他與研究相關之學習活動。",
+      "教科書/參考書": "無",
+      "自編教材比例": "0",
+      "授課方式": "實習/實驗",
+      "評量配分比重": "由指導老師自定",
+      "辦公時間": "依指導教授規定",
+      "授課週數": "16",
+      "彈性教學說明": "期刊論文研讀與報告/個別指導",
+      "課程領域": "實驗操作",
+      "核心能力": [
+        {
+          "能力名稱": "高等生物專業知識",
+          "強度指數": "(4) 高",
+          "評量方式": "實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "創新及整合研究",
+          "強度指數": "(3) 普通",
+          "評量方式": "實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "專業寫作與表達",
+          "強度指數": "(3) 普通",
+          "評量方式": "實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(3) 普通",
+          "評量方式": "實作/實驗 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24054",
+    "課號-班別": "LS6136-*",
+    "課程名稱(中文)": "生醫材料應用之研究",
+    "課程名稱(英文)": "Research on the application of biomedical materials",
+    "備註": "[不開放初選]",
+    "授課教師": "許斐婷",
+    "學分": "3",
+    "上課時間": "Fri789",
+    "教室": "S5-112",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "30",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24054&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系。年級:限二年級、三年級、四年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限生命科學系碩士班、生命科學系博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24054&outline=24054&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24054",
+      "課號": "LS6136-*",
+      "授課教師": "許斐婷",
+      "課程名稱(中文)": "生醫材料應用之研究",
+      "課程名稱(英文)": "Research on the application of biomedical materials",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "本課程旨在介紹生醫材料（Biomaterials）於醫學、再生醫學及精準醫療領域中的應用與最新發展。課程內容將結合理論、跨領域技術及臨床需求，讓學生了解生醫材料如何被設計、改質、檢測並應用於疾病診斷、治療與組織再生。",
+      "授課內容": "1. 生醫材料概論-1\n2. 生醫材料概論-2\n3. 奈米科技於生醫材料應用-1\n4. 奈米科技於生醫材料應用-2\n5. 組織工程與再生醫學材料-1\n6. 組織工程與再生醫學材料-2\n7. 生物可分解支架-1\n8. 期中報告\n9. 生物可分解支架-2\n10. 幹細胞材料與智慧材料-1\n11. 幹細胞材料與智慧材料-2\n12. 3D 列印於生醫材料-1\n13. 3D 列印於生醫材料-1\n14. 生物醫學影像與材料追蹤技術-1\n15. 生物醫學影像與材料追蹤技術-2\n16. 期末報告\n17. 實際臨床案例與產業應用趨勢-1(自主學習)\n18. 實際臨床案例與產業應用趨勢-2(自主學習)",
+      "教科書/參考書": "1. 《Biomedical Materials》第二版（Roger Narayan 編輯） — 專業現代材料應用介紹。 SpringerLink 2. 《Nanomaterials and Their Biomedical Applications》 — 聚焦奈米結構材料的生醫用途。",
+      "自編教材比例": "100",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "報告100%",
+      "辦公時間": "週二 09:00-12:00",
+      "授課週數": "16",
+      "彈性教學說明": "17. 實際臨床案例與產業應用趨勢-1(自主學習) 18. 實際臨床案例與產業應用趨勢-2(自主學習)",
+      "課程領域": "基礎學科 、 生物科技 、 醫藥 、 實驗操作",
+      "核心能力": [
+        {
+          "能力名稱": "高等生物專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "創新及整合研究",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "專業寫作與表達",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "生醫理工學院",
+    "系所": "生命科學系",
+    "流水號": "24055",
+    "課號-班別": "LS4020-*",
+    "課程名稱(中文)": "生命科學的醫療實踐",
+    "課程名稱(英文)": "Medical Practice in Life Sciences",
+    "備註": "[不開放初選]",
+    "授課教師": "陳右緯",
+    "學分": "3",
+    "上課時間": "Wed234",
+    "教室": "S5-112",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=24055&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生命科學系。年級:限二年級、三年級、四年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限學士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=24055&outline=24055&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "生命科學系",
+      "流水號": "24055",
+      "課號": "LS4020-*",
+      "授課教師": "陳右緯",
+      "課程名稱(中文)": "生命科學的醫療實踐",
+      "課程名稱(英文)": "Medical Practice in Life Sciences",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "修畢本課程後，學生將能夠： 1.理解生命科學於醫療實務、疾病預防與健康照護中的理論基礎與應用內涵 2.認識常見疾病之病理機轉、診斷方式、治療原則與照護模式 3.具備基礎醫學檢驗結果與臨床醫療資訊之判讀與應用能力 4.瞭解醫療跨專業合作於現代醫療體系中的功能與發展趨勢 5.建立生命科學、醫療應用與公衛健康之概念，培養健康素養與專業反思能力",
+      "授課內容": "本課程凝聚醫療體系各專業講師來校簡報授課。\n2周次彈性教學實施方式：自行觀賞教學影片後書面彙報(教師將評核各組彙報並列為期末成績評比)。\n1.資通訊於腦中風醫療之運用\n2.社區篩檢與健康管理\n3.癌症預防與生活保健\n4.醫學檢驗與結果判讀\n5.自體免疫疾病\n6.腎臟醫學保健\n7.兩性健康\n8.期中考週：考試\n9.介紹消化道內視鏡和癌症篩檢\n10.氣喘、毒害與菸害防治\n11.常見肝膽腸胃病症之預防及照護\n12.物理治療與健康\n13.醫學美容與皮膚保健\n14.癌症治療與照護\n15.護理與醫療臨床運作\n16.期末考週：考試",
+      "教科書/參考書": "教科書: Kumar & Clark臨床醫學：各科疾病的臨床診治 (合記出版社) 參考書目: (1)臨床醫學概論 (2)臨床檢驗判讀（第三版）",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討",
+      "評量配分比重": "1. 期中筆試(25%) 2. 期中個人心得書面報告(10%) 3. 期末筆試(25%) 4. 期末各組書面報告(20%) 5. 學生課堂發問與問題分析、出席狀況(20%) 成績評核方式： (1)報告成績評核：老師憑學生在議題的選擇及正確度給予成績。 (2)學生課堂發問與問題分析、出席狀況，學生若無故缺席，將扣學生成績，若當天表現良好(主動回答問題)，則可進行成績加分。",
+      "辦公時間": "請學生以yuwchen@ncu.edu.tw聯繫教師",
+      "授課週數": "16",
+      "彈性教學說明": "2周次彈性教學實施方式：自行觀賞教學影片後書面彙報(教師將評核各組彙報並列為期末成績評比)。",
+      "課程領域": "醫藥",
+      "核心能力": [
+        {
+          "能力名稱": "基礎生物專業知識",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "發掘問題及實驗能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "邏輯分析",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "網路學習及資料蒐集",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "溝通技巧",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "獨立思考與自我學習",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "團隊合作",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "博雅通識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,2546 @@
+[
+  {
+    "id": "advanced_semiconductor",
+    "name": "「前瞻半導體」學分學程",
+    "college": "教務處",
+    "cross_school": false,
+    "min_credits": 33,
+    "description": "國立中央大學與科技業廠商合作，以培育半導體產業人才為宗旨。招收本校大學部各學院學生，每年申請名額以 30 名為原則。完成學程並於碩士班就讀者可申請廠商兼任助理費用。",
+    "required_courses": [],
+    "elective_groups": [
+      {
+        "name": "必修-類別一：電子學一",
+        "select": 1,
+        "description": "必修 12 類選 3 類，各類至少修 1 門；此為類別一",
+        "courses": [
+          {
+            "code": "PH3063",
+            "name": "電子學(含實驗) I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "OS2013",
+            "name": "基礎電學 I",
+            "credits": 4,
+            "school": "NCU"
+          },
+          {
+            "code": "ME2065",
+            "name": "電路及電子學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE2001",
+            "name": "電子學 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CO2005",
+            "name": "電子學 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BM2043",
+            "name": "微電子學",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "必修-類別二：半導體元件物理",
+        "select": 1,
+        "description": "必修 12 類選 3 類，此為類別二",
+        "courses": [
+          {
+            "code": "EE3029",
+            "name": "固態電子學導論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE6044",
+            "name": "半導體元件",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE8006",
+            "name": "次微米元件物理技術",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE8020",
+            "name": "奈米電子學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "OS2011",
+            "name": "光電半導體物理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "OS6072",
+            "name": "光電半導體物理與元件",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE8083",
+            "name": "先進奈米電子元件",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "必修-類別三：半導體製程",
+        "select": 1,
+        "description": "必修 12 類選 3 類，此為類別三",
+        "courses": [
+          {
+            "code": "OS7086",
+            "name": "奈微米製作概論",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "ME6103",
+            "name": "半導體製程設備與技術",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME5207",
+            "name": "半導體與微奈米設備及製程整合",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME4096",
+            "name": "先進材料製程",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE6033",
+            "name": "固態工程",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE8061",
+            "name": "半導體製程實務",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BE5050",
+            "name": "微奈米材料暨元件技術導論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SD5013",
+            "name": "半導體製程減碳策略研究",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "必修-類別四：電路學",
+        "select": 1,
+        "description": "必修 12 類選 3 類，此為類別四",
+        "courses": [
+          {
+            "code": "OS2013",
+            "name": "基礎電學 I",
+            "credits": 4,
+            "school": "NCU"
+          },
+          {
+            "code": "OS2014",
+            "name": "基礎電學 II",
+            "credits": 4,
+            "school": "NCU"
+          },
+          {
+            "code": "EE2002",
+            "name": "電路學 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE2011",
+            "name": "電路學 II",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CO2001",
+            "name": "電路學 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CE2009",
+            "name": "電子電路學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BM2012",
+            "name": "電子電路學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME2065",
+            "name": "電路及電子學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BM2043",
+            "name": "微電子學",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "必修-類別五：材料分析與檢測",
+        "select": 1,
+        "description": "必修 12 類選 3 類，此為類別五",
+        "courses": [
+          {
+            "code": "CH7009",
+            "name": "材料分析與鑑定",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CM6025",
+            "name": "儀器分析",
+            "credits": 4,
+            "school": "NCU"
+          },
+          {
+            "code": "CH3012",
+            "name": "儀器分析",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GP5088",
+            "name": "儀器分析",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "BM2039",
+            "name": "儀器分析",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME5090",
+            "name": "矽晶材料及其應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CI6087",
+            "name": "精密儀器在工程材料上之應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MS5019",
+            "name": "奈米材料製程與檢測技術",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "必修-類別六：分析化學",
+        "select": 1,
+        "description": "必修 12 類選 3 類，此為類別六",
+        "courses": [
+          {
+            "code": "CM2021",
+            "name": "分析化學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CM2022",
+            "name": "分析化學",
+            "credits": 4,
+            "school": "NCU"
+          },
+          {
+            "code": "CM6021",
+            "name": "高等分析化學",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "必修-類別七：流體力學/輸送現象一",
+        "select": 1,
+        "description": "必修 12 類選 3 類，此為類別七",
+        "courses": [
+          {
+            "code": "CI2011",
+            "name": "流體力學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME3081",
+            "name": "流體力學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "AP2010",
+            "name": "流體力學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "PH4029",
+            "name": "流體力學導論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GP3096",
+            "name": "流體力學概論",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "ER6010",
+            "name": "計算流體力學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "HS6092",
+            "name": "計算流體力學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CI3072",
+            "name": "應用流體力學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CH2021",
+            "name": "輸送現象及單元操作 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CH6007",
+            "name": "高等輸送現象",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "必修-類別八：結晶學與相變態",
+        "select": 1,
+        "description": "必修 12 類選 3 類，此為類別八",
+        "courses": [
+          {
+            "code": "CH2026",
+            "name": "結晶繞射概論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MS5020",
+            "name": "X光繞射結晶學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MS5028",
+            "name": "材料物理化學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CH8128",
+            "name": "材料相變化學",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "必修-類別九：實驗設計與統計應用",
+        "select": 1,
+        "description": "必修 12 類選 3 類，此為類別九",
+        "courses": [
+          {
+            "code": "CH6040",
+            "name": "工程統計學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EG2001",
+            "name": "工程統計學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MA6058",
+            "name": "統計推論 II",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ST8015",
+            "name": "統計推論 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ST6023",
+            "name": "實驗設計 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME5045",
+            "name": "實驗設計與分析",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IA5007",
+            "name": "實驗設計",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BM3029",
+            "name": "統計機器學習基礎",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BE5013",
+            "name": "統計與實驗設計",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "必修-類別十：實驗物理與方法",
+        "select": 1,
+        "description": "必修 12 類選 3 類，此為類別十",
+        "courses": [
+          {
+            "code": "PH1029",
+            "name": "實驗物理與方法 I",
+            "credits": 6,
+            "school": "NCU"
+          },
+          {
+            "code": "PH1030",
+            "name": "實驗物理與方法 I",
+            "credits": 6,
+            "school": "NCU"
+          },
+          {
+            "code": "PH2029",
+            "name": "實驗物理與方法 II",
+            "credits": 6,
+            "school": "NCU"
+          },
+          {
+            "code": "PH2030",
+            "name": "實驗物理與方法 II",
+            "credits": 6,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "必修-類別十一：半導體製程設備與技術",
+        "select": 1,
+        "description": "必修 12 類選 3 類，此為類別十一",
+        "courses": [
+          {
+            "code": "ME6103",
+            "name": "半導體製程設備與技術",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME6101",
+            "name": "先進半導體設備技術",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME5207",
+            "name": "半導體與微奈米設備及製程整合",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "必修-類別十二：機器人與自動化應用",
+        "select": 1,
+        "description": "必修 12 類選 3 類，此為類別十二",
+        "courses": [
+          {
+            "code": "MA3137",
+            "name": "機器人專題",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "MA3138",
+            "name": "機器人專題 II",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "MA5047",
+            "name": "機器人特論",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "ME6061",
+            "name": "機器人學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME8002",
+            "name": "移動式機器人",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME4202",
+            "name": "工業機器人原理與自動化應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME7030",
+            "name": "醫療機器人設計導論",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "核心選修-類別一：電子學二",
+        "select": 1,
+        "description": "核心選修 24 類選 5 類（可用必修折抵），各類至少修 1 門；此為核心選修類別一",
+        "courses": [
+          {
+            "code": "PH3064",
+            "name": "電子學(含實驗) II",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "OS2014",
+            "name": "基礎電學 II",
+            "credits": 4,
+            "school": "NCU"
+          },
+          {
+            "code": "EE2009",
+            "name": "電子學 II",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CO2006",
+            "name": "電子學 II",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "核心選修-類別二：微分方程",
+        "select": 1,
+        "description": "核心選修 24 類選 5 類，此為類別二",
+        "courses": [
+          {
+            "code": "CH2009",
+            "name": "工程數學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CI2017",
+            "name": "工程數學 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME2001",
+            "name": "工程數學 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BM2010",
+            "name": "工程數學(上)",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "OS2007",
+            "name": "工程數學 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CE1006",
+            "name": "工程數學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE1010",
+            "name": "工程數學-微分方程",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CO2011",
+            "name": "工程數學-微分方程",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MA2041",
+            "name": "微分方程 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MA8017",
+            "name": "微分方程 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MA2042",
+            "name": "微分方程 II",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CM2011",
+            "name": "化學數學(I)",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "PH2003",
+            "name": "應用數學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GP2019",
+            "name": "應用數學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "AP2007",
+            "name": "應用數學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SS2005",
+            "name": "應用數學 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME5027",
+            "name": "高等應用數學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "AP6067",
+            "name": "高等應用數學 I",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "核心選修-類別三：線性代數",
+        "select": 1,
+        "description": "核心選修 24 類選 5 類，此為類別三",
+        "courses": [
+          {
+            "code": "OS2007",
+            "name": "工程數學 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CH2010",
+            "name": "工程數學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CI2018",
+            "name": "工程數學 II",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME2002",
+            "name": "工程數學 II",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE1009",
+            "name": "工程數學-線性代數",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CO1007",
+            "name": "工程數學-線性代數",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MA2007",
+            "name": "線性代數 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MA2008",
+            "name": "線性代數 II",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CE2005",
+            "name": "線性代數",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GP2061",
+            "name": "線性代數",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SS2013",
+            "name": "線性代數",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BM3023",
+            "name": "線性代數",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "PH2004",
+            "name": "應用數學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "AP2008",
+            "name": "應用數學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SS6009",
+            "name": "高等應用數學 I",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "核心選修-類別四：固態物理導論",
+        "select": 1,
+        "description": "核心選修 24 類選 5 類，此為類別四",
+        "courses": [
+          {
+            "code": "PH3042",
+            "name": "固態物理導論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CH3055",
+            "name": "固態物理導論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "OS7080",
+            "name": "固態物理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE8035",
+            "name": "固態物理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "PH6033",
+            "name": "固態物理 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "PH6034",
+            "name": "固態物理 II",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE3029",
+            "name": "固態電子學導論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MS5037",
+            "name": "固態材料物理",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "核心選修-類別五：電磁學",
+        "select": 1,
+        "description": "核心選修 24 類選 5 類，此為類別五",
+        "courses": [
+          {
+            "code": "PH1028",
+            "name": "電磁學",
+            "credits": 4,
+            "school": "NCU"
+          },
+          {
+            "code": "ME3055",
+            "name": "電磁學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GP2014",
+            "name": "電磁學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "OS2003",
+            "name": "電磁學 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE2004",
+            "name": "電磁學 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CO2003",
+            "name": "電磁學 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SS2003",
+            "name": "電磁學 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "OS2004",
+            "name": "電磁學 II",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE2015",
+            "name": "電磁學 II",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CO2004",
+            "name": "電磁學 II",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SS2004",
+            "name": "電磁學 II",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "PH6005",
+            "name": "電動力學 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "PH6006",
+            "name": "電動力學 II",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE8028",
+            "name": "數值電磁學",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "核心選修-類別六：積體電路設計",
+        "select": 1,
+        "description": "核心選修 24 類選 5 類，此為類別六",
+        "courses": [
+          {
+            "code": "EE3032",
+            "name": "超大型積體電路導論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE6013",
+            "name": "超大型積體電路設計",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE4032",
+            "name": "類比積體電路導論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE7050",
+            "name": "數位積體電路設計",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE4012",
+            "name": "超大型積體電路系統設計",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "核心選修-類別七：微電子工程",
+        "select": 1,
+        "description": "核心選修 24 類選 5 類，此為類別七",
+        "courses": [
+          {
+            "code": "EE8020",
+            "name": "奈米電子學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE3034",
+            "name": "固態電子元件",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE7052",
+            "name": "高速電子元件",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE8079",
+            "name": "功率電子元件",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE8083",
+            "name": "先進奈米電子元件",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BE5050",
+            "name": "微奈米材料暨元件技術導論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE6020",
+            "name": "光電元件",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "核心選修-類別八：電子薄膜科技",
+        "select": 1,
+        "description": "核心選修 24 類選 5 類，此為類別八",
+        "courses": [
+          {
+            "code": "OS6027",
+            "name": "薄膜光學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "OS7187",
+            "name": "薄膜沉積技術",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "OS6076",
+            "name": "薄膜設計與製作",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CH8117",
+            "name": "奈米薄膜製程與分析特論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MS5033",
+            "name": "薄膜物理簡介",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "核心選修-類別九：電漿工程與應用",
+        "select": 1,
+        "description": "核心選修 24 類選 5 類，此為類別九",
+        "courses": [
+          {
+            "code": "OS6097",
+            "name": "電漿技術",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "PH4065",
+            "name": "電漿物理導論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SS3002",
+            "name": "電漿物理導論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "AP3037",
+            "name": "電漿物理導論 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SS7011",
+            "name": "電漿量測 I",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "核心選修-類別十：材料科學",
+        "select": 1,
+        "description": "核心選修 24 類選 5 類，此為類別十",
+        "courses": [
+          {
+            "code": "ME2051",
+            "name": "材料科學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BM3006",
+            "name": "材料科學導論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CH1023",
+            "name": "材料工程概論 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CH1024",
+            "name": "材料工程概論 II",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME3048",
+            "name": "先進材料",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME5090",
+            "name": "矽晶材料及其應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MS5019",
+            "name": "奈米材料製程與檢測技術",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CM6063",
+            "name": "固態化學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "OS7140",
+            "name": "超材料物理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EI1102",
+            "name": "能源與材料科學導論",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "核心選修-類別十一：(固態)熱力學",
+        "select": 1,
+        "description": "核心選修 24 類選 5 類，此為類別十一",
+        "courses": [
+          {
+            "code": "PH3011",
+            "name": "熱物理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SS2014",
+            "name": "熱力學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME2073",
+            "name": "熱力學(I)",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME2072",
+            "name": "熱力學 II",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "ER6009",
+            "name": "高等熱力學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CH8022",
+            "name": "高等化工熱力學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MS5021",
+            "name": "材料熱力學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CH3059",
+            "name": "化工與材料熱力學 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CH3060",
+            "name": "化工與材料熱力學 II",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CM3042",
+            "name": "物理化學",
+            "credits": 4,
+            "school": "NCU"
+          },
+          {
+            "code": "BM2028",
+            "name": "物理化學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CH2005",
+            "name": "物理化學",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "核心選修-類別十二：物理冶金",
+        "select": 1,
+        "description": "核心選修 24 類選 5 類，此為類別十二",
+        "courses": [
+          {
+            "code": "ME3046",
+            "name": "物理冶金",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME5077",
+            "name": "高等物理冶金",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MS5003",
+            "name": "高等物理冶金",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "核心選修-類別十三：表面物理/化學",
+        "select": 1,
+        "description": "核心選修 24 類選 5 類，此為類別十三",
+        "courses": [
+          {
+            "code": "PH7015",
+            "name": "表面物理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EN7012",
+            "name": "膠體及表面化學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "OS7198",
+            "name": "表面電漿子超穎材料",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "核心選修-類別十四：材料表面工程/表面分析技術",
+        "select": 1,
+        "description": "核心選修 24 類選 5 類，此為類別十四",
+        "courses": [
+          {
+            "code": "BE5026",
+            "name": "表面分析與工程",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME5012",
+            "name": "半導體晶圓鍵合科學與技術",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "核心選修-類別十五：物理化學",
+        "select": 1,
+        "description": "核心選修 24 類選 5 類，此為類別十五",
+        "courses": [
+          {
+            "code": "CM3041",
+            "name": "物理化學",
+            "credits": 4,
+            "school": "NCU"
+          },
+          {
+            "code": "CM3042",
+            "name": "物理化學",
+            "credits": 4,
+            "school": "NCU"
+          },
+          {
+            "code": "BM2028",
+            "name": "物理化學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CH2005",
+            "name": "物理化學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CH2006",
+            "name": "物理化學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CM6041",
+            "name": "高等物理化學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MS5028",
+            "name": "材料物理化學",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "核心選修-類別十六：有機化學",
+        "select": 1,
+        "description": "核心選修 24 類選 5 類，此為類別十六",
+        "courses": [
+          {
+            "code": "CM2031",
+            "name": "有機化學",
+            "credits": 4,
+            "school": "NCU"
+          },
+          {
+            "code": "CH2001",
+            "name": "有機化學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "LS2005",
+            "name": "有機化學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CM2032",
+            "name": "有機化學",
+            "credits": 4,
+            "school": "NCU"
+          },
+          {
+            "code": "CH2002",
+            "name": "有機化學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "LS2006",
+            "name": "有機化學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CM6031",
+            "name": "高等有機化學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CM6036",
+            "name": "有機化學特論",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "CM3099",
+            "name": "大學部有機化學特論",
+            "credits": 2,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "核心選修-類別十七：材料化學",
+        "select": 1,
+        "description": "核心選修 24 類選 5 類，此為類別十七",
+        "courses": [
+          {
+            "code": "CH2031",
+            "name": "材料化學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CM6062",
+            "name": "材料化學特論",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "核心選修-類別十八：微機電",
+        "select": 1,
+        "description": "核心選修 24 類選 5 類，此為類別十八",
+        "courses": [
+          {
+            "code": "ME5065",
+            "name": "微機電系統",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "核心選修-類別十九：電機機械與電路學",
+        "select": 1,
+        "description": "核心選修 24 類選 5 類，此為類別十九",
+        "courses": [
+          {
+            "code": "EE3010",
+            "name": "電機機械",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "OS2013",
+            "name": "基礎電學 I",
+            "credits": 4,
+            "school": "NCU"
+          },
+          {
+            "code": "OS2014",
+            "name": "基礎電學 II",
+            "credits": 4,
+            "school": "NCU"
+          },
+          {
+            "code": "EE2002",
+            "name": "電路學 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE2011",
+            "name": "電路學 II",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CO2001",
+            "name": "電路學 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CE2009",
+            "name": "電子電路學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BM2012",
+            "name": "電子電路學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME2065",
+            "name": "電路及電子學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BM2043",
+            "name": "微電子學",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "核心選修-類別二十：機電整合與自動化應用",
+        "select": 1,
+        "description": "核心選修 24 類選 5 類，此為類別二十",
+        "courses": [
+          {
+            "code": "ME4061",
+            "name": "自動控制 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME4062",
+            "name": "自動控制 II",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE3003",
+            "name": "控制系統",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME7069",
+            "name": "數位控制",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME3101",
+            "name": "光機電系統整合概論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE8058",
+            "name": "智慧型控制系統設計與應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SG5005",
+            "name": "智慧型控制系統設計與應用",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "核心選修-類別二十一：感測技術基礎科學",
+        "select": 1,
+        "description": "核心選修 24 類選 5 類，此為類別二十一",
+        "courses": [
+          {
+            "code": "ME3056",
+            "name": "感測原理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME2003",
+            "name": "基礎工程光學 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME2004",
+            "name": "基礎工程光學 II",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "核心選修-類別二十二：機構設計與加工",
+        "select": 1,
+        "description": "核心選修 24 類選 5 類，此為類別二十二",
+        "courses": [
+          {
+            "code": "ME2035",
+            "name": "機構學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME3043",
+            "name": "機密機械設計 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME3044",
+            "name": "機密機械設計 II",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME5016",
+            "name": "雷射加工與材料處理",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "核心選修-類別二十三：化學工程",
+        "select": 1,
+        "description": "核心選修 24 類選 5 類，此為類別二十三",
+        "courses": [
+          {
+            "code": "CH2033",
+            "name": "化學工程概論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CH3011",
+            "name": "化學反應工程",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MS5045",
+            "name": "材料電化學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CH8076",
+            "name": "高等應用電化學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CH1012",
+            "name": "質能平衡與化工計算",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CH3042",
+            "name": "輸送現象及單元操作 II",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CH3043",
+            "name": "輸送現象與單元操作 III",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "核心選修-類別二十四：程式語言",
+        "select": 1,
+        "description": "核心選修 24 類選 5 類，此為類別二十四",
+        "courses": [
+          {
+            "code": "OS1008",
+            "name": "計算機概論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BM1004",
+            "name": "計算機概論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MA1013",
+            "name": "計算機概論 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE1003",
+            "name": "計算機概論 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CO1001",
+            "name": "計算機概論 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM1001",
+            "name": "計算機概論 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CE1001",
+            "name": "計算機概論 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CE1002",
+            "name": "計算機概論 II",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EG1001",
+            "name": "工程程式設計",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GS4719",
+            "name": "程式設計-Python",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MT1051",
+            "name": "程式設計-Python",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME4301",
+            "name": "Python 程式設計",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM1023",
+            "name": "程式設計",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM1013",
+            "name": "初階程式設計",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME3099",
+            "name": "程式設計與應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME7007",
+            "name": "物件導向程式設計",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "專業選修-類別一：近代物理",
+        "select": 1,
+        "description": "專業選修 21 類選 3 類（可用必修/核心選修折抵），各類至少修 1 門；此為專業選修類別一",
+        "courses": [
+          {
+            "code": "PH2035",
+            "name": "近代物理導論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME3053",
+            "name": "近代物理導論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "OS2001",
+            "name": "近代物理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE2023",
+            "name": "近代物理",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "專業選修-類別二：量子物理/量子力學",
+        "select": 1,
+        "description": "專業選修 21 類選 3 類，此為類別二",
+        "courses": [
+          {
+            "code": "PH3009",
+            "name": "量子物理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "OS2012",
+            "name": "量子物理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "PH3008",
+            "name": "量子力學導論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE4028",
+            "name": "量子力學導論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "PH6003",
+            "name": "量子力學 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "PH6004",
+            "name": "量子力學 II",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "OS7096",
+            "name": "應用量子力學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SH5002",
+            "name": "量子計算",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SH5005",
+            "name": "量子科技概論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "PH3010",
+            "name": "量子與統計物理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "PH7064",
+            "name": "量子光學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "OS7009",
+            "name": "量子光學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CM3041",
+            "name": "物理化學",
+            "credits": 4,
+            "school": "NCU"
+          },
+          {
+            "code": "CH2006",
+            "name": "物理化學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CM6041",
+            "name": "高等物理化學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MS5028",
+            "name": "材料物理化學",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "專業選修-類別三：半導體元件設計與模擬",
+        "select": 1,
+        "description": "專業選修 21 類選 3 類，此為類別三",
+        "courses": [
+          {
+            "code": "EE8083",
+            "name": "先進奈米電子元件",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "PH6024",
+            "name": "奈米電子元件之量子傳輸模擬",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "專業選修-類別四：半導體元件量測",
+        "select": 1,
+        "description": "專業選修 21 類選 3 類，此為類別四",
+        "courses": [
+          {
+            "code": "EE4027",
+            "name": "奈米電子專題實驗",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE4042",
+            "name": "光電元件專題實驗",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MS5035",
+            "name": "電子材料與元件特性",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "專業選修-類別五：半導體記憶體",
+        "select": 1,
+        "description": "專業選修 21 類選 3 類，此為類別五",
+        "courses": [
+          {
+            "code": "EE8074",
+            "name": "記憶體積體電路",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "專業選修-類別六：深度學習與 AI 應用",
+        "select": 1,
+        "description": "專業選修 21 類選 3 類，此為類別六",
+        "courses": [
+          {
+            "code": "EE8008",
+            "name": "神經系統及其應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CE5037",
+            "name": "類神經網路",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM3078",
+            "name": "人工智慧與機器學習",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE8087",
+            "name": "人工智慧實務",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GS4519",
+            "name": "機器學習概論",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "CE6102",
+            "name": "機器學習",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IA7053",
+            "name": "AI 機器學習與應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME6104",
+            "name": "Python 與機器學習",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CE6146",
+            "name": "深度學習介紹",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME5301",
+            "name": "深度學習專案設計",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IA7054",
+            "name": "AI 深度學習理論與實務",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE8094",
+            "name": "深度學習系統設計與應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE3054",
+            "name": "深度學習程式設計",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CO3027",
+            "name": "深度學習程式設計",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BM2044",
+            "name": "機械學習數學基礎",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "TM7044",
+            "name": "幾何深度學習數學基礎",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME5208",
+            "name": "深度學習與電腦視覺應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CI5033",
+            "name": "深度學習與建築資訊模型程式整合設計",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "專業選修-類別七：應用光電子學",
+        "select": 1,
+        "description": "專業選修 21 類選 3 類，此為類別七",
+        "courses": [
+          {
+            "code": "OS3001",
+            "name": "光學系統",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "OS3002",
+            "name": "光電工程概論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE8031",
+            "name": "半導體雷射",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "PH3059",
+            "name": "光學 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "PH3060",
+            "name": "光學 II",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "OS2018",
+            "name": "波動光學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "OS7104",
+            "name": "積體光學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "PH7064",
+            "name": "量子光學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "OS7109",
+            "name": "矽光子學",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "專業選修-類別八：進階積體電路設計",
+        "select": 1,
+        "description": "專業選修 21 類選 3 類，此為類別八",
+        "courses": [
+          {
+            "code": "EE6057",
+            "name": "類比積體電路",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE7026",
+            "name": "通訊積體電路",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE8074",
+            "name": "記憶體積體電路",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE8048",
+            "name": "無線通訊積體電路",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE8027",
+            "name": "射頻積體電路設計",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE4012",
+            "name": "超大型積體電路系統設計",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE6094",
+            "name": "電腦輔助超大型積體電路設計",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE6083",
+            "name": "超大型積體電路測試",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "專業選修-類別九：輻射光源與檢測",
+        "select": 1,
+        "description": "專業選修 21 類選 3 類，此為類別九",
+        "courses": [
+          {
+            "code": "OS7184",
+            "name": "同步輻射光源",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "OS6023",
+            "name": "輻射與檢測",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "專業選修-類別十：X 光繞射技術應用",
+        "select": 1,
+        "description": "專業選修 21 類選 3 類，此為類別十",
+        "courses": [
+          {
+            "code": "CH2026",
+            "name": "結晶繞射概論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MS5020",
+            "name": "X 光繞射結晶學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CH8108",
+            "name": "X 光/中子散射及反射物理原理與應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CM6072",
+            "name": "粉末 X-光繞射的原理與在化學上的應用",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "專業選修-類別十一：材料力學/應力分析",
+        "select": 1,
+        "description": "專業選修 21 類選 3 類，此為類別十一",
+        "courses": [
+          {
+            "code": "CI2004",
+            "name": "材料力學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CI6022",
+            "name": "高等材料力學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME1006",
+            "name": "靜力與材料力學",
+            "credits": 4,
+            "school": "NCU"
+          },
+          {
+            "code": "ME4016",
+            "name": "中等材力",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CI2005",
+            "name": "工程材料學",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "專業選修-類別十二：材料機械性質",
+        "select": 1,
+        "description": "專業選修 21 類選 3 類，此為類別十二",
+        "courses": [
+          {
+            "code": "ME6059",
+            "name": "材料機械性質",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "專業選修-類別十三：輸送現象二（熱傳導/熱質量傳遞）",
+        "select": 1,
+        "description": "專業選修 21 類選 3 類，此為類別十三",
+        "courses": [
+          {
+            "code": "CH3042",
+            "name": "輸送現象及單元操作 II",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CH6007",
+            "name": "高等輸送現象",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "專業選修-類別十四：電化學",
+        "select": 1,
+        "description": "專業選修 21 類選 3 類，此為類別十四",
+        "courses": [
+          {
+            "code": "MS5045",
+            "name": "材料電化學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CH8076",
+            "name": "高等應用電化學",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "專業選修-類別十五：無機化學",
+        "select": 1,
+        "description": "專業選修 21 類選 3 類，此為類別十五",
+        "courses": [
+          {
+            "code": "CM3051",
+            "name": "無機化學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CM3052",
+            "name": "無機化學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CM6051",
+            "name": "高等無機化學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CH2031",
+            "name": "材料化學",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "專業選修-類別十六：電子材料",
+        "select": 1,
+        "description": "專業選修 21 類選 3 類，此為類別十六",
+        "courses": [
+          {
+            "code": "CH8071",
+            "name": "電子材料科學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MS5035",
+            "name": "電子材料與元件特性",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "專業選修-類別十七：高分子科學",
+        "select": 1,
+        "description": "專業選修 21 類選 3 類，此為類別十七",
+        "courses": [
+          {
+            "code": "CM4037",
+            "name": "共軛高分子化學與應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CH4049",
+            "name": "高分子科學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CH8031",
+            "name": "高等高分子物理",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "專業選修-類別十八：材料動力學",
+        "select": 1,
+        "description": "專業選修 21 類選 3 類，此為類別十八",
+        "courses": [
+          {
+            "code": "MS5018",
+            "name": "材料動力學",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "專業選修-類別十九：智慧製造技術",
+        "select": 1,
+        "description": "專業選修 21 類選 3 類，此為類別十九",
+        "courses": [
+          {
+            "code": "ME5202",
+            "name": "智慧製造技術",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME5091",
+            "name": "半導體設備及製造整合 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE8058",
+            "name": "智慧型控制系統設計與應用",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "專業選修-類別二十：量測原理",
+        "select": 1,
+        "description": "專業選修 21 類選 3 類，此為類別二十",
+        "courses": [
+          {
+            "code": "OS6003",
+            "name": "傅氏光學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "OM6013",
+            "name": "光學量測",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME6066",
+            "name": "機械量測",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "專業選修-類別二十一：半導體實務（不計入學程學分）",
+        "select": 0,
+        "description": "此類別課程以微課程學分數認定，不計入學程學分，僅供學習參考",
+        "courses": [
+          {
+            "code": "",
+            "name": "半導體設備元件基礎",
+            "credits": 0,
+            "school": "NCU",
+            "description": "微課程，不計入學程學分"
+          },
+          {
+            "code": "",
+            "name": "半導體機台基礎",
+            "credits": 0,
+            "school": "NCU",
+            "description": "微課程，不計入學程學分"
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 33,
+        "description": "修畢至少 11 門科目且至少 33 學分"
+      },
+      {
+        "type": "dept_required",
+        "description": "必修：從 12 類中選 3 類，各類至少修 1 門課（共 3 門）"
+      },
+      {
+        "type": "elective_minimum",
+        "description": "核心選修：從 24 類中選 5 類，各類至少修 1 門課（共 5 門）；必修課程可折抵核心選修類別數"
+      },
+      {
+        "type": "elective_minimum",
+        "description": "專業選修：從 21 類中選 3 類，各類至少修 1 門課（共 3 門）；必修及核心選修課程可折抵專業選修類別數"
+      },
+      {
+        "type": "required_elective",
+        "description": "大學部成績及格標準 60 分；研究生成績及格標準 70 分"
+      },
+      {
+        "type": "outside_elective_max",
+        "description": "校際選課課程至多可抵免三分之一科目（約 3~4 門）"
+      },
+      {
+        "type": "elective_note",
+        "description": "每年申請名額以 30 名為原則，須向教務處提出申請"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢前瞻半導體學分學程」，並頒發學分學程證明書。完成學程並於本校碩士班就讀之 STEAM 領域學生，可申請廠商兼任助理費用（碩士班期間每月 15,000 元，至多補助 2 年；優先考慮非電機、電子、機械及半導體相關背景學生）。"
+  }
+]

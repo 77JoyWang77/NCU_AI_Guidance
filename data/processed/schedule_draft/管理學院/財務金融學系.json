@@ -1,0 +1,312 @@
+{
+  "id": "dept_finance",
+  "name": "財務金融學系",
+  "program_type": "traditional_dept",
+  "min_credits": 128,
+  "required_credits": 85,
+  "graduation_rules": [
+    {
+      "type": "credit_minimum",
+      "credits": 128,
+      "description": "最低畢業學分數 128 學分"
+    },
+    {
+      "type": "dept_required",
+      "credits": 85,
+      "description": "必修科目共 85 學分（共同必修25＋院訂必修24＋系訂必修36）"
+    },
+    {
+      "type": "elective_total_min",
+      "credits": 43,
+      "description": "選修至少 43 學分（不含通識及師資培育課程）"
+    },
+    {
+      "type": "dept_elective_min",
+      "credits": 18,
+      "description": "系訂選修至少 18 學分"
+    },
+    {
+      "type": "digital_literacy",
+      "credits": 6,
+      "description": "管院「數位素養」必選課程至少 6 學分，來源：企業資源規劃學程、商業智慧與分析學程、金融科技學程（IM前綴）或系課程委員會核准課程"
+    },
+    {
+      "type": "law_finance_group",
+      "select": 2,
+      "courses": [
+        "FM2009",
+        "FM3004",
+        "FM4013"
+      ],
+      "description": "法律／金融法規三擇二：民法概要(FM2009)、商事法(FM3004)、證券金融法規(FM4013)，擇二修習"
+    },
+    {
+      "type": "management_group",
+      "select": 1,
+      "courses": [
+        "FM2036",
+        "FM3011"
+      ],
+      "description": "管理課程二擇一：組織行為(FM2036)、行銷管理(FM3011)，擇一修習"
+    },
+    {
+      "type": "foreign_language",
+      "credits": 6,
+      "description": "外文課程可從三種外文課程中擇一修習 6 學分；進修英文學分不列入畢業學分"
+    },
+    {
+      "type": "general_education",
+      "domains_min": 1,
+      "description": "通識核心必修四大領域至少修習一個領域"
+    }
+  ],
+  "college_required_courses": [
+    {
+      "code": "MT1011",
+      "name": "經濟學",
+      "credits": 3,
+      "when": "大一上",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "MT1012",
+      "name": "經濟學（下）",
+      "credits": 3,
+      "when": "大一下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "MT1021",
+      "name": "企業概論",
+      "credits": 3,
+      "when": "大一上",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "MT1031",
+      "name": "會計學",
+      "credits": 3,
+      "when": "大一上",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "MT1032",
+      "name": "會計學（下）",
+      "credits": 3,
+      "when": "大一下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "MT2041",
+      "name": "統計學",
+      "credits": 3,
+      "when": "大二上",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "MT2042",
+      "name": "統計學（下）",
+      "credits": 3,
+      "when": "大二下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "MT1051",
+      "name": "程式設計：Python",
+      "credits": 3,
+      "when": "大一上",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    }
+  ],
+  "required_courses": [
+    {
+      "code": "MA1005",
+      "name": "微積分上",
+      "credits": 3,
+      "when": "大一上~大一下",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "MA1006",
+      "name": "微積分下",
+      "credits": 3,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FM1011",
+      "name": "財務金融概論",
+      "credits": 3,
+      "when": "大一下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FM2031",
+      "name": "財務管理上",
+      "credits": 3,
+      "when": "大二上~大二下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FM2032",
+      "name": "財務管理下",
+      "credits": 3,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FM2003",
+      "name": "個體經濟學",
+      "credits": 3,
+      "when": "大二上~大二下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FM2004",
+      "name": "總體經濟學",
+      "credits": 3,
+      "when": "",
+      "when_auto": false,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FM3017",
+      "name": "投資學",
+      "credits": 3,
+      "when": "大三上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FM3002",
+      "name": "期貨與選擇權",
+      "credits": 3,
+      "when": "大三上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FM4001",
+      "name": "國際財務管理",
+      "credits": 3,
+      "when": "大三下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FM3036",
+      "name": "金融機構與市場",
+      "credits": 3,
+      "when": "大三上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "FM3001",
+      "name": "財務報表分析",
+      "credits": 3,
+      "when": "大四上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    }
+  ],
+  "elective_groups": [
+    {
+      "name": "法律金融三擇二",
+      "select": 2,
+      "courses": [
+        {
+          "code": "FM2009",
+          "name": "民法概要",
+          "credits": 3,
+          "when": "",
+          "when_auto": false,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "FM3004",
+          "name": "商事法",
+          "credits": 3,
+          "when": "",
+          "when_auto": false,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "FM4013",
+          "name": "證券金融法規",
+          "credits": 3,
+          "when": "",
+          "when_auto": false,
+          "verified": false,
+          "note": ""
+        }
+      ]
+    },
+    {
+      "name": "管理二擇一",
+      "select": 1,
+      "courses": [
+        {
+          "code": "FM2036",
+          "name": "組織行為",
+          "credits": 3,
+          "when": "",
+          "when_auto": false,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "FM3011",
+          "name": "行銷管理",
+          "credits": 3,
+          "when": "",
+          "when_auto": false,
+          "verified": false,
+          "note": ""
+        }
+      ]
+    },
+    {
+      "name": "數位素養必選",
+      "select_credits": 6,
+      "description": "選修企業資源規劃、商業智慧與分析、金融科技（IM前綴）或系核准之數位課程，共 6 學分",
+      "courses": []
+    }
+  ]
+}

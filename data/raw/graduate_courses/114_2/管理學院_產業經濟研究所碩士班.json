@@ -1,0 +1,1381 @@
+[
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "管理學院",
+    "系所": "產業經濟研究所碩士班",
+    "流水號": "81001",
+    "課號-班別": "IE5016-*",
+    "課程名稱(中文)": "智慧財產權法",
+    "課程名稱(英文)": "Intellectual Property Law",
+    "備註": "[不開放初選]",
+    "授課教師": "王明禮",
+    "學分": "3",
+    "上課時間": "Thu234",
+    "教室": "I-823",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=81001&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=81001&outline=81001&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "產業經濟研究所碩士班",
+      "流水號": "81001",
+      "課號": "IE5016-*",
+      "授課教師": "王明禮",
+      "課程名稱(英文)": "Intellectual Property Law",
+      "課程學制": "碩士班",
+      "學分": "3\n後 2/3 則選擇若干與數位經濟有關的爭議性問題，進一步加以探討。\n細節將於暑假期間於我的課程網站上公布。“",
+      "教科書/參考書": "N/A.",
+      "自編教材比例": "100",
+      "授課方式": "研討",
+      "評量配分比重": "“課堂參與：40％ (單純出席不算) 期末報告：60％“",
+      "辦公時間": "請用 email 約時間 (mlwang@ncu.edu.tw).",
+      "授課週數": "16",
+      "彈性教學說明": "寫作指導。",
+      "課程領域": "產業經濟 、 管制經濟與法律 、 經濟發展",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "管理學院",
+    "系所": "產業經濟研究所碩士班",
+    "流水號": "81002",
+    "課號-班別": "IE6002-*",
+    "課程名稱(中文)": "產業經濟學（二）",
+    "課程名稱(英文)": "Industrial Economics Ⅱ",
+    "備註": "先修IE6001，經組必修，先修大學部統計學。\n[不開放初選]",
+    "授課教師": "鄒孟文",
+    "學分": "3",
+    "上課時間": "Wed567",
+    "教室": "I-406",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=81002&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。學院:限管理學院。系所:限產業經濟研究所碩士班。指定課程:必須先修IE6001。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=81002&outline=81002&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "產業經濟研究所碩士班",
+      "流水號": "81002",
+      "課號": "IE6002-*",
+      "授課教師": "鄒孟文",
+      "課程名稱(中文)": "產業經濟學（二）",
+      "課程名稱(英文)": "Industrial Economics Ⅱ",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "本課程的目標是結合產業理論與實證模型，以使學生學習如何利用實證分析來驗證相關的理論與產業現象。",
+      "授課內容": "Topics:\n1. Market Structure ＆ Entry and Exit\n2. Structure-Conduct-Performance (SCP) Paradigm\n3. New Empirical Industrial Organization (NEIO)\n4. Price Discrimination (1)\n5. Price Discrimination (2)\n6. R＆D, Innovation and Patent Licensing\n7. 校際活動週停課1日\n8. 期中考\n9. Advertising\n10. Horizontal Mergers\n11. Vertical Relations and Constraints\n12. Strategic Incumbents and Entry Strategies\n14. 產經實證文章分組口頭報告(1)\n15. 產經實證文章分組口頭報告(2)\n16. 期末考",
+      "教科書/參考書": "Required Textbooks: Pepall, Lynne, Dan Richards and George Norman (2008), Industrial Organization: Contemporary Theory and Empirical Applications, fourth edition, Blackwell Publishing Ltd. Tremblay, Victor J. and Carol Horton Tremblay (2012), New Perspectives in Industrial Organization: with Contributions from Behavioral Economics and Game Theory, Springer, New York. Supplementary Readings: Carlton, Dennis and Jeffrey Perloff (2005), Modern Industrial Organization, fourth edition, Pearson-Addison Wesley. Waldman, Don E. and Elizabeth J. Jensen (2007), Industrial Organization: Theory and Practice, third edition, Pearson-Addison Wesley.“",
+      "自編教材比例": "70",
+      "授課方式": "講授 研討 其他",
+      "評量配分比重": "Course Requirement: 1. Midterm exam (30％) 2. Final exam (30％) 3. Oral presentation (15％) 4. Term report (20％) 5. Participation (5％)",
+      "辦公時間": "By appointment. Email: tsoumw@ncu.edu.tw",
+      "授課週數": "16",
+      "課程領域": "經濟基礎 、 產業經濟 、 應用個體",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "管理學院",
+    "系所": "產業經濟研究所碩士班",
+    "流水號": "81003",
+    "課號-班別": "IE6003-*",
+    "課程名稱(中文)": "個體經濟學（一）",
+    "課程名稱(英文)": "Microeconomics I",
+    "備註": "產經組必修，請自行選課 與MB5068合班授課。\n[不開放初選]",
+    "授課教師": "蔡栢昇",
+    "學分": "3",
+    "上課時間": "Mon567",
+    "教室": "I-406",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=81003&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限學士班。年級:限四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=81003&outline=81003&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "產業經濟研究所碩士班",
+      "流水號": "81003",
+      "課號": "IE6003-*",
+      "授課教師": "蔡栢昇",
+      "課程名稱(中文)": "個體經濟學（一）",
+      "課程名稱(英文)": "Microeconomics I",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "Students are expected to develop a solid foundation in microeconomic analysis, master the basic modelling tools to construct economic models in explaining individual, consumer, and firm’s behavior, derive insights on and evaluate the welfare effects of economic policies.",
+      "授課內容": "This course introduces students to the fundamentals of microeconomic analysis and enable students’ application of economic tools in understanding and analyzing different economic problems to have a systematic view on the working of economics in the contemporary world.",
+      "教科書/參考書": "Our lectures closely follow Munoz-Garcia, Felix (2017), Advanced Microeconomic Theory: An Intuitive Approach with Examples, 1st Edition, Cambridge, MA: MIT Press (hereinto ““FMG““). Please obtain a copyright version of the textbook to help you better understand the lecture materials and work on the problem sets. I also recommend the accompanying workbook that provides step-to-step workout of odd-number questions, both can be obtained from the campus bookstore or online at www.amazon.com. Supplementary learning materials, such as journal articles and workout examples, will be distributed from time to time. You may also consult the following textbooks for further references. From a more theoretical side, you may read Mas-Colell, Andreu, Whinston, Michael D., and Green, Jerry R. (1995), Microeconomic Theory, 1st Edition, Cambridge, UK: Oxford University Press (hereinto ““MWG““) if you are interested in technical proofs and model-building. A book that focuses on both theory and application which I recommend is Varian Hal R. (1992), Microeconomic Analysis, 3rd Edition, Hoboken, NJ: John Wiley ＆ Sons, Inc. From a more applied side, you may study Jehle, Geoffrey A. and Reny, Philip J. (2011), Advanced Microeconomic Theory, 3rd Edition, Upper Saddle River, NJ: Prentice Hall (hereinto ““JR““) to help you form an intuition on the mechanics of economic models.",
+      "自編教材比例": "10",
+      "授課方式": "講授",
+      "評量配分比重": "Problem Sets: 8％ x 6, Mid-term Exams: 16％ x 2, Final Exam: 20％",
+      "辦公時間": "09:00 - 11:00, Thursday, or by appointment",
+      "授課週數": "16",
+      "彈性教學說明": "The last week is earmarked for final exam review. While there is no formal meeting, students are encouraged to schedule an appointment with the instructor to discuss their overall performance.",
+      "課程領域": "經濟基礎",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(1) 非常低",
+          "評量方式": "無"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "管理學院",
+    "系所": "產業經濟研究所碩士班",
+    "流水號": "81004",
+    "課號-班別": "IE6010-*",
+    "課程名稱(中文)": "產業經濟專題討論（二）",
+    "課程名稱(英文)": "Seminar on Industrial Economics Ⅱ",
+    "備註": "碩一、博班必選,與IE7050、IE8010合班\n[不開放初選]",
+    "授課教師": "鄭婷嫻",
+    "學分": "1",
+    "上課時間": "Tue67",
+    "教室": "I-406",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=81004&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限產業經濟研究所碩士班、產業經濟研究所博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=81004&outline=81004&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "產業經濟研究所碩士班",
+      "流水號": "81004",
+      "課號": "IE6010-*",
+      "授課教師": "鄭婷嫻",
+      "課程名稱(中文)": "產業經濟專題討論（二）",
+      "課程名稱(英文)": "Seminar on Industrial Economics Ⅱ",
+      "課程學制": "碩博同修",
+      "學分": "1",
+      "課程目標": "透過學者專家的演講，讓學生瞭解最新的產經學術與實務發展議題",
+      "授課內容": "產業經濟專題討論（二）主要形式為：邀請產、官、校內外學者專家針對特定主題進行學術演講。目的在促進學術交流並使用師生能對產經相關領域的最新研究有所涉獵。 按照慣例，本課程也要求碩士班學生於五月份報告碩士論文初稿以提升論文品質，訓練學生報告能力並促進所內研究之交流。",
+      "教科書/參考書": "隨堂發論文或講義。",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討",
+      "評量配分比重": "1.出席10次的基本分數80分。少於10次者，每少一次扣3分。多於10次者，每多一次加2分。 2.每提問一次加5分。相同問題重複提問將不予計分(由主持老師判斷)。 3.同一位同學在同一場次最多提2個問題。 4.加分上限至95分為止。",
+      "辦公時間": "Tue. 13:00-14:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "產業經濟 、 管制經濟與法律",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "管理學院",
+    "系所": "產業經濟研究所碩士班",
+    "流水號": "81005",
+    "課號-班別": "IE6050-*",
+    "課程名稱(中文)": "總體經濟學理論",
+    "課程名稱(英文)": "Macroeconomic Theory",
+    "備註": "[不開放初選]",
+    "授課教師": "鄒孟文",
+    "學分": "1",
+    "上課時間": "Mon4",
+    "教室": "I-807",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=81005&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班。學院:限管理學院。系所:限產業經濟研究所碩士班。指定課程:必須先修IE6001。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=81005&outline=81005&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "產業經濟研究所碩士班",
+      "流水號": "81005",
+      "課號": "IE6050-*",
+      "授課教師": "鄒孟文",
+      "課程名稱(中文)": "總體經濟學理論",
+      "課程名稱(英文)": "Macroeconomic Theory",
+      "課程學制": "碩士班",
+      "學分": "1",
+      "課程目標": "1 課程介紹 2 古典模型 3 內生成長模型 4 Harrod-Domar成長模型 5 公共政策與內生經濟成長 6 研發與經濟成長 7 貿易與經濟成長",
+      "授課內容": "1 課程介紹\n2 古典模型\n3 內生成長模型\n4 Harrod-Domar成長模型\n5 公共政策與內生經濟成長\n6 研發與經濟成長\n7 貿易與經濟成長",
+      "教科書/參考書": "自行編列講義",
+      "自編教材比例": "60",
+      "授課方式": "講授 研討",
+      "評量配分比重": "1. 期中考 (40%) 2. 口頭報告與討論 (30%) 3. 期末報告 (30%)",
+      "辦公時間": "By appointment",
+      "授課週數": "16",
+      "彈性教學說明": "視訊討論期末報告主題",
+      "課程領域": "經濟發展",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(2) 低",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "管理學院",
+    "系所": "產業經濟研究所碩士班",
+    "流水號": "81006",
+    "課號-班別": "IE6089-*",
+    "課程名稱(中文)": "賽局理論(二)",
+    "課程名稱(英文)": "Game Theory Ⅱ",
+    "備註": "[不開放初選]",
+    "授課教師": "蔡栢昇",
+    "學分": "3",
+    "上課時間": "Wed234",
+    "教室": "I-907",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=81006&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限學士班。年級:限四年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=81006&outline=81006&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "產業經濟研究所碩士班",
+      "流水號": "81006",
+      "課號": "IE6089-*",
+      "授課教師": "蔡栢昇",
+      "課程名稱(中文)": "賽局理論(二)",
+      "課程名稱(英文)": "Game Theory Ⅱ",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "This course introduces students to the application of game theory in two settings, which are (i) the management of common pool resources, and (ii) the optimal design of auctions.",
+      "授課內容": "Students are expected to understand the game-theoretic approach to the management of common pool resources and appreciate the various formats of contemporary auctions, being acquainted with the necessary tools to strategize bidding behavior and solve policy problems.",
+      "教科書/參考書": "Required 1. Espínola-Arredondo, A. ＆ Muñoz-García, F. (2021). Common Pool Resources: Strategic Behavior, Inefficiencies, and Incomplete Information. Cambridge University Press. Recommended 2. Milgrom, P. (2004). Putting Auction Theory to Work. Cambridge University Press. 3. Krishna, V. (2009). Auction Theory, 2nd Edition. Academic Press. 4. Menezes, F.M. ＆ Monteiro, P.K. (2008). An Introduction to Auction Theory. Oxford University Press. 5. Choi, P. ＆ Muñoz-García, F. (2021). Auction Theory: Introductory Exercises with Answer Keys. Springer Nature. 6. Klemperer, P. (2004). Auctions: Theory and Practice. Princeton University Press. 7. Campbell, D. (2006). Incentives, Motivation and Economics of Information, 2nd Edition. Cambridge University Press. 8. Roth, A. (2016). Who Gets What – and Why: The New Economics of Matchmaking and Market Design. Cambridge University Press. 9. 坂井豐貴 (2014). 試閱如何設計市場機制？——從學生選校、相親配對、拍賣競標，了解最新的實用經濟學。經濟新潮社",
+      "自編教材比例": "20",
+      "授課方式": "講授",
+      "評量配分比重": "Problem Sets (5％ each) 30％ Exams (30％ each) 60％ Class participation 10％",
+      "辦公時間": "09:00 - 11:00, Thursday, or by appointment",
+      "授課週數": "16",
+      "彈性教學說明": "No class on last week",
+      "課程領域": "",
+      "核心能力": []
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "管理學院",
+    "系所": "產業經濟研究所碩士班",
+    "流水號": "81007",
+    "課號-班別": "IE6096-*",
+    "課程名稱(中文)": "法律經濟分析",
+    "課程名稱(英文)": "Economic Analysis of Law",
+    "備註": "法律組必修，自行上網選課 與MB5069合班授課\n[不開放初選]",
+    "授課教師": "王明禮",
+    "學分": "3",
+    "上課時間": "Wed567",
+    "教室": "I-823",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=81007&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=81007&outline=81007&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "產業經濟研究所碩士班",
+      "流水號": "81007",
+      "課號": "IE6096-*",
+      "授課教師": "王明禮",
+      "課程名稱(中文)": "法律經濟分析",
+      "課程名稱(英文)": "Economic Analysis of Law",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "There is no Chinese description as it‘s an all-English course.",
+      "授課內容": "The course will cover the ABC of law and economics, from Coase Theorem, property rules and liability rules, all the way to cutting edge topics like behavioral law and economics.",
+      "教科書/參考書": "Textbook: A. Mitchell Polinsky, An Introduction to Law and Economics (5th ed., 2018). References: Richard A. Posner, Economic Analysis of Law (9th ed., 2014). Robert D. Cooter ＆ Thomas Ulen, Law and Economics (6th Ed., 2011). Steven Shavell, Foundations of Economic Analysis of Law (2004). Behavioral Law and Economics (Cass R. Sunstein, Ed., 2000). Game Theory and the Law (Douglas Baird, Robert Gertner ＆ Randal Picker eds, 1998). R. H. Coase, The Firm, the Market, and the Law (1990). Ronald H. Coase, The Problem of Social Cost, 3 J. Law ＆ Econ. 1 (1960). Guido Calabresi ＆ A. Douglas Melamed, Property Rules, Liability Rules, and Inalienability: One View of the Cathedral, 85 Harv. L. Rev. 1089 (1972). Margaret Jane Radin, Contested Commodities (2001).",
+      "自編教材比例": "10",
+      "授課方式": "研討",
+      "評量配分比重": "Participation: 40％, in classes and on the mailing list. Term Paper: 60％.",
+      "辦公時間": "Tel: (03) 422-7151 #66462 by appointment email:mlwang@ncu.edu.tw",
+      "授課週數": "16",
+      "彈性教學說明": "additional writing assistance.",
+      "課程領域": "管制經濟與法律",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "管理學院",
+    "系所": "產業經濟研究所碩士班",
+    "流水號": "81008",
+    "課號-班別": "IE7027-*",
+    "課程名稱(中文)": "破產法",
+    "課程名稱(英文)": "Bankruptcy Law",
+    "備註": "[不開放初選]",
+    "授課教師": "鄭有為",
+    "學分": "3",
+    "上課時間": "Mon678",
+    "教室": "I-823",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=81008&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=81008&outline=81008&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "產業經濟研究所碩士班",
+      "流水號": "81008",
+      "課號": "IE7027-*",
+      "授課教師": "鄭有為",
+      "課程名稱(中文)": "破產法",
+      "課程名稱(英文)": "Bankruptcy Law",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "透過國內外最新案例的討論,讓修課同學接觸及研究現代破產法學最新的焦點議題,為台灣培養下一世代的現代債務清理法制人才.",
+      "授課內容": "破產法\n消費者債務清理條例\n公司重整法\n債務清理法草案\n美國聯邦破產法",
+      "教科書/參考書": "鄭有為, 現代破產法, 元照出版,增修二版, 2024年1月 Daniel J. Bussel, David A. Skeel, Jr, Michelle M. Harner, Bankruptcy, Eleventh Edition, West Academic, 2021",
+      "自編教材比例": "50%",
+      "授課方式": "研討",
+      "評量配分比重": "70％課堂表現 30％期末報告",
+      "辦公時間": "星期三 下午2-4點 by appointment",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "管制經濟與法律",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "管理學院",
+    "系所": "產業經濟研究所碩士班",
+    "流水號": "81009",
+    "課號-班別": "IE7034-*",
+    "課程名稱(中文)": "證券交易法",
+    "課程名稱(英文)": "Securities Regulation",
+    "備註": "[不開放初選]",
+    "授課教師": "鄭婷嫻",
+    "學分": "3",
+    "上課時間": "Mon234",
+    "教室": "I-406",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=81009&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=81009&outline=81009&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "產業經濟研究所碩士班",
+      "流水號": "81009",
+      "課號": "IE7034-*",
+      "授課教師": "鄭婷嫻",
+      "課程名稱(中文)": "證券交易法",
+      "課程名稱(英文)": "Securities Regulation",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "1. 提供對證交法基礎理解與知識 2. 培養解決證交法實例問題之能力",
+      "授課內容": "本課程將以證券交易法研討為主要內容。證券交易法乃係公司法之特別法，有關公開發行公司之部分主要由證券交易法規範與管理，主要規範內容為公開發行公司與有價證券之募集、發行、私募與買賣。\n1. 證券交易法介紹\n2. 有價證券發行與管理\n3. 有價證券發行人之責任\n4. 公司治理\n5. 公開收購\n6. 公司揭露制度\n7. 內部人短線交易\n8. 操縱市場行為\n9. 內線交易\n*Please note that the instructor reserves the right to make adjustments to this syllabus as deemed necessary.",
+      "教科書/參考書": "1. 賴英照，最新證券交易法解析。 2. John C. Coffee Jr., Hillary A. Sale & Charles K. Whitehead, Securities Regulation: Cases and Materials (University Casebook Series, Foundation Press). 3. James D. Cox, Robert W. Hillman, Donald C. Langevoort & Ann M. Lipton, Securities Regulation: Cases and Materials (Aspen Casebook Series, Aspen Publishing).",
+      "自編教材比例": "90",
+      "授課方式": "講授 研討",
+      "評量配分比重": "• Participation: 50％ (including assignment) • Presentations ＆ Term paper: 50％",
+      "辦公時間": "Please make an appointment by Email: chength@cc.ncu.edu.tw",
+      "授課週數": "16",
+      "彈性教學說明": "Self-directed learning has been deemed an important skill. It can increase students' self-confidence, independence, and motivation. Therefore, students can write a research paper in these two weeks.",
+      "課程領域": "管制經濟與法律",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "管理學院",
+    "系所": "產業經濟研究所碩士班",
+    "流水號": "81010",
+    "課號-班別": "IE7050-*",
+    "課程名稱(中文)": "產業經濟專題討論(四)",
+    "課程名稱(英文)": "Seminar on Industrial Economics IV",
+    "備註": "碩二必修，與IE6010、IE8010合班\n[不開放初選]",
+    "授課教師": "鄭婷嫻",
+    "學分": "1",
+    "上課時間": "Tue67",
+    "教室": "I-406",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=81010&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限產業經濟研究所碩士班、產業經濟研究所博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=81010&outline=81010&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "產業經濟研究所碩士班",
+      "流水號": "81010",
+      "課號": "IE7050-*",
+      "授課教師": "鄭婷嫻",
+      "課程名稱(中文)": "產業經濟專題討論(四)",
+      "課程名稱(英文)": "Seminar on Industrial Economics IV",
+      "課程學制": "碩博同修",
+      "學分": "1",
+      "課程目標": "透過學者專家的演講，讓學生瞭解最新的產經學術與實務發展議題",
+      "授課內容": "產業經濟專題討論（四）主要形式為：邀請產、官、校內外學者專家針對特定主題進行學術演講。目的在促進學術交流並使用師生能對產經相關領域的最新研究有所涉獵。按照慣例，本課程也要求碩士班學生於五月份報告碩士論文初稿以提升論文品質，訓練學生報告能力並促進所內研究之交流。",
+      "教科書/參考書": "隨堂發論文或講義。",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討",
+      "評量配分比重": "1.出席10次的基本分數80分。少於10次者，每少一次扣3分。多於10次者，每多一次加2分。 2.每提問一次加5分。相同問題重複提問將不予計分(由主持老師判斷)。 3.同一位同學在同一場次最多提2個問題。 4.加分上限至95分為止。",
+      "辦公時間": "Tue. 13:00-14:00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "產業經濟 、 管制經濟與法律",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "管理學院",
+    "系所": "產業經濟研究所碩士班",
+    "流水號": "81011",
+    "課號-班別": "IE7056-*",
+    "課程名稱(中文)": "高科技產業分析（三） [已停開]",
+    "課程名稱(英文)": "High-Tech Industry Organization III",
+    "備註": "[不開放初選]",
+    "授課教師": "王弓",
+    "學分": "3",
+    "上課時間": "Thu567",
+    "教室": "I-823",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=81011&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=81011&outline=81011&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "產業經濟研究所碩士班",
+      "流水號": "81011",
+      "課號": "IE7056-*",
+      "授課教師": "王弓",
+      "課程名稱(中文)": "高科技產業分析（三）",
+      "課程名稱(英文)": "High-Tech Industry Organization III",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "研究高科技產業特性以及經營策略",
+      "授課內容": "\"高科技產業特性\n經營策略\n研發創新、資訊知識\n組織人力資源、品質保證管理、策略聯盟\n新興高科技產業軟體、顧問、生技、創投\"",
+      "教科書/參考書": "\"1. 知識經濟時代的產業政策 2. 台灣科技產業的競爭優勢 3. 知識管理 天下文化 4. Intel創新之秘 天下文化 5. 企業強權 麥格羅希爾 6. 知識管理 中國生產力中心 7. 雄霸天下-思科成功的奧秘 商周出版 8. 諾基亞的十大秘訣 聯經 9. 創新才會贏 遠流 10. 模仿是為了創新 遠流 11. 三千億傳奇郭台銘的鴻海帝國 天下 12. 從A到A+ 遠流 13. Killer App12步打造數位企業 天下文化 14. 專業主義 麥格羅希爾 15. 高科技產業管理 天下文化 16. 績效評估 天下文化\"",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 其他",
+      "評量配分比重": "\"1.小組討論 1.分組報告 2.講授 2.讀書心得 3.專題演講 3.課堂討論\"",
+      "辦公時間": "by appointment kanewang@itri.org.tw",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "管制經濟與法律",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "管理學院",
+    "系所": "產業經濟研究所碩士班",
+    "流水號": "81012",
+    "課號-班別": "IE8010-*",
+    "課程名稱(中文)": "高等產業經濟學專題討論（二）",
+    "課程名稱(英文)": "Advanced Seminar on Industrial Economics II",
+    "備註": "IE6010、IE7050、IE8010合班上課\n[不開放初選]",
+    "授課教師": "鄭婷嫻",
+    "學分": "1",
+    "上課時間": "Tue67",
+    "教室": "I-406",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=81012&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限產業經濟研究所博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=81012&outline=81012&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "產業經濟研究所碩士班",
+      "流水號": "81012",
+      "課號": "IE8010-*",
+      "授課教師": "鄭婷嫻",
+      "課程名稱(中文)": "高等產業經濟學專題討論（二）",
+      "課程名稱(英文)": "Advanced Seminar on Industrial Economics II",
+      "課程學制": "博士班",
+      "學分": "1",
+      "課程目標": "透過學者專家的演講，讓學生瞭解最新的產經學術與實務發展議題",
+      "授課內容": "主要形式為：邀請產、官、校內外學者專家針對特定主題進行學術演講。目的在促進學術交流並使用師生能對產經相關領域的\n最新研究有所涉獵。",
+      "教科書/參考書": "隨堂發論文或講義。",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討",
+      "評量配分比重": "1.出席10次的基本分數80分。少於10次者，每少一次扣3分。多於10次者，每多一次加2分。 2.每提問一次加5分。相同問題重複提問將不予計分(由主持老師判斷)。 3.同一位同學在同一場次最多提2個問題。 4.加分上限至95分為止。",
+      "辦公時間": ".",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "產業經濟",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "管理學院",
+    "系所": "產業經濟研究所碩士班",
+    "流水號": "81013",
+    "課號-班別": "IE8011-*",
+    "課程名稱(中文)": "AI商業資料分析與應用",
+    "課程名稱(英文)": "Business Data Analysis with AI",
+    "備註": "BA7126、FM5005、EC5033、IA7057合班上課，請自備筆電，產經所限5人\n[不開放初選]",
+    "授課教師": "胡中興",
+    "學分": "3",
+    "上課時間": "Tue234",
+    "教室": "I1-117",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "5",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=81013&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限產業經濟研究所碩士班、產業經濟研究所博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=81013&outline=81013&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "產業經濟研究所碩士班",
+      "流水號": "81013",
+      "課號": "IE8011-*",
+      "授課教師": "胡中興",
+      "課程名稱(中文)": "AI商業資料分析與應用",
+      "課程名稱(英文)": "Business Data Analysis with AI",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "With Python-programming skills, students will learn how to use concepts and techniques from both Data Analysis and Machine Learning algorithms for data-centric AI modeling in Business Strategies and Analyses.",
+      "授課內容": "1 ( / ) Course Introduction\n2 ( / ) Basics of Python Data Structure\n3 ( / ) Python Data Preprocessing with Examples\n4 ( / ) Python Data Visualization with Examples\n5 ( / ) Exploratory Data Analysis – Concepts and Applications\n6 ( / ) Introduction to Machine Learning\n7 ( / ) Supervized Learning – Regression Models with Examples\n8 ( / ) Supervized Learning – Classification Models with Examples\n9 ( / ) Midterm Project (Individual)\n10 ( / ) Unsupervized Learning – Clustering ＆amp; Dimensionality Reduction\n11 ( / ) Feature Engineering – Feature Selection with Applications\n12 ( / ) Best-Model Selection\n13 ( / ) [Case Study 1] : Moneyball Strategy\n14 ( / ) [Case Study 2] : Classification Models – Mobile Phone Pricing\n15 ( / ) [Case Study 3] : Regression Models – House Pricing\n16 ( / ) Final Project Presentation",
+      "教科書/參考書": "[Ref] : Jake VanderPlas, “Python Data Science Handbook — Essential Tools for Working with Data”, O‘Reilly Media, 2017. (https://jakevdp.github.io/PythonDataScienceHandbook/)",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討",
+      "評量配分比重": "Assignment (作業)30％ Midterm Project(Individual)20％ Final Project ＆ Presentation (Group)50％",
+      "辦公時間": "By appointment",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "產業經濟",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "管理學院",
+    "系所": "產業經濟研究所碩士班",
+    "流水號": "81014",
+    "課號-班別": "IE9998-*",
+    "課程名稱(中文)": "研究實習",
+    "課程名稱(英文)": "Research Training",
+    "備註": "實際上課時間依老師規定\n[不開放初選]",
+    "授課教師": "教授群",
+    "學分": "0",
+    "上課時間": "Sat1",
+    "教室": "*-***",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=81014&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=81014&outline=81014&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "產業經濟研究所碩士班",
+      "流水號": "81014",
+      "課號": "IE9998-*",
+      "授課教師": "教授群",
+      "課程名稱(中文)": "研究實習",
+      "課程名稱(英文)": "Research Training",
+      "課程學制": "碩博同修",
+      "學分": "0",
+      "課程目標": "培育兼任研究助理研究能力，透過學習課程進行與研究相關之學習活動。",
+      "授課內容": "實習、資料調查蒐集與統計分析、模組建立、理論建立、資料採集與標記、訪談記錄整理及其他與研究相關之學習活動。",
+      "教科書/參考書": "隨堂上課發的學術論文。",
+      "自編教材比例": "50",
+      "授課方式": "研討 個別指導",
+      "評量配分比重": "由授課老師自定",
+      "辦公時間": "by appointment",
+      "授課週數": "16",
+      "彈性教學說明": ".",
+      "課程領域": "經濟基礎 、 產業經濟",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(2) 低",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(2) 低",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 其他"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 其他"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "管理學院",
+    "系所": "產業經濟研究所碩士班",
+    "流水號": "81015",
+    "課號-班別": "IEA004-*",
+    "課程名稱(中文)": "產業經濟分析(一)",
+    "課程名稱(英文)": "Industrial Economics Analysis I",
+    "備註": "時間：六或日整天9:00~17:00(所辦排定後通知)，教室：I-406\n[不開放初選]",
+    "授課教師": "蔡栢昇\n邱俊榮",
+    "學分": "3",
+    "上課時間": "Sat234",
+    "教室": "I-406",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=81015&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士在職專班。系所:限產業經濟研究所碩士在職專班。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "年級:限非一年級。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=81015&outline=81015&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "產業經濟研究所碩士班",
+      "流水號": "81015",
+      "課號": "IEA004-*",
+      "授課教師": "蔡栢昇\n邱俊榮",
+      "課程名稱(中文)": "產業經濟分析(一)",
+      "課程名稱(英文)": "Industrial Economics Analysis I",
+      "課程學制": "碩士在職專班",
+      "學分": "3",
+      "課程目標": "產業經濟學主要討論經濟體系內各種產業的結構，廠商的行為，與產業結構與廠商行為的關係，以及不同產業結構的經濟績效。同時亦討論足以影響廠商行為，及整體經濟績效的政府政策、法令等。廠商的行為受到其目標與組織型態的影響。在不同的產業結構下，廠商的行為是不相同的，這些行為會影響產業結構及經濟績效。相對地，經濟績效也會影響廠商的行為及產業結構。",
+      "授課內容": "產業經濟學主要討論經濟體系內各種產業的結構，廠商的行為，與產業結構與廠商行為的關係，以及不同產業結構的經濟績效。同時亦討論足以影響廠商行為，及整體經濟績效的政府政策、法令等。廠商的行為受到其目標與組織型態的影響，在不同的產業結構下，廠商的行為是不相同的，這些行為會影響產業結構及經濟績效。相對地，經濟績效也會影響廠商的行為及產業結構。\n廠商是生產活動的基本單位，沒有廠商就沒有產業，因此本課程先討論廠商的發展、目標與組織及管理，之後再討論產業與市場及產業結構的決定因素(2~5章)。廠商必須瞭解自己所屬的產業結構及在產業內的相對地位，如此方能做出最適的決策。因此6~11章介紹產業結構。關於廠商的行為，我們共以六章(12~17章)來討論，除差別取價、價格行為及價格策略等外，並討論廠商的廣告行為，多角化及創新與研究發展。至於產業結構與經濟績效，我們除在6~11章中加以討論外，在第18章也做了較為一般性的討論。最後，政府的政策會影響廠商的行為與產業發展，因此第19章介紹了台灣過去以及民國90年代所採取的產業政策。\n講授方式:\n1. 面授 75％\n2. 課堂討論 25％\n課程大綱及預定進度:\n1. Ch1 序論\n2. Ch2 廠商理論\n3. Ch3 產業與市場\n4. Ch4 台灣的產業發展與產業政策\n5. Ch5 產業結構的決定因素\n6. Ch6 完全競爭市場\n7. Ch7 獨占市場結構\n8. 期中考試週\n9. Ch11 獨占性競爭市場\n10. Ch8 寡占市場 (1) 領導性寡占\n11. Ch18 賽局理論與競爭策略\n12. Ch9 寡占市場 (3) 低度寡占\n13. Ch12 獨占廠商的差別取價\n14. Ch13 廠商的價格行為\n15. Ch16 技術進步與研發創新\n16. Ch17 整合與多角化\n17. 期末考試週",
+      "教科書/參考書": "指定教科書: 陳正倉、林惠玲、陳忠榮、莊春發（2016）。產業經濟學（第三版）。 參考書: Carlton D.W., and Perloff J.M. (2015). Modern Industrial Organization, Fourth Edition.",
+      "自編教材比例": "20",
+      "授課方式": "講授",
+      "評量配分比重": "《蔡老師部分：占比50％，涵蓋第1-6章》 1. 作業題 15％ 2. 期中考試 15％ 3. 課堂參與 20％ 《邱老師部分：占比50％，涵蓋第7-18章》 4. 期末考試 40％ 5. 課堂參與 10％",
+      "辦公時間": "請撰寫郵件予蔡老師(pschoi@g.ncu.edu.tw)或其助教另行相約",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "產業經濟",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "管理學院",
+    "系所": "產業經濟研究所碩士班",
+    "流水號": "81016",
+    "課號-班別": "IEA005-*",
+    "課程名稱(中文)": "計量經濟分析",
+    "課程名稱(英文)": "Economics Analysis",
+    "備註": "時間：六或日9:00~17:00(所辦排定後通知)，教室：I-406\n[不開放初選]",
+    "授課教師": "劉家樺",
+    "學分": "3",
+    "上課時間": "Sun234",
+    "教室": "I-406",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=81016&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限產業經濟研究所碩士在職專班。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限產業經濟研究所碩士在職專班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=81016&outline=81016&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "產業經濟研究所碩士班",
+      "流水號": "81016",
+      "課號": "IEA005-*",
+      "授課教師": "劉家樺",
+      "課程名稱(中文)": "計量經濟分析",
+      "課程名稱(英文)": "Economics Analysis",
+      "課程學制": "碩士在職專班",
+      "學分": "3",
+      "課程目標": "本課程設計旨在運用經濟理論與統計方法來協助管理階層估計及預測經濟變數之間的關聯。",
+      "授課內容": "“課程內容分為五大部分，第一部份背景介紹，將描述何謂計量經濟學，其在現實社會中的應用，及回顧計量經濟學所需之機率概念與統計理論。第二部分基礎篇中，將介紹基本線性迴歸模型的設定、估計及假設檢定；並探討解釋變數彼此相關或共線性的情況。第三部份展延篇中，將分別介紹非線性迴歸模型、屬質變量的虛擬解釋變數，及檢定變數之間的結構性變動。第四部分相關議題篇中，將介紹橫斷面與時間序列資料之相關計量經濟學的議題，例如異質變異、序列相關、變數落後期的配置等。第五部分為特別議題篇，授課重點為預測、屬質或有限值之被解釋變數的估計模型、聯立方程式模型。第六部分為實際應用篇，介紹如何執行一實証研究計劃。\n講授方式:\n1.面授75％\n2.課堂討論25％\n課程大綱及預定進度表:\n Ch1 導論\n Ch2 簡單線性迴歸模型\n Ch2 ＆ Ch3 多變量線性迴歸模型：估計\n Ch3多變量線性迴歸模型：估計\n Ch4多變量線性迴歸模型：推論\n Ch5多變量線性迴歸模型：OLS漸近特性\n Ch6多變量線性迴歸模型：其它議題\n 期 中 考\n Ch7 多變量線性迴歸模型：屬質(虛擬) 解釋變數\n Ch9 模型設定與資料問題\n Ch8 橫斷面迴歸異質變異問題\n Ch10 時間序列資料迴歸分析基本議題\n Ch11 運用OLS於時間序列資料之相關議題\n Ch12 時間序列資料之異質變異與序列相關\n 期 末 考“",
+      "教科書/參考書": "“教科書：Introductory Econometrics: A Modern Approach, 6th edition（作者: Jeffrey M. Wooldridge出版書局: 華泰文化）“",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討",
+      "評量配分比重": "1.課堂討論、作業20％ 2.期中考40％ 3.期末考40“",
+      "辦公時間": "By appointment",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "應用個體",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "管理學院",
+    "系所": "產業經濟研究所碩士班",
+    "流水號": "81017",
+    "課號-班別": "IEA012-*",
+    "課程名稱(中文)": "碩士論文(二)",
+    "課程名稱(英文)": "Topics in Thesis Research Ⅱ",
+    "備註": "[不開放初選]",
+    "授課教師": "教授群",
+    "學分": "3",
+    "上課時間": "TueABC",
+    "教室": "I-406",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=81017&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限產業經濟研究所碩士在職專班。年級:限二年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限產業經濟研究所碩士在職專班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=81017&outline=81017&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "產業經濟研究所碩士班",
+      "流水號": "81017",
+      "課號": "IEA012-*",
+      "授課教師": "教授群",
+      "課程名稱(中文)": "碩士論文(二)",
+      "課程名稱(英文)": "Topics in Thesis Research Ⅱ",
+      "課程學制": "碩士在職專班",
+      "學分": "3",
+      "課程目標": "主要研擬碩士論文的題目訂定、論文方向等相關研究。",
+      "授課內容": "主要研擬碩士論文的題目訂定、論文方向等相關研究。並固定與學生討論論文的進度。",
+      "教科書/參考書": "隨課堂上發的論文.",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "“課堂表現50％ 研討50％“",
+      "辦公時間": "By appointment",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "產業經濟",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "管理學院",
+    "系所": "產業經濟研究所碩士班",
+    "流水號": "81018",
+    "課號-班別": "IEA021-*",
+    "課程名稱(中文)": "國際經濟與企業創新",
+    "課程名稱(英文)": "International Economics and Enterprise Innovation",
+    "備註": "六或日9:00~17:00整天或晚上(所辦排定後通知)\n[不開放初選]",
+    "授課教師": "鄒孟文",
+    "學分": "3",
+    "上課時間": "Sat567",
+    "教室": "I-807",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=81018&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限產業經濟研究所碩士在職專班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=81018&outline=81018&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "產業經濟研究所碩士班",
+      "流水號": "81018",
+      "課號": "IEA021-*",
+      "授課教師": "鄒孟文",
+      "課程名稱(中文)": "國際經濟與企業創新",
+      "課程名稱(英文)": "International Economics and Enterprise Innovation",
+      "課程學制": "碩士在職專班",
+      "學分": "3",
+      "課程目標": "本課程主要係討論國際經濟與企業創新的相關議題。國際經濟的部分將介紹國際貿易和海外直接投資理論，並講述關稅、配額、出口補貼等貿易政策效果。實證則關注於外銷、對外投資與廠商生產力、貿易中的政治因素、外資外溢效果等議題。企業創新的部分則討論有關研究發展、專利與公司成長，全球化佈局等實證研究。",
+      "授課內容": "Topics:\n1. Trade Theories and Tariffs\n2. Tariff, Import Quota and Export Subsidy\n3. Foreign Direct Investment (FDI) Theories, Foreign Market Entry, Greenfield vs. Acquisition, FDI and Intra-Firm Trade\n4. Empirical topics:Exports and Firm Productivity, Globalization and Labor Share, Export Superstars\n5. Empirical topics: FDI spillovers, FDI and Export Upgrading, Political Determinants of Trade\n6.Empirical topics: Exports and innovation, Innovation and Firm Growth, Outward FDI and Innovation\n7. 實證文章口頭分組報告(1)\n8. 實證文章口頭分組報告(2)",
+      "教科書/參考書": "依期初所發書單、學術論文及隨堂講義。",
+      "自編教材比例": "90",
+      "授課方式": "講授 研討 其他",
+      "評量配分比重": "1. Oral presentation (30％) 2. Final exam (30％) 3. Final report (30％) 4. Participation (10％)",
+      "辦公時間": "By appointment. Email:tsoumw@ncu.edu.tw",
+      "授課週數": "16",
+      "彈性教學說明": "以視訊、電郵方式討論研究報告主題",
+      "課程領域": "經濟基礎 、 產業經濟 、 應用個體",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "管理學院",
+    "系所": "產業經濟研究所碩士班",
+    "流水號": "81019",
+    "課號-班別": "IEA025-*",
+    "課程名稱(中文)": "國際公司治理專題",
+    "課程名稱(英文)": "Seminar on International Corporate Governance",
+    "備註": "時間：六或日整天9:00~17:00(所辦排定後通知)\n[不開放初選]",
+    "授課教師": "鄭婷嫻",
+    "學分": "3",
+    "上課時間": "Sun567",
+    "教室": "I-907",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=81019&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限產業經濟研究所碩士在職專班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=81019&outline=81019&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "產業經濟研究所碩士班",
+      "流水號": "81019",
+      "課號": "IEA025-*",
+      "授課教師": "鄭婷嫻",
+      "課程名稱(中文)": "國際公司治理專題",
+      "課程名稱(英文)": "Seminar on International Corporate Governance",
+      "課程學制": "碩士在職專班",
+      "學分": "3",
+      "課程目標": "This course aims to help students understand what international corporate governance is. In recent years, laws and regulations have provided some new types of legal entities for enterprises to choose from in response to diversification management. This course will discuss and study important issues derived from the creations and operations of these new types of enterprises through reading articles and surveying legal systems across countries.",
+      "授課內容": "The G20/OECD Principles of Corporate Governance help policymakers evaluate and improve the legal, regulatory, and institutional framework for corporate governance, to support economic efficiency, sustainable growth, and financial stability. We discuss that American corporate law and Taiwan corporate law have their particular structures. Also, we’ll seek to understand how the separation of ownership and control produces agency costs, and other remedy ways such as fiduciary duties, shareholder litigation, voting, and appraisal rights. Moreover, Environmental, Social, and Governance (ESG) is one of the most important issues that should be well addressed by modern corporations for enhancing sustainability. Maximizing stockholders’ welfare has traditionally been deemed as the primary purpose for a corporation, but pursuing such purpose may result in high external costs borne by stakeholders, causing many social and environmental problems such as pollution, climate change, and human capital issues, etc., Although many commentators opine that ESG helps corporations in terms of long-term profits, for business decision-makers facing the trend of ESG, how to balance ESG and corporations’ interests seems unclear due to the lack of consistent standards.",
+      "教科書/參考書": "William A. Klein, J. Mark Ramseyer, Stephen M. Bainbridge, Associations, Cases and Materials on Agency, Partnerships, and Corporations (University Casebook Series) 10th Edition. Steven L. Emanuel, Emanuel Law Outlines for Corporations and Other Business Entities (2020).",
+      "自編教材比例": "90",
+      "授課方式": "講授 研討",
+      "評量配分比重": "• Participation: 50％ (including assignment) • Presentations ＆ Term paper: 50％",
+      "辦公時間": "Please make an appointment by email: chength@g.ncu.edu.tw",
+      "授課週數": "16",
+      "彈性教學說明": "Self-directed learning has been deemed an important skill. It can increase students' self-confidence, independence, and motivation. Therefore, students can write a research paper in these two weeks.",
+      "課程領域": "管制經濟與法律",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        }
+      ]
+    }
+  }
+]

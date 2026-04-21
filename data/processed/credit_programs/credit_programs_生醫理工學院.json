@@ -1,0 +1,822 @@
+[
+  {
+    "id": "smart_biomedical_chip",
+    "name": "「智慧生醫晶片」學分學程",
+    "college": "生醫理工學院",
+    "cross_school": false,
+    "min_credits": 17,
+    "description": "融合生醫晶片技術、生物感測器及生物資料分析等相關課程，培養生物晶片技術領域的專業人才。本校大學部學生皆可選修。",
+    "required_courses": [],
+    "elective_groups": [
+      {
+        "name": "基礎科目",
+        "select": 2,
+        "courses": [
+          {
+            "code": "BM2028",
+            "name": "物理化學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BM2043",
+            "name": "微電子學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BM3033",
+            "name": "生醫技術暨微奈米晶片設計與應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BM1011",
+            "name": "人工智慧程式入門",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "進階科目",
+        "select": 4,
+        "courses": [
+          {
+            "code": "BM2014",
+            "name": "醫療器材設計原理及其應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BM2032",
+            "name": "分子醫學",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "BM2040",
+            "name": "資料結構",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BM3018",
+            "name": "數據科學導論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE4012",
+            "name": "超大型積體電路系統設計",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EE4032",
+            "name": "類比積體電路導論",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 17,
+        "description": "應修最低學分數為 17 學分"
+      },
+      {
+        "type": "required_elective",
+        "description": "需修習通過至少兩門基礎課程及至少四門進階課程"
+      },
+      {
+        "type": "substitution",
+        "description": "本校所開其它與本學程課程名稱或內容相似之科目，經向本學程申請認定後，依本校學分抵免辦法規定辦理"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢智慧生醫晶片學分學程」，並頒發學分學程證明書"
+  },
+  {
+    "id": "bioscience_career",
+    "name": "「生科職涯」學分學程",
+    "college": "生醫理工學院",
+    "cross_school": true,
+    "min_credits": 18,
+    "description": "培養學生具備生命科學之專業能力及增加就業技能，以便能從事各項生科相關工作。本校各學院學生均可選修。",
+    "required_courses": [],
+    "graduation_rules": [
+      {
+        "type": "program_choice",
+        "select": 1,
+        "options": [
+          "生物技術",
+          "農業技術",
+          "環境生物",
+          "遺傳諮商"
+        ],
+        "description": "修滿同一類組至少 18 學分，可申請加註完成證明"
+      },
+      {
+        "type": "credit_minimum",
+        "credits": 18,
+        "description": "應修最低學分數為 18 學分（同一類組）"
+      },
+      {
+        "type": "prerequisite",
+        "description": "CM2031/CM2032 及 LS2005/LS2006 須先修過普化；PS472D、PS240E 需先修過普通心理學"
+      },
+      {
+        "type": "elective_note",
+        "description": "DMS371400 醫學倫理每學期開放 5 位跨校選課名額"
+      }
+    ],
+    "specialization_tracks": [
+      {
+        "id": "bio_tech",
+        "name": "生物技術",
+        "min_credits": 18,
+        "pool_credits": 26,
+        "required_courses": [
+          {
+            "code": "LS5034",
+            "name": "免疫學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "LS3003",
+            "name": "微生物學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "LS6054",
+            "name": "質體學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "HT3001",
+            "name": "生物統計學-R語言應用",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ],
+        "elective_groups": [
+          {
+            "name": "普通生物學",
+            "select": 1,
+            "select_credits": 3,
+            "courses": [
+              {
+                "code": "LS1013",
+                "name": "普通生物學",
+                "credits": 3,
+                "school": "NCU"
+              },
+              {
+                "code": "LS1014",
+                "name": "普通生物學",
+                "credits": 3,
+                "school": "NCU"
+              },
+              {
+                "code": "LS1001",
+                "name": "普通生物學",
+                "credits": 3,
+                "school": "NCU"
+              },
+              {
+                "code": "LS1002",
+                "name": "普通生物學",
+                "credits": 3,
+                "school": "NCU"
+              },
+              {
+                "code": "BM1009",
+                "name": "普通生物學",
+                "credits": 3,
+                "school": "NCU"
+              },
+              {
+                "code": "EG1005",
+                "name": "普通生物學",
+                "credits": 3,
+                "school": "NCU"
+              }
+            ]
+          },
+          {
+            "name": "生物化學",
+            "select": 1,
+            "select_credits": 3,
+            "courses": [
+              {
+                "code": "LS2001",
+                "name": "生物化學",
+                "credits": 3,
+                "school": "NCU"
+              },
+              {
+                "code": "CM3067",
+                "name": "生物化學",
+                "credits": 3,
+                "school": "NCU"
+              },
+              {
+                "code": "CM3068",
+                "name": "生物化學",
+                "credits": 3,
+                "school": "NCU"
+              },
+              {
+                "code": "BM2036",
+                "name": "生物化學",
+                "credits": 3,
+                "school": "NCU"
+              }
+            ]
+          },
+          {
+            "name": "有機化學",
+            "select": 1,
+            "select_credits": 3,
+            "courses": [
+              {
+                "code": "LS2005",
+                "name": "有機化學",
+                "credits": 3,
+                "school": "NCU"
+              },
+              {
+                "code": "LS2006",
+                "name": "有機化學",
+                "credits": 3,
+                "school": "NCU"
+              },
+              {
+                "code": "CM2031",
+                "name": "有機化學",
+                "credits": 4,
+                "school": "NCU"
+              },
+              {
+                "code": "CM2032",
+                "name": "有機化學",
+                "credits": 4,
+                "school": "NCU"
+              }
+            ]
+          },
+          {
+            "name": "生物技術",
+            "select": 1,
+            "select_credits": 3,
+            "courses": [
+              {
+                "code": "LS6024",
+                "name": "生物技術",
+                "credits": 3,
+                "school": "NCU"
+              },
+              {
+                "code": "BE5008",
+                "name": "生物技術概論",
+                "credits": 3,
+                "school": "NCU"
+              }
+            ]
+          },
+          {
+            "name": "分子生物學",
+            "select": 1,
+            "select_credits": 2,
+            "courses": [
+              {
+                "code": "LS3035",
+                "name": "分子生物學",
+                "credits": 2,
+                "school": "NCU"
+              },
+              {
+                "code": "LS3036",
+                "name": "分子生物學",
+                "credits": 2,
+                "school": "NCU"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "agri_tech",
+        "name": "農業技術",
+        "min_credits": 18,
+        "pool_credits": 36,
+        "required_courses": [
+          {
+            "code": "LS7021",
+            "name": "前瞻植物與微生物學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "LS3001",
+            "name": "植物生理學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "LS1018",
+            "name": "昆蟲世界",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "LS5032",
+            "name": "植物組織培養",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "LS3021",
+            "name": "農業生物科技概論",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "LS5088",
+            "name": "茶作學",
+            "credits": 4,
+            "school": "NCU"
+          },
+          {
+            "code": "LS5069",
+            "name": "茶作基礎概論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "LS5037",
+            "name": "環境生物學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "LS6054",
+            "name": "質體學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "LS3033",
+            "name": "功能性基因體學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "UFDHB-2245",
+            "name": "植物病理學",
+            "credits": 2,
+            "school": "PCCU"
+          },
+          {
+            "code": "UFDHB-0502",
+            "name": "土壤與植物營養",
+            "credits": 2,
+            "school": "PCCU"
+          }
+        ],
+        "elective_groups": [
+          {
+            "name": "分析化學",
+            "select": 1,
+            "select_credits": 3,
+            "courses": [
+              {
+                "code": "CM2021",
+                "name": "分析化學",
+                "credits": 3,
+                "school": "NCU"
+              },
+              {
+                "code": "CM2022",
+                "name": "分析化學",
+                "credits": 4,
+                "school": "NCU"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "env_bio",
+        "name": "環境生物",
+        "min_credits": 18,
+        "pool_credits": 40,
+        "required_courses": [
+          {
+            "code": "LS5037",
+            "name": "環境生物學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "LS3003",
+            "name": "微生物學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "LS4015",
+            "name": "生態學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "LS5058",
+            "name": "毒理生化學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "CM6028",
+            "name": "環境化學(I)",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "CM6029",
+            "name": "環境化學(II)",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "EN6316",
+            "name": "應用環境微生物學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EN6070",
+            "name": "水處理特論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EN6310",
+            "name": "廢棄物處理與循環工程",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EN5005",
+            "name": "環境影響評估",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "AP3050",
+            "name": "空氣污染學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "AP3039",
+            "name": "環境科學導論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GP4008",
+            "name": "地下水及土壤污染控制",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ],
+        "elective_groups": [
+          {
+            "name": "分析化學",
+            "select": 1,
+            "select_credits": 3,
+            "courses": [
+              {
+                "code": "CM2021",
+                "name": "分析化學",
+                "credits": 3,
+                "school": "NCU"
+              },
+              {
+                "code": "CM2022",
+                "name": "分析化學",
+                "credits": 4,
+                "school": "NCU"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "genetic_counseling",
+        "name": "遺傳諮商",
+        "min_credits": 18,
+        "pool_credits": 47,
+        "required_courses": [
+          {
+            "code": "LS3033",
+            "name": "功能性基因體學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "LS5067",
+            "name": "病毒學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "LS3030",
+            "name": "親緣樹形圖的分析與應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "LS2010",
+            "name": "遺傳學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "LS3018",
+            "name": "動物生理學",
+            "credits": 4,
+            "school": "NCU"
+          },
+          {
+            "code": "LS5038",
+            "name": "癌症生物學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "LS3037",
+            "name": "神經疾病與機制",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "LS5055",
+            "name": "進階生物演化",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "LS5078",
+            "name": "果蠅遺傳學與人類疾病模式",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SB7067",
+            "name": "分子基因學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "HT3001",
+            "name": "生物統計學-R語言應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "PS472D",
+            "name": "諮商理論與技術",
+            "credits": 3,
+            "school": "CYCU"
+          },
+          {
+            "code": "PS240E",
+            "name": "諮商概論",
+            "credits": 3,
+            "school": "CYCU"
+          },
+          {
+            "code": "DMS371400",
+            "name": "醫學倫理",
+            "credits": 1,
+            "school": "NTHU"
+          }
+        ],
+        "elective_groups": [
+          {
+            "name": "分子生物學",
+            "select": 1,
+            "select_credits": 2,
+            "courses": [
+              {
+                "code": "LS3035",
+                "name": "分子生物學",
+                "credits": 2,
+                "school": "NCU"
+              },
+              {
+                "code": "LS3036",
+                "name": "分子生物學",
+                "credits": 2,
+                "school": "NCU"
+              }
+            ]
+          },
+          {
+            "name": "發育生物學",
+            "select": 1,
+            "select_credits": 2,
+            "courses": [
+              {
+                "code": "LS5023",
+                "name": "發育生物學",
+                "credits": 2,
+                "school": "NCU"
+              },
+              {
+                "code": "LS5024",
+                "name": "發育生物學",
+                "credits": 2,
+                "school": "NCU"
+              }
+            ]
+          },
+          {
+            "name": "普通心理學",
+            "select": 1,
+            "select_credits": 2,
+            "courses": [
+              {
+                "code": "CC0217",
+                "name": "普通心理學",
+                "credits": 2,
+                "school": "NCU"
+              },
+              {
+                "code": "BM1010",
+                "name": "認知心理學概論",
+                "credits": 3,
+                "school": "NCU"
+              },
+              {
+                "code": "PS153",
+                "name": "普通心理學上",
+                "credits": 3,
+                "school": "CYCU"
+              },
+              {
+                "code": "PS154",
+                "name": "普通心理學下",
+                "credits": 3,
+                "school": "CYCU"
+              },
+              {
+                "code": "PS216",
+                "name": "認知心理學",
+                "credits": 3,
+                "school": "CYCU"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "notes": "完成後成績單加註「修畢生科職涯學分學程」，並頒發學分學程證明書。跨校選修學校：中國文化大學(PCCU)、中原大學(CYCU)、清華大學(NTHU)。"
+  },
+  {
+    "id": "cognitive_neuroscience",
+    "name": "中央大學與中原大學「認知神經科學」跨校跨領域學分學程",
+    "college": "生醫理工學院",
+    "cross_school": true,
+    "min_credits": 18,
+    "description": "跨校跨領域學分學程，結合中央大學認知神經科學研究所、中原大學心理系師資，培養具跨領域研究、批判思考、腦科學實驗能力之學生。本校學生均可選修。",
+    "required_courses": [
+      {
+        "code": "",
+        "name": "心理及教育統計（上）",
+        "credits": 3,
+        "school": "TBD"
+      },
+      {
+        "code": "",
+        "name": "心理及教育統計（下）",
+        "credits": 3,
+        "school": "TBD"
+      },
+      {
+        "code": "",
+        "name": "心理實驗法（上）",
+        "credits": 3,
+        "school": "TBD"
+      },
+      {
+        "code": "",
+        "name": "心理實驗法（下）",
+        "credits": 3,
+        "school": "TBD"
+      }
+    ],
+    "elective_groups": [
+      {
+        "name": "特色領域課程",
+        "select_credits": 6,
+        "description": "下列 10 個特色領域課群，各 3 學分，選修至少 6 學分；實際開課課號每學期由學程辦公室另行公布",
+        "courses": [
+          {
+            "code": "",
+            "name": "認知心理學總論",
+            "credits": 3,
+            "school": "TBD"
+          },
+          {
+            "code": "",
+            "name": "視覺認知與認知控制",
+            "credits": 3,
+            "school": "TBD"
+          },
+          {
+            "code": "",
+            "name": "腦與行為",
+            "credits": 3,
+            "school": "TBD"
+          },
+          {
+            "code": "",
+            "name": "人類記憶",
+            "credits": 3,
+            "school": "TBD"
+          },
+          {
+            "code": "",
+            "name": "數量概念與語言認知",
+            "credits": 3,
+            "school": "TBD"
+          },
+          {
+            "code": "",
+            "name": "行動與認知",
+            "credits": 3,
+            "school": "TBD"
+          },
+          {
+            "code": "",
+            "name": "聽覺認知",
+            "credits": 3,
+            "school": "TBD"
+          },
+          {
+            "code": "",
+            "name": "計算與應用神經科學",
+            "credits": 3,
+            "school": "TBD"
+          },
+          {
+            "code": "",
+            "name": "壓力與健康",
+            "credits": 3,
+            "school": "TBD"
+          },
+          {
+            "code": "",
+            "name": "情緒與犯罪",
+            "credits": 3,
+            "school": "TBD"
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 18,
+        "description": "修畢本學程課程 18 學分以上"
+      },
+      {
+        "type": "dept_required",
+        "credits": 12,
+        "description": "必修心理及教育統計（上下）及心理實驗法（上下），共 12 學分"
+      },
+      {
+        "type": "elective_minimum",
+        "credits": 6,
+        "description": "選修特色領域課程至少 6 學分"
+      },
+      {
+        "type": "certification_required",
+        "description": "必須參加一場由本學程舉辦之「認知神經科學工作坊」"
+      },
+      {
+        "type": "elective_note",
+        "description": "學生選修對方開設之課程以本校未開之科目為原則，以開課學校之學生優先選課。大學部校際選課視同校內選課，免繳開課學校學分費；研究所學生須按規定繳交學分費。"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢認知神經科學跨領域學分學程」，並頒發學分學程證明書。課號未於 PDF 中列出，特色領域課程每學期由學程辦公室另行公布。合作學校：中原大學(CYCU)。"
+  }
+]

@@ -1,0 +1,3524 @@
+[
+  {
+    "id": "business_management",
+    "name": "「企業管理」學分學程",
+    "college": "管理學院",
+    "cross_school": false,
+    "min_credits": 24,
+    "description": "奠定企業管理專業人員之基礎，以便從事相關專長工作或學術研究。本校非管理學院大學部學生均可選修。",
+    "required_courses": [
+      {
+        "code": "BA1003",
+        "name": "管理學",
+        "credits": 3,
+        "school": "NCU"
+      },
+      {
+        "code": "MT1021",
+        "name": "企業概論",
+        "credits": 3,
+        "school": "NCU"
+      },
+      {
+        "code": "BA3005",
+        "name": "人力資源管理",
+        "credits": 3,
+        "school": "NCU"
+      },
+      {
+        "code": "FM2029",
+        "name": "財務管理 I",
+        "credits": 3,
+        "school": "NCU"
+      },
+      {
+        "code": "BA2030",
+        "name": "行銷管理",
+        "credits": 3,
+        "school": "NCU"
+      },
+      {
+        "code": "BA3001",
+        "name": "生產與作業管理",
+        "credits": 3,
+        "school": "NCU"
+      },
+      {
+        "code": "BA4002",
+        "name": "策略管理",
+        "credits": 3,
+        "school": "NCU"
+      }
+    ],
+    "elective_groups": [],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 24,
+        "description": "修得學程內課程 24 學分以上（8 科全修）"
+      },
+      {
+        "type": "dept_required",
+        "credits": 24,
+        "description": "8 科均為必修，全部修畢方可取得證明書"
+      },
+      {
+        "type": "substitution",
+        "description": "他系同名稱、同學分之課程須事先經企管系認定方可抵免，抵免以 3 科為限"
+      },
+      {
+        "type": "elective_note",
+        "description": "招生對象為本校非管理學院大學部學生"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢企業管理學分學程」，並頒發學分學程證明書。課號前綴 BA 為企管系開設，修課順序依企管系規定。",
+    "required_slots": [
+      {
+        "slot_id": "req_BA3004",
+        "slot_name": "資訊管理",
+        "select": 1,
+        "credits_options": [
+          3
+        ],
+        "courses": [
+          {
+            "code": "BA3004",
+            "name": "資訊管理",
+            "credits": 3
+          },
+          {
+            "code": "IM1018",
+            "name": "資訊管理導論",
+            "credits": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "erp",
+    "name": "「企業資源規劃」學分學程",
+    "college": "管理學院",
+    "cross_school": true,
+    "partner_schools": [
+      "TBD"
+    ],
+    "min_credits": 15,
+    "description": "整合商管領域知識和企業資源規劃(ERP)系統功能，培育產業電子化所需之 ERP 專業人才。各院各系所學生均可選修，具商管領域知識者優先。開放外校生以校際選課方式選修（每課程名額五分之一）。",
+    "required_courses": [],
+    "elective_groups": [
+      {
+        "name": "必修多選二（指定課群選 2 門）",
+        "select": 2,
+        "description": "從以下課群中選修 2 門，每門 3 學分，合計 6 學分",
+        "courses": [
+          {
+            "code": "BA7114",
+            "name": "企業資源規劃實務－SAP S/4HANA",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA5061",
+            "name": "ERP 財務會計模組",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA5062",
+            "name": "ERP 管理會計模組",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "HR6090",
+            "name": "人力資源管理資訊系統與數據分析",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA5041",
+            "name": "ERP 系統管理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM5006",
+            "name": "ERP 程式設計",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA7041",
+            "name": "ERP 與資料倉儲專題研究",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "AC6019",
+            "name": "ERP－會計模組",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA4100",
+            "name": "ERP 系統實施顧問服務",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA7121",
+            "name": "企業流程整合與商業應用程式",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IAA027",
+            "name": "數位轉型與智慧製造",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ],
+        "slots": [
+          {
+            "slot_id": "slot_BA7043",
+            "slot_name": "ERP 企業流程管理",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "BA7043",
+                "name": "ERP 企業流程管理",
+                "credits": 3
+              },
+              {
+                "code": "IAA009",
+                "name": "ERP 企業流程管理",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_BA6093",
+            "slot_name": "物流管理",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "BA6093",
+                "name": "物流管理",
+                "credits": 3
+              },
+              {
+                "code": "BA5033",
+                "name": "物流管理實習",
+                "credits": 0
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_IA5016",
+            "slot_name": "物流管理",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "IA5016",
+                "name": "物流管理",
+                "credits": 3
+              },
+              {
+                "code": "IA5044",
+                "name": "物流管理",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_IA5051",
+            "slot_name": "規劃與排程",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "IA5051",
+                "name": "規劃與排程",
+                "credits": 3
+              },
+              {
+                "code": "IA5054",
+                "name": "規劃與排程實習",
+                "credits": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "選修課程",
+        "select_credits": 0,
+        "description": "自由選修，累計達 15 學分總數（含固定必修 3 學分 + 多選二 6 學分 = 剩餘至少 6 學分由此選修）；企業實習及暑期實習課程至多認列 6 學分",
+        "courses": [
+          {
+            "code": "FM3035",
+            "name": "財務資訊管理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IA5041",
+            "name": "企業流程管理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA5002",
+            "name": "ERP 導入",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA7009",
+            "name": "成本評估模式",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IA5021",
+            "name": "全面品質管理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA5042",
+            "name": "高等 ERP 系統管理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA8066",
+            "name": "電子與資訊產業概論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA7042",
+            "name": "ERP 全球運籌管理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM8031",
+            "name": "電子商務(Ⅲ)：供應鏈管理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM6100",
+            "name": "顧客關係管理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA7024",
+            "name": "企業 e 化經營模式",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "AC6001",
+            "name": "ERP 管理控制系統",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM7074",
+            "name": "ERP 專題",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "AC6004",
+            "name": "創業與管理模擬",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "AC6013",
+            "name": "商業模式與決策模擬",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "AC6015",
+            "name": "商業模式與價值創造",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA7122",
+            "name": "資訊顧問專案實務",
+            "credits": 2,
+            "school": "NCU"
+          }
+        ],
+        "slots": [
+          {
+            "slot_id": "slot_BA6039",
+            "slot_name": "電子商務",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "BA6039",
+                "name": "電子商務",
+                "credits": 3
+              },
+              {
+                "code": "IM3031",
+                "name": "電子商務",
+                "credits": 3
+              },
+              {
+                "code": "IM5002",
+                "name": "電子商務技術",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_BA7040",
+            "slot_name": "資料挖礦",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "BA7040",
+                "name": "資料挖礦",
+                "credits": 3
+              },
+              {
+                "code": "IM7061",
+                "name": "資料挖礦",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_IA7038",
+            "slot_name": "資料倉儲與商業智慧",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "IA7038",
+                "name": "資料倉儲與商業智慧",
+                "credits": 3
+              },
+              {
+                "code": "BA7113",
+                "name": "資料倉儲與商業智慧",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_MT4011",
+            "slot_name": "企業實習(一)",
+            "select": 1,
+            "credits_options": [
+              1
+            ],
+            "courses": [
+              {
+                "code": "MT4011",
+                "name": "企業實習(一)",
+                "credits": 1
+              },
+              {
+                "code": "MT6011",
+                "name": "企業實習(一)",
+                "credits": 1
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_MT4012",
+            "slot_name": "企業實習(二)",
+            "select": 1,
+            "credits_options": [
+              2
+            ],
+            "courses": [
+              {
+                "code": "MT4012",
+                "name": "企業實習(二)",
+                "credits": 2
+              },
+              {
+                "code": "MT6012",
+                "name": "企業實習(二)",
+                "credits": 2
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_MT4013",
+            "slot_name": "企業實習(三)",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "MT4013",
+                "name": "企業實習(三)",
+                "credits": 3
+              },
+              {
+                "code": "MT6013",
+                "name": "企業實習(三)",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_MT4017",
+            "slot_name": "暑期實習(一)",
+            "select": 1,
+            "credits_options": [
+              1
+            ],
+            "courses": [
+              {
+                "code": "MT4017",
+                "name": "暑期實習(一)",
+                "credits": 1
+              },
+              {
+                "code": "MT6017",
+                "name": "暑期實習(一)",
+                "credits": 1
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_MT4018",
+            "slot_name": "暑期實習(二)",
+            "select": 1,
+            "credits_options": [
+              2
+            ],
+            "courses": [
+              {
+                "code": "MT4018",
+                "name": "暑期實習(二)",
+                "credits": 2
+              },
+              {
+                "code": "MT6018",
+                "name": "暑期實習(二)",
+                "credits": 2
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_MT4019",
+            "slot_name": "暑期實習(三)",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "MT4019",
+                "name": "暑期實習(三)",
+                "credits": 3
+              },
+              {
+                "code": "MT6019",
+                "name": "暑期實習(三)",
+                "credits": 3
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 15,
+        "description": "修得學程內課程 15 學分以上"
+      },
+      {
+        "type": "dept_required",
+        "credits": 3,
+        "description": "固定必修：企業資源規劃(BA5040/IAA091) 3 學分"
+      },
+      {
+        "type": "required_elective",
+        "description": "指定課群多選二：從必修課群中選修 2 門，共 6 學分"
+      },
+      {
+        "type": "outside_elective_max",
+        "credits": 6,
+        "description": "企業實習及暑期實習課程至多認列 6 學分"
+      },
+      {
+        "type": "elective_note",
+        "description": "其他 ERP 相關課程之認定或抵免授權由 ERP 中心主任辦理"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢企業資源規劃學分學程」，並頒發學分學程證明書。申請與發證流程由管理學院 ERP 課程委員會初審，教務處複審。",
+    "required_slots": [
+      {
+        "slot_id": "req_BA5040",
+        "slot_name": "企業資源規劃",
+        "select": 1,
+        "credits_options": [
+          3
+        ],
+        "courses": [
+          {
+            "code": "BA5040",
+            "name": "企業資源規劃",
+            "credits": 3
+          },
+          {
+            "code": "IAA091",
+            "name": "企業資源規劃",
+            "credits": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "business_intelligence_analytics",
+    "name": "「商業智慧與分析」學分學程",
+    "college": "管理學院",
+    "cross_school": true,
+    "partner_schools": [
+      "TBD"
+    ],
+    "min_credits": 15,
+    "description": "讓學生認識商業智慧（Business Intelligence）和商業分析（Business Analytics）的知識與相關應用工具，整合商管各領域知識，培育巨量資料時代所需專業人才。各院各系所學生均可選修，具商管領域知識者優先。開放外校生以校際選課方式選修（每課程名額五分之一）。",
+    "required_courses": [],
+    "elective_groups": [
+      {
+        "name": "程式撰寫必修（至少選一）",
+        "select": 1,
+        "description": "至少選修 1 門，3 學分",
+        "courses": [
+          {
+            "code": "BA5037",
+            "name": "商業分析程式語言",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM3078",
+            "name": "人工智慧與機器學習",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ME2025",
+            "name": "電腦網路及程式",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM5006",
+            "name": "ERP 程式設計",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA7080",
+            "name": "自動化商業資料分析",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA7131",
+            "name": "數據驅動的商業與機器學習",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "基礎觀念必修（至少選一）",
+        "select": 1,
+        "description": "至少選修 1 門，3 學分",
+        "courses": [
+          {
+            "code": "IM2002",
+            "name": "資料庫管理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA5029",
+            "name": "商業分析資料探勘",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA7117",
+            "name": "商用計算機程式與演算法",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "HR6090",
+            "name": "人力資源管理資訊系統與數據分析",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ],
+        "slots": [
+          {
+            "slot_id": "slot_IA7038",
+            "slot_name": "資料倉儲與商業智慧",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "IA7038",
+                "name": "資料倉儲與商業智慧",
+                "credits": 3
+              },
+              {
+                "code": "BA7113",
+                "name": "資料倉儲與商業智慧",
+                "credits": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "選修課程",
+        "select_credits": 0,
+        "description": "自由選修，累計達 15 學分總數；企業實習及暑期實習至多認列 6 學分",
+        "courses": [
+          {
+            "code": "EC3018",
+            "name": "計量經濟學(一)",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IA7028",
+            "name": "計量方法",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM3007",
+            "name": "投資組合分析",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM3035",
+            "name": "財務資訊管理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EC4018",
+            "name": "當前經濟議題",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EC5020",
+            "name": "實驗經濟學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EC5008",
+            "name": "經濟大數據分析",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "BA5069",
+            "name": "人才分析與管理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM6101",
+            "name": "財務實證分析",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA7041",
+            "name": "ERP 與資料倉儲專題研究",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM5008",
+            "name": "商業智慧",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA7058",
+            "name": "自動化商業知識掘取",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA8063",
+            "name": "量表發展之理論與應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA7082",
+            "name": "數位轉型",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM5032",
+            "name": "物聯網",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM3058",
+            "name": "電子商務技術",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM6072",
+            "name": "財務計量",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EC3113",
+            "name": "企業金融實務",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "EC5027",
+            "name": "金融科技專題(一)",
+            "credits": 1,
+            "school": "NCU"
+          },
+          {
+            "code": "EC5028",
+            "name": "金融科技專題(二)",
+            "credits": 1,
+            "school": "NCU"
+          },
+          {
+            "code": "EC7053",
+            "name": "實證產業組織",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM6111",
+            "name": "人工智慧/機器學習的財務應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM3061",
+            "name": "企業資料通訊",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ],
+        "slots": [
+          {
+            "slot_id": "slot_BA7040",
+            "slot_name": "資料挖礦",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "BA7040",
+                "name": "資料挖礦",
+                "credits": 3
+              },
+              {
+                "code": "IM7061",
+                "name": "資料挖礦",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_FM6005",
+            "slot_name": "數量方法Ⅰ",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "FM6005",
+                "name": "數量方法Ⅰ",
+                "credits": 3
+              },
+              {
+                "code": "EC5005",
+                "name": "數量方法",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_EC3118",
+            "slot_name": "企業金融實務、演練與大數據之相關應用",
+            "select": 1,
+            "credits_options": [
+              2
+            ],
+            "courses": [
+              {
+                "code": "EC3118",
+                "name": "企業金融實務、演練與大數據之相關應用",
+                "credits": 2
+              },
+              {
+                "code": "EC3119",
+                "name": "企業金融實務、演練與大數據之相關應用",
+                "credits": 2
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_EC3121",
+            "slot_name": "企業金融實務、演練與大數據之相關應用",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "EC3121",
+                "name": "企業金融實務、演練與大數據之相關應用",
+                "credits": 3
+              },
+              {
+                "code": "EC3122",
+                "name": "企業金融實務、演練與大數據之相關應用",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_BA7126",
+            "slot_name": "AI 商業資料分析與應用",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "BA7126",
+                "name": "AI 商業資料分析與應用",
+                "credits": 3
+              },
+              {
+                "code": "EC5033",
+                "name": "AI商業資料分析與應用",
+                "credits": 3
+              },
+              {
+                "code": "FM5005",
+                "name": "AI商業資料分析與應用",
+                "credits": 3
+              },
+              {
+                "code": "IE8011",
+                "name": "AI商業資料分析與應用",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_MT4011",
+            "slot_name": "企業實習(一)",
+            "select": 1,
+            "credits_options": [
+              1
+            ],
+            "courses": [
+              {
+                "code": "MT4011",
+                "name": "企業實習(一)",
+                "credits": 1
+              },
+              {
+                "code": "MT6011",
+                "name": "企業實習(一)",
+                "credits": 1
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_MT4012",
+            "slot_name": "企業實習(二)",
+            "select": 1,
+            "credits_options": [
+              2
+            ],
+            "courses": [
+              {
+                "code": "MT4012",
+                "name": "企業實習(二)",
+                "credits": 2
+              },
+              {
+                "code": "MT6012",
+                "name": "企業實習(二)",
+                "credits": 2
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_MT4013",
+            "slot_name": "企業實習(三)",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "MT4013",
+                "name": "企業實習(三)",
+                "credits": 3
+              },
+              {
+                "code": "MT6013",
+                "name": "企業實習(三)",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_MT4017",
+            "slot_name": "暑期實習(一)",
+            "select": 1,
+            "credits_options": [
+              1
+            ],
+            "courses": [
+              {
+                "code": "MT4017",
+                "name": "暑期實習(一)",
+                "credits": 1
+              },
+              {
+                "code": "MT6017",
+                "name": "暑期實習(一)",
+                "credits": 1
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_MT4018",
+            "slot_name": "暑期實習(二)",
+            "select": 1,
+            "credits_options": [
+              2
+            ],
+            "courses": [
+              {
+                "code": "MT4018",
+                "name": "暑期實習(二)",
+                "credits": 2
+              },
+              {
+                "code": "MT6018",
+                "name": "暑期實習(二)",
+                "credits": 2
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_MT4019",
+            "slot_name": "暑期實習(三)",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "MT4019",
+                "name": "暑期實習(三)",
+                "credits": 3
+              },
+              {
+                "code": "MT6019",
+                "name": "暑期實習(三)",
+                "credits": 3
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 15,
+        "description": "修得學程內課程 15 學分以上"
+      },
+      {
+        "type": "required_elective",
+        "description": "程式撰寫必修：至少選修 1 門（3 學分）"
+      },
+      {
+        "type": "required_elective",
+        "description": "基礎觀念必修：至少選修 1 門（3 學分）"
+      },
+      {
+        "type": "outside_elective_max",
+        "credits": 6,
+        "description": "企業實習及暑期實習課程至多認列 6 學分"
+      },
+      {
+        "type": "elective_note",
+        "description": "其他相關課程之認定或抵免授權由企業資源規劃中心主任辦理"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢商業智慧與分析學分學程」，並頒發學分學程證明書。"
+  },
+  {
+    "id": "impact_measurement_management",
+    "name": "「影響力衡量與管理」學分學程",
+    "college": "管理學院",
+    "cross_school": false,
+    "min_credits": 15,
+    "description": "提升本校學生環境、永續、社會及管理的實作能力，培養跨領域影響力管理與衡量專業人才。本校各學院學生均可選修。",
+    "required_courses": [
+      {
+        "code": "BA5063",
+        "name": "社會投資報酬分析實務專題",
+        "credits": 3,
+        "school": "NCU",
+        "description": "專題實作必修"
+      }
+    ],
+    "elective_groups": [
+      {
+        "name": "選修：環境及永續",
+        "select": 1,
+        "description": "至少選修 1 門",
+        "courses": [
+          {
+            "code": "GS3068",
+            "name": "永續發展與美好生活",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS4523",
+            "name": "人工智慧與永續發展",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "CI6100",
+            "name": "綠營建產業永續發展",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EN6308",
+            "name": "永續環境管理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EN5005",
+            "name": "環境影響評估",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EC3120",
+            "name": "能源政策導論",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "CH4038",
+            "name": "化材產業永續發展概論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SA5013",
+            "name": "循環經濟材料於基礎建設之再利用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SA5009",
+            "name": "氣候變遷風險與評估",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "SG5027",
+            "name": "綠能總論",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ],
+        "slots": [
+          {
+            "slot_id": "slot_SL5011",
+            "slot_name": "空間資訊數位研究",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "SL5011",
+                "name": "空間資訊數位研究",
+                "credits": 3
+              },
+              {
+                "code": "RS5054",
+                "name": "空間資訊數位研究",
+                "credits": 3
+              },
+              {
+                "code": "HP5054",
+                "name": "空間資訊數位研究",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_SL5006",
+            "slot_name": "再生能源與永續發展",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "SL5006",
+                "name": "再生能源與永續發展",
+                "credits": 3
+              },
+              {
+                "code": "IA7044",
+                "name": "再生能源與永續發展",
+                "credits": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "選修：社會及管理",
+        "select": 1,
+        "description": "至少選修 1 門",
+        "courses": [
+          {
+            "code": "GS3024",
+            "name": "社會企業",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "FM6113",
+            "name": "企業社會責任",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "HK3017",
+            "name": "社會企業概論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "HK4019",
+            "name": "綠色產業與地方社會",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "HK4027",
+            "name": "企業與環境倫理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IA7041",
+            "name": "永續供應鏈",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IA7044",
+            "name": "再生能源與永續發展",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EC3118",
+            "name": "企業金融實務、演練與大數據之相關應用",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "EC3119",
+            "name": "企業金融實務、演練與大數據之相關應用",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "EC3121",
+            "name": "企業金融實務、演練與大數據之相關應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EC3122",
+            "name": "企業金融實務、演練與大數據之相關應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "HR6096",
+            "name": "企業倫理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SL5015",
+            "name": "DEI 多元平等共融概論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA7136",
+            "name": "DEI 多元共融行銷專題",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SL5013",
+            "name": "永續發展社會實踐專題",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "SL5003",
+            "name": "社會與永續創業",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ],
+        "slots": [
+          {
+            "slot_id": "slot_SL5007",
+            "slot_name": "數位影像與社會變遷",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "SL5007",
+                "name": "數位影像與社會變遷",
+                "credits": 3
+              },
+              {
+                "code": "RS5044",
+                "name": "數位影像與社會變遷",
+                "credits": 3
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 15,
+        "description": "修得學程內課程 15 學分以上"
+      },
+      {
+        "type": "dept_required",
+        "credits": 3,
+        "description": "必修：社會投資報酬分析實務專題（BA5063）3 學分"
+      },
+      {
+        "type": "required_elective",
+        "description": "環境及永續類至少選修 1 門；社會及管理類至少選修 1 門"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢影響力衡量與管理學分學程」，並頒發學分學程證明書。"
+  },
+  {
+    "id": "accounting",
+    "name": "「會計」學分學程",
+    "college": "管理學院",
+    "cross_school": false,
+    "min_credits": 24,
+    "description": "奠定會計專業人員之基礎，以便從事各項會計工作。本校各學院各學系學生均可選修。",
+    "required_courses": [
+      {
+        "code": "MT1031",
+        "name": "會計學Ⅰ",
+        "credits": 3,
+        "school": "NCU"
+      },
+      {
+        "code": "MT1032",
+        "name": "會計學Ⅱ",
+        "credits": 3,
+        "school": "NCU"
+      }
+    ],
+    "elective_groups": [
+      {
+        "name": "選修課程",
+        "select_credits": 18,
+        "description": "選修 18 學分（從以下課程選修）",
+        "courses": [
+          {
+            "code": "FM2037",
+            "name": "中級會計學Ⅰ",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM2038",
+            "name": "中級會計學Ⅱ",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM3049",
+            "name": "高等會計學Ⅰ",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM3050",
+            "name": "高等會計學Ⅱ",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM4027",
+            "name": "審計學Ⅰ",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM4028",
+            "name": "審計學Ⅱ",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM4008",
+            "name": "稅務法規",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM2030",
+            "name": "財務管理",
+            "credits": 3,
+            "school": "NCU",
+            "description": "FM2031+FM2032 兩門合計可抵免 FM2030"
+          },
+          {
+            "code": "IM3040",
+            "name": "會計資訊系統",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM4032",
+            "name": "創業與管理模擬",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ],
+        "slots": [
+          {
+            "slot_id": "slot_FM3005",
+            "slot_name": "管理會計學",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "FM3005",
+                "name": "管理會計學",
+                "credits": 3
+              },
+              {
+                "code": "BA2017",
+                "name": "管理會計學",
+                "credits": 3
+              },
+              {
+                "code": "IM2029",
+                "name": "管理會計",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_FM3014",
+            "slot_name": "成本會計",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "FM3014",
+                "name": "成本會計",
+                "credits": 3
+              },
+              {
+                "code": "BA2016",
+                "name": "成本會計",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_BA5003",
+            "slot_name": "ERP 會計模組討論",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "BA5003",
+                "name": "ERP 會計模組討論",
+                "credits": 3
+              },
+              {
+                "code": "BA5061",
+                "name": "ERP財務會計模組",
+                "credits": 3
+              },
+              {
+                "code": "BA5062",
+                "name": "ERP管理會計模組",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_FM3001",
+            "slot_name": "財務報表分析",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "FM3001",
+                "name": "財務報表分析",
+                "credits": 3
+              },
+              {
+                "code": "FM6011",
+                "name": "財務報表分析",
+                "credits": 3
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 24,
+        "description": "修得學程內課程 24 學分以上"
+      },
+      {
+        "type": "dept_required",
+        "credits": 6,
+        "description": "必修：會計學Ⅰ(MT1031) + 會計學Ⅱ(MT1032)，共 6 學分"
+      },
+      {
+        "type": "elective_minimum",
+        "credits": 18,
+        "description": "選修：從其他會計相關課程中選修 18 學分"
+      },
+      {
+        "type": "substitution",
+        "description": "本校所開其他與本學程課程名稱或內容相似之科目，須經財金系認定始得抵免；FM2031+FM2032 兩門合計可抵免 FM2030"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢會計學分學程」，並頒發學分學程證書。課程主要由財務金融系開設。"
+  },
+  {
+    "id": "sustainable_enterprise",
+    "name": "「永續企業」學分學程",
+    "college": "管理學院",
+    "cross_school": true,
+    "partner_schools": [
+      "TBD"
+    ],
+    "min_credits": 15,
+    "description": "在地球暖化趨勢下，培養學生成為具有環保意識與知識的商管人才，涵蓋從企業高階永續策略到供應鏈管理、行銷等落實層面。本校各學院學生均可選修。台灣聯合大學系統各校開設之永續企業課程可申請認列。",
+    "required_courses": [],
+    "elective_groups": [
+      {
+        "name": "選修課程",
+        "select_credits": 15,
+        "description": "選修 15 學分以上；台灣聯大系統各校相關課程可申請認列（須填寫認列證明單）",
+        "courses": [
+          {
+            "code": "BA7075",
+            "name": "綠色創新管理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA7055",
+            "name": "綠色供應鏈管理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ER6007",
+            "name": "能源政策概論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA7056",
+            "name": "綠色行銷",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IE6017",
+            "name": "環境經濟學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA7068",
+            "name": "全球綠色產業",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA7072",
+            "name": "企業永續管理專題I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA7120",
+            "name": "綠色工業理論與政策",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "HR6078",
+            "name": "綠色經濟與人力資源管理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA7108",
+            "name": "企業倫理專題研討",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "AP2042",
+            "name": "地球環境化學導論",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS4406",
+            "name": "認識大氣",
+            "credits": 2,
+            "school": "NCU"
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 15,
+        "description": "修得學程內課程 15 學分以上"
+      },
+      {
+        "type": "substitution",
+        "description": "台灣聯合大學系統各校開設之永續企業課程，修課學生須至系辦填寫「永續企業學分學程其他永續企業課程證明單」辦理認列"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢永續企業學分學程」，並頒發學分學程證明書。"
+  },
+  {
+    "id": "social_enterprise_innovation",
+    "name": "「社會企業與社會創新」學分學程",
+    "college": "管理學院",
+    "cross_school": false,
+    "min_credits": 15,
+    "description": "提升本校學生多元創新與社會實踐能力，培養跨領域社會企業與社會創新專業人才。本校各學院學生均可選修。",
+    "required_courses": [],
+    "elective_groups": [
+      {
+        "name": "基礎必修（至少選 1 門）",
+        "select": 1,
+        "description": "3 門中至少選修 1 門",
+        "courses": [
+          {
+            "code": "HK3017",
+            "name": "社會企業概論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3638",
+            "name": "認識桃園與在地社會",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3024",
+            "name": "社會企業",
+            "credits": 2,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "創業必修（至少選 1 門）",
+        "select": 1,
+        "description": "3 門中至少選修 1 門；微課程 GS0076 須為尤努斯社會企業中心開設",
+        "courses": [
+          {
+            "code": "BA5038",
+            "name": "創業管理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA7084",
+            "name": "產品發展實作",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GS0076",
+            "name": "自主微課程（尤努斯社會企業中心）",
+            "credits": 1,
+            "school": "NCU",
+            "description": "須為尤努斯社會企業中心開設之微課程"
+          }
+        ]
+      },
+      {
+        "name": "實作必修（至少選 1 門）",
+        "select": 1,
+        "description": "3 門中至少選修 1 門",
+        "courses": [
+          {
+            "code": "BA5070",
+            "name": "社會企業實務專題",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA5063",
+            "name": "社會投資報酬分析實務專題",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GS4525",
+            "name": "人工智慧社會影響力評估",
+            "credits": 2,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "選修課程",
+        "select_credits": 0,
+        "description": "自由選修，累計達 15 學分總數；Capstone 課程須事先向尤努斯社會企業中心申請",
+        "courses": [
+          {
+            "code": "BA4000",
+            "name": "企業政策",
+            "credits": 3,
+            "school": "NCU",
+            "description": "Capstone 課程，須事先申請"
+          },
+          {
+            "code": "BA4086",
+            "name": "企管專題",
+            "credits": 3,
+            "school": "NCU",
+            "description": "Capstone 課程，須事先申請"
+          },
+          {
+            "code": "EC4014",
+            "name": "當前經濟議題（一）",
+            "credits": 3,
+            "school": "NCU",
+            "description": "Capstone 課程，須事先申請"
+          },
+          {
+            "code": "EC4016",
+            "name": "當前經濟議題（二）",
+            "credits": 3,
+            "school": "NCU",
+            "description": "Capstone 課程，須事先申請"
+          },
+          {
+            "code": "FM4004",
+            "name": "財務管理個案研究",
+            "credits": 3,
+            "school": "NCU",
+            "description": "Capstone 課程，須事先申請"
+          },
+          {
+            "code": "IM3028",
+            "name": "資訊系統發展專題 I",
+            "credits": 3,
+            "school": "NCU",
+            "description": "Capstone 課程，須事先申請"
+          },
+          {
+            "code": "IM4001",
+            "name": "資訊系統發展專題 II",
+            "credits": 3,
+            "school": "NCU",
+            "description": "Capstone 課程，須事先申請"
+          },
+          {
+            "code": "AC6015",
+            "name": "商業模式與價值創造",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA2000",
+            "name": "財務管理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA2030",
+            "name": "行銷管理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA3003",
+            "name": "商事法",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA4073",
+            "name": "公司治理理論與實務",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA5035",
+            "name": "策略管理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA5049",
+            "name": "公司治理理論與實務",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA5065",
+            "name": "數位行銷與社會影響力攝影專題",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA7084",
+            "name": "產品發展實作",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EC7051",
+            "name": "全球化與創新",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS0077",
+            "name": "自主微課程（尤努斯社會企業中心）",
+            "credits": 1,
+            "school": "NCU",
+            "description": "須為尤努斯社會企業中心開設"
+          },
+          {
+            "code": "GS3064",
+            "name": "設計思考",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "GS3904",
+            "name": "新創事業與創新實務",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS4715",
+            "name": "創意與創業",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "GS9802",
+            "name": "創業實務",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "HK3033",
+            "name": "客庄創生設計實作",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "HK4018",
+            "name": "東南亞當代社會議題",
+            "credits": 2,
+            "school": "NCU"
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 15,
+        "description": "修得學程內課程 15 學分以上"
+      },
+      {
+        "type": "required_elective",
+        "description": "基礎必修、創業必修、實作必修三類各至少選修 1 門課程"
+      },
+      {
+        "type": "prerequisite",
+        "description": "Capstone 課程（企業政策、企管專題、當前經濟議題、財務管理個案研究、資訊系統發展專題）須事先向尤努斯社會企業中心申請，並於該學期完成社會企業專題"
+      },
+      {
+        "type": "elective_note",
+        "description": "微課程（GS0076/GS0077）須為尤努斯社會企業中心開設，每學期選課期間公告"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢社會企業與社會創新學分學程」，並頒發學分學程證明書。"
+  },
+  {
+    "id": "english_mba",
+    "name": "「英文 MBA」學分學程",
+    "college": "管理學院",
+    "cross_school": true,
+    "partner_schools": [
+      "TBD"
+    ],
+    "min_credits": 15,
+    "description": "整合臺灣聯合大學系統四校英文管理學程，以英文教學為主的 MBA 學程，提升學生謀職與國外升學競爭力。本校管理學院各系碩士班學生均可選修。所有課程須為全英文授課，每學期開學一週內需送系辦審核確認。",
+    "required_courses": [],
+    "elective_groups": [
+      {
+        "name": "行銷類",
+        "select_credits": 0,
+        "description": "自由選修，須為英文授課；累計達 15 學分即可",
+        "courses": [
+          {
+            "code": "BA5023",
+            "name": "品牌管理 (Brand Management)",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA7056",
+            "name": "綠色行銷 (Green Marketing Management)",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "財管類",
+        "select_credits": 0,
+        "description": "自由選修，須為英文授課",
+        "courses": [
+          {
+            "code": "BA7006",
+            "name": "公司理財專題研討 (Seminar on Corporate Finance)",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA5005",
+            "name": "當代財務問題討論 (Seminar on Modern Financial Issues)",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM6011",
+            "name": "財務報表分析 (Financial Statement Analysis)",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA5009",
+            "name": "財務報表分析與科技評價 (Financial Statement Analysis & Valuation)",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM6090",
+            "name": "固定收益證券專題 (Advanced Topic in Fixed-Income Securities)",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "資管類",
+        "select_credits": 0,
+        "description": "自由選修，須為英文授課",
+        "courses": [
+          {
+            "code": "BA7067",
+            "name": "決策支援系統 (Decision Support Systems)",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "工管類",
+        "select_credits": 0,
+        "description": "自由選修，須為英文授課",
+        "courses": [
+          {
+            "code": "IA5001",
+            "name": "作業研究一 (Operations Research I)",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IA5005",
+            "name": "迴歸分析 (Regression Analysis)",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IA7039",
+            "name": "自動化物料搬運系統 (Automated Material Handling System)",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IA5041",
+            "name": "企業流程管理 (Business Process Management)",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IA5051",
+            "name": "規劃與排程 (Planning and Scheduling)",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IA5007",
+            "name": "實驗設計 (Experimental Design)",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IA5021",
+            "name": "全面品質管理 (Total Quality Management)",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IA7026",
+            "name": "供應鏈管理系統設計 (Design of Advanced Supply Chain Management Systems)",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IA7031",
+            "name": "大規模最佳化 (Large-scale Optimization)",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IA5039",
+            "name": "產銷模式 (Production and Distribution Models)",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "人資類",
+        "select_credits": 0,
+        "description": "自由選修，須為英文授課",
+        "courses": [
+          {
+            "code": "BA5024",
+            "name": "管理心理學 (Managerial Psychology)",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "HR6002",
+            "name": "人力資源管理 (Human Resource Management)",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 15,
+        "description": "修得學程內英文授課課程 15 學分以上"
+      },
+      {
+        "type": "elective_note",
+        "description": "所有課程須為全英文授課；每學期開學一週內將選課列表送系辦審核，確認為英文授課後才計入學程"
+      },
+      {
+        "type": "substitution",
+        "description": "臺灣聯合大學系統各校開設之英文授課管理類課程可申請認列，須填寫「英文 MBA 學分學程其他科目類課程證明單」"
+      },
+      {
+        "type": "elective_note",
+        "description": "招生對象為本校管理學院各系碩士班學生"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢英文 MBA 學分學程」，並頒發學分學程證明書。為臺灣聯合大學系統跨校 IMBA 學程之準備。"
+  },
+  {
+    "id": "elite_leadership",
+    "name": "「菁英領導 elite」學分學程",
+    "college": "管理學院",
+    "cross_school": true,
+    "partner_schools": [
+      "TBD"
+    ],
+    "min_credits": 15,
+    "description": "提升本校學生對趨勢辨識、洞察力之分析基礎的能力，培養具領導特質的菁英。強調跨領域綜合能力、大膽假設、科學化思辨與創新思維。接受各學院及台灣聯合大學系統大學部學生申請選修。",
+    "required_courses": [
+      {
+        "code": "MT3001",
+        "name": "當代政經哲思大師論壇",
+        "credits": 1,
+        "school": "NCU",
+        "description": "共同課程必修；邀請當代政經哲思大師蒞校演講"
+      },
+      {
+        "code": "MT3002",
+        "name": "政經哲思小論文",
+        "credits": 2,
+        "school": "NCU",
+        "description": "共同課程必修；須在教授群指導下撰寫並於論壇發表"
+      },
+      {
+        "code": "MT3003",
+        "name": "哲學批判與政治經濟分析",
+        "credits": 3,
+        "school": "NCU",
+        "description": "核心課程必修；整合經濟、政治分析工具與中西哲學"
+      }
+    ],
+    "elective_groups": [
+      {
+        "name": "哲學課程",
+        "select_credits": 3,
+        "description": "至少選修 3 學分",
+        "courses": [
+          {
+            "code": "PD2304",
+            "name": "中國思想史",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "PD4401",
+            "name": "西方哲學史",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "PD4402",
+            "name": "當代西方思潮",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "PD4406",
+            "name": "現象學與詮釋學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "PD4151",
+            "name": "AI、倫理學與實踐哲學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "PD4153",
+            "name": "人本 AI 的東方觀點",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "PD2203",
+            "name": "哲思方法",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "政治學課程",
+        "select_credits": 3,
+        "description": "至少選修 3 學分",
+        "courses": [
+          {
+            "code": "LG5028",
+            "name": "憲法研究專題",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "LG5079",
+            "name": "公共管理專題",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "經濟學課程",
+        "select_credits": 3,
+        "description": "至少選修 3 學分",
+        "courses": [
+          {
+            "code": "EC2059",
+            "name": "政治經濟經典選讀",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "EC3098",
+            "name": "國際財經新聞",
+            "credits": 2,
+            "school": "NCU"
+          },
+          {
+            "code": "MT3004",
+            "name": "當代管理思潮",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 15,
+        "description": "修得學程內課程 15 學分以上"
+      },
+      {
+        "type": "dept_required",
+        "credits": 6,
+        "description": "共同課程（MT3001+MT3002，3 學分）與核心課程（MT3003，3 學分）全部必修，共 6 學分"
+      },
+      {
+        "type": "required_elective",
+        "description": "哲學課程至少 3 學分；政治學課程至少 3 學分；經濟學課程至少 3 學分"
+      },
+      {
+        "type": "elective_note",
+        "description": "政經哲思小論文（MT3002）須在教授群指導下撰寫，並於當代政經哲思大師論壇課堂上發表"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢菁英領導 elite 學分學程」，並頒發學分學程證明書。"
+  },
+  {
+    "id": "financial_engineering",
+    "name": "「財務工程」學分學程",
+    "college": "管理學院",
+    "cross_school": false,
+    "min_credits": 18,
+    "description": "提升財務工程相關研究與教學，儲備優秀財務工程人才。教導學生衍生性金融商品訂價、評價模式、避險方法，並運用電腦模擬闡釋理論。跨財金系、統計所、數學系開課。",
+    "required_courses": [
+      {
+        "code": "FM6016",
+        "name": "期貨與選擇權",
+        "credits": 3,
+        "school": "NCU",
+        "description": "核心課程必修"
+      },
+      {
+        "code": "ST6003",
+        "name": "機率模式 I",
+        "credits": 3,
+        "school": "NCU",
+        "description": "核心課程必修"
+      }
+    ],
+    "elective_groups": [
+      {
+        "name": "選修課程",
+        "select": 3,
+        "select_credits": 9,
+        "description": "至少選修 3 門、共 9 學分；財金系及統計所學生，6 門課中至少 2 門須為外系所開設",
+        "courses": [
+          {
+            "code": "FM6076",
+            "name": "財務計算專題",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM6090",
+            "name": "固定收益證券專題",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM6078",
+            "name": "金融創新",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ST7061",
+            "name": "財務時間數列 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "ST7048",
+            "name": "高等財務工程",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM6098",
+            "name": "財務工程",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MA6060",
+            "name": "機率論 II",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM6111",
+            "name": "人工智慧/機器學習的財務應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM4024",
+            "name": "財務計量",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ],
+        "slots": [
+          {
+            "slot_id": "slot_FM6071",
+            "slot_name": "風險管理",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "FM6071",
+                "name": "風險管理",
+                "credits": 3
+              },
+              {
+                "code": "FM6077",
+                "name": "財務風險管理",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_ST7047",
+            "slot_name": "財務隨機過程",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "ST7047",
+                "name": "財務隨機過程",
+                "credits": 3
+              },
+              {
+                "code": "MA6055",
+                "name": "隨機財務數學 Ⅰ",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_MA7007",
+            "slot_name": "微分方程數值解 I",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "MA7007",
+                "name": "微分方程數值解 I",
+                "credits": 3
+              },
+              {
+                "code": "MA8019",
+                "name": "數值分析Ⅰ",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_FM6072",
+            "slot_name": "財務計量",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "FM6072",
+                "name": "財務計量",
+                "credits": 3
+              },
+              {
+                "code": "ST6036",
+                "name": "財務計量",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_FM6093",
+            "slot_name": "保險精算",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "FM6093",
+                "name": "保險精算",
+                "credits": 3
+              },
+              {
+                "code": "ST6029",
+                "name": "保險精算",
+                "credits": 3
+              },
+              {
+                "code": "ST6030",
+                "name": "保險精算",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_MA5301",
+            "slot_name": "機率導論",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "MA5301",
+                "name": "機率導論",
+                "credits": 3
+              },
+              {
+                "code": "MA6059",
+                "name": "機率論 I",
+                "credits": 3
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 18,
+        "description": "核心課程 9 學分 + 選修至少 9 學分，共 18 學分"
+      },
+      {
+        "type": "dept_required",
+        "credits": 9,
+        "description": "核心課程 3 門全修：期貨與選擇權(3) + 數量方法I/計量財務I(3) + 機率模式I(3)"
+      },
+      {
+        "type": "elective_minimum",
+        "credits": 9,
+        "description": "選修至少 3 門、共 9 學分"
+      },
+      {
+        "type": "required_elective",
+        "description": "財金系及統計所學生：6 門課中至少 2 門須為外系所開設"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢財務工程專業學程學分」，並頒發專業學程證書。",
+    "required_slots": [
+      {
+        "slot_id": "req_FM6005",
+        "slot_name": "數量方法 I",
+        "select": 1,
+        "credits_options": [
+          3
+        ],
+        "courses": [
+          {
+            "code": "FM6005",
+            "name": "數量方法 I",
+            "credits": 3
+          },
+          {
+            "code": "ST6035",
+            "name": "計量財務Ｉ",
+            "credits": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "finance",
+    "name": "「財務金融」學分學程",
+    "college": "管理學院",
+    "cross_school": false,
+    "min_credits": 24,
+    "description": "奠定財務金融專業人員之基礎，以便從事各項財務金融工作。各學院各學系學生（財務金融系除外）均可選修。",
+    "required_courses": [
+      {
+        "code": "FM2030",
+        "name": "財務管理",
+        "credits": 3,
+        "school": "NCU",
+        "description": "FM2031+FM2032 兩門合計可抵免 FM2030"
+      },
+      {
+        "code": "MT1031",
+        "name": "會計學Ⅰ",
+        "credits": 3,
+        "school": "NCU"
+      },
+      {
+        "code": "MT1032",
+        "name": "會計學Ⅱ",
+        "credits": 3,
+        "school": "NCU"
+      },
+      {
+        "code": "FM3017",
+        "name": "投資學",
+        "credits": 3,
+        "school": "NCU"
+      }
+    ],
+    "elective_groups": [
+      {
+        "name": "選修課程",
+        "select_credits": 12,
+        "description": "選修 12 學分；本校所開其他同名稱或內容相似科目須經財金系認定始得抵免",
+        "courses": [
+          {
+            "code": "FM3007",
+            "name": "投資組合分析",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM3002",
+            "name": "期貨與選擇權",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM3036",
+            "name": "金融機構與市場",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM3005",
+            "name": "管理會計學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM3035",
+            "name": "財務資訊管理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM3043",
+            "name": "收購與合併概論",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM4024",
+            "name": "財務計量",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM6032",
+            "name": "財務實證專題",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM3029",
+            "name": "貨幣銀行學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM3008",
+            "name": "保險學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM4033",
+            "name": "財務工程",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM4026",
+            "name": "行為財務學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM4034",
+            "name": "公司治理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM4040",
+            "name": "證券市場理論與實務",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM6101",
+            "name": "財務實證分析",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM6111",
+            "name": "人工智慧/機器學習的財務應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM6113",
+            "name": "企業社會責任",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM5008",
+            "name": "環境、社會與治理基礎與實務",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM5010",
+            "name": "股權投資分析師養成",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "EC5028",
+            "name": "金融科技專題(二)",
+            "credits": 1,
+            "school": "NCU"
+          },
+          {
+            "code": "EC3113",
+            "name": "企業金融實務",
+            "credits": 2,
+            "school": "NCU"
+          }
+        ],
+        "slots": [
+          {
+            "slot_id": "slot_FM4001",
+            "slot_name": "國際財務管理",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "FM4001",
+                "name": "國際財務管理",
+                "credits": 3
+              },
+              {
+                "code": "FM6012",
+                "name": "國際財務管理",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_FM3031",
+            "slot_name": "風險管理",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "FM3031",
+                "name": "風險管理",
+                "credits": 3
+              },
+              {
+                "code": "FM3047",
+                "name": "風險管理",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_FM3042",
+            "slot_name": "投資銀行",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "FM3042",
+                "name": "投資銀行",
+                "credits": 3
+              },
+              {
+                "code": "FM4036",
+                "name": "投資銀行",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_FM3026",
+            "slot_name": "債券市場",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "FM3026",
+                "name": "債券市場",
+                "credits": 3
+              },
+              {
+                "code": "FM4038",
+                "name": "債券市場",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_FM3039",
+            "slot_name": "金融創新",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "FM3039",
+                "name": "金融創新",
+                "credits": 3
+              },
+              {
+                "code": "FM4037",
+                "name": "金融創新",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_FM6105",
+            "slot_name": "金融科技專題(一)",
+            "select": 1,
+            "credits_options": [
+              1
+            ],
+            "courses": [
+              {
+                "code": "FM6105",
+                "name": "金融科技專題(一)",
+                "credits": 1
+              },
+              {
+                "code": "EC5027",
+                "name": "金融科技專題(一)",
+                "credits": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 24,
+        "description": "修得學程內課程 24 學分以上"
+      },
+      {
+        "type": "dept_required",
+        "credits": 12,
+        "description": "必修：財務管理(3) + 會計學Ⅰ(3) + 會計學Ⅱ(3) + 投資學(3)，共 12 學分"
+      },
+      {
+        "type": "elective_minimum",
+        "credits": 12,
+        "description": "選修：其他財務管理相關課程 12 學分"
+      },
+      {
+        "type": "substitution",
+        "description": "FM2031+FM2032 兩門合計可抵免 FM2030；本校所開其他同名稱或內容相似科目須經財金系認定始得抵免"
+      },
+      {
+        "type": "elective_note",
+        "description": "招生對象為各學院各學系學生，財務金融系學生除外"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢財務金融學分學程學分」，並頒發學分學程證書。課程主要由財務金融系開設。"
+  },
+  {
+    "id": "fintech",
+    "name": "「金融科技」學分學程",
+    "college": "管理學院",
+    "cross_school": false,
+    "min_credits": 24,
+    "description": "奠定金融科技專業人員之基礎，培養金融科技人才。各學院各學系學生均可選修。",
+    "required_courses": [
+      {
+        "code": "FM2030",
+        "name": "財務管理",
+        "credits": 3,
+        "school": "NCU",
+        "description": "FM2031+FM2032 兩門合計可抵免 FM2030"
+      },
+      {
+        "code": "FM3017",
+        "name": "投資學",
+        "credits": 3,
+        "school": "NCU"
+      }
+    ],
+    "elective_groups": [
+      {
+        "name": "選修課程",
+        "select_credits": 12,
+        "description": "選修 12 學分（與必修合計達 24 學分）；本校所開其他同名稱或內容相似科目須經財金系認定始得抵免",
+        "courses": [
+          {
+            "code": "FM3007",
+            "name": "投資組合分析",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM3002",
+            "name": "期貨與選擇權",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM3036",
+            "name": "金融機構與市場",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM3031",
+            "name": "風險管理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM3042",
+            "name": "投資銀行",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM3035",
+            "name": "財務資訊管理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM4037",
+            "name": "金融創新",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM2011",
+            "name": "貨幣銀行學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM3029",
+            "name": "貨幣銀行學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM4033",
+            "name": "財務工程",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM4026",
+            "name": "行為財務學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM3008",
+            "name": "保險學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM4040",
+            "name": "證券市場理論與實務",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM4043",
+            "name": "授信管理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM4024",
+            "name": "財務計量",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "FM6111",
+            "name": "人工智慧/機器學習的財務應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM4021",
+            "name": "Java 程式設計進階",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM5006",
+            "name": "ERP 程式設計",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM5008",
+            "name": "商業智慧",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM5030",
+            "name": "軟體流程與專案管理",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM5032",
+            "name": "物聯網實務應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM5033",
+            "name": "資料科學與機器學習",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM3069",
+            "name": "系統分析與設計",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM3029",
+            "name": "網頁程式設計",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ],
+        "slots": [
+          {
+            "slot_id": "slot_FM4001",
+            "slot_name": "國際財務管理",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "FM4001",
+                "name": "國際財務管理",
+                "credits": 3
+              },
+              {
+                "code": "FM6012",
+                "name": "國際財務管理",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_FM3005",
+            "slot_name": "管理會計學",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "FM3005",
+                "name": "管理會計學",
+                "credits": 3
+              },
+              {
+                "code": "IM2029",
+                "name": "管理會計",
+                "credits": 3
+              },
+              {
+                "code": "IM7000",
+                "name": "管理會計學",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_FM3026",
+            "slot_name": "債券市場",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "FM3026",
+                "name": "債券市場",
+                "credits": 3
+              },
+              {
+                "code": "FM4038",
+                "name": "債券市場",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_FM3011",
+            "slot_name": "行銷管理",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "FM3011",
+                "name": "行銷管理",
+                "credits": 3
+              },
+              {
+                "code": "IM3059",
+                "name": "行銷學",
+                "credits": 3
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 24,
+        "description": "修得學程內必修與選修課程合計 24 學分以上"
+      },
+      {
+        "type": "dept_required",
+        "credits": 12,
+        "description": "必修 4 門各 3 學分，共 12 學分：財務管理(3) + 投資學(3) + 電子商務技術或人工智慧與機器學習(3) + 程式設計類(3)"
+      },
+      {
+        "type": "elective_minimum",
+        "credits": 12,
+        "description": "選修課程至少 12 學分"
+      },
+      {
+        "type": "substitution",
+        "description": "FM2031+FM2032 兩門合計可抵免 FM2030 財務管理；本校所開其他同名稱或內容相似科目須經財金系認定始得抵免"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢金融科技學分學程學分」，並頒發學分學程證書。各學院各學系學生均可選修。",
+    "required_slots": [
+      {
+        "slot_id": "req_IM3058",
+        "slot_name": "電子商務技術",
+        "select": 1,
+        "credits_options": [
+          3
+        ],
+        "courses": [
+          {
+            "code": "IM3058",
+            "name": "電子商務技術",
+            "credits": 3
+          },
+          {
+            "code": "IM3078",
+            "name": "人工智慧與機器學習",
+            "credits": 3
+          }
+        ]
+      },
+      {
+        "slot_id": "req_IM1023",
+        "slot_name": "程式設計",
+        "select": 1,
+        "credits_options": [
+          3
+        ],
+        "courses": [
+          {
+            "code": "IM1023",
+            "name": "程式設計",
+            "credits": 3
+          },
+          {
+            "code": "MT1051",
+            "name": "程式設計：Python",
+            "credits": 3
+          },
+          {
+            "code": "IM1013",
+            "name": "初階程式設計",
+            "credits": 3
+          },
+          {
+            "code": "IM2038",
+            "name": "Python",
+            "credits": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ecommerce",
+    "name": "「電子商務(EC)」學分學程",
+    "college": "管理學院",
+    "cross_school": false,
+    "min_credits": 21,
+    "description": "培養學生具備電子商務(EC)跨領域之專業能力及就業技能。各學院學生均可選修。由資訊管理系主辦。",
+    "required_courses": [
+      {
+        "code": "IM6100",
+        "name": "顧客關係管理",
+        "credits": 3,
+        "school": "NCU"
+      }
+    ],
+    "elective_groups": [
+      {
+        "name": "先修課程",
+        "select_credits": 0,
+        "description": "建議先修，學分不計入學程 21 學分",
+        "courses": [
+          {
+            "code": "MT1031",
+            "name": "會計學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MT1011",
+            "name": "經濟學",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "MT2041",
+            "name": "統計學",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      },
+      {
+        "name": "商務類選修",
+        "select_credits": 0,
+        "description": "與資訊技術類合計至少選修 9 學分；兩類可自由搭配，不受比例限制",
+        "courses": [
+          {
+            "code": "IM4048",
+            "name": "管理資訊系統",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM7059",
+            "name": "網路創意行銷 I",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM7060",
+            "name": "網路創意行銷 II",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ],
+        "slots": [
+          {
+            "slot_id": "slot_IM3026",
+            "slot_name": "生產與作業管理",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "IM3026",
+                "name": "生產與作業管理",
+                "credits": 3
+              },
+              {
+                "code": "BA3001",
+                "name": "生產與作業管理",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_IM2030",
+            "slot_name": "財務管理",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "IM2030",
+                "name": "財務管理",
+                "credits": 3
+              },
+              {
+                "code": "BA2000",
+                "name": "財務管理",
+                "credits": 3
+              },
+              {
+                "code": "FM2031",
+                "name": "財務管理",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_IM3070",
+            "slot_name": "組織行為",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "IM3070",
+                "name": "組織行為",
+                "credits": 3
+              },
+              {
+                "code": "BA2015",
+                "name": "組織行為",
+                "credits": 3
+              },
+              {
+                "code": "FM2036",
+                "name": "組織行為",
+                "credits": 3
+              }
+            ]
+          },
+          {
+            "slot_id": "slot_IM7065",
+            "slot_name": "人力資源管理",
+            "select": 1,
+            "credits_options": [
+              3
+            ],
+            "courses": [
+              {
+                "code": "IM7065",
+                "name": "人力資源管理",
+                "credits": 3
+              },
+              {
+                "code": "BA3005",
+                "name": "人力資源管理",
+                "credits": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "資訊技術類選修",
+        "select_credits": 0,
+        "description": "與商務類合計至少選修 9 學分；兩類可自由搭配，不受比例限制",
+        "courses": [
+          {
+            "code": "IM3029",
+            "name": "網頁程式設計",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "BA5040",
+            "name": "企業資源規劃",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM5008",
+            "name": "商業智慧",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM6055",
+            "name": "電腦網路安全",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM5032",
+            "name": "物聯網實務應用",
+            "credits": 3,
+            "school": "NCU"
+          },
+          {
+            "code": "IM5033",
+            "name": "資料科學與機器學習",
+            "credits": 3,
+            "school": "NCU"
+          }
+        ]
+      }
+    ],
+    "graduation_rules": [
+      {
+        "type": "credit_minimum",
+        "credits": 21,
+        "description": "修得必修與選修課程合計 21 學分以上（先修課程學分不計入）"
+      },
+      {
+        "type": "dept_required",
+        "credits": 12,
+        "description": "核心課程 4 門全部必修：電子商務(3) + 電子商務技術(3) + 行銷學或行銷管理(3) + 顧客關係管理(3)，共 12 學分"
+      },
+      {
+        "type": "elective_minimum",
+        "credits": 9,
+        "description": "商務類與資訊技術類選修課程合計至少 9 學分，兩類可自由搭配，不受比例限制"
+      },
+      {
+        "type": "elective_note",
+        "description": "先修課程（會計學、經濟學、統計學）建議先修，但學分不計入學程 21 學分門檻"
+      },
+      {
+        "type": "substitution",
+        "description": "本校所開其他同名稱或內容相似科目須經資管系認定始得抵免"
+      }
+    ],
+    "notes": "完成後成績單加註「修畢電子商務(EC)學分學程」，並頒發學分學程證明書。",
+    "required_slots": [
+      {
+        "slot_id": "req_IM3031",
+        "slot_name": "電子商務",
+        "select": 1,
+        "credits_options": [
+          3
+        ],
+        "courses": [
+          {
+            "code": "IM3031",
+            "name": "電子商務",
+            "credits": 3
+          },
+          {
+            "code": "BA6039",
+            "name": "電子商務",
+            "credits": 3
+          }
+        ]
+      },
+      {
+        "slot_id": "req_IM5002",
+        "slot_name": "電子商務技術",
+        "select": 1,
+        "credits_options": [
+          3
+        ],
+        "courses": [
+          {
+            "code": "IM5002",
+            "name": "電子商務技術",
+            "credits": 3
+          },
+          {
+            "code": "IM3058",
+            "name": "電子商務技術",
+            "credits": 3
+          }
+        ]
+      },
+      {
+        "slot_id": "req_IM3059",
+        "slot_name": "行銷學或行銷管理",
+        "select": 1,
+        "credits_options": [
+          3
+        ],
+        "courses": [
+          {
+            "code": "IM3059",
+            "name": "行銷學或行銷管理",
+            "credits": 3
+          },
+          {
+            "code": "BA2030",
+            "name": "行銷管理",
+            "credits": 3
+          },
+          {
+            "code": "FM3011",
+            "name": "行銷管理",
+            "credits": 3
+          }
+        ]
+      }
+    ]
+  }
+]

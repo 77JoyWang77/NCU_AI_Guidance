@@ -87,7 +87,13 @@ backups/
 *.onnx
 
 # 資料目錄
-data/
+data/processed/curriculum_maps_png/
+data/raw/應修科目表/
+data/raw/學分學程/
+data/raw/課程地圖/
+data/raw/projects/
+data/sessions/
+data/test_results/
 
 # 大型資料檔案
 *.csv.gz

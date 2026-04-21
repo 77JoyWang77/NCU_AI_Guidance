@@ -1,0 +1,203 @@
+{
+  "id": "dept_english_literature",
+  "name": "英美語文學系",
+  "program_type": "traditional_dept",
+  "min_credits": 128,
+  "graduation_rules": [
+    {
+      "type": "credit_minimum",
+      "credits": 128,
+      "description": "最低畢業學分數 128 學分"
+    },
+    {
+      "type": "dept_courses_min",
+      "credits": 78,
+      "description": "本系課程至少 78 學分（語言訓練類≥30＋專業學科類≥48）"
+    },
+    {
+      "type": "language_training_minimum",
+      "credits": 30,
+      "description": "語言訓練類至少 30 學分（必修15＋必選3＋自選≥12）"
+    },
+    {
+      "type": "professional_minimum",
+      "credits": 48,
+      "description": "專業學科類至少 48 學分（必修6＋必選12＋自選≥27，另加EL1203等選修）"
+    },
+    {
+      "type": "free_elective",
+      "credits": 25,
+      "description": "剩餘 25 學分可自由選修全校課程（不含語言中心進修英文）"
+    },
+    {
+      "type": "general_education",
+      "domains_min": 1,
+      "description": "通識核心必修四大領域至少修習一個領域"
+    },
+    {
+      "type": "foreign_language",
+      "credits": 6,
+      "description": "外文 6 學分須選修本系開設之課程，大一英文不計入本系外文學分；進修英文學分不列入畢業學分"
+    }
+  ],
+  "required_courses": [
+    {
+      "code": "EL1060",
+      "name": "影像分析寫作",
+      "credits": 3,
+      "category": "語言訓練類",
+      "when": "大一上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "EL1064",
+      "name": "英文口語訓練",
+      "credits": 3,
+      "category": "語言訓練類",
+      "when": "大一上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "EL1204",
+      "name": "文獻蒐集與論證寫作",
+      "credits": 3,
+      "category": "語言訓練類",
+      "when": "大一下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "EL2078",
+      "name": "文學分析寫作",
+      "credits": 3,
+      "category": "語言訓練類",
+      "when": "大二上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "EL2076",
+      "name": "演說與溝通I",
+      "credits": 3,
+      "category": "語言訓練類",
+      "when": "大二上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "EL1201",
+      "name": "比較觀念文化史",
+      "credits": 3,
+      "category": "專業學科類",
+      "when": "大一上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "EL1202",
+      "name": "文學、歷史與哲思",
+      "credits": 3,
+      "category": "專業學科類",
+      "when": "大一上",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    }
+  ],
+  "elective_groups": [
+    {
+      "name": "語言訓練類必選（二擇一）",
+      "select": 1,
+      "category": "語言訓練類",
+      "courses": [
+        {
+          "code": "EL4201",
+          "name": "研究、寫作與實踐",
+          "credits": 3,
+          "when": "大三上~大三下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "EL4202",
+          "name": "翻譯與媒介",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        }
+      ]
+    },
+    {
+      "name": "專業學科類必選（六擇四）",
+      "select": 4,
+      "category": "專業學科類",
+      "courses": [
+        {
+          "code": "EL1203",
+          "name": "殖民現代性",
+          "credits": 3,
+          "when": "大一下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "EL2005",
+          "name": "英語語言學概論",
+          "credits": 3,
+          "when": "大二上~大二下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "EL3201",
+          "name": "英國文學研究",
+          "credits": 3,
+          "when": "大二上",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "EL3202",
+          "name": "英語系研究",
+          "credits": 3,
+          "when": "大三下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "EL3203",
+          "name": "美國研究I",
+          "credits": 3,
+          "when": "大二上",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "EL3204",
+          "name": "美國研究II",
+          "credits": 3,
+          "when": "大三下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        }
+      ]
+    }
+  ]
+}

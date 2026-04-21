@@ -1,0 +1,674 @@
+[
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "文學院",
+    "系所": "文學院學士班",
+    "流水號": "18001",
+    "課號-班別": "IL1002-*",
+    "課程名稱(中文)": "人文與科技發展",
+    "課程名稱(英文)": "Science, Technology, and the Humanities",
+    "備註": "文學院外同學需加選密碼卡請洽授課教師\n[不開放初選]",
+    "授課教師": "單維彰",
+    "學分": "3",
+    "上課時間": "Fri234",
+    "教室": "A-106",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=18001&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限文學院學士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限學士班。學院:限文學院。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=18001&outline=18001&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "文學院學士班",
+      "流水號": "18001",
+      "課號": "IL1002-*",
+      "授課教師": "單維彰",
+      "課程名稱(中文)": "人文與科技發展",
+      "課程名稱(英文)": "Science, Technology, and the Humanities",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "此課程為文學院學士班一年級的必選修課，以及 iHP 學分學程的基礎課，所以預期有20名學系或學程的學生，另外開放至多10名選修者。文學院以外的同學不會由系統分發，請聯絡教師商量領取密碼卡。 這門課的目標是想要協助學生建構一幅鳥瞰當今科學與技學的「方位概念圖」。課程內容以「知識的理論」為基本架構，注入較多數學、自然科學、計算機、SDGs課題。教師認為：「人文者，人之所作」。故人文不限於道德文章戲曲圖畫，舉凡數學與一切分科之學（科學與技學）皆為人文。每個社會挑選一部份人文化成文化，近代科技不在華人社會的原生文化之內，所以它是文明而非文化。雖然社會大眾已經從事科技文明的生產與消費，但畢竟尚未能將這些文明化入文化，而這就是人文學者的責任與時機了。",
+      "授課內容": "以下是 113-2 的各週授課計畫，僅供參考。實際授課計畫將在學期初公佈。\n1. 02/21課程導入，序言：所謂人文─人之所作\n2. 02/28 （國定假日）\n3. 03/07生成式AI與語言\n4. 03/14所謂知識、如何得知？\n5. 03/21知識類型：數學\n6. 03/28知識類型：自然科學\n7. 04/04 （國定假日）\n8. 04/11從簡單系統到複雜系統的物理（陳宣毅）\n9. 04/18知識類型：人的科學 (Human Sciences)\n10. 04/25知識類型：歷史\n11. 05/02知識的參考坐標：以數學發展脈絡為例\n12. 05/09生物學的推理為何不太需要數字？（蔡孟利）\n13. 05/16文院學士班讀字節「爬一座人文的山：山岳的跨域書寫與閱讀」\n（蔣竹山、單維彰：讀山偶得、洪廣冀、王威智、梁廷毓）\n14. 05/23 SDGs總論與SDG-13氣候行動（李河清）\n15. 05/30 （國定假日）\n16. 06/06結語：藝術、宗教，與智慧\n17. 18. 自主撰寫期末報告",
+      "教科書/參考書": "演講簡報與參考讀物。",
+      "自編教材比例": "80",
+      "授課方式": "講授 研討",
+      "評量配分比重": "本課程以講授為主，學生應全程出席，並參與討論和互評。成績計算方式，以學習參與20%、課後發展50%、期末報告30% 為原則。",
+      "辦公時間": "星期五第 5 節",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "人文",
+      "核心能力": [
+        {
+          "能力名稱": "人文實踐",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "批判思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "多元敘事",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "跨域學習",
+          "強度指數": "(5) 非常高",
+          "評量方式": "出席/課堂表現 ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "組織合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "文學院",
+    "系所": "文學院學士班",
+    "流水號": "18002",
+    "課號-班別": "IL1003-*",
+    "課程名稱(中文)": "影像與敘事分析",
+    "課程名稱(英文)": "Introduction to Film Studies",
+    "備註": "[不開放初選]",
+    "授課教師": "莎瓏．伊斯哈罕布德",
+    "學分": "3",
+    "上課時間": "Wed234",
+    "教室": "C2-104",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=18002&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限文學院學士班。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限文學院學士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=18002&outline=18002&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "文學院學士班",
+      "流水號": "18002",
+      "課號": "IL1003-*",
+      "授課教師": "莎瓏．伊斯哈罕布德",
+      "課程名稱(中文)": "影像與敘事分析",
+      "課程名稱(英文)": "Introduction to Film Studies",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "這是一門電影研究入門課程，研究對象是敘事電影（narrative films）。課程目標在訓練學生熟悉敘事電影的形式並分析其內容。",
+      "授課內容": "1 Course Introduction.\n2 影像中的場面調度 (1) Ida; (2) 偶然與想像\nhttps://www.youtube.com/watch?v=3euNFd7-TCg\n3 場面調度：攝影機移動 (1) Children of Man; (2) Pan’s labyrinth\nhttps://www.youtube.com/watch?v=IiyBo-qLDeM\n4 場面調度：電影攝影 (1) Citizen Kane; (2) On Body and Soul\n5 鏡頭到鏡頭間的剪輯藝術 (1) 寄生上流; (2) City Lights\nhttps://www.youtube.com/watch?v=ma1rD2OP85c\n6 聲音 (1) Sound of Metal; (2) War Witch\nhttps://www.youtube.com/watch?v=kavxsXhzD48\n7 敘事：由場到場 (1) Bicycle Thieves; (2) The Wizard of Oz\n8 從劇本到電影 (1) Inside Man; (2) Eternal Sunshine of the Spotless Mind\n9 電影從業人員 (1) 400 Blows; (2) The Seventh Seal\nhttps://www.youtube.com/watch?v=nfHnuZqtV68\n10 表演 (1) The Graduate; (2) Atonement\nhttps://www.youtube.com/watch?v=Tb-BsdyRdqw\n11 類型 (1) Shane; (2) Casablanca\n12 特殊效果 (1) Vertigo; (2) Sherlock Jr.\n13 電影與意識型態 (1) The Hurt Locker\nhttps://www.youtube.com/watch?v=GTCoPIalS4U\n14 數位電影時代的電影研究\n15 期末課堂報告1\n16 期末課堂報告2",
+      "教科書/參考書": "An Introduction to Film Studies by Ed Sikov.",
+      "自編教材比例": "0",
+      "授課方式": "講授 其他",
+      "評量配分比重": "每週測驗 40％ 每週口頭報告 20％ 期末書面報告 40％",
+      "辦公時間": "星期三56",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "影像",
+      "核心能力": [
+        {
+          "能力名稱": "人文實踐",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "批判思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "多元敘事",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "跨域學習",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "組織合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "文學院",
+    "系所": "文學院學士班",
+    "流水號": "18003",
+    "課號-班別": "IL2403-*",
+    "課程名稱(中文)": "世界電影",
+    "課程名稱(英文)": "World Cinema",
+    "備註": "[不開放初選]",
+    "授課教師": "倪娃法",
+    "學分": "3",
+    "上課時間": "Wed567",
+    "教室": "C2-112",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=18003&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限文學院學士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限學士班。學院:限文學院。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限學士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=18003&outline=18003&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "文學院學士班",
+      "流水號": "18003",
+      "課號": "IL2403-*",
+      "授課教師": "倪娃法",
+      "課程名稱(中文)": "世界電影",
+      "課程名稱(英文)": "World Cinema",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "For this semester, the world cinema class will be focused film and music, including musical genre from its beginning in film history and its importance all around the world, but not only. The importance of the use of songs will be also discussed. Each student will be asked to do an oral presentation on musical film. Film analysis workshop will take place regularly.",
+      "授課內容": "Week 1: Film and music, a long love story\nWeek 2 : The transition from silent to sound films\nWeek-3-5 : The Hollywood model\nWeek 5-7: Bollywood\nWeek 6-7 : The Soviet musicals\nWeek 9 : Egyptian musicals\nWeek 9: Musical in China\nWeek 10: Hong Kong musicals\nWeek 11: Taiwan Musicals\nWeek 12 : Japanese musicals\nWeek 13 : British musicals\nWeek 14: French musicals (week 14: essay to hand)\nWeek 15: German musicals\nWeek 16: Final exam",
+      "教科書/參考書": "自編",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "class attendance and participation 20％ Essay 30％ final exam 50％",
+      "辦公時間": "週三 14：00 到 16:00 需電子郵件事先約定",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "人文 、 影像 、 藝術 、 歷史",
+      "核心能力": [
+        {
+          "能力名稱": "人文實踐",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "批判思考",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗"
+        },
+        {
+          "能力名稱": "多元敘事",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "跨域學習",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "組織合作",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "文學院",
+    "系所": "文學院學士班",
+    "流水號": "18004",
+    "課號-班別": "IL4201-*",
+    "課程名稱(中文)": "台灣史與東亞史的交錯",
+    "課程名稱(英文)": "The Intersection of Taiwanese History and East Asian History",
+    "備註": "[不開放初選]",
+    "授課教師": "陳家豪",
+    "學分": "3",
+    "上課時間": "Thu234",
+    "教室": "C2-104",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=18004&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限文學院學士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限學士班。學院:限文學院。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限學士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=18004&outline=18004&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "文學院學士班",
+      "流水號": "18004",
+      "課號": "IL4201-*",
+      "授課教師": "陳家豪",
+      "課程名稱(中文)": "台灣史與東亞史的交錯",
+      "課程名稱(英文)": "The Intersection of Taiwanese History and East Asian History",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "1. Historical Context and Regional Interaction: East Asia has been compelled to confront military, political, economic, social, and cultural pressures and challenges imposed by Western Imperialism since the 19th century. Each country and region in the area has devised its own approach to respond to these challenges and pressures. Consequently, East Asia has internalized these challenges and pressures, shaping them into driving forces, obstacles, and limitations in the historical process of development. The course focuses on the intersection of Taiwanese history and the broader East Asian context to explore these dynamic historical processes. 2. Addressing the EMI Learning Gap in Humanities: Based on the \"hybrid\" class composition of local and international students, this course recognizes that the fundamental challenge of EMI in the humanities is not a single dimension, but the result of the interaction between language proficiency, cultural expression habits, inconsistent knowledge baselines, and classroom interaction patterns. Local students often exhibit low engagement due to language anxiety and lack of self-efficacy, while international students may face a \"knowledge structure rupture\" regarding Taiwanese history. This course aims to bridge this \"language gap x prior knowledge gap\" to ensure that the core activities of discussion and critical thinking can be successfully carried out. 3. Flipped Classroom and AI-Assisted Research: The course will apply a Flipped Classroom Approach, encouraging students to take an active role in learning by conducting research prior to class. Students will research chosen historical events using AI tools in different languages, which encourages them to critically evaluate historical sources in multiple languages while considering discrepancies and biases. This approach helps establish a shared knowledge platform for both local and international students, fostering cross-cultural understanding and knowledge translation. 4. Critical Synthesis and Academic Development: Following the student reports, the lecturer elaborates on the historical background and invites students to discuss controversial parts of the history. This process is designed to assist students in developing a comprehensive academic perspective and critical thinking skills. The ultimate goal is to enhance students' international competitiveness while providing an accessible learning environment for all.",
+      "授課內容": "Introduction（2026/2/25）\nEastern Spread of Western Imperialism（2026/3/5，Class begins at 9:20）\nModernization Race（2026/3/12，Class begins at 9:20）\n📋 Group list to be announced by the instructor\nTaiwan on the Eve of Colonization（2026/3/19，Class begins at 9:20）\n📋 AI Presentation begins from this week\nBecoming Japanese（2026/3/26，Class begins at 9:20）\nNo Class — University-Wide Activity Week（2026/4/2）\nPublic Health（2026/4/9，Class begins at 9:20）\nMalleability for WWII: Fighting for Whom? What Were the Reasons for the Fight?（2026/4/16，Class begins at 9:20）\nDignity of Allies Nations: East Asia's Post-War Early Years Reflected in the Shibuya Incident（2026/4/23，Class begins at 9:20）\n📋 Each group submits the topic of the final oral report\nSorrow of the Defeated Nations: Koreans and Ryukyuans in the 228 Incident（2026/4/30，Class begins at 9:20）\nFormation of the Cold War in East Asia: International Order（2026/5/7，Class begins at 9:20）\nFormation of Cold War in East Asia: Cross-Strait Relations（2026/5/14，Class begins at 9:20）\n📋 Each group submits the proposal of the final oral report\nTransitional Justice in East Asia（2026/5/21，Class begins at 9:20）\nWhy Japan Is Haunted by Its Past（2026/5/28，Class begins at 9:20）\n📋The end of AI Presentation.\nThe Path to Democratization in Asia（2026/6/4，Class begins at 9:20）\n📋 Each group submits the presentation slides of the final oral report\nFinal Oral Report — Taiwan-US Youth History Workshop（2026/6/8，Monday，Class time to be announced）",
+      "教科書/參考書": "Ebrey, Patricia Buckley, Anne Walthall, and James B. Palais. East Asia: A Cultural, Social and Political History. Boston, MA: Houghton Mifflin, 2009. Ericson, Steven J. The Sound of the Whistle: Railroads and the State in Meiji Japan. Cambridge, MA: Harvard University, 1996. Pomeranz, Kenneth. The Great Divergence: China, Europe, and the Making of the Modern World Economy. Princeton and Oxford: Princeton University Press, 2000.",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討",
+      "評量配分比重": "1.Attendance: 20％ For each unexcused absence, 4% will be deducted from the total course grade. Five unexcused absences will result in the full 20% attendance grade being deducted. Tardiness is included in the deduction policy: two instances of tardiness will be counted as one unexcused absence. If a student needs to request leave, they must notify the instructor by email prior to class. No supporting documents are required; however, the reason must be reasonable and is subject to the instructor’s approval. Failure to request leave in advance will be treated as an unexcused absence. No make-up mechanism is provided for attendance deductions. 2.Preparation and Presentation (30％): Students will research a chosen historical event using AI in different languages. Present findings during the first hour of class, focusing on discrepancies between sources in English, Chinese, Japanese, or other languages. 3.Final Oral presentation or performance (Group): 50％ History is not only about what happened, but also about what could have happened. For the final project, each group is required to construct a counterfactual historical scenario based on any historical turning point discussed in this course, or any turning point you consider historically significant within the framework of Taiwanese and East Asian history. Examples may include (but are not limited to): If France had won the Sino-French War and Taiwan became a French colony. If Japan had not surrendered in 1945. These examples are only illustrations. You are free to design your own historical scenario.",
+      "辦公時間": "Thursday PM 13-17",
+      "授課週數": "16",
+      "彈性教學說明": "In the final two weeks of the course, each group will have the opportunity to individually consult with the instructor to receive tailored feedback and guidance on how to improve their final oral report.",
+      "課程領域": "歷史",
+      "核心能力": [
+        {
+          "能力名稱": "人文實踐",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "批判思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "多元敘事",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "跨域學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "組織合作",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評 ， 作品/創作展演"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "文學院",
+    "系所": "文學院學士班",
+    "流水號": "18005",
+    "課號-班別": "IL4402-*",
+    "課程名稱(中文)": "電影、科技與未來想像",
+    "課程名稱(英文)": "Cinema, Sci-fi, and the Imagination of the Future",
+    "備註": "[不開放初選]",
+    "授課教師": "林文淇\n陳文屏",
+    "學分": "3",
+    "上課時間": "Mon567",
+    "教室": "A-107",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=18005&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限文學院學士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限學士班。學院:限文學院。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限學士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=18005&outline=18005&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "文學院學士班",
+      "流水號": "18005",
+      "課號": "IL4402-*",
+      "授課教師": "林文淇\n陳文屏",
+      "課程名稱(中文)": "電影、科技與未來想像",
+      "課程名稱(英文)": "Cinema, Sci-fi, and the Imagination of the Future",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "一、了解電影中的科技想像，學習基礎科學，培養思辨素養。 二、結合電影與天文科學領域教師專業，使學生透過科幻電影認識並討論科學相關知識，同時了解人文領域如何利用影像敘事想像與刻畫科技發展及人類文明。 三、提供學生電影賞析的基本能力。",
+      "授課內容": "課程內容以科幻電影為主，探討科學內容包括基礎物理與化學，例如力、能量、運動、物質成分、文明與智慧；瞭解宇宙的地理與歷史，而不僅限於人類或地球。\n1 課程介紹\n2 電影中的物理與天文1：《星際效應 Interstellar》、《浩劫餘生 Planet of the Apes》\n3 電影中的物理與天文2：《2001太空漫遊 2001: A Space Odyssey》、《地心引力 Gravity》\n4 電影中的物理與天文3：《接觸未來 Contact》、《星際救援 Ad Astra》\n5 電影中的物理與天文4： 《絕地救援 The Martian》、《魔鬼總動員 Total Recall》\n6 電影中的生物與基因工程1：《侏羅紀公園 Jurrasic Park》、《變蠅人 The Fly》\n7 電影中的生物與基因工程2： 《月球漫遊 Moon》、《米奇17 Micky 17》\n8 電影中的人工智能1 ：《雲端情人 Her》、《人造眷戀 After Yang》\n9 電影中的人工智能2 ：《機械姬 Ex Machina》、《攻殼機動隊 Ghost in the Shell》\n10 電影中的時間旅行：《回到未來 Back to the Future》、《魔鬼總動員 The Terminator》\n11 電影中的科學倫理：《異星入境 The Arrival》、《創始者 Primer》\n12 電影中的地球與末日災難1：《明天過後 The Day After Tomorrow》、《流浪地球》\n13 電影中的地球與末日災難2：《千萬別抬頭 Don't Look Up》、《彗星撞地球 Deep Impact》\n14 學生分組報告 1\n15 學生分組報告 2\n16 學生分組報告 3",
+      "教科書/參考書": "科幻電影： 《星際效應 Interstellar》 《浩劫餘生 Planet of the Apes》 《2001太空漫遊 2001: A Space Odyssey》 《地心引力 Gravity》 《接觸未來 Contact》 《星際救援 Ad Astra》 《絕地救援 The Martian》 《魔鬼總動員 Total Recall》 《侏羅紀公園 Jurrasic Park》 《變蠅人 The Fly》 《月球漫遊 Moon》 《米奇17 Micky 17》 《雲端情人 Her》 《人造眷戀 After Yang》 《機械姬 Ex Machina》 《攻殼機動隊 Ghost in the Shell》 《回到未來 Back to the Future》 《魔鬼總動員 The Terminator》 《異星入境 The Arrival》 《創始者 Primer》 《明天過後 The Day After Tomorrow》 《流浪地球》 《千萬別抬頭 Don't Look Up》 《彗星撞地球 Deep Impact》",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "每週小考 24% 每週500字觀影心得 36% 分組課堂報告 20% 期末學習報告 10% 課程參與（課堂討論、心得回應等）10%",
+      "辦公時間": "週二15：00 ～17：00",
+      "授課週數": "16",
+      "彈性教學說明": "學生第17、18週撰寫學期學習報告",
+      "課程領域": "人文 、 影像",
+      "核心能力": [
+        {
+          "能力名稱": "人文實踐",
+          "強度指數": "(3) 普通",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "批判思考",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "多元敘事",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "跨域學習",
+          "強度指數": "(5) 非常高",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "組織合作",
+          "強度指數": "(1) 非常低",
+          "評量方式": "出席/課堂表現"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "文學院",
+    "系所": "文學院學士班",
+    "流水號": "18006",
+    "課號-班別": "IL4409-*",
+    "課程名稱(中文)": "電影類型",
+    "課程名稱(英文)": "Film Genre",
+    "備註": "[不開放初選]",
+    "授課教師": "倪娃法",
+    "學分": "3",
+    "上課時間": "Tue567",
+    "教室": "C2-104",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=18006&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限文學院學士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限學士班。學院:限文學院。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限學士班。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=18006&outline=18006&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "文學院學士班",
+      "流水號": "18006",
+      "課號": "IL4409-*",
+      "授課教師": "倪娃法",
+      "課程名稱(中文)": "電影類型",
+      "課程名稱(英文)": "Film Genre",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "課程目標：Course Purpose This course aims to develop students’ understanding of the evolution, structure, and ideological dimensions of film genres, with an emphasis on their origins in Hollywood and their global transformations. Through lectures, readings, film analyses, and creative projects, students will: • Gain a deeper knowledge of the specificity and development of film genres that began in Hollywood. • Explore the evolution and adaptation of genres across different national cinemas. • Study non-Hollywood genres (e.g., martial arts cinema) and their influence on Hollywood conventions. • Reflect on the ideological implications of film genres and how they can be critiqued or subverted. • Improve oral and written English through analytical discussion and academic writing. • Develop film analysis skills, focusing on formal and thematic elements. • Reflect critically on what defines a genre and its functions within cinema and culture. Course Format Each class includes two parts: 1. Lecture: Contextual and theoretical overview of a specific film genre (historical development, major directors, stylistic conventions, ideological dimensions). 2. Workshop: Guided discussions, readings, and film analysis exercises, leading to the creation of a Film Genre Exhibition Project in the second half of the semester. Assessment • Midterm Essay (30%) – A close analysis of a selected film, focusing on a specific scene and its genre conventions. • Final Project (40%) – A creative and analytical Film Exhibition Project centered on a genre not covered in class. This includes a group presentation and a written report. • Participation & Workshop Engagement (30%) – Active involvement in discussions, readings, and analytical tasks.",
+      "授課內容": "Week 1: introduction / definition of film genres\nWeek 2: Slapstick (1)\nWeek 3: Slapstick (2)\nWeek 4: Western (1)\nWeek 5: Western (2)\nWeek 6: Melodrama (1)\nWeek 7: Melodrama (2)\nWeek 8: Film noir (1)\nWeek 9: Film noir (2) / Mid-term essay due\nWeek 10: comedies (1)\nWeek 11: comedies (2)\nWeek 12: Martial Arts (1)\nWeek 13: Martial Arts (2)\nWeek 14: Post-apocalyptic cinema (1)\nWeek 15: Post-apocalyptic cinema (2)\nWeek 16: final presentation",
+      "教科書/參考書": "Rick Altman, Film/Genre, BFI publishing, 1999 / Barry Langford, Film genre : Hollywood and beyond, Edinburgh University Press, 2005 Barry Keith Grant, Film genre : from iconography to ideology, Wallflower, 2007 Feng Lin ; Aston James (eds), Renegotiating film genres in East Asian cinemas and beyond, 2020 Laura Mulvey, Visual and other pleasures, Macmillan, 1989",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討",
+      "評量配分比重": "Attendance and participation: 30% Mid-term essay: 30% Final presentation: 40% (oral presentation+written report)",
+      "辦公時間": "週一： 10:00-12：00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "影像",
+      "核心能力": [
+        {
+          "能力名稱": "人文實踐",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 實作/實驗"
+        },
+        {
+          "能力名稱": "批判思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "多元敘事",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 實作/實驗 ， 出席/課堂表現 ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "跨域學習",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 作品/創作展演"
+        },
+        {
+          "能力名稱": "組織合作",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 作品/創作展演"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "文學院",
+    "系所": "文學院學士班",
+    "流水號": "18007",
+    "課號-班別": "IL4410-*",
+    "課程名稱(中文)": "人文應用專題：紀錄片製作",
+    "課程名稱(英文)": "Project in Humanities: Documentary Production",
+    "備註": "未修過指定擋修課程欲選修本課者，請洽授課教師。\n[不開放初選]",
+    "授課教師": "莎瓏．伊斯哈罕布德",
+    "學分": "3",
+    "上課時間": "Thu678",
+    "教室": "C2-104",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=18007&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限文學院學士班。指定課程:必須擋修IL4401。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=18007&outline=18007&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "文學院學士班",
+      "流水號": "18007",
+      "課號": "IL4410-*",
+      "授課教師": "莎瓏．伊斯哈罕布德",
+      "課程名稱(中文)": "人文應用專題：紀錄片製作",
+      "課程名稱(英文)": "Project in Humanities: Documentary Production",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "1. 同學認識紀錄片的歷史、形式與創作過程、紀錄片與社會的互動關係與文化意義，理解紀錄片作為文化媒體或社會行動所引起的改變、或溝通之效能。 2. 同學將分組完成一部20至25分鐘的紀錄片。 3. 邀請被拍攝者參與期末發表會，發表對紀錄片的回應。",
+      "授課內容": "1. 課程介紹 分析影片「鐵肺人生」\n2. 紀錄片的定義 分析影片「羅傑與我」\n3. 紀錄片的倫理 分析影片「麥胖報告」\n4. 紀錄片與當代議題 分析影片「⻝物工廠」 學生報告分組與預定拍攝主題\n5. 紀錄片與當代議題 分析影片「核你到永遠」 學生報告田調結果\n6. 如何拍攝畫面 分析影片「T婆工廠」 學生報告田調結果\n7. 如何拍攝畫面 分析影片「帶水雲」 學生報告拍攝大綱\n8. 如何拍攝訪問 學生報告所拍攝畫面\n9. 如何拍攝訪問 學生報告所拍攝畫面\n10. 如何進行紙上剪接 學生報告所拍攝訪問\n11. 如何進行紙上剪接 學生報告所拍攝訪問\n12. 如何進行電腦剪接 學生報告紙上剪接\n13. 如何進行電腦剪接 學生報告初剪\n14. 討論學生二剪影片\n15. 討論學生定剪影片\n16. 成果發表",
+      "教科書/參考書": "Michael Rabiger(著)， 王亞維、喻溟(譯)，2016，製作紀錄片，台北:遠流 李道明，2015，紀錄片:歷史、美學、製作、倫理(修訂二版)，台北:三⺠ 郭力昕，2014，真實的叩問:紀錄片的政治與去政治，台北:麥田",
+      "自編教材比例": "0",
+      "授課方式": "講授 其他",
+      "評量配分比重": "出席20% 平日作業20% 期末作業40% 期末展演20%",
+      "辦公時間": "星期三下午1600-1700",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "影像",
+      "核心能力": [
+        {
+          "能力名稱": "人文實踐",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作品/創作展演"
+        },
+        {
+          "能力名稱": "批判思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作品/創作展演"
+        },
+        {
+          "能力名稱": "多元敘事",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作品/創作展演"
+        },
+        {
+          "能力名稱": "跨域學習",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作品/創作展演"
+        },
+        {
+          "能力名稱": "組織合作",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作品/創作展演"
+        }
+      ]
+    }
+  },
+  {
+    "學年度": "114",
+    "學期": "2",
+    "學院": "文學院",
+    "系所": "文學院學士班",
+    "流水號": "18008",
+    "課號-班別": "IL4601-*",
+    "課程名稱(中文)": "業界實習",
+    "課程名稱(英文)": "Internship",
+    "備註": "欲選課同學請主動與授課老師聯繫 wafa.ghermani@gmail.com\n[不開放初選]",
+    "授課教師": "倪娃法",
+    "學分": "2",
+    "上課時間": "Mon34",
+    "教室": "C2-104",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?limit=18008&semester=1142",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限文學院學士班。年級:限非一年級、非二年級。指定課程:必須擋修IL4406。"
+        },
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限文學院學士班。年級:限非一年級、非二年級。指定課程:必須擋修IL4407。"
+        },
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限文學院學士班。年級:限非一年級、非二年級。指定課程:必須擋修IL4202。"
+        },
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限文學院學士班。年級:限非一年級、非二年級。指定課程:必須擋修AR4007。"
+        },
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限文學院學士班。年級:限非一年級、非二年級。指定課程:必須擋修PD4101。"
+        },
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限文學院學士班。年級:限非一年級、非二年級。指定課程:必須擋修HI4909。"
+        },
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限文學院學士班。年級:限非一年級、非二年級。指定課程:必須擋修AR4008。"
+        }
+      ]
+    },
+    "課程綱要_連結": "https://cis.ncu.edu.tw/Course/main/query/byKeywords?serialNo=18008&outline=18008&semester=1142",
+    "課程綱要": {
+      "學期": "1142",
+      "開課單位": "文學院學士班",
+      "流水號": "18008",
+      "課號": "IL4601-*",
+      "授課教師": "倪娃法",
+      "課程名稱(中文)": "業界實習",
+      "課程名稱(英文)": "Internship",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "為減少學用落差，使文學院學士班學生能在具體情境下確實運用課堂所學知識解決問題，進而提升其學習興趣與學習效果，以便為未來進入職場做準備，故開設實習課程。",
+      "授課內容": "學生於實習期間須撰寫2次工作報告交予實習單位導師評量，繳交時間分別為實習滿72小時及144小時後一週。\n1. 學生須於實習合作協議書所載明之實習期間完成實習時數達144小時以上。\n2. 由實習單位指派專人擔任實習導師，負責督導實習工作，以及給予專業指導。\n3. 本系校外實習課程之輔導教師由本系教師擔任，於實習期間將不定期拜訪實習單位及訪談實習學生，以了解學生實習工作現況與內容，並能適時協助學生解決專業知識與適應上之問題。\n4. 通過直接進入業界見習的方式，理解實習單位所屬產業現況、市場定位、內部文化等。\n5. 根據實習單位之工作性質，結合課堂所學知識與技能，從中精熟問題分析與策略選擇。\n公司的選擇：\n1/ 請事先與老師聯絡\n2/自行選擇但是必須提供簽約之內容",
+      "教科書/參考書": "自訂",
+      "自編教材比例": "0",
+      "授課方式": "實習/實驗",
+      "評量配分比重": "以實習單位導師考核成績佔70％，本系輔導教師考核成績佔30％，共同核計之。評分項目分別如下： 1. 實習工作報告 (30％) － 實習單位導師考核項目I 學生於實習期間須撰寫2次工作報告交予實習單位導師評量，繳交時間分別為實習滿72小時及144小時後一週。 2. 實習表現 (40％) － 實習單位導師考核項目II 實習單位導師就學生於實習期間之出缺勤、與同事互動狀況、工作態度與表現等予以考核評分。 3. 實習心得報告 (30％) － 學校輔導教師考核項目 學生須於實習結束後 1 個月內，繳交實習心得報告、實習滿意度調查予輔導教師以作為考核依據。",
+      "辦公時間": "週一： 10:00-12：00",
+      "授課週數": "16",
+      "彈性教學說明": "依授課教師課堂上說明",
+      "課程領域": "影像 、 藝術 、 哲學 、 歷史",
+      "核心能力": [
+        {
+          "能力名稱": "人文實踐",
+          "強度指數": "(5) 非常高",
+          "評量方式": "其他"
+        },
+        {
+          "能力名稱": "批判思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "其他"
+        },
+        {
+          "能力名稱": "多元敘事",
+          "強度指數": "(5) 非常高",
+          "評量方式": "其他"
+        },
+        {
+          "能力名稱": "跨域學習",
+          "強度指數": "(5) 非常高",
+          "評量方式": "其他"
+        },
+        {
+          "能力名稱": "組織合作",
+          "強度指數": "(5) 非常高",
+          "評量方式": "其他"
+        }
+      ]
+    }
+  }
+]

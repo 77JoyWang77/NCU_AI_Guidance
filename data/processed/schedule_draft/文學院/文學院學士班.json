@@ -1,0 +1,711 @@
+{
+  "id": "cbp_liberal_arts",
+  "name": "文學院學士班",
+  "program_type": "college_bachelor",
+  "min_credits": 128,
+  "foundation_credits": 12,
+  "professional_credits": 54,
+  "application_credits": 6,
+  "graduation_rules": [
+    {
+      "type": "credit_minimum",
+      "credits": 128,
+      "description": "最低畢業學分 128 學分"
+    },
+    {
+      "type": "foundation_required",
+      "credits": 12,
+      "description": "基礎課程至少選修並通過 12 學分（5 門中選 4 門）"
+    },
+    {
+      "type": "professional_minimum",
+      "credits": 54,
+      "description": "專業課程至少選修 54 學分"
+    },
+    {
+      "type": "specialization_minimum",
+      "credits": 27,
+      "description": "至少修完一主修課群 27 學分（含該課群基礎課程）作為專長領域，畢業證書加註"
+    },
+    {
+      "type": "application_required",
+      "credits": 6,
+      "description": "應用課程之「人文應用專題」至少選修並通過 6 學分（選 2 門）"
+    }
+  ],
+  "foundation_courses": [
+    {
+      "code": "PD1101",
+      "name": "哲學概論",
+      "credits": 3,
+      "when": "大一上~大一下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "HI1901",
+      "name": "史學導論",
+      "credits": 3,
+      "when": "大一上~大一下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "AR1001",
+      "name": "藝術與視覺文化導論",
+      "credits": 3,
+      "when": "大一上~大一下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "IL1003",
+      "name": "影像與敘事分析",
+      "credits": 3,
+      "when": "大一上~大一下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    },
+    {
+      "code": "IL1002",
+      "name": "人文與科技發展",
+      "credits": 3,
+      "when": "大一上~大一下",
+      "when_auto": true,
+      "verified": false,
+      "note": ""
+    }
+  ],
+  "elective_groups": [
+    {
+      "name": "應用課程—人文應用專題（至少 6 學分，選 2 門）",
+      "select": 2,
+      "min_credits": 6,
+      "courses": [
+        {
+          "code": "PD4101",
+          "name": "人文應用專題：哲學裡的實境遊戲",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "HI4909",
+          "name": "人文應用專題：歷史學微策展",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "HI4910",
+          "name": "人文應用專題：公眾史學的理論與實作",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "IL4202",
+          "name": "人文應用專題：歷史導覽",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "AR4007",
+          "name": "人文應用專題：美術館歷史與實務",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "AR4008",
+          "name": "人文應用專題：展覽策畫",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "IL4406",
+          "name": "人文應用專題：電影策展",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "IL4407",
+          "name": "人文應用專題：電影行銷實務",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "IL4410",
+          "name": "人文應用專題：紀錄片製作",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "IL4411",
+          "name": "人文應用專題：短片製作",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        }
+      ]
+    }
+  ],
+  "specialization_tracks": [
+    {
+      "id": "track_philosophy",
+      "name": "哲學思維與經典詮釋",
+      "english_name": "Philosophy",
+      "min_credits": 27,
+      "elective_courses": [
+        {
+          "code": "PD2203",
+          "name": "哲思方法",
+          "credits": 3,
+          "when": "大二上~大二下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "PD2304",
+          "name": "中國思想史",
+          "credits": 3,
+          "when": "大二上~大二下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "PD2202",
+          "name": "形上學",
+          "credits": 3,
+          "when": "大二上~大二下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "PD4401",
+          "name": "西方哲學史",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "PD4402",
+          "name": "當代西方思潮",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "PD4406",
+          "name": "現象學與詮釋學",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "PD4360",
+          "name": "中國哲學經典詮釋",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "IL4102",
+          "name": "西方哲學經典詮釋",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "PD4150",
+          "name": "宗教哲學與生命教育",
+          "credits": 3,
+          "when": "大三上~大三下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "PD4151",
+          "name": "AI、倫理學與實踐哲學",
+          "credits": 3,
+          "when": "大三上~大三下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "IL4101",
+          "name": "哲學人類學與數位科技",
+          "credits": 3,
+          "when": "大三上~大三下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "PD4153",
+          "name": "人本AI的東方觀點",
+          "credits": 3,
+          "when": "大三上~大三下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "PD4101",
+          "name": "人文應用專題：哲學裡的實境遊戲",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "track_history",
+      "name": "知識傳統與歷史應用",
+      "english_name": "History",
+      "min_credits": 27,
+      "elective_courses": [
+        {
+          "code": "HI2901",
+          "name": "台灣近代史",
+          "credits": 3,
+          "when": "大二上~大二下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "HI2902",
+          "name": "東亞區域史",
+          "credits": 3,
+          "when": "大二上~大二下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "HI2903",
+          "name": "中國近現代史",
+          "credits": 3,
+          "when": "大二上~大二下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "HI2904",
+          "name": "中國的身體與醫藥文化史",
+          "credits": 3,
+          "when": "大二上~大二下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "PD2304",
+          "name": "中國思想史",
+          "credits": 3,
+          "when": "大二上~大二下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "IL2201",
+          "name": "1949來台移民社會史",
+          "credits": 3,
+          "when": "大二上~大二下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "IL2202",
+          "name": "數位人文與歷史學",
+          "credits": 3,
+          "when": "大二上~大二下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "HI4904",
+          "name": "博物館歷史學",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "HI4908",
+          "name": "臺灣社會經濟史",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "IL4201",
+          "name": "台灣史與東亞史的交錯",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "HI4909",
+          "name": "人文應用專題：歷史學微策展",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "HI4910",
+          "name": "人文應用專題：公眾史學的理論與實作",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "IL4202",
+          "name": "人文應用專題：歷史導覽",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "track_art_history",
+      "name": "藝術與視覺文化",
+      "english_name": "Art History",
+      "min_credits": 27,
+      "elective_courses": [
+        {
+          "code": "AR2002",
+          "name": "近代西方藝術",
+          "credits": 3,
+          "when": "大二上~大二下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "AR2004",
+          "name": "攝影與文化",
+          "credits": 3,
+          "when": "大二上~大二下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "AR2005",
+          "name": "中國繪畫史",
+          "credits": 3,
+          "when": "大二上~大二下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "AR4004",
+          "name": "當代藝術思潮",
+          "credits": 3,
+          "when": "大二上~大二下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "AR4001",
+          "name": "亞洲藝術專題",
+          "credits": 3,
+          "when": "大三上~大三下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "AR4002",
+          "name": "藝術與社會",
+          "credits": 3,
+          "when": "大三上~大三下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "AR4003",
+          "name": "亞洲藝術交流與比較",
+          "credits": 3,
+          "when": "大三上~大三下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "AR4005",
+          "name": "藝術的跨域實驗",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "AR4006",
+          "name": "藝術理論與批評",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "AR0028",
+          "name": "數位化藝術史",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "AR4009",
+          "name": "亞洲藝術跨領域研究",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "AR4010",
+          "name": "藝文環境、法規與科技",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "AR4007",
+          "name": "人文應用專題：美術館歷史與實務",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "AR4008",
+          "name": "人文應用專題：展覽策畫",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "track_image_narrative",
+      "name": "影像與敘事",
+      "english_name": "Image and Narrative",
+      "min_credits": 27,
+      "elective_courses": [
+        {
+          "code": "IL2401",
+          "name": "臺灣電影",
+          "credits": 3,
+          "when": "大二上~大二下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "IL2402",
+          "name": "電影史",
+          "credits": 3,
+          "when": "大二上~大二下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "IL2403",
+          "name": "世界電影",
+          "credits": 3,
+          "when": "大二上~大二下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "CL2068",
+          "name": "華語電影與文學",
+          "credits": 3,
+          "when": "大二上~大二下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "FR2052",
+          "name": "影像敘事、感知與視覺文化",
+          "credits": 3,
+          "when": "大二上~大二下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "IL4401",
+          "name": "動態影像拍攝剪輯",
+          "credits": 3,
+          "when": "大三上~大三下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "IL4402",
+          "name": "電影、科技與未來想像",
+          "credits": 3,
+          "when": "大三上~大三下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "IL4403",
+          "name": "國際電影合作",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "IL4404",
+          "name": "劇本寫作",
+          "credits": 3,
+          "when": "大三上~大三下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "IL4405",
+          "name": "電影研究專題",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "IL4409",
+          "name": "電影類型",
+          "credits": 3,
+          "when": "大三上~大三下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "IL4406",
+          "name": "人文應用專題：電影策展",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "IL4407",
+          "name": "人文應用專題：電影行銷實務",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "IL4410",
+          "name": "人文應用專題：紀錄片製作",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        },
+        {
+          "code": "IL4411",
+          "name": "人文應用專題：短片製作",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": true,
+          "verified": false,
+          "note": ""
+        }
+      ]
+    }
+  ]
+}
