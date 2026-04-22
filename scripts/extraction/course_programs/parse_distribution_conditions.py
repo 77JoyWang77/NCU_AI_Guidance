@@ -2,16 +2,23 @@
 解析 raw/courses 和 raw/graduate_courses 的分發條件，
 為每門課萃取結構化的選課資格屬性。
 
-輸出格式（v2）：每筆記錄分三個語意 block：
+輸出格式（v3）：每個優先序（P1, P2, ...）保留為獨立 access_rule（OR 邏輯），
+不再合併成單一 eligibility 物件，以避免「dept + year 關聯性」在合併時遺失。
 
-  eligibility          : 修課資格限制（誰可以修）
-    is_unrestricted    : bool  無任何系所/學院/年級/學制限制 → 全校可修
-    eligible_years     : list[int]   可修年級，空 = 無年級限制
-    program_types      : list[str]   學制限制（bachelor/master/phd/...）
-    dept_include       : list[str]   指定可修系所
+  is_unrestricted      : bool  任何人皆可修（無任何限制）
+  is_grad_only         : bool  所有 rule 都只允許研究所學制
+  is_undergrad_open    : bool  至少一個 rule 允許大學部
+  has_special_condition: bool  含無法完全結構化的條件
+  has_conditional_prereq: bool 先修只在部分優先序存在（非絕對要求）
+
+  access_rules         : list  各優先序條件（符合任一即可修）
+    每條 rule 含：
+    program_types      : list[str]   學制限制（bachelor/master/phd/...），空 = 不限
+    dept_include       : list[str]   指定可修系所，空 = 不限
     dept_exclude       : list[str]   排除系所
-    college_include    : list[str]   指定可修學院
+    college_include    : list[str]   指定可修學院，空 = 不限
     college_exclude    : list[str]   排除學院
+    years              : list[int]   可修年級，空 = 不限；"非一年級" → [2,3,4]
     open_to_minor      : bool        輔系可修
     minor_include      : list[str]   輔系細目（空 = 全部輔系）
     open_to_double_major: bool       雙主修可修
@@ -24,9 +31,9 @@
     edu_program_include: list[str]
     open_to_cross_school: bool       申請校學士可修
     identity_flags     : list[str]   其他身份旗標
-    priority_count     : int         優先順序層數（批次數）
-    has_special_condition: bool      含無法完全結構化的條件
-    has_conditional_prereq: bool     先修只在部分優先序存在（非絕對要求）
+    section_include    : list[str]   班別限制（A/B/C）
+    gender_restriction : list[str]   性別限制
+    student_id_parity  : list[str]   學號奇偶
 
   course_relations     : 課程依賴關係（for 知識圖譜邊）
     prereq_codes       : list[str]   先修課號（修過才能選）
@@ -337,89 +344,89 @@ def parse_condition_text(text: str) -> dict:
     return result
 
 
-# ── 合併多優先序 ──────────────────────────────────────────────────────────────
+# ── 研究所學制判斷 ────────────────────────────────────────────────────────────
 
-def merge_priorities(priority_results: list[dict]) -> dict:
-    """
-    將多個優先序的解析結果合併：
-    - 修課資格：取聯集（任一條件符合即可修）
-    - 課程關係（prereq/coreq/conflict/forbidden）：跨優先序取聯集
-    - has_conditional_prereq：先修只存在於「部分」優先序（非全部）→ True
-    - has_special_condition：有無法完全結構化的條件 → True
+_GRAD_TYPES = {"master", "phd", "master_inservice", "master_industry"}
+_GRAD_DEPT_SUFFIXES = ("碩士班", "博士班", "研究所", "在職專班", "碩士學位學程", "博士學位學程")
 
-    回傳：
-      {
-        'eligibility': {...},
-        'course_relations': {...},
-        'unparseable_conditions': [...],
-      }
-    """
-    elig = {
-        'eligible_years': set(),
-        'program_types': set(),
-        'dept_include': set(),
-        'dept_exclude': set(),
-        'college_include': set(),
-        'college_exclude': set(),
-        'open_to_minor': False,
-        'minor_include': set(),
-        'open_to_double_major': False,
-        'double_major_include': set(),
-        'open_to_credit_prog': False,
-        'credit_prog_include': set(),
-        'open_to_2nd_spec': False,
-        'spec_include': set(),
-        'open_to_edu_program': False,
-        'edu_program_include': set(),
-        'open_to_cross_school': False,
-        'identity_flags': set(),
-        'section_include': set(),
-        'gender_restriction': set(),
-        'student_id_parity': set(),
+
+def _is_rule_unrestricted(rule: dict) -> bool:
+    return (
+        not rule['program_types']
+        and not rule['dept_include']
+        and not rule['dept_exclude']
+        and not rule['college_include']
+        and not rule['college_exclude']
+        and not rule['years']
+    )
+
+
+def _is_rule_grad_only(rule: dict) -> bool:
+    if rule['program_types']:
+        return all(pt in _GRAD_TYPES for pt in rule['program_types'])
+    if rule['dept_include']:
+        return all(
+            any(d.endswith(s) for s in _GRAD_DEPT_SUFFIXES)
+            for d in rule['dept_include']
+        )
+    return False
+
+
+def compute_top_level_flags(access_rules: list[dict]) -> dict:
+    if not access_rules:
+        return {'is_unrestricted': True, 'is_grad_only': False, 'is_undergrad_open': True}
+    is_unrestricted = any(_is_rule_unrestricted(r) for r in access_rules)
+    is_grad_only = all(_is_rule_grad_only(r) for r in access_rules)
+    is_undergrad_open = is_unrestricted or any(not _is_rule_grad_only(r) for r in access_rules)
+    return {
+        'is_unrestricted':  is_unrestricted,
+        'is_grad_only':     is_grad_only,
+        'is_undergrad_open': is_undergrad_open,
     }
+
+
+# ── 建立 access_rules ────────────────────────────────────────────────────────
+
+def build_access_rules(priority_results: list[dict]) -> dict:
+    """
+    將各優先序解析結果保留為獨立 access_rule（OR 邏輯：符合任一即可修）。
+    課程關係（prereq/coreq/conflict/forbidden）跨優先序取聯集。
+    """
+    access_rules = []
     rels = {
-        'prereq_codes': set(),
-        'coreq_codes': set(),
+        'prereq_codes':  set(),
+        'coreq_codes':   set(),
         'conflict_codes': set(),
         'forbidden_codes': set(),
     }
     unparseable_set: set[str] = set()
-
-    # 追蹤先修是否存在於「全部」優先序，以判斷是否為條件性先修
     priorities_with_prereq = 0
-    all_years_unrestricted = False
 
     for r in priority_results:
-        if not r['years']:
-            all_years_unrestricted = True
-        else:
-            elig['eligible_years'].update(r['years'])
-
-        if r['program_types']:
-            elig['program_types'].update(r['program_types'])
-
-        elig['dept_include'].update(r['dept_include'])
-        elig['dept_exclude'].update(r['dept_exclude'])
-        elig['college_include'].update(r['college_include'])
-        elig['college_exclude'].update(r['college_exclude'])
-        elig['identity_flags'].update(r['identity_flags'])
-        elig['section_include'].update(r['section_include'])
-        elig['gender_restriction'].update(r['gender_restriction'])
-        elig['student_id_parity'].update(r['student_id_parity'])
-
-        for flag_key, include_key in [
-            ('open_to_minor', 'minor_include'),
-            ('open_to_double_major', 'double_major_include'),
-            ('open_to_credit_prog', 'credit_prog_include'),
-            ('open_to_2nd_spec', 'spec_include'),
-            ('open_to_edu_program', 'edu_program_include'),
-        ]:
-            if r[flag_key]:
-                elig[flag_key] = True
-                elig[include_key].update(r[include_key])
-
-        if r['open_to_cross_school']:
-            elig['open_to_cross_school'] = True
+        rule = {
+            'program_types':        sorted(r['program_types']),
+            'dept_include':         sorted(r['dept_include']),
+            'dept_exclude':         sorted(r['dept_exclude']),
+            'college_include':      sorted(r['college_include']),
+            'college_exclude':      sorted(r['college_exclude']),
+            'years':                sorted(r['years']),
+            'open_to_minor':        r['open_to_minor'],
+            'minor_include':        sorted(r['minor_include']),
+            'open_to_double_major': r['open_to_double_major'],
+            'double_major_include': sorted(r['double_major_include']),
+            'open_to_credit_prog':  r['open_to_credit_prog'],
+            'credit_prog_include':  sorted(r['credit_prog_include']),
+            'open_to_2nd_spec':     r['open_to_2nd_spec'],
+            'spec_include':         sorted(r['spec_include']),
+            'open_to_edu_program':  r['open_to_edu_program'],
+            'edu_program_include':  sorted(r['edu_program_include']),
+            'open_to_cross_school': r['open_to_cross_school'],
+            'identity_flags':       sorted(r['identity_flags']),
+            'section_include':      sorted(r['section_include']),
+            'gender_restriction':   sorted(r['gender_restriction']),
+            'student_id_parity':    sorted(r['student_id_parity']),
+        }
+        access_rules.append(rule)
 
         rels['prereq_codes'].update(r['prereq_codes'])
         rels['coreq_codes'].update(r['coreq_codes'])
@@ -431,121 +438,47 @@ def merge_priorities(priority_results: list[dict]) -> dict:
 
         unparseable_set.update(r['unparseable'])
 
-    # 年級處理
-    if all_years_unrestricted:
-        elig['eligible_years'] = []
-    else:
-        elig['eligible_years'] = sorted(elig['eligible_years'])
-
-    # has_conditional_prereq：先修只在「部分」優先序存在
     has_conditional_prereq = (
-        bool(rels['prereq_codes'])
-        and priorities_with_prereq < len(priority_results)
+        bool(rels['prereq_codes']) and priorities_with_prereq < len(priority_results)
     )
 
-    # is_unrestricted：無任何結構限制（系所/學院/年級/學制皆空）
-    is_unrestricted = (
-        not elig['eligible_years']
-        and not elig['program_types']
-        and not elig['dept_include']
-        and not elig['dept_exclude']
-        and not elig['college_include']
-        and not elig['college_exclude']
-    )
-
-    has_special_condition = bool(unparseable_set)
-
-    eligibility_out = {
-        'is_unrestricted':       is_unrestricted,
-        'eligible_years':        elig['eligible_years'],
-        'program_types':         sorted(elig['program_types']),
-        'dept_include':          sorted(elig['dept_include']),
-        'dept_exclude':          sorted(elig['dept_exclude']),
-        'college_include':       sorted(elig['college_include']),
-        'college_exclude':       sorted(elig['college_exclude']),
-        'open_to_minor':         elig['open_to_minor'],
-        'minor_include':         sorted(elig['minor_include']),
-        'open_to_double_major':  elig['open_to_double_major'],
-        'double_major_include':  sorted(elig['double_major_include']),
-        'open_to_credit_prog':   elig['open_to_credit_prog'],
-        'credit_prog_include':   sorted(elig['credit_prog_include']),
-        'open_to_2nd_spec':      elig['open_to_2nd_spec'],
-        'spec_include':          sorted(elig['spec_include']),
-        'open_to_edu_program':   elig['open_to_edu_program'],
-        'edu_program_include':   sorted(elig['edu_program_include']),
-        'open_to_cross_school':  elig['open_to_cross_school'],
-        'identity_flags':        sorted(elig['identity_flags']),
-        'section_include':       sorted(elig['section_include']),
-        'gender_restriction':    sorted(elig['gender_restriction']),
-        'student_id_parity':     sorted(elig['student_id_parity']),
-        'has_special_condition': has_special_condition,
-        'has_conditional_prereq': has_conditional_prereq,
-    }
-    relations_out = {
-        'prereq_codes':   sorted(rels['prereq_codes']),
-        'coreq_codes':    sorted(rels['coreq_codes']),
-        'conflict_codes': sorted(rels['conflict_codes']),
-        'forbidden_codes':sorted(rels['forbidden_codes']),
-    }
     return {
-        'eligibility':            eligibility_out,
-        'course_relations':       relations_out,
+        **compute_top_level_flags(access_rules),
+        'access_rules':           access_rules,
+        'course_relations':       {k: sorted(v) for k, v in rels.items()},
         'unparseable_conditions': sorted(unparseable_set),
+        'has_special_condition':  bool(unparseable_set),
+        'has_conditional_prereq': has_conditional_prereq,
     }
 
 
 # ── 同課號不同班別合併 ────────────────────────────────────────────────────────
 
-def _join_list_fields(existing: list, incoming: list) -> list:
-    merged = set(existing) | set(incoming)
-    return sorted(merged)
-
-
 def merge_into_existing(existing: dict, parsed: dict, raw_cond_str: str) -> None:
-    """將同課號不同班別的 parsed 結果合併進 existing（in-place）。"""
-    ex_elig = existing['eligibility']
-    in_elig = parsed['eligibility']
+    """同課號不同班別：合併 access_rules（去重後 append），並更新 top-level 旗標。"""
+    existing_rules: list = existing.get('access_rules', [])
+    for new_rule in parsed.get('access_rules', []):
+        if new_rule not in existing_rules:
+            existing_rules.append(new_rule)
+    existing['access_rules'] = existing_rules
+
+    existing.update(compute_top_level_flags(existing_rules))
+
     ex_rels = existing['course_relations']
     in_rels = parsed['course_relations']
-
-    # 年級聯集（有一個無限制就無限制）
-    if ex_elig['eligible_years'] and in_elig['eligible_years']:
-        ex_elig['eligible_years'] = sorted(
-            set(ex_elig['eligible_years']) | set(in_elig['eligible_years'])
-        )
-    else:
-        ex_elig['eligible_years'] = []
-
-    # 一般 list 欄位取聯集
-    for f in ['program_types', 'dept_include', 'dept_exclude',
-              'college_include', 'college_exclude', 'identity_flags',
-              'minor_include', 'double_major_include',
-              'credit_prog_include', 'spec_include', 'edu_program_include',
-              'section_include', 'gender_restriction', 'student_id_parity']:
-        ex_elig[f] = _join_list_fields(ex_elig[f], in_elig[f])
-
-    # bool 欄位取 OR
-    for f in ['open_to_minor', 'open_to_double_major', 'open_to_credit_prog',
-              'open_to_2nd_spec', 'open_to_edu_program', 'open_to_cross_school',
-              'has_special_condition', 'has_conditional_prereq']:
-        if in_elig.get(f):
-            ex_elig[f] = True
-
-    # is_unrestricted：只要有一個班別無限制，整門課視為無限制
-    if in_elig.get('is_unrestricted'):
-        ex_elig['is_unrestricted'] = True
-
-    # 課程關係取聯集
     for f in ['prereq_codes', 'coreq_codes', 'conflict_codes', 'forbidden_codes']:
-        ex_rels[f] = _join_list_fields(ex_rels[f], in_rels[f])
+        ex_rels[f] = sorted(set(ex_rels[f]) | set(in_rels[f]))
 
-    # unparseable 取聯集
     existing['unparseable_conditions'] = sorted(
         set(existing.get('unparseable_conditions', []))
         | set(parsed.get('unparseable_conditions', []))
     )
 
-    # raw_conditions 累積（去重）
+    if parsed.get('has_special_condition'):
+        existing['has_special_condition'] = True
+    if parsed.get('has_conditional_prereq'):
+        existing['has_conditional_prereq'] = True
+
     if raw_cond_str and raw_cond_str not in existing['raw_conditions']:
         existing['raw_conditions'].append(raw_cond_str)
 
@@ -579,32 +512,12 @@ def main():
                 if not priorities:
                     no_condition += 1
                     parsed = {
-                        'eligibility': {
-                            'is_unrestricted': True,
-                            'eligible_years': [],
-                            'program_types': [],
-                            'dept_include': [],
-                            'dept_exclude': [],
-                            'college_include': [],
-                            'college_exclude': [],
-                            'open_to_minor': False,
-                            'minor_include': [],
-                            'open_to_double_major': False,
-                            'double_major_include': [],
-                            'open_to_credit_prog': False,
-                            'credit_prog_include': [],
-                            'open_to_2nd_spec': False,
-                            'spec_include': [],
-                            'open_to_edu_program': False,
-                            'edu_program_include': [],
-                            'open_to_cross_school': False,
-                            'identity_flags': [],
-                            'section_include': [],
-                            'gender_restriction': [],
-                            'student_id_parity': [],
-                            'has_special_condition': False,
-                            'has_conditional_prereq': False,
-                        },
+                        'is_unrestricted':     True,
+                        'is_grad_only':        False,
+                        'is_undergrad_open':   True,
+                        'has_special_condition':   False,
+                        'has_conditional_prereq':  False,
+                        'access_rules': [],
                         'course_relations': {
                             'prereq_codes': [],
                             'coreq_codes': [],
@@ -614,16 +527,13 @@ def main():
                         'unparseable_conditions': [],
                     }
                 else:
-                    # 解析每個優先序（注意：同一優先數字可能有多條，一律逐條解析）
+                    # 解析每個優先序（同一優先數字可能有多條，一律逐條解析）
                     priority_results = []
                     for p in priorities:
                         text = p.get('相關條件限制說明', '').strip()
                         if text:
                             priority_results.append(parse_condition_text(text))
-                    parsed = merge_priorities(priority_results)
-                    # priority_count = 原始優先序的「唯一批次數」（去重後的數字個數）
-                    unique_batches = len({p.get('優先順序', '?') for p in priorities})
-                    parsed['eligibility']['priority_count'] = unique_batches
+                    parsed = build_access_rules(priority_results)
 
                 key = (raw_code, c.get('學年度', ''), c.get('學期', ''))
                 if key in results:
@@ -639,10 +549,6 @@ def main():
                         'raw_conditions': [raw_cond_str] if raw_cond_str else [],
                     }
 
-    # 確保所有記錄都有 priority_count（無分發條件的課設為 0）
-    for r in results.values():
-        r['eligibility'].setdefault('priority_count', 0)
-
     output_list = sorted(results.values(), key=lambda x: x['course_code'])
     OUTPUT.write_text(
         json.dumps(output_list, ensure_ascii=False, indent=2),
@@ -650,36 +556,27 @@ def main():
     )
 
     # ── 統計 ──────────────────────────────────────────────────────────────────
-    elig_list = [r['eligibility'] for r in output_list]
     rels_list = [r['course_relations'] for r in output_list]
 
-    has_year     = sum(1 for e in elig_list if e['eligible_years'])
-    has_prog     = sum(1 for e in elig_list if e['program_types'])
-    unrestricted = sum(1 for e in elig_list if e['is_unrestricted'])
-    has_minor    = sum(1 for e in elig_list if e['open_to_minor'])
-    has_dbl      = sum(1 for e in elig_list if e['open_to_double_major'])
-    has_cp       = sum(1 for e in elig_list if e['open_to_credit_prog'])
-    has_edu      = sum(1 for e in elig_list if e['open_to_edu_program'])
-    has_cs       = sum(1 for e in elig_list if e['open_to_cross_school'])
-    has_special  = sum(1 for e in elig_list if e['has_special_condition'])
-    has_cond_pre = sum(1 for e in elig_list if e['has_conditional_prereq'])
-    has_prereq   = sum(1 for r in rels_list if r['prereq_codes'])
-    has_coreq    = sum(1 for r in rels_list if r['coreq_codes'])
-    has_conflict = sum(1 for r in rels_list if r['conflict_codes'])
-    has_forbid   = sum(1 for r in rels_list if r['forbidden_codes'])
+    unrestricted    = sum(1 for r in output_list if r['is_unrestricted'])
+    grad_only       = sum(1 for r in output_list if r['is_grad_only'])
+    undergrad_open  = sum(1 for r in output_list if r['is_undergrad_open'])
+    has_special     = sum(1 for r in output_list if r['has_special_condition'])
+    has_cond_pre    = sum(1 for r in output_list if r['has_conditional_prereq'])
+    has_prereq      = sum(1 for r in rels_list if r['prereq_codes'])
+    has_coreq       = sum(1 for r in rels_list if r['coreq_codes'])
+    has_conflict    = sum(1 for r in rels_list if r['conflict_codes'])
+    has_forbid      = sum(1 for r in rels_list if r['forbidden_codes'])
+    total_rules     = sum(len(r['access_rules']) for r in output_list)
 
     print(f'處理課程：{total} 門 → 去重後 {len(output_list)} 個課號')
     print(f'無分發條件（全部開放）：{no_condition} 門')
+    print(f'access_rules 總數：    {total_rules} 條')
     print()
     print(f'完全無限制（is_unrestricted）：{unrestricted} 個課號')
-    print(f'有年級限制：                  {has_year} 個課號')
-    print(f'有學制限制：                  {has_prog} 個課號')
-    print(f'輔系可修：                    {has_minor} 個課號')
-    print(f'雙主修可修：                  {has_dbl} 個課號')
-    print(f'學分學程可修：                {has_cp} 個課號')
-    print(f'教育學程可修：                {has_edu} 個課號')
-    print(f'申請校學士可修：              {has_cs} 個課號')
-    print(f'含特殊不可解析條件：          {has_special} 個課號')
+    print(f'純研究所課程（is_grad_only）： {grad_only} 個課號')
+    print(f'大學部可修（is_undergrad_open）：{undergrad_open} 個課號')
+    print(f'含特殊不可解析條件：           {has_special} 個課號')
     print()
     print(f'有先修課程（含條件性）：      {has_prereq} 個課號')
     print(f'  其中條件性先修：            {has_cond_pre} 個課號')
@@ -693,9 +590,8 @@ def main():
     print('\n=== 有先修要求 ===')
     for r in output_list:
         if r['course_relations']['prereq_codes']:
-            e = r['eligibility']
             print(f'  {r["course_code"]} {r["course_name"][:20]}')
-            print(f'    prereq={r["course_relations"]["prereq_codes"]}  conditional={e["has_conditional_prereq"]}')
+            print(f'    prereq={r["course_relations"]["prereq_codes"]}  conditional={r["has_conditional_prereq"]}')
             if len([x for x in output_list if x['course_relations']['prereq_codes']]) >= 3:
                 break
 
