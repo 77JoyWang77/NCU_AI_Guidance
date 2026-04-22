@@ -1,5 +1,6 @@
-import { useMemo, useRef, useEffect, useState } from 'react';
+import { useMemo, useRef, useEffect, useState, useCallback } from 'react';
 import {
+  HiBookOpen,
   HiChat,
   HiChevronLeft,
   HiChevronRight,
@@ -8,175 +9,432 @@ import {
   HiPlus,
   HiTrash,
 } from 'react-icons/hi';
-import { chatAPI } from '../api/services';
-import CourseMentionPanel from '../components/CourseMentionPanel';
-import type { CourseCard } from '../types';
+import { chatAPI, chatStreamAPI } from '../api/services';
+import CourseSidePanel from '../components/CourseSidePanel';
+import CourseDetailModal from '../components/CourseDetailModal';
+import CoursePoolDrawer from '../components/CoursePoolDrawer';
+import DebugTracePanel from '../components/DebugTracePanel';
+import HighlightedAnswer from '../components/HighlightedAnswer';
+import type { CourseCard, DebugTrace, StreamEvent, ToolTraceItem } from '../types';
+
+const TOOL_LABELS: Record<string, string> = {
+  search_courses:           '搜尋課程',
+  get_dept_courses:         '查詢系所課程',
+  get_program_courses:      '查詢學程課程',
+  get_teacher_info:         '查詢教師資訊',
+  search_teachers:          '搜尋教師',
+  get_prereq_info:          '查詢先修條件',
+  get_graduation_rules:     '查詢畢業規定',
+  get_dept_info:            '查詢系所介紹',
+  get_course_eligibility:   '查詢修課資格',
+  get_program_description:  '查詢學程說明',
+  get_requirements_notes:   '查詢修業規定',
+  find_similar_courses:     '搜尋相似課程',
+  get_course_knowledge_map: '查詢知識地圖',
+  get_depts_by_tech:        '查詢技術系所',
+  ppr_explore:              '知識圖譜探索',
+};
+
+interface ToolIndicator {
+  name:   string;
+  done:   boolean;
+  count?: number;
+}
 
 interface Message {
-  role:            'user' | 'assistant';
-  content:         string;
-  timestamp:       Date;
-  courseCards?:    CourseCard[];
+  role:             'user' | 'assistant';
+  content:          string;
+  timestamp:        Date;
+  isStreaming?:     boolean;
+  courseCards?:     CourseCard[];
+  coursePool?:      CourseCard[];
   coursePoolCount?: number;
-  hasLargeResult?: boolean;
+  hasLargeResult?:  boolean;
+  toolsUsed?:       string[];
+  debugTrace?:      DebugTrace;
 }
 
 interface Conversation {
-  id: string;
-  title: string;
-  messages: Message[];
+  id:        string;
+  title:     string;
+  messages:  Message[];
   createdAt: Date;
   updatedAt: Date;
 }
 
-const assistantGreeting = '你好，我是課程搜尋助理。你可以直接問我課程方向、學分安排，或想比較的學院特色。';
+const GREETING = '你好，我是課程搜尋助理。你可以直接問我課程方向、學分安排，或想比較的學院特色。';
+
+function makeConvFromSession(detail: {
+  session_id: string;
+  title: string;
+  updated_at: string;
+  turns: Array<{
+    user: string; assistant: string;
+    course_cards: CourseCard[]; course_pool?: CourseCard[];
+    tools_used: string[]; created_at: string;
+    debug_trace?: { toolCalls: import('../types').ToolTraceItem[] };
+  }>;
+}): Conversation {
+  const messages: Message[] = [
+    { role: 'assistant', content: GREETING, timestamp: new Date() },
+  ];
+  for (const t of detail.turns) {
+    const ts = new Date(t.created_at);
+    messages.push({ role: 'user', content: t.user, timestamp: ts });
+    const dt = t.debug_trace;
+    const debugTrace: DebugTrace | undefined = dt?.toolCalls?.length
+      ? { toolCalls: dt.toolCalls, verify: null }
+      : undefined;
+    messages.push({
+      role: 'assistant', content: t.assistant, timestamp: ts,
+      courseCards:    t.course_cards ?? [],
+      coursePool:     t.course_pool  ?? [],
+      toolsUsed:      t.tools_used   ?? [],
+      coursePoolCount: t.course_cards?.length ?? 0,
+      debugTrace,
+    });
+  }
+  const updatedAt = new Date(detail.updated_at || Date.now());
+  return {
+    id: detail.session_id, title: detail.title || '未命名對話',
+    messages, createdAt: updatedAt, updatedAt,
+  };
+}
 
 export default function CourseSearchPage() {
-  const [conversations, setConversations] = useState<Conversation[]>([
-    {
-      id: '1',
-      title: '新對話',
-      messages: [{ role: 'assistant', content: assistantGreeting, timestamp: new Date() }],
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-  ]);
-  const [selectedConversationId, setSelectedConversationId] = useState<string>('1');
-  const [inputMessage, setInputMessage] = useState('');
-  const [chatLoading, setChatLoading] = useState(false);
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [conversations, setConversations] = useState<Conversation[]>([]);
+  const [selectedConversationId, setSelectedConversationId] = useState('');
+  const [inputMessage, setInputMessage]   = useState('');
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(true);
   const [isMobileConversationOpen, setIsMobileConversationOpen] = useState(false);
-  // session_id per conversation (conversationId → backend session_id)
-  const sessionIds = useRef<Record<string, string>>({});
+  const [sessionsLoaded, setSessionsLoaded] = useState(false);
+
+  // 串流狀態
+  const [isStreaming, setIsStreaming]   = useState(false);
+  const [activeTools, setActiveTools]   = useState<ToolIndicator[]>([]);
+  const [isVerifying, setIsVerifying]   = useState(false);
+  const abortRef = useRef<AbortController | null>(null);
+  const activeTraceRef = useRef<{ toolCalls: ToolTraceItem[]; poolSize: number }>({ toolCalls: [], poolSize: 0 });
+
+  // 右側課程面板
+  const [panelCourses, setPanelCourses]     = useState<CourseCard[]>([]);
+  const [panelPoolCount, setPanelPoolCount] = useState(0);
+  const [panelPoolData, setPanelPoolData]   = useState<CourseCard[]>([]);
+  const [panelHasLarge, setPanelHasLarge]   = useState(false);
+
+  // modal / drawer
+  const [selectedCourse, setSelectedCourse] = useState<CourseCard | null>(null);
+  const [drawerData, setDrawerData]         = useState<CourseCard[] | null>(null);
+
+  const sessionIds    = useRef<Record<string, string>>({});
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const selectedConversation = useMemo(
-    () => conversations.find((conversation) => conversation.id === selectedConversationId) ?? null,
-    [conversations, selectedConversationId]
+    () => conversations.find((c) => c.id === selectedConversationId) ?? null,
+    [conversations, selectedConversationId],
   );
 
-  // 有新訊息時自動捲到底
+  // ── 啟動時從後端載入歷史對話 ─────────────────────────────────────────────
+  useEffect(() => {
+    chatAPI.getSessions()
+      .then(async (sessions) => {
+        if (sessions.length === 0) {
+          createDefaultConversation();
+          setSessionsLoaded(true);
+          return;
+        }
+        const details = await Promise.all(
+          sessions.slice(0, 30).map((s) => chatAPI.getSession(s.session_id).catch(() => null))
+        );
+        const convs: Conversation[] = details
+          .filter((d): d is NonNullable<typeof d> => d !== null && d.turns.length > 0)
+          .map(makeConvFromSession);
+
+        if (convs.length === 0) {
+          createDefaultConversation();
+        } else {
+          // 綁定 sessionIds
+          convs.forEach((c) => { sessionIds.current[c.id] = c.id; });
+          setConversations(convs);
+          setSelectedConversationId(convs[0].id);
+          // 右側面板顯示最新對話的最後一輪課程
+          const lastMsg = [...convs[0].messages].reverse().find(
+            (m) => m.role === 'assistant' && (m.courseCards?.length ?? 0) > 0
+          );
+          if (lastMsg?.courseCards) {
+            setPanelCourses(lastMsg.courseCards);
+            setPanelPoolCount(lastMsg.coursePoolCount ?? 0);
+          }
+        }
+        setSessionsLoaded(true);
+      })
+      .catch(() => {
+        createDefaultConversation();
+        setSessionsLoaded(true);
+      });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  function createDefaultConversation() {
+    const nc: Conversation = {
+      id: Date.now().toString(), title: '新對話',
+      messages: [{ role: 'assistant', content: GREETING, timestamp: new Date() }],
+      createdAt: new Date(), updatedAt: new Date(),
+    };
+    setConversations([nc]);
+    setSelectedConversationId(nc.id);
+  }
+
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [selectedConversation?.messages.length, chatLoading]);
+  }, [selectedConversation?.messages.length, isStreaming]);
 
+  const updateConv = useCallback((id: string, updater: (c: Conversation) => Conversation) => {
+    setConversations((prev) => prev.map((c) => (c.id === id ? updater(c) : c)));
+  }, []);
+
+  // ── 對話管理 ──────────────────────────────────────────────────────────────
   const handleNewConversation = () => {
-    const newConversation: Conversation = {
-      id: Date.now().toString(),
-      title: '新對話',
-      messages: [{ role: 'assistant', content: assistantGreeting, timestamp: new Date() }],
-      createdAt: new Date(),
-      updatedAt: new Date(),
+    const nc: Conversation = {
+      id: Date.now().toString(), title: '新對話',
+      messages: [{ role: 'assistant', content: GREETING, timestamp: new Date() }],
+      createdAt: new Date(), updatedAt: new Date(),
     };
-
-    setConversations((prev) => [newConversation, ...prev]);
-    setSelectedConversationId(newConversation.id);
+    setConversations((prev) => [nc, ...prev]);
+    setSelectedConversationId(nc.id);
     setInputMessage('');
     setIsMobileConversationOpen(false);
+    setPanelCourses([]);
+    setPanelPoolCount(0);
+    setPanelPoolData([]);
+    setPanelHasLarge(false);
   };
 
   const handleDeleteConversation = (id: string) => {
     const sid = sessionIds.current[id];
-    if (sid) {
-      chatAPI.clearSession(sid).catch(() => {});
-      delete sessionIds.current[id];
-    }
-    const nextConversations = conversations.filter((conversation) => conversation.id !== id);
-    setConversations(nextConversations);
-    if (selectedConversationId === id) {
-      setSelectedConversationId(nextConversations[0]?.id ?? '');
-      setInputMessage('');
-    }
+    if (sid) { chatAPI.clearSession(sid).catch(() => {}); delete sessionIds.current[id]; }
+    setConversations((prev) => {
+      const next = prev.filter((c) => c.id !== id);
+      if (selectedConversationId === id) {
+        const nextId = next[0]?.id ?? '';
+        setSelectedConversationId(nextId);
+      }
+      return next;
+    });
+    setInputMessage('');
   };
 
-  const handleSelectConversation = (id: string) => {
+  const handleSelectConversation = useCallback((id: string) => {
     setSelectedConversationId(id);
     setIsMobileConversationOpen(false);
-  };
-
-  const handleSendMessage = async (event: React.FormEvent) => {
-    event.preventDefault();
-    if (!inputMessage.trim() || !selectedConversation || chatLoading) return;
-
-    const messageText = inputMessage.trim();
-    const convId = selectedConversation.id;
-
-    const userMessage: Message = {
-      role: 'user',
-      content: messageText,
-      timestamp: new Date(),
-    };
-
-    const updatedConversation: Conversation = {
-      ...selectedConversation,
-      messages: [...selectedConversation.messages, userMessage],
-      updatedAt: new Date(),
-      title:
-        selectedConversation.messages.length === 1
-          ? messageText.slice(0, 20)
-          : selectedConversation.title,
-    };
-
-    setConversations((prev) =>
-      prev.map((c) => (c.id === convId ? updatedConversation : c))
+    const conv = conversations.find((c) => c.id === id);
+    if (!conv) return;
+    const last = [...conv.messages].reverse().find(
+      (m) => m.role === 'assistant' && !m.isStreaming && (m.courseCards?.length ?? 0) > 0
     );
-    setInputMessage('');
-    setChatLoading(true);
-
-    try {
-      const res = await chatAPI.send(
-        messageText,
-        sessionIds.current[convId] || undefined,
-      );
-      sessionIds.current[convId] = res.session_id;
-
-      const assistantMessage: Message = {
-        role:            'assistant',
-        content:         res.answer,
-        timestamp:       new Date(),
-        courseCards:     res.course_cards,
-        coursePoolCount: res.course_pool_count,
-        hasLargeResult:  res.has_large_result,
-      };
-
-      setConversations((prev) =>
-        prev.map((c) =>
-          c.id === convId
-            ? { ...c, messages: [...updatedConversation.messages, assistantMessage], updatedAt: new Date() }
-            : c
-        )
-      );
-    } catch {
-      const errorMessage: Message = {
-        role:      'assistant',
-        content:   '抱歉，連接伺服器時發生錯誤，請稍後再試。',
-        timestamp: new Date(),
-      };
-      setConversations((prev) =>
-        prev.map((c) =>
-          c.id === convId
-            ? { ...c, messages: [...updatedConversation.messages, errorMessage], updatedAt: new Date() }
-            : c
-        )
-      );
-    } finally {
-      setChatLoading(false);
+    if (last?.courseCards) {
+      setPanelCourses(last.courseCards);
+      setPanelPoolCount(last.coursePoolCount ?? 0);
+      setPanelPoolData(last.coursePool ?? []);
+      setPanelHasLarge(last.hasLargeResult ?? false);
+    } else {
+      setPanelCourses([]);
+      setPanelPoolCount(0);
+      setPanelPoolData([]);
+      setPanelHasLarge(false);
     }
+  }, [conversations]);
+
+  // 點擊「查看此次推薦課程」按鈕
+  const handleShowMsgCourses = useCallback((msg: Message) => {
+    setPanelCourses(msg.courseCards ?? []);
+    setPanelPoolCount(msg.coursePoolCount ?? 0);
+    setPanelPoolData(msg.coursePool ?? []);
+    setPanelHasLarge(msg.hasLargeResult ?? false);
+  }, []);
+
+  // ── 送出訊息（串流） ──────────────────────────────────────────────────────
+  const handleSendMessage = (event: React.FormEvent) => {
+    event.preventDefault();
+    if (!inputMessage.trim() || !selectedConversation || isStreaming) return;
+
+    const text   = inputMessage.trim();
+    const convId = selectedConversation.id;
+    setInputMessage('');
+    setIsStreaming(true);
+    setActiveTools([]);
+    setIsVerifying(false);
+    activeTraceRef.current = { toolCalls: [], poolSize: 0 };
+
+    const userMsg: Message   = { role: 'user',      content: text, timestamp: new Date() };
+    const streamMsg: Message = { role: 'assistant',  content: '',   timestamp: new Date(), isStreaming: true };
+
+    updateConv(convId, (c) => ({
+      ...c,
+      updatedAt: new Date(),
+      title: c.messages.length === 1 ? text.slice(0, 30) : c.title,
+      messages: [...c.messages, userMsg, streamMsg],
+    }));
+
+    const streamIdx = selectedConversation.messages.length + 1;
+
+    abortRef.current = chatStreamAPI.stream(
+      text,
+      {
+        onToken: (tok) => {
+          updateConv(convId, (c) => {
+            const msgs = [...c.messages];
+            if (msgs[streamIdx]) msgs[streamIdx] = { ...msgs[streamIdx], content: msgs[streamIdx].content + tok };
+            return { ...c, messages: msgs };
+          });
+        },
+        onToolStart: (tool, args) => {
+          setActiveTools((prev) => [...prev, { name: tool, done: false }]);
+          activeTraceRef.current.toolCalls.push({ tool, args, coursesFound: [], scores: [], scoreType: null, count: undefined });
+        },
+        onToolDone: (tool, count, coursesFound, scores, scoreType) => {
+          setActiveTools((prev) =>
+            prev.map((t) => (t.name === tool && !t.done ? { ...t, done: true, count } : t))
+          );
+          const calls = activeTraceRef.current.toolCalls;
+          const last = [...calls].reverse().find((c) => c.tool === tool && c.count === undefined);
+          if (last) {
+            last.count = count;
+            last.coursesFound = coursesFound ?? [];
+            last.scores    = scores    ?? [];
+            last.scoreType = scoreType ?? null;
+          }
+        },
+        onVerifyStart: (poolSize) => {
+          activeTraceRef.current.poolSize = poolSize;
+          setIsVerifying(true);
+        },
+        onVerifyDone: (selected, filteredOut) => {
+          setIsVerifying(false);
+          activeTraceRef.current = {
+            ...activeTraceRef.current,
+            toolCalls: activeTraceRef.current.toolCalls,
+            // store verify result temporarily in ref for onDone
+          };
+          // store verify data in a temp field for onDone to pick up
+          (activeTraceRef.current as typeof activeTraceRef.current & { verifyResult?: unknown }).verifyResult = { selected, filteredOut };
+        },
+        onDone: (ev: StreamEvent) => {
+          if (ev.session_id) sessionIds.current[convId] = ev.session_id;
+          const cards     = ev.course_cards      ?? [];
+          const pool      = ev.course_pool       ?? [];
+          const poolCount = ev.course_pool_count  ?? 0;
+          const hasLarge  = ev.has_large_result   ?? false;
+          const tools     = ev.tools_used         ?? [];
+
+          const traceRef = activeTraceRef.current as typeof activeTraceRef.current & { verifyResult?: { selected: string[]; filteredOut: string[] } };
+          const debugTrace: DebugTrace = {
+            toolCalls: traceRef.toolCalls,
+            verify: traceRef.verifyResult
+              ? { poolSize: traceRef.poolSize, ...traceRef.verifyResult }
+              : null,
+          };
+
+          setPanelCourses(cards);
+          setPanelPoolCount(poolCount);
+          setPanelPoolData(pool);
+          setPanelHasLarge(hasLarge);
+
+          updateConv(convId, (c) => {
+            const msgs = [...c.messages];
+            if (msgs[streamIdx]) {
+              msgs[streamIdx] = {
+                ...msgs[streamIdx],
+                isStreaming:     false,
+                courseCards:     cards,
+                coursePool:      pool,
+                coursePoolCount: poolCount,
+                hasLargeResult:  hasLarge,
+                toolsUsed:       tools,
+                debugTrace,
+              };
+            }
+            return { ...c, messages: msgs };
+          });
+          setIsStreaming(false);
+          setIsVerifying(false);
+          setActiveTools([]);
+        },
+        onError: (msg) => {
+          updateConv(convId, (c) => {
+            const msgs = [...c.messages];
+            if (msgs[streamIdx]) {
+              msgs[streamIdx] = {
+                ...msgs[streamIdx],
+                isStreaming: false,
+                content: msgs[streamIdx].content || `抱歉，發生錯誤：${msg}`,
+              };
+            }
+            return { ...c, messages: msgs };
+          });
+          setIsStreaming(false);
+          setIsVerifying(false);
+          setActiveTools([]);
+        },
+      },
+      sessionIds.current[convId] || undefined,
+    );
   };
 
   const formatTime = (date: Date) => {
-    const now = new Date();
-    const diff = now.getTime() - date.getTime();
+    const diff = Date.now() - date.getTime();
     const days = Math.floor(diff / 86400000);
-
     if (days === 0) return '今天';
     if (days === 1) return '昨天';
     if (days < 7) return `${days} 天前`;
     return date.toLocaleDateString('zh-TW', { month: 'short', day: 'numeric' });
   };
 
+  const ConvList = ({ onSelect }: { onSelect?: () => void }) => (
+    <div className="flex-1 space-y-2 overflow-y-auto p-3">
+      {conversations.map((conv) => (
+        <button
+          key={conv.id} type="button"
+          onClick={() => { handleSelectConversation(conv.id); onSelect?.(); }}
+          className={`w-full rounded-2xl border p-3 text-left transition ${
+            selectedConversationId === conv.id
+              ? 'border-primary-300 bg-primary-50'
+              : 'border-transparent bg-white hover:border-slate-200 hover:bg-slate-50'
+          }`}
+        >
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <HiChat className="h-4 w-4 text-primary-700" />
+              <h3 className="mt-2 line-clamp-2 text-sm font-semibold text-slate-900">{conv.title}</h3>
+              <p className="mt-1 text-xs text-slate-500">{formatTime(conv.updatedAt)}</p>
+            </div>
+            <button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); handleDeleteConversation(conv.id); }}
+              className="rounded-lg p-1 text-rose-500 transition hover:bg-rose-50 hover:text-rose-700"
+            >
+              <HiTrash className="h-4 w-4" />
+            </button>
+          </div>
+        </button>
+      ))}
+    </div>
+  );
+
+  if (!sessionsLoaded) {
+    return (
+      <div className="flex h-full items-center justify-center">
+        <div className="flex items-center gap-3 text-gray-400">
+          <span className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-gray-200 border-t-primary-500" />
+          載入對話記錄中…
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="page-container flex h-full flex-col py-3">
+      {/* 頁頭 */}
       <div className="mb-3 flex flex-shrink-0 items-center justify-between">
         <div className="flex items-center gap-2">
           <h1 className="text-base font-bold text-primary-900">課程搜尋</h1>
@@ -190,7 +448,8 @@ export default function CourseSearchPage() {
       </div>
 
       <div className="flex min-h-0 flex-1 gap-4">
-        {isMobileConversationOpen ? (
+        {/* Mobile 對話列表 */}
+        {isMobileConversationOpen && (
           <div className="fixed inset-y-0 left-0 z-40 w-[min(20rem,calc(100vw-3rem))] lg:hidden">
             <div className="flex h-full">
               <div className="card flex min-w-0 flex-1 flex-col overflow-hidden rounded-l-none rounded-r-2xl border-l-0 shadow-xl">
@@ -199,271 +458,258 @@ export default function CourseSearchPage() {
                     <HiMenu className="h-5 w-5 text-primary-700" />
                     <span className="text-sm font-semibold text-slate-800">對話列表</span>
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => setIsMobileConversationOpen(false)}
-                    className="rounded-xl p-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
-                    aria-label="收起對話列表"
-                  >
+                  <button type="button" onClick={() => setIsMobileConversationOpen(false)}
+                    className="rounded-xl p-2 text-slate-600 transition hover:bg-slate-100">
                     <HiChevronLeft className="h-5 w-5" />
                   </button>
                 </div>
-
                 <div className="border-b border-gray-200 p-3">
-                  <button
-                    type="button"
-                    onClick={handleNewConversation}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary-900 px-4 py-3 text-sm font-medium text-white transition hover:bg-primary-800"
-                  >
-                    <HiPlus className="h-4 w-4" />
-                    新對話
+                  <button type="button" onClick={handleNewConversation}
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary-900 px-4 py-3 text-sm font-medium text-white transition hover:bg-primary-800">
+                    <HiPlus className="h-4 w-4" />新對話
                   </button>
                 </div>
-
-                <div className="flex-1 space-y-2 overflow-y-auto p-3">
-                  {conversations.map((conversation) => (
-                    <button
-                      key={conversation.id}
-                      type="button"
-                      onClick={() => handleSelectConversation(conversation.id)}
-                      className={`w-full rounded-2xl border p-3 text-left transition ${
-                        selectedConversationId === conversation.id
-                          ? 'border-primary-300 bg-primary-50'
-                          : 'border-transparent bg-white hover:border-slate-200 hover:bg-slate-50'
-                      }`}
-                    >
-                      <div className="flex items-start justify-between gap-3">
-                        <div className="min-w-0">
-                          <div className="flex items-center gap-2">
-                            <HiChat className="h-4 w-4 flex-shrink-0 text-primary-700" />
-                          </div>
-                          <h3 className="mt-2 line-clamp-2 text-sm font-semibold text-slate-900">{conversation.title}</h3>
-                          <p className="mt-2 text-xs text-slate-500">{formatTime(conversation.updatedAt)}</p>
-                        </div>
-                        <button
-                          type="button"
-                          onClick={(event) => {
-                            event.stopPropagation();
-                            handleDeleteConversation(conversation.id);
-                          }}
-                          className="rounded-lg p-1 text-rose-500 transition hover:bg-rose-50 hover:text-rose-700"
-                          aria-label="刪除對話"
-                        >
-                          <HiTrash className="h-4 w-4" />
-                        </button>
-                      </div>
-                    </button>
-                  ))}
-                </div>
+                <ConvList onSelect={() => setIsMobileConversationOpen(false)} />
               </div>
-
               <div className="flex w-11 items-center justify-center pl-2">
-                <button
-                  type="button"
-                  onClick={() => setIsMobileConversationOpen(false)}
-                  className="flex h-28 w-10 flex-col items-center justify-center gap-2 rounded-r-2xl bg-primary-900 px-2 text-white shadow-lg transition hover:bg-primary-800"
-                  aria-label="收起對話列表"
-                >
+                <button type="button" onClick={() => setIsMobileConversationOpen(false)}
+                  className="flex h-28 w-10 flex-col items-center justify-center gap-2 rounded-r-2xl bg-primary-900 px-2 text-white shadow-lg transition hover:bg-primary-800">
                   <HiChevronLeft className="h-5 w-5" />
                   <span className="[writing-mode:vertical-rl] text-xs tracking-[0.2em]">對話列表</span>
                 </button>
               </div>
             </div>
           </div>
-        ) : null}
+        )}
 
-        <aside
-          className={`card hidden min-h-0 flex-shrink-0 overflow-hidden transition-all duration-300 lg:flex ${
-            isSidebarCollapsed ? 'w-[88px]' : 'w-[320px]'
-          }`}
-        >
+        {/* Desktop 側欄（左） */}
+        <aside className={`card hidden min-h-0 flex-shrink-0 overflow-hidden transition-all duration-300 lg:flex ${
+          isSidebarCollapsed ? 'w-[64px]' : 'w-[260px]'
+        }`}>
           <div className="flex w-full flex-col">
-            <div className={`border-b border-gray-200 p-3 ${isSidebarCollapsed ? 'flex flex-col items-center gap-3' : 'flex items-center justify-between gap-2'}`}>
+            <div className={`border-b border-gray-200 p-3 ${
+              isSidebarCollapsed ? 'flex flex-col items-center gap-3' : 'flex items-center justify-between gap-2'
+            }`}>
               {isSidebarCollapsed ? (
                 <>
-                  <button
-                    type="button"
-                    onClick={() => setIsSidebarCollapsed(false)}
-                    className="rounded-xl p-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
-                    aria-label="展開側欄"
-                  >
+                  <button type="button" onClick={() => setIsSidebarCollapsed(false)}
+                    className="rounded-xl p-2 text-slate-600 transition hover:bg-slate-100">
                     <HiChevronRight className="h-5 w-5" />
                   </button>
-                  <button
-                    type="button"
-                    onClick={handleNewConversation}
-                    className="rounded-xl bg-primary-900 p-2 text-white transition hover:bg-primary-800"
-                    aria-label="新增對話"
-                  >
+                  <button type="button" onClick={handleNewConversation}
+                    className="rounded-xl bg-primary-900 p-2 text-white transition hover:bg-primary-800">
                     <HiPlus className="h-5 w-5" />
                   </button>
                 </>
               ) : (
                 <>
-                  <div className="flex items-center gap-2">
-                    <HiMenu className="h-5 w-5 text-primary-700" />
-                    <span className="text-sm font-semibold text-slate-800">對話紀錄</span>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => setIsSidebarCollapsed(true)}
-                    className="rounded-xl p-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
-                    aria-label="收合側欄"
-                  >
+                  <span className="text-sm font-semibold text-slate-800">對話紀錄</span>
+                  <button type="button" onClick={() => setIsSidebarCollapsed(true)}
+                    className="rounded-xl p-2 text-slate-600 transition hover:bg-slate-100">
                     <HiChevronLeft className="h-5 w-5" />
                   </button>
                 </>
               )}
             </div>
-
-            <div className="flex-1 space-y-2 overflow-y-auto p-3">
-              {conversations.map((conversation) => (
-                <button
-                  key={conversation.id}
-                  type="button"
-                  onClick={() => setSelectedConversationId(conversation.id)}
-                  className={`w-full rounded-2xl border p-3 text-left transition ${
-                    selectedConversationId === conversation.id
-                      ? 'border-primary-300 bg-primary-50'
-                      : 'border-transparent bg-white hover:border-slate-200 hover:bg-slate-50'
-                  } ${isSidebarCollapsed ? 'flex justify-center' : ''}`}
-                >
-                  {isSidebarCollapsed ? (
+            {!isSidebarCollapsed ? (
+              <ConvList />
+            ) : (
+              <div className="flex-1 space-y-2 overflow-y-auto p-2">
+                {conversations.map((conv) => (
+                  <button key={conv.id} type="button"
+                    onClick={() => handleSelectConversation(conv.id)}
+                    className={`flex w-full justify-center rounded-2xl border p-2.5 transition ${
+                      selectedConversationId === conv.id
+                        ? 'border-primary-300 bg-primary-50'
+                        : 'border-transparent bg-white hover:border-slate-200 hover:bg-slate-50'
+                    }`}>
                     <HiChat className="h-5 w-5 text-primary-700" />
-                  ) : (
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="min-w-0">
-                        <div className="flex items-center gap-2">
-                          <HiChat className="h-4 w-4 flex-shrink-0 text-primary-700" />
-                        </div>
-                        <h3 className="mt-2 line-clamp-2 text-sm font-semibold text-slate-900">{conversation.title}</h3>
-                        <p className="mt-2 text-xs text-slate-500">{formatTime(conversation.updatedAt)}</p>
-                      </div>
-                      <button
-                        type="button"
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          handleDeleteConversation(conversation.id);
-                        }}
-                        className="rounded-lg p-1 text-rose-500 transition hover:bg-rose-50 hover:text-rose-700"
-                        aria-label="刪除對話"
-                      >
-                        <HiTrash className="h-4 w-4" />
-                      </button>
-                    </div>
-                  )}
-                </button>
-              ))}
-            </div>
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </aside>
 
+        {/* 主聊天區（中） */}
         <div className="flex min-h-0 flex-1 flex-col">
           {selectedConversation ? (
             <div className="relative h-full">
-              <button
-                type="button"
-                onClick={() => setIsMobileConversationOpen(true)}
-                className="fixed left-2 top-1/2 z-10 flex h-28 w-10 -translate-y-1/2 flex-col items-center justify-center gap-2 rounded-r-2xl bg-primary-900 px-2 text-white shadow-lg transition hover:bg-primary-800 lg:hidden"
-                aria-label="打開對話列表"
-              >
+              <button type="button" onClick={() => setIsMobileConversationOpen(true)}
+                className="fixed left-2 top-1/2 z-10 flex h-28 w-10 -translate-y-1/2 flex-col items-center justify-center gap-2 rounded-r-2xl bg-primary-900 px-2 text-white shadow-lg transition hover:bg-primary-800 lg:hidden">
                 <HiChevronRight className="h-5 w-5" />
                 <span className="[writing-mode:vertical-rl] text-xs tracking-[0.2em]">對話列表</span>
               </button>
-            <div className="card flex h-full flex-col">
-              <div className="flex flex-shrink-0 items-center justify-between gap-3 border-b border-gray-200 px-4 py-3">
-                <div className="flex min-w-0 items-center gap-3">
-                  <button
-                    type="button"
-                    onClick={() => setIsMobileConversationOpen(true)}
-                    className="hidden rounded-xl p-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 lg:hidden"
-                    aria-label="打開對話列表"
-                  >
-                    <HiMenu className="h-5 w-5" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setIsSidebarCollapsed((prev) => !prev)}
-                    className="hidden rounded-xl p-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 lg:inline-flex"
-                    aria-label="切換側欄"
-                  >
-                    {isSidebarCollapsed ? <HiChevronRight className="h-5 w-5" /> : <HiChevronLeft className="h-5 w-5" />}
-                  </button>
+
+              <div className="card flex h-full flex-col">
+                {/* 標題列 */}
+                <div className="flex flex-shrink-0 items-center border-b border-gray-200 px-4 py-3">
                   <div className="min-w-0">
                     <h2 className="truncate text-sm font-semibold text-gray-800">{selectedConversation.title}</h2>
                     <span className="text-xs text-gray-400">可以持續追問課程方向、學分配置與學院特色</span>
                   </div>
                 </div>
-              </div>
 
-              <div className="flex-1 space-y-3 overflow-y-auto p-4">
-                {selectedConversation.messages.map((message, index) => (
-                  <div key={index} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                    <div className={`max-w-[82%] ${message.role === 'user' ? '' : 'w-full'}`}>
-                      <div
-                        className={`rounded-2xl p-4 ${
-                          message.role === 'user' ? 'bg-primary-700 text-white' : 'bg-gray-100 text-gray-900'
-                        }`}
-                      >
-                        <p className="whitespace-pre-line text-sm leading-relaxed">{message.content}</p>
-                      </div>
-                      {message.role === 'assistant' &&
-                        message.courseCards &&
-                        message.courseCards.length > 0 && (
-                          <CourseMentionPanel
-                            courseCards={message.courseCards}
-                            coursePoolCount={message.coursePoolCount ?? 0}
-                            hasLargeResult={message.hasLargeResult ?? false}
-                          />
+                {/* 訊息列表 */}
+                <div className="flex-1 space-y-3 overflow-y-auto p-4">
+                  {selectedConversation.messages.map((msg, idx) => (
+                    <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                      <div className={msg.role === 'user' ? 'max-w-[82%]' : 'w-full'}>
+                        <div className={`rounded-2xl p-4 ${
+                          msg.role === 'user'
+                            ? 'bg-primary-700 text-white'
+                            : 'bg-gray-100 text-gray-900'
+                        }`}>
+                          {msg.role === 'user' ? (
+                            <p className="whitespace-pre-line text-sm leading-relaxed">{msg.content}</p>
+                          ) : (
+                            <HighlightedAnswer
+                              text={msg.content}
+                              courseCards={msg.courseCards ?? []}
+                              onCourseClick={setSelectedCourse}
+                            />
+                          )}
+                          {msg.isStreaming && (
+                            <span className="ml-0.5 inline-block h-4 w-0.5 animate-pulse bg-gray-500" />
+                          )}
+                        </div>
+
+                        {/* 每輪 assistant 訊息底下的操作列 */}
+                        {msg.role === 'assistant' && !msg.isStreaming && (
+                          <div className="mt-2 space-y-1.5">
+                            {(msg.courseCards?.length ?? 0) > 0 && (
+                              <div className="flex flex-wrap items-center gap-2">
+                                <button
+                                  type="button"
+                                  onClick={() => handleShowMsgCourses(msg)}
+                                  className="flex items-center gap-1.5 rounded-xl border border-primary-200 bg-white px-3 py-1.5 text-xs font-medium text-primary-600 shadow-sm transition hover:bg-primary-50"
+                                >
+                                  <HiBookOpen className="h-3.5 w-3.5" />
+                                  查看此次推薦課程（{msg.courseCards!.length} 門）
+                                </button>
+                                {(msg.toolsUsed?.length ?? 0) > 0 && (
+                                  <span className="text-xs text-gray-400">
+                                    {msg.toolsUsed!.map((t) => TOOL_LABELS[t] ?? t).join(' · ')}
+                                  </span>
+                                )}
+                              </div>
+                            )}
+                            {msg.debugTrace && (
+                              <DebugTracePanel trace={msg.debugTrace} />
+                            )}
+                          </div>
                         )}
-                    </div>
-                  </div>
-                ))}
-
-                {chatLoading ? (
-                  <div className="flex justify-start">
-                    <div className="rounded-2xl bg-gray-100 p-4 text-gray-900">
-                      <div className="flex space-x-2">
-                        <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400"></div>
-                        <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400 delay-100"></div>
-                        <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400 delay-200"></div>
                       </div>
                     </div>
-                  </div>
-                ) : null}
-                <div ref={messagesEndRef} />
-              </div>
+                  ))}
 
-              <form onSubmit={handleSendMessage} className="border-t border-gray-200 p-3">
-                <div className="flex gap-3">
-                  <input
-                    type="text"
-                    value={inputMessage}
-                    onChange={(event) => setInputMessage(event.target.value)}
-                    disabled={chatLoading}
-                    placeholder="輸入你想查詢的課程、學院或學習方向"
-                    className="flex-1 rounded-xl border border-gray-300 px-4 py-3 transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500 disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-400"
-                  />
-                  <button
-                    type="submit"
-                    disabled={chatLoading || !inputMessage.trim()}
-                    className="btn-primary disabled:cursor-not-allowed disabled:opacity-50"
-                  >
-                    <HiPaperAirplane className="h-5 w-5" />
-                  </button>
+                  {/* 工具呼叫進度 */}
+                  {isStreaming && activeTools.length > 0 && (
+                    <div className="flex justify-start">
+                      <div className="rounded-2xl bg-gray-50 px-4 py-3 text-xs text-gray-500 shadow-sm">
+                        <div className="space-y-1">
+                          {activeTools.map((t, i) => (
+                            <div key={i} className="flex items-center gap-2">
+                              {t.done ? (
+                                <span className="text-green-500">✓</span>
+                              ) : (
+                                <span className="inline-block h-3 w-3 animate-spin rounded-full border-2 border-gray-300 border-t-primary-500" />
+                              )}
+                              <span className={t.done ? 'text-gray-400' : 'text-gray-700'}>
+                                {TOOL_LABELS[t.name] ?? t.name}
+                                {t.done && t.count != null && ` (${t.count} 筆)`}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* 驗證課程中 */}
+                  {isVerifying && (
+                    <div className="flex justify-start">
+                      <div className="flex items-center gap-2 rounded-2xl bg-amber-50 px-4 py-2.5 text-xs text-amber-700 shadow-sm">
+                        <span className="inline-block h-3 w-3 animate-spin rounded-full border-2 border-amber-200 border-t-amber-500" />
+                        正在驗證推薦課程…
+                      </div>
+                    </div>
+                  )}
+
+                  {/* 等待第一個 token */}
+                  {isStreaming && activeTools.length === 0 &&
+                    !selectedConversation.messages.at(-1)?.content && (
+                    <div className="flex justify-start">
+                      <div className="rounded-2xl bg-gray-100 p-4">
+                        <div className="flex space-x-2">
+                          <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400" />
+                          <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400 [animation-delay:100ms]" />
+                          <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400 [animation-delay:200ms]" />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  <div ref={messagesEndRef} />
                 </div>
-              </form>
-            </div>
+
+                {/* 輸入框 */}
+                <form onSubmit={handleSendMessage} className="border-t border-gray-200 p-3">
+                  <div className="flex gap-3">
+                    <input
+                      type="text"
+                      value={inputMessage}
+                      onChange={(e) => setInputMessage(e.target.value)}
+                      disabled={isStreaming}
+                      placeholder="輸入你想查詢的課程、學院或學習方向"
+                      className="flex-1 rounded-xl border border-gray-300 px-4 py-3 transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500 disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-400"
+                    />
+                    <button type="submit" disabled={isStreaming || !inputMessage.trim()}
+                      className="btn-primary disabled:cursor-not-allowed disabled:opacity-50">
+                      <HiPaperAirplane className="h-5 w-5" />
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
           ) : (
             <div className="card flex h-full flex-col items-center justify-center">
               <HiChat className="mb-4 h-16 w-16 text-gray-300" />
               <p className="mb-2 text-gray-600">請先選擇一個對話，或建立新的對話。</p>
-              <p className="text-sm text-gray-500">你可以用自然語言詢問課程方向、學分安排或學院特色。</p>
             </div>
           )}
         </div>
+
+        {/* 右側課程面板（Desktop） */}
+        <aside className="card hidden min-h-0 w-[280px] flex-shrink-0 overflow-hidden lg:flex flex-col">
+          <CourseSidePanel
+            courses={panelCourses}
+            poolCount={panelPoolCount}
+            hasLarge={panelHasLarge}
+            onCourseClick={setSelectedCourse}
+            onViewAll={
+              panelPoolData.length > 0
+                ? () => setDrawerData(panelPoolData)
+                : undefined
+            }
+          />
+        </aside>
       </div>
+
+      {selectedCourse && (
+        <CourseDetailModal
+          course={selectedCourse}
+          onClose={() => setSelectedCourse(null)}
+        />
+      )}
+
+      {drawerData && (
+        <CoursePoolDrawer
+          courses={drawerData}
+          onClose={() => setDrawerData(null)}
+          onCourseClick={(c) => { setSelectedCourse(c); }}
+        />
+      )}
     </div>
   );
 }

@@ -54,6 +54,7 @@ def _fmt_courses(results: list[dict]) -> list[dict]:
             "tools":              m.get("tools", ""),
             "domain_tags":        m.get("domain_tags", ""),
             "summary":            r.get("document", "")[:200],
+            "distance":           round(r.get("distance", 0.0), 4),
         })
     return out
 
@@ -426,7 +427,8 @@ def tool_ppr_explore(
         extra = ""
         if r.get("dept"):
             extra = f"（{r['dept']}）"
-        lines.append(f"  [{label}] {name}{extra}")
+        score = r.get("score", 0)
+        lines.append(f"  [{label}] {name}{extra}  [PPR: {score}]")
 
     return "\n".join(lines)
 

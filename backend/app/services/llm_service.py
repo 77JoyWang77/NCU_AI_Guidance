@@ -255,18 +255,119 @@ def generate_simple_answer(question: str, context: str) -> str:
     return result["answer"]
 
 
-def _extract_mentioned_courses(answer: str, course_pool: dict) -> list[dict]:
-    """掃描 answer 中出現的課程名稱，與 course_pool 比對，回傳已驗證課程卡片。"""
-    mentioned = []
-    seen: set[str] = set()
-    for course in course_pool.values():
-        name = course.get("name", "")
-        if not name or len(name) < 2:
+def _enrich_course_cards(cards: list[dict]) -> list[dict]:
+    """對 code/teacher/summary 為空的課程卡片，以課名向量 DB 補齊欄位。"""
+    from app.services import retriever
+    for card in cards:
+        if card.get("code") and card.get("teacher") and card.get("summary"):
             continue
-        if name in answer and name not in seen:
+        try:
+            results = retriever.get_courses_by_name(card["name"])
+            if results:
+                meta = results[0].get("metadata", {})
+                doc  = results[0].get("document", "")
+                card["code"]    = card.get("code")    or meta.get("course_code", "")
+                card["teacher"] = card.get("teacher") or meta.get("teacher", "")
+                card["summary"] = card.get("summary") or doc[:150]
+                card["credits"] = card.get("credits") or meta.get("credits", 0)
+                card["type"]    = card.get("type")    or meta.get("type", "")
+        except Exception:
+            pass
+    return cards
+
+
+def _verify_course_list(question: str, answer: str, course_pool: dict) -> list[dict]:
+    """讓 LLM 從 course_pool 中選出真正相關的課程（一次集中驗證）。
+    LLM 只能從 pool 中選，不能發明課程 → 確保無幻覺。
+    """
+    if not course_pool:
+        return []
+
+    client = _get_client()
+    deployment = os.environ.get("AZURE_OPENAI_CHAT_DEPLOYMENT", "gpt-4o")
+
+    pool_items = list(course_pool.items())[:60]
+    pool_text = "\n".join(
+        f"{name}（{c.get('dept', '')}，{c.get('credits', 0) or '?'}學分）"
+        for name, c in pool_items
+    )
+
+    prompt = f"""學生問題：{question}
+
+助理回答（節錄）：{answer[:600]}
+
+以下是本次搜尋到的課程：
+{pool_text}
+
+請從上面清單中選出與問題真正相關的課程。
+規則：只能選清單裡有的課程，不能新增其他課程。
+輸出格式：每行一個課程名稱，不要任何說明、編號或括號。"""
+
+    try:
+        resp = client.chat.completions.create(
+            model=deployment,
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=300,
+            temperature=0,
+        )
+        raw_lines = (resp.choices[0].message.content or "").splitlines()
+    except Exception:
+        return list(course_pool.values())
+
+    pool_map = dict(course_pool)
+    result: list[dict] = []
+    seen: set[str] = set()
+    for line in raw_lines:
+        name = line.strip().lstrip("•-·0123456789.）) ").strip()
+        if '（' in name:
+            name = name[:name.index('（')].strip()
+        if not name or len(name) < 2 or name in seen:
+            continue
+        if name in pool_map:
             seen.add(name)
-            mentioned.append(course)
-    return mentioned
+            result.append(pool_map[name])
+
+    return result
+
+
+def _parse_courses_from_str(tool_name: str, text: str) -> list[dict]:
+    """從字串型工具回傳中以 regex 解析課程名稱與系所。"""
+    import re
+    courses: list[dict] = []
+
+    if tool_name == "ppr_explore":
+        # [課程] 深度學習程式設計（通訊工程學系）
+        for m in re.finditer(r'\[課程\]\s*(.+?)（(.+?)）', text):
+            name, dept = m.group(1).strip(), m.group(2).strip()
+            if name:
+                courses.append({"name": name, "dept": dept, "credits": 0, "type": "", "code": "", "teacher": "", "summary": ""})
+
+    elif tool_name in ("find_similar_courses", "get_course_knowledge_map"):
+        # - 深度學習程式設計（通訊工程學系，3學分） [共享概念：8 個]
+        for m in re.finditer(r'-\s*(.+?)（([^，）]+)(?:，(\d+)學分)?）', text):
+            name = m.group(1).strip()
+            dept = m.group(2).strip()
+            credits = int(m.group(3)) if m.group(3) else 0
+            if name and not name.startswith('[') and len(name) >= 2:
+                courses.append({"name": name, "dept": dept, "credits": credits, "type": "", "code": "", "teacher": "", "summary": ""})
+
+    elif tool_name == "get_depts_by_tech":
+        # 相關課程（前 10 門）：
+        #   - Python程式設計（機械工程學系）
+        in_courses = False
+        for line in text.splitlines():
+            if '相關課程' in line:
+                in_courses = True
+                continue
+            if not in_courses:
+                continue
+            m = re.match(r'\s*-\s*(.+?)（(.+?)）', line)
+            if m:
+                name, dept = m.group(1).strip(), m.group(2).strip()
+                if name and len(name) >= 2:
+                    courses.append({"name": name, "dept": dept, "credits": 0, "type": "", "code": "", "teacher": "", "summary": ""})
+
+    return courses
 
 
 def _collect_course_pool(tool_name: str, result, course_pool: dict) -> None:
@@ -296,6 +397,48 @@ def _collect_course_pool(tool_name: str, result, course_pool: dict) -> None:
                     "credits": c.get("credits", 0),
                     "type":    c.get("relation", ""),
                     "teacher": c.get("teacher", ""),
+                    "summary": "",
+                }
+    elif tool_name in ("ppr_explore", "find_similar_courses",
+                       "get_course_knowledge_map", "get_depts_by_tech") and isinstance(result, str):
+        for c in _parse_courses_from_str(tool_name, result):
+            name = c["name"]
+            if name and name not in course_pool:
+                course_pool[name] = c
+
+    elif tool_name == "get_course_eligibility" and isinstance(result, dict):
+        for c in result.get("courses", []):
+            name = c.get("name_zh", "")
+            if name and name not in course_pool:
+                course_pool[name] = {
+                    "code":    c.get("course_code", ""),
+                    "name":    name,
+                    "dept":    c.get("dept", ""),
+                    "credits": 0,
+                    "type":    "",
+                    "teacher": "",
+                    "summary": "",
+                }
+
+    elif tool_name == "get_prereq_info" and isinstance(result, dict):
+        # target course 本身
+        target = result.get("target_course", "")
+        if target and target not in course_pool:
+            course_pool[target] = {
+                "code": result.get("course_code", ""), "name": target,
+                "dept": "", "credits": 0, "type": "", "teacher": "", "summary": "",
+            }
+        # 先修課程
+        for c in result.get("prereq_details", []):
+            name = c.get("name_zh", "")
+            if name and name not in course_pool:
+                course_pool[name] = {
+                    "code":    c.get("course_code", ""),
+                    "name":    name,
+                    "dept":    c.get("dept", ""),
+                    "credits": c.get("credits", 0),
+                    "type":    "",
+                    "teacher": "",
                     "summary": "",
                 }
 
@@ -347,11 +490,13 @@ def generate_with_tools(
 
         if not msg.tool_calls:
             answer = msg.content or ""
+            course_cards = _enrich_course_cards(_verify_course_list(question, answer, course_pool))
             return {
                 "answer":            answer,
                 "tools_used":        tools_used,
                 "sources":           sources,
-                "course_cards":      _extract_mentioned_courses(answer, course_pool),
+                "course_cards":      course_cards,
+                "course_pool":       list(course_pool.values()),
                 "course_pool_count": len(course_pool),
                 "has_large_result":  has_large_result,
                 "model":             deployment,
@@ -423,14 +568,282 @@ def generate_with_tools(
     total_input  += final.usage.prompt_tokens
     total_output += final.usage.completion_tokens
     answer = final.choices[0].message.content or ""
+    course_cards = _enrich_course_cards(_verify_course_list(question, answer, course_pool))
     return {
         "answer":            answer,
         "tools_used":        tools_used,
         "sources":           sources,
-        "course_cards":      _extract_mentioned_courses(answer, course_pool),
+        "course_cards":      course_cards,
+        "course_pool":       list(course_pool.values()),
         "course_pool_count": len(course_pool),
         "has_large_result":  has_large_result,
         "model":             deployment,
         "input_tokens":      total_input,
         "output_tokens":     total_output,
     }
+
+
+def stream_with_tools(
+    question: str,
+    history: Optional[list[dict]] = None,
+    context_hint: str = "",
+    max_rounds: int = 4,
+):
+    """
+    Streaming ReAct Tool-Use：逐字 yield SSE JSON 字串。
+
+    事件格式（每行 "data: {...}\\n\\n"）：
+      {"type": "tool_start", "tool": "search_courses"}
+      {"type": "tool_done",  "tool": "search_courses", "count": 8}
+      {"type": "token",      "text": "根據..."}
+      {"type": "done",       "session_id": "", "tools_used": [...],
+       "course_cards": [...], "course_pool": [...],
+       "course_pool_count": N, "has_large_result": bool,
+       "model": "...", "input_tokens": N, "output_tokens": N}
+      {"type": "error",      "message": "..."}
+    """
+    from app.services.tools import TOOLS, execute_tool
+
+    client = _get_client()
+    deployment = os.environ.get("AZURE_OPENAI_CHAT_DEPLOYMENT", "gpt-4o")
+
+    system = SYSTEM_PROMPT
+    if context_hint:
+        system += f"\n\n## 學生背景資訊\n{context_hint}"
+
+    messages: list[dict] = list(history or [])
+    messages.append({"role": "user", "content": question})
+
+    tools_used: list[str] = []
+    course_pool: dict[str, dict] = {}
+    has_large_result = False
+    total_input = total_output = 0
+    debug_trace_calls: list[dict] = []
+
+    def _evt(data: dict) -> str:
+        return f"data: {json.dumps(data, ensure_ascii=False)}\n\n"
+
+    try:
+        for _ in range(max_rounds):
+            response = client.chat.completions.create(
+                model=deployment,
+                messages=[{"role": "system", "content": system}] + messages,
+                tools=TOOLS,
+                tool_choice="auto",
+                max_tokens=MAX_TOKENS,
+                stream=True,
+            )
+
+            # 累積 streaming 回應
+            tc_buffer: dict[int, dict] = {}   # index → {id, name, arguments}
+            content_parts: list[str] = []
+            finish_reason = None
+
+            for chunk in response:
+                if not chunk.choices:
+                    # 部分 provider 會在最後一個 chunk 只帶 usage
+                    if hasattr(chunk, "usage") and chunk.usage:
+                        total_input  += chunk.usage.prompt_tokens or 0
+                        total_output += chunk.usage.completion_tokens or 0
+                    continue
+
+                choice = chunk.choices[0]
+                finish_reason = choice.finish_reason or finish_reason
+                delta = choice.delta
+
+                if delta.tool_calls:
+                    for tcd in delta.tool_calls:
+                        i = tcd.index
+                        if i not in tc_buffer:
+                            tc_buffer[i] = {"id": "", "name": "", "arguments": ""}
+                        if tcd.id:
+                            tc_buffer[i]["id"] = tcd.id
+                        if tcd.function:
+                            if tcd.function.name:
+                                tc_buffer[i]["name"] += tcd.function.name
+                            if tcd.function.arguments:
+                                tc_buffer[i]["arguments"] += tcd.function.arguments
+
+                if delta.content:
+                    content_parts.append(delta.content)
+                    yield _evt({"type": "token", "text": delta.content})
+
+                if hasattr(chunk, "usage") and chunk.usage:
+                    total_input  += chunk.usage.prompt_tokens or 0
+                    total_output += chunk.usage.completion_tokens or 0
+
+            # 沒有工具呼叫 → 最終回答完成
+            if not tc_buffer:
+                final_answer = "".join(content_parts)
+                yield _evt({"type": "verify_start", "pool_size": len(course_pool)})
+                course_cards = _enrich_course_cards(_verify_course_list(question, final_answer, course_pool))
+                card_names   = {c["name"] for c in course_cards}
+                filtered_out = [n for n in course_pool if n not in card_names]
+                yield _evt({
+                    "type":         "verify_done",
+                    "selected":     [c["name"] for c in course_cards],
+                    "filtered_out": filtered_out,
+                })
+                yield _evt({
+                    "type":              "done",
+                    "tools_used":        tools_used,
+                    "course_cards":      course_cards,
+                    "course_pool":       list(course_pool.values()),
+                    "course_pool_count": len(course_pool),
+                    "has_large_result":  has_large_result,
+                    "model":             deployment,
+                    "input_tokens":      total_input,
+                    "output_tokens":     total_output,
+                    "debug_trace":       {"toolCalls": debug_trace_calls},
+                })
+                return
+
+            # 執行工具（並行）
+            tc_list = [tc_buffer[i] for i in sorted(tc_buffer.keys())]
+            for tc in tc_list:
+                tools_used.append(tc["name"])
+                try:
+                    tc_args = json.loads(tc["arguments"] or "{}")
+                except Exception:
+                    tc_args = {}
+                yield _evt({"type": "tool_start", "tool": tc["name"], "args": tc_args})
+
+            with ThreadPoolExecutor() as pool:
+                futures = {
+                    tc["id"]: pool.submit(
+                        execute_tool, tc["name"],
+                        json.loads(tc["arguments"] or "{}")
+                    )
+                    for tc in tc_list
+                }
+                results = {tid: f.result() for tid, f in futures.items()}
+
+            for tc in tc_list:
+                result = results.get(tc["id"])
+                _collect_course_pool(tc["name"], result, course_pool)
+                count = None
+                courses_found: list[str] = []
+                scores: list[float] = []
+                score_type: str | None = None
+
+                if tc["name"] in ("get_dept_courses", "get_program_courses") and isinstance(result, dict):
+                    count = len(result.get("courses", []))
+                    if count > 20:
+                        has_large_result = True
+                    courses_found = [
+                        c.get("name") or c.get("id", "")
+                        for c in result.get("courses", [])[:8]
+                    ]
+                elif tc["name"] == "search_courses" and isinstance(result, list):
+                    count = len(result)
+                    courses_found = [r.get("name_zh", "") for r in result[:8] if r.get("name_zh")]
+                    scores = [r.get("distance", 0.0) for r in result[:8] if r.get("name_zh")]
+                    score_type = "distance"
+                elif tc["name"] in ("find_similar_courses", "get_course_knowledge_map") and isinstance(result, str):
+                    import re as _re
+                    for m in _re.finditer(r'-\s*(.+?)（[^）]+）\s*(?:\[共享(?:概念：|\ )(\d+)\ 個(?:概念)?\])?', result):
+                        name = m.group(1).strip()
+                        sc = int(m.group(2)) if m.group(2) else 0
+                        if name and len(name) >= 2 and not name.startswith('['):
+                            courses_found.append(name)
+                            scores.append(float(sc))
+                    courses_found = courses_found[:8]
+                    scores = scores[:8]
+                    count = len(courses_found)
+                    score_type = "shared_concepts"
+                elif tc["name"] == "ppr_explore" and isinstance(result, str):
+                    import re as _re
+                    for m in _re.finditer(r'\[課程\]\s*(.+?)（(.+?)）\s*\[PPR:\s*([\d.]+)\]', result):
+                        courses_found.append(m.group(1).strip())
+                        scores.append(float(m.group(3)))
+                    courses_found = courses_found[:8]
+                    scores = scores[:8]
+                    count = len(courses_found)
+                    score_type = "ppr"
+                elif tc["name"] == "get_depts_by_tech" and isinstance(result, str):
+                    import re as _re
+                    in_courses = False
+                    for line in result.splitlines():
+                        if '相關課程' in line:
+                            in_courses = True
+                            continue
+                        if not in_courses:
+                            continue
+                        m2 = _re.match(r'\s*-\s*(.+?)（(.+?)）', line)
+                        if m2:
+                            name = m2.group(1).strip()
+                            if name and len(name) >= 2:
+                                courses_found.append(name)
+                    courses_found = courses_found[:8]
+                    count = len(courses_found)
+
+                debug_trace_calls.append({
+                    "tool":         tc["name"],
+                    "args":         json.loads(tc["arguments"] or "{}"),
+                    "coursesFound": courses_found,
+                    "count":        count,
+                    "scores":       scores,
+                    "scoreType":    score_type,
+                })
+                yield _evt({"type": "tool_done", "tool": tc["name"], "count": count,
+                            "courses_found": courses_found, "scores": scores, "score_type": score_type})
+
+            # 重建 messages
+            messages.append({
+                "role":    "assistant",
+                "content": "".join(content_parts) or None,
+                "tool_calls": [
+                    {"id": tc["id"], "type": "function",
+                     "function": {"name": tc["name"], "arguments": tc["arguments"]}}
+                    for tc in tc_list
+                ],
+            })
+            for tc in tc_list:
+                messages.append({
+                    "role": "tool",
+                    "tool_call_id": tc["id"],
+                    "content": json.dumps(results[tc["id"]], ensure_ascii=False),
+                })
+
+        # 超過最大輪數：強制串流最終回答
+        final = client.chat.completions.create(
+            model=deployment,
+            messages=[{"role": "system", "content": system}] + messages,
+            max_tokens=MAX_TOKENS,
+            stream=True,
+        )
+        content_parts = []
+        for chunk in final:
+            if chunk.choices and chunk.choices[0].delta.content:
+                text = chunk.choices[0].delta.content
+                content_parts.append(text)
+                yield _evt({"type": "token", "text": text})
+            if hasattr(chunk, "usage") and chunk.usage:
+                total_input  += chunk.usage.prompt_tokens or 0
+                total_output += chunk.usage.completion_tokens or 0
+
+        final_answer = "".join(content_parts)
+        yield _evt({"type": "verify_start", "pool_size": len(course_pool)})
+        course_cards = _enrich_course_cards(_verify_course_list(question, final_answer, course_pool))
+        card_names   = {c["name"] for c in course_cards}
+        filtered_out = [n for n in course_pool if n not in card_names]
+        yield _evt({
+            "type":         "verify_done",
+            "selected":     [c["name"] for c in course_cards],
+            "filtered_out": filtered_out,
+        })
+        yield _evt({
+            "type":              "done",
+            "tools_used":        tools_used,
+            "course_cards":      course_cards,
+            "course_pool":       list(course_pool.values()),
+            "course_pool_count": len(course_pool),
+            "has_large_result":  has_large_result,
+            "model":             deployment,
+            "input_tokens":      total_input,
+            "output_tokens":     total_output,
+            "debug_trace":       {"toolCalls": debug_trace_calls},
+        })
+
+    except Exception as exc:
+        yield _evt({"type": "error", "message": str(exc)})

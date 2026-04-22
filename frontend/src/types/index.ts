@@ -106,11 +106,66 @@ export interface ChatApiResponse {
   tools_used:        string[];
   sources:           { name: string; dept: string; type: string }[];
   course_cards:      CourseCard[];
+  course_pool:       CourseCard[];
   course_pool_count: number;
   has_large_result:  boolean;
   model:             string;
   input_tokens:      number;
   output_tokens:     number;
+}
+
+export type StreamEventType =
+  | 'tool_start' | 'tool_done'
+  | 'token' | 'done' | 'error'
+  | 'verify_start' | 'verify_done';
+
+export interface StreamEvent {
+  type:             StreamEventType;
+  text?:            string;   // token
+  tool?:            string;   // tool_start / tool_done
+  args?:            Record<string, unknown>; // tool_start
+  count?:           number;   // tool_done
+  courses_found?:   string[]; // tool_done
+  scores?:          number[]; // tool_done — 與 courses_found 對應
+  score_type?:      string;   // tool_done — "distance" | "shared_concepts" | "ppr"
+  message?:         string;   // error
+  // verify_start
+  pool_size?:       number;
+  // verify_done
+  selected?:        string[];
+  filtered_out?:    string[];
+  // done
+  session_id?:      string;
+  tools_used?:      string[];
+  course_cards?:    CourseCard[];
+  course_pool?:     CourseCard[];
+  course_pool_count?: number;
+  has_large_result?:  boolean;
+  model?:           string;
+  input_tokens?:    number;
+  output_tokens?:   number;
+  debug_trace?:     { toolCalls: ToolTraceItem[] }; // done — 後端累積的 trace
+}
+
+// Debug trace 型別
+export interface ToolTraceItem {
+  tool:         string;
+  args:         Record<string, unknown>;
+  coursesFound: string[];
+  scores:       number[];
+  scoreType:    string | null;
+  count?:       number;
+}
+
+export interface VerifyTrace {
+  poolSize:    number;
+  selected:    string[];
+  filteredOut: string[];
+}
+
+export interface DebugTrace {
+  toolCalls: ToolTraceItem[];
+  verify:    VerifyTrace | null;
 }
 
 // 学测科目
