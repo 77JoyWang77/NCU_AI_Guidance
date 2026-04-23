@@ -19,6 +19,7 @@ build_vector_index.py
   AZURE_OPENAI_EMBEDDING_DEPLOYMENT=text-embedding-3-large
 """
 
+import argparse
 import json
 import csv
 import os
@@ -186,7 +187,7 @@ def load_teacher_csv() -> dict[str, str]:
 def load_eligibility_lookup() -> dict[str, dict]:
     """
     回傳 {course_code: {eligibility fields, course_relations fields}}
-    支援新格式（v2：eligibility/course_relations 巢狀）與舊格式（頂層扁平）。
+    支援 v3 格式（access_rules list）與舊格式（v2：eligibility 巢狀 / 頂層扁平）。
     """
     lookup: dict[str, dict] = {}
     if not COURSE_ELIGIBILITY.exists():
@@ -198,26 +199,61 @@ def load_eligibility_lookup() -> dict[str, dict]:
         code = entry.get("course_code", "").strip()
         if not code:
             continue
-        # 新格式（v2）優先；若無 eligibility key 則 fallback 讀頂層欄位（舊格式）
-        elig = entry.get("eligibility") or entry
-        rels = entry.get("course_relations") or entry
-        lookup[code] = {
-            # 修課資格
-            "eligible_years":       elig.get("eligible_years", []),
-            "program_types":        elig.get("program_types", []),
-            "dept_include":         elig.get("dept_include", []),
-            "college_include":      elig.get("college_include", []),
-            "open_to_minor":        elig.get("open_to_minor", False),
-            "open_to_double_major": elig.get("open_to_double_major", False),
-            "open_to_credit_prog":  elig.get("open_to_credit_prog", False),
-            "open_to_cross_school": elig.get("open_to_cross_school", False),
-            "is_unrestricted":      elig.get("is_unrestricted", False),
-            "has_special_condition":elig.get("has_special_condition", False),
-            # 課程關係
-            "prereq_codes":         rels.get("prereq_codes", []),
-            "coreq_codes":          rels.get("coreq_codes", []),
-            "conflict_codes":       rels.get("conflict_codes", []),
-        }
+
+        access_rules = entry.get("access_rules")
+        if access_rules is not None:
+            # v3 格式：從 access_rules 聚合供 ChromaDB metadata 使用的欄位
+            rels = entry.get("course_relations") or {}
+            dept_union    = sorted({d for r in access_rules for d in r.get("dept_include", [])})
+            college_union = sorted({c for r in access_rules for c in r.get("college_include", [])})
+            open_to_minor        = any(r.get("open_to_minor")        for r in access_rules)
+            open_to_double_major = any(r.get("open_to_double_major") for r in access_rules)
+            open_to_credit_prog  = any(r.get("open_to_credit_prog")  for r in access_rules)
+            open_to_cross_school = any(r.get("open_to_cross_school") for r in access_rules)
+            # 大學部可修年級：取所有非研究所 rule 的年級聯集
+            _GRAD = {"master", "phd", "master_inservice", "master_industry"}
+            undergrad_years: set[int] = set()
+            for r in access_rules:
+                if not r.get("program_types") or any(pt not in _GRAD for pt in r["program_types"]):
+                    undergrad_years.update(r.get("years", []))
+            lookup[code] = {
+                "access_rules":        access_rules,
+                "eligible_years":      sorted(undergrad_years),
+                "dept_include":        dept_union,
+                "college_include":     college_union,
+                "open_to_minor":       open_to_minor,
+                "open_to_double_major":open_to_double_major,
+                "open_to_credit_prog": open_to_credit_prog,
+                "open_to_cross_school":open_to_cross_school,
+                "is_unrestricted":     entry.get("is_unrestricted", False),
+                "is_grad_only":        entry.get("is_grad_only", False),
+                "is_undergrad_open":   entry.get("is_undergrad_open", True),
+                "has_special_condition":entry.get("has_special_condition", False),
+                "prereq_codes":        rels.get("prereq_codes", []),
+                "coreq_codes":         rels.get("coreq_codes", []),
+                "conflict_codes":      rels.get("conflict_codes", []),
+            }
+        else:
+            # 舊格式 fallback（v2：eligibility 巢狀 / 頂層扁平）
+            elig = entry.get("eligibility") or entry
+            rels = entry.get("course_relations") or entry
+            lookup[code] = {
+                "eligible_years":       elig.get("eligible_years", []),
+                "dept_include":         elig.get("dept_include", []),
+                "college_include":      elig.get("college_include", []),
+                "open_to_minor":        elig.get("open_to_minor", False),
+                "open_to_double_major": elig.get("open_to_double_major", False),
+                "open_to_credit_prog":  elig.get("open_to_credit_prog", False),
+                "open_to_cross_school": elig.get("open_to_cross_school", False),
+                "is_unrestricted":      elig.get("is_unrestricted", False),
+                "is_grad_only":         False,
+                "is_undergrad_open":    True,
+                "has_special_condition":elig.get("has_special_condition", False),
+                "prereq_codes":         rels.get("prereq_codes", []),
+                "coreq_codes":          rels.get("coreq_codes", []),
+                "conflict_codes":       rels.get("conflict_codes", []),
+            }
+
     print(f"[Eligibility] 載入 {len(lookup)} 筆修課條件")
     return lookup
 
@@ -389,7 +425,7 @@ def build_course_doc(
     if ability_names:
         parts.append(f"核心能力：{', '.join(ability_names)}")
     if textbook:
-        parts.append(f"參考書目：{textbook[:200]}")
+        parts.append(f"參考書目：{textbook}")
     document = "\n".join(parts)
 
     # ── metadata（ChromaDB 只接受 str/int/float/bool）──
@@ -413,7 +449,6 @@ def build_course_doc(
         "teacher_specialties": teacher_spec,
         # 修課資格（eligibility）
         "eligible_years":        join_list(eligible_years),
-        "program_types":         join_list(elig.get("program_types", [])),
         "dept_include":          join_list(elig.get("dept_include", [])),
         "college_include":       join_list(elig.get("college_include", [])),
         "open_to_minor":         elig.get("open_to_minor", False),
@@ -421,6 +456,8 @@ def build_course_doc(
         "open_to_credit_prog":   elig.get("open_to_credit_prog", False),
         "open_to_cross_school":  elig.get("open_to_cross_school", False),
         "is_unrestricted":       elig.get("is_unrestricted", False),
+        "is_grad_only":          elig.get("is_grad_only", False),
+        "is_undergrad_open":     elig.get("is_undergrad_open", True),
         "has_special_condition": elig.get("has_special_condition", False),
         # 課程關係（course_relations）
         "prereq_codes":          join_list(prereq_codes),
@@ -435,6 +472,10 @@ def build_course_doc(
         "when_sem_end":      sched.get("when_sem_end", 0),
         "when_semesters":    sched.get("when_semesters", ""),
         "schedule_verified": sched.get("verified", False),
+        # 課程大綱詳細欄位
+        "objective": objective,
+        "content":   content,
+        "textbook":  textbook,
         # 課程附加資訊
         "course_domain":     syllabus.get("課程領域", "") or "",
         "class_time":        course.get("上課時間", "") or "",
@@ -756,8 +797,70 @@ def build_teachers_collection(
 
 # ── 主程式 ───────────────────────────────────────────────────────────────────
 
+def update_metadata_only(chroma: chromadb.PersistentClient) -> None:
+    """
+    只更新課程 collection 的 eligibility metadata（is_grad_only / is_undergrad_open / eligible_years）。
+    不重新 embed，不需要 API key。
+    """
+    eligibility_lookup = load_eligibility_lookup()
+
+    for col_name in ["ncu_courses_ug", "ncu_courses_grad"]:
+        try:
+            col = chroma.get_collection(col_name)
+        except Exception:
+            print(f"[跳過] {col_name} 不存在")
+            continue
+
+        result = col.get(include=["metadatas"])
+        ids: list[str] = result["ids"]
+        metadatas: list[dict] = result["metadatas"]
+
+        update_ids, update_metas = [], []
+        for doc_id, meta in zip(ids, metadatas):
+            code = meta.get("course_code", "")
+            elig = eligibility_lookup.get(code)
+            if not elig:
+                continue
+
+            new_grad_only     = elig.get("is_grad_only", False)
+            new_ug_open       = elig.get("is_undergrad_open", True)
+            new_years         = join_list(elig.get("eligible_years", []))
+
+            if (meta.get("is_grad_only")      != new_grad_only
+                    or meta.get("is_undergrad_open") != new_ug_open
+                    or meta.get("eligible_years")    != new_years):
+                update_ids.append(doc_id)
+                update_metas.append({**meta,
+                    "is_grad_only":      new_grad_only,
+                    "is_undergrad_open": new_ug_open,
+                    "eligible_years":    new_years,
+                })
+
+        if not update_ids:
+            print(f"[{col_name}] 無需更新（共 {len(ids)} 筆）")
+            continue
+
+        batch = 500
+        for i in range(0, len(update_ids), batch):
+            col.update(ids=update_ids[i:i+batch], metadatas=update_metas[i:i+batch])
+        print(f"[{col_name}] 更新 {len(update_ids)} / {len(ids)} 筆 metadata")
+
+
 def main():
+    parser = argparse.ArgumentParser(description="建立或更新 ChromaDB 向量索引")
+    parser.add_argument(
+        "--metadata-only", action="store_true",
+        help="只更新 eligibility metadata（不重新 embed，不需要 API key）"
+    )
+    args = parser.parse_args()
+
     load_dotenv(ROOT / ".env")
+    chroma = chromadb.PersistentClient(path=str(CHROMA_DIR))
+
+    if args.metadata_only:
+        update_metadata_only(chroma)
+        return
+
     api_key = os.getenv("AZURE_OPENAI_API_KEY")
     endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
     api_version = os.getenv("AZURE_OPENAI_API_VERSION", "2024-02-01")

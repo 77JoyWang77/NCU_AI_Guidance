@@ -564,20 +564,27 @@ def ppr_explore(
     """
     g = _g()
 
-    # 找種子節點：只從語意節點中找，且只做 query→name 方向的包含比對
+    # 找種子節點：Exact-first 策略
+    # Phase 1 精確匹配（nl == nname），保持信號集中；
+    # 只有當某個 seed 完全找不到精確匹配時，才 fallback 到 substring（nl in nname）。
+    # 原因：substring 匹配「演算法」會抓到「量子演算法」等 50+ 節點，稀釋 PPR 分數。
     _SEED_TYPES = {"Concept", "Technology", "Field", "Course"}
     seed_ids: set[str] = set()
     for name in seed_names:
         nl = name.lower()
+        exact: set[str] = set()
+        fuzzy: set[str] = set()
         for nid, nd in g["nodes"].items():
             if nd.get("node_type") not in _SEED_TYPES:
                 continue
             nname = nd.get("name", "").lower()
             if not nname:
                 continue
-            # 精確 or query 包含在節點名稱中（不反向，避免「機器」「學習」等片段成為種子）
-            if nl == nname or nl in nname:
-                seed_ids.add(nid)
+            if nl == nname:
+                exact.add(nid)
+            elif nl in nname:
+                fuzzy.add(nid)
+        seed_ids |= exact if exact else fuzzy
 
     if not seed_ids:
         return []

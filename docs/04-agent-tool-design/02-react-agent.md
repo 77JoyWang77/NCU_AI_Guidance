@@ -1,6 +1,6 @@
 # ReAct Agent 流程設計
 
-> 文件版本：2026-04-21
+> 文件版本：2026-04-24
 
 ---
 
@@ -63,12 +63,13 @@ course_pool: dict[str, CourseCard]  # {課名: CourseCard dict}
 | `get_dept_courses` | `dict` with `courses` list | 遍歷 `courses` 列表 |
 | `get_program_courses` | `dict` with `courses` list | 同上 |
 | `get_course_eligibility` | `dict` with `courses` list | 遍歷 `courses` 列表 |
+| `get_course_syllabus` | `dict`（單一課程或 candidates） | 取 `name_zh` 欄位；`ambiguous=True` 時遍歷 candidates |
 | `ppr_explore` | `str` | regex 解析 `[課程] 課名（系所）` 格式 |
 | `find_similar_courses` | `str` | regex 解析 `- 課名（系所，N學分）` 格式 |
 | `get_course_knowledge_map` | `str` | 同上 |
 | `get_depts_by_tech` | `str` | regex 解析「相關課程」段落 |
 
-其餘工具（`get_teacher_info`, `get_dept_info`, `get_graduation_rules` 等）不產出課程到 pool。
+其餘工具（`get_teacher_info`, `get_dept_info`, `get_graduation_requirements`, `search_programs`, `search_teachers` 等）不產出課程到 pool。
 
 ---
 
@@ -117,6 +118,9 @@ course_cards: list[CourseCard]
 ### 為什麼有效
 
 即使 LLM 在回答文字中「幻覺」出不存在的課程名稱（如從訓練知識中捏造），`_verify_course_list` 的輸出結果仍只包含 pool 內真實存在的課程，因此 `course_cards`（前端顯示的推薦卡片）永遠不會出現幻覺課程。
+
+> **規劃中：以 `<course>` 標籤取代此 LLM 呼叫**  
+> 在兩階段設計中，Stage 2 LLM 以 `<course>課名</course>` 標籤輸出提到的課程，後端直接 regex 擷取後做 exact/fuzzy match，不需額外一次 LLM 呼叫。詳見 `06-known-issues.md`。
 
 ---
 

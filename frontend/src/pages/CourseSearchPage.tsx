@@ -546,7 +546,6 @@ export default function CourseSearchPage() {
                 <div className="flex flex-shrink-0 items-center border-b border-gray-200 px-4 py-3">
                   <div className="min-w-0">
                     <h2 className="truncate text-sm font-semibold text-gray-800">{selectedConversation.title}</h2>
-                    <span className="text-xs text-gray-400">可以持續追問課程方向、學分配置與學院特色</span>
                   </div>
                 </div>
 

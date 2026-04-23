@@ -114,7 +114,7 @@ export default function DebugTracePanel({ trace }: DebugTracePanelProps) {
                         {t.coursesFound.length > 0 && (
                           <div className="mt-2">
                             <p className="mb-1 text-xs text-gray-400">
-                              找到的課程（前 8 門）
+                              找到的課程（共 {t.coursesFound.length} 門）
                               {t.scoreType === 'distance' && <span className="ml-1 text-gray-400">· dist 越小越相似</span>}
                               {t.scoreType === 'shared_concepts' && <span className="ml-1 text-gray-400">· c= 共享概念數</span>}
                               {t.scoreType === 'ppr' && <span className="ml-1 text-gray-400">· ppr= PPR×1000</span>}

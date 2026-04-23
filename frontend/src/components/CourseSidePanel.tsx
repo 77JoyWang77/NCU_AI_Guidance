@@ -47,11 +47,6 @@ function SidePanelCard({
           </span>
         )}
       </div>
-      {course.summary && (
-        <p className="mt-2 border-t border-gray-100 pt-2 text-xs leading-relaxed text-gray-500">
-          {course.summary}
-        </p>
-      )}
     </button>
   );
 }

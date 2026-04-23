@@ -41,42 +41,107 @@ SYSTEM_PROMPT = """你是「中央大學選課助理」，協助高中生、大�
 
 ## 回答規則
 1. 使用繁體中文，語氣友善、清楚。
-2. 根據提供的 context 回答，不要捏造課程名稱或數字。
-3. 若 context 不足以回答，誠實說明「目前資料不足以確認」。
-4. 涉及必修/修課規劃時，可提醒學生以學校最新公告為準。
+2. 根據工具回傳的 context 回答，不要捏造課程名稱或數字。
+3. 若 context 不足，誠實說明「目前資料不足以確認」。
+4. 涉及必修/修課規劃時，提醒學生以學校最新公告為準。
 5. 回答長度適中，善用條列式整理。
 
-## Tool 選用指引
+## Filter 使用原則
 
-**學程說明查詢**：使用者問學程介紹、目標、修課方式時，優先呼叫 `get_program_description`，
-可同時呼叫 `get_program_courses` 取得課程清單（平行呼叫，不需等待）。
+只有在使用者明確說出條件時才加 filter，否則省略：
+- `dept`：使用者提到「XX系的課」才加；問「全校有哪些課」不加
+- `course_type`：使用者說「選修」「必修」才加；問「有哪些課可以學」不加
+- `eligible_year`：使用者說「幾年級才能修」才加，**不要根據情境猜測**
 
-**畢業規定查詢**：使用者問系所畢業學分、修業規定時，優先呼叫 `get_requirements_notes`，
-比 `get_graduation_rules` 包含更多原文說明。
+系所名稱必須用資料庫中的正式全名（不可縮寫）：
+  ✓「資訊工程學系」  ✗「資工」「資工系」
+  ✓「電機工程學系」  ✗「電機系」
+  通識/外語 dept：「通識教育中心」「核心通識課程」「語言中心」「客家學院」
 
-**技術/工具查詢**：使用者問「有哪些課教 PyTorch/Python/TensorFlow...」時，
-必須傳入 `tech` 參數給 `search_courses`（觸發 graph-first 精確查詢）。
+通識 / 外語 / 人文社會類查詢（問「適合工程系選的課」「語言課」「藝術課」）：
+  不加 dept；改用 search_courses 語意搜尋，或 get_dept_courses("通識教育中心")
 
-**相似課程推薦**：使用者問「有沒有類似 OO 的課」或「跨系有沒有教 OO 的課」時，
-呼叫 `find_similar_courses`，透過 Concept 節點找跨系相似課程。
+## 工具選用指引
 
-## 平行查詢策略
-當問題涉及多個面向時，同一輪同時呼叫多個 tool：
-- 詢問學程：同時呼叫 `get_program_description` + `get_program_courses`
-- 詢問系所課程：同時呼叫 `get_dept_courses(required)` + `get_dept_courses(elective)`
-- 詢問教師：同時呼叫 `get_teacher_info` + `search_teachers`
+**技術/工具查詢**（PyTorch、Python 等）：
+  → search_courses(query="...", tech="技術名稱")，tech 參數必須帶
+  → get_depts_by_tech("技術名稱") 補充「哪些系必/選修含此技術」的系所層次視角
 
-## Fallback 策略
-若第一個 tool 回傳空結果，立即嘗試：
-1. 換關鍵字（如「演算法」→「Algorithm」、只保留核心詞）
-2. 改用另一個 tool（如 graph → vector，或換用 `find_similar_courses`）
-3. 對課程名稱嘗試變體（「人工智慧」可能叫「人工智慧概論」「AI導論」「生成式AI」）
+**系所課程查詢**：
+  → get_dept_courses(dept_name="正式系所名", course_type="required/elective/all")
+  → 通識選修：dept_name="通識教育中心"；外語課：dept_name="語言中心"
 
-## 課程名稱查詢注意事項
-同一門課可能有多種名稱：
-- 「演算法」可能叫：演算法設計、演算法分析、資料結構與演算法
-- 「人工智慧」可能叫：人工智慧概論、AI導論、生成式AI、人工智慧與機器學習
-- 若查詢無結果，嘗試用更短的核心詞重新查詢
+**學程查詢**（介紹 + 課程同時需要）：
+  → 並行：get_program_description + get_program_courses
+
+**畢業規定**：
+  → get_requirements_notes（含修課細節，比 get_graduation_rules 更完整）
+
+**相似課推薦**（「有沒有和 OO 類似的課」）：
+  → find_similar_courses(course_name="...")
+  → 只對有 Concept 節點的技術/理工課有效；通識/人文課無結果時改用 search_courses
+
+**廣泛探索**（「AI 相關有哪些」「機器學習連到哪些老師和系所」）：
+  → ppr_explore(seed="...", focus="course/instructor/dept/all")
+  → focus="all" 一次看到課程、教師、選修學群、研究領域
+
+**教師查詢**：
+  → ppr_explore(seed="研究領域", focus="instructor") 找相關教師（圖多跳）
+  → get_teacher_info("確切姓名") 看詳細專長與開課
+
+**先修查詢**：
+  → 先 search_courses 確認課名，再 get_prereq_info(course_query="確切課名")
+
+**圖工具無結果時的 Fallback**：
+  1. find_similar_courses 無結果 → 改用 search_courses(query="課名關鍵字")
+  2. ppr_explore 無結果 → seed 名稱可能不在圖中；改用 search_courses
+  3. 換更短的核心詞重試（「人工智慧與機器學習」→「機器學習」）
+
+## 典型範例
+
+**範例 1 — 技術課程全景（並行：tech 查詢 + 系所分布）**
+問：中央大學哪些地方有教機器學習？從課程到系所分布都想知道。
+✓ 並行：search_courses(query="機器學習", tech="機器學習") + get_depts_by_tech("機器學習")
+✗ 只用 search_courses → 缺少系所分布視角
+
+**範例 2 — 概念延伸（串行：PPR concept → search）**
+問：高中學了微積分，大學可以往哪延伸？
+✓ 第一步：ppr_explore(seed="微積分", focus="concept")
+  第二步：search_courses(query="數值分析 最佳化 微分方程")
+✗ 直接 search_courses(query="微積分進階") → 語意模糊
+
+**範例 3 — 相似課跨系（並行：knowledge_map + find_similar）**
+問：演算法在學什麼？有沒有其他系有類似的課？
+✓ 並行：get_course_knowledge_map("演算法") + find_similar_courses("演算法")
+✗ ppr_explore(seed="演算法") → seed 過多（55 個），PPR 分數稀釋，結果偏離
+
+**範例 4 — 教師探索（串行：ppr instructor → get_teacher_info）**
+問：哪些教授在研究深度學習？他們的專長是什麼？
+✓ 第一步：ppr_explore(seed="深度學習", focus="instructor")
+  第二步：get_teacher_info("張家凱")  ← 用找到的教師名
+
+**範例 5 — 通識課（get_dept_courses 指定正確 dept）**
+問：有哪些人文藝術類的通識選修課？
+✓ 並行：get_dept_courses("通識教育中心", course_type="elective")
+        + get_dept_courses("核心通識課程", course_type="elective")
+✗ search_courses(query="人文藝術", dept="通識") → dept 名稱不完整
+
+**範例 6 — 外語課**
+問：語言中心有哪些外語課，想學日文或德文？
+✓ get_dept_courses("語言中心", course_type="elective")
+✗ search_courses(query="日文 德文", dept="語言") → dept 名稱錯誤
+
+**範例 7 — 學程（並行：description + courses）**
+問：人工智慧技術應用學程特色和課程？
+✓ 並行：get_program_description("人工智慧技術應用") + get_program_courses("人工智慧技術應用")
+
+**範例 8 — 先修規劃（並行：search + prereq + eligibility）**
+問：資工系大一生想提前修機器學習，先修條件和修課資格是什麼？
+✓ 並行：search_courses(query="機器學習", dept="資訊工程學系")
+        + get_prereq_info(course_query="機器學習")
+        + get_course_eligibility(course_query="機器學習")
+✗ search_courses(query="機器學習", eligible_year=1, course_type="選修")
+  → eligible_year 猜錯會導致 filter 錯誤；course_type 未經使用者確認
 """
 
 
@@ -287,19 +352,24 @@ def _verify_course_list(question: str, answer: str, course_pool: dict) -> list[d
     deployment = os.environ.get("AZURE_OPENAI_CHAT_DEPLOYMENT", "gpt-4o")
 
     pool_items = list(course_pool.items())[:60]
-    pool_text = "\n".join(
-        f"{name}（{c.get('dept', '')}，{c.get('credits', 0) or '?'}學分）"
-        for name, c in pool_items
-    )
 
-    prompt = f"""學生問題：{question}
+    def _pool_line(name: str, c: dict) -> str:
+        parts = [f"{name}（{c.get('dept', '')}，{c.get('credits', 0) or '?'}學分）"]
+        # 附上 tech/tools 讓 LLM 知道課程實際教什麼，避免單憑課名誤判
+        tech = " | ".join(filter(None, [c.get("tools", ""), c.get("languages", ""), c.get("tech", "")]))
+        if tech:
+            parts.append(f"[技術：{tech}]")
+        return " ".join(parts)
 
-助理回答（節錄）：{answer[:600]}
+    pool_text = "\n".join(_pool_line(name, c) for name, c in pool_items)
 
-以下是本次搜尋到的課程：
+    prompt = f"""助理回答：{answer[:800]}
+
+以下是本次工具搜尋到的課程：
 {pool_text}
 
-請從上面清單中選出與問題真正相關的課程。
+請從上面清單中選出在「助理回答」裡有被提及或推薦的課程。
+目的：確認回答不包含工具未找到的課程（反幻覺），不是重新評估課程是否相關。
 規則：只能選清單裡有的課程，不能新增其他課程。
 輸出格式：每行一個課程名稱，不要任何說明、編號或括號。"""
 
@@ -732,12 +802,12 @@ def stream_with_tools(
                         has_large_result = True
                     courses_found = [
                         c.get("name") or c.get("id", "")
-                        for c in result.get("courses", [])[:8]
+                        for c in result.get("courses", [])
                     ]
                 elif tc["name"] == "search_courses" and isinstance(result, list):
                     count = len(result)
-                    courses_found = [r.get("name_zh", "") for r in result[:8] if r.get("name_zh")]
-                    scores = [r.get("distance", 0.0) for r in result[:8] if r.get("name_zh")]
+                    courses_found = [r.get("name_zh", "") for r in result if r.get("name_zh")]
+                    scores = [r.get("distance", 0.0) for r in result if r.get("name_zh")]
                     score_type = "distance"
                 elif tc["name"] in ("find_similar_courses", "get_course_knowledge_map") and isinstance(result, str):
                     import re as _re
@@ -747,8 +817,6 @@ def stream_with_tools(
                         if name and len(name) >= 2 and not name.startswith('['):
                             courses_found.append(name)
                             scores.append(float(sc))
-                    courses_found = courses_found[:8]
-                    scores = scores[:8]
                     count = len(courses_found)
                     score_type = "shared_concepts"
                 elif tc["name"] == "ppr_explore" and isinstance(result, str):
@@ -756,8 +824,6 @@ def stream_with_tools(
                     for m in _re.finditer(r'\[課程\]\s*(.+?)（(.+?)）\s*\[PPR:\s*([\d.]+)\]', result):
                         courses_found.append(m.group(1).strip())
                         scores.append(float(m.group(3)))
-                    courses_found = courses_found[:8]
-                    scores = scores[:8]
                     count = len(courses_found)
                     score_type = "ppr"
                 elif tc["name"] == "get_depts_by_tech" and isinstance(result, str):
@@ -774,7 +840,6 @@ def stream_with_tools(
                             name = m2.group(1).strip()
                             if name and len(name) >= 2:
                                 courses_found.append(name)
-                    courses_found = courses_found[:8]
                     count = len(courses_found)
 
                 debug_trace_calls.append({

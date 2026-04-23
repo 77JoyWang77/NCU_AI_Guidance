@@ -59,7 +59,8 @@ COURSE_DIRS = [
     BASE / 'data' / 'raw' / 'graduate_courses' / '114_1',
     BASE / 'data' / 'raw' / 'graduate_courses' / '114_2',
 ]
-OUTPUT = BASE / 'data' / 'processed' / 'course_eligibility.json'
+OUTPUT             = BASE / 'data' / 'processed' / 'course_eligibility.json'
+OUTPUT_COLLEGE_MAP = BASE / 'data' / 'processed' / 'dept_college_map.json'
 
 # ── 中文數字對應 ──────────────────────────────────────────────────────────────
 
@@ -485,9 +486,25 @@ def merge_into_existing(existing: dict, parsed: dict, raw_cond_str: str) -> None
 
 # ── 主程式 ────────────────────────────────────────────────────────────────────
 
+def _build_college_map() -> dict[str, str]:
+    """從原始課程資料建立 {系所: 學院} 對照表。"""
+    mapping: dict[str, str] = {}
+    for d in COURSE_DIRS:
+        if not d.exists():
+            continue
+        for f in d.glob('*.json'):
+            for c in json.loads(f.read_text(encoding='utf-8')):
+                dept    = c.get('系所', '').strip()
+                college = c.get('學院', '').strip()
+                if dept and college:
+                    mapping[dept] = college
+    return mapping
+
+
 def main():
     results: dict[tuple, dict] = {}
     total = no_condition = 0
+    college_map: dict[str, str] = {}
 
     for d in COURSE_DIRS:
         if not d.exists():
@@ -499,6 +516,12 @@ def main():
                 raw_code = c.get('課號-班別', '').split('-')[0]
                 if not raw_code:
                     continue
+
+                # 收集 dept→college 對應
+                dept_raw    = c.get('系所', '').strip()
+                college_raw = c.get('學院', '').strip()
+                if dept_raw and college_raw:
+                    college_map[dept_raw] = college_raw
 
                 cond_data = c.get('分發條件') or {}
                 priorities = cond_data.get('優先順序列表', [])
@@ -554,6 +577,13 @@ def main():
         json.dumps(output_list, ensure_ascii=False, indent=2),
         encoding='utf-8'
     )
+
+    # dept→college 對照表
+    OUTPUT_COLLEGE_MAP.write_text(
+        json.dumps(dict(sorted(college_map.items())), ensure_ascii=False, indent=2),
+        encoding='utf-8'
+    )
+    print(f'輸出：{OUTPUT_COLLEGE_MAP}（{len(college_map)} 個系所）')
 
     # ── 統計 ──────────────────────────────────────────────────────────────────
     rels_list = [r['course_relations'] for r in output_list]

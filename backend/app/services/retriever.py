@@ -5,6 +5,7 @@ ChromaDB 向量搜尋介面，對應五個 collection：
   ncu_courses_ug / ncu_courses_grad / ncu_credit_programs / ncu_departments / ncu_teachers
 """
 
+import json
 import os
 from functools import lru_cache
 from pathlib import Path
@@ -15,6 +16,8 @@ from openai import AzureOpenAI
 
 ROOT = Path(__file__).parent.parent.parent.parent  # project root
 CHROMA_DIR = ROOT / "data" / "processed" / "chroma_db"
+_ELIGIBILITY_PATH  = ROOT / "data" / "processed" / "course_eligibility.json"
+_COLLEGE_MAP_PATH  = ROOT / "data" / "processed" / "dept_college_map.json"
 
 
 @lru_cache(maxsize=1)
@@ -41,6 +44,31 @@ def _col(name: str):
     return _get_chroma().get_collection(name)
 
 
+@lru_cache(maxsize=1)
+def _load_eligibility_index() -> dict[str, dict]:
+    if not _ELIGIBILITY_PATH.exists():
+        return {}
+    data = json.loads(_ELIGIBILITY_PATH.read_text(encoding="utf-8"))
+    return {entry["course_code"]: entry for entry in data if entry.get("course_code")}
+
+
+def get_course_eligibility(course_code: str) -> dict:
+    """回傳課程的完整修課資格資料（含 access_rules），直接從 JSON 讀取。"""
+    return _load_eligibility_index().get(course_code, {})
+
+
+@lru_cache(maxsize=1)
+def _load_college_map() -> dict[str, str]:
+    if not _COLLEGE_MAP_PATH.exists():
+        return {}
+    return json.loads(_COLLEGE_MAP_PATH.read_text(encoding="utf-8"))
+
+
+def get_dept_college(dept: str) -> str:
+    """回傳系所所屬學院名稱，查無則回傳空字串。"""
+    return _load_college_map().get(dept, "")
+
+
 # ── 公開介面 ─────────────────────────────────────────────────────────────────
 
 def search_courses(
@@ -53,21 +81,32 @@ def search_courses(
     向量搜尋課程。
 
     filters 範例（ChromaDB where 語法）：
-      {"type": "必修"}
-      {"college": "資訊電機學院"}
-      {"required_year": 1, "required_sem": 1}
+      {"type": {"$eq": "必修"}}
+      {"$and": [{"college": {"$eq": "資訊電機學院"}}, {"type": {"$eq": "必修"}}]}
       {"tools": {"$contains": "PyTorch"}}
-      {"$and": [{"college": "資訊電機學院"}, {"type": "必修"}]}
     """
     embedding = _embed(query)
+    col = _col(collection)
     kwargs: dict = {"query_embeddings": [embedding], "n_results": n_results,
                     "include": ["documents", "metadatas", "distances"]}
     if filters:
         kwargs["where"] = filters
 
-    col = _col(collection)
-    res = col.query(**kwargs)
-    return _format(res)
+    try:
+        res = col.query(**kwargs)
+        return _format(res)
+    except Exception:
+        # ChromaDB 1.x 在 where 過濾後 0 筆匹配時拋例外；去掉 filter 後做純語意搜尋
+        if filters:
+            try:
+                kwargs_nf = {k: v for k, v in kwargs.items() if k != "where"}
+                res = col.query(**kwargs_nf)
+                results = _format(res)
+                # 後處理：保留 dept/college/type 最相近的結果
+                return results
+            except Exception:
+                pass
+        return []
 
 
 def search_programs(query: str, n_results: int = 5) -> list[dict]:

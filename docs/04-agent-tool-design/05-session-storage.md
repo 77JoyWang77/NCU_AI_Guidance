@@ -1,6 +1,6 @@
 # Session 儲存設計
 
-> 文件版本：2026-04-21  
+> 文件版本：2026-04-24  
 > 來源：`backend/app/services/session_store.py`，`backend/app/routes/chat.py`
 
 ---
@@ -43,6 +43,29 @@ data/sessions/{session_id}.json
           "summary": "課程摘要..."
         }
       ],
+      "course_pool": [
+        {
+          "code": "CS3001",
+          "name": "機器學習",
+          "dept": "資訊工程學系",
+          "credits": 3
+        }
+      ],
+      "debug_trace": {
+        "toolCalls": [
+          {
+            "tool": "get_course_knowledge_map",
+            "args": {"course_name": "深度學習"},
+            "coursesFound": ["機器學習", "電腦視覺"],
+            "count": 8
+          }
+        ],
+        "verify": {
+          "poolSize": 8,
+          "selected": ["機器學習", "電腦視覺"],
+          "filteredOut": []
+        }
+      },
       "tools_used": ["get_course_knowledge_map"],
       "created_at": "2026-04-21T10:30:00.000Z"
     }
@@ -76,13 +99,18 @@ messages = [
 {
     "user": str,
     "assistant": str,
-    "course_cards": list[CourseCard],
+    "course_cards": list[CourseCard],   # 驗證後的精選課程
+    "course_pool": list[CourseCard],    # 完整 pool（含未被選中的）
+    "debug_trace": {                    # 工具呼叫詳情
+        "toolCalls": list[ToolCallLog],
+        "verify": VerifyLog
+    },
     "tools_used": list[str],
     "created_at": str
 }
 ```
 
-- **用途**：前端載入歷史對話時，恢復完整顯示（含課程卡片）
+- **用途**：前端載入歷史對話時，恢復完整顯示（含課程卡片、debug trace）
 - **獨立於** `messages`，不影響 LLM context
 
 ---
@@ -142,33 +170,28 @@ GET /api/chat/session/{session_id}
 
 ---
 
-## 目前已知問題與待補強欄位
+## 已知問題
 
 ### 問題 1：`course_cards` 常有空欄位
 
-`_verify_course_list()` 選出的課程來自 `course_pool`，而 `course_pool` 中的 `ppr_explore` / `find_similar_courses` / `get_course_knowledge_map` 課程只有 `name` 和 `dept`，`code`、`teacher`、`summary` 均為空字串。
+`_verify_course_list()` 選出的課程來自 `course_pool`，而 `ppr_explore` / `find_similar_courses` / `get_course_knowledge_map` 回傳的課程只有 `name` 和 `dept`，`code`、`teacher`、`summary` 均為空字串。
 
-**根本原因**：`_parse_courses_from_str()` 只能從格式化字串中解析課名和系所，其他欄位無法得到。
+**根本原因**：`_parse_courses_from_str()` 只能從格式化字串中解析課名和系所，其他欄位無法取得。
 
-**解法**：在 `_verify_course_list()` 後，對 `code`/`teacher` 為空的 course_cards 用 `retriever.get_courses_by_name()` 補充完整資料。
+**建議解法**：在 `_verify_course_list()` 後，對 `code`/`teacher` 為空的 course_cards 用 `retriever.get_courses_by_name()` 補充完整資料。
 
-### 問題 2：缺少 `debug_trace` 欄位
+---
 
-目前 turns 不儲存工具呼叫詳情，重新載入歷史對話後 DebugTracePanel 為空。
+## `save()` 介面
 
-**計畫**：新增 `debug_trace` 欄位：
-
-```json
-"debug_trace": {
-  "toolCalls": [
-    {"tool": "get_course_knowledge_map", "args": {"course_name": "深度學習"}, "coursesFound": ["機器學習", "..."], "count": 8}
-  ],
-  "verify": {"poolSize": 8, "selected": ["機器學習", "..."], "filteredOut": []}
-}
+```python
+session_store.save(
+    session_id=session_id,
+    user_msg=question,
+    assistant_msg=answer,
+    course_cards=course_cards,
+    course_pool=list(course_pool.values()),   # 新增
+    debug_trace=debug_trace,                  # 新增
+    tools_used=tools_used
+)
 ```
-
-### 問題 3：缺少 `course_pool` 完整資料
-
-目前只儲存 `course_cards`（經驗證後的精選），不儲存完整的 `course_pool`。如需查看「查看全部 N 門課程」的 drawer，重新載入後無法恢復。
-
-**解法**：新增 `course_pool: list[CourseCard]` 欄位到 turns。
