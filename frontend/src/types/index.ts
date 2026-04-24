@@ -91,13 +91,14 @@ export interface Project {
 
 // 聊天 API 相關型別
 export interface CourseCard {
-  code:    string;
-  name:    string;
-  dept:    string;
-  credits: number;
-  type:    string;
-  teacher: string;
-  summary: string;
+  code:        string;
+  name:        string;
+  dept:        string;
+  credits:     number;
+  type:        string;
+  teacher:     string;
+  summary:     string;
+  domain_tags?: string; // "領域::relevance||領域::relevance"
 }
 
 export interface ChatApiResponse {
@@ -161,6 +162,7 @@ export interface VerifyTrace {
   poolSize:    number;
   selected:    string[];
   filteredOut: string[];
+  method?:     'tag' | 'llm';
 }
 
 export interface DebugTrace {

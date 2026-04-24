@@ -152,17 +152,23 @@ def load_nlp_data() -> dict:
     combined: dict = {}
     all_codes = set(tech) | set(simplified) | set(domain) | set(topic) | set(prof)
     for code in all_codes:
-        # domain_tags 結構是 [{"field": "...", "relevance": "..."}]，取 field 字串
+        # domain_tags 結構是 [{"field": "...", "relevance": "..."}]
         raw_domain = domain.get(code, {}).get("domain_tags", [])
         domain_fields = [
             tag["field"] for tag in raw_domain
             if isinstance(tag, dict) and tag.get("field")
         ] if raw_domain else []
+        domain_rich = "||".join(
+            f"{t['field']}::{t.get('relevance', 'medium')}"
+            for t in raw_domain
+            if isinstance(t, dict) and t.get("field")
+        ) if raw_domain else ""
 
         combined[code] = {
             "tech": tech.get(code, {}),
             "simplified": simplified.get(code, {}).get("simplified_concepts", []),
             "domain_tags": domain_fields,
+            "domain_tags_rich": domain_rich,
             "topic_tags": topic.get(code, {}).get("topic_tags", []),
             "core_questions": topic.get(code, {}).get("core_questions", []),
             "prof_links": prof.get(code, []),
@@ -445,7 +451,14 @@ def build_course_doc(
         "tools": join_list(tools),
         "concepts": join_list(concepts),
         "domain_tags": join_list(domain_tags),
-        "topic_tags": join_list(topic_tags),
+        "domain_tags_rich": nlp_data.get("domain_tags_rich", ""),
+        "topic_tags":           join_list(topic_tags),
+        "core_questions":       " | ".join(core_qs) if core_qs else "",
+        "simplified_concepts":  "||".join(
+            f"{c.get('original','')}::{c.get('display','')}"
+            for c in nlp_data.get("simplified", [])
+            if c.get("original") and c.get("display")
+        ),
         "teacher_specialties": teacher_spec,
         # 修課資格（eligibility）
         "eligible_years":        join_list(eligible_years),

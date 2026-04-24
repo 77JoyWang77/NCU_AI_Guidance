@@ -14,10 +14,13 @@ const TOOL_LABELS: Record<string, string> = {
   get_course_eligibility:   '查詢修課資格',
   get_program_description:  '查詢學程說明',
   get_requirements_notes:   '查詢修業規定',
-  find_similar_courses:     '搜尋相似課程',
-  get_course_knowledge_map: '查詢知識地圖',
-  get_depts_by_tech:        '查詢技術系所',
-  ppr_explore:              '知識圖譜探索',
+  find_similar_courses:        '搜尋相似課程',
+  get_course_knowledge_map:    '查詢知識地圖',
+  get_depts_by_tech:           '查詢技術系所',
+  ppr_explore:                 '知識圖譜探索',
+  search_programs:             '搜尋學分學程',
+  get_graduation_requirements: '查詢畢業規定',
+  get_course_syllabus:         '查詢課程大綱',
 };
 
 interface DebugTracePanelProps {
@@ -110,11 +113,11 @@ export default function DebugTracePanel({ trace }: DebugTracePanelProps) {
                           )}
                         </div>
 
-                        {/* 找到的課程 */}
+                        {/* 找到的課程／學程 */}
                         {t.coursesFound.length > 0 && (
                           <div className="mt-2">
                             <p className="mb-1 text-xs text-gray-400">
-                              找到的課程（共 {t.coursesFound.length} 門）
+                              {t.tool === 'search_programs' ? '找到的學程' : '找到的課程'}（共 {t.coursesFound.length} {t.tool === 'search_programs' ? '個' : '門'}）
                               {t.scoreType === 'distance' && <span className="ml-1 text-gray-400">· dist 越小越相似</span>}
                               {t.scoreType === 'shared_concepts' && <span className="ml-1 text-gray-400">· c= 共享概念數</span>}
                               {t.scoreType === 'ppr' && <span className="ml-1 text-gray-400">· ppr= PPR×1000</span>}
@@ -151,7 +154,10 @@ export default function DebugTracePanel({ trace }: DebugTracePanelProps) {
           {trace.verify && (
             <div className="p-3">
               <p className="mb-2 text-xs font-semibold text-gray-500">
-                LLM 驗證篩選
+                課程提取
+                <span className="ml-1 rounded bg-gray-100 px-1 py-0.5 text-xs font-mono text-gray-400">
+                  {trace.verify.method === 'tag' ? '<course> 標籤' : 'LLM 篩選'}
+                </span>
                 <span className="ml-1 font-normal text-gray-400">（從 {trace.verify.poolSize} 門課中選出）</span>
               </p>
 

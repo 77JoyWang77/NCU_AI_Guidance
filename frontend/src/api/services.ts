@@ -103,7 +103,7 @@ export const chatStreamAPI = {
       onToolStart:   (tool: string, args: Record<string, unknown>) => void;
       onToolDone:    (tool: string, count?: number, coursesFound?: string[], scores?: number[], scoreType?: string) => void;
       onVerifyStart: (poolSize: number) => void;
-      onVerifyDone:  (selected: string[], filteredOut: string[]) => void;
+      onVerifyDone:  (selected: string[], filteredOut: string[], method?: 'tag' | 'llm') => void;
       onDone:        (event: StreamEvent) => void;
       onError:       (msg: string) => void;
     },
@@ -139,7 +139,7 @@ export const chatStreamAPI = {
               else if (ev.type === 'tool_start') handlers.onToolStart(ev.tool ?? '', ev.args ?? {});
               else if (ev.type === 'tool_done')  handlers.onToolDone(ev.tool ?? '', ev.count, ev.courses_found, ev.scores, ev.score_type);
               else if (ev.type === 'verify_start') handlers.onVerifyStart(ev.pool_size ?? 0);
-              else if (ev.type === 'verify_done')  handlers.onVerifyDone(ev.selected ?? [], ev.filtered_out ?? []);
+              else if (ev.type === 'verify_done')  handlers.onVerifyDone(ev.selected ?? [], ev.filtered_out ?? [], ev.method);
               else if (ev.type === 'done')       handlers.onDone(ev);
               else if (ev.type === 'error')      handlers.onError(ev.message ?? '未知錯誤');
             } catch { /* malformed chunk */ }

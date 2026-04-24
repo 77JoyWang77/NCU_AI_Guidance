@@ -145,52 +145,69 @@ class CourseDetailRequest(BaseModel):
     code: str = ""
 
 
+def _parse_simplified(raw: str) -> list[dict]:
+    """將 'original::display||...' 格式還原為 [{original, display}] list。"""
+    if not raw:
+        return []
+    result = []
+    for pair in raw.split("||"):
+        parts = pair.split("::", 1)
+        if len(parts) == 2 and parts[0] and parts[1]:
+            result.append({"original": parts[0], "display": parts[1]})
+    return result
+
+
+def _parse_domain_tags(raw: str) -> list[dict]:
+    """將 'field::relevance||...' 格式還原為 [{field, relevance}] list。"""
+    if not raw:
+        return []
+    result = []
+    for pair in raw.split("||"):
+        parts = pair.split("::", 1)
+        field = parts[0].strip() if parts else ""
+        relevance = parts[1].strip() if len(parts) > 1 else "medium"
+        if field:
+            result.append({"field": field, "relevance": relevance})
+    return result
+
+
+
 @router.post("/course_detail")
 async def get_course_detail(req: CourseDetailRequest):
-    """以課名查詢完整課程資訊（含課程目標、內容、評分等）。"""
+    """以課名查詢完整課程資訊（含課程目標、內容、概念說明等）。"""
     from app.services import retriever
 
-    if req.name:
-        results = retriever.get_courses_by_name(req.name)
-        if results:
-            r = results[0]
-            meta = r.get("metadata", {})
-            return {
-                "name":             meta.get("name_zh", req.name),
-                "dept":             meta.get("dept", ""),
-                "credits":          meta.get("credits", 0),
-                "type":             meta.get("type", ""),
-                "teacher":          meta.get("teacher", ""),
-                "code":             meta.get("course_code", req.code),
-                "summary":          r.get("document", "")[:300],
-                "course_objective": meta.get("course_objective", ""),
-                "course_content":   meta.get("course_content", ""),
-                "grading":          meta.get("grading", ""),
-                "when_raw":         meta.get("when_raw", ""),
-                "prereq_codes":     meta.get("prereq_codes", ""),
-                "eligible_years":   meta.get("eligible_years", ""),
-            }
+    results = retriever.get_courses_by_name(req.name) if req.name else []
+    if not results:
+        results = retriever.search_courses(req.name or req.code, n_results=1)
+    if not results:
+        return {}
 
-    results = retriever.search_courses(req.name or req.code, n_results=1)
-    if results:
-        r = results[0]
-        meta = r.get("metadata", {})
-        return {
-            "name":             meta.get("name_zh", req.name),
-            "dept":             meta.get("dept", ""),
-            "credits":          meta.get("credits", 0),
-            "type":             meta.get("type", ""),
-            "teacher":          meta.get("teacher", ""),
-            "code":             meta.get("course_code", req.code),
-            "summary":          r.get("document", "")[:300],
-            "course_objective": meta.get("course_objective", ""),
-            "course_content":   meta.get("course_content", ""),
-            "grading":          meta.get("grading", ""),
-            "when_raw":         meta.get("when_raw", ""),
-            "prereq_codes":     meta.get("prereq_codes", ""),
-            "eligible_years":   meta.get("eligible_years", ""),
-        }
-    return {}
+    r = results[0]
+    meta = r.get("metadata", {})
+    return {
+        "name":                 meta.get("name_zh", req.name),
+        "dept":                 meta.get("dept", ""),
+        "credits":              meta.get("credits", 0),
+        "type":                 meta.get("type", ""),
+        "teacher":              meta.get("teacher", ""),
+        "code":                 meta.get("course_code", req.code),
+        # 課程主體
+        "course_objective":     meta.get("objective", ""),
+        "course_content":       meta.get("content", ""),
+        # 概念與技術
+        "concepts":             meta.get("concepts", ""),
+        "languages":            meta.get("languages", ""),
+        "tools":                meta.get("tools", ""),
+        "topic_tags":           meta.get("topic_tags", ""),
+        "core_questions":       meta.get("core_questions", ""),
+        "simplified_concepts":  _parse_simplified(meta.get("simplified_concepts", "")),
+        "domain_tags":          _parse_domain_tags(meta.get("domain_tags_rich", "") or meta.get("domain_tags", "")),
+        # 修課資格
+        "eligibility_raw":      "\n".join(retriever.get_course_eligibility(meta.get("course_code", "")).get("raw_conditions", [])),
+        "when_raw":             meta.get("when_raw", ""),
+        "prereq_codes":         meta.get("prereq_codes", ""),
+    }
 
 
 @router.get("/sessions")

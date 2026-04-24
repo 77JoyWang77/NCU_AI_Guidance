@@ -11,16 +11,26 @@ interface HighlightedAnswerProps {
 }
 
 function injectCourseMarkers(text: string, sorted: CourseCard[]): string {
-  let result = text;
+  // 建立課名 → index 的 lookup
+  const nameToIdx: Record<string, number> = {};
   for (let i = 0; i < sorted.length; i++) {
-    const name = sorted[i].name;
-    const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    result = result.replace(
-      new RegExp(escaped, 'g'),
-      `<mark data-cid="${i}">${name}</mark>`,
-    );
+    nameToIdx[sorted[i].name] = i;
   }
-  return result;
+
+  // 只替換 <course>課名（系所）</course> 或 <course>課名</course> 標籤所在位置
+  // 避免把全文中的同名子字串（如「巨量資料分析學程」中的「資料分析」）誤匹配
+  return text.replace(
+    /<course>(.*?)(?:（[^）]*）)?<\/course>/g,
+    (_, courseName) => {
+      const name = courseName.trim();
+      const idx = nameToIdx[name];
+      if (idx !== undefined) {
+        return `<mark data-cid="${idx}">${name}</mark>`;
+      }
+      // pool 中找不到對應課程，直接顯示文字（去掉標籤）
+      return name;
+    },
+  );
 }
 
 export default function HighlightedAnswer({
@@ -33,18 +43,9 @@ export default function HighlightedAnswer({
     ? text.slice(0, text.indexOf('<course_list>')).trimEnd()
     : text;
 
-  // 長名稱優先，避免「資料結構」被「資料」先切斷
-  const sorted = useMemo(
-    () =>
-      [...courseCards]
-        .filter((c) => c.name && c.name.length >= 2)
-        .sort((a, b) => b.name.length - a.name.length),
-    [courseCards],
-  );
-
   const processedText = useMemo(
-    () => (sorted.length ? injectCourseMarkers(clean, sorted) : clean),
-    [clean, sorted],
+    () => (courseCards.length ? injectCourseMarkers(clean, courseCards) : clean),
+    [clean, courseCards],
   );
 
   return (
@@ -56,7 +57,7 @@ export default function HighlightedAnswer({
           // 課程名稱高亮按鈕
           mark({ node: _n, ...props }) {
             const cid = parseInt((props as Record<string, unknown>)['data-cid'] as string ?? '-1', 10);
-            const card = sorted[cid];
+            const card = courseCards[cid];
             if (!card) return <mark {...props} />;
             return (
               <button

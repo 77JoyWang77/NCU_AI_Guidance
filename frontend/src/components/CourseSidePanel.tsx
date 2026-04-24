@@ -1,6 +1,23 @@
 import { HiBookOpen, HiInformationCircle, HiViewList } from 'react-icons/hi';
 import type { CourseCard } from '../types';
 
+type DomainTag = { field: string; relevance: 'high' | 'medium' | 'low' };
+
+function parseDomainTags(raw: string | undefined): DomainTag[] {
+  if (!raw) return [];
+  return raw.split('||').flatMap((part) => {
+    const [field, relevance] = part.split('::');
+    if (!field) return [];
+    return [{ field: field.trim(), relevance: (relevance?.trim() || 'medium') as DomainTag['relevance'] }];
+  });
+}
+
+const TAG_STYLES: Record<DomainTag['relevance'], string> = {
+  high:   'bg-primary-100 text-primary-700 font-medium',
+  medium: 'bg-gray-100 text-gray-600',
+  low:    'bg-gray-50 text-gray-400',
+};
+
 interface CourseSidePanelProps {
   courses:       CourseCard[];
   poolCount:     number;
@@ -40,6 +57,20 @@ function SidePanelCard({
           {course.teacher && (
             <div className="mt-0.5 text-xs text-gray-400">授課：{course.teacher}</div>
           )}
+          {course.domain_tags && (() => {
+            const tags = parseDomainTags(course.domain_tags)
+              .filter(t => t.relevance === 'high' || t.relevance === 'medium')
+              .slice(0, 3);
+            return tags.length > 0 ? (
+              <div className="mt-1.5 flex flex-wrap gap-1">
+                {tags.map((t, i) => (
+                  <span key={i} className={`rounded-full px-2 py-0.5 text-[10px] leading-tight ${TAG_STYLES[t.relevance]}`}>
+                    {t.field}
+                  </span>
+                ))}
+              </div>
+            ) : null;
+          })()}
         </div>
         {course.type && (
           <span className={`flex-shrink-0 rounded-full border px-1.5 py-0.5 text-xs font-medium ${typeColor}`}>

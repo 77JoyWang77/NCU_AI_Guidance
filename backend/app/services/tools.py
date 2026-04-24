@@ -34,6 +34,34 @@ def _load_requirements_notes() -> dict:
 
 # ── 結果格式化 ────────────────────────────────────────────────────────────────
 
+def _build_summary(m: dict) -> str:
+    """從 metadata 結構化欄位組合 summary，避免從 document 截斷。
+    通識課（GS/CC 開頭）優先用 topic_tags + core_questions，
+    其他課程用 concepts + technologies。
+    """
+    code = m.get("course_code", "")
+    parts = []
+
+    if code.startswith(("GS", "CC")):
+        topic = m.get("topic_tags", "") or ""
+        if topic:
+            parts.append(f"主題：{topic}")
+        core_qs = m.get("core_questions", "") or ""
+        if core_qs:
+            parts.append(f"核心議題：{core_qs}")
+    else:
+        concepts = m.get("concepts", "") or ""
+        if concepts:
+            parts.append(f"核心概念：{concepts}")
+        langs = m.get("languages", "") or ""
+        tools_s = m.get("tools", "") or ""
+        tech_parts = [x.strip() for x in (langs + "," + tools_s).split(",") if x.strip()]
+        if tech_parts:
+            parts.append(f"技術工具：{', '.join(tech_parts)}")
+
+    return "\n".join(parts)
+
+
 def _fmt_courses(results: list[dict]) -> list[dict]:
     out = []
     for r in results:
@@ -53,8 +81,9 @@ def _fmt_courses(results: list[dict]) -> list[dict]:
             "when_raw":     m.get("when_raw", ""),
             "concepts":     m.get("concepts", ""),
             "technologies": ", ".join(tech_parts),
-            "domain_tags":  m.get("domain_tags", ""),
-            "summary":      r.get("document", "")[:200],
+            "domain_tags":  m.get("domain_tags_rich", "") or m.get("domain_tags", ""),
+            "topic_tags":   m.get("topic_tags", ""),
+            "summary":      _build_summary(m),
             "distance":     round(r.get("distance", 0.0), 4),
         })
     return out

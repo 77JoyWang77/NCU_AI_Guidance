@@ -2,6 +2,23 @@ import { useState } from 'react';
 import { HiX, HiSearch, HiChevronDown, HiChevronUp } from 'react-icons/hi';
 import type { CourseCard } from '../types';
 
+type DomainTag = { field: string; relevance: 'high' | 'medium' | 'low' };
+
+function parseDomainTags(raw: string | undefined): DomainTag[] {
+  if (!raw) return [];
+  return raw.split('||').flatMap((part) => {
+    const [field, relevance] = part.split('::');
+    if (!field) return [];
+    return [{ field: field.trim(), relevance: (relevance?.trim() || 'medium') as DomainTag['relevance'] }];
+  });
+}
+
+const TAG_STYLES: Record<DomainTag['relevance'], string> = {
+  high:   'bg-primary-100 text-primary-700 font-medium',
+  medium: 'bg-gray-100 text-gray-600',
+  low:    'bg-gray-50 text-gray-400',
+};
+
 interface CoursePoolDrawerProps {
   courses:       CourseCard[];
   onClose:       () => void;
@@ -49,6 +66,20 @@ function PoolCard({ course, onClick }: { course: CourseCard; onClick: () => void
           )}
         </div>
       </div>
+      {course.domain_tags && (() => {
+        const tags = parseDomainTags(course.domain_tags)
+          .filter(t => t.relevance === 'high' || t.relevance === 'medium')
+          .slice(0, 4);
+        return tags.length > 0 ? (
+          <div className="mt-1.5 flex flex-wrap gap-1">
+            {tags.map((t, i) => (
+              <span key={i} className={`rounded-full px-2 py-0.5 text-[10px] leading-tight ${TAG_STYLES[t.relevance]}`}>
+                {t.field}
+              </span>
+            ))}
+          </div>
+        ) : null;
+      })()}
       {expanded && course.summary && (
         <p className="mt-2 border-t border-gray-100 pt-2 text-xs leading-relaxed text-gray-500">
           {course.summary}

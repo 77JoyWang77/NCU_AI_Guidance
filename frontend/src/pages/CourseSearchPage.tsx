@@ -29,10 +29,13 @@ const TOOL_LABELS: Record<string, string> = {
   get_course_eligibility:   '查詢修課資格',
   get_program_description:  '查詢學程說明',
   get_requirements_notes:   '查詢修業規定',
-  find_similar_courses:     '搜尋相似課程',
-  get_course_knowledge_map: '查詢知識地圖',
-  get_depts_by_tech:        '查詢技術系所',
-  ppr_explore:              '知識圖譜探索',
+  find_similar_courses:        '搜尋相似課程',
+  get_course_knowledge_map:    '查詢知識地圖',
+  get_depts_by_tech:           '查詢技術系所',
+  ppr_explore:                 '知識圖譜探索',
+  search_programs:             '搜尋學分學程',
+  get_graduation_requirements: '查詢畢業規定',
+  get_course_syllabus:         '查詢課程大綱',
 };
 
 interface ToolIndicator {
@@ -309,15 +312,10 @@ export default function CourseSearchPage() {
           activeTraceRef.current.poolSize = poolSize;
           setIsVerifying(true);
         },
-        onVerifyDone: (selected, filteredOut) => {
+        onVerifyDone: (selected, filteredOut, method) => {
           setIsVerifying(false);
-          activeTraceRef.current = {
-            ...activeTraceRef.current,
-            toolCalls: activeTraceRef.current.toolCalls,
-            // store verify result temporarily in ref for onDone
-          };
           // store verify data in a temp field for onDone to pick up
-          (activeTraceRef.current as typeof activeTraceRef.current & { verifyResult?: unknown }).verifyResult = { selected, filteredOut };
+          (activeTraceRef.current as typeof activeTraceRef.current & { verifyResult?: unknown }).verifyResult = { selected, filteredOut, method };
         },
         onDone: (ev: StreamEvent) => {
           if (ev.session_id) sessionIds.current[convId] = ev.session_id;
@@ -327,7 +325,7 @@ export default function CourseSearchPage() {
           const hasLarge  = ev.has_large_result   ?? false;
           const tools     = ev.tools_used         ?? [];
 
-          const traceRef = activeTraceRef.current as typeof activeTraceRef.current & { verifyResult?: { selected: string[]; filteredOut: string[] } };
+          const traceRef = activeTraceRef.current as typeof activeTraceRef.current & { verifyResult?: { selected: string[]; filteredOut: string[]; method?: 'tag' | 'llm' } };
           const debugTrace: DebugTrace = {
             toolCalls: traceRef.toolCalls,
             verify: traceRef.verifyResult
