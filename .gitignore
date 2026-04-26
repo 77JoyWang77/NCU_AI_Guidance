@@ -87,6 +87,8 @@ data/raw/課程地圖/
 data/raw/projects/
 data/sessions/
 data/test_results/
+data/processed/qdrant_data/
+data/processed/chroma_db_backup/
 
 # 大型資料檔案
 *.csv.gz

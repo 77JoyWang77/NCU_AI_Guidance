@@ -570,6 +570,77 @@ def tool_get_requirements_notes(dept_name: str) -> str:
     return f"找不到「{dept_name}」的畢業規定資料。"
 
 
+def tool_explore_concept_neighborhood(
+    query: str,
+    hops: int = 2,
+    top_k: int = 15,
+) -> str:
+    """以概念詞彙為中心做知識圖譜鄰域探索，找出覆蓋該概念的相關課程（N跳 BFS）。
+
+    【使用時機】使用者問「有哪些課程涵蓋 X 概念？」、「學習 Y 技術需要哪些課？」、
+    「X 和哪些課有直接關聯？」時使用。
+
+    與 ppr_explore 的差別：
+    - ppr_explore：全圖 PPR 擴散，覆蓋更廣（捕捉間接關聯）
+    - explore_concept_neighborhood：有限 N 跳 BFS，更精確的直接鄰域
+
+    支援 Qdrant 向量入口（需先執行 build_qdrant_index.py）；
+    未建立時自動退回字串比對入口。
+
+    hops: BFS 跳數（預設 2，最多 3）
+    """
+    hops = max(1, min(hops, 3))
+    results = graph_service.explore_by_concept_neighborhood(query, hops=hops, top_k=top_k)
+    if not results:
+        return (f"找不到與「{query}」相關的概念節點。"
+                f"請嘗試更精確的概念詞，如「深度學習」、「Python」、「資料結構」。")
+    lines = [f"以「{query}」為中心的概念鄰域（{hops} 跳，共 {len(results)} 門課）："]
+    for r in results:
+        dept    = r.get("dept") or "?"
+        credits = r.get("credits") or "?"
+        lines.append(f"- {r['name']}（{dept}，{credits} 學分）")
+    return "\n".join(lines)
+
+
+def tool_get_course_community(course_name: str) -> str:
+    """找指定課程在知識圖譜 Leiden 社群中的定位，並列出同類別課程。
+
+    【使用時機】使用者問「機器學習屬於哪個課程領域？」、「和深度學習同一類的課有哪些？」、
+    「這門課的課程類別是什麼？」等分類定位問題。
+    """
+    result = graph_service.get_course_community(course_name)
+    if not result.get("found"):
+        return result.get("message", f"找不到「{course_name}」的社群資料。")
+    label    = result.get("label") or f"社群 {result['community_id']}"
+    match    = "（精確匹配）" if result.get("exact_match") else "（模糊匹配）"
+    concepts = "、".join(result.get("top_concepts", []))
+    related  = "、".join(result.get("related_courses", []))
+    lines = [
+        f"「{course_name}」{match}",
+        f"所屬類別：{label}（共 {result['size']} 門課）",
+        f"核心概念：{concepts or '（無）'}",
+        f"同類別課程（部分）：{related or '（無）'}",
+    ]
+    return "\n".join(lines)
+
+
+def tool_list_course_communities() -> str:
+    """列出知識圖譜 Leiden 分群的所有課程類別（社群）及其規模與核心概念。
+
+    【使用時機】使用者問「中央大學課程有哪些大類？」、「有哪些 AI 相關的課程類別？」、
+    「學校課程大致分成哪幾個領域？」等整體性分類問題。
+    """
+    communities = graph_service.list_course_communities()
+    if not communities:
+        return "社群資料尚未建立，請執行 compute_communities.py。"
+    lines = [f"中央大學課程社群（Leiden 分群，共 {len(communities)} 個類別）："]
+    for c in communities:
+        label    = c.get("label") or f"社群 {c['id']}"
+        concepts = "、".join(c.get("top_concepts", [])[:4])
+        lines.append(f"- {label}（{c['size']} 門課）｜{concepts}")
+    return "\n".join(lines)
+
+
 def tool_find_similar_courses(course_name: str) -> str:
     """找與指定課程有最多共同概念的相似課程（跨系所）。
 
@@ -735,8 +806,10 @@ _TOOL_MAP = {
     "find_similar_courses":        tool_find_similar_courses,
     "get_course_knowledge_map":    tool_get_course_knowledge_map,
     "get_depts_by_tech":           tool_get_depts_by_tech,
-    "ppr_explore":                 tool_ppr_explore,
-    "get_course_syllabus":         tool_get_course_syllabus,
+    "ppr_explore":                    tool_ppr_explore,
+    "get_course_syllabus":            tool_get_course_syllabus,
+    "explore_concept_neighborhood":   tool_explore_concept_neighborhood,
+    # get_course_community / list_course_communities：社群已注入圖，暫不暴露為獨立工具
 }
 
 
@@ -995,6 +1068,22 @@ TOOLS = [
                     "top_k": {"type": "integer", "description": "回傳數量（預設 15）"},
                 },
                 "required": ["seed"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "explore_concept_neighborhood",
+            "description": "以語意概念詞彙為入口，在知識圖譜做 N 跳 BFS 鄰域探索，找出直接覆蓋此概念的課程。適合「有哪些課涵蓋神經網路？」「學卷積神經網路要修哪些課？」等需要精確概念鄰域的問題（比 ppr_explore 更精準，比 search_courses 更廣）。需先執行 build_qdrant_index.py；未建立時自動退回字串比對。",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "query": {"type": "string",  "description": "概念或技術關鍵詞，如「神經網路」「資料視覺化」「強化學習」"},
+                    "hops":  {"type": "integer", "description": "BFS 跳數（1-3，預設 2）"},
+                    "top_k": {"type": "integer", "description": "回傳課程數量（預設 15）"},
+                },
+                "required": ["query"],
             },
         },
     },

@@ -1,6 +1,7 @@
 {
   "total_nodes": 14602,
   "total_edges": 34631,
+  "note": "runtime igraph 額外注入 48 個 Community 節點（BELONGS_TO 弱邊 weight=0.12），不計入此統計",
   "node_types": {
     "Concept": 6938,
     "Field": 3594,

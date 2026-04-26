@@ -1,7 +1,7 @@
 """
 build_vector_index.py
 
-建立 ChromaDB 向量索引，涵蓋五個 collection：
+建立 Qdrant 向量索引，涵蓋五個 collection：
   ncu_courses_ug    — 大學部課程（含 NLP 萃取結果、教師專長、應修學期）
   ncu_courses_grad  — 研究所課程
   ncu_credit_programs — 學分學程
@@ -11,6 +11,7 @@ build_vector_index.py
 執行方式：
   cd <project_root>
   python scripts/rag/build_vector_index.py
+  python scripts/rag/build_vector_index.py --reset   # 強制重建（清空舊資料）
 
 環境變數（.env）：
   AZURE_OPENAI_API_KEY=...
@@ -20,8 +21,9 @@ build_vector_index.py
 """
 
 import argparse
-import json
 import csv
+import hashlib
+import json
 import os
 import re
 import time
@@ -30,14 +32,15 @@ from typing import Optional
 
 from dotenv import load_dotenv
 from openai import AzureOpenAI
-import chromadb
+from qdrant_client import QdrantClient
+from qdrant_client.models import Distance, PointStruct, VectorParams
 from tqdm import tqdm
 
 # ── 路徑設定 ────────────────────────────────────────────────────────────────
 ROOT = Path(__file__).parent.parent.parent
 DATA_RAW = ROOT / "data" / "raw"
 DATA_PROC = ROOT / "data" / "processed"
-CHROMA_DIR = DATA_PROC / "chroma_db"
+QDRANT_DIR = DATA_PROC / "qdrant_data"
 
 COURSE_ELIGIBILITY = DATA_PROC / "course_eligibility.json"
 COURSES_114_1 = DATA_RAW / "courses" / "114_1"
@@ -53,20 +56,22 @@ SCHEDULE_DIR = DATA_PROC / "schedule_draft"
 CREDIT_PROGRAMS_DIR = DATA_PROC / "credit_programs"
 PROGRAM_DESC = DATA_PROC / "program_descriptions.json"
 
-# ── 嵌入配置 ────────────────────────────────────────────────────────────────
-EMBED_BATCH = 50   # 每批送給 Azure OpenAI 的文件數
+VECTOR_DIM = 3072   # text-embedding-3-large
+EMBED_BATCH = 50    # 每批送給 Azure OpenAI 的文件數
 
 # ── 工具函式 ────────────────────────────────────────────────────────────────
 
 def clean_code(raw: str) -> str:
-    """CE1001-* → CE1001"""
     return raw.split("-")[0].strip() if raw else ""
+
+
+def _doc_id_to_int(doc_id: str) -> int:
+    return int(hashlib.md5(doc_id.encode()).hexdigest()[:15], 16)
 
 
 _YEAR_MAP = {"一": 1, "二": 2, "三": 3, "四": 4}
 _SEM_MAP  = {"上": 1, "下": 2}
 
-# 全部學期的順序表，用於展開範圍
 _ALL_SEMS: list[tuple[int, int]] = [
     (1, 1), (1, 2), (2, 1), (2, 2),
     (3, 1), (3, 2), (4, 1), (4, 2),
@@ -74,7 +79,6 @@ _ALL_SEMS: list[tuple[int, int]] = [
 
 
 def _parse_single(token: str) -> tuple[Optional[int], Optional[int]]:
-    """'大二下' → (2, 2)；解析失敗回傳 (None, None)"""
     m = re.search(r"大([一二三四])([上下])?", token.strip())
     if not m:
         return None, None
@@ -82,25 +86,13 @@ def _parse_single(token: str) -> tuple[Optional[int], Optional[int]]:
 
 
 def parse_when(when_str: str) -> dict:
-    """
-    解析 when 字串，回傳完整 metadata dict。
-
-    支援：
-      ""                → 全空
-      "大一上"           → 單學期
-      "大一上~大二下"    → 跨學期範圍
-
-    回傳 keys：
-      when_raw, when_year_start, when_year_end,
-      when_sem_start, when_sem_end, when_semesters
-    """
     result: dict = {
         "when_raw": when_str or "",
         "when_year_start": 0,
         "when_year_end": 0,
         "when_sem_start": 0,
         "when_sem_end": 0,
-        "when_semesters": "",
+        "when_semesters": [],   # list[str]，供 Qdrant MatchAny 過濾
     }
     if not when_str:
         return result
@@ -119,11 +111,10 @@ def parse_when(when_str: str) -> dict:
     result["when_year_end"]   = y_e
     result["when_sem_end"]    = s_e or 2
 
-    # 展開範圍成 "y_s" 代碼列表，供 $contains 過濾
     try:
         idx_s = _ALL_SEMS.index((y_s, result["when_sem_start"]))
         idx_e = _ALL_SEMS.index((y_e, result["when_sem_end"]))
-        result["when_semesters"] = ",".join(f"{y}_{s}" for y, s in _ALL_SEMS[idx_s:idx_e + 1])
+        result["when_semesters"] = [f"{y}_{s}" for y, s in _ALL_SEMS[idx_s:idx_e + 1]]
     except ValueError:
         pass
 
@@ -135,14 +126,9 @@ def load_json(path: Path) -> dict | list:
         return json.load(f)
 
 
-def join_list(items: list[str], sep=",") -> str:
-    return sep.join(str(i) for i in items if i)
-
-
 # ── 載入 NLP 萃取資料 ────────────────────────────────────────────────────────
 
 def load_nlp_data() -> dict:
-    """回傳 {course_code: {simplified, domain_tags, tech_nodes, topic_tags, prof_links}}"""
     tech = load_json(NLP_DIR / "nlp_tech_nodes.json")
     simplified = load_json(NLP_DIR / "nlp_simplified_concepts.json")
     domain = load_json(NLP_DIR / "nlp_domain_tags.json")
@@ -152,7 +138,6 @@ def load_nlp_data() -> dict:
     combined: dict = {}
     all_codes = set(tech) | set(simplified) | set(domain) | set(topic) | set(prof)
     for code in all_codes:
-        # domain_tags 結構是 [{"field": "...", "relevance": "..."}]
         raw_domain = domain.get(code, {}).get("domain_tags", [])
         domain_fields = [
             tag["field"] for tag in raw_domain
@@ -178,7 +163,6 @@ def load_nlp_data() -> dict:
 
 
 def load_teacher_csv() -> dict[str, str]:
-    """回傳 {教師名稱: '專長1,專長2,...'}"""
     result: dict[str, str] = {}
     with open(TEACHER_CSV, encoding="utf-8") as f:
         for row in csv.DictReader(f):
@@ -191,10 +175,6 @@ def load_teacher_csv() -> dict[str, str]:
 
 
 def load_eligibility_lookup() -> dict[str, dict]:
-    """
-    回傳 {course_code: {eligibility fields, course_relations fields}}
-    支援 v3 格式（access_rules list）與舊格式（v2：eligibility 巢狀 / 頂層扁平）。
-    """
     lookup: dict[str, dict] = {}
     if not COURSE_ELIGIBILITY.exists():
         return lookup
@@ -208,7 +188,6 @@ def load_eligibility_lookup() -> dict[str, dict]:
 
         access_rules = entry.get("access_rules")
         if access_rules is not None:
-            # v3 格式：從 access_rules 聚合供 ChromaDB metadata 使用的欄位
             rels = entry.get("course_relations") or {}
             dept_union    = sorted({d for r in access_rules for d in r.get("dept_include", [])})
             college_union = sorted({c for r in access_rules for c in r.get("college_include", [])})
@@ -216,7 +195,6 @@ def load_eligibility_lookup() -> dict[str, dict]:
             open_to_double_major = any(r.get("open_to_double_major") for r in access_rules)
             open_to_credit_prog  = any(r.get("open_to_credit_prog")  for r in access_rules)
             open_to_cross_school = any(r.get("open_to_cross_school") for r in access_rules)
-            # 大學部可修年級：取所有非研究所 rule 的年級聯集
             _GRAD = {"master", "phd", "master_inservice", "master_industry"}
             undergrad_years: set[int] = set()
             for r in access_rules:
@@ -240,7 +218,6 @@ def load_eligibility_lookup() -> dict[str, dict]:
                 "conflict_codes":      rels.get("conflict_codes", []),
             }
         else:
-            # 舊格式 fallback（v2：eligibility 巢狀 / 頂層扁平）
             elig = entry.get("eligibility") or entry
             rels = entry.get("course_relations") or entry
             lookup[code] = {
@@ -265,10 +242,6 @@ def load_eligibility_lookup() -> dict[str, dict]:
 
 
 def load_schedule_lookup() -> dict[str, dict]:
-    """
-    回傳 {course_code: {when_raw, when_year_start, ..., when_semesters, verified}}
-    從所有 schedule_draft 的 required_courses 建立
-    """
     lookup: dict = {}
     if not SCHEDULE_DIR.exists():
         return lookup
@@ -300,7 +273,9 @@ class Embedder:
         self.deployment = deployment
 
     def embed_batch(self, texts: list[str]) -> list[list[float]]:
-        """批次取得向量，自動重試"""
+        # text-embedding-3-large 最大 8192 tokens；中文約 2 token/字，保守截斷於 3500 字元
+        MAX_CHARS = 4000
+        texts = [t[:MAX_CHARS] if len(t) > MAX_CHARS else t for t in texts]
         results = []
         for i in range(0, len(texts), EMBED_BATCH):
             batch = texts[i : i + EMBED_BATCH]
@@ -327,9 +302,7 @@ def build_course_doc(
     eligibility_lookup: dict,
     is_grad: bool = False,
 ) -> tuple[str, str, dict]:
-    """
-    回傳 (doc_id, document_text, metadata)
-    """
+    """回傳 (doc_id, document_text, payload)"""
     syllabus = course.get("課程綱要") or {}
     if isinstance(syllabus, str):
         syllabus = {}
@@ -351,47 +324,34 @@ def build_course_doc(
     type_ = course.get("選修別", "")
     teacher = course.get("授課教師", "")
 
-    # NLP 萃取
     nlp_data = nlp.get(code, {})
     tech = nlp_data.get("tech", {})
-    languages = tech.get("languages", [])
-    tools = tech.get("tools", [])
-    concepts = tech.get("concepts", [])
-    domain_tags = nlp_data.get("domain_tags", [])
-    topic_tags = nlp_data.get("topic_tags", [])
+    languages: list[str] = tech.get("languages", [])
+    tools: list[str] = tech.get("tools", [])
+    concepts: list[str] = tech.get("concepts", [])
+    domain_tags: list[str] = nlp_data.get("domain_tags", [])
+    topic_tags: list[str] = nlp_data.get("topic_tags", [])
 
-    # 白話概念解釋（加入 embedding 文字）
     simplified = nlp_data.get("simplified", [])
     simplified_text = " ".join(
         sc.get("display", "") for sc in simplified if sc.get("display")
     )
-
-    # 教師官方專長
     teacher_spec = teacher_lookup.get(teacher, "")
-
-    # 應修學期
     sched = schedule_lookup.get(code, {})
-
-    # 修課條件（v2 格式：elig 含 eligibility + course_relations 欄位）
     elig = eligibility_lookup.get(code, {})
-    eligible_years = elig.get("eligible_years", [])
-    prereq_codes = elig.get("prereq_codes", [])
-    coreq_codes = elig.get("coreq_codes", [])
-    conflict_codes = elig.get("conflict_codes", [])
+    eligible_years: list[int] = elig.get("eligible_years", [])
+    prereq_codes: list[str] = elig.get("prereq_codes", [])
+    coreq_codes: list[str] = elig.get("coreq_codes", [])
+    conflict_codes: list[str] = elig.get("conflict_codes", [])
 
-    # core_questions（通識課，加入 embedding 文字提升語意命中率）
-    core_qs = nlp_data.get("core_questions", [])
-
-    # 教授研究領域（從 prof_links 萃取，補充語意）
+    core_qs: list[str] = nlp_data.get("core_questions", [])
     prof_links = nlp_data.get("prof_links", [])
     prof_fields = list({
         link["field"] for link in prof_links
         if isinstance(link, dict) and link.get("field")
     })[:5]
 
-    # 參考書目
     textbook = syllabus.get("教科書/參考書", "") or ""
-    # 核心能力名稱列表
     core_abilities = syllabus.get("核心能力", []) or []
     ability_names = [a.get("能力名稱", "") for a in core_abilities if isinstance(a, dict) and a.get("能力名稱")]
 
@@ -434,8 +394,10 @@ def build_course_doc(
         parts.append(f"參考書目：{textbook}")
     document = "\n".join(parts)
 
-    # ── metadata（ChromaDB 只接受 str/int/float/bool）──
-    meta: dict = {
+    # ── payload（Qdrant）──
+    # 過濾用的 list 欄位直接存陣列，供 MatchAny 做成員查詢
+    payload: dict = {
+        "_text": document,   # 原始文件文字
         "course_code": code,
         "name_zh": name_zh,
         "name_en": name_en,
@@ -447,23 +409,28 @@ def build_course_doc(
         "academic_year": year,
         "teacher": teacher,
         "is_grad": is_grad,
-        "languages": join_list(languages),
-        "tools": join_list(tools),
-        "concepts": join_list(concepts),
-        "domain_tags": join_list(domain_tags),
+        # ── list 欄位（支援 MatchAny / $contains 過濾）──
+        "languages": languages,
+        "tools": tools,
+        "concepts": concepts,
+        "domain_tags": domain_tags,
+        "topic_tags": topic_tags,
+        "eligible_years": [int(y) for y in eligible_years],
+        "dept_include": elig.get("dept_include", []),
+        "college_include": elig.get("college_include", []),
+        "prereq_codes": prereq_codes,
+        "coreq_codes": coreq_codes,
+        "conflict_codes": conflict_codes,
+        "when_semesters": sched.get("when_semesters", []),   # list[str]，例如 ["1_1","1_2"]
+        # ── 字串/數值欄位 ──
         "domain_tags_rich": nlp_data.get("domain_tags_rich", ""),
-        "topic_tags":           join_list(topic_tags),
-        "core_questions":       " | ".join(core_qs) if core_qs else "",
-        "simplified_concepts":  "||".join(
+        "core_questions": " | ".join(core_qs) if core_qs else "",
+        "simplified_concepts": "||".join(
             f"{c.get('original','')}::{c.get('display','')}"
             for c in nlp_data.get("simplified", [])
             if c.get("original") and c.get("display")
         ),
         "teacher_specialties": teacher_spec,
-        # 修課資格（eligibility）
-        "eligible_years":        join_list(eligible_years),
-        "dept_include":          join_list(elig.get("dept_include", [])),
-        "college_include":       join_list(elig.get("college_include", [])),
         "open_to_minor":         elig.get("open_to_minor", False),
         "open_to_double_major":  elig.get("open_to_double_major", False),
         "open_to_credit_prog":   elig.get("open_to_credit_prog", False),
@@ -472,31 +439,23 @@ def build_course_doc(
         "is_grad_only":          elig.get("is_grad_only", False),
         "is_undergrad_open":     elig.get("is_undergrad_open", True),
         "has_special_condition": elig.get("has_special_condition", False),
-        # 課程關係（course_relations）
-        "prereq_codes":          join_list(prereq_codes),
-        "coreq_codes":           join_list(coreq_codes),
-        "conflict_codes":        join_list(conflict_codes),
         "has_prereq":            len(prereq_codes) > 0,
-        # 應修學期（完整範圍資訊）
         "when_raw":          sched.get("when_raw", ""),
         "when_year_start":   sched.get("when_year_start", 0),
         "when_year_end":     sched.get("when_year_end", 0),
         "when_sem_start":    sched.get("when_sem_start", 0),
         "when_sem_end":      sched.get("when_sem_end", 0),
-        "when_semesters":    sched.get("when_semesters", ""),
         "schedule_verified": sched.get("verified", False),
-        # 課程大綱詳細欄位
         "objective": objective,
         "content":   content,
         "textbook":  textbook,
-        # 課程附加資訊
         "course_domain":     syllabus.get("課程領域", "") or "",
         "class_time":        course.get("上課時間", "") or "",
         "capacity":          int(course.get("人數限制", 0) or 0) if str(course.get("人數限制", "0") or "0").isdigit() else 0,
     }
 
     doc_id = f"{year}{semester}_{serial}_{code}"
-    return doc_id, document, meta
+    return doc_id, document, payload
 
 
 def load_all_courses(dirs: list[Path]) -> list[dict]:
@@ -516,8 +475,39 @@ def load_all_courses(dirs: list[Path]) -> list[dict]:
 
 # ── 建立各 Collection ─────────────────────────────────────────────────────────
 
+def _prepare_collection(client: QdrantClient, name: str, reset: bool) -> bool:
+    """若 collection 存在且不 reset，回傳 False（跳過）；否則建立並回傳 True。"""
+    existing = {c.name for c in client.get_collections().collections}
+    if name in existing:
+        if reset:
+            client.delete_collection(name)
+            print(f"  刪除舊 collection：{name}")
+        else:
+            print(f"  Collection '{name}' 已存在，跳過（使用 --reset 強制重建）")
+            return False
+    client.create_collection(
+        collection_name=name,
+        vectors_config=VectorParams(size=VECTOR_DIM, distance=Distance.COSINE),
+    )
+    return True
+
+
+def _upsert_batch(client: QdrantClient, name: str, doc_ids: list[str],
+                  documents: list[str], payloads: list[dict], embeddings: list):
+    points = [
+        PointStruct(
+            id=_doc_id_to_int(doc_id),
+            vector=emb,
+            payload=payload,
+        )
+        for doc_id, payload, emb in zip(doc_ids, payloads, embeddings)
+    ]
+    for i in range(0, len(points), 500):
+        client.upsert(collection_name=name, points=points[i:i+500])
+
+
 def build_courses_collection(
-    client: chromadb.PersistentClient,
+    qdrant: QdrantClient,
     embedder: Embedder,
     nlp: dict,
     teacher_lookup: dict,
@@ -526,16 +516,14 @@ def build_courses_collection(
     name: str,
     dirs: list[Path],
     is_grad: bool,
+    reset: bool,
 ):
     print(f"\n=== 建立 {name} ===")
-    col = client.get_or_create_collection(
-        name=name,
-        metadata={"hnsw:space": "cosine"},
-    )
+    if not _prepare_collection(qdrant, name, reset):
+        return
 
     raw = load_all_courses(dirs)
 
-    # scraped_missing 只補到大學部
     if not is_grad and SCRAPED_MISSING.exists():
         try:
             extra = load_json(SCRAPED_MISSING)
@@ -547,20 +535,19 @@ def build_courses_collection(
 
     print(f"  原始課程數：{len(raw)}")
 
-    # 去重：同 (course_code, semester) 只留一筆（114_2 優先，因後讀覆蓋前）
     seen: dict[str, dict] = {}
     for c in raw:
         code = clean_code(c.get("課號-班別", ""))
         sem = c.get("學期", "")
         key = f"{code}_{sem}"
-        seen[key] = c  # 後讀的同 key 自然覆蓋（dirs 順序：114_1 → 114_2）
+        seen[key] = c
     deduped = list(seen.values())
     print(f"  去重後：{len(deduped)} 筆")
 
-    ids, docs, metas = [], [], []
+    ids, docs, payloads = [], [], []
     skipped = 0
     for c in deduped:
-        doc_id, doc_text, meta = build_course_doc(
+        doc_id, doc_text, payload = build_course_doc(
             c, nlp, teacher_lookup, schedule_lookup, eligibility_lookup, is_grad
         )
         if not doc_text.strip():
@@ -568,56 +555,31 @@ def build_courses_collection(
             continue
         ids.append(doc_id)
         docs.append(doc_text)
-        metas.append(meta)
+        payloads.append(payload)
 
     print(f"  略過空白文件：{skipped}，準備嵌入：{len(ids)}")
 
-    # 已存在的不重複嵌入
-    existing = set(col.get(ids=ids)["ids"]) if ids else set()
-    new_mask = [i for i, did in enumerate(ids) if did not in existing]
-    if not new_mask:
-        print("  所有文件已在索引中，跳過。")
-        return
-
-    new_ids = [ids[i] for i in new_mask]
-    new_docs = [docs[i] for i in new_mask]
-    new_metas = [metas[i] for i in new_mask]
-    print(f"  新增嵌入：{len(new_ids)} 筆")
-
     embeddings = []
-    for i in tqdm(range(0, len(new_docs), EMBED_BATCH), desc=f"  Embedding {name}"):
-        batch = new_docs[i : i + EMBED_BATCH]
+    for i in tqdm(range(0, len(docs), EMBED_BATCH), desc=f"  Embedding {name}"):
+        batch = docs[i : i + EMBED_BATCH]
         embeddings.extend(embedder.embed_batch(batch))
 
-    # 分批寫入 ChromaDB（避免一次太大）
-    for i in range(0, len(new_ids), 500):
-        col.add(
-            ids=new_ids[i : i + 500],
-            documents=new_docs[i : i + 500],
-            embeddings=embeddings[i : i + 500],
-            metadatas=new_metas[i : i + 500],
-        )
-    print(f"  完成，collection 總數：{col.count()}")
+    _upsert_batch(qdrant, name, ids, docs, payloads, embeddings)
+    info = qdrant.get_collection(name)
+    print(f"  完成，collection 總數：{info.points_count}")
 
 
-def build_programs_collection(
-    client: chromadb.PersistentClient,
-    embedder: Embedder,
-):
+def build_programs_collection(qdrant: QdrantClient, embedder: Embedder, reset: bool):
     print("\n=== 建立 ncu_credit_programs ===")
-    col = client.get_or_create_collection(
-        name="ncu_credit_programs",
-        metadata={"hnsw:space": "cosine"},
-    )
+    if not _prepare_collection(qdrant, "ncu_credit_programs", reset):
+        return
 
-    # 載入 program_descriptions（自由文字）
     desc_map: dict[str, str] = {}
     if PROGRAM_DESC.exists():
         raw = load_json(PROGRAM_DESC)
         if isinstance(raw, dict):
             desc_map = {k: v.get("description", "") for k, v in raw.items()}
 
-    # 載入 credit_programs（結構化課程列表）
     programs: list[dict] = []
     if CREDIT_PROGRAMS_DIR.exists():
         for fp in CREDIT_PROGRAMS_DIR.glob("*.json"):
@@ -630,7 +592,7 @@ def build_programs_collection(
 
     print(f"  載入 {len(programs)} 個學分學程")
 
-    ids, docs, metas = [], [], []
+    ids, docs, payloads = [], [], []
     for p in programs:
         pid = p.get("id", "")
         pname = p.get("name", "")
@@ -638,7 +600,6 @@ def build_programs_collection(
         min_credits = p.get("min_credits", 0)
         description = desc_map.get(pname, p.get("description", ""))
 
-        # 課程名稱清單
         course_names = []
         for rc in p.get("required_courses", []):
             course_names.append(rc.get("name", ""))
@@ -659,37 +620,24 @@ def build_programs_collection(
 
         ids.append(pid)
         docs.append(doc_text)
-        metas.append({
+        payloads.append({
+            "_text": doc_text,
             "program_id": pid,
             "program_name": pname,
             "college": college,
             "min_credits": int(min_credits) if str(min_credits).isdigit() else 0,
         })
 
-    existing = set(col.get(ids=ids)["ids"]) if ids else set()
-    new_mask = [i for i, did in enumerate(ids) if did not in existing]
-    if not new_mask:
-        print("  所有學程已在索引中，跳過。")
-        return
-
-    new_ids = [ids[i] for i in new_mask]
-    new_docs = [docs[i] for i in new_mask]
-    new_metas = [metas[i] for i in new_mask]
-
-    embeddings = embedder.embed_batch(new_docs)
-    col.add(ids=new_ids, documents=new_docs, embeddings=embeddings, metadatas=new_metas)
-    print(f"  完成，collection 總數：{col.count()}")
+    embeddings = embedder.embed_batch(docs)
+    _upsert_batch(qdrant, "ncu_credit_programs", ids, docs, payloads, embeddings)
+    info = qdrant.get_collection("ncu_credit_programs")
+    print(f"  完成，collection 總數：{info.points_count}")
 
 
-def build_departments_collection(
-    client: chromadb.PersistentClient,
-    embedder: Embedder,
-):
+def build_departments_collection(qdrant: QdrantClient, embedder: Embedder, reset: bool):
     print("\n=== 建立 ncu_departments ===")
-    col = client.get_or_create_collection(
-        name="ncu_departments",
-        metadata={"hnsw:space": "cosine"},
-    )
+    if not _prepare_collection(qdrant, "ncu_departments", reset):
+        return
 
     if not COLLEGO.exists():
         print(f"  [WARN] 找不到 {COLLEGO}")
@@ -700,7 +648,7 @@ def build_departments_collection(
         print("  [WARN] collego_ncu.json 格式異常")
         return
 
-    ids, docs, metas = [], [], []
+    ids, docs, payloads = [], [], []
     for d in depts:
         dept_id = d.get("dept_id", "")
         dept_name = d.get("dept_name", "")
@@ -727,33 +675,26 @@ def build_departments_collection(
 
         ids.append(dept_id)
         docs.append(doc_text)
-        metas.append({"dept_id": dept_id, "dept_name": dept_name})
+        payloads.append({
+            "_text": doc_text,
+            "dept_id": dept_id,
+            "dept_name": dept_name,
+        })
 
-    existing = set(col.get(ids=ids)["ids"]) if ids else set()
-    new_mask = [i for i, did in enumerate(ids) if did not in existing]
-    if not new_mask:
-        print("  所有系所已在索引中，跳過。")
-        return
-
-    new_ids = [ids[i] for i in new_mask]
-    new_docs = [docs[i] for i in new_mask]
-    new_metas = [metas[i] for i in new_mask]
-
-    embeddings = embedder.embed_batch(new_docs)
-    col.add(ids=new_ids, documents=new_docs, embeddings=embeddings, metadatas=new_metas)
-    print(f"  完成，collection 總數：{col.count()}")
+    embeddings = embedder.embed_batch(docs)
+    _upsert_batch(qdrant, "ncu_departments", ids, docs, payloads, embeddings)
+    info = qdrant.get_collection("ncu_departments")
+    print(f"  完成，collection 總數：{info.points_count}")
 
 
 def build_teachers_collection(
-    client: chromadb.PersistentClient,
+    qdrant: QdrantClient,
     embedder: Embedder,
-    teacher_lookup: dict[str, str],
+    reset: bool,
 ):
     print("\n=== 建立 ncu_teachers ===")
-    col = client.get_or_create_collection(
-        name="ncu_teachers",
-        metadata={"hnsw:space": "cosine"},
-    )
+    if not _prepare_collection(qdrant, "ncu_teachers", reset):
+        return
 
     if not TEACHER_CSV.exists():
         print(f"  [WARN] 找不到 {TEACHER_CSV}")
@@ -764,8 +705,7 @@ def build_teachers_collection(
         for row in csv.DictReader(f):
             rows.append(row)
 
-    # 同名教師可能在多系所任職，全部保留（用 dept+name 作 ID）
-    ids, docs, metas = [], [], []
+    ids, docs, payloads = [], [], []
     for row in rows:
         name = row["教師名稱"].strip()
         dept = row["系所名稱"].strip()
@@ -785,7 +725,8 @@ def build_teachers_collection(
 
         ids.append(doc_id)
         docs.append(doc_text)
-        metas.append({
+        payloads.append({
+            "_text": doc_text,
             "name": name,
             "dept": dept,
             "rank": rank,
@@ -793,86 +734,23 @@ def build_teachers_collection(
             "specialties": spec,
         })
 
-    existing = set(col.get(ids=ids)["ids"]) if ids else set()
-    new_mask = [i for i, did in enumerate(ids) if did not in existing]
-    if not new_mask:
-        print("  所有教師已在索引中，跳過。")
-        return
-
-    new_ids = [ids[i] for i in new_mask]
-    new_docs = [docs[i] for i in new_mask]
-    new_metas = [metas[i] for i in new_mask]
-
-    embeddings = embedder.embed_batch(new_docs)
-    col.add(ids=new_ids, documents=new_docs, embeddings=embeddings, metadatas=new_metas)
-    print(f"  完成，collection 總數：{col.count()}")
+    embeddings = embedder.embed_batch(docs)
+    _upsert_batch(qdrant, "ncu_teachers", ids, docs, payloads, embeddings)
+    info = qdrant.get_collection("ncu_teachers")
+    print(f"  完成，collection 總數：{info.points_count}")
 
 
 # ── 主程式 ───────────────────────────────────────────────────────────────────
 
-def update_metadata_only(chroma: chromadb.PersistentClient) -> None:
-    """
-    只更新課程 collection 的 eligibility metadata（is_grad_only / is_undergrad_open / eligible_years）。
-    不重新 embed，不需要 API key。
-    """
-    eligibility_lookup = load_eligibility_lookup()
-
-    for col_name in ["ncu_courses_ug", "ncu_courses_grad"]:
-        try:
-            col = chroma.get_collection(col_name)
-        except Exception:
-            print(f"[跳過] {col_name} 不存在")
-            continue
-
-        result = col.get(include=["metadatas"])
-        ids: list[str] = result["ids"]
-        metadatas: list[dict] = result["metadatas"]
-
-        update_ids, update_metas = [], []
-        for doc_id, meta in zip(ids, metadatas):
-            code = meta.get("course_code", "")
-            elig = eligibility_lookup.get(code)
-            if not elig:
-                continue
-
-            new_grad_only     = elig.get("is_grad_only", False)
-            new_ug_open       = elig.get("is_undergrad_open", True)
-            new_years         = join_list(elig.get("eligible_years", []))
-
-            if (meta.get("is_grad_only")      != new_grad_only
-                    or meta.get("is_undergrad_open") != new_ug_open
-                    or meta.get("eligible_years")    != new_years):
-                update_ids.append(doc_id)
-                update_metas.append({**meta,
-                    "is_grad_only":      new_grad_only,
-                    "is_undergrad_open": new_ug_open,
-                    "eligible_years":    new_years,
-                })
-
-        if not update_ids:
-            print(f"[{col_name}] 無需更新（共 {len(ids)} 筆）")
-            continue
-
-        batch = 500
-        for i in range(0, len(update_ids), batch):
-            col.update(ids=update_ids[i:i+batch], metadatas=update_metas[i:i+batch])
-        print(f"[{col_name}] 更新 {len(update_ids)} / {len(ids)} 筆 metadata")
-
-
 def main():
-    parser = argparse.ArgumentParser(description="建立或更新 ChromaDB 向量索引")
+    parser = argparse.ArgumentParser(description="建立 Qdrant 向量索引（五個 collection）")
     parser.add_argument(
-        "--metadata-only", action="store_true",
-        help="只更新 eligibility metadata（不重新 embed，不需要 API key）"
+        "--reset", action="store_true",
+        help="強制重建（刪除已存在的 collection 重新嵌入）"
     )
     args = parser.parse_args()
 
     load_dotenv(ROOT / ".env")
-    chroma = chromadb.PersistentClient(path=str(CHROMA_DIR))
-
-    if args.metadata_only:
-        update_metadata_only(chroma)
-        return
 
     api_key = os.getenv("AZURE_OPENAI_API_KEY")
     endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
@@ -888,45 +766,42 @@ def main():
         api_version=api_version,
     )
     embedder = Embedder(oai, embed_deployment)
-    chroma = chromadb.PersistentClient(path=str(CHROMA_DIR))
+
+    QDRANT_DIR.mkdir(parents=True, exist_ok=True)
+    qdrant = QdrantClient(path=str(QDRANT_DIR))
 
     nlp = load_nlp_data()
     teacher_lookup = load_teacher_csv()
     schedule_lookup = load_schedule_lookup()
     eligibility_lookup = load_eligibility_lookup()
 
-    # 大學部課程
     build_courses_collection(
-        chroma, embedder, nlp, teacher_lookup, schedule_lookup, eligibility_lookup,
+        qdrant, embedder, nlp, teacher_lookup, schedule_lookup, eligibility_lookup,
         name="ncu_courses_ug",
         dirs=[COURSES_114_1, COURSES_114_2],
         is_grad=False,
+        reset=args.reset,
     )
 
-    # 研究所課程
     build_courses_collection(
-        chroma, embedder, nlp, teacher_lookup, schedule_lookup, eligibility_lookup,
+        qdrant, embedder, nlp, teacher_lookup, schedule_lookup, eligibility_lookup,
         name="ncu_courses_grad",
         dirs=[GRAD_114_1, GRAD_114_2],
         is_grad=True,
+        reset=args.reset,
     )
 
-    # 學分學程
-    build_programs_collection(chroma, embedder)
-
-    # 系所介紹
-    build_departments_collection(chroma, embedder)
-
-    # 教師專長
-    build_teachers_collection(chroma, embedder, teacher_lookup)
+    build_programs_collection(qdrant, embedder, args.reset)
+    build_departments_collection(qdrant, embedder, args.reset)
+    build_teachers_collection(qdrant, embedder, args.reset)
 
     print("\n✓ 所有 collection 建立完成")
-    print(f"  儲存位置：{CHROMA_DIR}")
+    print(f"  儲存位置：{QDRANT_DIR}")
     for col_name in ["ncu_courses_ug", "ncu_courses_grad", "ncu_credit_programs",
                      "ncu_departments", "ncu_teachers"]:
         try:
-            col = chroma.get_collection(col_name)
-            print(f"  {col_name}: {col.count()} 筆")
+            info = qdrant.get_collection(col_name)
+            print(f"  {col_name}: {info.points_count} 筆")
         except Exception:
             pass
 

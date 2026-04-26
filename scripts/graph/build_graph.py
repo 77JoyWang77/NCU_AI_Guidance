@@ -1032,6 +1032,69 @@ def enrich_all(G: nx.DiGraph):
 # 6.  儲存與統計
 # ══════════════════════════════════════════════════════════════════════════════
 
+def _save_igraph_format(G: nx.DiGraph) -> None:
+    """將 NetworkX 圖轉換為 igraph 格式並儲存（含預計算邊權重）。"""
+    try:
+        import igraph as ig
+    except ImportError:
+        print("  [跳過] python-igraph 未安裝，略過 .igraph 格式輸出")
+        return
+
+    GRAPH_IGRAPH = GRAPH_PKL.parent / "knowledge_graph.pkl"
+    COVERS_FIELD_W = {"high": 1.5, "medium": 1.0, "low": 0.5}
+    REL_WEIGHT = {
+        "COVERS": 1.0, "TEACHES": 1.2,
+        "PREREQUISITE_OF": 0.8,
+        "EXPERT_IN": 1.0, "RELEVANT_EXPERT": 1.0, "COURSE_EXPERT": 0.8,
+        "TAGGED_AS": 0.5, "IN_DOMAIN": 0.5, "DEVELOPS": 0.3,
+    }
+
+    nodes_list = list(G.nodes(data=True))
+    id_to_idx = {nid: i for i, (nid, _) in enumerate(nodes_list)}
+
+    G_ig = ig.Graph(directed=True)
+    G_ig.add_vertices(len(nodes_list))
+    for i, (nid, attrs) in enumerate(nodes_list):
+        G_ig.vs[i]["name"]      = nid
+        G_ig.vs[i]["node_type"] = attrs.get("node_type", "")
+        G_ig.vs[i]["node_name"] = attrs.get("name", "")
+        G_ig.vs[i]["dept"]      = attrs.get("dept", "")
+        G_ig.vs[i]["credits"]   = int(attrs.get("credits") or 0)
+        G_ig.vs[i]["level"]     = attrs.get("level", "")
+
+    edge_tuples: list[tuple] = []
+    weights: list[float] = []
+    relations: list[str] = []
+    seen_similar: set[tuple] = set()
+
+    for src, tgt, attrs in G.edges(data=True):
+        si = id_to_idx.get(src)
+        ti = id_to_idx.get(tgt)
+        if si is None or ti is None:
+            continue
+        rel = attrs.get("relation", "")
+        if rel == "SIMILAR_TO":
+            pair = (min(si, ti), max(si, ti))
+            if pair in seen_similar:
+                continue
+            seen_similar.add(pair)
+            w = float(attrs.get("weight", 0.8))
+        elif rel == "COVERS_FIELD":
+            w = COVERS_FIELD_W.get(attrs.get("relevance", "medium"), 1.0)
+        else:
+            w = REL_WEIGHT.get(rel, 0.3)
+        edge_tuples.append((si, ti))
+        weights.append(w)
+        relations.append(rel)
+
+    G_ig.add_edges(edge_tuples)
+    G_ig.es["weight"]   = weights
+    G_ig.es["relation"] = relations
+    G_ig.write_pickle(str(GRAPH_IGRAPH))
+    print(f"  儲存：{GRAPH_IGRAPH}（{G_ig.vcount()} 節點，{G_ig.ecount()} 邊，"
+          f"其中 SIMILAR_TO 已去重）")
+
+
 def save_graph(G: nx.DiGraph):
     GRAPH_PKL.parent.mkdir(parents=True, exist_ok=True)
     with open(GRAPH_PKL, "wb") as f:
@@ -1041,6 +1104,7 @@ def save_graph(G: nx.DiGraph):
         json.dump(data, f, ensure_ascii=False, indent=2)
     print(f"\n  儲存：{GRAPH_PKL}")
     print(f"  儲存：{GRAPH_JSON}")
+    _save_igraph_format(G)
 
 
 def print_and_save_stats(G: nx.DiGraph):

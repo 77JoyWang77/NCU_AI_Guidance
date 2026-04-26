@@ -1,8 +1,12 @@
 """
 retriever.py
 
-ChromaDB 向量搜尋介面，對應五個 collection：
-  ncu_courses_ug / ncu_courses_grad / ncu_credit_programs / ncu_departments / ncu_teachers
+Qdrant 向量搜尋介面，對應六個 collection：
+  ncu_courses_ug / ncu_courses_grad / ncu_credit_programs
+  ncu_departments / ncu_teachers / ncu_graph_nodes
+
+filters 參數沿用 ChromaDB where 語法（dict），由 _qdrant_filter() 內部轉換，
+tools.py 不需要修改。
 """
 
 import json
@@ -11,18 +15,19 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Optional
 
-import chromadb
 from openai import AzureOpenAI
+from qdrant_client import QdrantClient
+from qdrant_client.models import Filter, FieldCondition, MatchValue, MatchAny
 
-ROOT = Path(__file__).parent.parent.parent.parent  # project root
-CHROMA_DIR = ROOT / "data" / "processed" / "chroma_db"
-_ELIGIBILITY_PATH  = ROOT / "data" / "processed" / "course_eligibility.json"
-_COLLEGE_MAP_PATH  = ROOT / "data" / "processed" / "dept_college_map.json"
+ROOT = Path(__file__).parent.parent.parent.parent
+QDRANT_DIR        = ROOT / "data" / "processed" / "qdrant_data"
+_ELIGIBILITY_PATH = ROOT / "data" / "processed" / "course_eligibility.json"
+_COLLEGE_MAP_PATH = ROOT / "data" / "processed" / "dept_college_map.json"
 
 
 @lru_cache(maxsize=1)
-def _get_chroma() -> chromadb.PersistentClient:
-    return chromadb.PersistentClient(path=str(CHROMA_DIR))
+def _get_qdrant() -> QdrantClient:
+    return QdrantClient(path=str(QDRANT_DIR))
 
 
 @lru_cache(maxsize=1)
@@ -40,10 +45,6 @@ def _embed(text: str) -> list[float]:
     return resp.data[0].embedding
 
 
-def _col(name: str):
-    return _get_chroma().get_collection(name)
-
-
 @lru_cache(maxsize=1)
 def _load_eligibility_index() -> dict[str, dict]:
     if not _ELIGIBILITY_PATH.exists():
@@ -53,7 +54,7 @@ def _load_eligibility_index() -> dict[str, dict]:
 
 
 def get_course_eligibility(course_code: str) -> dict:
-    """回傳課程的完整修課資格資料（含 access_rules），直接從 JSON 讀取。"""
+    """回傳課程的完整修課資格資料，直接從 JSON 讀取。"""
     return _load_eligibility_index().get(course_code, {})
 
 
@@ -69,6 +70,67 @@ def get_dept_college(dept: str) -> str:
     return _load_college_map().get(dept, "")
 
 
+# ── Filter 轉換 ───────────────────────────────────────────────────────────────
+
+def _qdrant_filter(chroma_filter: dict) -> Filter:
+    """ChromaDB where 語法 → Qdrant Filter（遞迴轉換）。
+
+    支援：
+      {"field": {"$eq": value}}
+      {"field": {"$contains": value}}  →  MatchAny（payload 中該欄位為陣列）
+      {"$and": [...]}
+      {"$or": [...]}
+    """
+    if "$and" in chroma_filter:
+        return Filter(must=[_qdrant_filter(f) for f in chroma_filter["$and"]])
+    if "$or" in chroma_filter:
+        return Filter(should=[_qdrant_filter(f) for f in chroma_filter["$or"]])
+
+    conditions = []
+    for key, cond in chroma_filter.items():
+        if key.startswith("$") or not isinstance(cond, dict):
+            continue
+        if "$eq" in cond:
+            conditions.append(FieldCondition(key=key, match=MatchValue(value=cond["$eq"])))
+        elif "$contains" in cond:
+            # payload 中此欄位為 list[str]，用 MatchAny 做成員匹配
+            conditions.append(FieldCondition(key=key, match=MatchAny(any=[cond["$contains"]])))
+
+    if len(conditions) == 1:
+        return Filter(must=conditions)
+    return Filter(must=conditions)
+
+
+# ── 輸出格式化 ────────────────────────────────────────────────────────────────
+
+def _fmt_search(hits) -> list[dict]:
+    """ScoredPoint list → 標準化 list[dict]"""
+    results = []
+    for h in hits:
+        payload = h.payload or {}
+        results.append({
+            "id":       str(h.id),
+            "document": payload.get("_text", ""),
+            "metadata": {k: v for k, v in payload.items() if k != "_text"},
+            "distance": round(max(0.0, 1.0 - h.score), 4),
+        })
+    return results
+
+
+def _fmt_scroll(records) -> list[dict]:
+    """Record list → 標準化 list[dict]"""
+    results = []
+    for r in records:
+        payload = r.payload or {}
+        results.append({
+            "id":       str(r.id),
+            "document": payload.get("_text", ""),
+            "metadata": {k: v for k, v in payload.items() if k != "_text"},
+            "distance": 0.0,
+        })
+    return results
+
+
 # ── 公開介面 ─────────────────────────────────────────────────────────────────
 
 def search_courses(
@@ -77,33 +139,35 @@ def search_courses(
     n_results: int = 10,
     collection: str = "ncu_courses_ug",
 ) -> list[dict]:
-    """
-    向量搜尋課程。
+    """向量搜尋課程。
 
-    filters 範例（ChromaDB where 語法）：
-      {"type": {"$eq": "必修"}}
-      {"$and": [{"college": {"$eq": "資訊電機學院"}}, {"type": {"$eq": "必修"}}]}
-      {"tools": {"$contains": "PyTorch"}}
+    filters 使用 ChromaDB where 語法，內部自動轉為 Qdrant Filter。
+    filterable 欄位（tools/languages/concepts/when_semesters/eligible_years 等）
+    在 Qdrant payload 中以陣列儲存，支援 $contains → MatchAny 轉換。
     """
     embedding = _embed(query)
-    col = _col(collection)
-    kwargs: dict = {"query_embeddings": [embedding], "n_results": n_results,
-                    "include": ["documents", "metadatas", "distances"]}
-    if filters:
-        kwargs["where"] = filters
+    client = _get_qdrant()
+    qdrant_filter = _qdrant_filter(filters) if filters else None
 
     try:
-        res = col.query(**kwargs)
-        return _format(res)
+        hits = client.search(
+            collection_name=collection,
+            query_vector=embedding,
+            query_filter=qdrant_filter,
+            limit=n_results,
+            with_payload=True,
+        )
+        return _fmt_search(hits)
     except Exception:
-        # ChromaDB 1.x 在 where 過濾後 0 筆匹配時拋例外；去掉 filter 後做純語意搜尋
         if filters:
             try:
-                kwargs_nf = {k: v for k, v in kwargs.items() if k != "where"}
-                res = col.query(**kwargs_nf)
-                results = _format(res)
-                # 後處理：保留 dept/college/type 最相近的結果
-                return results
+                hits = client.search(
+                    collection_name=collection,
+                    query_vector=embedding,
+                    limit=n_results,
+                    with_payload=True,
+                )
+                return _fmt_search(hits)
             except Exception:
                 pass
         return []
@@ -111,22 +175,24 @@ def search_courses(
 
 def search_programs(query: str, n_results: int = 5) -> list[dict]:
     embedding = _embed(query)
-    res = _col("ncu_credit_programs").query(
-        query_embeddings=[embedding],
-        n_results=n_results,
-        include=["documents", "metadatas", "distances"],
+    hits = _get_qdrant().search(
+        collection_name="ncu_credit_programs",
+        query_vector=embedding,
+        limit=n_results,
+        with_payload=True,
     )
-    return _format(res)
+    return _fmt_search(hits)
 
 
 def search_departments(query: str, n_results: int = 5) -> list[dict]:
     embedding = _embed(query)
-    res = _col("ncu_departments").query(
-        query_embeddings=[embedding],
-        n_results=n_results,
-        include=["documents", "metadatas", "distances"],
+    hits = _get_qdrant().search(
+        collection_name="ncu_departments",
+        query_vector=embedding,
+        limit=n_results,
+        with_payload=True,
     )
-    return _format(res)
+    return _fmt_search(hits)
 
 
 def search_teachers(
@@ -135,37 +201,39 @@ def search_teachers(
     n_results: int = 8,
 ) -> list[dict]:
     embedding = _embed(query)
-    kwargs: dict = {"query_embeddings": [embedding], "n_results": n_results,
-                    "include": ["documents", "metadatas", "distances"]}
-    if filters:
-        kwargs["where"] = filters
-
-    res = _col("ncu_teachers").query(**kwargs)
-    return _format(res)
+    qdrant_filter = _qdrant_filter(filters) if filters else None
+    hits = _get_qdrant().search(
+        collection_name="ncu_teachers",
+        query_vector=embedding,
+        query_filter=qdrant_filter,
+        limit=n_results,
+        with_payload=True,
+    )
+    return _fmt_search(hits)
 
 
 def get_teacher_by_name(name: str) -> list[dict]:
-    """直接用名字查教師（不走向量）"""
-    res = _col("ncu_teachers").get(
-        where={"name": name},
-        include=["documents", "metadatas"],
+    """直接用姓名查教師（不走向量）。"""
+    records, _ = _get_qdrant().scroll(
+        collection_name="ncu_teachers",
+        scroll_filter=Filter(must=[FieldCondition(key="name", match=MatchValue(value=name))]),
+        limit=10,
+        with_payload=True,
+        with_vectors=False,
     )
-    return [
-        {"document": d, "metadata": m, "distance": 0.0}
-        for d, m in zip(res["documents"], res["metadatas"])
-    ]
+    return _fmt_scroll(records)
 
 
 def get_courses_by_code(code: str, collection: str = "ncu_courses_ug") -> list[dict]:
-    """直接用課號查課程（不走向量）"""
-    res = _col(collection).get(
-        where={"course_code": code},
-        include=["documents", "metadatas"],
+    """直接用課號查課程（不走向量）。"""
+    records, _ = _get_qdrant().scroll(
+        collection_name=collection,
+        scroll_filter=Filter(must=[FieldCondition(key="course_code", match=MatchValue(value=code))]),
+        limit=10,
+        with_payload=True,
+        with_vectors=False,
     )
-    return [
-        {"document": d, "metadata": m, "distance": 0.0}
-        for d, m in zip(res["documents"], res["metadatas"])
-    ]
+    return _fmt_scroll(records)
 
 
 def get_courses_by_dept_type(
@@ -174,19 +242,18 @@ def get_courses_by_dept_type(
     collection: str = "ncu_courses_ug",
     limit: int = 200,
 ) -> list[dict]:
-    """直接用 dept + type 精確過濾，回傳全部課程（不走向量，不受 n_results 上限）。"""
-    res = _col(collection).get(
-        where={"$and": [{"dept": {"$eq": dept}}, {"type": {"$eq": course_type}}]},
-        include=["documents", "metadatas"],
+    """直接用 dept + type 精確過濾，回傳全部課程（不走向量）。"""
+    records, _ = _get_qdrant().scroll(
+        collection_name=collection,
+        scroll_filter=Filter(must=[
+            FieldCondition(key="dept", match=MatchValue(value=dept)),
+            FieldCondition(key="type", match=MatchValue(value=course_type)),
+        ]),
         limit=limit,
+        with_payload=True,
+        with_vectors=False,
     )
-    docs   = res.get("documents") or []
-    metas  = res.get("metadatas") or []
-    ids    = res.get("ids") or []
-    return [
-        {"id": ids[i], "document": docs[i], "metadata": metas[i], "distance": 0.0}
-        for i in range(len(ids))
-    ]
+    return _fmt_scroll(records)
 
 
 def get_courses_by_name(
@@ -194,42 +261,18 @@ def get_courses_by_name(
     collection: str = "ncu_courses_ug",
     also_grad: bool = True,
 ) -> list[dict]:
-    """用課程名稱精確比對，同時搜大學部與研究所（供課程消歧義用）。"""
+    """用課程名稱精確比對，同時搜大學部與研究所（課程消歧義用）。"""
     results = []
     cols = [collection]
     if also_grad and collection == "ncu_courses_ug":
         cols.append("ncu_courses_grad")
     for col_name in cols:
-        res = _col(col_name).get(
-            where={"name_zh": {"$eq": name}},
-            include=["documents", "metadatas"],
+        records, _ = _get_qdrant().scroll(
+            collection_name=col_name,
+            scroll_filter=Filter(must=[FieldCondition(key="name_zh", match=MatchValue(value=name))]),
+            limit=50,
+            with_payload=True,
+            with_vectors=False,
         )
-        docs  = res.get("documents") or []
-        metas = res.get("metadatas") or []
-        ids   = res.get("ids") or []
-        results.extend(
-            {"id": ids[i], "document": docs[i], "metadata": metas[i], "distance": 0.0}
-            for i in range(len(ids))
-        )
+        results.extend(_fmt_scroll(records))
     return results
-
-
-# ── 格式化輸出 ───────────────────────────────────────────────────────────────
-
-def _format(res: dict) -> list[dict]:
-    """把 ChromaDB query 結果攤平成 list[dict]"""
-    if not res or not res.get("ids"):
-        return []
-    ids = res["ids"][0]
-    docs = res.get("documents", [[]])[0]
-    metas = res.get("metadatas", [[]])[0]
-    dists = res.get("distances", [[]])[0]
-    return [
-        {
-            "id": ids[i],
-            "document": docs[i],
-            "metadata": metas[i],
-            "distance": round(dists[i], 4),
-        }
-        for i in range(len(ids))
-    ]
