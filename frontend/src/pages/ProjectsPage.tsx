@@ -127,31 +127,74 @@ export default function ProjectsPage() {
     }
   };
 
-  const getTypeLabel = (type: string) => {
-    switch (type) {
-      case 'E':
-        return '文學院';
-      case 'H':
-        return '客家學院';
-      case 'M':
-        return '管理學院';
-      case 'B':
-        return '生醫理工';
-      default:
-        return type;
-    }
+  const getCollegeLabel = (department: string) => {
+    const collegeByDepartment: Record<string, string> = {
+      '文學院學士班': '文學院',
+      '中國文學系': '文學院',
+      '英美語文學系': '文學院',
+      '法國語文學系': '文學院',
+      '理學院學士班': '理學院',
+      '化學學系': '理學院',
+      '物理學系': '理學院',
+      '數學系': '理學院',
+      '光電科學與工程學系': '理學院',
+      '光電科學研究中心': '理學院',
+      '天文研究所': '理學院',
+      '統計研究所': '理學院',
+      '工學院學士班': '工學院',
+      '土木工程學系': '工學院',
+      '機械工程學系': '工學院',
+      '化學工程與材料工程學系': '工學院',
+      '材料科學與工程研究所': '工學院',
+      '營建管理研究所': '工學院',
+      '環境工程研究所': '工學院',
+      '能源工程研究所': '工學院',
+      '經濟學系': '管理學院',
+      '企業管理學系': '管理學院',
+      '財務金融學系': '管理學院',
+      '資訊管理學系': '管理學院',
+      '資訊電機學院學士班': '資訊電機學院',
+      '電機工程學系': '資訊電機學院',
+      '資訊工程學系': '資訊電機學院',
+      '通訊工程學系': '資訊電機學院',
+      '網路學習科技研究所': '資訊電機學院',
+      '地球科學學院學士班': '地球科學學院',
+      '地球科學學系': '地球科學學院',
+      '大氣科學學系': '地球科學學院',
+      '太空科學與工程學系': '地球科學學院',
+      '太空及遙測研究中心': '地球科學學院',
+      '太空科學與工程研究所': '地球科學學院',
+      '太空科學與科技研究中心': '地球科學學院',
+      '應用地質研究所': '地球科學學院',
+      '水文與海洋科學研究所': '地球科學學院',
+      '客家語文暨社會科學學系': '客家學院',
+      '生命科學系': '生醫理工學院',
+      '生醫科學與工程學系': '生醫理工學院',
+      '系統生物與生物資訊研究所': '生醫理工學院',
+      '認知神經科學研究所': '生醫理工學院',
+    };
+
+    return collegeByDepartment[department] || '未分類單位';
   };
 
-  const getTypeBadgeClass = (type: string) => {
-    switch (type) {
-      case 'E':
+  const getCollegeBadgeClass = (college: string) => {
+    switch (college) {
+      case '文學院':
         return 'bg-blue-100 text-blue-800';
-      case 'H':
-        return 'bg-purple-100 text-purple-800';
-      case 'M':
+      case '理學院':
+        return 'bg-cyan-100 text-cyan-800';
+      case '工學院':
+        return 'bg-orange-100 text-orange-800';
+      case '管理學院':
         return 'bg-green-100 text-green-800';
-      case 'B':
-        return 'bg-amber-100 text-amber-800';
+      case '資訊電機學院':
+        return 'bg-indigo-100 text-indigo-800';
+      case '地球科學學院':
+        return 'bg-teal-100 text-teal-800';
+      case '客家學院':
+        return 'bg-rose-100 text-rose-800';
+      case '生醫理工學院':
+        return 'bg-pink-100 text-pink-800';
       default:
         return 'bg-gray-100 text-gray-800';
     }
@@ -246,8 +289,8 @@ export default function ProjectsPage() {
 
                 <ProjectSummary
                   project={selectedProject}
-                  getTypeLabel={getTypeLabel}
-                  getTypeBadgeClass={getTypeBadgeClass}
+                  getCollegeLabel={getCollegeLabel}
+                  getCollegeBadgeClass={getCollegeBadgeClass}
                 />
 
                 <div className="mt-8 flex justify-end">
@@ -271,8 +314,8 @@ export default function ProjectsPage() {
                       >
                         <ProjectCardContent
                           project={project}
-                          getTypeLabel={getTypeLabel}
-                          getTypeBadgeClass={getTypeBadgeClass}
+                          getCollegeLabel={getCollegeLabel}
+                          getCollegeBadgeClass={getCollegeBadgeClass}
                         />
                       </div>
                     ))}
@@ -299,8 +342,8 @@ export default function ProjectsPage() {
                     >
                       <ProjectCardContent
                         project={project}
-                        getTypeLabel={getTypeLabel}
-                        getTypeBadgeClass={getTypeBadgeClass}
+                        getCollegeLabel={getCollegeLabel}
+                        getCollegeBadgeClass={getCollegeBadgeClass}
                       />
                     </div>
                   ))}
@@ -316,8 +359,8 @@ export default function ProjectsPage() {
                 <div className="card relative p-8">
                   <ProjectSummary
                     project={selectedProject}
-                    getTypeLabel={getTypeLabel}
-                    getTypeBadgeClass={getTypeBadgeClass}
+                    getCollegeLabel={getCollegeLabel}
+                    getCollegeBadgeClass={getCollegeBadgeClass}
                   />
 
                   <div className="flex justify-end">
@@ -525,17 +568,17 @@ function ChatPanel({
 
 function ProjectCardContent({
   project,
-  getTypeLabel,
-  getTypeBadgeClass,
+  getCollegeLabel,
+  getCollegeBadgeClass,
 }: {
   project: Project;
-  getTypeLabel: (type: string) => string;
-  getTypeBadgeClass: (type: string) => string;
+  getCollegeLabel: (department: string) => string;
+  getCollegeBadgeClass: (college: string) => string;
 }) {
   return (
     <>
       <div className="mb-2 flex items-start justify-between">
-        <span className={`badge text-xs ${getTypeBadgeClass(project.type)}`}>{getTypeLabel(project.type)}</span>
+        <span className={`badge text-xs ${getCollegeBadgeClass(getCollegeLabel(project.department))}`}>{getCollegeLabel(project.department)}</span>
         <span className="text-xs text-gray-500">{project.year}</span>
       </div>
       <h3 className="mb-2 line-clamp-2 text-sm font-semibold leading-tight text-primary-900">{project.title}</h3>
@@ -555,18 +598,18 @@ function ProjectCardContent({
 
 function ProjectSummary({
   project,
-  getTypeLabel,
-  getTypeBadgeClass,
+  getCollegeLabel,
+  getCollegeBadgeClass,
 }: {
   project: Project;
-  getTypeLabel: (type: string) => string;
-  getTypeBadgeClass: (type: string) => string;
+  getCollegeLabel: (department: string) => string;
+  getCollegeBadgeClass: (college: string) => string;
 }) {
   return (
     <>
       <div className="mb-6">
         <div className="mb-4 flex items-start justify-between">
-          <span className={`badge ${getTypeBadgeClass(project.type)}`}>{getTypeLabel(project.type)}</span>
+          <span className={`badge ${getCollegeBadgeClass(getCollegeLabel(project.department))}`}>{getCollegeLabel(project.department)}</span>
           <span className="text-sm text-gray-500">{project.year}</span>
         </div>
         <h2 className="mb-3 text-2xl font-bold text-primary-900">{project.title}</h2>
