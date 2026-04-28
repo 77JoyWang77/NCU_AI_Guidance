@@ -255,6 +255,51 @@ def generate_simple_answer(question: str, context: str) -> str:
     return result["answer"]
 
 
+def _extract_mentioned_courses(answer: str, course_pool: dict) -> list[dict]:
+    """掃描 answer 中出現的課程名稱，與 course_pool 比對，回傳已驗證課程卡片。"""
+    mentioned = []
+    seen: set[str] = set()
+    for course in course_pool.values():
+        name = course.get("name", "")
+        if not name or len(name) < 2:
+            continue
+        if name in answer and name not in seen:
+            seen.add(name)
+            mentioned.append(course)
+    return mentioned
+
+
+def _collect_course_pool(tool_name: str, result, course_pool: dict) -> None:
+    """從單次工具回傳結果中收集課程資料到 course_pool。"""
+    if tool_name == "search_courses" and isinstance(result, list):
+        for item in result:
+            key = item.get("course_code") or item.get("name_zh", "")
+            if key:
+                course_pool[key] = {
+                    "code":    item.get("course_code", ""),
+                    "name":    item.get("name_zh", ""),
+                    "dept":    item.get("dept", ""),
+                    "credits": item.get("credits", 0),
+                    "type":    item.get("type", ""),
+                    "teacher": item.get("teacher", ""),
+                    "summary": item.get("summary", "")[:150],
+                }
+    elif tool_name in ("get_dept_courses", "get_program_courses") and isinstance(result, dict):
+        dept_or_prog = result.get("dept_name") or result.get("program_name", "")
+        for c in result.get("courses", []):
+            name = c.get("name") or c.get("id", "")
+            if name:
+                course_pool[name] = {
+                    "code":    c.get("id", ""),
+                    "name":    name,
+                    "dept":    dept_or_prog,
+                    "credits": c.get("credits", 0),
+                    "type":    c.get("relation", ""),
+                    "teacher": c.get("teacher", ""),
+                    "summary": "",
+                }
+
+
 @traceable(name="ncu_rag_tools", run_type="llm")
 def generate_with_tools(
     question: str,
@@ -267,6 +312,7 @@ def generate_with_tools(
 
     回傳：
       {"answer": str, "tools_used": list[str], "sources": list[dict],
+       "course_cards": list[dict], "course_pool_count": int, "has_large_result": bool,
        "model": str, "input_tokens": int, "output_tokens": int}
     """
     from app.services.tools import TOOLS, execute_tool
@@ -283,6 +329,8 @@ def generate_with_tools(
 
     tools_used: list[str] = []
     sources: list[dict] = []
+    course_pool: dict[str, dict] = {}
+    has_large_result = False
     total_input = total_output = 0
 
     for _ in range(max_rounds):
@@ -298,13 +346,17 @@ def generate_with_tools(
         msg = response.choices[0].message
 
         if not msg.tool_calls:
+            answer = msg.content or ""
             return {
-                "answer":       msg.content or "",
-                "tools_used":   tools_used,
-                "sources":      sources,
-                "model":        deployment,
-                "input_tokens": total_input,
-                "output_tokens":total_output,
+                "answer":            answer,
+                "tools_used":        tools_used,
+                "sources":           sources,
+                "course_cards":      _extract_mentioned_courses(answer, course_pool),
+                "course_pool_count": len(course_pool),
+                "has_large_result":  has_large_result,
+                "model":             deployment,
+                "input_tokens":      total_input,
+                "output_tokens":     total_output,
             }
 
         # 並行執行所有工具呼叫
@@ -316,19 +368,26 @@ def generate_with_tools(
             }
             results = {tid: f.result() for tid, f in futures.items()}
 
-        # 收集 search_courses 的結果作為來源
+        # 收集課程資料 + 來源
         for tc in msg.tool_calls:
-            tools_used.append(tc.function.name)
-            if tc.function.name == "search_courses":
-                items = results.get(tc.id, [])
-                if isinstance(items, list):
-                    for item in items[:5]:
-                        if item.get("name_zh"):
-                            sources.append({
-                                "name": item["name_zh"],
-                                "dept": item.get("dept", ""),
-                                "type": item.get("type", ""),
-                            })
+            tool_name = tc.function.name
+            result = results.get(tc.id)
+            tools_used.append(tool_name)
+
+            _collect_course_pool(tool_name, result, course_pool)
+
+            if tool_name == "search_courses" and isinstance(result, list):
+                for item in result[:5]:
+                    if item.get("name_zh"):
+                        sources.append({
+                            "name": item["name_zh"],
+                            "dept": item.get("dept", ""),
+                            "type": item.get("type", ""),
+                        })
+
+            if tool_name in ("get_dept_courses", "get_program_courses") and isinstance(result, dict):
+                if len(result.get("courses", [])) > 20:
+                    has_large_result = True
 
         # 把 assistant 訊息（含 tool_calls）加回對話
         messages.append({
@@ -363,11 +422,15 @@ def generate_with_tools(
     )
     total_input  += final.usage.prompt_tokens
     total_output += final.usage.completion_tokens
+    answer = final.choices[0].message.content or ""
     return {
-        "answer":       final.choices[0].message.content or "",
-        "tools_used":   tools_used,
-        "sources":      sources,
-        "model":        deployment,
-        "input_tokens": total_input,
-        "output_tokens":total_output,
+        "answer":            answer,
+        "tools_used":        tools_used,
+        "sources":           sources,
+        "course_cards":      _extract_mentioned_courses(answer, course_pool),
+        "course_pool_count": len(course_pool),
+        "has_large_result":  has_large_result,
+        "model":             deployment,
+        "input_tokens":      total_input,
+        "output_tokens":     total_output,
     }

@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useEffect, useState } from 'react';
 import {
   HiChat,
   HiChevronLeft,
@@ -8,11 +8,17 @@ import {
   HiPlus,
   HiTrash,
 } from 'react-icons/hi';
+import { chatAPI } from '../api/services';
+import CourseMentionPanel from '../components/CourseMentionPanel';
+import type { CourseCard } from '../types';
 
 interface Message {
-  role: 'user' | 'assistant';
-  content: string;
-  timestamp: Date;
+  role:            'user' | 'assistant';
+  content:         string;
+  timestamp:       Date;
+  courseCards?:    CourseCard[];
+  coursePoolCount?: number;
+  hasLargeResult?: boolean;
 }
 
 interface Conversation {
@@ -29,26 +35,10 @@ export default function CourseSearchPage() {
   const [conversations, setConversations] = useState<Conversation[]>([
     {
       id: '1',
-      title: '資訊工程課程方向',
+      title: '新對話',
       messages: [{ role: 'assistant', content: assistantGreeting, timestamp: new Date() }],
-      createdAt: new Date(Date.now() - 86400000 * 2),
-      updatedAt: new Date(Date.now() - 86400000 * 2),
-    },
-    {
-      id: '2',
-      title: '管理學院選課建議',
-      messages: [
-        { role: 'assistant', content: assistantGreeting, timestamp: new Date(Date.now() - 86400000) },
-        { role: 'user', content: '管理學院有哪些適合新生先了解的課程？', timestamp: new Date(Date.now() - 86400000) },
-        {
-          role: 'assistant',
-          content:
-            '如果你剛開始接觸管理學院，可以先從三個方向認識：\n\n1. 經濟學系，適合想理解市場分析與理論的人。\n2. 企業管理學系，會接觸組織、行銷與策略。\n3. 資訊管理學系，結合管理與資訊工具，實作面較高。\n\n如果你願意，我也可以再依照「偏商管」或「偏資料分析」幫你縮小範圍。',
-          timestamp: new Date(Date.now() - 86400000),
-        },
-      ],
-      createdAt: new Date(Date.now() - 86400000),
-      updatedAt: new Date(Date.now() - 86400000),
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
   ]);
   const [selectedConversationId, setSelectedConversationId] = useState<string>('1');
@@ -56,11 +46,19 @@ export default function CourseSearchPage() {
   const [chatLoading, setChatLoading] = useState(false);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isMobileConversationOpen, setIsMobileConversationOpen] = useState(false);
+  // session_id per conversation (conversationId → backend session_id)
+  const sessionIds = useRef<Record<string, string>>({});
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const selectedConversation = useMemo(
     () => conversations.find((conversation) => conversation.id === selectedConversationId) ?? null,
     [conversations, selectedConversationId]
   );
+
+  // 有新訊息時自動捲到底
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [selectedConversation?.messages.length, chatLoading]);
 
   const handleNewConversation = () => {
     const newConversation: Conversation = {
@@ -78,6 +76,11 @@ export default function CourseSearchPage() {
   };
 
   const handleDeleteConversation = (id: string) => {
+    const sid = sessionIds.current[id];
+    if (sid) {
+      chatAPI.clearSession(sid).catch(() => {});
+      delete sessionIds.current[id];
+    }
     const nextConversations = conversations.filter((conversation) => conversation.id !== id);
     setConversations(nextConversations);
     if (selectedConversationId === id) {
@@ -91,11 +94,13 @@ export default function CourseSearchPage() {
     setIsMobileConversationOpen(false);
   };
 
-  const handleSendMessage = (event: React.FormEvent) => {
+  const handleSendMessage = async (event: React.FormEvent) => {
     event.preventDefault();
-    if (!inputMessage.trim() || !selectedConversation) return;
+    if (!inputMessage.trim() || !selectedConversation || chatLoading) return;
 
     const messageText = inputMessage.trim();
+    const convId = selectedConversation.id;
+
     const userMessage: Message = {
       role: 'user',
       content: messageText,
@@ -106,53 +111,57 @@ export default function CourseSearchPage() {
       ...selectedConversation,
       messages: [...selectedConversation.messages, userMessage],
       updatedAt: new Date(),
-      title: selectedConversation.messages.length === 1 ? `${messageText.slice(0, 18)}...` : selectedConversation.title,
+      title:
+        selectedConversation.messages.length === 1
+          ? messageText.slice(0, 20)
+          : selectedConversation.title,
     };
 
     setConversations((prev) =>
-      prev.map((conversation) => (conversation.id === selectedConversation.id ? updatedConversation : conversation))
+      prev.map((c) => (c.id === convId ? updatedConversation : c))
     );
     setInputMessage('');
     setChatLoading(true);
 
-    window.setTimeout(() => {
+    try {
+      const res = await chatAPI.send(
+        messageText,
+        sessionIds.current[convId] || undefined,
+      );
+      sessionIds.current[convId] = res.session_id;
+
       const assistantMessage: Message = {
-        role: 'assistant',
-        content: generateMockResponse(messageText),
-        timestamp: new Date(),
+        role:            'assistant',
+        content:         res.answer,
+        timestamp:       new Date(),
+        courseCards:     res.course_cards,
+        coursePoolCount: res.course_pool_count,
+        hasLargeResult:  res.has_large_result,
       };
 
       setConversations((prev) =>
-        prev.map((conversation) =>
-          conversation.id === selectedConversation.id
-            ? {
-                ...conversation,
-                messages: [...updatedConversation.messages, assistantMessage],
-                updatedAt: new Date(),
-              }
-            : conversation
+        prev.map((c) =>
+          c.id === convId
+            ? { ...c, messages: [...updatedConversation.messages, assistantMessage], updatedAt: new Date() }
+            : c
         )
       );
+    } catch {
+      const errorMessage: Message = {
+        role:      'assistant',
+        content:   '抱歉，連接伺服器時發生錯誤，請稍後再試。',
+        timestamp: new Date(),
+      };
+      setConversations((prev) =>
+        prev.map((c) =>
+          c.id === convId
+            ? { ...c, messages: [...updatedConversation.messages, errorMessage], updatedAt: new Date() }
+            : c
+        )
+      );
+    } finally {
       setChatLoading(false);
-    }, 1000);
-  };
-
-  const generateMockResponse = (query: string): string => {
-    const lowerQuery = query.toLowerCase();
-
-    if (lowerQuery.includes('資工') || lowerQuery.includes('資訊工程')) {
-      return '資訊工程可以先從三塊理解：\n\n1. 程式設計與資料結構。\n2. 演算法、系統與計算機基礎。\n3. AI、資料科學與網路應用。\n\n如果你想，我可以再幫你分成「新手先看」和「進階延伸」兩組。';
     }
-
-    if (lowerQuery.includes('學分') || lowerQuery.includes('必修')) {
-      return '建議先區分必修、選修和通識來源，再看單學期學分是否平均。對大一學生來說，先用核心必修搭配 1 到 2 門探索型選修，通常會比較穩。';
-    }
-
-    if (lowerQuery.includes('管理') || lowerQuery.includes('商管')) {
-      return '管理學院可以先看三個方向：\n\n- 經濟偏分析與理論。\n- 企管偏組織、行銷與策略。\n- 資管偏系統、資料與管理整合。\n\n如果你願意，我可以再用「偏商業」或「偏資料」幫你縮小。';
-    }
-
-    return '我可以協助你從課程名稱、學分配置、學院特色和學習方向來整理課程線索。\n\n你可以試著問我：\n1. 某個學系大一適合先看哪些課。\n2. 想走 AI 或資料分析可以注意哪些課程。\n3. 某個學院的必修與選修差別。\n4. 如何依興趣篩選課程方向。';
   };
 
   const formatTime = (date: Date) => {
@@ -390,12 +399,23 @@ export default function CourseSearchPage() {
               <div className="flex-1 space-y-3 overflow-y-auto p-4">
                 {selectedConversation.messages.map((message, index) => (
                   <div key={index} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                    <div
-                      className={`max-w-[82%] rounded-2xl p-4 ${
-                        message.role === 'user' ? 'bg-primary-700 text-white' : 'bg-gray-100 text-gray-900'
-                      }`}
-                    >
-                      <p className="whitespace-pre-line text-sm leading-relaxed">{message.content}</p>
+                    <div className={`max-w-[82%] ${message.role === 'user' ? '' : 'w-full'}`}>
+                      <div
+                        className={`rounded-2xl p-4 ${
+                          message.role === 'user' ? 'bg-primary-700 text-white' : 'bg-gray-100 text-gray-900'
+                        }`}
+                      >
+                        <p className="whitespace-pre-line text-sm leading-relaxed">{message.content}</p>
+                      </div>
+                      {message.role === 'assistant' &&
+                        message.courseCards &&
+                        message.courseCards.length > 0 && (
+                          <CourseMentionPanel
+                            courseCards={message.courseCards}
+                            coursePoolCount={message.coursePoolCount ?? 0}
+                            hasLargeResult={message.hasLargeResult ?? false}
+                          />
+                        )}
                     </div>
                   </div>
                 ))}
@@ -411,6 +431,7 @@ export default function CourseSearchPage() {
                     </div>
                   </div>
                 ) : null}
+                <div ref={messagesEndRef} />
               </div>
 
               <form onSubmit={handleSendMessage} className="border-t border-gray-200 p-3">

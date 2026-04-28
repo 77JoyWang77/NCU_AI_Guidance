@@ -89,6 +89,30 @@ export interface Project {
   pdfUrl?: string;
 }
 
+// 聊天 API 相關型別
+export interface CourseCard {
+  code:    string;
+  name:    string;
+  dept:    string;
+  credits: number;
+  type:    string;
+  teacher: string;
+  summary: string;
+}
+
+export interface ChatApiResponse {
+  answer:            string;
+  session_id:        string;
+  tools_used:        string[];
+  sources:           { name: string; dept: string; type: string }[];
+  course_cards:      CourseCard[];
+  course_pool_count: number;
+  has_large_result:  boolean;
+  model:             string;
+  input_tokens:      number;
+  output_tokens:     number;
+}
+
 // 学测科目
 export type Subject = '国文' | '英文' | '数学A' | '数学B' | '社会' | '自然';
 

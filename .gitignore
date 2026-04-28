@@ -59,14 +59,8 @@ htmlcov/
 logs/
 *.log
 
-# 資料庫
-*.db
-*.sqlite
-*.sqlite3
-
 # Vector Database (本地)
 qdrant_storage/
-chroma_db/
 milvus_data/
 
 # 快取
@@ -82,7 +76,6 @@ backups/
 # 模型檔案（如果本地存放）
 *.pt
 *.pth
-*.bin
 *.safetensors
 *.onnx
 

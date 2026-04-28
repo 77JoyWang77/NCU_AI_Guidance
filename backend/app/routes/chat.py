@@ -32,6 +32,9 @@ class ChatResponse(BaseModel):
     session_id: str
     tools_used: list[str]
     sources: list[dict]
+    course_cards: list[dict] = []
+    course_pool_count: int = 0
+    has_large_result: bool = False
     model: str
     input_tokens: int
     output_tokens: int
@@ -71,6 +74,9 @@ async def chat(req: ChatRequest):
         session_id=sid,
         tools_used=result["tools_used"],
         sources=result["sources"],
+        course_cards=result.get("course_cards", []),
+        course_pool_count=result.get("course_pool_count", 0),
+        has_large_result=result.get("has_large_result", False),
         model=result["model"],
         input_tokens=result["input_tokens"],
         output_tokens=result["output_tokens"],
