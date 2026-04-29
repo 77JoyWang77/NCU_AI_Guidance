@@ -65,7 +65,7 @@
       "credits": 3,
       "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -74,7 +74,7 @@
       "credits": 3,
       "when": "大一下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -83,7 +83,7 @@
       "credits": 3,
       "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -92,7 +92,7 @@
       "credits": 3,
       "when": "大一下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -101,7 +101,7 @@
       "credits": 3,
       "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -110,7 +110,7 @@
       "credits": 1,
       "when": "大一下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -119,7 +119,7 @@
       "credits": 1,
       "when": "大一上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -128,7 +128,7 @@
       "credits": 1,
       "when": "大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -137,25 +137,25 @@
       "credits": 2,
       "when": "大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "AP2049",
       "name": "程式語言與繪圖I",
       "credits": 2,
-      "when": "大一上~大一下",
+      "when": "大一上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "AP2050",
       "name": "程式語言與繪圖II",
       "credits": 2,
-      "when": "",
+      "when": "大一下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -164,25 +164,25 @@
       "credits": 2,
       "when": "大一上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "AP2007",
       "name": "應用數學上",
       "credits": 3,
-      "when": "大二上~大二下",
+      "when": "大二上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "AP2008",
       "name": "應用數學下",
       "credits": 3,
-      "when": "",
+      "when": "大二下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -191,61 +191,61 @@
       "credits": 3,
       "when": "大二上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "AP2010",
       "name": "流體力學",
       "credits": 3,
-      "when": "",
+      "when": "大二下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "AP2011",
       "name": "大氣熱力學",
       "credits": 3,
-      "when": "大二下",
+      "when": "大二上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "AP3001",
       "name": "大氣動力學上",
       "credits": 3,
-      "when": "大三上~大三下",
+      "when": "大三上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "AP3002",
       "name": "大氣動力學下",
       "credits": 3,
-      "when": "",
+      "when": "大三下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "AP4015",
       "name": "天氣學與天氣分析上",
       "credits": 3,
-      "when": "大三下~大四上",
+      "when": "大三下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "AP4016",
       "name": "天氣學與天氣分析下",
       "credits": 3,
-      "when": "大四上~大四下",
+      "when": "大四上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     }
   ],

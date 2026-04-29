@@ -55,7 +55,7 @@
       "credits": 3,
       "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -64,7 +64,7 @@
       "credits": 3,
       "when": "大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -73,7 +73,7 @@
       "credits": 3,
       "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -82,7 +82,7 @@
       "credits": 3,
       "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -91,7 +91,7 @@
       "credits": 3,
       "when": "大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -100,7 +100,7 @@
       "credits": 3,
       "when": "大二上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -109,7 +109,7 @@
       "credits": 3,
       "when": "大二下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -118,7 +118,7 @@
       "credits": 3,
       "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     }
   ],
@@ -127,18 +127,18 @@
       "code": "MA1005",
       "name": "微積分上",
       "credits": 3,
-      "when": "大一上~大一下",
+      "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "MA1006",
       "name": "微積分下",
       "credits": 3,
-      "when": "",
+      "when": "大一下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -147,7 +147,7 @@
       "credits": 3,
       "when": "大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -156,7 +156,7 @@
       "credits": 3,
       "when": "大二上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -165,7 +165,7 @@
       "credits": 3,
       "when": "大二上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -174,7 +174,7 @@
       "credits": 3,
       "when": "大二上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -183,7 +183,7 @@
       "credits": 3,
       "when": "大二上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -192,7 +192,7 @@
       "credits": 3,
       "when": "大二下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -201,7 +201,7 @@
       "credits": 3,
       "when": "大二下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -210,16 +210,16 @@
       "credits": 3,
       "when": "大二下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "BA3001",
       "name": "生產與作業管理",
       "credits": 3,
-      "when": "大二上",
+      "when": "大二下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -228,7 +228,7 @@
       "credits": 3,
       "when": "大三上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -237,7 +237,7 @@
       "credits": 3,
       "when": "大三上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -246,7 +246,7 @@
       "credits": 3,
       "when": "大三下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -255,7 +255,7 @@
       "credits": 3,
       "when": "大四上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -264,7 +264,7 @@
       "credits": 3,
       "when": "大四下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     }
   ],

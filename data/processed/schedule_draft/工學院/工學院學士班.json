@@ -54,18 +54,18 @@
       "code": "MA1003",
       "name": "微積分上",
       "credits": 3,
-      "when": "大一上~大一下",
+      "when": "大一上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "MA1004",
       "name": "微積分下",
       "credits": 3,
-      "when": "",
+      "when": "大一下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -74,7 +74,7 @@
       "credits": 3,
       "when": "大一上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -83,7 +83,7 @@
       "credits": 2,
       "when": "大一上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -92,7 +92,7 @@
       "credits": 3,
       "when": "大一上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -101,7 +101,7 @@
       "credits": 3,
       "when": "大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -110,16 +110,16 @@
       "credits": 1,
       "when": "大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "EG2001",
       "name": "工程統計學",
       "credits": 3,
-      "when": "大二下",
+      "when": "大三上~大三下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -128,7 +128,7 @@
       "credits": 1,
       "when": "大二上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -137,7 +137,7 @@
       "credits": 1,
       "when": "大二下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -146,7 +146,7 @@
       "credits": 1,
       "when": "大三上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -155,7 +155,7 @@
       "credits": 1,
       "when": "大三下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -164,7 +164,7 @@
       "credits": 3,
       "when": "大二下~大三上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -173,7 +173,7 @@
       "credits": 3,
       "when": "大三上~大三下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -182,7 +182,7 @@
       "credits": 3,
       "when": "大四上~大四下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     }
   ],
@@ -199,7 +199,7 @@
           "credits": 4,
           "when": "大一下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -208,7 +208,7 @@
           "credits": 1,
           "when": "大二上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -217,7 +217,7 @@
           "credits": 1,
           "when": "大二上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -226,7 +226,7 @@
           "credits": 3,
           "when": "大二下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -235,7 +235,7 @@
           "credits": 1,
           "when": "大二下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -244,7 +244,7 @@
           "credits": 3,
           "when": "大二上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -253,7 +253,7 @@
           "credits": 1,
           "when": "大二下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -262,7 +262,7 @@
           "credits": 1,
           "when": "大二下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -271,7 +271,7 @@
           "credits": 3,
           "when": "大二下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -280,7 +280,7 @@
           "credits": 1,
           "when": "大二下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -289,7 +289,7 @@
           "credits": 3,
           "when": "大二下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -298,7 +298,7 @@
           "credits": 3,
           "when": "大二下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -307,7 +307,7 @@
           "credits": 3,
           "when": "大三上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -316,7 +316,7 @@
           "credits": 3,
           "when": "大三下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -325,7 +325,7 @@
           "credits": 3,
           "when": "大三下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ],
@@ -342,18 +342,18 @@
           "code": "EI1102",
           "name": "能源與材料科學導論",
           "credits": 3,
-          "when": "",
+          "when": "大一上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CH2005",
           "name": "物理化學上",
           "credits": 3,
-          "when": "大二上~大二下",
+          "when": "大二上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -362,7 +362,7 @@
           "credits": 3,
           "when": "大二上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -371,7 +371,7 @@
           "credits": 3,
           "when": "大二上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -380,16 +380,16 @@
           "credits": 3,
           "when": "大二下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "ME1006",
           "name": "靜力與材料力學",
           "credits": 4,
-          "when": "大一下",
+          "when": "大二下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -398,25 +398,25 @@
           "credits": 1,
           "when": "大二下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CH3059",
           "name": "化工與材料熱力學I",
           "credits": 3,
-          "when": "大三上~大三下",
+          "when": "大三上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CH3060",
           "name": "化工與材料熱力學II",
           "credits": 3,
-          "when": "",
+          "when": "大三下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -425,7 +425,7 @@
           "credits": 3,
           "when": "大三上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -434,7 +434,7 @@
           "credits": 3,
           "when": "大三下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -443,7 +443,7 @@
           "credits": 3,
           "when": "大三上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ],
@@ -462,7 +462,7 @@
           "credits": 1,
           "when": "大一上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -471,7 +471,7 @@
           "credits": 3,
           "when": "大一上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -480,7 +480,7 @@
           "credits": 1,
           "when": "大一上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -489,7 +489,7 @@
           "credits": 3,
           "when": "大一下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -498,7 +498,7 @@
           "credits": 3,
           "when": "大一下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -507,7 +507,7 @@
           "credits": 3,
           "when": "大二上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -516,16 +516,16 @@
           "credits": 3,
           "when": "大二上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CI2017",
           "name": "工程數學I",
           "credits": 3,
-          "when": "大二上~大二下",
+          "when": "大二上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -534,7 +534,7 @@
           "credits": 3,
           "when": "大三上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -543,7 +543,7 @@
           "credits": 3,
           "when": "大二下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -552,7 +552,7 @@
           "credits": 3,
           "when": "大三下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -561,7 +561,7 @@
           "credits": 1,
           "when": "大三下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ],
@@ -578,36 +578,36 @@
           "code": "CH2001",
           "name": "有機化學上",
           "credits": 3,
-          "when": "大二上~大二下",
+          "when": "大二上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CH2002",
           "name": "有機化學下",
           "credits": 3,
-          "when": "",
+          "when": "大二下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CH2005",
           "name": "物理化學上",
           "credits": 3,
-          "when": "大二上~大二下",
+          "when": "大二上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CH2006",
           "name": "物理化學下",
           "credits": 3,
-          "when": "",
+          "when": "大二下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -616,7 +616,7 @@
           "credits": 3,
           "when": "大二上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -625,70 +625,70 @@
           "credits": 3,
           "when": "大二下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CH1012",
           "name": "質能平衡與化工計算",
           "credits": 3,
-          "when": "大一下",
+          "when": "大二下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CH1022",
           "name": "基礎材料化學實驗I",
           "credits": 1,
-          "when": "大一下~大二下",
+          "when": "大二下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CH2021",
           "name": "輸送現象I",
           "credits": 3,
-          "when": "大二下~大三下",
+          "when": "大二下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CH3042",
           "name": "輸送現象II",
           "credits": 3,
-          "when": "",
+          "when": "大三上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CH3043",
           "name": "輸送現象III",
           "credits": 3,
-          "when": "",
+          "when": "大三下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CH3059",
           "name": "化工與材料熱力學I",
           "credits": 3,
-          "when": "大三上~大三下",
+          "when": "大三上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CH3060",
           "name": "化工與材料熱力學II",
           "credits": 3,
-          "when": "",
+          "when": "大三下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -697,7 +697,7 @@
           "credits": 3,
           "when": "大三下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -706,7 +706,7 @@
           "credits": 1,
           "when": "大三下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ],
@@ -726,43 +726,43 @@
           "credits": 2,
           "when": "大三上~大三下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "ME4110",
           "name": "工程講座與專業倫理",
           "credits": 2,
-          "when": "",
+          "when": "大三上~大三下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "GS2003",
           "name": "倫理學與美好生活",
           "credits": 2,
-          "when": "",
+          "when": "大三上~大三下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "GS3355",
           "name": "環境倫理之實踐",
           "credits": 2,
-          "when": "",
+          "when": "大三上~大三下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "GS4530",
           "name": "人工智慧倫理導論",
           "credits": 2,
-          "when": "",
+          "when": "大三上~大三下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ]
@@ -779,45 +779,45 @@
           "code": "ME5209",
           "name": "人工智慧與設計思考",
           "credits": 2,
-          "when": "",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "EG5011",
           "name": "設計思考與智慧物聯網應用",
           "credits": 2,
-          "when": "",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "GS3064",
           "name": "設計思考",
           "credits": 2,
-          "when": "",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "IP2004",
           "name": "設計思考與永續科技",
           "credits": 2,
-          "when": "",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "GS4504",
           "name": "設計思考與行動APP程式設計應用",
           "credits": 2,
-          "when": "",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ]

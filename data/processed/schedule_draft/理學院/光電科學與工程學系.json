@@ -40,27 +40,27 @@
       "code": "MA1001",
       "name": "微積分上",
       "credits": 4,
-      "when": "大一上~大一下",
+      "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "MA1002",
       "name": "微積分下",
       "credits": 4,
-      "when": "",
+      "when": "大一下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "PH1031",
       "name": "普通物理A上",
       "credits": 3,
-      "when": "大一上~大一下",
+      "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -69,7 +69,7 @@
       "credits": 3,
       "when": "大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -78,7 +78,7 @@
       "credits": 1,
       "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -87,7 +87,7 @@
       "credits": 1,
       "when": "大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -96,34 +96,34 @@
       "credits": 3,
       "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CM1008",
       "name": "普化實驗",
       "credits": 1,
-      "when": "大一下",
+      "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "OS1006",
       "name": "光電科技概論上",
       "credits": 1,
-      "when": "大一上~大一下",
+      "when": "大一上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "OS1007",
       "name": "光電科技概論下",
       "credits": 1,
-      "when": "",
+      "when": "大一下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -132,79 +132,79 @@
       "credits": 3,
       "when": "大一上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "OS2007",
       "name": "工程數學I",
       "credits": 3,
-      "when": "大一下~大二上",
+      "when": "大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "OS2008",
       "name": "工程數學II",
       "credits": 3,
-      "when": "",
+      "when": "大二上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "OS2003",
       "name": "電磁學I",
       "credits": 3,
-      "when": "大二上~大二下",
+      "when": "大二上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "OS2004",
       "name": "電磁學II",
       "credits": 3,
-      "when": "",
+      "when": "大二下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "OS2013",
       "name": "基礎電學I",
       "credits": 4,
-      "when": "大二上~大二下",
+      "when": "大二上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "OS2014",
       "name": "基礎電學II",
       "credits": 4,
-      "when": "",
+      "when": "大二下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "OS2015",
       "name": "電子實驗I",
       "credits": 1,
-      "when": "大二上~大二下",
+      "when": "大二上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "OS2016",
       "name": "電子實驗II",
       "credits": 1,
-      "when": "",
+      "when": "大二下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -213,7 +213,7 @@
       "credits": 3,
       "when": "大二上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -222,7 +222,7 @@
       "credits": 3,
       "when": "大二下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -231,7 +231,7 @@
       "credits": 3,
       "when": "大三上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -240,7 +240,7 @@
       "credits": 1,
       "when": "大三上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -249,7 +249,7 @@
       "credits": 3,
       "when": "大二下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -258,7 +258,7 @@
       "credits": 3,
       "when": "大三下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -267,7 +267,7 @@
       "credits": 3,
       "when": "大三上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -276,7 +276,7 @@
       "credits": 3,
       "when": "大三下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -285,7 +285,7 @@
       "credits": 1,
       "when": "大三下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     }
   ],

@@ -59,18 +59,18 @@
           "code": "MA1001",
           "name": "微積分上",
           "credits": 4,
-          "when": "大一上~大一下",
+          "when": "大一上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "MA1002",
           "name": "微積分下",
           "credits": 4,
-          "when": "",
+          "when": "大一下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -79,7 +79,7 @@
           "credits": 3,
           "when": "大一上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -88,43 +88,43 @@
           "credits": 3,
           "when": "大一下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "MA2007",
           "name": "線性代數I",
           "credits": 3,
-          "when": "大一上~大一下",
+          "when": "大一上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "MA2008",
           "name": "線性代數II",
           "credits": 3,
-          "when": "",
+          "when": "大一下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "MA2045",
           "name": "高等微積分I",
           "credits": 4,
-          "when": "大二上~大二下",
+          "when": "大二上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "MA2046",
           "name": "高等微積分II",
           "credits": 4,
-          "when": "",
+          "when": "大二下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -133,7 +133,7 @@
           "credits": 3,
           "when": "大二上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -142,7 +142,7 @@
           "credits": 3,
           "when": "大二上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -151,7 +151,7 @@
           "credits": 3,
           "when": "大二下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -160,7 +160,7 @@
           "credits": 3,
           "when": "大三上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ],
@@ -175,18 +175,18 @@
               "code": "PH1033",
               "name": "普通物理B上",
               "credits": 3,
-              "when": "大一上~大一下",
+              "when": "大一上~大四下",
               "when_auto": true,
-              "verified": false,
+              "verified": true,
               "note": ""
             },
             {
               "code": "PH1034",
               "name": "普通物理B下",
               "credits": 3,
-              "when": "",
+              "when": "大一下~大四下",
               "when_auto": false,
-              "verified": false,
+              "verified": true,
               "note": ""
             }
           ],
@@ -195,18 +195,18 @@
               "code": "CM1009",
               "name": "普通化學I",
               "credits": 3,
-              "when": "大一上",
+              "when": "大一上~大四下",
               "when_auto": false,
-              "verified": false,
+              "verified": true,
               "note": ""
             },
             {
               "code": "CM1010",
               "name": "普通化學II",
               "credits": 3,
-              "when": "大一下",
+              "when": "大一上~大四下",
               "when_auto": true,
-              "verified": false,
+              "verified": true,
               "note": ""
             }
           ],
@@ -215,18 +215,18 @@
               "code": "LS1013",
               "name": "普通生物學I",
               "credits": 3,
-              "when": "大一上~大一下",
+              "when": "大一上~大四下",
               "when_auto": true,
-              "verified": false,
+              "verified": true,
               "note": ""
             },
             {
               "code": "LS1014",
               "name": "普通生物學II",
               "credits": 3,
-              "when": "",
+              "when": "大一上~大四下",
               "when_auto": false,
-              "verified": false,
+              "verified": true,
               "note": ""
             }
           ]
@@ -242,7 +242,7 @@
               "credits": 3,
               "when": "大二下",
               "when_auto": true,
-              "verified": false,
+              "verified": true,
               "note": ""
             },
             {
@@ -251,7 +251,7 @@
               "credits": 3,
               "when": "大二下",
               "when_auto": true,
-              "verified": false,
+              "verified": true,
               "note": ""
             },
             {
@@ -260,7 +260,7 @@
               "credits": 3,
               "when": "大三上",
               "when_auto": true,
-              "verified": false,
+              "verified": true,
               "note": ""
             },
             {
@@ -269,7 +269,7 @@
               "credits": 3,
               "when": "大三上",
               "when_auto": true,
-              "verified": false,
+              "verified": true,
               "note": ""
             },
             {
@@ -278,7 +278,7 @@
               "credits": 3,
               "when": "大三上",
               "when_auto": true,
-              "verified": false,
+              "verified": true,
               "note": ""
             },
             {
@@ -287,7 +287,7 @@
               "credits": 3,
               "when": "大三上",
               "when_auto": true,
-              "verified": false,
+              "verified": true,
               "note": ""
             },
             {
@@ -296,7 +296,7 @@
               "credits": 3,
               "when": "大三下",
               "when_auto": true,
-              "verified": false,
+              "verified": true,
               "note": ""
             },
             {
@@ -305,7 +305,7 @@
               "credits": 3,
               "when": "大三下",
               "when_auto": true,
-              "verified": false,
+              "verified": true,
               "note": ""
             },
             {
@@ -314,7 +314,7 @@
               "credits": 3,
               "when": "大三下",
               "when_auto": true,
-              "verified": false,
+              "verified": true,
               "note": ""
             }
           ]
@@ -365,18 +365,18 @@
           "code": "MA1001",
           "name": "微積分上",
           "credits": 4,
-          "when": "大一上~大一下",
+          "when": "大一上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "MA1002",
           "name": "微積分下",
           "credits": 4,
-          "when": "",
+          "when": "大一下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -385,16 +385,16 @@
           "credits": 3,
           "when": "大一上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "MA1013",
           "name": "計算機概論I",
           "credits": 3,
-          "when": "大一下",
+          "when": "大一上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -403,52 +403,52 @@
           "credits": 3,
           "when": "大一下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "MA2007",
           "name": "線性代數I",
           "credits": 3,
-          "when": "大一上~大一下",
+          "when": "大一上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "MA2008",
           "name": "線性代數II",
           "credits": 3,
-          "when": "",
+          "when": "大一下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "MA2049",
           "name": "分析導論I",
           "credits": 3,
-          "when": "大二上~大二下",
+          "when": "大二上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "MA2050",
           "name": "分析導論II",
           "credits": 3,
-          "when": "",
+          "when": "大二下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "MA2021",
           "name": "機率論",
           "credits": 3,
-          "when": "大二下",
+          "when": "大二上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -457,7 +457,7 @@
           "credits": 3,
           "when": "大二上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -466,7 +466,7 @@
           "credits": 3,
           "when": "大二上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -475,7 +475,7 @@
           "credits": 3,
           "when": "大二下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -484,7 +484,7 @@
           "credits": 3,
           "when": "大二下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -493,7 +493,7 @@
           "credits": 3,
           "when": "大二下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ],
@@ -508,18 +508,18 @@
               "code": "PH1033",
               "name": "普通物理B上",
               "credits": 3,
-              "when": "大一上~大一下",
+              "when": "大一上~大四下",
               "when_auto": true,
-              "verified": false,
+              "verified": true,
               "note": ""
             },
             {
               "code": "PH1034",
               "name": "普通物理B下",
               "credits": 3,
-              "when": "",
+              "when": "大一上~大四下",
               "when_auto": false,
-              "verified": false,
+              "verified": true,
               "note": ""
             }
           ],
@@ -528,18 +528,18 @@
               "code": "CM1009",
               "name": "普通化學I",
               "credits": 3,
-              "when": "大一上",
+              "when": "大一上~大四下",
               "when_auto": false,
-              "verified": false,
+              "verified": true,
               "note": ""
             },
             {
               "code": "CM1010",
               "name": "普通化學II",
               "credits": 3,
-              "when": "大一下",
+              "when": "大一上~大四下",
               "when_auto": true,
-              "verified": false,
+              "verified": true,
               "note": ""
             }
           ],
@@ -548,18 +548,18 @@
               "code": "LS1013",
               "name": "普通生物學I",
               "credits": 3,
-              "when": "大一上~大一下",
+              "when": "大一上~大四下",
               "when_auto": true,
-              "verified": false,
+              "verified": true,
               "note": ""
             },
             {
               "code": "LS1014",
               "name": "普通生物學II",
               "credits": 3,
-              "when": "",
+              "when": "大一上~大四下",
               "when_auto": false,
-              "verified": false,
+              "verified": true,
               "note": ""
             }
           ]
@@ -575,7 +575,7 @@
               "credits": 3,
               "when": "大三上",
               "when_auto": true,
-              "verified": false,
+              "verified": true,
               "note": ""
             },
             {
@@ -584,7 +584,7 @@
               "credits": 3,
               "when": "大三上",
               "when_auto": true,
-              "verified": false,
+              "verified": true,
               "note": ""
             },
             {
@@ -593,7 +593,7 @@
               "credits": 3,
               "when": "大三上",
               "when_auto": true,
-              "verified": false,
+              "verified": true,
               "note": ""
             }
           ]
@@ -609,7 +609,7 @@
               "credits": 3,
               "when": "大三上",
               "when_auto": true,
-              "verified": false,
+              "verified": true,
               "note": ""
             },
             {
@@ -618,7 +618,7 @@
               "credits": 3,
               "when": "大三下",
               "when_auto": true,
-              "verified": false,
+              "verified": true,
               "note": ""
             },
             {
@@ -627,7 +627,7 @@
               "credits": 3,
               "when": "大三下",
               "when_auto": true,
-              "verified": false,
+              "verified": true,
               "note": ""
             },
             {
@@ -636,7 +636,7 @@
               "credits": 3,
               "when": "大三下",
               "when_auto": true,
-              "verified": false,
+              "verified": true,
               "note": ""
             }
           ]

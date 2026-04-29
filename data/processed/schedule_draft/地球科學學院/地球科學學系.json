@@ -49,7 +49,7 @@
       "credits": 3,
       "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -58,7 +58,7 @@
       "credits": 3,
       "when": "大一下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -67,7 +67,7 @@
       "credits": 3,
       "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -76,16 +76,16 @@
       "credits": 3,
       "when": "大一下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "GP1017",
       "name": "程式語言與應用",
       "credits": 2,
-      "when": "大一下",
+      "when": "大一上~大一下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -94,7 +94,7 @@
       "credits": 2,
       "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -103,7 +103,7 @@
       "credits": 2,
       "when": "大一下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -112,7 +112,7 @@
       "credits": 1,
       "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -121,7 +121,7 @@
       "credits": 1,
       "when": "大一下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -130,7 +130,7 @@
       "credits": 3,
       "when": "大二上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -139,7 +139,7 @@
       "credits": 3,
       "when": "大二下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -148,7 +148,7 @@
       "credits": 2,
       "when": "大二上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -157,7 +157,7 @@
       "credits": 2,
       "when": "大二下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -166,7 +166,7 @@
       "credits": 2,
       "when": "大二下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -175,7 +175,7 @@
       "credits": 2,
       "when": "大二下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -184,7 +184,7 @@
       "credits": 3,
       "when": "大三上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -193,7 +193,7 @@
       "credits": 3,
       "when": "大三上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -202,7 +202,7 @@
       "credits": 3,
       "when": "大三下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -211,7 +211,7 @@
       "credits": 3,
       "when": "大三下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -220,7 +220,7 @@
       "credits": 1,
       "when": "大三上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -229,7 +229,7 @@
       "credits": 1,
       "when": "大三下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -238,43 +238,43 @@
       "credits": 3,
       "when": "大三下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "GP1010",
       "name": "地球系統科學概論",
       "credits": 2,
-      "when": "大一下",
+      "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "GP4031",
       "name": "台灣地質",
       "credits": 2,
-      "when": "大四下",
+      "when": "大四上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "GP4087",
       "name": "地球科學專題I",
       "credits": 1,
-      "when": "大四上",
+      "when": "大一上~大四下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "GP4088",
       "name": "地球科學專題II",
       "credits": 1,
-      "when": "大四下",
+      "when": "大一上~大四下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     }
   ],
@@ -288,54 +288,54 @@
           "code": "GP3052",
           "name": "時序分析",
           "credits": 3,
-          "when": "",
+          "when": "大三上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "GP3053",
           "name": "數值分析",
           "credits": 3,
-          "when": "",
+          "when": "大三下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "GP3072",
           "name": "統計學",
           "credits": 3,
-          "when": "",
+          "when": "大三下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "GP4024",
           "name": "地球科學資料處理",
           "credits": 3,
-          "when": "",
+          "when": "大三下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "GP2002",
           "name": "力學",
           "credits": 3,
-          "when": "",
+          "when": "大二上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "GP2014",
           "name": "電磁學",
           "credits": 3,
-          "when": "",
+          "when": "大二下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ]
@@ -349,45 +349,45 @@
           "code": "GP3013",
           "name": "野外地質學",
           "credits": 3,
-          "when": "",
+          "when": "大三下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "GP5068",
           "name": "地形學",
           "credits": 2,
-          "when": "",
+          "when": "大三上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "GP7048",
           "name": "層序地層學",
           "credits": 2,
-          "when": "",
+          "when": "大三下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "GP4065",
           "name": "工程地質學",
           "credits": 3,
-          "when": "",
+          "when": "大三上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "GP4008",
           "name": "地下水及土壤污染控制",
           "credits": 3,
-          "when": "",
+          "when": "大三上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -396,16 +396,16 @@
           "credits": 3,
           "when": "大三下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "GP4010",
           "name": "水文地質學",
           "credits": 2,
-          "when": "大二上",
+          "when": "大三下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ]
@@ -419,36 +419,36 @@
           "code": "GP3039",
           "name": "海洋學導論",
           "credits": 2,
-          "when": "",
+          "when": "大三上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "HS6063",
           "name": "海洋學概論",
           "credits": 3,
-          "when": "大二上",
+          "when": "大三下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "GP3096",
           "name": "流體力學概論",
           "credits": 2,
-          "when": "",
+          "when": "大三下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "GP4070",
           "name": "水文學",
           "credits": 3,
-          "when": "",
+          "when": "大三下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ]
