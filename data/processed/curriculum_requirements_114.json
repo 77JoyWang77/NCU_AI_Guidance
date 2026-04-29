@@ -687,25 +687,363 @@
               "id": "track_philosophy",
               "name": "哲學思維與經典詮釋",
               "english_name": "Philosophy",
-              "min_credits": 27
+              "min_credits": 27,
+              "elective_courses": [
+                {
+                  "code": "PD2203",
+                  "name": "哲思方法",
+                  "credits": 3,
+                  "when": "大一上~大二下"
+                },
+                {
+                  "code": "PD2304",
+                  "name": "中國思想史",
+                  "credits": 3,
+                  "when": "大一上~大二下"
+                },
+                {
+                  "code": "PD2202",
+                  "name": "形上學",
+                  "credits": 3,
+                  "when": "大一上~大二下"
+                },
+                {
+                  "code": "PD4401",
+                  "name": "西方哲學史",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PD4402",
+                  "name": "當代西方思潮",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PD4406",
+                  "name": "現象學與詮釋學",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PD4360",
+                  "name": "中國哲學經典詮釋",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "IL4102",
+                  "name": "西方哲學經典詮釋",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PD4150",
+                  "name": "宗教哲學與生命教育",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PD4151",
+                  "name": "AI、倫理學與實踐哲學",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "IL4101",
+                  "name": "哲學人類學與數位科技",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PD4153",
+                  "name": "人本AI的東方觀點",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PD4101",
+                  "name": "人文應用專題：哲學裡的實境遊戲",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                }
+              ]
             },
             {
               "id": "track_history",
               "name": "知識傳統與歷史應用",
               "english_name": "History",
-              "min_credits": 27
+              "min_credits": 27,
+              "elective_courses": [
+                {
+                  "code": "HI2901",
+                  "name": "台灣近代史",
+                  "credits": 3,
+                  "when": "大一上~大二下"
+                },
+                {
+                  "code": "HI2902",
+                  "name": "東亞區域史",
+                  "credits": 3,
+                  "when": "大一上~大二下"
+                },
+                {
+                  "code": "HI2903",
+                  "name": "中國近現代史",
+                  "credits": 3,
+                  "when": "大一上~大二下"
+                },
+                {
+                  "code": "HI2904",
+                  "name": "中國的身體與醫藥文化史",
+                  "credits": 3,
+                  "when": "大二上~大二下"
+                },
+                {
+                  "code": "PD2304",
+                  "name": "中國思想史",
+                  "credits": 3,
+                  "when": "大一上~大二下"
+                },
+                {
+                  "code": "IL2201",
+                  "name": "1949來台移民社會史",
+                  "credits": 3,
+                  "when": "大一上~大二下"
+                },
+                {
+                  "code": "IL2202",
+                  "name": "數位人文與歷史學",
+                  "credits": 3,
+                  "when": "大一上~大二下"
+                },
+                {
+                  "code": "HI4904",
+                  "name": "博物館歷史學",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "HI4908",
+                  "name": "臺灣社會經濟史",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "IL4201",
+                  "name": "台灣史與東亞史的交錯",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "HI4909",
+                  "name": "人文應用專題：歷史學微策展",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "HI4910",
+                  "name": "人文應用專題：公眾史學的理論與實作",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "IL4202",
+                  "name": "人文應用專題：歷史導覽",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                }
+              ]
             },
             {
               "id": "track_art_history",
               "name": "藝術與視覺文化",
               "english_name": "Art History",
-              "min_credits": 27
+              "min_credits": 27,
+              "elective_courses": [
+                {
+                  "code": "AR2002",
+                  "name": "近代西方藝術",
+                  "credits": 3,
+                  "when": "大一上~大二下"
+                },
+                {
+                  "code": "AR2004",
+                  "name": "攝影與文化",
+                  "credits": 3,
+                  "when": "大一上~大二下"
+                },
+                {
+                  "code": "AR2005",
+                  "name": "中國繪畫史",
+                  "credits": 3,
+                  "when": "大一上~大二下"
+                },
+                {
+                  "code": "AR4004",
+                  "name": "當代藝術思潮",
+                  "credits": 3,
+                  "when": "大一上~大二下"
+                },
+                {
+                  "code": "AR4001",
+                  "name": "亞洲藝術專題",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "AR4002",
+                  "name": "藝術與社會",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "AR4003",
+                  "name": "亞洲藝術交流與比較",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "AR4005",
+                  "name": "藝術的跨域實驗",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "AR4006",
+                  "name": "藝術理論與批評",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "AR0028",
+                  "name": "數位化藝術史",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "AR4009",
+                  "name": "亞洲藝術跨領域研究",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "AR4010",
+                  "name": "藝文環境、法規與科技",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "AR4007",
+                  "name": "人文應用專題：美術館歷史與實務",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "AR4008",
+                  "name": "人文應用專題：展覽策畫",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                }
+              ]
             },
             {
               "id": "track_image_narrative",
               "name": "影像與敘事",
               "english_name": "Image and Narrative",
-              "min_credits": 27
+              "min_credits": 27,
+              "elective_courses": [
+                {
+                  "code": "IL2401",
+                  "name": "臺灣電影",
+                  "credits": 3,
+                  "when": "大一上~大二下"
+                },
+                {
+                  "code": "IL2402",
+                  "name": "電影史",
+                  "credits": 3,
+                  "when": "大一上~大二下"
+                },
+                {
+                  "code": "IL2403",
+                  "name": "世界電影",
+                  "credits": 3,
+                  "when": "大一上~大二下"
+                },
+                {
+                  "code": "CL2068",
+                  "name": "華語電影與文學",
+                  "credits": 3,
+                  "when": "大二上~大二下"
+                },
+                {
+                  "code": "FR2052",
+                  "name": "影像敘事、感知與視覺文化",
+                  "credits": 3,
+                  "when": "大一上~大二下"
+                },
+                {
+                  "code": "IL4401",
+                  "name": "動態影像拍攝剪輯",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "IL4402",
+                  "name": "電影、科技與未來想像",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "IL4403",
+                  "name": "國際電影合作",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "IL4404",
+                  "name": "劇本寫作",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "IL4405",
+                  "name": "電影研究專題",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "IL4409",
+                  "name": "電影類型",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "IL4406",
+                  "name": "人文應用專題：電影策展",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "IL4407",
+                  "name": "人文應用專題：電影行銷實務",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "IL4410",
+                  "name": "人文應用專題：紀錄片製作",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "IL4411",
+                  "name": "人文應用專題：短片製作",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                }
+              ]
             }
           ]
         }
@@ -1968,42 +2306,38 @@
                 {
                   "code": "CM2021",
                   "name": "分析化學上",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大二上"
                 },
                 {
                   "code": "CM2022",
                   "name": "分析化學下",
-                  "credits": 4
+                  "credits": 4,
+                  "when": "大二下"
                 },
                 {
                   "code": "CM2031",
                   "name": "有機化學上",
-                  "credits": 4
+                  "credits": 4,
+                  "when": "大二上"
                 },
                 {
                   "code": "CM2032",
                   "name": "有機化學下",
-                  "credits": 4
+                  "credits": 4,
+                  "when": "大二下"
                 },
                 {
                   "code": "CM2081",
                   "name": "分析與有機化學實驗上",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大二上"
                 },
                 {
                   "code": "CM2082",
                   "name": "分析與有機化學實驗下",
-                  "credits": 3
-                },
-                {
-                  "code": "CM3067",
-                  "name": "生物化學上",
-                  "credits": 3
-                },
-                {
-                  "code": "CM3068",
-                  "name": "生物化學下",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大二下"
                 }
               ],
               "elective_groups": [
@@ -2014,26 +2348,134 @@
                     {
                       "code": "CM3041",
                       "name": "物理化學上",
-                      "credits": 4
+                      "credits": 4,
+                      "when": "大三上"
                     },
                     {
                       "code": "CM3042",
                       "name": "物理化學下",
-                      "credits": 4
+                      "credits": 4,
+                      "when": "大三下"
                     }
                   ],
                   "option_b": [
                     {
                       "code": "CM3051",
                       "name": "無機化學上",
-                      "credits": 3
+                      "credits": 3,
+                      "when": "大三上"
                     },
                     {
                       "code": "CM3052",
                       "name": "無機化學下",
-                      "credits": 3
+                      "credits": 3,
+                      "when": "大三下"
                     }
                   ]
+                }
+              ],
+              "elective_courses": [
+                {
+                  "code": "CM3067",
+                  "name": "生物化學上",
+                  "credits": 3,
+                  "when": "大三上"
+                },
+                {
+                  "code": "CM3068",
+                  "name": "生物化學下",
+                  "credits": 3,
+                  "when": "大三下"
+                },
+                {
+                  "code": "CM4033",
+                  "name": "高分子化學產業上",
+                  "credits": 1,
+                  "when": "大四上"
+                },
+                {
+                  "code": "CM4034",
+                  "name": "高分子化學產業II",
+                  "credits": 1,
+                  "when": "大四下"
+                },
+                {
+                  "code": "CM4035",
+                  "name": "過渡金屬化學",
+                  "credits": 3,
+                  "when": "大四下"
+                },
+                {
+                  "code": "CM6025",
+                  "name": "儀器分析",
+                  "credits": 4,
+                  "when": "大二上~大四下"
+                },
+                {
+                  "code": "CM6034",
+                  "name": "有機光譜分析",
+                  "credits": 3,
+                  "when": "大二上~大四下"
+                },
+                {
+                  "code": "CM6036",
+                  "name": "有機化學特論",
+                  "credits": 2,
+                  "when": "大二上~大四下"
+                },
+                {
+                  "code": "CM6054",
+                  "name": "計算化學",
+                  "credits": 3,
+                  "when": "大二上~大四下"
+                },
+                {
+                  "code": "CM6069",
+                  "name": "共軛高分子化學與應用",
+                  "credits": 3,
+                  "when": "大二上~大四下"
+                },
+                {
+                  "code": "CM6075",
+                  "name": "奈米材料結構",
+                  "credits": 3,
+                  "when": "大二上~大四下"
+                },
+                {
+                  "code": "CM6028",
+                  "name": "環境化學I",
+                  "credits": 2,
+                  "when": "大二上~大四下"
+                },
+                {
+                  "code": "CM6029",
+                  "name": "環境化學II",
+                  "credits": 2,
+                  "when": "大二上~大四下"
+                },
+                {
+                  "code": "CM6021",
+                  "name": "高等分析化學",
+                  "credits": 3,
+                  "when": "大二上~大四下"
+                },
+                {
+                  "code": "CM6031",
+                  "name": "高等有機化學",
+                  "credits": 3,
+                  "when": "大二上~大四下"
+                },
+                {
+                  "code": "CM6041",
+                  "name": "高等物理化學",
+                  "credits": 3,
+                  "when": "大二上~大四下"
+                },
+                {
+                  "code": "CM6051",
+                  "name": "高等無機化學",
+                  "credits": 3,
+                  "when": "大二上~大四下"
                 }
               ]
             },
@@ -2048,44 +2490,142 @@
                 {
                   "code": "LS2001",
                   "name": "生物化學上",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大二上"
                 },
                 {
                   "code": "LS2002",
                   "name": "生物化學下",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大二下"
                 },
                 {
                   "code": "LS3001",
                   "name": "植物生理學",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大二下"
                 },
                 {
                   "code": "LS3018",
                   "name": "動物生理學",
-                  "credits": 4
+                  "credits": 4,
+                  "when": "大三下"
                 }
               ],
               "elective_courses": [
                 {
                   "code": "LS2010",
                   "name": "遺傳學",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大三上"
                 },
                 {
                   "code": "LS2019",
                   "name": "細胞學上",
-                  "credits": 2
+                  "credits": 2,
+                  "when": "大三上"
                 },
                 {
                   "code": "LS2020",
                   "name": "細胞學下",
-                  "credits": 2
+                  "credits": 2,
+                  "when": "大三下"
                 },
                 {
                   "code": "LS3003",
                   "name": "微生物學",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大二上"
+                },
+                {
+                  "code": "LS3016",
+                  "name": "海洋生物學",
+                  "credits": 2,
+                  "when": "大三下"
+                },
+                {
+                  "code": "LS3030",
+                  "name": "親緣樹形圖的分析與應用",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "LS3035",
+                  "name": "分子生物學上",
+                  "credits": 2,
+                  "when": "大三上"
+                },
+                {
+                  "code": "LS3036",
+                  "name": "分子生物學下",
+                  "credits": 2,
+                  "when": "大三下"
+                },
+                {
+                  "code": "LS4015",
+                  "name": "生態學",
+                  "credits": 3,
+                  "when": "大四上"
+                },
+                {
+                  "code": "LS5016",
+                  "name": "分子演化及親源演化關係",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "LS5032",
+                  "name": "植物組織培養",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "LS5037",
+                  "name": "環境生物學",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "LS5038",
+                  "name": "癌症生物學",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "LS5055",
+                  "name": "進階生物演化",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "LS6024",
+                  "name": "生物技術I",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "LS7016",
+                  "name": "生物資訊及應用",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "LS7021",
+                  "name": "前瞻植物與微生物學",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "HT3001",
+                  "name": "生物統計學-R語言應用",
+                  "credits": 3,
+                  "when": "大三上"
+                },
+                {
+                  "code": "LS1018",
+                  "name": "昆蟲世界",
+                  "credits": 2,
+                  "when": "大一下"
                 }
               ]
             },
@@ -2101,43 +2641,95 @@
                   "required_courses": [
                     {
                       "code": "BM2014",
-                      "name": "醫療器材設計",
-                      "credits": 3
+                      "name": "醫療器材設計原理及其應用",
+                      "credits": 3,
+                      "when": "大二上"
                     },
                     {
                       "code": "BM2039",
                       "name": "儀器分析",
-                      "credits": 3
+                      "credits": 3,
+                      "when": "大二下"
                     },
                     {
                       "code": "BM2045",
                       "name": "細胞分子生物學",
-                      "credits": 2
+                      "credits": 2,
+                      "when": "大二下"
                     },
                     {
                       "code": "HT3001",
-                      "name": "生物統計學",
-                      "credits": 3
+                      "name": "生物統計學-R語言應用",
+                      "credits": 3,
+                      "when": "大三上"
                     },
                     {
                       "code": "BM3006",
                       "name": "材料科學導論",
-                      "credits": 3
+                      "credits": 3,
+                      "when": "大三下"
                     },
                     {
                       "code": "BM3032",
                       "name": "分子醫學",
-                      "credits": 2
+                      "credits": 2,
+                      "when": "大三上"
+                    }
+                  ],
+                  "elective_courses": [
+                    {
+                      "code": "BM1010",
+                      "name": "認知心理學概論",
+                      "credits": 3,
+                      "when": "大一下"
+                    },
+                    {
+                      "code": "BM2005",
+                      "name": "認知神經科學",
+                      "credits": 3,
+                      "when": "大二上"
+                    },
+                    {
+                      "code": "BM2010",
+                      "name": "工程數學上",
+                      "credits": 3,
+                      "when": "大二上"
+                    },
+                    {
+                      "code": "BM2011",
+                      "name": "工程數學下",
+                      "credits": 3,
+                      "when": "大二下"
                     },
                     {
                       "code": "BM2012",
                       "name": "電子電路學",
-                      "credits": 3
+                      "credits": 3,
+                      "when": "大二上"
                     },
                     {
                       "code": "BM2013",
                       "name": "電子電路學實驗",
-                      "credits": 1
+                      "credits": 1,
+                      "when": "大二下"
+                    },
+                    {
+                      "code": "BM3018",
+                      "name": "數據科學導論",
+                      "credits": 3,
+                      "when": "大三上"
+                    },
+                    {
+                      "code": "BM3029",
+                      "name": "統計機器學習基礎",
+                      "credits": 3,
+                      "when": "大三下"
+                    },
+                    {
+                      "code": "BM3033",
+                      "name": "生醫技術暨微奈米晶片設計與應用",
+                      "credits": 3,
+                      "when": "大三上"
                     }
                   ]
                 },
@@ -2146,49 +2738,114 @@
                   "name": "B組_醫學工程與資料科學組",
                   "required_courses": [
                     {
-                      "code": "BM2014",
-                      "name": "醫療器材設計",
-                      "credits": 3
-                    },
-                    {
-                      "code": "BM2039",
-                      "name": "儀器分析",
-                      "credits": 3
-                    },
-                    {
-                      "code": "HT3001",
-                      "name": "生物統計學",
-                      "credits": 3
-                    },
-                    {
-                      "code": "BM3006",
-                      "name": "材料科學導論",
-                      "credits": 3
-                    },
-                    {
-                      "code": "BM1011",
-                      "name": "人工智慧程式入門",
-                      "credits": 3
-                    },
-                    {
-                      "code": "BM2010",
-                      "name": "工程數學上",
-                      "credits": 3
-                    },
-                    {
-                      "code": "BM2011",
-                      "name": "工程數學下",
-                      "credits": 3
-                    },
-                    {
                       "code": "BM2012",
                       "name": "電子電路學",
-                      "credits": 3
+                      "credits": 3,
+                      "when": "大二上"
                     },
                     {
                       "code": "BM2013",
                       "name": "電子電路學實驗",
-                      "credits": 1
+                      "credits": 1,
+                      "when": "大二下"
+                    },
+                    {
+                      "code": "BM2014",
+                      "name": "醫療器材設計原理及其應用",
+                      "credits": 3,
+                      "when": "大二上"
+                    },
+                    {
+                      "code": "BM2039",
+                      "name": "儀器分析",
+                      "credits": 3,
+                      "when": "大二下"
+                    },
+                    {
+                      "code": "HT3001",
+                      "name": "生物統計學-R語言應用",
+                      "credits": 3,
+                      "when": "大三上"
+                    },
+                    {
+                      "code": "BM3006",
+                      "name": "材料科學導論",
+                      "credits": 3,
+                      "when": "大三下"
+                    }
+                  ],
+                  "elective_courses": [
+                    {
+                      "code": "BM1011",
+                      "name": "人工智慧程式入門",
+                      "credits": 3,
+                      "when": "大一下"
+                    },
+                    {
+                      "code": "BM2010",
+                      "name": "工程數學上",
+                      "credits": 3,
+                      "when": "大二上"
+                    },
+                    {
+                      "code": "BM2011",
+                      "name": "工程數學下",
+                      "credits": 3,
+                      "when": "大二下"
+                    },
+                    {
+                      "code": "BM2040",
+                      "name": "資料結構",
+                      "credits": 3,
+                      "when": "大二下"
+                    },
+                    {
+                      "code": "BM2041",
+                      "name": "作業系統概論",
+                      "credits": 3,
+                      "when": "大二下"
+                    },
+                    {
+                      "code": "BM2042",
+                      "name": "醫用物理",
+                      "credits": 3,
+                      "when": "大二下"
+                    },
+                    {
+                      "code": "BM2043",
+                      "name": "微電子學",
+                      "credits": 3,
+                      "when": "大二下"
+                    },
+                    {
+                      "code": "BM3022",
+                      "name": "演算法",
+                      "credits": 3,
+                      "when": "大三下"
+                    },
+                    {
+                      "code": "BM3023",
+                      "name": "線性代數",
+                      "credits": 3,
+                      "when": "大二上"
+                    },
+                    {
+                      "code": "BM3027",
+                      "name": "訊號與系統",
+                      "credits": 3,
+                      "when": "大三上"
+                    },
+                    {
+                      "code": "BM3028",
+                      "name": "微處理器與嵌入式系統",
+                      "credits": 3,
+                      "when": "大三上"
+                    },
+                    {
+                      "code": "BM3029",
+                      "name": "統計機器學習基礎",
+                      "credits": 3,
+                      "when": "大三下"
                     }
                   ]
                 }
@@ -2198,7 +2855,130 @@
               "id": "track_sci_photonics",
               "name": "光電科學與工程領域",
               "first_domain_min": 33,
-              "second_domain_min": 20
+              "second_domain_min": 20,
+              "elective_note": "修業期間至少選修並通過本系所（OS開頭課號）選修科目12學分（專題類課程除外）",
+              "required_courses": [
+                {
+                  "code": "OS1006",
+                  "name": "光電科技概論I",
+                  "credits": 1,
+                  "when": "大一上"
+                },
+                {
+                  "code": "OS1007",
+                  "name": "光電科技概論II",
+                  "credits": 1,
+                  "when": "大一下"
+                },
+                {
+                  "code": "OS1008",
+                  "name": "計算機概論",
+                  "credits": 3,
+                  "when": "大一上"
+                },
+                {
+                  "code": "OS2007",
+                  "name": "工程數學I",
+                  "credits": 3,
+                  "when": "大一下"
+                },
+                {
+                  "code": "OS2008",
+                  "name": "工程數學II",
+                  "credits": 3,
+                  "when": "大二上"
+                },
+                {
+                  "code": "OS2003",
+                  "name": "電磁學I",
+                  "credits": 3,
+                  "when": "大二上"
+                },
+                {
+                  "code": "OS2004",
+                  "name": "電磁學II",
+                  "credits": 3,
+                  "when": "大二下"
+                },
+                {
+                  "code": "OS2013",
+                  "name": "基礎電學I",
+                  "credits": 4,
+                  "when": "大二上"
+                },
+                {
+                  "code": "OS2014",
+                  "name": "基礎電學II",
+                  "credits": 4,
+                  "when": "大二下"
+                },
+                {
+                  "code": "OS2015",
+                  "name": "電子實驗I",
+                  "credits": 1,
+                  "when": "大二上"
+                },
+                {
+                  "code": "OS2016",
+                  "name": "電子實驗II",
+                  "credits": 1,
+                  "when": "大二下"
+                },
+                {
+                  "code": "OS2017",
+                  "name": "基礎光學與幾何光學",
+                  "credits": 3,
+                  "when": "大二上"
+                },
+                {
+                  "code": "OS2018",
+                  "name": "波動光學",
+                  "credits": 3,
+                  "when": "大二下"
+                },
+                {
+                  "code": "OS3016",
+                  "name": "電磁光學",
+                  "credits": 3,
+                  "when": "大三上"
+                },
+                {
+                  "code": "OS3011",
+                  "name": "光學實驗",
+                  "credits": 1,
+                  "when": "大三上"
+                },
+                {
+                  "code": "OS2001",
+                  "name": "近代物理",
+                  "credits": 3,
+                  "when": "大二下"
+                },
+                {
+                  "code": "OS3001",
+                  "name": "光學系統",
+                  "credits": 3,
+                  "when": "大三下"
+                },
+                {
+                  "code": "OS2011",
+                  "name": "光電半導體物理",
+                  "credits": 3,
+                  "when": "大三上"
+                },
+                {
+                  "code": "OS3002",
+                  "name": "光電工程概論",
+                  "credits": 3,
+                  "when": "大三下"
+                },
+                {
+                  "code": "OS3010",
+                  "name": "光電實驗",
+                  "credits": 1,
+                  "when": "大三下"
+                }
+              ]
             },
             {
               "id": "track_sci_physics",
@@ -2209,52 +2989,352 @@
                 {
                   "code": "PH1027",
                   "name": "力學",
-                  "credits": 4
+                  "credits": 4,
+                  "when": "大二上"
                 },
                 {
                   "code": "PH1028",
                   "name": "電磁學",
-                  "credits": 4
+                  "credits": 4,
+                  "when": "大二下"
                 },
                 {
                   "code": "PH3009",
                   "name": "量子物理",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大三下"
                 },
                 {
                   "code": "PH3011",
                   "name": "熱物理",
-                  "credits": 3
-                },
+                  "credits": 3,
+                  "when": "大三上"
+                }
+              ],
+              "elective_courses": [
                 {
                   "code": "PH1029",
                   "name": "實驗物理I上",
-                  "credits": 6
+                  "credits": 6,
+                  "when": "大二上"
                 },
                 {
                   "code": "PH1030",
                   "name": "實驗物理I下",
-                  "credits": 6
+                  "credits": 6,
+                  "when": "大二下"
                 },
                 {
                   "code": "PH2003",
                   "name": "應用數學上",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大二上~大三下"
                 },
                 {
                   "code": "PH2004",
                   "name": "應用數學下",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大二上~大三下"
+                },
+                {
+                  "code": "PH2010",
+                  "name": "波動物理學",
+                  "credits": 3,
+                  "when": "大三上~大四下"
                 },
                 {
                   "code": "PH2029",
                   "name": "實驗物理II上",
-                  "credits": 6
+                  "credits": 6,
+                  "when": "大三上"
                 },
                 {
                   "code": "PH2030",
                   "name": "實驗物理II下",
-                  "credits": 6
+                  "credits": 6,
+                  "when": "大三下"
+                },
+                {
+                  "code": "PH2033",
+                  "name": "普通天文學I",
+                  "credits": 3,
+                  "when": "大二上~大四下"
+                },
+                {
+                  "code": "PH2034",
+                  "name": "普通天文學II",
+                  "credits": 3,
+                  "when": "大二上~大四下"
+                },
+                {
+                  "code": "PH2035",
+                  "name": "近代物理導論",
+                  "credits": 3,
+                  "when": "大二上~大四下"
+                },
+                {
+                  "code": "PH3008",
+                  "name": "量子力學導論",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH3010",
+                  "name": "量子與統計物理",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH3029",
+                  "name": "物理數學I",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH3030",
+                  "name": "物理數學II",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH3036",
+                  "name": "近代物理實驗",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH3042",
+                  "name": "固態物理導論",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH3045",
+                  "name": "天文觀測I",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH3048",
+                  "name": "生物物理導論",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH3054",
+                  "name": "天文物理導論",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH3057",
+                  "name": "計算物理導論",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH3059",
+                  "name": "光學I",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH3060",
+                  "name": "光學II",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH3063",
+                  "name": "電子學（含實驗）I",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH3064",
+                  "name": "電子學（含實驗）II",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH3066",
+                  "name": "用Python做天文物理",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH4029",
+                  "name": "流體力學導論",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH4035",
+                  "name": "相對論導論",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH4040",
+                  "name": "高能物理導論",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH6003",
+                  "name": "量子力學I",
+                  "credits": 3,
+                  "when": "大四上~大四下"
+                },
+                {
+                  "code": "PH6004",
+                  "name": "量子力學II",
+                  "credits": 3,
+                  "when": "大四上~大四下"
+                },
+                {
+                  "code": "PH6005",
+                  "name": "電動力學I",
+                  "credits": 3,
+                  "when": "大四上~大四下"
+                },
+                {
+                  "code": "PH6006",
+                  "name": "電動力學II",
+                  "credits": 3,
+                  "when": "大四上~大四下"
+                },
+                {
+                  "code": "PH6007",
+                  "name": "古典力學I",
+                  "credits": 3,
+                  "when": "大四上~大四下"
+                },
+                {
+                  "code": "PH6008",
+                  "name": "古典力學II",
+                  "credits": 3,
+                  "when": "大四上~大四下"
+                },
+                {
+                  "code": "PH6012",
+                  "name": "統計力學I",
+                  "credits": 3,
+                  "when": "大四上~大四下"
+                },
+                {
+                  "code": "PH6013",
+                  "name": "計算物理",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH6029",
+                  "name": "量子場論I",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH6031",
+                  "name": "流體力學",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH6032",
+                  "name": "電漿物理",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH6033",
+                  "name": "固態物理I",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH6048",
+                  "name": "量子場論",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH6049",
+                  "name": "統計力學II",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH6058",
+                  "name": "原子分子物理",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH6059",
+                  "name": "生物物理",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH6070",
+                  "name": "非線性動力學",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH7009",
+                  "name": "群論與對稱",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH7014",
+                  "name": "廣義相對論",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH7015",
+                  "name": "表面物理",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH7024",
+                  "name": "軟凝體物理",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH7030",
+                  "name": "複雜系統",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH7044",
+                  "name": "量子計算與量子資訊",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH7046",
+                  "name": "現代宇宙學",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH7062",
+                  "name": "重力波與多重訊息觀測",
+                  "credits": 3,
+                  "when": "大三上~大四下"
+                },
+                {
+                  "code": "PH7064",
+                  "name": "量子光學",
+                  "credits": 3,
+                  "when": "大三上~大四下"
                 }
               ]
             },
@@ -2269,22 +3349,106 @@
                     {
                       "code": "MA2007",
                       "name": "線性代數I",
-                      "credits": 3
+                      "credits": 3,
+                      "when": "大一上~大一下"
                     },
                     {
                       "code": "MA2008",
                       "name": "線性代數II",
-                      "credits": 3
+                      "credits": 3,
+                      "when": ""
                     },
                     {
                       "code": "MA2045",
                       "name": "高等微積分I",
-                      "credits": 4
+                      "credits": 4,
+                      "when": "大二上~大二下"
                     },
                     {
                       "code": "MA2046",
                       "name": "高等微積分II",
-                      "credits": 4
+                      "credits": 4,
+                      "when": ""
+                    },
+                    {
+                      "code": "MA2021",
+                      "name": "機率論",
+                      "credits": 3,
+                      "when": ""
+                    },
+                    {
+                      "code": "MA2025",
+                      "name": "代數I",
+                      "credits": 3,
+                      "when": ""
+                    },
+                    {
+                      "code": "MA2041",
+                      "name": "微分方程I",
+                      "credits": 3,
+                      "when": ""
+                    }
+                  ],
+                  "elective_courses": [
+                    {
+                      "code": "MA2026",
+                      "name": "代數II",
+                      "credits": 3,
+                      "when": ""
+                    },
+                    {
+                      "code": "MA2042",
+                      "name": "微分方程II",
+                      "credits": 3,
+                      "when": ""
+                    },
+                    {
+                      "code": "MA2047",
+                      "name": "高等微積分III",
+                      "credits": 3,
+                      "when": ""
+                    },
+                    {
+                      "code": "MA2051",
+                      "name": "程式語言及其應用",
+                      "credits": 3,
+                      "when": ""
+                    },
+                    {
+                      "code": "MA3003",
+                      "name": "拓樸學",
+                      "credits": 3,
+                      "when": ""
+                    },
+                    {
+                      "code": "MA3015",
+                      "name": "複變函數論I",
+                      "credits": 3,
+                      "when": ""
+                    },
+                    {
+                      "code": "MA3025",
+                      "name": "數理統計I",
+                      "credits": 3,
+                      "when": ""
+                    },
+                    {
+                      "code": "MA3034",
+                      "name": "離散數學I",
+                      "credits": 3,
+                      "when": ""
+                    },
+                    {
+                      "code": "MA3036",
+                      "name": "近世代數",
+                      "credits": 3,
+                      "when": ""
+                    },
+                    {
+                      "code": "MA4005",
+                      "name": "幾何學I",
+                      "credits": 3,
+                      "when": ""
                     }
                   ]
                 },
@@ -2295,22 +3459,112 @@
                     {
                       "code": "MA2007",
                       "name": "線性代數I",
-                      "credits": 3
+                      "credits": 3,
+                      "when": "大一上~大一下"
                     },
                     {
                       "code": "MA2008",
                       "name": "線性代數II",
-                      "credits": 3
+                      "credits": 3,
+                      "when": ""
                     },
                     {
                       "code": "MA2049",
                       "name": "分析導論I",
-                      "credits": 3
+                      "credits": 3,
+                      "when": "大二上~大二下"
                     },
                     {
                       "code": "MA2050",
                       "name": "分析導論II",
-                      "credits": 3
+                      "credits": 3,
+                      "when": ""
+                    },
+                    {
+                      "code": "MA2011",
+                      "name": "統計學",
+                      "credits": 3,
+                      "when": ""
+                    },
+                    {
+                      "code": "MA2021",
+                      "name": "機率論",
+                      "credits": 3,
+                      "when": ""
+                    },
+                    {
+                      "code": "MA2044",
+                      "name": "數值微分方程",
+                      "credits": 3,
+                      "when": ""
+                    },
+                    {
+                      "code": "MA2063",
+                      "name": "最佳化方法與應用",
+                      "credits": 3,
+                      "when": ""
+                    }
+                  ],
+                  "elective_courses": [
+                    {
+                      "code": "MA1018",
+                      "name": "科學計算導論",
+                      "credits": 3,
+                      "when": ""
+                    },
+                    {
+                      "code": "MA2030",
+                      "name": "數值線性代數",
+                      "credits": 3,
+                      "when": ""
+                    },
+                    {
+                      "code": "MA3067",
+                      "name": "數學建模",
+                      "credits": 3,
+                      "when": ""
+                    },
+                    {
+                      "code": "MA3111",
+                      "name": "數學影像處理",
+                      "credits": 3,
+                      "when": ""
+                    },
+                    {
+                      "code": "MA3121",
+                      "name": "金融數學導論",
+                      "credits": 3,
+                      "when": ""
+                    },
+                    {
+                      "code": "MA3131",
+                      "name": "資料科學導論",
+                      "credits": 3,
+                      "when": ""
+                    },
+                    {
+                      "code": "MA3103",
+                      "name": "科學計算專題I",
+                      "credits": 3,
+                      "when": ""
+                    },
+                    {
+                      "code": "MA3113",
+                      "name": "影像處理專題I",
+                      "credits": 3,
+                      "when": ""
+                    },
+                    {
+                      "code": "MA3123",
+                      "name": "金融數學專題I",
+                      "credits": 3,
+                      "when": ""
+                    },
+                    {
+                      "code": "MA3133",
+                      "name": "資料科學專題I",
+                      "credits": 3,
+                      "when": ""
                     }
                   ]
                 }
@@ -4093,79 +5347,92 @@
                 {
                   "code": "ME1006",
                   "name": "靜力與材料力學",
-                  "credits": 4
+                  "credits": 4,
+                  "when": "大一下"
                 },
                 {
                   "code": "ME1041",
                   "name": "製造工程實習I",
-                  "credits": 1
+                  "credits": 1,
+                  "when": "大二上"
                 },
                 {
                   "code": "ME2037",
                   "name": "機械製圖上",
-                  "credits": 1
+                  "credits": 1,
+                  "when": "大二上"
                 },
                 {
                   "code": "ME1018",
                   "name": "微控制器",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大二下"
                 },
                 {
                   "code": "ME3096",
                   "name": "量測實驗",
-                  "credits": 1
+                  "credits": 1,
+                  "when": "大二下"
                 },
                 {
                   "code": "ME2001",
                   "name": "工程數學I",
                   "credits": 3,
-                  "alias": "CI2017/CH2009"
+                  "when": "大二上"
                 },
                 {
                   "code": "ME1042",
                   "name": "製造工程實習II",
-                  "credits": 1
+                  "credits": 1,
+                  "when": "大二下"
                 },
                 {
                   "code": "ME2038",
                   "name": "機械製圖下",
-                  "credits": 1
+                  "credits": 1,
+                  "when": "大二下"
                 },
                 {
                   "code": "ME2065",
                   "name": "電路及電子學",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大二下"
                 },
                 {
                   "code": "ME2066",
                   "name": "電路及電子實驗",
-                  "credits": 1
+                  "credits": 1,
+                  "when": "大二下"
                 },
                 {
                   "code": "ME2002",
                   "name": "工程數學II",
                   "credits": 3,
-                  "alias": "CI2018/CH2010"
+                  "when": "大二下"
                 },
                 {
                   "code": "ME2056",
                   "name": "精密機械製造I",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大二下"
                 },
                 {
                   "code": "ME5205",
                   "name": "智慧製造實作與專題I",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大三上"
                 },
                 {
-                  "code": "ME5202",
-                  "name": "智慧製造技術",
-                  "credits": 3
+                  "code": "ME5203",
+                  "name": "虛實整合技術",
+                  "credits": 3,
+                  "when": "大三下"
                 },
                 {
                   "code": "ME5206",
                   "name": "智慧製造實作與專題II",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大三下"
                 }
               ],
               "min_credits": 55,
@@ -4180,64 +5447,74 @@
                 {
                   "code": "EI1102",
                   "name": "能源與材料科學導論",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上"
                 },
                 {
                   "code": "CH2005",
                   "name": "物理化學上",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大二上"
                 },
                 {
                   "code": "CH2031",
                   "name": "材料化學",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大二上"
                 },
                 {
                   "code": "ME2001",
                   "name": "工程數學I",
                   "credits": 3,
-                  "alias": "CH2009/CI2017"
+                  "when": "大二上"
                 },
                 {
                   "code": "ME2002",
                   "name": "工程數學II",
                   "credits": 3,
-                  "alias": "CH2010/CI2018"
+                  "when": "大二下"
                 },
                 {
                   "code": "ME1006",
                   "name": "靜力與材料力學",
-                  "credits": 4
+                  "credits": 4,
+                  "when": "大二下"
                 },
                 {
                   "code": "ME3095",
                   "name": "材料實驗",
-                  "credits": 1
+                  "credits": 1,
+                  "when": "大二下"
                 },
                 {
                   "code": "CH3059",
                   "name": "化工與材料熱力學I",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大三上"
                 },
                 {
                   "code": "CH3060",
                   "name": "化工與材料熱力學II",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大三下"
                 },
                 {
                   "code": "CH3012",
                   "name": "儀器分析",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大三上"
                 },
                 {
                   "code": "ME3048",
                   "name": "先進材料",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大三下"
                 },
                 {
                   "code": "CH3055",
                   "name": "固態物理導論",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大三上"
                 }
               ],
               "min_credits": 53,
@@ -4252,63 +5529,74 @@
                 {
                   "code": "CI1002",
                   "name": "土木工程概論",
-                  "credits": 1
+                  "credits": 1,
+                  "when": "大一上"
                 },
                 {
                   "code": "CI1009",
                   "name": "測量學",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上"
                 },
                 {
                   "code": "CI1010",
                   "name": "測量實習",
-                  "credits": 1
+                  "credits": 1,
+                  "when": "大一上"
                 },
                 {
                   "code": "CI1005",
                   "name": "應用力學",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一下"
                 },
                 {
                   "code": "CI2005",
                   "name": "工程材料學",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一下"
                 },
                 {
                   "code": "CI2004",
                   "name": "材料力學",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大二上"
                 },
                 {
                   "code": "CI2011",
                   "name": "流體力學",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大二上"
                 },
                 {
                   "code": "CI2017",
                   "name": "工程數學I",
                   "credits": 3,
-                  "alias": "ME2001/CH2009"
+                  "when": "大二上"
                 },
                 {
                   "code": "CI2027",
                   "name": "空間資訊學概論",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大三上"
                 },
                 {
                   "code": "CI3003",
                   "name": "土壤力學I",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大二下"
                 },
                 {
                   "code": "CI4050",
                   "name": "地理資訊系統通論",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大三下"
                 },
                 {
                   "code": "CI2007",
                   "name": "工程圖學",
-                  "credits": 1
+                  "credits": 1,
+                  "when": "大三下"
                 }
               ],
               "min_credits": 59,
@@ -4323,79 +5611,92 @@
                 {
                   "code": "CH2001",
                   "name": "有機化學上",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大二上"
                 },
                 {
                   "code": "CH2002",
                   "name": "有機化學下",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大二下"
                 },
                 {
                   "code": "CH2005",
                   "name": "物理化學上",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大二上"
                 },
                 {
                   "code": "CH2006",
                   "name": "物理化學下",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大二下"
                 },
                 {
                   "code": "ME2001",
                   "name": "工程數學I",
                   "credits": 3,
-                  "alias": "CH2009/CI2017"
+                  "when": "大二上"
                 },
                 {
                   "code": "ME2002",
                   "name": "工程數學II",
                   "credits": 3,
-                  "alias": "CH2010/CI2018"
+                  "when": "大二下"
                 },
                 {
                   "code": "CH1012",
                   "name": "質能平衡與化工計算",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大二下"
                 },
                 {
                   "code": "CH1022",
                   "name": "基礎材料化學實驗I",
-                  "credits": 1
+                  "credits": 1,
+                  "when": "大二下"
                 },
                 {
                   "code": "CH2021",
                   "name": "輸送現象I",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大二下"
                 },
                 {
                   "code": "CH3042",
                   "name": "輸送現象II",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大三上"
                 },
                 {
                   "code": "CH3043",
                   "name": "輸送現象III",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大三下"
                 },
                 {
                   "code": "CH3059",
                   "name": "化工與材料熱力學I",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大三上"
                 },
                 {
                   "code": "CH3060",
                   "name": "化工與材料熱力學II",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大三下"
                 },
                 {
                   "code": "CH3011",
                   "name": "化學反應工程",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大三下"
                 },
                 {
                   "code": "CH4059",
                   "name": "化工與材料實驗II",
-                  "credits": 1
+                  "credits": 1,
+                  "when": "大三下"
                 }
               ],
               "min_credits": 56,
@@ -8444,52 +9745,62 @@
                 {
                   "code": "CE2003",
                   "name": "離散數學",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "CE2002",
                   "name": "資料結構",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "CE2004",
                   "name": "程式語言",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "CE2012",
                   "name": "組合語言與系統程式",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "CE2006",
                   "name": "機率與統計",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "CE3005",
                   "name": "演算法",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "CE3001",
                   "name": "計算機組織",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "CE3002",
                   "name": "作業系統",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "CE1002",
                   "name": "計算機概論II",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "CE1004",
                   "name": "計算機實習II",
-                  "credits": 1
+                  "credits": 1,
+                  "when": "大一上~大四下"
                 }
               ]
             },
@@ -8502,49 +9813,75 @@
                 {
                   "code": "EE1010",
                   "name": "工程數學微分方程",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "EE2002",
                   "name": "電路學I",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "EE2011",
                   "name": "電路學II",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "EE2001",
                   "name": "電子學I",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "EE2009",
                   "name": "電子學II",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "EE2004",
                   "name": "電磁學I",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "EE2015",
                   "name": "電磁學II",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "EE2030",
                   "name": "工程數學複變",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "EE3009",
                   "name": "信號與系統",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
-                {}
+                {
+                  "code": "EE2027",
+                  "name": "電子電路實驗I",
+                  "credits": 1,
+                  "when": "大一上~大四下"
+                },
+                {
+                  "code": "EE2028",
+                  "name": "電子電路實驗II",
+                  "credits": 1,
+                  "when": "大一上~大四下"
+                },
+                {
+                  "code": "EE3047",
+                  "name": "電子電路實驗III",
+                  "credits": 1,
+                  "when": "大一上~大四下"
+                }
               ]
             },
             {
@@ -8556,52 +9893,62 @@
                 {
                   "code": "CO3003",
                   "name": "機率",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "CO3004",
                   "name": "訊號與系統",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "EE2002",
                   "name": "電路學I",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "CO2013",
                   "name": "工程數學複變",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "CO3007",
                   "name": "通訊原理I",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "CO3008",
                   "name": "通訊原理II",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "CO3001",
                   "name": "通訊實驗I",
-                  "credits": 1
+                  "credits": 1,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "CO3002",
                   "name": "通訊實驗II",
-                  "credits": 1
+                  "credits": 1,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "EE1010",
                   "name": "工程數學微分方程",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "CO2005",
                   "name": "電子學I",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 }
               ]
             },
@@ -8614,57 +9961,68 @@
                 {
                   "code": "CE1002",
                   "name": "計算機概論II",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "CE1004",
                   "name": "計算機實習II",
-                  "credits": 1
+                  "credits": 1,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "CE2003",
                   "name": "離散數學",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "CO3003",
                   "name": "機率",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "CO2012",
                   "name": "資料結構",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "CO3006",
                   "name": "微算機原理",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "CO3005",
                   "name": "網路概論",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "CE3002",
                   "name": "作業系統",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "CE3001",
                   "name": "計算機組織",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "EE3009",
                   "name": "信號與系統",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 },
                 {
                   "code": "CE3005",
                   "name": "演算法",
-                  "credits": 3
+                  "credits": 3,
+                  "when": "大一上~大四下"
                 }
               ]
             }
