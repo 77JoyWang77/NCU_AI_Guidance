@@ -30,11 +30,12 @@ DATA_RAW   = ROOT / "data" / "raw"
 
 OUT_PATH   = DATA_PROC / "course_index.json"
 
-DEDUPED_UG   = DATA_PROC / "courses_deduped" / "undergrad.json"
-DEDUPED_GRAD = DATA_PROC / "courses_deduped" / "grad.json"
-NLP_DIR      = DATA_PROC / "nlp"
-SCHEDULE_DIR = DATA_PROC / "schedule_draft"
-ELIGIBILITY  = DATA_PROC / "course_eligibility.json"
+DEDUPED_UG      = DATA_PROC / "courses_deduped" / "undergrad.json"
+DEDUPED_GRAD    = DATA_PROC / "courses_deduped" / "grad.json"
+NLP_DIR         = DATA_PROC / "nlp"
+SCHEDULE_DIR    = DATA_PROC / "schedule_draft"
+CURRICULUM_REQ  = DATA_PROC / "curriculum_requirements_114.json"
+ELIGIBILITY     = DATA_PROC / "course_eligibility.json"
 
 
 # ── 工具 ─────────────────────────────────────────────────────────────────────
@@ -113,23 +114,46 @@ def load_nlp() -> dict:
 
 # ── 載入 schedule（建議學期）─────────────────────────────────────────────────
 
-def load_schedule() -> dict[str, str]:
-    """回傳 {course_code: when_raw}"""
-    lookup: dict[str, str] = {}
-    if not SCHEDULE_DIR.exists():
-        return lookup
-    for dept_file in SCHEDULE_DIR.rglob("*.json"):
-        try:
-            data = load_json(dept_file)
-            for rc in data.get("required_courses", []):
-                code = rc.get("code", "").strip()
-                when = rc.get("when", "")
-                if code and when:
-                    lookup.setdefault(code, when)
-        except Exception:
-            pass
-    print(f"[Schedule] 載入 {len(lookup)} 筆")
-    return lookup
+def load_schedule() -> dict[str, list[dict]]:
+    """從 curriculum_requirements_114.json 讀取全部層級，
+    回傳 {course_code: [{dept_id, dept_name, when}, ...]}。
+
+    相較於舊的逐檔掃描 + setdefault，此版本：
+    - 覆蓋所有層級（groups / specialization_tracks / 其子群組）
+    - 保留同一門課被多科系必修的完整資訊（43 門多科系課程）
+    """
+    from collections import defaultdict
+    lookup: defaultdict[str, list[dict]] = defaultdict(list)
+
+    if not CURRICULUM_REQ.exists():
+        print(f"[WARN] {CURRICULUM_REQ} 不存在，schedule 將為空")
+        return {}
+
+    data = load_json(CURRICULUM_REQ)
+
+    def walk(node: dict, dept_id: str, dept_name: str):
+        for rc in node.get("required_courses", []):
+            code = rc.get("code", "").strip()
+            when = rc.get("when", "")
+            if code and when:
+                # 去重：同一 dept_id 只記一次
+                if not any(e["dept_id"] == dept_id for e in lookup[code]):
+                    lookup[code].append({"dept_id": dept_id, "dept_name": dept_name, "when": when})
+        for track in node.get("specialization_tracks", []):
+            walk(track, track.get("id", dept_id), track.get("name", dept_name))
+        for grp in node.get("groups", []):
+            walk(grp, grp.get("id", dept_id), grp.get("name", dept_name))
+
+    for college in data.get("colleges", []):
+        for dept in college.get("departments", []):
+            walk(dept, dept.get("id", ""), dept.get("name", ""))
+        for cbp in college.get("college_bachelor_programs", []):
+            walk(cbp, cbp.get("id", ""), cbp.get("name", ""))
+
+    result = dict(lookup)
+    multi = sum(1 for v in result.values() if len(v) > 1)
+    print(f"[Schedule] 載入 {len(result)} 筆（其中 {multi} 門為多科系必修）")
+    return result
 
 
 # ── 載入 eligibility（先修/衝堂關係）────────────────────────────────────────
@@ -197,8 +221,8 @@ def build_index(
         # NLP 共用資料（by base_code）
         nlp_data = nlp.get(base_code, {})
 
-        # 建議學期
-        when_raw = schedule.get(base_code, "")
+        # 建議學期（多科系必修時保留完整列表）
+        when_schedule: list[dict] = schedule.get(base_code, [])
 
         # 修課關係（prereq/coreq/conflict）
         rel = elig_rel.get(base_code, {})
@@ -253,8 +277,8 @@ def build_index(
             "objective": objective,
             "content":   content,
             "textbook":  textbook,
-            # 修習資訊
-            "when_raw":      when_raw,
+            # 修習資訊（when_schedule：完整多科系列表）
+            "when_schedule": when_schedule,
             "prereq_codes":  rel.get("prereq_codes", []),
             "coreq_codes":   rel.get("coreq_codes", []),
             "conflict_codes": rel.get("conflict_codes", []),

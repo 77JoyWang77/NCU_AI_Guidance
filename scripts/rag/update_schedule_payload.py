@@ -5,12 +5,11 @@ update_schedule_payload.py
 兩個 collection 中的學期資訊欄位。
 
 新增/更新欄位：
-  when_raw          — 原始 when 字串（如「大一上」）
+  when_contexts     — list[str]，所有科系的 "{dept_id}@{when}" 完整列表
   when_is_dept_scoped — True：when 為系所相對時間，跨系過濾無意義
-  when_context      — "{dept_id}@{when_raw}"，供 RAG 系統使用
   when_year_start / when_year_end / when_sem_start / when_sem_end
   when_semesters    — list[str]，供 MatchAny 過濾（需同時指定 dept filter）
-  verified          — bool，是否為人工驗證
+  verified          — bool，是否有任一科系人工驗證
 
 執行：
   python scripts/rag/update_schedule_payload.py
@@ -45,10 +44,9 @@ def _parse_single(s: str):
 
 
 def parse_when(when_str: str, dept_id: str = "") -> dict:
+    """解析代表性 when_str，回傳 Qdrant payload 基礎欄位（不含 when_contexts）。"""
     result = {
-        "when_raw": when_str or "",
         "when_is_dept_scoped": True,
-        "when_context": f"{dept_id}@{when_str}" if (dept_id and when_str) else (when_str or ""),
         "when_year_start": 0, "when_year_end": 0,
         "when_sem_start": 0,  "when_sem_end": 0,
         "when_semesters": [],
@@ -78,21 +76,26 @@ def parse_when(when_str: str, dept_id: str = "") -> dict:
 # ── 建立 lookup {course_code: payload_dict} ──────────────────────────────────
 
 def build_lookup() -> dict[str, dict]:
-    lookup: dict[str, dict] = {}
+    """每個 course_code 累積所有科系的 when_context，
+    存成 when_contexts list，解決多科系共必修時的非確定性問題。
+    """
+    from collections import defaultdict
+    # code → list of (dept_id, when_str, verified)
+    raw: defaultdict[str, list[tuple[str, str, bool]]] = defaultdict(list)
 
     def _index(courses: list, dept_id: str):
         for rc in courses:
             code = rc.get("code", "").strip()
-            if not code:
+            when = rc.get("when", "")
+            if not code or not when:
                 continue
-            parsed = parse_when(rc.get("when", ""), dept_id=dept_id)
-            parsed["verified"] = rc.get("verified", False)
-            lookup[code] = parsed
+            verified = rc.get("verified", False)
+            raw[code].append((dept_id, when, verified))
 
-    for college_dir in SCHEDULE_DIR.iterdir():
+    for college_dir in sorted(SCHEDULE_DIR.iterdir()):  # sorted → 確定性順序
         if not college_dir.is_dir():
             continue
-        for dept_file in college_dir.glob("*.json"):
+        for dept_file in sorted(college_dir.glob("*.json")):
             try:
                 data = json.loads(dept_file.read_text(encoding="utf-8"))
                 dept_id = data.get("id", dept_file.stem)
@@ -109,7 +112,24 @@ def build_lookup() -> dict[str, dict]:
             except Exception as e:
                 print(f"  [WARN] {dept_file.name}: {e}")
 
-    print(f"Schedule lookup: {len(lookup)} 筆")
+    lookup: dict[str, dict] = {}
+    for code, entries in raw.items():
+        # 代表性 when：優先取 verified 的，否則取第一個
+        rep = next((e for e in entries if e[2]), entries[0])
+        rep_dept_id, rep_when, _ = rep
+        base = parse_when(rep_when, dept_id=rep_dept_id)
+
+        # when_contexts：所有科系的 dept_id@when（去重，sorted 確定性）
+        all_contexts = sorted({
+            f"{dept_id}@{when}" for dept_id, when, _ in entries if dept_id and when
+        })
+        base["when_contexts"] = all_contexts
+        # verified：只要有任一科系驗證過即為 True
+        base["verified"] = any(v for _, _, v in entries)
+        lookup[code] = base
+
+    multi = sum(1 for v in lookup.values() if len(v["when_contexts"]) > 1)
+    print(f"Schedule lookup: {len(lookup)} 筆（其中 {multi} 門為多科系必修）")
     return lookup
 
 
@@ -164,6 +184,40 @@ def main():
             offset = next_offset
 
         print(f"  → 更新 {updated} 筆")
+
+        # 清除舊版欄位（when_raw、when_context 已由 when_contexts 取代）
+        print(f"  清除舊欄位 when_raw / when_context …")
+        stale_ids = []
+        offset2 = None
+        while True:
+            results2, next2 = client.scroll(
+                collection_name=col,
+                limit=SCROLL_LIMIT,
+                offset=offset2,
+                with_payload=["when_raw", "when_context"],
+                with_vectors=False,
+            )
+            if not results2:
+                break
+            for point in results2:
+                p = point.payload or {}
+                if "when_raw" in p or "when_context" in p:
+                    stale_ids.append(point.id)
+            if next2 is None:
+                break
+            offset2 = next2
+
+        if stale_ids:
+            BATCH = 200
+            for i in range(0, len(stale_ids), BATCH):
+                client.delete_payload(
+                    collection_name=col,
+                    keys=["when_raw", "when_context"],
+                    points=stale_ids[i:i + BATCH],
+                )
+            print(f"  → 清除 {len(stale_ids)} 筆舊欄位")
+        else:
+            print(f"  → 無舊欄位需清除")
 
     print("\n✓ 完成")
 
