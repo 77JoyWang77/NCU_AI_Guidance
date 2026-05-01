@@ -43,11 +43,8 @@ DATA_PROC = ROOT / "data" / "processed"
 QDRANT_DIR = DATA_PROC / "qdrant_data"
 
 COURSE_ELIGIBILITY = DATA_PROC / "course_eligibility.json"
-COURSES_114_1 = DATA_RAW / "courses" / "114_1"
-COURSES_114_2 = DATA_RAW / "courses" / "114_2"
-GRAD_114_1 = DATA_RAW / "graduate_courses" / "114_1"
-GRAD_114_2 = DATA_RAW / "graduate_courses" / "114_2"
-SCRAPED_MISSING = DATA_RAW / "scraped_missing" / "courses.json"
+COURSES_DEDUPED_UG   = DATA_PROC / "courses_deduped" / "undergrad.json"
+COURSES_DEDUPED_GRAD = DATA_PROC / "courses_deduped" / "grad.json"
 COLLEGO = DATA_RAW / "collego_ncu.json"
 TEACHER_CSV = DATA_RAW / "114_ulistteacher.csv"
 
@@ -85,14 +82,16 @@ def _parse_single(token: str) -> tuple[Optional[int], Optional[int]]:
     return _YEAR_MAP.get(m.group(1)), _SEM_MAP.get(m.group(2)) if m.group(2) else None
 
 
-def parse_when(when_str: str) -> dict:
+def parse_when(when_str: str, dept_id: str = "") -> dict:
     result: dict = {
         "when_raw": when_str or "",
+        "when_is_dept_scoped": True,   # when 是系所相對時間，跨系比較無意義
+        "when_context": f"{dept_id}@{when_str}" if (dept_id and when_str) else (when_str or ""),
         "when_year_start": 0,
         "when_year_end": 0,
         "when_sem_start": 0,
         "when_sem_end": 0,
-        "when_semesters": [],   # list[str]，供 Qdrant MatchAny 過濾
+        "when_semesters": [],   # list[str]，供 Qdrant MatchAny 過濾（需同時指定 dept filter）
     }
     if not when_str:
         return result
@@ -242,26 +241,43 @@ def load_eligibility_lookup() -> dict[str, dict]:
 
 
 def load_schedule_lookup() -> dict[str, dict]:
+    """回傳 {course_code: parse_when_result + verified}，附帶 dept 脈絡。
+    同一課程可能出現在多個系所；後出現者覆蓋前者（以最後一個為主）。
+    """
     lookup: dict = {}
     if not SCHEDULE_DIR.exists():
         return lookup
+
+    def _index_courses(courses: list, dept_id: str):
+        for rc in courses:
+            code = rc.get("code", "").strip()
+            when = rc.get("when", "")
+            verified = rc.get("verified", False)
+            if code:
+                parsed = parse_when(when, dept_id=dept_id)
+                parsed["verified"] = verified
+                lookup[code] = parsed
+
     for college_dir in SCHEDULE_DIR.iterdir():
         if not college_dir.is_dir():
             continue
         for dept_file in college_dir.glob("*.json"):
             try:
                 data = load_json(dept_file)
-                for rc in data.get("required_courses", []):
-                    code = rc.get("code", "").strip()
-                    when = rc.get("when", "")
-                    verified = rc.get("verified", False)
-                    if code:
-                        parsed = parse_when(when)
-                        parsed["verified"] = verified
-                        lookup[code] = parsed
+                dept_id = data.get("id", dept_file.stem)
+                _index_courses(data.get("required_courses", []), dept_id)
+                for track in data.get("specialization_tracks", []):
+                    tid = track.get("id", dept_id)
+                    _index_courses(track.get("required_courses", []), tid)
+                    for grp in track.get("groups", []):
+                        gid = grp.get("id", tid)
+                        _index_courses(grp.get("required_courses", []), gid)
+                for grp in data.get("groups", []):
+                    gid = grp.get("id", dept_id)
+                    _index_courses(grp.get("required_courses", []), gid)
             except Exception:
                 pass
-    print(f"[Schedule] 載入 {len(lookup)} 筆必修學期資訊")
+    print(f"[Schedule] 載入 {len(lookup)} 筆必修學期資訊（附 dept 脈絡）")
     return lookup
 
 
@@ -435,9 +451,10 @@ def build_course_doc(
         "open_to_double_major":  elig.get("open_to_double_major", False),
         "open_to_credit_prog":   elig.get("open_to_credit_prog", False),
         "open_to_cross_school":  elig.get("open_to_cross_school", False),
-        "is_unrestricted":       elig.get("is_unrestricted", False),
-        "is_grad_only":          elig.get("is_grad_only", False),
-        "is_undergrad_open":     elig.get("is_undergrad_open", True),
+        "is_unrestricted":          elig.get("is_unrestricted", False),
+        "is_grad_only":             elig.get("is_grad_only", False),
+        "is_undergrad_open":        elig.get("is_undergrad_open", True),
+        "is_open_to_all_undergrad": elig.get("is_open_to_all_undergrad", False),
         "has_special_condition": elig.get("has_special_condition", False),
         "has_prereq":            len(prereq_codes) > 0,
         "when_raw":          sched.get("when_raw", ""),
@@ -454,7 +471,7 @@ def build_course_doc(
         "capacity":          int(course.get("人數限制", 0) or 0) if str(course.get("人數限制", "0") or "0").isdigit() else 0,
     }
 
-    doc_id = f"{year}{semester}_{serial}_{code}"
+    doc_id = f"{year}{semester}_{serial}_{code_raw}"
     return doc_id, document, payload
 
 
@@ -514,7 +531,7 @@ def build_courses_collection(
     schedule_lookup: dict,
     eligibility_lookup: dict,
     name: str,
-    dirs: list[Path],
+    canonical_json: Path,
     is_grad: bool,
     reset: bool,
 ):
@@ -522,27 +539,15 @@ def build_courses_collection(
     if not _prepare_collection(qdrant, name, reset):
         return
 
-    raw = load_all_courses(dirs)
+    if not canonical_json.exists():
+        print(f"  [ERROR] 找不到 {canonical_json}，請先執行 deduplicate_courses.py")
+        return
 
-    if not is_grad and SCRAPED_MISSING.exists():
-        try:
-            extra = load_json(SCRAPED_MISSING)
-            if isinstance(extra, list):
-                raw.extend(extra)
-                print(f"  scraped_missing 補充 {len(extra)} 筆")
-        except Exception as e:
-            print(f"  [WARN] scraped_missing: {e}")
-
-    print(f"  原始課程數：{len(raw)}")
-
-    seen: dict[str, dict] = {}
-    for c in raw:
-        code = clean_code(c.get("課號-班別", ""))
-        sem = c.get("學期", "")
-        key = f"{code}_{sem}"
-        seen[key] = c
-    deduped = list(seen.values())
-    print(f"  去重後：{len(deduped)} 筆")
+    deduped = load_json(canonical_json)
+    if not isinstance(deduped, list):
+        print(f"  [ERROR] {canonical_json} 格式異常")
+        return
+    print(f"  載入 canonical 課程數：{len(deduped)} 筆")
 
     ids, docs, payloads = [], [], []
     skipped = 0
@@ -778,7 +783,7 @@ def main():
     build_courses_collection(
         qdrant, embedder, nlp, teacher_lookup, schedule_lookup, eligibility_lookup,
         name="ncu_courses_ug",
-        dirs=[COURSES_114_1, COURSES_114_2],
+        canonical_json=COURSES_DEDUPED_UG,
         is_grad=False,
         reset=args.reset,
     )
@@ -786,7 +791,7 @@ def main():
     build_courses_collection(
         qdrant, embedder, nlp, teacher_lookup, schedule_lookup, eligibility_lookup,
         name="ncu_courses_grad",
-        dirs=[GRAD_114_1, GRAD_114_2],
+        canonical_json=COURSES_DEDUPED_GRAD,
         is_grad=True,
         reset=args.reset,
     )

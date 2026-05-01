@@ -68,23 +68,13 @@ def build_connected_courses(node_id: str, in_adj: dict) -> list[str]:
 
 
 def _concept_text(n: dict, nodes_by_id: dict, in_adj: dict) -> str:
-    """Concept / Technology / Field：名稱 + 類型 + 相關課程（豐富文字）"""
-    name = n.get("name", "")
-    ntype = n.get("node_type", "")
-    connected = build_connected_courses(n["id"], in_adj)
-    course_ctx = "、".join(nodes_by_id.get(c, {}).get("name", c) for c in connected[:5])
-    if course_ctx:
-        return f"{name}（{ntype}）相關課程：{course_ctx}"
-    return f"{name}（{ntype}）"
+    """Concept / Technology / Field：只放節點名稱，避免相關課程汙染語意。"""
+    return n.get("name", "") or n.get("node_name", "")
 
 
 def _course_text(n: dict, nodes_by_id: dict, in_adj: dict) -> str:
-    """Course：只放課程名稱 + 系所（精簡，避免與 Concept 語意混淆）"""
-    name = n.get("name", "") or n.get("node_name", "")
-    dept = n.get("dept", "")
-    if dept:
-        return f"{name}（{dept}）"
-    return name
+    """Course：只放課程名稱，系所不放入 embedding 避免語意偏移。"""
+    return n.get("name", "") or n.get("node_name", "")
 
 
 def _upsert_nodes(client, nodes: list, nodes_by_id: dict, in_adj: dict,
@@ -109,16 +99,28 @@ def _upsert_nodes(client, nodes: list, nodes_by_id: dict, in_adj: dict,
 
         points = []
         for n, vec in zip(batch, vectors):
-            nid = n["id"]
-            connected = build_connected_courses(nid, in_adj)
-            course_names = [nodes_by_id.get(c, {}).get("name", c) for c in connected]
-            payload = {
-                "node_id":   nid,
-                "node_type": n.get("node_type", ""),
-                "name":      n.get("name", "") or n.get("node_name", ""),
-                "dept":      n.get("dept", ""),
-                "connected_courses": course_names,
-            }
+            nid   = n["id"]
+            ntype = n.get("node_type", "")
+            name  = n.get("name", "") or n.get("node_name", "")
+            if ntype == "Course":
+                payload = {
+                    "node_id":   nid,
+                    "node_type": ntype,
+                    "name":      name,
+                    "dept":      n.get("dept", ""),
+                    "college":   n.get("college", ""),
+                    "level":     n.get("level", ""),   # "ugrad" / "grad"
+                }
+            else:
+                connected    = build_connected_courses(nid, in_adj)
+                course_names = [nodes_by_id.get(c, {}).get("name", c) for c in connected]
+                payload = {
+                    "node_id":          nid,
+                    "node_type":        ntype,
+                    "name":             name,
+                    "source":           n.get("source", ""),
+                    "connected_courses": course_names,
+                }
             points.append(PointStruct(id=_node_id_to_int(nid), vector=vec, payload=payload))
 
         client.upsert(collection_name=COLLECTION, points=points)
@@ -129,10 +131,110 @@ def _upsert_nodes(client, nodes: list, nodes_by_id: dict, in_adj: dict,
     return uploaded, errors
 
 
+def _build_course_concept_vecs(
+    node_list: list,
+    nodes_by_id: dict,
+    edge_list: list,
+    args,
+    out_path: Path,
+) -> None:
+    """Phase 3：為每門課程建立「概念平均向量」並存成 .npz 檔（不開 Qdrant，無 OOM）。
+
+    輸出：out_path.npz（或直接 out_path 副檔名為 .npz）
+      - names: shape (N,), dtype str   — 課程中文名稱
+      - vecs:  shape (N, D), dtype float32 — L2-normalized 概念平均向量
+      - depts: shape (N,), dtype str   — 系所
+      - codes: shape (N,), dtype str   — node_id（course::xxx）
+
+    搜尋端（retriever.py）直接 np.load + cosine sim，不需要 Qdrant。
+    """
+    import numpy as np
+
+    # 準備 concept edge 對應表：course_node_id → list[concept_node_id]
+    CONCEPT_RELS = {"COVERS", "TEACHES", "COVERS_FIELD"}
+    course_to_concepts: dict[str, list[str]] = {}
+    for e in edge_list:
+        rel = e.get("relation", "")
+        if rel not in CONCEPT_RELS:
+            continue
+        src, tgt = e["source"], e["target"]
+        if (nodes_by_id.get(src, {}).get("node_type") == "Course"
+                and nodes_by_id.get(tgt, {}).get("node_type") in ("Concept", "Technology", "Field")):
+            course_to_concepts.setdefault(src, []).append(tgt)
+
+    # 去重：只 embed 實際被課程用到的概念節點名稱
+    used_concept_ids: set[str] = {
+        nid for nids in course_to_concepts.values() for nid in nids
+    }
+    concept_id_list = list(used_concept_ids)
+    concept_names   = [nodes_by_id.get(nid, {}).get("name", nid) for nid in concept_id_list]
+    print(f"  課程實際用到的概念節點：{len(concept_id_list)} 個（去重後）")
+
+    limit_n = getattr(args, "limit", 0)
+    if limit_n:
+        concept_id_list = concept_id_list[:limit_n]
+        concept_names   = concept_names[:limit_n]
+
+    # Embed 概念名稱（batch）
+    print(f"  embed {len(concept_id_list)} 個概念名稱（批大小 {BATCH_SIZE}）...")
+    concept_vecs: dict[str, list[float]] = {}
+    for start in range(0, len(concept_id_list), BATCH_SIZE):
+        batch_ids   = concept_id_list[start: start + BATCH_SIZE]
+        batch_names = concept_names[start: start + BATCH_SIZE]
+        try:
+            vectors = _embed_batch(batch_names)
+            for nid, vec in zip(batch_ids, vectors):
+                concept_vecs[nid] = vec
+        except Exception as ex:
+            print(f"\n  [ERROR] embed batch {start}: {ex}")
+            time.sleep(2)
+        done = min(start + BATCH_SIZE, len(concept_id_list))
+        print(f"  embed 進度：{done}/{len(concept_id_list)}", end="\r")
+    print(f"\n  embed 完成，取得 {len(concept_vecs)} 個概念向量")
+
+    # 計算每門課的概念平均向量
+    course_nodes = [n for n in node_list if n.get("node_type") == "Course"]
+    names_out, codes_out, depts_out, vecs_out = [], [], [], []
+    skipped = 0
+    for n in course_nodes:
+        nid      = n["id"]
+        cname    = n.get("name", "")
+        if not cname:
+            skipped += 1
+            continue
+        concepts = course_to_concepts.get(nid, [])
+        c_vecs   = [concept_vecs[c] for c in concepts if c in concept_vecs]
+        if not c_vecs:
+            skipped += 1
+            continue
+        arr      = np.array(c_vecs, dtype=np.float32)
+        mean_vec = arr.mean(axis=0)
+        norm     = np.linalg.norm(mean_vec)
+        if norm > 0:
+            mean_vec /= norm
+        names_out.append(cname)
+        codes_out.append(nid)
+        depts_out.append(n.get("dept", ""))
+        vecs_out.append(mean_vec)
+
+    # 儲存 .npz
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    np.savez(
+        str(out_path),
+        names=np.array(names_out),
+        codes=np.array(codes_out),
+        depts=np.array(depts_out),
+        vecs=np.array(vecs_out, dtype=np.float32),
+    )
+    print(f"  完成：{len(names_out)} 筆，跳過（無名稱/無概念邊）{skipped} 筆")
+    print(f"  輸出：{out_path}")
+
+
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--reset", action="store_true", help="強制重建，清空舊資料")
-    parser.add_argument("--limit", type=int, default=0, help="只處理前 N 筆（0=全量，測試用）")
+    parser.add_argument("--reset",  action="store_true", help="強制重建，清空舊資料")
+    parser.add_argument("--limit",  type=int, default=0, help="只處理前 N 筆（0=全量，測試用）")
+    parser.add_argument("--phase3", action="store_true", help="執行 Phase 3：建立 ncu_course_concept_vecs")
     args = parser.parse_args()
 
     try:
@@ -169,52 +271,69 @@ def main():
     print(f"Concept/Technology/Field 節點：{len(target_nodes)} 筆")
     print(f"Course 節點：{sum(1 for n in node_list if n.get('node_type') == 'Course')} 筆")
 
-    # 建立 Qdrant client
-    QDRANT_DIR.mkdir(parents=True, exist_ok=True)
-    client = QdrantClient(path=str(QDRANT_DIR))
+    # ── Phase 3 only（不開 Qdrant，完全繞過 OOM）────────────────────────────
+    if args.phase3 and not args.reset:
+        print("\n[--phase3 模式] 跳過 Phase 1/2 與 Qdrant 初始化，直接執行 Phase 3")
+    else:
+        # 建立 Qdrant client（Phase 1/2 才需要）
+        QDRANT_DIR.mkdir(parents=True, exist_ok=True)
+        client = QdrantClient(path=str(QDRANT_DIR))
 
-    existing = [c.name for c in client.get_collections().collections]
-    if COLLECTION in existing:
-        if args.reset:
-            print(f"刪除舊 collection：{COLLECTION}")
-            client.delete_collection(COLLECTION)
+        existing = [c.name for c in client.get_collections().collections]
+        if COLLECTION in existing:
+            if args.reset:
+                print(f"刪除舊 collection：{COLLECTION}")
+                client.delete_collection(COLLECTION)
+                client.create_collection(
+                    collection_name=COLLECTION,
+                    vectors_config=VectorParams(size=VECTOR_DIM, distance=Distance.COSINE),
+                )
+                print(f"重建 collection：{COLLECTION}（dim={VECTOR_DIM}）")
+            else:
+                print(f"Collection '{COLLECTION}' 已存在，直接 upsert（使用 --reset 強制重建）")
+        else:
             client.create_collection(
                 collection_name=COLLECTION,
                 vectors_config=VectorParams(size=VECTOR_DIM, distance=Distance.COSINE),
             )
-            print(f"重建 collection：{COLLECTION}（dim={VECTOR_DIM}）")
-        else:
-            print(f"Collection '{COLLECTION}' 已存在，直接 upsert（使用 --reset 強制重建）")
-    else:
-        client.create_collection(
-            collection_name=COLLECTION,
-            vectors_config=VectorParams(size=VECTOR_DIM, distance=Distance.COSINE),
+            print(f"建立 collection：{COLLECTION}（dim={VECTOR_DIM}）")
+
+        # ── Phase 1：Concept / Technology / Field 節點（豐富文字） ──────────────
+        print(f"\n[Phase 1] Concept / Technology / Field 節點：{len(target_nodes)} 筆")
+        uploaded, errors = _upsert_nodes(
+            client, target_nodes, nodes_by_id, in_adj,
+            text_fn=_concept_text, args=args,
         )
-        print(f"建立 collection：{COLLECTION}（dim={VECTOR_DIM}）")
+        print(f"  完成：上傳 {uploaded} 筆，錯誤 {errors} 筆")
 
-    # ── Phase 1：Concept / Technology / Field 節點（豐富文字） ──────────────
-    print(f"\n[Phase 1] Concept / Technology / Field 節點：{len(target_nodes)} 筆")
-    uploaded, errors = _upsert_nodes(
-        client, target_nodes, nodes_by_id, in_adj,
-        text_fn=_concept_text, args=args,
-    )
-    print(f"  完成：上傳 {uploaded} 筆，錯誤 {errors} 筆")
+        # ── Phase 2：Course 節點（精簡文字，只放課名 + 系所） ────────────────────
+        course_nodes = [
+            n for n in node_list
+            if n.get("node_type") == "Course" and n.get("name", "").strip()
+        ]
+        print(f"\n[Phase 2] Course 節點：{len(course_nodes)} 筆")
+        uploaded, errors = _upsert_nodes(
+            client, course_nodes, nodes_by_id, in_adj,
+            text_fn=_course_text, args=args,
+        )
+        print(f"  完成：上傳 {uploaded} 筆，錯誤 {errors} 筆")
 
-    # ── Phase 2：Course 節點（精簡文字，只放課名 + 系所） ────────────────────
-    course_nodes = [
-        n for n in node_list
-        if n.get("node_type") == "Course" and n.get("name", "").strip()
-    ]
-    print(f"\n[Phase 2] Course 節點：{len(course_nodes)} 筆")
-    uploaded, errors = _upsert_nodes(
-        client, course_nodes, nodes_by_id, in_adj,
-        text_fn=_course_text, args=args,
-    )
-    print(f"  完成：上傳 {uploaded} 筆，錯誤 {errors} 筆")
+        info = client.get_collection(COLLECTION)
+        print(f"\n✓ {COLLECTION} 總筆數：{info.points_count}")
+        print(f"Qdrant 資料位置：{QDRANT_DIR}")
 
-    info = client.get_collection(COLLECTION)
-    print(f"\n✓ {COLLECTION} 總筆數：{info.points_count}")
-    print(f"Qdrant 資料位置：{QDRANT_DIR}")
+    # ── Phase 3：Course concept-averaged vectors（.npz，不開 Qdrant）──────────
+    if args.phase3:
+        print(f"\n[Phase 3] 建立 ncu_course_concept_vecs.npz（每課概念平均向量）")
+        try:
+            import numpy  # noqa: F401
+        except ImportError:
+            print("  [ERROR] 請先安裝 numpy：pip install numpy")
+        else:
+            out_npz = QDRANT_DIR.parent / "ncu_course_concept_vecs.npz"
+            _build_course_concept_vecs(
+                node_list, nodes_by_id, edge_list, args, out_path=out_npz
+            )
 
 
 if __name__ == "__main__":

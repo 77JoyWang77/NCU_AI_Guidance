@@ -290,7 +290,11 @@ def _add_rules(G, rules, owner_id, raw=None, plan_id=None):
                        group_rule=r.get("type", ""))
             G.add_edge(plan_id, eg_id, relation="HAS_ELECTIVE_GROUP")
             for code in codes:
-                _ensure_course(G, raw, code, stub_source="curriculum_only")
+                info = (raw or {}).get(code, {})
+                _ensure_course(G, raw, code,
+                               fallback_name=info.get("name", ""),
+                               fallback_credits=info.get("credits", 0),
+                               stub_source="curriculum_only")
                 ensure_edge(G, eg_id, code, relation="OFFERS_ELECTIVE")
 
 
@@ -318,11 +322,22 @@ def _process_dept_group(G, raw, grp, parent_id, rel="HAS_GROUP"):
     G.add_edge(gid, pid, relation="HAS_CURRICULUM")
     _add_rules(G, grp.get("graduation_rules", []), gid, raw=raw, plan_id=pid)
     for key in ("required_courses", "cross_group_required",
-                "college_required_courses", "common_required_courses"):
+                "college_required_courses", "common_required_courses",
+                "dept_required_courses", "required_electives",
+                "cross_domain_required", "earth_system_courses", "application_courses"):
         _add_courses(G, raw, grp.get(key, []), pid, "REQUIRES")
-    _add_courses(G, raw, grp.get("first_domain_electives", []), pid, "OFFERS_ELECTIVE")
+    for key in ("first_domain_electives", "elective_courses"):
+        _add_courses(G, raw, grp.get(key, []), pid, "OFFERS_ELECTIVE")
     for i, eg in enumerate(grp.get("elective_groups", [])):
         _add_eg(G, raw, eg, pid, i)
+    for i, eg in enumerate(grp.get("core_elective_groups", [])):
+        _add_eg(G, raw, eg, pid, 100 + i)
+    for i, eg in enumerate(grp.get("college_required_elective_groups", [])):
+        _add_eg(G, raw, eg, pid, 200 + i)
+    for i, eg in enumerate(grp.get("science_ability_groups", [])):
+        _add_eg(G, raw, eg, pid, 300 + i)
+    for i, eg in enumerate(grp.get("other_elective_groups", [])):
+        _add_eg(G, raw, eg, pid, 400 + i)
     for sub in grp.get("groups", []):
         _process_dept_group(G, raw, sub, gid)
 
@@ -339,12 +354,22 @@ def _process_dept(G, raw, dept, college_id):
     G.add_edge(did, pid, relation="HAS_CURRICULUM")
     _add_rules(G, dept.get("graduation_rules", []), did, raw=raw, plan_id=pid)
     for key in ("required_courses", "required_electives", "college_required_courses",
-                "dept_required_courses"):
+                "dept_required_courses", "foundation_courses", "common_required_courses",
+                "cross_domain_required", "earth_system_courses",
+                "cross_group_required", "application_courses"):
         _add_courses(G, raw, dept.get(key, []), pid, "REQUIRES")
+    for key in ("first_domain_electives", "elective_courses"):
+        _add_courses(G, raw, dept.get(key, []), pid, "OFFERS_ELECTIVE")
     for i, eg in enumerate(dept.get("elective_groups", [])):
         _add_eg(G, raw, eg, pid, i)
     for i, eg in enumerate(dept.get("core_elective_groups", [])):
         _add_eg(G, raw, eg, pid, 100 + i)
+    for i, eg in enumerate(dept.get("college_required_elective_groups", [])):
+        _add_eg(G, raw, eg, pid, 200 + i)
+    for i, eg in enumerate(dept.get("science_ability_groups", [])):
+        _add_eg(G, raw, eg, pid, 300 + i)
+    for i, eg in enumerate(dept.get("other_elective_groups", [])):
+        _add_eg(G, raw, eg, pid, 400 + i)
     # dept_with_groups 的系訂必修也需掛到各 group 底下（透過 dept_required_courses 已加在 plan 上）
     if dept.get("program_type") == "dept_with_groups":
         for grp in dept.get("groups", []):
@@ -366,7 +391,10 @@ def _process_track(G, raw, track, parent_id, rel="HAS_TRACK"):
     G.add_edge(parent_id, tid, relation=rel)
     pid = _make_plan(G, f"{tid}::plan", f"{track['name']}課程計畫")
     G.add_edge(tid, pid, relation="HAS_CURRICULUM")
-    _add_courses(G, raw, track.get("required_courses", []), pid, "REQUIRES")
+    _add_rules(G, track.get("graduation_rules", []), tid, raw=raw, plan_id=pid)
+    for key in ("required_courses", "foundation_courses", "college_required_courses",
+                "common_required_courses", "cross_domain_required", "cross_group_required"):
+        _add_courses(G, raw, track.get(key, []), pid, "REQUIRES")
     _add_courses(G, raw, track.get("elective_courses", []), pid, "OFFERS_ELECTIVE")
     for i, eg in enumerate(track.get("elective_groups", [])):
         _add_eg(G, raw, eg, pid, i)
@@ -376,7 +404,10 @@ def _process_track(G, raw, track, parent_id, rel="HAS_TRACK"):
         G.add_edge(tid, sub_id, relation="HAS_TRACK")
         sp = _make_plan(G, f"{sub_id}::plan", f"{sub['name']}課程計畫")
         G.add_edge(sub_id, sp, relation="HAS_CURRICULUM")
-        _add_courses(G, raw, sub.get("required_courses", []), sp, "REQUIRES")
+        _add_rules(G, sub.get("graduation_rules", []), sub_id, raw=raw, plan_id=sp)
+        for key in ("required_courses", "foundation_courses", "college_required_courses",
+                    "common_required_courses", "cross_domain_required"):
+            _add_courses(G, raw, sub.get(key, []), sp, "REQUIRES")
         _add_courses(G, raw, sub.get("elective_courses", []), sp, "OFFERS_ELECTIVE")
         for i, eg in enumerate(sub.get("elective_groups", [])):
             _add_eg(G, raw, eg, sp, i)
