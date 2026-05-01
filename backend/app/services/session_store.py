@@ -7,7 +7,7 @@ session_store.py
 
 import json
 import uuid
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent.parent.parent
@@ -136,5 +136,7 @@ def _new_data(session_id: str) -> dict:
     }
 
 
+_TW = timezone(timedelta(hours=8))
+
 def _now() -> str:
-    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    return datetime.now(_TW).strftime("%Y-%m-%dT%H:%M:%S+08:00")

@@ -20,15 +20,20 @@ function injectCourseMarkers(text: string, sorted: CourseCard[]): string {
   // 只替換 <course>課名（系所）</course> 或 <course>課名</course> 標籤所在位置
   // 避免把全文中的同名子字串（如「巨量資料分析學程」中的「資料分析」）誤匹配
   return text.replace(
-    /<course>(.*?)(?:（[^）]*）)?<\/course>/g,
-    (_, courseName) => {
+    /<course>(.*?)(?:（([^）]*)）)?<\/course>/g,
+    (_, courseName, deptHint) => {
       const name = courseName.trim();
+      const dept = deptHint?.trim() || '';
+      // 若 LLM 有標注系所則保留，否則從 card 補上
       const idx = nameToIdx[name];
+      const card = idx !== undefined ? sorted[idx] : undefined;
+      const displayDept = dept || card?.dept || '';
+      const displayText = displayDept ? `${name}（${displayDept}）` : name;
       if (idx !== undefined) {
-        return `<mark data-cid="${idx}">${name}</mark>`;
+        return `<mark data-cid="${idx}">${displayText}</mark>`;
       }
       // pool 中找不到對應課程，直接顯示文字（去掉標籤）
-      return name;
+      return displayText;
     },
   );
 }

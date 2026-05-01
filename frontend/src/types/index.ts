@@ -135,6 +135,7 @@ export interface StreamEvent {
   // verify_done
   selected?:        string[];
   filtered_out?:    string[];
+  method?:          'tag' | 'llm';
   // done
   session_id?:      string;
   tools_used?:      string[];

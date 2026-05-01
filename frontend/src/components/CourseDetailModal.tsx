@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import {
-  HiX, HiChevronDown, HiChevronUp,
+  HiX,
   HiLightBulb, HiBookOpen, HiClipboardList, HiShieldCheck, HiTag,
 } from 'react-icons/hi';
 import { apiClient } from '../api/client';
@@ -16,25 +16,48 @@ interface DomainTag {
   relevance: 'high' | 'medium' | 'low';
 }
 
+interface SectionInfo {
+  section:          string;
+  teacher:          string;
+  dept:             string;
+  college:          string;
+  type:             string;
+  eligibility_text: string;
+}
+
+interface WhenEntry {
+  dept_id:   string;
+  dept_name: string;
+  when:      string;
+}
+
 interface CourseDetail {
   name:                string;
+  name_en:             string;
   dept:                string;
+  college:             string;
   credits:             number;
   type:                string;
   teacher:             string;
   code:                string;
+  is_grad:             boolean;
   course_objective:    string;
   course_content:      string;
-  concepts:            string;
-  languages:           string;
-  tools:               string;
-  topic_tags:          string;
-  core_questions:      string;
-  simplified_concepts: SimplifiedConcept[];
-  domain_tags?:        DomainTag[];
-  eligibility_raw:     string;
-  when_raw:            string;
+  textbook:            string;
+  when_schedule:       WhenEntry[];
   prereq_codes:        string;
+  coreq_codes:         string;
+  // 分發條件：單班為字串，多班為空（看 sections）
+  eligibility_text:    string;
+  sections:            SectionInfo[];
+  // NLP（全部 list）
+  concepts:            string[];
+  languages:           string[];
+  tools:               string[];
+  topic_tags:          string[];
+  core_questions:      string[];
+  simplified_concepts: SimplifiedConcept[];
+  domain_tags:         DomainTag[];
 }
 
 interface Props {
@@ -44,40 +67,34 @@ interface Props {
 
 interface EligibilityRule {
   priority: number | null;
-  text: string;
+  text:     string;
 }
 
-const normalizeEligibilityText = (value: string) =>
-  value
-    .replace(/\r\n/g, '\n')
-    .replace(/[ \t]+/g, ' ')
-    .trim();
+function groupWhenSchedule(schedule: WhenEntry[]): { when: string; depts: string[] }[] {
+  const map = new Map<string, string[]>();
+  for (const e of schedule) {
+    const label = e.dept_name.replace(/_/g, '·');
+    if (!map.has(e.when)) map.set(e.when, []);
+    map.get(e.when)!.push(label);
+  }
+  return Array.from(map.entries()).map(([when, depts]) => ({ when, depts }));
+}
 
-const parseEligibilityRules = (raw: string): EligibilityRule[] => {
-  const normalized = normalizeEligibilityText(raw);
+function parseEligibilityRules(raw: string): EligibilityRule[] {
+  const normalized = raw.replace(/\r\n/g, '\n').replace(/[ \t]+/g, ' ').trim();
   if (!normalized) return [];
-
   const chunks = normalized
     .split(/\n+/)
-    .flatMap((line) => line.split(/\s*\|\s*/))
-    .map((line) => line.trim())
+    .flatMap(line => line.split(/\s*\|\s*/))
+    .map(l => l.trim())
     .filter(Boolean);
-
-  return chunks.map((chunk, index) => {
-    const matched = chunk.match(/^(?:P\s*)?(\d+)\s*[:：]?\s*(.*)$/i);
-    if (matched) {
-      return {
-        priority: Number(matched[1]),
-        text: (matched[2] || '').trim(),
-      };
-    }
-
-    return {
-      priority: index + 1,
-      text: chunk,
-    };
+  return chunks.map((chunk, i) => {
+    const m = chunk.match(/^(?:P\s*)?(\d+)\s*[:：]?\s*(.*)$/i);
+    return m
+      ? { priority: Number(m[1]), text: (m[2] || '').trim() }
+      : { priority: i + 1, text: chunk };
   });
-};
+}
 
 function ExpandableSection({
   icon, title, children,
@@ -115,6 +132,12 @@ function ExpandableSection({
   );
 }
 
+const TAG_STYLES: Record<DomainTag['relevance'], string> = {
+  high:   'bg-primary-100 text-primary-700 font-semibold ring-1 ring-primary-200',
+  medium: 'bg-gray-100 text-gray-600',
+  low:    'bg-gray-50 text-gray-400',
+};
+
 export default function CourseDetailModal({ course, onClose }: Props) {
   const [detail, setDetail] = useState<CourseDetail | null>(null);
   const [loading, setLoading] = useState(false);
@@ -133,13 +156,26 @@ export default function CourseDetailModal({ course, onClose }: Props) {
       .then(r => setDetail(r.data as CourseDetail))
       .catch(() => setDetail(null))
       .finally(() => setLoading(false));
-  }, [course?.name]);
+  }, [course?.name, course?.code]);
 
   if (!course) return null;
   const d = detail;
-  const typeIsRequired = (d?.type ?? course.type) === '必修';
-  const courseCode = (d?.code ?? course.code ?? '').trim();
-  const eligibilityRules = d?.eligibility_raw ? parseEligibilityRules(d.eligibility_raw) : [];
+
+  const displayDept    = d?.dept    || course.dept    || '';
+  const displayTeacher = d?.teacher || course.teacher || '';
+  const displayCredits = d?.credits ?? course.credits ?? 0;
+  const displayType    = d?.type    || course.type    || '';
+  const courseCode     = (d?.code   || course.code    || '').trim();
+  const typeIsRequired = displayType === '必修';
+
+  const hasMultiSections = (d?.sections?.length ?? 0) > 0;
+
+  // 單班分發條件
+  const singleEligRules = d?.eligibility_text
+    ? parseEligibilityRules(d.eligibility_text)
+    : [];
+
+  const techs = [...(d?.languages ?? []), ...(d?.tools ?? [])];
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}>
@@ -154,37 +190,45 @@ export default function CourseDetailModal({ course, onClose }: Props) {
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0 flex-1">
               <h2 className="text-base font-bold leading-snug text-gray-900">{course.name}</h2>
+              {d?.name_en && (
+                <p className="mt-0.5 text-xs text-gray-400">{d.name_en}</p>
+              )}
               <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
                 {courseCode && (
                   <span className="rounded-full bg-primary-50 px-2 py-0.5 text-xs font-medium text-primary-600">
-                    課號：{courseCode}
+                    {courseCode}
                   </span>
                 )}
-                {(d?.dept ?? course.dept) && (
+                {displayDept && (
                   <>
                     {courseCode && <span className="text-gray-200">·</span>}
-                  <span className="text-xs text-gray-400">{d?.dept ?? course.dept}</span>
+                    <span className="text-xs text-gray-400">{displayDept}</span>
                   </>
                 )}
-                {(d?.credits ?? course.credits ?? 0) > 0 && (
+                {displayCredits > 0 && (
                   <>
                     <span className="text-gray-200">·</span>
                     <span className="rounded-full bg-primary-50 px-2 py-0.5 text-xs font-medium text-primary-600">
-                      {d?.credits ?? course.credits} 學分
+                      {displayCredits} 學分
                     </span>
                   </>
                 )}
-                {(d?.type ?? course.type) && (
+                {displayType && (
                   <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${
                     typeIsRequired ? 'bg-red-50 text-red-500' : 'bg-emerald-50 text-emerald-600'
                   }`}>
-                    {d?.type ?? course.type}
+                    {displayType}
                   </span>
                 )}
-                {(d?.teacher ?? course.teacher) && (
+                {d?.is_grad && (
+                  <span className="rounded-full bg-purple-50 px-2 py-0.5 text-xs font-medium text-purple-600">
+                    研究所
+                  </span>
+                )}
+                {!hasMultiSections && displayTeacher && (
                   <>
                     <span className="text-gray-200">·</span>
-                    <span className="text-xs text-gray-400">{d?.teacher ?? course.teacher}</span>
+                    <span className="text-xs text-gray-400">{displayTeacher}</span>
                   </>
                 )}
               </div>
@@ -209,16 +253,18 @@ export default function CourseDetailModal({ course, onClose }: Props) {
             <p className="text-sm text-gray-400">暫無詳細資料。</p>
           ) : (
             <>
-              {/* 修課資格 */}
-              {(d.eligibility_raw || d.when_raw || d.prereq_codes) && (
-                <div className="flex items-start gap-2.5 rounded-xl bg-primary-50 px-3.5 py-3 text-primary-800">
+              {/* ── 修習資訊卡 ── */}
+              {(singleEligRules.length > 0 || d.when_raw || d.prereq_codes || hasMultiSections) && (
+                <div className="flex items-start gap-2.5 rounded-xl bg-primary-50 px-3.5 py-3">
                   <HiShieldCheck className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary-400" />
-                  <div className="space-y-1 min-w-0">
-                    {eligibilityRules.length > 0 && (
+                  <div className="min-w-0 w-full space-y-1.5">
+
+                    {/* 單班：分發條件 */}
+                    {!hasMultiSections && singleEligRules.length > 0 && (
                       <ul className="space-y-1.5">
-                        {eligibilityRules.map((rule, i) => (
-                          <li key={`${rule.priority ?? i}-${rule.text}`} className="flex items-start gap-2">
-                            <span className="mt-0.5 inline-flex h-4.5 min-w-4.5 items-center justify-center rounded-full bg-primary-100 px-1 text-[10px] font-semibold leading-none text-primary-700">
+                        {singleEligRules.map((rule, i) => (
+                          <li key={i} className="flex items-start gap-2">
+                            <span className="mt-0.5 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-primary-100 px-1 text-[10px] font-semibold text-primary-700">
                               {rule.priority ?? i + 1}
                             </span>
                             <p className="whitespace-pre-line text-xs leading-relaxed text-primary-900">{rule.text}</p>
@@ -226,30 +272,86 @@ export default function CourseDetailModal({ course, onClose }: Props) {
                         ))}
                       </ul>
                     )}
-                    {d.when_raw     && <p className="text-xs text-primary-500">建議修習：{d.when_raw}</p>}
-                    {d.prereq_codes && <p className="text-xs text-primary-500">先修：{d.prereq_codes}</p>}
+
+                    {/* 多班：各班別條件 */}
+                    {hasMultiSections && (
+                      <div className="space-y-2">
+                        <p className="text-xs font-semibold text-primary-700">
+                          此課程共 {d.sections.length} 個班別，各班分發條件不同：
+                        </p>
+                        {d.sections.map((sec, i) => (
+                          <div key={i} className="rounded-lg bg-white/70 px-3 py-2">
+                            <div className="flex flex-wrap items-center gap-1.5 mb-1">
+                              {sec.section && (
+                                <span className="rounded bg-primary-100 px-1.5 py-0.5 text-[10px] font-bold text-primary-700">
+                                  {sec.section} 班
+                                </span>
+                              )}
+                              {sec.dept && <span className="text-xs text-gray-500">{sec.dept}</span>}
+                              {sec.teacher && <span className="text-xs text-gray-400">· {sec.teacher}</span>}
+                            </div>
+                            {sec.eligibility_text ? (
+                              <ul className="space-y-1">
+                                {parseEligibilityRules(sec.eligibility_text).map((rule, j) => (
+                                  <li key={j} className="flex items-start gap-2">
+                                    <span className="mt-0.5 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-primary-100 px-1 text-[10px] font-semibold text-primary-700">
+                                      {rule.priority ?? j + 1}
+                                    </span>
+                                    <p className="whitespace-pre-line text-xs leading-relaxed text-primary-900">{rule.text}</p>
+                                  </li>
+                                ))}
+                              </ul>
+                            ) : (
+                              <p className="text-xs text-gray-400">不限修課條件</p>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {d.when_schedule?.length > 0 && (
+                      <div className="space-y-1">
+                        <span className="text-xs font-medium text-gray-500">建議修習</span>
+                        {groupWhenSchedule(d.when_schedule).map(({ when, depts }) => (
+                          <div key={when} className="flex flex-wrap items-center gap-1">
+                            <span className="text-xs font-semibold text-primary-700">{when}</span>
+                            {depts.map((dept, i) => (
+                              <span key={i} className="rounded bg-primary-50 px-1.5 py-0.5 text-[11px] text-primary-600">
+                                {dept}
+                              </span>
+                            ))}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                    {d.prereq_codes && (
+                      <p className="text-xs text-primary-600">先修：{d.prereq_codes}</p>
+                    )}
+                    {d.coreq_codes && (
+                      <p className="text-xs text-primary-600">同修：{d.coreq_codes}</p>
+                    )}
                   </div>
                 </div>
               )}
 
-              {/* 主題標籤（通識課） */}
-              {d.topic_tags && (
+              {/* ── 主題標籤 ── */}
+              {d.topic_tags.length > 0 && (
                 <div className="flex flex-wrap gap-1.5">
-                  {d.topic_tags.split(/[,，]/).filter(Boolean).map((t, i) => (
+                  {d.topic_tags.map((t, i) => (
                     <span key={i} className="inline-flex items-center gap-1 rounded-full bg-violet-50 px-3 py-1 text-xs font-medium text-violet-600">
                       <HiTag className="h-3 w-3" />
-                      {t.trim()}
+                      {t}
                     </span>
                   ))}
                 </div>
               )}
 
-              {/* 核心議題（通識課） */}
-              {d.core_questions && (
+              {/* ── 核心議題 ── */}
+              {d.core_questions.length > 0 && (
                 <div className="space-y-2">
                   <p className="text-xs font-semibold uppercase tracking-wide text-gray-400">核心議題</p>
                   <ul className="space-y-2">
-                    {d.core_questions.split(' | ').map((q, i) => (
+                    {d.core_questions.map((q, i) => (
                       <li key={i} className="flex items-start gap-2.5 text-sm text-gray-700">
                         <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-violet-400" />
                         {q}
@@ -259,7 +361,7 @@ export default function CourseDetailModal({ course, onClose }: Props) {
                 </div>
               )}
 
-              {/* 概念說明 */}
+              {/* ── 概念白話說明 ── */}
               {d.simplified_concepts.length > 0 && (
                 <div className="space-y-2">
                   <p className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-gray-400">
@@ -280,60 +382,46 @@ export default function CourseDetailModal({ course, onClose }: Props) {
                 </div>
               )}
 
-              {/* 程式語言 / 技術工具 */}
-              {(d.languages || d.tools) && (() => {
-                const techs = [
-                  ...d.languages.split(/[,，]/).filter(Boolean),
-                  ...d.tools.split(/[,，]/).filter(Boolean),
-                ];
-                return (
-                  <div className="space-y-1.5">
-                    <p className="text-xs font-semibold uppercase tracking-wide text-gray-400">技術工具</p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {techs.map((t, i) => (
-                        <span key={i} className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-600 ring-1 ring-indigo-100">
-                          {t.trim()}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                );
-              })()}
-
-              {/* 領域標籤 */}
-              {d.domain_tags?.length > 0 && (
+              {/* ── 技術工具 ── */}
+              {techs.length > 0 && (
                 <div className="space-y-1.5">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-gray-400">領域標籤</p>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-gray-400">技術工具</p>
                   <div className="flex flex-wrap gap-1.5">
-                    {d.domain_tags.map((t, i) => {
-                      const cls =
-                        t.relevance === 'high'
-                          ? 'bg-primary-100 text-primary-700 font-semibold ring-1 ring-primary-200'
-                          : t.relevance === 'medium'
-                          ? 'bg-gray-100 text-gray-600'
-                          : 'bg-gray-50 text-gray-400';
-                      return (
-                        <span key={i} className={`rounded-full px-2.5 py-0.5 text-xs ${cls}`}>
-                          {t.field}
-                        </span>
-                      );
-                    })}
+                    {techs.map((t, i) => (
+                      <span key={i} className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-600 ring-1 ring-indigo-100">
+                        {t}
+                      </span>
+                    ))}
                   </div>
                 </div>
               )}
 
-              {/* 技術概念 fallback */}
-              {d.concepts && !d.simplified_concepts.length && (
+              {/* ── 領域標籤 ── */}
+              {d.domain_tags.length > 0 && (
+                <div className="space-y-1.5">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-gray-400">領域標籤</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {d.domain_tags.map((t, i) => (
+                      <span key={i} className={`rounded-full px-2.5 py-0.5 text-xs ${TAG_STYLES[t.relevance]}`}>
+                        {t.field}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* ── 概念 fallback（無白話說明時） ── */}
+              {d.concepts.length > 0 && d.simplified_concepts.length === 0 && (
                 <div className="flex flex-wrap gap-1.5">
-                  {d.concepts.split(/[,，]/).filter(Boolean).map((c, i) => (
+                  {d.concepts.map((c, i) => (
                     <span key={i} className="rounded-full bg-blue-50 px-2.5 py-1 text-xs font-medium text-blue-600">
-                      {c.trim()}
+                      {c}
                     </span>
                   ))}
                 </div>
               )}
 
-              {/* 課程目標（展開） */}
+              {/* ── 課程目標 ── */}
               {d.course_objective && (
                 <ExpandableSection
                   icon={<HiBookOpen className="h-4 w-4 text-primary-400" />}
@@ -345,7 +433,7 @@ export default function CourseDetailModal({ course, onClose }: Props) {
                 </ExpandableSection>
               )}
 
-              {/* 授課內容（展開） */}
+              {/* ── 授課內容 ── */}
               {d.course_content && (
                 <ExpandableSection
                   icon={<HiClipboardList className="h-4 w-4 text-primary-400" />}
@@ -357,7 +445,21 @@ export default function CourseDetailModal({ course, onClose }: Props) {
                 </ExpandableSection>
               )}
 
-              {!d.course_objective && !d.course_content && !d.simplified_concepts.length && !d.topic_tags && (
+              {/* ── 教科書 ── */}
+              {d.textbook && (
+                <ExpandableSection
+                  icon={<HiBookOpen className="h-4 w-4 text-gray-300" />}
+                  title="教科書 / 參考書"
+                >
+                  <p className="whitespace-pre-line text-sm leading-relaxed text-gray-600">
+                    {d.textbook}
+                  </p>
+                </ExpandableSection>
+              )}
+
+              {!d.course_objective && !d.course_content
+                && d.simplified_concepts.length === 0
+                && d.topic_tags.length === 0 && (
                 <p className="text-sm text-gray-400">此課程暫無詳細資料。</p>
               )}
             </>

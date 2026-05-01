@@ -39,6 +39,7 @@ def _get_oai() -> AzureOpenAI:
     )
 
 
+@lru_cache(maxsize=512)
 def _embed(text: str) -> list[float]:
     deployment = os.environ.get("AZURE_OPENAI_EMBEDDING_DEPLOYMENT", "text-embedding-3-large")
     resp = _get_oai().embeddings.create(model=deployment, input=[text])
@@ -150,24 +151,24 @@ def search_courses(
     qdrant_filter = _qdrant_filter(filters) if filters else None
 
     try:
-        hits = client.search(
+        result = client.query_points(
             collection_name=collection,
-            query_vector=embedding,
+            query=embedding,
             query_filter=qdrant_filter,
             limit=n_results,
             with_payload=True,
         )
-        return _fmt_search(hits)
+        return _fmt_search(result.points)
     except Exception:
         if filters:
             try:
-                hits = client.search(
+                result = client.query_points(
                     collection_name=collection,
-                    query_vector=embedding,
+                    query=embedding,
                     limit=n_results,
                     with_payload=True,
                 )
-                return _fmt_search(hits)
+                return _fmt_search(result.points)
             except Exception:
                 pass
         return []
@@ -175,24 +176,24 @@ def search_courses(
 
 def search_programs(query: str, n_results: int = 5) -> list[dict]:
     embedding = _embed(query)
-    hits = _get_qdrant().search(
+    result = _get_qdrant().query_points(
         collection_name="ncu_credit_programs",
-        query_vector=embedding,
+        query=embedding,
         limit=n_results,
         with_payload=True,
     )
-    return _fmt_search(hits)
+    return _fmt_search(result.points)
 
 
 def search_departments(query: str, n_results: int = 5) -> list[dict]:
     embedding = _embed(query)
-    hits = _get_qdrant().search(
+    result = _get_qdrant().query_points(
         collection_name="ncu_departments",
-        query_vector=embedding,
+        query=embedding,
         limit=n_results,
         with_payload=True,
     )
-    return _fmt_search(hits)
+    return _fmt_search(result.points)
 
 
 def search_teachers(
@@ -202,14 +203,14 @@ def search_teachers(
 ) -> list[dict]:
     embedding = _embed(query)
     qdrant_filter = _qdrant_filter(filters) if filters else None
-    hits = _get_qdrant().search(
+    result = _get_qdrant().query_points(
         collection_name="ncu_teachers",
-        query_vector=embedding,
+        query=embedding,
         query_filter=qdrant_filter,
         limit=n_results,
         with_payload=True,
     )
-    return _fmt_search(hits)
+    return _fmt_search(result.points)
 
 
 def get_teacher_by_name(name: str) -> list[dict]:
@@ -275,4 +276,76 @@ def get_courses_by_name(
             with_vectors=False,
         )
         results.extend(_fmt_scroll(records))
+    return results
+
+
+_CONCEPT_VEC_INDEX: dict | None = None  # 快取載入的 npz 資料
+_CONCEPT_VEC_NPZ   = ROOT / "data" / "processed" / "ncu_course_concept_vecs.npz"
+
+
+def _load_concept_vec_index() -> dict | None:
+    """載入 ncu_course_concept_vecs.npz，快取後回傳。檔案不存在回傳 None。"""
+    global _CONCEPT_VEC_INDEX
+    if _CONCEPT_VEC_INDEX is not None:
+        return _CONCEPT_VEC_INDEX
+    if not _CONCEPT_VEC_NPZ.exists():
+        return None
+    try:
+        import numpy as np
+        data = np.load(str(_CONCEPT_VEC_NPZ), allow_pickle=False)
+        _CONCEPT_VEC_INDEX = {
+            "names": data["names"],   # shape (N,)
+            "codes": data["codes"],   # shape (N,)
+            "depts": data["depts"],   # shape (N,)
+            "vecs":  data["vecs"].astype("float32"),  # shape (N, D)
+        }
+        return _CONCEPT_VEC_INDEX
+    except Exception:
+        return None
+
+
+def search_by_concept_vec_for(
+    course_name: str,
+    n_results: int = 15,
+) -> list[dict]:
+    """Option A：用課程的概念平均向量搜尋最相似課程（ncu_course_concept_vecs.npz）。
+
+    需先執行 build_qdrant_index.py --phase3。
+    檔案不存在時回傳空 list（靜默降級）。
+    """
+    import numpy as np
+    idx = _load_concept_vec_index()
+    if idx is None:
+        return []
+
+    names = idx["names"]
+    vecs  = idx["vecs"]
+    depts = idx["depts"]
+    codes = idx["codes"]
+
+    # 找查詢課程的向量
+    matches = np.where(names == course_name)[0]
+    if len(matches) == 0:
+        return []
+    q_vec = vecs[matches[0]]  # shape (D,)
+
+    # Cosine similarity（vecs 已 L2-normalize，直接點積）
+    sims   = vecs @ q_vec          # shape (N,)
+    order  = np.argsort(-sims)     # 降序
+
+    results = []
+    for i in order:
+        if names[i] == course_name:
+            continue
+        results.append({
+            "id":       str(codes[i]),
+            "document": "",
+            "metadata": {
+                "name_zh": str(names[i]),
+                "dept":    str(depts[i]),
+            },
+            "distance": round(float(1.0 - sims[i]), 4),
+        })
+        if len(results) >= n_results:
+            break
     return results

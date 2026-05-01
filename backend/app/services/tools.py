@@ -32,7 +32,65 @@ def _load_requirements_notes() -> dict:
     return {}
 
 
+@lru_cache(maxsize=1)
+def _load_dept_id_name_map() -> dict[str, str]:
+    """dept_id (英文 id) → 中文系所名，從 schedule_draft 目錄讀取。"""
+    result: dict[str, str] = {}
+    schedule_dir = ROOT / "data" / "processed" / "schedule_draft"
+    if not schedule_dir.exists():
+        return result
+    for dept_file in schedule_dir.rglob("*.json"):
+        try:
+            data = json.loads(dept_file.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        for node in [data, *data.get("specialization_tracks", []), *data.get("groups", [])]:
+            nid = node.get("id", "")
+            nname = node.get("name", "")
+            if nid and nname:
+                result[nid] = nname
+    return result
+
+
+def _fmt_when(when_contexts: list[str]) -> str:
+    """when_contexts list → 顯示字串。
+    1 個科系：'大一上（地球科學學系）'
+    多個科系且 when 相同：'大一上（共 6 系必修）'
+    多個科系且 when 不同：'大一上（地球科學學系）、大二上（資訊工程學系）'
+    """
+    if not when_contexts:
+        return ""
+    name_map = _load_dept_id_name_map()
+    parsed = []
+    for ctx in when_contexts:
+        if "@" in ctx:
+            dept_id, when = ctx.split("@", 1)
+            dept_name = name_map.get(dept_id, dept_id)
+        else:
+            when, dept_name = ctx, ""
+        parsed.append((when, dept_name))
+
+    whens = [p[0] for p in parsed]
+    if len(set(whens)) == 1:
+        when = whens[0]
+        if len(parsed) == 1:
+            dept = parsed[0][1]
+            return f"{when}（{dept}）" if dept else when
+        dept_labels = "、".join(d.replace("_", "·") for _, d in parsed if d)
+        return f"{when}（{dept_labels}）" if dept_labels else when
+    return "、".join(
+        f"{w}（{d.replace('_', '·')}）" if d else w for w, d in parsed
+    )
+
+
 # ── 結果格式化 ────────────────────────────────────────────────────────────────
+
+def _s(val) -> str:
+    """Qdrant payload 欄位可能是 list（$contains 過濾欄）或 str，統一轉成逗號字串。"""
+    if isinstance(val, list):
+        return ", ".join(str(x) for x in val if x)
+    return val or ""
+
 
 def _build_summary(m: dict) -> str:
     """從 metadata 結構化欄位組合 summary，避免從 document 截斷。
@@ -43,19 +101,19 @@ def _build_summary(m: dict) -> str:
     parts = []
 
     if code.startswith(("GS", "CC")):
-        topic = m.get("topic_tags", "") or ""
+        topic = _s(m.get("topic_tags"))
         if topic:
             parts.append(f"主題：{topic}")
-        core_qs = m.get("core_questions", "") or ""
+        core_qs = _s(m.get("core_questions"))
         if core_qs:
             parts.append(f"核心議題：{core_qs}")
     else:
-        concepts = m.get("concepts", "") or ""
+        concepts = _s(m.get("concepts"))
         if concepts:
             parts.append(f"核心概念：{concepts}")
-        langs = m.get("languages", "") or ""
-        tools_s = m.get("tools", "") or ""
-        tech_parts = [x.strip() for x in (langs + "," + tools_s).split(",") if x.strip()]
+        tech_parts = [x.strip() for x in
+                      (_s(m.get("languages")) + "," + _s(m.get("tools"))).split(",")
+                      if x.strip()]
         if tech_parts:
             parts.append(f"技術工具：{', '.join(tech_parts)}")
 
@@ -66,9 +124,9 @@ def _fmt_courses(results: list[dict]) -> list[dict]:
     out = []
     for r in results:
         m = r.get("metadata", {})
-        langs    = m.get("languages", "") or ""
-        tools_s  = m.get("tools", "") or ""
-        tech_parts = [x.strip() for x in (langs + "," + tools_s).split(",") if x.strip()]
+        tech_parts = [x.strip() for x in
+                      (_s(m.get("languages")) + "," + _s(m.get("tools"))).split(",")
+                      if x.strip()]
         out.append({
             "course_code":  m.get("course_code", ""),
             "name_zh":      m.get("name_zh", ""),
@@ -78,15 +136,47 @@ def _fmt_courses(results: list[dict]) -> list[dict]:
             "credits":      m.get("credits", 0),
             "type":         m.get("type", ""),
             "teacher":      m.get("teacher", ""),
-            "when_raw":     m.get("when_raw", ""),
-            "concepts":     m.get("concepts", ""),
+            "when":         _fmt_when(m.get("when_contexts") or []),
+            "concepts":     _s(m.get("concepts")),
             "technologies": ", ".join(tech_parts),
-            "domain_tags":  m.get("domain_tags_rich", "") or m.get("domain_tags", ""),
-            "topic_tags":   m.get("topic_tags", ""),
+            "domain_tags":  _s(m.get("domain_tags_rich")) or _s(m.get("domain_tags")),
+            "topic_tags":   _s(m.get("topic_tags")),
             "summary":      _build_summary(m),
             "distance":     round(r.get("distance", 0.0), 4),
         })
     return out
+
+
+def _rrf_similar_courses(course_name: str, top_n: int = 15) -> list[dict]:
+    """圖共概念排名 + Qdrant 向量語意排名 RRF 融合，回傳相似課程 list[dict]。
+    每個 dict 保證有 name、dept、credits 欄位；來自圖的結果還有 shared_concepts。
+    """
+    graph_results  = graph_service.search_courses_by_concept_cluster(course_name, top_n=25)
+    vector_results = retriever.search_courses(course_name, n_results=20)
+
+    RRF_K = 60
+    scores: dict[str, float] = {}
+    meta:   dict[str, dict]  = {}
+
+    for rank, r in enumerate(graph_results, 1):
+        n = r["name"]
+        scores[n] = scores.get(n, 0.0) + 1.0 / (RRF_K + rank)
+        meta[n] = r
+
+    for rank, r in enumerate(vector_results, 1):
+        n = r.get("metadata", {}).get("name_zh", "")
+        if not n:
+            continue
+        scores[n] = scores.get(n, 0.0) + 1.0 / (RRF_K + rank)
+        meta.setdefault(n, {
+            "name":    n,
+            "dept":    r.get("metadata", {}).get("dept", ""),
+            "credits": r.get("metadata", {}).get("credits"),
+        })
+
+    ranked = [n for n in sorted(scores, key=scores.__getitem__, reverse=True)
+              if n != course_name][:top_n]
+    return [meta[n] for n in ranked]
 
 
 # ── 工具函式 ──────────────────────────────────────────────────────────────────
@@ -137,8 +227,22 @@ def tool_search_courses(
                 for c in filtered[:n * 2]
             ]
 
-    # 用 conditions list 累積，最後組成合法的 ChromaDB where 語法
-    # 避免 {"dept": "X", "$or": [...]} 這種非法混合格式
+    # ── Layer 1：Query expansion via ncu_graph_nodes ─────────────────────────
+    # 找語意相近的 Concept/Technology/Field 節點名稱，附加到查詢字串
+    from app.services.graph_service import _search_concept_nodes
+    concept_node_ids = _search_concept_nodes(query, top_k=3)
+    if concept_node_ids:
+        g = graph_service._g()
+        extra_terms = [
+            g["nodes"].get(nid, {}).get("name", "")
+            for nid in concept_node_ids
+        ]
+        extra_terms = [t for t in extra_terms if t and t.lower() not in query.lower()]
+        expanded_query = (query + " " + " ".join(extra_terms[:3])).strip() if extra_terms else query
+    else:
+        expanded_query = query
+
+    # ── Layer 2：Qdrant filters ──────────────────────────────────────────────
     conditions: list[dict] = []
     if dept:
         conditions.append({"dept": {"$eq": dept}})
@@ -170,9 +274,38 @@ def tool_search_courses(
         filters = {"$and": conditions}
 
     collection = "ncu_courses_grad" if is_grad else "ncu_courses_ug"
-    results = retriever.search_courses(
-        query, filters=filters, n_results=n, collection=collection
+
+    # Signal A：擴展查詢 + filters
+    results_a = retriever.search_courses(
+        expanded_query, filters=filters, n_results=n * 2, collection=collection
     )
+
+    # Signal B：原始查詢 + filters（確保原始語意不被擴展稀釋）
+    if expanded_query != query:
+        results_b = retriever.search_courses(
+            query, filters=filters, n_results=n * 2, collection=collection
+        )
+    else:
+        results_b = []
+
+    # ── Layer 3：RRF 融合 ────────────────────────────────────────────────────
+    if results_b:
+        RRF_K = 60
+        code_scores: dict[str, float] = {}
+        code_meta:   dict[str, dict]  = {}
+        for rank, r in enumerate(results_a, 1):
+            code = r.get("metadata", {}).get("course_code", "") or r.get("id", "")
+            code_scores[code] = code_scores.get(code, 0.0) + 1.0 / (RRF_K + rank)
+            code_meta[code] = r
+        for rank, r in enumerate(results_b, 1):
+            code = r.get("metadata", {}).get("course_code", "") or r.get("id", "")
+            code_scores[code] = code_scores.get(code, 0.0) + 1.0 / (RRF_K + rank)
+            code_meta.setdefault(code, r)
+        ranked_codes = sorted(code_scores, key=code_scores.__getitem__, reverse=True)[:n]
+        results = [code_meta[c] for c in ranked_codes]
+    else:
+        results = results_a[:n]
+
     return _fmt_courses(results)
 
 
@@ -427,11 +560,14 @@ def tool_get_course_knowledge_map(course_name: str) -> str:
         if len(concepts) > 15:
             lines.append(f"  ...等 {len(concepts)} 個概念")
 
-    similar = result.get("similar_courses", [])
+    # RRF 融合（圖 + 向量）取相似課程
+    similar = _rrf_similar_courses(c["name"], top_n=8)
     if similar:
         lines.append(f"\n概念重疊最高的相關課程（可延伸學習）：")
-        for s in similar[:8]:
-            lines.append(f"  - {s['name']}（{s['dept']}）[共享 {s.get('shared_concepts', 0)} 個概念]")
+        for s in similar:
+            cnt = s.get("shared_concepts", 0)
+            suffix = f" [共享 {cnt} 個概念]" if cnt > 1 else ""
+            lines.append(f"  - {s['name']}（{s.get('dept', '')}）{suffix}")
 
     return "\n".join(lines)
 
@@ -646,15 +782,19 @@ def tool_find_similar_courses(course_name: str) -> str:
 
     【使用時機】使用者問「有沒有類似 OO 的課？」、「哪些課和 OO 有關？」、
     「跨系有沒有教類似內容的課？」時使用。
-    利用知識圖譜的 Concept/Technology 節點做語意擴散，覆蓋比關鍵字搜尋更廣。
+    利用知識圖譜共概念排名 + Qdrant 向量語意排名做 RRF 融合，覆蓋比純關鍵字搜尋更廣。
     """
-    results = graph_service.search_courses_by_concept_cluster(course_name, top_n=15)
-    if not results:
+    similar = _rrf_similar_courses(course_name, top_n=15)
+
+    if not similar:
         return (f"找不到與「{course_name}」概念相近的課程（可能課程名稱不符，"
                 f"請嘗試更短的關鍵詞，如只輸入核心詞）。")
-    lines = [f"與「{course_name}」概念相近的課程（共 {len(results)} 門）："]
-    for r in results:
-        line = f"- {r['name']}（{r['dept']}，{r.get('credits', '?')}學分）"
+
+    lines = [f"與「{course_name}」概念相近的課程（共 {len(similar)} 門）："]
+    for r in similar:
+        dept    = r.get("dept", "")
+        credits = r.get("credits", "?")
+        line    = f"- {r['name']}（{dept}，{credits}學分）"
         cnt = r.get("shared_concepts", 0)
         if cnt > 1:
             line += f" [共享概念：{cnt} 個]"
@@ -710,39 +850,51 @@ def tool_search_programs(query: str, n: int = 5) -> list[dict]:
     ]
 
 
-def tool_get_course_syllabus(
+def tool_get_course_detail(
     name_zh: str = None,
     dept: str = None,
     course_code: str = None,
 ) -> dict:
-    """查詢課程的官方課綱：課程目標、授課內容、教科書/參考書。
+    """查詢課程完整資訊：官方課綱（目標/內容/教科書）+ 修課資格分發條件（含先修要求）。
 
-    【使用時機】使用者問「演算法在學什麼？」「這門課用什麼教科書？」等需要官方說明的問題。
-    與 get_course_knowledge_map 互補（後者是 NLP 提取的概念圖）。
+    整合原 get_course_syllabus + get_course_eligibility + get_prereq_info。
+    raw_conditions 已包含先修課程與年級/系所限制的原文，無需再分別查詢。
 
     同名課程消歧義：
     - 有 course_code → 精確查詢，無歧義
     - 只有 name_zh → 若多科系都有此課，回傳 ambiguous=True + candidates，由使用者選擇
     - name_zh + dept → 精確定位到指定科系
     """
+    def _build(m: dict) -> dict:
+        code = m.get("course_code", "")
+        elig = retriever.get_course_eligibility(code)
+        raw_list = elig.get("raw_conditions", [])
+        if elig.get("is_unrestricted"):
+            raw_conditions = "不限修課條件（全校皆可修）"
+        elif raw_list:
+            raw_conditions = " | ".join(raw_list)
+        else:
+            raw_conditions = "無詳細分發條件資料"
+        return {
+            "found": True, "ambiguous": False,
+            "course_code":    code,
+            "name_zh":        m.get("name_zh", ""),
+            "dept":           m.get("dept", ""),
+            "teacher":        m.get("teacher", ""),
+            "credits":        m.get("credits", 0),
+            "objective":      m.get("objective", ""),
+            "content":        m.get("content", ""),
+            "textbook":       m.get("textbook", ""),
+            "raw_conditions": raw_conditions,
+        }
+
     if course_code:
         results = retriever.get_courses_by_code(course_code)
         if not results:
             results = retriever.get_courses_by_code(course_code, collection="ncu_courses_grad")
         if not results:
             return {"found": False, "message": f"找不到課號「{course_code}」"}
-        m = results[0]["metadata"]
-        return {
-            "found": True, "ambiguous": False,
-            "course_code": m.get("course_code", ""),
-            "name_zh":     m.get("name_zh", ""),
-            "dept":        m.get("dept", ""),
-            "teacher":     m.get("teacher", ""),
-            "credits":     m.get("credits", 0),
-            "objective":   m.get("objective", ""),
-            "content":     m.get("content", ""),
-            "textbook":    m.get("textbook", ""),
-        }
+        return _build(results[0]["metadata"])
 
     if not name_zh:
         return {"found": False, "message": "請提供課程名稱（name_zh）或課號（course_code）"}
@@ -773,18 +925,7 @@ def tool_get_course_syllabus(
             ],
         }
 
-    m = exact[0]["metadata"]
-    return {
-        "found": True, "ambiguous": False,
-        "course_code": m.get("course_code", ""),
-        "name_zh":     m.get("name_zh", ""),
-        "dept":        m.get("dept", ""),
-        "teacher":     m.get("teacher", ""),
-        "credits":     m.get("credits", 0),
-        "objective":   m.get("objective", ""),
-        "content":     m.get("content", ""),
-        "textbook":    m.get("textbook", ""),
-    }
+    return _build(exact[0]["metadata"])
 
 
 # ── 分派表 ────────────────────────────────────────────────────────────────────
@@ -795,19 +936,17 @@ _TOOL_MAP = {
     "get_program_courses":         tool_get_program_courses,
     "get_teacher_info":            tool_get_teacher_info,
     "search_teachers":             tool_search_teachers,
-    "get_prereq_info":             tool_get_prereq_info,
     "get_graduation_requirements": tool_get_graduation_requirements,
     "get_graduation_rules":        tool_get_graduation_rules,       # backward compat
     "get_requirements_notes":      tool_get_requirements_notes,     # backward compat
     "get_dept_info":               tool_get_dept_info,
-    "get_course_eligibility":      tool_get_course_eligibility,
+    "get_course_detail":           tool_get_course_detail,
     "get_program_description":     tool_get_program_description,
     "search_programs":             tool_search_programs,
     "find_similar_courses":        tool_find_similar_courses,
     "get_course_knowledge_map":    tool_get_course_knowledge_map,
     "get_depts_by_tech":           tool_get_depts_by_tech,
     "ppr_explore":                    tool_ppr_explore,
-    "get_course_syllabus":            tool_get_course_syllabus,
     "explore_concept_neighborhood":   tool_explore_concept_neighborhood,
     # get_course_community / list_course_communities：社群已注入圖，暫不暴露為獨立工具
 }
@@ -833,7 +972,7 @@ TOOLS = [
         "type": "function",
         "function": {
             "name": "search_courses",
-            "description": "語意搜尋課程，支援依系所、學院、技術、年級、學期、選修別、修課資格等條件過濾。【重要】當使用者詢問特定程式語言或工具（如 PyTorch、Python、TensorFlow、Pandas、MATLAB 等），必須使用 tech 參數進行精確過濾，不可只靠語意搜尋。",
+            "description": "語意搜尋課程，支援依系所、學院、技術、選修別、修課資格等條件過濾。【重要】當使用者詢問特定程式語言或工具（如 PyTorch、Python、TensorFlow、Pandas、MATLAB 等），必須使用 tech 參數進行精確過濾，不可只靠語意搜尋。",
             "parameters": {
                 "type": "object",
                 "properties": {
@@ -841,8 +980,6 @@ TOOLS = [
                     "dept":         {"type": "string",  "description": "限縮系所，如「資訊工程學系」"},
                     "college":      {"type": "string",  "description": "限縮學院，如「資訊電機學院」"},
                     "course_type":  {"type": "string",  "enum": ["必修", "選修"], "description": "課程性質"},
-                    "year":         {"type": "integer", "description": "建議修習年級（1-4）"},
-                    "sem":          {"type": "integer", "enum": [1, 2], "description": "1=上學期，2=下學期"},
                     "tech":              {"type": "string",  "description": "技術或工具名稱，如「PyTorch」「Python」"},
                     "is_grad":           {"type": "boolean", "description": "true=搜尋研究所課程"},
                     "exclude_grad_only": {"type": "boolean", "description": "true（預設）=排除限研究所才能修的課程；false=顯示全部"},
@@ -914,20 +1051,6 @@ TOOLS = [
     {
         "type": "function",
         "function": {
-            "name": "get_prereq_info",
-            "description": "查詢課程的先修要求，並回傳先修課程的詳細資訊（課名、學分、建議修習學期）。",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "course_query": {"type": "string", "description": "課程名稱或課號"},
-                },
-                "required": ["course_query"],
-            },
-        },
-    },
-    {
-        "type": "function",
-        "function": {
             "name": "get_graduation_requirements",
             "description": "查詢某系所的畢業規定：同時回傳結構化學分要求（最低學分、必修學分、認證要求清單）與完整原文說明。整合原有兩個工具，一次呼叫即可。",
             "parameters": {
@@ -970,14 +1093,16 @@ TOOLS = [
     {
         "type": "function",
         "function": {
-            "name": "get_course_eligibility",
-            "description": "查詢課程修課資格限制：適合年級、限定系所、是否開放外系/輔系/雙主修等。回傳原始分發條件原文（raw_conditions），有多門同名課程時全部回傳。",
+            "name": "get_course_detail",
+            "description": "查詢課程完整資訊：官方課綱（課程目標、授課內容、教科書）＋修課資格分發條件原文（含年級/系所限制與先修要求）。一次呼叫取代原有三個工具（get_course_syllabus + get_course_eligibility + get_prereq_info）。同名多科系時回傳 ambiguous=True + candidates，可搭配 dept 或 course_code 精確查詢。",
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "course_query": {"type": "string", "description": "課程名稱或課號"},
+                    "name_zh":     {"type": "string", "description": "課程中文名稱，如「演算法」「機器學習」"},
+                    "dept":        {"type": "string", "description": "指定系所以消歧義，如「資訊工程學系」"},
+                    "course_code": {"type": "string", "description": "課號，精確查詢優先使用"},
                 },
-                "required": ["course_query"],
+                "required": [],
             },
         },
     },
@@ -993,22 +1118,6 @@ TOOLS = [
                     "n":     {"type": "integer", "description": "回傳筆數（預設 5）"},
                 },
                 "required": ["query"],
-            },
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "get_course_syllabus",
-            "description": "查詢課程官方課綱：課程目標、授課內容、教科書/參考書。與 get_course_knowledge_map 互補（後者是 NLP 提取的概念圖，此工具是官方說明）。同名課程會回傳 ambiguous=True + candidates 供選擇；可用 course_code 精確查詢。",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "name_zh":     {"type": "string",  "description": "課程中文名稱，如「演算法」「普通化學」"},
-                    "dept":        {"type": "string",  "description": "指定系所以消歧義，如「化學學系」"},
-                    "course_code": {"type": "string",  "description": "課號，精確查詢無歧義，優先使用"},
-                },
-                "required": [],
             },
         },
     },

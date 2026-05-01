@@ -145,68 +145,75 @@ class CourseDetailRequest(BaseModel):
     code: str = ""
 
 
-def _parse_simplified(raw: str) -> list[dict]:
-    """將 'original::display||...' 格式還原為 [{original, display}] list。"""
-    if not raw:
-        return []
-    result = []
-    for pair in raw.split("||"):
-        parts = pair.split("::", 1)
-        if len(parts) == 2 and parts[0] and parts[1]:
-            result.append({"original": parts[0], "display": parts[1]})
-    return result
+# ── course_index 載入（啟動時讀一次，之後 in-memory）────────────────────────
+from functools import lru_cache
+from pathlib import Path as _Path
+
+@lru_cache(maxsize=1)
+def _load_course_index() -> dict:
+    path = _Path(__file__).parent.parent.parent.parent / "data" / "processed" / "course_index.json"
+    if not path.exists():
+        return {}
+    with open(path, encoding="utf-8") as f:
+        return _json.load(f)
 
 
-def _parse_domain_tags(raw: str) -> list[dict]:
-    """將 'field::relevance||...' 格式還原為 [{field, relevance}] list。"""
-    if not raw:
-        return []
-    result = []
-    for pair in raw.split("||"):
-        parts = pair.split("::", 1)
-        field = parts[0].strip() if parts else ""
-        relevance = parts[1].strip() if len(parts) > 1 else "medium"
-        if field:
-            result.append({"field": field, "relevance": relevance})
-    return result
-
+def _lookup_course(name: str, code: str) -> dict | None:
+    """以 code 精確查，找不到再用 name 全表掃描。"""
+    idx = _load_course_index()
+    if not idx:
+        return None
+    # 1. code 精確查
+    if code and code in idx:
+        return idx[code]
+    # 2. name 全表掃描（取第一個 name_zh 吻合的）
+    if name:
+        name_lower = name.strip().lower()
+        for entry in idx.values():
+            if entry.get("name_zh", "").strip().lower() == name_lower:
+                return entry
+    return None
 
 
 @router.post("/course_detail")
 async def get_course_detail(req: CourseDetailRequest):
-    """以課名查詢完整課程資訊（含課程目標、內容、概念說明等）。"""
-    from app.services import retriever
-
-    results = retriever.get_courses_by_name(req.name) if req.name else []
-    if not results:
-        results = retriever.search_courses(req.name or req.code, n_results=1)
-    if not results:
+    """以課名或課號查詢完整課程資訊（從 course_index.json，不走 Qdrant）。"""
+    entry = _lookup_course(req.name, req.code)
+    if not entry:
         return {}
 
-    r = results[0]
-    meta = r.get("metadata", {})
+    sections = entry.get("sections", [])
+    has_multi = len(sections) > 0
+
     return {
-        "name":                 meta.get("name_zh", req.name),
-        "dept":                 meta.get("dept", ""),
-        "credits":              meta.get("credits", 0),
-        "type":                 meta.get("type", ""),
-        "teacher":              meta.get("teacher", ""),
-        "code":                 meta.get("course_code", req.code),
-        # 課程主體
-        "course_objective":     meta.get("objective", ""),
-        "course_content":       meta.get("content", ""),
-        # 概念與技術
-        "concepts":             meta.get("concepts", ""),
-        "languages":            meta.get("languages", ""),
-        "tools":                meta.get("tools", ""),
-        "topic_tags":           meta.get("topic_tags", ""),
-        "core_questions":       meta.get("core_questions", ""),
-        "simplified_concepts":  _parse_simplified(meta.get("simplified_concepts", "")),
-        "domain_tags":          _parse_domain_tags(meta.get("domain_tags_rich", "") or meta.get("domain_tags", "")),
-        # 修課資格
-        "eligibility_raw":      "\n".join(retriever.get_course_eligibility(meta.get("course_code", "")).get("raw_conditions", [])),
-        "when_raw":             meta.get("when_raw", ""),
-        "prereq_codes":         meta.get("prereq_codes", ""),
+        "name":    entry.get("name_zh", req.name),
+        "name_en": entry.get("name_en", ""),
+        "dept":    entry.get("dept", ""),
+        "college": entry.get("college", ""),
+        "credits": entry.get("credits", 0),
+        "type":    entry.get("type", ""),
+        "teacher": entry.get("teacher", ""),
+        "code":    req.code or "",
+        "is_grad": entry.get("is_grad", False),
+        # 課綱
+        "course_objective": entry.get("objective", ""),
+        "course_content":   entry.get("content", ""),
+        "textbook":         entry.get("textbook", ""),
+        # 修習資訊
+        "when_schedule": entry.get("when_schedule", []),
+        "prereq_codes":  ", ".join(entry.get("prereq_codes", [])),
+        "coreq_codes":   ", ".join(entry.get("coreq_codes", [])),
+        # 分發條件：單班直接給字串，多班給 sections 陣列
+        "eligibility_text": entry.get("eligibility_text", "") if not has_multi else "",
+        "sections":         sections if has_multi else [],
+        # NLP
+        "concepts":            entry.get("concepts", []),
+        "languages":           entry.get("languages", []),
+        "tools":               entry.get("tools", []),
+        "topic_tags":          entry.get("topic_tags", []),
+        "core_questions":      entry.get("core_questions", []),
+        "simplified_concepts": entry.get("simplified_concepts", []),
+        "domain_tags":         entry.get("domain_tags", []),
     }
 
 

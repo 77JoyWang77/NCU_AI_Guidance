@@ -91,8 +91,11 @@ SYSTEM_PROMPT = """你是「中央大學選課助理」，協助高中生、大�
   → get_depts_by_tech("技術名稱") 補充「哪些系必/選修含此技術」的系所層次視角
 
 **系所課程查詢**：
-  → get_dept_courses(dept_name="正式系所名", course_type="required/elective/all")
-  → 通識選修：dept_name="通識教育中心"；外語課：dept_name="語言中心"
+  → 廣泛列舉（「XX系有哪些必修」「通識有哪些選修」）：
+      get_dept_courses(dept_name="正式系所名", course_type="required/elective/all")
+      通識選修：dept_name="通識教育中心"；外語課：dept_name="語言中心"
+  → 主題式查詢（「通識有沒有法律相關」「語言中心有沒有日文課」）：
+      search_courses(query="法律", dept="通識教育中心") — 向量搜尋精準命中，勿回傳全部課程
 
 **學程查詢**：
   → 不知道學程名稱時：search_programs(query="主題關鍵詞") 先發現
@@ -101,13 +104,10 @@ SYSTEM_PROMPT = """你是「中央大學選課助理」，協助高中生、大�
 **畢業規定**：
   → get_graduation_requirements（同時回傳結構化學分 + 完整原文，一次呼叫即可）
 
-**課程官方說明**（課程目標、授課內容、教科書）：
-  → get_course_syllabus(name_zh="課名")
+**課程詳情**（課綱、修課資格、先修要求，三合一）：
+  → get_course_detail(name_zh="課名") 或 get_course_detail(course_code="CE3060")
   → 同名多科系時回傳 ambiguous=True + candidates，須請使用者選擇或搭配 dept 參數
-
-**修課資格**（外系能修嗎、年級限制）：
-  → get_course_eligibility(course_query="課名或課號")
-  → 回傳 raw_conditions 原文，直接描述給使用者
+  → raw_conditions 已含先修課程與年級/系所限制原文，無需再呼叫其他工具
 
 **相似課推薦**（「有沒有和 OO 類似的課」）：
   → find_similar_courses(course_name="...")
@@ -122,7 +122,7 @@ SYSTEM_PROMPT = """你是「中央大學選課助理」，協助高中生、大�
   → get_teacher_info("確切姓名") 看詳細專長與開課
 
 **先修查詢**：
-  → 先 search_courses 確認課名，再 get_prereq_info(course_query="確切課名")
+  → get_course_detail(name_zh="課名")  ← raw_conditions 已含先修資訊，一次搞定
 
 **圖工具無結果時的 Fallback**：
   1. find_similar_courses 無結果 → 改用 search_courses(query="課名關鍵字")
@@ -156,32 +156,36 @@ SYSTEM_PROMPT = """你是「中央大學選課助理」，協助高中生、大�
 ✓ 第一步：ppr_explore(seed="深度學習", focus="instructor")
   第二步：get_teacher_info("張家凱")
 
-**範例 5 — 通識課（get_dept_courses 指定正確 dept）**
-問：有哪些人文藝術類的通識選修課？
+**範例 5a — 通識課廣泛列舉**
+問：通識有哪些選修課？
 ✓ 並行：get_dept_courses("通識教育中心", course_type="elective")
         + get_dept_courses("核心通識課程", course_type="elective")
-✗ search_courses(query="人文藝術", dept="通識") → dept 名稱不完整
+
+**範例 5b — 通識課主題查詢**
+問：通識有沒有法律相關的課？
+✓ search_courses(query="法律", dept="通識教育中心")
+✗ get_dept_courses("通識教育中心", course_type="elective") → 回傳 100+ 筆，LLM 無法有效篩選
 
 **範例 6 — 外語課**
-問：語言中心有哪些外語課，想學日文或德文？
-✓ get_dept_courses("語言中心", course_type="elective")
-✗ search_courses(query="日文 德文", dept="語言") → dept 名稱錯誤
+問：語言中心有日文或德文課嗎？
+✓ search_courses(query="日文 德文", dept="語言中心")
+✗ get_dept_courses("語言中心", course_type="elective") → 回傳全部外語課，無主題過濾
 
 **範例 7 — 學程（發現 + 詳情）**
 問：有沒有和語言文化相關的學程？
 ✓ 第一步：search_programs(query="語言文化") 發現學程清單
   第二步：並行 get_program_description + get_program_courses
 
-**範例 8 — 先修規劃（並行：search + prereq + eligibility）**
+**範例 8 — 先修規劃 + 修課資格**
 問：外系學生想修機器學習，先修條件和修課資格是什麼？
 ✓ 並行：search_courses(query="機器學習")
-        + get_prereq_info(course_query="機器學習")
-        + get_course_eligibility(course_query="機器學習")
-✗ search_courses(query="機器學習", eligible_year=1) → eligible_year 參數已移除
+        + get_course_detail(name_zh="機器學習")
+  → get_course_detail 一次回傳課綱 + raw_conditions（含先修與資格限制）
+✗ 分別呼叫 get_prereq_info + get_course_eligibility → 已整合，無需兩次
 
-**範例 9 — 課程官方說明（課綱查詢）**
-問：普通化學這門課在教什麼？用哪本教科書？
-✓ get_course_syllabus(name_zh="普通化學")
+**範例 9 — 課程詳情（課綱 + 資格）**
+問：普通化學這門課在教什麼？用哪本教科書？外系可以修嗎？
+✓ get_course_detail(name_zh="普通化學")
   → 若同名多系，回傳 ambiguous=True，告知使用者需指定科系
 
 **範例 10 — 畢業規定（整合工具）**
@@ -590,39 +594,17 @@ def _collect_course_pool(tool_name: str, result, course_pool: dict) -> None:
             if name and name not in course_pool:
                 course_pool[name] = c
 
-    elif tool_name == "get_course_eligibility" and isinstance(result, dict):
-        for c in result.get("courses", []):
-            name = c.get("name_zh", "")
-            if name and name not in course_pool:
-                course_pool[name] = {
-                    "code":    c.get("course_code", ""),
-                    "name":    name,
-                    "dept":    c.get("dept", ""),
-                    "credits": 0,
-                    "type":    "",
-                    "teacher": "",
-                }
-
-    elif tool_name == "get_prereq_info" and isinstance(result, dict):
-        # target course 本身
-        target = result.get("target_course", "")
-        if target and target not in course_pool:
-            course_pool[target] = {
-                "code": result.get("course_code", ""), "name": target,
-                "dept": "", "credits": 0, "type": "", "teacher": "",
+    elif tool_name == "get_course_detail" and isinstance(result, dict):
+        name = result.get("name_zh", "")
+        if name and not result.get("ambiguous") and name not in course_pool:
+            course_pool[name] = {
+                "code":    result.get("course_code", ""),
+                "name":    name,
+                "dept":    result.get("dept", ""),
+                "credits": result.get("credits", 0),
+                "type":    "",
+                "teacher": result.get("teacher", ""),
             }
-        # 先修課程
-        for c in result.get("prereq_details", []):
-            name = c.get("name_zh", "")
-            if name and name not in course_pool:
-                course_pool[name] = {
-                    "code":    c.get("course_code", ""),
-                    "name":    name,
-                    "dept":    c.get("dept", ""),
-                    "credits": c.get("credits", 0),
-                    "type":    "",
-                    "teacher": "",
-                }
 
 
 @traceable(name="ncu_rag_tools", run_type="llm")

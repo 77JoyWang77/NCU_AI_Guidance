@@ -17,6 +17,7 @@ Graph schema（實際邊 relation）：
 """
 
 import json
+import statistics
 from functools import lru_cache
 from pathlib import Path
 
@@ -75,67 +76,13 @@ def _g():
     return _load_graph()
 
 
-_COMMUNITY_EDGE_WEIGHT = 0.12  # BELONGS_TO 弱橋接，讓 PPR 輕微感知社群結構
-
-
-def _inject_community_nodes(
-    G_ig, id_to_idx: dict[str, int], idx_to_id: dict[int, str]
-) -> None:
-    """動態注入 Community 節點與 BELONGS_TO 邊（每次 igraph 載入後呼叫）。
-
-    Community 節點作為同社群課程的弱橋接 hub：PPR 從一門課出發，
-    沿 BELONGS_TO（weight=0.12）到達 Community 節點，再擴散到同社群其他課程，
-    讓同類課程獲得略高的分數而不主導排序。
-    不修改 .pkl 檔案，只影響記憶體中的 igraph。
-    新邊同時設 weight 和 relation 屬性，讓 BFS 可依 relation 篩選。
-    """
-    if not COMMUNITIES_JSON.exists():
-        return
-    communities: list[dict] = json.loads(COMMUNITIES_JSON.read_text(encoding="utf-8"))
-
-    new_edges: list[tuple[int, int]] = []
-    new_weights: list[float] = []
-
-    for c in communities:
-        label    = c.get("label") or f"社群{c['id']}"
-        comm_nid = f"community::{c['id']}"
-
-        G_ig.add_vertex(
-            name=comm_nid,
-            node_type="Community",
-            node_name=label,
-            dept="",
-            credits=None,
-        )
-        v_idx = G_ig.vcount() - 1
-        id_to_idx[comm_nid] = v_idx
-        idx_to_id[v_idx]    = comm_nid
-
-        for course in c.get("courses", []):
-            c_nid = course["code"] if isinstance(course, dict) else course
-            c_idx = id_to_idx.get(c_nid)
-            if c_idx is not None:
-                new_edges.append((c_idx, v_idx))
-                new_weights.append(_COMMUNITY_EDGE_WEIGHT)
-
-    if not new_edges:
-        return
-
-    e_before = G_ig.ecount()
-    G_ig.add_edges(new_edges)
-    for i, eid in enumerate(range(e_before, G_ig.ecount())):
-        G_ig.es[eid]["weight"]   = new_weights[i]
-        G_ig.es[eid]["relation"] = "BELONGS_TO"
-
 
 @lru_cache(maxsize=1)
 def _load_igraph():
-    """建立 igraph（含預計算邊權重 + Community 節點注入）。
+    """建立 igraph（含預計算邊權重）。
 
     優先從 knowledge_graph.pkl（build_graph.py 輸出的快取）載入，
     快取不存在時從 knowledge_graph.json 動態建圖。
-    兩條路徑載入後都會執行 _inject_community_nodes()，
-    將 communities.json 的 48 個社群節點以 BELONGS_TO 弱邊（weight=0.12）接入圖。
     回傳 (G_ig, id_to_idx, idx_to_id)；若 igraph 未安裝則回傳 (None, {}, {})。
     SIMILAR_TO 雙向邊去重（只保留一條），PPR 設 directed=False 自動雙向遍歷。
     """
@@ -193,7 +140,6 @@ def _load_igraph():
         G_ig.es["weight"]   = weights
         G_ig.es["relation"] = relations
 
-    _inject_community_nodes(G_ig, id_to_idx, idx_to_id)
     return G_ig, id_to_idx, idx_to_id
 
 
@@ -716,6 +662,20 @@ def _find_ppr_seeds(seed_names: list[str]) -> set[str]:
     return seed_ids
 
 
+def _ppr_gap_filter(results: list[dict]) -> list[dict]:
+    """移除 PPR 尾部噪音：score < mean − 0.5σ 的結果。
+    結果少於 4 筆時不截斷（避免過度過濾）。
+    """
+    if len(results) < 4:
+        return results
+    scores = [r["score"] for r in results]
+    mean = statistics.mean(scores)
+    stdev = statistics.stdev(scores)
+    threshold = mean - 0.5 * stdev
+    filtered = [r for r in results if r["score"] >= threshold]
+    return filtered if filtered else results
+
+
 def ppr_explore(
     seed_names: list[str],
     top_k: int = 20,
@@ -733,7 +693,11 @@ def ppr_explore(
     node_type_filter:  若指定，只回傳特定類型的節點（如 ["Course", "Instructor"]）
     """
     g = _g()
-    seed_ids = _find_ppr_seeds(seed_names)
+    # Qdrant 向量語意種子 + 字串比對保底，取聯集
+    seed_ids: set[str] = set()
+    for name in seed_names:
+        seed_ids.update(_search_concept_nodes(name, top_k=3))
+    seed_ids |= _find_ppr_seeds(seed_names)
     if not seed_ids:
         return []
 
@@ -778,7 +742,7 @@ def ppr_explore(
                     })
                     if len(results) >= top_k:
                         break
-                return results
+                return _ppr_gap_filter(results)
 
     # ── Fallback：Python power iteration（原有行為）────────────────────────
     n_seeds = len(seed_ids)
@@ -823,7 +787,7 @@ def ppr_explore(
         })
         if len(results) >= top_k:
             break
-    return results
+    return _ppr_gap_filter(results)
 
 
 def explore_by_concept_neighborhood(
@@ -834,13 +798,13 @@ def explore_by_concept_neighborhood(
     """以概念詞彙為中心，igraph BFS 遍歷 N 跳收集相關課程。
 
     入口策略：
-    1. Qdrant ncu_graph_nodes 向量搜尋（可回傳 Concept/Technology/Community 節點）
+    1. Qdrant ncu_graph_nodes 向量搜尋（回傳 Concept/Technology/Field 節點）
     2. Fallback：字串比對 Concept/Technology/Field 節點
 
-    BFS 使用 igraph（含 BELONGS_TO 社群邊），邊類型白名單控制擴散範圍。
-    igraph 未安裝時退回 JSON adjacency BFS（不含 Community/BELONGS_TO）。
+    BFS 使用 igraph，邊類型白名單控制擴散範圍。
+    igraph 未安裝時退回 JSON adjacency BFS。
     """
-    TRAVERSE_RELS = {"COVERS", "TEACHES", "COVERS_FIELD", "SIMILAR_TO", "BELONGS_TO"}
+    TRAVERSE_RELS = {"COVERS", "TEACHES", "COVERS_FIELD", "SIMILAR_TO"}
 
     entry_ids: list[str] = _search_concept_nodes(query, top_k=5)
     if not entry_ids:
@@ -887,8 +851,7 @@ def explore_by_concept_neighborhood(
                 })
             return results
 
-    # ── Fallback：JSON adjacency BFS（無 BELONGS_TO）──────────────────────────
-    TRAVERSE_RELS_JSON = TRAVERSE_RELS - {"BELONGS_TO"}
+    # ── Fallback：JSON adjacency BFS ──────────────────────────────────────────
     visited_fb: set[str] = set()
     course_hits_fb: dict[str, int] = {}
     queue_fb: list[tuple[str, int]] = [(nid, 0) for nid in entry_ids]
@@ -902,10 +865,10 @@ def explore_by_concept_neighborhood(
             course_hits_fb[nid] = course_hits_fb.get(nid, 0) + (hops - depth + 1)
         if depth < hops:
             for tgt, rel in g["out"].get(nid, []):
-                if rel in TRAVERSE_RELS_JSON and tgt not in visited_fb:
+                if rel in TRAVERSE_RELS and tgt not in visited_fb:
                     queue_fb.append((tgt, depth + 1))
             for src, rel in g["in"].get(nid, []):
-                if rel in TRAVERSE_RELS_JSON and src not in visited_fb:
+                if rel in TRAVERSE_RELS and src not in visited_fb:
                     queue_fb.append((src, depth + 1))
 
     results_fb: list[dict] = []
@@ -921,23 +884,27 @@ def explore_by_concept_neighborhood(
     return results_fb
 
 
+_HAS_GRAPH_NODES: bool | None = None  # None = 未檢查
+
+
 def _search_concept_nodes(query: str, top_k: int = 5) -> list[str]:
     """找與 query 語意相近的 Concept/Technology/Field 節點 ID。
 
     優先使用 Qdrant ncu_graph_nodes 向量搜尋（如已建立）；
     否則退回字串比對。
+    使用 retriever 的共用 client（lru_cache），避免重複開啟 Qdrant 檔案。
     """
-    # 嘗試 Qdrant 向量搜尋
+    global _HAS_GRAPH_NODES
     try:
-        if QDRANT_DIR.exists():
-            from qdrant_client import QdrantClient
-            from app.services.retriever import _embed
-            client = QdrantClient(path=str(QDRANT_DIR))
-            cols = [c.name for c in client.get_collections().collections]
-            if "ncu_graph_nodes" in cols:
-                q_vec = _embed(query)
-                hits = client.search("ncu_graph_nodes", query_vector=q_vec, limit=top_k)
-                return [h.payload["node_id"] for h in hits if h.payload.get("node_id")]
+        from app.services.retriever import _get_qdrant, _embed
+        client = _get_qdrant()
+        if _HAS_GRAPH_NODES is None:
+            cols = {c.name for c in client.get_collections().collections}
+            _HAS_GRAPH_NODES = "ncu_graph_nodes" in cols
+        if _HAS_GRAPH_NODES:
+            q_vec = _embed(query)
+            result = client.query_points("ncu_graph_nodes", query=q_vec, limit=top_k, with_payload=True)
+            return [h.payload["node_id"] for h in result.points if h.payload.get("node_id")]
     except Exception:
         pass
 
@@ -967,78 +934,3 @@ def list_all_departments() -> list[dict]:
     ]
 
 
-# ── Leiden 社群查詢 ───────────────────────────────────────────────────────────
-
-COMMUNITIES_JSON = ROOT / "data" / "processed" / "graph" / "communities.json"
-
-
-@lru_cache(maxsize=1)
-def _load_communities() -> tuple:
-    """載入 communities.json，回傳 tuple（可 hashable 供 lru_cache 使用）。"""
-    if not COMMUNITIES_JSON.exists():
-        return ()
-    data = json.loads(COMMUNITIES_JSON.read_text(encoding="utf-8"))
-    return tuple(data)
-
-
-def _community_list() -> list[dict]:
-    return list(_load_communities())
-
-
-def _build_community_result(c: dict, query_name: str, exact: bool) -> dict:
-    courses = c.get("courses", [])
-    ql = query_name.lower()
-    related = [
-        (x["name"] if isinstance(x, dict) else x)
-        for x in courses
-        if (x["name"] if isinstance(x, dict) else x).lower() != ql
-    ][:10]
-    return {
-        "found":         True,
-        "exact_match":   exact,
-        "community_id":  c["id"],
-        "label":         c.get("label", ""),
-        "size":          c["size"],
-        "top_concepts":  c.get("top_concepts", [])[:8],
-        "related_courses": related,
-    }
-
-
-def get_course_community(course_name: str) -> dict:
-    """找指定課程所屬的 Leiden 社群。"""
-    communities = _community_list()
-    if not communities:
-        return {"found": False, "message": "社群資料尚未建立，請執行 compute_communities.py"}
-
-    nl = course_name.lower()
-    best_c: dict | None = None
-    best_score = 0.0
-
-    for c in communities:
-        for course in c.get("courses", []):
-            name = (course["name"] if isinstance(course, dict) else course)
-            nl_name = name.lower()
-            if nl == nl_name:
-                return _build_community_result(c, course_name, exact=True)
-            if nl in nl_name or nl_name in nl:
-                score = len(set(nl) & set(nl_name)) / max(len(nl), len(nl_name), 1)
-                if score > best_score:
-                    best_score = score
-                    best_c = c
-
-    if best_c is not None:
-        return _build_community_result(best_c, course_name, exact=False)
-    return {"found": False, "message": f"找不到課程「{course_name}」所屬社群"}
-
-
-def list_course_communities() -> list[dict]:
-    """列出所有社群的摘要（id, label, size, top_concepts）。"""
-    return [
-        {
-            "id":           c["id"],
-            "label":        c.get("label", ""),
-            "size":         c["size"],
-            "top_concepts": c.get("top_concepts", [])[:5],
-        }
-        for c in _community_list()
-    ]

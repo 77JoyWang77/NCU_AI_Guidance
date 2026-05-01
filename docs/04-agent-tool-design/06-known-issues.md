@@ -1,504 +1,415 @@
-# Graph 設計優化與已知問題
+# Tool 整合與 Hybrid Retrieval 設計
 
-> 更新時間：2026-04-25（最後更新：2026-04-25）
-> 現況：圖有 14,602 節點 / 29,567 邊，21 個工具（含 5 個新工具）
-
----
-
-## 現況確認（程式碼分析結果）
-
-| 問題 | 現狀 |
-|------|------|
-| PPR 加權 | ✅ igraph Weighted PPR（C 底層），邊權重依 relation 分級（0.3–1.5），0.23s/次 |
-| SIMILAR_TO 邊 | ✅ 已啟用：igraph PPR directed=False 自然納入，BFS 也走 SIMILAR_TO 邊 |
-| 圖節點查詢 | ✅ Qdrant ncu_graph_nodes（10,922 節點，dim=3072），向量入口 + 字串 fallback |
-| 圖 metadata filter | ✅ igraph `vs.select()` 原生語法（取代 NetworkX for loop） |
+> 更新時間：2026-04-30  
+> 目的：按功能分組分析 17 個 tool，評估合併機會、hybrid 改進方向、top-k / rerank 策略，以及相似課程的更好算法。
 
 ---
 
-## 一、已知問題解決方案
+## 一、功能分組現況
 
-### ✅ 問題 1：向量找圖節點（Vector Node Entry）— 已完成
-
-**實作**：Qdrant 本地模式 `ncu_graph_nodes` collection（取代原 ChromaDB 方案）
-- 10,922 個 Concept/Technology/Field 節點，dim=3072，Cosine 距離
-- 資料位置：`data/processed/qdrant_data/`
-- 建立腳本：`scripts/rag/build_qdrant_index.py`
-- 查詢流程：Qdrant 向量搜尋 → node_id → 走圖 BFS/PPR
-- Fallback：字串比對（Qdrant 未建立時自動退回）
-
-**影響工具**：`explore_concept_neighborhood`（新工具）、`ppr_explore`（種子查找）
+| 組別 | 工具 | 目前信號來源 |
+|------|------|------------|
+| **找課程** | search_courses, get_dept_courses, get_course_eligibility, get_prereq_info, get_course_syllabus | Qdrant 向量 / 圖 JSON walk / eligibility JSON |
+| **找學程** | get_program_courses, get_program_description, search_programs | 圖 JSON walk / program JSON / Qdrant 向量 |
+| **課程深度探索** | find_similar_courses, get_course_knowledge_map, explore_concept_neighborhood, ppr_explore | 圖 RRF+向量 / 圖 JSON / Qdrant+BFS / igraph PPR |
+| **找系所** | get_dept_info, get_depts_by_tech | Qdrant 向量 / 圖多跳 |
+| **找教師** | get_teacher_info, search_teachers | Qdrant 精確+圖 / Qdrant 向量 |
+| **修業規定** | get_graduation_requirements | schedule_draft JSON + requirements_notes JSON |
 
 ---
 
-### 問題 2：圖的 Metadata Filter
+## 二、分組詳細分析
 
-**痛點**：無法直接在圖上做 `WHERE level='ugrad' AND node_type='Course'` 的過濾，部分資料流需要繞道 ChromaDB。
+---
 
-**方案（不換套件）**：在 `graph_service.py` 新增 `filter_nodes` 工具函式，用 Python generator 過濾：
+### 2.1 找課程群（5 個工具）
 
-```python
-def filter_nodes(G, node_type=None, **attr_filter):
-    for nid, data in G.nodes(data=True):
-        if node_type and data.get("node_type") != node_type:
-            continue
-        if all(data.get(k) == v for k, v in attr_filter.items()):
-            yield nid, data
+#### 現有工具對比
+
+| 工具 | 輸入 | 信號 | 適用場景 |
+|------|------|------|---------|
+| `search_courses` | 自然語言 query + 過濾條件 | Qdrant 向量（無 tech）/ 圖精確（有 tech） | 廣泛課程搜尋 |
+| `get_dept_courses` | dept_name, course_type | 圖 JSON walk（→ Qdrant fallback） | 系所必/選修結構化清單 |
+| `get_course_eligibility` | course_query | Qdrant 精確+向量 → eligibility JSON | 查修課資格 |
+| `get_prereq_info` | course_query | Qdrant 向量 top-1 → prereq_codes 展開 | 查先修條件 |
+| `get_course_syllabus` | name_zh / course_code / dept | Qdrant 精確+消歧義 | 查官方課綱 |
+
+#### 合併機會
+
+**`get_course_eligibility` + `get_prereq_info` + `get_course_syllabus` → `get_course_detail`**
+
+三個工具的輸入形式相同（課程名稱/課號），且常被 LLM 連續呼叫。整合後一次回傳：
+```
+課綱（objective / content / textbook）
++ 修課資格（raw_conditions）
++ 先修課號展開（prereq_details）
 ```
 
-效能評估：14K 節點的線性掃描在 Python 中約 5-20ms，API 延遲可接受。
+> 目前已有 `course_index.json` 統一索引，後端 `/api/chat/course_detail` 已實作，可直接對接。
+> 整合後 LLM 只需 1 次呼叫，而非 2-3 次。
 
-**若需要更快速的過濾**：用 DuckDB 在記憶體中建節點屬性的 columnar index，支援 SQL WHERE 語法，查詢效能可達微秒級。
+#### `search_courses` 的 Hybrid 改進
 
----
+**現況問題**：無 tech 參數時，純 Qdrant 向量搜尋課程文字 embedding，可能漏掉「名稱不出現在課綱但在知識圖譜中有節點」的技術課程。
 
-### ✅ 問題 3：Weighted PPR（加權邊）— 已完成
-
-**實作**：igraph `personalized_pagerank(directed=False, damping=α, reset=v, weights="weight")` C 底層，效能 0.23s/次。
-
-**痛點（已解）**：現有 PPR 將 TEACHES（教技術）和 HAS_CURRICULUM（課程計畫結構）視為等權，導致結構性節點（CurriculumPlan、ElectiveGroup）得到不合理的高分。
-
-**設計：新增邊權重對應表**
-
-| 邊類型 | weight | 理由 |
-|--------|--------|------|
-| `COVERS_FIELD` relevance=high | 1.5 | 高相關領域，強語意連結 |
-| `COVERS_FIELD` relevance=medium | 1.0 | 中相關 |
-| `COVERS_FIELD` relevance=low | 0.5 | 低相關，弱化影響 |
-| `TEACHES`（技術邊） | 1.2 | 技術是核心教學內容 |
-| `COVERS`（概念邊） | 1.0 | 標準概念連結 |
-| `SIMILAR_TO` | ratio 值（0.7~1.0） | 使用字串相似度作為天然權重 |
-| `PREREQUISITE_OF` | 0.8 | 先修關係，稍弱 |
-| `EXPERT_IN` / `RELEVANT_EXPERT` | 1.0 | 教師-領域關係 |
-| 結構邊（REQUIRES、HAS_* 等） | 0.3 | 降低行政結構邊干擾 |
-
-**修改位置**：`backend/app/services/graph_service.py` 的 PPR power iteration（約 line 598-620）
-
-```python
-# 改前
-spread = alpha * score / len(nbrs)
-
-# 改後
-total_w = sum(get_edge_weight(G, nid, nbr) for nbr in nbrs)
-for nbr in nbrs:
-    w = get_edge_weight(G, nid, nbr)
-    new_scores[nbr] += alpha * score * (w / total_w)
+**Query Expansion via Graph**（低風險）：
+```
+query → _search_concept_nodes(query, top_k=3)   ← Qdrant ncu_graph_nodes
+      → 取得 top-3 概念節點的 name（如「深度神經網路」「卷積」）
+      → 展開 query：expanded = query + " " + " ".join(concept_names)
+      → retriever.search_courses(expanded, filters, n_results)
 ```
 
----
+**實作位置**：`tools.py` `tool_search_courses()` 無 tech 分支，在呼叫 `retriever.search_courses` 前加 3 行。
 
-### ✅ 問題 4：啟用 SIMILAR_TO 邊 — 已完成
-
-**實作**：igraph 建圖時 SIMILAR_TO 邊已去重並納入（seen_similar set 防止雙向重複計權），PPR 以 `directed=False` 自然雙向遍歷，BFS 工具 `explore_concept_neighborhood` 也走 SIMILAR_TO 邊。
-
-**現狀（已解）**：圖中有 5,064 條 SIMILAR_TO 邊（字串相似度 ≥ 0.70），完全未被使用。
-
-**三種啟用方式**：
-
-**A. PPR 整合（最簡單）**：PPR 已在無向模式遍歷，只需確認 SIMILAR_TO 邊不被過濾即可。加入後同義概念自然在 PPR 中獲得高分。
-
-**B. 查詢擴展（search_courses graph-first）**：找到種子 tech 節點後，透過 SIMILAR_TO 擴展種子集合再一起走反向邊：
-
-```python
-# 找到 concept::深度學習
-seed_nodes = {concept_node}
-# 透過 SIMILAR_TO 擴展
-for neighbor in G.successors(concept_node):
-    if G.edges[concept_node, neighbor].get("relation") == "SIMILAR_TO":
-        seed_nodes.add(neighbor)
-# 再從所有種子走反向邊找課程
-```
-
-**C. 新工具 `expand_concept_synonyms`**：給定概念，找出整個 SIMILAR_TO 連通分量，回傳語意相近的概念群。
-
-**建議**：同時做 A + B，效益最大且改動最小。
+**top-k 選擇**：
+- 目前 n=8（預設），已足夠 LLM 摘要
+- Query expansion 後建議先取 n×2=16，再做 MMR 縮回 n（見第四節）
 
 ---
 
-## ✅ 二、GraphRAG 社群分群（已完成）
+### 2.2 找學程群（3 個工具）
 
-**適用場景**：「AI 相關課程有哪些主要類別？」「學校課程大致分幾個領域？」這類整體性問題。
+#### 現有工具對比
 
-**實作成果**：
-1. Course+Concept+Technology 語意子圖上執行 **Leiden 演算法**（leidenalg 0.11.0）
-2. 加權邊（COVERS_FIELD high=1.5/medium=1.0/low=0.5，TEACHES=1.2，COVERS=1.0）
-3. modularity=0.8756，共 48 個社群（≥3 門課），全部已命名
-4. 離線儲存：`data/processed/graph/communities.json`
-5. 建立腳本：`scripts/graph/compute_communities.py`（計算）、`scripts/graph/label_communities.py`（命名）
-6. **新工具**：
-   - `get_course_community(course_name)` — 找一門課所在社群及同類別課程
-   - `list_course_communities()` — 列出所有 48 個類別（整體性問題入口）
-
----
-
-## 三、新工具設計（6 個）
-
-### 工具 17：`get_learning_path` — 學習路徑展開
-
-| 項目 | 說明 |
-|------|------|
-| 功能 | 給定目標課程，遞迴展開先修鏈 |
-| 算法 | BFS 走 `PREREQUISITE_OF` 反向邊，最多 3 層 |
-| 資料源 | 知識圖譜（PREREQUISITE_OF 邊，160 條） |
-| 使用場景 | 「我想修機器學習，需要先修哪些課？」 |
-
-回傳範例：
-```
-【機器學習概論】的先修路徑：
-  ← 先修（必要）：資料結構（資工系，大二上）
-  ← 先修（必要）：線性代數（數學系，大一下）
-共需先修 2 門課
-```
-
----
-
-### ✅ 工具 18：`explore_concept_neighborhood` — 概念鄰域探索（已完成）
-
-| 項目 | 說明 |
-|------|------|
-| 功能 | 語意找入口節點 + 圖展開 N 跳鄰域 |
-| 算法 | Qdrant `ncu_graph_nodes` 向量搜尋 → top-5 節點 → SIMILAR_TO + COVERS + TEACHES + COVERS_FIELD 展開 2 跳 |
-| 資料源 | Qdrant 本地（新建）+ 知識圖譜 |
-| 使用場景 | 「和神經網路有關的課程？」（解決字串比對盲點） |
-| 狀態 | ✅ `tools.py` 已實作，`graph_service.py` `explore_by_concept_neighborhood()` 已完成 |
-
----
-
-### 工具 19：`get_dept_concept_coverage` — 系所概念覆蓋地圖
-
-| 項目 | 說明 |
-|------|------|
-| 功能 | 統計系所課程覆蓋的技術/概念，依頻率排名 |
-| 算法 | 找系所所有課程 → 彙整 TEACHES + COVERS 出邊 → 計數排序 |
-| 資料源 | 知識圖譜 |
-| 使用場景 | 「資工系的課程主要教哪些技術？」「哪個系最常教統計？」 |
-
----
-
-### 工具 20：`find_expert_courses` — 教師專長對應課程
-
-| 項目 | 說明 |
-|------|------|
-| 功能 | 找與教師專長最相關的課程（不限該教師開授） |
-| 算法 | 取教師 EXPERT_IN + RELEVANT_EXPERT Field 節點 → 反向 COVERS_FIELD 找課程 → 加入 COURSE_EXPERT 直連課程 |
-| 資料源 | 知識圖譜 |
-| 使用場景 | 「誰最適合教人工智慧？」「這門課的推薦顧問是哪位老師？」 |
-
-與現有工具的差異：`get_teacher_info` 只查「此教師開授哪些課」，本工具查「哪些課與此教師的研究方向最相關」。
-
----
-
-### 工具 21：`compare_courses_by_concepts` — 課程概念比較
-
-| 項目 | 說明 |
-|------|------|
-| 功能 | 比較兩門課的概念重疊與差異 |
-| 算法 | 集合運算：A∩B（共同）、A−B（課A獨有）、B−A（課B獨有） |
-| 資料源 | 知識圖譜（COVERS + TEACHES 邊） |
-| 使用場景 | 「資料結構和演算法的差別是什麼？」「機器學習和深度學習哪裡不同？」 |
-
----
-
-### 工具 22：`get_cross_dept_concept_bridges` — 跨系橋接概念
-
-| 項目 | 說明 |
-|------|------|
-| 功能 | 找兩個系所之間的橋接概念（共同覆蓋的概念） |
-| 算法 | 系所 A 課程概念集合 ∩ 系所 B 課程概念集合 |
-| 資料源 | 知識圖譜 |
-| 使用場景 | 「資工和數學系有什麼共同的學習內容？」「跨域學習哪些概念最能銜接？」 |
-
----
-
-## 四、論文參考
-
-| 論文 | 年份 | 核心貢獻 | 對本系統的啟發 |
-|------|------|---------|--------------|
-| **Microsoft GraphRAG** (Edge et al.) | 2024 | 社群偵測 → 分層摘要，處理整體性問題 | 離線預計算社群，回答「課程體系是什麼」 |
-| **HippoRAG** (Guo et al.) | 2024 | PPR 做語意擴散，解決多跳查詢 | 本系統已部分實作，加入 SIMILAR_TO + weighted 可完整對齊 |
-| **G-Retriever** (He et al.) | 2024 | GNN + RAG，從問句提取相關子圖 | 未來可用於「自動提取最小相關子圖」 |
-| **SubgraphRAG** (Li et al.) | 2024 | 最小相關子圖提取，減少 LLM context 長度 | 複雜多跳查詢時精準截取子圖傳給 LLM |
-| **Think-on-Graph / ToG** (Sun et al.) | 2023 | 在圖上做束搜尋（beam search），更精準多跳推理 | 可取代目前 PPR，做到路徑可解釋的推理 |
-| **Entity-Centric RAG** | 2024 | 先 NER 識別實體再走圖 | 本系統已實作，可用 NER 強化 entity 辨識精度 |
-
----
-
-## 五、實作優先順序
-
-| 優先級 | 功能 | 效益 | 改動範圍 |
-|--------|------|------|---------|
-| ✅ 已完成 | 啟用 SIMILAR_TO 邊（PPR + BFS） | 立即改善「找不到概念」問題 | igraph directed=False |
-| ✅ 已完成 | Weighted PPR（igraph） | 搜尋結果更精準，結構節點干擾降低 | graph_service.py 完整改寫 |
-| ✅ 已完成 | 工具 18：`explore_concept_neighborhood` | 根本解決字串比對盲點 | Qdrant ncu_graph_nodes + BFS |
-| ✅ 已完成 | GraphRAG 社群分群（Leiden）+ 兩個工具 | 整體性問題入口 | compute_communities.py + tools.py |
-| ★★★ 高 | 工具 17：`get_learning_path` | 填補缺失的「學習規劃」場景 | 新工具，BFS on PREREQUISITE_OF，低風險 |
-| ★★☆ 中 | 工具 19：`get_dept_concept_coverage` | 「系所比較」、「哪個系教什麼」 | 新工具，統計邊，低風險 |
-| ★★☆ 中 | 工具 20：`find_expert_courses` | 強化教師-課程語意連結 | 新工具，利用現有邊 |
-| ★★☆ 中 | 工具 21：`compare_courses_by_concepts` | 補充「課程比較」場景 | 新工具，集合運算 |
-| ★☆☆ 低 | 工具 22：`get_cross_dept_concept_bridges` | 補充跨系查詢場景 | 新工具，集合運算 |
-
----
-
-## 六、向量資料庫比較（ChromaDB vs Qdrant vs 其他）
-
-### 現有 ChromaDB 資料量（實測）
-
-| Collection | 筆數 | 維度 | 純向量 RAM |
-|------------|------|------|----------|
-| ncu_courses_ug | 3,119 | 3072 | ~37 MB |
-| ncu_courses_grad | 957 | 3072 | ~11 MB |
-| ncu_teachers | 1,009 | 3072 | ~12 MB |
-| ncu_departments | 32 | 3072 | <1 MB |
-| ncu_credit_programs | 42 | 3072 | <1 MB |
-| **合計（現有）** | **5,159** | 3072 | **~60 MB** |
-| + HNSW index 估算（×2.5） | — | — | **~151 MB** |
-| + 未來圖節點 index（10,922 節點）| — | — | **~471 MB 合計** |
-
-→ **Qdrant Cloud 免費版 1GB RAM 完全足夠**（~471 MB，含未來節點 index 後仍有 50% 餘裕）  
-→ 若啟用 Qdrant **Scalar Quantization（int8）**：記憶體壓縮至 ~118 MB，更輕鬆
-
----
-
-### 向量資料庫功能比較
-
-| 功能 | **ChromaDB（現用）** | **Qdrant** | Weaviate | Milvus/Zilliz |
-|------|:------------------:|:----------:|:--------:|:------------:|
-| 底層語言 | Python | **Rust** | Go | C++ |
-| 向量搜尋速度 | 普通 | **快**（HNSW C++ binding） | 快 | 最快 |
-| Payload filter | 基本（等值、in） | **強**（範圍、巢狀、geo、全文） | GraphQL | 強 |
-| Hybrid search（BM25 + dense） | ❌ | ✓ | ✓ | ✓ |
-| Named Vectors（多向量空間/文件） | ❌ | ✓ | ✓ | ✓ |
-| Scalar Quantization（省記憶體） | ❌ | ✓（int8，記憶體 ÷4） | ✓ | ✓ |
-| 本地嵌入式（無 server） | ✓ | ✓（`QdrantClient(":memory:")` 或 local path） | ❌ | ❌ |
-| Cloud 免費方案 | ChromaDB Cloud | **1 cluster, 1GB RAM** | Sandbox（14天） | Zilliz 免費（1GB） |
-| Python SDK 易用度 | ★★★ | ★★★ | ★★ | ★★ |
-| 遷移成本（從 ChromaDB） | — | **低**（API 相似） | 高（GraphQL） | 中 |
-
-### Qdrant 對本系統的具體改善
-
-**1. Payload filter 更強**
-
-現在 `search_courses` 用 ChromaDB `where` 只能做等值比對：
-```python
-# ChromaDB 現況（只能等值）
-collection.query(where={"dept": "資訊工程學系"})
-
-# Qdrant 可做範圍、複合條件
-client.search(
-    collection_name="ncu_courses",
-    query_filter=Filter(
-        must=[
-            FieldCondition(key="credits", range=Range(gte=2, lte=3)),
-            FieldCondition(key="level", match=MatchValue(value="ugrad")),
-        ]
-    )
-)
-```
-
-**2. Hybrid Search（現在完全沒有）**
-
-Qdrant 可同時用關鍵字（BM25 sparse）+ 語意（dense）搜尋，對「演算法課程」這類查詢效果更好：
-```python
-client.query_points(
-    collection_name="ncu_courses",
-    prefetch=[
-        Prefetch(query=sparse_vector, using="bm25"),   # 關鍵字
-        Prefetch(query=dense_vector, using="dense"),    # 語意
-    ],
-    query=FusionQuery(fusion=Fusion.RRF),  # Reciprocal Rank Fusion 合併
-)
-```
-
-**3. Named Vectors（未來擴充）**
-
-可以為同一門課程存多個 embedding（課程名稱向量 / 課程內容向量 / 概念向量），查詢時指定用哪個：
-```python
-client.search(collection_name="ncu_courses", using="concept_vector", ...)
-```
-
-### Qdrant 遷移評估
-
-| 項目 | 評估 |
-|------|------|
-| **遷移工作量** | 中：`chromadb` API → `qdrant-client` API，邏輯不變，語法換 |
-| **本地開發** | `QdrantClient(path="./qdrant_data")` 或 `":memory:"`，不需 Docker |
-| **雲端部署** | `QdrantClient(url="...", api_key="...")` 指向 Qdrant Cloud |
-| **資料重建** | 需重跑 embedding（現有 3072 維 embedding 無法直接匯出轉入，要重新生成）|
-| **主要風險** | 重跑 embedding 的 API 費用（~5159 筆 × dim 3072 = 約 $0.05-0.2 USD） |
-
-### 建議：是否換 Qdrant？
-
-**換的理由**（效益）：
-- Hybrid search 可明顯改善「搜尋不到」的問題
-- Payload filter 更強，部分現在要繞道圖的查詢可直接在向量 DB 做
-- 1GB 免費雲端，部署更乾淨
-- 記憶體壓縮（quantization）對圖節點 index 很有幫助
-
-**不換的理由**（成本）：
-- 需重跑所有 embedding（費用小但需時間）
-- `retriever.py` 或 `build_vector_index.py` 要重寫
-- 現有 ChromaDB 功能對基本需求已夠用
-
-**結論**：如果同時要做「圖節點 index」（問題 1），建議直接用 Qdrant 建，一步到位；現有課程/教師 collection 可以之後再遷移。
-
----
-
-## 七、套件組合方案（含改動大小 × 雲端部署評估）
-
-> 背景調查結論（2026-04-25）：
-> - **Kuzu DB**：已於 2025/10 宣布棄用，不建議採用
-> - **Neo4j AuraDB 免費版**：不含 GDS plugin（PPR、Leiden 要付費）；自架 Community Edition 可裝免費 GDS plugin
-> - **NetworkX Louvain**：大型圖要跑 21 分鐘，不可接受；igraph Leiden 只需秒級
-> - **scipy sparse PPR**：比手寫 Python for loop 快 10-100 倍，改動最小
-
----
-
-### 方案 A：最小改動（保留 NetworkX，只加速 PPR）
-
-**組合**：NetworkX（現有）+ scipy sparse（PPR 加速）+ python-louvain（社群）+ ChromaDB 新 collection（向量節點查找）
-
-| 需求 | 解法 | 工具 |
+| 工具 | 輸入 | 信號 |
 |------|------|------|
-| 向量找節點 | 新建 `ncu_graph_nodes` ChromaDB collection | ChromaDB |
-| Metadata filter | `filter_nodes()` generator（Python comprehension） | 現有 Python |
-| PPR 加速 | 換用 `scipy.sparse` CSR 矩陣乘法，10-100x 加速 | `scipy` |
-| 社群分群 | `community.best_partition(G)` | `python-louvain` |
+| `get_program_courses` | program_name | 圖 JSON walk |
+| `get_program_description` | program_name | program_descriptions.json |
+| `search_programs` | query | Qdrant ncu_credit_programs 向量 |
 
-**改動範圍**：
-- `graph_service.py`：PPR 改用 sparse matrix，加 `filter_nodes` 函式
-- 新增腳本：`scripts/rag/build_node_index.py`
-- 新增 collection：`ncu_graph_nodes`
+#### 合併機會
 
-**雲端部署**：無新增 server，純 Python 套件，Render/Railway/fly.io 直接部署  
-**缺點**：Louvain 品質不如 Leiden；sparse matrix PPR 仍在 Python 層，不如 C 底層快  
-**適合**：時間緊迫，只想局部改善
+**`get_program_courses` + `get_program_description` → `get_program_info`**
+
+兩者輸入相同（學程名稱），且幾乎總是被 LLM 連續呼叫。整合後：
+```json
+{
+  "program_name": "...",
+  "description": "完整說明",
+  "required_courses": [...],
+  "elective_courses": [...]
+}
+```
+
+`search_programs` 保持獨立（輸入為 query，用於「找哪些學程和 AI 有關」場景）。
+
+#### Hybrid 改進
+
+`search_programs` 目前純 Qdrant 向量，無圖信號。可加：
+- 用 query 走圖找相關 CreditProgram 節點（如 `ppr_explore(focus="credit_program")`）
+- 兩路 RRF 融合（不急，效益中等）
 
 ---
 
-### 方案 B：換 igraph（推薦，改動中等）★ 建議
+### 2.3 課程深度探索群（4 個工具）
 
-**組合**：python-igraph（圖計算）+ ChromaDB（向量）+ FAISS 或 ChromaDB 新 collection（節點向量）
+#### 現有工具對比
 
-| 需求 | 解法 | 工具 |
+| 工具 | 輸入 | 算法 | 回傳粒度 |
+|------|------|------|---------|
+| `find_similar_courses` | course_name | RRF(圖共概念 + Qdrant 向量) | 課程列表 |
+| `get_course_knowledge_map` | course_name | 圖出向邊 + 共概念課程(純圖) | 課程結構地圖（字串） |
+| `explore_concept_neighborhood` | query（概念詞） | Qdrant ncu_graph_nodes → BFS N 跳 | 概念鄰域課程 |
+| `ppr_explore` | seed（概念/課程名） | Qdrant 種子 + igraph Weighted PPR | 跨類型節點（課+師+系+概念） |
+
+#### 工具邊界分析
+
+四個工具的使用場景**互補而非重疊**：
+
+```
+「有哪些課和A相似？」        → find_similar_courses（輸入：課程名）
+「A這門課在學什麼？」         → get_course_knowledge_map（輸入：課程名）
+「有哪些課涵蓋X概念？」       → explore_concept_neighborhood（輸入：概念詞）
+「和X相關的一切是什麼？」     → ppr_explore（輸入：概念/課程，跨類型）
+```
+
+**不建議合併**，但可改善個別工具。
+
+#### `get_course_knowledge_map` 的相似課程改進
+
+目前相似課程段落仍是純圖（`search_courses_by_concept_cluster` 純共概念數）。應與 `find_similar_courses` 使用相同的 RRF 邏輯：
+
+```python
+# tool_get_course_knowledge_map 修改：
+similar = graph_service.search_courses_by_concept_cluster(course_name, top_n=25)
+vec_sim  = retriever.search_courses(course_name, n_results=20)
+# RRF 融合（與 find_similar_courses 共用相同邏輯，可抽為 _rrf_similar_courses(name)）
+```
+
+**建議抽出 `_rrf_similar_courses(course_name, top_n=15)` 輔助函式**，讓兩個工具共用。
+
+---
+
+### 2.4 找系所群（2 個工具）
+
+| 工具 | 輸入 | 信號 |
 |------|------|------|
-| 向量找節點 | ChromaDB 新 collection 或 FAISS 記憶體 index | ChromaDB / faiss-cpu |
-| Metadata filter | `g.vs.select(node_type_eq="Course", level_eq="ugrad")` 原生語法 | igraph |
-| PPR（加權） | `g.personalized_pagerank(reset_vertices=seeds, weights=g.es["weight"])` 一行 C 底層 | igraph |
-| 社群分群 | `igraph.Graph.community_leiden(weights=g.es["weight"])` 秒級 Leiden | igraph + leidenalg |
+| `get_dept_info` | query | Qdrant ncu_departments 向量 |
+| `get_depts_by_tech` | tech_name | 圖多跳（Course → CurriculumPlan → Dept） |
 
-**從 NetworkX 遷移**：
-```python
-import igraph as ig
-import pickle
+兩者**場景完全不同**（介紹 vs 技術分布），不合併。
 
-G_nx = pickle.load(open("knowledge_graph.gpickle", "rb"))
-G_ig = ig.Graph.from_networkx(G_nx)  # 一行轉換
-G_ig.save("knowledge_graph.igraph")
-```
-
-**igraph vertex filter 範例**：
-```python
-# 找所有大學部課程
-courses = g.vs.select(node_type_eq="Course", level_eq="ugrad")
-# 找所有高相關 COVERS_FIELD 邊
-high_rel = g.es.select(relation_eq="COVERS_FIELD", relevance_eq="high")
-```
-
-**改動範圍**：
-- `graph_service.py`：全面改 igraph API（邏輯不變，API 不同）
-- `build_graph.py`：輸出新增 igraph 格式（可同時保留 gpickle）
-- 新增 `requirements.txt`：`python-igraph`, `leidenalg`, `faiss-cpu`
-
-**雲端部署**：純 Python 套件，無需 server，部署難度與現況相同  
-**缺點**：`graph_service.py` 需要完整重寫 API 呼叫（邏輯保留，語法換掉）；igraph vertex/edge 用 integer index，需維護 ID ↔ index 對應表  
-**適合**：想要完整改善 PPR + filter + 社群，又不想架 DB server
+`get_depts_by_tech` 可選性優化：課程列表目前無排序，可用 tech_name 做 Qdrant 向量搜尋後 rerank（效益低，不急）。
 
 ---
 
-### 方案 C：Neo4j 自架（最強，改動大）
+### 2.5 找教師群（2 個工具）
 
-**組合**：Neo4j Community Edition（自架）+ GDS plugin（免費，含 PPR / Leiden）+ 內建 vector index（Neo4j 5.x）
-
-| 需求 | 解法 | 工具 |
+| 工具 | 輸入 | 信號 |
 |------|------|------|
-| 向量找節點 | `CREATE VECTOR INDEX` + `db.index.vector.queryNodes()` | Neo4j 5.x 內建 |
-| Metadata filter | Cypher `MATCH (c:Course {level: 'ugrad'}) WHERE c.dept = '...'` | Cypher |
-| PPR | `gds.pageRank.stream({sourceNodes: [...]})` | GDS plugin |
-| 社群分群 | `gds.leiden.stream({relationshipWeightProperty: 'weight'})` | GDS plugin |
+| `get_teacher_info` | teacher_name（精確） | Qdrant 精確查 + 圖開課清單 |
+| `search_teachers` | query（語意） | Qdrant ncu_teachers 向量 |
 
-**AuraDB vs 自架比較**：
+已是最精簡形式，不合併（輸入語義不同）。
 
-| | AuraDB 免費 | AuraDB 付費 | 自架 Community |
-|--|------------|------------|--------------|
-| 節點上限 | 50K ✓ | 無限 | 無限 |
-| GDS（PPR/Leiden） | ❌ | ✓（$65+/月） | ✓（免費 plugin） |
-| 向量搜尋 | ✓ | ✓ | ✓ |
-| 維護難度 | 零 | 零 | 需自管 server |
-| 雲端 | 託管 | 託管 | Railway/Render/VPS |
+---
 
-**資料匯入**：
+## 三、相似課程：更好的算法選項
+
+### 3.1 現況（已實作）
+
+**RRF(k=60)**：圖共概念 top-25 + Qdrant 課程向量 top-20 → 融合排序。
+
+優點：無需訓練，即插即用。  
+缺點：圖路徑依賴手動標注的 Concept 節點（覆蓋率有限）；向量路徑使用課程文字 embedding，語意偏向課程描述風格。
+
+---
+
+### 3.2 改進選項（按實作難度）
+
+#### Option A：概念集合 Embedding（中難度）⭐ 推薦
+
+每門課程的概念節點在 `ncu_graph_nodes` 中已有向量。可計算**概念集合的平均 embedding** 作為課程的「概念向量」：
+
 ```python
-# 從現有 graph 匯出後用 neo4j-admin import 或 py2neo 逐筆寫入
-from neo4j import GraphDatabase
-driver = GraphDatabase.driver("bolt://localhost:7687")
-# 批次寫入節點/邊
+# 建構時（build_qdrant_index.py）：
+course_concept_vec = mean([ncu_graph_nodes[c] for c in course.concepts])
+# 儲存到 ncu_courses 的額外向量欄位，或獨立 collection
 ```
 
-**Railway 自架參考**：Railway 有 Neo4j template，一鍵部署 Community Edition + GDS plugin  
-**改動範圍**：圖查詢邏輯完全重寫（Cypher 語言）、`graph_service.py` 改為 Neo4j driver 呼叫  
-**缺點**：學習 Cypher 成本；服務需常駐（記憶體至少 1-2GB）；匯入需時  
-**適合**：長期維護、需要完整 OLAP 圖查詢、未來可能擴大資料規模
-
----
-
-### 方案 D：Hybrid（igraph + DuckDB，兼顧彈性）
-
-**組合**：igraph（圖遍歷 + PPR）+ DuckDB（節點屬性 SQL 查詢）+ FAISS（向量）
-
-| 需求 | 解法 |
-|------|------|
-| 向量找節點 | FAISS in-memory index（啟動時預建，約 3-5 秒） |
-| Metadata filter | DuckDB SQL：`SELECT nid FROM nodes WHERE node_type='Course' AND level='ugrad'` |
-| PPR | igraph weighted PPR |
-| 社群分群 | igraph Leiden |
-
-**DuckDB 節點索引建立**：
-```python
-import duckdb
-con = duckdb.connect(":memory:")  # 純記憶體，不落磁碟
-# 從圖匯出節點屬性 DataFrame
-nodes_df = pd.DataFrame([{"nid": n, **G.nodes[n]} for n in G.nodes()])
-con.execute("CREATE TABLE nodes AS SELECT * FROM nodes_df")
-# 之後可用 SQL 查詢
-result = con.execute("SELECT nid FROM nodes WHERE node_type='Course' AND level='ugrad'").fetchall()
+查詢相似課程時：
+```
+課程 A 的概念向量 → ncu_courses payload filter / 額外向量搜尋
+→ cosine 相似度排序
 ```
 
-**雲端部署**：純記憶體，無需額外服務  
-**缺點**：要同時維護 igraph 圖和 DuckDB index（兩份資料需同步）  
-**適合**：想要 SQL 風格查詢又不想架 Neo4j server
+**優點**：捕捉概念語意密度（「深度學習」的 embedding 和「機器學習」更近，而非只看是否共享同一節點）。  
+**論文依據**：「Knowledge Graph Embeddings」類工作的降維思路；SET2VEC / PoolBERT 的集合 embedding 方法。
 
 ---
 
-### 方案比較總表
+#### Option B：BM25 on Concept List（低難度）
 
-| | 方案 A（最小改） | 方案 B（igraph）★ | 方案 C（Neo4j） | 方案 D（Hybrid） |
-|--|:-:|:-:|:-:|:-:|
-| 向量找節點 | ChromaDB | ChromaDB/FAISS | 內建 | FAISS |
-| Metadata filter | Python generator | igraph 原生 | Cypher | DuckDB SQL |
-| PPR 速度 | ★★☆（scipy） | ★★★（C底層） | ★★★（GDS） | ★★★（C底層） |
-| Louvain/Leiden | Louvain（慢） | Leiden（快） | Leiden（GDS） | Leiden（快） |
-| 改動幅度 | 小 | 中 | 大 | 中 |
-| 需要 server | ❌ | ❌ | ✓ | ❌ |
-| 雲端部署難度 | 低 | 低 | 中 | 低 |
-| 長期維護性 | 普通 | 好 | 最好 | 好 |
+把每門課的概念清單當作「詞袋」，用 BM25 計算課程間相似度：
+
+```python
+# concepts_A = ["機器學習", "神經網路", "梯度下降"]
+# concepts_B = ["深度學習", "反向傳播", "神經網路"]
+# BM25(A, B) 以 concepts_A 為 query，concepts_B 為 document
+```
+
+**優點**：不需額外向量；BM25 對罕見概念有 IDF 加權（罕見概念貢獻更大）。  
+**缺點**：純詞彙匹配，「梯度下降」和「SGD」不會被視為相近。  
+**可直接用 `rank_bm25` 套件實作**，不依賴 Qdrant。
 
 ---
 
-### 套件視覺化推薦
+#### Option C：Graph Embedding（高難度，需訓練）
 
-| 需求 | 推薦 | 說明 |
-|------|------|------|
-| 互動式 Web 視覺化 | `pyvis` | 輸出 HTML，可在 notebook 或瀏覽器開啟 |
-| 靜態論文圖 | `matplotlib` + `networkx.draw` | 現有 NetworkX 即可 |
-| 離線大圖分析 | Gephi（獨立軟體） | 開啟 graphml/gexf 格式，支援 force-directed layout |
-| 社群著色 | `igraph` + `plotly` | 社群分群後按 community ID 著色 |
+在知識圖譜上訓練 **Node2Vec** 或 **LINE** embedding，讓圖中鄰近的節點 embedding 也接近：
+
+```
+Course_A ──COVERS──► Concept_X ◄──COVERS── Course_B
+→ Node2Vec 遊走後 Course_A 和 Course_B embedding 相近
+```
+
+**論文依據**：
+- Node2Vec（Grover & Leskovec, 2016）— 圖隨機遊走產生節點 embedding
+- LINE（Tang et al., 2015）— 大型資訊網路 embedding，保持一階/二階近鄰
+- LightGCN（He et al., 2020）— 協同過濾風格的圖卷積，適合推薦場景
+
+**缺點**：需要持續重訓（圖更新時）；開發成本高。目前規模（~4000 課程）優先用 RRF，此選項留未來。
+
+---
+
+#### Option D：課程 Syllabus 的多向量搜尋（中難度）
+
+目前課程 Qdrant 的向量是整段 `_text`（課綱摘要）。可改為**多欄位分段 embedding**：
+- `objective_vec`：課程目標 embedding
+- `content_vec`：授課內容 embedding
+- `concepts_vec`：概念集合平均 embedding（同 Option A）
+
+查詢時同時搜三個欄位，再用 RRF 融合。  
+**論文依據**：ColBERT（Khattab & Zaharia, 2020）的多向量精細化思路；SPLADE 的稀疏+稠密混合。
+
+---
+
+### 3.3 推薦路線
+
+```
+短期（改動小）：
+  Option B（BM25 概念）加入現有 RRF → 三路融合
+  ① 圖共概念（shared_count，rank）
+  ② Qdrant 課程向量（distance，rank）
+  ③ BM25 概念列表（bm25_score，rank）
+  → RRF(k=60) 三路融合
+
+中期（需 build pipeline 改動）：
+  Option A（概念集合 embedding）替換③
+  → 概念語意相似度比純 BM25 更精準
+
+長期（需訓練）：
+  Option C（Node2Vec/LightGCN）
+  → 全圖結構相似度，覆蓋「沒有共同概念但結構位置相近」的課程
+```
+
+---
+
+## 四、top-k 與 Rerank 策略
+
+### 4.1 目前問題
+
+| 工具 | top-k 策略 | 問題 |
+|------|-----------|------|
+| `search_courses` | Qdrant top-n（無 rerank） | 結果可能高度重複（同課程不同班） |
+| `find_similar_courses` | RRF top-15 | 可能有相似但非相關（同字詞） |
+| `ppr_explore` | PPR top-k（無過濾） | 分數差距小時排名不穩定 |
+| `explore_concept_neighborhood` | BFS depth-score top-k | 淺層節點可能過多 |
+
+---
+
+### 4.2 MMR（Maximal Marginal Relevance）
+
+適合 `search_courses`、`find_similar_courses` 結果多樣化：
+
+```python
+def mmr(candidates: list[dict], query_vec: list[float],
+        lambda_: float = 0.5, top_k: int = 8) -> list[dict]:
+    """
+    每次選分數最高且與已選集合最不相似的候選。
+    candidates 需含 'vec' 欄位（embedding）和 'score'（relevance）。
+    lambda_: 0 = 純多樣化，1 = 純相關性
+    """
+    selected, remaining = [], list(candidates)
+    while len(selected) < top_k and remaining:
+        mmr_scores = []
+        for c in remaining:
+            rel = c['score']
+            if selected:
+                max_sim = max(cosine_sim(c['vec'], s['vec']) for s in selected)
+            else:
+                max_sim = 0.0
+            mmr_scores.append(lambda_ * rel - (1 - lambda_) * max_sim)
+        best = remaining[max(range(len(remaining)), key=lambda i: mmr_scores[i])]
+        selected.append(best)
+        remaining.remove(best)
+    return selected
+```
+
+**論文依據**：Carbonell & Goldstein（1998）— "The Use of MMR, Diversity-Based Reranking for Reordering Documents and Producing Summaries"
+
+**限制**：需要各結果的 embedding，目前 `_fmt_search` 沒有回傳向量。需修改 `retriever.search_courses` 加 `with_vectors=True` 選項。
+
+---
+
+### 4.3 PPR 分數截斷
+
+`ppr_explore` 的 PPR 分數差距小時，排名末端可能是噪音。建議加 **gap 截斷**：
+
+```python
+# graph_service.ppr_explore() 結果後處理
+scores = [r['score'] for r in results]
+if scores:
+    mean_s, std_s = statistics.mean(scores), statistics.stdev(scores) if len(scores) > 1 else 0
+    results = [r for r in results if r['score'] > mean_s - 0.5 * std_s]
+```
+
+---
+
+### 4.4 各工具 top-k 建議
+
+| 工具 | 建議內部 top-k | 最終回傳 | 說明 |
+|------|-------------|---------|------|
+| `search_courses` | Qdrant n×2 | MMR→n | 多樣化去重 |
+| `find_similar_courses` | 圖 25 + 向量 20 | RRF→15 | 現況已合理 |
+| `get_course_knowledge_map` | 圖 25 + 向量 20 | RRF→8 | 與 find_similar 共用 |
+| `explore_concept_neighborhood` | BFS unlimited | score 截斷→top_k | 目前無截斷 |
+| `ppr_explore` | PPR all | gap 截斷→top_k | 加 mean-std filter |
+
+---
+
+## 五、現有 Hybrid 實作（已完成）
+
+| 工具 | 已實作 | 說明 |
+|------|--------|------|
+| `search_courses` | 3 層 Hybrid（query expansion + RRF） | 2026-04-30：Layer 1 ncu_graph_nodes 擴展 + Layer 2 Signal A/B + Layer 3 RRF(k=60) |
+| `find_similar_courses` | RRF(圖共概念 + Qdrant 向量) | 2026-04-30 實裝，委派 `_rrf_similar_courses()` |
+| `get_course_knowledge_map` | 相似課程段落改用 RRF | 2026-04-30：改用 `_rrf_similar_courses()` |
+| `explore_concept_neighborhood` | Qdrant ncu_graph_nodes 入口 + igraph BFS | 已完成 |
+| `ppr_explore` | Qdrant 種子 + igraph Weighted PPR + gap truncation | 2026-04-30：種子改 Qdrant 優先 + mean-0.5σ gap filter |
+
+---
+
+## 六、實作優先順序
+
+| 優先 | 項目 | 狀態 | 效益 |
+|------|------|------|------|
+| ✅ | `search_courses` 3 層 Hybrid（query expansion + RRF） | **已完成** 2026-04-30 | 語意搜尋命中率提升 |
+| ✅ | 抽出 `_rrf_similar_courses()` + 修 `get_course_knowledge_map` | **已完成** 2026-04-30 | 兩工具一致、地圖相似課程更準 |
+| ✅ | `ppr_explore` gap 截斷（mean-0.5σ） | **已完成** 2026-04-30 | 排名末端雜訊減少 |
+| ✅ | Option A 概念平均向量（`ncu_course_concept_vecs`） | **已完成** build_qdrant_index.py --phase3 | 概念語意相似度，需執行 Phase 3 |
+| ★★★ | `get_course_detail` 整合（syllabus+eligibility+prereq） | 待實作 | LLM 少 2 次呼叫 |
+| ★★☆ | `get_program_info` 整合（description+courses） | 待實作 | 學程查詢少 1 次呼叫 |
+| ★★☆ | `find_similar_courses` 加入 BM25 概念列表（三路 RRF） | 待實作 | 相似度更精準（需 rank_bm25） |
+| ★☆☆ | MMR 多樣化 | 待實作 | 需修改 with_vectors，成本中等 |
+
+---
+
+## 七、融合策略速查
+
+### RRF（現有）
+```python
+# k=60，兩路以上皆適用，不需分數可比性
+score[name] += 1 / (60 + rank)
+```
+論文：Cormack, Clarke, Buettcher (2009)
+
+### 加權線性融合
+```python
+# 需先正規化至 [0,1]
+score = α × graph_score + (1-α) × vector_score
+# α=0.6（偏圖精確）；α=0.4（偏語意探索）
+```
+
+### BM25 概念詞袋
+```python
+# pip install rank_bm25
+from rank_bm25 import BM25Okapi
+corpus = [c['concepts'] for c in all_courses]   # list of list[str]
+bm25   = BM25Okapi(corpus)
+scores = bm25.get_scores(query_course['concepts'])
+```
+論文：Robertson & Zaragoza (2009) — BM25 原始論文
+
+### MMR 多樣化
+論文：Carbonell & Goldstein (1998)
+
+---
+
+## 八、可直接呼叫的現有接口
+
+```python
+# retriever.py
+retriever.search_courses(query, filters, n_results, collection)
+retriever.get_courses_by_name(name)
+retriever.get_courses_by_code(code)
+retriever.get_courses_by_dept_type(dept, type_, collection, limit)
+
+# graph_service.py
+graph_service._search_concept_nodes(query, top_k)        # Qdrant ncu_graph_nodes
+graph_service.search_courses_by_tech(tech_name)          # 圖精確技術查詢
+graph_service.search_courses_by_concept_cluster(course)  # 圖共概念排序 → list[dict]
+graph_service.ppr_explore(seed_names, top_k, filter)     # igraph PPR
+graph_service.explore_by_concept_neighborhood(query, hops, top_k)  # igraph BFS
+```

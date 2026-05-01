@@ -18,24 +18,23 @@ import HighlightedAnswer from '../components/HighlightedAnswer';
 import type { CourseCard, DebugTrace, StreamEvent, ToolTraceItem } from '../types';
 
 const TOOL_LABELS: Record<string, string> = {
-  search_courses:           '搜尋課程',
-  get_dept_courses:         '查詢系所課程',
-  get_program_courses:      '查詢學程課程',
-  get_teacher_info:         '查詢教師資訊',
-  search_teachers:          '搜尋教師',
-  get_prereq_info:          '查詢先修條件',
-  get_graduation_rules:     '查詢畢業規定',
-  get_dept_info:            '查詢系所介紹',
-  get_course_eligibility:   '查詢修課資格',
-  get_program_description:  '查詢學程說明',
-  get_requirements_notes:   '查詢修業規定',
+  search_courses:              '搜尋課程',
+  get_dept_courses:            '查詢系所課程',
+  get_program_courses:         '查詢學程課程',
+  get_teacher_info:            '查詢教師資訊',
+  search_teachers:             '搜尋教師',
+  get_graduation_rules:        '查詢畢業規定',
+  get_dept_info:               '查詢系所介紹',
+  get_program_description:     '查詢學程說明',
+  get_requirements_notes:      '查詢修業規定',
   find_similar_courses:        '搜尋相似課程',
   get_course_knowledge_map:    '查詢知識地圖',
   get_depts_by_tech:           '查詢技術系所',
   ppr_explore:                 '知識圖譜探索',
   search_programs:             '搜尋學分學程',
   get_graduation_requirements: '查詢畢業規定',
-  get_course_syllabus:         '查詢課程大綱',
+  get_course_detail:           '查詢課程詳情',
+  explore_concept_neighborhood: '探索概念鄰域',
 };
 
 interface ToolIndicator {

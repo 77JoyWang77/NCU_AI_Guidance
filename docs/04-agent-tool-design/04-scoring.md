@@ -1,83 +1,117 @@
-# 三種評分系統
+# 評分系統
 
-> 文件版本：2026-04-21
+> 文件版本：2026-05-01
 
-系統共有三種分數，分別來自不同的資料源和算法。
+系統共有四種分數，分別來自不同的資料源和算法。
 
 ---
 
-## 1. ChromaDB `distance`（向量距離）
+## 1. Qdrant `distance`（余弦距離）
 
 ### 算法
 
-**Euclidean Distance（L2 norm）**：
+**Cosine Distance**（1 − cosine similarity）：
 
 ```
-distance = sqrt( Σ(embedding_i - query_i)² )
+distance = 1 − (A · B) / (‖A‖ × ‖B‖)
 ```
 
-ChromaDB 將文字嵌入為向量，搜尋時計算查詢向量與資料庫向量的 L2 距離。
+Qdrant 使用余弦距離（`Distance.COSINE`），所有 collection 均以此計算。`_fmt_search()` 回傳：
+
+```python
+"distance": round(max(0.0, 1.0 - h.score), 4)  # h.score 為 cosine similarity
+```
 
 ### 特性
 
 | 特性 | 說明 |
 |------|------|
-| 範圍 | 0 ~ ∞（無上限） |
-| 0 的含義 | 完全相同的向量 |
+| 範圍 | 0 ~ 2（理論上限 2，實際罕見超過 1.2） |
+| 0 的含義 | 完全相同的向量（方向一致） |
 | **越小越好** | distance 越小 = 語意越相似 |
-| 無法跨 collection 比較 | 不同嵌入模型/collection 的 distance 不可互比 |
+| 正規化向量 | text-embedding-3-large 輸出已 L2 normalize，distance ∈ [0, 1] 實際常見 |
 
-### 典型數值參考（大致範圍）
+### 典型數值參考
 
 | distance 範圍 | 語意相似度 |
 |-------------|-----------|
-| 0.0 ~ 0.8 | 非常相似（幾乎相同內容） |
-| 0.8 ~ 1.5 | 相關（主題相近） |
-| 1.5 ~ 2.5 | 弱相關 |
-| > 2.5 | 不相關 |
+| 0.0 ~ 0.25 | 非常相似（幾乎相同主題） |
+| 0.25 ~ 0.5 | 相關（主題相近） |
+| 0.5 ~ 0.75 | 弱相關 |
+| > 0.75 | 不相關 |
 
-> ⚠️ 實際閾值因嵌入模型而異，以上為參考值。
+> text-embedding-3-large（dim=3072）在余弦空間通常比 L2 分布更集中，閾值比舊 ChromaDB L2 小很多。
 
 ### 使用工具
 
-- `search_courses`（`n_results` 筆，ChromaDB 預設依 distance 升序排列）
+- `search_courses`（Signal A + B 各自取 distance）
 - `search_teachers`
 - `get_dept_info`
-- `get_prereq_info`（內部搜尋，取最近似 3 筆）
-- `get_course_eligibility`（語意搜尋 fallback，5 筆）
-
-### 目前狀態
-
-`distance` 值由 `retriever.search_courses()` 回傳，包含在 raw result 的 `distance` 欄位。  
-**但目前未傳遞至 SSE `tool_done` 事件**，前端 DebugTracePanel 看不到此分數（待補強）。
+- `search_programs`
 
 ---
 
-## 2. 知識圖譜 `shared_concepts`（共享概念數）
+## 2. RRF score（Reciprocal Rank Fusion）
 
 ### 算法
 
-**概念節點交集大小（Jaccard-like）**：
+**RRF（Cormack, Clarke, Buettcher, 2009）**：
+
+```
+RRF_score(d) = Σ_i  1 / (k + rank_i(d))
+k = 60（常數，防止高排名主宰結果）
+```
+
+將多路信號的排名融合為單一分數，**不需要信號分數可比**。
+
+### 適用場景
+
+| 工具 | 融合信號 |
+|------|---------|
+| `search_courses` | Signal A（expanded query）+ Signal B（original query） |
+| `find_similar_courses` | 圖共概念排名 + Qdrant 向量排名 |
+| `get_course_knowledge_map` | 同 find_similar_courses（共用 `_rrf_similar_courses()`） |
+
+### `_rrf_similar_courses()` — 共用 helper
+
+`find_similar_courses` 和 `get_course_knowledge_map` 共用同一函式，確保兩工具結果一致：
+
+```python
+def _rrf_similar_courses(course_name: str, top_n: int = 15) -> list[dict]:
+    graph_results  = graph_service.search_courses_by_concept_cluster(course_name, top_n=25)
+    vector_results = retriever.search_courses(course_name, n_results=20)
+    RRF_K = 60
+    # 對兩路結果計算 1/(60+rank)，按課名合併，排除自身後取前 top_n
+```
+
+### 特性
+
+| 特性 | 說明 |
+|------|------|
+| 範圍 | > 0（理論上限 N × 1/61 ≈ N/61） |
+| **越大越好** | 出現在多路信號且排名高的結果分數更高 |
+| 無需正規化 | 不同信號的原始分數不需可比 |
+| 穩健性高 | 對異常排名不敏感（k=60 是平滑底） |
+
+---
+
+## 3. 知識圖譜 `shared_concepts`（共享概念數）
+
+### 算法
+
+**概念節點交集大小**：
 
 ```
 shared_concepts(A, B) = |concepts(A) ∩ concepts(B)|
 ```
 
-其中 `concepts(X)` 是課程 X 的 `COVERS_CONCEPT`/`TEACHES_TECH` 出向邊所連到的 Concept/Technology 節點集合。
+其中 `concepts(X)` 是課程 X 的 `COVERS`/`TEACHES`/`COVERS_FIELD` 出向邊所連到的 Concept/Technology/Field 節點集合。
 
 ### 計算流程
 
 1. 找種子課程 A 的所有概念節點集合 `S`
 2. 從 `S` 的每個概念節點走反向邊，找有連到它們的其他課程 B
-3. 計算每門課 B 與 A 的共享概念數（`shared_concepts`）
-4. 依 `shared_concepts` 降序排列
-
-```python
-for concept_id in seed_concepts:
-    for (src, rel) in in_adj[concept_id]:
-        if rel in ("COVERS", "TEACHES"):
-            score[src] = score.get(src, 0) + 1  # 每多一個共享概念 +1
-```
+3. 計算每門課 B 與 A 的共享概念數
 
 ### 特性
 
@@ -99,31 +133,31 @@ for concept_id in seed_concepts:
 
 ### 使用工具
 
-- `find_similar_courses`：`top_n=15`，回傳字串中包含 `[共享概念：N 個]`
-- `get_course_knowledge_map`：相似課程部分（top 8）包含 `[共享 N 個概念]`
+- `find_similar_courses`：作為圖信號輸入 RRF，最終展示含 `[共享概念：N 個]`
+- `get_course_knowledge_map`：相似課程段落（top 8），同上
 
 ### 限制
 
 - 只計算知識圖譜中**已建立概念邊**的課程，未收錄的課程不會出現
-- 不同學院可能有不同的概念標注粒度
+- `shared_concepts` 高不等於語意距離近（可能只是共享邊緣通識概念）
+- 已藉 RRF 融合 Qdrant 向量分數修正此問題
 
 ---
 
-## 3. PPR `score`（Personalized PageRank 分數）
+## 4. PPR `score`（Personalized PageRank 分數）
 
 ### 算法
 
-**Personalized PageRank（帶重置的隨機遊走）**：
+**igraph Weighted PPR**（`personalized_pagerank(directed=False, damping=0.85, weights="weight")`）：
 
 ```
-PPR(v) = α × Σ [PPR(u)/out_degree(u)] + (1-α) × personalization(v)
+PPR(v) = α × Σ [PPR(u) × w(u,v) / weighted_degree(u)] + (1-α) × personalization(v)
 ```
 
 其中：
-- `α = 0.85`（阻尼係數，表示從種子重置的概率為 1-0.85=0.15）
+- `α = 0.85`（阻尼係數）
 - `personalization[seed_id] = 1/len(seeds)`（種子節點均分）
-- 其他節點 `personalization = 0`
-- `n_iter = 25`（收斂迭代次數）
+- 邊權重：`TEACHES=1.2`，`COVERS=1.0`，`PREREQUISITE_OF=0.8`，其餘 0.3~0.5
 
 ### 輸出分數
 
@@ -131,13 +165,24 @@ PPR(v) = α × Σ [PPR(u)/out_degree(u)] + (1-α) × personalization(v)
 score = round(raw_ppr_score * 1000, 4)  # 乘以 1000 讓數字可讀
 ```
 
+### Gap Truncation
+
+```python
+# graph_service._ppr_gap_filter()
+mean_s, std_s = statistics.mean(scores), statistics.stdev(scores)
+threshold = mean_s - 0.5 * std_s
+filtered = [r for r in results if r['score'] >= threshold]
+```
+
+排名尾部噪音（score < mean − 0.5σ）會被自動移除。少於 4 筆時不截斷。
+
 ### 特性
 
 | 特性 | 說明 |
 |------|------|
-| 範圍 | 0 ~ 1000（原始 PPR 為 0~1 的概率） |
+| 範圍 | 0 ~ 1000（原始 PPR × 1000） |
 | **越大越好** | 分數越高 = 與種子概念越相關 |
-| 跨類型比較 | 可同時比較課程、教師、系所、概念節點的相關性 |
+| 跨類型比較 | 可同時比較課程、教師、系所、概念節點 |
 | 多跳擴散 | 能捕捉間接關係（A→B→C 的間接相關性） |
 
 ### 典型數值參考
@@ -147,37 +192,18 @@ score = round(raw_ppr_score * 1000, 4)  # 乘以 1000 讓數字可讀
 | 100 ~ 1000 | 強相關（直接連接或高度間接相關） |
 | 10 ~ 100 | 相關 |
 | 1 ~ 10 | 弱相關 |
-| < 1 | 基本不相關 |
-
-> ⚠️ 分數分布會受圖的大小和結構影響，不同種子的分數範圍可能差異很大。
 
 ### 使用工具
 
-- `ppr_explore`：`top_k=15`（工具預設值），目前回傳字串中**未顯示 score**（待補強）
-
-### 與 `shared_concepts` 的比較
-
-| 面向 | shared_concepts | PPR score |
-|------|----------------|-----------|
-| 搜尋範圍 | 只找課程 | 跨課程、教師、系所、概念 |
-| 關係深度 | 直接共享概念 | 多跳間接關係 |
-| 可解釋性 | 高（有幾個共同概念） | 中（PageRank 概率） |
-| 適合問題 | 「哪些課和 X 最像？」 | 「和 X 相關的一切是什麼？」 |
+- `ppr_explore`：`top_k=15` + gap truncation，回傳字串中含 `[PPR: score]`
 
 ---
 
-## 三種分數在前端的顯示計畫
+## 分數比較速查
 
-目前 DebugTracePanel 只顯示工具名稱和 `courses_found`（課程名稱列表），**尚未顯示分數**。
-
-**計畫補強**（待實作）：
-
-| 工具 | 分數欄位 | 顯示位置 |
-|------|---------|---------|
-| `search_courses` | `distance`（Euclidean，越小越好） | 課程 badge 後面，如 `dist=0.92` |
-| `search_teachers` | `distance` | 同上 |
-| `find_similar_courses` | `shared_concepts`（整數，越大越好） | badge 後，如 `concepts=8` |
-| `get_course_knowledge_map` | `shared_concepts` | 同上 |
-| `ppr_explore` | `score`（×1000，越大越好） | badge 後，如 `ppr=342.5` |
-
-需要的後端修改：`tool_done` SSE 事件新增 `scores: list[float]` 欄位（與 `courses_found` 一一對應）。
+| 分數 | 越大/越小越好 | 跨工具可比 | 使用工具 |
+|------|------------|----------|---------|
+| Qdrant `distance` | 越小越好 | 同 collection 可比 | search_courses, search_teachers, get_dept_info |
+| RRF score | 越大越好 | 同次融合可比 | search_courses, find_similar_courses, get_course_knowledge_map |
+| `shared_concepts` | 越大越好 | 課程間可比 | find_similar_courses, get_course_knowledge_map |
+| PPR `score` | 越大越好 | 同次 PPR 可比 | ppr_explore |
