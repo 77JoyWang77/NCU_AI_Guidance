@@ -53,12 +53,8 @@ import re
 from pathlib import Path
 
 BASE = Path(__file__).parent.parent.parent.parent
-COURSE_DIRS = [
-    BASE / 'data' / 'raw' / 'courses' / '114_1',
-    BASE / 'data' / 'raw' / 'courses' / '114_2',
-    BASE / 'data' / 'raw' / 'graduate_courses' / '114_1',
-    BASE / 'data' / 'raw' / 'graduate_courses' / '114_2',
-]
+CANONICAL_UG   = BASE / 'data' / 'processed' / 'courses_deduped' / 'undergrad.json'
+CANONICAL_GRAD = BASE / 'data' / 'processed' / 'courses_deduped' / 'grad.json'
 OUTPUT             = BASE / 'data' / 'processed' / 'course_eligibility.json'
 OUTPUT_COLLEGE_MAP = BASE / 'data' / 'processed' / 'dept_college_map.json'
 
@@ -373,16 +369,54 @@ def _is_rule_grad_only(rule: dict) -> bool:
     return False
 
 
+def _is_rule_open_to_all_undergrad(rule: dict) -> bool:
+    """True = 這條 rule 允許所有大學部學生（不限系所／學院）。"""
+    if rule['program_types'] and all(pt in _GRAD_TYPES for pt in rule['program_types']):
+        return False
+    if rule['dept_include'] or rule['college_include']:
+        return False
+    if rule['dept_exclude'] or rule['college_exclude']:
+        return False
+    return True
+
+
+def _has_complement_pair(access_rules: list[dict]) -> bool:
+    """偵測「限X學院 + 限非X學院」互補對，合起來等於全開放大學部。"""
+    include_colleges: set[str] = set()
+    exclude_colleges: set[str] = set()
+    for r in access_rules:
+        if r['program_types'] and all(pt in _GRAD_TYPES for pt in r['program_types']):
+            continue
+        if r['dept_include'] or r['dept_exclude']:
+            continue
+        if len(r['college_include']) == 1 and not r['college_exclude']:
+            include_colleges.add(r['college_include'][0])
+        if len(r['college_exclude']) == 1 and not r['college_include']:
+            exclude_colleges.add(r['college_exclude'][0])
+    return bool(include_colleges & exclude_colleges)
+
+
 def compute_top_level_flags(access_rules: list[dict]) -> dict:
     if not access_rules:
-        return {'is_unrestricted': True, 'is_grad_only': False, 'is_undergrad_open': True}
+        return {
+            'is_unrestricted':          True,
+            'is_grad_only':             False,
+            'is_undergrad_open':        True,
+            'is_open_to_all_undergrad': True,
+        }
     is_unrestricted = any(_is_rule_unrestricted(r) for r in access_rules)
     is_grad_only = all(_is_rule_grad_only(r) for r in access_rules)
     is_undergrad_open = is_unrestricted or any(not _is_rule_grad_only(r) for r in access_rules)
+    is_open_to_all_undergrad = (
+        is_unrestricted
+        or any(_is_rule_open_to_all_undergrad(r) for r in access_rules)
+        or _has_complement_pair(access_rules)
+    )
     return {
-        'is_unrestricted':  is_unrestricted,
-        'is_grad_only':     is_grad_only,
-        'is_undergrad_open': is_undergrad_open,
+        'is_unrestricted':          is_unrestricted,
+        'is_grad_only':             is_grad_only,
+        'is_undergrad_open':        is_undergrad_open,
+        'is_open_to_all_undergrad': is_open_to_all_undergrad,
     }
 
 
@@ -486,91 +520,93 @@ def merge_into_existing(existing: dict, parsed: dict, raw_cond_str: str) -> None
 
 # ── 主程式 ────────────────────────────────────────────────────────────────────
 
-def _build_college_map() -> dict[str, str]:
-    """從原始課程資料建立 {系所: 學院} 對照表。"""
-    mapping: dict[str, str] = {}
-    for d in COURSE_DIRS:
-        if not d.exists():
+def _load_canonical() -> list[dict]:
+    """載入去重後的 canonical 課程清單（大學部 + 研究所）。"""
+    courses: list[dict] = []
+    for path in (CANONICAL_UG, CANONICAL_GRAD):
+        if not path.exists():
+            print(f'[WARN] 找不到 {path}，請先執行 deduplicate_courses.py')
             continue
-        for f in d.glob('*.json'):
-            for c in json.loads(f.read_text(encoding='utf-8')):
-                dept    = c.get('系所', '').strip()
-                college = c.get('學院', '').strip()
-                if dept and college:
-                    mapping[dept] = college
+        data = json.loads(path.read_text(encoding='utf-8'))
+        if isinstance(data, list):
+            courses.extend(data)
+    return courses
+
+
+def _build_college_map(courses: list[dict]) -> dict[str, str]:
+    """從課程清單建立 {系所: 學院} 對照表。"""
+    mapping: dict[str, str] = {}
+    for c in courses:
+        dept    = c.get('系所', '').strip()
+        college = c.get('學院', '').strip()
+        if dept and college:
+            mapping[dept] = college
     return mapping
 
 
 def main():
-    results: dict[tuple, dict] = {}
+    courses = _load_canonical()
+    print(f'載入 canonical 課程：{len(courses)} 筆')
+
+    results: dict[str, dict] = {}   # key = 課號-班別去掉班別後綴（與 build_vector_index eligibility_lookup 一致）
     total = no_condition = 0
-    college_map: dict[str, str] = {}
+    college_map = _build_college_map(courses)
 
-    for d in COURSE_DIRS:
-        if not d.exists():
+    for c in courses:
+        total += 1
+        raw_code = c.get('課號-班別', '').split('-')[0]
+        if not raw_code:
             continue
-        for f in sorted(d.glob('*.json')):
-            data = json.loads(f.read_text(encoding='utf-8'))
-            for c in data:
-                total += 1
-                raw_code = c.get('課號-班別', '').split('-')[0]
-                if not raw_code:
-                    continue
 
-                # 收集 dept→college 對應
-                dept_raw    = c.get('系所', '').strip()
-                college_raw = c.get('學院', '').strip()
-                if dept_raw and college_raw:
-                    college_map[dept_raw] = college_raw
+        cond_data = c.get('分發條件') or {}
+        priorities = cond_data.get('優先順序列表', [])
 
-                cond_data = c.get('分發條件') or {}
-                priorities = cond_data.get('優先順序列表', [])
+        # 組合原文（同課號不同班別用換行區分）
+        raw_cond_str = ' | '.join(
+            f'P{p.get("優先順序","?")}: {p.get("相關條件限制說明","").strip()}'
+            for p in priorities
+        ) if priorities else ''
 
-                # 組合原文（同課號不同班別用換行區分）
-                raw_cond_str = ' | '.join(
-                    f'P{p.get("優先順序","?")}: {p.get("相關條件限制說明","").strip()}'
-                    for p in priorities
-                ) if priorities else ''
+        if not priorities:
+            no_condition += 1
+            parsed = {
+                'is_unrestricted':     True,
+                'is_grad_only':        False,
+                'is_undergrad_open':   True,
+                'has_special_condition':   False,
+                'has_conditional_prereq':  False,
+                'access_rules': [],
+                'course_relations': {
+                    'prereq_codes': [],
+                    'coreq_codes': [],
+                    'conflict_codes': [],
+                    'forbidden_codes': [],
+                },
+                'unparseable_conditions': [],
+            }
+        else:
+            # 解析每個優先序（同一優先數字可能有多條，一律逐條解析）
+            priority_results = []
+            for p in priorities:
+                text = p.get('相關條件限制說明', '').strip()
+                if text:
+                    priority_results.append(parse_condition_text(text))
+            parsed = build_access_rules(priority_results)
 
-                if not priorities:
-                    no_condition += 1
-                    parsed = {
-                        'is_unrestricted':     True,
-                        'is_grad_only':        False,
-                        'is_undergrad_open':   True,
-                        'has_special_condition':   False,
-                        'has_conditional_prereq':  False,
-                        'access_rules': [],
-                        'course_relations': {
-                            'prereq_codes': [],
-                            'coreq_codes': [],
-                            'conflict_codes': [],
-                            'forbidden_codes': [],
-                        },
-                        'unparseable_conditions': [],
-                    }
-                else:
-                    # 解析每個優先序（同一優先數字可能有多條，一律逐條解析）
-                    priority_results = []
-                    for p in priorities:
-                        text = p.get('相關條件限制說明', '').strip()
-                        if text:
-                            priority_results.append(parse_condition_text(text))
-                    parsed = build_access_rules(priority_results)
-
-                key = (raw_code, c.get('學年度', ''), c.get('學期', ''))
-                if key in results:
-                    merge_into_existing(results[key], parsed, raw_cond_str)
-                else:
-                    results[key] = {
-                        'course_code':  raw_code,
-                        'course_name':  c.get('課程名稱(中文)', ''),
-                        'dept':         c.get('系所', ''),
-                        'academic_year':c.get('學年度', ''),
-                        'semester':     c.get('學期', ''),
-                        **parsed,
-                        'raw_conditions': [raw_cond_str] if raw_cond_str else [],
-                    }
+        # key = 基礎課號（不含班別後綴），與 build_vector_index.py 的 clean_code 邏輯一致
+        key = raw_code
+        if key in results:
+            merge_into_existing(results[key], parsed, raw_cond_str)
+        else:
+            results[key] = {
+                'course_code':  raw_code,
+                'course_name':  c.get('課程名稱(中文)', ''),
+                'dept':         c.get('系所', ''),
+                'academic_year':c.get('學年度', ''),
+                'semester':     c.get('學期', ''),
+                **parsed,
+                'raw_conditions': [raw_cond_str] if raw_cond_str else [],
+            }
 
     output_list = sorted(results.values(), key=lambda x: x['course_code'])
     OUTPUT.write_text(
@@ -581,7 +617,7 @@ def main():
     # dept→college 對照表
     OUTPUT_COLLEGE_MAP.write_text(
         json.dumps(dict(sorted(college_map.items())), ensure_ascii=False, indent=2),
-        encoding='utf-8'
+        encoding='utf-8',
     )
     print(f'輸出：{OUTPUT_COLLEGE_MAP}（{len(college_map)} 個系所）')
 

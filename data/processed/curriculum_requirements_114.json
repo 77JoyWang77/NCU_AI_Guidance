@@ -2477,6 +2477,18 @@
                   "credits": 3,
                   "when": "大二上~大四下"
                 }
+              ],
+              "graduation_rules": [
+                {
+                  "type": "first_domain_minimum",
+                  "credits": 27,
+                  "description": "第一領域專長：必修 27 學分，至少修 33 學分"
+                },
+                {
+                  "type": "second_domain_minimum",
+                  "credits": 15,
+                  "description": "第二領域專長：必修 15 學分，至少修 20 學分"
+                }
               ]
             },
             {
@@ -2627,6 +2639,18 @@
                   "credits": 2,
                   "when": "大一下"
                 }
+              ],
+              "graduation_rules": [
+                {
+                  "type": "first_domain_minimum",
+                  "credits": 13,
+                  "description": "第一領域專長：必修 13 學分，至少修 33 學分"
+                },
+                {
+                  "type": "second_domain_minimum",
+                  "credits": 13,
+                  "description": "第二領域專長：必修 13 學分，至少修 20 學分"
+                }
               ]
             },
             {
@@ -2730,6 +2754,24 @@
                       "name": "生醫技術暨微奈米晶片設計與應用",
                       "credits": 3,
                       "when": "大三上"
+                    }
+                  ],
+                  "second_domain_required": 16,
+                  "second_domain_min": 20,
+                  "graduation_rules": [
+                    {
+                      "type": "first_domain_minimum",
+                      "credits": 16,
+                      "description": "第一領域專長：必修 16 學分，至少修 33 學分"
+                    },
+                    {
+                      "type": "second_domain_minimum",
+                      "credits": 16,
+                      "description": "第二領域專長：必修 16 學分，至少修 20 學分"
+                    },
+                    {
+                      "type": "restriction",
+                      "description": "A組等同「生醫科學組」"
                     }
                   ]
                 },
@@ -2846,6 +2888,26 @@
                       "name": "統計機器學習基礎",
                       "credits": 3,
                       "when": "大三下"
+                    }
+                  ],
+                  "first_domain_required": 16,
+                  "first_domain_min": 33,
+                  "second_domain_required": 16,
+                  "second_domain_min": 20,
+                  "graduation_rules": [
+                    {
+                      "type": "first_domain_minimum",
+                      "credits": 16,
+                      "description": "第一領域專長：必修 16 學分，至少修 33 學分"
+                    },
+                    {
+                      "type": "second_domain_minimum",
+                      "credits": 16,
+                      "description": "第二領域專長：必修 16 學分，至少修 20 學分"
+                    },
+                    {
+                      "type": "restriction",
+                      "description": "B組等同「醫學工程與資料科學組」"
                     }
                   ]
                 }
@@ -2977,6 +3039,23 @@
                   "name": "光電實驗",
                   "credits": 1,
                   "when": "大三下"
+                }
+              ],
+              "graduation_rules": [
+                {
+                  "type": "first_domain_minimum",
+                  "credits": 33,
+                  "description": "第一領域專長：至少修 33 學分"
+                },
+                {
+                  "type": "second_domain_minimum",
+                  "credits": 20,
+                  "description": "第二領域專長：至少修 20 學分"
+                },
+                {
+                  "type": "elective_min",
+                  "credits": 12,
+                  "description": "修業期間內至少選修並通過本系所（OS開頭課號）選修科目 12 學分（專題類課程除外）"
                 }
               ]
             },
@@ -3336,6 +3415,18 @@
                   "credits": 3,
                   "when": "大三上~大四下"
                 }
+              ],
+              "graduation_rules": [
+                {
+                  "type": "first_domain_minimum",
+                  "credits": 14,
+                  "description": "第一領域專長：必修 14 學分，至少修 33 學分"
+                },
+                {
+                  "type": "second_domain_minimum",
+                  "credits": 20,
+                  "description": "第二領域專長：至少修 20 學分"
+                }
               ]
             },
             {
@@ -3449,6 +3540,26 @@
                       "name": "幾何學I",
                       "credits": 3,
                       "when": ""
+                    }
+                  ],
+                  "first_domain_required": 23,
+                  "first_domain_min": 32,
+                  "second_domain_required": 14,
+                  "second_domain_min": 20,
+                  "graduation_rules": [
+                    {
+                      "type": "first_domain_minimum",
+                      "credits": 23,
+                      "description": "第一領域專長：必修 23 學分，至少修 32 學分"
+                    },
+                    {
+                      "type": "second_domain_minimum",
+                      "credits": 14,
+                      "description": "第二領域專長：必修 14 學分，至少修 20 學分"
+                    },
+                    {
+                      "type": "restriction",
+                      "description": "A組等同「數學科學組」"
                     }
                   ]
                 },
@@ -3565,6 +3676,26 @@
                       "name": "資料科學專題I",
                       "credits": 3,
                       "when": ""
+                    }
+                  ],
+                  "first_domain_required": 24,
+                  "first_domain_min": 33,
+                  "second_domain_required": 12,
+                  "second_domain_min": 20,
+                  "graduation_rules": [
+                    {
+                      "type": "first_domain_minimum",
+                      "credits": 24,
+                      "description": "第一領域專長：必修 24 學分，至少修 33 學分"
+                    },
+                    {
+                      "type": "second_domain_minimum",
+                      "credits": 12,
+                      "description": "第二領域專長：必修 12 學分，至少修 20 學分"
+                    },
+                    {
+                      "type": "restriction",
+                      "description": "B組等同「計算與資料科學組」"
                     }
                   ]
                 }
