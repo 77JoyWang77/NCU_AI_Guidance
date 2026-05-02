@@ -2,12 +2,12 @@
 """
 debug_agent.py — NCU Agent 行為檢驗工具
 
-完整顯示每次問答的：
+顯示每次問答的：
   • 每輪 Tool Call（名稱、參數、回傳摘要）
   • Course Pool（所有 tool 收集到的課程）
   • Course Cards（最終顯示給使用者的課程）
-  • Pool 有但 Cards 沒有的課程（被 LLM 過濾的）
-  • 最終回答（含 <course_list> tag 原文）
+  • Pool 有但 Cards 沒有的課程（被 LLM 過濾）
+  • 最終回答
   • Token 統計
 
 用法：
@@ -23,14 +23,13 @@ import argparse
 from pathlib import Path
 from datetime import datetime
 
-# ── 路徑設定 ─────────────────────────────────────────────────────────────────
 ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(ROOT / "backend"))
 
 from dotenv import load_dotenv
 load_dotenv(ROOT / "backend" / ".env", override=False)
 
-# ── Monkey-patch：攔截 execute_tool ──────────────────────────────────────────
+# Monkey-patch execute_tool to log all calls
 from app.services import tools as _tools_module
 
 _tool_log: list[dict] = []
@@ -39,13 +38,19 @@ _original_execute = _tools_module.execute_tool
 
 def _result_summary(tool_name: str, result) -> str:
     if isinstance(result, list):
-        names = [r.get("name_zh") or r.get("name") or "?" for r in result[:3] if isinstance(r, dict)]
+        names = [r.get("name_zh") or r.get("name") or r.get("program_name") or "?"
+                 for r in result[:3] if isinstance(r, dict)]
         return f"list[{len(result)}]  範例：{', '.join(names)}" if names else f"list[{len(result)}]"
     if isinstance(result, dict):
+        if result.get("found") is False:
+            return f"dict  found=False  {result.get('message', '')[:60]}"
         if "courses" in result:
             courses = result["courses"]
             names = [c.get("name") or c.get("id", "?") for c in courses[:3]]
             return f"dict courses[{len(courses)}]  範例：{', '.join(names)}"
+        if "description" in result:
+            desc = result.get("description", "")[:60]
+            return f"dict program_info  description={desc}…"
         return f"dict  keys={list(result.keys())[:6]}"
     if isinstance(result, str):
         preview = result[:120].replace("\n", " ")
@@ -66,22 +71,8 @@ def _patched_execute(tool_name: str, args: dict):
 
 _tools_module.execute_tool = _patched_execute
 
-# ── Monkey-patch：攔截 _parse_course_list_tag 以捕捉 pool snapshot ─────────
 from app.services import llm_service as llm
 
-_debug_state: dict = {}
-_original_parse = llm._parse_course_list_tag
-
-
-def _patched_parse(answer: str, course_pool: dict):
-    _debug_state["course_pool_snapshot"] = dict(course_pool)
-    _debug_state["raw_answer"] = answer
-    return _original_parse(answer, course_pool)
-
-
-llm._parse_course_list_tag = _patched_parse
-
-# ── 顏色輸出（Windows 也可用）────────────────────────────────────────────────
 try:
     import colorama
     colorama.init()
@@ -89,11 +80,10 @@ try:
     G = colorama.Fore.GREEN
     Y = colorama.Fore.YELLOW
     B = colorama.Fore.CYAN
-    W = colorama.Fore.WHITE
     DIM = colorama.Style.DIM
     RST = colorama.Style.RESET_ALL
 except ImportError:
-    R = G = Y = B = W = DIM = RST = ""
+    R = G = Y = B = DIM = RST = ""
 
 
 def _hr(char="─", width=72):
@@ -101,9 +91,8 @@ def _hr(char="─", width=72):
 
 
 def run_debug(question: str, save_log: bool = False) -> dict:
-    global _tool_log, _debug_state
+    global _tool_log
     _tool_log = []
-    _debug_state = {}
 
     print()
     _hr("═")
@@ -112,67 +101,59 @@ def run_debug(question: str, save_log: bool = False) -> dict:
 
     result = llm.generate_with_tools(question)
 
-    # ── Tool Call 紀錄 ────────────────────────────────────────────────────────
+    # Tool Call 紀錄
     print(f"\n{Y}【Tool Call 紀錄】{RST}  共 {len(_tool_log)} 次")
     for i, t in enumerate(_tool_log, 1):
         args_str = json.dumps(t["args"], ensure_ascii=False)
-        if len(args_str) > 80:
-            args_str = args_str[:80] + "…"
+        if len(args_str) > 100:
+            args_str = args_str[:100] + "…"
         print(f"  {DIM}[{i}]{RST} {B}{t['tool']}{RST}")
-        print(f"      args    : {args_str}")
-        print(f"      result  : {t['summary']}")
+        print(f"      args   : {args_str}")
+        print(f"      result : {t['summary']}")
 
-    # ── Course Pool ───────────────────────────────────────────────────────────
-    pool = _debug_state.get("course_pool_snapshot", {})
+    # Course Pool（generate_with_tools 直接回傳 list）
+    pool_list: list[dict] = result.get("course_pool", [])
+    pool: dict[str, dict] = {c["name"]: c for c in pool_list if c.get("name")}
     print(f"\n{Y}【Course Pool】{RST}  共 {len(pool)} 門")
     for name, c in list(pool.items())[:25]:
-        tag = f"{c.get('dept','')}" + (f" {c.get('credits',0)}學分" if c.get('credits') else "")
+        tag = c.get("dept", "")
+        if c.get("credits"):
+            tag += f" {c['credits']}學分"
         print(f"  {DIM}•{RST} {name}  {DIM}{tag}{RST}")
     if len(pool) > 25:
         print(f"  {DIM}… 還有 {len(pool)-25} 門{RST}")
 
-    # ── Course Cards ──────────────────────────────────────────────────────────
+    # Course Cards
     cards = result.get("course_cards", [])
     card_names = {c["name"] for c in cards}
     print(f"\n{Y}【Course Cards（最終推薦）】{RST}  共 {len(cards)} 門")
     for c in cards:
-        in_pool = "(✓ pool)" if c["name"] in pool else f"{R}(⚠ 不在 pool 中，LLM 可能幻覺){RST}"
+        in_pool = "(✓ pool)" if c["name"] in pool else f"{R}(⚠ 不在 pool 中，可能幻覺){RST}"
         print(f"  {G}✓{RST} {c['name']}  {DIM}{c.get('dept','')} {in_pool}{RST}")
 
-    # ── Pool 有但 Cards 沒有 ───────────────────────────────────────────────────
+    # Pool 有但 Cards 沒有
     filtered = [n for n in pool if n not in card_names]
     if filtered:
-        print(f"\n{Y}【Pool 有但未納入推薦的課程】{RST}  {len(filtered)} 門（LLM 自行過濾）")
+        print(f"\n{Y}【Pool 有但未納入推薦】{RST}  {len(filtered)} 門（LLM 自行過濾）")
         for n in filtered[:15]:
-            c = pool[n]
-            print(f"  {R}×{RST} {n}  {DIM}{c.get('dept','')}{RST}")
+            print(f"  {R}×{RST} {n}  {DIM}{pool[n].get('dept','')}{RST}")
         if len(filtered) > 15:
             print(f"  {DIM}… 還有 {len(filtered)-15} 門{RST}")
 
-    # ── 原始回答（含 <course_list> tag）──────────────────────────────────────
-    raw = _debug_state.get("raw_answer", "")
-    print(f"\n{Y}【最終回答（clean）】{RST}")
+    # 最終回答
+    print(f"\n{Y}【最終回答】{RST}")
     print(result["answer"])
 
-    if "<course_list>" in raw:
-        import re
-        m = re.search(r'<course_list>(.*?)</course_list>', raw, re.DOTALL)
-        if m:
-            print(f"\n{Y}【LLM 輸出的 <course_list> 原文】{RST}")
-            for line in m.group(1).strip().splitlines():
-                print(f"  {DIM}{line}{RST}")
-    else:
-        print(f"\n{R}⚠ LLM 未輸出 <course_list>，使用 fallback 文字掃描{RST}")
-
-    # ── 統計 ─────────────────────────────────────────────────────────────────
+    # 統計
     tools_used = result.get("tools_used", [])
     print(f"\n{Y}【統計】{RST}")
     print(f"  tools_used    : {', '.join(tools_used) or '(無)'}")
+    print(f"  pool_count    : {result.get('course_pool_count', 0)}")
     print(f"  input_tokens  : {result.get('input_tokens', '?')}")
     print(f"  output_tokens : {result.get('output_tokens', '?')}")
     print(f"  has_large     : {result.get('has_large_result', False)}")
 
-    # ── 儲存 log ──────────────────────────────────────────────────────────────
+    # 儲存 log
     if save_log:
         log_dir = ROOT / "logs"
         log_dir.mkdir(exist_ok=True)
@@ -182,12 +163,11 @@ def run_debug(question: str, save_log: bool = False) -> dict:
         log_data = {
             "question":     question,
             "answer":       result["answer"],
-            "raw_answer":   raw,
-            "tool_log":     [
+            "tool_log": [
                 {"tool": t["tool"], "args": t["args"], "summary": t["summary"]}
                 for t in _tool_log
             ],
-            "course_pool":  list(pool.values()),
+            "course_pool":  pool_list,
             "course_cards": cards,
             "filtered_out": filtered,
             "tools_used":   tools_used,
@@ -216,7 +196,7 @@ def main():
     )
     parser.add_argument("question", nargs="?", help="要測試的問題（省略則進入互動模式）")
     parser.add_argument("--save",  action="store_true", help="儲存 JSON log 到 logs/")
-    parser.add_argument("--batch", metavar="FILE",      help="批次測試：一行一個問題的 txt 檔案")
+    parser.add_argument("--batch", metavar="FILE", help="批次測試：一行一個問題的 txt 檔")
     args = parser.parse_args()
 
     if args.batch:
@@ -228,7 +208,7 @@ def main():
     elif args.question:
         run_debug(args.question, save_log=args.save)
     else:
-        print("NCU Agent 行為檢驗工具（輸入 q 離開，--save 儲存 log）")
+        print("NCU Agent 行為檢驗工具（輸入 q 離開）")
         while True:
             try:
                 q = input("\n問題> ").strip()

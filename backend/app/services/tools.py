@@ -353,6 +353,44 @@ def tool_get_program_courses(program_name: str) -> dict:
     return {"program_name": program_name, "courses": courses}
 
 
+def tool_get_program_info(program_name: str) -> dict:
+    """查詢學分學程完整說明與必/選修課程（整合版）。
+    整合 get_program_description + get_program_courses，一次呼叫取得說明文字 + 課程清單。
+    """
+    data = _load_program_descriptions()
+    description = ""
+    resolved_name = program_name
+    if data:
+        for name, desc in data.items():
+            if program_name in name or name in program_name:
+                description = desc
+                resolved_name = name
+                break
+        if not description:
+            matches = [(k, v) for k, v in data.items()
+                       if any(c in k for c in program_name if len(c.encode()) > 1)]
+            if matches:
+                resolved_name, description = matches[0]
+
+    courses = graph_service.get_program_courses(program_name)
+
+    if not description and not courses:
+        available = list(data.keys())[:10] if data else []
+        return {"found": False, "message": f"找不到「{program_name}」的學程資料",
+                "available_programs": available}
+
+    required = [c for c in courses if "必" in c.get("relation", "")]
+    elective  = [c for c in courses if c not in required]
+    return {
+        "found":            True,
+        "program_name":     resolved_name,
+        "description":      description,
+        "required_courses": required,
+        "elective_courses": elective,
+        "courses":          courses,   # combined，供 course_pool 收集
+    }
+
+
 def tool_get_teacher_info(teacher_name: str) -> dict:
     """查詢特定教師的專長資料（CSV）與開課清單（圖）。"""
     profile_raw = retriever.get_teacher_by_name(teacher_name)
@@ -933,7 +971,9 @@ def tool_get_course_detail(
 _TOOL_MAP = {
     "search_courses":              tool_search_courses,
     "get_dept_courses":            tool_get_dept_courses,
-    "get_program_courses":         tool_get_program_courses,
+    "get_program_info":            tool_get_program_info,
+    "get_program_courses":         tool_get_program_courses,    # backward compat
+    "get_program_description":     tool_get_program_description, # backward compat
     "get_teacher_info":            tool_get_teacher_info,
     "search_teachers":             tool_search_teachers,
     "get_graduation_requirements": tool_get_graduation_requirements,
@@ -941,7 +981,6 @@ _TOOL_MAP = {
     "get_requirements_notes":      tool_get_requirements_notes,     # backward compat
     "get_dept_info":               tool_get_dept_info,
     "get_course_detail":           tool_get_course_detail,
-    "get_program_description":     tool_get_program_description,
     "search_programs":             tool_search_programs,
     "find_similar_courses":        tool_find_similar_courses,
     "get_course_knowledge_map":    tool_get_course_knowledge_map,
@@ -1008,20 +1047,6 @@ TOOLS = [
     {
         "type": "function",
         "function": {
-            "name": "get_program_courses",
-            "description": "查詢學分學程的必修和選修課程。",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "program_name": {"type": "string", "description": "學程名稱，如「人工智慧技術應用」"},
-                },
-                "required": ["program_name"],
-            },
-        },
-    },
-    {
-        "type": "function",
-        "function": {
             "name": "get_teacher_info",
             "description": "查詢特定教師的官方專長（教育部申報）與開課清單。",
             "parameters": {
@@ -1079,20 +1104,6 @@ TOOLS = [
     {
         "type": "function",
         "function": {
-            "name": "get_program_description",
-            "description": "直接取得學分學程的完整說明文字（目標、修課方式、學程特色）。【優先使用】比向量搜尋更完整，詢問學程說明時請優先呼叫此工具，可搭配 get_program_courses 同時取得課程清單。",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "program_name": {"type": "string", "description": "學程名稱，如「人工智慧技術應用」「資訊安全」"},
-                },
-                "required": ["program_name"],
-            },
-        },
-    },
-    {
-        "type": "function",
-        "function": {
             "name": "get_course_detail",
             "description": "查詢課程完整資訊：官方課綱（課程目標、授課內容、教科書）＋修課資格分發條件原文（含年級/系所限制與先修要求）。一次呼叫取代原有三個工具（get_course_syllabus + get_course_eligibility + get_prereq_info）。同名多科系時回傳 ambiguous=True + candidates，可搭配 dept 或 course_code 精確查詢。",
             "parameters": {
@@ -1118,6 +1129,20 @@ TOOLS = [
                     "n":     {"type": "integer", "description": "回傳筆數（預設 5）"},
                 },
                 "required": ["query"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "get_program_info",
+            "description": "查詢學分學程的完整說明（目標、修課方式、學程特色）與必/選修課程清單。整合原有 get_program_description + get_program_courses，一次呼叫取得全部。知道學程名稱時優先使用此工具；不知道名稱時先用 search_programs 發現。",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "program_name": {"type": "string", "description": "學程名稱，如「人工智慧技術應用」「客語教學學分學程」"},
+                },
+                "required": ["program_name"],
             },
         },
     },

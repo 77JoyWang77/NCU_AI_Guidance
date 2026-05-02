@@ -99,7 +99,7 @@ SYSTEM_PROMPT = """你是「中央大學選課助理」，協助高中生、大�
 
 **學程查詢**：
   → 不知道學程名稱時：search_programs(query="主題關鍵詞") 先發現
-  → 知道學程名稱時：並行 get_program_description + get_program_courses
+  → 知道學程名稱時：get_program_info(program_name="...") 一次取得說明 + 課程
 
 **畢業規定**：
   → get_graduation_requirements（同時回傳結構化學分 + 完整原文，一次呼叫即可）
@@ -174,7 +174,8 @@ SYSTEM_PROMPT = """你是「中央大學選課助理」，協助高中生、大�
 **範例 7 — 學程（發現 + 詳情）**
 問：有沒有和語言文化相關的學程？
 ✓ 第一步：search_programs(query="語言文化") 發現學程清單
-  第二步：並行 get_program_description + get_program_courses
+  第二步：get_program_info(program_name="找到的學程名") 取得說明 + 課程
+✗ 直接猜學程名用 get_program_info（應先 search_programs 確認名稱）
 
 **範例 8 — 先修規劃 + 修課資格**
 問：外系學生想修機器學習，先修條件和修課資格是什麼？
@@ -574,7 +575,7 @@ def _collect_course_pool(tool_name: str, result, course_pool: dict) -> None:
                     "type":    item.get("type", ""),
                     "teacher": item.get("teacher", ""),
                 }
-    elif tool_name in ("get_dept_courses", "get_program_courses") and isinstance(result, dict):
+    elif tool_name in ("get_dept_courses", "get_program_courses", "get_program_info") and isinstance(result, dict):
         dept_or_prog = result.get("dept_name") or result.get("program_name", "")
         for c in result.get("courses", []):
             name = c.get("name") or c.get("id", "")
@@ -797,6 +798,7 @@ def stream_with_tools(
                 tools=TOOLS,
                 tool_choice="auto",
                 stream=True,
+                stream_options={"include_usage": True},
                 **_build_completion_params(max_completion_tokens=MAX_TOKENS)
             )
 
@@ -897,7 +899,7 @@ def stream_with_tools(
                 scores: list[float] = []
                 score_type: str | None = None
 
-                if tc["name"] in ("get_dept_courses", "get_program_courses") and isinstance(result, dict):
+                if tc["name"] in ("get_dept_courses", "get_program_courses", "get_program_info") and isinstance(result, dict):
                     count = len(result.get("courses", []))
                     if count > 20:
                         has_large_result = True
@@ -908,8 +910,12 @@ def stream_with_tools(
                 elif tc["name"] == "search_courses" and isinstance(result, list):
                     count = len(result)
                     courses_found = [r.get("name_zh", "") for r in result if r.get("name_zh")]
-                    scores = [r.get("distance", 0.0) for r in result if r.get("name_zh")]
-                    score_type = "distance"
+                    if result and result[0].get("source") == "graph_tech":
+                        scores = []
+                        score_type = "graph_exact"
+                    else:
+                        scores = [r.get("distance", 0.0) for r in result if r.get("name_zh")]
+                        score_type = "distance"
                 elif tc["name"] in ("find_similar_courses", "get_course_knowledge_map") and isinstance(result, str):
                     import re as _re
                     for m in _re.finditer(r'-\s*(.+?)（[^）]+）\s*(?:\[共享(?:概念：|\ )(\d+)\ 個(?:概念)?\])?', result):
@@ -981,6 +987,7 @@ def stream_with_tools(
             model=deployment,
             messages=[{"role": "system", "content": system}] + messages,
             stream=True,
+            stream_options={"include_usage": True},
             **_build_completion_params(max_completion_tokens=MAX_TOKENS)
         )
         content_parts = []
