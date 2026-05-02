@@ -1,6 +1,6 @@
 # Session 儲存設計
 
-> 文件版本：2026-04-24  
+> 文件版本：2026-05-02  
 > 來源：`backend/app/services/session_store.py`，`backend/app/routes/chat.py`
 
 ---
@@ -57,14 +57,11 @@ data/sessions/{session_id}.json
             "tool": "get_course_knowledge_map",
             "args": {"course_name": "深度學習"},
             "coursesFound": ["機器學習", "電腦視覺"],
-            "count": 8
+            "count": 8,
+            "scores": [0.91, 0.87],
+            "scoreType": "rrf"
           }
-        ],
-        "verify": {
-          "poolSize": 8,
-          "selected": ["機器學習", "電腦視覺"],
-          "filteredOut": []
-        }
+        ]
       },
       "tools_used": ["get_course_knowledge_map"],
       "created_at": "2026-04-21T10:30:00.000Z"
@@ -99,11 +96,10 @@ messages = [
 {
     "user": str,
     "assistant": str,
-    "course_cards": list[CourseCard],   # 驗證後的精選課程
+    "course_cards": list[CourseCard],   # tag 提取後的精選課程
     "course_pool": list[CourseCard],    # 完整 pool（含未被選中的）
-    "debug_trace": {                    # 工具呼叫詳情
-        "toolCalls": list[ToolCallLog],
-        "verify": VerifyLog
+    "debug_trace": {                    # 工具呼叫詳情（串流路徑才有）
+        "toolCalls": list[ToolCallLog]  # {tool, args, coursesFound, count, scores, scoreType}
     },
     "tools_used": list[str],
     "created_at": str
@@ -112,12 +108,13 @@ messages = [
 
 - **用途**：前端載入歷史對話時，恢復完整顯示（含課程卡片、debug trace）
 - **獨立於** `messages`，不影響 LLM context
+- `debug_trace` 由串流路徑（`stream_with_tools`）填充；同步路徑（`generate_with_tools`）目前為 `{}`
 
 ---
 
 ## title 生成規則
 
-- 取**第一輪**使用者問題的前 20 個字元
+- 取**第一輪**使用者問題的前 40 個字元
 - 若第一輪後才修改 session，title 不更新
 
 ---
@@ -132,7 +129,9 @@ session_store.save(
     user_msg=question,
     assistant_msg=answer,
     course_cards=course_cards,
-    tools_used=tools_used
+    course_pool=list(course_pool.values()),
+    debug_trace=debug_trace,
+    tools_used=tools_used,
 )
 ```
 
@@ -167,31 +166,3 @@ GET /api/chat/session/{session_id}
 1. 呼叫 `GET /api/chat/session/{id}` 取得 turns
 2. 將每個 turn 轉換為 `Conversation.messages` 格式
 3. 從最後一個 turn 的 `course_cards` 恢復右側推薦面板
-
----
-
-## 已知問題
-
-### 問題 1：`course_cards` 常有空欄位
-
-`_verify_course_list()` 選出的課程來自 `course_pool`，而 `ppr_explore` / `find_similar_courses` / `get_course_knowledge_map` 回傳的課程只有 `name` 和 `dept`，`code`、`teacher`、`summary` 均為空字串。
-
-**根本原因**：`_parse_courses_from_str()` 只能從格式化字串中解析課名和系所，其他欄位無法取得。
-
-**建議解法**：在 `_verify_course_list()` 後，對 `code`/`teacher` 為空的 course_cards 用 `retriever.get_courses_by_name()` 補充完整資料。
-
----
-
-## `save()` 介面
-
-```python
-session_store.save(
-    session_id=session_id,
-    user_msg=question,
-    assistant_msg=answer,
-    course_cards=course_cards,
-    course_pool=list(course_pool.values()),   # 新增
-    debug_trace=debug_trace,                  # 新增
-    tools_used=tools_used
-)
-```

@@ -1,6 +1,6 @@
 # ReAct Agent 流程設計
 
-> 文件版本：2026-04-24
+> 文件版本：2026-05-02
 
 ---
 
@@ -61,66 +61,58 @@ course_pool: dict[str, CourseCard]  # {課名: CourseCard dict}
 |---------|---------|---------|
 | `search_courses` | `list[dict]` | 直接遍歷，取 `name_zh` 為 key |
 | `get_dept_courses` | `dict` with `courses` list | 遍歷 `courses` 列表 |
-| `get_program_courses` | `dict` with `courses` list | 同上 |
-| `get_course_eligibility` | `dict` with `courses` list | 遍歷 `courses` 列表 |
-| `get_course_syllabus` | `dict`（單一課程或 candidates） | 取 `name_zh` 欄位；`ambiguous=True` 時遍歷 candidates |
+| `get_program_info` | `dict` with `courses` list | 遍歷 `courses` 列表 |
+| `get_course_detail` | `dict`（單一課程或 candidates） | 取 `name_zh` 欄位；`ambiguous=True` 時遍歷 candidates |
 | `ppr_explore` | `str` | regex 解析 `[課程] 課名（系所）` 格式 |
 | `find_similar_courses` | `str` | regex 解析 `- 課名（系所，N學分）` 格式 |
 | `get_course_knowledge_map` | `str` | 同上 |
 | `get_depts_by_tech` | `str` | regex 解析「相關課程」段落 |
+| `explore_concept_neighborhood` | `str` | regex 解析課程列表 |
 
-其餘工具（`get_teacher_info`, `get_dept_info`, `get_graduation_requirements`, `search_programs`, `search_teachers` 等）不產出課程到 pool。
+其餘工具（`get_teacher_info`, `get_dept_info`, `get_graduation_requirements`, `search_programs`, `search_teachers`）不產出課程到 pool。
 
 ---
 
-## `_verify_course_list()` — 零幻覺驗證
+## `_extract_courses_from_tags()` — 零幻覺課程提取
 
 ### 目的
 
-ReAct 迴圈結束、LLM 生成回答後，再進行一次獨立的 LLM 呼叫，從 `course_pool` 中選出真正相關的課程作為 `course_cards`。
+ReAct 迴圈結束、LLM 生成回答後，透過 `<course>` 標籤機制從回答中提取課程作為 `course_cards`，不需額外 LLM 呼叫。
 
 ### 設計原則
 
-**LLM 只能從 pool 清單中選，不能輸出清單外的課程名稱 → 確保零幻覺**
+SYSTEM_PROMPT 要求 LLM 以 `<course>課名（系所）</course>` 標籤標記回答中提到的每門課程。後端 regex 擷取標籤後，做 exact + fuzzy match 比對 `course_pool`，只保留 pool 內存在的課程 → **確保零幻覺**。
 
 ### 流程
 
 ```
-course_pool（最多取 60 筆）
+LLM 回答（含 <course> 標籤）
     │
     ▼
-prompt 包含：
-  - 使用者問題
-  - 助理回答節錄（前 600 字）
-  - pool 課程清單（課名 + 系所 + 學分）
+TAG_RE = r'<course>(.*?)(?:（([^）]*)）)?</course>'
+    │  regex 擷取所有標籤（課名 + 可選系所 hint）
     │
     ▼
-LLM 呼叫（temperature=0, max_tokens=300, 同一個 gpt-4o deployment）
+exact match → pool 中課名完全一致
+fuzzy match → SequenceMatcher 相似度 ≥ 0.8
     │
-    ▼
-回傳：每行一個課程名稱
-    │
-    ▼
-逐行與 pool_map 比對（只保留 pool 內存在的課名）
-    │
+    │  只保留 pool 內存在的課程
     ▼
 course_cards: list[CourseCard]
 ```
 
-### 關鍵參數
+### 消歧義支援
 
-| 參數 | 值 |
-|------|-----|
-| `temperature` | 0（確定性輸出） |
-| `max_tokens` | 300 |
-| `pool_items` 最大量 | 60 筆 |
+LLM 可使用 `<course>統計學（數學系）</course>` 格式消歧義。若 pool 中有多門同名課程（不同系所），系所 hint 用於優先選取正確版本。
 
-### 為什麼有效
+### 與舊機制的差異
 
-即使 LLM 在回答文字中「幻覺」出不存在的課程名稱（如從訓練知識中捏造），`_verify_course_list` 的輸出結果仍只包含 pool 內真實存在的課程，因此 `course_cards`（前端顯示的推薦卡片）永遠不會出現幻覺課程。
-
-> **規劃中：以 `<course>` 標籤取代此 LLM 呼叫**  
-> 在兩階段設計中，Stage 2 LLM 以 `<course>課名</course>` 標籤輸出提到的課程，後端直接 regex 擷取後做 exact/fuzzy match，不需額外一次 LLM 呼叫。詳見 `06-known-issues.md`。
+| | 舊機制（`_verify_course_list`） | 現行機制（`_extract_courses_from_tags`） |
+|--|--|--|
+| 實作方式 | 第二次 LLM 呼叫 | regex 擷取 + dict lookup |
+| 額外 token | ~300 output tokens | 0 |
+| 延遲 | +1～2 秒 | 可忽略 |
+| 幻覺防護 | pool 清單限制輸出 | pool 比對過濾 |
 
 ---
 
@@ -131,12 +123,14 @@ course_cards: list[CourseCard]
 | 事件類型 | 時機 | 主要欄位 |
 |---------|------|---------|
 | `tool_start` | 每個工具開始執行前 | `tool`, `args` |
-| `tool_done` | 每個工具執行完成後 | `tool`, `count`, `courses_found` |
+| `tool_done` | 每個工具執行完成後 | `tool`, `count`, `courses_found`, `scores`, `score_type` |
 | `token` | LLM 生成文字每個 token | `text` |
-| `verify_start` | 驗證開始前 | `pool_size` |
-| `verify_done` | 驗證完成後 | `selected`, `filtered_out` |
-| `done` | 全部完成 | `session_id`, `course_cards`, `course_pool`, `course_pool_count`, `has_large_result`, `model`, `input_tokens`, `output_tokens` |
+| `verify_start` | tag 提取開始前 | `pool_size` |
+| `verify_done` | tag 提取完成後 | `method="tag"`, `selected`, `filtered_out` |
+| `done` | 全部完成 | `session_id`, `course_cards`, `course_pool`, `course_pool_count`, `has_large_result`, `tools_used`, `debug_trace`, `model`, `input_tokens`, `output_tokens` |
 | `error` | 任何錯誤 | `message` |
+
+> `debug_trace` 欄位（僅在 `done` 事件）：`{"toolCalls": [{tool, args, coursesFound, count, scores, scoreType}]}`
 
 ---
 
@@ -147,8 +141,9 @@ course_cards: list[CourseCard]
 - 不捏造課程名稱或數字
 - context 不足時誠實說明
 - 技術查詢：必須傳 tech 參數（觸發 graph-first 精確查詢）
-- 平行查詢策略：學程同時呼叫 description + courses
+- 學程查詢：呼叫 get_program_info 一次取得說明與課程清單
 - Fallback：空結果時換關鍵字 / 換工具
+- 提到的課程必須以 <course>課名（系所）</course> 標籤標記
 ```
 
 ---

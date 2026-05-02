@@ -1,6 +1,6 @@
-# 工具詳細設計（16 個工具）
+# 工具詳細設計（14 個工具）
 
-> 文件版本：2026-05-02  
+> 文件版本：2026-05-02（更新：get_program_info 整合）  
 > 來源：`backend/app/services/tools.py`  
 > 向量資料庫：Qdrant（本地模式，`data/processed/qdrant_data/`）  
 > 圖計算：igraph（PPR / BFS）+ JSON adjacency walk（其餘）
@@ -16,20 +16,20 @@
 | 3 | `get_dept_courses` | 知識圖譜（→ Qdrant fallback） | 無 | 查詢系所必/選修 |
 | 4 | `get_dept_info` | Qdrant 向量 | `distance` | 查詢系所介紹 |
 | 5 | `get_graduation_requirements` | schedule_draft JSON + requirements_notes.json | 無 | 畢業規定（整合版） |
-| 6 | `get_program_courses` | 知識圖譜 | 無 | 查詢學程課程 |
-| 7 | `get_program_description` | program_descriptions.json | 無 | 查詢學程說明 |
-| 8 | `search_programs` | Qdrant 向量 | `distance` | 語意搜尋學分學程 |
-| 9 | `get_teacher_info` | Qdrant + 知識圖譜 | 無 | 查詢教師詳情 |
-| 10 | `search_teachers` | Qdrant 向量 | `distance` | 語意搜尋教師 |
-| 11 | `get_course_knowledge_map` | 知識圖譜 + RRF（相似課程段落） | `shared_concepts` | 知識地圖探索 |
-| 12 | `find_similar_courses` | 知識圖譜 + Qdrant 向量（RRF 融合） | RRF score | 找相似課程 |
-| 13 | `get_depts_by_tech` | 知識圖譜 | 無 | 查詢技術分布系所 |
-| 14 | `ppr_explore` | 知識圖譜 igraph PPR | `score` (×1000) | 廣泛圖探索 |
-| 15 | `explore_concept_neighborhood` | Qdrant `ncu_graph_nodes` + igraph BFS | 無 | 概念鄰域精確探索 |
-| 16 | `search_courses` (dept filter) | Qdrant 向量 | `distance` | 主題式通識/語言課查詢 |
+| 6 | `get_program_info` | program_descriptions.json + 知識圖譜 | 無 | 學程說明 + 必/選修課程（整合版） |
+| 7 | `search_programs` | Qdrant 向量 | `distance` | 語意搜尋學分學程 |
+| 8 | `get_teacher_info` | Qdrant + 知識圖譜 | 無 | 查詢教師詳情 |
+| 9 | `search_teachers` | Qdrant 向量 | `distance` | 語意搜尋教師 |
+| 10 | `get_course_knowledge_map` | 知識圖譜 + RRF（相似課程段落） | `shared_concepts` | 知識地圖探索 |
+| 11 | `find_similar_courses` | 知識圖譜 + Qdrant 向量（RRF 融合） | RRF score | 找相似課程 |
+| 12 | `get_depts_by_tech` | 知識圖譜 | 無 | 查詢技術分布系所 |
+| 13 | `ppr_explore` | 知識圖譜 igraph PPR | `score` (×1000) | 廣泛圖探索 |
+| 14 | `explore_concept_neighborhood` | Qdrant `ncu_graph_nodes` + igraph BFS | 無 | 概念鄰域精確探索 |
 
-> **向下相容保留**：`get_graduation_rules`、`get_requirements_notes` 仍保留在 `_TOOL_MAP`，但不加入 `TOOLS` schema（LLM 不主動呼叫）。  
-> **已整合移除**：`get_course_syllabus`、`get_course_eligibility`、`get_prereq_info` → 合併為 `get_course_detail`。
+> **向下相容保留（`_TOOL_MAP` 有，`TOOLS` schema 無）**：  
+> `get_graduation_rules`, `get_requirements_notes`, `get_program_courses`, `get_program_description`  
+> **已整合移除**：`get_course_syllabus`、`get_course_eligibility`、`get_prereq_info` → 合併為 `get_course_detail`。  
+> **2026-05-02 整合**：`get_program_description` + `get_program_courses` → 合併為 `get_program_info`。
 
 ---
 
@@ -249,9 +249,9 @@
 
 ---
 
-### 6. `get_program_courses` — 查詢學程課程
+### 6. `get_program_info` — 查詢學程完整資訊（整合版）
 
-**功能**：從知識圖譜查詢學分學程的必修和選修課程。
+**功能**：一次回傳學分學程的完整說明文字（來自 `program_descriptions.json`）與必/選修課程清單（來自知識圖譜）。整合原 `get_program_description` + `get_program_courses`。
 
 **參數表**
 
@@ -259,39 +259,36 @@
 |------|------|------|------|
 | `program_name` | string | ✓ | 學程名稱，如「客語教學學分學程」 |
 
-**回傳格式**（`dict`）
+**比對策略**：精確比對 → 包含比對 → 模糊字元比對 → 回傳 `available_programs` 清單
+
+**回傳格式（找到）**（`dict`）
 
 ```json
 {
+  "found": true,
   "program_name": "客語教學學分學程",
-  "courses": [
+  "description": "本學程旨在培養學生具備客語教學能力...（完整說明）",
+  "required_courses": [
     {"id": "HAKKA1001", "name": "客語口語表達", "credits": 2, "relation": "必修"}
-  ]
+  ],
+  "elective_courses": [
+    {"id": "HAKKA2003", "name": "客家文化與社會", "credits": 2, "relation": "選修"}
+  ],
+  "courses": [...]
 }
 ```
 
-> 通常與 `get_program_description` 並行呼叫。
+**回傳格式（找不到）**（`dict`）
 
----
-
-### 7. `get_program_description` — 查詢學程說明
-
-**功能**：直接從 `program_descriptions.json` 取得學分學程的完整說明文字。比向量搜尋更完整，**應優先使用**。
-
-**參數表**
-
-| 參數 | 型別 | 必填 | 說明 |
-|------|------|------|------|
-| `program_name` | string | ✓ | 學程名稱 |
-
-**回傳格式**（`str`）
-
-```
-【客語教學學分學程】
-本學程旨在培養學生具備客語教學能力...（完整說明）
+```json
+{
+  "found": false,
+  "message": "找不到「OO學程」的學程資料",
+  "available_programs": ["客語教學學分學程", "人工智慧技術應用學分學程", "..."]
+}
 ```
 
-**比對策略**：精確比對 → 包含比對 → 模糊字元比對 → 列出所有學程名稱
+> `courses` 為 `required_courses + elective_courses` 的合併清單，供系統收集課程卡片用。
 
 ---
 
