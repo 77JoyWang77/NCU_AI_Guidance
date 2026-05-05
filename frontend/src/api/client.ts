@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getFirebaseIdToken } from '../auth/firebase';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
 
@@ -11,7 +12,11 @@ export const apiClient = axios.create({
 
 // 请求拦截器
 apiClient.interceptors.request.use(
-  (config) => {
+  async (config) => {
+    const token = await getFirebaseIdToken();
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
     return config;
   },
   (error) => {

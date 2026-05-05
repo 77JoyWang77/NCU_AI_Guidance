@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
-from app.routes import assessment, courses, projects, course_search, graph, chat, curriculum
+from app.routes import assessment, auth, courses, projects, course_search, graph, chat, curriculum
 
 # 載入 .env（開發環境）
 load_dotenv(Path(__file__).parent.parent.parent / ".env")
@@ -35,6 +35,7 @@ app.add_middleware(
 
 # Include routers
 app.include_router(assessment.router, prefix="/api/assessment", tags=["assessment"])
+app.include_router(auth.router, prefix="/api/auth", tags=["auth"])
 app.include_router(courses.router, prefix="/api/courses", tags=["courses"])
 app.include_router(projects.router, prefix="/api/projects", tags=["projects"])
 app.include_router(course_search.router, prefix="/api/course-search", tags=["course-search"])

@@ -8,6 +8,7 @@ import CoursesPage from './pages/CoursesPage';
 import CourseSearchPage from './pages/CourseSearchPage';
 import ResourcesPage from './pages/ResourcesPage';
 import CurriculumPage from './pages/CurriculumPage';
+import { AuthProvider } from './auth/AuthContext';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -19,22 +20,24 @@ function ScrollToTop() {
 
 function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/assessment" element={<AssessmentPage />} />
-          <Route path="/resources" element={<ResourcesPage />} />
-        </Route>
-        <Route element={<Layout fullHeight />}>
-          <Route path="/courses" element={<CoursesPage />} />
-          <Route path="/course-search" element={<CourseSearchPage />} />
-          <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/curriculum" element={<CurriculumPage />} />
-        </Route>
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <ScrollToTop />
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/assessment" element={<AssessmentPage />} />
+            <Route path="/resources" element={<ResourcesPage />} />
+          </Route>
+          <Route element={<Layout fullHeight />}>
+            <Route path="/courses" element={<CoursesPage />} />
+            <Route path="/course-search" element={<CourseSearchPage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/curriculum" element={<CurriculumPage />} />
+          </Route>
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 

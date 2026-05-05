@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { Link, useLocation } from 'react-router-dom';
 import { HiMenu, HiX } from 'react-icons/hi';
 import logo from '../assets/NCULogo.png';
+import GoogleLoginButton from './GoogleLoginButton';
 
 const navItems = [
   { path: '/', label: '首頁' },
@@ -55,6 +56,9 @@ function MobileMenuOverlay({
                 {item.label}
               </Link>
             ))}
+            <div className="mt-2 border-t border-slate-200 pt-4">
+              <GoogleLoginButton />
+            </div>
           </div>
         </div>
       </div>
@@ -105,6 +109,7 @@ export default function Navbar() {
                   {item.label}
                 </Link>
               ))}
+              <GoogleLoginButton />
             </div>
 
             <button
