@@ -57,71 +57,71 @@
           "name": "離散數學",
           "credits": 3,
           "note": "",
-          "when": "大一上",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false
+          "verified": true
         },
         {
           "code": "CE2002",
           "name": "資料結構",
           "credits": 3,
-          "when": "大二上",
+          "when": "大一上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CE2004",
           "name": "程式語言",
           "credits": 3,
-          "when": "大二下",
+          "when": "大一上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CE2012",
           "name": "組合語言與系統程式",
           "credits": 3,
-          "when": "大二上",
+          "when": "大一上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CE2006",
           "name": "機率與統計",
           "credits": 3,
-          "when": "大二上",
+          "when": "大一上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CE3005",
           "name": "演算法",
           "credits": 3,
-          "when": "大二下",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CE3001",
           "name": "計算機組織",
           "credits": 3,
-          "when": "大二下",
+          "when": "大一上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CE3002",
           "name": "作業系統",
           "credits": 3,
-          "when": "大二下",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -129,18 +129,18 @@
           "name": "計算機概論II",
           "credits": 3,
           "note": "",
-          "when": "大一上",
+          "when": "大一上~大四下",
           "when_auto": true,
-          "verified": false
+          "verified": true
         },
         {
           "code": "CE1004",
           "name": "計算機實習II",
           "credits": 1,
           "note": "",
-          "when": "",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false
+          "verified": true
         }
       ]
     },
@@ -155,84 +155,108 @@
           "name": "工程數學微分方程",
           "credits": 3,
           "note": "",
-          "when": "大一下~大二上",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false
+          "verified": true
         },
         {
           "code": "EE2002",
           "name": "電路學I",
           "credits": 3,
           "note": "",
-          "when": "大一下~大二上",
+          "when": "大一上~大四下",
           "when_auto": true,
-          "verified": false
+          "verified": true
         },
         {
           "code": "EE2011",
           "name": "電路學II",
           "credits": 3,
-          "when": "",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "EE2001",
           "name": "電子學I",
           "credits": 3,
-          "when": "大二上~大二下",
+          "when": "大一上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "EE2009",
           "name": "電子學II",
           "credits": 3,
-          "when": "",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "EE2004",
           "name": "電磁學I",
           "credits": 3,
-          "when": "大二上~大二下",
+          "when": "大一上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "EE2015",
           "name": "電磁學II",
           "credits": 3,
-          "when": "",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "EE2030",
           "name": "工程數學複變",
           "credits": 3,
-          "when": "大二上",
+          "when": "大一上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "EE3009",
           "name": "信號與系統",
           "credits": 3,
-          "when": "大一上",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
-          "note": "實驗6學分"
+          "code": "EE2027",
+          "name": "電子電路實驗I",
+          "credits": 1,
+          "when": "大一上~大四下",
+          "when_auto": true,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "EE2028",
+          "name": "電子電路實驗II",
+          "credits": 1,
+          "when": "大一上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "EE3047",
+          "name": "電子電路實驗III",
+          "credits": 1,
+          "when": "大一上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
         }
       ]
     },
@@ -246,18 +270,18 @@
           "code": "CO3003",
           "name": "機率",
           "credits": 3,
-          "when": "大一上",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CO3004",
           "name": "訊號與系統",
           "credits": 3,
-          "when": "大一上",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -265,53 +289,53 @@
           "name": "電路學I",
           "credits": 3,
           "note": "",
-          "when": "大一下~大二上",
+          "when": "大一上~大四下",
           "when_auto": true,
-          "verified": false
+          "verified": true
         },
         {
           "code": "CO2013",
           "name": "工程數學複變",
           "credits": 3,
-          "when": "大二上",
+          "when": "大一上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CO3007",
           "name": "通訊原理I",
           "credits": 3,
-          "when": "大三上~大三下",
+          "when": "大一上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CO3008",
           "name": "通訊原理II",
           "credits": 3,
-          "when": "",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CO3001",
           "name": "通訊實驗I",
           "credits": 1,
-          "when": "大三上~大三下",
+          "when": "大一上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CO3002",
           "name": "通訊實驗II",
           "credits": 1,
-          "when": "",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -319,17 +343,17 @@
           "name": "工程數學微分方程",
           "credits": 3,
           "note": "",
-          "when": "大一下~大二上",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false
+          "verified": true
         },
         {
           "code": "CO2005",
           "name": "電子學I",
           "credits": 3,
-          "when": "大二上",
+          "when": "大一上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ]
@@ -345,98 +369,98 @@
           "name": "計算機概論II",
           "credits": 3,
           "note": "",
-          "when": "大一上",
+          "when": "大一上~大四下",
           "when_auto": true,
-          "verified": false
+          "verified": true
         },
         {
           "code": "CE1004",
           "name": "計算機實習II",
           "credits": 1,
           "note": "",
-          "when": "",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false
+          "verified": true
         },
         {
           "code": "CE2003",
           "name": "離散數學",
           "credits": 3,
           "note": "",
-          "when": "大一上",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false
+          "verified": true
         },
         {
           "code": "CO3003",
           "name": "機率",
           "credits": 3,
-          "when": "大一上",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CO2012",
           "name": "資料結構",
           "credits": 3,
-          "when": "大一上",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CO3006",
           "name": "微算機原理",
           "credits": 3,
-          "when": "大一上",
+          "when": "大一上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CO3005",
           "name": "網路概論",
           "credits": 3,
-          "when": "大一上",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CE3002",
           "name": "作業系統",
           "credits": 3,
-          "when": "大二下",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CE3001",
           "name": "計算機組織",
           "credits": 3,
-          "when": "大二下",
+          "when": "大一上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "EE3009",
           "name": "信號與系統",
           "credits": 3,
-          "when": "大一上",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CE3005",
           "name": "演算法",
           "credits": 3,
-          "when": "大二下",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ]
@@ -449,7 +473,7 @@
       "credits": 3,
       "when": "大一上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -458,7 +482,7 @@
       "credits": 3,
       "when": "大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -467,70 +491,70 @@
       "credits": 2,
       "when": "大一上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "EE1009",
       "name": "線性代數",
       "credits": 3,
-      "when": "大一下",
+      "when": "大一上~大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "EE2016",
       "name": "數位系統導論",
       "credits": 3,
-      "when": "大二上",
+      "when": "大一上~大二下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "EE1006",
       "name": "數位邏輯實驗/數位系統實驗",
       "credits": 1,
-      "when": "大二上",
+      "when": "大一上~大二下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "EE1003",
       "name": "計算機概論I",
       "credits": 3,
-      "when": "大一上",
+      "when": "大一上~大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "EE1007",
       "name": "計算機概論實習I",
       "credits": 1,
-      "when": "大一上",
+      "when": "大一上~大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "IP2001",
       "name": "資電專題實作(I)",
       "credits": 3,
-      "when": "大三上",
+      "when": "大二上~大四下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "IP2002",
       "name": "資電專題實作(II)",
       "credits": 3,
-      "when": "大三下",
+      "when": "大二上~大四下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     }
   ],
@@ -544,18 +568,18 @@
           "code": "EE2002",
           "name": "電路學I",
           "credits": 3,
-          "when": "大二下",
+          "when": "大一下~大二上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "EE1010",
           "name": "工程數學─微分方程",
           "credits": 3,
-          "when": "大二下",
+          "when": "大一下~大二上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -564,25 +588,25 @@
           "credits": 3,
           "when": "大二上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CE1002",
           "name": "計算機概論II",
           "credits": 3,
-          "when": "大一下",
+          "when": "大一上~大二下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CE1004",
           "name": "計算機概論實習II",
           "credits": 1,
-          "when": "大一下",
+          "when": "大一上~大二下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ]

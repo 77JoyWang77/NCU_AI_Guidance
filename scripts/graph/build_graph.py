@@ -290,7 +290,11 @@ def _add_rules(G, rules, owner_id, raw=None, plan_id=None):
                        group_rule=r.get("type", ""))
             G.add_edge(plan_id, eg_id, relation="HAS_ELECTIVE_GROUP")
             for code in codes:
-                _ensure_course(G, raw, code, stub_source="curriculum_only")
+                info = (raw or {}).get(code, {})
+                _ensure_course(G, raw, code,
+                               fallback_name=info.get("name", ""),
+                               fallback_credits=info.get("credits", 0),
+                               stub_source="curriculum_only")
                 ensure_edge(G, eg_id, code, relation="OFFERS_ELECTIVE")
 
 
@@ -318,11 +322,22 @@ def _process_dept_group(G, raw, grp, parent_id, rel="HAS_GROUP"):
     G.add_edge(gid, pid, relation="HAS_CURRICULUM")
     _add_rules(G, grp.get("graduation_rules", []), gid, raw=raw, plan_id=pid)
     for key in ("required_courses", "cross_group_required",
-                "college_required_courses", "common_required_courses"):
+                "college_required_courses", "common_required_courses",
+                "dept_required_courses", "required_electives",
+                "cross_domain_required", "earth_system_courses", "application_courses"):
         _add_courses(G, raw, grp.get(key, []), pid, "REQUIRES")
-    _add_courses(G, raw, grp.get("first_domain_electives", []), pid, "OFFERS_ELECTIVE")
+    for key in ("first_domain_electives", "elective_courses"):
+        _add_courses(G, raw, grp.get(key, []), pid, "OFFERS_ELECTIVE")
     for i, eg in enumerate(grp.get("elective_groups", [])):
         _add_eg(G, raw, eg, pid, i)
+    for i, eg in enumerate(grp.get("core_elective_groups", [])):
+        _add_eg(G, raw, eg, pid, 100 + i)
+    for i, eg in enumerate(grp.get("college_required_elective_groups", [])):
+        _add_eg(G, raw, eg, pid, 200 + i)
+    for i, eg in enumerate(grp.get("science_ability_groups", [])):
+        _add_eg(G, raw, eg, pid, 300 + i)
+    for i, eg in enumerate(grp.get("other_elective_groups", [])):
+        _add_eg(G, raw, eg, pid, 400 + i)
     for sub in grp.get("groups", []):
         _process_dept_group(G, raw, sub, gid)
 
@@ -339,12 +354,22 @@ def _process_dept(G, raw, dept, college_id):
     G.add_edge(did, pid, relation="HAS_CURRICULUM")
     _add_rules(G, dept.get("graduation_rules", []), did, raw=raw, plan_id=pid)
     for key in ("required_courses", "required_electives", "college_required_courses",
-                "dept_required_courses"):
+                "dept_required_courses", "foundation_courses", "common_required_courses",
+                "cross_domain_required", "earth_system_courses",
+                "cross_group_required", "application_courses"):
         _add_courses(G, raw, dept.get(key, []), pid, "REQUIRES")
+    for key in ("first_domain_electives", "elective_courses"):
+        _add_courses(G, raw, dept.get(key, []), pid, "OFFERS_ELECTIVE")
     for i, eg in enumerate(dept.get("elective_groups", [])):
         _add_eg(G, raw, eg, pid, i)
     for i, eg in enumerate(dept.get("core_elective_groups", [])):
         _add_eg(G, raw, eg, pid, 100 + i)
+    for i, eg in enumerate(dept.get("college_required_elective_groups", [])):
+        _add_eg(G, raw, eg, pid, 200 + i)
+    for i, eg in enumerate(dept.get("science_ability_groups", [])):
+        _add_eg(G, raw, eg, pid, 300 + i)
+    for i, eg in enumerate(dept.get("other_elective_groups", [])):
+        _add_eg(G, raw, eg, pid, 400 + i)
     # dept_with_groups 的系訂必修也需掛到各 group 底下（透過 dept_required_courses 已加在 plan 上）
     if dept.get("program_type") == "dept_with_groups":
         for grp in dept.get("groups", []):
@@ -366,7 +391,10 @@ def _process_track(G, raw, track, parent_id, rel="HAS_TRACK"):
     G.add_edge(parent_id, tid, relation=rel)
     pid = _make_plan(G, f"{tid}::plan", f"{track['name']}課程計畫")
     G.add_edge(tid, pid, relation="HAS_CURRICULUM")
-    _add_courses(G, raw, track.get("required_courses", []), pid, "REQUIRES")
+    _add_rules(G, track.get("graduation_rules", []), tid, raw=raw, plan_id=pid)
+    for key in ("required_courses", "foundation_courses", "college_required_courses",
+                "common_required_courses", "cross_domain_required", "cross_group_required"):
+        _add_courses(G, raw, track.get(key, []), pid, "REQUIRES")
     _add_courses(G, raw, track.get("elective_courses", []), pid, "OFFERS_ELECTIVE")
     for i, eg in enumerate(track.get("elective_groups", [])):
         _add_eg(G, raw, eg, pid, i)
@@ -376,7 +404,10 @@ def _process_track(G, raw, track, parent_id, rel="HAS_TRACK"):
         G.add_edge(tid, sub_id, relation="HAS_TRACK")
         sp = _make_plan(G, f"{sub_id}::plan", f"{sub['name']}課程計畫")
         G.add_edge(sub_id, sp, relation="HAS_CURRICULUM")
-        _add_courses(G, raw, sub.get("required_courses", []), sp, "REQUIRES")
+        _add_rules(G, sub.get("graduation_rules", []), sub_id, raw=raw, plan_id=sp)
+        for key in ("required_courses", "foundation_courses", "college_required_courses",
+                    "common_required_courses", "cross_domain_required"):
+            _add_courses(G, raw, sub.get(key, []), sp, "REQUIRES")
         _add_courses(G, raw, sub.get("elective_courses", []), sp, "OFFERS_ELECTIVE")
         for i, eg in enumerate(sub.get("elective_groups", [])):
             _add_eg(G, raw, eg, sp, i)
@@ -1032,6 +1063,69 @@ def enrich_all(G: nx.DiGraph):
 # 6.  儲存與統計
 # ══════════════════════════════════════════════════════════════════════════════
 
+def _save_igraph_format(G: nx.DiGraph) -> None:
+    """將 NetworkX 圖轉換為 igraph 格式並儲存（含預計算邊權重）。"""
+    try:
+        import igraph as ig
+    except ImportError:
+        print("  [跳過] python-igraph 未安裝，略過 .igraph 格式輸出")
+        return
+
+    GRAPH_IGRAPH = GRAPH_PKL.parent / "knowledge_graph.pkl"
+    COVERS_FIELD_W = {"high": 1.5, "medium": 1.0, "low": 0.5}
+    REL_WEIGHT = {
+        "COVERS": 1.0, "TEACHES": 1.2,
+        "PREREQUISITE_OF": 0.8,
+        "EXPERT_IN": 1.0, "RELEVANT_EXPERT": 1.0, "COURSE_EXPERT": 0.8,
+        "TAGGED_AS": 0.5, "IN_DOMAIN": 0.5, "DEVELOPS": 0.3,
+    }
+
+    nodes_list = list(G.nodes(data=True))
+    id_to_idx = {nid: i for i, (nid, _) in enumerate(nodes_list)}
+
+    G_ig = ig.Graph(directed=True)
+    G_ig.add_vertices(len(nodes_list))
+    for i, (nid, attrs) in enumerate(nodes_list):
+        G_ig.vs[i]["name"]      = nid
+        G_ig.vs[i]["node_type"] = attrs.get("node_type", "")
+        G_ig.vs[i]["node_name"] = attrs.get("name", "")
+        G_ig.vs[i]["dept"]      = attrs.get("dept", "")
+        G_ig.vs[i]["credits"]   = int(attrs.get("credits") or 0)
+        G_ig.vs[i]["level"]     = attrs.get("level", "")
+
+    edge_tuples: list[tuple] = []
+    weights: list[float] = []
+    relations: list[str] = []
+    seen_similar: set[tuple] = set()
+
+    for src, tgt, attrs in G.edges(data=True):
+        si = id_to_idx.get(src)
+        ti = id_to_idx.get(tgt)
+        if si is None or ti is None:
+            continue
+        rel = attrs.get("relation", "")
+        if rel == "SIMILAR_TO":
+            pair = (min(si, ti), max(si, ti))
+            if pair in seen_similar:
+                continue
+            seen_similar.add(pair)
+            w = float(attrs.get("weight", 0.8))
+        elif rel == "COVERS_FIELD":
+            w = COVERS_FIELD_W.get(attrs.get("relevance", "medium"), 1.0)
+        else:
+            w = REL_WEIGHT.get(rel, 0.3)
+        edge_tuples.append((si, ti))
+        weights.append(w)
+        relations.append(rel)
+
+    G_ig.add_edges(edge_tuples)
+    G_ig.es["weight"]   = weights
+    G_ig.es["relation"] = relations
+    G_ig.write_pickle(str(GRAPH_IGRAPH))
+    print(f"  儲存：{GRAPH_IGRAPH}（{G_ig.vcount()} 節點，{G_ig.ecount()} 邊，"
+          f"其中 SIMILAR_TO 已去重）")
+
+
 def save_graph(G: nx.DiGraph):
     GRAPH_PKL.parent.mkdir(parents=True, exist_ok=True)
     with open(GRAPH_PKL, "wb") as f:
@@ -1041,6 +1135,7 @@ def save_graph(G: nx.DiGraph):
         json.dump(data, f, ensure_ascii=False, indent=2)
     print(f"\n  儲存：{GRAPH_PKL}")
     print(f"  儲存：{GRAPH_JSON}")
+    _save_igraph_format(G)
 
 
 def print_and_save_stats(G: nx.DiGraph):

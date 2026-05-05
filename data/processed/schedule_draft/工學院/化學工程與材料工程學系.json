@@ -76,18 +76,18 @@
       "code": "MA1003",
       "name": "微積分上",
       "credits": 3,
-      "when": "大一上~大一下",
+      "when": "大一上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "MA1004",
       "name": "微積分下",
       "credits": 3,
-      "when": "",
+      "when": "大一下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -96,7 +96,7 @@
       "credits": 3,
       "when": "大一上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -105,7 +105,7 @@
       "credits": 3,
       "when": "大一上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -114,25 +114,25 @@
       "credits": 3,
       "when": "大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CH1023",
       "name": "材料工程概論I",
       "credits": 3,
-      "when": "大一上~大一下",
+      "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CH1024",
       "name": "材料工程概論II",
       "credits": 3,
-      "when": "",
+      "when": "大一下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -141,7 +141,7 @@
       "credits": 3,
       "when": "大一下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -150,34 +150,34 @@
       "credits": 1,
       "when": "大一上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CH1022",
       "name": "基礎材料化學實驗I",
       "credits": 1,
-      "when": "大一下~大二下",
+      "when": "大一下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CH2029",
       "name": "基礎材料化學實驗II",
       "credits": 1,
-      "when": "",
+      "when": "大二上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CH2030",
       "name": "基礎材料化學實驗III",
       "credits": 1,
-      "when": "",
+      "when": "大二下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -186,79 +186,79 @@
       "credits": 3,
       "when": "大二上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CH2001",
       "name": "有機化學上",
       "credits": 3,
-      "when": "大二上~大二下",
+      "when": "大二上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CH2002",
       "name": "有機化學下",
       "credits": 3,
-      "when": "",
+      "when": "大二下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CH2005",
       "name": "物理化學上",
       "credits": 3,
-      "when": "大二上~大二下",
+      "when": "大二上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CH2006",
       "name": "物理化學下",
       "credits": 3,
-      "when": "",
+      "when": "大二下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CH2009",
       "name": "工程數學上",
       "credits": 3,
-      "when": "大二上~大二下",
+      "when": "大二上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CH2010",
       "name": "工程數學下",
       "credits": 3,
-      "when": "",
+      "when": "大二下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CH3059",
       "name": "化工與材料熱力學I",
       "credits": 3,
-      "when": "大三上~大三下",
+      "when": "大三上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CH3060",
       "name": "化工與材料熱力學II",
       "credits": 3,
-      "when": "",
+      "when": "大三下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -267,7 +267,7 @@
       "credits": 3,
       "when": "大三下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -276,34 +276,34 @@
       "credits": 3,
       "when": "大三上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CH2021",
       "name": "輸送現象與單元操作I",
       "credits": 3,
-      "when": "大二下~大三下",
+      "when": "大二下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CH3042",
       "name": "輸送現象與單元操作II",
       "credits": 3,
-      "when": "",
+      "when": "大三上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CH3043",
       "name": "輸送現象與單元操作III",
       "credits": 3,
-      "when": "",
+      "when": "大三下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -312,16 +312,16 @@
       "credits": 3,
       "when": "大三上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CH3058",
       "name": "化工與材料實驗I",
       "credits": 1,
-      "when": "大三上~大四上",
+      "when": "大三上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -330,16 +330,16 @@
       "credits": 1,
       "when": "大三下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CH4060",
       "name": "化工與材料實驗III",
       "credits": 1,
-      "when": "",
+      "when": "大四上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -348,7 +348,7 @@
       "credits": 4,
       "when": "大四上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     }
   ],
@@ -363,36 +363,36 @@
           "code": "CH2033",
           "name": "化學工程概論",
           "credits": 3,
-          "when": "大二上",
+          "when": "大二上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CH4012",
           "name": "數值分析",
           "credits": 3,
-          "when": "大三上",
+          "when": "大三上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CH4002",
           "name": "程序控制",
           "credits": 3,
-          "when": "大三上",
+          "when": "大三上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CH4062",
           "name": "生物工程概論",
           "credits": 3,
-          "when": "大三上",
+          "when": "大三上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ]
@@ -407,27 +407,27 @@
           "code": "CH2026",
           "name": "結晶繞射概論",
           "credits": 3,
-          "when": "大二上",
+          "when": "大二上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CH4049",
           "name": "高分子科學",
           "credits": 3,
-          "when": "大三上",
+          "when": "大三上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CH4051",
           "name": "電子與陶瓷材料",
           "credits": 3,
-          "when": "大三上",
+          "when": "大三上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ]
@@ -443,9 +443,9 @@
           "code": "CH3063",
           "name": "專題製作",
           "credits": 1,
-          "when": "大二上",
+          "when": "大二上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -453,9 +453,9 @@
           "name": "學士論文I",
           "credits": 1,
           "prerequisite_for": "CH4072",
-          "when": "大三上~大四下",
+          "when": "大三上~大三下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -463,9 +463,9 @@
           "name": "學士論文II",
           "credits": 2,
           "prerequisite": "CH4071",
-          "when": "",
+          "when": "大四上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -473,9 +473,9 @@
           "name": "理論與實務整合專題實作(一)",
           "credits": 1,
           "sequence": 1,
-          "when": "",
+          "when": "大二上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -483,9 +483,9 @@
           "name": "理論與實務整合專題實作(二)",
           "credits": 1,
           "sequence": 2,
-          "when": "",
+          "when": "大二上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -493,27 +493,27 @@
           "name": "理論與實務整合專題實作(三)",
           "credits": 1,
           "sequence": 3,
-          "when": "",
+          "when": "大二上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CH3065",
           "name": "工廠實習",
           "credits": 1,
-          "when": "大三上",
+          "when": "大三上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CH3066",
           "name": "文獻選讀與數據處理",
           "credits": 1,
-          "when": "大三上",
+          "when": "大三上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ]

@@ -9,31 +9,25 @@ router = APIRouter()
 
 # 載入課程資料
 def load_courses():
-    """從 data/raw/courses 載入並轉換課程資料"""
-    base_dir = Path(__file__).parent.parent.parent.parent / 'data' / 'raw' / 'courses'
+    """從 data/processed/courses_deduped/undergrad.json 載入並轉換課程資料"""
+    canonical = Path(__file__).parent.parent.parent.parent / 'data' / 'processed' / 'courses_deduped' / 'undergrad.json'
+
+    if not canonical.exists():
+        print(f"[WARN] 找不到 {canonical}，請先執行 deduplicate_courses.py")
+        return []
+
+    try:
+        with open(canonical, 'r', encoding='utf-8') as f:
+            raw_courses = json.load(f)
+    except Exception as e:
+        print(f"Error loading canonical courses: {e}")
+        return []
 
     all_courses = []
-
-    # 遍歷 114_1 和 114_2 兩個學期的資料
-    for semester_dir in base_dir.iterdir():
-        if not semester_dir.is_dir():
-            continue
-
-        # 讀取該學期目錄下的所有 JSON 檔案
-        for json_file in semester_dir.glob('*.json'):
-            try:
-                with open(json_file, 'r', encoding='utf-8') as f:
-                    courses_data = json.load(f)
-
-                # 處理每門課程
-                for raw_course in courses_data:
-                    converted_course = convert_course_format(raw_course)
-                    if converted_course:
-                        all_courses.append(converted_course)
-
-            except Exception as e:
-                print(f"Error loading {json_file}: {e}")
-                continue
+    for raw_course in raw_courses:
+        converted_course = convert_course_format(raw_course)
+        if converted_course:
+            all_courses.append(converted_course)
 
     return all_courses
 

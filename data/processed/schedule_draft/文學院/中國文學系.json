@@ -44,108 +44,108 @@
       "code": "CL1003",
       "name": "國學導讀上",
       "credits": 2,
-      "when": "大一上~大一下",
+      "when": "大一上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CL1004",
       "name": "國學導讀下",
       "credits": 2,
-      "when": "",
+      "when": "大一下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CL1005",
       "name": "文學概論上",
       "credits": 2,
-      "when": "大一上~大一下",
+      "when": "大一上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CL1006",
       "name": "文學概論下",
       "credits": 2,
-      "when": "",
+      "when": "大一下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CL1025",
       "name": "古籍閱讀上",
       "credits": 1,
-      "when": "大一上~大一下",
+      "when": "大一上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CL1026",
       "name": "古籍閱讀下",
       "credits": 1,
-      "when": "",
+      "when": "大一下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CL2001",
       "name": "歷代文選及習作上",
       "credits": 3,
-      "when": "大二上~大二下",
+      "when": "大二上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CL2002",
       "name": "歷代文選及習作下",
       "credits": 3,
-      "when": "",
+      "when": "大二下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CL2005",
       "name": "中國文學史上",
       "credits": 3,
-      "when": "大二上~大二下",
+      "when": "大二上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CL2006",
       "name": "中國文學史下",
       "credits": 3,
-      "when": "",
+      "when": "大二下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CL2003",
       "name": "文字學上",
       "credits": 2,
-      "when": "大二上~大二下",
+      "when": "大二上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CL2004",
       "name": "文字學下",
       "credits": 2,
-      "when": "",
+      "when": "大二下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -154,34 +154,34 @@
       "credits": 2,
       "when": "大二上~大二下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CL2008",
       "name": "詩選及習作下",
       "credits": 2,
-      "when": "",
+      "when": "大二下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CL4003",
       "name": "中國思想史上",
       "credits": 3,
-      "when": "大三上~大三下",
+      "when": "大三上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CL4004",
       "name": "中國思想史下",
       "credits": 3,
-      "when": "",
+      "when": "大三下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -190,7 +190,7 @@
       "credits": 3,
       "when": "大三上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -199,7 +199,7 @@
       "credits": 3,
       "when": "大三上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -208,7 +208,7 @@
       "credits": 3,
       "when": "大三下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -217,7 +217,7 @@
       "credits": 3,
       "when": "大三下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     }
   ]

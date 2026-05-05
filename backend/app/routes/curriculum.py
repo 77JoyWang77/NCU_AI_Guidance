@@ -1,0 +1,241 @@
+"""
+curriculum.py — 修課規定瀏覽 API
+
+GET /api/curriculum/tree               → 學院 → 系所/學士班 階層樹
+GET /api/curriculum/dept/{id}          → 系所完整資料（from curriculum_requirements_114.json）
+GET /api/curriculum/notes              → requirements_notes.json 全部內容
+GET /api/curriculum/notes/{dept_name} → 指定系所的 raw_text 參考資料
+"""
+
+import json
+from pathlib import Path
+from typing import Any, Optional
+from fastapi import APIRouter, HTTPException
+
+router = APIRouter()
+
+BASE = Path(__file__).parent.parent.parent.parent
+CURRICULUM_PATH = BASE / "data" / "processed" / "curriculum_requirements_114.json"
+NOTES_PATH      = BASE / "data" / "processed" / "requirements_notes.json"
+
+# ── module-level cache ───────────────────────────────────────────────────────
+
+_curriculum_cache: Optional[dict] = None
+_notes_cache: Optional[dict]      = None
+_name_to_id_cache: Optional[dict] = None   # {dept_name: dept_id}
+_id_to_name_cache: Optional[dict] = None   # {dept_id: dept_name}
+
+
+def _load_curriculum() -> dict:
+    global _curriculum_cache
+    if _curriculum_cache is None:
+        with open(CURRICULUM_PATH, encoding="utf-8") as f:
+            _curriculum_cache = json.load(f)
+    return _curriculum_cache
+
+
+def _load_notes() -> dict:
+    global _notes_cache
+    if _notes_cache is None:
+        if NOTES_PATH.exists():
+            with open(NOTES_PATH, encoding="utf-8") as f:
+                _notes_cache = json.load(f)
+        else:
+            _notes_cache = {}
+    return _notes_cache
+
+
+def _build_name_id_maps() -> tuple[dict, dict]:
+    global _name_to_id_cache, _id_to_name_cache
+    if _name_to_id_cache is not None:
+        return _name_to_id_cache, _id_to_name_cache
+    data = _load_curriculum()
+    n2i, i2n = {}, {}
+
+    def _register(node: dict):
+        nid  = node.get("id", "")
+        name = node.get("name", "")
+        if nid and name:
+            n2i[name] = nid
+            i2n[nid]  = name
+
+    for college in data.get("colleges", []):
+        for dept in college.get("departments", []):
+            _register(dept)
+            for g in dept.get("groups", []):
+                _register(g)
+        for cbp in college.get("college_bachelor_programs", []):
+            _register(cbp)
+            for t in cbp.get("specialization_tracks", []):
+                _register(t)
+
+    _name_to_id_cache = n2i
+    _id_to_name_cache = i2n
+    return n2i, i2n
+
+
+# ── 遞迴尋找系所節點 ─────────────────────────────────────────────────────────
+
+def _find_node(data: dict, target_id: str) -> Optional[dict]:
+    for college in data.get("colleges", []):
+        for dept in college.get("departments", []):
+            if dept.get("id") == target_id:
+                return dept
+            for g in dept.get("groups", []):
+                if g.get("id") == target_id:
+                    return g
+        for cbp in college.get("college_bachelor_programs", []):
+            if cbp.get("id") == target_id:
+                return cbp
+            for t in cbp.get("specialization_tracks", []):
+                if t.get("id") == target_id:
+                    return t
+    return None
+
+
+# ── 規則分類 ─────────────────────────────────────────────────────────────────
+
+_RULE_CATEGORY: dict[str, str] = {
+    "credit_minimum": "學分規定", "dept_required": "學分規定",
+    "elective_min": "學分規定", "elective_minimum": "學分規定",
+    "common_required": "學分規定", "total_required": "學分規定",
+    "dept_elective_min": "學分規定", "elective_total_min": "學分規定",
+    "free_elective": "學分規定", "free_elective_min": "學分規定",
+    "school_elective_min": "學分規定", "dept_school_elective_min": "學分規定",
+    "cross_college_elective": "學分規定", "cross_college_elective_min": "學分規定",
+    "outside_elective_min": "學分規定", "outside_elective_max": "學分規定",
+    "dept_system_elective": "學分規定", "core_elective_min": "學分規定",
+    "cross_group_elective": "學分規定", "ch_elective_min": "學分規定",
+    "star_elective_min": "學分規定", "triangle_elective_min": "學分規定",
+    "capstone_elective_min": "學分規定", "other_elective_min": "學分規定",
+    "second_domain_minimum": "學分規定", "first_domain_minimum": "學分規定",
+    "professional_minimum": "學分規定", "foundation_required": "學分規定",
+    "dept_courses_min": "學分規定", "language_training_minimum": "學分規定",
+    "domain_elective": "學分規定", "elective_fail_note": "學分規定",
+    "cross_domain_required": "學分規定", "cross_domain": "學分規定",
+    "college_required": "學分規定", "college_elective_min": "學分規定",
+    "college_and_dept_required": "學分規定", "additional_required": "學分規定",
+    "required_elective_min": "學分規定", "elective_note": "學分規定",
+    "ph_elective_min": "學分規定", "dept_elective_gp": "學分規定",
+    "science_required_min": "學分規定",
+    "design_course_min": "指定選課", "required_elective": "指定選課",
+    "law_finance_group": "指定選課", "capstone_credit_limit": "指定選課",
+    "internship_limit": "指定選課", "natural_science_select": "指定選課",
+    "group_required": "指定選課", "earth_system_required": "指定選課",
+    "basic_science_two_of_three_groups": "指定選課", "lab_one_of_three": "指定選課",
+    "core_elective_ab": "指定選課", "core_elective_each_group": "指定選課",
+    "prerequisite": "先修條件", "prerequisite_note": "先修條件",
+    "prerequisite_calculus_to_engineering_math": "先修條件",
+    "prerequisite_program_design": "先修條件",
+    "prerequisite_project_sequence": "先修條件",
+    "prerequisite_thesis": "先修條件",
+    "social_practice_prerequisite": "先修條件",
+    "certification_required": "外部認證", "certification_waiver": "外部認證",
+    "cpe_certification": "外部認證", "foreign_language": "外部認證",
+    "restriction": "特殊規定", "course_substitution": "特殊規定",
+    "course_substitution_limit": "特殊規定", "substitution": "特殊規定",
+    "equivalent_courses": "特殊規定", "equivalent_course_note": "特殊規定",
+    "double_major_extra_elective": "特殊規定",
+    "general_education": "特殊規定", "general_education_limit": "特殊規定",
+    "general_education_required": "特殊規定",
+    "emi_track_requirement": "特殊規定", "digital_literacy": "特殊規定",
+    "design_thinking": "特殊規定", "early_graduation": "特殊規定",
+    "cross_dept_elective_limit": "特殊規定", "secondary_track_optional": "特殊規定",
+    "specialization_minimum": "特殊規定", "specialization_track": "特殊規定",
+    "group_split": "特殊規定", "program_choice": "特殊規定",
+    "program_elective": "特殊規定", "special_requirement": "特殊規定",
+    "special_requirement_one_of": "特殊規定", "capstone_mutual_exclusion": "特殊規定",
+    "thesis_requirement": "特殊規定", "academic_ethics_course": "特殊規定",
+    "science_ability_required": "特殊規定",
+}
+
+
+def _rule_category(rule_type: str) -> str:
+    return _RULE_CATEGORY.get(rule_type, "其他規定")
+
+
+def _enrich_rules(rules: list) -> list:
+    return [{**r, "category": _rule_category(r.get("type", ""))} for r in rules]
+
+
+# ── 端點 ────────────────────────────────────────────────────────────────────
+
+@router.get("/tree")
+def get_curriculum_tree() -> list[dict]:
+    """學院 → 系所/學院學士班 的輕量階層樹。"""
+    data = _load_curriculum()
+    result = []
+    for college in data.get("colleges", []):
+        college_node: dict[str, Any] = {
+            "id":   college["id"],
+            "name": college["name"],
+            "departments": [],
+            "college_bachelor_programs": [],
+        }
+        for dept in college.get("departments", []):
+            node: dict[str, Any] = {
+                "id":           dept["id"],
+                "name":         dept["name"],
+                "program_type": dept.get("program_type", "traditional_dept"),
+                "min_credits":  dept.get("min_credits", 0),
+            }
+            if dept.get("program_type") == "dept_with_groups":
+                node["groups"] = [
+                    {"id": g["id"], "name": g["name"],
+                     "group_label": g.get("group_label", "")}
+                    for g in dept.get("groups", [])
+                ]
+            college_node["departments"].append(node)
+        for cbp in college.get("college_bachelor_programs", []):
+            college_node["college_bachelor_programs"].append({
+                "id":           cbp["id"],
+                "name":         cbp["name"],
+                "program_type": cbp.get("program_type", "college_bachelor"),
+                "min_credits":  cbp.get("min_credits", 0),
+                "specialization_tracks": [
+                    {"id": t["id"], "name": t["name"]}
+                    for t in cbp.get("specialization_tracks", [])
+                ],
+            })
+        result.append(college_node)
+    return result
+
+
+@router.get("/dept/{dept_id}")
+def get_dept_detail(dept_id: str) -> dict:
+    """系所完整資料（含 category 欄位的 graduation_rules）。"""
+    data = _load_curriculum()
+    node = _find_node(data, dept_id)
+    if node is None:
+        raise HTTPException(status_code=404, detail=f"找不到系所：{dept_id}")
+    node = dict(node)
+    node["graduation_rules"] = _enrich_rules(node.get("graduation_rules", []))
+    return node
+
+
+@router.get("/notes")
+def get_all_notes() -> dict:
+    """回傳 requirements_notes.json 全部內容。"""
+    return _load_notes()
+
+
+@router.get("/notes/by-id/{dept_id}")
+def get_notes_by_id(dept_id: str) -> dict:
+    """以系所 id 查找對應的 requirements_notes 條目。"""
+    notes = _load_notes()
+    _, i2n = _build_name_id_maps()
+    dept_name = i2n.get(dept_id, "")
+
+    # 精確比對或部分比對
+    if dept_name in notes:
+        return {"dept_id": dept_id, "dept_name": dept_name,
+                "entries": [{"key": dept_name, **notes[dept_name]}]}
+
+    # 模糊比對：找所有以 dept_name 開頭或包含的 key
+    matched = {k: v for k, v in notes.items()
+               if dept_name and (k.startswith(dept_name) or dept_name in k)}
+    if matched:
+        return {"dept_id": dept_id, "dept_name": dept_name,
+                "entries": [{"key": k, **v} for k, v in matched.items()]}
+
+    return {"dept_id": dept_id, "dept_name": dept_name, "entries": []}

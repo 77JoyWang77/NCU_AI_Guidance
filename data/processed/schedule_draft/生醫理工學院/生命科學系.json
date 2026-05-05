@@ -33,7 +33,7 @@
       "credits": 3,
       "when": "大三上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     }
   ],
@@ -42,9 +42,9 @@
       "code": "MA1001",
       "name": "微積分上",
       "credits": 4,
-      "when": "大一上~大一下",
+      "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -53,7 +53,7 @@
       "credits": 3,
       "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -62,34 +62,34 @@
       "credits": 3,
       "when": "大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CM1008",
       "name": "普化實驗",
       "credits": 1,
-      "when": "大一下",
+      "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "LS1001",
       "name": "普通生物學上",
       "credits": 3,
-      "when": "大一上~大一下",
+      "when": "大一上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "LS1002",
       "name": "普通生物學下",
       "credits": 3,
-      "when": "",
+      "when": "大一下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -98,16 +98,16 @@
       "credits": 1,
       "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "LS1004",
       "name": "普通生物學實驗下",
       "credits": 1,
-      "when": "",
+      "when": "大一下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -116,61 +116,61 @@
       "credits": 3,
       "when": "大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "LS2005",
       "name": "有機化學上",
       "credits": 3,
-      "when": "大二上~大二下",
+      "when": "大二上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "LS2006",
       "name": "有機化學下",
       "credits": 3,
-      "when": "",
+      "when": "大二下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "LS2001",
       "name": "生物化學上",
       "credits": 3,
-      "when": "大二上~大二下",
+      "when": "大二上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "LS2002",
       "name": "生物化學下",
       "credits": 3,
-      "when": "",
+      "when": "大二下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "LS2003",
       "name": "生物化學實驗上",
       "credits": 1,
-      "when": "大二上~大二下",
+      "when": "大二上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "LS2004",
       "name": "生物化學實驗下",
       "credits": 1,
-      "when": "",
+      "when": "大二下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -179,7 +179,7 @@
       "credits": 3,
       "when": "大二上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -188,7 +188,7 @@
       "credits": 3,
       "when": "大二下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -197,25 +197,25 @@
       "credits": 1,
       "when": "大二下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "LS2019",
       "name": "細胞學上",
       "credits": 2,
-      "when": "大三上~大三下",
+      "when": "大三上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "LS2020",
       "name": "細胞學下",
       "credits": 2,
-      "when": "",
+      "when": "大三下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -224,25 +224,25 @@
       "credits": 3,
       "when": "大三上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "LS3035",
       "name": "分子生物學上",
       "credits": 2,
-      "when": "大三上~大三下",
+      "when": "大三上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "LS3036",
       "name": "分子生物學下",
       "credits": 2,
-      "when": "",
+      "when": "大三下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -251,7 +251,7 @@
       "credits": 4,
       "when": "大三下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -260,25 +260,25 @@
       "credits": 1,
       "when": "大三下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "LS4001",
       "name": "書報討論I",
       "credits": 1,
-      "when": "大四上~大四下",
+      "when": "大四上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "LS4002",
       "name": "書報討論II",
       "credits": 1,
-      "when": "",
+      "when": "大四下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -287,7 +287,7 @@
       "credits": 3,
       "when": "大四上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     }
   ]

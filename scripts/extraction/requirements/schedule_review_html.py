@@ -159,6 +159,7 @@ body {{ font-family: 'Noto Sans TC', sans-serif; font-size: 13px;
 .section-hdr:hover {{ background: #d0d8dd; }}
 .section-hdr.slot-hdr {{ background: #e8f4fd; border-left: 4px solid #0984e3; }}
 .section-hdr.slot-hdr::before {{ content: '⬡ '; color: #0984e3; }}
+.dual-major-badge {{ display: inline-block; margin-left: 8px; padding: 1px 7px; background: #6c5ce7; color: #fff; border-radius: 10px; font-size: 0.75em; font-weight: 700; vertical-align: middle; letter-spacing: 0.03em; }}
 .section-body {{ overflow-x: auto; }}
 
 /* ── table ── */
@@ -308,11 +309,13 @@ function buildSections(node, container, col, dept, path) {{
       // 群組陣列（有 name/courses）
       else if (val.length && (val[0]?.courses || val[0]?.required_courses || val[0]?.name)) {{
         val.forEach((grp, gi) => {{
-          const grpLabel = label + (grp.name ? '：' + grp.name : ' ' + (gi+1));
+          const dualBadge = grp.dual_major_only ? '<span class="dual-major-badge">雙主修</span>' : '';
+          const grpLabel = label + (grp.name ? '：' + grp.name : ' ' + (gi+1)) + dualBadge;
           const newPath  = path.concat(key, gi);
           // 群組內直接課程
           if (grp.courses) addCourseTable(container, grpLabel, grp.courses, col, dept, newPath.concat('courses'));
           if (grp.required_courses) addCourseTable(container, grpLabel + '（必修）', grp.required_courses, col, dept, newPath.concat('required_courses'));
+          if (grp.elective_courses) addCourseTable(container, grpLabel + '（選修）', grp.elective_courses, col, dept, newPath.concat('elective_courses'));
           // option_a / option_b / option_c（三選N 結構）
           const OPT_LABELS = {{option_a:'選項A', option_b:'選項B', option_c:'選項C'}};
           Object.entries(OPT_LABELS).forEach(([optKey, optLabel]) => {{

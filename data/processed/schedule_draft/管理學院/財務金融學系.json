@@ -67,7 +67,7 @@
       "credits": 3,
       "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -76,7 +76,7 @@
       "credits": 3,
       "when": "大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -85,7 +85,7 @@
       "credits": 3,
       "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -94,7 +94,7 @@
       "credits": 3,
       "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -103,7 +103,7 @@
       "credits": 3,
       "when": "大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -112,7 +112,7 @@
       "credits": 3,
       "when": "大二上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -121,7 +121,7 @@
       "credits": 3,
       "when": "大二下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -130,7 +130,7 @@
       "credits": 3,
       "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     }
   ],
@@ -139,18 +139,18 @@
       "code": "MA1005",
       "name": "微積分上",
       "credits": 3,
-      "when": "大一上~大一下",
+      "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "MA1006",
       "name": "微積分下",
       "credits": 3,
-      "when": "",
+      "when": "大一下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -159,43 +159,43 @@
       "credits": 3,
       "when": "大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "FM2031",
       "name": "財務管理上",
       "credits": 3,
-      "when": "大二上~大二下",
+      "when": "大二上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "FM2032",
       "name": "財務管理下",
       "credits": 3,
-      "when": "",
+      "when": "大二下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "FM2003",
       "name": "個體經濟學",
       "credits": 3,
-      "when": "大二上~大二下",
+      "when": "大二上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "FM2004",
       "name": "總體經濟學",
       "credits": 3,
-      "when": "",
+      "when": "大二下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -204,7 +204,7 @@
       "credits": 3,
       "when": "大三上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -213,7 +213,7 @@
       "credits": 3,
       "when": "大三上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -222,7 +222,7 @@
       "credits": 3,
       "when": "大三下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -231,7 +231,7 @@
       "credits": 3,
       "when": "大三上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -240,64 +240,66 @@
       "credits": 3,
       "when": "大四上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     }
   ],
   "elective_groups": [
     {
       "name": "法律金融三擇二",
+      "dual_major_only": true,
       "select": 2,
       "courses": [
         {
           "code": "FM2009",
           "name": "民法概要",
           "credits": 3,
-          "when": "",
+          "when": "大二上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "FM3004",
           "name": "商事法",
           "credits": 3,
-          "when": "",
+          "when": "大二下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "FM4013",
           "name": "證券金融法規",
           "credits": 3,
-          "when": "",
+          "when": "大四上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ]
     },
     {
       "name": "管理二擇一",
+      "dual_major_only": true,
       "select": 1,
       "courses": [
         {
           "code": "FM2036",
           "name": "組織行為",
           "credits": 3,
-          "when": "",
+          "when": "大二下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "FM3011",
           "name": "行銷管理",
           "credits": 3,
-          "when": "",
+          "when": "大二上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ]

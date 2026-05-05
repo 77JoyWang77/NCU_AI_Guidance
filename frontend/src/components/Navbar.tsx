@@ -11,6 +11,7 @@ const navItems = [
   { path: '/course-search', label: '課程搜尋' },
   { path: '/projects', label: '研究計畫' },
   { path: '/resources', label: '資源連結' },
+  { path: '/curriculum', label: '修課規定' },
 ];
 
 function MobileMenuOverlay({

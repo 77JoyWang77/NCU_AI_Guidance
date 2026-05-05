@@ -50,36 +50,36 @@
       "code": "MA1001",
       "name": "微積分上",
       "credits": 4,
-      "when": "大一上~大一下",
+      "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "MA1002",
       "name": "微積分下",
       "credits": 4,
-      "when": "",
+      "when": "大一下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "JS1001",
       "name": "跨領域書報討論上",
       "credits": 1,
-      "when": "大一上~大一下",
+      "when": "大一上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "JS1002",
       "name": "跨領域書報討論下",
       "credits": 1,
-      "when": "",
+      "when": "大一下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -88,7 +88,7 @@
       "credits": 1,
       "when": "大四下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -97,7 +97,7 @@
       "credits": 3,
       "when": "大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     }
   ],
@@ -112,9 +112,9 @@
           "code": "PH1031",
           "name": "普通物理A上",
           "credits": 3,
-          "when": "大一上~大一下",
+          "when": "大一上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -123,7 +123,7 @@
           "credits": 3,
           "when": "大一下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ],
@@ -134,7 +134,7 @@
           "credits": 3,
           "when": "大一上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -143,7 +143,7 @@
           "credits": 3,
           "when": "大一下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ],
@@ -152,18 +152,18 @@
           "code": "LS1013",
           "name": "普通生物學上",
           "credits": 3,
-          "when": "大一上~大一下",
+          "when": "大一上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "LS1014",
           "name": "普通生物學下",
           "credits": 3,
-          "when": "",
+          "when": "大一下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ]
@@ -179,7 +179,7 @@
           "credits": 1,
           "when": "大一上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -188,7 +188,7 @@
           "credits": 1,
           "when": "大一下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -197,7 +197,7 @@
           "credits": 1,
           "when": "大一上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ]
@@ -212,7 +212,7 @@
           "credits": 1,
           "when": "大三上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -221,7 +221,7 @@
           "credits": 1,
           "when": "大三下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -230,7 +230,7 @@
           "credits": 2,
           "when": "大四上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -239,7 +239,7 @@
           "credits": 2,
           "when": "大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ]
@@ -258,72 +258,54 @@
           "code": "CM2021",
           "name": "分析化學上",
           "credits": 3,
-          "when": "大二上~大二下",
+          "when": "大二上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CM2022",
           "name": "分析化學下",
           "credits": 4,
-          "when": "",
+          "when": "大二下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CM2031",
           "name": "有機化學上",
           "credits": 4,
-          "when": "大二上~大二下",
+          "when": "大二上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CM2032",
           "name": "有機化學下",
           "credits": 4,
-          "when": "",
+          "when": "大二下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CM2081",
           "name": "分析與有機化學實驗上",
           "credits": 3,
-          "when": "大二上~大二下",
+          "when": "大二上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CM2082",
           "name": "分析與有機化學實驗下",
           "credits": 3,
-          "when": "",
+          "when": "大二下",
           "when_auto": false,
-          "verified": false,
-          "note": ""
-        },
-        {
-          "code": "CM3067",
-          "name": "生物化學上",
-          "credits": 3,
-          "when": "大三上~大三下",
-          "when_auto": true,
-          "verified": false,
-          "note": ""
-        },
-        {
-          "code": "CM3068",
-          "name": "生物化學下",
-          "credits": 3,
-          "when": "",
-          "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ],
@@ -336,18 +318,18 @@
               "code": "CM3041",
               "name": "物理化學上",
               "credits": 4,
-              "when": "大三上~大三下",
+              "when": "大三上",
               "when_auto": true,
-              "verified": false,
+              "verified": true,
               "note": ""
             },
             {
               "code": "CM3042",
               "name": "物理化學下",
               "credits": 4,
-              "when": "",
+              "when": "大三下",
               "when_auto": false,
-              "verified": false,
+              "verified": true,
               "note": ""
             }
           ],
@@ -356,21 +338,188 @@
               "code": "CM3051",
               "name": "無機化學上",
               "credits": 3,
-              "when": "大三上~大三下",
+              "when": "大三上",
               "when_auto": true,
-              "verified": false,
+              "verified": true,
               "note": ""
             },
             {
               "code": "CM3052",
               "name": "無機化學下",
               "credits": 3,
-              "when": "",
+              "when": "大三下",
               "when_auto": false,
-              "verified": false,
+              "verified": true,
               "note": ""
             }
           ]
+        }
+      ],
+      "elective_courses": [
+        {
+          "code": "CM3067",
+          "name": "生物化學上",
+          "credits": 3,
+          "when": "大三上",
+          "when_auto": true,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "CM3068",
+          "name": "生物化學下",
+          "credits": 3,
+          "when": "大三下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "CM4033",
+          "name": "高分子化學產業上",
+          "credits": 1,
+          "when": "大四上",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "CM4034",
+          "name": "高分子化學產業II",
+          "credits": 1,
+          "when": "大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "CM4035",
+          "name": "過渡金屬化學",
+          "credits": 3,
+          "when": "大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "CM6025",
+          "name": "儀器分析",
+          "credits": 4,
+          "when": "大二上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "CM6034",
+          "name": "有機光譜分析",
+          "credits": 3,
+          "when": "大二上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "CM6036",
+          "name": "有機化學特論",
+          "credits": 2,
+          "when": "大二上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "CM6054",
+          "name": "計算化學",
+          "credits": 3,
+          "when": "大二上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "CM6069",
+          "name": "共軛高分子化學與應用",
+          "credits": 3,
+          "when": "大二上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "CM6075",
+          "name": "奈米材料結構",
+          "credits": 3,
+          "when": "大二上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "CM6028",
+          "name": "環境化學I",
+          "credits": 2,
+          "when": "大二上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "CM6029",
+          "name": "環境化學II",
+          "credits": 2,
+          "when": "大二上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "CM6021",
+          "name": "高等分析化學",
+          "credits": 3,
+          "when": "大二上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "CM6031",
+          "name": "高等有機化學",
+          "credits": 3,
+          "when": "大二上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "CM6041",
+          "name": "高等物理化學",
+          "credits": 3,
+          "when": "大二上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "CM6051",
+          "name": "高等無機化學",
+          "credits": 3,
+          "when": "大二上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        }
+      ],
+      "graduation_rules": [
+        {
+          "type": "first_domain_minimum",
+          "credits": 27,
+          "description": "第一領域專長：必修 27 學分，至少修 33 學分"
+        },
+        {
+          "type": "second_domain_minimum",
+          "credits": 15,
+          "description": "第二領域專長：必修 15 學分，至少修 20 學分"
         }
       ]
     },
@@ -386,18 +535,18 @@
           "code": "LS2001",
           "name": "生物化學上",
           "credits": 3,
-          "when": "大二上~大二下",
+          "when": "大二上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "LS2002",
           "name": "生物化學下",
           "credits": 3,
-          "when": "",
+          "when": "大二下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -406,7 +555,7 @@
           "credits": 3,
           "when": "大二下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -415,7 +564,7 @@
           "credits": 4,
           "when": "大三下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ],
@@ -426,25 +575,25 @@
           "credits": 3,
           "when": "大三上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "LS2019",
           "name": "細胞學上",
           "credits": 2,
-          "when": "大三上~大三下",
+          "when": "大三上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "LS2020",
           "name": "細胞學下",
           "credits": 2,
-          "when": "",
+          "when": "大三下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -453,8 +602,155 @@
           "credits": 3,
           "when": "大二上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
+        },
+        {
+          "code": "LS3016",
+          "name": "海洋生物學",
+          "credits": 2,
+          "when": "大三下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "LS3030",
+          "name": "親緣樹形圖的分析與應用",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "LS3035",
+          "name": "分子生物學上",
+          "credits": 2,
+          "when": "大三上",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "LS3036",
+          "name": "分子生物學下",
+          "credits": 2,
+          "when": "大三下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "LS4015",
+          "name": "生態學",
+          "credits": 3,
+          "when": "大四上",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "LS5016",
+          "name": "分子演化及親源演化關係",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "LS5032",
+          "name": "植物組織培養",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "LS5037",
+          "name": "環境生物學",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "LS5038",
+          "name": "癌症生物學",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "LS5055",
+          "name": "進階生物演化",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "LS6024",
+          "name": "生物技術I",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "LS7016",
+          "name": "生物資訊及應用",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "LS7021",
+          "name": "前瞻植物與微生物學",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "HT3001",
+          "name": "生物統計學-R語言應用",
+          "credits": 3,
+          "when": "大三上",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "LS1018",
+          "name": "昆蟲世界",
+          "credits": 2,
+          "when": "大一下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        }
+      ],
+      "graduation_rules": [
+        {
+          "type": "first_domain_minimum",
+          "credits": 13,
+          "description": "第一領域專長：必修 13 學分，至少修 33 學分"
+        },
+        {
+          "type": "second_domain_minimum",
+          "credits": 13,
+          "description": "第二領域專長：必修 13 學分，至少修 20 學分"
         }
       ]
     },
@@ -470,7 +766,7 @@
           "required_courses": [
             {
               "code": "BM2014",
-              "name": "醫療器材設計",
+              "name": "醫療器材設計原理及其應用",
               "credits": 3,
               "when": "大二上",
               "when_auto": true,
@@ -497,7 +793,7 @@
             },
             {
               "code": "HT3001",
-              "name": "生物統計學",
+              "name": "生物統計學-R語言應用",
               "credits": 3,
               "when": "大三上",
               "when_auto": true,
@@ -521,7 +817,114 @@
               "when_auto": true,
               "verified": false,
               "note": ""
+            }
+          ],
+          "elective_courses": [
+            {
+              "code": "BM1010",
+              "name": "認知心理學概論",
+              "credits": 3,
+              "when": "大一下",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
             },
+            {
+              "code": "BM2005",
+              "name": "認知神經科學",
+              "credits": 3,
+              "when": "大二上",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "BM2010",
+              "name": "工程數學上",
+              "credits": 3,
+              "when": "大二上",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "BM2011",
+              "name": "工程數學下",
+              "credits": 3,
+              "when": "大二下",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "BM2012",
+              "name": "電子電路學",
+              "credits": 3,
+              "when": "大二上",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "BM2013",
+              "name": "電子電路學實驗",
+              "credits": 1,
+              "when": "大二下",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "BM3018",
+              "name": "數據科學導論",
+              "credits": 3,
+              "when": "大三上",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "BM3029",
+              "name": "統計機器學習基礎",
+              "credits": 3,
+              "when": "大三下",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "BM3033",
+              "name": "生醫技術暨微奈米晶片設計與應用",
+              "credits": 3,
+              "when": "大三上",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            }
+          ],
+          "second_domain_required": 16,
+          "second_domain_min": 20,
+          "graduation_rules": [
+            {
+              "type": "first_domain_minimum",
+              "credits": 16,
+              "description": "第一領域專長：必修 16 學分，至少修 33 學分"
+            },
+            {
+              "type": "second_domain_minimum",
+              "credits": 16,
+              "description": "第二領域專長：必修 16 學分，至少修 20 學分"
+            },
+            {
+              "type": "restriction",
+              "description": "A組等同「生醫科學組」"
+            }
+          ]
+        },
+        {
+          "id": "track_sci_biomedical_b",
+          "name": "B組_醫學工程與資料科學組",
+          "required_courses": [
             {
               "code": "BM2012",
               "name": "電子電路學",
@@ -539,16 +942,10 @@
               "when_auto": true,
               "verified": false,
               "note": ""
-            }
-          ]
-        },
-        {
-          "id": "track_sci_biomedical_b",
-          "name": "B組_醫學工程與資料科學組",
-          "required_courses": [
+            },
             {
               "code": "BM2014",
-              "name": "醫療器材設計",
+              "name": "醫療器材設計原理及其應用",
               "credits": 3,
               "when": "大二上",
               "when_auto": true,
@@ -566,7 +963,7 @@
             },
             {
               "code": "HT3001",
-              "name": "生物統計學",
+              "name": "生物統計學-R語言應用",
               "credits": 3,
               "when": "大三上",
               "when_auto": true,
@@ -581,7 +978,9 @@
               "when_auto": true,
               "verified": false,
               "note": ""
-            },
+            }
+          ],
+          "elective_courses": [
             {
               "code": "BM1011",
               "name": "人工智慧程式入門",
@@ -595,7 +994,7 @@
               "code": "BM2010",
               "name": "工程數學上",
               "credits": 3,
-              "when": "大二上~大二下",
+              "when": "大二上",
               "when_auto": true,
               "verified": false,
               "note": ""
@@ -604,28 +1003,111 @@
               "code": "BM2011",
               "name": "工程數學下",
               "credits": 3,
-              "when": "",
+              "when": "大二下",
               "when_auto": false,
               "verified": false,
               "note": ""
             },
             {
-              "code": "BM2012",
-              "name": "電子電路學",
+              "code": "BM2040",
+              "name": "資料結構",
               "credits": 3,
-              "when": "大二上",
-              "when_auto": true,
+              "when": "大二下",
+              "when_auto": false,
               "verified": false,
               "note": ""
             },
             {
-              "code": "BM2013",
-              "name": "電子電路學實驗",
-              "credits": 1,
+              "code": "BM2041",
+              "name": "作業系統概論",
+              "credits": 3,
               "when": "大二下",
-              "when_auto": true,
+              "when_auto": false,
               "verified": false,
               "note": ""
+            },
+            {
+              "code": "BM2042",
+              "name": "醫用物理",
+              "credits": 3,
+              "when": "大二下",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "BM2043",
+              "name": "微電子學",
+              "credits": 3,
+              "when": "大二下",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "BM3022",
+              "name": "演算法",
+              "credits": 3,
+              "when": "大三下",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "BM3023",
+              "name": "線性代數",
+              "credits": 3,
+              "when": "大二上",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "BM3027",
+              "name": "訊號與系統",
+              "credits": 3,
+              "when": "大三上",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "BM3028",
+              "name": "微處理器與嵌入式系統",
+              "credits": 3,
+              "when": "大三上",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "BM3029",
+              "name": "統計機器學習基礎",
+              "credits": 3,
+              "when": "大三下",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            }
+          ],
+          "first_domain_required": 16,
+          "first_domain_min": 33,
+          "second_domain_required": 16,
+          "second_domain_min": 20,
+          "graduation_rules": [
+            {
+              "type": "first_domain_minimum",
+              "credits": 16,
+              "description": "第一領域專長：必修 16 學分，至少修 33 學分"
+            },
+            {
+              "type": "second_domain_minimum",
+              "credits": 16,
+              "description": "第二領域專長：必修 16 學分，至少修 20 學分"
+            },
+            {
+              "type": "restriction",
+              "description": "B組等同「醫學工程與資料科學組」"
             }
           ]
         }
@@ -635,7 +1117,207 @@
       "id": "track_sci_photonics",
       "name": "光電科學與工程領域",
       "first_domain_min": 33,
-      "second_domain_min": 20
+      "second_domain_min": 20,
+      "elective_note": "修業期間至少選修並通過本系所（OS開頭課號）選修科目12學分（專題類課程除外）",
+      "required_courses": [
+        {
+          "code": "OS1006",
+          "name": "光電科技概論I",
+          "credits": 1,
+          "when": "大一上",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "OS1007",
+          "name": "光電科技概論II",
+          "credits": 1,
+          "when": "大一下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "OS1008",
+          "name": "計算機概論",
+          "credits": 3,
+          "when": "大一上",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "OS2007",
+          "name": "工程數學I",
+          "credits": 3,
+          "when": "大一下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "OS2008",
+          "name": "工程數學II",
+          "credits": 3,
+          "when": "大二上",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "OS2003",
+          "name": "電磁學I",
+          "credits": 3,
+          "when": "大二上",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "OS2004",
+          "name": "電磁學II",
+          "credits": 3,
+          "when": "大二下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "OS2013",
+          "name": "基礎電學I",
+          "credits": 4,
+          "when": "大二上",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "OS2014",
+          "name": "基礎電學II",
+          "credits": 4,
+          "when": "大二下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "OS2015",
+          "name": "電子實驗I",
+          "credits": 1,
+          "when": "大二上",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "OS2016",
+          "name": "電子實驗II",
+          "credits": 1,
+          "when": "大二下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "OS2017",
+          "name": "基礎光學與幾何光學",
+          "credits": 3,
+          "when": "大二上",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "OS2018",
+          "name": "波動光學",
+          "credits": 3,
+          "when": "大二下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "OS3016",
+          "name": "電磁光學",
+          "credits": 3,
+          "when": "大三上",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "OS3011",
+          "name": "光學實驗",
+          "credits": 1,
+          "when": "大三上",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "OS2001",
+          "name": "近代物理",
+          "credits": 3,
+          "when": "大二下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "OS3001",
+          "name": "光學系統",
+          "credits": 3,
+          "when": "大三下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "OS2011",
+          "name": "光電半導體物理",
+          "credits": 3,
+          "when": "大三上",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "OS3002",
+          "name": "光電工程概論",
+          "credits": 3,
+          "when": "大三下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "OS3010",
+          "name": "光電實驗",
+          "credits": 1,
+          "when": "大三下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        }
+      ],
+      "graduation_rules": [
+        {
+          "type": "first_domain_minimum",
+          "credits": 33,
+          "description": "第一領域專長：至少修 33 學分"
+        },
+        {
+          "type": "second_domain_minimum",
+          "credits": 20,
+          "description": "第二領域專長：至少修 20 學分"
+        },
+        {
+          "type": "elective_min",
+          "credits": 12,
+          "description": "修業期間內至少選修並通過本系所（OS開頭課號）選修科目 12 學分（專題類課程除外）"
+        }
+      ]
     },
     {
       "id": "track_sci_physics",
@@ -647,91 +1329,537 @@
           "code": "PH1027",
           "name": "力學",
           "credits": 4,
-          "when": "大一上",
+          "when": "大二上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "PH1028",
           "name": "電磁學",
           "credits": 4,
-          "when": "大一下",
+          "when": "大二下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "PH3009",
           "name": "量子物理",
           "credits": 3,
-          "when": "大二下",
+          "when": "大三下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "PH3011",
           "name": "熱物理",
           "credits": 3,
-          "when": "大二上",
+          "when": "大三上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
-        },
+        }
+      ],
+      "elective_courses": [
         {
           "code": "PH1029",
           "name": "實驗物理I上",
           "credits": 6,
-          "when": "大一上~大一下",
+          "when": "大二上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "PH1030",
           "name": "實驗物理I下",
           "credits": 6,
-          "when": "",
+          "when": "大二下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "PH2003",
           "name": "應用數學上",
           "credits": 3,
-          "when": "大二上~大二下",
+          "when": "大二上~大三下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "PH2004",
           "name": "應用數學下",
           "credits": 3,
-          "when": "",
+          "when": "大二上~大三下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH2010",
+          "name": "波動物理學",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "PH2029",
           "name": "實驗物理II上",
           "credits": 6,
-          "when": "大二上~大二下",
+          "when": "大三上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "PH2030",
           "name": "實驗物理II下",
           "credits": 6,
-          "when": "",
+          "when": "大三下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
+        },
+        {
+          "code": "PH2033",
+          "name": "普通天文學I",
+          "credits": 3,
+          "when": "大二上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH2034",
+          "name": "普通天文學II",
+          "credits": 3,
+          "when": "大二上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH2035",
+          "name": "近代物理導論",
+          "credits": 3,
+          "when": "大二上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH3008",
+          "name": "量子力學導論",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH3010",
+          "name": "量子與統計物理",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH3029",
+          "name": "物理數學I",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH3030",
+          "name": "物理數學II",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH3036",
+          "name": "近代物理實驗",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH3042",
+          "name": "固態物理導論",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH3045",
+          "name": "天文觀測I",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH3048",
+          "name": "生物物理導論",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH3054",
+          "name": "天文物理導論",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH3057",
+          "name": "計算物理導論",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH3059",
+          "name": "光學I",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH3060",
+          "name": "光學II",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH3063",
+          "name": "電子學（含實驗）I",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH3064",
+          "name": "電子學（含實驗）II",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH3066",
+          "name": "用Python做天文物理",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH4029",
+          "name": "流體力學導論",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH4035",
+          "name": "相對論導論",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH4040",
+          "name": "高能物理導論",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH6003",
+          "name": "量子力學I",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH6004",
+          "name": "量子力學II",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH6005",
+          "name": "電動力學I",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH6006",
+          "name": "電動力學II",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH6007",
+          "name": "古典力學I",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH6008",
+          "name": "古典力學II",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH6012",
+          "name": "統計力學I",
+          "credits": 3,
+          "when": "大四上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH6013",
+          "name": "計算物理",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH6029",
+          "name": "量子場論I",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH6031",
+          "name": "流體力學",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH6032",
+          "name": "電漿物理",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH6033",
+          "name": "固態物理I",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH6048",
+          "name": "量子場論",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH6049",
+          "name": "統計力學II",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH6058",
+          "name": "原子分子物理",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH6059",
+          "name": "生物物理",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH6070",
+          "name": "非線性動力學",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH7009",
+          "name": "群論與對稱",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH7014",
+          "name": "廣義相對論",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH7015",
+          "name": "表面物理",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH7024",
+          "name": "軟凝體物理",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH7030",
+          "name": "複雜系統",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH7044",
+          "name": "量子計算與量子資訊",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH7046",
+          "name": "現代宇宙學",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH7062",
+          "name": "重力波與多重訊息觀測",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        },
+        {
+          "code": "PH7064",
+          "name": "量子光學",
+          "credits": 3,
+          "when": "大三上~大四下",
+          "when_auto": false,
+          "verified": true,
+          "note": ""
+        }
+      ],
+      "graduation_rules": [
+        {
+          "type": "first_domain_minimum",
+          "credits": 14,
+          "description": "第一領域專長：必修 14 學分，至少修 33 學分"
+        },
+        {
+          "type": "second_domain_minimum",
+          "credits": 20,
+          "description": "第二領域專長：至少修 20 學分"
         }
       ]
     },
@@ -778,6 +1906,145 @@
               "when_auto": false,
               "verified": false,
               "note": ""
+            },
+            {
+              "code": "MA2021",
+              "name": "機率論",
+              "credits": 3,
+              "when": "",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "MA2025",
+              "name": "代數I",
+              "credits": 3,
+              "when": "",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "MA2041",
+              "name": "微分方程I",
+              "credits": 3,
+              "when": "",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            }
+          ],
+          "elective_courses": [
+            {
+              "code": "MA2026",
+              "name": "代數II",
+              "credits": 3,
+              "when": "",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "MA2042",
+              "name": "微分方程II",
+              "credits": 3,
+              "when": "",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "MA2047",
+              "name": "高等微積分III",
+              "credits": 3,
+              "when": "",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "MA2051",
+              "name": "程式語言及其應用",
+              "credits": 3,
+              "when": "",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "MA3003",
+              "name": "拓樸學",
+              "credits": 3,
+              "when": "",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "MA3015",
+              "name": "複變函數論I",
+              "credits": 3,
+              "when": "",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "MA3025",
+              "name": "數理統計I",
+              "credits": 3,
+              "when": "",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "MA3034",
+              "name": "離散數學I",
+              "credits": 3,
+              "when": "",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "MA3036",
+              "name": "近世代數",
+              "credits": 3,
+              "when": "",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "MA4005",
+              "name": "幾何學I",
+              "credits": 3,
+              "when": "",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            }
+          ],
+          "first_domain_required": 23,
+          "first_domain_min": 32,
+          "second_domain_required": 14,
+          "second_domain_min": 20,
+          "graduation_rules": [
+            {
+              "type": "first_domain_minimum",
+              "credits": 23,
+              "description": "第一領域專長：必修 23 學分，至少修 32 學分"
+            },
+            {
+              "type": "second_domain_minimum",
+              "credits": 14,
+              "description": "第二領域專長：必修 14 學分，至少修 20 學分"
+            },
+            {
+              "type": "restriction",
+              "description": "A組等同「數學科學組」"
             }
           ]
         },
@@ -820,6 +2087,154 @@
               "when_auto": false,
               "verified": false,
               "note": ""
+            },
+            {
+              "code": "MA2011",
+              "name": "統計學",
+              "credits": 3,
+              "when": "",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "MA2021",
+              "name": "機率論",
+              "credits": 3,
+              "when": "",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "MA2044",
+              "name": "數值微分方程",
+              "credits": 3,
+              "when": "",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "MA2063",
+              "name": "最佳化方法與應用",
+              "credits": 3,
+              "when": "",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            }
+          ],
+          "elective_courses": [
+            {
+              "code": "MA1018",
+              "name": "科學計算導論",
+              "credits": 3,
+              "when": "",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "MA2030",
+              "name": "數值線性代數",
+              "credits": 3,
+              "when": "",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "MA3067",
+              "name": "數學建模",
+              "credits": 3,
+              "when": "",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "MA3111",
+              "name": "數學影像處理",
+              "credits": 3,
+              "when": "",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "MA3121",
+              "name": "金融數學導論",
+              "credits": 3,
+              "when": "",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "MA3131",
+              "name": "資料科學導論",
+              "credits": 3,
+              "when": "",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "MA3103",
+              "name": "科學計算專題I",
+              "credits": 3,
+              "when": "",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "MA3113",
+              "name": "影像處理專題I",
+              "credits": 3,
+              "when": "",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "MA3123",
+              "name": "金融數學專題I",
+              "credits": 3,
+              "when": "",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            },
+            {
+              "code": "MA3133",
+              "name": "資料科學專題I",
+              "credits": 3,
+              "when": "",
+              "when_auto": false,
+              "verified": false,
+              "note": ""
+            }
+          ],
+          "first_domain_required": 24,
+          "first_domain_min": 33,
+          "second_domain_required": 12,
+          "second_domain_min": 20,
+          "graduation_rules": [
+            {
+              "type": "first_domain_minimum",
+              "credits": 24,
+              "description": "第一領域專長：必修 24 學分，至少修 33 學分"
+            },
+            {
+              "type": "second_domain_minimum",
+              "credits": 12,
+              "description": "第二領域專長：必修 12 學分，至少修 20 學分"
+            },
+            {
+              "type": "restriction",
+              "description": "B組等同「計算與資料科學組」"
             }
           ]
         }
@@ -838,9 +2253,9 @@
           "name": "經濟學上",
           "credits": 3,
           "college": "管理學院",
-          "when": "大一上~大一下",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -848,9 +2263,9 @@
           "name": "經濟學下",
           "credits": 3,
           "college": "管理學院",
-          "when": "",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -858,9 +2273,9 @@
           "name": "會計學上",
           "credits": 3,
           "college": "管理學院",
-          "when": "大一上~大一下",
+          "when": "大一上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -868,9 +2283,9 @@
           "name": "會計學下",
           "credits": 3,
           "college": "管理學院",
-          "when": "",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -878,9 +2293,9 @@
           "name": "統計學上",
           "credits": 3,
           "college": "管理學院",
-          "when": "大二上~大二下",
+          "when": "大一上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -888,9 +2303,9 @@
           "name": "統計學下",
           "credits": 3,
           "college": "管理學院",
-          "when": "",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -898,9 +2313,9 @@
           "name": "企業概論",
           "credits": 3,
           "college": "管理學院",
-          "when": "大一上",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -908,9 +2323,9 @@
           "name": "應用力學",
           "credits": 3,
           "college": "工學院",
-          "when": "大一下",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -918,9 +2333,9 @@
           "name": "工程材料學",
           "credits": 3,
           "college": "工學院",
-          "when": "大一下",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -928,9 +2343,9 @@
           "name": "動力學",
           "credits": 3,
           "college": "工學院",
-          "when": "大二上",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -938,9 +2353,9 @@
           "name": "材料科學",
           "credits": 3,
           "college": "工學院",
-          "when": "大二上",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -948,9 +2363,9 @@
           "name": "材料工程概論I",
           "credits": 3,
           "college": "工學院",
-          "when": "大一上~大一下",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -958,9 +2373,9 @@
           "name": "電路學I",
           "credits": 3,
           "college": "資電學院",
-          "when": "大一下~大二上",
+          "when": "大一上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -968,9 +2383,9 @@
           "name": "電路學II",
           "credits": 3,
           "college": "資電學院",
-          "when": "",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -978,9 +2393,9 @@
           "name": "電子學I",
           "credits": 3,
           "college": "資電學院",
-          "when": "大二上~大二下",
+          "when": "大一上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -988,9 +2403,9 @@
           "name": "電子學II",
           "credits": 3,
           "college": "資電學院",
-          "when": "",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -998,9 +2413,9 @@
           "name": "計算機概論I",
           "credits": 3,
           "college": "資電學院",
-          "when": "大一上",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -1008,9 +2423,9 @@
           "name": "通訊原理I",
           "credits": 3,
           "college": "資電學院",
-          "when": "大三上~大三下",
+          "when": "大一上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -1018,9 +2433,9 @@
           "name": "通訊原理II",
           "credits": 3,
           "college": "資電學院",
-          "when": "",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -1028,9 +2443,9 @@
           "name": "訊號與系統",
           "credits": 3,
           "college": "資電學院",
-          "when": "大一上",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -1038,9 +2453,9 @@
           "name": "地球系統科學概論",
           "credits": 2,
           "college": "地科學院",
-          "when": "大一上",
+          "when": "大一上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -1048,9 +2463,9 @@
           "name": "地球系統科學概論（地質組）",
           "credits": 2,
           "college": "地科學院",
-          "when": "",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -1058,9 +2473,9 @@
           "name": "地球系統科學概論（海洋組）",
           "credits": 2,
           "college": "地科學院",
-          "when": "",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -1068,9 +2483,9 @@
           "name": "氣候變遷與地球災害概論",
           "credits": 2,
           "college": "地科學院",
-          "when": "大三下",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -1078,9 +2493,9 @@
           "name": "全球環境變遷",
           "credits": 2,
           "college": "地科學院",
-          "when": "大一上",
+          "when": "大一上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -1088,9 +2503,9 @@
           "name": "大氣熱力學",
           "credits": 3,
           "college": "地科學院",
-          "when": "大二下",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -1098,9 +2513,9 @@
           "name": "太空物理學I",
           "credits": 3,
           "college": "地科學院",
-          "when": "",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -1108,9 +2523,9 @@
           "name": "太空物理學II",
           "credits": 3,
           "college": "地科學院",
-          "when": "",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -1118,9 +2533,9 @@
           "name": "普通地質學",
           "credits": 2,
           "college": "地科學院",
-          "when": "大一上~大一下",
+          "when": "大一上~大四下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -1128,9 +2543,9 @@
           "name": "遙測科學導論",
           "credits": 2,
           "college": "地科學院",
-          "when": "大一上",
+          "when": "大一上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ]

@@ -22,7 +22,7 @@
     {
       "type": "professional_minimum",
       "credits": 48,
-      "description": "專業學科類至少 48 學分（必修6＋必選12＋自選≥27，另加EL1203等選修）"
+      "description": "專業學科類至少 48 學分（必修9＋必選12＋自選≥27）"
     },
     {
       "type": "free_elective",
@@ -48,7 +48,7 @@
       "category": "語言訓練類",
       "when": "大一上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -58,7 +58,7 @@
       "category": "語言訓練類",
       "when": "大一上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -68,7 +68,7 @@
       "category": "語言訓練類",
       "when": "大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -78,7 +78,7 @@
       "category": "語言訓練類",
       "when": "大二上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -88,7 +88,17 @@
       "category": "語言訓練類",
       "when": "大二上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
+      "note": ""
+    },
+    {
+      "code": "EL1203",
+      "name": "殖民現代性",
+      "credits": 3,
+      "category": "專業學科類",
+      "when": "大一下",
+      "when_auto": true,
+      "verified": true,
       "note": ""
     },
     {
@@ -98,7 +108,7 @@
       "category": "專業學科類",
       "when": "大一上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -108,7 +118,7 @@
       "category": "專業學科類",
       "when": "大一上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     }
   ],
@@ -124,7 +134,7 @@
           "credits": 3,
           "when": "大三上~大三下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -133,68 +143,59 @@
           "credits": 3,
           "when": "大四上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ]
     },
     {
-      "name": "專業學科類必選（六擇四）",
+      "name": "專業學科類必選（五擇四）",
       "select": 4,
       "category": "專業學科類",
       "courses": [
-        {
-          "code": "EL1203",
-          "name": "殖民現代性",
-          "credits": 3,
-          "when": "大一下",
-          "when_auto": true,
-          "verified": false,
-          "note": ""
-        },
         {
           "code": "EL2005",
           "name": "英語語言學概論",
           "credits": 3,
           "when": "大二上~大二下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "EL3201",
           "name": "英國文學研究",
           "credits": 3,
-          "when": "大二上",
+          "when": "大二上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "EL3202",
           "name": "英語系研究",
           "credits": 3,
-          "when": "大三下",
+          "when": "大三下~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "EL3203",
           "name": "美國研究I",
           "credits": 3,
-          "when": "大二上",
+          "when": "大二上~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "EL3204",
           "name": "美國研究II",
           "credits": 3,
-          "when": "大三下",
+          "when": "大三下~大四下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ]

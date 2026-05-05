@@ -53,27 +53,27 @@
       "code": "MA1003",
       "name": "微積分上",
       "credits": 3,
-      "when": "大一上~大一下",
+      "when": "大一上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "MA1004",
       "name": "微積分下",
       "credits": 3,
-      "when": "",
+      "when": "大一下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "PH1031",
       "name": "普通物理A上",
       "credits": 3,
-      "when": "大一上~大一下",
+      "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -82,7 +82,7 @@
       "credits": 3,
       "when": "大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -91,7 +91,7 @@
       "credits": 1,
       "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -100,7 +100,7 @@
       "credits": 1,
       "when": "大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -109,7 +109,7 @@
       "credits": 3,
       "when": "大一上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -118,7 +118,7 @@
       "credits": 1,
       "when": "大一上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -127,7 +127,7 @@
       "credits": 3,
       "when": "大一上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -136,7 +136,7 @@
       "credits": 1,
       "when": "大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -145,7 +145,7 @@
       "credits": 3,
       "when": "大一上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -154,7 +154,7 @@
       "credits": 3,
       "when": "大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -163,7 +163,7 @@
       "credits": 3,
       "when": "大二上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -172,7 +172,7 @@
       "credits": 3,
       "when": "大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -181,7 +181,7 @@
       "credits": 3,
       "when": "大二上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -190,61 +190,61 @@
       "credits": 1,
       "when": "大二下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CO3003",
       "name": "機率",
       "credits": 3,
-      "when": "大一上",
+      "when": "大二下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CO3004",
       "name": "訊號與系統",
       "credits": 3,
-      "when": "大一上",
+      "when": "大二下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CO3001",
       "name": "通訊實驗I",
       "credits": 1,
-      "when": "大三上~大三下",
+      "when": "大三上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CO3002",
       "name": "通訊實驗II",
       "credits": 1,
-      "when": "",
+      "when": "大三下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CO3007",
       "name": "通訊原理I",
       "credits": 3,
-      "when": "大三上~大三下",
+      "when": "大三上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "CO3008",
       "name": "通訊原理II",
       "credits": 3,
-      "when": "",
+      "when": "大三下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -253,7 +253,7 @@
       "credits": 3,
       "when": "大三上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -262,7 +262,7 @@
       "credits": 3,
       "when": "大三下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     }
   ],
@@ -278,7 +278,7 @@
           "credits": 3,
           "when": "大二下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -287,7 +287,7 @@
           "credits": 3,
           "when": "大二上",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -296,7 +296,7 @@
           "credits": 3,
           "when": "大二下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ],
@@ -310,54 +310,54 @@
               "code": "EE3001",
               "name": "電子學III",
               "credits": 3,
-              "when": "大三上",
+              "when": "大三上~大四下",
               "when_auto": true,
-              "verified": false,
+              "verified": true,
               "note": ""
             },
             {
               "code": "EE4034",
               "name": "微波系統導論",
               "credits": 3,
-              "when": "大三上",
+              "when": "大三上~大四下",
               "when_auto": true,
-              "verified": false,
+              "verified": true,
               "note": ""
             },
             {
               "code": "EE4038",
               "name": "天線工程導論",
               "credits": 3,
-              "when": "大三上",
+              "when": "大三上~大四下",
               "when_auto": true,
-              "verified": false,
+              "verified": true,
               "note": ""
             },
             {
               "code": "EE4032",
               "name": "類比積體電路導論",
               "credits": 3,
-              "when": "大三上",
+              "when": "大三上~大四下",
               "when_auto": true,
-              "verified": false,
+              "verified": true,
               "note": ""
             },
             {
               "code": "EE3032",
               "name": "超大型積體電路導論",
               "credits": 3,
-              "when": "大三上",
+              "when": "大三上~大四下",
               "when_auto": true,
-              "verified": false,
+              "verified": true,
               "note": ""
             },
             {
               "code": "EE4012",
               "name": "超大型積體電路系統設計",
               "credits": 3,
-              "when": "大三上",
+              "when": "大三上~大四下",
               "when_auto": true,
-              "verified": false,
+              "verified": true,
               "note": ""
             }
           ]
@@ -373,18 +373,18 @@
           "code": "CO3005",
           "name": "網路概論",
           "credits": 3,
-          "when": "大一上",
+          "when": "大二下",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
           "code": "CO2012",
           "name": "資料結構",
           "credits": 3,
-          "when": "大一上",
+          "when": "大二上",
           "when_auto": false,
-          "verified": false,
+          "verified": true,
           "note": ""
         },
         {
@@ -393,7 +393,7 @@
           "credits": 3,
           "when": "大二下",
           "when_auto": true,
-          "verified": false,
+          "verified": true,
           "note": ""
         }
       ],
@@ -403,8 +403,24 @@
           "select": 2,
           "min_credits": 6,
           "courses": [
-            { "code": "CE3002", "name": "作業系統",   "credits": 3, "when": "大二下", "when_auto": false, "verified": false, "note": "" },
-            { "code": "CO3006", "name": "微算機原理", "credits": 3, "when": "大一上", "when_auto": true,  "verified": false, "note": "" }
+            {
+              "code": "CE3002",
+              "name": "作業系統",
+              "credits": 3,
+              "when": "大二上~大四下",
+              "when_auto": false,
+              "verified": true,
+              "note": ""
+            },
+            {
+              "code": "CO3006",
+              "name": "微算機原理",
+              "credits": 3,
+              "when": "大二上~大四下",
+              "when_auto": true,
+              "verified": true,
+              "note": ""
+            }
           ],
           "slots": [
             {
@@ -412,8 +428,24 @@
               "slot_name": "離散數學（CO3019 / CE2003）",
               "select": 1,
               "courses": [
-                { "code": "CO3019", "name": "離散數學", "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" },
-                { "code": "CE2003", "name": "離散數學", "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" }
+                {
+                  "code": "CO3019",
+                  "name": "離散數學",
+                  "credits": 3,
+                  "when": "大二上~大四下",
+                  "when_auto": false,
+                  "verified": true,
+                  "note": ""
+                },
+                {
+                  "code": "CE2003",
+                  "name": "離散數學",
+                  "credits": 3,
+                  "when": "大二上~大四下",
+                  "when_auto": false,
+                  "verified": true,
+                  "note": ""
+                }
               ]
             },
             {
@@ -421,9 +453,33 @@
               "slot_name": "計算機組織（CO3020 / CE3001 / EE3035）",
               "select": 1,
               "courses": [
-                { "code": "CO3020", "name": "計算機組織", "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" },
-                { "code": "CE3001", "name": "計算機組織", "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" },
-                { "code": "EE3035", "name": "計算機組織", "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" }
+                {
+                  "code": "CO3020",
+                  "name": "計算機組織",
+                  "credits": 3,
+                  "when": "大二上~大四下",
+                  "when_auto": false,
+                  "verified": true,
+                  "note": ""
+                },
+                {
+                  "code": "CE3001",
+                  "name": "計算機組織",
+                  "credits": 3,
+                  "when": "大二上~大四下",
+                  "when_auto": false,
+                  "verified": true,
+                  "note": ""
+                },
+                {
+                  "code": "EE3035",
+                  "name": "計算機組織",
+                  "credits": 3,
+                  "when": "大二上~大四下",
+                  "when_auto": false,
+                  "verified": true,
+                  "note": ""
+                }
               ]
             },
             {
@@ -431,8 +487,24 @@
               "slot_name": "深度學習程式設計（CO3027 / EE3054）",
               "select": 1,
               "courses": [
-                { "code": "CO3027", "name": "深度學習程式設計", "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" },
-                { "code": "EE3054", "name": "深度學習程式設計", "credits": 3, "when": "", "when_auto": false, "verified": false, "note": "" }
+                {
+                  "code": "CO3027",
+                  "name": "深度學習程式設計",
+                  "credits": 3,
+                  "when": "大二上~大四下",
+                  "when_auto": false,
+                  "verified": true,
+                  "note": ""
+                },
+                {
+                  "code": "EE3054",
+                  "name": "深度學習程式設計",
+                  "credits": 3,
+                  "when": "大二上~大四下",
+                  "when_auto": false,
+                  "verified": true,
+                  "note": ""
+                }
               ]
             }
           ]

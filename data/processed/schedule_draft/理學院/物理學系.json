@@ -28,7 +28,9 @@
     },
     {
       "type": "thesis_requirement",
-      "tracks": ["乙類"],
+      "tracks": [
+        "乙類"
+      ],
       "description": "乙類學生須：(1)參加物理小年會壁報展並報告；(2)完成畢業論文（格式比照碩士論文）並繳交 PDF 至系辦；(3)通過至少二位委員組成之論文口試"
     },
     {
@@ -47,36 +49,36 @@
       "code": "MA1001",
       "name": "微積分上",
       "credits": 4,
-      "when": "大一上~大一下",
+      "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "MA1002",
       "name": "微積分下",
       "credits": 4,
-      "when": "",
+      "when": "大一下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "PH1029",
       "name": "實驗物理與方法I上",
       "credits": 6,
-      "when": "大一上~大一下",
+      "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "PH1030",
       "name": "實驗物理與方法I下",
       "credits": 6,
-      "when": "",
+      "when": "大一下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -85,7 +87,7 @@
       "credits": 4,
       "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -94,25 +96,25 @@
       "credits": 4,
       "when": "大一下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "PH2003",
       "name": "應用數學上",
       "credits": 3,
-      "when": "大二上~大二下",
+      "when": "大二上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "PH2004",
       "name": "應用數學下",
       "credits": 3,
-      "when": "",
+      "when": "大二下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -121,7 +123,7 @@
       "credits": 3,
       "when": "大二上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -130,25 +132,25 @@
       "credits": 3,
       "when": "大二下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "PH2029",
       "name": "實驗物理與方法II上",
       "credits": 6,
-      "when": "大二上~大二下",
+      "when": "大二上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "PH2030",
       "name": "實驗物理與方法II下",
       "credits": 6,
-      "when": "",
+      "when": "大二下",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     }
   ]

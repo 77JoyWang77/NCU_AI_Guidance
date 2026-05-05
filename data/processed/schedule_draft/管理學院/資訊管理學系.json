@@ -60,7 +60,7 @@
       "credits": 3,
       "when": "大二上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -69,7 +69,7 @@
       "credits": 3,
       "when": "大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -78,7 +78,7 @@
       "credits": 3,
       "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -87,7 +87,7 @@
       "credits": 3,
       "when": "大一上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -96,7 +96,7 @@
       "credits": 3,
       "when": "大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -105,7 +105,7 @@
       "credits": 3,
       "when": "大二上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -114,7 +114,7 @@
       "credits": 3,
       "when": "大二下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     }
   ],
@@ -123,18 +123,9 @@
       "code": "MA1005",
       "name": "微積分上",
       "credits": 3,
-      "when": "大一上~大一下",
-      "when_auto": false,
-      "verified": false,
-      "note": ""
-    },
-    {
-      "code": "MT1051",
-      "name": "程式設計：Python",
-      "credits": 3,
       "when": "大一上",
-      "when_auto": true,
-      "verified": false,
+      "when_auto": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -143,7 +134,7 @@
       "credits": 3,
       "when": "大一上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -152,7 +143,7 @@
       "credits": 3,
       "when": "大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -161,7 +152,7 @@
       "credits": 3,
       "when": "大一下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -170,7 +161,7 @@
       "credits": 3,
       "when": "大二上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -179,7 +170,7 @@
       "credits": 3,
       "when": "大二上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -188,7 +179,7 @@
       "credits": 3,
       "when": "大二下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -197,7 +188,7 @@
       "credits": 3,
       "when": "大二下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -206,7 +197,7 @@
       "credits": 3,
       "when": "大三上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -215,7 +206,7 @@
       "credits": 3,
       "when": "大三上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -224,7 +215,7 @@
       "credits": 3,
       "when": "大三上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -233,7 +224,7 @@
       "credits": 3,
       "when": "大三上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -242,7 +233,7 @@
       "credits": 3,
       "when": "大三下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -251,7 +242,7 @@
       "credits": 3,
       "when": "大三下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -260,25 +251,25 @@
       "credits": 3,
       "when": "大三下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "IM3028",
       "name": "資訊系統發展專題I",
       "credits": 3,
-      "when": "大三下~大四上",
+      "when": "大三下",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
       "code": "IM4001",
       "name": "資訊系統發展專題II",
       "credits": 3,
-      "when": "",
+      "when": "大四上",
       "when_auto": false,
-      "verified": false,
+      "verified": true,
       "note": ""
     },
     {
@@ -287,7 +278,7 @@
       "credits": 3,
       "when": "大四上",
       "when_auto": true,
-      "verified": false,
+      "verified": true,
       "note": ""
     }
   ],
@@ -297,27 +288,27 @@
       "name": "初階程式設計",
       "credits": 3,
       "note": "",
-      "when": "",
+      "when": "大一上",
       "when_auto": false,
-      "verified": false
+      "verified": true
     },
     {
       "code": "IM3029",
       "name": "網頁程式設計",
       "credits": 3,
       "note": "",
-      "when": "",
+      "when": "大二上",
       "when_auto": false,
-      "verified": false
+      "verified": true
     },
     {
       "code": "MA1006",
       "name": "微積分下",
       "credits": 3,
       "note": "",
-      "when": "",
+      "when": "大一下",
       "when_auto": false,
-      "verified": false
+      "verified": true
     }
   ]
 }
