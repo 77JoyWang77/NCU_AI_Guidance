@@ -21,6 +21,17 @@ from app.services.auth_service import AuthUser, get_optional_user
 router = APIRouter()
 
 
+def _user_profile(user: AuthUser | None) -> dict | None:
+    if user is None:
+        return None
+    return {
+        "email": user.email,
+        "name": user.name,
+        "picture": user.picture,
+        "provider": "firebase",
+    }
+
+
 class ChatRequest(BaseModel):
     question: str
     session_id: Optional[str] = None
@@ -73,6 +84,7 @@ async def chat(req: ChatRequest, user: AuthUser | None = Depends(get_optional_us
         course_cards=result.get("course_cards", []),
         tools_used=result.get("tools_used", []),
         user_id=user_id,
+        user_profile=_user_profile(user),
     )
 
     return ChatResponse(
@@ -132,6 +144,7 @@ async def chat_stream(req: ChatRequest, user: AuthUser | None = Depends(get_opti
                             course_pool=data.get("course_pool", []),
                             debug_trace=data.get("debug_trace"),
                             user_id=user_id,
+                            user_profile=_user_profile(user),
                         )
                         raw = f"data: {_json.dumps(data, ensure_ascii=False)}\n\n"
                 except Exception:
