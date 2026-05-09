@@ -121,8 +121,9 @@ async def chat_stream(req: ChatRequest):
                         answer_buf.append(data.get("text", ""))
                     elif data.get("type") == "done":
                         data["session_id"] = sid
+                        answer_text = data.get("final_answer") or "".join(answer_buf)
                         ss.save(
-                            sid, q, "".join(answer_buf),
+                            sid, q, answer_text,
                             course_cards=data.get("course_cards", []),
                             tools_used=data.get("tools_used", []),
                             course_pool=data.get("course_pool", []),

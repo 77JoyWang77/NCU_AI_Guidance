@@ -342,6 +342,7 @@ export default function CourseSearchPage() {
             if (msgs[streamIdx]) {
               msgs[streamIdx] = {
                 ...msgs[streamIdx],
+                ...(ev.final_answer ? { content: ev.final_answer } : {}),
                 isStreaming:     false,
                 courseCards:     cards,
                 coursePool:      pool,

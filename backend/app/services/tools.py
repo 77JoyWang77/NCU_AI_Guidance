@@ -140,11 +140,54 @@ def _fmt_courses(results: list[dict]) -> list[dict]:
             "concepts":     _s(m.get("concepts")),
             "technologies": ", ".join(tech_parts),
             "domain_tags":  _s(m.get("domain_tags_rich")) or _s(m.get("domain_tags")),
+            "course_domain": m.get("course_domain", ""),
             "topic_tags":   _s(m.get("topic_tags")),
             "summary":      _build_summary(m),
             "distance":     round(r.get("distance", 0.0), 4),
         })
     return out
+
+
+def _enrich_courses_metadata(courses: list[dict]) -> list[dict]:
+    """對 graph 路徑回傳的課程補齊語意欄位（純圖遍歷，無 I/O）。
+    course dict 的 id 可能在 "id" 或 "course_code" 鍵下。
+    competencies 回傳 list[dict]，含 name/level_num/level_label。
+    """
+    for c in courses:
+        cid = c.get("id") or c.get("course_code", "")
+        if not cid:
+            continue
+        tags = graph_service.get_course_tags(cid)
+        c["concepts"]      = ", ".join(tags["concepts"])
+        c["technologies"]  = ", ".join(tags["technologies"])
+        c["field_tags"]    = ", ".join(tags["field_tags"])
+        c["course_domain"] = tags["course_domain"]
+        # competencies 保留結構化資料（含等級），方便 LLM 呈現
+        c["competencies"]  = tags["competencies"]
+        if tags["topic_tags"]:
+            c["topic_tags"]     = ", ".join(tags["topic_tags"])
+            c["core_questions"] = " | ".join(tags["core_questions"])
+    return courses
+
+
+def _deduplicate_courses_by_name(courses: list[dict]) -> list[dict]:
+    """同名 + 同學分的課程視為同課不同班，合併為一筆並記錄 sections 數。
+    同名但不同學分（真正不同課）→ 保留各自。
+    """
+    from collections import defaultdict
+    groups: dict[tuple, list] = defaultdict(list)
+    for c in courses:
+        name = c.get("name") or c.get("name_zh", "")
+        cred = c.get("credits") or 0
+        groups[(name, cred)].append(c)
+    result = []
+    for group in groups.values():
+        rep = group[0].copy()
+        if len(group) > 1:
+            rep["sections"]   = len(group)
+            rep["course_ids"] = [g.get("id") or g.get("course_code", "") for g in group]
+        result.append(rep)
+    return result
 
 
 def _rrf_similar_courses(course_name: str, top_n: int = 15) -> list[dict]:
@@ -210,22 +253,19 @@ def tool_search_courses(
             filtered = [c for c in graph_hits if c.get("level", "ugrad") == level_filter]
             if not filtered:
                 filtered = graph_hits  # 若沒符合等級，仍回傳全部
-            return [
+            results = [
                 {
+                    "id":          c["id"],
                     "course_code": c["id"],
                     "name_zh":     c["name"],
                     "dept":        c["dept"],
                     "credits":     c.get("credits"),
-                    "tech_node":   c.get("tech_node", ""),
+                    "matched_via": c.get("tech_node", "").split("::", 1)[-1] if c.get("tech_node") else "",
                     "source":      "graph_tech",
-                    # 其餘欄位留空，vector search 沒額外資料
-                    "name_en": "", "college": "", "type": "", "teacher": "",
-                    "teacher_specialties": "", "when_raw": "", "prereq_codes": "",
-                    "eligible_years": "", "languages": "", "tools": "",
-                    "domain_tags": "", "summary": "",
                 }
                 for c in filtered[:n * 2]
             ]
+            return _enrich_courses_metadata(results)
 
     # ── Layer 1：Query expansion via ncu_graph_nodes ─────────────────────────
     # 找語意相近的 Concept/Technology/Field 節點名稱，附加到查詢字串
@@ -344,6 +384,10 @@ def tool_get_dept_courses(dept_name: str, course_type: str = "required") -> dict
                 for r in raw
             ]
         courses = req + elec
+    # 補齊語意欄位（concepts/technologies/field_tags/course_domain/competencies）
+    courses = _enrich_courses_metadata(courses)
+    # 同名同學分去重（分班問題）
+    courses = _deduplicate_courses_by_name(courses)
     return {"dept_name": dept_name, "course_type": course_type, "courses": courses}
 
 
@@ -367,15 +411,36 @@ def tool_get_program_info(program_name: str) -> dict:
                 resolved_name = name
                 break
         if not description:
-            matches = [(k, v) for k, v in data.items()
-                       if any(c in k for c in program_name if len(c.encode()) > 1)]
-            if matches:
-                resolved_name, description = matches[0]
+            # 向量搜尋 Fallback（取代單字元模糊比對，避免誤命中不相關學程）
+            try:
+                hits = retriever.search_programs(program_name, n_results=3)
+                for hit in hits:
+                    candidate = hit.get("metadata", {}).get("program_name", "")
+                    if not candidate:
+                        continue
+                    for k, v in data.items():
+                        if candidate in k or k in candidate:
+                            resolved_name = k
+                            description = v
+                            break
+                    if description:
+                        break
+            except Exception:
+                pass
 
-    courses = graph_service.get_program_courses(program_name)
+    courses = graph_service.get_program_courses(resolved_name)
 
     if not description and not courses:
-        available = list(data.keys())[:10] if data else []
+        # 用向量搜尋提供語意相近的學程清單，而非全部學程
+        try:
+            hits = retriever.search_programs(program_name, n_results=5)
+            available = [
+                h.get("metadata", {}).get("program_name", "")
+                for h in hits
+                if h.get("metadata", {}).get("program_name")
+            ]
+        except Exception:
+            available = list(data.keys())[:10] if data else []
         return {"found": False, "message": f"找不到「{program_name}」的學程資料",
                 "available_programs": available}
 
@@ -623,6 +688,12 @@ def tool_get_depts_by_tech(tech_name: str) -> str:
         return f"知識圖譜中找不到教「{tech_name}」的課程（請嘗試英文或其他名稱）。"
 
     lines = [f"教「{tech_name}」的系所分布（共 {len(result['courses'])} 門相關課程）："]
+    matched = result.get("matched_nodes", [])
+    if matched:
+        # 去掉與輸入完全相同的項目，只顯示額外擴展到的節點
+        extra = [n for n in matched if n.lower() != tech_name.lower()]
+        if extra:
+            lines.append(f"  ▸ 向量搜尋擴展命中節點：{', '.join(extra)}")
 
     req = result.get("required_depts", [])
     if req:
@@ -645,7 +716,7 @@ def tool_get_depts_by_tech(tech_name: str) -> str:
 
 def tool_ppr_explore(
     seed: str,
-    focus: str = "all",
+    focus: str = "course",
     top_k: int = 15,
 ) -> str:
     """Personalized PageRank 探索：從種子概念出發，找整個知識圖譜中最相關的節點。
@@ -654,50 +725,93 @@ def tool_ppr_explore(
     - 「和機器學習相關的一切有哪些？」
     - 「我對 AI 有興趣，中央大學有什麼相關資源？」
     - 「深度學習連結到哪些老師和系所？」
-    比 find_similar_courses 更廣，能跨越課程、老師、系所、概念等所有節點類型。
+    比 find_similar_courses 更廣，能跨越課程、老師、系所等所有節點類型。
 
-    focus 參數：
-    - "all"：回傳所有節點類型
-    - "course"：只回傳課程
+    ⚠️ 種子策略：系統自動從「語意概念節點」與「課程節點」雙路徑起跑 PPR，
+       無需使用者指定種子類型。基礎學科（微積分、線代）請用 focus="course"。
+
+    focus 參數（控制回傳節點類型）：
+    - "course"（預設）：只回傳課程
     - "instructor"：只回傳教師
     - "dept"：只回傳系所
-    - "concept"：只回傳概念/技術節點
+    - "overview"：分組顯示課程 + 教師 + 系所 + 學程（適合全貌探索）
+    注意：概念/技術節點是 PPR 內部種子，不作為輸出——如傳入 "concept" 將自動改為 "course"
     """
-    focus_map = {
+    _OVERVIEW_TYPES = [
+        "Course", "Instructor",
+        "Department", "DeptGroup", "CollegeBachelorProgram",
+        "CreditProgram",
+    ]
+    _FOCUS_MAP: dict[str, list[str] | None] = {
         "course":     ["Course"],
         "instructor": ["Instructor"],
         "dept":       ["Department", "DeptGroup", "CollegeBachelorProgram"],
-        "concept":    ["Concept", "Technology", "Field"],
+        "overview":   _OVERVIEW_TYPES,
+        "all":        _OVERVIEW_TYPES,   # 向後兼容別名
+        "concept":    ["Course"],         # 重導向：概念是種子不是輸出
     }
-    type_filter = focus_map.get(focus)
+    _TYPE_LABELS = {
+        "Course": "課程", "Instructor": "教師",
+        "Department": "系所", "DeptGroup": "系所",
+        "CollegeBachelorProgram": "學院學士班",
+        "CreditProgram": "學分學程",
+    }
+
+    is_overview = focus in ("overview", "all")
+    type_filter = _FOCUS_MAP.get(focus, ["Course"])
     seed_list = [s.strip() for s in seed.replace("、", ",").replace("，", ",").split(",")]
 
+    fetch_k = top_k * 3 if is_overview else top_k
     results = graph_service.ppr_explore(
         seed_names=seed_list,
-        top_k=top_k,
+        top_k=fetch_k,
         node_type_filter=type_filter,
     )
 
     if not results:
         return f"找不到以「{seed}」為起點的相關節點（請確認概念名稱是否正確）。"
 
-    lines = [f"以「{seed}」為起點的 PPR 探索結果（{focus} 模式）："]
-    type_labels = {
-        "Course": "課程", "Instructor": "教師",
-        "Department": "系所", "DeptGroup": "系所分組",
-        "CollegeBachelorProgram": "學院學士班",
-        "Concept": "概念", "Technology": "技術", "Field": "研究領域",
-        "CreditProgram": "學分學程",
-    }
-    for r in results:
-        label = type_labels.get(r["node_type"], r["node_type"])
-        name = r["name"]
-        extra = ""
-        if r.get("dept"):
-            extra = f"（{r['dept']}）"
-        score = r.get("score", 0)
-        lines.append(f"  [{label}] {name}{extra}  [PPR: {score}]")
+    def _fmt(r: dict) -> str:
+        label = _TYPE_LABELS.get(r["node_type"], r["node_type"])
+        extra = f"（{r['dept']}）" if r.get("dept") else ""
+        return f"  [{label}] {r['name']}{extra}  [PPR: {r['score']}]"
 
+    if not is_overview:
+        lines = [f"以「{seed}」為起點的 PPR 探索（{focus} 模式，{len(results)} 筆）："]
+        lines += [_fmt(r) for r in results[:top_k]]
+        return "\n".join(lines)
+
+    # ── overview 模式：分組顯示 ──────────────────────────────────────────────
+    _GROUPS = [
+        ("Course",        "課程",      {"Course"}),
+        ("Instructor",    "教師",      {"Instructor"}),
+        ("dept",          "系所",      {"Department", "DeptGroup", "CollegeBachelorProgram"}),
+        ("CreditProgram", "學分學程",  {"CreditProgram"}),
+    ]
+    _CAP = {"Course": 10, "Instructor": 6, "dept": 5, "CreditProgram": 4}
+
+    buckets: dict[str, list[dict]] = {k: [] for k, _, _ in _GROUPS}
+    for r in results:
+        ntype = r["node_type"]
+        for key, _, types in _GROUPS:
+            if ntype in types:
+                buckets[key].append(r)
+                break
+
+    lines = [f"以「{seed}」為起點的全景探索（overview 模式）：\n"]
+    has_any = False
+    for key, group_label, _ in _GROUPS:
+        items = buckets[key]
+        if not items:
+            continue
+        has_any = True
+        show = items[:_CAP[key]]
+        lines.append(f"{group_label}（{len(show)} 筆）：")
+        lines += [_fmt(r) for r in show]
+        lines.append("")
+
+    if not has_any:
+        return f"找不到以「{seed}」為起點的相關節點（請確認概念名稱是否正確）。"
     return "\n".join(lines)
 
 
@@ -939,6 +1053,22 @@ def tool_get_course_detail(
 
     exact = retriever.get_courses_by_name(name_zh)
     if not exact:
+        fallback = retriever.search_courses(name_zh, n_results=5)
+        if fallback:
+            return {
+                "found": False,
+                "fallback_candidates": [
+                    {
+                        "name_zh":     r.get("metadata", {}).get("name_zh", ""),
+                        "dept":        r.get("metadata", {}).get("dept", ""),
+                        "course_code": r.get("metadata", {}).get("course_code", ""),
+                        "credits":     r.get("metadata", {}).get("credits", 0),
+                        "distance":    round(r.get("distance", 0.0), 4),
+                    }
+                    for r in fallback
+                ],
+                "message": f"找不到「{name_zh}」，以下是相似課程，請確認名稱後重新查詢",
+            }
         return {"found": False, "message": f"找不到課程「{name_zh}」"}
 
     if dept:
@@ -951,6 +1081,7 @@ def tool_get_course_detail(
         return {
             "found": True,
             "ambiguous": True,
+            "name_zh": name_zh,
             "message": f"找到 {len(depts)} 個科系都有「{name_zh}」，請指定 dept 或由使用者選擇：",
             "candidates": [
                 {
@@ -1192,13 +1323,13 @@ TOOLS = [
         "type": "function",
         "function": {
             "name": "ppr_explore",
-            "description": "Personalized PageRank 廣泛探索：從概念/課程出發，找知識圖譜中最相關的節點（可跨課程、教師、系所、概念）。適合「和 AI 相關的一切有哪些？」「深度學習連結到哪些老師和系所？」等廣泛探索。",
+            "description": "Personalized PageRank 廣泛探索：從概念/課程出發，找知識圖譜中最相關的節點（可跨課程、教師、系所）。種子策略自動複合（無需指定種子類型）。適合「和 AI 相關的一切有哪些？」「深度學習連結到哪些老師和系所？」等廣泛探索。⚠️ 不適合直接查詢某門具體課程：若使用者問「總體經濟學是什麼」「有沒有自然語言處理的課」，請改用 get_course_detail 或 search_courses。",
             "parameters": {
                 "type": "object",
                 "properties": {
                     "seed":  {"type": "string", "description": "起始概念或課程名稱，可用逗號分隔多個，如「機器學習」或「機器學習,深度學習」"},
-                    "focus": {"type": "string", "enum": ["all", "course", "instructor", "dept", "concept"],
-                              "description": "回傳節點類型：all=全部，course=課程，instructor=教師，dept=系所，concept=概念技術"},
+                    "focus": {"type": "string", "enum": ["course", "instructor", "dept", "overview"],
+                              "description": "回傳節點類型（預設 course）：course=課程；instructor=教師；dept=系所；overview=課程＋教師＋系所＋學程分組顯示（全貌探索時使用）"},
                     "top_k": {"type": "integer", "description": "回傳數量（預設 15）"},
                 },
                 "required": ["seed"],

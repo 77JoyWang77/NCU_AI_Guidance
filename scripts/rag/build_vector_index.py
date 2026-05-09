@@ -772,8 +772,12 @@ def main():
     )
     embedder = Embedder(oai, embed_deployment)
 
-    QDRANT_DIR.mkdir(parents=True, exist_ok=True)
-    qdrant = QdrantClient(path=str(QDRANT_DIR))
+    qdrant_url = os.environ.get("QDRANT_URL", "")
+    if qdrant_url:
+        qdrant = QdrantClient(url=qdrant_url)
+    else:
+        QDRANT_DIR.mkdir(parents=True, exist_ok=True)
+        qdrant = QdrantClient(path=str(QDRANT_DIR))
 
     nlp = load_nlp_data()
     teacher_lookup = load_teacher_csv()

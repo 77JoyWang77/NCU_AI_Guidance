@@ -27,6 +27,9 @@ _COLLEGE_MAP_PATH = ROOT / "data" / "processed" / "dept_college_map.json"
 
 @lru_cache(maxsize=1)
 def _get_qdrant() -> QdrantClient:
+    qdrant_url = os.environ.get("QDRANT_URL", "")
+    if qdrant_url:
+        return QdrantClient(url=qdrant_url)
     return QdrantClient(path=str(QDRANT_DIR))
 
 

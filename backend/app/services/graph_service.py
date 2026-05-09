@@ -22,9 +22,10 @@ from functools import lru_cache
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent.parent.parent
-GRAPH_JSON   = ROOT / "data" / "processed" / "graph" / "knowledge_graph.json"
-GRAPH_IGRAPH = ROOT / "data" / "processed" / "graph" / "knowledge_graph.pkl"
-SCHEDULE_DIR = ROOT / "data" / "processed" / "schedule_draft"
+GRAPH_JSON        = ROOT / "data" / "processed" / "graph" / "knowledge_graph.json"
+GRAPH_IGRAPH      = ROOT / "data" / "processed" / "graph" / "knowledge_graph.pkl"
+SCHEDULE_DIR      = ROOT / "data" / "processed" / "schedule_draft"
+_DEPT_ALIASES_PATH = ROOT / "data" / "processed" / "dept_aliases.json"
 QDRANT_DIR   = ROOT / "data" / "processed" / "qdrant_data"
 
 try:
@@ -61,6 +62,8 @@ def _load_graph() -> dict:
     out_adj: dict[str, list[tuple[str, str]]] = {nid: [] for nid in nodes}
     # 建立反向索引 {tgt: [(src, relation)]}
     in_adj: dict[str, list[tuple[str, str]]] = {nid: [] for nid in nodes}
+    # 邊屬性查詢 {(src, tgt): edge_dict}（用於取 level_num 等屬性）
+    edge_attrs: dict[tuple[str, str], dict] = {}
 
     for e in edges:
         src, tgt, rel = e["source"], e["target"], e["relation"]
@@ -68,8 +71,9 @@ def _load_graph() -> dict:
             out_adj[src].append((tgt, rel))
         if tgt in in_adj:
             in_adj[tgt].append((src, rel))
+        edge_attrs[(src, tgt)] = e
 
-    return {"nodes": nodes, "edges": edges, "out": out_adj, "in": in_adj}
+    return {"nodes": nodes, "edges": edges, "edge_attrs": edge_attrs, "out": out_adj, "in": in_adj}
 
 
 def _g():
@@ -159,19 +163,61 @@ def _find_nodes_by(attr: str, value: str, node_type: str = None) -> list[str]:
 
 # ── 公開查詢 API ─────────────────────────────────────────────────────────────
 
+@lru_cache(maxsize=1)
+def _load_dept_aliases() -> dict[str, str]:
+    """載入系所別名對照表（縮寫 → 正式全名）。"""
+    if _DEPT_ALIASES_PATH.exists():
+        return json.loads(_DEPT_ALIASES_PATH.read_text(encoding="utf-8"))
+    return {}
+
+
 def _find_dept_like(dept_name: str) -> list[str]:
-    """找系所節點（精確 + 模糊，涵蓋 Department / DeptGroup / CollegeBachelorProgram）"""
+    """找系所節點，依序嘗試：精確比對 → 別名查找 → 子字串比對 → 向量搜尋。"""
     dept_types = {"Department", "DeptGroup", "CollegeBachelorProgram"}
-    exact = [
-        nid for nid, n in _g()["nodes"].items()
-        if n.get("node_type") in dept_types and n.get("name") == dept_name
-    ]
+
+    def _match_name(name: str) -> list[str]:
+        return [
+            nid for nid, n in _g()["nodes"].items()
+            if n.get("node_type") in dept_types and n.get("name") == name
+        ]
+
+    # 1. 精確比對
+    exact = _match_name(dept_name)
     if exact:
         return exact
-    return [
+
+    # 2. 別名查找
+    canonical = _load_dept_aliases().get(dept_name)
+    if canonical:
+        via_alias = _match_name(canonical)
+        if via_alias:
+            return via_alias
+
+    # 3. 子字串包含比對
+    substring = [
         nid for nid, n in _g()["nodes"].items()
         if n.get("node_type") in dept_types and dept_name in n.get("name", "")
     ]
+    if substring:
+        return substring
+
+    # 4. 向量搜尋（最後手段）
+    try:
+        from app.services.retriever import _get_qdrant, _embed
+        q_vec = _embed(dept_name)
+        result = _get_qdrant().query_points(
+            "ncu_departments", query=q_vec, limit=1, with_payload=True
+        )
+        if result.points:
+            best = result.points[0].payload.get("dept_name", "")
+            if best:
+                via_vec = _match_name(best)
+                if via_vec:
+                    return via_vec
+    except Exception:
+        pass
+
+    return []
 
 
 def _collect_courses_from_plan(plan_id: str, relation_label: str) -> list[dict]:
@@ -226,33 +272,44 @@ def _collect_electives_from_plan(plan_id: str) -> list[dict]:
     return results
 
 
+def _iter_dept_plans(did: str) -> list[str]:
+    """回傳一個 Dept/DeptGroup 節點下所有 CurriculumPlan 的 ID，含 HAS_GROUP 子組。"""
+    plan_ids: list[str] = []
+    for tgt, rel in _g()["out"].get(did, []):
+        if rel == "HAS_CURRICULUM":
+            plan_ids.append(tgt)
+        elif rel == "HAS_GROUP":
+            for tgt2, rel2 in _g()["out"].get(tgt, []):
+                if rel2 == "HAS_CURRICULUM":
+                    plan_ids.append(tgt2)
+    return plan_ids
+
+
 def get_dept_required_courses(dept_name: str) -> list[dict]:
-    """回傳某系所的必修課程 list（兩段路：Dept → CurriculumPlan → Course）"""
+    """回傳某系所的必修課程 list（支援 Dept → HAS_GROUP → DeptGroup → CurriculumPlan）"""
     dept_ids = _find_dept_like(dept_name)
     results = []
     seen: set[str] = set()
     for did in dept_ids:
-        for plan_id, rel in _g()["out"].get(did, []):
-            if rel == "HAS_CURRICULUM":
-                for course in _collect_courses_from_plan(plan_id, "必修"):
-                    if course["id"] not in seen:
-                        seen.add(course["id"])
-                        results.append(course)
+        for plan_id in _iter_dept_plans(did):
+            for course in _collect_courses_from_plan(plan_id, "必修"):
+                if course["id"] not in seen:
+                    seen.add(course["id"])
+                    results.append(course)
     return results
 
 
 def get_dept_elective_courses(dept_name: str) -> list[dict]:
-    """回傳某系所的選修課程 list"""
+    """回傳某系所的選修課程 list（支援 HAS_GROUP 子組）"""
     dept_ids = _find_dept_like(dept_name)
     results = []
     seen: set[str] = set()
     for did in dept_ids:
-        for plan_id, rel in _g()["out"].get(did, []):
-            if rel == "HAS_CURRICULUM":
-                for course in _collect_electives_from_plan(plan_id):
-                    if course["id"] not in seen:
-                        seen.add(course["id"])
-                        results.append(course)
+        for plan_id in _iter_dept_plans(did):
+            for course in _collect_electives_from_plan(plan_id):
+                if course["id"] not in seen:
+                    seen.add(course["id"])
+                    results.append(course)
     return results
 
 
@@ -443,21 +500,25 @@ def search_courses_by_tech(tech_name: str) -> list[dict]:
         f"concept::{tech_name}",
         f"field::{tech_name}",
     ]
-    # 也做模糊比對（大小寫不同、簡稱等）
+    # 大小寫不同、簡稱等精確名稱比對
     lower = tech_name.lower()
     for nid, n in _g()["nodes"].items():
         if n.get("node_type") in ("Technology", "Concept", "Field"):
             if n.get("name", "").lower() == lower:
                 candidate_ids.append(nid)
 
+    # 向量搜尋補充（處理別名、縮寫，如 GIS → 地理資訊系統）
+    candidate_ids.extend(_search_concept_nodes(tech_name, top_k=3))
+
     # 去重
     candidate_ids = list(dict.fromkeys(candidate_ids))
 
+    COURSE_RELS = {"TEACHES", "COVERS", "COVERS_FIELD", "DEVELOPS"}
     for tech_nid in candidate_ids:
         if not _g()["nodes"].get(tech_nid):
             continue
         for src, rel in _g()["in"].get(tech_nid, []):
-            if rel in ("TEACHES", "COVERS", "COVERS_FIELD") and src not in seen:
+            if rel in COURSE_RELS and src not in seen:
                 course_node = _node(src)
                 if course_node.get("node_type") == "Course":
                     seen.add(src)
@@ -575,15 +636,26 @@ def get_depts_by_tech(tech_name: str) -> dict:
         if n.get("node_type") in ("Technology", "Concept", "Field"):
             if n.get("name", "").lower() == lower:
                 candidate_node_ids.append(nid)
+
+    # 向量搜尋補充（處理別名、縮寫，如 GIS → 地理資訊系統）
+    candidate_node_ids.extend(_search_concept_nodes(tech_name, top_k=3))
     candidate_node_ids = list(dict.fromkeys(candidate_node_ids))
 
+    # 記錄實際命中的節點名稱（供 tool 顯示透明度用）
+    matched_nodes = [
+        _g()["nodes"][nid].get("name", nid)
+        for nid in candidate_node_ids
+        if _g()["nodes"].get(nid)
+    ]
+
     # 2. 找到所有教此技術的 Course 節點
+    COURSE_RELS = {"TEACHES", "COVERS", "COVERS_FIELD", "DEVELOPS"}
     tech_courses: set[str] = set()
     for tech_nid in candidate_node_ids:
         if not _g()["nodes"].get(tech_nid):
             continue
         for src, rel in _g()["in"].get(tech_nid, []):
-            if rel in ("TEACHES", "COVERS", "COVERS_FIELD"):
+            if rel in COURSE_RELS:
                 if _node(src).get("node_type") == "Course":
                     tech_courses.add(src)
 
@@ -628,7 +700,8 @@ def get_depts_by_tech(tech_name: str) -> dict:
             elective_depts[c["dept"]] = c["dept"]
 
     return {
-        "tech":          tech_name,
+        "tech":           tech_name,
+        "matched_nodes":  matched_nodes,
         "required_depts": sorted(required_depts.keys()),
         "elective_depts": sorted(elective_depts.keys()),
         "courses":        course_list[:30],
@@ -696,8 +769,13 @@ def ppr_explore(
     # Qdrant 向量語意種子 + 字串比對保底，取聯集
     seed_ids: set[str] = set()
     for name in seed_names:
-        seed_ids.update(_search_concept_nodes(name, top_k=3))
+        seed_ids.update(_search_concept_nodes(name, top_k=8))
     seed_ids |= _find_ppr_seeds(seed_names)
+    # 排除孤立 Field 節點（只有 EXPERT_IN/RELEVANT_EXPERT，沒有課程連接）
+    seed_ids = {
+        s for s in seed_ids
+        if _g()["nodes"].get(s, {}).get("node_type") != "Field" or _has_course_edge(s)
+    }
     if not seed_ids:
         return []
 
@@ -721,12 +799,9 @@ def ppr_explore(
                     weights="weight",
                 )
 
-                seed_idx_set = set(seed_indices)
                 ranked = sorted(enumerate(scores_vec), key=lambda x: -x[1])
                 results: list[dict] = []
                 for idx, score in ranked:
-                    if idx in seed_idx_set:
-                        continue
                     nid = idx_to_id.get(idx, "")
                     nd  = g["nodes"].get(nid, {})
                     ntype = nd.get("node_type", "")
@@ -771,8 +846,6 @@ def ppr_explore(
 
     results = []
     for nid, score in sorted(scores.items(), key=lambda x: -x[1]):
-        if nid in seed_ids:
-            continue
         nd    = g["nodes"].get(nid, {})
         ntype = nd.get("node_type", "")
         if allowed and ntype not in allowed:
@@ -910,7 +983,7 @@ def _search_concept_nodes(query: str, top_k: int = 5) -> list[str]:
 
     # Fallback：字串比對
     g = _g()
-    ENTRY_TYPES = {"Concept", "Technology", "Field"}
+    ENTRY_TYPES = {"Concept", "Technology", "Field", "Competency"}
     ql = query.lower()
     exact: list[str] = []
     fuzzy: list[str] = []
@@ -923,6 +996,62 @@ def _search_concept_nodes(query: str, top_k: int = 5) -> list[str]:
         elif ql in nname or nname in ql:
             fuzzy.append(nid)
     return (exact or fuzzy)[:top_k]
+
+
+def _has_course_edge(nid: str) -> bool:
+    """True if the node has at least one incoming edge from a Course node."""
+    COURSE_RELS = {"COVERS_FIELD", "TEACHES", "COVERS", "DEVELOPS"}
+    return any(
+        rel in COURSE_RELS
+        and _g()["nodes"].get(src, {}).get("node_type") == "Course"
+        for src, rel in _g()["in"].get(nid, [])
+    )
+
+
+def get_course_tags(course_id: str) -> dict:
+    """回傳一門課的語意標籤（純記憶體遍歷，無 I/O）。
+
+    回傳欄位：
+      concepts, technologies, field_tags, topic_tags, core_questions（list[str]）
+      competencies（list[dict]，含 name/level_num/level_label）
+      course_domain（str，以 ・ 連結 domains list）
+    """
+    g = _g()
+    concepts, techs, fields, topics = [], [], [], []
+    competencies: list[dict] = []
+
+    for target_id, rel in g["out"].get(course_id, []):
+        nd = g["nodes"].get(target_id, {})
+        name = nd.get("name", "")
+        if not name:
+            continue
+        ntype = nd.get("node_type", "")
+        if rel == "COVERS" and ntype == "Concept":
+            concepts.append(name)
+        elif rel == "TEACHES" and ntype == "Technology":
+            techs.append(name)
+        elif rel == "COVERS_FIELD" and ntype == "Field":
+            fields.append(name)
+        elif rel == "TAGGED_AS" and ntype == "Domain":
+            topics.append(name)
+        elif rel == "DEVELOPS" and ntype == "Competency":
+            edge_data = g["edge_attrs"].get((course_id, target_id), {})
+            competencies.append({
+                "name":        name,
+                "level_num":   edge_data.get("level_num", 0),
+                "level_label": edge_data.get("level_label", ""),
+            })
+
+    course_nd = g["nodes"].get(course_id, {})
+    return {
+        "concepts":       concepts,
+        "technologies":   techs,
+        "field_tags":     fields,
+        "topic_tags":     topics,
+        "core_questions": course_nd.get("core_questions", []),
+        "course_domain":  " ・ ".join(course_nd.get("domains", [])),
+        "competencies":   competencies,
+    }
 
 
 def list_all_departments() -> list[dict]:

@@ -29,7 +29,7 @@ COLLECTION  = "ncu_graph_nodes"
 VECTOR_DIM  = 3072  # text-embedding-3-large
 
 # 豐富文字節點類型（名稱 + 相關課程）
-INDEXED_TYPES = {"Concept", "Technology", "Field"}
+INDEXED_TYPES = {"Concept", "Technology", "Field", "Competency"}
 # Course 節點用精簡文字（只放課名 + 系所，避免與 Concept 節點語意混淆）
 
 # 每批 embed 的筆數（避免 API rate limit）
@@ -57,10 +57,14 @@ def _node_id_to_int(node_id: str) -> int:
 
 
 def build_connected_courses(node_id: str, in_adj: dict) -> list[str]:
-    """找與此節點有 COVERS/TEACHES/COVERS_FIELD 入向邊的課程名稱（最多 10 筆）。"""
+    """找與此節點有課程連結邊的來源課程 ID（最多 10 筆）。
+    支援 Concept/Technology/Field（COVERS/TEACHES/COVERS_FIELD）與
+    Competency（DEVELOPS）節點。
+    """
+    COURSE_RELS = {"COVERS", "TEACHES", "COVERS_FIELD", "DEVELOPS"}
     courses = []
     for src, rel in in_adj.get(node_id, []):
-        if rel in ("COVERS", "TEACHES", "COVERS_FIELD"):
+        if rel in COURSE_RELS:
             courses.append(src)
         if len(courses) >= 10:
             break
@@ -230,11 +234,23 @@ def _build_course_concept_vecs(
     print(f"  輸出：{out_path}")
 
 
+def _get_existing_qdrant_ids(client, collection: str, ids: list[int]) -> set[int]:
+    """分批查詢 Qdrant，回傳已存在的 point id 集合。"""
+    existing: set[int] = set()
+    for start in range(0, len(ids), 200):
+        batch = ids[start: start + 200]
+        found = client.retrieve(collection_name=collection, ids=batch, with_vectors=False)
+        existing.update(p.id for p in found)
+    return existing
+
+
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--reset",  action="store_true", help="強制重建，清空舊資料")
-    parser.add_argument("--limit",  type=int, default=0, help="只處理前 N 筆（0=全量，測試用）")
-    parser.add_argument("--phase3", action="store_true", help="執行 Phase 3：建立 ncu_course_concept_vecs")
+    parser.add_argument("--reset",        action="store_true", help="強制重建，清空舊資料")
+    parser.add_argument("--limit",        type=int, default=0, help="只處理前 N 筆（0=全量，測試用）")
+    parser.add_argument("--phase3",       action="store_true", help="執行 Phase 3：建立 ncu_course_concept_vecs")
+    parser.add_argument("--sync-courses", action="store_true",
+                        help="增量同步：只 embed 圖中有但 Qdrant 缺少的 Course 節點（省費用）")
     args = parser.parse_args()
 
     try:
@@ -268,19 +284,23 @@ def main():
         n for n in node_list
         if n.get("node_type") in INDEXED_TYPES and n.get("name", "").strip()
     ]
-    print(f"Concept/Technology/Field 節點：{len(target_nodes)} 筆")
+    print(f"Concept/Technology/Field/Competency 節點：{len(target_nodes)} 筆")
     print(f"Course 節點：{sum(1 for n in node_list if n.get('node_type') == 'Course')} 筆")
 
     # ── Phase 3 only（不開 Qdrant，完全繞過 OOM）────────────────────────────
-    if args.phase3 and not args.reset:
+    if args.phase3 and not args.reset and not args.sync_courses:
         print("\n[--phase3 模式] 跳過 Phase 1/2 與 Qdrant 初始化，直接執行 Phase 3")
     else:
         # 建立 Qdrant client（Phase 1/2 才需要）
-        QDRANT_DIR.mkdir(parents=True, exist_ok=True)
-        client = QdrantClient(path=str(QDRANT_DIR))
+        qdrant_url = os.environ.get("QDRANT_URL", "")
+        if qdrant_url:
+            client = QdrantClient(url=qdrant_url)
+        else:
+            QDRANT_DIR.mkdir(parents=True, exist_ok=True)
+            client = QdrantClient(path=str(QDRANT_DIR))
 
-        existing = [c.name for c in client.get_collections().collections]
-        if COLLECTION in existing:
+        existing_cols = [c.name for c in client.get_collections().collections]
+        if COLLECTION in existing_cols:
             if args.reset:
                 print(f"刪除舊 collection：{COLLECTION}")
                 client.delete_collection(COLLECTION)
@@ -298,29 +318,56 @@ def main():
             )
             print(f"建立 collection：{COLLECTION}（dim={VECTOR_DIM}）")
 
-        # ── Phase 1：Concept / Technology / Field 節點（豐富文字） ──────────────
-        print(f"\n[Phase 1] Concept / Technology / Field 節點：{len(target_nodes)} 筆")
-        uploaded, errors = _upsert_nodes(
-            client, target_nodes, nodes_by_id, in_adj,
-            text_fn=_concept_text, args=args,
-        )
-        print(f"  完成：上傳 {uploaded} 筆，錯誤 {errors} 筆")
+        # ── --sync-courses：只補缺少的 Course 節點 ───────────────────────────────
+        if args.sync_courses:
+            course_nodes = [
+                n for n in node_list
+                if n.get("node_type") == "Course" and n.get("name", "").strip()
+            ]
+            all_point_ids = [_node_id_to_int(n["id"]) for n in course_nodes]
+            print(f"\n[--sync-courses] 圖中 Course 節點：{len(course_nodes)} 筆，查詢 Qdrant 現有狀態...")
+            existing_ids = _get_existing_qdrant_ids(client, COLLECTION, all_point_ids)
+            new_nodes = [
+                n for n, pid in zip(course_nodes, all_point_ids)
+                if pid not in existing_ids
+            ]
+            print(f"  Qdrant 已有：{len(existing_ids)} 筆，待補：{len(new_nodes)} 筆")
+            if new_nodes:
+                uploaded, errors = _upsert_nodes(
+                    client, new_nodes, nodes_by_id, in_adj,
+                    text_fn=_course_text, args=args,
+                )
+                print(f"  完成：上傳 {uploaded} 筆，錯誤 {errors} 筆")
+            else:
+                print("  Course 節點已全部同步，無需更新。")
+            info = client.get_collection(COLLECTION)
+            print(f"\n✓ {COLLECTION} 總筆數：{info.points_count}")
+            print(f"Qdrant 資料位置：{QDRANT_DIR}")
 
-        # ── Phase 2：Course 節點（精簡文字，只放課名 + 系所） ────────────────────
-        course_nodes = [
-            n for n in node_list
-            if n.get("node_type") == "Course" and n.get("name", "").strip()
-        ]
-        print(f"\n[Phase 2] Course 節點：{len(course_nodes)} 筆")
-        uploaded, errors = _upsert_nodes(
-            client, course_nodes, nodes_by_id, in_adj,
-            text_fn=_course_text, args=args,
-        )
-        print(f"  完成：上傳 {uploaded} 筆，錯誤 {errors} 筆")
+        else:
+            # ── Phase 1：Concept / Technology / Field / Competency 節點 ────────────
+            print(f"\n[Phase 1] Concept / Technology / Field / Competency 節點：{len(target_nodes)} 筆")
+            uploaded, errors = _upsert_nodes(
+                client, target_nodes, nodes_by_id, in_adj,
+                text_fn=_concept_text, args=args,
+            )
+            print(f"  完成：上傳 {uploaded} 筆，錯誤 {errors} 筆")
 
-        info = client.get_collection(COLLECTION)
-        print(f"\n✓ {COLLECTION} 總筆數：{info.points_count}")
-        print(f"Qdrant 資料位置：{QDRANT_DIR}")
+            # ── Phase 2：Course 節點（精簡文字，只放課名 + 系所） ────────────────────
+            course_nodes = [
+                n for n in node_list
+                if n.get("node_type") == "Course" and n.get("name", "").strip()
+            ]
+            print(f"\n[Phase 2] Course 節點：{len(course_nodes)} 筆")
+            uploaded, errors = _upsert_nodes(
+                client, course_nodes, nodes_by_id, in_adj,
+                text_fn=_course_text, args=args,
+            )
+            print(f"  完成：上傳 {uploaded} 筆，錯誤 {errors} 筆")
+
+            info = client.get_collection(COLLECTION)
+            print(f"\n✓ {COLLECTION} 總筆數：{info.points_count}")
+            print(f"Qdrant 資料位置：{QDRANT_DIR}")
 
     # ── Phase 3：Course concept-averaged vectors（.npz，不開 Qdrant）──────────
     if args.phase3:

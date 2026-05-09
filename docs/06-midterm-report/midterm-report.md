@@ -1,7 +1,7 @@
 # NCU 科系探索系統 期中報告
 
 > **系統名稱**：中央大學選課助理（NCU Course Advisor）  
-> **報告日期**：2026-05-02  
+> **報告日期**：2026-05-03  
 > **版本**：v2.0（期初 v1.2 → 期中 v2.0）
 
 ---
@@ -24,7 +24,7 @@
 基礎 RAG 向量搜尋             →  三層 Hybrid 搜尋（圖 + 向量 + RRF）
 單一 Chatbot                  →  ReAct Agent + 14 工具
 課程原始資料                  →  NLP 萃取語意節點（概念 / 技術 / 領域）
-無知識結構                    →  知識圖譜（14,602 節點 / 34,631 邊）
+無知識結構                    →  知識圖譜（15,186 節點 / 37,055 邊）
 本地開發                      →  Firebase + Render + Cloudinary 雲端部署
 ```
 
@@ -32,12 +32,12 @@
 
 | 指標 | 數值 |
 |------|------|
-| 知識圖譜節點 | **14,602** |
-| 知識圖譜邊 | **34,631** |
-| 向量索引 collections | **5 個** |
+| 知識圖譜節點 | **15,186** |
+| 知識圖譜邊 | **37,055** |
+| 向量索引 collections | **6 個** |
 | Agent 工具數 | **14 個** |
-| 教師節點（全量） | **1,021 位** |
-| NLP 萃取概念節點 | **6,938 個** |
+| 教師節點（全量） | **1,023 位** |
+| NLP 萃取概念節點 | **7,286 個** |
 | 修課資格規則 | **7,282 條** |
 
 ---
@@ -182,38 +182,42 @@ NLP 前先對每門課程指定類別，決定要執行哪些 Agent，避免無�
 | `TOPICS_ONLY` | 通識課程 | 僅執行 Agent 3 主題分類 | 人文、社會、自然通識課 |
 | `FULL` | 其他學術課程 | Agent 1 + 2 + 4 完整萃取 | 資工、電機、機械等各系課程 |
 
-### 4.3 四個 Agent 流程
+### 4.3 四個 Agent 的資料流
+
+四個 Agent 分成兩條路線並行：主線處理 FULL 類學術課程，旁線獨立處理通識課：
 
 ```mermaid
 flowchart LR
-    PRE["前置<br/>normalize_teacher_specialties<br/>→ 教授領域詞彙表<br/>300 KB"]
+    subgraph in["輸入"]
+        RAW["課程授課目標<br/>+ 授課內容<br/>（FULL 類）"]
+        SPEC["教師專長詞彙表<br/>（normalize 前處理）"]
+        GE["通識課程名稱<br/>+ 授課內容<br/>（TOPICS_ONLY 類）"]
+    end
 
-    A1["Agent 1<br/>run_agent1_tech<br/>→ nlp_tech_nodes.json<br/>857 KB<br/>語言 / 工具 / 概念"]
+    subgraph main["主線"]
+        A1["Agent 1<br/>萃取技術 & 概念節點"]
+        FIX["後處理<br/>英文 → 繁中"]
+        A2["Agent 2<br/>標記研究領域<br/>關聯相關教授"]
+        A4["Agent 4<br/>概念友善化<br/>高中生易懂解釋"]
+    end
 
-    FIX["後處理<br/>fix_tech_nodes<br/>英文翻繁中"]
+    subgraph side["旁線"]
+        A3["Agent 3<br/>通識主題分類"]
+    end
 
-    A2["Agent 2<br/>run_agent2_domain<br/>→ nlp_domain_tags.json 1.1 MB<br/>→ nlp_professor_links.json 1.4 MB<br/>課程↔領域 / 課程↔教授"]
-
-    A3["Agent 3<br/>run_agent3_topics<br/>→ nlp_topic_tags.json<br/>38 KB<br/>通識主題 + 核心議題"]
-
-    A4["Agent 4<br/>run_agent4_simplify<br/>→ nlp_simplified_concepts.json<br/>2.6 MB<br/>高中生友善化"]
-
-    POST["後處理<br/>postprocess_simplified<br/>去標籤、繁體化"]
-
-    PRE --> A1
-    A1 --> FIX --> A2
-    A3
-    A1 --> A4 --> POST
+    RAW --> A1 --> FIX --> A2
+    SPEC --> A2
+    RAW --> A4
+    A1 --> A4
+    GE --> A3
 ```
 
-| 輸出檔案 | 大小 | 說明 |
-|---------|------|------|
-| `dept_professor_map.json` | 300 KB | 1,009 位教師，2,469 個專長 |
-| `nlp_tech_nodes.json` | 857 KB | 技術節點（語言/工具/概念） |
-| `nlp_domain_tags.json` | 1.1 MB | 課程→研究領域標籤（high/medium/low） |
-| `nlp_professor_links.json` | 1.4 MB | 課程→相關教授 |
-| `nlp_topic_tags.json` | 38 KB | 通識課主題 + 核心議題問句 |
-| `nlp_simplified_concepts.json` | 2.6 MB | 概念高中生友善化 |
+| Agent | 輸入 | 輸出 | 適用類別 |
+|-------|------|------|---------|
+| **Agent 1** | 課程授課目標 + 內容（原文） | 每門課的**技術節點**（語言/框架/工具）與**概念節點**（學術概念） | FULL |
+| **Agent 2** | 課程 + Agent 1 技術節點 + 教師詞彙表 | 課程↔研究領域關係（high/medium/low） | FULL |
+| **Agent 3** | 通識課程名稱 + 授課內容（原文） | 主題標籤（人文 / 社會 / 自然 / 藝術等）+ 核心議題問句 | TOPICS_ONLY |
+| **Agent 4** | Agent 1 輸出的概念節點（專業術語） | 每個概念對應的高中生友善解釋 | FULL |
 
 ### 4.4 先修關係三種來源
 
@@ -240,27 +244,31 @@ flowchart LR
 
 ### 5.1 兩階段建置
 
+**Phase 1** 以結構化資料建立骨架；**Phase 2** 以 NLP 結果與額外資料源補入語意。
+
 ```mermaid
-flowchart TD
-    subgraph Phase1["Phase 1 — 基礎圖（結構化）"]
-        P1A["應修科目表<br/>curriculum_requirements"]
-        P1B["學分學程<br/>credit_programs"]
-        P1C["課程 JSON<br/>raw / graduate / scraped"]
-        BASE["基礎圖<br/>節點：University / College / Department<br/>/ Course / Instructor / Domain / Competency<br/>+ 機構結構邊 + 課程要求邊"]
+flowchart LR
+    subgraph src["Phase 1 — 資料來源"]
+        C["課程 JSON<br/>raw / graduate"]
+        CU["應修科目表"]
+        CP["學分學程"]
     end
 
-    subgraph Phase2["Phase 2 — 語意豐富化（NLP）"]
-        P2A["2-a 教師全量建立<br/>114_ulistteacher.csv<br/>→ 1,021 位 Instructor<br/>→ EXPERT_IN 邊"]
-        P2B["2-b NLP 萃取整合<br/>nlp_tech/domain/topic<br/>→ Field / Technology / Concept 節點"]
-        P2C["2-c 教授課程關聯<br/>nlp_professor_links<br/>→ COURSE_EXPERT 邊"]
-        P2D["2-d 修課條件<br/>course_eligibility<br/>→ PREREQUISITE_OF 邊"]
-        P2E["2-e 建議學期<br/>schedule_draft<br/>→ suggested_year 屬性"]
-        P2F["2-f 同義邊<br/>字串相似度 ≥ 0.70<br/>→ SIMILAR_TO 邊"]
-    end
+    BASE["基礎圖<br/>University / College / Department<br/>→ Course / Instructor / Domain<br/>機構結構邊 ＋ 必修課程邊"]
 
-    P1A & P1B & P1C --> BASE
-    BASE --> P2A --> P2B --> P2C --> P2D --> P2E --> P2F
+    C & CU & CP --> BASE
 ```
+
+Phase 2 在基礎圖上依序補入語意（各步驟均依賴 Phase 1 結果，彼此獨立）：
+
+| 步驟 | 資料來源 | 新增到圖譜 |
+|------|---------|-----------|
+| 2-a 教師全量補建 | `114_ulistteacher.csv` | 1,021 個 Instructor 節點 ＋ EXPERT_IN 邊 |
+| 2-b NLP 語意節點 | nlp_tech / domain / topic JSON | Field / Technology / Concept 節點 ＋ COVERS / TEACHES / COVERS_FIELD 邊 |
+| 2-c 教授課程關聯 | `nlp_professor_links.json` | COURSE_EXPERT 邊 |
+| 2-d 修課先修條件 | `course_eligibility.json` | PREREQUISITE_OF 邊 |
+| 2-e 建議修課學期 | `schedule_draft` JSON | Course 節點 `suggested_year` 屬性 |
+| 2-f 同義概念邊 | 字串相似度（Jaro-Winkler ≥ 0.70） | **5,064 條** SIMILAR_TO 邊 |
 
 ### 5.2 節點類型總覽
 
@@ -304,218 +312,233 @@ graph LR
 | `Concept` | 細（課程涵蓋概念） | 「梯度下降」、「記憶體管理」 | NLP 從授課內容萃取 |
 | `Technology` | 工具層 | 「PyTorch」、「Docker」 | NLP 從授課內容萃取 |
 
-### 5.5 圖譜統計（2026-04-21）
+### 5.5 圖譜統計
 
-| 類型 | Phase 1 | Phase 2 後 |
-|------|---------|-----------|
-| Course 節點（有完整資料） | 1,348 | 1,348（新增屬性） |
-| Course stub 節點 | 127 | 127 |
-| Instructor 節點 | 411 | **1,021**（全量補建） |
-| Field 節點 | 0 | **3,594** |
-| Concept 節點 | 0 | **6,938** |
-| Technology 節點 | 0 | **390** |
-| TEACHES 邊 | 0 | **633** |
-| COVERS 邊 | 0 | **9,049** |
-| COVERS_FIELD 邊 | 0 | **3,720** |
-| EXPERT_IN 邊 | 0 | **2,629** |
-| COURSE_EXPERT 邊 | 0 | **3,522** |
-| PREREQUISITE_OF 邊 | 0 | **160** |
-| SIMILAR_TO 邊 | 0 | **5,064** |
-| TAUGHT_BY 邊 | 897 | 897 |
-| DEVELOPS 邊 | 4,209 | 4,209 |
-| **總節點** | — | **14,602** |
-| **總邊** | — | **34,631** |
+**總節點 15,186 個 ／ 總邊 37,055 條**
+
+**節點組成**
+
+| 節點類型 | 數量 | 說明 |
+|---------|------|------|
+| Concept | **7,286** | NLP 從授課內容萃取的學術概念（最大節點類） |
+| Field | **3,594** | 教師研究領域（細粒度，由教師專長 NLP 萃取） |
+| Course | **1,581** | 課程節點（含少量 stub） |
+| Instructor | **1,023** | 教師節點（全量補建） |
+| Technology | **441** | 程式語言 / 框架 / 工具 |
+| Competency | 224 | 課程培養的能力標籤 |
+| Domain | 216 | 課程所屬大領域（粗粒度） |
+| CreditProgram | 42 | 學分學程 |
+| 其他機構結構 | 779 | GraduationRule / ElectiveGroup / Department / College 等 |
+
+**主要邊類型**
+
+| 邊類型 | 數量 | 意義 |
+|-------|------|------|
+| COVERS | 9,515 | 課程涵蓋概念 |
+| SIMILAR_TO | 5,268 | 同義 / 相關概念（字串相似度） |
+| DEVELOPS | 4,779 | 課程培養能力 |
+| COVERS_FIELD | 3,911 | 課程對應研究領域 |
+| COURSE_EXPERT | 3,705 | 教授擅長課程（NLP 分析） |
+| EXPERT_IN | 2,629 | 教師官方研究領域（教育部申報） |
+| 其他 | 7,248 | REQUIRES / PREREQUISITE_OF / TAUGHT_BY / 機構結構邊等 |
 
 ---
 
-## 六、RAG 系統設計
+## 六、向量檢索基礎設施
 
-### 6.1 五個向量 Collection
+### 6.1 Collection 設計
 
-```
-Qdrant（本地 file-mode）
-  ├── ncu_courses_ug      大學部課程  ~1,400 筆  3,072 維
-  ├── ncu_courses_grad    研究所課程  ~900 筆    3,072 維
-  ├── ncu_teachers        教師資料    1,009 筆   3,072 維
-  ├── ncu_departments     系所介紹    ~40 筆     3,072 維
-  └── ncu_credit_programs 學分學程    42 筆      3,072 維
-```
+系統使用 6 個 Qdrant Collection，各自服務不同場景：
 
-### 6.2 課程向量的組成
+| Collection | 筆數 | 用於哪些工具 |
+|-----------|------|------------|
+| `ncu_courses_ug` | 3,627 | `search_courses`、`get_course_detail`、`get_dept_courses`（fallback） |
+| `ncu_courses_grad` | 930 | `search_courses`（is_grad=True）、`get_course_detail` |
+| `ncu_teachers` | 1,009 | `search_teachers`、`get_teacher_info` |
+| `ncu_departments` | 32 | `get_dept_info` |
+| `ncu_credit_programs` | 42 | `search_programs` |
+| `ncu_graph_nodes` | 12,388 | `search_courses`（Query Expansion 種子）、`explore_concept_neighborhood`（BFS 入口） |
 
-每門課程的嵌入文字整合多個來源：
+> 所有向量維度 **3,072**（Azure text-embedding-3-large）；以本地 file-mode 運行於 Render。
+
+### 6.2 課程向量的資料組成
+
+課程向量不只嵌入原始課綱，還整合 NLP 萃取結果與教師專長，讓向量能捕捉到概念層與技術層的語意：
 
 ```mermaid
 flowchart LR
-    subgraph Inputs["資料來源"]
-        A["課程 JSON<br/>課名、目標、內容"]
-        B["NLP 萃取結果<br/>概念、技術、領域標籤"]
-        C["教師資料<br/>教師專長詞彙"]
-        D["Schedule Draft<br/>建議修課學期"]
+    subgraph src["四個來源"]
+        A["課程 JSON<br/>課名 / 目標 / 授課內容"]
+        B["NLP 萃取<br/>概念 / 技術 / 領域標籤"]
+        C["教師專長詞彙<br/>（教育部申報）"]
+        D["建議修課學期<br/>schedule_draft"]
     end
 
-    DOC["📄 課程嵌入文字<br/>（組裝後送 Embedding API）"]
-    VEC["向量<br/>3,072 維"]
-    PAY["Payload<br/>供過濾：年級 / 系所<br/>/ 先修 / 修課資格..."]
+    DOC["組裝後課程文字<br/>→ Embedding API"]
+    VEC["向量 3,072 維<br/>存入 Qdrant"]
+    PAY["Payload<br/>年級 / 系所 / 先修 / 修課資格<br/>（供精確條件過濾）"]
 
     A & B & C & D --> DOC
     DOC --> VEC
     DOC --> PAY
 ```
 
-### 6.3 修課資格 v3 架構
+### 6.3 修課資格規則庫
 
-每門課可有**多條資格規則（OR 邏輯）**：
+每門課可有**多條資格規則（OR 邏輯）**，由 `get_course_detail` 工具直接回傳原文，供 LLM 理解：
 
 ```
-course_eligibility.json
-  ├── is_unrestricted     → 全校皆可修
-  ├── is_grad_only        → 純研究所課程
-  ├── is_undergrad_open   → 大學部可修
-  └── access_rules: [
-        { 系所限制 / 年級限制 / 身份限制 },  ← 規則 1
-        { 系所限制 / 年級限制 / 身份限制 },  ← 規則 2（OR）
-        ...
-      ]
+course_eligibility.json  ─  114 學年 3,765 個課號
 
-統計（114 學年 3,765 個課號）：
-  access_rules 總數  7,282 條
-  有年級限制         1,748 門
-  有先修要求          142 門
-  純研究所課程       1,116 門
+  is_unrestricted      全校皆可修
+  is_grad_only         純研究所課程
+  is_undergrad_open    大學部可修
+  access_rules: [
+    { 系所限制 / 年級限制 / 身份限制 },   ← 規則 1
+    { 系所限制 / 年級限制 / 身份限制 },   ← 規則 2（OR）
+  ]
+
+統計：access_rules 7,282 條 ／ 有年級限制 1,748 門 ／ 純研究所 1,116 門
 ```
-
-### 6.4 三層 Hybrid 搜尋架構
-
-```mermaid
-flowchart TD
-    Q["使用者查詢"]
-
-    TECH{"含技術參數？<br/>如 tech=Python"}
-    GRAPH_EXACT["知識圖譜精確查詢<br/>TEACHES / COVERS 邊"]
-
-    L1["Layer 1：Query Expansion<br/>在概念節點 collection 找語意相近概念<br/>擴展查詢字串"]
-
-    L2A["Signal A<br/>向量搜尋（擴展查詢）"]
-    L2B["Signal B<br/>向量搜尋（原始查詢）"]
-
-    RRF["Layer 3：RRF 融合<br/>RRF(d) = Σ 1/(60 + rank)<br/>合併排名，取前 N 筆"]
-
-    Q --> TECH
-    TECH -->|是| GRAPH_EXACT
-    TECH -->|否| L1
-    L1 --> L2A
-    L1 --> L2B
-    L2A --> RRF
-    L2B --> RRF
-```
-
-### 6.5 四種評分說明
-
-| 分數 | 意義 | 越___越好 | 使用工具 |
-|------|------|----------|---------|
-| `distance`（餘弦距離） | 向量語意距離，0=完全相同 | **越小**越好 | search_courses / search_teachers 等 |
-| `RRF score` | 多路信號排名融合，出現次數越多分越高 | **越大**越好 | search_courses / find_similar_courses |
-| `shared_concepts` | 兩課程共享概念節點數量 | **越大**越好 | find_similar_courses / knowledge_map |
-| `PPR score` | Personalized PageRank × 1000 | **越大**越好 | ppr_explore |
 
 ---
 
-## 七、ReAct Agent 設計
+## 七、ReAct Agent 與搜尋工具
 
 ### 7.1 對話主流程
 
 ```mermaid
 sequenceDiagram
-    participant User as 👤 使用者
-    participant FE as 前端（React）
+    participant User as 使用者
+    participant FE as 前端
     participant Agent as ReAct Agent
-    participant Tool as 工具層
-    participant LLM as Azure OpenAI GPT-5.4-mini
+    participant Tools as 工具層
+    participant LLM as Azure OpenAI
 
     User ->> FE: 提問
     FE ->> Agent: POST /api/chat/stream
 
     loop 最多 4 輪
-        Agent ->> LLM: 訊息歷史 + 工具清單
-        LLM -->> Agent: 決定呼叫工具
-        Agent ->> Tool: 並行執行多個工具
-        Tool -->> Agent: 工具結果 + 課程清單
+        Agent ->> LLM: 訊息歷史 + 14 個工具定義
+        LLM -->> Agent: 選擇工具 + 參數
+        Agent ->> Tools: 並行執行（ThreadPoolExecutor）
+        Tools -->> Agent: 結果 + 課程清單
         Agent -->> FE: SSE tool_start / tool_done
     end
 
     Agent ->> LLM: 整合結果，生成回答
     LLM -->> FE: SSE token（逐字串流）
-    Agent ->> Agent: 零幻覺驗證<br/>（course pool 比對）
+    Agent ->> Agent: 零幻覺驗證
     Agent -->> FE: SSE done（課程卡片 + debug）
-    FE -->> User: 顯示回答 + 推薦課程
+    FE -->> User: 回答 + 推薦課程
 ```
 
-### 7.2 14 個工具分類
+### 7.2 14 個工具
+
+| 類別 | 工具 | 典型問法 |
+|------|------|---------|
+| **課程搜尋** | `search_courses` | 「有哪些 AI 相關課程？」「哪些課教 Python？」 |
+| | `get_course_detail` | 「演算法有哪些修課限制？課程內容是什麼？」 |
+| | `get_dept_courses` | 「資工系有哪些必修課？」 |
+| **系所** | `get_dept_info` | 「電機系在學什麼？畢業能做什麼？」 |
+| | `get_graduation_requirements` | 「資工系要修幾學分才能畢業？」 |
+| **學程** | `search_programs` | 「有哪些 AI 相關的學分學程？」 |
+| | `get_program_info` | 「人工智慧技術應用學程要修哪些課？」 |
+| **教師** | `search_teachers` | 「哪些老師研究強化學習？」 |
+| | `get_teacher_info` | 「王小明教授開了哪些課？研究什麼？」 |
+| **圖探索** | `get_course_knowledge_map` | 「人工智慧導論涵蓋哪些概念？有哪些相關課？」 |
+| | `find_similar_courses` | 「有什麼課和機器學習類似？」 |
+| | `get_depts_by_tech` | 「哪些系所的課有用到 GIS？」 |
+| | `ppr_explore` | 「以深度學習為起點，探索整個相關領域」 |
+| | `explore_concept_neighborhood` | 「神經網路概念周邊有哪些課？」 |
+
+圖探索類五個工具的選用邏輯詳見 7.4。
+
+### 7.3 `search_courses` 的搜尋機制
+
+`search_courses` 是呼叫頻率最高的工具，內部採三層設計，解決「查詢字眼和課程名稱不直接吻合」的問題：
+
+**一般語意查詢：三層流程**
 
 ```
-課程搜尋類（3）
-  ├── search_courses          語意搜尋課程（三層 Hybrid）
-  ├── get_course_detail       完整課綱 + 修課資格 + 先修要求
-  └── get_dept_courses        系所必修 / 選修清單
-
-系所類（2）
-  ├── get_dept_info           系所介紹（Collego）
-  └── get_graduation_requirements  畢業規定
-
-學程類（2）
-  ├── search_programs         語意搜尋學分學程
-  └── get_program_info        學程說明 + 課程清單
-
-教師類（2）
-  ├── search_teachers         語意搜尋教師
-  └── get_teacher_info        教師詳情 + 開課清單
-
-圖探索類（5）
-  ├── get_course_knowledge_map  課程概念地圖
-  ├── find_similar_courses      找共享概念最多的相似課程
-  ├── get_depts_by_tech         查哪些系所教某技術
-  ├── ppr_explore               Personalized PageRank 廣泛探索
-  └── explore_concept_neighborhood  概念 N 跳鄰域探索
+輸入：「電腦如何看懂圖片」
+────────────────────────────────────────────────
+Layer 1  Query Expansion（圖輔助擴展）
+         在 ncu_graph_nodes collection 找最近概念
+         → 「電腦視覺」「影像辨識」「卷積神經網路」
+         拼接成 expanded_query
+────────────────────────────────────────────────
+Layer 2  雙路向量搜尋
+         Signal A：搜尋 expanded_query（語意偏移補救）
+         Signal B：搜尋原始查詢（保留原始意圖）
+         各取 n×2 筆候選
+────────────────────────────────────────────────
+Layer 3  RRF 融合（Reciprocal Rank Fusion，k=60）
+         score = 1/(60+rankA) + 1/(60+rankB)
+         兩路同時命中的課程得分倍增，取前 n 筆
+────────────────────────────────────────────────
+輸出：「電腦視覺」「圖形識別」「數位影像處理」...
+      T1 實測：5/5 命中，無任何關鍵字直接吻合
 ```
 
-### 7.3 零幻覺機制
+**技術精確查詢：圖優先路徑**
+
+傳入 `tech="Python"` 時，略過三層 Hybrid，改走知識圖譜 `TEACHES`/`COVERS` 精確邊，結果確定性更高。
+
+### 7.4 圖探索工具：四種查詢模式
+
+五個圖探索工具對應四種不同需求，依據問題類型選用：
+
+```mermaid
+graph LR
+    Q1["知道明確技術<br/>「教 Python 的課」"] --> T1["search_courses<br/>tech='Python'<br/>→ 圖精確邊查詢"]
+    Q2["概念模糊查詢<br/>「神經網路相關課程」"] --> T2["explore_concept<br/>_neighborhood<br/>→ BFS N 跳展開"]
+    Q3["廣泛領域探索<br/>「深度學習為種子」"] --> T3["ppr_explore<br/>→ 全圖 Weighted PPR<br/>+ Gap 截斷"]
+    Q4["已知一門課<br/>「和機器學習最像的課」"] --> T4["find_similar_courses<br/>→ 圖共享概念<br/>+ 向量語意 RRF"]
+```
+
+| 工具 | 策略 | 精準 | 廣度 | 最適情境 |
+|------|------|:----:|:----:|---------|
+| `search_courses(tech=...)` | 圖精確邊 | ★★★★★ | ★★ | 明確技術名稱 |
+| `explore_concept_neighborhood` | BFS N 跳 | ★★★★ | ★★★ | 概念鄰域課程探索 |
+| `ppr_explore` | 全圖 PPR | ★★★ | ★★★★★ | 廣泛擴散、找隱性關聯 |
+| `find_similar_courses` | 圖 + 向量 RRF | ★★★★ | ★★★★ | 跨系相似課程推薦 |
+
+`ppr_explore` 採 Gap Truncation（mean − 0.5σ）自動截斷低分尾部，避免雜訊節點混入結果。`find_similar_courses("機器學習")` 實測跨資工、生醫、統計、財金等 6 個學院，圖路徑與向量路徑互補。
+
+### 7.5 零幻覺防護
 
 ```mermaid
 flowchart LR
-    subgraph Defense["三層防護"]
-        D1["🛡 工具層<br/>只從 Qdrant / 圖譜取課程<br/>LLM 不直接生成課程名"]
-        D2["🏷 標籤層<br/>LLM 必須以標籤<br/>標記所有課程名稱"]
-        D3["✅ 驗證層<br/>regex 擷取標籤<br/>pool 精確 / 模糊比對<br/>不在 pool 內的課程全部過濾"]
-    end
+    D1["工具層<br/>只從 Qdrant / 圖譜取課程<br/>LLM 不直接生成課程名"]
+    D2["標籤層<br/>LLM 以 &lt;course&gt; 標籤<br/>標記所有課程名稱"]
+    D3["驗證層<br/>regex 擷取標籤<br/>pool 精確 / 模糊比對<br/>不在 pool 內的一律過濾"]
 
-    D1 --> D2 --> D3 --> Out["零幻覺<br/>課程卡片"]
+    D1 --> D2 --> D3 --> R["零幻覺課程卡片"]
 ```
 
-**效果**：使用者看到的課程卡片永遠是工具實際回傳、真實存在的課程。
+使用者看到的推薦卡片，永遠是工具實際回傳、資料庫中確實存在的課程。
 
-### 7.4 前端三欄 Layout
+### 7.6 前端介面
 
-```
-┌──────────────┬────────────────────────────┬──────────────┐
-│  左側欄      │       聊天區域              │  右側面板    │
-│  320px       │       flex-1               │  280px       │
-│              │                            │              │
-│  歷史對話    │  訊息泡泡                  │  推薦課程    │
-│  列表        │  （Markdown 渲染）         │  卡片列表    │
-│  可新增      │  + DebugTracePanel         │              │
-│  可刪除      │                            │  手機版隱藏  │
-│  預設收合    │  輸入框                    │              │
-└──────────────┴────────────────────────────┴──────────────┘
-```
-
-### 7.5 SSE 串流事件
+**三欄 Layout**
 
 ```
-tool_start  →  工具開始執行（顯示 loading）
+┌─────────────┬──────────────────────────┬────────────┐
+│  歷史對話   │     聊天區域（flex-1）    │  推薦課程  │
+│  320px      │  Markdown 渲染訊息泡泡   │  280px     │
+│  可新增刪除 │  + Debug Trace Panel    │  卡片列表  │
+│  預設收合   │  輸入框                  │  手機版隱藏│
+└─────────────┴──────────────────────────┴────────────┘
+```
+
+**SSE 串流事件序列**
+
+```
+tool_start  →  工具開始執行（顯示 loading 動畫）
 tool_done   →  工具完成（顯示找到 N 筆課程）
 token       →  LLM 逐字生成（即時顯示文字）
-verify_done →  零幻覺驗證完成（顯示過濾結果）
+verify_done →  零幻覺驗證完成
 done        →  全部完成（推送課程卡片 + debug trace）
 ```
 
