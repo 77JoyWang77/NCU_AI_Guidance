@@ -158,8 +158,16 @@ def parse_when(when_str: str) -> tuple[Optional[int], Optional[int]]:
 #     （原 build_knowledge_graph.py 的全部邏輯）
 # ══════════════════════════════════════════════════════════════════════════════
 
+def _parse_level_str(s: str) -> tuple[int, str]:
+    """'(4) 高' → (4, '高')；無法解析回傳 (0, original)。"""
+    m = re.search(r'\((\d)\)\s*(.+)', (s or "").strip())
+    return (int(m.group(1)), m.group(2).strip()) if m else (0, (s or "").strip())
+
+
 def _load_raw_courses() -> dict:
-    """回傳 code → {name, credits, dept, college, level, semester, instructors, domains, competencies}"""
+    """回傳 code → {name, credits, dept, college, level, semester, instructors, domains, competencies}
+    competencies 格式：[{name, level_num, level_label}]
+    """
     raw: dict = {}
 
     def register(c: dict, level: str, source: str):
@@ -175,10 +183,13 @@ def _load_raw_courses() -> dict:
         outline = c.get("課程綱要", {}) or {}
         domain_raw = outline.get("課程領域", "") or c.get("課程領域", "") or ""
         domains = [p.strip() for p in re.split(r"[、,，]+", domain_raw) if p.strip()]
-        competencies = [
-            a.get("能力名稱", "") for a in (outline.get("核心能力") or [])
-            if a.get("能力名稱")
-        ]
+        competencies = []
+        for a in (outline.get("核心能力") or []):
+            cname = a.get("能力名稱", "").strip()
+            if not cname:
+                continue
+            level_num, level_label = _parse_level_str(a.get("強度指數", ""))
+            competencies.append({"name": cname, "level_num": level_num, "level_label": level_label})
         instructors = [
             t.strip() for t in re.split(r"[\n,、；;]", c.get("授課教師", "") or "")
             if t.strip()
@@ -508,11 +519,19 @@ def build_base_graph(raw: dict) -> nx.DiGraph:
         for cbp in college.get("college_bachelor_programs", []):
             _process_cbp(G, raw, cbp, col_id)
 
+    # [1.5/4] 確保所有 raw 課程節點存在（含通識選修、聯盟課程等未在課程結構中的課）
+    print("  [1.5/4] raw 課程節點補建...")
+    for code, r in raw.items():
+        if not G.has_node(code):
+            G.add_node(code, node_type="Course",
+                       name=r["name"], credits=r["credits"],
+                       dept=r["dept"], college=r["college"],
+                       level=r["level"], semester=r["semester"],
+                       domains=r["domains"], source="raw")
+
     # Instructor / Domain / Competency
     print("  [2/4] Instructor / Domain / Competency 節點...")
     for code, r in raw.items():
-        if not G.has_node(code):
-            continue
         for name in r.get("instructors", []):
             iid = f"instructor::{name}"
             ensure_node(G, iid, node_type="Instructor", name=name)
@@ -522,9 +541,15 @@ def build_base_graph(raw: dict) -> nx.DiGraph:
             ensure_node(G, did, node_type="Domain", name=domain)
             ensure_edge(G, code, did, relation="IN_DOMAIN")
         for comp in r.get("competencies", []):
-            cid = f"competency::{comp}"
-            ensure_node(G, cid, node_type="Competency", name=comp)
-            ensure_edge(G, code, cid, relation="DEVELOPS")
+            # 向後相容：comp 可能是舊格式 str 或新格式 {name, level_num, level_label}
+            if isinstance(comp, dict):
+                cname, level_num, level_label = comp["name"], comp.get("level_num", 0), comp.get("level_label", "")
+            else:
+                cname, level_num, level_label = comp, 0, ""
+            cid = f"competency::{cname}"
+            ensure_node(G, cid, node_type="Competency", name=cname)
+            ensure_edge(G, code, cid, relation="DEVELOPS",
+                        level_num=level_num, level_label=level_label)
 
     # Credit programs
     print("  [3/4] 學分學程...")
@@ -1112,6 +1137,10 @@ def _save_igraph_format(G: nx.DiGraph) -> None:
             w = float(attrs.get("weight", 0.8))
         elif rel == "COVERS_FIELD":
             w = COVERS_FIELD_W.get(attrs.get("relevance", "medium"), 1.0)
+        elif rel == "DEVELOPS":
+            # 等級 1-4 映射到 0.25-1.0；無等級資訊預設 0.3
+            lv = attrs.get("level_num", 0)
+            w = max(0.25, lv / 4.0) if lv else 0.3
         else:
             w = REL_WEIGHT.get(rel, 0.3)
         edge_tuples.append((si, ti))
