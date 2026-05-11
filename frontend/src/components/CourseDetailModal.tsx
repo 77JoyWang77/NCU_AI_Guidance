@@ -23,6 +23,9 @@ interface SectionInfo {
   college:          string;
   type:             string;
   eligibility_text: string;
+  course_objective?: string;
+  course_content?:  string;
+  textbook?:        string;
 }
 
 interface WhenEntry {
@@ -169,6 +172,19 @@ export default function CourseDetailModal({ course, onClose }: Props) {
   const typeIsRequired = displayType === '必修';
 
   const hasMultiSections = (d?.sections?.length ?? 0) > 0;
+
+  // 判斷各班 syllabus 是否有差異（課程目標或授課內容有一班和其他班不同）
+  const hasDifferentSyllabus = hasMultiSections && (() => {
+    const secs = d!.sections;
+    const firstObj  = secs[0]?.course_objective?.trim() ?? '';
+    const firstCont = secs[0]?.course_content?.trim() ?? '';
+    const firstTb   = secs[0]?.textbook?.trim() ?? '';
+    return secs.some(s =>
+      (s.course_objective?.trim() ?? '') !== firstObj ||
+      (s.course_content?.trim()  ?? '') !== firstCont ||
+      (s.textbook?.trim()        ?? '') !== firstTb
+    );
+  })();
 
   // 單班分發條件
   const singleEligRules = d?.eligibility_text
@@ -421,40 +437,85 @@ export default function CourseDetailModal({ course, onClose }: Props) {
                 </div>
               )}
 
-              {/* ── 課程目標 ── */}
-              {d.course_objective && (
+              {/* ── 課程目標 / 授課內容 / 教科書（分班差異時改為 per-section accordion）── */}
+              {hasDifferentSyllabus ? (
                 <ExpandableSection
                   icon={<HiBookOpen className="h-4 w-4 text-primary-400" />}
-                  title="課程目標"
+                  title="各班課程說明"
                 >
-                  <p className="whitespace-pre-line text-sm leading-relaxed text-gray-600">
-                    {d.course_objective}
-                  </p>
+                  <div className="space-y-3">
+                    {d.sections.map((sec, i) => (
+                      <div key={i} className="rounded-lg border border-gray-100 bg-gray-50/60 px-3 py-2.5">
+                        <div className="flex flex-wrap items-center gap-1.5 mb-2">
+                          {sec.section && (
+                            <span className="rounded bg-primary-100 px-1.5 py-0.5 text-[10px] font-bold text-primary-700">
+                              {sec.section} 班
+                            </span>
+                          )}
+                          {sec.teacher && (
+                            <span className="text-xs text-gray-500">{sec.teacher}</span>
+                          )}
+                        </div>
+                        {sec.course_objective && (
+                          <div className="mb-1.5">
+                            <p className="text-[10px] font-semibold uppercase tracking-wide text-gray-400 mb-0.5">課程目標</p>
+                            <p className="whitespace-pre-line text-xs leading-relaxed text-gray-600">{sec.course_objective}</p>
+                          </div>
+                        )}
+                        {sec.course_content && (
+                          <div className="mb-1.5">
+                            <p className="text-[10px] font-semibold uppercase tracking-wide text-gray-400 mb-0.5">授課內容</p>
+                            <p className="whitespace-pre-line text-xs leading-relaxed text-gray-600">{sec.course_content}</p>
+                          </div>
+                        )}
+                        {sec.textbook && (
+                          <div>
+                            <p className="text-[10px] font-semibold uppercase tracking-wide text-gray-400 mb-0.5">教科書</p>
+                            <p className="whitespace-pre-line text-xs leading-relaxed text-gray-600">{sec.textbook}</p>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </ExpandableSection>
-              )}
+              ) : (
+                <>
+                  {/* ── 課程目標 ── */}
+                  {d.course_objective && (
+                    <ExpandableSection
+                      icon={<HiBookOpen className="h-4 w-4 text-primary-400" />}
+                      title="課程目標"
+                    >
+                      <p className="whitespace-pre-line text-sm leading-relaxed text-gray-600">
+                        {d.course_objective}
+                      </p>
+                    </ExpandableSection>
+                  )}
 
-              {/* ── 授課內容 ── */}
-              {d.course_content && (
-                <ExpandableSection
-                  icon={<HiClipboardList className="h-4 w-4 text-primary-400" />}
-                  title="授課內容"
-                >
-                  <p className="whitespace-pre-line text-sm leading-relaxed text-gray-600">
-                    {d.course_content}
-                  </p>
-                </ExpandableSection>
-              )}
+                  {/* ── 授課內容 ── */}
+                  {d.course_content && (
+                    <ExpandableSection
+                      icon={<HiClipboardList className="h-4 w-4 text-primary-400" />}
+                      title="授課內容"
+                    >
+                      <p className="whitespace-pre-line text-sm leading-relaxed text-gray-600">
+                        {d.course_content}
+                      </p>
+                    </ExpandableSection>
+                  )}
 
-              {/* ── 教科書 ── */}
-              {d.textbook && (
-                <ExpandableSection
-                  icon={<HiBookOpen className="h-4 w-4 text-gray-300" />}
-                  title="教科書 / 參考書"
-                >
-                  <p className="whitespace-pre-line text-sm leading-relaxed text-gray-600">
-                    {d.textbook}
-                  </p>
-                </ExpandableSection>
+                  {/* ── 教科書 ── */}
+                  {d.textbook && (
+                    <ExpandableSection
+                      icon={<HiBookOpen className="h-4 w-4 text-gray-300" />}
+                      title="教科書 / 參考書"
+                    >
+                      <p className="whitespace-pre-line text-sm leading-relaxed text-gray-600">
+                        {d.textbook}
+                      </p>
+                    </ExpandableSection>
+                  )}
+                </>
               )}
 
               {!d.course_objective && !d.course_content

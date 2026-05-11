@@ -388,7 +388,12 @@ def tool_get_dept_courses(dept_name: str, course_type: str = "required") -> dict
     courses = _enrich_courses_metadata(courses)
     # 同名同學分去重（分班問題）
     courses = _deduplicate_courses_by_name(courses)
-    return {"dept_name": dept_name, "course_type": course_type, "courses": courses}
+    return {
+        "dept_name":   dept_name,
+        "course_type": course_type,
+        "total_found": len(courses),
+        "courses":     courses,
+    }
 
 
 def tool_get_program_courses(program_name: str) -> dict:
@@ -528,13 +533,22 @@ def tool_get_graduation_rules(dept_name: str) -> dict:
 def tool_get_dept_info(query: str) -> list[dict]:
     """語意搜尋系所介紹（Collego 資料：特色、生涯進路、能力特質）。"""
     results = retriever.search_departments(query, n_results=5)
-    return [
-        {
-            "dept_name": r.get("metadata", {}).get("dept_name", ""),
-            "summary":   r.get("document", "")[:500],
+    out = []
+    for r in results:
+        dept_name = r.get("metadata", {}).get("dept_name", "")
+        entry = {
+            "dept_name":     dept_name,
+            "summary":       r.get("document", "")[:500],
+            "domain_profile": [],
         }
-        for r in results
-    ]
+        if dept_name:
+            try:
+                profile = graph_service.get_dept_domain_profile(dept_name)
+                entry["domain_profile"] = profile.get("top_domains", [])
+            except Exception:
+                pass
+        out.append(entry)
+    return out
 
 
 def _matches_access_rule(rule: dict, student_dept: str, student_year: int,
@@ -959,24 +973,27 @@ def tool_get_graduation_requirements(dept_name: str) -> dict:
 
     整合原有 get_graduation_rules 與 get_requirements_notes，一次呼叫取得全部。
     """
-    rules = graph_service.get_graduation_rules(dept_name)
+    # alias 正規化（縮寫 → 正式全名），避免 fallback 取到錯誤系所
+    aliases = graph_service._load_dept_aliases()
+    normalized = aliases.get(dept_name, dept_name)
+
+    rules = graph_service.get_graduation_rules(normalized)
     notes_data = _load_requirements_notes()
 
     raw_notes = ""
-    for dept, notes in notes_data.items():
-        if dept_name in dept or dept in dept_name:
-            raw_notes = notes
-            break
-    if not raw_notes:
+    # 依序嘗試正規化名稱、原始名稱做精確或包含比對
+    for name_try in dict.fromkeys([normalized, dept_name]):
         for dept, notes in notes_data.items():
-            if any(c in dept for c in dept_name if len(c.encode()) > 1):
+            if dept == name_try or name_try in dept or dept in name_try:
                 raw_notes = notes
                 break
+        if raw_notes:
+            break
 
     if not rules and not raw_notes:
         return {"found": False, "message": f"找不到「{dept_name}」的畢業規定資料"}
 
-    result: dict = {"found": True, "dept_name": dept_name, "raw_notes": raw_notes}
+    result: dict = {"found": True, "dept_name": normalized, "raw_notes": raw_notes}
     if rules:
         result["min_credits"]      = rules.get("min_credits")
         result["required_credits"] = rules.get("required_credits")

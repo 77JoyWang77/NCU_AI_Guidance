@@ -285,6 +285,44 @@ def _iter_dept_plans(did: str) -> list[str]:
     return plan_ids
 
 
+def get_dept_domain_profile(dept_name: str) -> dict:
+    """統計某系所必修課與選修課的領域分布，回傳 top-5 domain 頻率。"""
+    from collections import Counter
+    dept_ids = _find_dept_like(dept_name)
+    domain_counter: Counter = Counter()
+    course_count = 0
+    g = _g()
+    seen: set[str] = set()
+    for did in dept_ids:
+        for plan_id in _iter_dept_plans(did):
+            for tgt, rel in g["out"].get(plan_id, []):
+                # 圖中必修邊可能為 "REQUIRES" 或 "REQUIRED"，兩者都處理
+                if rel in ("REQUIRED", "REQUIRES", "OFFERS_ELECTIVE"):
+                    if tgt in seen:
+                        continue
+                    node = g["nodes"].get(tgt, {})
+                    if node.get("node_type") == "Course":
+                        seen.add(tgt)
+                        course_count += 1
+                        for d in node.get("domains", []):
+                            if d:
+                                domain_counter[d] += 1
+                elif rel == "HAS_ELECTIVE_GROUP":
+                    for tgt2, rel2 in g["out"].get(tgt, []):
+                        if rel2 in ("OFFERS_ELECTIVE", "REQUIRES", "REQUIRED"):
+                            if tgt2 in seen:
+                                continue
+                            node2 = g["nodes"].get(tgt2, {})
+                            if node2.get("node_type") == "Course":
+                                seen.add(tgt2)
+                                course_count += 1
+                                for d in node2.get("domains", []):
+                                    if d:
+                                        domain_counter[d] += 1
+    top_domains = [{"domain": d, "count": c} for d, c in domain_counter.most_common(5)]
+    return {"course_count": course_count, "top_domains": top_domains}
+
+
 def get_dept_required_courses(dept_name: str) -> list[dict]:
     """回傳某系所的必修課程 list（支援 Dept → HAS_GROUP → DeptGroup → CurriculumPlan）"""
     dept_ids = _find_dept_like(dept_name)
