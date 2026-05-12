@@ -87,6 +87,20 @@ class Course(BaseModel):
     teaching_method: Optional[str] = None  # 授課方式
     office_hours: Optional[str] = None  # 辦公時間
     weeks: Optional[str] = None  # 授課週數
+    is_grad: Optional[bool] = None
+    relevance_score: Optional[float] = None
+    search_source: Optional[str] = None
+    semantic_summary: Optional[str] = None
+    eligibility_summary: Optional[str] = None
+    eligibility_status: Optional[str] = None
+    eligibility_warning: Optional[str] = None
+    languages: Optional[List[str]] = None
+    tools: Optional[List[str]] = None
+    concepts: Optional[List[str]] = None
+    topic_tags: Optional[List[str]] = None
+    domain_tags: Optional[List[str]] = None
+    core_questions: Optional[List[str]] = None
+    simplified_concepts: Optional[List[str]] = None
 
 class CourseSearchRequest(BaseModel):
     query: str
