@@ -16,6 +16,7 @@ update_schedule_payload.py
 """
 
 import json
+import os
 import re
 from pathlib import Path
 
@@ -141,7 +142,12 @@ def main():
         print("lookup 為空，跳過")
         return
 
-    client = QdrantClient(path=str(QDRANT_DIR))
+    qdrant_url = os.environ.get("QDRANT_URL", "")
+    qdrant_api_key = os.environ.get("QDRANT_API_KEY")
+    if qdrant_url:
+        client = QdrantClient(url=qdrant_url, api_key=qdrant_api_key)
+    else:
+        client = QdrantClient(path=str(QDRANT_DIR))
 
     for col in COLLECTIONS:
         try:

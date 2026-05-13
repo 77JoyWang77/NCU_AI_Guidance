@@ -33,7 +33,10 @@ from typing import Optional
 from dotenv import load_dotenv
 from openai import AzureOpenAI
 from qdrant_client import QdrantClient
-from qdrant_client.models import Distance, PointStruct, VectorParams
+from qdrant_client.models import (
+    Distance, PointStruct, VectorParams,
+    SparseVectorParams, SparseIndexParams, SparseVector,
+)
 from tqdm import tqdm
 
 # ── 路徑設定 ────────────────────────────────────────────────────────────────
@@ -55,6 +58,46 @@ PROGRAM_DESC = DATA_PROC / "program_descriptions.json"
 
 VECTOR_DIM = 3072   # text-embedding-3-large
 EMBED_BATCH = 50    # 每批送給 Azure OpenAI 的文件數
+
+
+def _env_bool(name: str, default: bool = False) -> bool:
+    raw = os.environ.get(name)
+    if raw is None:
+        return default
+    return raw.strip().lower() in {"1", "true", "yes", "y", "on"}
+
+
+def _env_int(name: str, default: int) -> int:
+    raw = os.environ.get(name)
+    if raw is None:
+        return default
+    try:
+        return int(raw)
+    except ValueError:
+        return default
+
+
+def _env_float(name: str, default: float) -> float:
+    raw = os.environ.get(name)
+    if raw is None:
+        return default
+    try:
+        return float(raw)
+    except ValueError:
+        return default
+
+
+def _create_qdrant_client(url: str, api_key: Optional[str]) -> QdrantClient:
+    prefer_grpc = _env_bool("QDRANT_PREFER_GRPC", False)
+    grpc_port = _env_int("QDRANT_GRPC_PORT", 6334)
+    timeout = _env_float("QDRANT_TIMEOUT_SEC", 60.0)
+    return QdrantClient(
+        url=url,
+        api_key=api_key,
+        prefer_grpc=prefer_grpc,
+        grpc_port=grpc_port,
+        timeout=timeout,
+    )
 
 # ── 工具函式 ────────────────────────────────────────────────────────────────
 
@@ -283,6 +326,26 @@ def load_schedule_lookup() -> dict[str, dict]:
 
 # ── 嵌入 ────────────────────────────────────────────────────────────────────
 
+class BM25Embedder:
+    """用 fastembed Qdrant/bm25 批量產生 sparse vectors。"""
+
+    def __init__(self):
+        try:
+            from fastembed import SparseTextEmbedding
+            self.model = SparseTextEmbedding(model_name="Qdrant/bm25")
+            self.available = True
+            print("[BM25] fastembed Qdrant/bm25 model 載入完成")
+        except ImportError:
+            self.model = None
+            self.available = False
+            print("[BM25] fastembed 未安裝，跳過 sparse vector（建議：pip install fastembed）")
+
+    def embed_batch(self, texts: list[str]) -> list | None:
+        if not self.available:
+            return None
+        return list(self.model.embed(texts))
+
+
 class Embedder:
     def __init__(self, client: AzureOpenAI, deployment: str):
         self.client = client
@@ -492,7 +555,9 @@ def load_all_courses(dirs: list[Path]) -> list[dict]:
 
 # ── 建立各 Collection ─────────────────────────────────────────────────────────
 
-def _prepare_collection(client: QdrantClient, name: str, reset: bool) -> bool:
+def _prepare_collection(
+    client: QdrantClient, name: str, reset: bool, with_bm25: bool = True
+) -> bool:
     """若 collection 存在且不 reset，回傳 False（跳過）；否則建立並回傳 True。"""
     existing = {c.name for c in client.get_collections().collections}
     if name in existing:
@@ -502,30 +567,59 @@ def _prepare_collection(client: QdrantClient, name: str, reset: bool) -> bool:
         else:
             print(f"  Collection '{name}' 已存在，跳過（使用 --reset 強制重建）")
             return False
-    client.create_collection(
+    create_kwargs: dict = dict(
         collection_name=name,
         vectors_config=VectorParams(size=VECTOR_DIM, distance=Distance.COSINE),
     )
+    if with_bm25:
+        create_kwargs["sparse_vectors_config"] = {
+            "bm25": SparseVectorParams(index=SparseIndexParams(on_disk=False))
+        }
+    client.create_collection(**create_kwargs)
+    bm25_tag = "含 BM25" if with_bm25 else "無 BM25"
+    print(f"  建立 collection：{name}（{bm25_tag}）")
     return True
 
 
 def _upsert_batch(client: QdrantClient, name: str, doc_ids: list[str],
-                  documents: list[str], payloads: list[dict], embeddings: list):
-    points = [
-        PointStruct(
-            id=_doc_id_to_int(doc_id),
-            vector=emb,
-            payload=payload,
-        )
-        for doc_id, payload, emb in zip(doc_ids, payloads, embeddings)
-    ]
-    for i in range(0, len(points), 500):
-        client.upsert(collection_name=name, points=points[i:i+500])
+                  documents: list[str], payloads: list[dict], embeddings: list,
+                  sparse_embeddings=None):
+    points = []
+    for i, (doc_id, payload, emb) in enumerate(zip(doc_ids, payloads, embeddings)):
+        if sparse_embeddings is not None and i < len(sparse_embeddings):
+            sp = sparse_embeddings[i]
+            # "" 代表 unnamed/default dense vector（named vector context 下的規格）
+            vector = {
+                "": emb,
+                "bm25": SparseVector(indices=sp.indices.tolist(), values=sp.values.tolist()),
+            }
+        else:
+            vector = emb
+        points.append(PointStruct(id=_doc_id_to_int(doc_id), vector=vector, payload=payload))
+    batch_size = max(1, _env_int("QDRANT_UPSERT_BATCH", 200))
+    for i in range(0, len(points), batch_size):
+        _upsert_with_retry(client, name, points[i:i + batch_size])
+
+
+def _upsert_with_retry(client: QdrantClient, name: str, points: list[PointStruct]) -> None:
+    retries = max(1, _env_int("QDRANT_UPSERT_RETRIES", 5))
+    wait = _env_bool("QDRANT_UPSERT_WAIT", False)
+    for attempt in range(retries):
+        try:
+            client.upsert(collection_name=name, points=points, wait=wait)
+            return
+        except Exception as ex:
+            if attempt == retries - 1:
+                raise
+            delay = min(30, 2 ** attempt)
+            print(f"  [WARN] upsert 失敗，{delay}s 後重試：{ex}")
+            time.sleep(delay)
 
 
 def build_courses_collection(
     qdrant: QdrantClient,
     embedder: Embedder,
+    bm25: "BM25Embedder",
     nlp: dict,
     teacher_lookup: dict,
     schedule_lookup: dict,
@@ -536,7 +630,7 @@ def build_courses_collection(
     reset: bool,
 ):
     print(f"\n=== 建立 {name} ===")
-    if not _prepare_collection(qdrant, name, reset):
+    if not _prepare_collection(qdrant, name, reset, with_bm25=bm25.available):
         return
 
     if not canonical_json.exists():
@@ -569,14 +663,15 @@ def build_courses_collection(
         batch = docs[i : i + EMBED_BATCH]
         embeddings.extend(embedder.embed_batch(batch))
 
-    _upsert_batch(qdrant, name, ids, docs, payloads, embeddings)
+    sparse_embs = bm25.embed_batch(docs) if bm25.available else None
+    _upsert_batch(qdrant, name, ids, docs, payloads, embeddings, sparse_embs)
     info = qdrant.get_collection(name)
     print(f"  完成，collection 總數：{info.points_count}")
 
 
-def build_programs_collection(qdrant: QdrantClient, embedder: Embedder, reset: bool):
+def build_programs_collection(qdrant: QdrantClient, embedder: Embedder, bm25: "BM25Embedder", reset: bool):
     print("\n=== 建立 ncu_credit_programs ===")
-    if not _prepare_collection(qdrant, "ncu_credit_programs", reset):
+    if not _prepare_collection(qdrant, "ncu_credit_programs", reset, with_bm25=bm25.available):
         return
 
     desc_map: dict[str, str] = {}
@@ -634,14 +729,15 @@ def build_programs_collection(qdrant: QdrantClient, embedder: Embedder, reset: b
         })
 
     embeddings = embedder.embed_batch(docs)
-    _upsert_batch(qdrant, "ncu_credit_programs", ids, docs, payloads, embeddings)
+    sparse_embs = bm25.embed_batch(docs) if bm25.available else None
+    _upsert_batch(qdrant, "ncu_credit_programs", ids, docs, payloads, embeddings, sparse_embs)
     info = qdrant.get_collection("ncu_credit_programs")
     print(f"  完成，collection 總數：{info.points_count}")
 
 
-def build_departments_collection(qdrant: QdrantClient, embedder: Embedder, reset: bool):
+def build_departments_collection(qdrant: QdrantClient, embedder: Embedder, bm25: "BM25Embedder", reset: bool):
     print("\n=== 建立 ncu_departments ===")
-    if not _prepare_collection(qdrant, "ncu_departments", reset):
+    if not _prepare_collection(qdrant, "ncu_departments", reset, with_bm25=bm25.available):
         return
 
     if not COLLEGO.exists():
@@ -687,7 +783,8 @@ def build_departments_collection(qdrant: QdrantClient, embedder: Embedder, reset
         })
 
     embeddings = embedder.embed_batch(docs)
-    _upsert_batch(qdrant, "ncu_departments", ids, docs, payloads, embeddings)
+    sparse_embs = bm25.embed_batch(docs) if bm25.available else None
+    _upsert_batch(qdrant, "ncu_departments", ids, docs, payloads, embeddings, sparse_embs)
     info = qdrant.get_collection("ncu_departments")
     print(f"  完成，collection 總數：{info.points_count}")
 
@@ -695,10 +792,11 @@ def build_departments_collection(qdrant: QdrantClient, embedder: Embedder, reset
 def build_teachers_collection(
     qdrant: QdrantClient,
     embedder: Embedder,
+    bm25: "BM25Embedder",
     reset: bool,
 ):
     print("\n=== 建立 ncu_teachers ===")
-    if not _prepare_collection(qdrant, "ncu_teachers", reset):
+    if not _prepare_collection(qdrant, "ncu_teachers", reset, with_bm25=bm25.available):
         return
 
     if not TEACHER_CSV.exists():
@@ -740,7 +838,8 @@ def build_teachers_collection(
         })
 
     embeddings = embedder.embed_batch(docs)
-    _upsert_batch(qdrant, "ncu_teachers", ids, docs, payloads, embeddings)
+    sparse_embs = bm25.embed_batch(docs) if bm25.available else None
+    _upsert_batch(qdrant, "ncu_teachers", ids, docs, payloads, embeddings, sparse_embs)
     info = qdrant.get_collection("ncu_teachers")
     print(f"  完成，collection 總數：{info.points_count}")
 
@@ -771,10 +870,12 @@ def main():
         api_version=api_version,
     )
     embedder = Embedder(oai, embed_deployment)
+    bm25 = BM25Embedder()
 
     qdrant_url = os.environ.get("QDRANT_URL", "")
+    qdrant_api_key = os.environ.get("QDRANT_API_KEY")
     if qdrant_url:
-        qdrant = QdrantClient(url=qdrant_url)
+        qdrant = _create_qdrant_client(qdrant_url, qdrant_api_key)
     else:
         QDRANT_DIR.mkdir(parents=True, exist_ok=True)
         qdrant = QdrantClient(path=str(QDRANT_DIR))
@@ -785,7 +886,7 @@ def main():
     eligibility_lookup = load_eligibility_lookup()
 
     build_courses_collection(
-        qdrant, embedder, nlp, teacher_lookup, schedule_lookup, eligibility_lookup,
+        qdrant, embedder, bm25, nlp, teacher_lookup, schedule_lookup, eligibility_lookup,
         name="ncu_courses_ug",
         canonical_json=COURSES_DEDUPED_UG,
         is_grad=False,
@@ -793,16 +894,16 @@ def main():
     )
 
     build_courses_collection(
-        qdrant, embedder, nlp, teacher_lookup, schedule_lookup, eligibility_lookup,
+        qdrant, embedder, bm25, nlp, teacher_lookup, schedule_lookup, eligibility_lookup,
         name="ncu_courses_grad",
         canonical_json=COURSES_DEDUPED_GRAD,
         is_grad=True,
         reset=args.reset,
     )
 
-    build_programs_collection(qdrant, embedder, args.reset)
-    build_departments_collection(qdrant, embedder, args.reset)
-    build_teachers_collection(qdrant, embedder, args.reset)
+    build_programs_collection(qdrant, embedder, bm25, args.reset)
+    build_departments_collection(qdrant, embedder, bm25, args.reset)
+    build_teachers_collection(qdrant, embedder, bm25, args.reset)
 
     print("\n✓ 所有 collection 建立完成")
     print(f"  儲存位置：{QDRANT_DIR}")

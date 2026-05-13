@@ -36,6 +36,47 @@ INDEXED_TYPES = {"Concept", "Technology", "Field", "Competency"}
 BATCH_SIZE = 32
 
 
+def _env_bool(name: str, default: bool = False) -> bool:
+    raw = os.environ.get(name)
+    if raw is None:
+        return default
+    return raw.strip().lower() in {"1", "true", "yes", "y", "on"}
+
+
+def _env_int(name: str, default: int) -> int:
+    raw = os.environ.get(name)
+    if raw is None:
+        return default
+    try:
+        return int(raw)
+    except ValueError:
+        return default
+
+
+def _env_float(name: str, default: float) -> float:
+    raw = os.environ.get(name)
+    if raw is None:
+        return default
+    try:
+        return float(raw)
+    except ValueError:
+        return default
+
+
+def _create_qdrant_client(url: str, api_key: str | None):
+    from qdrant_client import QdrantClient
+    prefer_grpc = _env_bool("QDRANT_PREFER_GRPC", False)
+    grpc_port = _env_int("QDRANT_GRPC_PORT", 6334)
+    timeout = _env_float("QDRANT_TIMEOUT_SEC", 60.0)
+    return QdrantClient(
+        url=url,
+        api_key=api_key,
+        prefer_grpc=prefer_grpc,
+        grpc_port=grpc_port,
+        timeout=timeout,
+    )
+
+
 def _get_oai():
     from openai import AzureOpenAI
     return AzureOpenAI(
@@ -47,8 +88,17 @@ def _get_oai():
 
 def _embed_batch(texts: list[str]) -> list[list[float]]:
     deployment = os.environ.get("AZURE_OPENAI_EMBEDDING_DEPLOYMENT", "text-embedding-3-large")
-    resp = _get_oai().embeddings.create(model=deployment, input=texts)
-    return [item.embedding for item in resp.data]
+    for attempt in range(3):
+        try:
+            resp = _get_oai().embeddings.create(model=deployment, input=texts)
+            return [item.embedding for item in resp.data]
+        except Exception as ex:
+            if attempt == 2:
+                raise
+            delay = 2 ** attempt
+            print(f"  [WARN] embed 失敗，{delay}s 後重試：{ex}")
+            time.sleep(delay)
+    return []
 
 
 def _node_id_to_int(node_id: str) -> int:
@@ -127,12 +177,27 @@ def _upsert_nodes(client, nodes: list, nodes_by_id: dict, in_adj: dict,
                 }
             points.append(PointStruct(id=_node_id_to_int(nid), vector=vec, payload=payload))
 
-        client.upsert(collection_name=COLLECTION, points=points)
+        _upsert_with_retry(client, COLLECTION, points)
         uploaded += len(points)
         print(f"  上傳 {uploaded}/{total} 筆...", end="\r")
         time.sleep(0.1)
     print()
     return uploaded, errors
+
+
+def _upsert_with_retry(client, collection_name: str, points: list) -> None:
+    retries = max(1, _env_int("QDRANT_UPSERT_RETRIES", 5))
+    wait = _env_bool("QDRANT_UPSERT_WAIT", False)
+    for attempt in range(retries):
+        try:
+            client.upsert(collection_name=collection_name, points=points, wait=wait)
+            return
+        except Exception as ex:
+            if attempt == retries - 1:
+                raise
+            delay = min(30, 2 ** attempt)
+            print(f"  [WARN] upsert 失敗，{delay}s 後重試：{ex}")
+            time.sleep(delay)
 
 
 def _build_course_concept_vecs(
@@ -293,8 +358,9 @@ def main():
     else:
         # 建立 Qdrant client（Phase 1/2 才需要）
         qdrant_url = os.environ.get("QDRANT_URL", "")
+        qdrant_api_key = os.environ.get("QDRANT_API_KEY")
         if qdrant_url:
-            client = QdrantClient(url=qdrant_url)
+            client = _create_qdrant_client(qdrant_url, qdrant_api_key)
         else:
             QDRANT_DIR.mkdir(parents=True, exist_ok=True)
             client = QdrantClient(path=str(QDRANT_DIR))
