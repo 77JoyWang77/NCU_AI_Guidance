@@ -6,6 +6,9 @@ import type {
   Answer,
   AssessmentResult,
   Course,
+  CourseAskResponse,
+  CourseSemanticSearchParams,
+  CourseSemanticSearchResponse,
   Project,
   ChatApiResponse,
   StreamEvent,
@@ -61,6 +64,16 @@ export const courseAPI = {
 
   searchCourses: async (query: string): Promise<Course[]> => {
     const response = await apiClient.post('/course-search', { query });
+    return response.data;
+  },
+
+  semanticSearch: async (params: CourseSemanticSearchParams): Promise<CourseSemanticSearchResponse> => {
+    const response = await apiClient.post('/courses/semantic-search', params);
+    return response.data;
+  },
+
+  askCourse: async (courseId: string, question: string): Promise<CourseAskResponse> => {
+    const response = await apiClient.post(`/courses/${encodeURIComponent(courseId)}/ask`, { question });
     return response.data;
   },
 };

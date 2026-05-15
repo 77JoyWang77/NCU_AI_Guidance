@@ -13,7 +13,8 @@ load_dotenv(Path(__file__).parent.parent.parent / ".env")
 def get_allowed_origins() -> list[str]:
     origins = os.getenv(
         "ALLOWED_ORIGINS",
-        "http://localhost:5173,http://localhost:5174,http://localhost:3000",
+        "http://localhost:5173,http://localhost:5174,http://localhost:3000,"
+        "http://127.0.0.1:5173,http://127.0.0.1:5174,http://127.0.0.1:3000",
     )
     return [origin.strip() for origin in origins.split(",") if origin.strip()]
 

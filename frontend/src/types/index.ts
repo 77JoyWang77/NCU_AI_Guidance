@@ -75,6 +75,40 @@ export interface Course {
   teaching_method?: string;  // 授课方式
   office_hours?: string;  // 办公时间
   weeks?: string;  // 授课周数
+  is_grad?: boolean;
+  relevance_score?: number;
+  search_source?: string;
+  semantic_summary?: string;
+  eligibility_summary?: string;
+  eligibility_status?: string;
+  eligibility_warning?: string;
+  languages?: string[];
+  tools?: string[];
+  concepts?: string[];
+  topic_tags?: string[];
+  domain_tags?: string[];
+  core_questions?: string[];
+  simplified_concepts?: string[];
+}
+
+export interface CourseSemanticSearchParams {
+  query: string;
+  selected_types?: string[];
+  selected_credits?: string[];
+  selected_semesters?: string[];
+  limit?: number;
+}
+
+export interface CourseSemanticSearchResponse {
+  mode: 'semantic' | 'fallback';
+  message?: string;
+  results: Course[];
+}
+
+export interface CourseAskResponse {
+  answer: string;
+  model: string;
+  warnings: string[];
 }
 
 // 大专生计划相关类型
