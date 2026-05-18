@@ -1,12 +1,12 @@
 {
-  "total_nodes": 28309,
+  "total_nodes": 28281,
   "total_edges": 104427,
   "node_types": {
     "Concept": 16985,
     "Course": 3982,
     "Field": 3594,
     "Instructor": 1187,
-    "Technology": 923,
+    "Technology": 895,
     "Competency": 458,
     "Domain": 359,
     "GraduationRule": 269,

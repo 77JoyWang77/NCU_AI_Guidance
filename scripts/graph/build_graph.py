@@ -766,6 +766,8 @@ def enrich_nlp(G: nx.DiGraph) -> dict:
     tech_path = NLP_DIR / "nlp_tech_nodes.json"
     if tech_path.exists():
         tech_nodes = load_json(tech_path)
+        # lowercase → canonical node_id；防止大小寫不同產生重複節點
+        _tech_norm_map: dict[str, str] = {}
         for code, data in tech_nodes.items():
             if not isinstance(data, dict):
                 continue
@@ -776,9 +778,14 @@ def enrich_nlp(G: nx.DiGraph) -> dict:
                 item = item.strip()
                 if not item:
                     continue
-                tid = f"tech::{item}"
-                if ensure_node(G, tid, node_type="Technology", name=item, source="nlp"):
-                    stats["tech_nodes"] += 1
+                norm_key = item.lower()
+                if norm_key in _tech_norm_map:
+                    tid = _tech_norm_map[norm_key]   # 重定向到已存在的正規節點
+                else:
+                    tid = f"tech::{item}"
+                    if ensure_node(G, tid, node_type="Technology", name=item, source="nlp"):
+                        stats["tech_nodes"] += 1
+                    _tech_norm_map[norm_key] = tid
                 if ensure_edge(G, cnid, tid, relation="TEACHES", source="nlp"):
                     stats["teaches"] += 1
             for concept in data.get("concepts", []):
