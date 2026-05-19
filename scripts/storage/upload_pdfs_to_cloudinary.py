@@ -64,8 +64,15 @@ def resolve_root_dir(root_arg: str) -> Path:
     return root_dir.resolve()
 
 
+def normalize_cloudinary_public_id_part(part: str) -> str:
+    return part.replace("&", "and")
+
+
 def build_public_id(pdf_path: Path, root_dir: Path, folder: str) -> str:
-    relative_path = pdf_path.relative_to(root_dir).as_posix()
+    relative_path = "/".join(
+        normalize_cloudinary_public_id_part(part)
+        for part in pdf_path.relative_to(root_dir).parts
+    )
     return f"{folder.rstrip('/')}/{relative_path}"
 
 
