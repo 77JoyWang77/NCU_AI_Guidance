@@ -54,6 +54,33 @@ def _sparse_embed(text: str):
 _DENSE_ONLY_COLLECTIONS = {"ncu_graph_nodes"}
 
 
+def _merge_must_not(base_filter: Filter | None, must_not_conds: list[dict]) -> Filter | None:
+    """將 must_not_conds（ChromaDB 語法 list）合併進 base_filter。
+
+    must_not_conds 格式範例：
+      [{"dept_exclude": {"$contains": "資工系"}}, {"dept_exclude": {"$contains": "電機系"}}]
+    → 每個 $contains 轉換為 FieldCondition(MatchAny)，放入 filter.must_not
+    """
+    if not must_not_conds:
+        return base_filter
+    mn_conditions = []
+    for cond in must_not_conds:
+        for key, op in cond.items():
+            if not isinstance(op, dict):
+                continue
+            if "$contains" in op:
+                mn_conditions.append(FieldCondition(key=key, match=MatchAny(any=[op["$contains"]])))
+            elif "$eq" in op:
+                mn_conditions.append(FieldCondition(key=key, match=MatchValue(value=op["$eq"])))
+    if not mn_conditions:
+        return base_filter
+    if base_filter is None:
+        return Filter(must_not=mn_conditions)
+    existing_mn = list(base_filter.must_not or [])
+    base_filter.must_not = existing_mn + mn_conditions
+    return base_filter
+
+
 def _hybrid_search(client, collection, dense_vec, query_text, qdrant_filter, n_results):
     """Dense + BM25 prefetch → RRF 融合；graph_nodes 或失敗時降級為純 dense。"""
     if collection in _DENSE_ONLY_COLLECTIONS:
@@ -206,16 +233,20 @@ def search_courses(
     filters: Optional[dict] = None,
     n_results: int = 10,
     collection: str = "ncu_courses_ug",
+    must_not_conds: Optional[list[dict]] = None,
 ) -> list[dict]:
     """向量搜尋課程。
 
     filters 使用 ChromaDB where 語法，內部自動轉為 Qdrant Filter。
+    must_not_conds：list[dict]，格式同 filters，但轉為 Qdrant must_not 條件，
+      用於排除特定欄位值（例如排除 dept_exclude 含指定系所的課程）。
     filterable 欄位（tools/languages/concepts/when_semesters/eligible_years 等）
     在 Qdrant payload 中以陣列儲存，支援 $contains → MatchAny 轉換。
     """
     embedding = _embed(query)
     client = _get_qdrant()
     qdrant_filter = _qdrant_filter(filters) if filters else None
+    qdrant_filter = _merge_must_not(qdrant_filter, must_not_conds or [])
 
     try:
         points = _hybrid_search(client, collection, embedding, query, qdrant_filter, n_results)

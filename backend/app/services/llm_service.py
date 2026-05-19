@@ -63,18 +63,31 @@ SYSTEM_PROMPT = """你是「中央大學選課助理」，協助高中生、大�
    （例如：不得把「法律與政府研究所」猜測補全為「法律與政府學系」；無對應節點就直接說「查無此系所」）。
 5. 涉及必修/修課規劃時，提醒學生以學校最新公告為準。
 6. 回答長度適中，善用條列式整理。
-7. **提到課程名稱時，必須用 `<course>` 標籤包住，格式如下：**
+7. **嚴禁在用戶可見的回答中使用任何系統技術用語**，包括但不限於：
+   「知識圖譜」、「圖譜」、「語意相近」、「精確命中」、「節點」、「向量搜尋」、「工具回傳」、「系統查詢」。
+   直接說「有哪些系」「有哪些課」即可；資料來源不需要解釋。
+8. **提到課程名稱時，必須用 `<course>` 標籤包住，格式如下：**
    - 知道系所時：`<course>課名（系所）</course>`，例如：`<course>統計學（數學系）</course>`
    - 不知道系所時：`<course>課名</course>`，例如：`<course>資料結構</course>`
-   ⚠️ **課名必須與工具回傳的原始名稱「逐字相同」**，不得縮寫、改寫或翻譯。
-      系所名稱同理，必須與工具回傳的 dept 欄位完全一致。
+   ⚠️ **`<course>` 標籤只能包住「課程名稱」，絕對不可用來包住系所名稱、學院名稱或其他非課程的詞**。
+      課名必須與工具回傳的原始名稱「逐字相同」，不得縮寫、改寫或翻譯。
       若不確定課名是否正確，**不要加標籤**，寧可不標也不要標錯。
       標籤只用於工具實際回傳過的課程，不得自行推測或補充工具未回傳的課程。
+   **同名課程消歧義格式**（同名但不同系所或不同學分時必須標明）：
+      - 不同系所：`<course>統計學（數學系）</course>`
+      - 不同學分：`<course>生成式人工智慧導論（2學分）</course>`
+      若同名課程有多個版本但無法確定是哪個，**不加標籤**，在文字中說明即可。
 
 ## Filter 使用原則
 
 只有在使用者明確說出條件時才加 filter，否則省略：
-- `dept`：使用者提到「XX系的課」才加；問「全校有哪些課」不加
+- `dept`：使用者提到「XX系開的課」「XX系有哪些」才加；問「全校有哪些課」不加
+- `college`：使用者提到「XX學院開的課」才加；與 `student_college` 不同，這是限制**開課單位**
+- `student_college`：使用者說「我是XX學院/系的學生」「XX學院學生可以修哪些」才加；
+  這是根據**學生身份**過濾可修課程（含全校開放課程），不限制開課學院；
+  ⚠️ `college`（開課學院）和 `student_college`（學生所屬學院）意思相反，不要混用：
+  → 「文學院開設的機器學習」→ `college="文學院"`
+  → 「文學院學生可以修哪些機器學習」→ `student_college="文學院"`
 - `course_type`：使用者說「選修」「必修」才加；問「有哪些課可以學」不加
 - `exclude_grad_only`：預設 true（隱藏限研究所課程）；使用者明確詢問研究所課程時才設為 false
 
@@ -105,6 +118,8 @@ SYSTEM_PROMPT = """你是「中央大學選課助理」，協助高中生、大�
 - `course_domain`：課程大領域（例如「資訊科學 ・ 電機工程」）
 - `competencies`：核心能力 list，每筆為 `{name, level_num, level_label}`；
   level_num 1–4 分別對應「認識/了解 → 熟悉 → 應用 → 精通」
+- `exact_match`（search_courses）：true 代表課名與查詢詞完全相同，是使用者最直接想找的那門課；
+  呈現時可優先置頂並說明「以下是完全符合的課程」，其餘為相關課程
 - `matched_via`（search_courses graph 路徑）：命中的技術/概念節點，解釋此課為何出現
 - `sections`（get_dept_courses）：同名課程合併後的開課班數（分班）；`course_ids` 列出所有課號
 - `total_found`（get_dept_courses）：去重後的課程總數；**若 total_found > 15，回答時說明「共有 X 門課，以下列出代表性的...」**，不要全部列完再說
@@ -113,9 +128,6 @@ SYSTEM_PROMPT = """你是「中央大學選課助理」，協助高中生、大�
 - `domain_profile`：系所課程的 top-5 領域分布（`{"top_domains": [{"domain": ..., "count": ...}]}`）；
   介紹系所特色、比較兩系差異時**應主動引用此欄位**說明課程側重領域，勿只引用 Collego 文字。
   「XX系課程以哪些領域為主」類問題優先 get_dept_info，看 domain_profile，而非 get_dept_courses(all)。
-
-**get_depts_by_tech**：
-- `matched_nodes`：Qdrant 向量擴展找到的相關節點，說明「為何這些系所出現」
 
 善用這些欄位回答：用 `concepts`/`technologies` 說明「課程教什麼」，
 `competencies` 說明「培養什麼能力及程度」，`matched_via` 解釋「為何此課出現在結果中」，
@@ -127,6 +139,15 @@ SYSTEM_PROMPT = """你是「中央大學選課助理」，協助高中生、大�
   → search_courses(query="...", tech="技術名稱")，tech 參數必須帶
   → get_depts_by_tech("技術名稱")：**僅在使用者明確詢問「哪些系所有教 XX」「系所分布」時才補呼叫**；
     若使用者只問「有哪些課」「哪裡可以學」，不需要呼叫 get_depts_by_tech
+
+**get_depts_by_tech 回答格式**：
+  - 有「必修科系」與「選修科系」時，直接引用清單：「以下科系將 XX 列為**必修**：A系、B系；選修：C系、D系」
+  - 某類別為空：說「目前沒有科系將 XX 列為必修/選修」，不說「查無」
+  - 找不到任何系所：說「目前沒有查到教 XX 的系所資料」，不推斷或補全任何系所名稱
+  - 同時有主要結果和補充（◆相關）：先呈主要結果，再以「另外也有一些相關的...」自然帶入補充
+  - 補充結果過濾：依**課程名稱本身**判斷是否真正教到那個技術或概念，不以學院歸屬排除
+    例：問「語音辨識」→「語言學概論」教的是語言學理論，應跳過；「計算語言學」「語音信號處理」即使在人文院，可納入
+  - 所有補充都不相關：直接以精確結果回答，不硬補系所
 
 **系所課程查詢**：
   → 廣泛列舉（「XX系有哪些必修」「通識有哪些選修」）：
@@ -166,6 +187,8 @@ SYSTEM_PROMPT = """你是「中央大學選課助理」，協助高中生、大�
   → focus="dept"：只回傳系所，適合「XX 領域哪些系所涉及」
   → focus="overview"：**僅在使用者明確要求同時看課程＋教師＋系所全貌時使用**；
     一般問題請用 focus="course" 或分開呼叫，不要預設用 overview（overview 回傳 25 個混合節點，難整合）
+  → ⚠️ focus="overview" 執行後，**必須追加呼叫 search_courses（query=seed 主題詞）**，
+     補充更完整的課程清單；並在回答中說明「以下是代表性課程概覽，相關課程不止這些」
   → ⚠️ 以「課程名稱」（微積分、線性代數等基礎學科）為 seed 時，必須用 focus="course"；
      種子策略自動複合（Concept 節點 + Course 節點同時起跑），無需也不應傳入已廢除的 focus="concept"
   → 觸發時機：問「哪些 XX 相關」「全面了解 XX」「XX 連到哪些」「跨類型探索」等廣泛問題
@@ -190,6 +213,9 @@ SYSTEM_PROMPT = """你是「中央大學選課助理」，協助高中生、大�
   → ⚠️ **不要用 ppr_explore 做直接課程名稱查詢**：ppr_explore 是廣泛圖探索工具，
      適合「和 XX 相關的一切」，不適合「我要找 XX 這門課」
 
+**工具去重原則**：同一規劃輪次，若兩次查詢的主題相同、只換修飾詞（如先查「土木環境工程課程」
+  再查「環境工程土木交叉課程」），合併為一次；拿到結果後先整合現有資料、確認具體缺口，再決定是否補查。
+
 **圖工具無結果時的 Fallback**：
   1. find_similar_courses 無結果 → 改用 search_courses(query="課名關鍵字")
   2. ppr_explore 無結果：
@@ -197,9 +223,6 @@ SYSTEM_PROMPT = """你是「中央大學選課助理」，協助高中生、大�
      b. 若仍無結果 → seed 不在圖中；改用 search_courses
      ⚠️ ppr_explore 回傳 0 筆時，**不得用 <course> 標籤標記任何課程**，
         亦不得自行補充工具未回傳的課程名稱
-**工具去重原則**：同一規劃輪次，若兩次查詢的主題相同、只換修飾詞（如先查「土木環境工程課程」
-  再查「環境工程土木交叉課程」），合併為一次；拿到結果後先整合現有資料、確認具體缺口，再決定是否補查。
-
   3. get_depts_by_tech 回傳 0 筆 → 技術名稱可能不在圖中；改用以下策略：
      a. 嘗試中文同義詞（GIS → "地理資訊"、"空間分析"）
      b. 改用 search_courses(query="技術名稱") 做向量搜尋
@@ -556,8 +579,9 @@ def _extract_courses_from_tags(answer: str, course_pool: dict) -> tuple[list[dic
     import re
     from difflib import SequenceMatcher
 
-    # 支援 <course>課名</course> 和 <course>課名（系所）</course>
-    TAG_RE = re.compile(r'<course>(.*?)(?:（([^）]*)）)?</course>', re.DOTALL)
+    # 支援 <course>課名</course> / <course>課名（系所）</course> / <course>課名（N學分）</course>
+    TAG_RE      = re.compile(r'<course>(.*?)(?:（([^）]*)）)?</course>', re.DOTALL)
+    CREDITS_RE  = re.compile(r'^(\d+)\s*學分$')
     tag_matches = TAG_RE.findall(answer)
     if not tag_matches:
         return [], answer
@@ -573,9 +597,9 @@ def _extract_courses_from_tags(answer: str, course_pool: dict) -> tuple[list[dic
     seen: set[str] = set()
     corrections: dict[str, str] = {}  # 錯誤課名 → 正確課名
 
-    for raw_name, dept_hint in tag_matches:
+    for raw_name, hint in tag_matches:
         name = raw_name.strip()
-        dept_hint = dept_hint.strip() if dept_hint else ""
+        hint = hint.strip() if hint else ""
         if not name:
             continue
 
@@ -583,18 +607,27 @@ def _extract_courses_from_tags(answer: str, course_pool: dict) -> tuple[list[dic
         candidates = name_index.get(name, [])
         if candidates:
             if len(candidates) == 1:
-                matched = candidates[0]
-            elif dept_hint:
-                matched = next(
-                    (c for c in candidates if dept_hint in c.get("dept", "")),
-                    candidates[0],
-                )
+                matched_list = [candidates[0]]
+            elif hint:
+                cm = CREDITS_RE.match(hint)
+                if cm:
+                    # 括號內是「N學分」→ 以學分數消歧義
+                    credits_val = int(cm.group(1))
+                    filtered = [c for c in candidates if c.get("credits") == credits_val]
+                    matched_list = filtered if filtered else candidates
+                else:
+                    # 括號內是系所名 → 以系所消歧義
+                    filtered = [c for c in candidates if hint in c.get("dept", "")]
+                    matched_list = filtered if filtered else candidates
             else:
-                matched = candidates[0]
-            uid = f"{matched.get('name', '')}|{matched.get('dept', '')}"
-            if uid not in seen:
-                seen.add(uid)
-                result.append(matched)
+                # 無 hint 且有多個候選：回傳全部版本，不任意選 first
+                matched_list = candidates
+
+            for matched in matched_list:
+                uid = f"{matched.get('name', '')}|{matched.get('dept', '')}|{matched.get('credits', 0)}"
+                if uid not in seen:
+                    seen.add(uid)
+                    result.append(matched)
             continue
 
         # 2. Fuzzy match (ratio >= 0.85)
@@ -607,7 +640,7 @@ def _extract_courses_from_tags(answer: str, course_pool: dict) -> tuple[list[dic
 
         if best_ratio >= 0.85 and best_key:
             matched = name_index[best_key][0]
-            uid = f"{matched.get('name', '')}|{matched.get('dept', '')}"
+            uid = f"{matched.get('name', '')}|{matched.get('dept', '')}|{matched.get('credits', 0)}"
             if uid not in seen:
                 seen.add(uid)
                 result.append(matched)
@@ -644,19 +677,13 @@ def _parse_courses_from_str(tool_name: str, text: str) -> list[dict]:
                 courses.append({"name": name, "dept": dept, "credits": credits, "type": "", "code": "", "teacher": ""})
 
     elif tool_name == "get_depts_by_tech":
-        # 相關課程（前 10 門）：
-        #   - Python程式設計（機械工程學系）
-        in_courses = False
+        # 格式：每門課程以 4 格縮排 + dash 開頭，例如
+        #   - Python程式設計（機械工程學系） → 選修：機械工程學系
         for line in text.splitlines():
-            if '相關課程' in line:
-                in_courses = True
-                continue
-            if not in_courses:
-                continue
-            m = re.match(r'\s*-\s*(.+?)（(.+?)）', line)
+            m = re.match(r'\s{2,}-\s+(.+?)（(.+?)）', line)
             if m:
                 name, dept = m.group(1).strip(), m.group(2).strip()
-                if name and len(name) >= 2:
+                if name and len(name) >= 2 and not name.startswith('【') and not name.startswith('▲') and not name.startswith('◆'):
                     courses.append({"name": name, "dept": dept, "credits": 0, "type": "", "code": "", "teacher": ""})
 
     return courses
@@ -728,12 +755,18 @@ def _collect_course_pool(tool_name: str, result, course_pool: dict) -> None:
         teacher = result.get("teacher_name", "")
         for c in result.get("courses", []):
             name = c.get("name", "")
-            if name and name not in course_pool:
-                course_pool[name] = {
-                    "code":    c.get("id", ""),
+            if not name:
+                continue
+            # 同名但不同課號/學分的課（如不同學分版本）各自保留
+            course_id = c.get("id", "")
+            credits   = c.get("credits") or 0
+            key = f"{name}|{course_id or credits}"
+            if key not in course_pool:
+                course_pool[key] = {
+                    "code":    course_id,
                     "name":    name,
                     "dept":    "",
-                    "credits": c.get("credits") or 0,
+                    "credits": credits,
                     "type":    c.get("relation", ""),
                     "teacher": teacher,
                 }
@@ -1096,6 +1129,10 @@ def stream_with_tools(
                 })
                 yield _evt({"type": "tool_done", "tool": tc["name"], "count": count,
                             "courses_found": courses_found, "scores": scores, "score_type": score_type})
+                # 字串型工具（get_depts_by_tech / ppr / find_similar）回傳完整文字供測試腳本捕捉
+                if isinstance(result, str) and result:
+                    preview = result[:800] + ("…" if len(result) > 800 else "")
+                    yield _evt({"type": "tool_result", "tool": tc["name"], "result": preview})
 
             # 重建 messages
             messages.append({
