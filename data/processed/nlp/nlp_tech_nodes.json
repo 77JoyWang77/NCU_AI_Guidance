@@ -39,9 +39,9 @@
       "Python"
     ],
     "tools": [
-      "Numpy",
-      "Pandas",
-      "Scikit-learn",
+      "NumPy",
+      "pandas",
+      "scikit-learn",
       "PyTorch"
     ],
     "concepts": [
@@ -147,12 +147,12 @@
   },
   "GP1017": {
     "languages": [
-      "Matlab",
+      "MATLAB",
       "Python"
     ],
     "tools": [
       "PyCMT",
-      "Obspy"
+      "ObsPy"
     ],
     "concepts": [
       "IF",
@@ -794,7 +794,6 @@
     "languages": [],
     "tools": [
       "無人機",
-      "無人機",
       "掃描儀",
       "航空攝影",
       "SfM（Structure from Motion）",
@@ -1303,10 +1302,10 @@
     ],
     "tools": [
       "Google Colab",
-      "Numpy",
-      "Pandas",
+      "NumPy",
+      "pandas",
       "Matplotlib",
-      "Scikit-Learn",
+      "scikit-learn",
       "Kaggle"
     ],
     "concepts": [
@@ -2115,7 +2114,7 @@
   "SS7021": {
     "languages": [],
     "tools": [
-      "CODE V"
+      "Code V"
     ],
     "concepts": [
       "高光譜成像儀",
@@ -4728,9 +4727,9 @@
       "Python"
     ],
     "tools": [
-      "Pandas",
+      "pandas",
       "NumPy",
-      "matplotlib"
+      "Matplotlib"
     ],
     "concepts": [
       "資料處理",
@@ -5289,9 +5288,9 @@
       "Python"
     ],
     "tools": [
-      "Pandas",
+      "pandas",
       "NumPy",
-      "matplotlib"
+      "Matplotlib"
     ],
     "concepts": [
       "資料結構",
@@ -5355,7 +5354,7 @@
       "ROS2（機器人作業系統2）",
       "MATLAB",
       "Simulink",
-      "Rviz",
+      "RViz",
       "Gazebo"
     ],
     "concepts": [
@@ -8460,7 +8459,7 @@
       "Python"
     ],
     "tools": [
-      "LaTex"
+      "LaTeX"
     ],
     "concepts": [
       "電腦系統結構",
@@ -9515,7 +9514,7 @@
     ],
     "tools": [
       "Matplotlib",
-      "Numpy",
+      "NumPy",
       "SciPy",
       "Astropy",
       "Google Colaboratory",
@@ -9754,7 +9753,7 @@
   "PH9998": {
     "languages": [],
     "tools": [
-      "LINUX",
+      "Linux",
       "MySQL"
     ],
     "concepts": [
@@ -11083,7 +11082,7 @@
     "tools": [
       "Colab",
       "NumPy",
-      "Pandas"
+      "pandas"
     ],
     "concepts": [
       "多層感知器",
@@ -11772,7 +11771,7 @@
     "languages": [],
     "tools": [
       "TensorFlow",
-      "Scikit-Learn"
+      "scikit-learn"
     ],
     "concepts": [
       "大型語言模型",
@@ -12394,9 +12393,9 @@
     ],
     "tools": [
       "Colab",
-      "Pandas",
+      "pandas",
       "Kaggle",
-      "Llama"
+      "LLaMA"
     ],
     "concepts": [
       "深度學習",
@@ -12420,7 +12419,7 @@
       "R"
     ],
     "tools": [
-      "STATA"
+      "Stata"
     ],
     "concepts": [
       "簡單回歸",
@@ -12704,7 +12703,7 @@
   "FM4035": {
     "languages": [],
     "tools": [
-      "STATA",
+      "Stata",
       "SAS"
     ],
     "concepts": [
@@ -12783,7 +12782,7 @@
       "R"
     ],
     "tools": [
-      "STATA",
+      "Stata",
       "TEJ"
     ],
     "concepts": [
@@ -13172,8 +13171,8 @@
       "Python"
     ],
     "tools": [
-      "Numpy",
-      "Pandas",
+      "NumPy",
+      "pandas",
       "Excel"
     ],
     "concepts": [
@@ -13953,7 +13952,7 @@
   "CE2013": {
     "languages": [],
     "tools": [
-      "Github",
+      "GitHub",
       "LINE Bot",
       "ComfyUI",
       "Docker",
@@ -17284,9 +17283,9 @@
     ],
     "tools": [
       "NumPy",
-      "Pandas",
+      "pandas",
       "Matplotlib",
-      "Scikit-Learn",
+      "scikit-learn",
       "TensorFlow",
       "Keras",
       "PyTorch",
@@ -17535,7 +17534,7 @@
       "MATLAB"
     ],
     "tools": [
-      "SIMULINK",
+      "Simulink",
       "GUI程式設計",
       "M檔案",
       "二維平面繪圖",
@@ -17735,7 +17734,7 @@
   "SS3018": {
     "languages": [
       "IDL",
-      "matlab"
+      "MATLAB"
     ],
     "tools": [],
     "concepts": [
@@ -18211,7 +18210,7 @@
       "來上客網",
       "Google Sites",
       "Gemini",
-      "Notebooklm",
+      "NotebookLM",
       "Magicschool",
       "Wordwall",
       "Padlet",
@@ -18599,7 +18598,7 @@
       "Python"
     ],
     "tools": [
-      "Numpy",
+      "NumPy",
       "SciPy",
       "Matplotlib",
       "MATLAB"
@@ -19272,9 +19271,9 @@
       "Python"
     ],
     "tools": [
-      "numpy",
+      "NumPy",
       "pandas",
-      "matplotlib",
+      "Matplotlib",
       "scikit-learn",
       "Jupyter Notebooks",
       "IPython"
@@ -20092,7 +20091,7 @@
     "languages": [],
     "tools": [
       "AutoCAD",
-      "SOLIDWORKS"
+      "SolidWorks"
     ],
     "concepts": [
       "工程投影",
@@ -20413,8 +20412,8 @@
       "Python"
     ],
     "tools": [
-      "Numpy",
-      "Pandas",
+      "NumPy",
+      "pandas",
       "Matplotlib",
       "Seaborn",
       "Keras",
@@ -20725,7 +20724,7 @@
     "tools": [
       "ROS（機器人作業系統）",
       "Gazebo",
-      "Rviz",
+      "RViz",
       "超寬頻定位系統",
       "單晶片電腦控制"
     ],
@@ -21244,7 +21243,7 @@
   "ME3001": {
     "languages": [],
     "tools": [
-      "Solidworks"
+      "SolidWorks"
     ],
     "concepts": [
       "參變量式",
@@ -23115,7 +23114,7 @@
       "Python"
     ],
     "tools": [
-      "Scikit-Learn",
+      "scikit-learn",
       "Keras",
       "TensorFlow"
     ],
@@ -25311,7 +25310,7 @@
   "LS5070": {
     "languages": [
       "R",
-      "MatLab"
+      "MATLAB"
     ],
     "tools": [
       "MACS（多代理系統）",
@@ -25721,7 +25720,7 @@
     ],
     "tools": [
       "NumPy",
-      "Pandas"
+      "pandas"
     ],
     "concepts": [
       "資料結構",
@@ -25757,7 +25756,7 @@
     "languages": [],
     "tools": [
       "NI ELVIS II+",
-      "LabView"
+      "LabVIEW"
     ],
     "concepts": [
       "被動元件交流電路",
@@ -26543,7 +26542,7 @@
     "tools": [
       "SAP S/4HANA",
       "圖形使用者介面(GUI)",
-      "FIORI",
+      "Fiori",
       "銷售配送模組(SD)",
       "物料管理模組(MM)",
       "生產規劃模組(PP)",
@@ -27290,9 +27289,9 @@
     ],
     "tools": [
       "Colab",
-      "Pandas",
+      "pandas",
       "Kaggle",
-      "Llama"
+      "LLaMA"
     ],
     "concepts": [
       "深度學習",
@@ -27627,8 +27626,8 @@
     ],
     "tools": [
       "yfinance",
-      "matplotlib",
-      "plotly",
+      "Matplotlib",
+      "Plotly",
       "Excel",
       "大語言模型 API"
     ],
@@ -27788,7 +27787,7 @@
   "FM6006": {
     "languages": [],
     "tools": [
-      "STATA",
+      "Stata",
       "SAS"
     ],
     "concepts": [
@@ -29220,7 +29219,7 @@
     "languages": [],
     "tools": [
       "PyTorch",
-      "Scikit-Learn"
+      "scikit-learn"
     ],
     "concepts": [
       "機器學習",
@@ -29641,9 +29640,7 @@
     "tools": [
       "NS3",
       "NS2",
-      "Android",
-      "NS3",
-      "NS2"
+      "Android"
     ],
     "concepts": [
       "無線網路",
@@ -29752,7 +29749,7 @@
     "languages": [],
     "tools": [
       "PowerPoint",
-      "Matlab"
+      "MATLAB"
     ],
     "concepts": [
       "多輸入多輸出",
@@ -30957,7 +30954,7 @@
   "RS7012": {
     "languages": [
       "MATLAB",
-      "PYTHON"
+      "Python"
     ],
     "tools": [],
     "concepts": [
@@ -31101,8 +31098,8 @@
       "Python"
     ],
     "tools": [
-      "numpy",
-      "scipy",
+      "NumPy",
+      "SciPy",
       "pandas"
     ],
     "concepts": [
@@ -35185,7 +35182,7 @@
       "statsmodels",
       "pymer4",
       "JASP",
-      "numpy",
+      "NumPy",
       "pandas"
     ],
     "concepts": [
@@ -36626,7 +36623,7 @@
       "R"
     ],
     "tools": [
-      "STATA"
+      "Stata"
     ],
     "concepts": [
       "簡單回歸",
@@ -37232,7 +37229,7 @@
     ],
     "tools": [
       "SPSS",
-      "Pandas",
+      "pandas",
       "Matplotlib",
       "xAPI",
       "最小均方"
@@ -37680,7 +37677,7 @@
   },
   "AG7044": {
     "languages": [
-      "FORTRAN"
+      "Fortran"
     ],
     "tools": [],
     "concepts": [
@@ -42538,7 +42535,7 @@
   "IA7033": {
     "languages": [],
     "tools": [
-      "ARENA"
+      "Arena"
     ],
     "concepts": []
   },

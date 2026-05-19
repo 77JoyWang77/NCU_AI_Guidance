@@ -171,6 +171,7 @@ export interface StreamEvent {
   filtered_out?:    string[];
   method?:          'tag' | 'llm';
   // done
+  final_answer?:    string;
   session_id?:      string;
   tools_used?:      string[];
   course_cards?:    CourseCard[];

@@ -33,7 +33,11 @@ from typing import Optional
 from dotenv import load_dotenv
 from openai import AzureOpenAI
 from qdrant_client import QdrantClient
-from qdrant_client.models import Distance, PointStruct, VectorParams
+from qdrant_client.models import (
+    Distance, PointStruct, VectorParams,
+    SparseVectorParams, SparseIndexParams, SparseVector,
+    PayloadSchemaType,
+)
 from tqdm import tqdm
 
 # ── 路徑設定 ────────────────────────────────────────────────────────────────
@@ -43,6 +47,7 @@ DATA_PROC = ROOT / "data" / "processed"
 QDRANT_DIR = DATA_PROC / "qdrant_data"
 
 COURSE_ELIGIBILITY = DATA_PROC / "course_eligibility.json"
+DEPT_ALIASES       = DATA_PROC / "dept_aliases.json"
 COURSES_DEDUPED_UG   = DATA_PROC / "courses_deduped" / "undergrad.json"
 COURSES_DEDUPED_GRAD = DATA_PROC / "courses_deduped" / "grad.json"
 COLLEGO = DATA_RAW / "collego_ncu.json"
@@ -55,6 +60,46 @@ PROGRAM_DESC = DATA_PROC / "program_descriptions.json"
 
 VECTOR_DIM = 3072   # text-embedding-3-large
 EMBED_BATCH = 50    # 每批送給 Azure OpenAI 的文件數
+
+
+def _env_bool(name: str, default: bool = False) -> bool:
+    raw = os.environ.get(name)
+    if raw is None:
+        return default
+    return raw.strip().lower() in {"1", "true", "yes", "y", "on"}
+
+
+def _env_int(name: str, default: int) -> int:
+    raw = os.environ.get(name)
+    if raw is None:
+        return default
+    try:
+        return int(raw)
+    except ValueError:
+        return default
+
+
+def _env_float(name: str, default: float) -> float:
+    raw = os.environ.get(name)
+    if raw is None:
+        return default
+    try:
+        return float(raw)
+    except ValueError:
+        return default
+
+
+def _create_qdrant_client(url: str, api_key: Optional[str]) -> QdrantClient:
+    prefer_grpc = _env_bool("QDRANT_PREFER_GRPC", False)
+    grpc_port = _env_int("QDRANT_GRPC_PORT", 6334)
+    timeout = _env_float("QDRANT_TIMEOUT_SEC", 60.0)
+    return QdrantClient(
+        url=url,
+        api_key=api_key,
+        prefer_grpc=prefer_grpc,
+        grpc_port=grpc_port,
+        timeout=timeout,
+    )
 
 # ── 工具函式 ────────────────────────────────────────────────────────────────
 
@@ -240,23 +285,38 @@ def load_eligibility_lookup() -> dict[str, dict]:
     return lookup
 
 
-def load_schedule_lookup() -> dict[str, dict]:
-    """回傳 {course_code: parse_when_result + verified}，附帶 dept 脈絡。
-    同一課程可能出現在多個系所；後出現者覆蓋前者（以最後一個為主）。
+def load_schedule_lookup() -> dict[str, dict[str, dict]]:
+    """回傳 {dept_id: {course_code: {when_raw, when_year_start, when_sem_start, when_year_end, when_sem_end}}}。
+    同一課程可出現在多個系所，各自保有獨立 when 記錄。
     """
-    lookup: dict = {}
+    lookup: dict[str, dict[str, dict]] = {}
     if not SCHEDULE_DIR.exists():
         return lookup
 
-    def _index_courses(courses: list, dept_id: str):
+    def _parse_range(when_str: str) -> tuple[int, int, int, int]:
+        parts = [p.strip() for p in when_str.split("~")]
+        y_s, s_s = _parse_single(parts[0])
+        if y_s is None:
+            return 0, 0, 0, 0
+        y_e, s_e = (_parse_single(parts[1]) if len(parts) > 1 else (y_s, s_s))
+        if y_e is None:
+            y_e, s_e = y_s, s_s
+        return y_s, (s_s or 1), y_e, (s_e or 2)
+
+    def _index(courses: list, did: str, display_name: str):
         for rc in courses:
             code = rc.get("code", "").strip()
             when = rc.get("when", "")
-            verified = rc.get("verified", False)
-            if code:
-                parsed = parse_when(when, dept_id=dept_id)
-                parsed["verified"] = verified
-                lookup[code] = parsed
+            if code and when:
+                y_start, s_start, y_end, s_end = _parse_range(when)
+                lookup.setdefault(did, {})[code] = {
+                    "when_raw":        when,
+                    "when_year_start": y_start,
+                    "when_sem_start":  s_start,
+                    "when_year_end":   y_end,
+                    "when_sem_end":    s_end,
+                    "dept_name":       display_name,
+                }
 
     for college_dir in SCHEDULE_DIR.iterdir():
         if not college_dir.is_dir():
@@ -264,24 +324,50 @@ def load_schedule_lookup() -> dict[str, dict]:
         for dept_file in college_dir.glob("*.json"):
             try:
                 data = load_json(dept_file)
-                dept_id = data.get("id", dept_file.stem)
-                _index_courses(data.get("required_courses", []), dept_id)
+                dept_id   = data.get("id",   dept_file.stem)
+                dept_name = data.get("name", dept_id)
+                _index(data.get("required_courses", []), dept_id, dept_name)
                 for track in data.get("specialization_tracks", []):
                     tid = track.get("id", dept_id)
-                    _index_courses(track.get("required_courses", []), tid)
+                    tname = track.get("name", tid)
+                    _index(track.get("required_courses", []), tid, tname)
                     for grp in track.get("groups", []):
                         gid = grp.get("id", tid)
-                        _index_courses(grp.get("required_courses", []), gid)
+                        gname = grp.get("name", gid)
+                        _index(grp.get("required_courses", []), gid, gname)
                 for grp in data.get("groups", []):
                     gid = grp.get("id", dept_id)
-                    _index_courses(grp.get("required_courses", []), gid)
+                    gname = grp.get("name", gid)
+                    _index(grp.get("required_courses", []), gid, gname)
             except Exception:
                 pass
-    print(f"[Schedule] 載入 {len(lookup)} 筆必修學期資訊（附 dept 脈絡）")
+
+    total = sum(len(v) for v in lookup.values())
+    print(f"[Schedule] 載入 {len(lookup)} 個系所，共 {total} 筆必修學期資訊")
     return lookup
 
 
 # ── 嵌入 ────────────────────────────────────────────────────────────────────
+
+class BM25Embedder:
+    """用 fastembed Qdrant/bm25 批量產生 sparse vectors。"""
+
+    def __init__(self):
+        try:
+            from fastembed import SparseTextEmbedding
+            self.model = SparseTextEmbedding(model_name="Qdrant/bm25")
+            self.available = True
+            print("[BM25] fastembed Qdrant/bm25 model 載入完成")
+        except ImportError:
+            self.model = None
+            self.available = False
+            print("[BM25] fastembed 未安裝，跳過 sparse vector（建議：pip install fastembed）")
+
+    def embed_batch(self, texts: list[str]) -> list | None:
+        if not self.available:
+            return None
+        return list(self.model.embed(texts))
+
 
 class Embedder:
     def __init__(self, client: AzureOpenAI, deployment: str):
@@ -353,7 +439,11 @@ def build_course_doc(
         sc.get("display", "") for sc in simplified if sc.get("display")
     )
     teacher_spec = teacher_lookup.get(teacher, "")
-    sched = schedule_lookup.get(code, {})
+    dept_schedule: list[str] = []
+    for _dept_courses in schedule_lookup.values():
+        if code in _dept_courses:
+            info = _dept_courses[code]
+            dept_schedule.append(f"{info['dept_name']}: {info['when_raw']}")
     elig = eligibility_lookup.get(code, {})
     eligible_years: list[int] = elig.get("eligible_years", [])
     prereq_codes: list[str] = elig.get("prereq_codes", [])
@@ -386,8 +476,8 @@ def build_course_doc(
         parts.append(f"教師專長：{teacher_spec}")
     if type_:
         parts.append(f"修課性質：{type_}")
-    if sched.get("when_raw"):
-        parts.append(f"建議修習：{sched['when_raw']}")
+    if dept_schedule:
+        parts.append(f"建議修習：{'、'.join(dept_schedule)}")
     if objective:
         parts.append(f"課程目標：{objective}")
     if content:
@@ -437,7 +527,7 @@ def build_course_doc(
         "prereq_codes": prereq_codes,
         "coreq_codes": coreq_codes,
         "conflict_codes": conflict_codes,
-        "when_semesters": sched.get("when_semesters", []),   # list[str]，例如 ["1_1","1_2"]
+        "dept_schedule": dept_schedule,
         # ── 字串/數值欄位 ──
         "domain_tags_rich": nlp_data.get("domain_tags_rich", ""),
         "core_questions": " | ".join(core_qs) if core_qs else "",
@@ -457,12 +547,6 @@ def build_course_doc(
         "is_open_to_all_undergrad": elig.get("is_open_to_all_undergrad", False),
         "has_special_condition": elig.get("has_special_condition", False),
         "has_prereq":            len(prereq_codes) > 0,
-        "when_raw":          sched.get("when_raw", ""),
-        "when_year_start":   sched.get("when_year_start", 0),
-        "when_year_end":     sched.get("when_year_end", 0),
-        "when_sem_start":    sched.get("when_sem_start", 0),
-        "when_sem_end":      sched.get("when_sem_end", 0),
-        "schedule_verified": sched.get("verified", False),
         "objective": objective,
         "content":   content,
         "textbook":  textbook,
@@ -492,7 +576,55 @@ def load_all_courses(dirs: list[Path]) -> list[dict]:
 
 # ── 建立各 Collection ─────────────────────────────────────────────────────────
 
-def _prepare_collection(client: QdrantClient, name: str, reset: bool) -> bool:
+def _create_payload_indexes(client: QdrantClient, name: str):
+    """為 collection 建立 payload 欄位 index，讓 scroll/count 的 filter 在 cloud Qdrant 上正常運作。
+    已存在的 index 會被 Qdrant 忽略（冪等操作）。
+    """
+    # 課程 collection 的 list[str] 欄位（$contains / MatchAny 過濾用）
+    keyword_list_fields = [
+        "concepts", "tools", "languages",        # NLP 萃取
+        "domain_tags", "topic_tags",             # 領域 / 主題標籤
+        "dept_schedule",                         # 建議修習學期（格式：「系所: 修習時間」）
+        "eligible_years",                        # 修課年級（int list，仍用 KEYWORD）
+        "dept_include", "college_include",       # 修課條件
+        "prereq_codes", "coreq_codes",           # 先修/同修課號
+    ]
+    # 課程 collection 的單值字串欄位（$eq / MatchValue 過濾用）
+    keyword_scalar_fields = [
+        "course_code", "name_zh", "dept", "college", "type", "teacher",
+    ]
+    # 教師 collection 用
+    teacher_fields = ["name", "dept"]
+
+    fields: list[tuple[str, PayloadSchemaType]] = []
+
+    if name in ("ncu_courses_ug", "ncu_courses_grad"):
+        fields += [(f, PayloadSchemaType.KEYWORD) for f in keyword_list_fields + keyword_scalar_fields]
+        fields += [
+            ("is_grad_only",    PayloadSchemaType.KEYWORD),   # bool，用 MatchValue(False)
+            ("is_unrestricted", PayloadSchemaType.KEYWORD),
+        ]
+    elif name == "ncu_teachers":
+        fields += [(f, PayloadSchemaType.KEYWORD) for f in teacher_fields]
+
+    created = 0
+    for field, schema in fields:
+        try:
+            client.create_payload_index(
+                collection_name=name,
+                field_name=field,
+                field_schema=schema,
+            )
+            created += 1
+        except Exception:
+            pass  # 已存在或不支援時略過
+
+    print(f"  Payload index 建立完成（{name}）：處理 {len(fields)} 個欄位，新建 {created} 個")
+
+
+def _prepare_collection(
+    client: QdrantClient, name: str, reset: bool, with_bm25: bool = True
+) -> bool:
     """若 collection 存在且不 reset，回傳 False（跳過）；否則建立並回傳 True。"""
     existing = {c.name for c in client.get_collections().collections}
     if name in existing:
@@ -502,30 +634,207 @@ def _prepare_collection(client: QdrantClient, name: str, reset: bool) -> bool:
         else:
             print(f"  Collection '{name}' 已存在，跳過（使用 --reset 強制重建）")
             return False
-    client.create_collection(
+    create_kwargs: dict = dict(
         collection_name=name,
         vectors_config=VectorParams(size=VECTOR_DIM, distance=Distance.COSINE),
     )
+    if with_bm25:
+        create_kwargs["sparse_vectors_config"] = {
+            "bm25": SparseVectorParams(index=SparseIndexParams(on_disk=False))
+        }
+    client.create_collection(**create_kwargs)
+    bm25_tag = "含 BM25" if with_bm25 else "無 BM25"
+    print(f"  建立 collection：{name}（{bm25_tag}）")
     return True
 
 
 def _upsert_batch(client: QdrantClient, name: str, doc_ids: list[str],
-                  documents: list[str], payloads: list[dict], embeddings: list):
-    points = [
-        PointStruct(
-            id=_doc_id_to_int(doc_id),
-            vector=emb,
-            payload=payload,
+                  documents: list[str], payloads: list[dict], embeddings: list,
+                  sparse_embeddings=None):
+    points = []
+    for i, (doc_id, payload, emb) in enumerate(zip(doc_ids, payloads, embeddings)):
+        if sparse_embeddings is not None and i < len(sparse_embeddings):
+            sp = sparse_embeddings[i]
+            # "" 代表 unnamed/default dense vector（named vector context 下的規格）
+            vector = {
+                "": emb,
+                "bm25": SparseVector(indices=sp.indices.tolist(), values=sp.values.tolist()),
+            }
+        else:
+            vector = emb
+        points.append(PointStruct(id=_doc_id_to_int(doc_id), vector=vector, payload=payload))
+    batch_size = max(1, _env_int("QDRANT_UPSERT_BATCH", 200))
+    for i in range(0, len(points), batch_size):
+        _upsert_with_retry(client, name, points[i:i + batch_size])
+
+
+def _upsert_with_retry(client: QdrantClient, name: str, points: list[PointStruct]) -> None:
+    retries = max(1, _env_int("QDRANT_UPSERT_RETRIES", 5))
+    wait = _env_bool("QDRANT_UPSERT_WAIT", False)
+    for attempt in range(retries):
+        try:
+            client.upsert(collection_name=name, points=points, wait=wait)
+            return
+        except Exception as ex:
+            if attempt == retries - 1:
+                raise
+            delay = min(30, 2 ** attempt)
+            print(f"  [WARN] upsert 失敗，{delay}s 後重試：{ex}")
+            time.sleep(delay)
+
+
+def _build_exclude_lookup() -> dict[str, dict]:
+    """從 course_eligibility.json 取出有 dept_exclude / college_exclude 的課程。
+    所有名稱透過 dept_aliases.json 正規化。
+    """
+    aliases: dict[str, str] = {}
+    if DEPT_ALIASES.exists():
+        aliases = json.loads(DEPT_ALIASES.read_text(encoding="utf-8"))
+
+    if not COURSE_ELIGIBILITY.exists():
+        return {}
+    data = load_json(COURSE_ELIGIBILITY)
+    if not isinstance(data, list):
+        return {}
+
+    def resolve(name: str) -> str:
+        return aliases.get(name, name)
+
+    lookup: dict[str, dict] = {}
+    for entry in data:
+        code = entry.get("course_code", "").strip()
+        rules = entry.get("access_rules") or []
+        if not code or not rules:
+            continue
+
+        dept_excl = sorted({resolve(d) for r in rules for d in r.get("dept_exclude", [])})
+        coll_excl = sorted({resolve(c) for r in rules for c in r.get("college_exclude", [])})
+        if not dept_excl and not coll_excl:
+            continue
+
+        dept_incl = sorted({d for r in rules for d in r.get("dept_include", [])})
+        coll_incl = sorted({c for r in rules for c in r.get("college_include", [])})
+        is_open_all = entry.get("is_open_to_all_undergrad", False)
+
+        lookup[code] = {
+            "dept_exclude":            dept_excl,
+            "college_exclude":         coll_excl,
+            "is_open_with_exclusions": not dept_incl and not coll_incl and not is_open_all,
+        }
+    return lookup
+
+
+def _update_exclude_for_collection(client: QdrantClient, collection_name: str, lookup: dict[str, dict]):
+    """將 dept_exclude / college_exclude / is_open_with_exclusions 寫入指定 collection。"""
+    from qdrant_client.models import Filter, FieldCondition, MatchValue
+    print(f"  [{collection_name}] 寫入 exclude payload...")
+    updated = skipped = 0
+    for code, info in lookup.items():
+        records, _ = client.scroll(
+            collection_name=collection_name,
+            scroll_filter=Filter(must=[FieldCondition(key="course_code", match=MatchValue(value=code))]),
+            limit=50, with_payload=False, with_vectors=False,
         )
-        for doc_id, payload, emb in zip(doc_ids, payloads, embeddings)
-    ]
-    for i in range(0, len(points), 500):
-        client.upsert(collection_name=name, points=points[i:i+500])
+        if not records:
+            skipped += 1
+            continue
+        client.set_payload(
+            collection_name=collection_name,
+            payload=info,
+            points=[r.id for r in records],
+        )
+        updated += len(records)
+    print(f"    更新 {updated} 個 point，跳過 {skipped} 個課號（不在此 collection）")
+
+
+def update_exclude_payload_all(client: QdrantClient):
+    """補齊兩個 course collection 的 dept_exclude / college_exclude / is_open_with_exclusions。
+    自動在 --payload-only 或完整重建後執行。
+    """
+    from qdrant_client.models import PayloadSchemaType as PST
+    lookup = _build_exclude_lookup()
+    open_excl = [c for c, v in lookup.items() if v["is_open_with_exclusions"]]
+    print(f"\n=== [update-exclude] 共 {len(lookup)} 門課程有 exclude 欄位（{len(open_excl)} 門純負向限制）===")
+
+    for col in ("ncu_courses_ug", "ncu_courses_grad"):
+        try:
+            client.get_collection(col)
+        except Exception:
+            print(f"  Collection {col} 不存在，跳過")
+            continue
+        for field, schema in [
+            ("dept_exclude",            PST.KEYWORD),
+            ("college_exclude",         PST.KEYWORD),
+            ("is_open_with_exclusions", PST.BOOL),
+        ]:
+            try:
+                client.create_payload_index(collection_name=col, field_name=field, field_schema=schema)
+            except Exception:
+                pass
+        _update_exclude_for_collection(client, col, lookup)
+
+
+def update_courses_payload_only(
+    qdrant: QdrantClient,
+    nlp: dict,
+    teacher_lookup: dict,
+    schedule_lookup: dict,
+    eligibility_lookup: dict,
+    name: str,
+    canonical_json: Path,
+    is_grad: bool,
+):
+    """只更新 payload，不重新嵌入向量。以 course_code filter 定位 point，避免 ID 猜測錯誤。"""
+    from qdrant_client.models import Filter, FieldCondition, MatchValue
+    print(f"\n=== [payload-only] 更新 {name} ===")
+    if not canonical_json.exists():
+        print(f"  [ERROR] 找不到 {canonical_json}")
+        return
+
+    deduped = load_json(canonical_json)
+    if not isinstance(deduped, list):
+        print(f"  [ERROR] {canonical_json} 格式異常")
+        return
+
+    items: list[tuple[str, dict]] = []   # (course_code, payload)
+    skipped = 0
+    for c in deduped:
+        _, doc_text, payload = build_course_doc(
+            c, nlp, teacher_lookup, schedule_lookup, eligibility_lookup, is_grad
+        )
+        if not doc_text.strip():
+            skipped += 1
+            continue
+        code = payload.get("course_code", "")
+        if code:
+            items.append((code, payload))
+
+    print(f"  共 {len(items)} 筆需更新（略過空白 {skipped} 筆）")
+    updated = errors = 0
+    batch_size = max(1, _env_int("QDRANT_UPSERT_BATCH", 200))
+
+    for i in tqdm(range(0, len(items), batch_size), desc="  overwrite_payload"):
+        batch = items[i:i + batch_size]
+        for code, payload in batch:
+            try:
+                qdrant.overwrite_payload(
+                    collection_name=name,
+                    payload=payload,
+                    points=Filter(must=[FieldCondition(key="course_code", match=MatchValue(value=code))]),
+                )
+                updated += 1
+            except Exception as e:
+                errors += 1
+                if errors <= 3:
+                    print(f"\n  [WARN] 失敗 code={code}: {e}")
+
+    print(f"  ✓ 完成 {updated} 個課號，失敗 {errors} 個")
 
 
 def build_courses_collection(
     qdrant: QdrantClient,
     embedder: Embedder,
+    bm25: "BM25Embedder",
     nlp: dict,
     teacher_lookup: dict,
     schedule_lookup: dict,
@@ -536,7 +845,7 @@ def build_courses_collection(
     reset: bool,
 ):
     print(f"\n=== 建立 {name} ===")
-    if not _prepare_collection(qdrant, name, reset):
+    if not _prepare_collection(qdrant, name, reset, with_bm25=bm25.available):
         return
 
     if not canonical_json.exists():
@@ -569,14 +878,16 @@ def build_courses_collection(
         batch = docs[i : i + EMBED_BATCH]
         embeddings.extend(embedder.embed_batch(batch))
 
-    _upsert_batch(qdrant, name, ids, docs, payloads, embeddings)
+    sparse_embs = bm25.embed_batch(docs) if bm25.available else None
+    _upsert_batch(qdrant, name, ids, docs, payloads, embeddings, sparse_embs)
+    _create_payload_indexes(qdrant, name)
     info = qdrant.get_collection(name)
     print(f"  完成，collection 總數：{info.points_count}")
 
 
-def build_programs_collection(qdrant: QdrantClient, embedder: Embedder, reset: bool):
+def build_programs_collection(qdrant: QdrantClient, embedder: Embedder, bm25: "BM25Embedder", reset: bool):
     print("\n=== 建立 ncu_credit_programs ===")
-    if not _prepare_collection(qdrant, "ncu_credit_programs", reset):
+    if not _prepare_collection(qdrant, "ncu_credit_programs", reset, with_bm25=bm25.available):
         return
 
     desc_map: dict[str, str] = {}
@@ -634,14 +945,15 @@ def build_programs_collection(qdrant: QdrantClient, embedder: Embedder, reset: b
         })
 
     embeddings = embedder.embed_batch(docs)
-    _upsert_batch(qdrant, "ncu_credit_programs", ids, docs, payloads, embeddings)
+    sparse_embs = bm25.embed_batch(docs) if bm25.available else None
+    _upsert_batch(qdrant, "ncu_credit_programs", ids, docs, payloads, embeddings, sparse_embs)
     info = qdrant.get_collection("ncu_credit_programs")
     print(f"  完成，collection 總數：{info.points_count}")
 
 
-def build_departments_collection(qdrant: QdrantClient, embedder: Embedder, reset: bool):
+def build_departments_collection(qdrant: QdrantClient, embedder: Embedder, bm25: "BM25Embedder", reset: bool):
     print("\n=== 建立 ncu_departments ===")
-    if not _prepare_collection(qdrant, "ncu_departments", reset):
+    if not _prepare_collection(qdrant, "ncu_departments", reset, with_bm25=bm25.available):
         return
 
     if not COLLEGO.exists():
@@ -687,7 +999,8 @@ def build_departments_collection(qdrant: QdrantClient, embedder: Embedder, reset
         })
 
     embeddings = embedder.embed_batch(docs)
-    _upsert_batch(qdrant, "ncu_departments", ids, docs, payloads, embeddings)
+    sparse_embs = bm25.embed_batch(docs) if bm25.available else None
+    _upsert_batch(qdrant, "ncu_departments", ids, docs, payloads, embeddings, sparse_embs)
     info = qdrant.get_collection("ncu_departments")
     print(f"  完成，collection 總數：{info.points_count}")
 
@@ -695,10 +1008,11 @@ def build_departments_collection(qdrant: QdrantClient, embedder: Embedder, reset
 def build_teachers_collection(
     qdrant: QdrantClient,
     embedder: Embedder,
+    bm25: "BM25Embedder",
     reset: bool,
 ):
     print("\n=== 建立 ncu_teachers ===")
-    if not _prepare_collection(qdrant, "ncu_teachers", reset):
+    if not _prepare_collection(qdrant, "ncu_teachers", reset, with_bm25=bm25.available):
         return
 
     if not TEACHER_CSV.exists():
@@ -740,7 +1054,9 @@ def build_teachers_collection(
         })
 
     embeddings = embedder.embed_batch(docs)
-    _upsert_batch(qdrant, "ncu_teachers", ids, docs, payloads, embeddings)
+    sparse_embs = bm25.embed_batch(docs) if bm25.available else None
+    _upsert_batch(qdrant, "ncu_teachers", ids, docs, payloads, embeddings, sparse_embs)
+    _create_payload_indexes(qdrant, "ncu_teachers")
     info = qdrant.get_collection("ncu_teachers")
     print(f"  完成，collection 總數：{info.points_count}")
 
@@ -753,9 +1069,60 @@ def main():
         "--reset", action="store_true",
         help="強制重建（刪除已存在的 collection 重新嵌入）"
     )
+    parser.add_argument(
+        "--index-only", action="store_true",
+        help="只補建 payload index，不重新嵌入（用於已存在的 cloud collection）"
+    )
+    parser.add_argument(
+        "--payload-only", action="store_true",
+        help="只更新 payload，不重新嵌入向量（補齊 college 等欄位後使用，無需 Azure 金鑰）"
+    )
+    parser.add_argument(
+        "--update-exclude", action="store_true",
+        help="只補寫 dept_exclude / college_exclude / is_open_with_exclusions（無需 Azure 金鑰）"
+    )
     args = parser.parse_args()
 
     load_dotenv(ROOT / ".env")
+
+    qdrant_url = os.environ.get("QDRANT_URL", "")
+    qdrant_api_key = os.environ.get("QDRANT_API_KEY")
+    if qdrant_url:
+        qdrant = _create_qdrant_client(qdrant_url, qdrant_api_key)
+    else:
+        QDRANT_DIR.mkdir(parents=True, exist_ok=True)
+        qdrant = QdrantClient(path=str(QDRANT_DIR))
+
+    if args.index_only:
+        print("=== --index-only 模式：只補建 payload index，不重新嵌入 ===")
+        for col in ["ncu_courses_ug", "ncu_courses_grad", "ncu_teachers"]:
+            print(f"\n[{col}]")
+            _create_payload_indexes(qdrant, col)
+        print("\n✓ payload index 補建完成")
+        return
+
+    if args.update_exclude:
+        update_exclude_payload_all(qdrant)
+        print("\n✓ exclude payload 更新完成")
+        return
+
+    if args.payload_only:
+        print("=== --payload-only 模式：只更新 payload，不重新嵌入 ===")
+        nlp = load_nlp_data()
+        teacher_lookup = load_teacher_csv()
+        schedule_lookup = load_schedule_lookup()
+        eligibility_lookup = load_eligibility_lookup()
+        update_courses_payload_only(
+            qdrant, nlp, teacher_lookup, schedule_lookup, eligibility_lookup,
+            "ncu_courses_ug", COURSES_DEDUPED_UG, is_grad=False,
+        )
+        update_courses_payload_only(
+            qdrant, nlp, teacher_lookup, schedule_lookup, eligibility_lookup,
+            "ncu_courses_grad", COURSES_DEDUPED_GRAD, is_grad=True,
+        )
+        update_exclude_payload_all(qdrant)
+        print("\n✓ payload 更新完成（含 exclude 欄位）")
+        return
 
     api_key = os.getenv("AZURE_OPENAI_API_KEY")
     endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
@@ -771,9 +1138,7 @@ def main():
         api_version=api_version,
     )
     embedder = Embedder(oai, embed_deployment)
-
-    QDRANT_DIR.mkdir(parents=True, exist_ok=True)
-    qdrant = QdrantClient(path=str(QDRANT_DIR))
+    bm25 = BM25Embedder()
 
     nlp = load_nlp_data()
     teacher_lookup = load_teacher_csv()
@@ -781,7 +1146,7 @@ def main():
     eligibility_lookup = load_eligibility_lookup()
 
     build_courses_collection(
-        qdrant, embedder, nlp, teacher_lookup, schedule_lookup, eligibility_lookup,
+        qdrant, embedder, bm25, nlp, teacher_lookup, schedule_lookup, eligibility_lookup,
         name="ncu_courses_ug",
         canonical_json=COURSES_DEDUPED_UG,
         is_grad=False,
@@ -789,16 +1154,17 @@ def main():
     )
 
     build_courses_collection(
-        qdrant, embedder, nlp, teacher_lookup, schedule_lookup, eligibility_lookup,
+        qdrant, embedder, bm25, nlp, teacher_lookup, schedule_lookup, eligibility_lookup,
         name="ncu_courses_grad",
         canonical_json=COURSES_DEDUPED_GRAD,
         is_grad=True,
         reset=args.reset,
     )
 
-    build_programs_collection(qdrant, embedder, args.reset)
-    build_departments_collection(qdrant, embedder, args.reset)
-    build_teachers_collection(qdrant, embedder, args.reset)
+    build_programs_collection(qdrant, embedder, bm25, args.reset)
+    build_departments_collection(qdrant, embedder, bm25, args.reset)
+    build_teachers_collection(qdrant, embedder, bm25, args.reset)
+    update_exclude_payload_all(qdrant)
 
     print("\n✓ 所有 collection 建立完成")
     print(f"  儲存位置：{QDRANT_DIR}")

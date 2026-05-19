@@ -245,13 +245,20 @@ def build_index(
             # 分發條件（原始 dict → 可讀字串）
             eligibility_text = format_condition(c.get("分發條件"))
 
+            sec_obj  = (c_syllabus.get("課程目標", "") or "").strip()
+            sec_cont = (c_syllabus.get("授課內容", "") or "").strip()
+            sec_tb   = (c_syllabus.get("教科書/參考書", "") or "").strip()
+
             sections.append({
-                "section":         section_id,
-                "teacher":         teacher,
-                "dept":            dept,
-                "college":         college,
-                "type":            type_,
+                "section":          section_id,
+                "teacher":          teacher,
+                "dept":             dept,
+                "college":          college,
+                "type":             type_,
                 "eligibility_text": eligibility_text,
+                "course_objective": sec_obj,
+                "course_content":   sec_cont,
+                "textbook":         sec_tb,
             })
 
         # 如果只有一個 section 且沒有 section id，把 dept/teacher 提到外層
