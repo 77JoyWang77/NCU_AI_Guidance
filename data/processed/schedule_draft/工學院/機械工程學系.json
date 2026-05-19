@@ -95,7 +95,7 @@
           "code": "ME1041",
           "name": "製造工程實習I",
           "credits": 1,
-          "when": "大二上",
+          "when": "大一上",
           "when_auto": false,
           "verified": true,
           "note": ""
@@ -104,7 +104,7 @@
           "code": "ME2037",
           "name": "機械製圖上",
           "credits": 1,
-          "when": "大二上",
+          "when": "大一上",
           "when_auto": false,
           "verified": true,
           "note": ""
@@ -113,7 +113,7 @@
           "code": "ME2038",
           "name": "機械製圖下",
           "credits": 1,
-          "when": "大二下",
+          "when": "大一下",
           "when_auto": true,
           "verified": true,
           "note": ""
@@ -778,7 +778,7 @@
           "code": "ME2037",
           "name": "機械製圖上",
           "credits": 1,
-          "when": "大二上",
+          "when": "大一上",
           "when_auto": false,
           "verified": true,
           "note": ""
@@ -787,7 +787,7 @@
           "code": "ME2038",
           "name": "機械製圖下",
           "credits": 1,
-          "when": "大一上",
+          "when": "大一下",
           "when_auto": true,
           "verified": true,
           "note": ""
