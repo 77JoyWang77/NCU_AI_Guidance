@@ -100,7 +100,7 @@ const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKey
 
   if (!course) {
     return (
-      <div className="flex h-full items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50">
+      <div className="flex h-full items-center justify-center rounded-lg border-2 border-dashed border-slate-300 bg-slate-50">
         <div className="text-center text-gray-500">
           <HiBookOpen className="mx-auto mb-4 h-16 w-16 text-gray-400" />
           <p className="text-lg font-medium">請選擇一門課程查看詳情</p>
@@ -123,8 +123,8 @@ const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKey
 
   return (
     <>
-    <div className="rounded-lg border border-gray-200 bg-white shadow-sm">
-      <div className="border-b border-primary-200 bg-gradient-to-br from-primary-50 via-primary-100 to-primary-200 p-5">
+    <div className="rounded-lg border border-slate-200 bg-white shadow-sm">
+      <div className="border-b border-slate-200 bg-white p-5">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
           <div className="min-w-0 flex-1">
             <div className="mb-1.5 flex flex-wrap items-center gap-2">
@@ -132,7 +132,7 @@ const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKey
                 <HighlightText text={course.course_name_zh} keyword={searchKeyword} />
               </h2>
               {courseFieldTags.map((field) => (
-                <span key={field} className="rounded-full border border-primary-200 bg-white/80 px-2.5 py-0.5 text-xs font-medium text-primary-700">
+                <span key={field} className="rounded-full border border-indigo-100 bg-indigo-50 px-2.5 py-0.5 text-xs font-medium text-indigo-700">
                   <HighlightText text={field} keyword={searchKeyword} />
                 </span>
               ))}
@@ -141,10 +141,13 @@ const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKey
               <HighlightText text={course.course_name_en} keyword={searchKeyword} />
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
-              <span className="rounded-full border border-primary-200 bg-white/80 px-3 py-1 text-sm font-medium text-gray-700">
+              <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-sm font-medium text-slate-700">
+                課號：{course.course_id || '未提供'}
+              </span>
+              <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-sm font-medium text-slate-700">
                 {course.course_system || '未提供學制資訊'}
               </span>
-              <span className="rounded-full border border-primary-200 bg-white/80 px-3 py-1 text-sm font-medium text-gray-700">
+              <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-sm font-medium text-slate-700">
                 {course.credits} 學分
               </span>
               <span
@@ -156,7 +159,7 @@ const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKey
               >
                 {course.required_elective || '未提供類型'}
               </span>
-              <span className="rounded-full border border-primary-200 bg-white/80 px-3 py-1 text-sm font-medium text-gray-700">
+              <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-sm font-medium text-slate-700">
                 {course.semester_display || '未提供學期'}
               </span>
             </div>
@@ -168,7 +171,7 @@ const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKey
                 resetAskState();
                 setAskOpen(true);
               }}
-              className="inline-flex items-center gap-2 rounded-lg bg-primary-700 px-3 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-primary-800"
+              className="inline-flex items-center gap-2 rounded-lg border border-slate-800 bg-slate-900 px-3 py-2 text-sm font-medium text-white shadow-xl shadow-slate-300 transition duration-200 hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-2xl active:translate-y-0"
             >
               <HiChatAlt2 className="h-4 w-4" />
               詢問這門課
@@ -224,21 +227,6 @@ const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKey
         {course.core_abilities && course.core_abilities.length > 0 ? (
           <Section icon={<HiUserGroup className="h-5 w-5" />} title="核心能力">
             <CoreAbilityTable abilities={course.core_abilities} />
-          </Section>
-        ) : null}
-
-        {course.eligibility_summary ? (
-          <Section icon={<HiUserGroup className="h-5 w-5" />} title="修課資格摘要">
-            <div className={`rounded-lg border p-3 ${course.eligibility_status === 'warning' || course.eligibility_status === 'missing' ? 'border-amber-200 bg-amber-50' : 'border-emerald-100 bg-emerald-50'}`}>
-              <p className="text-sm leading-relaxed text-gray-700">
-                <HighlightText text={course.eligibility_summary} keyword={searchKeyword} />
-              </p>
-              {course.eligibility_warning ? (
-                <p className="mt-2 text-xs font-medium text-amber-700">
-                  {course.eligibility_warning}
-                </p>
-              ) : null}
-            </div>
           </Section>
         ) : null}
 
@@ -309,7 +297,7 @@ const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKey
         ) : null}
 
         {course.note ? (
-          <div className="rounded-lg border border-yellow-200 bg-yellow-50 p-4">
+          <div className="rounded-lg border border-slate-200 bg-slate-50 p-4">
             <p className="text-sm text-gray-700">
               <span className="font-medium">備註：</span>
               <HighlightText text={course.note} keyword={searchKeyword} />
@@ -349,7 +337,7 @@ const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKey
         <div className="max-h-[92vh] w-full max-w-2xl overflow-hidden rounded-t-2xl bg-white shadow-2xl sm:rounded-2xl" onClick={(event) => event.stopPropagation()}>
           <div className="flex items-start justify-between gap-4 border-b border-slate-200 px-5 py-4">
             <div className="min-w-0">
-              <div className="flex items-center gap-2 text-sm font-semibold text-primary-700">
+              <div className="flex items-center gap-2 text-sm font-semibold text-violet-700">
                 <HiChatAlt2 className="h-5 w-5" />
                 單門課程問答
               </div>
@@ -369,8 +357,8 @@ const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKey
             ) : null}
 
             {askAnswer ? (
-              <div className="rounded-lg border border-primary-100 bg-primary-50 p-3">
-                <div className="mb-1 text-xs font-semibold text-primary-700">AI 回答</div>
+              <div className="rounded-lg border border-fuchsia-100 bg-fuchsia-50 p-3">
+                <div className="mb-1 text-xs font-semibold text-fuchsia-700">AI 回答</div>
                 <MarkdownAnswer text={askAnswer} />
               </div>
             ) : (
@@ -394,13 +382,13 @@ const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKey
                 onChange={(event) => setAskQuestion(event.target.value)}
                 rows={3}
                 placeholder="例如：這門課需要哪些先備知識？"
-                className="min-h-20 flex-1 resize-none rounded-xl border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-500"
+                className="min-h-20 flex-1 resize-none rounded-xl border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-violet-500 focus:ring-2 focus:ring-violet-500"
                 disabled={askLoading}
               />
               <button
                 type="submit"
                 disabled={askLoading}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary-900 px-4 py-3 text-sm font-medium text-white transition hover:bg-primary-800 disabled:cursor-not-allowed disabled:bg-slate-400"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500 px-4 py-3 text-sm font-medium text-white shadow-lg shadow-fuchsia-200 transition duration-200 hover:-translate-y-0.5 hover:from-violet-600 hover:to-fuchsia-600 disabled:cursor-not-allowed disabled:translate-y-0 disabled:from-slate-400 disabled:to-slate-400 disabled:shadow-none"
               >
                 <HiPaperAirplane className="h-4 w-4" />
                 {askLoading ? '回答中' : '送出'}
