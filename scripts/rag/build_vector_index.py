@@ -285,23 +285,38 @@ def load_eligibility_lookup() -> dict[str, dict]:
     return lookup
 
 
-def load_schedule_lookup() -> dict[str, dict]:
-    """回傳 {course_code: parse_when_result + verified}，附帶 dept 脈絡。
-    同一課程可能出現在多個系所；後出現者覆蓋前者（以最後一個為主）。
+def load_schedule_lookup() -> dict[str, dict[str, dict]]:
+    """回傳 {dept_id: {course_code: {when_raw, when_year_start, when_sem_start, when_year_end, when_sem_end}}}。
+    同一課程可出現在多個系所，各自保有獨立 when 記錄。
     """
-    lookup: dict = {}
+    lookup: dict[str, dict[str, dict]] = {}
     if not SCHEDULE_DIR.exists():
         return lookup
 
-    def _index_courses(courses: list, dept_id: str):
+    def _parse_range(when_str: str) -> tuple[int, int, int, int]:
+        parts = [p.strip() for p in when_str.split("~")]
+        y_s, s_s = _parse_single(parts[0])
+        if y_s is None:
+            return 0, 0, 0, 0
+        y_e, s_e = (_parse_single(parts[1]) if len(parts) > 1 else (y_s, s_s))
+        if y_e is None:
+            y_e, s_e = y_s, s_s
+        return y_s, (s_s or 1), y_e, (s_e or 2)
+
+    def _index(courses: list, did: str, display_name: str):
         for rc in courses:
             code = rc.get("code", "").strip()
             when = rc.get("when", "")
-            verified = rc.get("verified", False)
-            if code:
-                parsed = parse_when(when, dept_id=dept_id)
-                parsed["verified"] = verified
-                lookup[code] = parsed
+            if code and when:
+                y_start, s_start, y_end, s_end = _parse_range(when)
+                lookup.setdefault(did, {})[code] = {
+                    "when_raw":        when,
+                    "when_year_start": y_start,
+                    "when_sem_start":  s_start,
+                    "when_year_end":   y_end,
+                    "when_sem_end":    s_end,
+                    "dept_name":       display_name,
+                }
 
     for college_dir in SCHEDULE_DIR.iterdir():
         if not college_dir.is_dir():
@@ -309,20 +324,26 @@ def load_schedule_lookup() -> dict[str, dict]:
         for dept_file in college_dir.glob("*.json"):
             try:
                 data = load_json(dept_file)
-                dept_id = data.get("id", dept_file.stem)
-                _index_courses(data.get("required_courses", []), dept_id)
+                dept_id   = data.get("id",   dept_file.stem)
+                dept_name = data.get("name", dept_id)
+                _index(data.get("required_courses", []), dept_id, dept_name)
                 for track in data.get("specialization_tracks", []):
                     tid = track.get("id", dept_id)
-                    _index_courses(track.get("required_courses", []), tid)
+                    tname = track.get("name", tid)
+                    _index(track.get("required_courses", []), tid, tname)
                     for grp in track.get("groups", []):
                         gid = grp.get("id", tid)
-                        _index_courses(grp.get("required_courses", []), gid)
+                        gname = grp.get("name", gid)
+                        _index(grp.get("required_courses", []), gid, gname)
                 for grp in data.get("groups", []):
                     gid = grp.get("id", dept_id)
-                    _index_courses(grp.get("required_courses", []), gid)
+                    gname = grp.get("name", gid)
+                    _index(grp.get("required_courses", []), gid, gname)
             except Exception:
                 pass
-    print(f"[Schedule] 載入 {len(lookup)} 筆必修學期資訊（附 dept 脈絡）")
+
+    total = sum(len(v) for v in lookup.values())
+    print(f"[Schedule] 載入 {len(lookup)} 個系所，共 {total} 筆必修學期資訊")
     return lookup
 
 
@@ -418,7 +439,11 @@ def build_course_doc(
         sc.get("display", "") for sc in simplified if sc.get("display")
     )
     teacher_spec = teacher_lookup.get(teacher, "")
-    sched = schedule_lookup.get(code, {})
+    dept_schedule: list[str] = []
+    for _dept_courses in schedule_lookup.values():
+        if code in _dept_courses:
+            info = _dept_courses[code]
+            dept_schedule.append(f"{info['dept_name']}: {info['when_raw']}")
     elig = eligibility_lookup.get(code, {})
     eligible_years: list[int] = elig.get("eligible_years", [])
     prereq_codes: list[str] = elig.get("prereq_codes", [])
@@ -451,8 +476,8 @@ def build_course_doc(
         parts.append(f"教師專長：{teacher_spec}")
     if type_:
         parts.append(f"修課性質：{type_}")
-    if sched.get("when_raw"):
-        parts.append(f"建議修習：{sched['when_raw']}")
+    if dept_schedule:
+        parts.append(f"建議修習：{'、'.join(dept_schedule)}")
     if objective:
         parts.append(f"課程目標：{objective}")
     if content:
@@ -502,7 +527,7 @@ def build_course_doc(
         "prereq_codes": prereq_codes,
         "coreq_codes": coreq_codes,
         "conflict_codes": conflict_codes,
-        "when_semesters": sched.get("when_semesters", []),   # list[str]，例如 ["1_1","1_2"]
+        "dept_schedule": dept_schedule,
         # ── 字串/數值欄位 ──
         "domain_tags_rich": nlp_data.get("domain_tags_rich", ""),
         "core_questions": " | ".join(core_qs) if core_qs else "",
@@ -522,12 +547,6 @@ def build_course_doc(
         "is_open_to_all_undergrad": elig.get("is_open_to_all_undergrad", False),
         "has_special_condition": elig.get("has_special_condition", False),
         "has_prereq":            len(prereq_codes) > 0,
-        "when_raw":          sched.get("when_raw", ""),
-        "when_year_start":   sched.get("when_year_start", 0),
-        "when_year_end":     sched.get("when_year_end", 0),
-        "when_sem_start":    sched.get("when_sem_start", 0),
-        "when_sem_end":      sched.get("when_sem_end", 0),
-        "schedule_verified": sched.get("verified", False),
         "objective": objective,
         "content":   content,
         "textbook":  textbook,
@@ -565,7 +584,7 @@ def _create_payload_indexes(client: QdrantClient, name: str):
     keyword_list_fields = [
         "concepts", "tools", "languages",        # NLP 萃取
         "domain_tags", "topic_tags",             # 領域 / 主題標籤
-        "when_semesters", "when_contexts",       # 學期 / 科系脈絡
+        "dept_schedule",                         # 建議修習學期（格式：「系所: 修習時間」）
         "eligible_years",                        # 修課年級（int list，仍用 KEYWORD）
         "dept_include", "college_include",       # 修課條件
         "prereq_codes", "coreq_codes",           # 先修/同修課號
@@ -765,7 +784,8 @@ def update_courses_payload_only(
     canonical_json: Path,
     is_grad: bool,
 ):
-    """只更新 payload，不重新嵌入向量。適用於欄位（如 college）補齊後的同步。"""
+    """只更新 payload，不重新嵌入向量。以 course_code filter 定位 point，避免 ID 猜測錯誤。"""
+    from qdrant_client.models import Filter, FieldCondition, MatchValue
     print(f"\n=== [payload-only] 更新 {name} ===")
     if not canonical_json.exists():
         print(f"  [ERROR] 找不到 {canonical_json}")
@@ -776,33 +796,39 @@ def update_courses_payload_only(
         print(f"  [ERROR] {canonical_json} 格式異常")
         return
 
-    items: list[tuple[int, dict]] = []
+    items: list[tuple[str, dict]] = []   # (course_code, payload)
     skipped = 0
     for c in deduped:
-        doc_id, doc_text, payload = build_course_doc(
+        _, doc_text, payload = build_course_doc(
             c, nlp, teacher_lookup, schedule_lookup, eligibility_lookup, is_grad
         )
         if not doc_text.strip():
             skipped += 1
             continue
-        items.append((_doc_id_to_int(doc_id), payload))
+        code = payload.get("course_code", "")
+        if code:
+            items.append((code, payload))
 
     print(f"  共 {len(items)} 筆需更新（略過空白 {skipped} 筆）")
     updated = errors = 0
-    for point_id, payload in tqdm(items, desc="  overwrite_payload"):
-        try:
-            qdrant.overwrite_payload(
-                collection_name=name,
-                payload=payload,
-                points=[point_id],
-            )
-            updated += 1
-        except Exception as e:
-            errors += 1
-            if errors <= 3:
-                print(f"\n  [WARN] 失敗 point={point_id}: {e}")
+    batch_size = max(1, _env_int("QDRANT_UPSERT_BATCH", 200))
 
-    print(f"  ✓ 更新 {updated} 筆，失敗（point 不存在或其他錯誤）{errors} 筆")
+    for i in tqdm(range(0, len(items), batch_size), desc="  overwrite_payload"):
+        batch = items[i:i + batch_size]
+        for code, payload in batch:
+            try:
+                qdrant.overwrite_payload(
+                    collection_name=name,
+                    payload=payload,
+                    points=Filter(must=[FieldCondition(key="course_code", match=MatchValue(value=code))]),
+                )
+                updated += 1
+            except Exception as e:
+                errors += 1
+                if errors <= 3:
+                    print(f"\n  [WARN] 失敗 code={code}: {e}")
+
+    print(f"  ✓ 完成 {updated} 個課號，失敗 {errors} 個")
 
 
 def build_courses_collection(

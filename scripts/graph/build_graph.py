@@ -143,7 +143,7 @@ def ensure_edge(G: nx.DiGraph, src: str, tgt: str, **attrs) -> bool:
 
 
 def parse_when(when_str: str) -> tuple[Optional[int], Optional[int]]:
-    """'大二下' → (2, 2)；解析失敗回傳 (None, None)"""
+    """'大二下' → (2, 2)；解析失敗回傳 (None, None)。取範圍起始段。"""
     year_map = {"一": 1, "二": 2, "三": 3, "四": 4}
     sem_map  = {"上": 1, "下": 2}
     first = when_str.split("~")[0].strip()
@@ -151,6 +151,27 @@ def parse_when(when_str: str) -> tuple[Optional[int], Optional[int]]:
     if not m:
         return None, None
     return year_map.get(m.group(1)), sem_map.get(m.group(2)) if m.group(2) else None
+
+
+def parse_when_range(when_str: str) -> tuple[int, int, int, int]:
+    """'大三上~大三下' → (3, 1, 3, 2)；解析失敗各欄位為 0。"""
+    year_map = {"一": 1, "二": 2, "三": 3, "四": 4}
+    sem_map  = {"上": 1, "下": 2}
+
+    def _single(token: str) -> tuple[Optional[int], Optional[int]]:
+        m = re.search(r"大([一二三四])([上下])?", token.strip())
+        if not m:
+            return None, None
+        return year_map.get(m.group(1)), sem_map.get(m.group(2)) if m.group(2) else None
+
+    parts = [p.strip() for p in when_str.split("~")]
+    y_s, s_s = _single(parts[0])
+    if y_s is None:
+        return 0, 0, 0, 0
+    y_e, s_e = (_single(parts[1]) if len(parts) > 1 else (y_s, s_s))
+    if y_e is None:
+        y_e, s_e = y_s, s_s
+    return y_s, (s_s or 1), y_e, (s_e or 2)
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -248,7 +269,15 @@ def _add_courses(G, raw, courses, owner_id, rel="REQUIRES", stub="curriculum_onl
         if not isinstance(c, dict) or not c.get("code"):
             continue
         _ensure_course(G, raw, c["code"], c.get("name", ""), c.get("credits", 0), stub)
-        ensure_edge(G, owner_id, c["code"], relation=rel, credits=c.get("credits", 0))
+        when_raw = c.get("when", "")
+        if when_raw and rel == "REQUIRES":
+            y_s, s_s, y_e, s_e = parse_when_range(when_raw)
+            ensure_edge(G, owner_id, c["code"], relation=rel, credits=c.get("credits", 0),
+                        when_raw=when_raw,
+                        when_year_start=y_s, when_sem_start=s_s,
+                        when_year_end=y_e,   when_sem_end=s_e)
+        else:
+            ensure_edge(G, owner_id, c["code"], relation=rel, credits=c.get("credits", 0))
 
 
 def _add_slot(G, raw, slot, parent_id, idx, stub="cp_only"):
@@ -864,30 +893,50 @@ def enrich_eligibility(G: nx.DiGraph) -> dict:
 
 
 def enrich_schedule(G: nx.DiGraph) -> dict:
-    """Phase 2c：必修建議學期屬性（from schedule_draft）"""
+    """Phase 2e：為 REQUIRES 邊補寫 when_raw / when_year_start 等屬性（from schedule_draft）。
+    補充 _add_courses 未涵蓋的邊（如 build_base_graph 後才更新 schedule_draft 的情形）。
+    """
     stats = {"updated": 0}
     if not SCHEDULE_DIR.exists():
         return stats
+
+    def _apply(courses: list, plan_nid: str):
+        for rc in courses:
+            code = rc.get("code", "").strip()
+            when = rc.get("when", "")
+            if not code or not when:
+                continue
+            if not G.has_edge(plan_nid, code):
+                continue
+            # 只補寫尚未設定 when_raw 的邊（不覆蓋 _add_courses 已寫入的值）
+            if G.edges[plan_nid, code].get("when_raw"):
+                continue
+            y_s, s_s, y_e, s_e = parse_when_range(when)
+            G.edges[plan_nid, code]["when_raw"]        = when
+            G.edges[plan_nid, code]["when_year_start"] = y_s
+            G.edges[plan_nid, code]["when_sem_start"]  = s_s
+            G.edges[plan_nid, code]["when_year_end"]   = y_e
+            G.edges[plan_nid, code]["when_sem_end"]    = s_e
+            stats["updated"] += 1
+
     for college_dir in SCHEDULE_DIR.iterdir():
         if not college_dir.is_dir():
             continue
         for dept_file in college_dir.glob("*.json"):
             try:
-                for rc in load_json(dept_file).get("required_courses", []):
-                    code = rc.get("code", "").strip()
-                    when = rc.get("when", "")
-                    if not code or not when:
-                        continue
-                    cnid = _find_course(G, code)
-                    if not cnid:
-                        continue
-                    year, sem = parse_when(when)
-                    if year is not None:
-                        G.nodes[cnid]["suggested_year"] = year
-                    if sem is not None:
-                        G.nodes[cnid]["suggested_semester"] = sem
-                    G.nodes[cnid]["schedule_verified"] = rc.get("verified", False)
-                    stats["updated"] += 1
+                data = load_json(dept_file)
+                dept_id = data.get("id", dept_file.stem)
+                plan_id = f"{dept_id}::plan"
+                _apply(data.get("required_courses", []), plan_id)
+                for track in data.get("specialization_tracks", []):
+                    tid = track.get("id", dept_id)
+                    _apply(track.get("required_courses", []), f"{tid}::plan")
+                    for grp in track.get("groups", []):
+                        gid = grp.get("id", tid)
+                        _apply(grp.get("required_courses", []), f"{gid}::plan")
+                for grp in data.get("groups", []):
+                    gid = grp.get("id", dept_id)
+                    _apply(grp.get("required_courses", []), f"{gid}::plan")
             except Exception as e:
                 print(f"    [WARN] {dept_file.name}: {e}")
     return stats
