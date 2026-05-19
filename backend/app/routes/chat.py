@@ -9,15 +9,27 @@ GET  /api/chat/session/{id} — 取得單一對話完整資料
 
 import json as _json
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, Depends, HTTPException
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 from typing import Optional
 
 from app.services import llm_service as llm
 from app.services import session_store as ss
+from app.services.auth_service import AuthUser, get_optional_user
 
 router = APIRouter()
+
+
+def _user_profile(user: AuthUser | None) -> dict | None:
+    if user is None:
+        return None
+    return {
+        "email": user.email,
+        "name": user.name,
+        "picture": user.picture,
+        "provider": "firebase",
+    }
 
 
 class ChatRequest(BaseModel):
@@ -43,13 +55,14 @@ class ChatResponse(BaseModel):
 
 
 @router.post("", response_model=ChatResponse)
-async def chat(req: ChatRequest):
+async def chat(req: ChatRequest, user: AuthUser | None = Depends(get_optional_user)):
     q = req.question.strip()
     if not q:
         raise HTTPException(status_code=400, detail="question 不得為空")
 
     sid = req.session_id or ss.new_session_id()
-    history = ss.load(sid)
+    user_id = user.user_id if user else None
+    history = ss.load(sid, user_id=user_id)
 
     hints = []
     if req.dept:
@@ -70,6 +83,8 @@ async def chat(req: ChatRequest):
         sid, q, result["answer"],
         course_cards=result.get("course_cards", []),
         tools_used=result.get("tools_used", []),
+        user_id=user_id,
+        user_profile=_user_profile(user),
     )
 
     return ChatResponse(
@@ -88,14 +103,15 @@ async def chat(req: ChatRequest):
 
 
 @router.post("/stream")
-async def chat_stream(req: ChatRequest):
+async def chat_stream(req: ChatRequest, user: AuthUser | None = Depends(get_optional_user)):
     """串流版：SSE 逐字回傳 + 工具呼叫進度事件。"""
     q = req.question.strip()
     if not q:
         raise HTTPException(status_code=400, detail="question 不得為空")
 
     sid = req.session_id or ss.new_session_id()
-    history = ss.load(sid)
+    user_id = user.user_id if user else None
+    history = ss.load(sid, user_id=user_id)
 
     hints = []
     if req.dept:
@@ -128,6 +144,8 @@ async def chat_stream(req: ChatRequest):
                             tools_used=data.get("tools_used", []),
                             course_pool=data.get("course_pool", []),
                             debug_trace=data.get("debug_trace"),
+                            user_id=user_id,
+                            user_profile=_user_profile(user),
                         )
                         raw = f"data: {_json.dumps(data, ensure_ascii=False)}\n\n"
                 except Exception:
@@ -219,24 +237,24 @@ async def get_course_detail(req: CourseDetailRequest):
 
 
 @router.get("/sessions")
-async def list_sessions():
+async def list_sessions(user: AuthUser | None = Depends(get_optional_user)):
     """列出所有對話摘要（session_id、標題、更新時間、輪數）。"""
-    return ss.list_sessions()
+    return ss.list_sessions(user_id=user.user_id if user else None)
 
 
 @router.get("/session/{session_id}")
-async def get_session(session_id: str):
+async def get_session(session_id: str, user: AuthUser | None = Depends(get_optional_user)):
     """取得單一對話完整資料（含每輪課程卡片與工具紀錄）。"""
-    data = ss.get_display(session_id)
+    data = ss.get_display(session_id, user_id=user.user_id if user else None)
     if data is None:
         raise HTTPException(status_code=404, detail="Session not found")
     return data
 
 
 @router.delete("/session/{session_id}")
-async def delete_session(session_id: str):
+async def delete_session(session_id: str, user: AuthUser | None = Depends(get_optional_user)):
     """清除對話記錄（前端「開新對話」按鈕用）"""
-    deleted = ss.delete(session_id)
+    deleted = ss.delete(session_id, user_id=user.user_id if user else None)
     return {"deleted": deleted, "session_id": session_id}
 
 

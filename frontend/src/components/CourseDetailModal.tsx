@@ -270,7 +270,7 @@ export default function CourseDetailModal({ course, onClose }: Props) {
           ) : (
             <>
               {/* ── 修習資訊卡 ── */}
-              {(singleEligRules.length > 0 || d.when_raw || d.prereq_codes || hasMultiSections) && (
+              {(singleEligRules.length > 0 || d.when_schedule?.length > 0 || d.prereq_codes || hasMultiSections) && (
                 <div className="flex items-start gap-2.5 rounded-xl bg-primary-50 px-3.5 py-3">
                   <HiShieldCheck className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary-400" />
                   <div className="min-w-0 w-full space-y-1.5">

@@ -2,19 +2,37 @@ import { HiAcademicCap, HiCollection, HiExternalLink } from 'react-icons/hi';
 
 const scoreResources = [
   {
-    title: '大學考試入學分發委員會',
-    description: '查看各校系分發資訊、歷年錄取結果與招生相關公告。',
+    title: '114大學交叉查榜｜www.com.tw',
+    description: '查詢大學申請、繁星、分科與統測榜單，也可查看各系組錄取分數與交叉查榜資訊。',
     href: 'https://www.com.tw/cross/',
   },
   {
     title: '大學甄選入學委員會',
-    description: '查詢申請入學、繁星推薦與各項招生時程及簡章資訊。',
+    description: '查詢大學申請入學與繁星推薦的官方招生簡章、重要時程、校系分則與錄取公告。',
     href: 'https://www.uac.edu.tw/',
   },
   {
-    title: 'TUN 大學網',
-    description: '整合校系介紹、課程內容與升學資訊，方便快速比較不同學系。',
-    href: 'https://university.1111.com.tw/',
+    title: '1111落點分析',
+    description: '輸入成績後進行校系落點分析，搭配學群、志願與升學建議評估可能錄取範圍。',
+    href: 'https://exam-match.1111.com.tw/',
+  },
+];
+
+const studyResources = [
+  {
+    title: 'ColleGo!',
+    description: '探索大學學群、學類、校系與高中學習準備方向，適合用來認識科系與規劃學習路徑。',
+    href: 'https://collego.edu.tw/',
+  },
+  {
+    title: 'IOH 開放個人經驗平台',
+    description: '透過學長姐與講者的求學、科系、職涯經驗分享，了解不同校系的實際學習樣貌。',
+    href: 'https://ioh.tw/',
+  },
+  {
+    title: '大學問',
+    description: '查詢大學校系、學群分類、入學管道與升學新聞，適合快速比較不同學校與科系資訊。',
+    href: 'https://www.unews.com.tw/',
   },
 ];
 
@@ -114,7 +132,7 @@ export default function ResourcesPage() {
           </div>
           <h1 className="mt-6 text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">升學與校系資源</h1>
           <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600 md:text-lg">
-            這裡整理了常用的升學平台與中央大學各學院、系所官方網站，方便你快速查詢校系資訊與延伸閱讀。
+            這裡整理了落點分析工具、升學參考平台與中央大學各學院、系所官方網站，方便你快速查詢志願、校系資訊與延伸閱讀。
           </p>
         </div>
       </section>
@@ -125,12 +143,29 @@ export default function ResourcesPage() {
             <HiExternalLink className="h-5 w-5" />
           </div>
           <div>
-            <h2 className="text-2xl font-semibold text-slate-950">升學參考平台</h2>
-            <p className="text-sm text-slate-500">快速前往常用的升學資訊網站與分發查詢平台。</p>
+            <h2 className="text-2xl font-semibold text-slate-950">落點分析相關網站</h2>
+            <p className="text-sm text-slate-500">查詢交叉查榜、招生簡章、錄取公告與成績落點分析工具。</p>
           </div>
         </div>
         <div className="grid gap-5 md:grid-cols-3">
           {scoreResources.map((resource) => (
+            <ResourceCard key={resource.title} {...resource} />
+          ))}
+        </div>
+      </section>
+
+      <section className="pb-12">
+        <div className="mb-6 flex items-center gap-3">
+          <div className="rounded-2xl bg-primary-100 p-2 text-primary-700">
+            <HiExternalLink className="h-5 w-5" />
+          </div>
+          <div>
+            <h2 className="text-2xl font-semibold text-slate-950">升學參考平台</h2>
+            <p className="text-sm text-slate-500">認識學群、學類、校系特色與學長姐經驗，輔助選系與生涯探索。</p>
+          </div>
+        </div>
+        <div className="grid gap-5 md:grid-cols-3">
+          {studyResources.map((resource) => (
             <ResourceCard key={resource.title} {...resource} />
           ))}
         </div>

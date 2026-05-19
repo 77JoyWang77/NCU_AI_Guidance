@@ -1,16 +1,32 @@
 import { apiClient } from './client';
+import { getFirebaseIdToken } from '../auth/firebase';
 import type {
   AssessmentMode,
   Question,
   Answer,
   AssessmentResult,
   Course,
+  CourseAskResponse,
+  CourseSemanticSearchParams,
+  CourseSemanticSearchResponse,
   Project,
   ChatApiResponse,
   StreamEvent,
 } from '../types';
 
 const API_BASE = (import.meta.env.VITE_API_URL as string | undefined) ?? 'http://localhost:8000/api';
+
+export const authAPI = {
+  me: async (): Promise<{
+    id: string;
+    email: string;
+    name: string;
+    picture: string;
+  }> => {
+    const response = await apiClient.get('/auth/me');
+    return response.data;
+  },
+};
 
 // 科系兴趣量表 API
 export const assessmentAPI = {
@@ -48,6 +64,16 @@ export const courseAPI = {
 
   searchCourses: async (query: string): Promise<Course[]> => {
     const response = await apiClient.post('/course-search', { query });
+    return response.data;
+  },
+
+  semanticSearch: async (params: CourseSemanticSearchParams): Promise<CourseSemanticSearchResponse> => {
+    const response = await apiClient.post('/courses/semantic-search', params);
+    return response.data;
+  },
+
+  askCourse: async (courseId: string, question: string): Promise<CourseAskResponse> => {
+    const response = await apiClient.post(`/courses/${encodeURIComponent(courseId)}/ask`, { question });
     return response.data;
   },
 };
@@ -113,12 +139,16 @@ export const chatStreamAPI = {
   ): AbortController {
     const controller = new AbortController();
 
-    fetch(`${API_BASE}/chat/stream`, {
+    getFirebaseIdToken()
+      .then((token) => fetch(`${API_BASE}/chat/stream`, {
       method:  'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      },
       body:    JSON.stringify({ question, session_id, college, dept }),
       signal:  controller.signal,
-    })
+      }))
       .then(async (res) => {
         if (!res.ok) { handlers.onError(`HTTP ${res.status}`); return; }
         const reader = res.body!.getReader();

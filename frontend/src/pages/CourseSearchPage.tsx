@@ -15,6 +15,7 @@ import CourseDetailModal from '../components/CourseDetailModal';
 import CoursePoolDrawer from '../components/CoursePoolDrawer';
 import DebugTracePanel from '../components/DebugTracePanel';
 import HighlightedAnswer from '../components/HighlightedAnswer';
+import { useAuth } from '../auth/AuthContext';
 import type { CourseCard, DebugTrace, StreamEvent, ToolTraceItem } from '../types';
 
 const TOOL_LABELS: Record<string, string> = {
@@ -104,6 +105,7 @@ function makeConvFromSession(detail: {
 }
 
 export default function CourseSearchPage() {
+  const { user, loading: authLoading } = useAuth();
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [selectedConversationId, setSelectedConversationId] = useState('');
   const [inputMessage, setInputMessage]   = useState('');
@@ -136,10 +138,21 @@ export default function CourseSearchPage() {
     [conversations, selectedConversationId],
   );
 
-  // ── 啟動時從後端載入歷史對話 ─────────────────────────────────────────────
+  // ── 從後端載入目前登入帳戶的歷史對話 ───────────────────────────────────
   useEffect(() => {
+    if (authLoading) return;
+
+    let cancelled = false;
+    setSessionsLoaded(false);
+    sessionIds.current = {};
+    setPanelCourses([]);
+    setPanelPoolCount(0);
+    setPanelPoolData([]);
+    setPanelHasLarge(false);
+
     chatAPI.getSessions()
       .then(async (sessions) => {
+        if (cancelled) return;
         if (sessions.length === 0) {
           createDefaultConversation();
           setSessionsLoaded(true);
@@ -148,6 +161,8 @@ export default function CourseSearchPage() {
         const details = await Promise.all(
           sessions.slice(0, 30).map((s) => chatAPI.getSession(s.session_id).catch(() => null))
         );
+        if (cancelled) return;
+
         const convs: Conversation[] = details
           .filter((d): d is NonNullable<typeof d> => d !== null && d.turns.length > 0)
           .map(makeConvFromSession);
@@ -171,11 +186,16 @@ export default function CourseSearchPage() {
         setSessionsLoaded(true);
       })
       .catch(() => {
+        if (cancelled) return;
         createDefaultConversation();
         setSessionsLoaded(true);
       });
+
+    return () => {
+      cancelled = true;
+    };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [authLoading, user?.id]);
 
   function createDefaultConversation() {
     const nc: Conversation = {
