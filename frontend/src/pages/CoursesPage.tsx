@@ -9,35 +9,36 @@ import {
   HiChip,
   HiCog,
   HiGlobeAlt,
-  HiHeart,
   HiLibrary,
-  HiOfficeBuilding,
   HiPlus,
   HiSearch,
   HiTrash,
   HiX,
 } from 'react-icons/hi';
+import { FaHeartbeat, FaLandmark, FaLeaf } from 'react-icons/fa';
 import { courseAPI } from '../api/services';
 import CourseCompareModal from '../components/CourseCompareModal';
 import CourseDetailPanel from '../components/CourseDetailPanel';
 import HighlightText from '../components/HighlightText';
 import type { Course } from '../types';
 
-const COLLEGE_ORDER = ['文學院', '理學院', '工學院', '管理學院', '資訊電機學院', '地球科學學院', '客家學院', '生醫理工學院', '中心、處室'] as const;
+const COLLEGE_ORDER = ['文學院', '理學院', '工學院', '管理學院', '資訊電機學院', '地球科學學院', '客家學院', '生醫理工學院', '永續與綠能科技研究學院', '中心、處室'] as const;
 const FALLBACK_COLLEGE = '中心、處室';
 const FALLBACK_DEPARTMENT = '未分類單位';
 const COMPARE_LIMIT = 3;
 
-const COLLEGE_CONFIG: Record<string, { icon: ComponentType<{ className?: string }>; gradient: string }> = {
-  文學院: { icon: HiBookOpen, gradient: 'from-blue-400 to-violet-500' },
-  理學院: { icon: HiBeaker, gradient: 'from-cyan-400 to-blue-500' },
-  工學院: { icon: HiCog, gradient: 'from-orange-400 to-red-500' },
-  管理學院: { icon: HiBriefcase, gradient: 'from-green-400 to-emerald-500' },
-  資訊電機學院: { icon: HiChip, gradient: 'from-indigo-400 to-purple-600' },
-  地球科學學院: { icon: HiGlobeAlt, gradient: 'from-teal-400 to-cyan-500' },
-  客家學院: { icon: HiLibrary, gradient: 'from-rose-400 to-pink-500' },
-  生醫理工學院: { icon: HiHeart, gradient: 'from-pink-400 to-rose-500' },
-  '中心、處室': { icon: HiOfficeBuilding, gradient: 'from-slate-400 to-slate-500' },
+const COLLEGE_CONFIG: Record<string, { icon: ComponentType<{ className?: string }>; color: string; badge: string; surface: string; headerSurface: string; border: string; selectedBorder: string }> = {
+  文學院: { icon: HiBookOpen, color: 'bg-violet-500', badge: 'bg-violet-50 text-violet-700', surface: 'bg-violet-500/[0.045]', headerSurface: 'bg-violet-500/[0.09]', border: 'border-violet-200/50', selectedBorder: 'border-violet-500' },
+  理學院: { icon: HiBeaker, color: 'bg-cyan-500', badge: 'bg-cyan-50 text-cyan-700', surface: 'bg-cyan-500/[0.045]', headerSurface: 'bg-cyan-500/[0.09]', border: 'border-cyan-200/50', selectedBorder: 'border-cyan-500' },
+  工學院: { icon: HiCog, color: 'bg-orange-500', badge: 'bg-orange-50 text-orange-700', surface: 'bg-orange-500/[0.045]', headerSurface: 'bg-orange-500/[0.09]', border: 'border-orange-200/50', selectedBorder: 'border-orange-500' },
+  管理學院: { icon: HiBriefcase, color: 'bg-emerald-500', badge: 'bg-emerald-50 text-emerald-700', surface: 'bg-emerald-500/[0.045]', headerSurface: 'bg-emerald-500/[0.09]', border: 'border-emerald-200/50', selectedBorder: 'border-emerald-500' },
+  資訊電機學院: { icon: HiChip, color: 'bg-indigo-600', badge: 'bg-indigo-50 text-indigo-700', surface: 'bg-indigo-600/[0.045]', headerSurface: 'bg-indigo-600/[0.09]', border: 'border-indigo-200/50', selectedBorder: 'border-indigo-600' },
+  地球科學學院: { icon: HiGlobeAlt, color: 'bg-teal-600', badge: 'bg-teal-50 text-teal-700', surface: 'bg-teal-600/[0.045]', headerSurface: 'bg-teal-600/[0.09]', border: 'border-teal-200/50', selectedBorder: 'border-teal-600' },
+  客家學院: { icon: HiLibrary, color: 'bg-rose-400', badge: 'bg-rose-50 text-rose-700', surface: 'bg-rose-400/[0.05]', headerSurface: 'bg-rose-400/[0.10]', border: 'border-rose-200/50', selectedBorder: 'border-rose-400' },
+  生醫理工學院: { icon: FaHeartbeat, color: 'bg-red-500', badge: 'bg-red-50 text-red-700', surface: 'bg-red-500/[0.045]', headerSurface: 'bg-red-500/[0.09]', border: 'border-red-200/50', selectedBorder: 'border-red-500' },
+  永續與綠能科技研究學院: { icon: FaLeaf, color: 'bg-lime-500', badge: 'bg-lime-50 text-lime-700', surface: 'bg-lime-500/[0.05]', headerSurface: 'bg-lime-500/[0.10]', border: 'border-lime-200/50', selectedBorder: 'border-lime-500' },
+  永續與綠能學院: { icon: FaLeaf, color: 'bg-lime-500', badge: 'bg-lime-50 text-lime-700', surface: 'bg-lime-500/[0.05]', headerSurface: 'bg-lime-500/[0.10]', border: 'border-lime-200/50', selectedBorder: 'border-lime-500' },
+  '中心、處室': { icon: FaLandmark, color: 'bg-slate-400', badge: 'bg-slate-100 text-slate-600', surface: 'bg-slate-400/[0.06]', headerSurface: 'bg-slate-400/[0.12]', border: 'border-slate-200/60', selectedBorder: 'border-slate-400' },
 };
 
 type NavigationLevel = 'colleges' | 'departments' | 'courses';
@@ -443,6 +444,34 @@ export default function CoursesPage() {
 
   const navigationTitle = navigationLevel === 'colleges' ? '選擇學院' : navigationLevel === 'departments' ? selectedCollege || '選擇系所' : selectedDepartment || '選擇課程';
   const navigationHint = navigationLevel === 'colleges' ? '從學院開始瀏覽' : navigationLevel === 'departments' ? '查看各系所課程' : '選擇一門課程查看詳情';
+  const selectedCollegeConfig = selectedCollege ? COLLEGE_CONFIG[selectedCollege] : undefined;
+  const hasCollegeNavigationColor = navigationLevel !== 'colleges' && Boolean(selectedCollegeConfig);
+  const navigationShellClass = hasCollegeNavigationColor
+    ? `border-r ${selectedCollegeConfig!.border} bg-white`
+    : 'border-r border-slate-200 bg-white';
+  const navigationTopClass = hasCollegeNavigationColor
+    ? `border-b ${selectedCollegeConfig!.border} ${selectedCollegeConfig!.surface}`
+    : 'border-b border-slate-200 bg-white';
+  const filterPanelClass = hasCollegeNavigationColor
+    ? `space-y-3 border-t ${selectedCollegeConfig!.border} bg-white/35 px-4 py-3 backdrop-blur-sm`
+    : 'space-y-3 border-t border-slate-200 px-4 py-3';
+  const navigationHeaderClass = hasCollegeNavigationColor
+    ? `border-white/50 ${selectedCollegeConfig!.headerSurface} px-4 py-3 backdrop-blur-sm`
+    : 'border-slate-100 bg-slate-50 px-4 py-3';
+  const navigationBackButtonClass = hasCollegeNavigationColor
+    ? 'inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/70 text-slate-700 shadow-sm ring-1 ring-white/60 transition hover:bg-white/90'
+    : 'inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-slate-600 shadow-sm transition hover:bg-slate-50';
+  const navigationTitleClass = hasCollegeNavigationColor
+    ? 'text-sm font-bold text-slate-950'
+    : 'text-sm font-bold text-slate-900';
+  const navigationHintClass = hasCollegeNavigationColor
+    ? 'mt-0.5 text-xs text-slate-700'
+    : 'mt-0.5 text-xs text-slate-500';
+  const navigationListClass = 'bg-white';
+  const navigationRowClass = 'border-b border-slate-100 bg-white hover:bg-slate-50';
+  const selectedCourseRowClass = hasCollegeNavigationColor
+    ? `${selectedCollegeConfig!.selectedBorder} bg-white`
+    : 'border-indigo-600 bg-white';
   const closeMobileNavigator = () => setIsMobileNavigatorOpen(false);
   const openMobileNavigator = () => setIsMobileNavigatorOpen(true);
 
@@ -499,7 +528,7 @@ export default function CoursesPage() {
 
   return (
     <>
-      <div className="h-full bg-gray-50">
+      <div className="h-full bg-slate-50">
         {loading ? (
           <div className="flex h-full items-center justify-center">
             <div className="text-center">
@@ -509,9 +538,9 @@ export default function CoursesPage() {
           </div>
         ) : (
           <div className="flex h-full min-h-0 flex-col md:flex-row">
-            <aside className={`relative z-10 min-h-0 w-full flex-col overflow-hidden border-r border-slate-200 bg-white ${isMobileNavigatorOpen ? 'flex flex-1' : 'hidden'} md:flex md:w-[24rem] md:min-w-[24rem] md:max-w-[24rem] md:flex-none`}>
-              <div className="sticky top-0 z-10 border-b border-slate-200 bg-white">
-                <div className="flex items-center justify-between gap-3 px-4 py-3">
+            <aside className={`relative z-10 min-h-0 w-full flex-col overflow-hidden ${navigationShellClass} ${isMobileNavigatorOpen ? 'flex flex-1' : 'hidden'} md:flex md:w-[24rem] md:min-w-[24rem] md:max-w-[24rem] md:flex-none`}>
+              <div className={`sticky top-0 z-10 ${navigationTopClass}`}>
+                <div className="flex items-center justify-between gap-3 bg-white px-4 py-3">
                   <h2 className="text-sm font-bold tracking-wide text-slate-900">課程導航</h2>
                   <div className="flex items-center gap-2">
                     <button type="button" onClick={openSearchPanel} className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-300 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50" aria-label="開啟課程搜尋">
@@ -524,7 +553,7 @@ export default function CoursesPage() {
                 </div>
 
                 {hasActiveFilters ? (
-                  <div className="space-y-3 border-t border-slate-200 px-4 py-3">
+                  <div className={filterPanelClass}>
                     {activeTags.length > 0 ? (
                       <div className="flex flex-wrap gap-2">
                         {activeTags.map((tag) => (
@@ -558,7 +587,7 @@ export default function CoursesPage() {
                     ) : null}
                   </div>
                 ) : (
-                  <div className="border-t border-slate-200 bg-gradient-to-r from-primary-50 to-primary-100 px-4 py-3">
+                  <div className={`border-t ${navigationHeaderClass}`}>
                     <div className="flex items-center gap-2">
                       {navigationLevel !== 'colleges' ? (
                         <button
@@ -573,22 +602,22 @@ export default function CoursesPage() {
                             setSelectedCourse(null);
                             setNavigationLevel('colleges');
                           }}
-                          className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-slate-600 shadow-sm"
+                          className={navigationBackButtonClass}
                           aria-label="返回上一層"
                         >
                           <HiChevronLeft className="h-5 w-5" />
                         </button>
                       ) : null}
                       <div className="min-w-0">
-                        <div className="text-sm font-bold text-slate-900">{navigationTitle}</div>
-                        <div className="mt-0.5 text-xs text-slate-500">{navigationHint}</div>
+                        <div className={navigationTitleClass}>{navigationTitle}</div>
+                        <div className={navigationHintClass}>{navigationHint}</div>
                       </div>
                     </div>
                   </div>
                 )}
               </div>
 
-              <div className="flex-1 overflow-y-auto">
+              <div className="flex-1 overflow-y-auto bg-white">
                 {hasActiveFilters ? (
                   <div className="bg-white">
                     {hasSearchQuery && searchMode === 'semantic' ? (
@@ -603,7 +632,7 @@ export default function CoursesPage() {
                             const preview = getDetailPreview(course, searchQuery);
                             const tags = metadataPreview(course);
                             return (
-                              <div key={courseKey(course)} className={`flex gap-2 px-4 py-3 transition hover:bg-primary-50 ${isSelected ? 'border-l-4 border-primary-600 bg-primary-50' : ''}`}>
+                              <div key={courseKey(course)} className={`flex gap-2 px-4 py-3 transition hover:bg-slate-50 ${isSelected ? 'border-l-4 border-indigo-600 bg-slate-50' : ''}`}>
                                 <button type="button" onClick={() => handleSelectFlatSearchResult(course)} className="min-w-0 flex-1 text-left">
                                   <div className="text-sm font-semibold leading-snug text-slate-900">
                                     <HighlightText text={course.course_name_zh} keyword={searchQuery} />
@@ -663,7 +692,7 @@ export default function CoursesPage() {
                                       const preview = getDetailPreview(course, searchQuery);
                                       const tags = metadataPreview(course);
                                       return (
-                                        <div key={courseKey(course)} className={`flex gap-2 border-t border-slate-100 px-4 py-3 transition hover:bg-primary-50 ${isSelected ? 'border-l-4 border-primary-600 bg-primary-50' : ''}`}>
+                                        <div key={courseKey(course)} className={`flex gap-2 border-t border-slate-100 px-4 py-3 transition hover:bg-slate-50 ${isSelected ? 'border-l-4 border-indigo-600 bg-slate-50' : ''}`}>
                                           <button type="button" onClick={() => handleSelectSearchResult(group.college, department.name, course)} className="min-w-0 flex-1 text-left">
                                             <div className="text-sm font-semibold leading-snug text-slate-900">
                                               <HighlightText text={course.course_name_zh} keyword={searchQuery} />
@@ -714,30 +743,34 @@ export default function CoursesPage() {
                     )}
                   </div>
                 ) : navigationLevel === 'colleges' ? (
-                  <div className="bg-white">
+                  <div className="space-y-2 bg-slate-50 p-3">
                     {sortedColleges.map((college) => {
                       const config = COLLEGE_CONFIG[college] || COLLEGE_CONFIG[FALLBACK_COLLEGE];
                       const Icon = config.icon;
                       return (
-                        <button key={college} type="button" onClick={() => handleSelectCollege(college)} className="flex w-full items-center gap-3 border-b border-slate-200 px-4 py-3 text-left transition hover:bg-slate-50">
-                          <div className={`flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br ${config.gradient} shadow-sm`}>
+                        <button key={college} type="button" onClick={() => handleSelectCollege(college)} className="group flex w-full items-center gap-3 rounded-xl border border-slate-200 bg-white px-3 py-3 text-left shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md">
+                          <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl ${config.color} shadow-sm shadow-slate-200 transition duration-200 group-hover:scale-105`}>
                             <Icon className="h-5 w-5 text-white" />
                           </div>
-                          <div className="min-w-0">
-                            <div className="truncate text-sm font-medium text-slate-900">{college}</div>
-                            <div className="text-xs text-slate-500">{Object.keys(groupedCourses[college] || {}).length} 系所</div>
+                          <div className="min-w-0 flex-1">
+                            <div className="truncate text-sm font-semibold text-slate-950">{college}</div>
+                            <div className="mt-1 flex items-center gap-2">
+                              <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${config.badge}`}>{Object.keys(groupedCourses[college] || {}).length} 系所</span>
+                              <span className="text-xs text-slate-400">探索課程</span>
+                            </div>
                           </div>
+                          <HiChevronRight className="h-5 w-5 shrink-0 text-slate-300 transition group-hover:translate-x-0.5 group-hover:text-slate-500" />
                         </button>
                       );
                     })}
                   </div>
                 ) : navigationLevel === 'departments' ? (
-                  <div className="bg-white">
+                  <div className={navigationListClass}>
                     {currentDepartments.length > 0 ? (
                       currentDepartments.map((department) => {
                         const departmentCount = (groupedCourses[selectedCollege!]?.[department] || []).length;
                         return (
-                          <button key={department} type="button" onClick={() => handleSelectDepartment(department)} className="flex w-full items-center justify-between border-b border-slate-200 px-4 py-3 text-left transition hover:bg-primary-50">
+                          <button key={department} type="button" onClick={() => handleSelectDepartment(department)} className={`flex w-full items-center justify-between px-4 py-3 text-left transition ${navigationRowClass}`}>
                             <div className="min-w-0">
                               <div className="truncate text-sm font-medium text-slate-900">{department}</div>
                               <div className="text-xs text-slate-500">{departmentCount} 門課</div>
@@ -751,14 +784,14 @@ export default function CoursesPage() {
                     )}
                   </div>
                 ) : (
-                  <div className="bg-white">
+                  <div className={navigationListClass}>
                     {currentCourses.length > 0 ? (
-                      <div className="divide-y divide-slate-200">
+                      <div>
                         {currentCourses.map((course) => {
                           const isSelected = selectedCourse ? courseKey(selectedCourse) === courseKey(course) : false;
                           const isRequired = normalize(course.required_elective) === '必修';
                           return (
-                            <div key={courseKey(course)} className={`flex gap-2 px-4 py-3 transition hover:bg-primary-50 ${isSelected ? 'border-l-4 border-primary-600 bg-primary-50' : ''}`}>
+                            <div key={courseKey(course)} className={`flex gap-2 border-b px-4 py-3 transition ${navigationRowClass} ${isSelected ? `border-l-4 ${selectedCourseRowClass}` : ''}`}>
                               <button type="button" onClick={() => handleSelectCourse(course)} className="min-w-0 flex-1 text-left">
                                 <div className="mb-1 text-sm font-semibold leading-snug text-slate-900">
                                   <HighlightText text={course.course_name_zh} keyword={searchQuery} />
@@ -786,7 +819,7 @@ export default function CoursesPage() {
               </div>
             </aside>
 
-            <div className={`relative z-0 min-h-0 min-w-0 flex-1 overflow-y-auto bg-gray-50 p-4 ${isMobileNavigatorOpen ? 'hidden md:block' : 'block'}`}>
+            <div className={`relative z-0 min-h-0 min-w-0 flex-1 overflow-y-auto bg-slate-50 p-4 ${isMobileNavigatorOpen ? 'hidden md:block' : 'block'}`}>
               {!isMobileNavigatorOpen ? (
                 <button
                   type="button"
