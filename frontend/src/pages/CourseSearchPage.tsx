@@ -142,6 +142,12 @@ export default function CourseSearchPage() {
   useEffect(() => {
     if (authLoading) return;
 
+    if (!user) {
+      createDefaultConversation();
+      setSessionsLoaded(true);
+      return;
+    }
+
     let cancelled = false;
     setSessionsLoaded(false);
     sessionIds.current = {};
@@ -411,10 +417,13 @@ export default function CourseSearchPage() {
   const ConvList = ({ onSelect }: { onSelect?: () => void }) => (
     <div className="flex-1 space-y-2 overflow-y-auto p-3">
       {conversations.map((conv) => (
-        <button
-          key={conv.id} type="button"
+        <div
+          key={conv.id}
+          role="button"
+          tabIndex={0}
           onClick={() => { handleSelectConversation(conv.id); onSelect?.(); }}
-          className={`w-full rounded-2xl border p-3 text-left transition ${
+          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { handleSelectConversation(conv.id); onSelect?.(); } }}
+          className={`w-full cursor-pointer rounded-2xl border p-3 text-left transition ${
             selectedConversationId === conv.id
               ? 'border-primary-300 bg-primary-50'
               : 'border-transparent bg-white hover:border-slate-200 hover:bg-slate-50'
@@ -434,7 +443,7 @@ export default function CourseSearchPage() {
               <HiTrash className="h-4 w-4" />
             </button>
           </div>
-        </button>
+        </div>
       ))}
     </div>
   );
