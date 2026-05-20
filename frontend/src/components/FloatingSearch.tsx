@@ -108,8 +108,7 @@ export default function FloatingSearch() {
         onClick={() => setIsOpen((prev) => !prev)}
         className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900 px-4 py-3 text-sm font-medium text-white shadow-xl shadow-slate-300 transition duration-200 hover:-translate-y-1 hover:bg-slate-800 hover:shadow-2xl active:translate-y-0 active:scale-[0.98]"
       >
-        <HiSearch className="h-5 w-5" />
-        {isOpen ? '收合搜尋' : '快速搜尋'}
+        {isOpen ? <HiX className="h-6 w-6" /> : <HiSearch className="h-6 w-6" />}
       </button>
     </div>
   );
