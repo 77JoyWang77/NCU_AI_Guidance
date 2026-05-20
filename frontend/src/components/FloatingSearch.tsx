@@ -106,9 +106,7 @@ export default function FloatingSearch() {
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
-        className={`flex h-14 w-14 items-center justify-center rounded-full border border-slate-200/60 bg-white/90 backdrop-blur-md shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg active:translate-y-0 active:scale-95 ${isOpen ? 'text-indigo-600 bg-indigo-50/90' : 'text-slate-500 hover:text-indigo-500 hover:bg-slate-50/90'}`}
-        aria-label={isOpen ? '收合搜尋' : '快速搜尋'}
-        title={isOpen ? '收合搜尋' : '快速搜尋'}
+        className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900 px-4 py-3 text-sm font-medium text-white shadow-xl shadow-slate-300 transition duration-200 hover:-translate-y-1 hover:bg-slate-800 hover:shadow-2xl active:translate-y-0 active:scale-[0.98]"
       >
         {isOpen ? <HiX className="h-6 w-6" /> : <HiSearch className="h-6 w-6" />}
       </button>
