@@ -1,10 +1,10 @@
 {
-  "total_nodes": 28281,
-  "total_edges": 104427,
+  "total_nodes": 27447,
+  "total_edges": 103111,
   "node_types": {
     "Concept": 16985,
     "Course": 3982,
-    "Field": 3594,
+    "Field": 2760,
     "Instructor": 1187,
     "Technology": 895,
     "Competency": 458,
@@ -26,8 +26,8 @@
     "COVERS": 23527,
     "DEVELOPS": 21608,
     "SIMILAR_TO": 15966,
-    "COVERS_FIELD": 12010,
     "COURSE_EXPERT": 10991,
+    "COVERS_FIELD": 10694,
     "IN_DOMAIN": 6873,
     "TAUGHT_BY": 4692,
     "EXPERT_IN": 2629,
