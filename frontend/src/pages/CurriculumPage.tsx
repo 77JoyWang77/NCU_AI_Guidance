@@ -140,7 +140,7 @@ function TreeNode({
         {icon && <span className="text-base drop-shadow-sm">{icon}</span>}
         <span className={`flex-1 text-[13px] ${dimmed ? 'text-slate-400 font-normal' : 'text-slate-700 font-medium'}`}>{label}</span>
         {badge !== undefined && badge !== '' && (
-          <span className={`shrink-0 rounded-full px-2.5 py-0.5 text-[10px] font-bold tracking-wide shadow-sm border border-black/5 ${badgeColor}`}>
+          <span className={`shrink-0 rounded-lg px-3.5 py-[5.5px] text-[10px] font-bold leading-none tracking-wide shadow-sm border border-black/5 ${badgeColor}`}>
             {badge}
           </span>
         )}
@@ -207,8 +207,8 @@ function CourseLeaf({ c, depth, hideIndent = false }: { c: CourseEntry; depth: n
       <div className="flex-grow flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
         <div className="flex items-center gap-2.5">
           <h4 className="text-[13px] font-bold text-slate-700 group-hover:text-teal-700 transition-colors">{c.name}</h4>
-          {c.mandatory && <span className="px-1 py-0.5 rounded text-[8px] font-bold bg-teal-100 border border-teal-200 text-teal-800">必修</span>}
-          <span className="bg-amber-100 text-amber-800 text-[10px] font-bold px-1.5 py-0.5 rounded-full uppercase tracking-wide">{c.credits} 學分</span>
+          {c.mandatory && <span className="px-1 py-[1px] rounded text-[8px] font-bold bg-teal-100 border border-teal-200 text-teal-800">必修</span>}
+          <span className="bg-amber-100 text-amber-800 text-[10px] font-bold px-2.5 py-[5.5px] rounded-lg leading-none uppercase tracking-wide">{c.credits} 學分</span>
         </div>
         <div className="flex items-center gap-2">
           <span className="text-[10px] font-mono text-slate-500">代碼: {c.code}</span>
@@ -242,7 +242,7 @@ function ElectiveGroupTree({ g, depth }: { g: ElectiveGroup; depth: number }) {
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="text-[15px] font-bold text-slate-800 tracking-tight">{g.name || '選修群組'}</span>
-            {selectLabel && <span className="px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-teal-50 border border-teal-100 text-teal-700">{selectLabel}</span>}
+            {selectLabel && <span className="px-2.5 py-[5.5px] rounded-lg text-[10px] font-bold leading-none bg-teal-50 border border-teal-100 text-teal-700">{selectLabel}</span>}
           </div>
           {isEmpty && <div className="text-[11px] text-slate-400 mt-1 italic">（課程清單未收錄）</div>}
         </div>
@@ -257,7 +257,7 @@ function ElectiveGroupTree({ g, depth }: { g: ElectiveGroup; depth: number }) {
       </div>
       {showCourses && allCourses.length > 0 && (
         <div className="border-t border-slate-200/25 p-3 bg-slate-50/30">
-          <SemesterGroup courses={allCourses} depth={0} />
+          <SemesterGroup courses={allCourses} depth={0} hideSemesters />
         </div>
       )}
       {/* slots */}
@@ -266,7 +266,7 @@ function ElectiveGroupTree({ g, depth }: { g: ElectiveGroup; depth: number }) {
           <div className="text-[11px] font-bold text-teal-600 mb-2 flex items-center gap-2">
             <span>{slot.slot_name || `Slot ${i + 1}`}</span>
           </div>
-          <SemesterGroup courses={slot.courses} depth={0} />
+          <SemesterGroup courses={slot.courses} depth={0} hideSemesters />
         </div>
       ))}
       {/* options (sub groups) */}
@@ -275,19 +275,19 @@ function ElectiveGroupTree({ g, depth }: { g: ElectiveGroup; depth: number }) {
           {g.option_a && (
             <div>
               <div className="text-[11px] font-bold text-slate-600 mb-2">▪ 選項 A</div>
-              <SemesterGroup courses={g.option_a} depth={0} />
+              <SemesterGroup courses={g.option_a} depth={0} hideSemesters />
             </div>
           )}
           {g.option_b && (
             <div>
               <div className="text-[11px] font-bold text-slate-600 mb-2">▪ 選項 B</div>
-              <SemesterGroup courses={g.option_b} depth={0} />
+              <SemesterGroup courses={g.option_b} depth={0} hideSemesters />
             </div>
           )}
           {g.option_c && (
             <div>
               <div className="text-[11px] font-bold text-slate-600 mb-2">▪ 選項 C</div>
-              <SemesterGroup courses={g.option_c} depth={0} />
+              <SemesterGroup courses={g.option_c} depth={0} hideSemesters />
             </div>
           )}
         </div>
@@ -345,7 +345,7 @@ function RuleTree({ rule, depth }: { rule: GraduationRule; depth: number }) {
         <span className="w-5 shrink-0 text-center text-[10px] text-slate-300 flex items-center justify-center mt-1">•</span>
         <span className="flex-1 text-[13px]">{label}</span>
         {creditBadge && (
-          <span className="shrink-0 rounded-full bg-slate-100 px-2.5 py-0.5 text-[10px] font-bold text-slate-500 shadow-sm border border-slate-200/60">
+          <span className="shrink-0 rounded-lg bg-slate-100 px-3.5 py-[5.5px] text-[10px] font-bold leading-none text-slate-500 shadow-sm border border-slate-200/60">
             {creditBadge}
           </span>
         )}
@@ -396,7 +396,25 @@ const REQUIRED_COURSE_FIELDS: Array<{ key: keyof DeptDetail; label: string }> = 
   { key: 'first_domain_electives', label: '第一領域選修' },
 ];
 
-function SemesterGroup({ courses, depth }: { courses: CourseEntry[]; depth: number }) {
+function SemesterGroup({
+  courses,
+  depth,
+  hideSemesters = false,
+}: {
+  courses: CourseEntry[];
+  depth: number;
+  hideSemesters?: boolean;
+}) {
+  if (hideSemesters) {
+    return (
+      <div style={{ marginLeft: depth * INDENT }}>
+        <div className="bg-white rounded-xl overflow-hidden shadow-soft">
+          {courses.map((c) => <CourseLeaf key={c.code} c={c} depth={0} hideIndent />)}
+        </div>
+      </div>
+    );
+  }
+
   const semMap = groupBySem(courses);
   return (
     <div className="space-y-7">
@@ -445,7 +463,19 @@ function getDefaultTab(detail: DeptDetail): 'required' | 'elective' | 'rules' {
   return 'required';
 }
 
-function DeptTree({ detail, depth = 0, defaultTab }: { detail: DeptDetail; depth?: number; defaultTab?: 'required' | 'elective' | 'rules' }) {
+function DeptTree({
+  detail,
+  depth = 0,
+  defaultTab,
+  showNotes,
+  setShowNotes,
+}: {
+  detail: DeptDetail;
+  depth?: number;
+  defaultTab?: 'required' | 'elective' | 'rules';
+  showNotes?: boolean;
+  setShowNotes?: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   const [activeTab, setActiveTab] = useState<'required' | 'elective' | 'rules'>(defaultTab ?? getDefaultTab(detail));
 
   // 收集所有有課程的必修區塊
@@ -470,17 +500,35 @@ function DeptTree({ detail, depth = 0, defaultTab }: { detail: DeptDetail; depth
 
   return (
     <div className="font-sans pb-10 leading-relaxed">
-      {/* ── Tabs 標籤列 ── */}
-      <div className="flex items-center gap-1 mb-6 border-b border-slate-200/80 mt-2 px-1">
-        <button onClick={() => setActiveTab('required')} className={`px-5 py-3 text-[13px] font-extrabold border-b-[3px] transition-colors duration-200 ${activeTab === 'required' ? 'border-teal-600 text-teal-700' : 'border-transparent text-slate-500 hover:text-slate-800'}`}>
-          核心必修
-        </button>
-        <button onClick={() => setActiveTab('elective')} className={`px-5 py-3 text-[13px] font-extrabold border-b-[3px] transition-colors duration-200 ${activeTab === 'elective' ? 'border-teal-600 text-teal-700' : 'border-transparent text-slate-500 hover:text-slate-800'}`}>
-          領域與分組選修
-        </button>
-        <button onClick={() => setActiveTab('rules')} className={`px-5 py-3 text-[13px] font-extrabold border-b-[3px] transition-colors duration-200 ${activeTab === 'rules' ? 'border-emerald-600 text-emerald-700' : 'border-transparent text-slate-500 hover:text-slate-800'}`}>
-          畢業規定與其他
-        </button>
+      {/* ── Tabs 標籤列與切換按鈕 ── */}
+      <div className="flex items-center justify-between border-b border-slate-200/80 mt-2 px-1 mb-6">
+        <div className="flex items-center gap-1">
+          <button onClick={() => setActiveTab('required')} className={`px-5 py-3 text-[13px] font-extrabold border-b-[3px] transition-colors duration-200 ${activeTab === 'required' ? 'border-teal-600 text-teal-700' : 'border-transparent text-slate-500 hover:text-slate-800'}`}>
+            核心必修
+          </button>
+          <button onClick={() => setActiveTab('elective')} className={`px-5 py-3 text-[13px] font-extrabold border-b-[3px] transition-colors duration-200 ${activeTab === 'elective' ? 'border-teal-600 text-teal-700' : 'border-transparent text-slate-500 hover:text-slate-800'}`}>
+            領域與分組選修
+          </button>
+          <button onClick={() => setActiveTab('rules')} className={`px-5 py-3 text-[13px] font-extrabold border-b-[3px] transition-colors duration-200 ${activeTab === 'rules' ? 'border-emerald-600 text-emerald-700' : 'border-transparent text-slate-500 hover:text-slate-800'}`}>
+            畢業規定與其他
+          </button>
+        </div>
+
+        {depth === 0 && showNotes !== undefined && setShowNotes !== undefined && (
+          <div className="pb-1.5">
+            <button
+              onClick={() => setShowNotes((v) => !v)}
+              className={`flex items-center gap-1.5 rounded-xl border px-4 py-2 text-xs font-bold transition-all duration-200 shadow-sm ${
+                showNotes
+                  ? 'bg-amber-50/50 border-amber-200 text-amber-700 hover:bg-amber-100/70 shadow-amber-100/20'
+                  : 'bg-transparent border-slate-200 text-slate-600 hover:bg-slate-50/80 hover:text-amber-600 hover:border-amber-200'
+              }`}
+            >
+              <span>{showNotes ? '▶' : '◀'}</span>
+              {showNotes ? '隱藏參考文字' : '顯示參考文字'}
+            </button>
+          </div>
+        )}
       </div>
 
       {activeTab === 'required' && (
@@ -608,7 +656,7 @@ function DeptTree({ detail, depth = 0, defaultTab }: { detail: DeptDetail; depth
                 defaultOpen={true}
               >
                 <div className="mt-4 space-y-2">
-                  <SemesterGroup courses={detail.elective_courses} depth={depth + 1} />
+                  <SemesterGroup courses={detail.elective_courses} depth={depth + 1} hideSemesters />
                 </div>
               </TreeNode>
             </SectionCard>
@@ -738,12 +786,12 @@ function DeptHeader({ detail }: { detail: DeptDetail }) {
           {detail.name}
         </h2>
         {detail.min_credits > 0 && (
-          <span className="rounded-full bg-amber-50/80 border border-amber-100 px-3 py-1 text-[11px] font-bold text-amber-800 shadow-sm">
+          <span className="rounded-lg bg-amber-50/80 border border-amber-100 px-3.5 py-[7px] text-[11px] font-bold leading-none text-amber-800 shadow-sm">
             最低 {detail.min_credits} 學分
           </span>
         )}
         {detail.required_credits !== undefined && (
-          <span className="rounded-full bg-teal-50/80 border border-teal-100 px-3 py-1 text-[11px] font-bold text-teal-800 shadow-sm">
+          <span className="rounded-lg bg-teal-50/80 border border-teal-100 px-3.5 py-[7px] text-[11px] font-bold leading-none text-teal-800 shadow-sm">
             必修 {detail.required_credits} 學分
           </span>
         )}
@@ -799,7 +847,7 @@ function NotesPanel({ deptId }: { deptId: string }) {
           <div className="text-[12px] leading-relaxed text-slate-700" style={{ whiteSpace: 'pre-wrap' }}>
             {e.raw_text}
           </div>
-          {e.source && (
+          {e.source && e.source !== 'pdfplumber_fixed' && (
             <div className="mt-3 text-[10px] font-medium text-amber-500/80 flex justify-end">來源：{e.source}</div>
           )}
         </div>
@@ -814,85 +862,50 @@ function NotesPanel({ deptId }: { deptId: string }) {
 
 const COLLEGE_STYLES: Record<string, any> = {
   '文學院': { 
-    bg: 'bg-emerald-100/70', 
-    text: 'text-emerald-700', 
-    cardBg: 'bg-emerald-50/40', 
-    cardBorder: 'border-emerald-100/60', 
-    badge: 'bg-emerald-100/50 text-emerald-800',
-    hoverArrow: 'group-hover:text-emerald-400', 
-    icon: <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg> 
+    iconBg: 'bg-violet-500', 
+    badge: 'bg-violet-50 text-violet-600 border-violet-100/50',
+    icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg> 
   },
   '理學院': { 
-    bg: 'bg-blue-100/70', 
-    text: 'text-blue-700', 
-    cardBg: 'bg-blue-50/40', 
-    cardBorder: 'border-blue-100/60', 
-    badge: 'bg-blue-100/50 text-blue-800',
-    hoverArrow: 'group-hover:text-blue-400', 
-    icon: <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 3h4.5m-4.5 0v3.75L4.5 16.5a2.25 2.25 0 002.25 2.25h10.5a2.25 2.25 0 002.25-2.25L14.25 6.75V3m-4.5 0h4.5" /></svg> 
+    iconBg: 'bg-sky-500', 
+    badge: 'bg-sky-50 text-sky-600 border-sky-100/50',
+    icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M9.75 3h4.5m-4.5 0v3.75L4.5 16.5a2.25 2.25 0 002.25 2.25h10.5a2.25 2.25 0 002.25-2.25L14.25 6.75V3m-4.5 0h4.5" /></svg> 
   },
   '工學院': { 
-    bg: 'bg-amber-100/70', 
-    text: 'text-amber-700', 
-    cardBg: 'bg-amber-50/40', 
-    cardBorder: 'border-amber-100/60', 
-    badge: 'bg-amber-100/50 text-amber-800',
-    hoverArrow: 'group-hover:text-amber-400', 
-    icon: <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><circle cx="12" cy="12" r="3" strokeWidth={2} /></svg> 
+    iconBg: 'bg-orange-500', 
+    badge: 'bg-orange-50 text-orange-600 border-orange-100/50',
+    icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><circle cx="12" cy="12" r="3" strokeWidth={2.2} /></svg> 
   },
   '管理學院': { 
-    bg: 'bg-purple-100/70', 
-    text: 'text-purple-700', 
-    cardBg: 'bg-purple-50/40', 
-    cardBorder: 'border-purple-100/60', 
-    badge: 'bg-purple-100/50 text-purple-800',
-    hoverArrow: 'group-hover:text-purple-400', 
-    icon: <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg> 
+    iconBg: 'bg-emerald-500', 
+    badge: 'bg-emerald-50 text-emerald-600 border-emerald-100/50',
+    icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg> 
   },
   '資訊電機學院': { 
-    bg: 'bg-cyan-100/70', 
-    text: 'text-cyan-700', 
-    cardBg: 'bg-cyan-50/40', 
-    cardBorder: 'border-cyan-100/60', 
-    badge: 'bg-cyan-100/50 text-cyan-800',
-    hoverArrow: 'group-hover:text-cyan-400', 
-    icon: <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg> 
+    iconBg: 'bg-indigo-500', 
+    badge: 'bg-indigo-50 text-indigo-600 border-indigo-100/50',
+    icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 5h10a2 2 0 012 2v10a2 2 0 01-2 2H7a2 2 0 01-2-2V7a2 2 0 012-2zM9 9h6v6H9V9z" /></svg> 
   },
   '地球科學學院': { 
-    bg: 'bg-teal-100/70', 
-    text: 'text-teal-700', 
-    cardBg: 'bg-teal-50/40', 
-    cardBorder: 'border-teal-100/60', 
-    badge: 'bg-teal-100/50 text-teal-800',
-    hoverArrow: 'group-hover:text-teal-400', 
-    icon: <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg> 
+    iconBg: 'bg-teal-600', 
+    badge: 'bg-teal-50 text-teal-600 border-teal-100/50',
+    icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg> 
   },
   '客家學院': { 
-    bg: 'bg-pink-100/70', 
-    text: 'text-pink-700', 
-    cardBg: 'bg-pink-50/40', 
-    cardBorder: 'border-pink-100/60', 
-    badge: 'bg-pink-100/50 text-pink-800',
-    hoverArrow: 'group-hover:text-pink-400', 
-    icon: <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg> 
+    iconBg: 'bg-pink-500', 
+    badge: 'bg-pink-50 text-pink-600 border-pink-100/50',
+    icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg> 
   },
   '生醫理工學院': { 
-    bg: 'bg-rose-100/70', 
-    text: 'text-rose-700', 
-    cardBg: 'bg-rose-50/40', 
-    cardBorder: 'border-rose-100/60', 
-    badge: 'bg-rose-100/50 text-rose-800',
-    hoverArrow: 'group-hover:text-rose-400', 
-    icon: <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 2c0 6 12 14 12 20 M18 2c0 6-12 14-12 20 M7 3.5h10 M8 6h8 M9 8.5h6 M11 10.5h2 M11 13.5h2 M9 15.5h6 M8 18h8 M7 20.5h10" /></svg> 
+    iconBg: 'bg-rose-500', 
+    badge: 'bg-rose-50 text-rose-600 border-rose-100/50',
+    icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M6 2c0 6 12 14 12 20 M18 2c0 6-12 14-12 20 M7 3.5h10 M8 6h8 M9 8.5h6 M11 10.5h2 M11 13.5h2 M9 15.5h6 M8 18h8 M7 20.5h10" /></svg> 
   },
   'default': { 
-    bg: 'bg-slate-100/70', 
-    text: 'text-slate-700', 
-    cardBg: 'bg-slate-50/40', 
-    cardBorder: 'border-slate-100/60', 
-    badge: 'bg-slate-100/50 text-slate-800',
-    hoverArrow: 'group-hover:text-slate-400', 
-    icon: <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg> }
+    iconBg: 'bg-slate-500', 
+    badge: 'bg-slate-50 text-slate-600 border-slate-100/50',
+    icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg> 
+  }
 };
 
 // ══════════════════════════════════════════════════════════════════════════
@@ -997,7 +1010,7 @@ export default function CurriculumPage() {
             }`}>
               {dept.name}
             </span>
-            <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold tracking-wide shadow-sm border ${badgeInfo.className}`}>
+            <span className={`shrink-0 rounded-lg px-3 py-[5.5px] text-[10px] font-bold leading-none tracking-wide shadow-sm border ${badgeInfo.className}`}>
               {badgeInfo.label}
             </span>
           </div>
@@ -1086,8 +1099,7 @@ export default function CurriculumPage() {
       <div className={`shrink-0 transition-all duration-300 ${isSidebarOpen ? 'w-[340px]' : 'w-0'} bg-slate-50/50 relative z-20`}>
         <aside className={`w-[340px] h-full flex flex-col overflow-y-auto border-r border-slate-200/60 ${isSidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'} transition-opacity duration-300`}>
           <div className="sticky top-0 z-10 border-b border-slate-200/60 bg-white/95 backdrop-blur-md px-6 py-5 shadow-sm">
-            <h1 className="text-base font-bold text-slate-800 drop-shadow-sm pr-6">修課規定導覽</h1>
-            <p className="text-[10px] text-slate-500 font-medium mt-1 pr-6">請選擇您所屬的學院以查看詳細系所</p>
+            <h1 className="text-base font-bold text-slate-800 drop-shadow-sm pr-6">選擇學院</h1>
           </div>
           <div className="flex-1 py-4 pr-4 pl-8">
             <h2 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-3 ml-0">學院導覽</h2>
@@ -1112,40 +1124,38 @@ export default function CurriculumPage() {
               ];
 
               const deptCount = depts.length;
-              const groupCount = depts.reduce((sum, d) => sum + d.groups.length, 0);
 
               return (
                 <div key={college.id} className="relative mb-2">
                   {/* 學院卡片 - 與所有子卡片同寬 (w-full) */}
                   <div
                     onClick={() => toggleCollege(college.id)}
-                    className={`w-full ${style.cardBg} ${style.cardBorder} border rounded-[16px] text-left transition-all duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] overflow-hidden cursor-pointer ${
-                      isOpen ? 'ring-1 ring-black/5' : ''
+                    className={`w-full bg-white border border-slate-100 rounded-[16px] text-left transition-all duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:border-slate-200/80 overflow-hidden cursor-pointer ${
+                      isOpen ? 'ring-1 ring-indigo-500/5' : ''
                     }`}
                   >
-                    <div className="w-full flex items-center justify-between py-3.5 px-4 select-none">
-                      <div className="flex items-center gap-2.5">
-                        <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center shrink-0 shadow-sm [&>svg]:w-3.5 [&>svg]:h-3.5">
-                          <span className={style.text}>{style.icon}</span>
+                    <div className="w-full flex items-center justify-between py-2.5 px-4 select-none">
+                      <div className="flex items-center gap-3">
+                        <div className={`w-9 h-9 ${style.iconBg} rounded-xl flex items-center justify-center shrink-0 shadow-sm text-white [&>svg]:w-5 [&>svg]:h-5`}>
+                          {style.icon}
                         </div>
-                        <h3 className={`text-[15px] font-bold ${style.text} transition-colors`}>
-                          {college.name}
-                        </h3>
+                        <div className="flex flex-col gap-0.5 text-left">
+                          <h3 className="text-[15px] font-bold text-slate-800 transition-colors">
+                            {college.name}
+                          </h3>
+                          <div className="flex items-center gap-2">
+                            {deptCount > 0 && (
+                              <span className={`shrink-0 rounded-lg px-3 py-[5.5px] text-[10px] font-bold leading-none tracking-wide border ${style.badge}`}>
+                                {deptCount} 系所
+                              </span>
+                            )}
+                          </div>
+                        </div>
                       </div>
                       
-                      <div className="flex items-center gap-2">
-                        {deptCount > 0 && (
-                          <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold tracking-wide shadow-sm border border-black/5 ${style.badge}`}>
-                            {deptCount} 系所
-                          </span>
-                        )}
-                        {groupCount > 0 && (
-                          <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold tracking-wide shadow-sm border border-black/5 ${style.badge}`}>
-                            {groupCount} 分組
-                          </span>
-                        )}
-                        <div className={`transition-transform duration-300 ${style.text} ${isOpen ? '-rotate-180' : ''} mr-0.5`}>
-                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                      <div className="flex items-center">
+                        <div className={`transition-transform duration-300 text-slate-300 ${isOpen ? 'rotate-90' : ''} mr-0.5`}>
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M9 5l7 7-7 7"></path></svg>
                         </div>
                       </div>
                     </div>
@@ -1179,21 +1189,16 @@ export default function CurriculumPage() {
           {/* 樹狀主區 */}
           <div className="flex flex-1 flex-col overflow-hidden bg-white/40">
             <DeptHeader detail={detail} />
-            {/* notes toggle bar */}
-            <div className="relative w-full z-10">
-              <div className="absolute right-6 top-2">
-                <button
-                  onClick={() => setShowNotes((v) => !v)}
-                  className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] font-bold text-slate-500 hover:bg-slate-100 hover:text-slate-800 transition-colors border border-transparent hover:border-slate-200"
-                >
-                  <span>{showNotes ? '▶' : '◀'}</span>
-                  {showNotes ? '隱藏參考文字' : '顯示參考文字'}
-                </button>
-              </div>
-            </div>
-            <div className="flex-1 overflow-y-auto px-6 pt-2 pb-20">
+            <div className="flex-1 overflow-y-auto px-6 pt-6 pb-20">
               <div className="max-w-5xl mx-auto">
-                <DeptTree key={detail.id} detail={detail} depth={0} defaultTab={childDeptIds.has(detail.id) ? 'elective' : undefined} />
+                <DeptTree 
+                  key={detail.id} 
+                  detail={detail} 
+                  depth={0} 
+                  defaultTab={childDeptIds.has(detail.id) ? 'elective' : undefined} 
+                  showNotes={showNotes}
+                  setShowNotes={setShowNotes}
+                />
               </div>
             </div>
           </div>
