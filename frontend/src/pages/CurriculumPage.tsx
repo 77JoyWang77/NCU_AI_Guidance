@@ -486,9 +486,6 @@ function DeptTree({
     }))
     .filter(({ courses }) => courses.length > 0);
 
-  const allRequiredCourses = reqSections.flatMap(({ courses }) => courses);
-  const totalReqCr = allRequiredCourses.reduce((s, c) => s + (c.credits || 0), 0);
-
   const rulesByCategory: Record<string, GraduationRule[]> = {};
   for (const cat of CATEGORIES_ORDER) rulesByCategory[cat] = [];
   for (const rule of detail.graduation_rules ?? []) {
@@ -775,8 +772,6 @@ function DeptTree({
 // ══════════════════════════════════════════════════════════════════════════
 // 系所 Header
 // ══════════════════════════════════════════════════════════════════════════
-
-const PROGRAM_TYPE_LABEL: Record<string, string> = {};
 
 function DeptHeader({ detail }: { detail: DeptDetail }) {
   return (
