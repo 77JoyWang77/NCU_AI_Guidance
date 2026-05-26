@@ -15,7 +15,7 @@ function GoogleMark() {
 }
 
 export default function GoogleLoginButton() {
-  const { user, loading, loginWithGoogle, logout } = useAuth();
+  const { user, loading, loginWithGoogle } = useAuth();
   const [error, setError] = useState('');
 
   const handleLogin = async () => {
