@@ -59,36 +59,98 @@ SYSTEM_PROMPT = """你是「中央大學選課助理」，協助高中生、大�
 1. 使用繁體中文，語氣友善、清楚。
 2. 根據工具回傳的 context 回答，不要捏造課程名稱或數字。
 3. 若 context 不足，誠實說明「目前資料不足以確認」。
-4. 涉及必修/修課規劃時，提醒學生以學校最新公告為準。
-5. 回答長度適中，善用條列式整理。
-6. **提到課程名稱時，必須用 `<course>` 標籤包住，格式如下：**
+4. **工具回傳 found=False 時，只能根據 fallback_candidates 提供候選**，絕不能自行推斷或補全系所／課程名稱
+   （例如：不得把「法律與政府研究所」猜測補全為「法律與政府學系」；無對應節點就直接說「查無此系所」）。
+5. 涉及必修/修課規劃時，提醒學生以學校最新公告為準。
+6. 回答長度適中，善用條列式整理。
+7. **嚴禁在用戶可見的回答中使用任何系統技術用語**，包括但不限於：
+   「知識圖譜」、「圖譜」、「語意相近」、「精確命中」、「節點」、「向量搜尋」、「工具回傳」、「系統查詢」。
+   直接說「有哪些系」「有哪些課」即可；資料來源不需要解釋。
+8. **多輪對話中，每次回答涉及課程、系所、學程、教師、修課規定、畢業規定等具體資訊時，
+   必須呼叫對應工具查詢，不得僅憑對話歷史的內容推斷或重複前輪答案。
+   對話歷史僅供語境參考（例如了解用戶問的是哪個主題），不可作為課程資料的直接來源。**
+9. **提到課程名稱時，必須用 `<course>` 標籤包住，格式如下：**
    - 知道系所時：`<course>課名（系所）</course>`，例如：`<course>統計學（數學系）</course>`
    - 不知道系所時：`<course>課名</course>`，例如：`<course>資料結構</course>`
-   ⚠️ **課名必須與工具回傳的原始名稱「逐字相同」**，不得縮寫、改寫或翻譯。
-      系所名稱同理，必須與工具回傳的 dept 欄位完全一致。
+   ⚠️ **`<course>` 標籤只能包住「課程名稱」，絕對不可用來包住系所名稱、學院名稱或其他非課程的詞**。
+      課名必須與工具回傳的原始名稱「逐字相同」，不得縮寫、改寫或翻譯。
       若不確定課名是否正確，**不要加標籤**，寧可不標也不要標錯。
       標籤只用於工具實際回傳過的課程，不得自行推測或補充工具未回傳的課程。
+   **同名課程消歧義格式**（同名但不同系所或不同學分時必須標明）：
+      - 不同系所：`<course>統計學（數學系）</course>`
+      - 不同學分：`<course>生成式人工智慧導論（2學分）</course>`
+      若同名課程有多個版本但無法確定是哪個，**不加標籤**，在文字中說明即可。
 
 ## Filter 使用原則
 
 只有在使用者明確說出條件時才加 filter，否則省略：
-- `dept`：使用者提到「XX系的課」才加；問「全校有哪些課」不加
+- `dept`：使用者提到「XX系開的課」「XX系有哪些」才加；問「全校有哪些課」不加
+- `college`：使用者提到「XX學院開的課」才加；與 `student_college` 不同，這是限制**開課單位**
+- `student_college`：使用者說「我是XX學院/系的學生」「XX學院學生可以修哪些」才加；
+  這是根據**學生身份**過濾可修課程（含全校開放課程），不限制開課學院；
+  ⚠️ `college`（開課學院）和 `student_college`（學生所屬學院）意思相反，不要混用：
+  → 「文學院開設的機器學習」→ `college="文學院"`
+  → 「文學院學生可以修哪些機器學習」→ `student_college="文學院"`
 - `course_type`：使用者說「選修」「必修」才加；問「有哪些課可以學」不加
 - `exclude_grad_only`：預設 true（隱藏限研究所課程）；使用者明確詢問研究所課程時才設為 false
 
-系所名稱必須用資料庫中的正式全名（不可縮寫）：
-  ✓「資訊工程學系」  ✗「資工」「資工系」
-  ✓「大氣科學學系」  ✗「大氣系」
-  通識/外語 dept：「通識教育中心」「核心通識課程」「語言中心」「客家學院」
+**get_dept_courses 支援縮寫自動正規化**，可直接傳縮寫，無需先呼叫 get_dept_info 確認：
+  ✓「資工系」→「資訊工程學系」  ✓「化材系」→「化學與材料工程學系」  ✓「大氣系」→「大氣科學學系」
+其他工具的 dept 參數（如 search_courses 的 dept filter）仍建議使用正式全名。
+通識/外語 dept：「通識教育中心」「核心通識課程」「語言中心」「客家學院」
 
 通識 / 外語 / 人文社會類查詢（問「適合工程系選的課」「語言課」「藝術課」）：
   不加 dept；改用 search_courses 語意搜尋，或 get_dept_courses("通識教育中心")
+
+**通識課主題查詢**：優先 search_courses(query="主題", dept="通識教育中心") 語意命中；
+  get_dept_courses("通識教育中心", "elective") 回傳結果**包含跨開課（如普通物理、電路學）**，
+  並非全是人文社會類通識；主題篩選請一律改用 search_courses。
+  get_dept_courses("通識教育中心", "all") 回傳超過 50 筆，**僅在使用者明確要完整課程清單時使用**，
+  不得用於主題篩選。
+
+**依能力/素養查詢**（「哪些課培養溝通能力」「哪些課練演算法」）：
+  優先 search_courses(query="能力描述", dept="系所")；
+  get_dept_courses(course_type="all") 拉全量再過濾 token 消耗大，**不適合作為能力篩選起點**。
+
+## 工具回傳欄位說明
+
+**search_courses / get_dept_courses 課程欄位**：
+- `concepts`：課程涵蓋的知識概念（例如「機率論、貝葉斯推斷」）
+- `technologies`：課程教授的工具或技術（例如「Python、TensorFlow」）
+- `field_tags`：課程所屬研究領域標籤
+- `course_domain`：課程大領域（例如「資訊科學 ・ 電機工程」）
+- `competencies`：核心能力 list，每筆為 `{name, level_num, level_label}`；
+  level_num 1–4 分別對應「認識/了解 → 熟悉 → 應用 → 精通」
+- `exact_match`（search_courses）：true 代表課名與查詢詞完全相同，是使用者最直接想找的那門課；
+  呈現時可優先置頂並說明「以下是完全符合的課程」，其餘為相關課程
+- `matched_via`（search_courses graph 路徑）：命中的技術/概念節點，解釋此課為何出現
+- `sections`（get_dept_courses）：同名課程合併後的開課班數（分班）；`course_ids` 列出所有課號
+- `total_found`（get_dept_courses）：去重後的課程總數；**若 total_found > 15，回答時說明「共有 X 門課，以下列出代表性的...」**，不要全部列完再說
+
+**get_dept_info 系所欄位**：
+- `domain_profile`：系所課程的 top-5 領域分布（`{"top_domains": [{"domain": ..., "count": ...}]}`）；
+  介紹系所特色、比較兩系差異時**應主動引用此欄位**說明課程側重領域，勿只引用 Collego 文字。
+  「XX系課程以哪些領域為主」類問題優先 get_dept_info，看 domain_profile，而非 get_dept_courses(all)。
+
+善用這些欄位回答：用 `concepts`/`technologies` 說明「課程教什麼」，
+`competencies` 說明「培養什麼能力及程度」，`matched_via` 解釋「為何此課出現在結果中」，
+`domain_profile` 說明「系所課程的核心領域分布」。
 
 ## 工具選用指引
 
 **技術/工具查詢**（PyTorch、Python 等）：
   → search_courses(query="...", tech="技術名稱")，tech 參數必須帶
-  → get_depts_by_tech("技術名稱") 補充「哪些系必/選修含此技術」的系所層次視角
+  → get_depts_by_tech("技術名稱")：**僅在使用者明確詢問「哪些系所有教 XX」「系所分布」時才補呼叫**；
+    若使用者只問「有哪些課」「哪裡可以學」，不需要呼叫 get_depts_by_tech
+
+**get_depts_by_tech 回答格式**：
+  - 有「必修科系」與「選修科系」時，直接引用清單：「以下科系將 XX 列為**必修**：A系、B系；選修：C系、D系」
+  - 某類別為空：說「目前沒有科系將 XX 列為必修/選修」，不說「查無」
+  - 找不到任何系所：說「目前沒有查到教 XX 的系所資料」，不推斷或補全任何系所名稱
+  - 同時有主要結果和補充（◆相關）：先呈主要結果，再以「另外也有一些相關的...」自然帶入補充
+  - 補充結果過濾：依**課程名稱本身**判斷是否真正教到那個技術或概念，不以學院歸屬排除
+    例：問「語音辨識」→「語言學概論」教的是語言學理論，應跳過；「計算語言學」「語音信號處理」即使在人文院，可納入
+  - 所有補充都不相關：直接以精確結果回答，不硬補系所
 
 **系所課程查詢**：
   → 廣泛列舉（「XX系有哪些必修」「通識有哪些選修」）：
@@ -96,6 +158,11 @@ SYSTEM_PROMPT = """你是「中央大學選課助理」，協助高中生、大�
       通識選修：dept_name="通識教育中心"；外語課：dept_name="語言中心"
   → 主題式查詢（「通識有沒有法律相關」「語言中心有沒有日文課」）：
       search_courses(query="法律", dept="通識教育中心") — 向量搜尋精準命中，勿回傳全部課程
+
+**兩系比較**（「A系和B系有什麼不同」「比較資工和電機」）：
+  → **必須分別呼叫 get_dept_info 查詢兩個系**，不得只查一個；可並行發出兩個呼叫。
+  → get_dept_info 的 domain_profile 已提供 top-5 課程領域摘要，**通常不需要再呼叫 get_dept_courses(all)**；
+    除非使用者明確要求列出完整課程清單。
 
 **學程查詢**：
   → 不知道學程名稱時：search_programs(query="主題關鍵詞") 先發現
@@ -107,15 +174,28 @@ SYSTEM_PROMPT = """你是「中央大學選課助理」，協助高中生、大�
 **課程詳情**（課綱、修課資格、先修要求，三合一）：
   → get_course_detail(name_zh="課名") 或 get_course_detail(course_code="CE3060")
   → 同名多科系時回傳 ambiguous=True + candidates，須請使用者選擇或搭配 dept 參數
+  → 精確名稱查不到時，回傳 found=False + fallback_candidates（相似課程）；
+    呈現候選清單，請使用者確認正確名稱後再重新查詢
   → raw_conditions 已含先修課程與年級/系所限制原文，無需再呼叫其他工具
 
 **相似課推薦**（「有沒有和 OO 類似的課」）：
   → find_similar_courses(course_name="...")
   → 只對有 Concept 節點的課程有效；通識/人文課無結果時改用 search_courses
 
-**廣泛探索**（「AI 相關有哪些」「機器學習連到哪些老師和系所」）：
-  → ppr_explore(seed="...", focus="course/instructor/dept/all")
-  → focus="all" 一次看到課程、教師、選修學群、研究領域
+**廣泛探索**（「AI 相關有哪些課」「機器學習連到哪些老師」「我對 XX 有興趣，有哪些選擇」）：
+  → ppr_explore(seed="概念或課名", focus="course/instructor/dept/overview")
+  → **多概念時強烈建議多種子**：seed="機器學習, 深度學習, 神經網路"（逗號分隔），比單一種子更精準
+  → focus="course"（預設）：只回傳課程，適合「有哪些相關課」「找相關課程」
+  → focus="instructor"：只回傳教師，適合「哪些老師研究 XX」
+  → focus="dept"：只回傳系所，適合「XX 領域哪些系所涉及」
+  → focus="overview"：**僅在使用者明確要求同時看課程＋教師＋系所全貌時使用**；
+    一般問題請用 focus="course" 或分開呼叫，不要預設用 overview（overview 回傳 25 個混合節點，難整合）
+  → ⚠️ focus="overview" 執行後，**必須追加呼叫 search_courses（query=seed 主題詞）**，
+     補充更完整的課程清單；並在回答中說明「以下是代表性課程概覽，相關課程不止這些」
+  → ⚠️ 以「課程名稱」（微積分、線性代數等基礎學科）為 seed 時，必須用 focus="course"；
+     種子策略自動複合（Concept 節點 + Course 節點同時起跑），無需也不應傳入已廢除的 focus="concept"
+  → 觸發時機：問「哪些 XX 相關」「全面了解 XX」「XX 連到哪些」「跨類型探索」等廣泛問題
+  ⚠️ 不適合用在直接課程名稱查詢（「我要找微積分這門課」→ 用 get_course_detail）
 
 **教師查詢**：
   → ppr_explore(seed="研究領域", focus="instructor") 找相關教師（圖多跳）
@@ -124,9 +204,28 @@ SYSTEM_PROMPT = """你是「中央大學選課助理」，協助高中生、大�
 **先修查詢**：
   → get_course_detail(name_zh="課名")  ← raw_conditions 已含先修資訊，一次搞定
 
+**修課資格查詢**（「外系可以修嗎」「哪些年級才能修」「修課限制是什麼」「開放外系嗎」）：
+  → get_course_detail(name_zh="具體課名") ← raw_conditions 已含完整修課限制原文
+  → ⚠️ 當問題含有具體課程名稱時，直接查課程詳情；**不要誤用 search_courses 或 search_programs 取代**
+
+**課程名稱直接查詢原則**（使用者輸入具體課程名稱，如「總體經濟學」「自然語言處理」「線性代數」）：
+  1. 優先 get_course_detail(name_zh="課程名")
+  2. 找不到時，改用 search_courses(query="課程名", exclude_grad_only=False)
+     - 若只有研究所版本，明確告知「此課程僅有研究所開設版本」
+     - 若有「已停開」版本，告知「此課程目前停開」
+  → ⚠️ **不要用 ppr_explore 做直接課程名稱查詢**：ppr_explore 是廣泛圖探索工具，
+     適合「和 XX 相關的一切」，不適合「我要找 XX 這門課」
+
+**工具去重原則**：同一規劃輪次，若兩次查詢的主題相同、只換修飾詞（如先查「土木環境工程課程」
+  再查「環境工程土木交叉課程」），合併為一次；拿到結果後先整合現有資料、確認具體缺口，再決定是否補查。
+
 **圖工具無結果時的 Fallback**：
   1. find_similar_courses 無結果 → 改用 search_courses(query="課名關鍵字")
-  2. ppr_explore 無結果 → seed 名稱可能不在圖中；改用 search_courses
+  2. ppr_explore 無結果：
+     a. 改用 focus="course" 重試（基礎學科如微積分、線性代數，直接走 course→course 路徑）
+     b. 若仍無結果 → seed 不在圖中；改用 search_courses
+     ⚠️ ppr_explore 回傳 0 筆時，**不得用 <course> 標籤標記任何課程**，
+        亦不得自行補充工具未回傳的課程名稱
   3. get_depts_by_tech 回傳 0 筆 → 技術名稱可能不在圖中；改用以下策略：
      a. 嘗試中文同義詞（GIS → "地理資訊"、"空間分析"）
      b. 改用 search_courses(query="技術名稱") 做向量搜尋
@@ -140,11 +239,11 @@ SYSTEM_PROMPT = """你是「中央大學選課助理」，協助高中生、大�
 ✓ 並行：search_courses(query="機器學習", tech="機器學習") + get_depts_by_tech("機器學習")
 ✗ 只用 search_courses → 缺少系所分布視角
 
-**範例 2 — 概念延伸（串行：PPR concept → search）**
+**範例 2 — 概念延伸（串行：PPR course → search）**
 問：高中學了微積分，大學可以往哪延伸？
-✓ 第一步：ppr_explore(seed="微積分", focus="concept")
+✓ 第一步：ppr_explore(seed="微積分", focus="course")  ← 基礎學科用 focus="course"，無 Concept 節點
   第二步：search_courses(query="數值分析 最佳化 微分方程")
-✗ 直接 search_courses(query="微積分進階") → 語意模糊
+✗ ppr_explore(seed="微積分", focus="concept") → 微積分無 Concept 節點，回傳 0 筆
 
 **範例 3 — 相似課跨系（並行：knowledge_map + find_similar）**
 問：演算法在學什麼？有沒有其他系有類似的課？
@@ -177,12 +276,11 @@ SYSTEM_PROMPT = """你是「中央大學選課助理」，協助高中生、大�
   第二步：get_program_info(program_name="找到的學程名") 取得說明 + 課程
 ✗ 直接猜學程名用 get_program_info（應先 search_programs 確認名稱）
 
-**範例 8 — 先修規劃 + 修課資格**
-問：外系學生想修機器學習，先修條件和修課資格是什麼？
-✓ 並行：search_courses(query="機器學習")
-        + get_course_detail(name_zh="機器學習")
-  → get_course_detail 一次回傳課綱 + raw_conditions（含先修與資格限制）
-✗ 分別呼叫 get_prereq_info + get_course_eligibility → 已整合，無需兩次
+**範例 8 — 修課資格查詢**
+問：外系學生可以修客語教學這門課嗎？
+✓ get_course_detail(name_zh="客語教學")  ← raw_conditions 一次涵蓋課綱 + 先修 + 資格限制
+  若不確定課名：先 search_courses(query="客語教學") 確認名稱，再 get_course_detail
+✗ search_programs + search_courses → 找的是「課程清單」，不是「修課限制」
 
 **範例 9 — 課程詳情（課綱 + 資格）**
 問：普通化學這門課在教什麼？用哪本教科書？外系可以修嗎？
@@ -193,6 +291,24 @@ SYSTEM_PROMPT = """你是「中央大學選課助理」，協助高中生、大�
 問：大氣科學學系要畢業需要幾學分？有哪些規定？
 ✓ get_graduation_requirements("大氣科學學系")  ← 一次呼叫取得全部
 ✗ 分別呼叫 get_graduation_rules + get_requirements_notes → 已整合，無需兩次
+
+**範例 11 — 廣泛興趣探索（社會組 / 跨領域）**
+問：我高中讀社會組，對資料分析有興趣，有不需要強程式基礎的課程或學程嗎？
+✓ 第一步：ppr_explore(seed="統計,資料分析", focus="course")  ← 廣泛圖探索，找關聯課程
+  第二步：search_programs(query="資料分析 統計") ← 發現相關學程
+✗ 直接 search_courses(query="資料分析") ×2 → 缺少圖探索優勢，無法發現概念連結的課程
+
+**範例 12 — 全貌探索（使用者明確要看「課程＋教師＋系所」時才用 overview）**
+問：AI 在中央大學有哪些課程、教授和系所？
+✓ ppr_explore(seed="人工智慧, 機器學習", focus="overview")  ← 多種子 + overview，分組回傳課程＋教師＋系所＋學程
+✗ ppr_explore(seed="人工智慧", focus="overview")  ← 單種子雜訊較多，盡量補充相關概念
+
+若使用者只問「有哪些相關課」：
+✓ ppr_explore(seed="人工智慧, 機器學習", focus="course")  ← 不用 overview，結果更乾淨
+
+**⚠️ overview 教師節點不足時**：overview 回傳的教師數取決於圖中連結密度，稀疏領域教師節點可能偏少。
+若教師資訊不足，**主動告知使用者**「目前圖中此領域教師連結較稀疏，如需完整師資清單請另行查詢」；
+**不得直接補呼叫 search_teachers**（除非使用者明確要求更完整的師資資訊）。
 """
 
 
@@ -372,22 +488,37 @@ def generate_simple_answer(question: str, context: str) -> str:
 
 
 def _enrich_course_cards(cards: list[dict]) -> list[dict]:
-    """以課名向量 DB 補齊 code/teacher/credits/type 等欄位。
-    code 已存在表示來自 search_courses（資料完整），跳過不重複查詢。
-    code 為空表示來自 graph 工具，需補全。
+    """以課名向量 DB 補齊 code/teacher/credits/type/domain_tags 等欄位。
+    code 已存在表示來自 search_courses（基本資料完整），只補 domain_tags。
+    code 為空表示來自 graph 工具，需補全所有欄位。
     """
     from app.services import retriever
     for card in cards:
-        if card.get("code"):
-            continue
+        has_code = bool(card.get("code"))
+        if has_code and card.get("domain_tags"):
+            continue  # 已完整，跳過
         try:
-            results = retriever.get_courses_by_name(card["name"])
+            if has_code:
+                results = retriever.get_courses_by_code(card["code"])
+                if not results:
+                    results = retriever.get_courses_by_code(
+                        card["code"], collection="ncu_courses_grad"
+                    )
+            else:
+                results = retriever.get_courses_by_name(card["name"])
             if results:
                 meta = results[0].get("metadata", {})
-                card["code"]    = meta.get("course_code", "")
-                card["teacher"] = card.get("teacher") or meta.get("teacher", "")
-                card["credits"] = card.get("credits") or meta.get("credits", 0)
-                card["type"]    = card.get("type")    or meta.get("type", "")
+                if not has_code:
+                    card["code"]    = meta.get("course_code", "")
+                    card["teacher"] = card.get("teacher") or meta.get("teacher", "")
+                    card["credits"] = card.get("credits") or meta.get("credits", 0)
+                    card["type"]    = card.get("type")    or meta.get("type", "")
+                # domain_tags：優先取有 score 的 domain_tags_rich，fallback plain list
+                raw = meta.get("domain_tags_rich") or meta.get("domain_tags") or []
+                if isinstance(raw, list) and raw:
+                    card["domain_tags"] = "||".join(str(x) for x in raw)
+                elif isinstance(raw, str) and raw:
+                    card["domain_tags"] = raw
         except Exception:
             pass
     return cards
@@ -452,22 +583,26 @@ def _verify_course_list(question: str, answer: str, course_pool: dict) -> list[d
     return result
 
 
-def _extract_courses_from_tags(answer: str, course_pool: dict) -> list[dict]:
+def _extract_courses_from_tags(answer: str, course_pool: dict) -> tuple[list[dict], str]:
     """從回答中的 <course>課名（系所）</course> 標籤提取課程，exact + fuzzy match pool。
 
     支援帶系所的消歧義格式：<course>統計學（數學系）</course>
     pool 的 key 可能是 course_code（search_courses 路徑）或課名（圖工具路徑），
     以 card["name"] 建立名稱 → list[card] 索引，保留所有同名版本。
-    若 LLM 未輸出任何標籤，回傳空 list（不做額外 LLM 驗證）。
+    若 LLM 未輸出任何標籤，回傳 ([], answer)。
+
+    fuzzy match 成功時，同步修正 answer text 裡的錯誤課名，確保 <course> tag 與 card 名稱一致。
+    回傳 (course_cards, corrected_answer)。
     """
     import re
     from difflib import SequenceMatcher
 
-    # 支援 <course>課名</course> 和 <course>課名（系所）</course>
-    TAG_RE = re.compile(r'<course>(.*?)(?:（([^）]*)）)?</course>', re.DOTALL)
+    # 支援 <course>課名</course> / <course>課名（系所）</course> / <course>課名（N學分）</course>
+    TAG_RE      = re.compile(r'<course>(.*?)(?:（([^）]*)）)?</course>', re.DOTALL)
+    CREDITS_RE  = re.compile(r'^(\d+)\s*學分$')
     tag_matches = TAG_RE.findall(answer)
     if not tag_matches:
-        return []
+        return [], answer
 
     # name → list[card]，保留所有同名版本（不覆蓋）
     name_index: dict[str, list[dict]] = {}
@@ -478,10 +613,11 @@ def _extract_courses_from_tags(answer: str, course_pool: dict) -> list[dict]:
 
     result: list[dict] = []
     seen: set[str] = set()
+    corrections: dict[str, str] = {}  # 錯誤課名 → 正確課名
 
-    for raw_name, dept_hint in tag_matches:
+    for raw_name, hint in tag_matches:
         name = raw_name.strip()
-        dept_hint = dept_hint.strip() if dept_hint else ""
+        hint = hint.strip() if hint else ""
         if not name:
             continue
 
@@ -489,18 +625,27 @@ def _extract_courses_from_tags(answer: str, course_pool: dict) -> list[dict]:
         candidates = name_index.get(name, [])
         if candidates:
             if len(candidates) == 1:
-                matched = candidates[0]
-            elif dept_hint:
-                matched = next(
-                    (c for c in candidates if dept_hint in c.get("dept", "")),
-                    candidates[0],
-                )
+                matched_list = [candidates[0]]
+            elif hint:
+                cm = CREDITS_RE.match(hint)
+                if cm:
+                    # 括號內是「N學分」→ 以學分數消歧義
+                    credits_val = int(cm.group(1))
+                    filtered = [c for c in candidates if c.get("credits") == credits_val]
+                    matched_list = filtered if filtered else candidates
+                else:
+                    # 括號內是系所名 → 以系所消歧義
+                    filtered = [c for c in candidates if hint in c.get("dept", "")]
+                    matched_list = filtered if filtered else candidates
             else:
-                matched = candidates[0]
-            uid = f"{matched.get('name', '')}|{matched.get('dept', '')}"
-            if uid not in seen:
-                seen.add(uid)
-                result.append(matched)
+                # 無 hint 且有多個候選：回傳全部版本，不任意選 first
+                matched_list = candidates
+
+            for matched in matched_list:
+                uid = f"{matched.get('name', '')}|{matched.get('dept', '')}|{matched.get('credits', 0)}"
+                if uid not in seen:
+                    seen.add(uid)
+                    result.append(matched)
             continue
 
         # 2. Fuzzy match (ratio >= 0.85)
@@ -513,12 +658,19 @@ def _extract_courses_from_tags(answer: str, course_pool: dict) -> list[dict]:
 
         if best_ratio >= 0.85 and best_key:
             matched = name_index[best_key][0]
-            uid = f"{matched.get('name', '')}|{matched.get('dept', '')}"
+            uid = f"{matched.get('name', '')}|{matched.get('dept', '')}|{matched.get('credits', 0)}"
             if uid not in seen:
                 seen.add(uid)
                 result.append(matched)
+            if name != best_key:
+                corrections[name] = best_key
 
-    return result
+    # 修正 answer 裡因 LLM 幻覺產生的錯誤課名（只替換 <course> tag 內的部分）
+    corrected = answer
+    for wrong, correct in corrections.items():
+        corrected = corrected.replace(f"<course>{wrong}", f"<course>{correct}")
+
+    return result, corrected
 
 
 def _parse_courses_from_str(tool_name: str, text: str) -> list[dict]:
@@ -543,19 +695,13 @@ def _parse_courses_from_str(tool_name: str, text: str) -> list[dict]:
                 courses.append({"name": name, "dept": dept, "credits": credits, "type": "", "code": "", "teacher": ""})
 
     elif tool_name == "get_depts_by_tech":
-        # 相關課程（前 10 門）：
-        #   - Python程式設計（機械工程學系）
-        in_courses = False
+        # 格式：每門課程以 4 格縮排 + dash 開頭，例如
+        #   - Python程式設計（機械工程學系） → 選修：機械工程學系
         for line in text.splitlines():
-            if '相關課程' in line:
-                in_courses = True
-                continue
-            if not in_courses:
-                continue
-            m = re.match(r'\s*-\s*(.+?)（(.+?)）', line)
+            m = re.match(r'\s{2,}-\s+(.+?)（(.+?)）', line)
             if m:
                 name, dept = m.group(1).strip(), m.group(2).strip()
-                if name and len(name) >= 2:
+                if name and len(name) >= 2 and not name.startswith('【') and not name.startswith('▲') and not name.startswith('◆'):
                     courses.append({"name": name, "dept": dept, "credits": 0, "type": "", "code": "", "teacher": ""})
 
     return courses
@@ -596,16 +742,52 @@ def _collect_course_pool(tool_name: str, result, course_pool: dict) -> None:
                 course_pool[name] = c
 
     elif tool_name == "get_course_detail" and isinstance(result, dict):
-        name = result.get("name_zh", "")
-        if name and not result.get("ambiguous") and name not in course_pool:
-            course_pool[name] = {
-                "code":    result.get("course_code", ""),
-                "name":    name,
-                "dept":    result.get("dept", ""),
-                "credits": result.get("credits", 0),
-                "type":    "",
-                "teacher": result.get("teacher", ""),
-            }
+        if result.get("ambiguous"):
+            cname = result.get("name_zh", "")
+            for c in result.get("candidates", []):
+                key = c.get("course_code") or cname
+                if key and key not in course_pool:
+                    course_pool[key] = {
+                        "code":    c.get("course_code", ""),
+                        "name":    cname,
+                        "dept":    c.get("dept", ""),
+                        "credits": c.get("credits", 0),
+                        "type":    "",
+                        "teacher": c.get("teacher", ""),
+                    }
+        else:
+            name = result.get("name_zh", "")
+            code = result.get("course_code", "")
+            key = code or name   # 精確查詢時用 course_code 作唯一鍵，避免同名不同系的課互相覆蓋
+            if key and key not in course_pool:
+                course_pool[key] = {
+                    "code":    code,
+                    "name":    name,
+                    "dept":    result.get("dept", ""),
+                    "credits": result.get("credits", 0),
+                    "type":    "",
+                    "teacher": result.get("teacher", ""),
+                }
+
+    elif tool_name == "get_teacher_info" and isinstance(result, dict):
+        teacher = result.get("teacher_name", "")
+        for c in result.get("courses", []):
+            name = c.get("name", "")
+            if not name:
+                continue
+            # 同名但不同課號/學分的課（如不同學分版本）各自保留
+            course_id = c.get("id", "")
+            credits   = c.get("credits") or 0
+            key = f"{name}|{course_id or credits}"
+            if key not in course_pool:
+                course_pool[key] = {
+                    "code":    course_id,
+                    "name":    name,
+                    "dept":    "",
+                    "credits": credits,
+                    "type":    c.get("relation", ""),
+                    "teacher": teacher,
+                }
 
 
 @traceable(name="ncu_rag_tools", run_type="llm")
@@ -631,6 +813,12 @@ def generate_with_tools(
     system = SYSTEM_PROMPT
     if context_hint:
         system += f"\n\n## 學生背景資訊\n{context_hint}"
+    if history:
+        system += (
+            "\n\n⚠️ 多輪對話提醒：歷史訊息中的助理回答皆為上輪工具查詢後生成的摘要文字，"
+            "不代表完整資料。本輪若涉及課程/系所/學程/教師/畢業規定等具體查詢，"
+            "**仍必須呼叫對應工具取得最新資料**，不得只參照歷史對話的文字內容直接回答。"
+        )
 
     messages: list[dict] = list(history or [])
     messages.append({"role": "user", "content": question})
@@ -656,7 +844,7 @@ def generate_with_tools(
         if not msg.tool_calls:
             answer = msg.content or ""
             _enrich_course_cards(list(course_pool.values()))
-            course_cards = _extract_courses_from_tags(answer, course_pool)
+            course_cards, answer = _extract_courses_from_tags(answer, course_pool)
             return {
                 "answer":            answer,
                 "tools_used":        tools_used,
@@ -735,7 +923,7 @@ def generate_with_tools(
     total_output += final.usage.completion_tokens
     answer = final.choices[0].message.content or ""
     _enrich_course_cards(list(course_pool.values()))
-    course_cards = _extract_courses_from_tags(answer, course_pool)
+    course_cards, answer = _extract_courses_from_tags(answer, course_pool)
     return {
         "answer":            answer,
         "tools_used":        tools_used,
@@ -777,6 +965,12 @@ def stream_with_tools(
     system = SYSTEM_PROMPT
     if context_hint:
         system += f"\n\n## 學生背景資訊\n{context_hint}"
+    if history:
+        system += (
+            "\n\n⚠️ 多輪對話提醒：歷史訊息中的助理回答皆為上輪工具查詢後生成的摘要文字，"
+            "不代表完整資料。本輪若涉及課程/系所/學程/教師/畢業規定等具體查詢，"
+            "**仍必須呼叫對應工具取得最新資料**，不得只參照歷史對話的文字內容直接回答。"
+        )
 
     messages: list[dict] = list(history or [])
     messages.append({"role": "user", "content": question})
@@ -845,7 +1039,7 @@ def stream_with_tools(
                 final_answer = "".join(content_parts)
                 yield _evt({"type": "verify_start", "pool_size": len(course_pool)})
                 _enrich_course_cards(list(course_pool.values()))
-                course_cards = _extract_courses_from_tags(final_answer, course_pool)
+                course_cards, final_answer = _extract_courses_from_tags(final_answer, course_pool)
                 card_names   = {c["name"] for c in course_cards}
                 filtered_out = [
                     card["name"] for card in course_pool.values()
@@ -859,6 +1053,7 @@ def stream_with_tools(
                 })
                 yield _evt({
                     "type":              "done",
+                    "final_answer":      final_answer,
                     "tools_used":        tools_used,
                     "course_cards":      course_cards,
                     "course_pool":       list(course_pool.values()),
@@ -964,6 +1159,10 @@ def stream_with_tools(
                 })
                 yield _evt({"type": "tool_done", "tool": tc["name"], "count": count,
                             "courses_found": courses_found, "scores": scores, "score_type": score_type})
+                # 字串型工具（get_depts_by_tech / ppr / find_similar）回傳完整文字供測試腳本捕捉
+                if isinstance(result, str) and result:
+                    preview = result[:800] + ("…" if len(result) > 800 else "")
+                    yield _evt({"type": "tool_result", "tool": tc["name"], "result": preview})
 
             # 重建 messages
             messages.append({
@@ -1003,7 +1202,7 @@ def stream_with_tools(
         final_answer = "".join(content_parts)
         yield _evt({"type": "verify_start", "pool_size": len(course_pool)})
         _enrich_course_cards(list(course_pool.values()))
-        course_cards = _extract_courses_from_tags(final_answer, course_pool)
+        course_cards, final_answer = _extract_courses_from_tags(final_answer, course_pool)
         card_names   = {c["name"] for c in course_cards}
         filtered_out = [
             card["name"] for card in course_pool.values()
@@ -1017,6 +1216,7 @@ def stream_with_tools(
         })
         yield _evt({
             "type":              "done",
+            "final_answer":      final_answer,
             "tools_used":        tools_used,
             "course_cards":      course_cards,
             "course_pool":       list(course_pool.values()),

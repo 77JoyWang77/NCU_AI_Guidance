@@ -16,7 +16,7 @@ from typing import Optional
 
 from app.services import llm_service as llm
 from app.services import session_store as ss
-from app.services.auth_service import AuthUser, get_optional_user
+from app.services.auth_service import AuthUser, get_optional_user, get_current_user
 
 router = APIRouter()
 
@@ -137,8 +137,9 @@ async def chat_stream(req: ChatRequest, user: AuthUser | None = Depends(get_opti
                         answer_buf.append(data.get("text", ""))
                     elif data.get("type") == "done":
                         data["session_id"] = sid
+                        answer_text = data.get("final_answer") or "".join(answer_buf)
                         ss.save(
-                            sid, q, "".join(answer_buf),
+                            sid, q, answer_text,
                             course_cards=data.get("course_cards", []),
                             tools_used=data.get("tools_used", []),
                             course_pool=data.get("course_pool", []),
@@ -238,7 +239,7 @@ async def get_course_detail(req: CourseDetailRequest):
 @router.get("/sessions")
 async def list_sessions(user: AuthUser | None = Depends(get_optional_user)):
     """列出所有對話摘要（session_id、標題、更新時間、輪數）。"""
-    return ss.list_sessions(user_id=user.user_id if user else None)
+    return ss.list_sessions(limit=100, user_id=user.user_id if user else None)
 
 
 @router.get("/session/{session_id}")
@@ -255,6 +256,51 @@ async def delete_session(session_id: str, user: AuthUser | None = Depends(get_op
     """清除對話記錄（前端「開新對話」按鈕用）"""
     deleted = ss.delete(session_id, user_id=user.user_id if user else None)
     return {"deleted": deleted, "session_id": session_id}
+
+
+@router.get("/analytics")
+async def get_analytics(user: AuthUser = Depends(get_current_user)):
+    """取得當前用戶的學習傾向分析統計（需登入）。"""
+    from app.services.retriever import _load_college_map, get_courses_by_name
+    college_map = _load_college_map()
+    result = ss.get_analytics(user.user_id, college_map=college_map)
+
+    # 舊紀錄的 course_cards 缺少 domain_tags，用課程名稱回查 Qdrant 補齊
+    if not result["top_domain_tags"] and result["top_courses"]:
+        tag_counter: dict[str, int] = {}
+        for course_item in result["top_courses"][:10]:
+            try:
+                hits = get_courses_by_name(course_item["name"])
+                if not hits:
+                    continue
+                meta = hits[0].get("metadata", {})
+                raw = meta.get("domain_tags_rich") or meta.get("domain_tags") or []
+                weight = course_item.get("count", 1)
+                tags = raw if isinstance(raw, list) else (raw.split("||") if isinstance(raw, str) else [])
+                for entry in tags:
+                    entry = str(entry).strip()
+                    if not entry:
+                        continue
+                    if "::" in entry:
+                        tag, score_str = entry.rsplit("::", 1)
+                        tag = tag.strip()
+                        try:
+                            if tag and float(score_str) >= 0.5:
+                                tag_counter[tag] = tag_counter.get(tag, 0) + weight
+                        except ValueError:
+                            if tag:
+                                tag_counter[tag] = tag_counter.get(tag, 0) + weight
+                    else:
+                        tag_counter[entry] = tag_counter.get(entry, 0) + weight
+            except Exception:
+                pass
+        if tag_counter:
+            result["top_domain_tags"] = [
+                {"tag": t, "count": c}
+                for t, c in sorted(tag_counter.items(), key=lambda x: -x[1])[:15]
+            ]
+
+    return result
 
 
 @router.get("/tools")

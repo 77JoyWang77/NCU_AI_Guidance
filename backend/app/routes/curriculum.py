@@ -59,15 +59,18 @@ def _build_name_id_maps() -> tuple[dict, dict]:
             n2i[name] = nid
             i2n[nid]  = name
 
+    def _register_all(node: dict):
+        _register(node)
+        for child in node.get("groups", []):
+            _register_all(child)
+        for child in node.get("specialization_tracks", []):
+            _register_all(child)
+
     for college in data.get("colleges", []):
         for dept in college.get("departments", []):
-            _register(dept)
-            for g in dept.get("groups", []):
-                _register(g)
+            _register_all(dept)
         for cbp in college.get("college_bachelor_programs", []):
-            _register(cbp)
-            for t in cbp.get("specialization_tracks", []):
-                _register(t)
+            _register_all(cbp)
 
     _name_to_id_cache = n2i
     _id_to_name_cache = i2n
@@ -76,21 +79,26 @@ def _build_name_id_maps() -> tuple[dict, dict]:
 
 # ── 遞迴尋找系所節點 ─────────────────────────────────────────────────────────
 
-def _find_node(data: dict, target_id: str) -> Optional[dict]:
+def _find_node_with_parent(data: dict, target_id: str) -> tuple[Optional[dict], list[dict]]:
+    def _search(node: dict, ancestors: list[dict]) -> tuple[Optional[dict], list[dict]]:
+        if node.get("id") == target_id:
+            return node, ancestors
+        for child in node.get("groups", []) + node.get("specialization_tracks", []):
+            found, parent_chain = _search(child, ancestors + [node])
+            if found is not None:
+                return found, parent_chain
+        return None, []
+
     for college in data.get("colleges", []):
         for dept in college.get("departments", []):
-            if dept.get("id") == target_id:
-                return dept
-            for g in dept.get("groups", []):
-                if g.get("id") == target_id:
-                    return g
+            found, parent_chain = _search(dept, [])
+            if found is not None:
+                return found, parent_chain
         for cbp in college.get("college_bachelor_programs", []):
-            if cbp.get("id") == target_id:
-                return cbp
-            for t in cbp.get("specialization_tracks", []):
-                if t.get("id") == target_id:
-                    return t
-    return None
+            found, parent_chain = _search(cbp, [])
+            if found is not None:
+                return found, parent_chain
+    return None, []
 
 
 # ── 規則分類 ─────────────────────────────────────────────────────────────────
@@ -203,12 +211,49 @@ def get_curriculum_tree() -> list[dict]:
 
 @router.get("/dept/{dept_id}")
 def get_dept_detail(dept_id: str) -> dict:
-    """系所完整資料（含 category 欄位的 graduation_rules）。"""
+    """系所完整資料（含 category 欄位的 graduation_rules），支援從父層繼承。"""
     data = _load_curriculum()
-    node = _find_node(data, dept_id)
+    node, parent = _find_node_with_parent(data, dept_id)
     if node is None:
         raise HTTPException(status_code=404, detail=f"找不到系所：{dept_id}")
+    
     node = dict(node)
+    
+    if parent:
+        INHERITABLE_LIST_FIELDS = [
+            "required_courses", "foundation_courses", "college_required_courses",
+            "common_required_courses", "dept_required_courses", "required_electives",
+            "cross_domain_required", "earth_system_courses", "cross_group_required",
+            "application_courses", "first_domain_electives", "elective_courses",
+            "elective_groups", "core_elective_groups", "college_required_elective_groups",
+            "science_ability_groups", "other_elective_groups"
+        ]
+
+        for field in INHERITABLE_LIST_FIELDS:
+            merged = list(node.get(field, []) or [])
+            for anc in parent:
+                ancestor_list = anc.get(field, []) or []
+                if ancestor_list:
+                    merged = merged + ancestor_list if merged else ancestor_list
+            if merged:
+                node[field] = merged
+
+        # 繼承畢業規定
+        merged_rules = list(node.get("graduation_rules", []) or [])
+        for anc in parent:
+            ancestor_rules = anc.get("graduation_rules", []) or []
+            if ancestor_rules:
+                merged_rules = merged_rules + ancestor_rules
+        node["graduation_rules"] = merged_rules
+
+        # 繼承學分設定
+        for key in ("min_credits", "required_credits"):
+            if key not in node or node.get(key) is None:
+                for anc in parent:
+                    if key in anc and anc.get(key) is not None:
+                        node[key] = anc[key]
+                        break
+
     node["graduation_rules"] = _enrich_rules(node.get("graduation_rules", []))
     return node
 
@@ -239,3 +284,26 @@ def get_notes_by_id(dept_id: str) -> dict:
                 "entries": [{"key": k, **v} for k, v in matched.items()]}
 
     return {"dept_id": dept_id, "dept_name": dept_name, "entries": []}
+
+from fastapi.responses import FileResponse
+
+PDF_BASE = BASE / "data" / "raw" / "應修科目表"
+
+@router.get("/pdf/{dept_id}")
+def get_curriculum_pdf(dept_id: str):
+    """取得指定系所的原始應修科目表 PDF"""
+    _, i2n = _build_name_id_maps()
+    dept_name = i2n.get(dept_id, "")
+    if not dept_name:
+        raise HTTPException(status_code=404, detail="找不到系所")
+
+    if not PDF_BASE.exists():
+        raise HTTPException(status_code=404, detail="PDF 目錄不存在")
+
+    # 在目錄中遞迴尋找包含系所名稱的 PDF 檔案
+    # 優先尋找完全匹配的檔名，例如 "資訊工程學系_114.pdf"
+    for path in PDF_BASE.rglob("*.pdf"):
+        if dept_name in path.name:
+            return FileResponse(path, media_type="application/pdf", filename=path.name)
+
+    raise HTTPException(status_code=404, detail=f"找不到對應的 PDF ({dept_name})")

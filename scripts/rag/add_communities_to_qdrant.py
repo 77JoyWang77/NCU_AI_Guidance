@@ -62,7 +62,12 @@ def main():
     )
     deployment = os.environ.get("AZURE_OPENAI_EMBEDDING_DEPLOYMENT", "text-embedding-3-large")
 
-    client = QdrantClient(path=str(QDRANT_DIR))
+    qdrant_url = os.environ.get("QDRANT_URL", "")
+    qdrant_api_key = os.environ.get("QDRANT_API_KEY")
+    if qdrant_url:
+        client = QdrantClient(url=qdrant_url, api_key=qdrant_api_key)
+    else:
+        client = QdrantClient(path=str(QDRANT_DIR))
     cols = [c.name for c in client.get_collections().collections]
     if COLLECTION not in cols:
         print(f"[錯誤] Collection '{COLLECTION}' 不存在，請先執行 build_qdrant_index.py")

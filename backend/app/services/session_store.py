@@ -19,6 +19,27 @@ MAX_HISTORY = 20  # 保留最近幾則 role/content 訊息給 LLM 使用
 _SCHEMA_READY = False
 _TW = timezone(timedelta(hours=8))
 
+TOOL_LABELS: dict[str, str] = {
+    "search_courses":              "課程語意搜尋",
+    "get_dept_courses":            "系所課程查詢",
+    "get_program_info":            "學分學程資訊",
+    "get_program_courses":         "學分學程課程",
+    "get_teacher_info":            "教師資訊查詢",
+    "search_teachers":             "教師語意搜尋",
+    "get_graduation_requirements": "畢業規定查詢",
+    "get_graduation_rules":        "畢業規定查詢",
+    "get_requirements_notes":      "修課規定查詢",
+    "get_dept_info":               "系所介紹查詢",
+    "get_course_detail":           "課程詳情查詢",
+    "search_programs":             "學分學程搜尋",
+    "get_program_description":     "學程說明查詢",
+    "find_similar_courses":        "相似課程推薦",
+    "get_course_knowledge_map":    "課程知識地圖",
+    "get_depts_by_tech":           "技術科系分佈",
+    "ppr_explore":                 "知識圖譜探索",
+    "explore_concept_neighborhood": "概念鄰域探索",
+}
+
 
 def new_session_id() -> str:
     return uuid.uuid4().hex
@@ -387,3 +408,149 @@ def _format_dt(value: Any) -> str:
     if value:
         return str(value)
     return ""
+
+
+_WEEKDAY_NAMES = ["週一", "週二", "週三", "週四", "週五", "週六", "週日"]
+
+
+def get_analytics(
+    user_id: str,
+    college_map: dict[str, str] | None = None,
+) -> dict:
+    """從用戶歷史對話萃取學習傾向統計。"""
+    if not user_id:
+        return _empty_analytics()
+
+    _ensure_schema()
+    college_map = college_map or {}
+
+    with _connect() as conn:
+        session_row = conn.execute(
+            "SELECT count(*)::int AS n FROM chat_sessions WHERE user_id = %s",
+            (user_id,),
+        ).fetchone()
+        total_sessions: int = session_row["n"] if session_row else 0
+
+        rows = conn.execute(
+            """
+            SELECT t.tools_used, t.course_pool, t.course_cards, t.created_at
+            FROM chat_turns t
+            JOIN chat_sessions s ON s.session_id = t.session_id
+            WHERE s.user_id = %s
+            ORDER BY t.id ASC
+            """,
+            (user_id,),
+        ).fetchall()
+
+    total_turns = len(rows)
+    seen_courses: set[str]           = set()
+    dept_counter: dict[str, int]      = {}
+    tool_counter: dict[str, int]      = {}
+    card_name_counter: dict[str, int] = {}   # top_courses：來自 course_cards
+    domain_tag_counter: dict[str, int] = {}  # 興趣標籤：course_cards.domain_tags
+
+    for row in rows:
+        # 工具計數
+        for tool in _from_jsonb(row["tools_used"], []):
+            if isinstance(tool, str):
+                tool_counter[tool] = tool_counter.get(tool, 0) + 1
+
+        # course_pool：系所分佈 + 唯一課程數
+        for course in _from_jsonb(row["course_pool"], []):
+            if not isinstance(course, dict):
+                continue
+            uid = course.get("code") or course.get("name", "")
+            if uid:
+                seen_courses.add(uid)
+            dept = course.get("dept", "").strip()
+            if dept:
+                dept_counter[dept] = dept_counter.get(dept, 0) + 1
+
+        # course_cards：AI 推薦課程名稱 + domain_tags 興趣標籤
+        for card in _from_jsonb(row["course_cards"], []):
+            if not isinstance(card, dict):
+                continue
+            name = card.get("name", "").strip()
+            if name:
+                card_name_counter[name] = card_name_counter.get(name, 0) + 1
+            # domain_tags 格式："人工智慧::0.85||機器學習::0.72" 或純 "人工智慧||機器學習"
+            for part in (card.get("domain_tags") or "").split("||"):
+                part = part.strip()
+                if not part:
+                    continue
+                if "::" in part:
+                    tag, score_str = part.rsplit("::", 1)
+                    tag = tag.strip()
+                    try:
+                        if tag and float(score_str) >= 0.5:
+                            domain_tag_counter[tag] = domain_tag_counter.get(tag, 0) + 1
+                    except ValueError:
+                        if tag:  # 分數解析失敗，仍計入
+                            domain_tag_counter[tag] = domain_tag_counter.get(tag, 0) + 1
+                else:
+                    domain_tag_counter[part] = domain_tag_counter.get(part, 0) + 1
+
+    # ── 系所 Top 8 ───────────────────────────────────────────────
+    total_dept = sum(dept_counter.values()) or 1
+    dept_distribution = [
+        {"name": d, "count": c, "pct": round(c / total_dept * 100, 1)}
+        for d, c in sorted(dept_counter.items(), key=lambda x: -x[1])[:8]
+    ]
+
+    # ── 學院 Top 5（從 dept 換算）────────────────────────────────
+    college_counter: dict[str, int] = {}
+    for dept, cnt in dept_counter.items():
+        college = college_map.get(dept, "其他")
+        college_counter[college] = college_counter.get(college, 0) + cnt
+    total_col = sum(college_counter.values()) or 1
+    college_distribution = [
+        {"name": c, "count": n, "pct": round(n / total_col * 100, 1)}
+        for c, n in sorted(college_counter.items(), key=lambda x: -x[1])[:5]
+    ]
+    fav_college = college_distribution[0]["name"] if college_distribution else ""
+
+    # ── 工具使用頻率 ─────────────────────────────────────────────
+    tool_usage = [
+        {"tool": t, "label": TOOL_LABELS.get(t, t), "count": c}
+        for t, c in sorted(tool_counter.items(), key=lambda x: -x[1])
+    ]
+
+    # ── AI 推薦課程 Top 10（來自 course_cards）────────────────────
+    top_courses = [
+        {"name": n, "count": c}
+        for n, c in sorted(card_name_counter.items(), key=lambda x: -x[1])[:10]
+    ]
+
+    # ── 興趣標籤 Top 15（解析 course_cards.domain_tags）──────────
+    top_domain_tags = [
+        {"tag": t, "count": c}
+        for t, c in sorted(domain_tag_counter.items(), key=lambda x: -x[1])[:15]
+    ]
+
+    return {
+        "overview": {
+            "total_sessions":         total_sessions,
+            "total_turns":            total_turns,
+            "total_courses_explored": len(seen_courses),
+            "fav_college":            fav_college,
+        },
+        "dept_distribution":    dept_distribution,
+        "college_distribution": college_distribution,
+        "tool_usage":           tool_usage,
+        "top_courses":          top_courses,
+        "top_domain_tags":      top_domain_tags,
+    }
+
+
+def _empty_analytics() -> dict:
+    return {
+        "overview": {
+            "total_sessions": 0, "total_turns": 0,
+            "total_courses_explored": 0, "fav_college": "",
+        },
+        "dept_distribution":    [],
+        "college_distribution": [],
+        "tool_usage":           [],
+        "top_courses":          [],
+        "top_domain_tags":      [],
+    }

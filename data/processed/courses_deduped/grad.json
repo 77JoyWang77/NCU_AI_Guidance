@@ -1,5 +1,2984 @@
 [
   {
+    "學年度": "106",
+    "學期": "1",
+    "系所": "會計研究所碩士班",
+    "流水號": "49001",
+    "課號-班別": "AC6001-*",
+    "課程名稱(中文)": "ERP-管理控制系統",
+    "課程名稱(英文)": "ERP-Management Control System",
+    "備註": "",
+    "授課教師": "鄭漢鐔",
+    "學分": "3",
+    "上課時間": "Wed678",
+    "教室": "I1-521",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "40",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限會計研究所碩士班。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限會計研究所碩士班。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限學分學程-企業資源規劃。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "學制:限碩士班。"
+        },
+        {
+          "優先順序": "5",
+          "相關條件限制說明": "學制:限學士班。"
+        }
+      ]
+    },
+    "課程綱要": {
+      "學期": "1061",
+      "開課單位": "會計研究所碩士班",
+      "流水號": "49001",
+      "課號": "AC6001-*",
+      "授課教師": "鄭漢鐔",
+      "課程名稱(中文)": "ERP-管理控制系統",
+      "課程名稱(英文)": "ERP-Management Control System",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "\"1. 介紹管理控制系統的基本概念，並探討企業如何建立管理控制系統，應用財務及非財務績效指標，落實企業之經營策略，以達成創造企業價值之經營目標。 2. 藉由文獻探討及事業決策模擬提升學生管理與控制系統的知識與技能、培養學生團隊合作與溝通以及系統思考能力。\"",
+      "授課內容": "\"Week Topic Note\n1 (09/14) 課程介紹\n2 (09/21) 任務編組\n企業資源規劃與管理控制系統\n3 (09/28) 中秋節停課\n4 (10/05) 企業資源規劃決策模擬 ABC 2016 使用手冊閱讀測驗\n企業資源規劃決策模擬 ABC 2016 操作說明 10/06晚上22:00啟動練習，每一回合決策時間8小時\n5( 10/12) (1) 策略性思考入門\n(2) 企業的策略性思考\n(3) 妨礙策略性思考的要素 教1：第1部 第1章\n教1：第1部 第2章\n教1：第1部 第3章\n6 (10/19) (4) 策略性思考團隊的形成\n(5) 關於策略性思考\n(6) 何謂「低成長」 教1：第1部 第5章\n教1：第2部 第1章\n教1：第2部 第2章\n7 (10/26) (7) 以策略性思考為基礎的企業策略\n(8) 策略性計畫的核心\n(9) 先見術—透視「成功模式」的充分與必要條件 教1：第2部 第3章\n教1：第2部 第4章\n教1：第2部 附錄\n8 (11/02) 企業資源規劃決策模擬 ABC 2016練習體驗報告\n期中考\n9 (11/09) (10) 組織設計的張力\n(11) 組織活動的疆界\n(12) 組織結構 教2：第1章\n教2：第2章\n教2：第3章\n10 (11/16) 全校運動會 停課\n11(11/23) (13) 控制系統\n(14) 互動網絡\n(15) 共同責任 教2：第4章\n教2：第5章\n教2：第6章\n12 (11/30) (16) 調整槓桿\n(17) 組織績效\n(18) 投出績效「魔球」 教2：第7章\n教2：第8章\n教3：October 2012, HBR(中)\n13 (12/07) 預算編制報告\n14 (12/14) 企業資源規劃決策模擬 ABC 2016競賽 (第一年)\n15 (12/21) 企業資源規劃決策模擬 ABC 2016競賽 (第二年)\n16 (12/28) 企業資源規劃決策模擬 ABC 2016競賽 (第三年)\n17 (01/04) 企業資源規劃決策模擬 ABC 2016績效分析與任務檢討\n18 (01/11) 期末考\"",
+      "教科書/參考書": "\"1. 《新企業參謀》大前研一著，江裕真譯，商周出版社，2015年。 2. Simons, R., Levers of Organization Design: How Managers Use Accountability Systems for Greater Performance and Commitment, Harvard Business School Press, 2005.《組織設計-如何運用槓桿原理讓權責式領導發揮最大效益》，王承志譯，臉譜出版社，2009年。\"",
+      "自編教材比例": "60",
+      "授課方式": "講授 研討 實習/實驗 其他",
+      "評量配分比重": "\"Class Participation (出席率)10％ Assignment (作業)10％ Mid-Term Test (期中考)20% Final Test (期末考)20％ Presentation (專題發表)20％ Role Playing (角色扮演)20％\"",
+      "辦公時間": "星期三09:0-12:00 或預約",
+      "授課週數": "18",
+      "課程領域": "會計 、 企業資源規劃 、 一般管理",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1061,
+    "學院": "管理學院"
+  },
+  {
+    "學年度": "",
+    "學期": "",
+    "系所": "會計研究所碩士班",
+    "流水號": "49002",
+    "課號-班別": "AC6004-*",
+    "課程名稱(中文)": "創業與管理模擬",
+    "課程名稱(英文)": "Entrepreneurship and Management Simulation",
+    "備註": "",
+    "授課教師": "鄭漢鐔",
+    "學分": "3",
+    "上課時間": "Wed678",
+    "教室": "I-402",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "42",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限會計研究所碩士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限財務金融學系碩士班。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限學分學程-企業資源規劃。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "系所:限財務金融學系。"
+        },
+        {
+          "優先順序": "5",
+          "相關條件限制說明": "系所:限非會計研究所碩士班。"
+        }
+      ]
+    },
+    "課程綱要": {
+      "學期": "0982",
+      "開課單位": "會計研究所碩士班",
+      "流水號": "49002",
+      "課號": "AC6004-*",
+      "授課教師": "鄭漢鐔",
+      "課程名稱(中文)": "創業與管理模擬",
+      "課程名稱(英文)": "Entrepreneurship and Management Simulation",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "授課內容": "課程內容：\n1. 企業計劃之擬定與經營策略之執行\n2. 創業實務案例與個案討論\n3. 創業與管理實務模擬\n個案討論\n個案討論是本課程的主要學習過程之ㄧ。學員應於課前充分研讀指定個案及相關教材、針對指定問題進行分組討論、於課堂中積極參與討論、並提出個人對個案主要議題的見解。本課程成績有很大的比重決定於學員對個案討論的貢獻程度。\n創業與管理模擬\n學員按其專業背景分組成立管理團隊，擬定創業計劃書，描述商業模式、經營策略、以及財務規劃。個團隊應用創業與管理模擬軟件所提供的各項KPI，建立管理控制系統參與經營模擬，定期分析並檢討經營結果。",
+      "教科書/參考書": "教材 1. Bygrave & Zacharakis. Entrepreneurship, Wiley, 2008. (指南書局代理) 2. 創業與管理模擬軟件 3. 其他教材 參考書 4. Dollinger. Entrepreneurship:Strategies and Resources 3rd., Pearson, 2006. (中譯本：創業管理—策略與資源，智勝文化代理) 5. Burns. Entrepreneurship and Small Business 2nd., Palgrave Macmillan, 2007.",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "成績 25% 指定作業 25% 創業與管理模擬 25% 個案討論 25% 課堂參與",
+      "辦公時間": "星期一 14:00-16:00",
+      "授課週數": "18",
+      "核心能力": []
+    },
+    "_source": "scraped_missing",
+    "_semester": 982,
+    "學院": "管理學院"
+  },
+  {
+    "學年度": "",
+    "學期": "",
+    "系所": "會計研究所碩士班",
+    "流水號": "49006",
+    "課號-班別": "AC6013-*",
+    "課程名稱(中文)": "商業模式與決策模擬",
+    "課程名稱(英文)": "Business Model and Decision Simulation",
+    "備註": "",
+    "授課教師": "鄭漢鐔",
+    "學分": "3",
+    "上課時間": "ThuABC",
+    "教室": "I1-521",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "35",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限會計研究所碩士班。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限會計研究所碩士班。年級:限二年級。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "系所:限非會計研究所碩士班。"
+        }
+      ]
+    },
+    "課程綱要": {
+      "學期": "0992",
+      "開課單位": "會計研究所碩士班",
+      "流水號": "49006",
+      "課號": "AC6013-*",
+      "授課教師": "鄭漢鐔",
+      "課程名稱(中文)": "商業模式與決策模擬",
+      "課程名稱(英文)": "Business Model and Decision Simulation",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "授課內容": "課程目的\n1. 介紹商業模式的基本概念，並探討企業如何設計商業模式，以因應外部環境的變化，並維續企業價值創造之經營目標。\n2. 藉由個案討論及實務模擬培養學員運用商業模式的邏輯思考、辨識企業經營問題、以及決策能力。\n教材\n1. 白地策略，林麗冠譯，天下文化出版，2010年。 (Seizing the White Space: Business Model Innovation for Growth and Renewal, by M. Johnson & S. Wunker, HBSP, 2010.)\n2. Business Model Generation, by A. Osterwalder & Y. Pigneur, John Wiley & Sons, 2010.\n3. 其他指定個案與教材。\n個案\n個案討論是本課程的重要學習過程之ㄧ，學員應於課前充分研讀指定個案，針對指定問題進行分組討論，並於課堂中積極參與討論，提出個人對個案主要議題的見解。本課程成績有很大的比重決定於學生對個案討論的貢獻程度。\n管理決策模擬\n學員按其性格傾項專業背景分組成立管理團隊，擬定企業經營策略、建立管理控制系統、參與企業經營模擬、透過管理控制系統，分析經營結果、並對管理控制系統進行評估。",
+      "教科書/參考書": "教 3：Note on Business Model Analysis for the Entrepreneur 教 3：Why Business Models Matter (HBR:May 2002) 教 3：邁向價值創新 (HBR:2010年1月號) 教 3：Understanding Customer Profitability at Charles Schwab 教 1：ch1-2 突破成長極限的秘密 教 2：ch1 Canvas 教 3：到新興市場當新企業 (HBR:2011年1月號) 教 3：Zipcar: Refining the Business Model 教 2：ch2 Patterns 教 3：執行長的開創執行力 (HBR:2011年1月號) 教 3：Keurig 教 1：ch6-7 永續經營的市場白地 教 2：ch3 Design 教 3：再創成長曲線、萬一商業模式陷入困境(HBR:2011年1月號) 教 3：Design Thinking and Innovation at Apple 教 1：ch3-5 進入充滿希望的市場白地 教 2：ch4 Strategy 教 3：實現策略五部曲 (HBR:2011年1月號) 教 3：Apple Inc. in 2010",
+      "授課方式": "講授 研討 實習/實驗",
+      "評量配分比重": "30% 參與個案討論 30% 參與管理決策模擬 40% 完成指定作業",
+      "辦公時間": "星期三14:0-17:00 或預約",
+      "授課週數": "18",
+      "核心能力": []
+    },
+    "_source": "scraped_missing",
+    "_semester": 992,
+    "學院": "管理學院"
+  },
+  {
+    "學年度": "107",
+    "學期": "2",
+    "系所": "應用地質研究所碩士班",
+    "流水號": "64004",
+    "課號-班別": "AG7025-*",
+    "課程名稱(中文)": "高等環境地質學",
+    "課程名稱(英文)": "Advanced Environmental Geology",
+    "備註": "",
+    "授課教師": "蔡龍珆",
+    "學分": "2",
+    "上課時間": "Thu56",
+    "教室": "S-130",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要": {
+      "學期": "1072",
+      "開課單位": "應用地質研究所碩士班",
+      "流水號": "64004",
+      "課號": "AG7025-*",
+      "授課教師": "蔡龍珆",
+      "課程名稱(中文)": "高等環境地質學",
+      "課程名稱(英文)": "Advanced Environmental Geology",
+      "課程學制": "碩博同修",
+      "學分": "2",
+      "課程目標": "探討人類與地質環境間之互動關係",
+      "授課內容": "探討人類與地質環境間之互動關係，內容包括各種地質災害、污染、及廢棄物處理、能源開發及環境影響評估等。",
+      "教科書/參考書": "\"Rnvironmental Geology, Keller\"",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "Midterm + Final exam",
+      "辦公時間": "Friday 16:00 ~ 17:00",
+      "授課週數": "18",
+      "課程領域": "環境地化",
+      "核心能力": [
+        {
+          "能力名稱": "數理基礎",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "專業知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "邏輯能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "野外與實作能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "創新思維",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "團隊合作精神",
+          "強度指數": "(3) 普通",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "環境倫理與哲學",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "外語能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "表達能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1072,
+    "學院": "地球科學學院"
+  },
+  {
+    "學年度": "",
+    "學期": "",
+    "系所": "環境工程研究所碩士班",
+    "流水號": "36006",
+    "課號-班別": "EN6012-*",
+    "課程名稱(中文)": "環境影響評估",
+    "課程名稱(英文)": "Environmental Impact Assessment",
+    "備註": "工程管理學程、環境與工業安全學程",
+    "授課教師": "王鯤生",
+    "學分": "2",
+    "上課時間": "Tue56",
+    "教室": "E3-207",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要": {
+      "學期": "0941",
+      "開課單位": "環境工程研究所碩士班",
+      "流水號": "36006",
+      "課號": "EN6012-*",
+      "授課教師": "王鯤生",
+      "課程名稱(中文)": "環境影響評估",
+      "課程名稱(英文)": "Environmental Impact Assessment",
+      "課程學制": "碩士班",
+      "學分": "2",
+      "授課內容": "週次 講 題\n---- -----------------\n01‧ 環境影響評估概要\n02‧ 環境影響評估制度之演進及相關法規\n03‧ 環境影響評估作業之規劃與管理\n04‧ 環境影響評估之方法論/表定、整合技術\nO5‧ 描述環境現況及影響之指數與指標\n05‧ 影響界定/環境現描述\n06‧ 大氣",
+      "教科書/參考書": "教科書： 1.Environmental Impact Assessment by Larry. W. Canter 環保通訊社 2.生態環境影響評估 鄭先佑編譯 徐氏基金會 參考書： 1. Environmental Assessment by R.E. Munn --Principle and Procedure 2. Environmental Assessment by Paul",
+      "授課方式": "講授",
+      "評量配分比重": "期中考試 期末考試",
+      "授課週數": "18",
+      "核心能力": []
+    },
+    "_source": "scraped_missing",
+    "_semester": 941,
+    "學院": "工學院"
+  },
+  {
+    "學年度": "",
+    "學期": "",
+    "系所": "環境工程研究所碩士班",
+    "流水號": "36006",
+    "課號-班別": "EN6023-*",
+    "課程名稱(中文)": "土壤污染",
+    "課程名稱(英文)": "Soil Pollution",
+    "備註": "",
+    "授課教師": "李俊福",
+    "學分": "2",
+    "上課時間": "Thu34",
+    "教室": "E3-207",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要": {
+      "學期": "0932",
+      "開課單位": "環境工程研究所碩士班",
+      "流水號": "36006",
+      "課號": "EN6023-*",
+      "授課教師": "李俊福",
+      "課程名稱(中文)": "土壤污染",
+      "課程名稱(英文)": "Soil Pollution",
+      "課程學制": "碩士班",
+      "學分": "2",
+      "授課方式": "講授 實習/實驗",
+      "評量配分比重": "期中考試50％；實驗報告50％。",
+      "授課週數": "18",
+      "核心能力": []
+    },
+    "_source": "scraped_missing",
+    "_semester": 932,
+    "學院": "工學院"
+  },
+  {
+    "學年度": "",
+    "學期": "",
+    "系所": "環境工程研究所碩士班",
+    "流水號": "36013",
+    "課號-班別": "EN6045-*",
+    "課程名稱(中文)": "環境檢測原理",
+    "課程名稱(英文)": "Principle of Environmental Sampling and Analysis",
+    "備註": "",
+    "授課教師": "李俊福",
+    "學分": "2",
+    "上課時間": "Thu34",
+    "教室": "E3-207",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要": {
+      "學期": "0941",
+      "開課單位": "環境工程研究所碩士班",
+      "流水號": "36013",
+      "課號": "EN6045-*",
+      "授課教師": "李俊福",
+      "課程名稱(中文)": "環境檢測原理",
+      "課程名稱(英文)": "Principle of Environmental Sampling and Analysis",
+      "課程學制": "碩士班",
+      "學分": "2",
+      "授課內容": "09/20環境檢測品保品管概述\n09/27數據處理及管制圖\n10/04標準品及追溯性(水及廢棄物)\n10/11檢量線與偵測極限\n10/18水樣之採集與保存\n10/25土壤採樣方法概述\n11/01廢棄物與空氣樣品採樣\n11/08樣品前處理技術\n11/15期 中 考\n11/29環境檢測化學原理\n12/06環境檢測光學",
+      "教科書/參考書": "環保署公告文件 Analytical Chemistry Instrumental Analysis",
+      "授課方式": "講授",
+      "評量配分比重": "期中考 期末考",
+      "授課週數": "18",
+      "核心能力": []
+    },
+    "_source": "scraped_missing",
+    "_semester": 941,
+    "學院": "工學院"
+  },
+  {
+    "學年度": "108",
+    "學期": "2",
+    "系所": "環境工程研究所碩士班",
+    "流水號": "36010",
+    "課號-班別": "EN6308-*",
+    "課程名稱(中文)": "永續環境管理",
+    "課程名稱(英文)": "Sustainable Environmental Management",
+    "備註": "大四可修，先修課程:永續發展或環境系統分析",
+    "授課教師": "廖述良",
+    "學分": "3",
+    "上課時間": "Thu234",
+    "教室": "E3-207",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要": {
+      "學期": "1082",
+      "開課單位": "環境工程研究所碩士班",
+      "流水號": "36010",
+      "課號": "EN6308-*",
+      "授課教師": "廖述良",
+      "課程名稱(中文)": "永續環境管理",
+      "課程名稱(英文)": "Sustainable Environmental Management",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "講授如何透過永續環境管理的方式與措施來有效落實環境永續性保護(永續環境保護)的目的，內容包括系統思維的決策及問題解決概念與原則、組織的營運管理概念與原則、永續環境管理的基本概念與原則、基本架構與機制(分層分工職掌與程序步驟)、基本事務與內涵、以及不同層級組織的實務應用架構。",
+      "授課內容": "第1週 1.課程說明\n第2週 2.前言(背景、目的及內容)\n3.人類與真實的世界\n4.系統與系統的世界\n第3週 5. 存在與存在的意義\n6. 行動與行動的目的\n7. 問題與解決問題的行動\n第4週 8. 現況評量與趨勢分析\n9. 資源與資源利用的活動\n10. 風險與風險預防及管理\n第5週 11. 目的、目標及資源限制條件\n12. 決策與系統思維的決策\n13. 資訊與決策的資訊及指標\n14. 模式與決策支援工具\n第6週 15. 管理與自我的管理\n16. 組織與組織的架構\n17. 組織的管理、管制及控制\n第7週 18. 生態系統與物質的循環\n19. 人類-自然生態系統的永續性\n20. 環境永續性的保護與管理\n第8週 21. 永續環境管理原則與架構\n22. 永續環境管理系統與機制\n23. 義務與法規管理\n第9週 24. 生態與物質循環管理\n25. 供需與總量管理\n26. 綠色與風險管理\n第10週 期中考\n第11週 27. 全球永續環境管理\n28. 國家永續環境管理\n29. 地方永續環境管理\n第12週 30. 社區永續環境管理\n31. 事業永續環境管理\n32. 個人永續環境管理\n第13週 33. 總結\n第14-18週 34. 期末報告",
+      "教科書/參考書": "簡報、參考文獻",
+      "自編教材比例": "0",
+      "授課方式": "講授 其他",
+      "評量配分比重": "1.心得報告四次(4x15%)\n2.期末報告(20%+20%)",
+      "辦公時間": "星期四09:00~12:00",
+      "授課週數": "18",
+      "課程領域": "永續環境保護",
+      "核心能力": [
+        {
+          "能力名稱": "以人為本的社會價值與環境價值判斷與抉擇能力",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "符合系統思維的環境問題發現、分析及解決能力",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "合乎情理法的環境科學知識與工程技術運用能力",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "前瞻宏觀的需求分析、規劃決策及科技研發能力",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "積極有效的溝通表達、協調合作及整合領導能力",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "持續不斷的人文、科學及工程智能學習創新能力",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面)"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1082,
+    "學院": "工學院"
+  },
+  {
+    "學年度": "112",
+    "學期": "2",
+    "系所": "環境工程研究所碩士班",
+    "流水號": "36013",
+    "課號-班別": "EN7012-*",
+    "課程名稱(中文)": "膠體及表面化學",
+    "課程名稱(英文)": "Colloid & Surface Chemistry",
+    "備註": "",
+    "授課教師": "秦靜如",
+    "學分": "3",
+    "上課時間": "Wed234",
+    "教室": "E3-207",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要": {
+      "學期": "1122",
+      "開課單位": "環境工程研究所碩士班",
+      "流水號": "36013",
+      "課號": "EN7012-*",
+      "授課教師": "秦靜如",
+      "課程名稱(中文)": "膠體及表面化學",
+      "課程名稱(英文)": "Colloid & Surface Chemistry",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "Colloid ＆ Surface Chemistry",
+      "授課內容": "“Forces in colloidal systems\nSurface tension and contact angle\nCapillarity and wetting phenomena\nAssociation colloids: Micelles, Vesicles, and Membranes\nAdsorption\nColloidal stability\nSedimentation and diffusion",
+      "教科書/參考書": "“1.Principles of Colloid and Surface Chemistry, Hiemenz, P. C. and Rajagopalan, R., 3rd ed., Marcel Dekker, New York, 1997. 2.Surfaces, Interfaces, and Colloids: Principles and Applications, Myers, D., VCH, New York, 1991. 3.Shaw, D. J., “Introduction to Colloid and Surface Chemistry,” 4th ed., Butterworth-Heinemann (1992). 4.Hunter, R. J., “Foundations of Colloid Science,” 2nd ed., Oxford, New York (2004). 5.Evans, D. F., and Wennerstrom, H., “The Colloidal Domain:Where physics, chemistry, biology, and technology meet,” VCH, New York (1994).“",
+      "自編教材比例": "0",
+      "授課方式": "講授 其他",
+      "評量配分比重": "“Midterm, 20％ ; homeworks and reports, 50％; term paper 30％“",
+      "辦公時間": "Tuesday 9:00am ~ 12:00 am or by appointment",
+      "授課週數": "18",
+      "課程領域": "永續環境保護 、 水汙染 、 土壤汙染",
+      "核心能力": [
+        {
+          "能力名稱": "以人為本的社會價值與環境價值判斷與抉擇能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "符合系統思維的環境問題發現、分析及解決能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "合乎情理法的環境科學知識與工程技術運用能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "前瞻宏觀的需求分析、規劃決策及科技研發能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "積極有效的溝通表達、協調合作及整合領導能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "持續不斷的人文、科學及工程智能學習創新能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1122,
+    "學院": "工學院"
+  },
+  {
+    "學年度": "109",
+    "學期": "1",
+    "系所": "能源工程研究所碩士班",
+    "流水號": "38007",
+    "課號-班別": "ER6007-*",
+    "課程名稱(中文)": "能源政策概論",
+    "課程名稱(英文)": "Introduction to energy economics and policies：energy, environmental protection and economic growth in Taiwan",
+    "備註": "與SD6001合班上課",
+    "授課教師": "梁啟源",
+    "學分": "3",
+    "上課時間": "Wed678",
+    "教室": "E2-128",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "70",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要": {
+      "學期": "1091",
+      "開課單位": "能源工程研究所碩士班",
+      "流水號": "38007",
+      "課號": "ER6007-*",
+      "授課教師": "梁啟源",
+      "課程名稱(中文)": "能源政策概論",
+      "課程名稱(英文)": "Introduction to energy economics and policies：energy, environmental protection and economic growth in Taiwan",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "\"For students to understand：\n(1) The issues and theories related to energy, environment and economic growth.\n(2)Policy evaluation and suggestions related to energy, environment and economic growth in Taiwan.\"",
+      "授課內容": "\"A guide to understanding the best use of energy.\nTentative Course Schedule\nWeek Topics\n1 (1) Course Introduction\n(2) Energy Issues and Energy Economics\n2 (1) Static Criteria for Efficient Energy Resource Allocation\n(2) Criteria for Efficient Dynamic Resource Allocation\n3 (1) OPEC and World Oil Price\n(2) The Analysis and Impact of Oil Price Surge on Taiwan\n4 The Effects of Oil Price Fluctuations on Emerging Market Countries\n5 Energy Policy to Cope with Climate Change in Taiwan\n6 A Pragmatic Review of the Power Supply in Taiwan’s Energy Transformation Policy\n7 Estimate Air Pollution Social Cost of Taiwan\n8 Environmental Economics\n9 Mid-term Exam\n10 (1) A General Equilibrium Model Under Fix Input-Output Coefficient The Input-Output Analysis\n(2) A Study on the Renewable Energy Development Strategy of Taiwan\n11 A Synthesis of Energy Tax, Carbon Tax and Emission Trading System in Taiwan\n12 Energy Market Liberalization\n13 (1) Industrial Structure Changes and the Measurement of Total Factor Productivity Growth\n(2) Structural Changes and TFP Growth in Taiwan, 1982-2013\n14 (1) A Comparison on Total Factor Productivity Growth in Service Sectors among U.S., Japan, Korea and Taiwan\n(2) An International Comparison on TFP Changes in ICT Industry among Japan, Korea, Taiwan, China and the United States\n15 Industrial Policy and Taiwan's Economic Development\n16 Term Paper Presentation\n17 Founding Anniversary of R. O. C. - No Classes\n18 Final Exam\"",
+      "教科書/參考書": "\"1.Articles and books written by Chi-Yuan Liang.\n2.Campbell R. McConnell, Stanley L. Brue, Sean M. Flynn, Economics. (McGraw-Hill Education, 20 edition)\n\"",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "\"1. Theme report (20%)\n2. Mid-term exam (30%) Final exam (35%)\n3. Attendance and participation (15%)\n\"",
+      "辦公時間": "by appointment",
+      "授課週數": "18",
+      "課程領域": "基礎學科",
+      "核心能力": [
+        {
+          "能力名稱": "專業知識與技能",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "實驗規劃與資料分析",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "工程設計與整合",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "合作溝通與管理",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "專業倫理與社會責任",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1091,
+    "學院": "工學院"
+  },
+  {
+    "學年度": "109",
+    "學期": "1",
+    "系所": "人力資源管理研究所碩士班",
+    "流水號": "47006",
+    "課號-班別": "HR6078-*",
+    "課程名稱(中文)": "綠色經濟與人力資源管理 [已停開]",
+    "課程名稱(英文)": "Green Economy and HRM",
+    "備註": "",
+    "授課教師": "李誠",
+    "學分": "3",
+    "上課時間": "Mon567",
+    "教室": "I1-410",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "33",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要": {
+      "學期": "1091",
+      "開課單位": "人力資源管理研究所碩士班",
+      "流水號": "47006",
+      "授課教師": "李誠",
+      "課程名稱(中文)": "綠色經濟與人力資源管理",
+      "課程名稱(英文)": "Green Economy and HRM",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "自編教材比例": "0",
+      "授課週數": "18",
+      "核心能力": []
+    },
+    "_source": "scraped_missing",
+    "_semester": 1091,
+    "學院": "管理學院"
+  },
+  {
+    "學年度": "113",
+    "學期": "2",
+    "系所": "人力資源管理研究所碩士班",
+    "流水號": "47014",
+    "課號-班別": "HR6096-*",
+    "課程名稱(中文)": "企業倫理",
+    "課程名稱(英文)": "Business Ethics",
+    "備註": "MB5042合班授課",
+    "授課教師": "杜可婷",
+    "學分": "3",
+    "上課時間": "Wed567",
+    "教室": "I1-507",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "33",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要": {
+      "學期": "1132",
+      "開課單位": "人力資源管理研究所碩士班",
+      "流水號": "47014",
+      "課號": "HR6096-*",
+      "授課教師": "杜可婷",
+      "課程名稱(中文)": "企業倫理",
+      "課程名稱(英文)": "Business Ethics",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "This course offers a combination of theoretical and practical frameworks to identify, examine, and comprehend how ethical decisions are made and how ethical issues are dealt with in the field of business. This class will utilize lectures, case analyses, and other materials such as videos, vignettes, and other digital media to challenge the students‘ ethical reasoning and decisions. Interactive learning techniques aim to enhance students’ learning motivation and experience that encourage critical thinking skills, impacting their perspectives and attitudes toward business ethics.",
+      "授課內容": "1 (2/19) Class Introduction\n2 (2/26) Introduction to Business Ethics\n3 (3/5) Case 1: Dilemma at Devil’s Den\n4 (3/12) Managing and Institutionalizing Ethics in Organizations\n5 (3/19) Case 2: UIT: Business ethics and compliance\n6 (3/26) Individual Factors: Moral Reasoning and Decision-Making Process\n7 (4/2) Case 3: Lenhage AG: Ethical dilemma\n8 (4/9) Organizational Factors: Culture, Relationships, and Developing Ethics Programs\n9 (4/16) Case 4: KingJewels: Ethical leadership in practice\n10 (4/23) Managing Ethical Programs and Global Ethics\n11 (4/30) Case 5: GitHub Copilot: Great Promises Tempered by Looming Ethical Shadows\n12 (5/7) Ethical Leadership and Social Responsibility\n13 (5/14) Case 6: Ferris Valley Foods Company: CSR and Reentry\n14 (5/21) Group Report on Special Topics in Business Ethics\n15 (5/28) Group Report on Special Topics in Business Ethics/Project Writing\n16 (6/4) Deadline: Group Final Project (Paper)",
+      "教科書/參考書": "Ferrell, O. C., Fraedrich, J., ＆ Ferrell, L. (2021). Business ethics: Ethical decision making ＆ cases (13th edition). Cengage learning; Harvard/Ivey Cases",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "Class Participation (出席率) 30％ Paper/Theses Writing (報告/論文) 15％ Presentation (專題發表) 20％ Group Case Analysis 35％",
+      "辦公時間": "Wednesdays (10:30-11:30); by appointment/ I1-738",
+      "授課週數": "16+2",
+      "彈性教學說明": "Final report and project",
+      "課程領域": "團隊與領導 、 基礎管理",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1132,
+    "學院": "管理學院"
+  },
+  {
+    "學年度": "104",
+    "學期": "1",
+    "系所": "水文與海洋科學研究所碩士班",
+    "流水號": "66010",
+    "課號-班別": "HS6061-*",
+    "課程名稱(中文)": "水化學 [已停開]",
+    "課程名稱(英文)": "Aguatic Chemistry",
+    "備註": "",
+    "授課教師": "劉康克",
+    "學分": "3",
+    "上課時間": "Mon678",
+    "教室": "S-325",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要": {
+      "學期": "1041",
+      "開課單位": "水文與海洋科學研究所碩士班",
+      "流水號": "66010",
+      "課號": "HS6061-*",
+      "授課教師": "劉康克",
+      "課程名稱(中文)": "水化學",
+      "課程名稱(英文)": "Aguatic Chemistry",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "#N/A",
+      "授課內容": "#N/A",
+      "教科書/參考書": "#N/A",
+      "自編教材比例": "#N/A",
+      "評量配分比重": "#N/A",
+      "辦公時間": "#N/A",
+      "授課週數": "18",
+      "課程領域": "水文循環 、 水文環境 、 水文資訊工具",
+      "核心能力": []
+    },
+    "_source": "scraped_missing",
+    "_semester": 1041,
+    "學院": "地球科學學院"
+  },
+  {
+    "學年度": "105",
+    "學期": "2",
+    "系所": "水文與海洋科學研究所碩士班",
+    "流水號": "66012",
+    "課號-班別": "HS6090-*",
+    "課程名稱(中文)": "空間分析與模型建立 [已停開]",
+    "課程名稱(英文)": "Spatial Analysis and Modeling",
+    "備註": "",
+    "授課教師": "吳祚任",
+    "學分": "3",
+    "上課時間": "Mon234",
+    "教室": "S-325",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要": {
+      "學期": "1052",
+      "開課單位": "水文與海洋科學研究所碩士班",
+      "流水號": "66012",
+      "課號": "HS6090-*",
+      "授課教師": "吳祚任",
+      "課程名稱(中文)": "空間分析與模型建立",
+      "課程名稱(英文)": "Spatial Analysis and Modeling",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "#N/A",
+      "授課內容": "#N/A",
+      "教科書/參考書": "#N/A",
+      "自編教材比例": "0",
+      "評量配分比重": "#N/A",
+      "辦公時間": "#N/A",
+      "授課週數": "18",
+      "課程領域": "",
+      "核心能力": []
+    },
+    "_source": "scraped_missing",
+    "_semester": 1052,
+    "學院": "地球科學學院"
+  },
+  {
+    "學年度": "107",
+    "學期": "1",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46002",
+    "課號-班別": "IA5005-*",
+    "課程名稱(中文)": "迴歸分析",
+    "課程名稱(英文)": "Regression Analysis",
+    "備註": "",
+    "授課教師": "曾富祥",
+    "學分": "3",
+    "上課時間": "Tue567",
+    "教室": "I1-504",
+    "選修別": "必修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限工業管理研究所碩士班。年級:限一年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限碩士班、博士班。"
+        }
+      ]
+    },
+    "課程綱要": {
+      "學期": "1071",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46002",
+      "課號": "IA5005-*",
+      "授課教師": "曾富祥",
+      "課程名稱(中文)": "迴歸分析",
+      "課程名稱(英文)": "Regression Analysis",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "\"Linear regression models are widely used today in business administration, economics, engineering, and the social, health, and biological sciences. Successful applications of these models require a sound understanding of both the underlying theory and the practical problems that are encountered in using the models in real-life situation. In this course, theoretical ideas are presented to the degree needed for good understanding in making sound application. Application of regression models frequently require extensive computations, which will be carried out by statistical software like Minitab, SAS, or SPSS.\nClass Participation. Class participation is crucial for learning the course content and for keeping in pace with the class progress.\n1)You should be prepared for each class and should try to contribute to class discussions. Active and cooperative learning will be encouraged. During the lecture, you are expected to answer/raise questions, and participate in small-group activities such as modeling and solving problems, and interpreting solutions.\n2)You should read the assigned sections from the textbook and any other course material that is posted online.\n3)Attendance will be taken in classes and will constitute part of your participation grade.\nHomework Assignments. You will apply the concepts learnt in class to a variety of problems. The assignments have been taken from the textbook (Kutner, Nachtsheim, and Neter) unless specified otherwise. Homework assignments must be prepared individually.\n1)All assignments should be prepared professionally. Every assignment must include your name and student ID number. Unorganized, illegible, or incomplete assignments will not be graded.\n2)Homeworks will be posted at least one week prior to their due date. Late assignments will not be accepted. Photocopied homework solutions will not be accepted\n3)Homework solutions will be posted on the course web page the same day they are collected.\nProject. We will have a project in a group of Two students. Each group needs to choose and work on a specific subject. Project proposal is due on Nov. 22 by 1 or 2 pages with project title, motivation, expected results, and Gantt chart. One presentation and one final report must be submitted for the group at the end.\nExaminations. One exam and a final exam will be administered as scheduled by the school. Examinations will be closed book and notes.\n1)Each student will be allowed a A4 sheet of handwritten “crib” notes for the exams. No photocopies or computer printouts will be allowed.\n2)No make-up exams will be given unless required by National Central University policies. Students who are eligible for a make-up exam or need extra time must contact the instructor at least one week prior to the exam date.\nCheating in any form will not be tolerated. Any student caught cheating will be censured in full accordance with National Central University policies.\"",
+      "授課內容": "1. Review on statistics and Simple Linear Regression\n2. Inferences in Regression and Correlation Analysis\n3. Diagnostics and Remedial Measures\n4. Matrix Approach to Simple Linear Regression Analysis\n5. Multiple Linear Regression\n6. Regression Models for Quantitative and Qualitative Predictors\n7. Regression Models Building\n8. Neural Networks\n9. Logistic Regression\n10. Prediction and Classification Models\n11. Discriminant Analysis",
+      "教科書/參考書": "\"Applied Linear Regression Models (4th Edition), McGraw-Hill,\nby M. H. Kutner, C. J. Nachtsheim, and J. Neter\"",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "30% Project\n10% Attendance\n10% Homework\n25% Midterm Examination\n25% Final Examination",
+      "辦公時間": "Monday 2pm-5pm",
+      "授課週數": "18",
+      "課程領域": "研究方法",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1071,
+    "學院": "管理學院"
+  },
+  {
+    "學年度": "111",
+    "學期": "2",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46003",
+    "課號-班別": "IA5021-*",
+    "課程名稱(中文)": "全面品質管理",
+    "課程名稱(英文)": "Total Quality Management",
+    "備註": "",
+    "授課教師": "高信培",
+    "學分": "3",
+    "上課時間": "Tue678",
+    "教室": "I1-504",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。"
+        }
+      ]
+    },
+    "課程綱要": {
+      "學期": "1112",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46003",
+      "課號": "IA5021-*",
+      "授課教師": "高信培",
+      "課程名稱(中文)": "全面品質管理",
+      "課程名稱(英文)": "Total Quality Management",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "In English",
+      "授課內容": "In English",
+      "教科書/參考書": "In English",
+      "自編教材比例": "70",
+      "授課方式": "講授 研討 個別指導",
+      "評量配分比重": "1期中報告：40%\n2期末報告：40%\n3課堂問答：10%\n4上課出席：10%",
+      "辦公時間": "\"一、14:00~16:00,三、10:00 /　I1-729\"",
+      "授課週數": "18",
+      "課程領域": "品質管理",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1112,
+    "學院": "管理學院"
+  },
+  {
+    "學年度": "107",
+    "學期": "2",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46004",
+    "課號-班別": "IA5039-*",
+    "課程名稱(中文)": "產銷模式",
+    "課程名稱(英文)": "Production and Distribution Models",
+    "備註": "",
+    "授課教師": "陳振明",
+    "學分": "3",
+    "上課時間": "Wed234",
+    "教室": "I1-504",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。"
+        }
+      ]
+    },
+    "課程綱要": {
+      "學期": "1072",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46004",
+      "課號": "IA5039-*",
+      "授課教師": "陳振明",
+      "課程名稱(中文)": "產銷模式",
+      "課程名稱(英文)": "Production and Distribution Models",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "本課程將使用管理文獻、實務個案等教材授課，並配合學生報告、課堂研討及實作練習等方式進行，授課內容包含作業/供應鏈管理之導論、供應網路設計、相關作業活動的規劃、協調、操作及控制，同時兼論其在企業經營的策略意涵，以達成如下課程目標：（一）修課學生將了解供應鏈的相關活動，包含作業面、戰術面及策略面之營運及管理意涵，（二）修課學生將會使用基本的資訊、軟體或解析工具(analytic tools)來解決作業/供應鏈管理的相關問題，（三）修課學生將具有前瞻性、全球化的觀點來處理供應鏈所衍生的企業社會責任(CSR)及永續經營等議題。",
+      "授課內容": "過去十年，台灣在全球化、自由化及企業虛擬化的風潮之下，已逐漸發展成為亞太高科技製造中心，在全球產品供應鏈上的地位日益重要。本國廠商取得與持續保有國外訂單的關鍵因素則為價格、品質、交期及全球運籌管理能力。因此，本課程將結合我國廠商「製造服務業」的產業特性，以及網際網路所衍生的產業電子化的概念下，從全球化的宏觀視野來思考產品供應鏈管理與通路協調的相關問題，並探討21世紀前瞻性的產銷策略與作業模式。授課內容兼顧技術類與管理類論文，主要以生命週期短暫的資訊、半導體以及時尚性商品為例證，說明在企業資訊溝通平台與產銷合約架構下，如何構建訂購-定價（ordering-pricing）聯合決策以及相關的通路協調機制及產、銷、儲、運規劃。",
+      "教科書/參考書": "\"1Selected articles from prestigious journals including Management Science, Operations Research, Marketing Science, Interfaces, Harvard Business Review, etc.\n2 Simchi-Levi, D, P Kaminsky, and E Simchi-Levi (2005), Designing and Managing the Supply Chain – Concepts, Strategies, and Case Studies, McGraw-Hill, Boston.\n3 Stadtler, H and C Kilger (2000), Supply Chain Management and Advanced Planning-Concepts, Models, Software and Case Studies, Springer, Berlin.\"",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討",
+      "評量配分比重": "文獻專題報告 40％\n小考 30％\n出席、作業 20％\n討論 (Q&A) 10％",
+      "辦公時間": "星期二 12-14",
+      "授課週數": "18",
+      "課程領域": "供應鏈管理",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 實作/實驗 ， 出席/課堂表現"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1072,
+    "學院": "管理學院"
+  },
+  {
+    "學年度": "111",
+    "學期": "1",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46004",
+    "課號-班別": "IA5041-*",
+    "課程名稱(中文)": "企業流程管理",
+    "課程名稱(英文)": "Business Process Management",
+    "備註": "",
+    "授課教師": "高信培",
+    "學分": "3",
+    "上課時間": "Thu678",
+    "教室": "I1-504",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。"
+        }
+      ]
+    },
+    "課程綱要": {
+      "學期": "1111",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46004",
+      "課號": "IA5041-*",
+      "授課教師": "高信培",
+      "課程名稱(中文)": "企業流程管理",
+      "課程名稱(英文)": "Business Process Management",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "\"This course is to introduce methodologies/methods/tools about the (re)design, control, and improvement of the business processes (e.g., production logistics, inbound/outbound logistics, human resource logistics, and integrated product development process) with reduced process cycle time and cost. Furthermore, managing inter-organizational business processes has become increasingly important to achieve efficient and secure inter-organizational cooperation and collaboration.\"",
+      "授課內容": "\"1. Concepts, theories, and methodologies of BPM\n2. Business process architecture\n3. System engineering and information modeling\n4. Introduction to ERP\n5. Enterprise object architecture (OOA/OOD)\n6. CIMOSA\n7. Pera and TOVE\n8. Modeling and simulat\"",
+      "教科書/參考書": "\"Required:\n1.A.-W. Scheer, Business Process Engineering – Reference Models for Industrial Enterprises, 1998, Springer-Verlag.\n2. O. A. El Sawy, Redesigning Enterprise Processes for e-Business, 2001, McGraw Hill.\n3. Assigned Journal Papers\nOptional Rea\"",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討 實習/實驗 個別指導",
+      "評量配分比重": "In-Class Presentation: 60%\nTerm Paper: 40%",
+      "辦公時間": "Monday-Wednesday (9:30AM- 5:30PM)",
+      "授課週數": "18",
+      "課程領域": "供應鏈管理",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1111,
+    "學院": "管理學院"
+  },
+  {
+    "學年度": "102",
+    "學期": "2",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46010",
+    "課號-班別": "IA7026-*",
+    "課程名稱(中文)": "供應鏈管理系統設計",
+    "課程名稱(英文)": "Design and Implementation of Advanced Supply Chain Management Computer Systems",
+    "備註": "",
+    "授課教師": "王啟泰",
+    "學分": "3",
+    "上課時間": "Thu234",
+    "教室": "I1-506",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班。學院:限管理學院。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限學分學程-英文MBA、學分學程-RFID物流與供應鏈(1011退場)。"
+        }
+      ]
+    },
+    "課程綱要": {
+      "學期": "1022",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46010",
+      "課號": "IA7026-*",
+      "授課教師": "王啟泰",
+      "課程名稱(中文)": "供應鏈管理系統設計",
+      "課程名稱(英文)": "Design and Implementation of Advanced Supply Chain Management Computer Systems",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "授課方式": "講授 研討",
+      "評量配分比重": "Midterm project report and presentation: 40% Final project report and presentation: 60%",
+      "辦公時間": "every Thursday 2 ~ 5 PM, or by appointment",
+      "授課週數": "18",
+      "課程領域": "",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(2) 低",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1022,
+    "學院": "管理學院"
+  },
+  {
+    "學年度": "107",
+    "學期": "2",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46011",
+    "課號-班別": "IA7028-*",
+    "課程名稱(中文)": "計量方法",
+    "課程名稱(英文)": "Quantitative Methodology",
+    "備註": "",
+    "授課教師": "曾富祥",
+    "學分": "3",
+    "上課時間": "Mon67",
+    "教室": "I1-506-1\nMon8/I1-405-3",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。學院:限管理學院。"
+        }
+      ]
+    },
+    "課程綱要": {
+      "學期": "1072",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46011",
+      "課號": "IA7028-*",
+      "授課教師": "曾富祥",
+      "課程名稱(中文)": "計量方法",
+      "課程名稱(英文)": "Quantitative Methodology",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "\"This course consists of four parts, multivariate analysis, data mining, optimization, and decision analysis. In this course, theoretical ideas are presented to the degree needed for good understanding in making sound application. If students feel interested in some certain topics and want to study further, they know where to find the advance materials. In other words, this course provides students a broad view of methodologies which are useful to their research and future professional works.\"",
+      "授課內容": "\"Week 1: Break\nWeek 2: Introduction to Multivariate Analysis and Data Mining\nWeek 3: Newsvendor Model\nWeek 4: Coordination Mechanism.\nWeek 5: Coordination Mechanism\nWeek 6: Multivariate Analysis and tests.\nWeek 7: Break\nWeek 8: Discriminate Analysis\nWeek 9: Principal Component\nWeek 10: Factor Analysis\nWeek 11: Canonical Analysis\nWeek 12: Utility Function and Distribution\nWeek 13: Risk Averse\nWeek 14: Association Rules\nWeek 15: Neural Network\nWeek 16: Bayesian Network\nWeek 17: Decision Trees\nWeek 18: Clustering\n\"",
+      "教科書/參考書": "\"Applied Multivariare Statistical Analysis, by R. A. Johnson and D. W. Wichern\nData Mining, by Jiawei Han and M. Kamber\nDecisions with Multiple Obkectives, by R. Keeney and H. Raiffa\nOptimization in Operation Reseach, by R. L. Rardin\"",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討",
+      "評量配分比重": "Presentation 50%\nProject/Report 50%",
+      "辦公時間": "Monday 10:00-12:00 or by appointment",
+      "授課週數": "18",
+      "課程領域": "研究方法",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1072,
+    "學院": "管理學院"
+  },
+  {
+    "學年度": "111",
+    "學期": "2",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46009",
+    "課號-班別": "IA7031-*",
+    "課程名稱(中文)": "大規模最佳化",
+    "課程名稱(英文)": "Large-scale Optimization",
+    "備註": "",
+    "授課教師": "王啟泰",
+    "學分": "3",
+    "上課時間": "Thu234",
+    "教室": "I1-504",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。"
+        }
+      ]
+    },
+    "課程綱要": {
+      "學期": "1112",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46009",
+      "課號": "IA7031-*",
+      "授課教師": "王啟泰",
+      "課程名稱(中文)": "大規模最佳化",
+      "課程名稱(英文)": "Large-scale Optimization",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "請參見英文部份。",
+      "授課內容": "請參見英文部份。",
+      "教科書/參考書": "請參見英文部份。",
+      "自編教材比例": "100",
+      "授課方式": "講授 其他",
+      "評量配分比重": "請參見英文部份。",
+      "辦公時間": "請參見英文部份。",
+      "授課週數": "18",
+      "課程領域": "研究方法",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1112,
+    "學院": "管理學院"
+  },
+  {
+    "學年度": "108",
+    "學期": "1",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46010",
+    "課號-班別": "IA7038-*",
+    "課程名稱(中文)": "資料倉儲與商業智慧",
+    "課程名稱(英文)": "Datawarehouse & Business Intelligence",
+    "備註": "",
+    "授課教師": "鄭晉昌\n許智誠\n蔡文賢\n許秉瑜\n沈建文\n陳炫碩\n陳仲儼",
+    "學分": "3",
+    "上課時間": "Mon567",
+    "教室": "I1-006",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "70",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限學士班。學院:限管理學院。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。學院:限管理學院。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限學士班。學院:限非管理學院。年級:限三年級、四年級。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限碩士班、博士班。學院:限非管理學院。"
+        }
+      ]
+    },
+    "課程綱要": {
+      "學期": "1081",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46010",
+      "課號": "IA7038-*",
+      "授課教師": "鄭晉昌\n許智誠\n蔡文賢\n許秉瑜\n沈建文\n陳炫碩\n陳仲儼",
+      "課程名稱(中文)": "資料倉儲與商業智慧",
+      "課程名稱(英文)": "Datawarehouse & Business Intelligence",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "公司在導入ERP，取得日常的營運資料後，往往需要進一步將資料整合分析，以作為決策的參考，「資料倉儲與商業智慧」的課程主要目的是讓學生了解企業如何處理這些資料，以及這些資料如何形成有效經營決策的智慧，另外也將介紹整個BI專案的過程，並已依實際案例說明專案的關鍵成功要素。",
+      "授課內容": "\"Date Topic Instructor\n9/10 BI Introduction 何靖遠 老師\n9/17 Dimensional modeling 許秉瑜 老師\n9/24 No Class (中秋節)\n10/1 Cube & reporting 許智誠 老師\n10/8 ETL 許智誠 老師\n10/15 KPI – Sales & Distribution 王福川 老師\n10/22 KPI – Procurement 陳美純 老師\n10/29 KPI – Financial Accounting 蔡文賢 老師\n11/5 Mid Term (No Class)\n11/12 Business Impact & Measure of Success 陳仲儼 老師\n11/19 BI Project Life Cycle 陳炫碩 老師\n11/26 KPI – Production Planning 沈國基 老師\n12/3 KPI – Human Resources 鄭晉昌 老師\n12/10 Clustering 王貞淑 老師\n12/17 Association Rule 沈建文 老師\n12/24 Classification 黃世翔 老師\n12/31 No Class (元旦彈性放假)\n1/7 Final Exam\"",
+      "教科書/參考書": "商業智慧與大數據分析(第三版) – 滄海書局出版",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "\"期末考: 30% 上課參與討論40%: (上課發言一次得總分5分, 以此類推, 8 次可得40分; 達12次者, 得45分, 達15次及以上得50分) 出席率: 30% (缺席一次扣總成績10分; 缺席兩次扣總成績20分; 缺席三次扣總成績30分)\"",
+      "辦公時間": "Tue: 9-12am; 1~5pm",
+      "授課週數": "18",
+      "課程領域": "營收管理",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "出席/課堂表現"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1081,
+    "學院": "管理學院"
+  },
+  {
+    "學年度": "112",
+    "學期": "2",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46011",
+    "課號-班別": "IA7039-*",
+    "課程名稱(中文)": "自動化物料搬運系統",
+    "課程名稱(英文)": "Automated Material Handing System",
+    "備註": "",
+    "授課教師": "何應欽",
+    "學分": "3",
+    "上課時間": "Thu789",
+    "教室": "I1-623",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。"
+        }
+      ]
+    },
+    "課程綱要": {
+      "學期": "1122",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46011",
+      "課號": "IA7039-*",
+      "授課教師": "何應欽",
+      "課程名稱(中文)": "自動化物料搬運系統",
+      "課程名稱(英文)": "Automated Material Handing System",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "Learning knowledge in Automated Material Handing Systems.",
+      "授課內容": "Read papers that are related to Automated Material Handing Systems.",
+      "教科書/參考書": "None",
+      "自編教材比例": "100",
+      "授課方式": "研討",
+      "評量配分比重": "“Report 75％ Attendance 25％“",
+      "辦公時間": "Friday 6:30pm~8:30pm",
+      "授課週數": "18",
+      "課程領域": "供應鏈管理",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1122,
+    "學院": "管理學院"
+  },
+  {
+    "學年度": "112",
+    "學期": "2",
+    "系所": "工業管理研究所碩士班",
+    "流水號": "46015",
+    "課號-班別": "IA7053-*",
+    "課程名稱(中文)": "AI機器學習與應用",
+    "課程名稱(英文)": "AI Machine Learning and Applications",
+    "備註": "",
+    "授課教師": "胡中興",
+    "學分": "3",
+    "上課時間": "Tue567",
+    "教室": "I1-504",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。"
+        }
+      ]
+    },
+    "課程綱要": {
+      "學期": "1122",
+      "開課單位": "工業管理研究所碩士班",
+      "流水號": "46015",
+      "課號": "IA7053-*",
+      "授課教師": "胡中興",
+      "課程名稱(中文)": "AI機器學習與應用",
+      "課程名稱(英文)": "AI Machine Learning and Applications",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "Utilizing Al for solving problems ni Data Science, it si necessary to employ Machine Learning algorithms ot build predictive/descriptive models ni a variety of domains. Accordingly, ni this course, we shal implement the Machine Learning algorithms with Python programming language which is a de facto standard ni the current industry. The objective of this course focuses on teaching students how to use Python packages to realize Data Analysis and data-centric Machine Learning modeling.",
+      "授課內容": "1. Course Introduction\n2. Python Data Structures - list, tuple, set and dictionary\n3. Exploratory Data Analysis with Al Approach\n4. Al Agents and Machine Learning\n5. Supersized Learning Algorithms with Scikit-learn\n6. Unsupervised Learning Algorithms with Scikit-learn\n7. Ensemble Learning - Bagging Methods with Scikit-learn\n8. Ensemble Learning - Boosting Methods with Scikit-learn\n9. MidtermProject(Individual)\n10. Best Model Selection - PART :1 Bias-Variance Tradeoff\n11. Best Model Selection - PART :2 Validation Curves vs. Learning Curves\n12. [Workshop 1]: Feature Engineering\n13. [Workshop 2]:PneumoniaDetection\n14. [Workshop 3]: House Pricing\n15. Reinforcement Learning - Markov Decision Process (MDP)\n16. Reinforcement Learning Algorithms - Dynamic Programming\n17. Reinforcement Learning with OpenAI\n18. Final Project Presentation",
+      "教科書/參考書": "[Ref] : Jake VanderPlas, “Python Data Science Handbook — Essential Tools for Working with Data“, O‘Reilly Media, 2017. (https://jakevdp.github.io/PythonDataScienceHandbook/)",
+      "自編教材比例": "100%",
+      "授課方式": "講授 其他",
+      "評量配分比重": "HW Assignments: 30％ Midterm Project (Individual): 20％ Final Project ＆ Presentation: 50％",
+      "辦公時間": "By appointment.",
+      "授課週數": "18",
+      "課程領域": "研究方法",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1122,
+    "學院": "管理學院"
+  },
+  {
+    "學年度": "111",
+    "學期": "1",
+    "系所": "產業經濟研究所碩士班",
+    "流水號": "81007",
+    "課號-班別": "IE6017-*",
+    "課程名稱(中文)": "環境經濟學",
+    "課程名稱(英文)": "Environmental Economics",
+    "備註": "",
+    "授課教師": "劉錦龍",
+    "學分": "3",
+    "上課時間": "Fri123",
+    "教室": "I-907",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。系所:限產業經濟研究所碩士班、產業經濟研究所博士班。指定課程:必須先修IE6003。"
+        }
+      ]
+    },
+    "課程綱要": {
+      "學期": "1111",
+      "開課單位": "產業經濟研究所碩士班",
+      "流水號": "81007",
+      "課號": "IE6017-*",
+      "授課教師": "劉錦龍",
+      "課程名稱(中文)": "環境經濟學",
+      "課程名稱(英文)": "Environmental Economics",
+      "課程學制": "碩士班",
+      "學分": "3",
+      "課程目標": "課程概要：\n1. Measuring Values and Benefits\n2. Defining and Measuring Welfare Changes\n3. Models for Indirect Benefit Estimation\n4. Contingent Valuation Methods\n5. Hedonic Models\n6. Valuing Statistical Value of Life\n7. Travel Costs Methods",
+      "授課內容": "課程概要：\n1. Measuring Values and Benefits\n2. Defining and Measuring Welfare Changes\n3. Models for Indirect Benefit Estimation\n4. Contingent Valuation Methods\n5. Hedonic Models\n6. Valuing Statistical Value of Life\n7. Travel Costs Methods",
+      "教科書/參考書": "\"教材: The Environmental and Resource Values: Theory and Methods\n作者: A. Myrick Freeman III\n出版者: Resources for the Future, Washington, D.C. 1993\"",
+      "自編教材比例": "100",
+      "授課方式": "講授 研討",
+      "評量配分比重": "課堂討論、期中、期末報告",
+      "辦公時間": "by appointment每週四中午至 2﹕00",
+      "授課週數": "16+2",
+      "彈性教學說明": "線上學習",
+      "課程領域": "應用個體",
+      "核心能力": [
+        {
+          "能力名稱": "管理知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際觀",
+          "強度指數": "(5) 非常高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "社會責任",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 學習檔案評量"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1111,
+    "學院": "管理學院"
+  },
+  {
+    "學年度": "113",
+    "學期": "2",
+    "系所": "產業經濟研究所碩士班",
+    "流水號": "81010",
+    "課號-班別": "IE7047-*",
+    "課程名稱(中文)": "高科技產業分析(一) [已停開]",
+    "課程名稱(英文)": "High-Tech Industry Organization I",
+    "備註": "",
+    "授課教師": "",
+    "學分": "3",
+    "上課時間": "Thu89A",
+    "教室": "I-823",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。"
+        }
+      ]
+    },
+    "課程綱要": {
+      "學期": "1132",
+      "開課單位": "產業經濟研究所碩士班",
+      "流水號": "81010",
+      "課號": "IE7047-*",
+      "課程名稱(中文)": "高科技產業分析(一)",
+      "課程名稱(英文)": "High-Tech Industry Organization I",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "研究高科技產業特性以及經營策略",
+      "授課內容": "高科技產業特性\n經營策略\n研發創新、資訊知識\n組織人力資源、品質保證管理、策略聯盟\n新興高科技產業軟體、顧問、生技、創投",
+      "教科書/參考書": "課程大綱及預定進度\n課\n程\n大\n綱\n及\n進\n度\n表 進度 日期 課程內容 備註\n1. 知識經濟時代的產業政策\n2. 台灣科技產業的競爭優勢\n3. 知識管理 天下文化\n4. Intel創新之秘 天下文化\n5. 企業強權 麥格羅希爾\n6. 知識管理 中國生產力中心\n7. 雄霸天下-思科成功的奧秘 商周出版\n8. 諾基亞的十大秘訣 聯經\n9. 創新才會贏 遠流\n10. 模仿是為了創新 遠流\n11. 三千億傳奇郭台銘的鴻海帝國 天下\n12. 從A到A+ 遠流\n13. Killer App12步打造數位企業 天下文化\n14. 專業主義 麥格羅希爾\n15. 高科技產業管理 天下文化\n16. 績效評估 天下文化\n17.\n18.",
+      "自編教材比例": "0",
+      "授課方式": "講授 研討 其他",
+      "評量配分比重": "1. 小組討論、分組報告 2. 講授、讀書心得 3. 專題演講、課堂討論",
+      "辦公時間": "by appointment kanewang@itri.org.tw",
+      "授課週數": "18",
+      "課程領域": "管制經濟與法律",
+      "核心能力": [
+        {
+          "能力名稱": "原創性",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "熟悉其專業領域文獻",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考和解決問題能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "溝通能力",
+          "強度指數": "(4) 高",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1132,
+    "學院": "管理學院"
+  },
+  {
+    "學年度": "113",
+    "學期": "2",
+    "系所": "法律與政府研究所碩士班",
+    "流水號": "74001",
+    "課號-班別": "LG0002-*",
+    "課程名稱(中文)": "債編總論",
+    "課程名稱(英文)": "General Provisions of Obligations",
+    "備註": "",
+    "授課教師": "楊君仁",
+    "學分": "2",
+    "上課時間": "Wed34",
+    "教室": "HK-116",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限學分學程-法律。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限第二專長-法律。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限碩士班。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "學制:限學士班。年級:限非一年級。"
+        }
+      ]
+    },
+    "課程綱要": {
+      "學期": "1132",
+      "開課單位": "法律與政府研究所碩士班",
+      "流水號": "74001",
+      "課號": "LG0002-*",
+      "授課教師": "楊君仁",
+      "課程名稱(中文)": "債編總論",
+      "課程名稱(英文)": "General Provisions of Obligations",
+      "課程學制": "學士班",
+      "學分": "2",
+      "自編教材比例": "0",
+      "授課週數": "18",
+      "核心能力": []
+    },
+    "_source": "scraped_missing",
+    "_semester": 1132,
+    "學院": "客家學院"
+  },
+  {
+    "學年度": "112",
+    "學期": "2",
+    "系所": "法律與政府研究所碩士班",
+    "流水號": "74001",
+    "課號-班別": "LG0006-*",
+    "課程名稱(中文)": "行政法",
+    "課程名稱(英文)": "Administrative Law",
+    "備註": "",
+    "授課教師": "范雅琇",
+    "學分": "3",
+    "上課時間": "Mon678",
+    "教室": "HK-116",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限第二專長-法律。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限法律與政府研究所碩士班。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限學士班。年級:限非一年級。"
+        }
+      ]
+    },
+    "課程綱要": {
+      "學期": "1122",
+      "開課單位": "法律與政府研究所碩士班",
+      "流水號": "74001",
+      "課號": "LG0006-*",
+      "授課教師": "范雅琇",
+      "課程名稱(中文)": "行政法",
+      "課程名稱(英文)": "Administrative Law",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "本課程教學目的在於讓修課同學對行政法有基本認識，了解行政法之原理原則以及架構，並將課程所學應用在日常生活中。",
+      "授課內容": "（112.02.07修正版）\n2/19(第一週)課程介紹及行政法導論Introduction to Administrative Law\n2/26(第二週)行政法法源Sources of Administrative law\n3/4(第三週)行政組織Administrative organization\n3/11(第四週)行政處分Administrative Acts\n3/18(第五週)停課一次（補課方式待加退選結束後與修課同學討論）\n3/25(第六週)行政處分Administrative Acts\n4/1(第七週)行政處分Administrative Acts\n4/8(第八週)期中考Midtern exam\n4/15(第九週)行政處分Administrative Acts\n4/22(第十週)行政處分Administrative Acts\n4/29(第十一週)行政契約Administrative contract\n5/6(第十二週)行政罰法與行政執行Administrative Penalty Law and Administrative Enforcement Law\n5/13(第十三週)行政救濟Administrative Remedy\n5/20(第十四週)行政救濟Administrative Remedy\n5/27(第十五週)國家賠償與國家責任法National Compensation and State Liability Law\n6/3(第十六週)期末考Final exam\n6/10(第十七週)端午節放假\n6/17(第十八週)彈性教學：課程總結與反思\n（以上課程進度僅供參考，實際授課進度仍視上課情況而定。）",
+      "教科書/參考書": "林明鏘，行政法講義(七版二刷)，2023，新學林",
+      "自編教材比例": "30",
+      "授課方式": "講授",
+      "評量配分比重": "期中考50％+期末考50％",
+      "辦公時間": "與教師另約時間",
+      "授課週數": "16+2",
+      "彈性教學說明": "課程總結與反思：方式由教師與學生討論",
+      "課程領域": "法律學類",
+      "核心能力": [
+        {
+          "能力名稱": "搜尋與運用法律資訊之能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "具備法學理論與知識體系之能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "具備法律解釋與適用，以及制度創新發展之能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "具備法律表達與促進正義之能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1122,
+    "學院": "客家學院"
+  },
+  {
+    "學年度": "112",
+    "學期": "1",
+    "系所": "法律與政府研究所碩士班",
+    "流水號": "74002",
+    "課號-班別": "LG0008-*",
+    "課程名稱(中文)": "刑事訴訟法",
+    "課程名稱(英文)": "Criminal Procedure Law",
+    "備註": "",
+    "授課教師": "溫祖德",
+    "學分": "3",
+    "上課時間": "Mon678",
+    "教室": "HK-116",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限第二專長-法律。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限碩士班。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限學士班。年級:限非一年級。"
+        }
+      ]
+    },
+    "課程綱要": {
+      "學期": "1121",
+      "開課單位": "法律與政府研究所碩士班",
+      "流水號": "74002",
+      "課號": "LG0008-*",
+      "授課教師": "溫祖德",
+      "課程名稱(中文)": "刑事訴訟法",
+      "課程名稱(英文)": "Criminal Procedure Law",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "本課程在於介紹實現實體刑法之程序，課程目標說明刑事訴訟中，刑事訴訟法與刑事實體法間之連結，當犯罪行為發生時，從發動刑事偵查、偵查作為、偵查終結、提起公訴、審判及量刑程序，如何認定該行為人之犯罪事實而依法追訴與處罰，如何兼顧追求實體之真實發現及維護程序正義並達到保障人權目的之刑事程序。在平衡二者利益下，實現國家具體刑罰權之目的。",
+      "授課內容": "第一單元　 緒論\n一、憲法與刑事訴訟法之關連性\n二、作為人權保障之刑事訴訟法之基本架構\n三、刑事訴訟之目的\n第二單元 刑事訴訟法的基本架構及原則\n一、糾問制度與彈劾制度\n二、當事人進行主義(二造對抗)及職權主義\n三、審判程序之基本原則\n(一)、無罪推定原則\n(二)、檢察官之舉證責任\n(三)、公平法院之角色\n(四)、舉證證明程度\n(五)、法院有無依職權調查\n義務及實務見解\n第三單元　 偵查\n一、 偵查發動及進行\n(一)、偵查法定原則\n(二)、偵查不公開原則及例外\n(三)、偵查之移轉及停止\n二、檢警關係及偵查主體\n三、告訴\n(一)、告訴權人\n(二)、告訴期間及方式\n(三)、告訴效力\n(四)、撤回告訴及效力\n四、強制處分及任意處分\n(一)、強制處分總論與基本權利之關係\n(二)、強制處分決定機關及執行機關\n(三) 、強制處分種類、聲請程序及法院\n審查門檻\n(四)、傳喚與通知\n(五)、拘提(含緊急拘提)及逮捕\n(六)、羈押(一般羈押及預防性羈押)之要\n件、法院審查程序及法院裁定結果\n(七)、羈押執行、押期計算、撤銷羈押、\n停止羈押及救濟程序\n(八)、搜索(令狀搜索及無令狀搜索)及扣\n押\n(九)、鑑定留置及身體檢查\n(十)、通訊監察及科技偵查概論\n(十一)、違反強制處分法定要件取得證據\n之效力",
+      "教科書/參考書": "1. 林鈺雄，《刑事訴訟法上冊總論編》，台北：元照。 2. 王兆鵬等三人合著，《刑事訴訟法講義》，台北：元照。 3. 張麗卿，《刑事訴訟法理論與運用》，台北 : 五南。 4. 黃朝義，《刑事訴訟法》，台北 : 新學林。 林鈺雄，科技偵查概論（上）(下) －干預屬性及授權基礎，於月旦法學教室第 220 期，2021 年 2 月，第 46-57 頁。 李榮耕，定位追蹤監控，台大法學論叢(2015)。 李榮耕，犯罪偵查中通訊內容的調取，臺大法學論叢(2022)。 溫祖德，GPS定位追蹤合憲性之探討，東吳法律學報(2018)。 溫祖德，偵查機關調取歷史性行動電話基地台位置紀錄之合憲性審查，政大法學評論 (2021)。 溫祖德，行動電話數位資訊之附帶搜索，月旦法學(2015)。 溫祖德，GPS定位追蹤監視之立法論，2019聯合國反貪腐公約專題學術研討會實錄論文集(2019) 溫祖德，無人機偵查法制初論。 熊誦梅、溫祖德，從馬賽克理論(Mosaic Theory)談通訊使用者資料的法官保留-評智慧財產法院 106 年度刑智上易字第 65 號刑事判決，法令月刊，第69卷9期。 王士帆，網路之刑事追訴，政大法學評論(2016)。 王士帆，當科技偵查駭入語音助理－刑事訴訟準備好了嗎？，台北大法學論叢(2019)。 王士帆，M 化車法制出路－德國 IMSI-Catcher 科技偵查借鏡，臺北大學法學論叢，第 121 期，55-117 頁 (2022)。",
+      "自編教材比例": "100%",
+      "授課方式": "講授 研討",
+      "評量配分比重": "期中考 期末考 各50%",
+      "辦公時間": "星期一下午一點到二點",
+      "授課週數": "16+2",
+      "彈性教學說明": "最後二周上課說明",
+      "課程領域": "法律學類",
+      "核心能力": [
+        {
+          "能力名稱": "搜尋與運用法律資訊之能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "具備法學理論與知識體系之能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "具備法律解釋與適用，以及制度創新發展之能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "具備法律表達與促進正義之能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1121,
+    "學院": "客家學院"
+  },
+  {
+    "學年度": "113",
+    "學期": "2",
+    "系所": "法律與政府研究所碩士班",
+    "流水號": "74002",
+    "課號-班別": "LG0009-*",
+    "課程名稱(中文)": "民法物權",
+    "課程名稱(英文)": "Property Law",
+    "備註": "",
+    "授課教師": "黃育玲",
+    "學分": "2",
+    "上課時間": "Thu34",
+    "教室": "HK-116",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限學分學程-法律。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限第二專長-法律。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限碩士班。"
+        },
+        {
+          "優先順序": "4",
+          "相關條件限制說明": "學制:限學士班。年級:限非一年級。"
+        }
+      ]
+    },
+    "課程綱要": {
+      "學期": "1132",
+      "開課單位": "法律與政府研究所碩士班",
+      "流水號": "74002",
+      "課號": "LG0009-*",
+      "授課教師": "黃育玲",
+      "課程名稱(中文)": "民法物權",
+      "課程名稱(英文)": "Property Law",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "培養民法物權基礎理論知識",
+      "授課內容": "民法物權編(物權通論、物權變動、所有權-權能、所有權-原始取得、所有權-繼受取得、不動產所有權-相鄰關係、建築物之區分所有、動產所有權-善意取得、添附、共有-內部關係、共有-外部關係、共有-公同共有及準共有、抵押權-普通抵押權、抵押權之實行與消滅、抵押權-最高限額抵押權、占有、用益物權)",
+      "教科書/參考書": "謝在全，民法物權論(上)(下) ，新學林 鄭玉波、黃宗樂，民法物權，三民",
+      "自編教材比例": "80%",
+      "授課方式": "講授 研討",
+      "評量配分比重": "平時成績 40％ 期中評量 30％ 期末評量 30％",
+      "辦公時間": "週四10:00-11:50",
+      "授課週數": "16+2",
+      "彈性教學說明": "視課程進度",
+      "課程領域": "法律學類",
+      "核心能力": [
+        {
+          "能力名稱": "搜尋與運用法律資訊之能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "具備法學理論與知識體系之能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "具備法律解釋與適用，以及制度創新發展之能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "具備法律表達與促進正義之能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1132,
+    "學院": "客家學院"
+  },
+  {
+    "學年度": "111",
+    "學期": "2",
+    "系所": "法律與政府研究所碩士班",
+    "流水號": "74003",
+    "課號-班別": "LG0011-*",
+    "課程名稱(中文)": "民法繼承",
+    "課程名稱(英文)": "Civil Law：Succession",
+    "備註": "",
+    "授課教師": "黃育玲",
+    "學分": "2",
+    "上課時間": "Mon34",
+    "教室": "HK-116",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限第二專長-法律。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限碩士班。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限學士班。年級:限非一年級。"
+        }
+      ]
+    },
+    "課程綱要": {
+      "學期": "1112",
+      "開課單位": "法律與政府研究所碩士班",
+      "流水號": "74003",
+      "課號": "LG0011-*",
+      "授課教師": "黃育玲",
+      "課程名稱(中文)": "民法繼承",
+      "課程名稱(英文)": "Civil Law：Succession",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "培養民法繼承基礎理論知識",
+      "授課內容": "1.法定繼承人.法定應繼分\n2.代位繼承.繼承權之喪失\n3.繼承回復請求權\n4.繼承標的\n5遺產酌給請求權\n6.期中考\n7.遺囑種類.要件\n8.遺囑能力\n9.遺囑之撤回. 效力.執行\n10.共同繼承與單獨繼承\n11.遺產之分割.效力\n12.生前特種贈與.歸扣\n13.繼承人之有限責任\n14.拋棄繼承\n15.無人承認之繼承\n16.遺贈\n17.特留分\n18.期末考",
+      "教科書/參考書": "1.繼承法講義,林秀雄,元照 2.陳棋炎.黃宗樂.郭振恭三人合著,民法繼承新論,三民書局",
+      "自編教材比例": "80%",
+      "授課方式": "講授",
+      "評量配分比重": "平時成績40% 期中評量30% 期末評量30%",
+      "辦公時間": "週一10:00-11:50",
+      "授課週數": "16+2",
+      "彈性教學說明": "視進度而定",
+      "課程領域": "法律學類",
+      "核心能力": [
+        {
+          "能力名稱": "搜尋與運用法律資訊之能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "具備法學理論與知識體系之能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "具備法律解釋與適用，以及制度創新發展之能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "具備法律表達與促進正義之能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1112,
+    "學院": "客家學院"
+  },
+  {
+    "學年度": "111",
+    "學期": "1",
+    "系所": "法律與政府研究所碩士班",
+    "流水號": "74019",
+    "課號-班別": "LG0016-*",
+    "課程名稱(中文)": "社會法",
+    "課程名稱(英文)": "Law of Social Security",
+    "備註": "",
+    "授課教師": "張桐銳",
+    "學分": "2",
+    "上課時間": "TueAB",
+    "教室": "HK-116",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限第二專長-法律。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限碩士班。"
+        },
+        {
+          "優先順序": "3",
+          "相關條件限制說明": "學制:限學士班。年級:限非一年級。"
+        }
+      ]
+    },
+    "課程綱要": {
+      "學期": "1111",
+      "開課單位": "法律與政府研究所碩士班",
+      "流水號": "74019",
+      "課號": "LG0016-*",
+      "授課教師": "張桐銳",
+      "課程名稱(中文)": "社會法",
+      "課程名稱(英文)": "Law of Social Security",
+      "課程學制": "學士班",
+      "學分": "2",
+      "課程目標": "建立修課同學對於社會法之基本理解，並深化其對於憲法與行政法之理解。",
+      "授課內容": "1. 社會法之起源2. 社會法之概念與發展3. 社會法與法律體系 I4. 社會法與法律體系 II5. 社會法與憲法 I6. 社會法與憲法 II7. 社會給付請求權 I8. 社會給付請求權 II9. 期中考10. 社會保險法總論 I11. 社會保險法總論 II12. 社會保險法總論 III13. 勞工保險 I14. 勞工保險 II15. 全民健康保險16. 職災保險17. 社會救助18. 期末考",
+      "教科書/參考書": "1. 台灣社會法與社會政策學會主編，社會法。2. 李玉君等譯，德國社會法。",
+      "自編教材比例": "50%",
+      "授課方式": "講授",
+      "評量配分比重": "期中考 50% 期末考 50%",
+      "辦公時間": "另約",
+      "授課週數": "18",
+      "課程領域": "法律學類",
+      "核心能力": [
+        {
+          "能力名稱": "搜尋與運用法律資訊之能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "具備法學理論與知識體系之能力",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "具備法律解釋與適用，以及制度創新發展之能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考"
+        },
+        {
+          "能力名稱": "具備法律表達與促進正義之能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1111,
+    "學院": "客家學院"
+  },
+  {
+    "學年度": "100",
+    "學期": "2",
+    "系所": "學習與教學研究所碩士班",
+    "流水號": "17005",
+    "課號-班別": "LI7072-*",
+    "課程名稱(中文)": "語意概論與語言教學",
+    "課程名稱(英文)": "Semantics and Language Teaching",
+    "備註": "學習所學生優先",
+    "授課教師": "衛友賢",
+    "學分": "3",
+    "上課時間": "Mon678",
+    "教室": "LS-405",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要": {
+      "學期": "1002",
+      "開課單位": "學習與教學研究所碩士班",
+      "流水號": "17005",
+      "課號": "LI7072-*",
+      "授課教師": "衛友賢",
+      "課程名稱(中文)": "語意概論與語言教學",
+      "課程名稱(英文)": "Semantics and Language Teaching",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "授課內容": "Introduction to Semantics for Language Education",
+      "教科書/參考書": "Hurford, J.R. and Heasley, B. (1983) Semantics: A Coursebook. Cambridge: Cambridge U Press. Wible, D. (2005) Language Learning and Language Technology. Taipei: Crane.",
+      "授課方式": "講授 研討",
+      "評量配分比重": "1. Class attendance 2. Class participation (regular presentations and class discussion) 3. Written exercises 4. Three short papers (3 pages each) The course grade will be based on an equal weighting of the above 6 items.",
+      "辦公時間": "By Appointment",
+      "授課週數": "18",
+      "核心能力": []
+    },
+    "_source": "scraped_missing",
+    "_semester": 1002,
+    "學院": "文學院"
+  },
+  {
+    "學年度": "108",
+    "學期": "1",
+    "系所": "材料科學與工程研究所碩士班",
+    "流水號": "39003",
+    "課號-班別": "MS5018-*",
+    "課程名稱(中文)": "材料動力學",
+    "課程名稱(英文)": "Kinetic Process of Materials",
+    "備註": "",
+    "授課教師": "王冠文",
+    "學分": "3",
+    "上課時間": "Mon234",
+    "教室": "E6-B142",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要": {
+      "學期": "1081",
+      "開課單位": "材料科學與工程研究所碩士班",
+      "流水號": "39003",
+      "課號": "MS5018-*",
+      "授課教師": "王冠文",
+      "課程名稱(中文)": "材料動力學",
+      "課程名稱(英文)": "Kinetic Process of Materials",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "1. 瞭解擴散方程式與解擴散方程式\n2. 瞭解原子擴散理論\n3. 瞭解Kirkendall 效應\n4. 瞭解均質反應與異質反應\n5. 瞭解氣固反應\n6. 瞭解相變化機制\n7. 瞭解特殊之相變化型態\n8. 培養學生解決問題的能力",
+      "授課內容": "1. Introduction\n2. Diffusion kinetics\n3. Homogeneous reactions\n4. Heterogeneous reaction\n5. Gas-Solid Reaction\n6. Phase transformation",
+      "教科書/參考書": "\"(1) P. G. Shewmon, \"\"Diffusion in Solid,\"\" 2 nd edition, McGraw-Hill\n(2) O. Levenspiel, \"\"Chemical Reaction Kinetics\"\", 3rd Ed., John Wiley & Sons, 1999.\n(3) D. A. Porter,\"\"Phase Transformations in metals and alloys\"\", 2nd Ed., Chapman & Hall, 1992.\"",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "1. Homework 20%\n2. Midterm 40%\n3. Final exam 40%",
+      "辦公時間": "周三早上11:00",
+      "授課週數": "18",
+      "課程領域": "材料科學核心課程",
+      "核心能力": [
+        {
+          "能力名稱": "專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "邏輯推理",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "論文撰寫能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際合作",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "終身學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1081,
+    "學院": "工學院"
+  },
+  {
+    "學年度": "113",
+    "學期": "1",
+    "系所": "材料科學與工程研究所碩士班",
+    "流水號": "39003",
+    "課號-班別": "MS5020-*",
+    "課程名稱(中文)": "X光繞射結晶學",
+    "課程名稱(英文)": "X-ray Diffraction and Crystal Structure",
+    "備註": "",
+    "授課教師": "陳一塵",
+    "學分": "3",
+    "上課時間": "Thu678",
+    "教室": "E6-B142",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限材料科學與工程研究所碩士班、材料科學與工程研究所博士班、材料科學與工程研究所-工學博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限非材料科學與工程研究所碩士班。"
+        }
+      ]
+    },
+    "課程綱要": {
+      "學期": "1131",
+      "開課單位": "材料科學與工程研究所碩士班",
+      "流水號": "39003",
+      "課號": "MS5020-*",
+      "授課教師": "陳一塵",
+      "課程名稱(中文)": "X光繞射結晶學",
+      "課程名稱(英文)": "X-ray Diffraction and Crystal Structure",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "本課程目標為介紹X光繞射與結晶學之基本概念，此外並將介紹X光繞射在材料分析上之應用，除了引導同學對X光繞射物理與應用有初步的概念外、亦讓同學對其在產業界的應用有所瞭解。",
+      "授課內容": "1. X光基本物理\n2. 結晶學簡介\n3. X光繞射基本概念\n4. X光繞射之實驗方法\n5. X光繞射之基本應用",
+      "教科書/參考書": "Elements of X-ray Diffraction, Cullity ＆ Stock 3rd ed. (Prentice Hall)",
+      "自編教材比例": "70",
+      "授課方式": "講授",
+      "評量配分比重": "出席/課堂表現: 10％ 期中考1: 30％ 期中考2: 30％ 期末報告: 30％",
+      "辦公時間": "By appointment",
+      "授課週數": "16+2",
+      "彈性教學說明": "最後兩週將以影片補充相關課程知識",
+      "課程領域": "材料科學核心課程",
+      "核心能力": [
+        {
+          "能力名稱": "專業知識",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "邏輯推理",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "論文撰寫能力",
+          "強度指數": "(1) 非常低",
+          "評量方式": "紙筆測驗/會考 ， 口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "國際合作",
+          "強度指數": "(0) 無",
+          "評量方式": "無"
+        },
+        {
+          "能力名稱": "國際視野",
+          "強度指數": "(1) 非常低",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "終身學習",
+          "強度指數": "(1) 非常低",
+          "評量方式": "口頭報告/口試 ， 出席/課堂表現"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1131,
+    "學院": "工學院"
+  },
+  {
+    "學年度": "111",
+    "學期": "1",
+    "系所": "哲學研究所碩士班",
+    "流水號": "14003",
+    "課號-班別": "PD4401-*",
+    "課程名稱(中文)": "西方哲學史",
+    "課程名稱(英文)": "History of Western Philosophy",
+    "備註": "",
+    "授課教師": "陸敬忠",
+    "學分": "3",
+    "上課時間": "Wed234",
+    "教室": "LS-322",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "20",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限文學院學士班。"
+        }
+      ]
+    },
+    "課程綱要": {
+      "學期": "1111",
+      "開課單位": "哲學研究所碩士班",
+      "流水號": "14003",
+      "課號": "PD4401-*",
+      "授課教師": "陸敬忠",
+      "課程名稱(中文)": "西方哲學史",
+      "課程名稱(英文)": "History of Western Philosophy",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "西方哲學從源生便是起於一種源自Arche 之系統式思維，此思維一直發展至現代自然科學典範，主宰著西方文明之主流意識。即使是所謂系統性哲學也充分顯示出此思維之宰制性。然而，在西方哲思之生成發展過程中，系統式思維與體系性哲思同時處於辯證性生化過程中，若能從此過程中耙梳出體系性哲思，誠能提供另一種關於西方哲學乃至世界哲學之典範。而此又可從對於西方哲學史中關鍵性哲學大師之思想與經典文本的理解與詮釋中呈現。本課程之基本目標在於一方面導引學生進入西方哲思之為系統性哲學及其哲學史，二方面則從此中洞見出西方哲學之體系性思想，三方面導引學生進入西方哲學大師之關鍵性經典文本進行導讀與詮釋之路。首先從哲學之系統與生成進路導論出發，推導出系統性哲學及其體系性轉向之可能性。然後再西方哲學思想史為主軸於巨觀向度縱觀希臘哲思，中世紀哲思，近代哲思，黑格爾哲思乃至開啟當代現象學與詮釋學哲思中系統式思維與體系性哲思之辯證，接著，經由對西方哲學史中原創性大師之跨時代經典進行文本導讀與精義詮釋，最後由此導論出體系性哲學之潛能。",
+      "授課內容": "1. 哲學導論 I哲學之問題與意義2. 哲學導論 II：系統性思想進路及歷史性生成進路3 哲學之系統I- 理論哲學1:邏輯與辯證法4. 哲學之系統II- 理論哲學2:形上學與存在主義5. 哲學之系統III- 理論哲學3:知識論與科學哲學6. 哲學之系統IV- 實踐哲學1:倫理學與社會及政治哲學7. 哲學之系統V- 實踐哲學2:美學與藝術哲學8. 哲學之系統VI- 實踐哲學3:宗教哲學與人生哲學9. 哲學之歷史I：希臘哲思源生之為系統式哲學起源：先蘇哲思10. 哲學之歷史II：希臘哲思典範之為系統性與體系性辯證壹：柏拉圖與亞理斯多德11. 柏拉圖《理想國》三譬喻導讀與詮釋12. 哲學之歷史III: 近代哲思之為系統性與體系性辯證貳：從笛卡爾開始13. 笛卡爾《沈思錄》〈第一沈思〉導讀與詮釋14. 哲學之歷史IV：康德哲學之綜合與總結近代哲學之為系統性與體系性辯證參15. 康德《純粹理性批判》〈導論〉導讀與詮釋16. 哲學之歷史V：德意志觀念論與黑格爾哲思之為系統性與體系性辯證肆17. 黑格爾《精神現象學》〈導論〉導讀與詮釋18. 開放性結論: 從後黑格爾至當代哲學思潮",
+      "教科書/參考書": "哲學概論：黃藿譯，學富出版社，2001.哲學概論：沈清松主編，五南出版社，2002哲學淺談：Joseph M. Bochenski著，王弘五譯註；臺北市：御書房出版，紅螞蟻圖書總經銷，2001.西洋哲學史：傅偉勳，臺北，三民書局，1965年",
+      "自編教材比例": "80",
+      "授課方式": "講授 研討 個別指導 其他",
+      "評量配分比重": "平時成績(含期中學習評量): 50%；期末成績(期末報告):50% 期中學習評量時間: 第八周(十一月二日) 期末報告繳交期限:第十六周(十二月二十八日)",
+      "辦公時間": "星期三12至14時",
+      "授課週數": "16+2",
+      "彈性教學說明": "兩週彈性教學以視聽媒體教學以及學生參加哲學研究所或詮釋學哲學研究室所舉辦哲學相關演講為加深加廣教學或學術活動。",
+      "課程領域": "專業進階研究課程群",
+      "核心能力": [
+        {
+          "能力名稱": "理論觀念",
+          "強度指數": "(5) 非常高",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "批判思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "文獻解讀",
+          "強度指數": "(4) 高",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "學理應用",
+          "強度指數": "(5) 非常高",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "人文素養",
+          "強度指數": "(5) 非常高",
+          "評量方式": "專題研究報告(書面) ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "中外思想",
+          "強度指數": "(4) 高",
+          "評量方式": "出席/課堂表現 ， 自我評量/同儕互評"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1111,
+    "學院": "文學院"
+  },
+  {
+    "學年度": "113",
+    "學期": "1",
+    "系所": "哲學研究所碩士班",
+    "流水號": "14002",
+    "課號-班別": "PD4402-*",
+    "課程名稱(中文)": "當代西方思潮",
+    "課程名稱(英文)": "Contemporary Western Thoughts",
+    "備註": "",
+    "授課教師": "黃雅嫺",
+    "學分": "3",
+    "上課時間": "Wed234",
+    "教室": "A-104",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "50",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限文學院學士班。"
+        }
+      ]
+    },
+    "課程綱要": {
+      "學期": "1131",
+      "開課單位": "哲學研究所碩士班",
+      "流水號": "14002",
+      "課號": "PD4402-*",
+      "授課教師": "黃雅嫺",
+      "課程名稱(中文)": "當代西方思潮",
+      "課程名稱(英文)": "Contemporary Western Thoughts",
+      "課程學制": "學士班",
+      "學分": "3",
+      "課程目標": "1. 增進學生對當代西方思潮的理解 2. 提供學生思考跨領域合作的可能性",
+      "授課內容": "一般而言，所謂「當代」意指二十世紀迄今。但是當代西方思潮，卻很難僅以時間作為思想的分期。\n如果說，西方近代哲學起於笛卡爾確立了主體哲學的基礎；現代思潮則以黑格爾之後，作為起點；那麼當代的開始，或許可以從分別代表歐陸哲學的海德格以及英美分析哲學的維根斯坦，同時以「哲學終結」為結論的主張作為開端。\n由於當代西方思潮多元且豐富，彼此雖不一定有直接的繼承關係，但卻可能因為相互影響，而開出另一個學派。換言之，以地域性來區分當代哲學，也不是最恰當的分類方式。\n一個學期的課程中，無法盡數介紹所有當代西方思潮。因之，僅介紹其中幾項具代表性的思潮，以作為認識的開始。另一方面，當代社會、政治、藝術、文化，甚至科學等，也都少不了哲學作為基礎，因此越理解當代西方思想，就越能進行跨領域的合作與嘗試。\n每週課程如下：Week 1\n1. Introduction to Contemporary western thoughts\nWeek 2\n1. The Utilitarian: Bentham\n“The Utilitarian: Bentham and Mill”, in Understanding Philosophy. Contemporary Thought, Joan A. Price.\nWeek 3\n1. The Utilitarian: Mill\n“The Utilitarian: Bentham and Mill”, in Understanding Philosophy. Contemporary Thought, Joan A. Price.\nWeek 4\n1. The individual: Kierkegaard\n“The individual: Kierkegaard and Nietzsche” in Understanding Philosophy. Contemporary Thought, Joan A. Price.\nWeek 5\n1. The individual: Nietzsche\n“The individual: Kierkegaard and Nietzsche” in Understanding Philosophy. Contemporary Thought, Joan A. Price.\nWeek 6\n1. Pragmatism: James\n“Pragmatism: James and Dewey” in Understanding Philosophy. Contemporary Thought, Joan A. Price.\nWeek 7\n1. Pragmatism: Dewey\n“Pragmatism: James and Dewey” in Understanding Philosophy. Contemporary Thought, Joan A. Price.\nWeek 8\n1. Process philosophy: Bergson\n“Process philosophy: Bergson and Whitehead”, in Understanding Philosophy. Contemporary Thought, Joan A. Price.\nWeek 9\n1. Process philosophy: Whitehead\n“Process philosophy: Bergson and Whitehead”, in Understanding Philosophy. Contemporary Thought, Joan A. Price.\nWeek 10\n1. Analytic Philosophy: Russell\n“Analytic Philosophy: Russell, Logical positivism, and Wittgenstein” in Understanding Philosophy. Contemporary Thought, Joan A. Price.\nWeek 11\n1. Analytic Philosophy: Wittgenstein\n“Analytic Philosophy: Russell, Logical positivism, and Wittgenstein” in Understanding Philosophy. Contemporary Thought, Joan A. Price.\nWeek 12\n1. Phenomenology: Husserl\n“Phenomenology: Husserl and Heidegger” in Understanding Philosophy. Contemporary Thought, Joan A. Price.\nWeek 13\n1. Phenomenology: Heidegger\n“Phenomenology: Husserl and Heidegger” in Understanding Philosophy. Contemporary Thought, Joan A. Price.\nWeek 14\n1. Existentialism: Sartre and de Beauvoir\n“Existentialism: Sartre, de Beauvoir, and Camus” in Understanding Philosophy. Contemporary Thought, Joan A. Price.\nWeek 15\n1. Existentialism: Camus\n“Existentialism: Sartre, de Beauvoir, and Camus” in Understanding Philosophy. Contemporary Thought, Joan A. Price.\nWeek 16 Final exam\nWeek 17 Self-directed learning\nWeek 18 Self-directed learning",
+      "教科書/參考書": "1. 現代哲學論衡，沈清松 著，黎明文化事業，民79年，台北。 2. 現代西方哲學新編，趙敦華 著，五南出版，民2002年，台北。 3. 什麼是當代，汪民安 著，新星出版社，2014年，北京。",
+      "自編教材比例": "0",
+      "授課方式": "講授",
+      "評量配分比重": "跟課紀錄 30％，課堂討論15％，期末考試55％",
+      "辦公時間": "週一10-13時",
+      "授課週數": "16+2",
+      "彈性教學說明": "留予學生自主討論此書問題以及閱讀相關參考書籍",
+      "課程領域": "應用倫理學課程群",
+      "核心能力": [
+        {
+          "能力名稱": "理論觀念",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "批判思考",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "文獻解讀",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "學理應用",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "人文素養",
+          "強度指數": "(5) 非常高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "中外思想",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 出席/課堂表現"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1131,
+    "學院": "文學院"
+  },
+  {
+    "學年度": "113",
+    "學期": "2",
+    "系所": "永續去碳科技碩士學位學程",
+    "流水號": "86006",
+    "課號-班別": "SD5013-*",
+    "課程名稱(中文)": "半導體製程減碳策略研究",
+    "課程名稱(英文)": "Introduction: Strategies of semiconductor process decarbonization",
+    "備註": "",
+    "授課教師": "劉楫平",
+    "學分": "3",
+    "上課時間": "FriABC",
+    "教室": "TR-501",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "30",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限永續去碳科技碩士學位學程、永續去碳科技博士學位學程。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學院:限永續與綠能科技研究學院。"
+        }
+      ]
+    },
+    "課程綱要": {
+      "學期": "1132",
+      "開課單位": "永續去碳科技碩士學位學程",
+      "流水號": "86006",
+      "課號": "SD5013-*",
+      "授課教師": "劉楫平",
+      "課程名稱(中文)": "半導體製程減碳策略研究",
+      "課程名稱(英文)": "Introduction: Strategies of semiconductor process decarbonization",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "本課程旨在使學生全面了解在半導體製造過程中減碳的技術和策略。隨著電子產品需求的增加以及相應的環境影響，去碳化已成為該行業的重要方面。通過講座、案例研究和實際練習，學生將探討在半導體工藝中實施更可持續策略的挑戰和機遇。 課程目標： 通過本課程，學生將能夠： 1. 理解半導體製造工藝對環境的影響。 2. 確定半導體工藝中可以應用去碳化努力的關鍵領域。 3. 評估不同去碳化策略及其有效性。 4. 開發實施半導體製造去碳化策略的實際方法。 5. 分析各種去碳化方法的經濟和技術可行性。 6. 及時了解可持續半導體製造的最新進展和趨勢。",
+      "授課內容": "第1週：課程介紹概述\n• 課程介紹\n第2週：半導體製程介紹\n• 半導體製程的基本概念\n• 半導體製程的主要步驟\n第3週：半導體材料與環境影響\n• 半導體材料的種類及特性\n• 半導體製程對環境的影響\n第4週：減碳策略概述與規劃\n• 減碳的基本概念和重要性\n• 全球減碳目標和政策\n• 半導體製程中的能源需求\n• 能源效率提升策略\n• 碳足跡計算與分析\n• 半導體製程中的碳足跡分析\n第5週：半導體製程介紹: 黃光刻製程與減碳策略\n• 黃光刻製程介紹\n• 黃光刻製程中的減碳技術\n第6週：半導體製程介紹: 蝕刻製程與減碳策略\n• 蝕刻製程介紹\n• 蝕刻製程中的減碳技術\n第7週：半導體製程介紹: 薄膜沉積製程與減碳策略\n• 薄膜沉積製程介紹\n• 薄膜沉積製程中的減碳技術\n第8週：半導體製程介紹: 離子佈植製程＆化學機械平坦化（CMP）與減碳策略\n• 離子佈植製程介紹\n• 離子佈植製程中的減碳技術（如低能耗離子源）\n• CMP製程介紹\n• CMP製程中的減碳技術（如使用環保拋光液）\n第9週：小組期中案例分享: 半導體減碳策略探討\n第10週：期中考\n第11週：先進封裝製程與減碳策略-1\n• 封裝製程介紹\n• 封裝製程中的減碳技術（如使用低能耗封裝材料）\n第12週：封裝製程與減碳策略-2\n• 成熟封裝製程介紹\n• 成熟封裝製程中的減碳技術(矽光子）\n第12週：案例研究-1：成功的減碳實踐\n• 企業減碳案例分析\n• 成功實踐的關鍵因素\n第13週：案例研究-2: 成功的減碳實踐\n• 材料選擇與減碳\n• 低碳材料的選擇\n• 材料替代策略\n• 製程優化與減碳\n• 減少製程中的碳排放\n• 半導體製程中的廢棄物管理, 回收技術和策略\n第14週：期末專題報告\n• 小組專題報告: 半導體製程減碳策略\n第15週：期末專題報告\n• 小組專題報告: 半導體製程減碳策略\n• 學生專題報告展示與評價\n• 互動討論與反饋\n第16週：課程總結與未來展望\n• 半導體未來趨勢分析\n• 課程總結\n• 未來研究方向與職業發展",
+      "教科書/參考書": "1. ISO 14064-1:2018 溫室氣體條文 2. GHG Protocol標準與指南 3. 企業價值鏈(範疇三)會計與報告準則 4. 科學基礎減量目標標準與指南 5. Fundamental Principles of Optical Lithography: The Science of Microfabrication. Author(s):Chris Mack. Print ISBN:9780470018934 |Online ISBN:9780470723876 |DOI:10.1002/9780470723876 6. Michael F. Ashby, “Materials and Sustainable Development,“ 2nd Edition, 2022, ISBN-13: 978-0323983617",
+      "自編教材比例": "100%",
+      "授課方式": "講授",
+      "評量配分比重": "• 課堂出席：20％ • 期中報告: 減碳策略規劃：20％ • 期中考: 30％ • 期末專題報告：30％ • 課程參與(bonus): 10％",
+      "辦公時間": "請與老師聯繫",
+      "授課週數": "18",
+      "核心能力": []
+    },
+    "_source": "scraped_missing",
+    "_semester": 1132,
+    "學院": "永續與綠能科技研究學院"
+  },
+  {
+    "學年度": "103",
+    "學期": "1",
+    "系所": "統計研究所碩士班",
+    "流水號": "25001",
+    "課號-班別": "ST6001-*",
+    "課程名稱(中文)": "數理統計Ｉ",
+    "課程名稱(英文)": "Mathematical Statistics I",
+    "備註": "",
+    "授課教師": "曾議寬",
+    "學分": "3",
+    "上課時間": "Mon34",
+    "教室": "M-605\nWed3/M-605",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "25",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限統計研究所碩士班、統計研究所博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "系所:限非統計研究所碩士班、非統計研究所博士班。"
+        }
+      ]
+    },
+    "課程綱要": {
+      "學期": "1031",
+      "開課單位": "統計研究所碩士班",
+      "流水號": "25001",
+      "課號": "ST6001-*",
+      "授課教師": "曾議寬",
+      "課程名稱(中文)": "數理統計Ｉ",
+      "課程名稱(英文)": "Mathematical Statistics I",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "\"瞭解基礎統計理論,熟悉統計方法\"",
+      "授課內容": "\"基礎統計理論 Basic concept of random variables, distribution and density function;\nExpectation and moment generating function;\nSpecial distributions;\nMultiple random variable;\nProperties of a random sample;\nData reduction;\nPoint estimation.\"",
+      "教科書/參考書": "\"統計推論Textbook: Statistical inference 2nd Ed., by Berger and Casella,ISBN:0534243126\nReference books: A course in mathematical statistics 2nd Ed., by Roussas, ISBN: 0125993153\nMathematical statistics, by Shao, ISBN: 9624300917\nA first course in probability 6th Ed., by Ross, ISBN: 0130338516\"",
+      "自編教材比例": "20",
+      "授課方式": "講授 個別指導",
+      "評量配分比重": "Homework 25%\nMidterm 35%\nFinal 45%",
+      "辦公時間": "(二) 11:00-12:00",
+      "授課週數": "18",
+      "課程領域": "統計推論",
+      "核心能力": [
+        {
+          "能力名稱": "專業知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 自我評量/同儕互評 ， 其他"
+        },
+        {
+          "能力名稱": "獨立思考",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試 ， 其他"
+        },
+        {
+          "能力名稱": "創新能力",
+          "強度指數": "(4) 高",
+          "評量方式": "作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "跨領域合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 實作/實驗 ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "終身學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 其他"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1031,
+    "學院": "理學院"
+  },
+  {
+    "學年度": "103",
+    "學期": "2",
+    "系所": "統計研究所碩士班",
+    "流水號": "25001",
+    "課號-班別": "ST6002-*",
+    "課程名稱(中文)": "數理統計Ⅱ",
+    "課程名稱(英文)": "Mathematical Statistics Ⅱ",
+    "備註": "通過[數理統計I]者",
+    "授課教師": "曾議寬",
+    "學分": "3",
+    "上課時間": "Mon34",
+    "教室": "M-605\nWed3/M-605",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要": {
+      "學期": "1032",
+      "開課單位": "統計研究所碩士班",
+      "流水號": "25001",
+      "課號": "ST6002-*",
+      "授課教師": "曾議寬",
+      "課程名稱(中文)": "數理統計Ⅱ",
+      "課程名稱(英文)": "Mathematical Statistics Ⅱ",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "\"瞭解基礎統計理論,熟悉統計方法\"",
+      "授課內容": "1.Principle of data reduction\n2.Point estimate\n3.Hypothesis testing\n4.Interval estimation\n5.Asymptotic evaluation",
+      "教科書/參考書": "\"Textbook: Statistical inference, Berger&Casella, 2nd edition, Duxbury Press\nReference book: Mathematical Statistics, K. Knight, Chapman&Hall\nMathematical Statistics, J. Shao, Springer\nA course in mathematical statistics, Roussass, Academic press\"",
+      "自編教材比例": "10",
+      "授課方式": "講授 個別指導 其他",
+      "評量配分比重": "\"Homework 20%\nMidterm 35%\nFinal 45% 出席 20 % 期中 35 % 期末 45 %\"",
+      "辦公時間": "By appointment",
+      "授課週數": "18",
+      "課程領域": "統計推論",
+      "核心能力": [
+        {
+          "能力名稱": "專業知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 出席/課堂表現 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "獨立思考",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "創新能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "紙筆測驗/會考 ， 作業練習"
+        },
+        {
+          "能力名稱": "跨領域合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 自我評量/同儕互評"
+        },
+        {
+          "能力名稱": "終身學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "口頭報告/口試 ， 專題研究報告(書面)"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1032,
+    "學院": "理學院"
+  },
+  {
+    "學年度": "111",
+    "學期": "2",
+    "系所": "統計研究所碩士班",
+    "流水號": "25003",
+    "課號-班別": "ST6041-*",
+    "課程名稱(中文)": "無母數方法 I",
+    "課程名稱(英文)": "Nonparametric Statistical Methods I",
+    "備註": "",
+    "授課教師": "陳玉英",
+    "學分": "3",
+    "上課時間": "Wed8",
+    "教室": "M-708\nThu78/M-708",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "指定課程:必須先修ST6021、先修ST6038。且檢定指定課程平均成績達70分以上。"
+        }
+      ]
+    },
+    "課程綱要": {
+      "學期": "1112",
+      "開課單位": "統計研究所碩士班",
+      "流水號": "25003",
+      "課號": "ST6041-*",
+      "授課教師": "陳玉英",
+      "課程名稱(中文)": "無母數方法 I",
+      "課程名稱(英文)": "Nonparametric Statistical Methods I",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "提供母體分布未知情形下資料的統計分析方法。",
+      "授課內容": "機率密度函數的估計，單一樣本或成對資料的推論，雙樣本的推論及其應用.",
+      "教科書/參考書": "課堂講義",
+      "自編教材比例": "60",
+      "授課方式": "講授 研討",
+      "評量配分比重": "作業60%，專題40%",
+      "辦公時間": "週三14:00-16:00",
+      "授課週數": "18",
+      "課程領域": "生物統計 、 工業統計 、 統計推論",
+      "核心能力": [
+        {
+          "能力名稱": "專業知識",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "獨立思考",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "創新能力",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "跨領域合作",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面) ， 出席/課堂表現"
+        },
+        {
+          "能力名稱": "終身學習",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1112,
+    "學院": "理學院"
+  },
+  {
+    "學年度": "",
+    "學期": "",
+    "系所": "統計研究所碩士班",
+    "流水號": "25006",
+    "課號-班別": "ST6047-*",
+    "課程名稱(中文)": "時間數列Ｉ [已停開]",
+    "課程名稱(英文)": "Time Series Ⅰ",
+    "備註": "",
+    "授課教師": "",
+    "學分": "3",
+    "上課時間": "Thu234",
+    "教室": "M-708",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件": {
+      "限制說明": "課程沒有限制"
+    },
+    "課程綱要": {
+      "學期": "0991",
+      "開課單位": "統計研究所碩士班",
+      "流水號": "25006",
+      "課號": "ST6047-*",
+      "課程名稱(中文)": "時間數列Ｉ",
+      "課程名稱(英文)": "Time Series Ⅰ",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "授課方式": "講授",
+      "授課週數": "18",
+      "核心能力": []
+    },
+    "_source": "scraped_missing",
+    "_semester": 991,
+    "學院": "理學院"
+  },
+  {
+    "學年度": "108",
+    "學期": "1",
+    "系所": "統計研究所碩士班",
+    "流水號": "25012",
+    "課號-班別": "ST7052-*",
+    "課程名稱(中文)": "多維度資料分析",
+    "課程名稱(英文)": "High-Dimensional Data Analysis",
+    "備註": "",
+    "授課教師": "江村剛志",
+    "學分": "3",
+    "上課時間": "Mon567",
+    "教室": "M-707",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "學制:限碩士班、博士班。"
+        },
+        {
+          "優先順序": "2",
+          "相關條件限制說明": "學制:限學士班。指定課程:必須先修ST6021、先修ST6038。且檢定指定課程平均成績達70分以上。"
+        }
+      ]
+    },
+    "課程綱要": {
+      "學期": "1081",
+      "開課單位": "統計研究所碩士班",
+      "流水號": "25012",
+      "課號": "ST7052-*",
+      "授課教師": "江村剛志",
+      "課程名稱(中文)": "多維度資料分析",
+      "課程名稱(英文)": "High-Dimensional Data Analysis",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "Learn basic materials for high-dimensional data analysis",
+      "授課內容": "\"R programming\nGraphical Display\nLinear Model\nLogistic Regression\nCluster Analysis\nPrincipal Component Analysis\nMultidimensional Scaling\nRecursive Partitioning\nSurvival Analysis\"",
+      "教科書/參考書": "\"A Handbook of Statistical Analysis using R, 2nd Edition\"",
+      "自編教材比例": "50",
+      "授課方式": "講授",
+      "評量配分比重": "\"Homework, Exam, in-class answer\"",
+      "辦公時間": "by appointment",
+      "授課週數": "18",
+      "課程領域": "財務工程 、 生物統計 、 工業統計 、 統計推論",
+      "核心能力": [
+        {
+          "能力名稱": "專業知識",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "獨立思考",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "創新能力",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "跨領域合作",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        },
+        {
+          "能力名稱": "終身學習",
+          "強度指數": "(4) 高",
+          "評量方式": "紙筆測驗/會考 ， 作業練習 ， 口頭報告/口試"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1081,
+    "學院": "理學院"
+  },
+  {
+    "學年度": "113",
+    "學期": "2",
+    "系所": "生醫科學與工程學系跨領域轉譯醫學博士班",
+    "流水號": "84005",
+    "課號-班別": "TM7044-*",
+    "課程名稱(中文)": "幾何深度學習數學基礎",
+    "課程名稱(英文)": "The mathematical foundation of geometric deep learning",
+    "備註": "",
+    "授課教師": "陳健章",
+    "學分": "3",
+    "上課時間": "Tue234",
+    "教室": "R3-117",
+    "選修別": "選修",
+    "全半年": "半",
+    "人數限制": "無",
+    "分發條件": {
+      "優先順序列表": [
+        {
+          "優先順序": "1",
+          "相關條件限制說明": "系所:限生醫科學與工程學系跨領域轉譯醫學博士班。"
+        }
+      ]
+    },
+    "課程綱要": {
+      "學期": "1132",
+      "開課單位": "生醫科學與工程學系跨領域轉譯醫學博士班",
+      "流水號": "84005",
+      "課號": "TM7044-*",
+      "授課教師": "陳健章",
+      "課程名稱(中文)": "幾何深度學習數學基礎",
+      "課程名稱(英文)": "The mathematical foundation of geometric deep learning",
+      "課程學制": "碩博同修",
+      "學分": "3",
+      "課程目標": "以研習微分幾何以及群論數學理論為方法，來理解現代深度學習網路模型的構造型態、參數前饋與反向的傳遞方法，架構行為過擬合成因，以及張量計算的方法與複雜度分析。期待能以此理論與方法的養成，建立學生輕量型網路最佳化的思考模式，並建構其相關數學理論從而設計具備可解釋性的網路模型。",
+      "授課內容": "1. 深度學習模型的歷史發展與侷限\n2. 幾何深度學習的開端\n3. 高維度資料的歸納偏置、正規化與詛咒\n4. 資料的幾何先驗特性\n5. 對稱性、群表徵以及群不變性\n6. 同構群與自同構群\n7. 變形穩定性\n8. 平移不變性與尺度分離\n10. 圖深度學習網路\n11. 圖卷積深度學習網路\n12. 圖集合\n13. 歐式空間與格點表徵\n14. 群與齊次空間\n15. 測地線與流形\n16. 規範與叢集\n17. 幾何圖與網格表徵\n18. 近代幾何深度學習模型簡介",
+      "教科書/參考書": "1. Geometric Deep Learning: Grids, Groups, Graphs, Geodesics, and Gauges, M. M. Bronstein, et. al., 2021. 2. M. M. Bronstein, et. al., “Geometric Deep Learning: Going beyond Euclidean data,” IEEE Signal Processing Magazine, Vol. 34, July 2017. 3. F. Monti, et. al., “Geometric Deep Learning on Graphs and Manifolds Using Mixture Model CNNs,” IEEE CVPR, 2017.",
+      "自編教材比例": "100",
+      "授課方式": "講授",
+      "評量配分比重": "課堂表現 10% 作業 20% 課中報告 30% 學期專題 40%",
+      "辦公時間": "星期四 13點至15點",
+      "授課週數": "18",
+      "課程領域": "工程科學建模 、 大數據與機械學習",
+      "核心能力": [
+        {
+          "能力名稱": "轉譯醫學與臨床問題締合",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "實驗架構設計與執行",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "數據分析、邏輯推演與建模預測",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "團隊合作、領導與溝通",
+          "強度指數": "(5) 非常高",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "醫學倫理與社會責任",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "產業鏈與商品化",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        },
+        {
+          "能力名稱": "智慧財產價值創新、維護與尊重",
+          "強度指數": "(3) 普通",
+          "評量方式": "作業練習 ， 口頭報告/口試 ， 專題研究報告(書面)"
+        }
+      ]
+    },
+    "_source": "scraped_missing",
+    "_semester": 1132,
+    "學院": "生醫理工學院"
+  },
+  {
     "學年度": "114",
     "學期": "1",
     "學院": "中心、處室",

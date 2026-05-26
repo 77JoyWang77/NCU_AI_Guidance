@@ -629,7 +629,7 @@
                   "code": "HI4909",
                   "name": "人文應用專題：歷史學微策展",
                   "credits": 3,
-                  "when": "大三下~大四下"
+                  "when": "大三上~大四下"
                 },
                 {
                   "code": "HI4910",
@@ -4661,19 +4661,19 @@
                   "code": "ME1041",
                   "name": "製造工程實習I",
                   "credits": 1,
-                  "when": "大二上"
+                  "when": "大一上"
                 },
                 {
                   "code": "ME2037",
                   "name": "機械製圖上",
                   "credits": 1,
-                  "when": "大二上"
+                  "when": "大一上"
                 },
                 {
                   "code": "ME2038",
                   "name": "機械製圖下",
                   "credits": 1,
-                  "when": "大二下"
+                  "when": "大一下"
                 },
                 {
                   "code": "ME1006",
@@ -5152,13 +5152,13 @@
                   "code": "ME2037",
                   "name": "機械製圖上",
                   "credits": 1,
-                  "when": "大二上"
+                  "when": "大一上"
                 },
                 {
                   "code": "ME2038",
                   "name": "機械製圖下",
                   "credits": 1,
-                  "when": "大一上"
+                  "when": "大一下"
                 },
                 {
                   "code": "ME1006",
@@ -5479,7 +5479,7 @@
                   "code": "ME1006",
                   "name": "靜力與材料力學",
                   "credits": 4,
-                  "when": "大一下"
+                  "when": "大二下"
                 },
                 {
                   "code": "ME1041",
@@ -5923,27 +5923,32 @@
                   "code": "EG4002",
                   "name": "工程倫理",
                   "credits": 2,
-                  "alias": "CH3062"
+                  "alias": "CH3062",
+                  "when": "大三上~大三下"
                 },
                 {
                   "code": "ME4110",
                   "name": "工程講座與專業倫理",
-                  "credits": 2
+                  "credits": 2,
+                  "when": "大三上~大三下"
                 },
                 {
                   "code": "GS2003",
                   "name": "倫理學與美好生活",
-                  "credits": 2
+                  "credits": 2,
+                  "when": "大三上~大三下"
                 },
                 {
                   "code": "GS3355",
                   "name": "環境倫理之實踐",
-                  "credits": 2
+                  "credits": 2,
+                  "when": "大三上~大三下"
                 },
                 {
                   "code": "GS4530",
                   "name": "人工智慧倫理導論",
-                  "credits": 2
+                  "credits": 2,
+                  "when": "大三上~大三下"
                 }
               ]
             }
@@ -7906,7 +7911,7 @@
               "code": "MA1003",
               "name": "微積分上",
               "credits": 3,
-              "when": "大一下"
+              "when": "大一上"
             },
             {
               "code": "MA1004",
@@ -9877,7 +9882,7 @@
                   "code": "CE2003",
                   "name": "離散數學",
                   "credits": 3,
-                  "when": "大一上~大四下"
+                  "when": "大二上"
                 },
                 {
                   "code": "CE2002",
@@ -9925,13 +9930,13 @@
                   "code": "CE1002",
                   "name": "計算機概論II",
                   "credits": 3,
-                  "when": "大一上~大四下"
+                  "when": "大一上~大二下"
                 },
                 {
                   "code": "CE1004",
                   "name": "計算機實習II",
                   "credits": 1,
-                  "when": "大一上~大四下"
+                  "when": "大一上~大二下"
                 }
               ]
             },
@@ -9945,13 +9950,13 @@
                   "code": "EE1010",
                   "name": "工程數學微分方程",
                   "credits": 3,
-                  "when": "大一上~大四下"
+                  "when": "大一下~大二上"
                 },
                 {
                   "code": "EE2002",
                   "name": "電路學I",
                   "credits": 3,
-                  "when": "大一上~大四下"
+                  "when": "大一下~大二上"
                 },
                 {
                   "code": "EE2011",
@@ -10037,7 +10042,7 @@
                   "code": "EE2002",
                   "name": "電路學I",
                   "credits": 3,
-                  "when": "大一上~大四下"
+                  "when": "大一下~大二上"
                 },
                 {
                   "code": "CO2013",
@@ -10073,7 +10078,7 @@
                   "code": "EE1010",
                   "name": "工程數學微分方程",
                   "credits": 3,
-                  "when": "大一上~大四下"
+                  "when": "大一下~大二上"
                 },
                 {
                   "code": "CO2005",
@@ -10093,19 +10098,19 @@
                   "code": "CE1002",
                   "name": "計算機概論II",
                   "credits": 3,
-                  "when": "大一上~大四下"
+                  "when": "大一上~大二下"
                 },
                 {
                   "code": "CE1004",
                   "name": "計算機實習II",
                   "credits": 1,
-                  "when": "大一上~大四下"
+                  "when": "大一上~大二下"
                 },
                 {
                   "code": "CE2003",
                   "name": "離散數學",
                   "credits": 3,
-                  "when": "大一上~大四下"
+                  "when": "大二上"
                 },
                 {
                   "code": "CO3003",

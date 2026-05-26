@@ -12,7 +12,6 @@ import {
 import { chatAPI, chatStreamAPI } from '../api/services';
 import CourseSidePanel from '../components/CourseSidePanel';
 import CourseDetailModal from '../components/CourseDetailModal';
-import CoursePoolDrawer from '../components/CoursePoolDrawer';
 import DebugTracePanel from '../components/DebugTracePanel';
 import HighlightedAnswer from '../components/HighlightedAnswer';
 import { useAuth } from '../auth/AuthContext';
@@ -39,22 +38,19 @@ const TOOL_LABELS: Record<string, string> = {
 };
 
 interface ToolIndicator {
-  name:   string;
-  done:   boolean;
+  name: string;
+  done: boolean;
   count?: number;
 }
 
 interface Message {
-  role:             'user' | 'assistant';
-  content:          string;
-  timestamp:        Date;
-  isStreaming?:     boolean;
-  courseCards?:     CourseCard[];
-  coursePool?:      CourseCard[];
-  coursePoolCount?: number;
-  hasLargeResult?:  boolean;
-  toolsUsed?:       string[];
-  debugTrace?:      DebugTrace;
+  role:         'user' | 'assistant';
+  content:      string;
+  timestamp:    Date;
+  isStreaming?: boolean;
+  courseCards?: CourseCard[];
+  toolsUsed?:  string[];
+  debugTrace?: DebugTrace;
 }
 
 interface Conversation {
@@ -63,6 +59,7 @@ interface Conversation {
   messages:  Message[];
   createdAt: Date;
   updatedAt: Date;
+  isStub?:   boolean; // true = metadata only, full turns not yet loaded
 }
 
 const GREETING = '你好，我是課程搜尋助理。你可以直接問我課程方向、學分安排，或想比較的學院特色。';
@@ -73,7 +70,7 @@ function makeConvFromSession(detail: {
   updated_at: string;
   turns: Array<{
     user: string; assistant: string;
-    course_cards: CourseCard[]; course_pool?: CourseCard[];
+    course_cards: CourseCard[];
     tools_used: string[]; created_at: string;
     debug_trace?: { toolCalls: import('../types').ToolTraceItem[] };
   }>;
@@ -90,28 +87,30 @@ function makeConvFromSession(detail: {
       : undefined;
     messages.push({
       role: 'assistant', content: t.assistant, timestamp: ts,
-      courseCards:    t.course_cards ?? [],
-      coursePool:     t.course_pool  ?? [],
-      toolsUsed:      t.tools_used   ?? [],
-      coursePoolCount: t.course_cards?.length ?? 0,
+      courseCards: t.course_cards ?? [],
+      toolsUsed:   t.tools_used  ?? [],
       debugTrace,
     });
   }
   const updatedAt = new Date(detail.updated_at || Date.now());
   return {
-    id: detail.session_id, title: detail.title || '未命名對話',
-    messages, createdAt: updatedAt, updatedAt,
+    id: detail.session_id,
+    title: detail.title || '未命名對話',
+    messages,
+    createdAt: updatedAt,
+    updatedAt,
+    isStub: false,
   };
 }
 
 export default function CourseSearchPage() {
   const { user, loading: authLoading } = useAuth();
-  const [conversations, setConversations] = useState<Conversation[]>([]);
+  const [conversations, setConversations]       = useState<Conversation[]>([]);
   const [selectedConversationId, setSelectedConversationId] = useState('');
-  const [inputMessage, setInputMessage]   = useState('');
+  const [inputMessage, setInputMessage]         = useState('');
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(true);
   const [isMobileConversationOpen, setIsMobileConversationOpen] = useState(false);
-  const [sessionsLoaded, setSessionsLoaded] = useState(false);
+  const [sessionsLoaded, setSessionsLoaded]     = useState(false);
 
   // 串流狀態
   const [isStreaming, setIsStreaming]   = useState(false);
@@ -120,35 +119,43 @@ export default function CourseSearchPage() {
   const abortRef = useRef<AbortController | null>(null);
   const activeTraceRef = useRef<{ toolCalls: ToolTraceItem[]; poolSize: number }>({ toolCalls: [], poolSize: 0 });
 
-  // 右側課程面板
-  const [panelCourses, setPanelCourses]     = useState<CourseCard[]>([]);
-  const [panelPoolCount, setPanelPoolCount] = useState(0);
-  const [panelPoolData, setPanelPoolData]   = useState<CourseCard[]>([]);
-  const [panelHasLarge, setPanelHasLarge]   = useState(false);
+  // 右側推薦課程
+  const [panelCourses, setPanelCourses] = useState<CourseCard[]>([]);
 
-  // modal / drawer
+  // Modal
   const [selectedCourse, setSelectedCourse] = useState<CourseCard | null>(null);
-  const [drawerData, setDrawerData]         = useState<CourseCard[] | null>(null);
 
   const sessionIds    = useRef<Record<string, string>>({});
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const textareaRef   = useRef<HTMLTextAreaElement>(null);
 
   const selectedConversation = useMemo(
     () => conversations.find((c) => c.id === selectedConversationId) ?? null,
     [conversations, selectedConversationId],
   );
 
-  // ── 從後端載入目前登入帳戶的歷史對話 ───────────────────────────────────
+  // textarea 自動增高
+  useEffect(() => {
+    const el = textareaRef.current;
+    if (!el) return;
+    el.style.height = 'auto';
+    el.style.height = `${Math.min(el.scrollHeight, 96)}px`; // max ~4 行
+  }, [inputMessage]);
+
+  // ── 載入歷史對話（先拿 metadata，選到才 fetch 詳情）─────────────────────
   useEffect(() => {
     if (authLoading) return;
+
+    if (!user) {
+      createDefaultConversation();
+      setSessionsLoaded(true);
+      return;
+    }
 
     let cancelled = false;
     setSessionsLoaded(false);
     sessionIds.current = {};
     setPanelCourses([]);
-    setPanelPoolCount(0);
-    setPanelPoolData([]);
-    setPanelHasLarge(false);
 
     chatAPI.getSessions()
       .then(async (sessions) => {
@@ -158,32 +165,30 @@ export default function CourseSearchPage() {
           setSessionsLoaded(true);
           return;
         }
-        const details = await Promise.all(
-          sessions.slice(0, 30).map((s) => chatAPI.getSession(s.session_id).catch(() => null))
-        );
-        if (cancelled) return;
 
-        const convs: Conversation[] = details
-          .filter((d): d is NonNullable<typeof d> => d !== null && d.turns.length > 0)
-          .map(makeConvFromSession);
-
-        if (convs.length === 0) {
-          createDefaultConversation();
-        } else {
-          // 綁定 sessionIds
-          convs.forEach((c) => { sessionIds.current[c.id] = c.id; });
-          setConversations(convs);
-          setSelectedConversationId(convs[0].id);
-          // 右側面板顯示最新對話的最後一輪課程
-          const lastMsg = [...convs[0].messages].reverse().find(
-            (m) => m.role === 'assistant' && (m.courseCards?.length ?? 0) > 0
-          );
-          if (lastMsg?.courseCards) {
-            setPanelCourses(lastMsg.courseCards);
-            setPanelPoolCount(lastMsg.coursePoolCount ?? 0);
-          }
-        }
+        // 建立 stub（只有 metadata，無詳情）
+        const stubs: Conversation[] = sessions.map(s => ({
+          id:        s.session_id,
+          title:     s.title || '未命名對話',
+          messages:  [{ role: 'assistant' as const, content: GREETING, timestamp: new Date(s.updated_at) }],
+          createdAt: new Date(s.updated_at),
+          updatedAt: new Date(s.updated_at),
+          isStub:    true,
+        }));
+        stubs.forEach(c => { sessionIds.current[c.id] = c.id; });
+        setConversations(stubs);
+        setSelectedConversationId(stubs[0].id);
         setSessionsLoaded(true);
+
+        // 自動載入第一則對話的完整詳情
+        const detail = await chatAPI.getSession(stubs[0].id).catch(() => null);
+        if (cancelled || !detail) return;
+        const full = makeConvFromSession(detail);
+        setConversations(prev => prev.map(c => c.id === full.id ? full : c));
+        const lastMsg = [...full.messages].reverse().find(
+          m => m.role === 'assistant' && (m.courseCards?.length ?? 0) > 0
+        );
+        if (lastMsg?.courseCards) setPanelCourses(lastMsg.courseCards);
       })
       .catch(() => {
         if (cancelled) return;
@@ -191,9 +196,7 @@ export default function CourseSearchPage() {
         setSessionsLoaded(true);
       });
 
-    return () => {
-      cancelled = true;
-    };
+    return () => { cancelled = true; };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [authLoading, user?.id]);
 
@@ -215,7 +218,7 @@ export default function CourseSearchPage() {
     setConversations((prev) => prev.map((c) => (c.id === id ? updater(c) : c)));
   }, []);
 
-  // ── 對話管理 ──────────────────────────────────────────────────────────────
+  // ── 對話管理 ────────────────────────────────────────────────────────────
   const handleNewConversation = () => {
     const nc: Conversation = {
       id: Date.now().toString(), title: '新對話',
@@ -227,9 +230,6 @@ export default function CourseSearchPage() {
     setInputMessage('');
     setIsMobileConversationOpen(false);
     setPanelCourses([]);
-    setPanelPoolCount(0);
-    setPanelPoolData([]);
-    setPanelHasLarge(false);
   };
 
   const handleDeleteConversation = (id: string) => {
@@ -237,47 +237,62 @@ export default function CourseSearchPage() {
     if (sid) { chatAPI.clearSession(sid).catch(() => {}); delete sessionIds.current[id]; }
     setConversations((prev) => {
       const next = prev.filter((c) => c.id !== id);
+      if (next.length === 0) {
+        // 刪除最後一則：清空面板，建立新對話
+        setPanelCourses([]);
+        const nc: Conversation = {
+          id: Date.now().toString(), title: '新對話',
+          messages: [{ role: 'assistant', content: GREETING, timestamp: new Date() }],
+          createdAt: new Date(), updatedAt: new Date(),
+        };
+        setSelectedConversationId(nc.id);
+        return [nc];
+      }
       if (selectedConversationId === id) {
-        const nextId = next[0]?.id ?? '';
-        setSelectedConversationId(nextId);
+        const nextConv = next[0];
+        setSelectedConversationId(nextConv.id);
+        const lastMsg = [...nextConv.messages].reverse().find(
+          m => m.role === 'assistant' && (m.courseCards?.length ?? 0) > 0
+        );
+        setPanelCourses(lastMsg?.courseCards ?? []);
       }
       return next;
     });
     setInputMessage('');
   };
 
-  const handleSelectConversation = useCallback((id: string) => {
+  // 選擇對話：stub 時 lazy load 完整詳情
+  const handleSelectConversation = useCallback(async (id: string) => {
     setSelectedConversationId(id);
     setIsMobileConversationOpen(false);
-    const conv = conversations.find((c) => c.id === id);
+
+    const conv = conversations.find(c => c.id === id);
     if (!conv) return;
-    const last = [...conv.messages].reverse().find(
-      (m) => m.role === 'assistant' && !m.isStreaming && (m.courseCards?.length ?? 0) > 0
-    );
-    if (last?.courseCards) {
-      setPanelCourses(last.courseCards);
-      setPanelPoolCount(last.coursePoolCount ?? 0);
-      setPanelPoolData(last.coursePool ?? []);
-      setPanelHasLarge(last.hasLargeResult ?? false);
-    } else {
-      setPanelCourses([]);
-      setPanelPoolCount(0);
-      setPanelPoolData([]);
-      setPanelHasLarge(false);
+
+    if (conv.isStub) {
+      const detail = await chatAPI.getSession(id).catch(() => null);
+      if (!detail) return;
+      const full = makeConvFromSession(detail);
+      setConversations(prev => prev.map(c => c.id === id ? full : c));
+      const lastMsg = [...full.messages].reverse().find(
+        m => m.role === 'assistant' && (m.courseCards?.length ?? 0) > 0
+      );
+      setPanelCourses(lastMsg?.courseCards ?? []);
+      return;
     }
+
+    const last = [...conv.messages].reverse().find(
+      m => m.role === 'assistant' && !m.isStreaming && (m.courseCards?.length ?? 0) > 0
+    );
+    setPanelCourses(last?.courseCards ?? []);
   }, [conversations]);
 
-  // 點擊「查看此次推薦課程」按鈕
   const handleShowMsgCourses = useCallback((msg: Message) => {
     setPanelCourses(msg.courseCards ?? []);
-    setPanelPoolCount(msg.coursePoolCount ?? 0);
-    setPanelPoolData(msg.coursePool ?? []);
-    setPanelHasLarge(msg.hasLargeResult ?? false);
   }, []);
 
-  // ── 送出訊息（串流） ──────────────────────────────────────────────────────
-  const handleSendMessage = (event: React.FormEvent) => {
-    event.preventDefault();
+  // ── 送出訊息（串流） ─────────────────────────────────────────────────────
+  const doSend = () => {
     if (!inputMessage.trim() || !selectedConversation || isStreaming) return;
 
     const text   = inputMessage.trim();
@@ -333,16 +348,12 @@ export default function CourseSearchPage() {
         },
         onVerifyDone: (selected, filteredOut, method) => {
           setIsVerifying(false);
-          // store verify data in a temp field for onDone to pick up
           (activeTraceRef.current as typeof activeTraceRef.current & { verifyResult?: unknown }).verifyResult = { selected, filteredOut, method };
         },
         onDone: (ev: StreamEvent) => {
           if (ev.session_id) sessionIds.current[convId] = ev.session_id;
-          const cards     = ev.course_cards      ?? [];
-          const pool      = ev.course_pool       ?? [];
-          const poolCount = ev.course_pool_count  ?? 0;
-          const hasLarge  = ev.has_large_result   ?? false;
-          const tools     = ev.tools_used         ?? [];
+          const cards = ev.course_cards ?? [];
+          const tools = ev.tools_used   ?? [];
 
           const traceRef = activeTraceRef.current as typeof activeTraceRef.current & { verifyResult?: { selected: string[]; filteredOut: string[]; method?: 'tag' | 'llm' } };
           const debugTrace: DebugTrace = {
@@ -353,21 +364,16 @@ export default function CourseSearchPage() {
           };
 
           setPanelCourses(cards);
-          setPanelPoolCount(poolCount);
-          setPanelPoolData(pool);
-          setPanelHasLarge(hasLarge);
 
           updateConv(convId, (c) => {
             const msgs = [...c.messages];
             if (msgs[streamIdx]) {
               msgs[streamIdx] = {
                 ...msgs[streamIdx],
-                isStreaming:     false,
-                courseCards:     cards,
-                coursePool:      pool,
-                coursePoolCount: poolCount,
-                hasLargeResult:  hasLarge,
-                toolsUsed:       tools,
+                ...(ev.final_answer ? { content: ev.final_answer } : {}),
+                isStreaming: false,
+                courseCards: cards,
+                toolsUsed:   tools,
                 debugTrace,
               };
             }
@@ -398,6 +404,11 @@ export default function CourseSearchPage() {
     );
   };
 
+  const handleSendMessage = (e: React.FormEvent) => {
+    e.preventDefault();
+    doSend();
+  };
+
   const formatTime = (date: Date) => {
     const diff = Date.now() - date.getTime();
     const days = Math.floor(diff / 86400000);
@@ -410,10 +421,13 @@ export default function CourseSearchPage() {
   const ConvList = ({ onSelect }: { onSelect?: () => void }) => (
     <div className="flex-1 space-y-2 overflow-y-auto p-3">
       {conversations.map((conv) => (
-        <button
-          key={conv.id} type="button"
+        <div
+          key={conv.id}
+          role="button"
+          tabIndex={0}
           onClick={() => { handleSelectConversation(conv.id); onSelect?.(); }}
-          className={`w-full rounded-2xl border p-3 text-left transition ${
+          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { handleSelectConversation(conv.id); onSelect?.(); } }}
+          className={`w-full cursor-pointer rounded-2xl border p-3 text-left transition ${
             selectedConversationId === conv.id
               ? 'border-primary-300 bg-primary-50'
               : 'border-transparent bg-white hover:border-slate-200 hover:bg-slate-50'
@@ -433,7 +447,7 @@ export default function CourseSearchPage() {
               <HiTrash className="h-4 w-4" />
             </button>
           </div>
-        </button>
+        </div>
       ))}
     </div>
   );
@@ -561,9 +575,7 @@ export default function CourseSearchPage() {
               <div className="card flex h-full flex-col">
                 {/* 標題列 */}
                 <div className="flex flex-shrink-0 items-center border-b border-gray-200 px-4 py-3">
-                  <div className="min-w-0">
-                    <h2 className="truncate text-sm font-semibold text-gray-800">{selectedConversation.title}</h2>
-                  </div>
+                  <h2 className="truncate text-sm font-semibold text-gray-800">{selectedConversation.title}</h2>
                 </div>
 
                 {/* 訊息列表 */}
@@ -590,7 +602,6 @@ export default function CourseSearchPage() {
                           )}
                         </div>
 
-                        {/* 每輪 assistant 訊息底下的操作列 */}
                         {msg.role === 'assistant' && !msg.isStreaming && (
                           <div className="mt-2 space-y-1.5">
                             {(msg.courseCards?.length ?? 0) > 0 && (
@@ -610,9 +621,7 @@ export default function CourseSearchPage() {
                                 )}
                               </div>
                             )}
-                            {msg.debugTrace && (
-                              <DebugTracePanel trace={msg.debugTrace} />
-                            )}
+                            {msg.debugTrace && <DebugTracePanel trace={msg.debugTrace} />}
                           </div>
                         )}
                       </div>
@@ -642,7 +651,6 @@ export default function CourseSearchPage() {
                     </div>
                   )}
 
-                  {/* 驗證課程中 */}
                   {isVerifying && (
                     <div className="flex justify-start">
                       <div className="flex items-center gap-2 rounded-2xl bg-amber-50 px-4 py-2.5 text-xs text-amber-700 shadow-sm">
@@ -652,7 +660,6 @@ export default function CourseSearchPage() {
                     </div>
                   )}
 
-                  {/* 等待第一個 token */}
                   {isStreaming && activeTools.length === 0 &&
                     !selectedConversation.messages.at(-1)?.content && (
                     <div className="flex justify-start">
@@ -671,17 +678,24 @@ export default function CourseSearchPage() {
 
                 {/* 輸入框 */}
                 <form onSubmit={handleSendMessage} className="border-t border-gray-200 p-3">
-                  <div className="flex gap-3">
-                    <input
-                      type="text"
+                  <div className="flex items-end gap-3">
+                    <textarea
+                      ref={textareaRef}
                       value={inputMessage}
                       onChange={(e) => setInputMessage(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' && !e.shiftKey) {
+                          e.preventDefault();
+                          doSend();
+                        }
+                      }}
                       disabled={isStreaming}
-                      placeholder="輸入你想查詢的課程、學院或學習方向"
-                      className="flex-1 rounded-xl border border-gray-300 px-4 py-3 transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500 disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-400"
+                      placeholder="輸入你想查詢的課程、學院或學習方向（Enter 送出，Shift+Enter 換行）"
+                      rows={1}
+                      className="flex-1 resize-none overflow-y-auto rounded-xl border border-gray-300 px-4 py-3 text-sm leading-6 transition-colors focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500 disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-400"
                     />
                     <button type="submit" disabled={isStreaming || !inputMessage.trim()}
-                      className="btn-primary disabled:cursor-not-allowed disabled:opacity-50">
+                      className="btn-primary flex-shrink-0 self-end disabled:cursor-not-allowed disabled:opacity-50">
                       <HiPaperAirplane className="h-5 w-5" />
                     </button>
                   </div>
@@ -700,14 +714,7 @@ export default function CourseSearchPage() {
         <aside className="card hidden min-h-0 w-[280px] flex-shrink-0 overflow-hidden lg:flex flex-col">
           <CourseSidePanel
             courses={panelCourses}
-            poolCount={panelPoolCount}
-            hasLarge={panelHasLarge}
             onCourseClick={setSelectedCourse}
-            onViewAll={
-              panelPoolData.length > 0
-                ? () => setDrawerData(panelPoolData)
-                : undefined
-            }
           />
         </aside>
       </div>
@@ -716,14 +723,6 @@ export default function CourseSearchPage() {
         <CourseDetailModal
           course={selectedCourse}
           onClose={() => setSelectedCourse(null)}
-        />
-      )}
-
-      {drawerData && (
-        <CoursePoolDrawer
-          courses={drawerData}
-          onClose={() => setDrawerData(null)}
-          onCourseClick={(c) => { setSelectedCourse(c); }}
         />
       )}
     </div>

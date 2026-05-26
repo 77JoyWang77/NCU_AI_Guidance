@@ -17,7 +17,10 @@ from typing import Optional
 
 from openai import AzureOpenAI
 from qdrant_client import QdrantClient
-from qdrant_client.models import Filter, FieldCondition, MatchValue, MatchAny
+from qdrant_client.models import (
+    Filter, FieldCondition, MatchValue, MatchAny,
+    Prefetch, FusionQuery, Fusion, SparseVector,
+)
 
 ROOT = Path(__file__).parent.parent.parent.parent
 QDRANT_DIR        = ROOT / "data" / "processed" / "qdrant_data"
@@ -35,6 +38,94 @@ def _get_qdrant() -> QdrantClient:
             timeout=30,
         )
     return QdrantClient(path=str(QDRANT_DIR))
+
+
+_bm25_model = None  # 模組級快取，避免每次重新載入
+
+
+def _get_bm25():
+    global _bm25_model
+    if _bm25_model is None:
+        from fastembed import SparseTextEmbedding
+        _bm25_model = SparseTextEmbedding(model_name="Qdrant/bm25")
+    return _bm25_model
+
+
+def _sparse_embed(text: str):
+    return list(_get_bm25().embed([text]))[0]
+
+
+_DENSE_ONLY_COLLECTIONS = {"ncu_graph_nodes"}
+
+
+def _merge_must_not(base_filter: Filter | None, must_not_conds: list[dict]) -> Filter | None:
+    """將 must_not_conds（ChromaDB 語法 list）合併進 base_filter。
+
+    must_not_conds 格式範例：
+      [{"dept_exclude": {"$contains": "資工系"}}, {"dept_exclude": {"$contains": "電機系"}}]
+    → 每個 $contains 轉換為 FieldCondition(MatchAny)，放入 filter.must_not
+    """
+    if not must_not_conds:
+        return base_filter
+    mn_conditions = []
+    for cond in must_not_conds:
+        for key, op in cond.items():
+            if not isinstance(op, dict):
+                continue
+            if "$contains" in op:
+                mn_conditions.append(FieldCondition(key=key, match=MatchAny(any=[op["$contains"]])))
+            elif "$eq" in op:
+                mn_conditions.append(FieldCondition(key=key, match=MatchValue(value=op["$eq"])))
+    if not mn_conditions:
+        return base_filter
+    if base_filter is None:
+        return Filter(must_not=mn_conditions)
+    existing_mn = list(base_filter.must_not or [])
+    base_filter.must_not = existing_mn + mn_conditions
+    return base_filter
+
+
+def _hybrid_search(client, collection, dense_vec, query_text, qdrant_filter, n_results):
+    """Dense + BM25 prefetch → RRF 融合；graph_nodes 或失敗時降級為純 dense。"""
+    if collection in _DENSE_ONLY_COLLECTIONS:
+        result = client.query_points(
+            collection_name=collection,
+            query=dense_vec,
+            query_filter=qdrant_filter,
+            limit=n_results,
+            with_payload=True,
+        )
+        return result.points
+    try:
+        sp = _sparse_embed(query_text)
+        result = client.query_points(
+            collection_name=collection,
+            prefetch=[
+                Prefetch(query=dense_vec, limit=n_results * 3),
+                Prefetch(
+                    query=SparseVector(
+                        indices=sp.indices.tolist(),
+                        values=sp.values.tolist(),
+                    ),
+                    using="bm25",
+                    limit=n_results * 3,
+                ),
+            ],
+            query=FusionQuery(fusion=Fusion.RRF),
+            query_filter=qdrant_filter,
+            limit=n_results,
+            with_payload=True,
+        )
+        return result.points
+    except Exception:
+        result = client.query_points(
+            collection_name=collection,
+            query=dense_vec,
+            query_filter=qdrant_filter,
+            limit=n_results,
+            with_payload=True,
+        )
+        return result.points
 
 
 @lru_cache(maxsize=1)
@@ -146,61 +237,42 @@ def search_courses(
     filters: Optional[dict] = None,
     n_results: int = 10,
     collection: str = "ncu_courses_ug",
+    must_not_conds: Optional[list[dict]] = None,
 ) -> list[dict]:
     """向量搜尋課程。
 
     filters 使用 ChromaDB where 語法，內部自動轉為 Qdrant Filter。
+    must_not_conds：list[dict]，格式同 filters，但轉為 Qdrant must_not 條件，
+      用於排除特定欄位值（例如排除 dept_exclude 含指定系所的課程）。
     filterable 欄位（tools/languages/concepts/when_semesters/eligible_years 等）
     在 Qdrant payload 中以陣列儲存，支援 $contains → MatchAny 轉換。
     """
     embedding = _embed(query)
     client = _get_qdrant()
     qdrant_filter = _qdrant_filter(filters) if filters else None
+    qdrant_filter = _merge_must_not(qdrant_filter, must_not_conds or [])
 
     try:
-        result = client.query_points(
-            collection_name=collection,
-            query=embedding,
-            query_filter=qdrant_filter,
-            limit=n_results,
-            with_payload=True,
-        )
-        return _fmt_search(result.points)
+        points = _hybrid_search(client, collection, embedding, query, qdrant_filter, n_results)
+        return _fmt_search(points)
     except Exception:
         if filters:
             try:
-                result = client.query_points(
-                    collection_name=collection,
-                    query=embedding,
-                    limit=n_results,
-                    with_payload=True,
-                )
-                return _fmt_search(result.points)
+                points = _hybrid_search(client, collection, embedding, query, None, n_results)
+                return _fmt_search(points)
             except Exception:
                 pass
         return []
 
 
 def search_programs(query: str, n_results: int = 5) -> list[dict]:
-    embedding = _embed(query)
-    result = _get_qdrant().query_points(
-        collection_name="ncu_credit_programs",
-        query=embedding,
-        limit=n_results,
-        with_payload=True,
-    )
-    return _fmt_search(result.points)
+    emb = _embed(query)
+    return _fmt_search(_hybrid_search(_get_qdrant(), "ncu_credit_programs", emb, query, None, n_results))
 
 
 def search_departments(query: str, n_results: int = 5) -> list[dict]:
-    embedding = _embed(query)
-    result = _get_qdrant().query_points(
-        collection_name="ncu_departments",
-        query=embedding,
-        limit=n_results,
-        with_payload=True,
-    )
-    return _fmt_search(result.points)
+    emb = _embed(query)
+    return _fmt_search(_hybrid_search(_get_qdrant(), "ncu_departments", emb, query, None, n_results))
 
 
 def search_teachers(
@@ -208,16 +280,9 @@ def search_teachers(
     filters: Optional[dict] = None,
     n_results: int = 8,
 ) -> list[dict]:
-    embedding = _embed(query)
-    qdrant_filter = _qdrant_filter(filters) if filters else None
-    result = _get_qdrant().query_points(
-        collection_name="ncu_teachers",
-        query=embedding,
-        query_filter=qdrant_filter,
-        limit=n_results,
-        with_payload=True,
-    )
-    return _fmt_search(result.points)
+    emb = _embed(query)
+    f = _qdrant_filter(filters) if filters else None
+    return _fmt_search(_hybrid_search(_get_qdrant(), "ncu_teachers", emb, query, f, n_results))
 
 
 def get_teacher_by_name(name: str) -> list[dict]:

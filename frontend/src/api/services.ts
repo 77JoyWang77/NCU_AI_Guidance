@@ -6,6 +6,9 @@ import type {
   Answer,
   AssessmentResult,
   Course,
+  CourseAskResponse,
+  CourseSemanticSearchParams,
+  CourseSemanticSearchResponse,
   Project,
   ChatApiResponse,
   StreamEvent,
@@ -61,6 +64,16 @@ export const courseAPI = {
 
   searchCourses: async (query: string): Promise<Course[]> => {
     const response = await apiClient.post('/course-search', { query });
+    return response.data;
+  },
+
+  semanticSearch: async (params: CourseSemanticSearchParams): Promise<CourseSemanticSearchResponse> => {
+    const response = await apiClient.post('/courses/semantic-search', params);
+    return response.data;
+  },
+
+  askCourse: async (courseId: string, question: string): Promise<CourseAskResponse> => {
+    const response = await apiClient.post(`/courses/${encodeURIComponent(courseId)}/ask`, { question });
     return response.data;
   },
 };
@@ -168,6 +181,47 @@ export const chatStreamAPI = {
       });
 
     return controller;
+  },
+};
+
+// 學習傾向分析 API
+export interface AnalyticsOverview {
+  total_sessions: number;
+  total_turns: number;
+  total_courses_explored: number;
+  fav_college: string;
+}
+
+export interface AnalyticsDistItem {
+  name: string;
+  count: number;
+  pct: number;
+}
+
+export interface AnalyticsToolItem {
+  tool: string;
+  label: string;
+  count: number;
+}
+
+export interface AnalyticsCourseItem {
+  name: string;
+  count: number;
+}
+
+export interface AnalyticsData {
+  overview: AnalyticsOverview;
+  dept_distribution: AnalyticsDistItem[];
+  college_distribution: AnalyticsDistItem[];
+  tool_usage: AnalyticsToolItem[];
+  top_courses: AnalyticsCourseItem[];
+  top_domain_tags: { tag: string; count: number }[];
+}
+
+export const analyticsAPI = {
+  get: async (): Promise<AnalyticsData> => {
+    const response = await apiClient.get('/chat/analytics');
+    return response.data;
   },
 };
 

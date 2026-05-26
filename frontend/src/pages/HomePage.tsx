@@ -7,6 +7,7 @@ import {
   HiChartBar,
   HiChevronLeft,
   HiChevronRight,
+  HiClipboardList,
   HiCollection,
   HiSearch,
 } from 'react-icons/hi';
@@ -63,24 +64,24 @@ const stats = [
 const features = [
   {
     title: '興趣測評',
-    description: '透過問答探索個人興趣與能力傾向，快速找到更適合自己的學系方向。',
+    description: '透過題目評估興趣與能力傾向，快速整理出較適合探索的學院與學系方向。',
     icon: HiChartBar,
     path: '/assessment',
     tag: '40+ 題目',
   },
   {
     title: '課程資訊',
-    description: '瀏覽各系課程內容、學分與授課資訊，建立對不同學群的具體想像。',
+    description: '瀏覽課程目標、內容、學分、授課教師與知識標籤，也能搜尋與對比多門課程。',
     icon: HiBookOpen,
     path: '/courses',
     tag: '1,300+ 課程',
   },
   {
     title: '課程搜尋',
-    description: '用關鍵字快速查找課程與教師資訊，縮短探索課程方向的時間。',
+    description: '用 AI 對話描述想學的主題或方向，取得相關課程推薦與延伸查詢結果。',
     icon: HiSearch,
     path: '/course-search',
-    tag: '快速查找',
+    tag: 'AI 對話',
   },
   {
     title: '研究計畫',
@@ -90,8 +91,15 @@ const features = [
     tag: '459 筆資料',
   },
   {
+    title: '修課規定',
+    description: '查詢各學院與學系的修課架構、畢業條件與課程規則，協助理解學習路徑。',
+    icon: HiClipboardList,
+    path: '/curriculum',
+    tag: '規則整理',
+  },
+  {
     title: '資源連結',
-    description: '整合升學、學習與延伸閱讀資源，讓後續查找資訊更有效率。',
+    description: '整理落點分析、升學參考平台與中央大學系所網站，集中管理常用外部資源。',
     icon: HiCollection,
     path: '/resources',
     tag: '整合入口',
@@ -213,6 +221,24 @@ export default function HomePage() {
           onPointerCancel={handlePointerUp}
         >
           <div className="feature-coverflow-stage">
+            <button
+              type="button"
+              onPointerDown={(event) => event.stopPropagation()}
+              onClick={() => goToFeature(activeFeatureIndex - 1)}
+              className="absolute left-1 top-1/2 z-20 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white/95 text-slate-600 shadow-soft transition hover:bg-white hover:text-slate-900 sm:left-4 lg:left-10"
+              aria-label="上一張"
+            >
+              <HiChevronLeft className="h-5 w-5" />
+            </button>
+            <button
+              type="button"
+              onPointerDown={(event) => event.stopPropagation()}
+              onClick={() => goToFeature(activeFeatureIndex + 1)}
+              className="absolute right-1 top-1/2 z-20 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white/95 text-slate-600 shadow-soft transition hover:bg-white hover:text-slate-900 sm:right-4 lg:right-10"
+              aria-label="下一張"
+            >
+              <HiChevronRight className="h-5 w-5" />
+            </button>
             {features.map((feature, index) => {
               const Icon = feature.icon;
               const offset = index - activeFeatureIndex;
@@ -250,25 +276,6 @@ export default function HomePage() {
                 </button>
               );
             })}
-          </div>
-
-          <div className="mt-[2px] flex items-center justify-center gap-2">
-            <button
-              type="button"
-              onClick={() => goToFeature(activeFeatureIndex - 1)}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white/90 text-slate-600 shadow-soft transition hover:bg-white hover:text-slate-900"
-              aria-label="上一張"
-            >
-              <HiChevronLeft className="h-5 w-5" />
-            </button>
-            <button
-              type="button"
-              onClick={() => goToFeature(activeFeatureIndex + 1)}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white/90 text-slate-600 shadow-soft transition hover:bg-white hover:text-slate-900"
-              aria-label="下一張"
-            >
-              <HiChevronRight className="h-5 w-5" />
-            </button>
           </div>
         </div>
       </section>

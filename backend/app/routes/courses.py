@@ -1,11 +1,36 @@
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, HTTPException, Query
+from pydantic import BaseModel, Field
 from typing import List, Optional
 import json
-import os
 from pathlib import Path
-from app.models.schemas import Course, CoreAbility, DistributionCondition
+from app.models.schemas import Course
+from app.services.course_info_service import answer_course_question, enrich_course_dict, semantic_search_courses
 
 router = APIRouter()
+
+
+class CourseSemanticSearchRequest(BaseModel):
+    query: str
+    selected_types: List[str] = Field(default_factory=list)
+    selected_credits: List[str] = Field(default_factory=list)
+    selected_semesters: List[str] = Field(default_factory=list)
+    limit: int = 50
+
+
+class CourseSemanticSearchResponse(BaseModel):
+    mode: str
+    message: str = ""
+    results: List[Course] = Field(default_factory=list)
+
+
+class CourseAskRequest(BaseModel):
+    question: str
+
+
+class CourseAskResponse(BaseModel):
+    answer: str
+    model: str
+    warnings: List[str] = Field(default_factory=list)
 
 # 載入課程資料
 def load_courses():
@@ -27,7 +52,7 @@ def load_courses():
     for raw_course in raw_courses:
         converted_course = convert_course_format(raw_course)
         if converted_course:
-            all_courses.append(converted_course)
+            all_courses.append(enrich_course_dict(converted_course))
 
     return all_courses
 
@@ -137,6 +162,54 @@ async def get_courses(
         return filtered_courses[:limit]
     return filtered_courses
 
+
+@router.post("/semantic-search", response_model=CourseSemanticSearchResponse)
+async def semantic_search_courses_endpoint(request: CourseSemanticSearchRequest):
+    """
+    Search courses with cached text-embedding-3-large query vectors and local Qdrant collections.
+    Falls back on the frontend keyword search if any dependency is unavailable.
+    """
+    try:
+        results = semantic_search_courses(
+            query=request.query,
+            selected_types=request.selected_types,
+            selected_credits=request.selected_credits,
+            selected_semesters=request.selected_semesters,
+            limit=max(1, min(request.limit, 120)),
+        )
+        return CourseSemanticSearchResponse(mode="semantic", results=results)
+    except Exception as exc:
+        return CourseSemanticSearchResponse(
+            mode="fallback",
+            message=f"關鍵字向量搜尋暫時不可用，請先改用一般文字搜尋。原因：{exc}",
+            results=[],
+        )
+
+
+@router.post("/{course_id}/ask", response_model=CourseAskResponse)
+async def ask_course_question_endpoint(course_id: str, request: CourseAskRequest):
+    """
+    Answer a one-off question about a single course. This endpoint does not save chat history.
+    """
+    if not request.question.strip():
+        raise HTTPException(status_code=400, detail="問題不可為空。")
+
+    try:
+        result = answer_course_question(course_id=course_id, question=request.question)
+        return CourseAskResponse(**result)
+    except RuntimeError as exc:
+        if "AI_API_CONFIG_MISSING" in str(exc) or "OPENAI_API_KEY" in str(exc):
+            raise HTTPException(
+                status_code=503,
+                detail=(
+                    "AI 課程助理目前無法使用，請確認後端 .env 已設定 Azure OpenAI "
+                    "或 OPENAI_API_KEY。"
+                ),
+            ) from exc
+        raise HTTPException(status_code=503, detail=f"AI 課程助理暫時無法回答：{exc}") from exc
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+
 @router.get("/{course_id}", response_model=Course)
 async def get_course_by_id(course_id: str):
     """
@@ -145,7 +218,7 @@ async def get_course_by_id(course_id: str):
     courses = load_courses()
 
     for course in courses:
-        if course.get('serial_no') == course_id:
+        if course.get('serial_no') == course_id or course.get('course_id') == course_id:
             return course
 
-    return {"error": "Course not found"}
+    raise HTTPException(status_code=404, detail="Course not found")
