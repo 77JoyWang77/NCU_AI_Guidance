@@ -117,6 +117,7 @@ Desktop.ini
 # Node.js (如果有前端)
 node_modules/
 package-lock.json
+!frontend/package-lock.json
 yarn.lock
 npm-debug.log*
 
