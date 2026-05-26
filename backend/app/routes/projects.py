@@ -26,7 +26,7 @@ def build_pdf_url(pdf_path: str) -> str:
     project_folder = os.getenv("CLOUDINARY_PROJECT_FOLDER")
 
     if cloud_name and project_folder:
-        encoded_parts = [quote(part, safe="") for part in pdf_path.split("\\")]
+        encoded_parts = [quote(part.replace("&", "and"), safe="") for part in pdf_path.split("\\")]
         encoded_path = "/".join(encoded_parts)
         encoded_folder = "/".join(quote(part, safe="") for part in project_folder.strip("/").split("/"))
         return f"https://res.cloudinary.com/{cloud_name}/raw/upload/{encoded_folder}/{encoded_path}"
