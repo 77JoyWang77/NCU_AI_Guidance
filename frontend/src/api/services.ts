@@ -184,6 +184,47 @@ export const chatStreamAPI = {
   },
 };
 
+// 學習傾向分析 API
+export interface AnalyticsOverview {
+  total_sessions: number;
+  total_turns: number;
+  total_courses_explored: number;
+  fav_college: string;
+}
+
+export interface AnalyticsDistItem {
+  name: string;
+  count: number;
+  pct: number;
+}
+
+export interface AnalyticsToolItem {
+  tool: string;
+  label: string;
+  count: number;
+}
+
+export interface AnalyticsCourseItem {
+  name: string;
+  count: number;
+}
+
+export interface AnalyticsData {
+  overview: AnalyticsOverview;
+  dept_distribution: AnalyticsDistItem[];
+  college_distribution: AnalyticsDistItem[];
+  tool_usage: AnalyticsToolItem[];
+  top_courses: AnalyticsCourseItem[];
+  top_domain_tags: { tag: string; count: number }[];
+}
+
+export const analyticsAPI = {
+  get: async (): Promise<AnalyticsData> => {
+    const response = await apiClient.get('/chat/analytics');
+    return response.data;
+  },
+};
+
 // 大专生计划 API
 export const projectAPI = {
   getProjects: async (filters?: {

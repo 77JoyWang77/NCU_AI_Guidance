@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { HiUser } from 'react-icons/hi';
 import { useAuth } from '../auth/AuthContext';
 
 function GoogleMark() {
@@ -36,19 +38,12 @@ export default function GoogleLoginButton() {
 
   if (user) {
     return (
-      <div className="flex items-center gap-2">
-        {user.picture ? (
-          <img src={user.picture} alt="" className="h-8 w-8 rounded-full object-cover" />
-        ) : null}
-        <span className="max-w-32 truncate text-xs font-medium text-slate-600">{user.name}</span>
-        <button
-          type="button"
-          onClick={logout}
-          className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 shadow-sm transition hover:bg-slate-50 hover:text-slate-900"
-        >
-          登出
-        </button>
-      </div>
+      <Link
+        to="/profile"
+        className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 shadow-sm transition hover:border-primary-200 hover:bg-primary-50 hover:text-primary-700"
+      >
+        <HiUser className="h-5 w-5" />
+      </Link>
     );
   }
 

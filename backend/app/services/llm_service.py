@@ -66,7 +66,10 @@ SYSTEM_PROMPT = """你是「中央大學選課助理」，協助高中生、大�
 7. **嚴禁在用戶可見的回答中使用任何系統技術用語**，包括但不限於：
    「知識圖譜」、「圖譜」、「語意相近」、「精確命中」、「節點」、「向量搜尋」、「工具回傳」、「系統查詢」。
    直接說「有哪些系」「有哪些課」即可；資料來源不需要解釋。
-8. **提到課程名稱時，必須用 `<course>` 標籤包住，格式如下：**
+8. **多輪對話中，每次回答涉及課程、系所、學程、教師、修課規定、畢業規定等具體資訊時，
+   必須呼叫對應工具查詢，不得僅憑對話歷史的內容推斷或重複前輪答案。
+   對話歷史僅供語境參考（例如了解用戶問的是哪個主題），不可作為課程資料的直接來源。**
+9. **提到課程名稱時，必須用 `<course>` 標籤包住，格式如下：**
    - 知道系所時：`<course>課名（系所）</course>`，例如：`<course>統計學（數學系）</course>`
    - 不知道系所時：`<course>課名</course>`，例如：`<course>資料結構</course>`
    ⚠️ **`<course>` 標籤只能包住「課程名稱」，絕對不可用來包住系所名稱、學院名稱或其他非課程的詞**。
@@ -485,22 +488,37 @@ def generate_simple_answer(question: str, context: str) -> str:
 
 
 def _enrich_course_cards(cards: list[dict]) -> list[dict]:
-    """以課名向量 DB 補齊 code/teacher/credits/type 等欄位。
-    code 已存在表示來自 search_courses（資料完整），跳過不重複查詢。
-    code 為空表示來自 graph 工具，需補全。
+    """以課名向量 DB 補齊 code/teacher/credits/type/domain_tags 等欄位。
+    code 已存在表示來自 search_courses（基本資料完整），只補 domain_tags。
+    code 為空表示來自 graph 工具，需補全所有欄位。
     """
     from app.services import retriever
     for card in cards:
-        if card.get("code"):
-            continue
+        has_code = bool(card.get("code"))
+        if has_code and card.get("domain_tags"):
+            continue  # 已完整，跳過
         try:
-            results = retriever.get_courses_by_name(card["name"])
+            if has_code:
+                results = retriever.get_courses_by_code(card["code"])
+                if not results:
+                    results = retriever.get_courses_by_code(
+                        card["code"], collection="ncu_courses_grad"
+                    )
+            else:
+                results = retriever.get_courses_by_name(card["name"])
             if results:
                 meta = results[0].get("metadata", {})
-                card["code"]    = meta.get("course_code", "")
-                card["teacher"] = card.get("teacher") or meta.get("teacher", "")
-                card["credits"] = card.get("credits") or meta.get("credits", 0)
-                card["type"]    = card.get("type")    or meta.get("type", "")
+                if not has_code:
+                    card["code"]    = meta.get("course_code", "")
+                    card["teacher"] = card.get("teacher") or meta.get("teacher", "")
+                    card["credits"] = card.get("credits") or meta.get("credits", 0)
+                    card["type"]    = card.get("type")    or meta.get("type", "")
+                # domain_tags：優先取有 score 的 domain_tags_rich，fallback plain list
+                raw = meta.get("domain_tags_rich") or meta.get("domain_tags") or []
+                if isinstance(raw, list) and raw:
+                    card["domain_tags"] = "||".join(str(x) for x in raw)
+                elif isinstance(raw, str) and raw:
+                    card["domain_tags"] = raw
         except Exception:
             pass
     return cards
@@ -795,6 +813,12 @@ def generate_with_tools(
     system = SYSTEM_PROMPT
     if context_hint:
         system += f"\n\n## 學生背景資訊\n{context_hint}"
+    if history:
+        system += (
+            "\n\n⚠️ 多輪對話提醒：歷史訊息中的助理回答皆為上輪工具查詢後生成的摘要文字，"
+            "不代表完整資料。本輪若涉及課程/系所/學程/教師/畢業規定等具體查詢，"
+            "**仍必須呼叫對應工具取得最新資料**，不得只參照歷史對話的文字內容直接回答。"
+        )
 
     messages: list[dict] = list(history or [])
     messages.append({"role": "user", "content": question})
@@ -941,6 +965,12 @@ def stream_with_tools(
     system = SYSTEM_PROMPT
     if context_hint:
         system += f"\n\n## 學生背景資訊\n{context_hint}"
+    if history:
+        system += (
+            "\n\n⚠️ 多輪對話提醒：歷史訊息中的助理回答皆為上輪工具查詢後生成的摘要文字，"
+            "不代表完整資料。本輪若涉及課程/系所/學程/教師/畢業規定等具體查詢，"
+            "**仍必須呼叫對應工具取得最新資料**，不得只參照歷史對話的文字內容直接回答。"
+        )
 
     messages: list[dict] = list(history or [])
     messages.append({"role": "user", "content": question})

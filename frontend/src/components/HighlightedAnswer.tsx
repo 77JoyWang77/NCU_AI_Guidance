@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { HiAcademicCap } from 'react-icons/hi';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
@@ -68,8 +69,9 @@ export default function HighlightedAnswer({
               <button
                 type="button"
                 onClick={() => onCourseClick(card)}
-                className="inline rounded bg-primary-50 px-0.5 font-semibold text-primary-700 underline decoration-dotted underline-offset-2 transition hover:bg-primary-100"
+                className="inline-flex items-center gap-1 rounded-md bg-white px-1.5 py-0.5 font-medium text-primary-700 shadow-sm ring-1 ring-black/[0.06] transition-all hover:-translate-y-px hover:shadow active:translate-y-0 active:shadow-sm"
               >
+                <HiAcademicCap className="h-3.5 w-3.5 shrink-0 text-primary-400" />
                 {props.children}
               </button>
             );
