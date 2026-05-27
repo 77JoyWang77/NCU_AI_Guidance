@@ -244,4 +244,66 @@ export const projectAPI = {
     const response = await apiClient.post(`/projects/${projectId}/chat`, { message });
     return response.data.reply;
   },
+
+  streamChat(
+    projectId: string,
+    message: string,
+    handlers: {
+      onToken: (text: string) => void;
+      onDone: (sources: string[], sessionId: string) => void;
+      onError: (msg: string) => void;
+    },
+    threadId?: string,
+  ): AbortController {
+    const controller = new AbortController();
+
+    getFirebaseIdToken()
+      .then((token) =>
+        fetch(`${API_BASE}/projects/${projectId}/chat/stream`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            ...(token ? { Authorization: `Bearer ${token}` } : {}),
+          },
+          body: JSON.stringify({ message, thread_id: threadId ?? null }),
+          signal: controller.signal,
+        }),
+      )
+      .then(async (res) => {
+        if (!res.ok) { handlers.onError(`HTTP ${res.status}`); return; }
+        const reader = res.body!.getReader();
+        const decoder = new TextDecoder();
+        let buf = '';
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          buf += decoder.decode(value, { stream: true });
+          const lines = buf.split('
+');
+          buf = lines.pop() ?? '';
+          for (const line of lines) {
+            if (!line.startsWith('data: ')) continue;
+            try {
+              const ev = JSON.parse(line.slice(6)) as {
+                token?: string;
+                done?: boolean;
+                sources?: string[];
+                session_id?: string;
+              };
+              if (ev.token !== undefined) handlers.onToken(ev.token);
+              else if (ev.done) handlers.onDone(ev.sources ?? [], ev.session_id ?? '');
+            } catch { /* malformed chunk */ }
+          }
+        }
+      })
+      .catch((err: Error) => {
+        if (err.name !== 'AbortError') handlers.onError(err.message);
+      });
+
+    return controller;
+  },
+
+  cancelChat: async (projectId: string, threadId: string): Promise<void> => {
+    await apiClient.post(`/projects/${projectId}/chat/${threadId}/cancel`);
+  },
 };

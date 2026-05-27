@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { FormEvent, ReactNode } from 'react';
 import {
   HiAcademicCap,
@@ -7,6 +7,7 @@ import {
   HiChevronLeft,
   HiChevronRight,
   HiPaperAirplane,
+  HiStop,
   HiUser,
 } from 'react-icons/hi';
 import { projectAPI } from '../api/services';
@@ -29,6 +30,9 @@ export default function ProjectsPage() {
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
   const [inputMessage, setInputMessage] = useState('');
   const [chatLoading, setChatLoading] = useState(false);
+  const [threadId, setThreadId] = useState<string | undefined>(undefined);
+  const [streamingText, setStreamingText] = useState('');
+  const abortCtrlRef = useRef<AbortController | null>(null);
   const [loading, setLoading] = useState(true);
   const [filterYear, setFilterYear] = useState('');
   const [filterDept, setFilterDept] = useState('');
@@ -83,6 +87,10 @@ export default function ProjectsPage() {
     setViewMode('outline');
     setMobileOutlineView('detail');
     setIsMobileChatOpen(false);
+    setThreadId(undefined);
+    setStreamingText('');
+    abortCtrlRef.current?.abort();
+    abortCtrlRef.current = null;
   };
 
   const handleBackToOutline = () => {
@@ -104,27 +112,56 @@ export default function ProjectsPage() {
     }
   };
 
-  const handleSendMessage = async (event: FormEvent) => {
+  const handleSendMessage = (event: FormEvent) => {
     event.preventDefault();
-    if (!inputMessage.trim() || !selectedProject) return;
+    if (!inputMessage.trim() || !selectedProject || chatLoading) return;
 
     const userMessage = inputMessage.trim();
     setChatMessages((prev) => [...prev, { role: 'user', content: userMessage }]);
     setInputMessage('');
     setChatLoading(true);
+    setStreamingText('');
 
-    try {
-      const reply = await projectAPI.chatWithProject(selectedProject.id, userMessage);
-      setChatMessages((prev) => [...prev, { role: 'assistant', content: reply }]);
-    } catch (error) {
-      console.error('Project chat failed:', error);
-      setChatMessages((prev) => [
-        ...prev,
-        { role: 'assistant', content: '目前暫時無法回應，請稍後再試一次。' },
-      ]);
-    } finally {
-      setChatLoading(false);
-    }
+    const ctrl = projectAPI.streamChat(
+      selectedProject.id,
+      userMessage,
+      {
+        onToken: (token) => setStreamingText((prev) => prev + token),
+        onDone: (_, sessionId) => {
+          setStreamingText((prev) => {
+            if (prev) setChatMessages((msgs) => [...msgs, { role: 'assistant', content: prev }]);
+            return '';
+          });
+          setChatLoading(false);
+          setThreadId(sessionId || undefined);
+          abortCtrlRef.current = null;
+        },
+        onError: (msg) => {
+          console.error('Project stream error:', msg);
+          setStreamingText('');
+          setChatMessages((prev) => [
+            ...prev,
+            { role: 'assistant', content: '目前暫時無法回應，請稍後再試一次。' },
+          ]);
+          setChatLoading(false);
+          abortCtrlRef.current = null;
+        },
+      },
+      threadId,
+    );
+    abortCtrlRef.current = ctrl;
+  };
+
+  const handleCancelStream = () => {
+    if (!abortCtrlRef.current || !selectedProject || !threadId) return;
+    abortCtrlRef.current.abort();
+    abortCtrlRef.current = null;
+    if (threadId) projectAPI.cancelChat(selectedProject.id, threadId).catch(() => {});
+    setStreamingText((prev) => {
+      if (prev) setChatMessages((msgs) => [...msgs, { role: 'assistant', content: prev + '…（已中止）' }]);
+      return '';
+    });
+    setChatLoading(false);
   };
 
   const getCollegeLabel = (department: string) => {
@@ -400,10 +437,12 @@ export default function ProjectsPage() {
                 <ChatPanel
                   compact
                   messages={chatMessages}
+                  streamingText={streamingText}
                   inputMessage={inputMessage}
                   chatLoading={chatLoading}
                   onInputChange={setInputMessage}
                   onSubmit={handleSendMessage}
+                  onCancel={handleCancelStream}
                   onClose={() => setIsMobileChatOpen(false)}
                 />
 
@@ -433,10 +472,12 @@ export default function ProjectsPage() {
 
             <ChatPanel
               messages={chatMessages}
+              streamingText={streamingText}
               inputMessage={inputMessage}
               chatLoading={chatLoading}
               onInputChange={setInputMessage}
               onSubmit={handleSendMessage}
+              onCancel={handleCancelStream}
             />
           </div>
         </>
@@ -488,21 +529,31 @@ function PdfPanel({
 
 function ChatPanel({
   messages,
+  streamingText,
   inputMessage,
   chatLoading,
   onInputChange,
   onSubmit,
+  onCancel,
   onClose,
   compact = false,
 }: {
   messages: ChatMessage[];
+  streamingText: string;
   inputMessage: string;
   chatLoading: boolean;
   onInputChange: (value: string) => void;
   onSubmit: (event: FormEvent) => void;
+  onCancel: () => void;
   onClose?: () => void;
   compact?: boolean;
 }) {
+  const bottomRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages, streamingText]);
+
   return (
     <div className="card flex h-full flex-col overflow-hidden">
       <div className="flex flex-shrink-0 items-center justify-between gap-3 border-b border-gray-200 px-4 py-2.5">
@@ -530,12 +581,21 @@ function ChatPanel({
                 message.role === 'user' ? 'max-w-[80%] bg-primary-700 text-white' : 'max-w-[85%] bg-gray-100 text-gray-900'
               }`}
             >
-              <p className="text-sm leading-relaxed">{message.content}</p>
+              <p className="whitespace-pre-wrap text-sm leading-relaxed">{message.content}</p>
             </div>
           </div>
         ))}
 
-        {chatLoading ? (
+        {chatLoading && streamingText ? (
+          <div className="flex justify-start">
+            <div className="max-w-[85%] rounded-lg bg-gray-100 p-4 text-gray-900">
+              <p className="whitespace-pre-wrap text-sm leading-relaxed">
+                {streamingText}
+                <span className="ml-0.5 inline-block h-4 w-0.5 animate-pulse bg-gray-500 align-text-bottom" />
+              </p>
+            </div>
+          </div>
+        ) : chatLoading ? (
           <div className="flex justify-start">
             <div className="rounded-lg bg-gray-100 p-4 text-gray-900">
               <div className="flex space-x-2">
@@ -546,20 +606,35 @@ function ChatPanel({
             </div>
           </div>
         ) : null}
+
+        <div ref={bottomRef} />
       </div>
 
       <form onSubmit={onSubmit} className="border-t border-gray-200 p-3">
-        <div className="flex gap-3">
+        <div className="flex gap-2">
           <input
             type="text"
             value={inputMessage}
             onChange={(event) => onInputChange(event.target.value)}
             placeholder="輸入你想了解的研究問題..."
-            className="min-w-0 flex-1 rounded-md border border-gray-300 px-4 py-3 transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500"
+            disabled={chatLoading}
+            className="min-w-0 flex-1 rounded-md border border-gray-300 px-4 py-3 transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500 disabled:bg-gray-50 disabled:text-gray-400"
           />
-          <button type="submit" disabled={chatLoading || !inputMessage.trim()} className="btn-primary">
-            <HiPaperAirplane className="h-5 w-5" />
-          </button>
+          {chatLoading ? (
+            <button
+              type="button"
+              onClick={onCancel}
+              className="btn-secondary flex shrink-0 items-center gap-1 px-3"
+              aria-label="中止回應"
+            >
+              <HiStop className="h-4 w-4" />
+              <span className="text-xs">停止</span>
+            </button>
+          ) : (
+            <button type="submit" disabled={!inputMessage.trim()} className="btn-primary shrink-0">
+              <HiPaperAirplane className="h-5 w-5" />
+            </button>
+          )}
         </div>
       </form>
     </div>
