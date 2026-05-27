@@ -118,6 +118,7 @@ class Project(BaseModel):
 
 class ChatRequest(BaseModel):
     message: str
+    thread_id: str | None = None  # 多輪對話用
 
 class ChatResponse(BaseModel):
     reply: str

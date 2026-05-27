@@ -12,3 +12,22 @@ fastembed>=0.3.6
 grpcio>=1.72.0
 psycopg[binary]>=3.2.0
 firebase-admin>=6.5.0
+
+# Multi-agent PDF 問答（核心）
+langchain>=0.3.0
+langchain-openai>=0.2.0
+langchain-core>=0.3.0
+langgraph>=1.2.0
+langgraph-checkpoint-postgres>=2.0.0
+psycopg-pool>=3.2.0
+
+# Database ORM for PDF tables
+sqlalchemy>=2.0.0
+alembic>=1.13.0
+
+# Settings
+pydantic-settings>=2.0.0
+
+# Utilities
+uuid-extensions>=0.1.0
+python-json-logger>=2.0.7
