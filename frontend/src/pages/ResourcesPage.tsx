@@ -100,7 +100,7 @@ const departmentGroups = [
     college: '生醫理工學院',
     links: [
       ['生命科學系', 'https://nculs.in.ncu.edu.tw/'],
-      ['生醫科學與工程學系', 'https://dbse.ncu.edu.tw/'],
+      ['生醫科學與工程學系', 'https://ncu.edu.tw/dbse/tw/index.php'],
     ],
   },
 ];

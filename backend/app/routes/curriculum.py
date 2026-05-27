@@ -292,6 +292,10 @@ PDF_BASE = BASE / "data" / "raw" / "應修科目表"
 @router.get("/pdf/{dept_id}")
 def get_curriculum_pdf(dept_id: str):
     """取得指定系所的原始應修科目表 PDF"""
+    # ─── 將文學院學士班分組的 ID 映射至文學院學士班的主 ID ───
+    if dept_id in {"track_philosophy", "track_history", "track_art_history", "track_image_narrative"}:
+        dept_id = "cbp_liberal_arts"
+
     _, i2n = _build_name_id_maps()
     dept_name = i2n.get(dept_id, "")
     if not dept_name:
