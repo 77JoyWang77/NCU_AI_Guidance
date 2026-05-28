@@ -2,11 +2,14 @@
 
 Short-term:  context_summary column in pdf_conversations table.
              Research coverage results stored directly from AgentResult.coverage_result.
+             answer_snippet stores the first 200 chars of the agent's response for follow-up context.
              Injected into chat/research agent calls as background context.
 
 Long-term:   LangGraph AsyncPostgresStore (pgvector).
              Each research finding is embedded and stored with user_id/thread_id.
              Semantically similar past findings are retrieved for new questions.
+             Dedup: skip storing if a very similar question already exists (score >= 0.92).
+             Doc-aware sort: same-document results ranked before cross-document results.
 """
 from __future__ import annotations
 
@@ -24,7 +27,8 @@ logger = logging.getLogger(__name__)
 MEMORY_COLLECTION = "pdf_research_memories"
 VECTOR_SIZE = 3072
 MAX_FINDINGS = 5
-LONG_TERM_LIMIT = 2
+LONG_TERM_LIMIT = 4
+_DEDUP_THRESHOLD = 0.92
 
 
 # ── Qdrant memory collection init ─────────────────────────────────────────────
@@ -93,6 +97,7 @@ async def update_context_summary(
 
     new_finding = {
         "question": question[:200],
+        "answer_snippet": result.response[:200],
         "coverage": {
             slot_id: {
                 "status": slot_data["status"],
@@ -137,6 +142,9 @@ def get_context_summary_text(thread_id: str) -> str | None:
                 q = (finding.get("question") or "").strip()
                 if q:
                     lines.append(f"問題：{q[:120]}")
+                snippet = (finding.get("answer_snippet") or "").strip()
+                if snippet:
+                    lines.append(f"  摘要：{snippet[:150]}")
                 for slot_id, slot_data in (finding.get("coverage") or {}).items():
                     status = slot_data.get("status", "")
                     label = slot_data.get("label", slot_id)
@@ -174,7 +182,10 @@ async def store_long_term_memory(
     question: str,
     result: AgentResult,
 ) -> None:
-    """Store a research finding in LangGraph Store for semantic retrieval."""
+    """Store a research finding in LangGraph Store for semantic retrieval.
+
+    Skips storing if a near-duplicate already exists (cosine similarity >= _DEDUP_THRESHOLD).
+    """
     if not user_id:
         return
     try:
@@ -183,6 +194,20 @@ async def store_long_term_memory(
         if store is None:
             return
         namespace = (user_id, "research_memories")
+
+        # Dedup: skip if very similar question already stored
+        try:
+            existing = await store.asearch(namespace, query=question, limit=1)
+            if existing and getattr(existing[0], "score", None) is not None:
+                if existing[0].score >= _DEDUP_THRESHOLD:
+                    logger.debug(
+                        "store_long_term_memory: skipping dedup (score=%.3f >= %.2f)",
+                        existing[0].score, _DEDUP_THRESHOLD,
+                    )
+                    return
+        except Exception as exc:
+            logger.debug("store_long_term_memory: dedup check failed (non-fatal): %s", exc)
+
         await store.aput(namespace, str(uuid.uuid4()), {
             "question": question[:300],
             "summary": result.response[:1000],
@@ -198,8 +223,12 @@ async def search_long_term_memory(
     user_id: str,
     query: str,
     limit: int = LONG_TERM_LIMIT,
+    document_ids: list[int] | None = None,
 ) -> list[str]:
-    """Return relevant past research findings via semantic search in LangGraph Store."""
+    """Return relevant past research findings via semantic search in LangGraph Store.
+
+    Same-document results are ranked before cross-document results within the returned set.
+    """
     if not user_id:
         return []
     try:
@@ -208,10 +237,21 @@ async def search_long_term_memory(
         if store is None:
             return []
         namespace = (user_id, "research_memories")
-        results = await store.asearch(namespace, query=query, limit=limit)
+        # Fetch more than needed so we can re-rank by document overlap
+        candidates = await store.asearch(namespace, query=query, limit=limit * 2)
+
+        doc_set = set(document_ids or [])
+        if doc_set:
+            # Sort: same-document items first, then by original score order
+            same_doc = [r for r in candidates if set(r.value.get("document_ids") or []) & doc_set]
+            other_doc = [r for r in candidates if r not in same_doc]
+            ranked = (same_doc + other_doc)[:limit]
+        else:
+            ranked = candidates[:limit]
+
         return [
             f"（過去研究）{r.value.get('question', '')}：{r.value.get('summary', '')[:200]}"
-            for r in results
+            for r in ranked
             if r.value.get("summary")
         ]
     except Exception as exc:

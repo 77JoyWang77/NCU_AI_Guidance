@@ -1,11 +1,15 @@
 from app.utils import new_id
+import logging
 import re
 from collections.abc import AsyncIterator, Callable
 
 from app.prompting.loader import load_stack
 
 from .no_tool_runner import run_no_tool_agent, stream_no_tool_agent, write_agent_span
+from .request_context import get_user_id
 from .types import AgentResult, AgentStatus
+
+logger = logging.getLogger(__name__)
 
 STACK_NAME = "question_default"
 PROMPT_NAME = "question_skill"
@@ -55,6 +59,19 @@ async def answer(
         "context supplied by the router. Do not claim that you searched the "
         "documents yourself.",
     ]
+
+    # Inject context_summary so follow-up questions are aware of prior research
+    try:
+        from app.services.pdf_agent_memory import build_memory_context, format_memory_system_messages
+        memory = await build_memory_context(
+            AGENT_NAME, thread_id, get_user_id(), user_message, document_ids
+        )
+        mem_msgs = format_memory_system_messages(memory)
+        if mem_msgs:
+            extra_system_messages = mem_msgs + extra_system_messages
+    except Exception as _exc:
+        logger.debug("question_agent.answer: memory context failed (non-fatal): %s", _exc)
+
     payload = {}
     if evidence_context:
         payload["evidence_context"] = evidence_context
@@ -145,6 +162,18 @@ async def stream(
         "context supplied by the router. Do not claim that you searched the "
         "documents yourself.",
     ]
+
+    try:
+        from app.services.pdf_agent_memory import build_memory_context, format_memory_system_messages
+        memory = await build_memory_context(
+            AGENT_NAME, thread_id, get_user_id(), user_message, document_ids
+        )
+        mem_msgs = format_memory_system_messages(memory)
+        if mem_msgs:
+            extra_system_messages = mem_msgs + extra_system_messages
+    except Exception as _exc:
+        logger.debug("question_agent.stream: memory context failed (non-fatal): %s", _exc)
+
     payload = {}
     if evidence_context:
         payload["evidence_context"] = evidence_context

@@ -145,6 +145,22 @@ async def answer(
     await _emit_stage(on_stage, "組織回答中")
     observation_id = observation_id or new_id()
 
+    # Inject memory context (context_summary + long_term + user_profile)
+    extra_msgs: list[str] = [
+        "You do not have retrieval tools in this step. If the request "
+        "requires document evidence, answer only from context already "
+        "provided by the router or state that the router should use a "
+        "retrieval/research route."
+    ]
+    try:
+        from app.services.pdf_agent_memory import build_memory_context, format_memory_system_messages
+        memory = await build_memory_context(
+            AGENT_NAME, thread_id, get_user_id(), user_message, document_ids
+        )
+        extra_msgs = format_memory_system_messages(memory) + extra_msgs
+    except Exception as _exc:
+        logger.debug("chat_agent.answer: memory context failed (non-fatal): %s", _exc)
+
     response, sources, meta, observation_id = await run_no_tool_agent(
         user_message=user_message,
         thread_id=thread_id,
@@ -155,12 +171,7 @@ async def answer(
         observation_id=observation_id,
         trace_id=trace_id,
         use_mini=use_mini,
-        extra_system_messages=[
-            "You do not have retrieval tools in this step. If the request "
-            "requires document evidence, answer only from context already "
-            "provided by the router or state that the router should use a "
-            "retrieval/research route."
-        ],
+        extra_system_messages=extra_msgs,
     )
     _insufficient = "[INSUFFICIENT_CONTEXT]" in response
     response = response.replace("[INSUFFICIENT_CONTEXT]", "").strip()
@@ -192,6 +203,22 @@ async def stream(
 ) -> AsyncIterator[tuple[str, bool, list[str]]]:
     observation_id = observation_id or new_id()
     await _emit_stage(on_stage, "組織回答中")
+
+    extra_msgs: list[str] = [
+        "You do not have retrieval tools in this step. If the request "
+        "requires document evidence, answer only from context already "
+        "provided by the router or state that the router should use a "
+        "retrieval/research route."
+    ]
+    try:
+        from app.services.pdf_agent_memory import build_memory_context, format_memory_system_messages
+        memory = await build_memory_context(
+            AGENT_NAME, thread_id, get_user_id(), user_message, document_ids
+        )
+        extra_msgs = format_memory_system_messages(memory) + extra_msgs
+    except Exception as _exc:
+        logger.debug("chat_agent.stream: memory context failed (non-fatal): %s", _exc)
+
     async for token in stream_no_tool_agent(
         user_message=user_message,
         thread_id=thread_id,
@@ -202,12 +229,7 @@ async def stream(
         observation_id=observation_id,
         trace_id=trace_id,
         use_mini=use_mini,
-        extra_system_messages=[
-            "You do not have retrieval tools in this step. If the request "
-            "requires document evidence, answer only from context already "
-            "provided by the router or state that the router should use a "
-            "retrieval/research route."
-        ],
+        extra_system_messages=extra_msgs,
     ):
         yield token, False, []
     yield "", True, []

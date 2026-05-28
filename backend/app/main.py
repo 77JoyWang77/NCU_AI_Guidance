@@ -47,8 +47,10 @@ async def lifespan(app: FastAPI):
         request_all_drain("server_shutdown")
 
         from app.agents.pdf.research import _background_tasks
-        if _background_tasks:
-            await asyncio.gather(*list(_background_tasks), return_exceptions=True)
+        from app.agents.pdf.router_agent import _router_background_tasks
+        pending = list(_background_tasks) + list(_router_background_tasks)
+        if pending:
+            await asyncio.gather(*pending, return_exceptions=True)
     except Exception as exc:
         logger.warning("PDF chat shutdown error (non-fatal): %s", exc)
 

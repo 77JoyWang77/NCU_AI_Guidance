@@ -22,14 +22,21 @@ from . import steering as _steering
 
 logger = logging.getLogger(__name__)
 
+# Background tasks fired by this module (memory writes, DB writes, evaluations).
+# Tracked so they can be awaited during graceful shutdown.
+_router_background_tasks: set[asyncio.Task] = set()
+
 
 def _fire_and_forget(coro) -> None:
     task = asyncio.create_task(coro)
-    task.add_done_callback(
-        lambda t: logger.warning("Background task failed: %s", t.exception())
-        if not t.cancelled() and t.exception()
-        else None
-    )
+    _router_background_tasks.add(task)
+
+    def _on_done(t: asyncio.Task) -> None:
+        _router_background_tasks.discard(t)
+        if not t.cancelled() and t.exception():
+            logger.warning("Background task failed: %s", t.exception())
+
+    task.add_done_callback(_on_done)
 
 
 ROUTER_PROMPT_NAME = "route_coordinator"
