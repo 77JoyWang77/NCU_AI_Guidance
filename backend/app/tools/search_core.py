@@ -54,6 +54,9 @@ class AgentContext:
     observation_id: str | None = None
     tool_sources: list[str] = field(default_factory=list)
     _memory_context: dict | None = field(default=None, repr=False)
+    # Cached per-request values (document metadata never changes mid-conversation)
+    _cached_total_chunks: int | None = field(default=None, repr=False)
+    _cached_lang: str | None = field(default=None, repr=False)
 
 
 class SearchInput(BaseModel):
@@ -202,14 +205,18 @@ async def run_search_report(
     short_q = label[:30] + ("..." if len(label) > 30 else "")
     _emit_stage_sync(ctx.on_stage, f"搜尋文件：{short_q}")
 
-    total_chunks = await _acount_document_chunks(ctx.document_ids or None)
+    if ctx._cached_total_chunks is None:
+        ctx._cached_total_chunks = await _acount_document_chunks(ctx.document_ids or None)
+    total_chunks = ctx._cached_total_chunks
     if total_chunks > 0 and len(ctx.seen_chunks) >= total_chunks:
         return json.dumps(
             {"results": [], "HARD_STOP": f"All {total_chunks} chunks already reviewed. Use collected evidence to answer."},
             ensure_ascii=False,
         )
 
-    lang = await _aget_document_language(ctx.document_ids or None)
+    if ctx._cached_lang is None:
+        ctx._cached_lang = await _aget_document_language(ctx.document_ids or None)
+    lang = ctx._cached_lang
     queries = expand_queries(
         query, sub_queries, target_lang=lang,
         keyword_query=keyword_query, semantic_query=semantic_query, section_terms=section_terms,

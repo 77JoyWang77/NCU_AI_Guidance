@@ -815,7 +815,7 @@ function NotesPanel({ deptId }: { deptId: string }) {
 
   useEffect(() => {
     if (!deptId) return;
-    setLoading(true);
+    void (async () => { await Promise.resolve(); setLoading(true); })();
     apiClient
       .get(`/curriculum/notes/by-id/${deptId}`)
       .then((res) => setEntries(res.data.entries ?? []))
@@ -855,7 +855,8 @@ function NotesPanel({ deptId }: { deptId: string }) {
 // 學院風格定義
 // ══════════════════════════════════════════════════════════════════════════
 
-const COLLEGE_STYLES: Record<string, any> = {
+type CollegeStyle = { iconBg: string; badge: string; icon: React.ReactNode };
+const COLLEGE_STYLES: Record<string, CollegeStyle> = {
   '文學院': { 
     iconBg: 'bg-violet-500', 
     badge: 'bg-violet-50 text-violet-600 border-violet-100/50',
@@ -920,8 +921,8 @@ export default function CurriculumPage() {
   const [selectedCourse, setSelectedCourse] = useState<CourseCard | null>(null);
 
   useEffect(() => {
-    const handleShowCourse = (e: any) => {
-      setSelectedCourse(e.detail);
+    const handleShowCourse = (e: Event) => {
+      setSelectedCourse((e as CustomEvent<CourseCard>).detail);
     };
     window.addEventListener('SHOW_COURSE_DETAIL', handleShowCourse);
     return () => window.removeEventListener('SHOW_COURSE_DETAIL', handleShowCourse);

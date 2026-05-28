@@ -61,8 +61,11 @@ const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKey
   };
 
   useEffect(() => {
-    setAskOpen(false);
-    resetAskState();
+    void (async () => {
+      await Promise.resolve();
+      setAskOpen(false);
+      resetAskState();
+    })();
   }, [courseIdentity]);
 
   const closeAsk = () => {

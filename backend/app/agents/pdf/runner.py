@@ -1,3 +1,4 @@
+import asyncio
 import json
 import logging
 import re
@@ -81,7 +82,7 @@ class AgentResponse(BaseModel):
     answer: str = Field(description="Complete answer to the user's question")
     sources: list[str] = Field(
         default_factory=list,
-        description='Most relevant sources referenced (max 3), each as "filename p.N" (e.g. "report.pdf p.3")',
+        description='Leave empty — sources are not displayed to the user.',
         max_length=3,
     )
 
@@ -219,10 +220,23 @@ async def setup_checkpointer():
     from langchain_openai import AzureOpenAIEmbeddings
     pool = AsyncConnectionPool(
         conninfo=pdf_settings.database_url,
-        kwargs={"autocommit": True},
+        kwargs={
+            "autocommit": True,
+            "keepalives": 1,
+            "keepalives_idle": 30,
+            "keepalives_interval": 5,
+            "keepalives_count": 5,
+        },
+        min_size=1,
+        max_size=10,
+        # Recycle idle connections every 2 min, well below NeonDB's ~5-min timeout
+        max_idle=120,
+        # Ping with SELECT 1 before returning a connection; rebuilds dead ones
+        check=AsyncConnectionPool.check_connection,
+        reconnect_timeout=300,
         open=False,
     )
-    await pool.open()
+    await pool.open(wait=True)
     _pool = pool
     _checkpointer = AsyncPostgresSaver(
         pool,
@@ -602,14 +616,19 @@ async def run_tool_agent_stream(
         if interrupts:
             yield interrupts, "interrupt", []
             return
-        token_text = _stream_token_from_chunk(chunk)
-        if token_text:
-            yield token_text, False, []
 
-    sources: list[str] = []
     structured = await _get_structured_response(thread_id)
-    if structured:
-        sources = structured.sources
+    sources: list[str] = structured.sources if structured else []
+    answer: str = structured.answer if structured else ""
+
+    # Yield answer in small chunks so the frontend sees progressive streaming.
+    # The LangGraph tool-agent produces structured JSON; we can only stream after
+    # extracting the final answer, so we simulate streaming here.
+    if answer:
+        chunk_size = 8
+        for i in range(0, len(answer), chunk_size):
+            yield answer[i:i + chunk_size], False, sources
+            await asyncio.sleep(0)
 
     yield "", True, sources
 
@@ -636,12 +655,14 @@ async def run_tool_agent_resume_stream(
         if interrupts:
             yield interrupts, "interrupt", []
             return
-        token_text = _stream_token_from_chunk(chunk)
-        if token_text:
-            yield token_text, False, []
 
-    sources: list[str] = []
     structured = await _get_structured_response(thread_id)
-    if structured:
-        sources = structured.sources
+    sources: list[str] = structured.sources if structured else []
+    answer: str = structured.answer if structured else ""
+
+    if answer:
+        chunk_size = 8
+        for i in range(0, len(answer), chunk_size):
+            yield answer[i:i + chunk_size], False, sources
+            await asyncio.sleep(0)
     yield "", True, sources

@@ -72,7 +72,7 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    setIsMobileMenuOpen(false);
+    void (async () => { await Promise.resolve(); setIsMobileMenuOpen(false); })();
   }, [location.pathname]);
 
   useEffect(() => {

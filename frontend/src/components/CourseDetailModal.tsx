@@ -152,14 +152,17 @@ export default function CourseDetailModal({ course, onClose }: Props) {
   }, [onClose]);
 
   useEffect(() => {
-    if (!course) { setDetail(null); return; }
-    setLoading(true);
+    if (!course) {
+      void (async () => { await Promise.resolve(); setDetail(null); })();
+      return;
+    }
+    void (async () => { await Promise.resolve(); setLoading(true); })();
     apiClient
       .post('/chat/course_detail', { name: course.name, code: course.code ?? '' })
       .then(r => setDetail(r.data as CourseDetail))
       .catch(() => setDetail(null))
       .finally(() => setLoading(false));
-  }, [course?.name, course?.code]);
+  }, [course]);
 
   if (!course) return null;
   const d = detail;

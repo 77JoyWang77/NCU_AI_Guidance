@@ -13,7 +13,7 @@ import {
   HiMap,
   HiAdjustments,
 } from 'react-icons/hi';
-import { useAuth } from '../auth/AuthContext';
+import { useAuth } from '../auth/useAuth';
 import { analyticsAPI, type AnalyticsData } from '../api/services';
 
 // ── 學院 → 學術領域對照 ─────────────────────────────────────────
@@ -185,15 +185,17 @@ function DonutChart({ items }: { items: { name: string; pct: number }[] }) {
   const cy = SIZE / 2;
   const C = 2 * Math.PI * R;
 
-  let cumPct = 0;
+  const offsets: number[] = [];
+  for (const [i] of items.entries()) {
+    offsets.push(i === 0 ? 0 : offsets[i - 1] + items[i - 1].pct);
+  }
 
   return (
     <svg viewBox={`0 0 ${SIZE} ${SIZE}`} className="w-36 h-36 shrink-0">
       <circle cx={cx} cy={cy} r={R} fill="none" stroke="#f1f5f9" strokeWidth={STROKE} />
       {items.map((item, i) => {
         const segLen = (item.pct / 100) * C;
-        const dashoffset = C * 0.25 - (cumPct / 100) * C;
-        cumPct += item.pct;
+        const dashoffset = C * 0.25 - (offsets[i] / 100) * C;
         return (
           <circle
             key={item.name}
@@ -333,12 +335,19 @@ export default function AnalyticsPage() {
 
   useEffect(() => {
     if (!user) return;
-    setLoading(true);
-    setError('');
-    analyticsAPI.get()
-      .then(setData)
-      .catch(() => setError('載入分析資料失敗，請稍後再試'))
-      .finally(() => setLoading(false));
+    void (async () => {
+      await Promise.resolve();
+      setLoading(true);
+      setError('');
+      try {
+        const result = await analyticsAPI.get();
+        setData(result);
+      } catch {
+        setError('載入分析資料失敗，請稍後再試');
+      } finally {
+        setLoading(false);
+      }
+    })();
   }, [user]);
 
   const domainAxes = useMemo(() => {

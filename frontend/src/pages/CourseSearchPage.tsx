@@ -14,7 +14,7 @@ import CourseSidePanel from '../components/CourseSidePanel';
 import CourseDetailModal from '../components/CourseDetailModal';
 import DebugTracePanel from '../components/DebugTracePanel';
 import HighlightedAnswer from '../components/HighlightedAnswer';
-import { useAuth } from '../auth/AuthContext';
+import { useAuth } from '../auth/useAuth';
 import type { CourseCard, DebugTrace, StreamEvent, ToolTraceItem } from '../types';
 
 const TOOL_LABELS: Record<string, string> = {
@@ -103,6 +103,59 @@ function makeConvFromSession(detail: {
   };
 }
 
+function formatTime(date: Date): string {
+  const diff = Date.now() - date.getTime();
+  const days = Math.floor(diff / 86400000);
+  if (days === 0) return '今天';
+  if (days === 1) return '昨天';
+  if (days < 7) return `${days} 天前`;
+  return date.toLocaleDateString('zh-TW', { month: 'short', day: 'numeric' });
+}
+
+type ConvListProps = {
+  conversations: Conversation[];
+  selectedConversationId: string;
+  onSelectConversation: (id: string) => void;
+  onDeleteConversation: (id: string) => void;
+  onSelect?: () => void;
+};
+
+function ConvList({ conversations, selectedConversationId, onSelectConversation, onDeleteConversation, onSelect }: ConvListProps) {
+  return (
+    <div className="flex-1 space-y-2 overflow-y-auto p-3">
+      {conversations.map((conv) => (
+        <div
+          key={conv.id}
+          role="button"
+          tabIndex={0}
+          onClick={() => { onSelectConversation(conv.id); onSelect?.(); }}
+          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { onSelectConversation(conv.id); onSelect?.(); } }}
+          className={`w-full cursor-pointer rounded-2xl border p-3 text-left transition ${
+            selectedConversationId === conv.id
+              ? 'border-primary-300 bg-primary-50'
+              : 'border-transparent bg-white hover:border-slate-200 hover:bg-slate-50'
+          }`}
+        >
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <HiChat className="h-4 w-4 text-primary-700" />
+              <h3 className="mt-2 line-clamp-2 text-sm font-semibold text-slate-900">{conv.title}</h3>
+              <p className="mt-1 text-xs text-slate-500">{formatTime(conv.updatedAt)}</p>
+            </div>
+            <button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); onDeleteConversation(conv.id); }}
+              className="rounded-lg p-1 text-rose-500 transition hover:bg-rose-50 hover:text-rose-700"
+            >
+              <HiTrash className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function CourseSearchPage() {
   const { user, loading: authLoading } = useAuth();
   const [conversations, setConversations]       = useState<Conversation[]>([]);
@@ -142,23 +195,35 @@ export default function CourseSearchPage() {
     el.style.height = `${Math.min(el.scrollHeight, 96)}px`; // max ~4 行
   }, [inputMessage]);
 
+  const createDefaultConversation = useCallback(() => {
+    const nc: Conversation = {
+      id: Date.now().toString(), title: '新對話',
+      messages: [{ role: 'assistant', content: GREETING, timestamp: new Date() }],
+      createdAt: new Date(), updatedAt: new Date(),
+    };
+    setConversations([nc]);
+    setSelectedConversationId(nc.id);
+  }, []);
+
   // ── 載入歷史對話（先拿 metadata，選到才 fetch 詳情）─────────────────────
   useEffect(() => {
     if (authLoading) return;
-
-    if (!user) {
-      createDefaultConversation();
-      setSessionsLoaded(true);
-      return;
-    }
-
     let cancelled = false;
-    setSessionsLoaded(false);
-    sessionIds.current = {};
-    setPanelCourses([]);
 
-    chatAPI.getSessions()
-      .then(async (sessions) => {
+    void (async () => {
+      await Promise.resolve();
+      if (!user) {
+        createDefaultConversation();
+        setSessionsLoaded(true);
+        return;
+      }
+
+      setSessionsLoaded(false);
+      sessionIds.current = {};
+      setPanelCourses([]);
+
+      try {
+        const sessions = await chatAPI.getSessions();
         if (cancelled) return;
         if (sessions.length === 0) {
           createDefaultConversation();
@@ -166,7 +231,6 @@ export default function CourseSearchPage() {
           return;
         }
 
-        // 建立 stub（只有 metadata，無詳情）
         const stubs: Conversation[] = sessions.map(s => ({
           id:        s.session_id,
           title:     s.title || '未命名對話',
@@ -180,7 +244,6 @@ export default function CourseSearchPage() {
         setSelectedConversationId(stubs[0].id);
         setSessionsLoaded(true);
 
-        // 自動載入第一則對話的完整詳情
         const detail = await chatAPI.getSession(stubs[0].id).catch(() => null);
         if (cancelled || !detail) return;
         const full = makeConvFromSession(detail);
@@ -189,26 +252,15 @@ export default function CourseSearchPage() {
           m => m.role === 'assistant' && (m.courseCards?.length ?? 0) > 0
         );
         if (lastMsg?.courseCards) setPanelCourses(lastMsg.courseCards);
-      })
-      .catch(() => {
+      } catch {
         if (cancelled) return;
         createDefaultConversation();
         setSessionsLoaded(true);
-      });
+      }
+    })();
 
     return () => { cancelled = true; };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [authLoading, user?.id]);
-
-  function createDefaultConversation() {
-    const nc: Conversation = {
-      id: Date.now().toString(), title: '新對話',
-      messages: [{ role: 'assistant', content: GREETING, timestamp: new Date() }],
-      createdAt: new Date(), updatedAt: new Date(),
-    };
-    setConversations([nc]);
-    setSelectedConversationId(nc.id);
-  }
+  }, [authLoading, user, createDefaultConversation]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -409,48 +461,6 @@ export default function CourseSearchPage() {
     doSend();
   };
 
-  const formatTime = (date: Date) => {
-    const diff = Date.now() - date.getTime();
-    const days = Math.floor(diff / 86400000);
-    if (days === 0) return '今天';
-    if (days === 1) return '昨天';
-    if (days < 7) return `${days} 天前`;
-    return date.toLocaleDateString('zh-TW', { month: 'short', day: 'numeric' });
-  };
-
-  const ConvList = ({ onSelect }: { onSelect?: () => void }) => (
-    <div className="flex-1 space-y-2 overflow-y-auto p-3">
-      {conversations.map((conv) => (
-        <div
-          key={conv.id}
-          role="button"
-          tabIndex={0}
-          onClick={() => { handleSelectConversation(conv.id); onSelect?.(); }}
-          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { handleSelectConversation(conv.id); onSelect?.(); } }}
-          className={`w-full cursor-pointer rounded-2xl border p-3 text-left transition ${
-            selectedConversationId === conv.id
-              ? 'border-primary-300 bg-primary-50'
-              : 'border-transparent bg-white hover:border-slate-200 hover:bg-slate-50'
-          }`}
-        >
-          <div className="flex items-start justify-between gap-3">
-            <div className="min-w-0">
-              <HiChat className="h-4 w-4 text-primary-700" />
-              <h3 className="mt-2 line-clamp-2 text-sm font-semibold text-slate-900">{conv.title}</h3>
-              <p className="mt-1 text-xs text-slate-500">{formatTime(conv.updatedAt)}</p>
-            </div>
-            <button
-              type="button"
-              onClick={(e) => { e.stopPropagation(); handleDeleteConversation(conv.id); }}
-              className="rounded-lg p-1 text-rose-500 transition hover:bg-rose-50 hover:text-rose-700"
-            >
-              <HiTrash className="h-4 w-4" />
-            </button>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
 
   if (!sessionsLoaded) {
     return (
@@ -500,7 +510,13 @@ export default function CourseSearchPage() {
                     <HiPlus className="h-4 w-4" />新對話
                   </button>
                 </div>
-                <ConvList onSelect={() => setIsMobileConversationOpen(false)} />
+                <ConvList
+                  conversations={conversations}
+                  selectedConversationId={selectedConversationId}
+                  onSelectConversation={handleSelectConversation}
+                  onDeleteConversation={handleDeleteConversation}
+                  onSelect={() => setIsMobileConversationOpen(false)}
+                />
               </div>
               <div className="flex w-11 items-center justify-center pl-2">
                 <button type="button" onClick={() => setIsMobileConversationOpen(false)}
@@ -543,7 +559,12 @@ export default function CourseSearchPage() {
               )}
             </div>
             {!isSidebarCollapsed ? (
-              <ConvList />
+              <ConvList
+                conversations={conversations}
+                selectedConversationId={selectedConversationId}
+                onSelectConversation={handleSelectConversation}
+                onDeleteConversation={handleDeleteConversation}
+              />
             ) : (
               <div className="flex-1 space-y-2 overflow-y-auto p-2">
                 {conversations.map((conv) => (

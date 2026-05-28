@@ -40,7 +40,16 @@ export default {
         'medium': '0 4px 12px rgba(0, 0, 0, 0.08)',
         'strong': '0 8px 24px rgba(0, 0, 0, 0.12)',
       },
+      typography: {
+        sm: {
+          css: {
+            lineHeight: '2.0',
+            p: { marginTop: '0.75em', marginBottom: '0.75em' },
+            li: { marginTop: '0.4em', marginBottom: '0.4em' },
+          },
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 }

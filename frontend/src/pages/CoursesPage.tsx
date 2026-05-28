@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { ComponentType, Dispatch, SetStateAction } from 'react';
 import {
   HiBeaker,
@@ -195,15 +195,18 @@ export default function CoursesPage() {
   useEffect(() => {
     const query = searchQuery.trim();
     if (!query || searchMode !== 'semantic') {
-      setSemanticCourses([]);
-      setSemanticLoading(false);
-      setSemanticMode('idle');
-      setSemanticMessage('');
+      void (async () => {
+        await Promise.resolve();
+        setSemanticCourses([]);
+        setSemanticLoading(false);
+        setSemanticMode('idle');
+        setSemanticMessage('');
+      })();
       return;
     }
 
     let cancelled = false;
-    setSemanticLoading(true);
+    void (async () => { await Promise.resolve(); setSemanticLoading(true); })();
 
     const runSearch = async () => {
       try {
@@ -244,7 +247,7 @@ export default function CoursesPage() {
     };
   }, [searchMode, searchQuery, selectedTypes, selectedCredits, selectedSemesters]);
 
-  const searchableFields = (course: Course) =>
+  const searchableFields = useCallback((course: Course) =>
     resultTab === 'course_name'
       ? [course.course_name_zh, course.course_name_en]
       : [
@@ -268,24 +271,24 @@ export default function CoursesPage() {
           ...(course.languages ?? []),
           ...(course.simplified_concepts ?? []),
           ...(course.core_questions ?? []),
-        ];
+        ], [resultTab]);
 
-  const matchesStructuredFilters = (course: Course) => {
+  const matchesStructuredFilters = useCallback((course: Course) => {
     const matchesType = selectedTypes.length === 0 || selectedTypes.includes(normalize(course.required_elective));
     const matchesCredits = selectedCredits.length === 0 || selectedCredits.includes(String(course.credits));
     const matchesSemester = selectedSemesters.length === 0 || selectedSemesters.includes(normalize(course.semester_display));
     return matchesType && matchesCredits && matchesSemester;
-  };
+  }, [selectedTypes, selectedCredits, selectedSemesters]);
 
-  const matchesKeywordFilters = (course: Course) => {
+  const matchesKeywordFilters = useCallback((course: Course) => {
     const query = searchQuery.trim().toLowerCase();
     const matchesQuery = !query || searchableFields(course).filter(Boolean).some((value) => value!.toLowerCase().includes(query));
     return matchesStructuredFilters(course) && matchesQuery;
-  };
+  }, [searchQuery, matchesStructuredFilters, searchableFields]);
 
   const currentCourses = useMemo(
     () => departmentCourses.filter(matchesKeywordFilters),
-    [departmentCourses, searchQuery, selectedTypes, selectedCredits, selectedSemesters, resultTab]
+    [departmentCourses, matchesKeywordFilters]
   );
 
   const filteredCourses = useMemo(
@@ -297,7 +300,7 @@ export default function CoursesPage() {
       }
       return courses.filter(matchesKeywordFilters);
     },
-    [courses, hasSearchQuery, searchMode, searchQuery, selectedTypes, selectedCredits, selectedSemesters, resultTab, semanticCourses, semanticMode]
+    [courses, hasSearchQuery, searchMode, semanticCourses, semanticMode, matchesKeywordFilters, matchesStructuredFilters]
   );
 
   const groupedSearchResults = useMemo(() => {
@@ -345,7 +348,12 @@ export default function CoursesPage() {
   );
 
   useEffect(() => {
-    if (!selectedCollege && sortedColleges.length > 0) setSelectedCollege(sortedColleges[0]);
+    if (!selectedCollege && sortedColleges.length > 0) {
+      void (async () => {
+        await Promise.resolve();
+        setSelectedCollege(sortedColleges[0]);
+      })();
+    }
   }, [sortedColleges, selectedCollege]);
 
   useEffect(() => {
@@ -357,21 +365,30 @@ export default function CoursesPage() {
       filteredCourses.some((course) => courseKey(course) === courseKey(selectedCourse));
 
     if (!departments.length) {
-      setSelectedDepartment(null);
+      void (async () => {
+        await Promise.resolve();
+        setSelectedDepartment(null);
+      })();
       return;
     }
     if (selectedDepartment && departments.includes(selectedDepartment)) return;
-    setSelectedDepartment(null);
-    if (!selectedCourseInFilteredResults) {
-      setSelectedCourse(null);
-    }
+    void (async () => {
+      await Promise.resolve();
+      setSelectedDepartment(null);
+      if (!selectedCourseInFilteredResults) {
+        setSelectedCourse(null);
+      }
+    })();
   }, [filteredCourses, groupedCourses, hasActiveFilters, selectedCollege, selectedCourse, selectedDepartment]);
 
   useEffect(() => {
     const source = hasActiveFilters ? filteredCourses : currentCourses;
     if (!selectedCourse) return;
     if (selectedCourse && source.some((course) => courseKey(course) === courseKey(selectedCourse))) return;
-    setSelectedCourse(null);
+    void (async () => {
+      await Promise.resolve();
+      setSelectedCourse(null);
+    })();
   }, [currentCourses, filteredCourses, hasActiveFilters, selectedCourse]);
 
   const toggleValue = (value: string, setter: Dispatch<SetStateAction<string[]>>) =>

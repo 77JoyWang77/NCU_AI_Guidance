@@ -152,11 +152,11 @@ def _route_for_agent(
         agent_name = "chat"
     if agent_name == "research":
         prompt = _primary_prompt("research_runtime", "research_writer", thread_id, document_ids)
-        return AgentRoute(agent_name, prompt.name, prompt.version, compose_after=True, evaluate_after=evaluate_after)
+        return AgentRoute(agent_name, prompt.name, prompt.version, compose_after=False, evaluate_after=evaluate_after)
     if agent_name == "question":
-        return AgentRoute(agent_name, "question_skill", prompt_version("question_skill"), compose_after=True, evaluate_after=evaluate_after)
+        return AgentRoute(agent_name, "question_skill", prompt_version("question_skill"), compose_after=False, evaluate_after=evaluate_after)
     if agent_name == "retrieval":
-        return AgentRoute(agent_name, "retrieval_capability", prompt_version("retrieval_capability"), compose_after=True, evaluate_after=evaluate_after)
+        return AgentRoute(agent_name, "retrieval_capability", prompt_version("retrieval_capability"), compose_after=False, evaluate_after=evaluate_after)
     if agent_name == "evaluation":
         return AgentRoute(agent_name, "evaluation_agent", prompt_version("evaluation_agent"), evaluate_after=False)
     return AgentRoute("chat", "chat_mode", prompt_version("chat_mode"), evaluate_after=False)
@@ -773,7 +773,10 @@ async def route_agent_stream(
                 if not streamed_tokens:
                     _streamed_response.append(research_result.response)
                     if plan.composition_step is None:
-                        yield research_result.response, False, []
+                        chunk_size = 8
+                        for _i in range(0, len(research_result.response), chunk_size):
+                            yield research_result.response[_i:_i + chunk_size], False, []
+                            await asyncio.sleep(0)
                 _fire_and_forget(_update_memory(
                     "research", thread_id, get_user_id(), document_ids, user_message, research_result
                 ))
@@ -834,14 +837,15 @@ async def route_agent_stream(
                             yield _item
 
                 last_sources = _retrieval_sources
+                _retrieval_has_answer = bool(_retrieval_response)
                 agent_result = AgentResult(
                     response=_retrieval_response,
                     sources=_retrieval_sources,
                     agent_name="retrieval",
                     status=AgentStatus(
-                        completed=bool(_retrieval_sources),
-                        gaps=[] if _retrieval_sources else ["未找到與問題相關的文件片段"],
-                        agent_limitation="" if _retrieval_sources else "單點查找，文件中可能無此資訊",
+                        completed=_retrieval_has_answer,
+                        gaps=[] if _retrieval_has_answer else ["未找到與問題相關的文件片段"],
+                        agent_limitation="" if _retrieval_has_answer else "單點查找，文件中可能無此資訊",
                     ),
                 )
 

@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { FormEvent, ReactNode } from 'react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import {
   HiAcademicCap,
   HiArrowLeft,
@@ -33,6 +35,7 @@ export default function ProjectsPage() {
   const [threadId, setThreadId] = useState<string | undefined>(undefined);
   const [streamingText, setStreamingText] = useState('');
   const abortCtrlRef = useRef<AbortController | null>(null);
+  const streamingTextRef = useRef('');
   const [loading, setLoading] = useState(true);
   const [filterYear, setFilterYear] = useState('');
   const [filterDept, setFilterDept] = useState('');
@@ -67,18 +70,32 @@ export default function ProjectsPage() {
     [projects, filterYear, filterDept]
   );
 
-  useEffect(() => {
+  const clearSelectedIfFiltered = (nextYear: string, nextDept: string) => {
     if (!selectedProject) return;
-    const stillExists = filteredProjects.some((project) => project.id === selectedProject.id);
+    const stillExists = projects.some(
+      (p) =>
+        p.id === selectedProject.id &&
+        (!nextYear || p.year === nextYear) &&
+        (!nextDept || p.department === nextDept),
+    );
     if (stillExists) return;
-
     setSelectedProject(null);
     setChatMessages([]);
     setInputMessage('');
     setViewMode('outline');
     setMobileOutlineView('list');
     setIsMobileChatOpen(false);
-  }, [filteredProjects, selectedProject]);
+  };
+
+  const handleFilterYearChange = (year: string) => {
+    setFilterYear(year);
+    clearSelectedIfFiltered(year, filterDept);
+  };
+
+  const handleFilterDeptChange = (dept: string) => {
+    setFilterDept(dept);
+    clearSelectedIfFiltered(filterYear, dept);
+  };
 
   const handleSelectProject = (project: Project) => {
     setSelectedProject(project);
@@ -88,6 +105,7 @@ export default function ProjectsPage() {
     setMobileOutlineView('detail');
     setIsMobileChatOpen(false);
     setThreadId(undefined);
+    streamingTextRef.current = '';
     setStreamingText('');
     abortCtrlRef.current?.abort();
     abortCtrlRef.current = null;
@@ -126,18 +144,24 @@ export default function ProjectsPage() {
       selectedProject.id,
       userMessage,
       {
-        onToken: (token) => setStreamingText((prev) => prev + token),
-        onDone: (_, sessionId) => {
-          setStreamingText((prev) => {
-            if (prev) setChatMessages((msgs) => [...msgs, { role: 'assistant', content: prev }]);
-            return '';
-          });
+        onToken: (token) => {
+          streamingTextRef.current += token;
+          setStreamingText(streamingTextRef.current);
+        },
+        onDone: (sessionId) => {
+          const finalText = streamingTextRef.current;
+          streamingTextRef.current = '';
+          setStreamingText('');
+          if (finalText) {
+            setChatMessages((msgs) => [...msgs, { role: 'assistant', content: finalText }]);
+          }
           setChatLoading(false);
           setThreadId(sessionId || undefined);
           abortCtrlRef.current = null;
         },
         onError: (msg) => {
           console.error('Project stream error:', msg);
+          streamingTextRef.current = '';
           setStreamingText('');
           setChatMessages((prev) => [
             ...prev,
@@ -157,10 +181,12 @@ export default function ProjectsPage() {
     abortCtrlRef.current.abort();
     abortCtrlRef.current = null;
     if (threadId) projectAPI.cancelChat(selectedProject.id, threadId).catch(() => {});
-    setStreamingText((prev) => {
-      if (prev) setChatMessages((msgs) => [...msgs, { role: 'assistant', content: prev + '…（已中止）' }]);
-      return '';
-    });
+    const finalText = streamingTextRef.current;
+    streamingTextRef.current = '';
+    setStreamingText('');
+    if (finalText) {
+      setChatMessages((msgs) => [...msgs, { role: 'assistant', content: finalText + '…（已中止）' }]);
+    }
     setChatLoading(false);
   };
 
@@ -279,7 +305,7 @@ export default function ProjectsPage() {
           <div className="flex flex-wrap items-center gap-2">
             <select
               value={filterYear}
-              onChange={(event) => setFilterYear(event.target.value)}
+              onChange={(event) => handleFilterYearChange(event.target.value)}
               className="rounded-md border border-gray-300 px-2 py-1.5 text-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-500"
             >
               <option value="">全部年份</option>
@@ -291,7 +317,7 @@ export default function ProjectsPage() {
             </select>
             <select
               value={filterDept}
-              onChange={(event) => setFilterDept(event.target.value)}
+              onChange={(event) => handleFilterDeptChange(event.target.value)}
               className="max-w-[180px] rounded-md border border-gray-300 px-2 py-1.5 text-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-500"
             >
               <option value="">全部系所</option>
@@ -527,6 +553,7 @@ function PdfPanel({
   );
 }
 
+
 function ChatPanel({
   messages,
   streamingText,
@@ -581,7 +608,15 @@ function ChatPanel({
                 message.role === 'user' ? 'max-w-[80%] bg-primary-700 text-white' : 'max-w-[85%] bg-gray-100 text-gray-900'
               }`}
             >
-              <p className="whitespace-pre-wrap text-sm leading-relaxed">{message.content}</p>
+              {message.role === 'assistant' ? (
+                <div className="prose prose-sm prose-gray max-w-none text-sm">
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    {message.content}
+                  </ReactMarkdown>
+                </div>
+              ) : (
+                <p className="whitespace-pre-wrap text-sm leading-relaxed">{message.content}</p>
+              )}
             </div>
           </div>
         ))}
@@ -589,10 +624,12 @@ function ChatPanel({
         {chatLoading && streamingText ? (
           <div className="flex justify-start">
             <div className="max-w-[85%] rounded-lg bg-gray-100 p-4 text-gray-900">
-              <p className="whitespace-pre-wrap text-sm leading-relaxed">
-                {streamingText}
-                <span className="ml-0.5 inline-block h-4 w-0.5 animate-pulse bg-gray-500 align-text-bottom" />
-              </p>
+              <div className="prose prose-sm prose-gray max-w-none text-sm">
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {streamingText}
+                </ReactMarkdown>
+              </div>
+              <span className="inline-block h-4 w-0.5 animate-pulse bg-gray-500 align-text-bottom" />
             </div>
           </div>
         ) : chatLoading ? (
@@ -624,11 +661,10 @@ function ChatPanel({
             <button
               type="button"
               onClick={onCancel}
-              className="btn-secondary flex shrink-0 items-center gap-1 px-3"
+              className="btn-secondary shrink-0"
               aria-label="中止回應"
             >
-              <HiStop className="h-4 w-4" />
-              <span className="text-xs">停止</span>
+              <HiStop className="h-5 w-5" />
             </button>
           ) : (
             <button type="submit" disabled={!inputMessage.trim()} className="btn-primary shrink-0">

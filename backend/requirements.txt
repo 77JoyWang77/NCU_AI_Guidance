@@ -1,6 +1,7 @@
 fastapi>=0.115.0,<0.116.0
 uvicorn[standard]>=0.27.0
 pydantic>=2.6.0
+pydantic-settings>=2.0.0
 python-multipart>=0.0.9
 python-dotenv>=1.0.0
 openai>=1.40.0
@@ -11,4 +12,24 @@ qdrant-client>=1.9.0
 fastembed>=0.3.6
 grpcio>=1.72.0
 psycopg[binary]>=3.2.0
+psycopg-pool>=3.2.0
 firebase-admin>=6.5.0
+
+# Multi-agent PDF chat
+langchain>=0.3.0
+langchain-openai>=0.2.0
+langchain-community>=0.3.0
+langchain-qdrant>=0.2.0
+langchain-core>=0.3.0
+langgraph>=1.2.0
+langgraph-checkpoint-postgres>=2.0.0
+
+# ORM for PDF chat tables
+sqlalchemy>=2.0.0
+alembic>=1.13.0
+
+# Reranker for PDF search
+flashrank>=0.2.0
+
+# Web search tool
+duckduckgo-search>=6.0.0
