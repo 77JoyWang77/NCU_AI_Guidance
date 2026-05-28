@@ -16,7 +16,7 @@ from app.prompting.loader import load_stack
 from app.prompting.registry import get as get_prompt
 from app.prompting.registry import version as prompt_version
 
-from .types import AgentRoute, AgentResult, AgentStatus
+from .types import AgentLimitation, AgentRoute, AgentResult, AgentStatus
 from .request_context import get_user_id
 from . import steering as _steering
 
@@ -42,6 +42,7 @@ def _fire_and_forget(coro) -> None:
 ROUTER_PROMPT_NAME = "route_coordinator"
 VALID_AGENTS = {"chat", "retrieval", "research", "question", "evaluation"}
 MAX_HANDOFFS = 3
+COMPOSE_MIN_CHARS = 600  # minimum research response length to trigger composition
 
 _FOLLOWUP_SIGNALS = (
     "繼續", "再說", "補充", "更多", "詳細", "展開", "那", "那麼", "這個",
@@ -135,11 +136,18 @@ def _allows_background_evaluation(agent_name: str, has_docs: bool) -> bool:
     return has_docs and agent_name in {"research", "retrieval", "question"}
 
 
-def _normalise_decision(decision: RouterDecision, has_docs: bool) -> RouterDecision:
+_ANALYTIC_SIGNALS = ("分析", "整理", "比較", "摘要", "總結", "evaluate", "compare", "summarize", "summary")
+
+
+def _normalise_decision(decision: RouterDecision, has_docs: bool, user_message: str = "") -> RouterDecision:
     agent_name = decision.agent_name if decision.agent_name in VALID_AGENTS else "chat"
     if agent_name in {"research", "retrieval"} and not has_docs:
         agent_name = "chat"
     evaluate_after = bool(decision.evaluate_after and _allows_background_evaluation(agent_name, has_docs))
+    # Heuristic: auto-enable evaluation for research when the question is analytic
+    if not evaluate_after and agent_name == "research" and has_docs:
+        if any(s in user_message for s in _ANALYTIC_SIGNALS):
+            evaluate_after = _allows_background_evaluation(agent_name, has_docs)
     return RouterDecision(agent_name=agent_name, evaluate_after=evaluate_after, reason=decision.reason)
 
 
@@ -159,7 +167,7 @@ def _route_for_agent(
         agent_name = "chat"
     if agent_name == "research":
         prompt = _primary_prompt("research_runtime", "research_writer", thread_id, document_ids)
-        return AgentRoute(agent_name, prompt.name, prompt.version, compose_after=False, evaluate_after=evaluate_after)
+        return AgentRoute(agent_name, prompt.name, prompt.version, compose_after=True, evaluate_after=evaluate_after)
     if agent_name == "question":
         return AgentRoute(agent_name, "question_skill", prompt_version("question_skill"), compose_after=False, evaluate_after=evaluate_after)
     if agent_name == "retrieval":
@@ -290,7 +298,7 @@ async def _orchestrate(
         decision: RouterDecision = await chain.ainvoke(
             {"payload": json.dumps(user, ensure_ascii=False)}
         )
-        return _normalise_decision(decision, has_docs)
+        return _normalise_decision(decision, has_docs, message)
     except Exception as exc:
         logger.warning("Orchestrator LLM failed; using conservative fallback: %s", exc)
         fallback = "retrieval" if has_docs else "chat"
@@ -398,6 +406,8 @@ async def run_research_agent(
         "agent_name": "research",
         **stack.metadata(),
     }
+    n_docs = len(document_ids or [])
+    max_searches = 14 + max(0, (n_docs - 1) * 2)
     return await run_research_task(
         question=user_message,
         thread_id=thread_id,
@@ -407,7 +417,7 @@ async def run_research_agent(
         observation_id=observation_id,
         on_stage=on_stage,
         on_token=on_token,
-        max_searches=20,
+        max_searches=max_searches,
         max_searches_per_slot=3,
         max_consecutive_no_new=2,
         trace_id=trace_id,
@@ -767,15 +777,13 @@ async def route_agent_stream(
                             etype, val = rem
                             if etype == "token":
                                 _streamed_response.append(val)
-                                if plan.composition_step is None:
-                                    yield val, False, []
+                                yield val, False, []
                                 streamed_tokens = True
                         break
                     etype, val = event
                     if etype == "token":
                         _streamed_response.append(val)
-                        if plan.composition_step is None:
-                            yield val, False, []
+                        yield val, False, []
                         streamed_tokens = True
 
                 if rtask.cancelled():
@@ -785,11 +793,10 @@ async def route_agent_stream(
                 research_result = rtask.result()
                 if not streamed_tokens:
                     _streamed_response.append(research_result.response)
-                    if plan.composition_step is None:
-                        chunk_size = 8
-                        for _i in range(0, len(research_result.response), chunk_size):
-                            yield research_result.response[_i:_i + chunk_size], False, []
-                            await asyncio.sleep(0)
+                    chunk_size = 8
+                    for _i in range(0, len(research_result.response), chunk_size):
+                        yield research_result.response[_i:_i + chunk_size], False, []
+                        await asyncio.sleep(0)
                 _fire_and_forget(_update_memory(
                     "research", thread_id, get_user_id(), document_ids, user_message, research_result
                 ))
@@ -858,7 +865,7 @@ async def route_agent_stream(
                     status=AgentStatus(
                         completed=_retrieval_has_answer,
                         gaps=[] if _retrieval_has_answer else ["未找到與問題相關的文件片段"],
-                        agent_limitation="" if _retrieval_has_answer else "單點查找，文件中可能無此資訊",
+                        agent_limitation=AgentLimitation.NONE if _retrieval_has_answer else AgentLimitation.SINGLE_POINT_LOOKUP,
                     ),
                 )
 
@@ -882,8 +889,9 @@ async def route_agent_stream(
 
                 _chat_full = "".join(_streamed_response)
                 _fire_and_forget(_update_chat_summary(thread_id, user_message, _chat_full))
-                if "[INSUFFICIENT_CONTEXT]" in _chat_full:
-                    _chat_full = _chat_full.replace("[INSUFFICIENT_CONTEXT]", "").strip()
+                _chat_lines = _chat_full.strip().split("\n")
+                if _chat_lines[-1].strip() == "[INSUFFICIENT_CONTEXT]":
+                    _chat_full = "\n".join(_chat_lines[:-1]).strip()
                     _streamed_response = [_chat_full]
                     agent_result = AgentResult(
                         response=_chat_full,
@@ -892,7 +900,7 @@ async def route_agent_stream(
                         status=AgentStatus(
                             completed=False,
                             work_summary="chat 無法從現有 context 充分回答",
-                            agent_limitation="chat 無文件搜尋工具，context 不足以充分回答此問題",
+                            agent_limitation=AgentLimitation.CONTEXT_INSUFFICIENT,
                         ),
                     )
 
@@ -901,7 +909,7 @@ async def route_agent_stream(
 
         _full_response = "".join(_streamed_response) or None
 
-        if plan.composition_step is not None:
+        if plan.composition_step is not None and len(_full_response or "") >= COMPOSE_MIN_CHARS:
             if on_stage:
                 on_stage("組織回答中")
             _composed = await _run_composition(
@@ -910,7 +918,7 @@ async def route_agent_stream(
                             agent_name=current_route.agent_name),
                 user_message, thread_id, document_ids, use_mini,
             )
-            yield _composed.response, False, _composed.sources
+            yield _composed.response, "replace", _composed.sources
             last_sources = _composed.sources
             _full_response = _composed.response
 

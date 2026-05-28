@@ -1,3 +1,4 @@
+import asyncio
 import json as _json
 import logging
 import os
@@ -17,6 +18,9 @@ router = APIRouter()
 # Per-user stream lock: prevents duplicate concurrent requests for the same user+project.
 # Key: "{project_id}:{user_id_or_anon}"
 _stream_lock: dict[str, str] = {}  # key → active thread_id
+_stream_lock_mutex = asyncio.Lock()  # makes check-and-set atomic within a single asyncio worker
+
+HEARTBEAT_INTERVAL = 15.0  # seconds between SSE heartbeats while waiting for LLM tokens
 
 
 # ── 資料載入 ───────────────────────────────────────────────────────────────────
@@ -166,7 +170,6 @@ async def chat_with_project_stream(
     from app.agents.pdf import chat_jobs, steering
     from app.agents.pdf.router_agent import route_agent_stream
     from app.agents.pdf.request_context import set_user_id
-    from app.services.pdf_llm_gate import get_gate
 
     document_ids = _get_document_ids_for_project(project_id) or None
     thread_id = request.thread_id or new_id()
@@ -175,17 +178,21 @@ async def chat_with_project_stream(
 
     # Per-user stream lock: if same user+project already has an active stream,
     # silently drop the duplicate request so the frontend only sees one response.
+    # Mutex makes the check-and-set atomic within a single asyncio worker.
     lock_key = f"{project_id}:{user_id or 'anon'}"
-    if lock_key in _stream_lock:
-        logger.warning("duplicate stream dropped project=%s user=%s active_thread=%s",
-                       project_id, user_id, _stream_lock[lock_key])
+    async with _stream_lock_mutex:
+        if lock_key in _stream_lock:
+            _active = _stream_lock[lock_key]
+            logger.warning("duplicate stream dropped project=%s user=%s active_thread=%s",
+                           project_id, user_id, _active)
 
-        async def _drop():
-            yield f"data: {_json.dumps({'done': True, 'session_id': _stream_lock.get(lock_key, thread_id)})}\n\n"
+            async def _drop():
+                yield f"data: {_json.dumps({'done': True, 'session_id': _active})}\n\n"
 
-        return StreamingResponse(_drop(), media_type="text/event-stream")
+            return StreamingResponse(_drop(), media_type="text/event-stream")
 
-    _stream_lock[lock_key] = thread_id
+        _stream_lock[lock_key] = thread_id
+
     logger.info("stream request project=%s thread=%s has_thread_in_req=%s",
                 project_id, thread_id, bool(request.thread_id))
 
@@ -205,25 +212,50 @@ async def chat_with_project_stream(
     chat_jobs.start(thread_id, request.message, user_id=user_id, title=conv.title)
 
     async def event_stream():
-        gate = get_gate()
-        await gate.acquire()
+        from app.services.pdf_llm_gate import acquire_with_timeout, get_gate
+
+        gate_acquired = await acquire_with_timeout(timeout=30.0)
+        if not gate_acquired:
+            yield f"data: {_json.dumps({'error': '服務目前繁忙，請稍後再試。', 'done': True, 'session_id': thread_id})}\n\n"
+            _stream_lock.pop(lock_key, None)
+            return
+
+        pending: asyncio.Task | None = None
         try:
-            async for token, is_done, _ in route_agent_stream(
+            aiter = route_agent_stream(
                 request.message,
                 thread_id=thread_id,
                 document_ids=document_ids,
-            ):
-                if is_done:
-                    yield f"data: {_json.dumps({'done': True, 'session_id': thread_id})}\n\n"
+            ).__aiter__()
+
+            pending = asyncio.create_task(aiter.__anext__())
+            while True:
+                try:
+                    result = await asyncio.wait_for(asyncio.shield(pending), timeout=HEARTBEAT_INTERVAL)
+                except asyncio.TimeoutError:
+                    yield f"data: {_json.dumps({'heartbeat': True})}\n\n"
+                    continue
+                except StopAsyncIteration:
+                    break
+
+                token, is_done, sources = result
+                if is_done == "replace":
+                    yield f"data: {_json.dumps({'replace': token, 'sources': sources})}\n\n"
+                elif is_done:
+                    yield f"data: {_json.dumps({'done': True, 'session_id': thread_id, 'cancelled': chat_jobs.is_cancelled(thread_id)})}\n\n"
+                    break
                 else:
                     yield f"data: {_json.dumps({'token': token})}\n\n"
+
+                pending = asyncio.create_task(aiter.__anext__())
+
         except Exception as exc:
             logger.error("event_stream error thread=%s: %s", thread_id, exc)
-            yield (
-                f"data: {_json.dumps({'token': '處理時發生錯誤，請稍後再試。', 'done': True, 'session_id': thread_id})}\n\n"
-            )
+            yield f"data: {_json.dumps({'token': '處理時發生錯誤，請稍後再試。', 'done': True, 'session_id': thread_id})}\n\n"
         finally:
-            gate.release()
+            if pending and not pending.done():
+                pending.cancel()
+            get_gate().release()
             chat_jobs.finish(thread_id)
             _mark_stream(thread_id, None)
             _stream_lock.pop(lock_key, None)

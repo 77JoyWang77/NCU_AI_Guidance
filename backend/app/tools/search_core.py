@@ -221,11 +221,13 @@ async def run_search_report(
         query, sub_queries, target_lang=lang,
         keyword_query=keyword_query, semantic_query=semantic_query, section_terms=section_terms,
     )
+    _hyde_already_tried = False
     if use_hyde:
         queries = await _hyde_expand(
             queries, query=query, keyword_query=keyword_query,
             semantic_query=semantic_query, section_terms=section_terms,
         )
+        _hyde_already_tried = True
     if not queries:
         ctx.consecutive_empty += 1
         return json.dumps({"results": [], "message": "No retrieval query was provided."}, ensure_ascii=False)
@@ -241,7 +243,7 @@ async def run_search_report(
         exclude_chunk_keys=ctx.seen_chunks,
     )
 
-    if not chunks and not use_hyde:
+    if not chunks and not _hyde_already_tried:
         hyde_queries = await _hyde_expand(
             queries, query=query, keyword_query=keyword_query,
             semantic_query=semantic_query, section_terms=section_terms,

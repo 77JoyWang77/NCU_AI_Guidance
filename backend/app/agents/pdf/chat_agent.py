@@ -14,7 +14,7 @@ from .no_tool_runner import run_no_tool_agent, stream_no_tool_agent, write_agent
 from .request_context import get_user_id  # noqa: F401
 from app.prompting.loader import load_stack
 
-from .types import AgentResult, AgentStatus
+from .types import AgentLimitation, AgentResult, AgentStatus
 
 STACK_NAME = "chat_default"
 PROMPT_NAME = "chat_mode"
@@ -173,8 +173,9 @@ async def answer(
         use_mini=use_mini,
         extra_system_messages=extra_msgs,
     )
-    _insufficient = "[INSUFFICIENT_CONTEXT]" in response
-    response = response.replace("[INSUFFICIENT_CONTEXT]", "").strip()
+    _lines = response.strip().split("\n")
+    _insufficient = _lines[-1].strip() == "[INSUFFICIENT_CONTEXT]"
+    response = "\n".join(_lines[:-1]).strip() if _insufficient else response.strip()
 
     return AgentResult(
         response=response,
@@ -186,7 +187,7 @@ async def answer(
         status=AgentStatus(
             completed=not _insufficient,
             work_summary="直接從對話 context 回答。",
-            agent_limitation="chat 無文件搜尋工具，現有 context 不足以充分回答" if _insufficient else "",
+            agent_limitation=AgentLimitation.CONTEXT_INSUFFICIENT if _insufficient else AgentLimitation.NONE,
         ),
     )
 

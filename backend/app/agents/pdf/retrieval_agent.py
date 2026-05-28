@@ -6,7 +6,7 @@ from .runner import run_tool_agent_stream as _run_agent_stream
 from .no_tool_runner import write_agent_span
 from app.prompting.loader import load_stack
 
-from .types import AgentResult, AgentStatus
+from .types import AgentLimitation, AgentResult, AgentStatus
 
 
 async def _emit_stage(on_stage, msg: str) -> None:
@@ -82,7 +82,7 @@ async def answer(
             completed=completed,
             work_summary=f"從文件中搜尋相關內容，找到 {len(sources)} 個來源。" if completed else "搜尋文件但未找到相關內容。",
             gaps=[] if completed else ["未找到與問題相關的文件片段"],
-            agent_limitation="" if completed else "單點查找，無法跨文件深度綜合分析",
+            agent_limitation=AgentLimitation.NONE if completed else AgentLimitation.SINGLE_POINT_LOOKUP,
         ),
     )
 

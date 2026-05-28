@@ -26,7 +26,7 @@ from .runtime_metadata import (
 )
 from .state import ResearchGraphState, ResearchState
 from .task_planner import create_research_plan, fallback_research_plan
-from ..types import AgentResult, AgentStatus
+from ..types import AgentLimitation, AgentResult, AgentStatus
 from ..no_tool_runner import write_agent_span
 
 logger = logging.getLogger(__name__)
@@ -383,7 +383,7 @@ async def run_research_task(
             completed=len(_unfilled_gaps) == 0,
             work_summary="完成多步驟研究分析。",
             gaps=_unfilled_gaps,
-            agent_limitation="" if len(_unfilled_gaps) == 0 else "部分檢索項目未能找到足夠文件內容",
+            agent_limitation=AgentLimitation.NONE if len(_unfilled_gaps) == 0 else AgentLimitation.RESEARCH_BUDGET_EXHAUSTED,
         )
         return AgentResult(
             response=answer, sources=sources,

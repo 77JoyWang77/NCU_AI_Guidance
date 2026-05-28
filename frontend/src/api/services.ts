@@ -250,8 +250,9 @@ export const projectAPI = {
     message: string,
     handlers: {
       onToken: (text: string) => void;
-      onDone: (sessionId: string) => void;
+      onDone: (sessionId: string, cancelled?: boolean) => void;
       onError: (msg: string) => void;
+      onReplace?: (text: string) => void;
     },
     threadId?: string,
   ): AbortController {
@@ -287,9 +288,17 @@ export const projectAPI = {
                 token?: string;
                 done?: boolean;
                 session_id?: string;
+                cancelled?: boolean;
+                heartbeat?: boolean;
+                error?: string;
+                replace?: string;
+                sources?: string[];
               };
+              if (ev.heartbeat) continue;
+              if (ev.error) { handlers.onError(ev.error); continue; }
+              if (ev.replace !== undefined) { handlers.onReplace?.(ev.replace); continue; }
               if (ev.token !== undefined) handlers.onToken(ev.token);
-              else if (ev.done) handlers.onDone(ev.session_id ?? '');
+              else if (ev.done) handlers.onDone(ev.session_id ?? '', ev.cancelled);
             } catch { /* malformed chunk */ }
           }
         }

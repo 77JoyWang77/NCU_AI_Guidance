@@ -391,8 +391,6 @@ async def search_documents(
 ) -> tuple[list[RetrievedChunk], list[str]]:
     """Multi-query search → deduplicate → rerank."""
     effective_lang = lang or await aget_document_language(document_ids)
-    vectorstore = get_dense_vectorstore() if effective_lang == "en" else get_vectorstore()
-    fusion = _WEIGHTED_RRF if (weighted_rrf and effective_lang != "en") else None
 
     qdrant_filter = None
     if document_ids:
@@ -405,11 +403,23 @@ async def search_documents(
 
     seen_content: set[str] = set()
     all_results = []
-    # Run all queries in parallel instead of sequentially
-    hit_lists = await asyncio.gather(*[
-        vectorstore.asimilarity_search(q, k=RETRIEVAL_K, filter=qdrant_filter, hybrid_fusion=fusion)
-        for q in queries
-    ])
+    # Run all queries in parallel; for mixed-language docs, run both dense and hybrid then deduplicate
+    if effective_lang == "mixed":
+        _dense_vs = get_dense_vectorstore()
+        _hybrid_vs = get_vectorstore()
+        _fusion = _WEIGHTED_RRF if weighted_rrf else None
+        _dense_hits, _hybrid_hits = await asyncio.gather(
+            asyncio.gather(*[_dense_vs.asimilarity_search(q, k=RETRIEVAL_K, filter=qdrant_filter) for q in queries]),
+            asyncio.gather(*[_hybrid_vs.asimilarity_search(q, k=RETRIEVAL_K, filter=qdrant_filter, hybrid_fusion=_fusion) for q in queries]),
+        )
+        hit_lists = list(_dense_hits) + list(_hybrid_hits)
+    elif effective_lang == "en":
+        _vs = get_dense_vectorstore()
+        hit_lists = await asyncio.gather(*[_vs.asimilarity_search(q, k=RETRIEVAL_K, filter=qdrant_filter) for q in queries])
+    else:
+        _vs = get_vectorstore()
+        _fusion = _WEIGHTED_RRF if weighted_rrf else None
+        hit_lists = await asyncio.gather(*[_vs.asimilarity_search(q, k=RETRIEVAL_K, filter=qdrant_filter, hybrid_fusion=_fusion) for q in queries])
     for hits in hit_lists:
         for doc in hits:
             _sec = doc.metadata.get("section", "")
@@ -431,11 +441,20 @@ async def search_documents(
     reranker = get_reranker()
     best_score: dict[str, float] = {}
     best_doc: dict[str, object] = {}
-    # Run reranking queries in parallel via thread pool
-    rerank_results = await asyncio.gather(*[
-        asyncio.to_thread(reranker.compress_documents, all_results, q)
+    # Run reranking queries in parallel with per-query timeout to avoid blocking on large chunks
+    _RERANK_TIMEOUT = 8.0
+    rerank_results = []
+    for coro in asyncio.as_completed([
+        asyncio.wait_for(
+            asyncio.to_thread(reranker.compress_documents, all_results, q),
+            timeout=_RERANK_TIMEOUT,
+        )
         for q in queries[:3]
-    ])
+    ]):
+        try:
+            rerank_results.append(await coro)
+        except asyncio.TimeoutError:
+            logger.warning("rerank: timed out for one query, skipping")
     for docs in rerank_results:
         for doc in docs:
             key = _chunk_key(doc.page_content)

@@ -31,5 +31,8 @@ alembic>=1.13.0
 # Reranker for PDF search
 flashrank>=0.2.0
 
+# Accurate token counting (optional; falls back to len//4 if absent)
+tiktoken>=0.7.0
+
 # Web search tool
 duckduckgo-search>=6.0.0

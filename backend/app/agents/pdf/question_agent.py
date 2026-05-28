@@ -7,7 +7,7 @@ from app.prompting.loader import load_stack
 
 from .no_tool_runner import run_no_tool_agent, stream_no_tool_agent, write_agent_span
 from .request_context import get_user_id
-from .types import AgentResult, AgentStatus
+from .types import AgentLimitation, AgentResult, AgentStatus
 
 logger = logging.getLogger(__name__)
 
@@ -129,7 +129,7 @@ async def answer(
             completed=False,
             work_summary="生成題目但缺乏充分文件依據。",
             gaps=["缺少足夠的文件內容作為題目依據"],
-            agent_limitation="依賴 retrieval 提供 evidence",
+            agent_limitation=AgentLimitation.CONTEXT_INSUFFICIENT,
         ),
     )
 

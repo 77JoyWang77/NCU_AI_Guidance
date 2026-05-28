@@ -61,23 +61,23 @@ evaluation — 評估「系統上一個回答」的品質
 5. 禁止用「摘要沒提到」作為選 chat_agent 的理由；摘要只是壓縮概述，文件全文可能有答案
 
 【evaluate_after 規則】
-預設為 false。必須同時滿足以下兩個條件才設為 true：
-① 使用者在同一則訊息提出實質任務（摘要、整理、分析等）
-② 且在同一則訊息明確要求事後確認輸出品質（有沒有漏、是否完整、幫我 review 等）
+預設為 false。若 agent 為 research，且問題包含分析性要求（整理、分析、比較、摘要、總結），則自動設為 true，不需使用者主動要求。
 
 true 範例：
+- 「幫我分析研究方法」
+- 「整理一下這篇的核心貢獻」
+- 「比較這篇和一般做法的差異」
 - 「幫我摘要這篇，然後告訴我有沒有漏掉重要內容」
-- 「整理研究方法，並確認整理是否完整」
 
 false 範例：
-- 一般 research、retrieval、chat 問題（即使複雜）
+- 非 research agent 的問題
 - 「評估一下剛才的答案」（單獨的 evaluation 請求 → evaluation_agent，不是 evaluate_after）
-- 使用者只提問未要求事後品質確認
+- 一般查詢、事實確認類問題
 
 【agent_status 解讀規則（re-routing 專用）】
 當 agent_status 存在，代表 router 正在進行 re-routing：
-- agent_limitation 含「無文件搜尋工具」→ 上一個 agent 因缺乏工具無法回答，選 retrieval 補搜尋
-- agent_limitation 含「單點查找」且 gaps 不為空 → retrieval 找不到，可嘗試 research 做更深入搜尋
+- agent_limitation = "context_insufficient" → 上一個 agent 因缺乏工具無法回答，選 retrieval 補搜尋
+- agent_limitation = "single_point_lookup" 且 gaps 不為空 → retrieval 找不到，可嘗試 research 做更深入搜尋
 - gaps 含「未找到與問題相關的文件片段」且 previous_agent 為 retrieval 或 research
   → 文件確實可能沒有此資訊，選 chat 做盡力回答並說明文件無此資訊，不要再嘗試搜尋
 

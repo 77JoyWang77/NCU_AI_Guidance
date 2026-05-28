@@ -1,4 +1,12 @@
 from dataclasses import dataclass, field
+from enum import Enum
+
+
+class AgentLimitation(str, Enum):
+    NONE = ""
+    CONTEXT_INSUFFICIENT = "context_insufficient"
+    SINGLE_POINT_LOOKUP = "single_point_lookup"
+    RESEARCH_BUDGET_EXHAUSTED = "research_budget_exhausted"
 
 
 @dataclass(frozen=True)
@@ -7,7 +15,7 @@ class AgentStatus:
     completed: bool = True
     work_summary: str = ""
     gaps: list[str] = field(default_factory=list)
-    agent_limitation: str = ""
+    agent_limitation: AgentLimitation = AgentLimitation.NONE
 
 
 @dataclass(frozen=True)

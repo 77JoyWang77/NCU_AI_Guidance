@@ -6,6 +6,15 @@ from dataclasses import dataclass
 
 from . import registry
 
+try:
+    import tiktoken as _tiktoken
+    _enc = _tiktoken.get_encoding("cl100k_base")
+    def _count_tokens(text: str) -> int:
+        return len(_enc.encode(text))
+except ImportError:
+    def _count_tokens(text: str) -> int:
+        return len(text) // 4
+
 
 PROMPT_STACKS: dict[str, list[str]] = {
     "chat_default": ["core", "chat_mode"],
@@ -49,7 +58,7 @@ class PromptStack:
         text = "\n".join(self.contents)
         if not text:
             return 0
-        return max(1, len(text) // 4)
+        return max(1, _count_tokens(text))
 
     def metadata(self) -> dict[str, str | int]:
         prompts = [

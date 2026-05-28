@@ -148,6 +148,10 @@ export default function ProjectsPage() {
           streamingTextRef.current += token;
           setStreamingText(streamingTextRef.current);
         },
+        onReplace: (text) => {
+          streamingTextRef.current = text;
+          setStreamingText(text);
+        },
         onDone: (sessionId) => {
           const finalText = streamingTextRef.current;
           streamingTextRef.current = '';
