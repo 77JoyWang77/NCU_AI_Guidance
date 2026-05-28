@@ -13,7 +13,7 @@ import {
   HiMap,
   HiAdjustments,
 } from 'react-icons/hi';
-import { useAuth } from '../auth/useAuth';
+import { useAuth } from '../auth/AuthContext';
 import { analyticsAPI, type AnalyticsData } from '../api/services';
 
 // ── 學院 → 學術領域對照 ─────────────────────────────────────────

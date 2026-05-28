@@ -14,7 +14,7 @@ import CourseSidePanel from '../components/CourseSidePanel';
 import CourseDetailModal from '../components/CourseDetailModal';
 import DebugTracePanel from '../components/DebugTracePanel';
 import HighlightedAnswer from '../components/HighlightedAnswer';
-import { useAuth } from '../auth/useAuth';
+import { useAuth } from '../auth/AuthContext';
 import type { CourseCard, DebugTrace, StreamEvent, ToolTraceItem } from '../types';
 
 const TOOL_LABELS: Record<string, string> = {
