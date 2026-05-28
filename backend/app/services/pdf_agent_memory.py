@@ -42,7 +42,6 @@ MEMORY_READ_POLICY: dict[str, MemoryRead] = {
     "retrieval": MemoryRead(context_summary=True,  long_term=False, user_profile=False),
     "question":  MemoryRead(context_summary=True,  long_term=False, user_profile=False),
     "chat":      MemoryRead(context_summary=True,  long_term=True,  user_profile=True),
-    "summary":   MemoryRead(context_summary=True,  long_term=False, user_profile=False),
 }
 
 MEMORY_WRITE_POLICY: dict[str, MemoryWrite] = {
@@ -50,7 +49,6 @@ MEMORY_WRITE_POLICY: dict[str, MemoryWrite] = {
     "retrieval": MemoryWrite(context_summary=False, long_term=False, user_profile=False),
     "question":  MemoryWrite(context_summary=False, long_term=False, user_profile=False),
     "chat":      MemoryWrite(context_summary=False, long_term=False, user_profile=False),
-    "summary":   MemoryWrite(context_summary=True,  long_term=True,  user_profile=False),
 }
 
 _CONTEXT_LABELS = {

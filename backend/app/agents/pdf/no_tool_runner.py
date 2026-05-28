@@ -18,20 +18,31 @@ from .request_context import get_user_id  # noqa: F401 — kept for callers that
 
 logger = logging.getLogger(__name__)
 
+_chat_llm: AzureChatOpenAI | None = None
+_mini_llm_instance: AzureChatOpenAI | None = None
 
-def _llm(use_mini: bool = False) -> AzureChatOpenAI:
-    deployment = (
-        pdf_settings.azure_mini_deployment
-        if use_mini and pdf_settings.azure_mini_deployment
-        else pdf_settings.azure_chat_deployment
-    )
-    return AzureChatOpenAI(
-        azure_deployment=deployment,
-        azure_endpoint=pdf_settings.azure_openai_endpoint,
-        api_key=pdf_settings.azure_openai_api_key.get_secret_value(),
-        api_version=pdf_settings.azure_openai_api_version,
-        temperature=0.2,
-    )
+
+def _get_llm(use_mini: bool = False) -> AzureChatOpenAI:
+    global _chat_llm, _mini_llm_instance
+    if use_mini and pdf_settings.azure_mini_deployment:
+        if _mini_llm_instance is None:
+            _mini_llm_instance = AzureChatOpenAI(
+                azure_deployment=pdf_settings.azure_mini_deployment,
+                azure_endpoint=pdf_settings.azure_openai_endpoint,
+                api_key=pdf_settings.azure_openai_api_key.get_secret_value(),
+                api_version=pdf_settings.azure_openai_api_version,
+                temperature=0.2,
+            )
+        return _mini_llm_instance
+    if _chat_llm is None:
+        _chat_llm = AzureChatOpenAI(
+            azure_deployment=pdf_settings.azure_chat_deployment,
+            azure_endpoint=pdf_settings.azure_openai_endpoint,
+            api_key=pdf_settings.azure_openai_api_key.get_secret_value(),
+            api_version=pdf_settings.azure_openai_api_version,
+            temperature=0.2,
+        )
+    return _chat_llm
 
 
 async def write_agent_span(**kwargs) -> None:
@@ -112,7 +123,7 @@ async def run_no_tool_agent(
         sources=sources,
     )
 
-    _llm_instance = _llm(use_mini=use_mini)
+    _llm_instance = _get_llm(use_mini=use_mini)
     response = await _llm_instance.ainvoke(messages)
     content = str(getattr(response, "content", response)).strip()
     result_sources = sources or []
@@ -146,6 +157,6 @@ async def stream_no_tool_agent(
         sources=sources,
     )
 
-    llm_instance = _llm(use_mini=use_mini)
+    llm_instance = _get_llm(use_mini=use_mini)
     async for chunk in llm_instance.astream(messages):
         yield chunk.content or ""

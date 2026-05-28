@@ -29,10 +29,8 @@ async def lifespan(app: FastAPI):
     # PDF 問答初始化
     try:
         from app.agents.pdf.runner import setup_checkpointer, shutdown_checkpointer
-        from app.services.pdf_memory_service import ensure_memory_collection
         await setup_checkpointer()
-        ensure_memory_collection()
-        logger.info("PDF chat: checkpointer and memory collection ready")
+        logger.info("PDF chat: checkpointer ready")
     except Exception as exc:
         logger.warning("PDF chat init failed (non-fatal): %s", exc)
 

@@ -24,29 +24,9 @@ if TYPE_CHECKING:
 
 logger = logging.getLogger(__name__)
 
-MEMORY_COLLECTION = "pdf_research_memories"
-VECTOR_SIZE = 3072
 MAX_FINDINGS = 5
 LONG_TERM_LIMIT = 4
 _DEDUP_THRESHOLD = 0.92
-
-
-# ── Qdrant memory collection init ─────────────────────────────────────────────
-
-def ensure_memory_collection() -> None:
-    """Create pdf_research_memories Qdrant collection if it doesn't exist."""
-    try:
-        from app.rag import get_qdrant_client
-        from qdrant_client.models import Distance, VectorParams
-        client = get_qdrant_client()
-        if not client.collection_exists(MEMORY_COLLECTION):
-            client.create_collection(
-                collection_name=MEMORY_COLLECTION,
-                vectors_config=VectorParams(size=VECTOR_SIZE, distance=Distance.COSINE),
-            )
-            logger.info("Created Qdrant collection: %s", MEMORY_COLLECTION)
-    except Exception as exc:
-        logger.warning("ensure_memory_collection failed (non-fatal): %s", exc)
 
 
 # ── Short-term: context_summary ───────────────────────────────────────────────
@@ -113,6 +93,42 @@ async def update_context_summary(
 
     if not new_finding["coverage"]:
         return
+
+    findings = [f for f in findings if f.get("question", "")[:100] != question[:100]]
+    findings = findings[-(MAX_FINDINGS - 1):]
+    findings.append(new_finding)
+
+    _save_summary(thread_id, {
+        "version": 2,
+        "user_focus": question[:60],
+        "findings": findings,
+        "last_updated": datetime.now(timezone.utc).isoformat(),
+    })
+
+
+async def update_chat_context_summary(
+    thread_id: str,
+    question: str,
+    answer: str,
+) -> None:
+    """Write a lightweight Q+A finding to context_summary for chat agent turns.
+
+    Unlike update_context_summary, this does not require coverage_result — it stores
+    only the question and answer snippet so follow-up turns can reference prior chat replies.
+    """
+    if not question or not answer:
+        return
+
+    existing = _load_summary(thread_id)
+    findings = list(existing.get("findings", []))
+
+    new_finding = {
+        "question": question[:200],
+        "answer_snippet": answer[:200],
+        "coverage": {},
+        "sources": [],
+        "created_at": datetime.now(timezone.utc).isoformat(),
+    }
 
     findings = [f for f in findings if f.get("question", "")[:100] != question[:100]]
     findings = findings[-(MAX_FINDINGS - 1):]

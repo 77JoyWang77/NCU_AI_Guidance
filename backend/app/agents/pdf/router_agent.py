@@ -336,6 +336,11 @@ async def _update_memory(
     )
 
 
+async def _update_chat_summary(thread_id: str, question: str, answer: str) -> None:
+    from app.services.pdf_memory_service import update_chat_context_summary
+    await update_chat_context_summary(thread_id, question, answer)
+
+
 async def _run_evaluation_agent(
     thread_id: str,
     *,
@@ -523,6 +528,7 @@ async def route_agent_message(
                     trace_id=step.trace_id,
                     use_mini=use_mini,
                 )
+                _fire_and_forget(_update_chat_summary(thread_id, user_message, result.response))
 
         except Exception:
             raise
@@ -875,6 +881,7 @@ async def route_agent_stream(
                         yield item
 
                 _chat_full = "".join(_streamed_response)
+                _fire_and_forget(_update_chat_summary(thread_id, user_message, _chat_full))
                 if "[INSUFFICIENT_CONTEXT]" in _chat_full:
                     _chat_full = _chat_full.replace("[INSUFFICIENT_CONTEXT]", "").strip()
                     _streamed_response = [_chat_full]
