@@ -17,9 +17,10 @@ if config.config_file_name is not None:
 
 target_metadata = PdfBase.metadata
 
-# Override sqlalchemy.url from env
+# Override sqlalchemy.url from env（確保使用 psycopg3 driver）
 from app.pdf_config import pdf_settings
-config.set_main_option("sqlalchemy.url", pdf_settings.database_url)
+from app.database_pdf import _make_url
+config.set_main_option("sqlalchemy.url", _make_url(pdf_settings.database_url))
 
 
 def run_migrations_offline() -> None:

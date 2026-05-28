@@ -405,8 +405,12 @@ async def search_documents(
 
     seen_content: set[str] = set()
     all_results = []
-    for q in queries:
-        hits = await vectorstore.asimilarity_search(q, k=RETRIEVAL_K, filter=qdrant_filter, hybrid_fusion=fusion)
+    # Run all queries in parallel instead of sequentially
+    hit_lists = await asyncio.gather(*[
+        vectorstore.asimilarity_search(q, k=RETRIEVAL_K, filter=qdrant_filter, hybrid_fusion=fusion)
+        for q in queries
+    ])
+    for hits in hit_lists:
         for doc in hits:
             _sec = doc.metadata.get("section", "")
             if _sec in ("references", "參考文獻"):
@@ -427,8 +431,13 @@ async def search_documents(
     reranker = get_reranker()
     best_score: dict[str, float] = {}
     best_doc: dict[str, object] = {}
-    for q in queries[:3]:
-        for doc in await asyncio.to_thread(reranker.compress_documents, all_results, q):
+    # Run reranking queries in parallel via thread pool
+    rerank_results = await asyncio.gather(*[
+        asyncio.to_thread(reranker.compress_documents, all_results, q)
+        for q in queries[:3]
+    ])
+    for docs in rerank_results:
+        for doc in docs:
             key = _chunk_key(doc.page_content)
             score = doc.metadata.get("relevance_score", 0.0)
             if score > best_score.get(key, -1):

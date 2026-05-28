@@ -39,6 +39,8 @@ ENV/
 .vscode/
 .idea/
 .claude/
+.cursor/
+.codegraph/
 *.swp
 *.swo
 *.sublime-project

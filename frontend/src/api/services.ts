@@ -250,7 +250,7 @@ export const projectAPI = {
     message: string,
     handlers: {
       onToken: (text: string) => void;
-      onDone: (sources: string[], sessionId: string) => void;
+      onDone: (sessionId: string) => void;
       onError: (msg: string) => void;
     },
     threadId?: string,
@@ -278,8 +278,7 @@ export const projectAPI = {
           const { done, value } = await reader.read();
           if (done) break;
           buf += decoder.decode(value, { stream: true });
-          const lines = buf.split('
-');
+          const lines = buf.split('\n');
           buf = lines.pop() ?? '';
           for (const line of lines) {
             if (!line.startsWith('data: ')) continue;
@@ -287,11 +286,10 @@ export const projectAPI = {
               const ev = JSON.parse(line.slice(6)) as {
                 token?: string;
                 done?: boolean;
-                sources?: string[];
                 session_id?: string;
               };
               if (ev.token !== undefined) handlers.onToken(ev.token);
-              else if (ev.done) handlers.onDone(ev.sources ?? [], ev.session_id ?? '');
+              else if (ev.done) handlers.onDone(ev.session_id ?? '');
             } catch { /* malformed chunk */ }
           }
         }

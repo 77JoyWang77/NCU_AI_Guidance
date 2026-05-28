@@ -1,4 +1,7 @@
+import asyncio
+import logging
 import os
+from contextlib import asynccontextmanager
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -8,6 +11,8 @@ from app.routes import assessment, auth, courses, projects, course_search, graph
 
 # 載入 .env（開發環境）
 load_dotenv(Path(__file__).parent.parent.parent / ".env")
+
+logger = logging.getLogger(__name__)
 
 
 def get_allowed_origins() -> list[str]:
@@ -19,10 +24,40 @@ def get_allowed_origins() -> list[str]:
     return [origin.strip() for origin in origins.split(",") if origin.strip()]
 
 
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # PDF 問答初始化
+    try:
+        from app.agents.pdf.runner import setup_checkpointer, shutdown_checkpointer
+        from app.services.pdf_memory_service import ensure_memory_collection
+        await setup_checkpointer()
+        ensure_memory_collection()
+        logger.info("PDF chat: checkpointer and memory collection ready")
+    except Exception as exc:
+        logger.warning("PDF chat init failed (non-fatal): %s", exc)
+
+    yield
+
+    # PDF 問答 shutdown
+    try:
+        from app.agents.pdf.runner import shutdown_checkpointer
+        await shutdown_checkpointer()
+
+        from app.agents.pdf.research.agent import request_all_drain
+        request_all_drain("server_shutdown")
+
+        from app.agents.pdf.research import _background_tasks
+        if _background_tasks:
+            await asyncio.gather(*list(_background_tasks), return_exceptions=True)
+    except Exception as exc:
+        logger.warning("PDF chat shutdown error (non-fatal): %s", exc)
+
+
 app = FastAPI(
     title="NCU High School Student Portal API",
     description="API for NCU high school student guidance system",
-    version="1.0.0"
+    version="1.0.0",
+    lifespan=lifespan,
 )
 
 # CORS configuration

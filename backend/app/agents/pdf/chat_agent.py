@@ -74,32 +74,44 @@ async def compose_final_response(
         "agent_name": AGENT_NAME,
         **stack.metadata(),
     }
-    system_messages = [SystemMessage(content=content) for content in stack.contents]
-    system_messages.append(SystemMessage(content=(
-        "You are formatting the final user-facing response from an existing "
-        "task-agent result. Do not perform routing. Do not add facts, evidence, "
-        "or content that does not appear in the task-agent answer. "
-        "If the task-agent answer says content was not found or is incomplete, "
-        "preserve that incompleteness — do not fill gaps with your own knowledge. "
-        "Preserve all technical terms, classification names, and taxonomy labels "
-        "verbatim; never substitute them with synonyms or paraphrases."
-    )))
+    # Use only the core rules (first prompt in stack), not chat_mode.
+    # chat_mode adds educational elaborations that inflate the composition output.
+    core_content = stack.contents[0] if stack.contents else ""
+    system_messages = [
+        SystemMessage(content=core_content),
+        SystemMessage(content=(
+            "你是最終回覆格式化層。將 task_answer 直接呈現給使用者。"
+            "不添加 task_answer 未提及的內容、事實或資訊。"
+            "不補充背景知識、不延伸解說、不加評論。"
+            "保留所有技術術語、分類名稱和專有名詞原文。"
+            "不引用來源、文件名稱或頁碼。"
+            "語言與使用者問題一致。"
+        )),
+    ]
     payload = {
         "user_message": user_message,
         "task_agent": task_result.agent_name,
         "task_answer": task_result.response,
-        "sources": task_result.sources,
         "response_contract": {
             "language": "Match the user's language.",
-            "preserve_sources": True,
             "do_not_add_new_facts": True,
+            "do_not_append_sources": True,
         },
     }
     messages = [
         *system_messages,
         HumanMessage(content=json.dumps(payload, ensure_ascii=False)),
     ]
-    response = await _llm(use_mini=use_mini).ainvoke(messages)
+    response = await _llm(use_mini=use_mini).with_config({
+        "run_name": "chat_compose",
+        "metadata": {
+            "agent_name": AGENT_NAME,
+            "thread_id": thread_id,
+            "trace_id": trace_id or "",
+            "observation_id": observation_id,
+            **{k: v for k, v in metadata.items() if isinstance(v, str)},
+        },
+    }).ainvoke(messages)
     content = str(getattr(response, "content", response)).strip()
     return AgentResult(
         response=content,
