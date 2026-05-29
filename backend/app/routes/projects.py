@@ -188,7 +188,7 @@ async def chat_with_project_stream(
     # Per-user stream lock: if same user+project already has an active stream,
     # silently drop the duplicate request so the frontend only sees one response.
     # Mutex makes the check-and-set atomic within a single asyncio worker.
-    lock_key = f"{project_id}:{user_id or 'anon'}"
+    lock_key = f"{project_id}:{user_id or thread_id}"
     async with _stream_lock_mutex:
         if lock_key in _stream_lock:
             _active = _stream_lock[lock_key]

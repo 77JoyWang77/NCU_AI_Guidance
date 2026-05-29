@@ -521,17 +521,18 @@ async def route_agent_stream(
                 while True:
                     event = await _rqueue.get()
                     if event is None:
-                        while not _rqueue.empty():
-                            rem = _rqueue.get_nowait()
-                            if rem is None:
-                                continue
-                            etype, val = rem
-                            if etype == "token":
-                                ans_part = _ans_extractor.process(val)
-                                if ans_part:
-                                    _streamed_response.append(ans_part)
-                                    yield ans_part, False, []
-                                    streamed_tokens = True
+                        if not _chat_jobs.is_cancelled(thread_id):
+                            while not _rqueue.empty():
+                                rem = _rqueue.get_nowait()
+                                if rem is None:
+                                    continue
+                                etype, val = rem
+                                if etype == "token":
+                                    ans_part = _ans_extractor.process(val)
+                                    if ans_part:
+                                        _streamed_response.append(ans_part)
+                                        yield ans_part, False, []
+                                        streamed_tokens = True
                         break
                     etype, val = event
                     if etype == "token":
@@ -540,6 +541,9 @@ async def route_agent_stream(
                             _streamed_response.append(ans_part)
                             yield ans_part, False, []
                             streamed_tokens = True
+                    if _chat_jobs.is_cancelled(thread_id):
+                        rtask.cancel()
+                        break
 
                 if rtask.cancelled():
                     raise asyncio.CancelledError("research task was cancelled")
