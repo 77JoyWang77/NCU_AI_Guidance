@@ -19,6 +19,7 @@ import type { Project } from '../types';
 type ChatMessage = {
   role: 'user' | 'assistant';
   content: string;
+  sources?: string[];
 };
 
 type MobileOutlineView = 'list' | 'detail';
@@ -152,12 +153,15 @@ export default function ProjectsPage() {
           streamingTextRef.current = text;
           setStreamingText(text);
         },
-        onDone: (sessionId) => {
+        onDone: (sessionId, _cancelled, sources) => {
           const finalText = streamingTextRef.current;
           streamingTextRef.current = '';
           setStreamingText('');
           if (finalText) {
-            setChatMessages((msgs) => [...msgs, { role: 'assistant', content: finalText }]);
+            setChatMessages((msgs) => [
+              ...msgs,
+              { role: 'assistant', content: finalText, sources: sources?.length ? sources : undefined },
+            ]);
           }
           setChatLoading(false);
           setThreadId(sessionId || undefined);
@@ -613,11 +617,23 @@ function ChatPanel({
               }`}
             >
               {message.role === 'assistant' ? (
-                <div className="prose prose-sm prose-gray max-w-none text-sm">
-                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                    {message.content}
-                  </ReactMarkdown>
-                </div>
+                <>
+                  <div className="prose prose-sm prose-gray max-w-none text-sm">
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                      {message.content}
+                    </ReactMarkdown>
+                  </div>
+                  {message.sources && message.sources.length > 0 && (
+                    <div className="mt-2 border-t border-gray-200 pt-2">
+                      <p className="text-xs font-medium text-gray-500">來源</p>
+                      <ul className="mt-1 space-y-0.5">
+                        {message.sources.map((src, i) => (
+                          <li key={i} className="text-xs text-gray-400">{src}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </>
               ) : (
                 <p className="whitespace-pre-wrap text-sm leading-relaxed">{message.content}</p>
               )}

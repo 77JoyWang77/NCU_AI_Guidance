@@ -54,9 +54,12 @@ class AgentContext:
     observation_id: str | None = None
     tool_sources: list[str] = field(default_factory=list)
     _memory_context: dict | None = field(default=None, repr=False)
+    # Task prompt injected by _memory_prompt (not stored in LangGraph state)
+    task_prompt: "str | list[str] | None" = field(default=None, repr=False)
     # Cached per-request values (document metadata never changes mid-conversation)
     _cached_total_chunks: int | None = field(default=None, repr=False)
     _cached_lang: str | None = field(default=None, repr=False)
+    _cached_abstracts_text: str | None = field(default=None, repr=False)
 
 
 class SearchInput(BaseModel):
@@ -115,7 +118,6 @@ def expand_queries(
     keyword_query: str = "",
     semantic_query: str = "",
     section_terms: list[str] | None = None,
-    use_hyde: bool = False,
 ) -> list[str]:
     raw_queries = [
         keyword_query,
@@ -129,21 +131,6 @@ def expand_queries(
         cleaned = " ".join(str(raw or "").split())
         if cleaned and cleaned not in queries:
             queries.append(cleaned)
-    if use_hyde and _query_expander_llm is not None:
-        try:
-            hyde = _query_expander_llm.invoke([
-                SystemMessage(content=_HYDE_PROMPT),
-                HumanMessage(content=(
-                    f"semantic_query: {semantic_query or query or keyword_query}\n"
-                    f"keyword_query: {keyword_query}\n"
-                    f"section_terms: {' '.join(section_terms or [])}"
-                )),
-            ])
-            passage = str(getattr(hyde, "content", "") or "").strip()
-            if passage and passage not in queries:
-                queries.append(passage)
-        except Exception:
-            pass
     return queries
 
 
@@ -232,16 +219,17 @@ async def run_search_report(
         ctx.consecutive_empty += 1
         return json.dumps({"results": [], "message": "No retrieval query was provided."}, ensure_ascii=False)
 
-    num_docs = len(ctx.document_ids) if ctx.document_ids else 1
-    top_n = min(num_docs * 3, 12) if num_docs > 1 else 4
-
     chunks, _ = await _search_documents(
         queries,
         document_ids=ctx.document_ids or None,
-        top_n=top_n,
+        top_n=4,
         lang=lang,
         exclude_chunk_keys=ctx.seen_chunks,
     )
+    for _c in chunks:
+        _fn = _c.get("filename")
+        if _fn and _fn not in ctx.tool_sources:
+            ctx.tool_sources.append(_fn)
 
     if not chunks and not _hyde_already_tried:
         hyde_queries = await _hyde_expand(
@@ -252,10 +240,14 @@ async def run_search_report(
             chunks, _ = await _search_documents(
                 hyde_queries,
                 document_ids=ctx.document_ids or None,
-                top_n=top_n,
+                top_n=4,
                 lang=lang,
                 exclude_chunk_keys=ctx.seen_chunks,
             )
+            for _c in chunks:
+                _fn = _c.get("filename")
+                if _fn and _fn not in ctx.tool_sources:
+                    ctx.tool_sources.append(_fn)
             if chunks:
                 logger.debug("run_search_report: HyDE fallback found %d chunks for %r", len(chunks), query[:60])
 

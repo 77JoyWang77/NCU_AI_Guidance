@@ -250,7 +250,7 @@ export const projectAPI = {
     message: string,
     handlers: {
       onToken: (text: string) => void;
-      onDone: (sessionId: string, cancelled?: boolean) => void;
+      onDone: (sessionId: string, cancelled?: boolean, sources?: string[]) => void;
       onError: (msg: string) => void;
       onReplace?: (text: string) => void;
     },
@@ -298,7 +298,7 @@ export const projectAPI = {
               if (ev.error) { handlers.onError(ev.error); continue; }
               if (ev.replace !== undefined) { handlers.onReplace?.(ev.replace); continue; }
               if (ev.token !== undefined) handlers.onToken(ev.token);
-              else if (ev.done) handlers.onDone(ev.session_id ?? '', ev.cancelled);
+              else if (ev.done) handlers.onDone(ev.session_id ?? '', ev.cancelled, ev.sources ?? []);
             } catch { /* malformed chunk */ }
           }
         }

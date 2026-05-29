@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 import json
 import logging
+import re as _re
 
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.prompts import ChatPromptTemplate
@@ -21,6 +22,51 @@ from .request_context import get_user_id
 from . import steering as _steering
 
 logger = logging.getLogger(__name__)
+
+
+class _ResearchAnswerExtractor:
+    """從 research writer 的 JSON 串流中即時提取 answer 欄位 token。"""
+
+    def __init__(self) -> None:
+        self._buf = ""
+        self._in_answer = False
+        self._escape = False
+        self._done = False
+
+    def process(self, token: str) -> str:
+        if self._done:
+            return ""
+        if not self._in_answer:
+            self._buf += token
+            m = _re.search(r'"answer"\s*:\s*"', self._buf)
+            if m:
+                self._in_answer = True
+                remainder = self._buf[m.end():]
+                self._buf = ""
+                return self._consume(remainder)
+            return ""
+        return self._consume(token)
+
+    def _consume(self, text: str) -> str:
+        out = []
+        for ch in text:
+            if self._escape:
+                out.append(ch)
+                self._escape = False
+            elif ch == "\\":
+                out.append(ch)
+                self._escape = True
+            elif ch == '"':
+                self._done = True
+                break
+            else:
+                out.append(ch)
+        return "".join(out)
+
+    @property
+    def produced_output(self) -> bool:
+        return self._done or self._in_answer
+
 
 # Background tasks fired by this module (memory writes, DB writes, evaluations).
 # Tracked so they can be awaited during graceful shutdown.
@@ -40,7 +86,7 @@ def _fire_and_forget(coro) -> None:
 
 
 ROUTER_PROMPT_NAME = "route_coordinator"
-VALID_AGENTS = {"chat", "retrieval", "research", "question", "evaluation"}
+VALID_AGENTS = {"chat", "retrieval", "research"}
 MAX_HANDOFFS = 3
 COMPOSE_MIN_CHARS = 600  # minimum research response length to trigger composition
 
@@ -61,9 +107,8 @@ def _looks_like_followup(message: str) -> bool:
 
 class RouterDecision(BaseModel):
     agent_name: str = Field(
-        description="Exact agent to invoke: chat | retrieval | research | question | evaluation"
+        description="Exact agent to invoke: chat | retrieval | research"
     )
-    evaluate_after: bool = Field(default=False)
     reason: str = Field(default="")
 
 
@@ -81,7 +126,6 @@ class ExecutionPlan:
     trace_id: str
     route: AgentRoute
     steps: tuple[ExecutionStep, ...]
-    evaluate_after: bool = False
 
     @property
     def primary_step(self) -> ExecutionStep:
@@ -90,10 +134,6 @@ class ExecutionPlan:
     @property
     def composition_step(self) -> ExecutionStep | None:
         return next((step for step in self.steps if step.kind == "composition"), None)
-
-    @property
-    def evidence_step(self) -> ExecutionStep | None:
-        return next((step for step in self.steps if step.kind == "evidence_collection"), None)
 
     @property
     def target_step(self) -> ExecutionStep:
@@ -119,7 +159,6 @@ async def _escalation_route_for(
     guidance = _steering.get_and_clear(thread_id) if thread_id else None
     decision = await _orchestrate(
         user_message,
-        has_docs=True,
         document_ids=document_ids,
         previous_agent=route.agent_name,
         agent_status=result.status,
@@ -127,28 +166,12 @@ async def _escalation_route_for(
     )
     if decision.agent_name == route.agent_name or decision.agent_name in visited_agents:
         return None
-    return _route_for_agent(
-        decision.agent_name, document_ids, thread_id, evaluate_after=decision.evaluate_after
-    )
+    return _route_for_agent(decision.agent_name, document_ids, thread_id)
 
 
-def _allows_background_evaluation(agent_name: str, has_docs: bool) -> bool:
-    return has_docs and agent_name in {"research", "retrieval", "question"}
-
-
-_ANALYTIC_SIGNALS = ("分析", "整理", "比較", "摘要", "總結", "evaluate", "compare", "summarize", "summary")
-
-
-def _normalise_decision(decision: RouterDecision, has_docs: bool, user_message: str = "") -> RouterDecision:
+def _normalise_decision(decision: RouterDecision) -> RouterDecision:
     agent_name = decision.agent_name if decision.agent_name in VALID_AGENTS else "chat"
-    if agent_name in {"research", "retrieval"} and not has_docs:
-        agent_name = "chat"
-    evaluate_after = bool(decision.evaluate_after and _allows_background_evaluation(agent_name, has_docs))
-    # Heuristic: auto-enable evaluation for research when the question is analytic
-    if not evaluate_after and agent_name == "research" and has_docs:
-        if any(s in user_message for s in _ANALYTIC_SIGNALS):
-            evaluate_after = _allows_background_evaluation(agent_name, has_docs)
-    return RouterDecision(agent_name=agent_name, evaluate_after=evaluate_after, reason=decision.reason)
+    return RouterDecision(agent_name=agent_name, reason=decision.reason)
 
 
 def _primary_prompt(stack_name: str, base_name: str, thread_id: str | None, document_ids: list[int] | None):
@@ -160,21 +183,15 @@ def _route_for_agent(
     agent_name: str,
     document_ids: list[int] | None = None,
     thread_id: str | None = None,
-    *,
-    evaluate_after: bool = False,
 ) -> AgentRoute:
     if agent_name not in VALID_AGENTS:
         agent_name = "chat"
     if agent_name == "research":
         prompt = _primary_prompt("research_runtime", "research_writer", thread_id, document_ids)
-        return AgentRoute(agent_name, prompt.name, prompt.version, compose_after=True, evaluate_after=evaluate_after)
-    if agent_name == "question":
-        return AgentRoute(agent_name, "question_skill", prompt_version("question_skill"), compose_after=False, evaluate_after=evaluate_after)
+        return AgentRoute(agent_name, prompt.name, prompt.version, compose_after=True)
     if agent_name == "retrieval":
-        return AgentRoute(agent_name, "retrieval_capability", prompt_version("retrieval_capability"), compose_after=False, evaluate_after=evaluate_after)
-    if agent_name == "evaluation":
-        return AgentRoute(agent_name, "evaluation_agent", prompt_version("evaluation_agent"), evaluate_after=False)
-    return AgentRoute("chat", "chat_mode", prompt_version("chat_mode"), evaluate_after=False)
+        return AgentRoute(agent_name, "retrieval_capability", prompt_version("retrieval_capability"))
+    return AgentRoute("chat", "chat_mode", prompt_version("chat_mode"))
 
 
 def _fetch_document_context(document_ids: list[int]) -> list[dict]:
@@ -201,26 +218,18 @@ def _build_execution_plan(
     *,
     trace_id: str,
     observation_id: str | None = None,
-    collect_evidence: bool = False,
 ) -> ExecutionPlan:
     agent_name = route.agent_name
-    steps: list[ExecutionStep] = []
-    if collect_evidence and agent_name == "question":
-        steps.append(ExecutionStep(
-            agent_name="retrieval",
-            observation_id=new_id(),
+    steps: list[ExecutionStep] = [
+        ExecutionStep(
+            agent_name=agent_name,
+            observation_id=observation_id or new_id(),
             trace_id=trace_id,
-            kind="evidence_collection",
-            reason="question_requires_document_evidence",
-        ))
-    steps.append(ExecutionStep(
-        agent_name=agent_name,
-        observation_id=observation_id or new_id(),
-        trace_id=trace_id,
-        kind="primary",
-        reason=f"agent={agent_name}",
-    ))
-    if route.compose_after and agent_name not in {"chat", "evaluation"}:
+            kind="primary",
+            reason=f"agent={agent_name}",
+        )
+    ]
+    if route.compose_after and agent_name != "chat":
         steps.append(ExecutionStep(
             agent_name="chat",
             observation_id=new_id(),
@@ -232,7 +241,6 @@ def _build_execution_plan(
         trace_id=trace_id,
         route=route,
         steps=tuple(steps),
-        evaluate_after=route.evaluate_after,
     )
 
 
@@ -254,7 +262,6 @@ def _get_router_llm():
 
 async def _orchestrate(
     message: str,
-    has_docs: bool,
     document_ids: list[int] | None = None,
     previous_agent: str | None = None,
     is_followup: bool = False,
@@ -265,12 +272,11 @@ async def _orchestrate(
     system = get_prompt(ROUTER_PROMPT_NAME)
 
     doc_context: list[dict] = []
-    if has_docs and document_ids:
+    if document_ids:
         doc_context = await asyncio.to_thread(_fetch_document_context, document_ids)
 
     user = {
         "message": message,
-        "has_documents": has_docs,
         "document_context": doc_context,
         "previous_agent": previous_agent,
         "is_followup_signal": is_followup,
@@ -281,10 +287,9 @@ async def _orchestrate(
             "agent_limitation": agent_status.agent_limitation,
         } if agent_status else None,
         "steering_guidance": steering_guidance,
-        "available_agents": ["chat", "retrieval", "research", "question", "evaluation"],
+        "available_agents": ["chat", "retrieval", "research"],
         "response_format": {
-            "agent_name": "chat|retrieval|research|question|evaluation",
-            "evaluate_after": "boolean",
+            "agent_name": "chat|retrieval|research",
             "reason": "short reason",
         },
     }
@@ -298,11 +303,10 @@ async def _orchestrate(
         decision: RouterDecision = await chain.ainvoke(
             {"payload": json.dumps(user, ensure_ascii=False)}
         )
-        return _normalise_decision(decision, has_docs, message)
+        return _normalise_decision(decision)
     except Exception as exc:
         logger.warning("Orchestrator LLM failed; using conservative fallback: %s", exc)
-        fallback = "retrieval" if has_docs else "chat"
-        return RouterDecision(agent_name=fallback, evaluate_after=False, reason="fallback")
+        return RouterDecision(agent_name="retrieval", reason="fallback")
 
 
 async def route_request(
@@ -311,18 +315,14 @@ async def route_request(
     thread_id: str | None = None,
     previous_agent_name: str | None = None,
 ) -> AgentRoute:
-    has_docs = bool(document_ids)
     is_followup = _looks_like_followup(message)
     decision = await _orchestrate(
         message,
-        has_docs,
         document_ids,
         previous_agent=previous_agent_name,
         is_followup=is_followup,
     )
-    return _route_for_agent(
-        decision.agent_name, document_ids, thread_id, evaluate_after=decision.evaluate_after
-    )
+    return _route_for_agent(decision.agent_name, document_ids, thread_id)
 
 
 async def _update_memory(
@@ -349,45 +349,6 @@ async def _update_chat_summary(thread_id: str, question: str, answer: str) -> No
     await update_chat_context_summary(thread_id, question, answer)
 
 
-async def _run_evaluation_agent(
-    thread_id: str,
-    *,
-    observation_id: str | None = None,
-    trace_id: str | None = None,
-    exclude_observation_id: str | None = None,
-    answer: str | None = None,
-    sources: list[str] | None = None,
-    user_message: str | None = None,
-    agent_name: str = "chat",
-) -> AgentResult:
-    from app.agents.pdf.evaluation_agent import (
-        evaluate_direct_answer,
-        evaluate_latest_thread_message,
-        format_evaluation_for_user,
-    )
-    if answer is not None:
-        result = await evaluate_direct_answer(
-            user_task=user_message or "",
-            answer=answer,
-            sources=sources or [],
-            agent_name=agent_name,
-        )
-    else:
-        result = await evaluate_latest_thread_message(
-            thread_id,
-            exclude_observation_id=exclude_observation_id,
-        )
-    return AgentResult(
-        response=format_evaluation_for_user(result),
-        sources=[],
-        agent_name="evaluation",
-        prompt_name="evaluation_agent",
-        prompt_version=prompt_version("evaluation_agent"),
-        observation_id=observation_id,
-        status=AgentStatus(completed=True, work_summary="完成品質評估。"),
-    )
-
-
 async def run_research_agent(
     user_message: str,
     thread_id: str,
@@ -406,8 +367,6 @@ async def run_research_agent(
         "agent_name": "research",
         **stack.metadata(),
     }
-    n_docs = len(document_ids or [])
-    max_searches = 14 + max(0, (n_docs - 1) * 2)
     return await run_research_task(
         question=user_message,
         thread_id=thread_id,
@@ -417,7 +376,7 @@ async def run_research_agent(
         observation_id=observation_id,
         on_stage=on_stage,
         on_token=on_token,
-        max_searches=max_searches,
+        max_searches=14,
         max_searches_per_slot=3,
         max_consecutive_no_new=2,
         trace_id=trace_id,
@@ -457,7 +416,7 @@ async def route_agent_message(
     use_mini: bool = False,
 ) -> AgentResult:
     """Route a user message to the appropriate task agent (loop, not recursion)."""
-    from . import chat_agent, question_agent, retrieval_agent
+    from . import chat_agent, retrieval_agent
 
     trace_id = trace_id or new_id()
     _visited: frozenset[str] = frozenset()
@@ -475,23 +434,11 @@ async def route_agent_message(
         else:
             current_route = await route_request(user_message, document_ids, thread_id)
 
-        plan = _build_execution_plan(
-            current_route,
-            trace_id=trace_id,
-            collect_evidence=bool(document_ids) and current_route.agent_name == "question",
-        )
+        plan = _build_execution_plan(current_route, trace_id=trace_id)
         step = plan.target_step
 
         try:
-            if current_route.agent_name == "evaluation":
-                result = await _run_evaluation_agent(
-                    thread_id,
-                    observation_id=step.observation_id,
-                    trace_id=step.trace_id,
-                )
-                return result
-
-            elif current_route.agent_name == "research":
+            if current_route.agent_name == "research":
                 result = await run_research_agent(
                     user_message, thread_id, document_ids,
                     observation_id=step.observation_id,
@@ -500,28 +447,6 @@ async def route_agent_message(
                 _fire_and_forget(_update_memory(
                     "research", thread_id, get_user_id(), document_ids, user_message, result
                 ))
-
-            elif current_route.agent_name == "question":
-                evidence_context = None
-                evidence_sources: list[str] = []
-                evidence_step = plan.evidence_step
-                if evidence_step is not None:
-                    evidence = await retrieval_agent.answer(
-                        user_message, thread_id, document_ids,
-                        observation_id=evidence_step.observation_id,
-                        trace_id=evidence_step.trace_id,
-                        use_mini=use_mini,
-                    )
-                    evidence_context = evidence.response
-                    evidence_sources = evidence.sources
-                result = await question_agent.answer(
-                    user_message, thread_id, document_ids,
-                    observation_id=step.observation_id,
-                    trace_id=step.trace_id,
-                    use_mini=use_mini,
-                    evidence_context=evidence_context,
-                    evidence_sources=evidence_sources,
-                )
 
             elif current_route.agent_name == "retrieval":
                 result = await retrieval_agent.answer(
@@ -627,16 +552,6 @@ async def _finalize_plan(
             primary_observation_id=primary_observation_id,
             result=result,
         ))
-    if plan.evaluate_after:
-        _fire_and_forget(_run_evaluation_agent(
-            thread_id,
-            trace_id=plan.trace_id,
-            exclude_observation_id=primary_observation_id,
-            answer=output_response,
-            sources=sources or [],
-            user_message=user_message,
-            agent_name=route.agent_name,
-        ))
     if route.agent_name == "research" and result is not None:
         _fire_and_forget(_update_memory(
             "research", thread_id, get_user_id(), document_ids, user_message, result
@@ -667,10 +582,8 @@ async def _run_composition(
 
 
 _AGENT_STAGE_LABELS: dict[str, str] = {
-    "chat":       "直接回答中",
-    "retrieval":  "搜尋文件中",
-    "question":   "生成導讀問題中",
-    "evaluation": "品質評估中",
+    "chat":      "直接回答中",
+    "retrieval": "搜尋文件中",
 }
 
 
@@ -689,7 +602,7 @@ async def route_agent_stream(
     use_mini: bool = False,
 ) -> AsyncIterator[tuple[str, bool, list[str]]]:
     """Stream tokens. Multi-hop routing handled via while-loop (not recursion)."""
-    from . import chat_agent, question_agent, retrieval_agent
+    from . import chat_agent, retrieval_agent
 
     trace_id = trace_id or new_id()
     _visited: frozenset[str] = frozenset()
@@ -730,16 +643,6 @@ async def route_agent_stream(
         )
         step = plan.target_step
 
-        if current_route.agent_name == "evaluation":
-            result = await _run_evaluation_agent(
-                thread_id,
-                observation_id=step.observation_id,
-                trace_id=step.trace_id,
-            )
-            yield result.response, False, []
-            yield "", True, []
-            return
-
         _streamed_response: list[str] = []
         agent_result: AgentResult | None = None
 
@@ -766,6 +669,7 @@ async def route_agent_stream(
                 )
                 rtask.add_done_callback(lambda _: _rqueue.put_nowait(None))
 
+                _ans_extractor = _ResearchAnswerExtractor()
                 streamed_tokens = False
                 while True:
                     event = await _rqueue.get()
@@ -776,15 +680,19 @@ async def route_agent_stream(
                                 continue
                             etype, val = rem
                             if etype == "token":
-                                _streamed_response.append(val)
-                                yield val, False, []
-                                streamed_tokens = True
+                                ans_part = _ans_extractor.process(val)
+                                if ans_part:
+                                    _streamed_response.append(ans_part)
+                                    yield ans_part, False, []
+                                    streamed_tokens = True
                         break
                     etype, val = event
                     if etype == "token":
-                        _streamed_response.append(val)
-                        yield val, False, []
-                        streamed_tokens = True
+                        ans_part = _ans_extractor.process(val)
+                        if ans_part:
+                            _streamed_response.append(ans_part)
+                            yield ans_part, False, []
+                            streamed_tokens = True
 
                 if rtask.cancelled():
                     raise asyncio.CancelledError("research task was cancelled")
@@ -802,40 +710,6 @@ async def route_agent_stream(
                 ))
                 last_sources = research_result.sources
                 agent_result = research_result
-
-            elif current_route.agent_name == "question":
-                evidence_context = None
-                evidence_sources: list[str] = []
-                evidence_step = plan.evidence_step
-                if evidence_step is not None:
-                    evidence = await retrieval_agent.answer(
-                        user_message, thread_id, document_ids,
-                        observation_id=evidence_step.observation_id,
-                        trace_id=evidence_step.trace_id,
-                        on_stage=on_stage,
-                        use_mini=use_mini,
-                    )
-                    evidence_context = evidence.response
-                    evidence_sources = evidence.sources
-                async for item in question_agent.stream(
-                    user_message, thread_id, document_ids,
-                    observation_id=step.observation_id,
-                    trace_id=step.trace_id,
-                    on_stage=on_stage,
-                    use_mini=use_mini,
-                    evidence_context=evidence_context,
-                    evidence_sources=evidence_sources,
-                ):
-                    token, is_done, sources = item
-                    if is_done == "interrupt":
-                        yield item
-                        return
-                    if is_done:
-                        last_sources = sources
-                    else:
-                        _streamed_response.append(token)
-                        if plan.composition_step is None:
-                            yield item
 
             elif current_route.agent_name == "retrieval":
                 _retrieval_response = ""

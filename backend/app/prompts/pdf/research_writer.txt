@@ -25,9 +25,9 @@
 10. sources 只放實際用到的來源。
 
 輸出 schema：
+- answer: string
 - sections: list
   - coverage_id: string
   - title: string
   - content: string
-- answer: string
 - sources: list[str]

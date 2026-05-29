@@ -24,7 +24,6 @@ class AgentRoute:
     prompt_name: str
     prompt_version: str = "unknown"
     compose_after: bool = False
-    evaluate_after: bool = False
 
 
 @dataclass(frozen=True)

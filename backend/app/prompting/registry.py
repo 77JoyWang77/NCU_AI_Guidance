@@ -19,9 +19,7 @@ ALIASES: dict[str, str] = {
     "core": "core",
     "retrieval_capability": "retrieval_capability",
     "chat_mode": "chat_mode",
-    "question_skill": "question_skill",
     "route_coordinator": "route_coordinator",
-    "evaluation_agent": "evaluation_agent",
     "task_planner": "task_planner",
     "research_scheduler": "research_scheduler",
     "research_planner": "research_planner",
@@ -31,7 +29,6 @@ ALIASES: dict[str, str] = {
     "router": "route_coordinator",
     "base_research": "retrieval_capability",
     "chat_task": "chat_mode",
-    "question_task": "question_skill",
 }
 
 

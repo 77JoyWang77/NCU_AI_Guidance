@@ -242,7 +242,7 @@ async def chat_with_project_stream(
                 if is_done == "replace":
                     yield f"data: {_json.dumps({'replace': token, 'sources': sources})}\n\n"
                 elif is_done:
-                    yield f"data: {_json.dumps({'done': True, 'session_id': thread_id, 'cancelled': chat_jobs.is_cancelled(thread_id)})}\n\n"
+                    yield f"data: {_json.dumps({'done': True, 'session_id': thread_id, 'sources': sources, 'cancelled': chat_jobs.is_cancelled(thread_id)})}\n\n"
                     break
                 else:
                     yield f"data: {_json.dumps({'token': token})}\n\n"

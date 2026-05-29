@@ -10,19 +10,18 @@ from langchain.agents import create_agent
 from langchain.agents.middleware import (
     ContextEditingMiddleware,
     ClearToolUsesEdit,
-    HumanInTheLoopMiddleware,
     ModelCallLimitMiddleware,
     ModelFallbackMiddleware,
     ModelRetryMiddleware,
+    ModelResponse,
     SummarizationMiddleware,
-    ToolCallLimitMiddleware,
     ToolRetryMiddleware,
     after_model,
-    before_model,
     dynamic_prompt,
+    wrap_model_call,
     ModelRequest,
 )
-from langchain.agents.structured_output import ProviderStrategy
+from langchain.agents.structured_output import ProviderStrategy, StructuredOutputValidationError
 from langchain_openai import AzureChatOpenAI
 from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
 from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver
@@ -47,6 +46,50 @@ from app.tools.rag_tool import (
 )
 
 logger = logging.getLogger(__name__)
+
+
+class _AnswerExtractor:
+    """從 AgentResponse JSON stream 中即時提取 answer 欄位 token。"""
+
+    def __init__(self) -> None:
+        self._buf = ""
+        self._in_answer = False
+        self._escape = False
+        self._done = False
+
+    def process(self, token: str) -> str:
+        if self._done:
+            return ""
+        if not self._in_answer:
+            self._buf += token
+            m = re.search(r'"answer"\s*:\s*"', self._buf)
+            if m:
+                self._in_answer = True
+                remainder = self._buf[m.end():]
+                self._buf = ""
+                return self._consume(remainder)
+            return ""
+        return self._consume(token)
+
+    def _consume(self, text: str) -> str:
+        out: list[str] = []
+        for ch in text:
+            if self._escape:
+                out.append(ch)
+                self._escape = False
+            elif ch == "\\":
+                out.append(ch)
+                self._escape = True
+            elif ch == '"':
+                self._done = True
+                break
+            else:
+                out.append(ch)
+        return "".join(out)
+
+    @property
+    def produced_output(self) -> bool:
+        return self._done or self._in_answer
 
 
 def _get_abstracts(document_ids: list[int] | None) -> list[dict]:
@@ -144,21 +187,22 @@ def _track_model_cost(state: dict, runtime) -> None:
         agent_name_ctx = getattr(ctx, "agent_name", None) or "unknown"
         thread_id = (getattr(ctx, "thread_id", None) or "")[:8]
         model_name = (getattr(response, "response_metadata", None) or {}).get("model_name", "")
+        cache_read = (usage.get("input_token_details") or {}).get("cache_read", 0)
         logger.info(
-            "model_cost agent=%s thread=%s in=%d out=%d total=%d model=%s",
+            "model_cost agent=%s thread=%s in=%d out=%d total=%d cache_read=%d model=%s",
             agent_name_ctx, thread_id,
             usage.get("input_tokens", 0), usage.get("output_tokens", 0),
-            usage.get("total_tokens", 0), model_name,
+            usage.get("total_tokens", 0), cache_read, model_name,
         )
     except Exception:
         pass
 
 
-@before_model
-def _trim_messages(state: dict, runtime) -> dict | None:
-    messages = state.get("messages", [])
+@wrap_model_call
+async def _trim_messages(request: ModelRequest, handler: Callable[[ModelRequest], ModelResponse]) -> ModelResponse:
+    messages = request.messages
     if len(messages) <= 20:
-        return None
+        return await handler(request)
     tail = messages[-20:]
     for i, msg in enumerate(tail):
         if isinstance(msg, HumanMessage):
@@ -166,7 +210,7 @@ def _trim_messages(state: dict, runtime) -> dict | None:
             break
     else:
         tail = tail[-10:]
-    return {"messages": tail}
+    return await handler(request.override(messages=tail))
 
 
 @dynamic_prompt
@@ -176,6 +220,7 @@ async def _memory_prompt(request: ModelRequest) -> str:
     document_ids = getattr(ctx, "document_ids", None)
     user_id = get_user_id()
 
+    # ── Memory context (cached per request) ────────────────────────────────────
     cached = getattr(ctx, "_memory_context", None)
     if cached is None:
         query = ""
@@ -196,21 +241,56 @@ async def _memory_prompt(request: ModelRequest) -> str:
         except Exception as exc:
             logger.debug("_memory_prompt: build failed: %s", exc)
             cached = {}
-
         if ctx is not None:
             try:
                 ctx._memory_context = cached
             except Exception:
                 pass
 
+    parts: list[str] = []
+
+    # ── Task prompt (stack contents injected at call time, not stored in state) ─
+    task_prompt = getattr(ctx, "task_prompt", None)
+    if task_prompt:
+        prompts = task_prompt if isinstance(task_prompt, list) else [task_prompt]
+        parts.extend(p for p in prompts if p)
+    else:
+        parts.append(SYSTEM_PROMPT)
+
+    # ── Memory lines ────────────────────────────────────────────────────────────
     try:
         from app.services.pdf_agent_memory import format_memory_system_messages
         lines = format_memory_system_messages(cached)
         if lines:
-            return SYSTEM_PROMPT + "\n\n" + "\n\n".join(lines)
+            parts.extend(lines)
     except Exception as exc:
         logger.debug("_memory_prompt: format failed: %s", exc)
-    return SYSTEM_PROMPT
+
+    # ── Document abstracts (cached per request, not stored in LangGraph state) ──
+    if document_ids:
+        abstracts_text = getattr(ctx, "_cached_abstracts_text", None)
+        if abstracts_text is None:
+            try:
+                abstracts = await asyncio.to_thread(_get_abstracts, document_ids)
+                if abstracts:
+                    abstracts_text = (
+                        "以下是本次對話引用的文件摘要，請以此作為背景資訊回答問題：\n\n"
+                        + "\n\n".join(f"【{a['filename']}】\n{a['abstract']}" for a in abstracts)
+                    )
+                else:
+                    abstracts_text = ""
+            except Exception as exc:
+                logger.debug("_memory_prompt: abstracts failed: %s", exc)
+                abstracts_text = ""
+            if ctx is not None:
+                try:
+                    ctx._cached_abstracts_text = abstracts_text
+                except Exception:
+                    pass
+        if abstracts_text:
+            parts.append(abstracts_text)
+
+    return "\n\n".join(parts)
 
 
 async def setup_checkpointer():
@@ -269,11 +349,11 @@ async def setup_checkpointer():
                 _memory_prompt,
                 SummarizationMiddleware(
                     model=_get_mini_llm(),
-                    trigger=("tokens", 4000),
+                    trigger=("tokens", 8000),
                     keep=("messages", 10),
                 ),
                 ContextEditingMiddleware(
-                    edits=[ClearToolUsesEdit(trigger=60000, keep=3)],
+                    edits=[ClearToolUsesEdit(trigger=20000, keep=3)],
                 ),
                 _trim_messages,
                 _track_model_cost,
@@ -281,9 +361,7 @@ async def setup_checkpointer():
                 ModelFallbackMiddleware(_get_mini_llm()),
                 ModelRetryMiddleware(
                     max_retries=2,
-                    retry_on=lambda e: any(
-                        kw in str(e) for kw in ("StructuredOutputValidationError", "Extra data")
-                    ),
+                    retry_on=StructuredOutputValidationError,
                     on_failure="continue",
                 ),
                 ToolRetryMiddleware(
@@ -291,7 +369,6 @@ async def setup_checkpointer():
                     retry_on=(ConnectionError, TimeoutError),
                     on_failure="return_message",
                 ),
-                HumanInTheLoopMiddleware(interrupt_on={}),
             ],
             response_format=ProviderStrategy(AgentResponse, strict=True),
             checkpointer=_checkpointer,
@@ -383,16 +460,22 @@ def _content_to_text(content: Any) -> str:
     return str(content)
 
 
-def _stream_token_from_chunk(chunk: dict) -> str:
-    if chunk.get("type") != "messages":
-        return ""
-    data = chunk.get("data")
-    if not isinstance(data, tuple) or len(data) != 2:
-        return ""
-    token, metadata = data
-    if not isinstance(metadata, dict) or metadata.get("langgraph_node") != "model":
-        return ""
-    return _content_to_text(getattr(token, "content", None))
+def _extract_msg_data(chunk) -> tuple | None:
+    """從各版本 astream chunk 中提取 (token_msg, meta) 二元組，不限制 node 名稱。"""
+    # version="v2" dict format: {"type": "messages", "data": (msg, meta)}
+    if isinstance(chunk, dict) and chunk.get("type") == "messages":
+        data = chunk.get("data")
+        if isinstance(data, tuple) and len(data) == 2:
+            return data
+    # older tuple format: ("messages", (msg, meta))
+    if isinstance(chunk, tuple) and len(chunk) == 2 and chunk[0] == "messages":
+        data = chunk[1]
+        if isinstance(data, tuple) and len(data) == 2:
+            return data
+    # bare tuple format from stream_mode="messages": (msg, meta)
+    if isinstance(chunk, tuple) and len(chunk) == 2 and hasattr(chunk[0], "content"):
+        return chunk
+    return None
 
 
 def _interrupts_from_chunk(chunk: dict) -> list | None:
@@ -441,11 +524,9 @@ async def get_thread_messages(thread_id: str) -> list[dict]:
     result = []
     for msg in messages:
         if isinstance(msg, HumanMessage):
-            content = msg.content if isinstance(msg.content, str) else str(msg.content)
-            result.append({"role": "user", "content": content})
+            result.append({"role": "user", "content": _content_to_text(msg.content)})
         elif isinstance(msg, AIMessage) and msg.content:
-            content = msg.content if isinstance(msg.content, str) else str(msg.content)
-            result.append({"role": "assistant", "content": _extract_answer(content)})
+            result.append({"role": "assistant", "content": _extract_answer(_content_to_text(msg.content))})
     return result
 
 
@@ -460,29 +541,9 @@ async def _get_structured_response(thread_id: str) -> AgentResponse | None:
     return checkpoint_tuple.checkpoint.get("channel_values", {}).get("structured_response")
 
 
-def _build_messages(
-    user_message: str,
-    document_ids: list[int] | None,
-    task_prompt: str | list[str] | None = None,
-    include_document_abstracts: bool = True,
-) -> list:
-    messages = []
-    if task_prompt:
-        prompts = task_prompt if isinstance(task_prompt, list) else [task_prompt]
-        for prompt in prompts:
-            if prompt:
-                messages.append(SystemMessage(content=prompt))
-    if document_ids and include_document_abstracts:
-        abstracts = _get_abstracts(document_ids)
-        if abstracts:
-            block = "\n\n".join(
-                f"【{a['filename']}】\n{a['abstract']}" for a in abstracts
-            )
-            messages.append(SystemMessage(content=(
-                "以下是本次對話引用的文件摘要，請以此作為背景資訊回答問題：\n\n" + block
-            )))
-    messages.append(HumanMessage(content=user_message))
-    return messages
+async def _build_messages(user_message: str) -> list:
+    """Return only the current user message; system context is injected by _memory_prompt."""
+    return [HumanMessage(content=user_message)]
 
 
 async def run_tool_agent(
@@ -510,22 +571,25 @@ async def run_tool_agent(
     if observation_id:
         config["run_id"] = _uuid.UUID(observation_id)
 
+    ctx = AgentContext(
+        document_ids=document_ids,
+        on_stage=on_stage,
+        max_searches=max_searches,
+        max_consecutive_empty=max_consecutive_empty,
+        thread_id=thread_id,
+        observation_id=observation_id,
+        task_prompt=task_prompt,
+    )
     result = await agent.ainvoke(
-        {"messages": _build_messages(user_message, document_ids, task_prompt, include_document_abstracts)},
+        {"messages": await _build_messages(user_message)},
         config,
-        context=AgentContext(
-            document_ids=document_ids,
-            on_stage=on_stage,
-            max_searches=max_searches,
-            max_consecutive_empty=max_consecutive_empty,
-            thread_id=thread_id,
-            observation_id=observation_id,
-        ),
+        context=ctx,
     )
 
     structured: AgentResponse | None = result.get("structured_response")
+    sources = ctx.tool_sources or (structured.sources if structured else [])
     if structured:
-        return structured.answer, structured.sources
+        return structured.answer, sources
     ai_messages = [m for m in result["messages"] if isinstance(m, AIMessage) and m.content]
     raw = ai_messages[-1].content if ai_messages else "Unable to generate a response."
     return _extract_answer(raw), []
@@ -594,41 +658,54 @@ async def run_tool_agent_stream(
     if observation_id:
         config["run_id"] = _uuid.UUID(observation_id)
 
+    ctx = AgentContext(
+        document_ids=document_ids,
+        on_stage=on_stage,
+        max_searches=max_searches,
+        max_consecutive_empty=max_consecutive_empty,
+        thread_id=thread_id,
+        observation_id=observation_id,
+        task_prompt=task_prompt,
+    )
+
+    init_messages = await _build_messages(user_message)
+
     async def _stream_chunks() -> AsyncIterator[dict]:
         async for chunk in agent.astream(
-            {"messages": _build_messages(user_message, document_ids, task_prompt, include_document_abstracts)},
+            {"messages": init_messages},
             config,
-            context=AgentContext(
-                document_ids=document_ids,
-                on_stage=on_stage,
-                max_searches=max_searches,
-                max_consecutive_empty=max_consecutive_empty,
-                thread_id=thread_id,
-                observation_id=observation_id,
-            ),
+            context=ctx,
             stream_mode=["messages", "updates"],
             version="v2",
         ):
             yield chunk
+
+    extractor = _AnswerExtractor()
 
     async for chunk in _stream_chunks():
         interrupts = _interrupts_from_chunk(chunk)
         if interrupts:
             yield interrupts, "interrupt", []
             return
+        msg_data = _extract_msg_data(chunk)
+        if msg_data is not None:
+            token_msg, meta = msg_data
+            text = _content_to_text(getattr(token_msg, "content", None))
+            if text:
+                answer_part = extractor.process(text)
+                if answer_part:
+                    yield answer_part, False, []
 
     structured = await _get_structured_response(thread_id)
-    sources: list[str] = structured.sources if structured else []
-    answer: str = structured.answer if structured else ""
+    sources: list[str] = ctx.tool_sources or (structured.sources if structured else [])
 
-    # Yield answer in small chunks so the frontend sees progressive streaming.
-    # The LangGraph tool-agent produces structured JSON; we can only stream after
-    # extracting the final answer, so we simulate streaming here.
-    if answer:
-        chunk_size = 8
-        for i in range(0, len(answer), chunk_size):
-            yield answer[i:i + chunk_size], False, sources
-            await asyncio.sleep(0)
+    if not extractor.produced_output:
+        answer: str = structured.answer if structured else ""
+        if answer:
+            chunk_size = 8
+            for i in range(0, len(answer), chunk_size):
+                yield answer[i:i + chunk_size], False, sources
+                await asyncio.sleep(0)
 
     yield "", True, sources
 
@@ -645,6 +722,7 @@ async def run_tool_agent_resume_stream(
         return
     pending = await get_pending_interrupt(thread_id)
     config = {"configurable": {"thread_id": thread_id}}
+    extractor = _AnswerExtractor()
     async for chunk in agent.astream(
         Command(resume=_resume_value(pending, decisions, interrupt_id)),
         config,
@@ -655,14 +733,23 @@ async def run_tool_agent_resume_stream(
         if interrupts:
             yield interrupts, "interrupt", []
             return
+        msg_data = _extract_msg_data(chunk)
+        if msg_data is not None:
+            token_msg, meta = msg_data
+            text = _content_to_text(getattr(token_msg, "content", None))
+            if text:
+                answer_part = extractor.process(text)
+                if answer_part:
+                    yield answer_part, False, []
 
     structured = await _get_structured_response(thread_id)
     sources: list[str] = structured.sources if structured else []
-    answer: str = structured.answer if structured else ""
 
-    if answer:
-        chunk_size = 8
-        for i in range(0, len(answer), chunk_size):
-            yield answer[i:i + chunk_size], False, sources
-            await asyncio.sleep(0)
+    if not extractor.produced_output:
+        answer: str = structured.answer if structured else ""
+        if answer:
+            chunk_size = 8
+            for i in range(0, len(answer), chunk_size):
+                yield answer[i:i + chunk_size], False, sources
+                await asyncio.sleep(0)
     yield "", True, sources

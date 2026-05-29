@@ -18,9 +18,7 @@ except ImportError:
 
 PROMPT_STACKS: dict[str, list[str]] = {
     "chat_default": ["core", "chat_mode"],
-    "question_default": ["core", "question_skill"],
     "retrieval_default": ["core", "retrieval_capability"],
-    "evaluation_default": ["core", "evaluation_agent"],
     "router_default": ["core", "route_coordinator"],
     "research_runtime": [
         "core",
@@ -36,9 +34,7 @@ STACK_ALIASES: dict[str, str] = {}
 
 PRIMARY_PROMPT_BY_STACK: dict[str, str] = {
     "chat_default": "chat_mode",
-    "question_default": "question_skill",
     "retrieval_default": "retrieval_capability",
-    "evaluation_default": "evaluation_agent",
     "router_default": "route_coordinator",
     "research_runtime": "research_writer",
 }

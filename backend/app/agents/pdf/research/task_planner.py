@@ -162,19 +162,6 @@ def _clean_plan(plan: ResearchPlan, task_context: str, question: str) -> Researc
     return plan.model_copy(update={"coverage_items": items})
 
 
-def _comparison_plan(question: str) -> ResearchPlan:
-    return ResearchPlan(
-        goal=question or "比較文件中的重點差異。",
-        coverage_items=[
-            _item("comparison_scope", "比較範圍", "確認使用者要比較的對象、文件範圍與問題邊界。", ["比較", "範圍", "對象"], "能明確指出比較對象與資料範圍。"),
-            _item("comparison_dimensions", "比較面向", "找出可以比較的具體面向，例如動機、方法、成果、限制或分類。", ["面向", "方法", "成果", "限制"], "能列出有證據支持的比較面向。"),
-            _item("key_differences", "主要差異", "整理各比較對象最主要的不同點與代表性證據。", ["差異", "不同", "特色"], "能用文件證據說明主要差異。"),
-            _item("evidence_limits", "證據限制", "指出比較時缺乏證據或文件沒有明示的部分。", ["限制", "未明示", "不足"], "能標示比較證據的不足。", required=False),
-        ],
-        output_contract="以比較表或分段方式回答，保留比較面向、主要差異與證據限制。",
-    )
-
-
 def _student_plan(question: str) -> ResearchPlan:
     return ResearchPlan(
         goal=question or "整理可供高中生導讀或興趣量表使用的摘要。",
@@ -225,8 +212,6 @@ def _summary_plan(question: str) -> ResearchPlan:
 
 def _summary_fallback_from_question(question: str) -> ResearchPlan:
     q = question or ""
-    if _contains_any(q, ("比較", "差異", "異同", "對照")):
-        return _comparison_plan(q)
     if _contains_any(q, ("高中生", "導讀", "興趣量表", "學生", "學習")):
         return _student_plan(q)
     method_terms = ("方法", "步驟", "流程", "分析方法")
@@ -238,12 +223,7 @@ def _summary_fallback_from_question(question: str) -> ResearchPlan:
     return _summary_plan(q)
 
 
-def _count_documents(document_context: str) -> int:
-    import re as _re
-    return len(_re.findall(r"^\[.+?\]", document_context, flags=_re.MULTILINE))
-
-
-def fallback_research_plan(task_context: str, question: str, document_count: int = 1) -> ResearchPlan:
+def fallback_research_plan(task_context: str, question: str) -> ResearchPlan:
     task_context = (task_context or "research").lower()
     if task_context == "retrieval":
         return ResearchPlan(
@@ -254,10 +234,6 @@ def fallback_research_plan(task_context: str, question: str, document_count: int
             ],
             output_contract="根據文件證據直接回答；沒有證據時說明文件未明示。",
         )
-    # Multiple documents without explicit single-doc analysis request → comparison plan
-    q = question or ""
-    if document_count > 1 and not _contains_any(q, ("高中生", "導讀", "興趣量表", "摘要這篇", "分析這篇")):
-        return _comparison_plan(q)
     return _summary_fallback_from_question(question)
 
 
@@ -268,11 +244,6 @@ async def create_research_plan(
     task_context: str,
     document_context: str,
 ) -> ResearchPlan:
-    doc_count = _count_documents(document_context)
-    multi_doc_hint = (
-        f"\n\n注意：本次有 {doc_count} 份文件，請考慮生成比較型 coverage items（比較範圍、比較面向、主要差異）。"
-        if doc_count > 1 else ""
-    )
     doc_language = _lang_from_text(document_context)
     lang_hint = (
         "\n\n【語言】此文件為英文，每個 item 的 search_hints 必須全部使用英文術語，不可翻譯成中文。label 仍使用繁體中文。"
@@ -287,7 +258,7 @@ async def create_research_plan(
                     {
                         "question": question,
                         "task_context": task_context,
-                        "document_context": document_context + multi_doc_hint + lang_hint,
+                        "document_context": document_context + lang_hint,
                         "instruction": "請規劃 coverage items，每個 item 描述一個證據需求，使用繁體中文 label。",
                     },
                     ensure_ascii=False,
@@ -300,4 +271,4 @@ async def create_research_plan(
         return _clean_plan(plan, task_context, question)
     except Exception as exc:
         logger.warning("create_research_plan failed: %s", exc)
-        return fallback_research_plan(task_context, question, document_count=doc_count)
+        return fallback_research_plan(task_context, question)

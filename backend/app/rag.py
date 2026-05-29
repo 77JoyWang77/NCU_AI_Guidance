@@ -7,7 +7,6 @@ import asyncio
 import hashlib
 import logging
 import re
-from collections import defaultdict
 from typing import TypedDict
 
 from langchain_community.document_compressors.flashrank_rerank import FlashrankRerank
@@ -181,20 +180,8 @@ def get_document_language(document_ids: list[int] | None = None) -> str:
     )
     if not results:
         return "unknown"
-    if not document_ids or len(document_ids) <= 1:
-        sample = " ".join(r.payload.get("page_content", "") for r in results if r.payload)
-        return _lang_from_text(sample)
-    doc_texts: dict[str, list[str]] = defaultdict(list)
-    for r in results:
-        if not r.payload:
-            continue
-        doc_id = r.payload.get("metadata", {}).get("document_id", "?")
-        doc_texts[doc_id].append(r.payload.get("page_content", ""))
-    langs = {doc_id: _lang_from_text(" ".join(texts)) for doc_id, texts in doc_texts.items()}
-    unique = set(langs.values())
-    if len(unique) == 1:
-        return unique.pop()
-    return "mixed"
+    sample = " ".join(r.payload.get("page_content", "") for r in results if r.payload)
+    return _lang_from_text(sample)
 
 
 async def aget_document_language(document_ids: list[int] | None = None) -> str:
@@ -216,20 +203,8 @@ async def aget_document_language(document_ids: list[int] | None = None) -> str:
     )
     if not results:
         return "unknown"
-    if not document_ids or len(document_ids) <= 1:
-        sample = " ".join(r.payload.get("page_content", "") for r in results if r.payload)
-        return _lang_from_text(sample)
-    doc_texts: dict[str, list[str]] = defaultdict(list)
-    for r in results:
-        if not r.payload:
-            continue
-        doc_id = r.payload.get("metadata", {}).get("document_id", "?")
-        doc_texts[doc_id].append(r.payload.get("page_content", ""))
-    langs = {doc_id: _lang_from_text(" ".join(texts)) for doc_id, texts in doc_texts.items()}
-    unique = set(langs.values())
-    if len(unique) == 1:
-        return unique.pop()
-    return "mixed"
+    sample = " ".join(r.payload.get("page_content", "") for r in results if r.payload)
+    return _lang_from_text(sample)
 
 
 # ── Chunk counting ──────────────────────────────────────────────────────────────

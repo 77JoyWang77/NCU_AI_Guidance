@@ -24,10 +24,10 @@ class AnswerSection(BaseModel):
 
 
 class ResearchStructuredWriteup(BaseModel):
+    answer: str = Field(description="Complete final answer in Traditional Chinese.")
     sections: list[AnswerSection] = Field(
         description="Dynamic answer sections. Include one section for each important required coverage item."
     )
-    answer: str = Field(description="Complete final answer in Traditional Chinese.")
     sources: list[str] = Field(description='Sources as "filename p.N".')
 
 
