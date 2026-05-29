@@ -43,7 +43,8 @@ def _emit_stage_sync(on_stage, msg: str) -> None:
 class AgentContext:
     """Runtime state shared across tool calls during one request."""
 
-    document_ids: list[int] | None = None
+    document_id: int | None = None
+    agent_name: str | None = None
     seen_chunks: set = field(default_factory=set)
     search_count: int = 0
     consecutive_empty: int = 0
@@ -171,6 +172,9 @@ async def run_search_report(
     section_terms: list[str] | None = None,
     use_hyde: bool = False,
 ) -> str:
+    if ctx.document_id is None:
+        raise ValueError("document_id is required for PDF document search")
+
     max_searches = ctx.max_searches or _MAX_SEARCHES
     max_empty = ctx.max_consecutive_empty or _MAX_CONSECUTIVE_EMPTY
 
@@ -193,7 +197,7 @@ async def run_search_report(
     _emit_stage_sync(ctx.on_stage, f"搜尋文件：{short_q}")
 
     if ctx._cached_total_chunks is None:
-        ctx._cached_total_chunks = await _acount_document_chunks(ctx.document_ids or None)
+        ctx._cached_total_chunks = await _acount_document_chunks(ctx.document_id)
     total_chunks = ctx._cached_total_chunks
     if total_chunks > 0 and len(ctx.seen_chunks) >= total_chunks:
         return json.dumps(
@@ -202,7 +206,7 @@ async def run_search_report(
         )
 
     if ctx._cached_lang is None:
-        ctx._cached_lang = await _aget_document_language(ctx.document_ids or None)
+        ctx._cached_lang = await _aget_document_language(ctx.document_id)
     lang = ctx._cached_lang
     queries = expand_queries(
         query, sub_queries, target_lang=lang,
@@ -221,7 +225,7 @@ async def run_search_report(
 
     chunks, _ = await _search_documents(
         queries,
-        document_ids=ctx.document_ids or None,
+        document_id=ctx.document_id,
         top_n=4,
         lang=lang,
         exclude_chunk_keys=ctx.seen_chunks,
@@ -241,7 +245,7 @@ async def run_search_report(
         if len(hyde_queries) > len(queries):
             chunks, _ = await _search_documents(
                 hyde_queries,
-                document_ids=ctx.document_ids or None,
+                document_id=ctx.document_id,
                 top_n=4,
                 lang=lang,
                 exclude_chunk_keys=ctx.seen_chunks,

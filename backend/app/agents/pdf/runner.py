@@ -91,20 +91,17 @@ class _AnswerExtractor:
         return self._done or self._in_answer
 
 
-def _get_abstracts(document_ids: list[int] | None) -> list[dict]:
+def _get_abstract(document_id: int) -> dict | None:
     from app.database_pdf import PdfSessionLocal
     from app.models.pdf_models import PdfDocument
     with PdfSessionLocal() as db:
-        q = db.query(PdfDocument.id, PdfDocument.filename, PdfDocument.abstract_text).filter(
-            PdfDocument.status == "ready"
-        )
-        if document_ids:
-            q = q.filter(PdfDocument.id.in_(document_ids))
-        return [
-            {"filename": row.filename, "abstract": row.abstract_text}
-            for row in q.all()
-            if row.abstract_text
-        ]
+        row = db.query(PdfDocument.id, PdfDocument.filename, PdfDocument.abstract_text).filter(
+            PdfDocument.status == "ready",
+            PdfDocument.id == document_id,
+        ).first()
+    if row is None or not row.abstract_text:
+        return None
+    return {"filename": row.filename, "abstract": row.abstract_text}
 
 
 _checkpointer: AsyncPostgresSaver | None = None
@@ -216,7 +213,7 @@ async def _trim_messages(request: ModelRequest, handler: Callable[[ModelRequest]
 async def _memory_prompt(request: ModelRequest) -> str:
     ctx = request.runtime.context
     thread_id = getattr(ctx, "thread_id", None) or ""
-    document_ids = getattr(ctx, "document_ids", None)
+    document_id = getattr(ctx, "document_id", None)
     user_id = get_user_id()
 
     # ── Memory context (cached per request) ────────────────────────────────────
@@ -235,7 +232,7 @@ async def _memory_prompt(request: ModelRequest) -> str:
                 thread_id=thread_id,
                 user_id=user_id,
                 query=query,
-                document_ids=document_ids,
+                document_id=document_id,
             )
         except Exception as exc:
             logger.debug("_memory_prompt: build failed: %s", exc)
@@ -266,15 +263,15 @@ async def _memory_prompt(request: ModelRequest) -> str:
         logger.debug("_memory_prompt: format failed: %s", exc)
 
     # ── Document abstracts (cached per request, not stored in LangGraph state) ──
-    if document_ids:
+    if document_id is not None:
         abstracts_text = getattr(ctx, "_cached_abstracts_text", None)
         if abstracts_text is None:
             try:
-                abstracts = await asyncio.to_thread(_get_abstracts, document_ids)
-                if abstracts:
+                abstract = await asyncio.to_thread(_get_abstract, document_id)
+                if abstract:
                     abstracts_text = (
                         "以下是本次對話引用的論文摘要，請以此作為背景資訊：\n\n"
-                        + abstracts[0]["abstract"]
+                        + abstract["abstract"][:1200]
                     )
                 else:
                     abstracts_text = ""
@@ -487,7 +484,7 @@ async def _build_messages(user_message: str) -> list:
 async def run_tool_agent(
     user_message: str,
     thread_id: str,
-    document_ids: list[int] | None = None,
+    document_id: int,
     metadata: dict | None = None,
     observation_id: str | None = None,
     on_stage: Callable[[str], None] | None = None,
@@ -496,6 +493,7 @@ async def run_tool_agent(
     max_searches: int | None = None,
     max_consecutive_empty: int | None = None,
     use_mini: bool = False,
+    agent_name: str | None = None,
 ) -> tuple[str, list[str]]:
     import uuid as _uuid
     agent = _get_tool_agent(mini=use_mini)
@@ -509,7 +507,8 @@ async def run_tool_agent(
         config["run_id"] = _uuid.UUID(observation_id)
 
     ctx = AgentContext(
-        document_ids=document_ids,
+        document_id=document_id,
+        agent_name=agent_name or metadata.get("agent_name"),
         on_stage=on_stage,
         max_searches=max_searches,
         max_consecutive_empty=max_consecutive_empty,
@@ -573,7 +572,7 @@ def _strip_abstracts_block(text: str) -> str:
 async def run_tool_agent_stream(
     user_message: str,
     thread_id: str,
-    document_ids: list[int] | None = None,
+    document_id: int,
     metadata: dict | None = None,
     observation_id: str | None = None,
     on_stage: Callable[[str], None] | None = None,
@@ -581,6 +580,7 @@ async def run_tool_agent_stream(
     max_searches: int | None = None,
     max_consecutive_empty: int | None = None,
     use_mini: bool = False,
+    agent_name: str | None = None,
 ):
     """Async generator yielding (token, is_done, sources) tuples."""
     import uuid as _uuid
@@ -595,7 +595,8 @@ async def run_tool_agent_stream(
         config["run_id"] = _uuid.UUID(observation_id)
 
     ctx = AgentContext(
-        document_ids=document_ids,
+        document_id=document_id,
+        agent_name=agent_name or metadata.get("agent_name"),
         on_stage=on_stage,
         max_searches=max_searches,
         max_consecutive_empty=max_consecutive_empty,

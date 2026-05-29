@@ -23,7 +23,7 @@ AGENT_NAME = "retrieval"
 async def answer(
     user_message: str,
     thread_id: str,
-    document_ids: list[int] | None = None,
+    document_id: int,
     *,
     task_prompt: str | list[str] | None = None,
     on_stage: Callable[[str], None] | None = None,
@@ -49,7 +49,7 @@ async def answer(
     response, sources = await _run_agent(
         user_message,
         thread_id,
-        document_ids,
+        document_id,
         metadata=metadata,
         observation_id=observation_id,
         task_prompt=effective_prompt,
@@ -79,7 +79,7 @@ async def answer(
 async def stream(
     user_message: str,
     thread_id: str,
-    document_ids: list[int] | None = None,
+    document_id: int,
     *,
     task_prompt: str | list[str] | None = None,
     on_stage: Callable[[str], None] | None = None,
@@ -103,7 +103,7 @@ async def stream(
     async for item in _run_agent_stream(
         user_message,
         thread_id,
-        document_ids,
+        document_id,
         metadata=metadata,
         task_prompt=effective_prompt,
         on_stage=on_stage,

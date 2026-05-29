@@ -133,7 +133,7 @@ def _trace_summary(state: ResearchGraphState) -> dict:
     return {
         "task": {
             "question": state.get("question", ""),
-            "document_ids": state.get("document_ids", []),
+            "document_id": state.get("document_id"),
             "goal": state.get("task_goal", ""),
         },
         "limits": {
@@ -342,7 +342,7 @@ def _merge_stream_patch(state: dict, patch: dict) -> dict:
 def _graph_to_rs(state: ResearchGraphState) -> ResearchState:
     return ResearchState(
         question=state["question"],
-        document_ids=list(state["document_ids"]),
+        document_id=state["document_id"],
         document_context=state["document_context"],
         task_goal=state.get("task_goal", ""),
         coverage_items=list(state.get("coverage_items", [])),

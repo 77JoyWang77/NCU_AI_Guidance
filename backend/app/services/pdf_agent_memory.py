@@ -68,7 +68,7 @@ async def build_memory_context(
     thread_id: str,
     user_id: str | None,
     query: str,
-    document_ids: list[int] | None = None,
+    document_id: int,
 ) -> dict[str, str | None]:
     """Return memory snippets keyed by type, per the agent_name's read policy."""
     policy = MEMORY_READ_POLICY.get(agent_name, MemoryRead())
@@ -85,7 +85,7 @@ async def build_memory_context(
     if policy.long_term and user_id:
         try:
             from app.services.pdf_memory_service import search_long_term_memory
-            items = await search_long_term_memory(user_id, query, document_ids=document_ids)
+            items = await search_long_term_memory(user_id, query, document_id=document_id)
             result["long_term"] = "\n".join(items) if items else None
         except Exception as exc:
             logger.debug("build_memory_context: long_term failed: %s", exc)
@@ -124,7 +124,7 @@ async def record_agent_memory(
     user_id: str | None,
     question: str,
     result: AgentResult,
-    document_ids: list[int] | None = None,
+    document_id: int,
 ) -> None:
     """Write memory after an agent completes, per the agent_name's write policy.
 
@@ -143,7 +143,7 @@ async def record_agent_memory(
     if policy.long_term and user_id:
         try:
             from app.services.pdf_memory_service import store_long_term_memory
-            await store_long_term_memory(user_id, thread_id, document_ids, question, result)
+            await store_long_term_memory(user_id, thread_id, document_id, question, result)
         except Exception as exc:
             logger.warning("record_agent_memory: long_term write failed: %s", exc)
 

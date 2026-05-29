@@ -151,7 +151,7 @@ async def chat_with_project(
         async for token, is_done, _ in route_agent_stream(
             request.message,
             thread_id=thread_id,
-            document_ids=[document_id],
+            document_id=document_id,
             previous_agent_name=conv.last_agent_name,
         ):
             if not is_done:
@@ -232,7 +232,7 @@ async def chat_with_project_stream(
             aiter = route_agent_stream(
                 request.message,
                 thread_id=thread_id,
-                document_ids=[document_id],
+                document_id=document_id,
                 previous_agent_name=conv.last_agent_name,
             ).__aiter__()
 

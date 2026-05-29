@@ -44,16 +44,18 @@ def _get_llm(use_mini: bool = False) -> AzureChatOpenAI:
     return _chat_llm
 
 
-def _get_document_abstracts(document_ids: list[int]) -> list[dict]:
+def _get_document_abstract(document_id: int) -> dict | None:
     from app.database_pdf import PdfSessionLocal
     from app.models.pdf_models import PdfDocument
     with PdfSessionLocal() as db:
-        rows = (
+        row = (
             db.query(PdfDocument.id, PdfDocument.filename, PdfDocument.abstract_text)
-            .filter(PdfDocument.status == "ready", PdfDocument.id.in_(document_ids))
-            .all()
+            .filter(PdfDocument.status == "ready", PdfDocument.id == document_id)
+            .first()
         )
-    return [{"filename": r.filename, "abstract": r.abstract_text} for r in rows if r.abstract_text]
+    if row is None or not row.abstract_text:
+        return None
+    return {"filename": row.filename, "abstract": row.abstract_text}
 
 
 def _prepare_no_tool_call(
@@ -61,7 +63,7 @@ def _prepare_no_tool_call(
     user_message: str,
     stack_name: str,
     agent_name: str,
-    document_ids: list[int] | None = None,
+    document_id: int,
     extra_system_messages: list[str] | None = None,
 ) -> tuple[list, dict]:
     stack = load_stack(stack_name)
@@ -71,12 +73,11 @@ def _prepare_no_tool_call(
     }
 
     messages = [SystemMessage(content=content) for content in stack.contents]
-    if document_ids:
-        abstracts = _get_document_abstracts(document_ids)
-        if abstracts:
-            messages.append(SystemMessage(content=(
-                "以下是本次對話引用的論文摘要，請以此作為背景資訊：\n\n" + abstracts[0]["abstract"]
-            )))
+    abstract = _get_document_abstract(document_id)
+    if abstract:
+        messages.append(SystemMessage(content=(
+            "以下是本次對話引用的論文摘要，請以此作為背景資訊：\n\n" + abstract["abstract"][:1200]
+        )))
     for content in extra_system_messages or []:
         if content:
             messages.append(SystemMessage(content=content))
@@ -88,7 +89,7 @@ async def run_no_tool_agent(
     *,
     user_message: str,
     thread_id: str,
-    document_ids: list[int] | None,
+    document_id: int,
     stack_name: str,
     agent_name: str,
     observation_id: str | None = None,
@@ -102,7 +103,7 @@ async def run_no_tool_agent(
         user_message=user_message,
         stack_name=stack_name,
         agent_name=agent_name,
-        document_ids=document_ids,
+        document_id=document_id,
         extra_system_messages=extra_system_messages,
     )
 
@@ -116,7 +117,7 @@ async def stream_no_tool_agent(
     *,
     user_message: str,
     thread_id: str,
-    document_ids: list[int] | None,
+    document_id: int,
     stack_name: str,
     agent_name: str,
     observation_id: str | None = None,
@@ -130,7 +131,7 @@ async def stream_no_tool_agent(
         user_message=user_message,
         stack_name=stack_name,
         agent_name=agent_name,
-        document_ids=document_ids,
+        document_id=document_id,
         extra_system_messages=extra_system_messages,
     )
 

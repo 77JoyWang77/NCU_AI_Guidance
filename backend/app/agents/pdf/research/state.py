@@ -82,7 +82,7 @@ class SearchStep:
 @dataclass
 class ResearchState:
     question: str
-    document_ids: list[int]
+    document_id: int
     document_context: str = ""
     task_goal: str = ""
     coverage_items: list[dict] = field(default_factory=list)
@@ -280,7 +280,7 @@ def default_summary_coverage() -> list[dict]:
 class ResearchGraphState(TypedDict):
     # ── request config ──────────────────────────────────────────────────────────
     question: str
-    document_ids: list[int]
+    document_id: int
     document_context: str
     observation_id: str
     thread_id: str

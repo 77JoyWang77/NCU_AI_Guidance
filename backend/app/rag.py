@@ -17,7 +17,6 @@ from qdrant_client.models import (
     Distance,
     FieldCondition,
     Filter,
-    MatchAny,
     MatchValue,
     Modifier,
     Rrf,
@@ -161,14 +160,14 @@ def _lang_from_text(text: str) -> str:
     return "en" if cjk / total < 0.15 else "zh"
 
 
-def get_document_language(document_ids: list[int] | None = None) -> str:
+def get_document_language(document_id: int | None = None) -> str:
     client = get_qdrant_client()
     scroll_filter = None
-    if document_ids:
+    if document_id is not None:
         scroll_filter = Filter(
             must=[FieldCondition(
                 key="metadata.document_id",
-                match=MatchAny(any=[str(did) for did in document_ids]),
+                match=MatchValue(value=str(document_id)),
             )]
         )
     results, _ = client.scroll(
@@ -184,14 +183,14 @@ def get_document_language(document_ids: list[int] | None = None) -> str:
     return _lang_from_text(sample)
 
 
-async def aget_document_language(document_ids: list[int] | None = None) -> str:
+async def aget_document_language(document_id: int | None = None) -> str:
     client = get_async_qdrant_client()
     scroll_filter = None
-    if document_ids:
+    if document_id is not None:
         scroll_filter = Filter(
             must=[FieldCondition(
                 key="metadata.document_id",
-                match=MatchAny(any=[str(did) for did in document_ids]),
+                match=MatchValue(value=str(document_id)),
             )]
         )
     results, _ = await client.scroll(
@@ -209,28 +208,28 @@ async def aget_document_language(document_ids: list[int] | None = None) -> str:
 
 # ── Chunk counting ──────────────────────────────────────────────────────────────
 
-def count_document_chunks(document_ids: list[int] | None) -> int:
+def count_document_chunks(document_id: int | None) -> int:
     client = get_qdrant_client()
     qdrant_filter = None
-    if document_ids:
+    if document_id is not None:
         qdrant_filter = Filter(
             must=[FieldCondition(
                 key="metadata.document_id",
-                match=MatchAny(any=[str(did) for did in document_ids]),
+                match=MatchValue(value=str(document_id)),
             )]
         )
     result = client.count(collection_name=_collection(), count_filter=qdrant_filter, exact=True)
     return result.count
 
 
-async def acount_document_chunks(document_ids: list[int] | None) -> int:
+async def acount_document_chunks(document_id: int | None) -> int:
     client = get_async_qdrant_client()
     qdrant_filter = None
-    if document_ids:
+    if document_id is not None:
         qdrant_filter = Filter(
             must=[FieldCondition(
                 key="metadata.document_id",
-                match=MatchAny(any=[str(did) for did in document_ids]),
+                match=MatchValue(value=str(document_id)),
             )]
         )
     result = await client.count(collection_name=_collection(), count_filter=qdrant_filter, exact=True)
@@ -358,21 +357,21 @@ def _chunk_key(content: str) -> str:
 
 async def search_documents(
     queries: list[str],
-    document_ids: list[int] | None = None,
+    document_id: int | None = None,
     top_n: int | None = None,
     lang: str | None = None,
     exclude_chunk_keys: set[str] | None = None,
     weighted_rrf: bool = False,
 ) -> tuple[list[RetrievedChunk], list[str]]:
     """Multi-query search → deduplicate → rerank."""
-    effective_lang = lang or await aget_document_language(document_ids)
+    effective_lang = lang or await aget_document_language(document_id)
 
     qdrant_filter = None
-    if document_ids:
+    if document_id is not None:
         qdrant_filter = Filter(
             must=[FieldCondition(
                 key="metadata.document_id",
-                match=MatchAny(any=[str(did) for did in document_ids]),
+                match=MatchValue(value=str(document_id)),
             )]
         )
 

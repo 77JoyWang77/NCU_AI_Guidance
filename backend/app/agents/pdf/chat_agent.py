@@ -54,7 +54,7 @@ async def compose_final_response(
     user_message: str,
     task_result: AgentResult,
     thread_id: str,
-    document_ids: list[int] | None = None,
+    document_id: int,
     observation_id: str | None = None,
     trace_id: str | None = None,
     use_mini: bool = False,
@@ -114,7 +114,7 @@ async def compose_final_response(
         observation_id=observation_id,
         status=AgentStatus(
             completed=True,
-            work_summary="從對話 context 和文件摘要回答。" if document_ids else "從對話 context 回答（無文件）。",
+            work_summary="從對話 context 和文件摘要回答。",
         ),
     )
 
@@ -122,7 +122,7 @@ async def compose_final_response(
 async def answer(
     user_message: str,
     thread_id: str,
-    document_ids: list[int] | None = None,
+    document_id: int,
     *,
     observation_id: str | None = None,
     trace_id: str | None = None,
@@ -147,7 +147,7 @@ async def answer(
     try:
         from app.services.pdf_agent_memory import build_memory_context, format_memory_system_messages
         memory = await build_memory_context(
-            AGENT_NAME, thread_id, get_user_id(), user_message, document_ids
+            AGENT_NAME, thread_id, get_user_id(), user_message, document_id
         )
         extra_msgs = format_memory_system_messages(memory) + extra_msgs
     except Exception as _exc:
@@ -156,7 +156,7 @@ async def answer(
     response, sources, meta, observation_id = await run_no_tool_agent(
         user_message=user_message,
         thread_id=thread_id,
-        document_ids=document_ids,
+        document_id=document_id,
         stack_name=STACK_NAME,
         agent_name=AGENT_NAME,
         observation_id=observation_id,
@@ -186,7 +186,7 @@ async def answer(
 async def stream(
     user_message: str,
     thread_id: str,
-    document_ids: list[int] | None = None,
+    document_id: int,
     *,
     observation_id: str | None = None,
     trace_id: str | None = None,
@@ -205,7 +205,7 @@ async def stream(
     try:
         from app.services.pdf_agent_memory import build_memory_context, format_memory_system_messages
         memory = await build_memory_context(
-            AGENT_NAME, thread_id, get_user_id(), user_message, document_ids
+            AGENT_NAME, thread_id, get_user_id(), user_message, document_id
         )
         extra_msgs = format_memory_system_messages(memory) + extra_msgs
     except Exception as _exc:
@@ -214,7 +214,7 @@ async def stream(
     async for token in stream_no_tool_agent(
         user_message=user_message,
         thread_id=thread_id,
-        document_ids=document_ids,
+        document_id=document_id,
         stack_name=STACK_NAME,
         agent_name=AGENT_NAME,
         observation_id=observation_id,

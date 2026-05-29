@@ -38,20 +38,26 @@ def _resolve_section(raw: str) -> str:
 
 async def _section_filtered_search(ctx: AgentContext, section_terms: list[str]) -> str | None:
     """Try Qdrant section-metadata filter for each term. Returns JSON if results found, else None."""
-    from qdrant_client.models import Filter, FieldCondition, MatchAny, MatchValue
+    from qdrant_client.models import Filter, FieldCondition, MatchValue
     from app.rag import get_vectorstore, get_dense_vectorstore, aget_document_language, RETRIEVAL_K
 
-    lang = await aget_document_language(ctx.document_ids)
+    if ctx.document_id is None:
+        raise ValueError("document_id is required for PDF section search")
+
+    if ctx._cached_lang is not None:
+        lang = ctx._cached_lang
+    else:
+        lang = await aget_document_language(ctx.document_id)
+        ctx._cached_lang = lang
     vs = get_dense_vectorstore() if lang == "en" else get_vectorstore()
 
     for term in section_terms:
         canonical = _resolve_section(term)
         must: list = []
-        if ctx.document_ids:
-            must.append(FieldCondition(
-                key="metadata.document_id",
-                match=MatchAny(any=[str(did) for did in ctx.document_ids]),
-            ))
+        must.append(FieldCondition(
+            key="metadata.document_id",
+            match=MatchValue(value=str(ctx.document_id)),
+        ))
         must.append(FieldCondition(key="metadata.section", match=MatchValue(value=canonical)))
 
         hits = await vs.asimilarity_search(term, k=RETRIEVAL_K, filter=Filter(must=must))
@@ -90,7 +96,7 @@ async def search_report(
     use_hyde: bool = False,
 ) -> str:
     """
-    Search uploaded documents for evidence about ONE focused topic.
+    Search the current PDF for evidence about ONE focused topic.
 
     Use for document-specific questions about motivation, methods, experiments,
     results, limitations, definitions, sections, architectures, and frameworks.

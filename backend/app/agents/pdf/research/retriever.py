@@ -16,7 +16,7 @@ def _source_for_chunk(chunk: dict) -> str:
 async def retrieve_evidence(
     *,
     query: str,
-    document_ids: list[int],
+    document_id: int,
     seen_chunks: set[str],
     sub_queries: list[str] | None = None,
     display_intent: str = "",
@@ -31,7 +31,7 @@ async def retrieve_evidence(
     max_consecutive_empty: int | None = None,
 ) -> tuple[list[dict], list[str]]:
     ctx = AgentContext(
-        document_ids=document_ids,
+        document_id=document_id,
         seen_chunks=seen_chunks,
         search_count=search_count,
         consecutive_empty=consecutive_empty,

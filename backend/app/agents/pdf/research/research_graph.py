@@ -171,7 +171,7 @@ def get_or_build_research_graph(checkpointer=None, store=None) -> object:
 def final_rs_from_result(result: ResearchGraphState) -> ResearchState:
     return ResearchState(
         question=result["question"],
-        document_ids=result["document_ids"],
+        document_id=result["document_id"],
         document_context=result["document_context"],
         task_goal=result.get("task_goal", ""),
         coverage_items=result.get("coverage_items", []),

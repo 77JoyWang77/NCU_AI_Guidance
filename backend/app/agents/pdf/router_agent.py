@@ -96,33 +96,32 @@ class ExecutionPlan:
         return next((step for step in self.steps if step.kind == "primary"), self.steps[0])
 
 
-def _prompt_key(thread_id: str | None, document_ids: list[int] | None) -> str:
-    doc_key = ",".join(str(doc_id) for doc_id in sorted(document_ids or []))
-    return f"{thread_id or ''}:{doc_key}"
+def _prompt_key(thread_id: str | None, document_id: int) -> str:
+    return f"{thread_id or ''}:{document_id}"
 
 
 async def _escalation_route_for(
     result: AgentResult,
     route: AgentRoute,
     user_message: str,
-    document_ids: list[int] | None,
+    document_id: int,
     thread_id: str | None,
     hop_count: int,
     visited_agents: frozenset[str],
 ) -> AgentRoute | None:
-    if result.status.completed or not document_ids or hop_count + 1 >= MAX_HANDOFFS:
+    if result.status.completed or hop_count + 1 >= MAX_HANDOFFS:
         return None
     guidance = _steering.get_and_clear(thread_id) if thread_id else None
     decision = await _orchestrate(
         user_message,
-        document_ids=document_ids,
+        document_id=document_id,
         previous_agent=route.agent_name,
         agent_status=result.status,
         steering_guidance=guidance,
     )
     if decision.agent_name == route.agent_name or decision.agent_name in visited_agents:
         return None
-    return _route_for_agent(decision.agent_name, document_ids, thread_id)
+    return _route_for_agent(decision.agent_name, document_id, thread_id)
 
 
 def _normalise_decision(decision: RouterDecision) -> RouterDecision:
@@ -130,43 +129,42 @@ def _normalise_decision(decision: RouterDecision) -> RouterDecision:
     return RouterDecision(agent_name=agent_name, reason=decision.reason)
 
 
-def _primary_prompt(stack_name: str, base_name: str, thread_id: str | None, document_ids: list[int] | None):
-    stack = load_stack(stack_name, _prompt_key(thread_id, document_ids))
+def _primary_prompt(stack_name: str, base_name: str, thread_id: str | None, document_id: int):
+    stack = load_stack(stack_name, _prompt_key(thread_id, document_id))
     return next((p for p in stack.prompts if p.base_name == base_name), stack.prompts[-1])
 
 
 def _route_for_agent(
     agent_name: str,
-    document_ids: list[int] | None = None,
+    document_id: int,
     thread_id: str | None = None,
 ) -> AgentRoute:
     if agent_name not in VALID_AGENTS:
         agent_name = "chat"
     if agent_name == "research":
-        prompt = _primary_prompt("research_runtime", "research_writer", thread_id, document_ids)
+        prompt = _primary_prompt("research_runtime", "research_writer", thread_id, document_id)
         return AgentRoute(agent_name, prompt.name, prompt.version, compose_after=True)
     if agent_name == "retrieval":
         return AgentRoute(agent_name, "retrieval_capability", prompt_version("retrieval_capability"))
     return AgentRoute("chat", "chat_mode", prompt_version("chat_mode"))
 
 
-def _fetch_document_context(document_ids: list[int]) -> list[dict]:
+def _fetch_document_context(document_id: int) -> dict | None:
     from app.database_pdf import PdfSessionLocal
     from app.models.pdf_models import PdfDocument
     with PdfSessionLocal() as db:
-        docs = (
+        doc = (
             db.query(PdfDocument.id, PdfDocument.filename, PdfDocument.abstract_text)
-            .filter(PdfDocument.id.in_(document_ids))
-            .all()
+            .filter(PdfDocument.id == document_id)
+            .first()
         )
-    return [
-        {
-            "id": d.id,
-            "filename": d.filename,
-            "abstract": (d.abstract_text or "")[:300],
-        }
-        for d in docs
-    ]
+    if doc is None:
+        return None
+    return {
+        "id": doc.id,
+        "filename": doc.filename,
+        "abstract": (doc.abstract_text or "")[:300],
+    }
 
 
 def _build_execution_plan(
@@ -218,7 +216,7 @@ def _get_router_llm():
 
 async def _orchestrate(
     message: str,
-    document_ids: list[int] | None = None,
+    document_id: int,
     previous_agent: str | None = None,
     is_followup: bool = False,
     agent_status: AgentStatus | None = None,
@@ -227,13 +225,11 @@ async def _orchestrate(
     stack = load_stack("router_default")
     system = get_prompt(ROUTER_PROMPT_NAME)
 
-    doc_context: list[dict] = []
-    if document_ids:
-        doc_context = await asyncio.to_thread(_fetch_document_context, document_ids)
+    _doc = await asyncio.to_thread(_fetch_document_context, document_id)
 
     user = {
         "message": message,
-        "document_context": doc_context,
+        "document_context": _doc["abstract"] if _doc else None,
         "previous_agent": previous_agent,
         "is_followup_signal": is_followup,
         "agent_status": {
@@ -267,25 +263,25 @@ async def _orchestrate(
 
 async def route_request(
     message: str,
-    document_ids: list[int] | None = None,
+    document_id: int,
     thread_id: str | None = None,
     previous_agent_name: str | None = None,
 ) -> AgentRoute:
     is_followup = _looks_like_followup(message)
     decision = await _orchestrate(
         message,
-        document_ids,
+        document_id,
         previous_agent=previous_agent_name,
         is_followup=is_followup,
     )
-    return _route_for_agent(decision.agent_name, document_ids, thread_id)
+    return _route_for_agent(decision.agent_name, document_id, thread_id)
 
 
 async def _update_memory(
     agent_name: str,
     thread_id: str,
     user_id: str | None,
-    document_ids: list[int] | None,
+    document_id: int,
     question: str,
     result,
 ) -> None:
@@ -296,7 +292,7 @@ async def _update_memory(
         user_id=user_id,
         question=question,
         result=result,
-        document_ids=document_ids,
+        document_id=document_id,
     )
 
 
@@ -308,7 +304,7 @@ async def _update_chat_summary(thread_id: str, question: str, answer: str) -> No
 async def run_research_agent(
     user_message: str,
     thread_id: str,
-    document_ids: list[int] | None,
+    document_id: int,
     *,
     observation_id: str | None,
     trace_id: str | None = None,
@@ -318,7 +314,7 @@ async def run_research_agent(
 ) -> AgentResult:
     from .research import run_research_task
 
-    stack = load_stack("research_runtime", _prompt_key(thread_id, document_ids))
+    stack = load_stack("research_runtime", _prompt_key(thread_id, document_id))
     metadata = {
         "agent_name": "research",
         **stack.metadata(),
@@ -326,7 +322,7 @@ async def run_research_agent(
     return await run_research_task(
         question=user_message,
         thread_id=thread_id,
-        document_ids=document_ids or [],
+        document_id=document_id,
         research_mode="research",
         metadata=metadata,
         observation_id=observation_id,
@@ -382,7 +378,7 @@ async def _finalize_plan(
     plan: ExecutionPlan,
     route: AgentRoute,
     thread_id: str,
-    document_ids: list[int] | None,
+    document_id: int,
     user_message: str,
     *,
     output_response: str | None,
@@ -402,7 +398,7 @@ async def _finalize_plan(
         ))
     if route.agent_name == "research" and result is not None:
         _fire_and_forget(_update_memory(
-            "research", thread_id, get_user_id(), document_ids, user_message, result
+            "research", thread_id, get_user_id(), document_id, user_message, result
         ))
 
 
@@ -411,7 +407,7 @@ async def _run_composition(
     result: AgentResult,
     user_message: str,
     thread_id: str,
-    document_ids: list[int] | None,
+    document_id: int,
     use_mini: bool,
 ) -> AgentResult:
     composition_step = plan.composition_step
@@ -422,7 +418,7 @@ async def _run_composition(
         user_message=user_message,
         task_result=result,
         thread_id=thread_id,
-        document_ids=document_ids,
+        document_id=document_id,
         observation_id=composition_step.observation_id,
         trace_id=composition_step.trace_id,
         use_mini=use_mini,
@@ -438,7 +434,7 @@ _AGENT_STAGE_LABELS: dict[str, str] = {
 async def route_agent_stream(
     user_message: str,
     thread_id: str,
-    document_ids: list[int] | None = None,
+    document_id: int | None = None,
     *,
     route: AgentRoute | None = None,
     trace_id: str | None = None,
@@ -451,6 +447,9 @@ async def route_agent_stream(
 ) -> AsyncIterator[tuple[str, bool, list[str]]]:
     """Stream tokens. Multi-hop routing handled via while-loop (not recursion)."""
     from . import chat_agent, retrieval_agent
+
+    if document_id is None:
+        raise ValueError("document_id is required for PDF chat")
 
     trace_id = trace_id or new_id()
     _visited: frozenset[str] = frozenset()
@@ -475,7 +474,7 @@ async def route_agent_stream(
             next_route = None
         else:
             current_route = await route_request(
-                user_message, document_ids, thread_id,
+                user_message, document_id, thread_id,
                 previous_agent_name=previous_agent_name if _hop == 0 else None,
             )
 
@@ -507,7 +506,7 @@ async def route_agent_stream(
 
                 rtask = asyncio.create_task(
                     run_research_agent(
-                        user_message, thread_id, document_ids,
+                        user_message, thread_id, document_id,
                         observation_id=step.observation_id,
                         trace_id=step.trace_id,
                         on_stage=_push_research_stage,
@@ -554,7 +553,7 @@ async def route_agent_stream(
                         yield research_result.response[_i:_i + chunk_size], False, []
                         await asyncio.sleep(0)
                 _fire_and_forget(_update_memory(
-                    "research", thread_id, get_user_id(), document_ids, user_message, research_result
+                    "research", thread_id, get_user_id(), document_id, user_message, research_result
                 ))
                 last_sources = research_result.sources
                 agent_result = research_result
@@ -563,7 +562,7 @@ async def route_agent_stream(
                 _retrieval_response = ""
                 _retrieval_sources: list[str] = []
                 async for _item in retrieval_agent.stream(
-                    user_message, thread_id, document_ids,
+                    user_message, thread_id, document_id,
                     observation_id=step.observation_id,
                     trace_id=step.trace_id,
                     on_stage=on_stage,
@@ -593,7 +592,7 @@ async def route_agent_stream(
 
             else:  # chat
                 async for item in chat_agent.stream(
-                    user_message, thread_id, document_ids,
+                    user_message, thread_id, document_id,
                     observation_id=step.observation_id,
                     trace_id=step.trace_id,
                     on_stage=on_stage,
@@ -638,7 +637,7 @@ async def route_agent_stream(
                 plan,
                 AgentResult(response=_full_response or "", sources=last_sources,
                             agent_name=current_route.agent_name),
-                user_message, thread_id, document_ids, use_mini,
+                user_message, thread_id, document_id, use_mini,
             )
             yield _composed.response, "replace", _composed.sources
             last_sources = _composed.sources
@@ -646,10 +645,9 @@ async def route_agent_stream(
 
         if (agent_result is not None
                 and not agent_result.status.completed
-                and document_ids
                 and _hop + 1 < MAX_HANDOFFS):
             _esc = await _escalation_route_for(
-                agent_result, current_route, user_message, document_ids, thread_id,
+                agent_result, current_route, user_message, document_id, thread_id,
                 _hop, _visited | {current_route.agent_name},
             )
             if _esc is not None:
@@ -662,10 +660,11 @@ async def route_agent_stream(
 
     if plan is not None and step is not None and current_route is not None:
         await _finalize_plan(
-            plan, current_route, thread_id, document_ids, user_message,
+            plan, current_route, thread_id, document_id, user_message,
             output_response=_full_response,
             primary_observation_id=step.observation_id,
             sources=last_sources,
+            result=agent_result,
         )
 
     yield "", True, last_sources

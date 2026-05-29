@@ -119,17 +119,14 @@ async def _run_graph_streaming(
     return state
 
 
-def _document_context(document_ids: list[int]) -> str:
+def _document_context(document_id: int) -> str:
     from app.database_pdf import PdfSessionLocal
     from app.models.pdf_models import PdfDocument
     with PdfSessionLocal() as db:
-        rows = db.query(PdfDocument.id, PdfDocument.filename, PdfDocument.abstract_text).filter(
-            PdfDocument.id.in_(document_ids)
-        ).all()
-        return "\n\n".join(
-            f"[{row.filename}]\n{row.abstract_text or ''}".strip()
-            for row in rows
-        )
+        row = db.query(PdfDocument.id, PdfDocument.filename, PdfDocument.abstract_text).filter(
+            PdfDocument.id == document_id
+        ).first()
+        return f"[{row.filename}]\n{row.abstract_text or ''}".strip() if row else ""
 
 
 async def _emit_stage(on_stage, msg: str) -> None:
@@ -178,7 +175,7 @@ async def _plan_research(
 def _build_initial_graph_state(
     *,
     question: str,
-    document_ids: list[int],
+    document_id: int,
     context: str,
     observation_id: str,
     thread_id: str,
@@ -200,7 +197,7 @@ def _build_initial_graph_state(
     effective_max_searches = max(max_searches, required_count * max_searches_per_slot + 1)
     return {
         "question": question,
-        "document_ids": document_ids,
+        "document_id": document_id,
         "document_context": context[:2000],
         "observation_id": observation_id,
         "thread_id": thread_id,
@@ -246,7 +243,7 @@ async def run_research_task(
     *,
     question: str,
     thread_id: str,
-    document_ids: list[int],
+    document_id: int,
     observation_id: str,
     metadata: dict,
     research_mode: str = "document_extraction",
@@ -277,13 +274,13 @@ async def run_research_task(
 
     llm = _llm()
     set_query_expander_llm(llm)
-    context = _document_context(document_ids)
+    context = _document_context(document_id)
 
     task_goal, coverage_items, output_contract, coverage_ids, plan_llm_calls = await _plan_research(
         llm, question, research_mode, context, on_stage
     )
     initial_state = _build_initial_graph_state(
-        question=question, document_ids=document_ids, context=context,
+        question=question, document_id=document_id, context=context,
         observation_id=observation_id, thread_id=thread_id, metadata=metadata,
         max_searches=max_searches, max_searches_per_slot=max_searches_per_slot,
         max_consecutive_no_new=max_consecutive_no_new,
@@ -361,7 +358,7 @@ async def run_research_summary(
     *,
     question: str,
     thread_id: str,
-    document_ids: list[int],
+    document_id: int,
     observation_id: str,
     metadata: dict,
     on_stage: Callable[[str], None] | None = None,
@@ -372,7 +369,7 @@ async def run_research_summary(
     return await run_research_task(
         question=question,
         thread_id=thread_id,
-        document_ids=document_ids,
+        document_id=document_id,
         observation_id=observation_id,
         metadata=metadata,
         research_mode="document_extraction",

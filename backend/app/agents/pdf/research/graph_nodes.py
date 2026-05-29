@@ -148,7 +148,7 @@ async def _run_single_slot(
         semantic_query=decision.semantic_query,
         section_terms=decision.section_terms,
         use_hyde=bool(decision.use_hyde),
-        document_ids=state["document_ids"],
+        document_id=state["document_id"],
         seen_chunks=seen,
         on_stage=None,
         search_count=state.get("search_count", 0),

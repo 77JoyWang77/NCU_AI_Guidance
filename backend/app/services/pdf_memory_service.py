@@ -9,7 +9,7 @@ Long-term:   LangGraph AsyncPostgresStore (pgvector).
              Each research finding is embedded and stored with user_id/thread_id.
              Semantically similar past findings are retrieved for new questions.
              Dedup: skip storing if a very similar question already exists (score >= 0.92).
-             Doc-aware sort: same-document results ranked before cross-document results.
+             Document-scoped retrieval: when a document_id is present, only that PDF's memories are used.
 """
 from __future__ import annotations
 
@@ -194,7 +194,7 @@ def get_context_summary_text(thread_id: str) -> str | None:
 async def store_long_term_memory(
     user_id: str,
     thread_id: str,
-    document_ids: list[int] | None,
+    document_id: int,
     question: str,
     result: AgentResult,
 ) -> None:
@@ -228,7 +228,7 @@ async def store_long_term_memory(
             "question": question[:300],
             "summary": result.response[:1000],
             "sources": result.sources[:5],
-            "document_ids": document_ids or [],
+            "document_id": document_id,
             "created_at": datetime.now(timezone.utc).isoformat(),
         })
     except Exception as exc:
@@ -239,11 +239,11 @@ async def search_long_term_memory(
     user_id: str,
     query: str,
     limit: int = LONG_TERM_LIMIT,
-    document_ids: list[int] | None = None,
+    document_id: int | None = None,
 ) -> list[str]:
     """Return relevant past research findings via semantic search in LangGraph Store.
 
-    Same-document results are ranked before cross-document results within the returned set.
+    When document_id is present, memories from other PDFs are ignored to keep PDF chat scoped and compact.
     """
     if not user_id:
         return []
@@ -253,15 +253,15 @@ async def search_long_term_memory(
         if store is None:
             return []
         namespace = (user_id, "research_memories")
-        # Fetch more than needed so we can re-rank by document overlap
+        # Fetch more than needed so document-scoped filtering still has enough candidates.
         candidates = await store.asearch(namespace, query=query, limit=limit * 2)
 
-        doc_set = set(document_ids or [])
-        if doc_set:
-            # Sort: same-document items first, then by original score order
-            same_doc = [r for r in candidates if set(r.value.get("document_ids") or []) & doc_set]
-            other_doc = [r for r in candidates if r not in same_doc]
-            ranked = (same_doc + other_doc)[:limit]
+        if document_id is not None:
+            ranked = [
+                r for r in candidates
+                if r.value.get("document_id") == document_id
+                or document_id in (r.value.get("document_ids") or [])
+            ][:limit]
         else:
             ranked = candidates[:limit]
 
@@ -279,12 +279,17 @@ async def search_long_term_memory(
 async def store_research_memory(
     user_id: str,
     thread_id: str,
-    document_ids: list[int] | None,
+    document_id: int,
     question: str,
     result: AgentResult,
 ) -> None:
-    await store_long_term_memory(user_id, thread_id, document_ids, question, result)
+    await store_long_term_memory(user_id, thread_id, document_id, question, result)
 
 
-async def search_research_memories(user_id: str, query: str, limit: int = LONG_TERM_LIMIT) -> list[str]:
-    return await search_long_term_memory(user_id, query, limit)
+async def search_research_memories(
+    user_id: str,
+    query: str,
+    document_id: int,
+    limit: int = LONG_TERM_LIMIT,
+) -> list[str]:
+    return await search_long_term_memory(user_id, query, limit=limit, document_id=document_id)
