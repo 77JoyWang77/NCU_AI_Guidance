@@ -275,33 +275,41 @@ export const projectAPI = {
         const reader = res.body!.getReader();
         const decoder = new TextDecoder();
         let buf = '';
+
+        const processLine = (line: string) => {
+          if (!line.startsWith('data: ')) return;
+          try {
+            const ev = JSON.parse(line.slice(6)) as {
+              token?: string;
+              done?: boolean;
+              session_id?: string;
+              cancelled?: boolean;
+              heartbeat?: boolean;
+              error?: string;
+              replace?: string;
+              sources?: string[];
+            };
+            if (ev.heartbeat) return;
+            if (ev.error) { handlers.onError(ev.error); return; }
+            if (ev.replace !== undefined) { handlers.onReplace?.(ev.replace); return; }
+            if (ev.token !== undefined) handlers.onToken(ev.token);
+            else if (ev.done) handlers.onDone(ev.session_id ?? '', ev.cancelled, ev.sources ?? []);
+          } catch { /* malformed chunk */ }
+        };
+
         while (true) {
           const { done, value } = await reader.read();
-          if (done) break;
+          if (done) {
+            buf += decoder.decode(); // flush multi-byte sequences
+            break;
+          }
           buf += decoder.decode(value, { stream: true });
           const lines = buf.split('\n');
           buf = lines.pop() ?? '';
-          for (const line of lines) {
-            if (!line.startsWith('data: ')) continue;
-            try {
-              const ev = JSON.parse(line.slice(6)) as {
-                token?: string;
-                done?: boolean;
-                session_id?: string;
-                cancelled?: boolean;
-                heartbeat?: boolean;
-                error?: string;
-                replace?: string;
-                sources?: string[];
-              };
-              if (ev.heartbeat) continue;
-              if (ev.error) { handlers.onError(ev.error); continue; }
-              if (ev.replace !== undefined) { handlers.onReplace?.(ev.replace); continue; }
-              if (ev.token !== undefined) handlers.onToken(ev.token);
-              else if (ev.done) handlers.onDone(ev.session_id ?? '', ev.cancelled, ev.sources ?? []);
-            } catch { /* malformed chunk */ }
-          }
+          for (const line of lines) processLine(line);
         }
+        // flush any remaining data not ending with \n
+        for (const line of buf.split('\n')) processLine(line);
       })
       .catch((err: Error) => {
         if (err.name !== 'AbortError') handlers.onError(err.message);

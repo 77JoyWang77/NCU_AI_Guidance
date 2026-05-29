@@ -340,119 +340,6 @@ async def run_research_agent(
     )
 
 
-async def run_chat_agent(
-    user_message: str,
-    thread_id: str,
-    document_ids: list[int] | None,
-    *,
-    observation_id: str | None,
-    trace_id: str | None = None,
-    on_stage=None,
-    use_mini: bool = False,
-) -> AgentResult:
-    from .chat_agent import answer as _chat_answer
-    return await _chat_answer(
-        user_message,
-        thread_id,
-        document_ids,
-        observation_id=observation_id,
-        trace_id=trace_id,
-        on_stage=on_stage,
-        use_mini=use_mini,
-    )
-
-
-async def route_agent_message(
-    user_message: str,
-    thread_id: str,
-    document_ids: list[int] | None = None,
-    *,
-    route: AgentRoute | None = None,
-    trace_id: str | None = None,
-    use_mini: bool = False,
-) -> AgentResult:
-    """Route a user message to the appropriate task agent (loop, not recursion)."""
-    from . import chat_agent, retrieval_agent
-
-    trace_id = trace_id or new_id()
-    _visited: frozenset[str] = frozenset()
-    _hop = 0
-    plan: "ExecutionPlan | None" = None
-    current_route: AgentRoute | None = None
-    result: AgentResult | None = None
-    next_route: AgentRoute | None = route
-
-    while _hop < MAX_HANDOFFS:
-
-        if next_route is not None:
-            current_route = next_route
-            next_route = None
-        else:
-            current_route = await route_request(user_message, document_ids, thread_id)
-
-        plan = _build_execution_plan(current_route, trace_id=trace_id)
-        step = plan.target_step
-
-        try:
-            if current_route.agent_name == "research":
-                result = await run_research_agent(
-                    user_message, thread_id, document_ids,
-                    observation_id=step.observation_id,
-                    trace_id=step.trace_id,
-                )
-                _fire_and_forget(_update_memory(
-                    "research", thread_id, get_user_id(), document_ids, user_message, result
-                ))
-
-            elif current_route.agent_name == "retrieval":
-                result = await retrieval_agent.answer(
-                    user_message, thread_id, document_ids,
-                    observation_id=step.observation_id,
-                    trace_id=step.trace_id,
-                    use_mini=use_mini,
-                )
-
-            else:  # chat
-                result = await chat_agent.answer(
-                    user_message, thread_id, document_ids,
-                    observation_id=step.observation_id,
-                    trace_id=step.trace_id,
-                    use_mini=use_mini,
-                )
-                _fire_and_forget(_update_chat_summary(thread_id, user_message, result.response))
-
-        except Exception:
-            raise
-
-        if (result is not None
-                and not result.status.completed
-                and document_ids
-                and _hop + 1 < MAX_HANDOFFS):
-            _esc = await _escalation_route_for(
-                result, current_route, user_message, document_ids, thread_id,
-                _hop, _visited | {current_route.agent_name},
-            )
-            if _esc is not None:
-                _visited = _visited | {current_route.agent_name}
-                next_route = _esc
-                _hop += 1
-                continue
-
-        break
-
-    if plan is not None and current_route is not None and result is not None:
-        await _finalize_plan(
-            plan, current_route, thread_id, document_ids, user_message,
-            output_response=result.response,
-            primary_observation_id=result.observation_id,
-            sources=result.sources,
-            result=result,
-        )
-        result = await _run_composition(plan, result, user_message, thread_id, document_ids, use_mini)
-
-    return result
-
-
 async def _write_agent_message(
     *,
     thread_id: str,
@@ -477,8 +364,13 @@ async def _write_agent_message(
         observation_id=primary_observation_id,
     )
     def _write():
+        from app.models.pdf_models import PdfConversation
         with PdfSessionLocal() as db:
             db.add(msg)
+            conv = db.query(PdfConversation).filter_by(thread_id=thread_id).first()
+            if conv:
+                conv.last_agent_name = route.agent_name
+                conv.message_count = (conv.message_count or 0) + 1
             db.commit()
     try:
         await asyncio.to_thread(_write)

@@ -27,7 +27,6 @@ from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
 from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver
 from langgraph.checkpoint.serde.jsonplus import JsonPlusSerializer
 from langgraph.store.postgres.aio import AsyncPostgresStore
-from langgraph.types import Command
 
 from .request_context import get_user_id
 
@@ -402,46 +401,6 @@ async def shutdown_checkpointer() -> None:
         _pool = None
 
 
-async def get_pending_interrupt(thread_id: str) -> dict | None:
-    if _checkpointer is None:
-        return None
-    try:
-        config = {"configurable": {"thread_id": thread_id}}
-        checkpoint_tuple = await _checkpointer.aget_tuple(config)
-        if not checkpoint_tuple:
-            return None
-        snapshot_tasks = checkpoint_tuple.checkpoint.get("tasks") or []
-        for task in snapshot_tasks:
-            interrupts = getattr(task, "interrupts", None) or []
-            if interrupts:
-                return {"interrupt_id": str(task.id), "value": interrupts[0].value}
-        for task_id, channel, value in (checkpoint_tuple.pending_writes or []):
-            if channel == "__interrupt__":
-                return {"interrupt_id": str(task_id), "value": value}
-        return None
-    except Exception as exc:
-        logger.debug("get_pending_interrupt(%s): %s", thread_id, exc)
-        return None
-
-
-async def resume_from_interrupt(thread_id: str, response: str) -> bool:
-    if _checkpointer is None:
-        return False
-    pending = await get_pending_interrupt(thread_id)
-    if not pending:
-        return False
-    try:
-        agent = _tool_agent
-        if agent is None:
-            return False
-        config = {"configurable": {"thread_id": thread_id}}
-        await agent.ainvoke(Command(resume=response), config)
-        return True
-    except Exception as exc:
-        logger.warning("resume_from_interrupt(%s): %s", thread_id, exc)
-        return False
-
-
 def _content_to_text(content: Any) -> str:
     if content is None:
         return ""
@@ -490,27 +449,6 @@ def _interrupts_from_chunk(chunk: dict) -> list | None:
         if isinstance(value, dict) and "__interrupt__" in value:
             return value["__interrupt__"]
     return None
-
-
-def _resume_value(pending: dict | None, decisions: list[dict], interrupt_id: str | None = None) -> dict:
-    resolved_interrupt_id = interrupt_id or (pending or {}).get("interrupt_id")
-    if not resolved_interrupt_id:
-        return {"decisions": decisions}
-    return {resolved_interrupt_id: {"decisions": decisions}}
-
-
-async def generate_title(messages: list[dict]) -> str:
-    context = "\n".join(
-        f"{m['role']}: {m['content'][:300]}" for m in messages[:4]
-    )
-    response = await _get_mini_llm().ainvoke([
-        SystemMessage(content=(
-            "根據以下對話內容，用繁體中文生成一個簡潔的對話標題（5-10字）。"
-            "只回傳標題本身，不要加引號或其他說明。"
-        )),
-        HumanMessage(content=context),
-    ])
-    return response.content.strip()[:60]
 
 
 async def get_thread_messages(thread_id: str) -> list[dict]:
@@ -705,49 +643,4 @@ async def run_tool_agent_stream(
                 yield answer[i:i + chunk_size], False, sources
                 await asyncio.sleep(0)
 
-    yield "", True, sources
-
-
-async def run_tool_agent_resume_stream(
-    thread_id: str,
-    decisions: list[dict],
-    *,
-    interrupt_id: str | None = None,
-    use_mini: bool = False,
-) -> AsyncIterator[tuple[Any, bool | str, list[str]]]:
-    agent = _get_tool_agent(mini=use_mini)
-    if agent is None:
-        return
-    pending = await get_pending_interrupt(thread_id)
-    config = {"configurable": {"thread_id": thread_id}}
-    extractor = _AnswerExtractor()
-    async for chunk in agent.astream(
-        Command(resume=_resume_value(pending, decisions, interrupt_id)),
-        config,
-        stream_mode=["messages", "updates"],
-        version="v2",
-    ):
-        interrupts = _interrupts_from_chunk(chunk)
-        if interrupts:
-            yield interrupts, "interrupt", []
-            return
-        msg_data = _extract_msg_data(chunk)
-        if msg_data is not None:
-            token_msg, meta = msg_data
-            text = _content_to_text(getattr(token_msg, "content", None))
-            if text:
-                answer_part = extractor.process(text)
-                if answer_part:
-                    yield answer_part, False, []
-
-    structured = await _get_structured_response(thread_id)
-    sources: list[str] = structured.sources if structured else []
-
-    if not extractor.produced_output:
-        answer: str = structured.answer if structured else ""
-        if answer:
-            chunk_size = 8
-            for i in range(0, len(answer), chunk_size):
-                yield answer[i:i + chunk_size], False, sources
-                await asyncio.sleep(0)
     yield "", True, sources

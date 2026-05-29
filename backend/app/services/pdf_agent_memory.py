@@ -55,6 +55,13 @@ _CONTEXT_LABELS = {
     "user_profile":    "【使用者背景】以下是關於使用者的背景資訊，供回覆參考：\n",
 }
 
+# Per-component character budget for memory injection.
+_MEMORY_CHAR_LIMITS = {
+    "context_summary": 800,
+    "long_term":       500,
+    "user_profile":    300,
+}
+
 
 async def build_memory_context(
     agent_name: str,
@@ -102,8 +109,12 @@ def format_memory_system_messages(memory: dict[str, str | None]) -> list[str]:
     messages = []
     for key in ("context_summary", "long_term", "user_profile"):
         text = memory.get(key)
-        if text:
-            messages.append(_CONTEXT_LABELS.get(key, "") + text)
+        if not text:
+            continue
+        limit = _MEMORY_CHAR_LIMITS.get(key)
+        if limit and len(text) > limit:
+            text = text[:limit] + "…"
+        messages.append(_CONTEXT_LABELS.get(key, "") + text)
     return messages
 
 

@@ -140,14 +140,17 @@ async def chat_with_project(
 
     document_ids = _get_document_ids_for_project(project_id) or None
     thread_id = request.thread_id or new_id()
-    set_user_id(user.user_id if user else "")
+    user_id = user.user_id if user else None
+    set_user_id(user_id or "")
 
+    conv = _get_or_create_pdf_conversation(thread_id, user_id)
     full_response = ""
     try:
         async for token, is_done, _ in route_agent_stream(
             request.message,
             thread_id=thread_id,
             document_ids=document_ids,
+            previous_agent_name=conv.last_agent_name,
         ):
             if not is_done:
                 full_response += token
@@ -226,6 +229,7 @@ async def chat_with_project_stream(
                 request.message,
                 thread_id=thread_id,
                 document_ids=document_ids,
+                previous_agent_name=conv.last_agent_name,
             ).__aiter__()
 
             pending = asyncio.create_task(aiter.__anext__())
