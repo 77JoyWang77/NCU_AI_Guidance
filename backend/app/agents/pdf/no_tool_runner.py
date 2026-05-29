@@ -3,7 +3,6 @@ from __future__ import annotations
 
 from app.utils import new_id
 
-from datetime import datetime, timezone
 import json
 import logging
 from collections.abc import AsyncIterator
@@ -45,11 +44,6 @@ def _get_llm(use_mini: bool = False) -> AzureChatOpenAI:
     return _chat_llm
 
 
-async def write_agent_span(**kwargs) -> None:
-    """No-op — tracing removed. Signature kept for compatibility with callers."""
-    pass
-
-
 def _get_document_abstracts(document_ids: list[int]) -> list[dict]:
     from app.database_pdf import PdfSessionLocal
     from app.models.pdf_models import PdfDocument
@@ -69,8 +63,6 @@ def _prepare_no_tool_call(
     agent_name: str,
     document_ids: list[int] | None = None,
     extra_system_messages: list[str] | None = None,
-    payload: dict | None = None,
-    sources: list[str] | None = None,
 ) -> tuple[list, dict]:
     stack = load_stack(stack_name)
     metadata = {
@@ -89,10 +81,7 @@ def _prepare_no_tool_call(
     for content in extra_system_messages or []:
         if content:
             messages.append(SystemMessage(content=content))
-    messages.append(HumanMessage(content=json.dumps({
-        "user_message": user_message,
-        **(payload or {}),
-    }, ensure_ascii=False)))
+    messages.append(HumanMessage(content=json.dumps({"user_message": user_message}, ensure_ascii=False)))
     return messages, metadata
 
 
@@ -102,14 +91,11 @@ async def run_no_tool_agent(
     thread_id: str,
     document_ids: list[int] | None,
     stack_name: str,
-    prompt_name: str,
     agent_name: str,
     observation_id: str | None = None,
     trace_id: str | None = None,
     use_mini: bool = False,
     extra_system_messages: list[str] | None = None,
-    payload: dict | None = None,
-    sources: list[str] | None = None,
 ) -> tuple[str, list[str], dict, str]:
     """Run one no-tool LLM call."""
     observation_id = observation_id or new_id()
@@ -119,15 +105,12 @@ async def run_no_tool_agent(
         agent_name=agent_name,
         document_ids=document_ids,
         extra_system_messages=extra_system_messages,
-        payload=payload,
-        sources=sources,
     )
 
     _llm_instance = _get_llm(use_mini=use_mini)
     response = await _llm_instance.ainvoke(messages)
     content = str(getattr(response, "content", response)).strip()
-    result_sources = sources or []
-    return content, result_sources, metadata, observation_id
+    return content, [], metadata, observation_id
 
 
 async def stream_no_tool_agent(
@@ -136,14 +119,11 @@ async def stream_no_tool_agent(
     thread_id: str,
     document_ids: list[int] | None,
     stack_name: str,
-    prompt_name: str,
     agent_name: str,
     observation_id: str | None = None,
     trace_id: str | None = None,
     use_mini: bool = False,
     extra_system_messages: list[str] | None = None,
-    payload: dict | None = None,
-    sources: list[str] | None = None,
 ) -> AsyncIterator[str]:
     """Stream one no-tool LLM call token-by-token."""
     observation_id = observation_id or new_id()
@@ -153,8 +133,6 @@ async def stream_no_tool_agent(
         agent_name=agent_name,
         document_ids=document_ids,
         extra_system_messages=extra_system_messages,
-        payload=payload,
-        sources=sources,
     )
 
     llm_instance = _get_llm(use_mini=use_mini)

@@ -26,7 +26,6 @@ from .runtime_metadata import (
 from .state import ResearchGraphState, ResearchState
 from .task_planner import create_research_plan, fallback_research_plan
 from ..types import AgentLimitation, AgentResult, AgentStatus
-from ..no_tool_runner import write_agent_span
 
 logger = logging.getLogger(__name__)
 
@@ -131,11 +130,6 @@ def _document_context(document_ids: list[int]) -> str:
             f"[{row.filename}]\n{row.abstract_text or ''}".strip()
             for row in rows
         )
-
-
-async def _async_quality_check(*, observation_id: str, answer: str, document_ids: list[int]) -> None:
-    """Placeholder — quality evaluation via observation_id not available in this deployment."""
-    pass
 
 
 async def _emit_stage(on_stage, msg: str) -> None:
@@ -271,18 +265,6 @@ async def run_research_task(
         min_evidence_per_slot = 1 if research_mode == "document_extraction" else 0
     started_at = _utcnow()
 
-    if trace_id:
-        await write_agent_span(
-            observation_id=observation_id,
-            trace_id=trace_id,
-            thread_id=thread_id,
-            parent_observation_id=trace_id,
-            name="Research Agent",
-            start_time=started_at,
-            input_data={"messages": [{"role": "user", "content": question}]},
-            extra_metadata={"agent_name": "research"},
-        )
-
     metadata = dict(metadata)
     base_stack_meta = research_base_stack_metadata()
     base_prompts = _parse_json_field(base_stack_meta.get("prompt_stack_json")) or []
@@ -350,29 +332,6 @@ async def run_research_task(
             for slot in final_state.coverage_ids()
         }
 
-        ended_at = _utcnow()
-        if trace_id:
-            await write_agent_span(
-                observation_id=observation_id,
-                trace_id=trace_id,
-                thread_id=thread_id,
-                parent_observation_id=trace_id,
-                name="Research Agent",
-                start_time=started_at,
-                end_time=ended_at,
-                input_data={"messages": [{"role": "user", "content": question}]},
-                output_data={"answer": answer, "sources": sources},
-                extra_metadata={"agent_name": "research"},
-            )
-
-        # Fire-and-forget quality check — does not block the response.
-        # Task is tracked in _background_tasks so main.py shutdown can await it.
-        _task = asyncio.create_task(
-            _async_quality_check(observation_id=observation_id, answer=answer, document_ids=document_ids)
-        )
-        _background_tasks.add(_task)
-        _task.add_done_callback(_background_tasks.discard)
-
         _unfilled_gaps = [
             info.get("label") or slot
             for slot, info in coverage_result.items()
@@ -395,20 +354,6 @@ async def run_research_task(
         )
     except Exception as exc:
         logger.exception("run_research_task failed (observation_id=%s)", observation_id)
-        err_ended_at = _utcnow()
-        if trace_id:
-            await write_agent_span(
-                observation_id=observation_id,
-                trace_id=trace_id,
-                thread_id=thread_id,
-                parent_observation_id=trace_id,
-                name="Research Agent",
-                start_time=started_at,
-                end_time=err_ended_at,
-                input_data={"messages": [{"role": "user", "content": question}]},
-                error=str(exc),
-                extra_metadata={"agent_name": "research"},
-            )
         raise
 
 

@@ -3,7 +3,6 @@ from collections.abc import AsyncIterator, Callable
 
 from .runner import run_tool_agent as _run_agent
 from .runner import run_tool_agent_stream as _run_agent_stream
-from .no_tool_runner import write_agent_span
 from app.prompting.loader import load_stack
 
 from .types import AgentLimitation, AgentResult, AgentStatus

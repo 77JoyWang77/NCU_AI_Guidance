@@ -7,11 +7,9 @@ LangGraph nodes (planner, retriever, reflector, writer) and shared state.
 from .agent import (
     _background_tasks,
     run_research_task,
-    run_research_summary,
 )
 
 __all__ = [
     "_background_tasks",
     "run_research_task",
-    "run_research_summary",
 ]

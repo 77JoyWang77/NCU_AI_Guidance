@@ -10,7 +10,7 @@ from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_openai import AzureChatOpenAI
 
 from app.pdf_config import pdf_settings
-from .no_tool_runner import run_no_tool_agent, stream_no_tool_agent, write_agent_span
+from .no_tool_runner import run_no_tool_agent, stream_no_tool_agent
 from .request_context import get_user_id  # noqa: F401
 from app.prompting.loader import load_stack
 
@@ -158,7 +158,6 @@ async def answer(
         thread_id=thread_id,
         document_ids=document_ids,
         stack_name=STACK_NAME,
-        prompt_name=PROMPT_NAME,
         agent_name=AGENT_NAME,
         observation_id=observation_id,
         trace_id=trace_id,
@@ -217,7 +216,6 @@ async def stream(
         thread_id=thread_id,
         document_ids=document_ids,
         stack_name=STACK_NAME,
-        prompt_name=PROMPT_NAME,
         agent_name=AGENT_NAME,
         observation_id=observation_id,
         trace_id=trace_id,
