@@ -8,10 +8,9 @@ from app.tools.rag_tool import AgentContext, run_search_report
 
 
 def _source_for_chunk(chunk: dict) -> str:
-    filename = chunk.get("filename", "Unknown")
     page = chunk.get("page", "?")
     page_end = chunk.get("page_end", page)
-    return f"{filename} p.{page}-{page_end}" if page_end != page else f"{filename} p.{page}"
+    return f"p.{page}-{page_end}" if page_end != page else f"p.{page}"
 
 
 async def retrieve_evidence(

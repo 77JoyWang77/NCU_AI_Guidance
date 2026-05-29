@@ -227,9 +227,11 @@ async def run_search_report(
         exclude_chunk_keys=ctx.seen_chunks,
     )
     for _c in chunks:
-        _fn = _c.get("filename")
-        if _fn and _fn not in ctx.tool_sources:
-            ctx.tool_sources.append(_fn)
+        _p = _c.get("page", "?")
+        _pe = _c.get("page_end", _p)
+        _src = f"p.{_p}-{_pe}" if _pe != _p else f"p.{_p}"
+        if _src not in ctx.tool_sources:
+            ctx.tool_sources.append(_src)
 
     if not chunks and not _hyde_already_tried:
         hyde_queries = await _hyde_expand(
@@ -245,9 +247,11 @@ async def run_search_report(
                 exclude_chunk_keys=ctx.seen_chunks,
             )
             for _c in chunks:
-                _fn = _c.get("filename")
-                if _fn and _fn not in ctx.tool_sources:
-                    ctx.tool_sources.append(_fn)
+                _p = _c.get("page", "?")
+                _pe = _c.get("page_end", _p)
+                _src = f"p.{_p}-{_pe}" if _pe != _p else f"p.{_p}"
+                if _src not in ctx.tool_sources:
+                    ctx.tool_sources.append(_src)
             if chunks:
                 logger.debug("run_search_report: HyDE fallback found %d chunks for %r", len(chunks), query[:60])
 

@@ -74,9 +74,8 @@ def _prepare_no_tool_call(
     if document_ids:
         abstracts = _get_document_abstracts(document_ids)
         if abstracts:
-            block = "\n\n".join(f"【{a['filename']}】\n{a['abstract']}" for a in abstracts)
             messages.append(SystemMessage(content=(
-                "以下是本次對話引用的文件摘要，請以此作為背景資訊回答問題：\n\n" + block
+                "以下是本次對話引用的論文摘要，請以此作為背景資訊：\n\n" + abstracts[0]["abstract"]
             )))
     for content in extra_system_messages or []:
         if content:

@@ -6,7 +6,7 @@ from datetime import datetime, timezone
 from typing import List, Optional
 from urllib.parse import quote
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, HTTPException, Query
 from fastapi.responses import StreamingResponse
 
 from app.models.schemas import Project, ChatRequest, ChatResponse
@@ -73,7 +73,7 @@ async def get_project_by_id(project_id: str):
 
 # ── PDF chat 輔助函式 ──────────────────────────────────────────────────────────
 
-def _get_document_ids_for_project(project_id: str) -> list[int]:
+def _get_document_id_for_project(project_id: str) -> int | None:
     """project_id → pdf_documents.id，比對 pdfPath 檔名。"""
     try:
         from app.database_pdf import PdfSessionLocal
@@ -81,17 +81,17 @@ def _get_document_ids_for_project(project_id: str) -> list[int]:
 
         project = next((p for p in load_projects() if p["id"] == project_id), None)
         if not project or not project.get("pdfPath"):
-            return []
+            return None
         filename = project["pdfPath"].replace("\\", "/").split("/")[-1]
         with PdfSessionLocal() as db:
             doc = db.query(PdfDocument.id).filter(
                 PdfDocument.filename.ilike(f"%{filename}%"),
                 PdfDocument.status == "ready",
             ).first()
-        return [doc.id] if doc else []
+        return doc.id if doc else None
     except Exception as exc:
-        logger.warning("_get_document_ids_for_project failed: %s", exc)
-        return []
+        logger.warning("_get_document_id_for_project failed: %s", exc)
+        return None
 
 
 def _get_or_create_pdf_conversation(thread_id: str, user_id: str | None):
@@ -138,7 +138,9 @@ async def chat_with_project(
     from app.agents.pdf.router_agent import route_agent_stream
     from app.agents.pdf.request_context import set_user_id
 
-    document_ids = _get_document_ids_for_project(project_id) or None
+    document_id = _get_document_id_for_project(project_id)
+    if document_id is None:
+        raise HTTPException(status_code=409, detail="此論文的 PDF 尚未完成索引，請稍後再試。")
     thread_id = request.thread_id or new_id()
     user_id = user.user_id if user else None
     set_user_id(user_id or "")
@@ -149,7 +151,7 @@ async def chat_with_project(
         async for token, is_done, _ in route_agent_stream(
             request.message,
             thread_id=thread_id,
-            document_ids=document_ids,
+            document_ids=[document_id],
             previous_agent_name=conv.last_agent_name,
         ):
             if not is_done:
@@ -174,7 +176,9 @@ async def chat_with_project_stream(
     from app.agents.pdf.router_agent import route_agent_stream
     from app.agents.pdf.request_context import set_user_id
 
-    document_ids = _get_document_ids_for_project(project_id) or None
+    document_id = _get_document_id_for_project(project_id)
+    if document_id is None:
+        raise HTTPException(status_code=409, detail="此論文的 PDF 尚未完成索引，請稍後再試。")
     thread_id = request.thread_id or new_id()
     user_id = user.user_id if user else None
     set_user_id(user_id or "")
@@ -228,7 +232,7 @@ async def chat_with_project_stream(
             aiter = route_agent_stream(
                 request.message,
                 thread_id=thread_id,
-                document_ids=document_ids,
+                document_ids=[document_id],
                 previous_agent_name=conv.last_agent_name,
             ).__aiter__()
 

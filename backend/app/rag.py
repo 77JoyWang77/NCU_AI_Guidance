@@ -470,9 +470,9 @@ async def search_documents(
             section=section, content=doc.page_content, is_low_quality=low_q,
         ))
         source = (
-            f"{filename} p.{page_num}-{page_end_num}"
+            f"p.{page_num}-{page_end_num}"
             if page_end_num != page_num else
-            f"{filename} p.{page_num}"
+            f"p.{page_num}"
         )
         if source not in seen_sources:
             seen_sources.add(source)

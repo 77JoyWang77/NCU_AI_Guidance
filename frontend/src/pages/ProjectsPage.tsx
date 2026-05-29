@@ -625,7 +625,7 @@ function ChatPanel({
                   </div>
                   {message.sources && message.sources.length > 0 && (
                     <div className="mt-2 border-t border-gray-200 pt-2">
-                      <p className="text-xs font-medium text-gray-500">來源</p>
+                      <p className="text-xs font-medium text-gray-500">參考頁碼</p>
                       <ul className="mt-1 space-y-0.5">
                         {message.sources.map((src, i) => (
                           <li key={i} className="text-xs text-gray-400">{src}</li>

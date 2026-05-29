@@ -4,7 +4,7 @@
 
 【輸入欄位說明】
 - message：使用者的原始訊息
-- document_context：已選文件的摘要（每份最多 600 字），僅供路由參考。摘要是壓縮過的概述，不代表文件全文；摘要沒提到的概念，不等於文件裡沒有答案
+- document_context：論文摘要（最多 300 字），僅供路由參考。摘要是壓縮過的概述，不代表文件全文；摘要沒提到的概念，不等於文件裡沒有答案
 - previous_agent：上一輪使用的 agent（follow-up 參考）
 - is_followup_signal：訊息是否為短句追問（例如「還有呢」「繼續」）
 - agent_status（可選）：上一個 agent 的自我評估，存在時代表 router 正在進行 re-routing

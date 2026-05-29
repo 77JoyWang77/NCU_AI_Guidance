@@ -56,15 +56,22 @@ async def _section_filtered_search(ctx: AgentContext, section_terms: list[str]) 
 
         hits = await vs.asimilarity_search(term, k=RETRIEVAL_K, filter=Filter(must=must))
         if hits:
-            chunks = [
-                {
+            chunks = []
+            for doc in hits[:6]:
+                raw_page = doc.metadata.get("page")
+                raw_page_end = doc.metadata.get("page_end", raw_page)
+                p = (int(raw_page) + 1) if raw_page is not None else "?"
+                pe = (int(raw_page_end) + 1) if raw_page_end is not None else p
+                src = f"p.{p}-{pe}" if pe != p else f"p.{p}"
+                if src not in ctx.tool_sources:
+                    ctx.tool_sources.append(src)
+                chunks.append({
                     "filename": doc.metadata.get("filename", ""),
-                    "page": doc.metadata.get("page"),
+                    "page": p,
+                    "page_end": pe,
                     "section": doc.metadata.get("section", ""),
                     "content": doc.page_content[:900],
-                }
-                for doc in hits[:6]
-            ]
+                })
             return json.dumps({"results": chunks}, ensure_ascii=False)
     return None
 

@@ -163,7 +163,7 @@ def _fetch_document_context(document_ids: list[int]) -> list[dict]:
         {
             "id": d.id,
             "filename": d.filename,
-            "abstract": (d.abstract_text or "")[:600],
+            "abstract": (d.abstract_text or "")[:300],
         }
         for d in docs
     ]

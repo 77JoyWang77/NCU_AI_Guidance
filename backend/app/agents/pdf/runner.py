@@ -273,8 +273,8 @@ async def _memory_prompt(request: ModelRequest) -> str:
                 abstracts = await asyncio.to_thread(_get_abstracts, document_ids)
                 if abstracts:
                     abstracts_text = (
-                        "以下是本次對話引用的文件摘要，請以此作為背景資訊回答問題：\n\n"
-                        + "\n\n".join(f"【{a['filename']}】\n{a['abstract']}" for a in abstracts)
+                        "以下是本次對話引用的論文摘要，請以此作為背景資訊：\n\n"
+                        + abstracts[0]["abstract"]
                     )
                 else:
                     abstracts_text = ""
