@@ -35,6 +35,7 @@ SPARSE_NAME = "sparse"
 RETRIEVAL_K = 10
 RERANK_TOP_N = 4
 RERANK_MAX = 12
+RERANK_CANDIDATE_MAX = RERANK_MAX * 3
 
 # ── Singletons ─────────────────────────────────────────────────────────────────
 
@@ -411,6 +412,8 @@ async def search_documents(
     if not all_results:
         return [], []
 
+    all_results = all_results[:RERANK_CANDIDATE_MAX]
+    _pre_rerank = all_results[:]   # saved for timeout fallback
     effective_top_n = min(top_n or RERANK_TOP_N, RERANK_MAX)
     reranker = get_reranker()
     best_score: dict[str, float] = {}
@@ -448,6 +451,11 @@ async def search_documents(
 
     ranked = sorted(best_doc.values(), key=_rank_key)
     all_results = ranked[:effective_top_n]
+    if not all_results:
+        logger.warning("rerank: all queries timed out, falling back to vector candidates")
+        all_results = _pre_rerank[:effective_top_n]
+        for doc in all_results:
+            doc.metadata.setdefault("is_low_quality", False)
 
     for doc in all_results:
         key = _chunk_key(doc.page_content)

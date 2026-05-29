@@ -263,6 +263,10 @@ async def chat_with_project_stream(
         finally:
             if pending and not pending.done():
                 pending.cancel()
+                try:
+                    await pending
+                except (asyncio.CancelledError, StopAsyncIteration, Exception):
+                    pass
             get_gate().release()
             chat_jobs.finish(thread_id)
             _mark_stream(thread_id, None)

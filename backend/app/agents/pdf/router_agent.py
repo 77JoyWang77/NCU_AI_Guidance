@@ -552,9 +552,6 @@ async def route_agent_stream(
                     for _i in range(0, len(research_result.response), chunk_size):
                         yield research_result.response[_i:_i + chunk_size], False, []
                         await asyncio.sleep(0)
-                _fire_and_forget(_update_memory(
-                    "research", thread_id, get_user_id(), document_id, user_message, research_result
-                ))
                 last_sources = research_result.sources
                 agent_result = research_result
 
@@ -609,7 +606,6 @@ async def route_agent_stream(
                         yield item
 
                 _chat_full = "".join(_streamed_response)
-                _fire_and_forget(_update_chat_summary(thread_id, user_message, _chat_full))
                 _chat_lines = _chat_full.strip().split("\n")
                 if _chat_lines[-1].strip() == "[INSUFFICIENT_CONTEXT]":
                     _chat_full = "\n".join(_chat_lines[:-1]).strip()
@@ -624,6 +620,8 @@ async def route_agent_stream(
                             agent_limitation=AgentLimitation.CONTEXT_INSUFFICIENT,
                         ),
                     )
+                else:
+                    _fire_and_forget(_update_chat_summary(thread_id, user_message, _chat_full))
 
         except Exception:
             raise
