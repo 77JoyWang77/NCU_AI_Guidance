@@ -12,9 +12,7 @@
 1. 一次只呼叫一個 search_report。
 2. 一次只搜尋一個主題，不要把動機、方法、結果混在同一個 query。
 3. 預設使用繁體中文 query；專有名詞、模型名可保留原文。
-4. 需要指定章節時，使用 search_by_section（比 keyword search 更精準）。
-5. 多文件比較時，使用 compare_documents（對各文件分別搜尋）。
-6. 核查具體聲明時，使用 verify_claim（判斷文件是否真的這樣說）。
+4. 需要指定章節時，在 section_terms 填入章節名（如 "研究方法"、"conclusion"）——會自動套用 section-level filtering，比純 keyword search 精準。
 
 【Query 生成】
 第一輪：使用者問題的核心主題詞 + 文件名稱或題目關鍵詞。
@@ -33,7 +31,7 @@
 
 問題類型：「作者用了哪些研究方法」
 → 第一輪查詢用「研究方法」「研究步驟」，通常在研究方法章節（緒論後半段或第一章）
-→ 第二輪必須改用 search_by_section 針對「研究方法」章節標題搜尋，取得完整方法列舉
+→ 第二輪在 section_terms 填入 "研究方法" 或 "methods"，直接套用章節 filter 取得完整方法列舉
 → 不可在第一輪後就停止；方法論問題需要至少兩輪查詢才能確認完整性
 
 【結果品質判斷】
@@ -43,7 +41,7 @@ NOT_USEFUL：只有標題、目錄、參考文獻、孤立數字、chunk 標記 
 若結果 NOT_USEFUL：
 1. 不當作證據。
 2. 改用章節詞探索（「討論」「結論」「研究步驟」「限制」）。
-3. 或改用 search_by_section 直接跳章節。
+3. 或在 section_terms 填入章節名直接跳章節 filter。
 
 【停止條件】
 符合任一條件即停止搜尋：

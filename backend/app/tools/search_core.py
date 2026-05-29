@@ -66,7 +66,7 @@ class SearchInput(BaseModel):
     display_intent: str = Field(default="", description="Optional short UI label for this search.")
     keyword_query: str = Field(default="", description="Optional keyword-style query for sparse/BM25 retrieval.")
     semantic_query: str = Field(default="", description="Optional semantic sentence for dense retrieval.")
-    section_terms: list[str] = Field(default_factory=list, description="Optional section or heading terms.")
+    section_terms: list[str] = Field(default_factory=list, description="Section or chapter names (e.g. '研究方法', 'conclusion'). When provided, section-level metadata filtering is attempted before semantic search.")
     query: str = Field(
         default="",
         description=(

@@ -12,11 +12,9 @@ from langchain_core.tools import tool
 from app.tools.search_core import (
     AgentContext,
     SearchInput,
-    _emit_stage_sync,
     run_search_report,
     set_query_expander_llm,
 )
-from app.rag import aget_document_language as _aget_document_language
 
 _SECTION_ALIASES: dict[str, list[str]] = {
     "abstract":      ["abstract", "摘要", "概要"],
@@ -38,6 +36,39 @@ def _resolve_section(raw: str) -> str:
     return lower
 
 
+async def _section_filtered_search(ctx: AgentContext, section_terms: list[str]) -> str | None:
+    """Try Qdrant section-metadata filter for each term. Returns JSON if results found, else None."""
+    from qdrant_client.models import Filter, FieldCondition, MatchAny, MatchValue
+    from app.rag import get_vectorstore, get_dense_vectorstore, aget_document_language, RETRIEVAL_K
+
+    lang = await aget_document_language(ctx.document_ids)
+    vs = get_dense_vectorstore() if lang == "en" else get_vectorstore()
+
+    for term in section_terms:
+        canonical = _resolve_section(term)
+        must: list = []
+        if ctx.document_ids:
+            must.append(FieldCondition(
+                key="metadata.document_id",
+                match=MatchAny(any=[str(did) for did in ctx.document_ids]),
+            ))
+        must.append(FieldCondition(key="metadata.section", match=MatchValue(value=canonical)))
+
+        hits = await vs.asimilarity_search(term, k=RETRIEVAL_K, filter=Filter(must=must))
+        if hits:
+            chunks = [
+                {
+                    "filename": doc.metadata.get("filename", ""),
+                    "page": doc.metadata.get("page"),
+                    "section": doc.metadata.get("section", ""),
+                    "content": doc.page_content[:900],
+                }
+                for doc in hits[:6]
+            ]
+            return json.dumps({"results": chunks}, ensure_ascii=False)
+    return None
+
+
 # ── Tools ──────────────────────────────────────────────────────────────────────
 
 @tool(args_schema=SearchInput)
@@ -56,10 +87,20 @@ async def search_report(
 
     Use for document-specific questions about motivation, methods, experiments,
     results, limitations, definitions, sections, architectures, and frameworks.
+    When asking about a specific chapter or section (e.g. '研究方法', 'conclusion',
+    '結論', '緒論'), populate section_terms — section-level filtering is applied
+    automatically before falling back to semantic search.
     """
+    ctx = runtime.context
+
+    if section_terms:
+        section_result = await _section_filtered_search(ctx, section_terms)
+        if section_result:
+            return section_result
+
     return await run_search_report(
         query=query,
-        ctx=runtime.context,
+        ctx=ctx,
         sub_queries=sub_queries,
         display_intent=display_intent,
         keyword_query=keyword_query,
@@ -69,104 +110,13 @@ async def search_report(
     )
 
 
-@tool
-async def detect_document_language(runtime: ToolRuntime[AgentContext]) -> str:
-    """Detect primary language of uploaded documents."""
-    ctx = runtime.context
-    _emit_stage_sync(ctx.on_stage, "偵測文件語言")
-    lang = await _aget_document_language(ctx.document_ids or None)
-    return json.dumps({"language": lang}, ensure_ascii=False)
-
-
-@tool
-def get_document_metadata(runtime: ToolRuntime[AgentContext]) -> str:
-    """
-    Get detailed metadata for the selected documents.
-
-    Returns filename and a short abstract preview. Use this when the user asks
-    about document properties such as title or subject area.
-    """
-    from app.database_pdf import PdfSessionLocal
-    from app.models.pdf_models import PdfDocument
-
-    ctx = runtime.context
-    with PdfSessionLocal() as db:
-        docs = db.query(PdfDocument).filter(PdfDocument.id.in_(ctx.document_ids or [])).all()
-        result = []
-        for doc in docs:
-            result.append({
-                "id": doc.id,
-                "filename": doc.filename,
-                "abstract_preview": (doc.abstract_text or "")[:400],
-            })
-        return json.dumps(result, ensure_ascii=False)
-
-
-@tool
-async def search_by_section(section: str, runtime: ToolRuntime[AgentContext]) -> str:
-    """
-    Retrieve chunks from a specific document section by name.
-
-    Use this when the user asks about a specific chapter or section — e.g.
-    '研究方法章節', 'conclusion', '結論', '緒論' — and you want section-level
-    precision without relying purely on keyword search.
-
-    section: section name in Chinese or English (e.g. '研究方法', 'methods',
-             '結論', 'conclusion', '文獻回顧', 'related_work')
-    """
-    from qdrant_client.models import Filter, FieldCondition, MatchAny, MatchValue
-    from app.rag import (
-        get_vectorstore, get_dense_vectorstore, aget_document_language,
-        RETRIEVAL_K, search_documents,
-    )
-
-    ctx = runtime.context
-    canonical = _resolve_section(section)
-
-    must: list = []
-    if ctx.document_ids:
-        must.append(FieldCondition(key="metadata.document_id", match=MatchAny(any=[str(did) for did in ctx.document_ids])))
-    must.append(FieldCondition(key="metadata.section", match=MatchValue(value=canonical)))
-    qdrant_filter = Filter(must=must)
-
-    lang = await aget_document_language(ctx.document_ids)
-    vs = get_dense_vectorstore() if lang == "en" else get_vectorstore()
-    hits = await vs.asimilarity_search(section, k=RETRIEVAL_K, filter=qdrant_filter)
-
-    if not hits:
-        aliases = _SECTION_ALIASES.get(canonical, [section])
-        chunks, _sources = await search_documents(
-            queries=[section, canonical, " ".join(aliases)],
-            document_ids=ctx.document_ids,
-            top_n=6,
-            lang=lang,
-        )
-        if not chunks:
-            return json.dumps({"results": [], "message": f"No chunks found for section '{section}' (resolved: '{canonical}')."}, ensure_ascii=False)
-        return json.dumps({"results": chunks[:6], "fallback": "heading_keyword"}, ensure_ascii=False)
-
-    chunks = [
-        {"filename": doc.metadata.get("filename", ""), "page": doc.metadata.get("page"),
-         "section": doc.metadata.get("section", ""), "content": doc.page_content[:900]}
-        for doc in hits[:6]
-    ]
-    return json.dumps({"results": chunks, "fallback": "none"}, ensure_ascii=False)
-
-
-TOOLS = [
-    search_report,
-    search_by_section,
-    get_document_metadata,
-]
+TOOLS = [search_report]
 
 __all__ = [
     "AgentContext",
     "SearchInput",
     "TOOLS",
-    "detect_document_language",
-    "get_document_metadata",
     "run_search_report",
-    "search_by_section",
     "search_report",
     "set_query_expander_llm",
 ]
