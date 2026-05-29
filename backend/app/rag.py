@@ -387,7 +387,9 @@ async def search_documents(
             asyncio.gather(*[_dense_vs.asimilarity_search(q, k=RETRIEVAL_K, filter=qdrant_filter) for q in queries]),
             asyncio.gather(*[_hybrid_vs.asimilarity_search(q, k=RETRIEVAL_K, filter=qdrant_filter, hybrid_fusion=_fusion) for q in queries]),
         )
-        hit_lists = list(_dense_hits) + list(_hybrid_hits)
+        # Interleave per-query so dense and hybrid candidates are equally represented
+        # before the RERANK_CANDIDATE_MAX cap, avoiding dense-only bias.
+        hit_lists = [item for pair in zip(_dense_hits, _hybrid_hits) for item in pair]
     elif effective_lang == "en":
         _vs = get_dense_vectorstore()
         hit_lists = await asyncio.gather(*[_vs.asimilarity_search(q, k=RETRIEVAL_K, filter=qdrant_filter) for q in queries])

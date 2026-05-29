@@ -154,7 +154,9 @@ async def chat_with_project(
             document_id=document_id,
             previous_agent_name=conv.last_agent_name,
         ):
-            if not is_done:
+            if is_done == "replace":
+                full_response = token
+            elif not is_done:
                 full_response += token
     except Exception as exc:
         logger.error("chat_with_project error: %s", exc)
@@ -265,8 +267,10 @@ async def chat_with_project_stream(
                 pending.cancel()
                 try:
                     await pending
-                except (asyncio.CancelledError, StopAsyncIteration, Exception):
+                except (asyncio.CancelledError, StopAsyncIteration):
                     pass
+                except Exception as _drain_exc:
+                    logger.debug("event_stream: pending drain error: %s", _drain_exc)
             get_gate().release()
             chat_jobs.finish(thread_id)
             _mark_stream(thread_id, None)

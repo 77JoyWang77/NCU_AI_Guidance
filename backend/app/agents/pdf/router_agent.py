@@ -610,6 +610,8 @@ async def route_agent_stream(
                 if _chat_lines[-1].strip() == "[INSUFFICIENT_CONTEXT]":
                     _chat_full = "\n".join(_chat_lines[:-1]).strip()
                     _streamed_response = [_chat_full]
+                    # Clear any tokens already sent to the frontend before escalating.
+                    yield "", "replace", []
                     agent_result = AgentResult(
                         response=_chat_full,
                         sources=last_sources,
