@@ -22,7 +22,6 @@ from .runtime_metadata import (
     graph_runtime_metadata as _graph_runtime_metadata,
     parse_json_field as _parse_json_field,
     runtime_prompt_specs as _runtime_prompt_specs,
-    trace_metadata,
 )
 from .state import ResearchGraphState, ResearchState
 from .task_planner import create_research_plan, fallback_research_plan

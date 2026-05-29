@@ -6,7 +6,7 @@ The router uses this module to inject memory context and record outcomes.
 
 Policy rules:
 - Only research writes to long-term memory (store), context_summary, and user_profile.
-- Retrieval/question/chat can read context_summary for follow-up disambiguation.
+- Retrieval/chat can read context_summary for follow-up disambiguation.
 - Long-term memory (semantic search) is enabled for research and chat only.
 - User profile is read by research and chat; written only by research (background).
 - retrieval memory is framing context only, never citation evidence.
@@ -40,14 +40,12 @@ class MemoryWrite:
 MEMORY_READ_POLICY: dict[str, MemoryRead] = {
     "research":  MemoryRead(context_summary=True,  long_term=True,  user_profile=True),
     "retrieval": MemoryRead(context_summary=True,  long_term=False, user_profile=False),
-    "question":  MemoryRead(context_summary=True,  long_term=False, user_profile=False),
     "chat":      MemoryRead(context_summary=True,  long_term=True,  user_profile=True),
 }
 
 MEMORY_WRITE_POLICY: dict[str, MemoryWrite] = {
     "research":  MemoryWrite(context_summary=True,  long_term=True,  user_profile=True),
     "retrieval": MemoryWrite(context_summary=False, long_term=False, user_profile=False),
-    "question":  MemoryWrite(context_summary=False, long_term=False, user_profile=False),
     "chat":      MemoryWrite(context_summary=False, long_term=False, user_profile=False),
 }
 

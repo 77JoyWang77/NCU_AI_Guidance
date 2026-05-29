@@ -34,14 +34,6 @@ async def _emit_stage(on_stage, msg: str) -> None:
         pass
 
 
-def trace_metadata() -> dict[str, str | int]:
-    stack = load_stack(STACK_NAME)
-    return {
-        "agent_name": AGENT_NAME,
-        **stack.metadata(),
-    }
-
-
 def _llm(use_mini: bool = False) -> AzureChatOpenAI:
     deployment = (
         pdf_settings.azure_mini_deployment

@@ -5,7 +5,6 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 import json
 import logging
-import re as _re
 
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.prompts import ChatPromptTemplate
@@ -19,53 +18,10 @@ from app.prompting.registry import version as prompt_version
 
 from .types import AgentLimitation, AgentRoute, AgentResult, AgentStatus
 from .request_context import get_user_id
+from .runner import _AnswerExtractor
 from . import steering as _steering
 
 logger = logging.getLogger(__name__)
-
-
-class _ResearchAnswerExtractor:
-    """從 research writer 的 JSON 串流中即時提取 answer 欄位 token。"""
-
-    def __init__(self) -> None:
-        self._buf = ""
-        self._in_answer = False
-        self._escape = False
-        self._done = False
-
-    def process(self, token: str) -> str:
-        if self._done:
-            return ""
-        if not self._in_answer:
-            self._buf += token
-            m = _re.search(r'"answer"\s*:\s*"', self._buf)
-            if m:
-                self._in_answer = True
-                remainder = self._buf[m.end():]
-                self._buf = ""
-                return self._consume(remainder)
-            return ""
-        return self._consume(token)
-
-    def _consume(self, text: str) -> str:
-        out = []
-        for ch in text:
-            if self._escape:
-                out.append(ch)
-                self._escape = False
-            elif ch == "\\":
-                out.append(ch)
-                self._escape = True
-            elif ch == '"':
-                self._done = True
-                break
-            else:
-                out.append(ch)
-        return "".join(out)
-
-    @property
-    def produced_output(self) -> bool:
-        return self._done or self._in_answer
 
 
 # Background tasks fired by this module (memory writes, DB writes, evaluations).
@@ -669,7 +625,7 @@ async def route_agent_stream(
                 )
                 rtask.add_done_callback(lambda _: _rqueue.put_nowait(None))
 
-                _ans_extractor = _ResearchAnswerExtractor()
+                _ans_extractor = _AnswerExtractor()
                 streamed_tokens = False
                 while True:
                     event = await _rqueue.get()

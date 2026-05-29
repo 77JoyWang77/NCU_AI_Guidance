@@ -8,12 +8,10 @@ from .agent import (
     _background_tasks,
     run_research_task,
     run_research_summary,
-    trace_metadata,
 )
 
 __all__ = [
     "_background_tasks",
     "run_research_task",
     "run_research_summary",
-    "trace_metadata",
 ]

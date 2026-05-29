@@ -21,14 +21,6 @@ PROMPT_NAME = "retrieval_capability"
 AGENT_NAME = "retrieval"
 
 
-def trace_metadata() -> dict[str, str | int]:
-    stack = load_stack(STACK_NAME)
-    return {
-        "agent_name": AGENT_NAME,
-        **stack.metadata(),
-    }
-
-
 async def answer(
     user_message: str,
     thread_id: str,
@@ -39,7 +31,6 @@ async def answer(
     recursion_limit: int = 30,
     metadata: dict[str, str | int] | None = None,
     observation_id: str | None = None,
-    include_document_abstracts: bool = True,
     max_searches: int | None = None,
     max_consecutive_empty: int | None = None,
     trace_id: str | None = None,
@@ -65,7 +56,6 @@ async def answer(
         task_prompt=effective_prompt,
         on_stage=on_stage,
         recursion_limit=recursion_limit,
-        include_document_abstracts=include_document_abstracts,
         max_searches=max_searches,
         max_consecutive_empty=max_consecutive_empty,
         use_mini=use_mini,
@@ -97,7 +87,6 @@ async def stream(
     metadata: dict[str, str | int] | None = None,
     observation_id: str | None = None,
     trace_id: str | None = None,
-    include_document_abstracts: bool = True,
     max_searches: int | None = None,
     max_consecutive_empty: int | None = None,
     use_mini: bool = False,
@@ -120,7 +109,6 @@ async def stream(
         task_prompt=effective_prompt,
         on_stage=on_stage,
         observation_id=observation_id,
-        include_document_abstracts=include_document_abstracts,
         max_searches=max_searches,
         max_consecutive_empty=max_consecutive_empty,
         use_mini=use_mini,

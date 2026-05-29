@@ -18,27 +18,6 @@ RUNTIME_PROMPT_NAMES = (
 )
 
 
-def trace_metadata(
-    thread_id: str | None = None,
-    document_ids: list[int] | None = None,
-    *,
-    agent_name: str = SUMMARY_AGENT_NAME,
-    stack_name: str = RESEARCH_STACK_NAME,
-) -> dict[str, str | int]:
-    """Build trace metadata for research or summary runs."""
-    from app.prompting.loader import load_stack as _load_stack
-
-    def _prompt_key(tid: str | None, doc_ids: list[int] | None) -> str:
-        doc_key = ",".join(str(d) for d in sorted(doc_ids or []))
-        return f"{tid or ''}:{doc_key}"
-
-    stack = _load_stack(stack_name, _prompt_key(thread_id, document_ids))
-    return {
-        "agent_name": agent_name,
-        **stack.metadata(),
-    }
-
-
 def runtime_prompt_specs() -> list[dict[str, str]]:
     specs: list[dict[str, str]] = []
     for name in RUNTIME_PROMPT_NAMES:
