@@ -30,6 +30,22 @@ _DEFAULT_DAILY_LIMIT = int(__import__("os").getenv("PDF_CHAT_DAILY_LIMIT", "50")
 _in_flight: dict[str, int] = {}
 
 
+def _effective_id(user_id: str | None, anon_id: str | None) -> str | None:
+    """Return the canonical quota key.
+
+    Authenticated users  → user_id as-is (Firebase UID, no prefix).
+    Anonymous users      → "anon:{anon_id}" — the prefix prevents any
+                           client-supplied value from colliding with a
+                           real Firebase UID, regardless of its content.
+    Neither present      → None (request is untracked / passes through).
+    """
+    if user_id:
+        return user_id
+    if anon_id:
+        return f"anon:{anon_id}"
+    return None
+
+
 def _today_start() -> datetime:
     now = datetime.now(timezone.utc)
     return now.replace(hour=0, minute=0, second=0, microsecond=0)
@@ -54,12 +70,12 @@ def check_quota(user_id: str | None, anon_id: str | None = None) -> None:
     effective_id priority: user_id (authenticated) > anon_id (X-Anon-Session).
     If neither is present the request is untracked and passes through.
     """
-    effective_id = user_id or anon_id
-    if not effective_id:
+    eid = _effective_id(user_id, anon_id)
+    if not eid:
         return
 
-    db_count = _db_count(effective_id)
-    in_flight = _in_flight.get(effective_id, 0)
+    db_count = _db_count(eid)
+    in_flight = _in_flight.get(eid, 0)
 
     if db_count + in_flight >= _DEFAULT_DAILY_LIMIT:
         raise HTTPException(
@@ -78,26 +94,26 @@ def quota_reservation(user_id: str | None, anon_id: str | None = None):
 
     Automatically releases the slot on exit (success, exception, or cancel).
     """
-    effective_id = user_id or anon_id
-    if effective_id:
-        _in_flight[effective_id] = _in_flight.get(effective_id, 0) + 1
+    eid = _effective_id(user_id, anon_id)
+    if eid:
+        _in_flight[eid] = _in_flight.get(eid, 0) + 1
     try:
         yield
     finally:
-        if effective_id:
-            count = _in_flight.get(effective_id, 1) - 1
+        if eid:
+            count = _in_flight.get(eid, 1) - 1
             if count <= 0:
-                _in_flight.pop(effective_id, None)
+                _in_flight.pop(eid, None)
             else:
-                _in_flight[effective_id] = count
+                _in_flight[eid] = count
 
 
 def enter_reservation(user_id: str | None, anon_id: str | None = None) -> str | None:
     """Increment the in-flight counter; returns effective_id for exit_reservation()."""
-    effective_id = user_id or anon_id
-    if effective_id:
-        _in_flight[effective_id] = _in_flight.get(effective_id, 0) + 1
-    return effective_id
+    eid = _effective_id(user_id, anon_id)
+    if eid:
+        _in_flight[eid] = _in_flight.get(eid, 0) + 1
+    return eid
 
 
 def exit_reservation(effective_id: str | None) -> None:

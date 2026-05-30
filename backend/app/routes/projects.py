@@ -2,9 +2,18 @@ import asyncio
 import json as _json
 import logging
 import os
+import re as _re
 from datetime import datetime, timezone
 from typing import List, Optional
 from urllib.parse import quote
+
+# Strict UUID4 pattern — reject any header value that doesn't match.
+# Prevents clients from spoofing authenticated user_ids (which never look like UUIDs)
+# and limits garbage input from reaching the quota system.
+_UUID4_RE = _re.compile(
+    r'^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$',
+    _re.IGNORECASE,
+)
 
 from fastapi import APIRouter, Depends, HTTPException, Query, Request
 from fastapi.responses import StreamingResponse
@@ -199,7 +208,8 @@ async def chat_with_project(
         raise HTTPException(status_code=409, detail="此論文的 PDF 尚未完成索引，請稍後再試。")
     thread_id = request.thread_id or new_id()
     user_id = user.user_id if user else None
-    anon_id = None if user_id else http_request.headers.get("X-Anon-Session")
+    _raw_anon = http_request.headers.get("X-Anon-Session", "")
+    anon_id = _raw_anon if (not user_id and _UUID4_RE.match(_raw_anon)) else None
     set_user_id(user_id or anon_id or "")
     await asyncio.to_thread(check_quota, user_id, anon_id)
 
@@ -244,7 +254,8 @@ async def chat_with_project_stream(
         raise HTTPException(status_code=409, detail="此論文的 PDF 尚未完成索引，請稍後再試。")
     thread_id = request.thread_id or new_id()
     user_id = user.user_id if user else None
-    anon_id = None if user_id else http_request.headers.get("X-Anon-Session")
+    _raw_anon = http_request.headers.get("X-Anon-Session", "")
+    anon_id = _raw_anon if (not user_id and _UUID4_RE.match(_raw_anon)) else None
     set_user_id(user_id or anon_id or "")
     await asyncio.to_thread(check_quota, user_id, anon_id)
 
