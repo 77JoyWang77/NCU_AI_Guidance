@@ -10,10 +10,11 @@ import json
 from langchain.tools import ToolRuntime
 from langchain_core.tools import tool
 
-from app.rag import _to_page_num
+from app.rag import _to_page_num, _is_cover_page, _is_references_page, _is_table_or_formula_heavy
 from app.tools.search_core import (
     AgentContext,
     SearchInput,
+    _MAX_SEARCHES,
     run_search_report,
     set_query_expander_llm,
 )
@@ -65,22 +66,40 @@ async def _section_filtered_search(ctx: AgentContext, section_terms: list[str]) 
         hits = await vs.asimilarity_search(term, k=RETRIEVAL_K, filter=Filter(must=must))
         if hits:
             chunks = []
-            for doc in hits[:6]:
+            heavy_chunks = []
+            for doc in hits[:4]:
+                text = doc.page_content[:900]
+                # Hard quality exclusions (same as main search path)
+                if _is_cover_page(text) or _is_references_page(text):
+                    continue
+                # Skip already-seen chunks (#7)
+                content_hash = hashlib.md5(text.encode("utf-8", errors="replace")).hexdigest()
+                if content_hash in ctx.seen_chunks:
+                    continue
                 raw_page = doc.metadata.get("page")
                 raw_page_end = doc.metadata.get("page_end", raw_page)
                 p = _to_page_num(raw_page, "?")
                 pe = _to_page_num(raw_page_end, p)
                 src = f"p.{p}-{pe}" if pe != p else f"p.{p}"
-                if src not in ctx.tool_sources:
-                    ctx.tool_sources.append(src)
-                chunks.append({
+                entry = {
                     "filename": doc.metadata.get("filename", ""),
                     "page": p,
                     "page_end": pe,
                     "section": doc.metadata.get("section", ""),
-                    "content": doc.page_content[:900],
-                })
-            return json.dumps({"results": chunks}, ensure_ascii=False)
+                    "content": text,
+                }
+                if _is_table_or_formula_heavy(text):
+                    heavy_chunks.append((src, content_hash, entry))
+                else:
+                    chunks.append((src, content_hash, entry))
+            # Append heavy chunks only when normal chunks are insufficient
+            all_chunks = chunks + (heavy_chunks if len(chunks) < 2 else [])
+            if all_chunks:
+                for src, h, entry in all_chunks:
+                    if src not in ctx.tool_sources:
+                        ctx.tool_sources.append(src)
+                    ctx.seen_chunks.add(h)
+                return json.dumps({"results": [e for _, _, e in all_chunks]}, ensure_ascii=False)
     return None
 
 
@@ -107,6 +126,13 @@ async def search_report(
     automatically before falling back to semantic search.
     """
     ctx = runtime.context
+
+    max_searches = ctx.max_searches or _MAX_SEARCHES
+    if ctx.search_count >= max_searches:
+        return json.dumps(
+            {"results": [], "HARD_STOP": f"Search limit reached ({max_searches}). Use collected evidence to answer."},
+            ensure_ascii=False,
+        )
 
     if section_terms:
         section_result = await _section_filtered_search(ctx, section_terms)

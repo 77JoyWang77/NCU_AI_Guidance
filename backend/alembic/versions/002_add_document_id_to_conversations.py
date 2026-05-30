@@ -25,8 +25,17 @@ def upgrade() -> None:
         "pdf_conversations",
         ["document_id"],
     )
+    op.create_foreign_key(
+        "fk_pdf_conversations_document_id",
+        "pdf_conversations",
+        "pdf_documents",
+        ["document_id"],
+        ["id"],
+        ondelete="SET NULL",
+    )
 
 
 def downgrade() -> None:
+    op.drop_constraint("fk_pdf_conversations_document_id", "pdf_conversations", type_="foreignkey")
     op.drop_index("ix_pdf_conversations_document_id", table_name="pdf_conversations")
     op.drop_column("pdf_conversations", "document_id")

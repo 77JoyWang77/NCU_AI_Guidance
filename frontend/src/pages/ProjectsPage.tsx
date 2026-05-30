@@ -108,6 +108,7 @@ export default function ProjectsPage() {
     setThreadId(undefined);
     streamingTextRef.current = '';
     setStreamingText('');
+    setChatLoading(false);
     abortCtrlRef.current?.abort();
     abortCtrlRef.current = null;
   };
@@ -152,6 +153,9 @@ export default function ProjectsPage() {
         onReplace: (text) => {
           streamingTextRef.current = text;
           setStreamingText(text);
+        },
+        onSessionId: (id) => {
+          setThreadId(id || undefined);
         },
         onDone: (sessionId, _cancelled, sources) => {
           const finalText = streamingTextRef.current;

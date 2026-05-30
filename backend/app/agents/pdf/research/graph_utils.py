@@ -192,8 +192,8 @@ def _hard_max_searches(state: ResearchGraphState) -> int:
         configured = int(state.get("max_searches") or 0)
     except Exception:
         configured = 0
-    # configured is a floor; derived scales with coverage count so more slots always get budget.
-    return max(configured, derived) if configured > 0 else derived
+    # configured is a hard ceiling; derived is used only when no ceiling is set.
+    return configured if configured > 0 else derived
 
 
 def _slot_search_counts(state: ResearchGraphState) -> dict[str, int]:
@@ -326,8 +326,12 @@ def _merge_stream_patch(state: dict, patch: dict) -> dict:
             merged[key] = _merge_evidence_dict(merged.get(key, {}), value)
         elif key == "slot_status":
             merged[key] = _merge_dict_overwrite(merged.get(key, {}), value)
-        elif key in {"used_queries", "steps_json", "chunks_by_query_json", "messages"}:
+        elif key in {"used_queries", "steps_json", "chunks_by_query_json"}:
             merged[key] = list(merged.get(key, [])) + list(value or [])
+        elif key == "messages":
+            from .state import _CAP_MESSAGES
+            merged_msgs = list(merged.get(key, [])) + list(value or [])
+            merged[key] = merged_msgs[-_CAP_MESSAGES:] if len(merged_msgs) > _CAP_MESSAGES else merged_msgs
         elif key in {"search_count", "llm_call_count"}:
             merged[key] = int(merged.get(key, 0) or 0) + int(value or 0)
         elif key in {"suggested_query_terms", "avoid_query_terms"}:

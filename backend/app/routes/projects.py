@@ -20,6 +20,9 @@ router = APIRouter()
 _stream_lock: dict[str, str] = {}  # key → active thread_id
 _stream_lock_mutex = asyncio.Lock()  # makes check-and-set atomic within a single asyncio worker
 
+# project_id → pdf_documents.id cache (stable for the lifetime of the process)
+_project_doc_id_cache: dict[str, int | None] = {}
+
 HEARTBEAT_INTERVAL = 15.0  # seconds between SSE heartbeats while waiting for LLM tokens
 
 
@@ -68,27 +71,35 @@ async def get_project_by_id(project_id: str):
     for project in load_projects():
         if project['id'] == project_id:
             return project
-    return {"error": "Project not found"}
+    raise HTTPException(status_code=404, detail="Project not found")
 
 
 # ── PDF chat 輔助函式 ──────────────────────────────────────────────────────────
 
 def _get_document_id_for_project(project_id: str) -> int | None:
-    """project_id → pdf_documents.id，比對 pdfPath 檔名。"""
+    """project_id → pdf_documents.id，比對 pdfPath 檔名。結果快取於 process 生命周期。"""
+    if project_id in _project_doc_id_cache:
+        return _project_doc_id_cache[project_id]
     try:
         from app.database_pdf import PdfSessionLocal
         from app.models.pdf_models import PdfDocument
 
         project = next((p for p in load_projects() if p["id"] == project_id), None)
         if not project or not project.get("pdfPath"):
+            _project_doc_id_cache[project_id] = None
             return None
         filename = project["pdfPath"].replace("\\", "/").split("/")[-1]
+        # Escape SQL wildcard characters so literal % and _ in filenames match correctly.
+        safe_fn = filename.replace("%", r"\%").replace("_", r"\_")
         with PdfSessionLocal() as db:
             doc = db.query(PdfDocument.id).filter(
-                PdfDocument.filename.ilike(f"%{filename}%"),
+                PdfDocument.filename.ilike(f"%{safe_fn}%", escape="\\"),
                 PdfDocument.status == "ready",
             ).first()
-        return doc.id if doc else None
+        result = doc.id if doc else None
+        if result is not None:
+            _project_doc_id_cache[project_id] = result
+        return result
     except Exception as exc:
         logger.warning("_get_document_id_for_project failed: %s", exc)
         return None
@@ -163,6 +174,7 @@ async def chat_with_project(
     from app.utils import new_id
     from app.agents.pdf.router_agent import route_agent_stream
     from app.agents.pdf.request_context import set_user_id
+    from app.services.pdf_quota_service import check_quota
 
     document_id = _get_document_id_for_project(project_id)
     if document_id is None:
@@ -170,6 +182,7 @@ async def chat_with_project(
     thread_id = request.thread_id or new_id()
     user_id = user.user_id if user else None
     set_user_id(user_id or "")
+    await asyncio.to_thread(check_quota, user_id)
 
     conv = _get_or_create_pdf_conversation(thread_id, user_id, document_id)
     full_response = ""
@@ -203,6 +216,7 @@ async def chat_with_project_stream(
     from app.agents.pdf import chat_jobs, steering
     from app.agents.pdf.router_agent import route_agent_stream
     from app.agents.pdf.request_context import set_user_id
+    from app.services.pdf_quota_service import check_quota
 
     document_id = _get_document_id_for_project(project_id)
     if document_id is None:
@@ -210,6 +224,7 @@ async def chat_with_project_stream(
     thread_id = request.thread_id or new_id()
     user_id = user.user_id if user else None
     set_user_id(user_id or "")
+    await asyncio.to_thread(check_quota, user_id)
 
     # Per-user stream lock: if same user+project already has an active stream,
     # silently drop the duplicate request so the frontend only sees one response.
@@ -224,7 +239,8 @@ async def chat_with_project_stream(
                 logger.info("steering accepted project=%s thread=%s", project_id, _active)
 
                 async def _steer():
-                    yield f"data: {_json.dumps({'token': '已收到補充，將納入考量。', 'done': True})}\n\n"
+                    yield f"data: {_json.dumps({'token': '已收到補充，將納入考量。'})}\n\n"
+                    yield f"data: {_json.dumps({'done': True, 'session_id': _active})}\n\n"
 
                 return StreamingResponse(_steer(), media_type="text/event-stream")
 
@@ -253,7 +269,7 @@ async def chat_with_project_stream(
         _stream_lock.pop(lock_key, None)
 
         async def _ack():
-            yield f"data: {_json.dumps({'token': '已收到補充，將納入考量。', 'done': True})}\n\n"
+            yield f"data: {_json.dumps({'token': '已收到補充，將納入考量。', 'done': True, 'session_id': thread_id})}\n\n"
 
         return StreamingResponse(_ack(), media_type="text/event-stream")
 
@@ -263,16 +279,19 @@ async def chat_with_project_stream(
     async def event_stream():
         from app.services.pdf_llm_gate import acquire_with_timeout, get_gate
 
-        gate_acquired = await acquire_with_timeout(timeout=30.0)
-        if not gate_acquired:
-            yield f"data: {_json.dumps({'error': '服務目前繁忙，請稍後再試。', 'done': True, 'session_id': thread_id})}\n\n"
-            chat_jobs.finish(thread_id)
-            _mark_stream(thread_id, None)
-            _stream_lock.pop(lock_key, None)
-            return
-
+        # gate_acquired and pending must be initialised before try so finally can reference them
+        # regardless of which await is cancelled by a client disconnect.
+        gate_acquired = False
         pending: asyncio.Task | None = None
         try:
+            gate_acquired = await acquire_with_timeout(timeout=30.0)
+            if not gate_acquired:
+                yield f"data: {_json.dumps({'error': '服務目前繁忙，請稍後再試。', 'done': True, 'session_id': thread_id})}\n\n"
+                return
+
+            # Send session_id immediately so the frontend can enable the cancel button.
+            yield f"data: {_json.dumps({'session_id': thread_id})}\n\n"
+
             aiter = route_agent_stream(
                 request.message,
                 thread_id=thread_id,
@@ -303,7 +322,7 @@ async def chat_with_project_stream(
 
         except Exception as exc:
             logger.error("event_stream error thread=%s: %s", thread_id, exc)
-            yield f"data: {_json.dumps({'token': '處理時發生錯誤，請稍後再試。', 'done': True, 'session_id': thread_id})}\n\n"
+            yield f"data: {_json.dumps({'error': '處理時發生錯誤，請稍後再試。', 'done': True, 'session_id': thread_id})}\n\n"
         finally:
             if pending and not pending.done():
                 pending.cancel()
@@ -313,7 +332,8 @@ async def chat_with_project_stream(
                     pass
                 except Exception as _drain_exc:
                     logger.debug("event_stream: pending drain error: %s", _drain_exc)
-            get_gate().release()
+            if gate_acquired:
+                get_gate().release()
             chat_jobs.finish(thread_id)
             _mark_stream(thread_id, None)
             _stream_lock.pop(lock_key, None)
@@ -324,10 +344,14 @@ async def chat_with_project_stream(
 # ── 取消串流 ────────────────────────────────────────────────────────────────────
 
 @router.post("/{project_id}/chat/{thread_id}/cancel")
-async def cancel_project_chat(project_id: str, thread_id: str):
+async def cancel_project_chat(
+    project_id: str,
+    thread_id: str,
+    user: Optional[AuthUser] = Depends(get_optional_user),
+):
     from app.agents.pdf import chat_jobs
 
-    # Verify the thread belongs to this project's document.
+    # Verify the thread belongs to this project's document and this user.
     # Fail open on DB errors so a legitimate cancel is never blocked by infra issues.
     document_id = _get_document_id_for_project(project_id)
     if document_id is not None:
@@ -336,12 +360,17 @@ async def cancel_project_chat(project_id: str, thread_id: str):
             from app.models.pdf_models import PdfConversation
             with PdfSessionLocal() as db:
                 conv = (
-                    db.query(PdfConversation.document_id)
+                    db.query(PdfConversation.document_id, PdfConversation.user_id)
                     .filter_by(thread_id=thread_id)
                     .first()
                 )
-            if conv and conv.document_id is not None and conv.document_id != document_id:
-                raise HTTPException(status_code=403, detail="此對話紀錄不屬於本論文。")
+            if conv:
+                if conv.document_id is not None and conv.document_id != document_id:
+                    raise HTTPException(status_code=403, detail="此對話紀錄不屬於本論文。")
+                # User ownership: only check when both sides are identified.
+                req_user_id = user.user_id if user else None
+                if conv.user_id and (not req_user_id or conv.user_id != req_user_id):
+                    raise HTTPException(status_code=403, detail="無法取消他人的對話。")
         except HTTPException:
             raise
         except Exception as exc:

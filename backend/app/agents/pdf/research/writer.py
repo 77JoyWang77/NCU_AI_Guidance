@@ -121,7 +121,9 @@ def _to_writeup(result: ResearchStructuredWriteup, state: ResearchState) -> Rese
     ):
         answer = section_answer
 
-    sources = result.sources or state.sources[:5]
+    valid = set(state.sources)
+    filtered = [s for s in (result.sources or []) if s in valid]
+    sources = filtered or state.sources[:5]
     return ResearchWriteup(answer=answer, sources=sources)
 
 

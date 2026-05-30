@@ -11,7 +11,7 @@ from dataclasses import dataclass, field
 from typing import Callable
 
 from langchain_core.messages import HumanMessage, SystemMessage
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 from app.rag import (
     acount_document_chunks as _acount_document_chunks,
@@ -80,6 +80,11 @@ class SearchInput(BaseModel):
         description="Optional alternative phrasings of the SAME topic, max 2.",
     )
     use_hyde: bool = Field(default=False, description="Enable one HyDE expansion only when normal retrieval is weak or empty.")
+
+    @field_validator("section_terms")
+    @classmethod
+    def _cap_section_terms(cls, v: list[str]) -> list[str]:
+        return [s[:50] for s in v[:4]]
 
 
 _HYDE_PROMPT = (

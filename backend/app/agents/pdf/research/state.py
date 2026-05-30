@@ -25,6 +25,7 @@ _CAP_USED_QUERIES = 30
 _CAP_QUERY_TERMS = 20              # suggested / avoid terms
 _CAP_CHUNK_KEYS = 200              # dedup keys (larger = more effective dedup)
 _CAP_TRACE_ENTRIES = 30            # steps_json / chunks_by_query_json
+_CAP_MESSAGES = 30                 # research graph message history
 
 
 def _merge_dict_overwrite(a: dict | None, b: dict | None) -> dict:
@@ -94,6 +95,7 @@ _merge_query_terms_capped = _merge_unique_list_capped(_CAP_QUERY_TERMS)
 _merge_chunk_keys_capped = _merge_unique_list_capped(_CAP_CHUNK_KEYS)
 _add_queries_capped = _add_list_capped(_CAP_USED_QUERIES)
 _add_trace_capped = _add_list_capped(_CAP_TRACE_ENTRIES)
+_add_messages_capped = _add_list_capped(_CAP_MESSAGES)
 
 @dataclass
 class CoverageItem:
@@ -372,7 +374,7 @@ class ResearchGraphState(TypedDict):
     steps_json: Annotated[list, _add_trace_capped]
     chunks_by_query_json: Annotated[list, _add_trace_capped]
     trace_summary: dict
-    messages: Annotated[list, operator.add]
+    messages: Annotated[list, _add_messages_capped]
     llm_call_count: Annotated[int, operator.add]
     started_at: str
     final_answer: str

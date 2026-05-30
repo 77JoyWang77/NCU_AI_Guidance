@@ -143,7 +143,7 @@ def _route_for_agent(
         agent_name = "chat"
     if agent_name == "research":
         prompt = _primary_prompt("research_runtime", "research_writer", thread_id, document_id)
-        return AgentRoute(agent_name, prompt.name, prompt.version, compose_after=True)
+        return AgentRoute(agent_name, prompt.name, prompt.version, compose_after=False)
     if agent_name == "retrieval":
         return AgentRoute(agent_name, "retrieval_capability", prompt_version("retrieval_capability"))
     return AgentRoute("chat", "chat_mode", prompt_version("chat_mode"))
@@ -577,9 +577,11 @@ async def route_agent_stream(
                         _streamed_response.append(_tok)
                         if plan.composition_step is None:
                             yield _item
+                    if _chat_jobs.is_cancelled(thread_id):
+                        break
 
                 last_sources = _retrieval_sources
-                _retrieval_has_answer = bool(_retrieval_response)
+                _retrieval_has_answer = bool(_retrieval_response) and bool(_retrieval_sources)
                 agent_result = AgentResult(
                     response=_retrieval_response,
                     sources=_retrieval_sources,
@@ -608,6 +610,8 @@ async def route_agent_stream(
                     else:
                         _streamed_response.append(token)
                         yield item
+                    if _chat_jobs.is_cancelled(thread_id):
+                        break
 
                 _chat_full = "".join(_streamed_response)
                 _chat_lines = _chat_full.strip().split("\n")
@@ -634,7 +638,9 @@ async def route_agent_stream(
 
         _full_response = "".join(_streamed_response) or None
 
-        if plan.composition_step is not None and len(_full_response or "") >= COMPOSE_MIN_CHARS:
+        if (plan.composition_step is not None
+                and not _chat_jobs.is_cancelled(thread_id)
+                and len(_full_response or "") >= COMPOSE_MIN_CHARS):
             if on_stage:
                 on_stage("組織回答中")
             _composed = await _run_composition(
@@ -661,6 +667,10 @@ async def route_agent_stream(
                 continue
 
         break
+
+    # Clean up any unconsumed steering message to prevent pollution of future requests.
+    if thread_id:
+        _steering.get_and_clear(thread_id)
 
     if plan is not None and step is not None and current_route is not None:
         await _finalize_plan(

@@ -71,13 +71,13 @@ class _AnswerExtractor:
         return self._consume(token)
 
     def _consume(self, text: str) -> str:
+        _ESC = {"n": "\n", "t": "\t", "r": "\r", '"': '"', "\\": "\\", "/": "/", "b": "\b", "f": "\f"}
         out: list[str] = []
         for ch in text:
             if self._escape:
-                out.append(ch)
+                out.append(_ESC.get(ch, ch))
                 self._escape = False
             elif ch == "\\":
-                out.append(ch)
                 self._escape = True
             elif ch == '"':
                 self._done = True
@@ -314,34 +314,32 @@ async def setup_checkpointer():
     )
     await pool.open(wait=True)
     _pool = pool
-    _checkpointer = AsyncPostgresSaver(
-        pool,
-        serde=JsonPlusSerializer(allowed_msgpack_modules=[
-            ("app.agents.pdf.runner", "AgentResponse"),
-        ]),
-    )
-    await _checkpointer.setup()
+    try:
+        _checkpointer = AsyncPostgresSaver(
+            pool,
+            serde=JsonPlusSerializer(allowed_msgpack_modules=[
+                ("app.agents.pdf.runner", "AgentResponse"),
+            ]),
+        )
+        await _checkpointer.setup()
 
-    _store = AsyncPostgresStore(
-        pool,
-        index={
-            "embed": AzureOpenAIEmbeddings(
-                azure_deployment=pdf_settings.azure_embedding_deployment,
-                azure_endpoint=pdf_settings.azure_openai_endpoint,
-                api_key=pdf_settings.azure_openai_api_key.get_secret_value(),
-                api_version=pdf_settings.azure_openai_api_version,
-            ),
-            "dims": 3072,
-            "fields": ["$"],
-        },
-    )
-    await _store.setup()
+        _store = AsyncPostgresStore(
+            pool,
+            index={
+                "embed": AzureOpenAIEmbeddings(
+                    azure_deployment=pdf_settings.azure_embedding_deployment,
+                    azure_endpoint=pdf_settings.azure_openai_endpoint,
+                    api_key=pdf_settings.azure_openai_api_key.get_secret_value(),
+                    api_version=pdf_settings.azure_openai_api_version,
+                ),
+                "dims": 3072,
+                "fields": ["$"],
+            },
+        )
+        await _store.setup()
 
-    def _make_agent(llm, tools):
-        return create_agent(
-            llm,
-            tools=tools,
-            middleware=[
+        def _make_agent(llm, tools, fallback_llm=None):
+            middleware = [
                 _memory_prompt,
                 SummarizationMiddleware(
                     model=_get_mini_llm(),
@@ -354,7 +352,6 @@ async def setup_checkpointer():
                 _trim_messages,
                 _track_model_cost,
                 ModelCallLimitMiddleware(run_limit=15, exit_behavior="end"),
-                ModelFallbackMiddleware(_get_mini_llm()),
                 ModelRetryMiddleware(
                     max_retries=2,
                     retry_on=StructuredOutputValidationError,
@@ -365,15 +362,32 @@ async def setup_checkpointer():
                     retry_on=(ConnectionError, TimeoutError),
                     on_failure="return_message",
                 ),
-            ],
-            response_format=ProviderStrategy(AgentResponse, strict=True),
-            checkpointer=_checkpointer,
-            store=_store,
-            context_schema=AgentContext,
-        )
+            ]
+            if fallback_llm is not None:
+                middleware.insert(6, ModelFallbackMiddleware(fallback_llm))
+            return create_agent(
+                llm,
+                tools=tools,
+                middleware=middleware,
+                response_format=ProviderStrategy(AgentResponse, strict=True),
+                checkpointer=_checkpointer,
+                store=_store,
+                context_schema=AgentContext,
+            )
 
-    _tool_agent = _make_agent(_get_agent_llm(), TOOLS)
-    _tool_agent_mini = _make_agent(_get_mini_agent_llm(), TOOLS)
+        _tool_agent = _make_agent(_get_agent_llm(), TOOLS, fallback_llm=_get_mini_llm())
+        _tool_agent_mini = _make_agent(_get_mini_agent_llm(), TOOLS)  # no fallback
+    except Exception:
+        _checkpointer = None
+        _store = None
+        _tool_agent = None
+        _tool_agent_mini = None
+        _pool = None
+        try:
+            await pool.close()
+        except Exception:
+            pass
+        raise
 
 
 def _get_tool_agent(mini: bool = False):
@@ -523,7 +537,7 @@ async def run_tool_agent(
     )
 
     structured: AgentResponse | None = result.get("structured_response")
-    sources = ctx.tool_sources or (structured.sources if structured else [])
+    sources = (ctx.tool_sources or (structured.sources if structured else []))[:10]
     if structured:
         return structured.answer, sources
     ai_messages = [m for m in result["messages"] if isinstance(m, AIMessage) and m.content]
@@ -634,7 +648,7 @@ async def run_tool_agent_stream(
                     yield answer_part, False, []
 
     structured = await _get_structured_response(thread_id)
-    sources: list[str] = ctx.tool_sources or (structured.sources if structured else [])
+    sources: list[str] = (ctx.tool_sources or (structured.sources if structured else []))[:10]
 
     if not extractor.produced_output:
         answer: str = structured.answer if structured else ""

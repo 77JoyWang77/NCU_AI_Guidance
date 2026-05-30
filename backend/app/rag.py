@@ -7,6 +7,7 @@ import asyncio
 import hashlib
 import logging
 import re
+import threading
 from typing import TypedDict
 
 from langchain_community.document_compressors.flashrank_rerank import FlashrankRerank
@@ -55,6 +56,10 @@ _dense_vectorstore: QdrantVectorStore | None = None
 _reranker: FlashrankRerank | None = None
 _qdrant_client: QdrantClient | None = None
 _async_qdrant_client: AsyncQdrantClient | None = None
+
+# Per-document caches — language and chunk count are stable after ingestion.
+_doc_lang_cache: dict[int, str] = {}
+_doc_chunks_cache: dict[int, int] = {}
 
 
 def _collection() -> str:
@@ -172,6 +177,8 @@ def _lang_from_text(text: str) -> str:
 
 
 def get_document_language(document_id: int | None = None) -> str:
+    if document_id is not None and document_id in _doc_lang_cache:
+        return _doc_lang_cache[document_id]
     client = get_qdrant_client()
     scroll_filter = None
     if document_id is not None:
@@ -191,10 +198,15 @@ def get_document_language(document_id: int | None = None) -> str:
     if not results:
         return "unknown"
     sample = " ".join(r.payload.get("page_content", "") for r in results if r.payload)
-    return _lang_from_text(sample)
+    lang = _lang_from_text(sample)
+    if document_id is not None:
+        _doc_lang_cache[document_id] = lang
+    return lang
 
 
 async def aget_document_language(document_id: int | None = None) -> str:
+    if document_id is not None and document_id in _doc_lang_cache:
+        return _doc_lang_cache[document_id]
     client = get_async_qdrant_client()
     scroll_filter = None
     if document_id is not None:
@@ -214,12 +226,17 @@ async def aget_document_language(document_id: int | None = None) -> str:
     if not results:
         return "unknown"
     sample = " ".join(r.payload.get("page_content", "") for r in results if r.payload)
-    return _lang_from_text(sample)
+    lang = _lang_from_text(sample)
+    if document_id is not None:
+        _doc_lang_cache[document_id] = lang
+    return lang
 
 
 # ── Chunk counting ──────────────────────────────────────────────────────────────
 
 def count_document_chunks(document_id: int | None) -> int:
+    if document_id is not None and document_id in _doc_chunks_cache:
+        return _doc_chunks_cache[document_id]
     client = get_qdrant_client()
     qdrant_filter = None
     if document_id is not None:
@@ -230,10 +247,15 @@ def count_document_chunks(document_id: int | None) -> int:
             )]
         )
     result = client.count(collection_name=_collection(), count_filter=qdrant_filter, exact=True)
-    return result.count
+    count = result.count
+    if document_id is not None:
+        _doc_chunks_cache[document_id] = count
+    return count
 
 
 async def acount_document_chunks(document_id: int | None) -> int:
+    if document_id is not None and document_id in _doc_chunks_cache:
+        return _doc_chunks_cache[document_id]
     client = get_async_qdrant_client()
     qdrant_filter = None
     if document_id is not None:
@@ -244,7 +266,52 @@ async def acount_document_chunks(document_id: int | None) -> int:
             )]
         )
     result = await client.count(collection_name=_collection(), count_filter=qdrant_filter, exact=True)
-    return result.count
+    count = result.count
+    if document_id is not None:
+        _doc_chunks_cache[document_id] = count
+    return count
+
+
+# ── Startup warmup ─────────────────────────────────────────────────────────────
+
+async def warmup() -> bool:
+    """Pre-initialize vector stores and reranker to avoid cold-start latency on first request.
+
+    Called from the FastAPI lifespan. Returns True only when ALL components succeed.
+    Each component failure is logged individually; exceptions do not propagate.
+    """
+    ok = True
+    try:
+        await asyncio.to_thread(get_reranker)
+        logger.info("RAG warmup: reranker ready")
+    except Exception as exc:
+        logger.warning("RAG warmup: reranker failed: %s", exc)
+        ok = False
+    try:
+        await asyncio.to_thread(get_vectorstore)
+        await asyncio.to_thread(get_dense_vectorstore)
+        logger.info("RAG warmup: vectorstore ready")
+    except Exception as exc:
+        logger.warning("RAG warmup: vectorstore failed: %s", exc)
+        ok = False
+    return ok
+
+
+async def close_qdrant_clients() -> None:
+    """Close Qdrant HTTP connection pools on shutdown."""
+    global _qdrant_client, _async_qdrant_client
+    if _async_qdrant_client is not None:
+        try:
+            await _async_qdrant_client.close()
+        except Exception as exc:
+            logger.debug("close async qdrant client failed: %s", exc)
+        _async_qdrant_client = None
+    if _qdrant_client is not None:
+        try:
+            await asyncio.to_thread(_qdrant_client.close)
+        except Exception as exc:
+            logger.debug("close qdrant client failed: %s", exc)
+        _qdrant_client = None
 
 
 # ── Page quality filters (inlined from rag.cleaning) ──────────────────────────
@@ -366,6 +433,14 @@ def _chunk_key(content: str) -> str:
     return hashlib.md5(content.encode("utf-8", errors="replace")).hexdigest()
 
 
+_RERANK_THREAD_SEM = threading.BoundedSemaphore(6)
+
+
+def _rerank_bounded(reranker, docs, q):
+    with _RERANK_THREAD_SEM:
+        return reranker.compress_documents(docs, q)
+
+
 async def search_documents(
     queries: list[str],
     document_id: int | None = None,
@@ -414,9 +489,10 @@ async def search_documents(
                 continue
             if _is_cover_page(doc.page_content) or _is_references_page(doc.page_content):
                 continue
-            if exclude_chunk_keys and _chunk_key(doc.page_content) in exclude_chunk_keys:
+            _truncated_content = doc.page_content[:900]
+            if exclude_chunk_keys and _chunk_key(_truncated_content) in exclude_chunk_keys:
                 continue
-            key = _chunk_key(doc.page_content)
+            key = _chunk_key(_truncated_content)
             if key not in seen_content:
                 seen_content.add(key)
                 all_results.append(doc)
@@ -435,7 +511,7 @@ async def search_documents(
     rerank_results = []
     for coro in asyncio.as_completed([
         asyncio.wait_for(
-            asyncio.to_thread(reranker.compress_documents, all_results, q),
+            asyncio.to_thread(_rerank_bounded, reranker, all_results, q),
             timeout=_RERANK_TIMEOUT,
         )
         for q in queries[:3]
@@ -467,11 +543,11 @@ async def search_documents(
         logger.warning("rerank: all queries timed out, falling back to vector candidates")
         all_results = _pre_rerank[:effective_top_n]
         for doc in all_results:
-            doc.metadata.setdefault("is_low_quality", False)
-
-    for doc in all_results:
-        key = _chunk_key(doc.page_content)
-        doc.metadata["is_low_quality"] = is_heavy.get(key, False)
+            doc.metadata["is_low_quality"] = _is_table_or_formula_heavy(doc.page_content)
+    else:
+        for doc in all_results:
+            key = _chunk_key(doc.page_content)
+            doc.metadata["is_low_quality"] = is_heavy.get(key, False)
 
     chunks: list[RetrievedChunk] = []
     sources: list[str] = []

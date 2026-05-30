@@ -194,7 +194,9 @@ def _build_initial_graph_state(
     """Build the initial LangGraph state dict from resolved plan and runtime params."""
     graph_metadata = _graph_runtime_metadata(metadata)
     required_count = len([i for i in coverage_items if i.get("required", True)]) or 1
-    effective_max_searches = max(max_searches, required_count * max_searches_per_slot + 1)
+    derived_max = required_count * max_searches_per_slot + 1
+    # max_searches is a hard ceiling; only fall back to derived when not set.
+    effective_max_searches = max_searches if max_searches > 0 else derived_max
     return {
         "question": question,
         "document_id": document_id,

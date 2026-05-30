@@ -14,6 +14,9 @@ load_dotenv(Path(__file__).parent.parent.parent / ".env")
 
 logger = logging.getLogger(__name__)
 
+_pdf_init_ready = False
+_rag_init_ready = False
+
 
 def get_allowed_origins() -> list[str]:
     origins = os.getenv(
@@ -26,21 +29,36 @@ def get_allowed_origins() -> list[str]:
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    global _pdf_init_ready
+    pdf_ok = False
+
     # PDF 問答初始化
     try:
-        from app.agents.pdf.runner import setup_checkpointer, shutdown_checkpointer
+        from app.agents.pdf.runner import setup_checkpointer
         await setup_checkpointer()
+        pdf_ok = True
         logger.info("PDF chat: checkpointer ready")
     except Exception as exc:
         logger.warning("PDF chat init failed (non-fatal): %s", exc)
 
+    # RAG 預熱（向量庫 + reranker），checkpointer 失敗仍執行
+    rag_ok = False
+    try:
+        from app.rag import warmup as rag_warmup
+        rag_ok = await rag_warmup()
+    except Exception as exc:
+        logger.warning("RAG warmup failed (non-fatal): %s", exc)
+
+    _pdf_init_ready = pdf_ok
+    _rag_init_ready = rag_ok
+
     yield
 
-    # PDF 問答 shutdown
-    try:
-        from app.agents.pdf.runner import shutdown_checkpointer
-        await shutdown_checkpointer()
+    _pdf_init_ready = False
+    _rag_init_ready = False
 
+    # PDF 問答 shutdown：先 drain 再等 tasks，最後關 pool
+    try:
         from app.agents.pdf.research.agent import request_all_drain
         request_all_drain("server_shutdown")
 
@@ -48,9 +66,25 @@ async def lifespan(app: FastAPI):
         from app.agents.pdf.router_agent import _router_background_tasks
         pending = list(_background_tasks) + list(_router_background_tasks)
         if pending:
-            await asyncio.gather(*pending, return_exceptions=True)
+            await asyncio.wait_for(
+                asyncio.gather(*pending, return_exceptions=True),
+                timeout=10.0,
+            )
+    except asyncio.TimeoutError:
+        logger.warning("PDF chat shutdown: background tasks did not finish within 10s")
     except Exception as exc:
         logger.warning("PDF chat shutdown error (non-fatal): %s", exc)
+    finally:
+        try:
+            from app.agents.pdf.runner import shutdown_checkpointer
+            await shutdown_checkpointer()
+        except Exception as exc:
+            logger.warning("PDF chat checkpointer shutdown failed: %s", exc)
+        try:
+            from app.rag import close_qdrant_clients
+            await close_qdrant_clients()
+        except Exception as exc:
+            logger.warning("Qdrant client shutdown failed: %s", exc)
 
 
 app = FastAPI(
@@ -94,4 +128,8 @@ async def root():
 
 @app.get("/health")
 async def health_check():
-    return {"status": "healthy"}
+    return {
+        "status": "healthy",
+        "pdf_chat": "ready" if _pdf_init_ready else "initializing",
+        "rag": "ready" if _rag_init_ready else "initializing",
+    }

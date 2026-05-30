@@ -253,6 +253,7 @@ export const projectAPI = {
       onDone: (sessionId: string, cancelled?: boolean, sources?: string[]) => void;
       onError: (msg: string) => void;
       onReplace?: (text: string) => void;
+      onSessionId?: (sessionId: string) => void;
     },
     threadId?: string,
   ): AbortController {
@@ -292,8 +293,10 @@ export const projectAPI = {
             if (ev.heartbeat) return;
             if (ev.error) { handlers.onError(ev.error); return; }
             if (ev.replace !== undefined) { handlers.onReplace?.(ev.replace); return; }
+            // session_id-only event (no token/done): front-load the session id so cancel works from turn 1.
+            if (ev.session_id && !ev.done && ev.token === undefined) { handlers.onSessionId?.(ev.session_id); return; }
             if (ev.token !== undefined) handlers.onToken(ev.token);
-            else if (ev.done) handlers.onDone(ev.session_id ?? '', ev.cancelled, ev.sources ?? []);
+            if (ev.done) handlers.onDone(ev.session_id ?? '', ev.cancelled, ev.sources ?? []);
           } catch { /* malformed chunk */ }
         };
 
