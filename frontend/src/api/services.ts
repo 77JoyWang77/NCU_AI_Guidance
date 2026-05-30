@@ -16,6 +16,16 @@ import type {
 
 const API_BASE = (import.meta.env.VITE_API_URL as string | undefined) ?? 'http://localhost:8000/api';
 
+function getAnonSessionId(): string {
+  const KEY = 'ncu_anon_session_id';
+  let id = localStorage.getItem(KEY);
+  if (!id) {
+    id = crypto.randomUUID();
+    localStorage.setItem(KEY, id);
+  }
+  return id;
+}
+
 export const authAPI = {
   me: async (): Promise<{
     id: string;
@@ -258,6 +268,7 @@ export const projectAPI = {
     threadId?: string,
   ): AbortController {
     const controller = new AbortController();
+    const anonId = getAnonSessionId();
 
     getFirebaseIdToken()
       .then((token) =>
@@ -266,6 +277,7 @@ export const projectAPI = {
           headers: {
             'Content-Type': 'application/json',
             ...(token ? { Authorization: `Bearer ${token}` } : {}),
+            'X-Anon-Session': anonId,
           },
           body: JSON.stringify({ message, thread_id: threadId ?? null }),
           signal: controller.signal,

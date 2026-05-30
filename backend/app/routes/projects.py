@@ -6,7 +6,7 @@ from datetime import datetime, timezone
 from typing import List, Optional
 from urllib.parse import quote
 
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, HTTPException, Query, Request
 from fastapi.responses import StreamingResponse
 
 from app.models.schemas import Project, ChatRequest, ChatResponse
@@ -77,7 +77,8 @@ async def get_project_by_id(project_id: str):
 # ── PDF chat 輔助函式 ──────────────────────────────────────────────────────────
 
 def _get_document_id_for_project(project_id: str) -> int | None:
-    """project_id → pdf_documents.id，比對 pdfPath 檔名。結果快取於 process 生命周期。"""
+    """project_id → pdf_documents.id。優先使用 projects.json 的 documentId 欄位精確查詢；
+    未填寫時 fallback 至 pdfPath 檔名 ilike 查詢。結果快取於 process 生命周期。"""
     if project_id in _project_doc_id_cache:
         return _project_doc_id_cache[project_id]
     try:
@@ -85,7 +86,18 @@ def _get_document_id_for_project(project_id: str) -> int | None:
         from app.models.pdf_models import PdfDocument
 
         project = next((p for p in load_projects() if p["id"] == project_id), None)
-        if not project or not project.get("pdfPath"):
+        if not project:
+            _project_doc_id_cache[project_id] = None
+            return None
+
+        # Fast path: projects.json already has documentId populated by the populate script.
+        if project.get("documentId") is not None:
+            doc_id = int(project["documentId"])
+            _project_doc_id_cache[project_id] = doc_id
+            return doc_id
+
+        # Fallback: derive from pdfPath filename via ilike.
+        if not project.get("pdfPath"):
             _project_doc_id_cache[project_id] = None
             return None
         filename = project["pdfPath"].replace("\\", "/").split("/")[-1]
@@ -174,37 +186,40 @@ def _mark_stream(thread_id: str, started_at: datetime | None) -> None:
 async def chat_with_project(
     project_id: str,
     request: ChatRequest,
+    http_request: Request,
     user: Optional[AuthUser] = Depends(get_optional_user),
 ):
     from app.utils import new_id
     from app.agents.pdf.router_agent import route_agent_stream
     from app.agents.pdf.request_context import set_user_id
-    from app.services.pdf_quota_service import check_quota
+    from app.services.pdf_quota_service import check_quota, quota_reservation
 
     document_id = await asyncio.to_thread(_get_document_id_for_project, project_id)
     if document_id is None:
         raise HTTPException(status_code=409, detail="此論文的 PDF 尚未完成索引，請稍後再試。")
     thread_id = request.thread_id or new_id()
     user_id = user.user_id if user else None
-    set_user_id(user_id or "")
-    await asyncio.to_thread(check_quota, user_id)
+    anon_id = None if user_id else http_request.headers.get("X-Anon-Session")
+    set_user_id(user_id or anon_id or "")
+    await asyncio.to_thread(check_quota, user_id, anon_id)
 
     conv = await asyncio.to_thread(_get_or_create_pdf_conversation, thread_id, user_id, document_id)
     full_response = ""
-    try:
-        async for token, is_done, _ in route_agent_stream(
-            request.message,
-            thread_id=thread_id,
-            document_id=document_id,
-            previous_agent_name=conv.last_agent_name,
-        ):
-            if is_done == "replace":
-                full_response = token
-            elif not is_done:
-                full_response += token
-    except Exception as exc:
-        logger.error("chat_with_project error: %s", exc)
-        full_response = "抱歉，處理您的問題時發生錯誤，請稍後再試。"
+    with quota_reservation(user_id, anon_id):
+        try:
+            async for token, is_done, _ in route_agent_stream(
+                request.message,
+                thread_id=thread_id,
+                document_id=document_id,
+                previous_agent_name=conv.last_agent_name,
+            ):
+                if is_done == "replace":
+                    full_response = token
+                elif not is_done:
+                    full_response += token
+        except Exception as exc:
+            logger.error("chat_with_project error: %s", exc)
+            full_response = "抱歉，處理您的問題時發生錯誤，請稍後再試。"
 
     return ChatResponse(reply=full_response)
 
@@ -215,6 +230,7 @@ async def chat_with_project(
 async def chat_with_project_stream(
     project_id: str,
     request: ChatRequest,
+    http_request: Request,
     user: Optional[AuthUser] = Depends(get_optional_user),
 ):
     from app.utils import new_id
@@ -228,13 +244,15 @@ async def chat_with_project_stream(
         raise HTTPException(status_code=409, detail="此論文的 PDF 尚未完成索引，請稍後再試。")
     thread_id = request.thread_id or new_id()
     user_id = user.user_id if user else None
-    set_user_id(user_id or "")
-    await asyncio.to_thread(check_quota, user_id)
+    anon_id = None if user_id else http_request.headers.get("X-Anon-Session")
+    set_user_id(user_id or anon_id or "")
+    await asyncio.to_thread(check_quota, user_id, anon_id)
 
     # Per-user stream lock: if same user+project already has an active stream,
     # silently drop the duplicate request so the frontend only sees one response.
     # Mutex makes the check-and-set atomic within a single asyncio worker.
-    lock_key = f"{project_id}:{user_id or thread_id}"
+    # Authenticated users are keyed by user_id; anonymous by stable anon_id (or thread_id fallback).
+    lock_key = f"{project_id}:{user_id or anon_id or thread_id}"
     async with _stream_lock_mutex:
         if lock_key in _stream_lock:
             _active = _stream_lock[lock_key]
@@ -288,6 +306,8 @@ async def chat_with_project_stream(
         # regardless of which await is cancelled by a client disconnect.
         gate_acquired = False
         pending: asyncio.Task | None = None
+        from app.services.pdf_quota_service import enter_reservation, exit_reservation
+        _quota_id = enter_reservation(user_id, anon_id)
         try:
             gate_acquired = await acquire_with_timeout(timeout=30.0)
             if not gate_acquired:
@@ -342,6 +362,7 @@ async def chat_with_project_stream(
             chat_jobs.finish(thread_id)
             _mark_stream(thread_id, None)
             _stream_lock.pop(lock_key, None)
+            exit_reservation(_quota_id)
 
     return StreamingResponse(event_stream(), media_type="text/event-stream")
 
