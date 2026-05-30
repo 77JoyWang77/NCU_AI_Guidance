@@ -412,6 +412,8 @@ async def shutdown_checkpointer() -> None:
         _pool = None
     _checkpointer = None
     _store = None
+    from app.agents.pdf.research.research_graph import reset_research_graph
+    reset_research_graph()
 
 
 def _content_to_text(content: Any) -> str:

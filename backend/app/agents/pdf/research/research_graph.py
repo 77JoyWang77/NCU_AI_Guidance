@@ -166,6 +166,11 @@ def get_or_build_research_graph(checkpointer=None, store=None) -> object:
     return _research_graph_checkpointed
 
 
+def reset_research_graph() -> None:
+    global _research_graph_checkpointed
+    _research_graph_checkpointed = None
+
+
 # ── Public API ────────────────────────────────────────────────────────────────
 
 def final_rs_from_result(result: ResearchGraphState) -> ResearchState:

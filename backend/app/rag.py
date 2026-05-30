@@ -299,7 +299,9 @@ async def warmup() -> bool:
 
 async def close_qdrant_clients() -> None:
     """Close Qdrant HTTP connection pools on shutdown."""
-    global _qdrant_client, _async_qdrant_client
+    global _qdrant_client, _async_qdrant_client, _vectorstore, _dense_vectorstore
+    _vectorstore = None
+    _dense_vectorstore = None
     if _async_qdrant_client is not None:
         try:
             await _async_qdrant_client.close()

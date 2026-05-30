@@ -152,7 +152,7 @@ def _get_or_create_pdf_conversation(
                         status_code=403,
                         detail="此對話紀錄不屬於本論文，請重新開始對話。",
                     )
-                if conv.user_id != user_id:
+                if conv.user_id is not None and conv.user_id != user_id:
                     raise HTTPException(
                         status_code=403,
                         detail="此對話紀錄不屬於目前使用者，請重新開始對話。",
@@ -197,6 +197,23 @@ def _mark_stream(thread_id: str, started_at: datetime | None) -> None:
         logger.debug("_mark_stream failed: %s", exc)
 
 
+def _verify_cancel_ownership(thread_id: str, document_id: int, effective_req_id: str | None) -> None:
+    from app.database_pdf import PdfSessionLocal
+    from app.models.pdf_models import PdfConversation
+
+    with PdfSessionLocal() as db:
+        conv = (
+            db.query(PdfConversation.document_id, PdfConversation.user_id)
+            .filter_by(thread_id=thread_id)
+            .first()
+        )
+    if conv:
+        if conv.document_id is not None and conv.document_id != document_id:
+            raise HTTPException(status_code=403, detail="此對話紀錄不屬於本論文。")
+        if conv.user_id is not None and (not effective_req_id or conv.user_id != effective_req_id):
+            raise HTTPException(status_code=403, detail="無法取消他人的對話。")
+
+
 # ── 非串流 chat（向下相容原有 schema）────────────────────────────────────────────
 
 @router.post("/{project_id}/chat", response_model=ChatResponse)
@@ -218,12 +235,13 @@ async def chat_with_project(
     user_id = user.user_id if user else None
     _raw_anon = http_request.headers.get("X-Anon-Session", "")
     anon_id = _raw_anon if (not user_id and _UUID4_RE.match(_raw_anon)) else None
+    owner_id = user_id or (f"anon:{anon_id}" if anon_id else None)
     # Use anon: prefix so DB records match the quota key (fixes anonymous quota accumulation).
-    set_user_id(user_id or (f"anon:{anon_id}" if anon_id else "") or "")
+    set_user_id(owner_id or "")
     # Atomically check quota and claim an in-flight slot (no await between check and increment).
     _quota_id = await check_and_reserve(user_id, anon_id)
 
-    conv = await asyncio.to_thread(_get_or_create_pdf_conversation, thread_id, user_id, document_id)
+    conv = await asyncio.to_thread(_get_or_create_pdf_conversation, thread_id, owner_id, document_id)
     full_response = ""
     try:
         async for token, is_done, _ in route_agent_stream(
@@ -267,7 +285,8 @@ async def chat_with_project_stream(
     user_id = user.user_id if user else None
     _raw_anon = http_request.headers.get("X-Anon-Session", "")
     anon_id = _raw_anon if (not user_id and _UUID4_RE.match(_raw_anon)) else None
-    set_user_id(user_id or (f"anon:{anon_id}" if anon_id else "") or "")
+    owner_id = user_id or (f"anon:{anon_id}" if anon_id else None)
+    set_user_id(owner_id or "")
     _quota_id = await check_and_reserve(user_id, anon_id)
 
     # Per-user stream lock: if same user+project already has an active stream,
@@ -282,6 +301,7 @@ async def chat_with_project_stream(
                 # Client sent back the in-flight thread_id → steering, not a duplicate.
                 steering.set(_active, request.message)
                 logger.info("steering accepted project=%s thread=%s", project_id, _active)
+                exit_reservation(_quota_id)
 
                 async def _steer():
                     yield f"data: {_json.dumps({'token': '已收到補充，將納入考量。'})}\n\n"
@@ -291,6 +311,7 @@ async def chat_with_project_stream(
 
             logger.warning("duplicate stream dropped project=%s user=%s active_thread=%s",
                            project_id, user_id, _active)
+            exit_reservation(_quota_id)
 
             async def _drop():
                 yield f"data: {_json.dumps({'done': True, 'session_id': _active})}\n\n"
@@ -303,8 +324,8 @@ async def chat_with_project_stream(
                 project_id, thread_id, bool(request.thread_id))
 
     try:
-        conv = await asyncio.to_thread(_get_or_create_pdf_conversation, thread_id, user_id, document_id)
-    except HTTPException:
+        conv = await asyncio.to_thread(_get_or_create_pdf_conversation, thread_id, owner_id, document_id)
+    except Exception:
         _stream_lock.pop(lock_key, None)
         exit_reservation(_quota_id)
         raise
@@ -396,33 +417,27 @@ async def chat_with_project_stream(
 async def cancel_project_chat(
     project_id: str,
     thread_id: str,
+    http_request: Request,
     user: Optional[AuthUser] = Depends(get_optional_user),
 ):
     from app.agents.pdf import chat_jobs
 
-    # Verify the thread belongs to this project's document and this user.
-    document_id = _get_document_id_for_project(project_id)
-    if document_id is not None:
-        try:
-            from app.database_pdf import PdfSessionLocal
-            from app.models.pdf_models import PdfConversation
-            with PdfSessionLocal() as db:
-                conv = (
-                    db.query(PdfConversation.document_id, PdfConversation.user_id)
-                    .filter_by(thread_id=thread_id)
-                    .first()
-                )
-            if conv:
-                if conv.document_id is not None and conv.document_id != document_id:
-                    raise HTTPException(status_code=403, detail="此對話紀錄不屬於本論文。")
-                req_user_id = user.user_id if user else None
-                if conv.user_id and (not req_user_id or conv.user_id != req_user_id):
-                    raise HTTPException(status_code=403, detail="無法取消他人的對話。")
-        except HTTPException:
-            raise
-        except Exception as exc:
-            logger.warning("cancel ownership check failed: %s", exc)
-            raise HTTPException(status_code=503, detail="暫時無法驗證對話擁有者，請稍後再試。")
+    document_id = await asyncio.to_thread(_get_document_id_for_project, project_id)
+    if document_id is None:
+        raise HTTPException(status_code=409, detail="此論文的 PDF 尚未完成索引。")
+
+    req_user_id = user.user_id if user else None
+    _raw_anon = http_request.headers.get("X-Anon-Session", "")
+    req_anon_id = _raw_anon if (not req_user_id and _UUID4_RE.match(_raw_anon)) else None
+    effective_req_id = req_user_id or (f"anon:{req_anon_id}" if req_anon_id else None)
+
+    try:
+        await asyncio.to_thread(_verify_cancel_ownership, thread_id, document_id, effective_req_id)
+    except HTTPException:
+        raise
+    except Exception as exc:
+        logger.warning("cancel ownership check failed: %s", exc)
+        raise HTTPException(status_code=503, detail="暫時無法驗證對話擁有者，請稍後再試。")
 
     chat_jobs.request_cancel(thread_id)
     return {"ok": True}

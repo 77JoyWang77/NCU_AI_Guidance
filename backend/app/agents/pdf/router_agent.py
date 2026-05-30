@@ -518,32 +518,44 @@ async def route_agent_stream(
 
                 _ans_extractor = _AnswerExtractor()
                 streamed_tokens = False
-                while True:
-                    event = await _rqueue.get()
-                    if event is None:
-                        if not _chat_jobs.is_cancelled(thread_id):
-                            while not _rqueue.empty():
-                                rem = _rqueue.get_nowait()
-                                if rem is None:
-                                    continue
-                                etype, val = rem
-                                if etype == "token":
-                                    ans_part = _ans_extractor.process(val)
-                                    if ans_part:
-                                        _streamed_response.append(ans_part)
-                                        yield ans_part, False, []
-                                        streamed_tokens = True
-                        break
-                    etype, val = event
-                    if etype == "token":
-                        ans_part = _ans_extractor.process(val)
-                        if ans_part:
-                            _streamed_response.append(ans_part)
-                            yield ans_part, False, []
-                            streamed_tokens = True
-                    if _chat_jobs.is_cancelled(thread_id):
+                try:
+                    while True:
+                        event = await _rqueue.get()
+                        if event is None:
+                            if not _chat_jobs.is_cancelled(thread_id):
+                                while not _rqueue.empty():
+                                    rem = _rqueue.get_nowait()
+                                    if rem is None:
+                                        continue
+                                    etype, val = rem
+                                    if etype == "token":
+                                        ans_part = _ans_extractor.process(val)
+                                        if ans_part:
+                                            _streamed_response.append(ans_part)
+                                            yield ans_part, False, []
+                                            streamed_tokens = True
+                            break
+                        etype, val = event
+                        if etype == "token":
+                            ans_part = _ans_extractor.process(val)
+                            if ans_part:
+                                _streamed_response.append(ans_part)
+                                yield ans_part, False, []
+                                streamed_tokens = True
+                        if _chat_jobs.is_cancelled(thread_id):
+                            rtask.cancel()
+                            try:
+                                await rtask
+                            except (asyncio.CancelledError, Exception):
+                                pass
+                            break
+                finally:
+                    if not rtask.done():
                         rtask.cancel()
-                        break
+                        try:
+                            await rtask
+                        except (asyncio.CancelledError, Exception):
+                            pass
 
                 if rtask.cancelled():
                     raise asyncio.CancelledError("research task was cancelled")
