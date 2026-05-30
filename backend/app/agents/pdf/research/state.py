@@ -5,7 +5,6 @@ from dataclasses import dataclass, field
 from typing import Annotated, Literal, TypedDict
 
 
-
 SlotStatus = Literal["FILLED", "PARTIAL", "NOT_FILLED", "EXHAUSTED", "NOT_FOUND", "OMITTED"]
 
 DEFAULT_SUMMARY_COVERAGE: tuple[str, ...] = (
@@ -14,6 +13,18 @@ DEFAULT_SUMMARY_COVERAGE: tuple[str, ...] = (
     "research_findings",
     "research_limitations",
 )
+
+# ── Global accumulation caps ──────────────────────────────────────────────────
+# These cap the ACCUMULATED state in ResearchGraphState (checkpoint size).
+# Tighter limits are applied in planner_prompt_dict() for what goes to the LLM.
+_CAP_EVIDENCE_PER_SLOT = 20        # notes per coverage slot
+_CAP_EVIDENCE_DETAILS_PER_SLOT = 12
+_CAP_SOURCES = 20
+_CAP_KEYWORDS = 80                 # matches graph_utils._MAX_STATE_KEYWORDS
+_CAP_USED_QUERIES = 30
+_CAP_QUERY_TERMS = 20              # suggested / avoid terms
+_CAP_CHUNK_KEYS = 200              # dedup keys (larger = more effective dedup)
+_CAP_TRACE_ENTRIES = 30            # steps_json / chunks_by_query_json
 
 
 def _merge_dict_overwrite(a: dict | None, b: dict | None) -> dict:
@@ -33,6 +44,17 @@ def _merge_evidence_dict(a: dict | None, b: dict | None) -> dict:
     return result
 
 
+def _merge_evidence_dict_capped(a: dict | None, b: dict | None) -> dict:
+    """Merge evidence dicts and cap each slot's notes at _CAP_EVIDENCE_PER_SLOT."""
+    result = _merge_evidence_dict(a, b)
+    return {slot: notes[:_CAP_EVIDENCE_PER_SLOT] for slot, notes in result.items()}
+
+
+def _merge_evidence_details_capped(a: dict | None, b: dict | None) -> dict:
+    """Merge evidence_details dicts and cap each slot at _CAP_EVIDENCE_DETAILS_PER_SLOT."""
+    result = _merge_evidence_dict(a, b)
+    return {slot: notes[:_CAP_EVIDENCE_DETAILS_PER_SLOT] for slot, notes in result.items()}
+
 
 def _keep_last(a, b):
     """Last-write-wins for string fields (last node write takes precedence)."""
@@ -47,6 +69,31 @@ def _merge_unique_list(a: list | None, b: list | None) -> list:
             result.append(item)
             seen.add(str(item))
     return result
+
+
+def _merge_unique_list_capped(limit: int):
+    """Return a reducer that deduplicates then caps the list at `limit` items."""
+    def _reducer(a: list | None, b: list | None) -> list:
+        result = _merge_unique_list(a, b)
+        return result[:limit] if len(result) > limit else result
+    return _reducer
+
+
+def _add_list_capped(limit: int):
+    """Return a reducer that appends (operator.add) then caps at `limit` items."""
+    def _reducer(a: list | None, b: list | None) -> list:
+        merged = list(a or []) + list(b or [])
+        return merged[-limit:] if len(merged) > limit else merged
+    return _reducer
+
+
+# Pre-built capped reducers used in ResearchGraphState annotations.
+_merge_sources_capped = _merge_unique_list_capped(_CAP_SOURCES)
+_merge_keywords_capped = _merge_unique_list_capped(_CAP_KEYWORDS)
+_merge_query_terms_capped = _merge_unique_list_capped(_CAP_QUERY_TERMS)
+_merge_chunk_keys_capped = _merge_unique_list_capped(_CAP_CHUNK_KEYS)
+_add_queries_capped = _add_list_capped(_CAP_USED_QUERIES)
+_add_trace_capped = _add_list_capped(_CAP_TRACE_ENTRIES)
 
 @dataclass
 class CoverageItem:
@@ -217,22 +264,24 @@ class ResearchState:
         }
 
     def planner_prompt_dict(self) -> dict:
+        # Tighter prompt-level caps prevent token bloat independent of checkpoint caps.
         return {
             "task_goal": self.task_goal,
             "output_contract": self.output_contract,
             "coverage_items": self.coverage_items,
             "search_count": self.search_count,
-            "known_keywords": self.known_keywords,
+            "known_keywords": self.known_keywords[:20],
             "coverage_status": self.slot_status,
             "slot_status": self.slot_status,
-            "used_queries": self.used_queries,
+            "used_queries": self.used_queries[-15:],
             "evidence_brief": {
-                item_id: list(notes) for item_id, notes in self.evidence.items()
+                item_id: notes[:8]
+                for item_id, notes in self.evidence.items()
             },
             "last_reflection": self.last_reflection,
             "next_search_angle": self.next_search_angle,
-            "suggested_query_terms": self.suggested_query_terms,
-            "avoid_query_terms": self.avoid_query_terms,
+            "suggested_query_terms": self.suggested_query_terms[:10],
+            "avoid_query_terms": self.avoid_query_terms[:10],
         }
 
 
@@ -297,18 +346,18 @@ class ResearchGraphState(TypedDict):
     # ── persistent research state ─────────────────────────────────────────────
     search_count: Annotated[int, operator.add]
     consecutive_no_new: int
-    known_keywords: Annotated[list[str], _merge_unique_list]
-    used_queries: Annotated[list[str], operator.add]
+    known_keywords: Annotated[list[str], _merge_keywords_capped]
+    used_queries: Annotated[list[str], _add_queries_capped]
     slot_status: Annotated[dict, _merge_dict_overwrite]
-    evidence: Annotated[dict, _merge_evidence_dict]
-    evidence_details: Annotated[dict, _merge_evidence_dict]
-    sources: Annotated[list[str], _merge_unique_list]
+    evidence: Annotated[dict, _merge_evidence_dict_capped]
+    evidence_details: Annotated[dict, _merge_evidence_details_capped]
+    sources: Annotated[list[str], _merge_sources_capped]
     last_reflection: Annotated[str, _keep_last]
     next_search_angle: Annotated[str, _keep_last]
-    suggested_query_terms: Annotated[list[str], _merge_unique_list]
-    avoid_query_terms: Annotated[list[str], _merge_unique_list]
-    seen_chunk_keys: Annotated[list[str], _merge_unique_list]
-    used_query_keys: Annotated[list[str], _merge_unique_list]
+    suggested_query_terms: Annotated[list[str], _merge_query_terms_capped]
+    avoid_query_terms: Annotated[list[str], _merge_query_terms_capped]
+    seen_chunk_keys: Annotated[list[str], _merge_chunk_keys_capped]
+    used_query_keys: Annotated[list[str], _add_queries_capped]
 
     # ── per-run quality constraints ───────────────────────────────────────────
     min_evidence_per_slot: int
@@ -320,8 +369,8 @@ class ResearchGraphState(TypedDict):
     void_slot_attempts: Annotated[dict, _merge_dict_overwrite]  # {slot_id: int}
 
     # ── trace & output ────────────────────────────────────────────────────────
-    steps_json: Annotated[list, operator.add]
-    chunks_by_query_json: Annotated[list, operator.add]
+    steps_json: Annotated[list, _add_trace_capped]
+    chunks_by_query_json: Annotated[list, _add_trace_capped]
     trace_summary: dict
     messages: Annotated[list, operator.add]
     llm_call_count: Annotated[int, operator.add]
