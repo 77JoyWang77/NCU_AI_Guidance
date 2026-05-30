@@ -123,6 +123,11 @@ def _get_or_create_pdf_conversation(
                         status_code=403,
                         detail="此對話紀錄不屬於本論文，請重新開始對話。",
                     )
+                if conv.user_id != user_id:
+                    raise HTTPException(
+                        status_code=403,
+                        detail="此對話紀錄不屬於目前使用者，請重新開始對話。",
+                    )
                 if conv.document_id is None:
                     conv.document_id = document_id
                     db.commit()
@@ -176,7 +181,7 @@ async def chat_with_project(
     from app.agents.pdf.request_context import set_user_id
     from app.services.pdf_quota_service import check_quota
 
-    document_id = _get_document_id_for_project(project_id)
+    document_id = await asyncio.to_thread(_get_document_id_for_project, project_id)
     if document_id is None:
         raise HTTPException(status_code=409, detail="此論文的 PDF 尚未完成索引，請稍後再試。")
     thread_id = request.thread_id or new_id()
@@ -184,7 +189,7 @@ async def chat_with_project(
     set_user_id(user_id or "")
     await asyncio.to_thread(check_quota, user_id)
 
-    conv = _get_or_create_pdf_conversation(thread_id, user_id, document_id)
+    conv = await asyncio.to_thread(_get_or_create_pdf_conversation, thread_id, user_id, document_id)
     full_response = ""
     try:
         async for token, is_done, _ in route_agent_stream(
@@ -218,7 +223,7 @@ async def chat_with_project_stream(
     from app.agents.pdf.request_context import set_user_id
     from app.services.pdf_quota_service import check_quota
 
-    document_id = _get_document_id_for_project(project_id)
+    document_id = await asyncio.to_thread(_get_document_id_for_project, project_id)
     if document_id is None:
         raise HTTPException(status_code=409, detail="此論文的 PDF 尚未完成索引，請稍後再試。")
     thread_id = request.thread_id or new_id()
@@ -258,7 +263,7 @@ async def chat_with_project_stream(
                 project_id, thread_id, bool(request.thread_id))
 
     try:
-        conv = _get_or_create_pdf_conversation(thread_id, user_id, document_id)
+        conv = await asyncio.to_thread(_get_or_create_pdf_conversation, thread_id, user_id, document_id)
     except HTTPException:
         _stream_lock.pop(lock_key, None)
         raise
@@ -352,7 +357,6 @@ async def cancel_project_chat(
     from app.agents.pdf import chat_jobs
 
     # Verify the thread belongs to this project's document and this user.
-    # Fail open on DB errors so a legitimate cancel is never blocked by infra issues.
     document_id = _get_document_id_for_project(project_id)
     if document_id is not None:
         try:
@@ -367,14 +371,14 @@ async def cancel_project_chat(
             if conv:
                 if conv.document_id is not None and conv.document_id != document_id:
                     raise HTTPException(status_code=403, detail="此對話紀錄不屬於本論文。")
-                # User ownership: only check when both sides are identified.
                 req_user_id = user.user_id if user else None
                 if conv.user_id and (not req_user_id or conv.user_id != req_user_id):
                     raise HTTPException(status_code=403, detail="無法取消他人的對話。")
         except HTTPException:
             raise
         except Exception as exc:
-            logger.debug("cancel ownership check failed: %s", exc)
+            logger.warning("cancel ownership check failed: %s", exc)
+            raise HTTPException(status_code=503, detail="暫時無法驗證對話擁有者，請稍後再試。")
 
     chat_jobs.request_cancel(thread_id)
     return {"ok": True}

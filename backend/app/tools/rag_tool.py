@@ -10,7 +10,7 @@ import json
 from langchain.tools import ToolRuntime
 from langchain_core.tools import tool
 
-from app.rag import _to_page_num, _is_cover_page, _is_references_page, _is_table_or_formula_heavy
+from app.rag import to_page_num, is_cover_page, is_references_page, is_table_or_formula_heavy
 from app.tools.search_core import (
     AgentContext,
     SearchInput,
@@ -70,7 +70,7 @@ async def _section_filtered_search(ctx: AgentContext, section_terms: list[str]) 
             for doc in hits[:4]:
                 text = doc.page_content[:900]
                 # Hard quality exclusions (same as main search path)
-                if _is_cover_page(text) or _is_references_page(text):
+                if is_cover_page(text) or is_references_page(text):
                     continue
                 # Skip already-seen chunks (#7)
                 content_hash = hashlib.md5(text.encode("utf-8", errors="replace")).hexdigest()
@@ -78,8 +78,8 @@ async def _section_filtered_search(ctx: AgentContext, section_terms: list[str]) 
                     continue
                 raw_page = doc.metadata.get("page")
                 raw_page_end = doc.metadata.get("page_end", raw_page)
-                p = _to_page_num(raw_page, "?")
-                pe = _to_page_num(raw_page_end, p)
+                p = to_page_num(raw_page, "?")
+                pe = to_page_num(raw_page_end, p)
                 src = f"p.{p}-{pe}" if pe != p else f"p.{p}"
                 entry = {
                     "filename": doc.metadata.get("filename", ""),
@@ -88,7 +88,7 @@ async def _section_filtered_search(ctx: AgentContext, section_terms: list[str]) 
                     "section": doc.metadata.get("section", ""),
                     "content": text,
                 }
-                if _is_table_or_formula_heavy(text):
+                if is_table_or_formula_heavy(text):
                     heavy_chunks.append((src, content_hash, entry))
                 else:
                     chunks.append((src, content_hash, entry))

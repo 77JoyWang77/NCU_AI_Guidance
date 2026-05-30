@@ -276,7 +276,7 @@ async def run_research_task(
 
     llm = _llm()
     set_query_expander_llm(llm)
-    context = _document_context(document_id)
+    context = await asyncio.to_thread(_document_context, document_id)
 
     task_goal, coverage_items, output_contract, coverage_ids, plan_llm_calls = await _plan_research(
         llm, question, research_mode, context, on_stage

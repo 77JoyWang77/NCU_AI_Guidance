@@ -277,6 +277,7 @@ export const projectAPI = {
         const decoder = new TextDecoder();
         let buf = '';
 
+        let parseErrorStreak = 0;
         const processLine = (line: string) => {
           if (!line.startsWith('data: ')) return;
           try {
@@ -290,6 +291,7 @@ export const projectAPI = {
               replace?: string;
               sources?: string[];
             };
+            parseErrorStreak = 0;
             if (ev.heartbeat) return;
             if (ev.error) { handlers.onError(ev.error); return; }
             if (ev.replace !== undefined) { handlers.onReplace?.(ev.replace); return; }
@@ -297,7 +299,13 @@ export const projectAPI = {
             if (ev.session_id && !ev.done && ev.token === undefined) { handlers.onSessionId?.(ev.session_id); return; }
             if (ev.token !== undefined) handlers.onToken(ev.token);
             if (ev.done) handlers.onDone(ev.session_id ?? '', ev.cancelled, ev.sources ?? []);
-          } catch { /* malformed chunk */ }
+          } catch (e) {
+            console.error('[SSE] parse error on line:', line.slice(6, 120), e);
+            parseErrorStreak += 1;
+            if (parseErrorStreak >= 3) {
+              handlers.onError('串流格式異常，請重新整理後再試。');
+            }
+          }
         };
 
         while (true) {

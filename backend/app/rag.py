@@ -31,7 +31,7 @@ from app.pdf_config import pdf_settings
 logger = logging.getLogger(__name__)
 
 
-def _to_page_num(val, fallback=None):
+def to_page_num(val, fallback=None):
     """Safely convert Qdrant page metadata (0-indexed) to 1-indexed int.
     Returns fallback when val is None, empty, or non-numeric.
     """
@@ -120,7 +120,7 @@ def _ensure_collection(client: QdrantClient) -> None:
 def get_vectorstore() -> QdrantVectorStore:
     global _vectorstore
     if _vectorstore is None:
-        client = _build_client()
+        client = get_qdrant_client()
         _ensure_collection(client)
         _vectorstore = QdrantVectorStore(
             client=client,
@@ -137,7 +137,7 @@ def get_vectorstore() -> QdrantVectorStore:
 def get_dense_vectorstore() -> QdrantVectorStore:
     global _dense_vectorstore
     if _dense_vectorstore is None:
-        client = _build_client()
+        client = get_qdrant_client()
         _ensure_collection(client)
         _dense_vectorstore = QdrantVectorStore(
             client=client,
@@ -356,7 +356,7 @@ _LATEX_DELIMITER_RE = re.compile(
 )
 
 
-def _is_cover_page(text: str) -> bool:
+def is_cover_page(text: str) -> bool:
     if any(phrase in text for phrase in _COVER_PAGE_DEFINITIVE):
         return True
     if not any(marker in text for marker in _COVER_PAGE_MARKERS):
@@ -368,7 +368,7 @@ def _is_cover_page(text: str) -> bool:
     return True
 
 
-def _is_references_page(text: str) -> bool:
+def is_references_page(text: str) -> bool:
     stripped = text.lstrip()
     for marker in _REFERENCES_MARKERS:
         if stripped.startswith(marker) or stripped.startswith(f"# {marker}") or stripped.startswith(f"## {marker}"):
@@ -391,7 +391,7 @@ def _is_references_page(text: str) -> bool:
     return entry_starts / len(lines) >= 0.5
 
 
-def _is_table_or_formula_heavy(text: str) -> bool:
+def is_table_or_formula_heavy(text: str) -> bool:
     lines = [l.strip() for l in text.splitlines() if l.strip()]
     if len(lines) < 4:
         return False
@@ -487,7 +487,7 @@ async def search_documents(
             _sec = doc.metadata.get("section", "")
             if _sec in ("references", "參考文獻"):
                 continue
-            if _is_cover_page(doc.page_content) or _is_references_page(doc.page_content):
+            if is_cover_page(doc.page_content) or is_references_page(doc.page_content):
                 continue
             _truncated_content = doc.page_content[:900]
             if exclude_chunk_keys and _chunk_key(_truncated_content) in exclude_chunk_keys:
@@ -529,7 +529,7 @@ async def search_documents(
                 best_doc[key] = doc
 
     is_heavy: dict[str, bool] = {
-        key: _is_table_or_formula_heavy(doc.page_content)
+        key: is_table_or_formula_heavy(doc.page_content)
         for key, doc in best_doc.items()
     }
 
@@ -543,7 +543,7 @@ async def search_documents(
         logger.warning("rerank: all queries timed out, falling back to vector candidates")
         all_results = _pre_rerank[:effective_top_n]
         for doc in all_results:
-            doc.metadata["is_low_quality"] = _is_table_or_formula_heavy(doc.page_content)
+            doc.metadata["is_low_quality"] = is_table_or_formula_heavy(doc.page_content)
     else:
         for doc in all_results:
             key = _chunk_key(doc.page_content)
@@ -556,8 +556,8 @@ async def search_documents(
         filename = doc.metadata.get("filename", "Unknown")
         page = doc.metadata.get("page", "?")
         page_end = doc.metadata.get("page_end", page)
-        page_num = _to_page_num(page, "?")
-        page_end_num = _to_page_num(page_end, page_num)
+        page_num = to_page_num(page, "?")
+        page_end_num = to_page_num(page_end, page_num)
         section = doc.metadata.get("section", "unknown")
         low_q = doc.metadata.get("is_low_quality", False)
         chunks.append(RetrievedChunk(

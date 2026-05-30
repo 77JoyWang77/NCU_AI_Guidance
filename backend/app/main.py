@@ -3,11 +3,14 @@ import logging
 import os
 from contextlib import asynccontextmanager
 from dotenv import load_dotenv
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
 from app.routes import assessment, auth, courses, projects, course_search, graph, chat, curriculum
+from app.logging_config import configure_logging
+
+configure_logging()
 
 # 載入 .env（開發環境）
 load_dotenv(Path(__file__).parent.parent.parent / ".env")
@@ -85,6 +88,11 @@ async def lifespan(app: FastAPI):
             await close_qdrant_clients()
         except Exception as exc:
             logger.warning("Qdrant client shutdown failed: %s", exc)
+        try:
+            from app.database_pdf import dispose_pdf_engine
+            dispose_pdf_engine()
+        except Exception as exc:
+            logger.warning("PDF DB engine dispose failed: %s", exc)
 
 
 app = FastAPI(
@@ -128,8 +136,22 @@ async def root():
 
 @app.get("/health")
 async def health_check():
+    return {"status": "healthy"}
+
+
+@app.get("/ready")
+async def readiness_check():
+    if not (_pdf_init_ready and _rag_init_ready):
+        raise HTTPException(
+            status_code=503,
+            detail={
+                "status": "not_ready",
+                "pdf_chat": "ready" if _pdf_init_ready else "initializing",
+                "rag": "ready" if _rag_init_ready else "initializing",
+            },
+        )
     return {
-        "status": "healthy",
-        "pdf_chat": "ready" if _pdf_init_ready else "initializing",
-        "rag": "ready" if _rag_init_ready else "initializing",
+        "status": "ready",
+        "pdf_chat": "ready",
+        "rag": "ready",
     }
