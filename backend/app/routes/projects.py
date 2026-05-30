@@ -109,7 +109,8 @@ def _get_document_id_for_project(project_id: str) -> int | None:
         if not project.get("pdfPath"):
             _project_doc_id_cache[project_id] = None
             return None
-        filename = project["pdfPath"].replace("\\", "/").split("/")[-1]
+        import unicodedata as _ud
+        filename = _ud.normalize("NFKC", project["pdfPath"].replace("\\", "/").split("/")[-1])
         # Escape SQL wildcard characters so literal % and _ in filenames match correctly.
         safe_fn = filename.replace("%", r"\%").replace("_", r"\_")
         with PdfSessionLocal() as db:
