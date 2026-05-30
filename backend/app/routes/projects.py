@@ -139,6 +139,12 @@ def _get_or_create_pdf_conversation(
     user_id: str | None,
     document_id: int,
 ):
+    if not user_id:
+        raise HTTPException(
+            status_code=400,
+            detail="此端點需要登入或有效的匿名工作階段（X-Anon-Session header）。",
+        )
+
     from app.database_pdf import PdfSessionLocal
     from app.models.pdf_models import PdfConversation
     from sqlalchemy.exc import IntegrityError
@@ -152,7 +158,7 @@ def _get_or_create_pdf_conversation(
                         status_code=403,
                         detail="此對話紀錄不屬於本論文，請重新開始對話。",
                     )
-                if conv.user_id is not None and conv.user_id != user_id:
+                if conv.user_id != user_id:
                     raise HTTPException(
                         status_code=403,
                         detail="此對話紀錄不屬於目前使用者，請重新開始對話。",
@@ -210,7 +216,7 @@ def _verify_cancel_ownership(thread_id: str, document_id: int, effective_req_id:
     if conv:
         if conv.document_id is not None and conv.document_id != document_id:
             raise HTTPException(status_code=403, detail="此對話紀錄不屬於本論文。")
-        if conv.user_id is not None and (not effective_req_id or conv.user_id != effective_req_id):
+        if conv.user_id != effective_req_id:
             raise HTTPException(status_code=403, detail="無法取消他人的對話。")
 
 
