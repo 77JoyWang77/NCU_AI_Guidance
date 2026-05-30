@@ -4,6 +4,7 @@ Business logic lives in app.tools.search_core. This module is the thin adapter
 layer that wraps core functions as LangChain tools and exposes the TOOLS list
 consumed by runner.py.
 """
+import hashlib
 import json
 
 from langchain.tools import ToolRuntime
@@ -110,6 +111,18 @@ async def search_report(
     if section_terms:
         section_result = await _section_filtered_search(ctx, section_terms)
         if section_result:
+            # Count against max_searches and reset consecutive_empty so the
+            # model can't bypass limits by using section_terms exclusively.
+            ctx.search_count += 1
+            ctx.consecutive_empty = 0
+            try:
+                for _c in json.loads(section_result).get("results", []):
+                    _h = hashlib.md5(
+                        _c.get("content", "").encode("utf-8", errors="replace")
+                    ).hexdigest()
+                    ctx.seen_chunks.add(_h)
+            except Exception:
+                pass
             return section_result
 
     return await run_search_report(

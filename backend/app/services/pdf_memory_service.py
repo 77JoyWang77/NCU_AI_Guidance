@@ -13,6 +13,7 @@ Long-term:   LangGraph AsyncPostgresStore (pgvector).
 """
 from __future__ import annotations
 
+import asyncio
 import json
 import logging
 import uuid
@@ -72,7 +73,7 @@ async def update_context_summary(
     if not coverage:
         return
 
-    existing = _load_summary(thread_id)
+    existing = await asyncio.to_thread(_load_summary, thread_id)
     findings = list(existing.get("findings", []))
 
     new_finding = {
@@ -98,7 +99,7 @@ async def update_context_summary(
     findings = findings[-(MAX_FINDINGS - 1):]
     findings.append(new_finding)
 
-    _save_summary(thread_id, {
+    await asyncio.to_thread(_save_summary, thread_id, {
         "version": 2,
         "user_focus": question[:60],
         "findings": findings,
@@ -119,7 +120,7 @@ async def update_chat_context_summary(
     if not question or not answer:
         return
 
-    existing = _load_summary(thread_id)
+    existing = await asyncio.to_thread(_load_summary, thread_id)
     findings = list(existing.get("findings", []))
 
     new_finding = {
@@ -134,7 +135,7 @@ async def update_chat_context_summary(
     findings = findings[-(MAX_FINDINGS - 1):]
     findings.append(new_finding)
 
-    _save_summary(thread_id, {
+    await asyncio.to_thread(_save_summary, thread_id, {
         "version": 2,
         "user_focus": question[:60],
         "findings": findings,
@@ -211,14 +212,20 @@ async def store_long_term_memory(
             return
         namespace = (user_id, "research_memories")
 
-        # Dedup: skip if very similar question already stored
+        # Dedup only within the same PDF. Similar questions from other PDFs should not
+        # suppress this document's memory.
         try:
-            existing = await store.asearch(namespace, query=question, limit=1)
-            if existing and getattr(existing[0], "score", None) is not None:
-                if existing[0].score >= _DEDUP_THRESHOLD:
+            existing = await store.asearch(namespace, query=question, limit=5)
+            for item in existing:
+                score = getattr(item, "score", None)
+                same_doc = (
+                    item.value.get("document_id") == document_id
+                    or document_id in (item.value.get("document_ids") or [])
+                )
+                if same_doc and score is not None and score >= _DEDUP_THRESHOLD:
                     logger.debug(
                         "store_long_term_memory: skipping dedup (score=%.3f >= %.2f)",
-                        existing[0].score, _DEDUP_THRESHOLD,
+                        score, _DEDUP_THRESHOLD,
                     )
                     return
         except Exception as exc:
@@ -253,8 +260,8 @@ async def search_long_term_memory(
         if store is None:
             return []
         namespace = (user_id, "research_memories")
-        # Fetch more than needed so document-scoped filtering still has enough candidates.
-        candidates = await store.asearch(namespace, query=query, limit=limit * 2)
+        # Fetch extra candidates so document-scoped filtering still has enough matches.
+        candidates = await store.asearch(namespace, query=query, limit=max(limit * 5, 20))
 
         if document_id is not None:
             ranked = [

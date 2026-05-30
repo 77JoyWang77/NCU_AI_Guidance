@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from app.utils import new_id
 
+import asyncio
 import json
 import logging
 from collections.abc import AsyncIterator
@@ -58,7 +59,7 @@ def _get_document_abstract(document_id: int) -> dict | None:
     return {"filename": row.filename, "abstract": row.abstract_text}
 
 
-def _prepare_no_tool_call(
+async def _prepare_no_tool_call(
     *,
     user_message: str,
     stack_name: str,
@@ -73,7 +74,7 @@ def _prepare_no_tool_call(
     }
 
     messages = [SystemMessage(content=content) for content in stack.contents]
-    abstract = _get_document_abstract(document_id)
+    abstract = await asyncio.to_thread(_get_document_abstract, document_id)
     if abstract:
         messages.append(SystemMessage(content=(
             "以下是本次對話引用的論文摘要，請以此作為背景資訊：\n\n" + abstract["abstract"][:1200]
@@ -99,7 +100,7 @@ async def run_no_tool_agent(
 ) -> tuple[str, list[str], dict, str]:
     """Run one no-tool LLM call."""
     observation_id = observation_id or new_id()
-    messages, metadata = _prepare_no_tool_call(
+    messages, metadata = await _prepare_no_tool_call(
         user_message=user_message,
         stack_name=stack_name,
         agent_name=agent_name,
@@ -127,7 +128,7 @@ async def stream_no_tool_agent(
 ) -> AsyncIterator[str]:
     """Stream one no-tool LLM call token-by-token."""
     observation_id = observation_id or new_id()
-    messages, metadata = _prepare_no_tool_call(
+    messages, metadata = await _prepare_no_tool_call(
         user_message=user_message,
         stack_name=stack_name,
         agent_name=agent_name,

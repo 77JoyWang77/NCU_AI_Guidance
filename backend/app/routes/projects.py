@@ -112,6 +112,9 @@ def _get_or_create_pdf_conversation(
                         status_code=403,
                         detail="此對話紀錄不屬於本論文，請重新開始對話。",
                     )
+                if conv.document_id is None:
+                    conv.document_id = document_id
+                    db.commit()
                 return conv
             new_conv = PdfConversation(
                 thread_id=thread_id,

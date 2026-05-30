@@ -486,7 +486,7 @@ async def search_documents(
         low_q = doc.metadata.get("is_low_quality", False)
         chunks.append(RetrievedChunk(
             filename=filename, page=page_num, page_end=page_end_num,
-            section=section, content=doc.page_content, is_low_quality=low_q,
+            section=section, content=doc.page_content[:900], is_low_quality=low_q,
         ))
         source = (
             f"p.{page_num}-{page_end_num}"

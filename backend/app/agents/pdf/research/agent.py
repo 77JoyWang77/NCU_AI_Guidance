@@ -332,7 +332,7 @@ async def run_research_task(
         _unfilled_gaps = [
             info.get("label") or slot
             for slot, info in coverage_result.items()
-            if info.get("status") == "NOT_FILLED"
+            if info.get("status") in ("NOT_FILLED", "NOT_FOUND", "EXHAUSTED")
         ]
         _research_status = AgentStatus(
             completed=len(_unfilled_gaps) == 0,

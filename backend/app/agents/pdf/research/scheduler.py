@@ -63,7 +63,6 @@ def _build_scheduler_prompt(
         "task_goal": rs.task_goal,
         "output_contract": rs.output_contract,
         "candidate_slots": candidate_payload,
-        "state": rs.planner_prompt_dict(),
         "response_contract": {
             "slots": (
                 "Return only the single highest-priority slot to execute next. "
@@ -95,6 +94,8 @@ async def decide_slot_ordering(
 ) -> SchedulerDecision:
     if not candidate_slots:
         return SchedulerDecision(slots=[], rationale="no candidates")
+    if len(candidate_slots) == 1:
+        return _fallback_ordering(candidate_slots)
     try:
         structured = llm.with_structured_output(SchedulerDecision, strict=True, include_raw=True)
         raw_result = await structured.ainvoke(
