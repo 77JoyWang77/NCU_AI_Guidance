@@ -121,6 +121,7 @@ export interface Project {
   title: string;
   pdfPath?: string;
   pdfUrl?: string;
+  documentId?: number;
 }
 
 // 聊天 API 相關型別

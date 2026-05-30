@@ -290,6 +290,7 @@ export const projectAPI = {
         let buf = '';
 
         let parseErrorStreak = 0;
+        let aborted = false;
         const processLine = (line: string) => {
           if (!line.startsWith('data: ')) return;
           try {
@@ -305,7 +306,7 @@ export const projectAPI = {
             };
             parseErrorStreak = 0;
             if (ev.heartbeat) return;
-            if (ev.error) { handlers.onError(ev.error); return; }
+            if (ev.error) { handlers.onError(ev.error); aborted = true; return; }
             if (ev.replace !== undefined) { handlers.onReplace?.(ev.replace); return; }
             // session_id-only event (no token/done): front-load the session id so cancel works from turn 1.
             if (ev.session_id && !ev.done && ev.token === undefined) { handlers.onSessionId?.(ev.session_id); return; }
@@ -316,11 +317,13 @@ export const projectAPI = {
             parseErrorStreak += 1;
             if (parseErrorStreak >= 3) {
               handlers.onError('串流格式異常，請重新整理後再試。');
+              aborted = true;
             }
           }
         };
 
         while (true) {
+          if (aborted) { reader.cancel(); break; }
           const { done, value } = await reader.read();
           if (done) {
             buf += decoder.decode(); // flush multi-byte sequences
@@ -329,10 +332,12 @@ export const projectAPI = {
           buf += decoder.decode(value, { stream: true });
           const lines = buf.split('\n');
           buf = lines.pop() ?? '';
-          for (const line of lines) processLine(line);
+          for (const line of lines) { processLine(line); if (aborted) break; }
         }
-        // flush any remaining data not ending with \n
-        for (const line of buf.split('\n')) processLine(line);
+        // flush any remaining data not ending with \n (only if not aborted)
+        if (!aborted) {
+          for (const line of buf.split('\n')) processLine(line);
+        }
       })
       .catch((err: Error) => {
         if (err.name !== 'AbortError') handlers.onError(err.message);

@@ -14,6 +14,7 @@ lock or atomic UPDATE ... RETURNING counter.
 """
 from __future__ import annotations
 
+import asyncio
 from contextlib import contextmanager
 from datetime import datetime, timezone
 
@@ -69,6 +70,9 @@ def check_quota(user_id: str | None, anon_id: str | None = None) -> None:
 
     effective_id priority: user_id (authenticated) > anon_id (X-Anon-Session).
     If neither is present the request is untracked and passes through.
+
+    NOTE: calling this via asyncio.to_thread and then enter_reservation separately
+    is NOT atomic — use check_and_reserve() instead for new code.
     """
     eid = _effective_id(user_id, anon_id)
     if not eid:
@@ -82,6 +86,34 @@ def check_quota(user_id: str | None, anon_id: str | None = None) -> None:
             status_code=429,
             detail=f"今日 PDF 問答請求數已達上限（{_DEFAULT_DAILY_LIMIT} 次）",
         )
+
+
+async def check_and_reserve(
+    user_id: str | None, anon_id: str | None = None
+) -> str | None:
+    """Atomically check quota and claim an in-flight slot.
+
+    The DB query runs in a thread pool so the event loop is not blocked.
+    The comparison and increment have no await between them, making the
+    check→increment sequence atomic within asyncio's single-threaded model.
+
+    Returns the effective_id to pass to exit_reservation(), or None if the
+    identity is untracked (request passes through without quota enforcement).
+    Raises HTTP 429 when the limit is reached.
+    """
+    eid = _effective_id(user_id, anon_id)
+    if not eid:
+        return None
+    db_count = await asyncio.to_thread(_db_count, eid)
+    # No await between here and the increment — atomic in asyncio single-worker.
+    in_flight = _in_flight.get(eid, 0)
+    if db_count + in_flight >= _DEFAULT_DAILY_LIMIT:
+        raise HTTPException(
+            status_code=429,
+            detail=f"今日 PDF 問答請求數已達上限（{_DEFAULT_DAILY_LIMIT} 次）",
+        )
+    _in_flight[eid] = in_flight + 1
+    return eid
 
 
 @contextmanager

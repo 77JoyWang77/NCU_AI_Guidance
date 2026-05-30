@@ -115,6 +115,7 @@ class Project(BaseModel):
     title: str
     pdfPath: Optional[str] = None
     pdfUrl: Optional[str] = None
+    documentId: Optional[int] = None
 
 class ChatRequest(BaseModel):
     message: str
@@ -126,6 +127,15 @@ class ChatRequest(BaseModel):
         if not v.strip():
             raise ValueError("message must not be empty")
         return v.strip()
+
+    @field_validator("thread_id")
+    @classmethod
+    def thread_id_valid(cls, v: str | None) -> str | None:
+        if v is None:
+            return v
+        if len(v) > 36:
+            raise ValueError("thread_id must be at most 36 characters")
+        return v
 
 class ChatResponse(BaseModel):
     reply: str

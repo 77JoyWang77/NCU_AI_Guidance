@@ -100,10 +100,17 @@ def _get_document_id_for_project(project_id: str) -> int | None:
             return None
 
         # Fast path: projects.json already has documentId populated by the populate script.
+        # Validate the row still exists and is ready (one indexed PK lookup; result is cached).
         if project.get("documentId") is not None:
             doc_id = int(project["documentId"])
-            _project_doc_id_cache[project_id] = doc_id
-            return doc_id
+            with PdfSessionLocal() as db:
+                exists = db.query(PdfDocument.id).filter_by(
+                    id=doc_id, status="ready"
+                ).first()
+            if exists:
+                _project_doc_id_cache[project_id] = doc_id
+                return doc_id
+            # Row missing or not ready — fall through to ilike re-discovery.
 
         # Fallback: derive from pdfPath filename via ilike.
         if not project.get("pdfPath"):
@@ -202,7 +209,7 @@ async def chat_with_project(
     from app.utils import new_id
     from app.agents.pdf.router_agent import route_agent_stream
     from app.agents.pdf.request_context import set_user_id
-    from app.services.pdf_quota_service import check_quota, quota_reservation
+    from app.services.pdf_quota_service import check_and_reserve, exit_reservation
 
     document_id = await asyncio.to_thread(_get_document_id_for_project, project_id)
     if document_id is None:
@@ -211,26 +218,29 @@ async def chat_with_project(
     user_id = user.user_id if user else None
     _raw_anon = http_request.headers.get("X-Anon-Session", "")
     anon_id = _raw_anon if (not user_id and _UUID4_RE.match(_raw_anon)) else None
-    set_user_id(user_id or anon_id or "")
-    await asyncio.to_thread(check_quota, user_id, anon_id)
+    # Use anon: prefix so DB records match the quota key (fixes anonymous quota accumulation).
+    set_user_id(user_id or (f"anon:{anon_id}" if anon_id else "") or "")
+    # Atomically check quota and claim an in-flight slot (no await between check and increment).
+    _quota_id = await check_and_reserve(user_id, anon_id)
 
     conv = await asyncio.to_thread(_get_or_create_pdf_conversation, thread_id, user_id, document_id)
     full_response = ""
-    with quota_reservation(user_id, anon_id):
-        try:
-            async for token, is_done, _ in route_agent_stream(
-                request.message,
-                thread_id=thread_id,
-                document_id=document_id,
-                previous_agent_name=conv.last_agent_name,
-            ):
-                if is_done == "replace":
-                    full_response = token
-                elif not is_done:
-                    full_response += token
-        except Exception as exc:
-            logger.error("chat_with_project error: %s", exc)
-            full_response = "抱歉，處理您的問題時發生錯誤，請稍後再試。"
+    try:
+        async for token, is_done, _ in route_agent_stream(
+            request.message,
+            thread_id=thread_id,
+            document_id=document_id,
+            previous_agent_name=conv.last_agent_name,
+        ):
+            if is_done == "replace":
+                full_response = token
+            elif not is_done:
+                full_response += token
+    except Exception as exc:
+        logger.error("chat_with_project error: %s", exc)
+        full_response = "抱歉，處理您的問題時發生錯誤，請稍後再試。"
+    finally:
+        exit_reservation(_quota_id)
 
     return ChatResponse(reply=full_response)
 
@@ -248,7 +258,7 @@ async def chat_with_project_stream(
     from app.agents.pdf import chat_jobs, steering
     from app.agents.pdf.router_agent import route_agent_stream
     from app.agents.pdf.request_context import set_user_id
-    from app.services.pdf_quota_service import check_quota
+    from app.services.pdf_quota_service import check_and_reserve, exit_reservation
 
     document_id = await asyncio.to_thread(_get_document_id_for_project, project_id)
     if document_id is None:
@@ -257,8 +267,8 @@ async def chat_with_project_stream(
     user_id = user.user_id if user else None
     _raw_anon = http_request.headers.get("X-Anon-Session", "")
     anon_id = _raw_anon if (not user_id and _UUID4_RE.match(_raw_anon)) else None
-    set_user_id(user_id or anon_id or "")
-    await asyncio.to_thread(check_quota, user_id, anon_id)
+    set_user_id(user_id or (f"anon:{anon_id}" if anon_id else "") or "")
+    _quota_id = await check_and_reserve(user_id, anon_id)
 
     # Per-user stream lock: if same user+project already has an active stream,
     # silently drop the duplicate request so the frontend only sees one response.
@@ -296,19 +306,21 @@ async def chat_with_project_stream(
         conv = await asyncio.to_thread(_get_or_create_pdf_conversation, thread_id, user_id, document_id)
     except HTTPException:
         _stream_lock.pop(lock_key, None)
+        exit_reservation(_quota_id)
         raise
 
     # Mid-run steering：同一 thread 在串流中補送訊息
     if conv.stream_started_at and _is_within_ttl(conv.stream_started_at):
         steering.set(thread_id, request.message)
         _stream_lock.pop(lock_key, None)
+        exit_reservation(_quota_id)  # steering doesn't consume this slot
 
         async def _ack():
             yield f"data: {_json.dumps({'token': '已收到補充，將納入考量。', 'done': True, 'session_id': thread_id})}\n\n"
 
         return StreamingResponse(_ack(), media_type="text/event-stream")
 
-    _mark_stream(thread_id, datetime.now(timezone.utc))
+    await asyncio.to_thread(_mark_stream, thread_id, datetime.now(timezone.utc))
     chat_jobs.start(thread_id, request.message, user_id=user_id, title=conv.title)
 
     async def event_stream():
@@ -318,8 +330,7 @@ async def chat_with_project_stream(
         # regardless of which await is cancelled by a client disconnect.
         gate_acquired = False
         pending: asyncio.Task | None = None
-        from app.services.pdf_quota_service import enter_reservation, exit_reservation
-        _quota_id = enter_reservation(user_id, anon_id)
+        # _quota_id is set in the outer coroutine (check_and_reserve) and captured here.
         try:
             gate_acquired = await acquire_with_timeout(timeout=30.0)
             if not gate_acquired:
@@ -372,7 +383,7 @@ async def chat_with_project_stream(
             if gate_acquired:
                 get_gate().release()
             chat_jobs.finish(thread_id)
-            _mark_stream(thread_id, None)
+            await asyncio.to_thread(_mark_stream, thread_id, None)
             _stream_lock.pop(lock_key, None)
             exit_reservation(_quota_id)
 

@@ -403,13 +403,15 @@ def get_store() -> AsyncPostgresStore | None:
 
 
 async def shutdown_checkpointer() -> None:
-    global _pool
+    global _pool, _checkpointer, _store
     if _pool is not None:
         try:
             await _pool.close()
         except Exception as exc:
             logger.warning("checkpointer pool close failed: %s", exc)
         _pool = None
+    _checkpointer = None
+    _store = None
 
 
 def _content_to_text(content: Any) -> str:

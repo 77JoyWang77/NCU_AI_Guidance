@@ -44,7 +44,8 @@ class PdfBase(DeclarativeBase):
 
 def dispose_pdf_engine() -> None:
     """Dispose the SQLAlchemy connection pool. Call during application shutdown."""
-    global _engine
+    global _engine, _session_factory
     if _engine is not None:
         _engine.dispose()
         _engine = None
+    _session_factory = None
