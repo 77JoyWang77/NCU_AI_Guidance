@@ -94,18 +94,41 @@ def _get_document_id_for_project(project_id: str) -> int | None:
         return None
 
 
-def _get_or_create_pdf_conversation(thread_id: str, user_id: str | None):
+def _get_or_create_pdf_conversation(
+    thread_id: str,
+    user_id: str | None,
+    document_id: int,
+):
     from app.database_pdf import PdfSessionLocal
     from app.models.pdf_models import PdfConversation
+    from sqlalchemy.exc import IntegrityError
 
-    with PdfSessionLocal() as db:
-        conv = db.query(PdfConversation).filter_by(thread_id=thread_id).first()
-        if not conv:
-            conv = PdfConversation(thread_id=thread_id, user_id=user_id)
-            db.add(conv)
-            db.commit()
-            db.refresh(conv)
-    return conv
+    for attempt in range(2):
+        with PdfSessionLocal() as db:
+            conv = db.query(PdfConversation).filter_by(thread_id=thread_id).first()
+            if conv:
+                if conv.document_id is not None and conv.document_id != document_id:
+                    raise HTTPException(
+                        status_code=403,
+                        detail="此對話紀錄不屬於本論文，請重新開始對話。",
+                    )
+                return conv
+            new_conv = PdfConversation(
+                thread_id=thread_id,
+                user_id=user_id,
+                document_id=document_id,
+            )
+            db.add(new_conv)
+            try:
+                db.commit()
+                db.refresh(new_conv)
+                return new_conv
+            except IntegrityError:
+                db.rollback()
+                if attempt == 0:
+                    continue  # race condition: re-query to get the winner's record
+                raise
+    raise RuntimeError("unreachable")
 
 
 def _is_within_ttl(stream_started_at: datetime, ttl_seconds: int = 30) -> bool:
@@ -145,7 +168,7 @@ async def chat_with_project(
     user_id = user.user_id if user else None
     set_user_id(user_id or "")
 
-    conv = _get_or_create_pdf_conversation(thread_id, user_id)
+    conv = _get_or_create_pdf_conversation(thread_id, user_id, document_id)
     full_response = ""
     try:
         async for token, is_done, _ in route_agent_stream(
@@ -205,7 +228,11 @@ async def chat_with_project_stream(
     logger.info("stream request project=%s thread=%s has_thread_in_req=%s",
                 project_id, thread_id, bool(request.thread_id))
 
-    conv = _get_or_create_pdf_conversation(thread_id, user_id)
+    try:
+        conv = _get_or_create_pdf_conversation(thread_id, user_id, document_id)
+    except HTTPException:
+        _stream_lock.pop(lock_key, None)
+        raise
 
     # Mid-run steering：同一 thread 在串流中補送訊息
     if conv.stream_started_at and _is_within_ttl(conv.stream_started_at):
@@ -226,6 +253,8 @@ async def chat_with_project_stream(
         gate_acquired = await acquire_with_timeout(timeout=30.0)
         if not gate_acquired:
             yield f"data: {_json.dumps({'error': '服務目前繁忙，請稍後再試。', 'done': True, 'session_id': thread_id})}\n\n"
+            chat_jobs.finish(thread_id)
+            _mark_stream(thread_id, None)
             _stream_lock.pop(lock_key, None)
             return
 
@@ -284,5 +313,26 @@ async def chat_with_project_stream(
 @router.post("/{project_id}/chat/{thread_id}/cancel")
 async def cancel_project_chat(project_id: str, thread_id: str):
     from app.agents.pdf import chat_jobs
+
+    # Verify the thread belongs to this project's document.
+    # Fail open on DB errors so a legitimate cancel is never blocked by infra issues.
+    document_id = _get_document_id_for_project(project_id)
+    if document_id is not None:
+        try:
+            from app.database_pdf import PdfSessionLocal
+            from app.models.pdf_models import PdfConversation
+            with PdfSessionLocal() as db:
+                conv = (
+                    db.query(PdfConversation.document_id)
+                    .filter_by(thread_id=thread_id)
+                    .first()
+                )
+            if conv and conv.document_id is not None and conv.document_id != document_id:
+                raise HTTPException(status_code=403, detail="此對話紀錄不屬於本論文。")
+        except HTTPException:
+            raise
+        except Exception as exc:
+            logger.debug("cancel ownership check failed: %s", exc)
+
     chat_jobs.request_cancel(thread_id)
     return {"ok": True}

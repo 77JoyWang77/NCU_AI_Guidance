@@ -12,6 +12,7 @@ class PdfConversation(PdfBase):
     id = Column(Integer, primary_key=True)
     thread_id = Column(String(36), unique=True, nullable=False, index=True)
     user_id = Column(String, nullable=True, index=True)
+    document_id = Column(Integer, nullable=True, index=True)
     model = Column(String, nullable=True)
     title = Column(String, nullable=True)
     message_count = Column(Integer, default=0)
