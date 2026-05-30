@@ -9,6 +9,8 @@ import json
 import os
 import uuid
 from datetime import datetime, timedelta, timezone
+from functools import lru_cache
+from pathlib import Path
 from typing import Any
 
 import psycopg
@@ -18,6 +20,39 @@ from psycopg.rows import dict_row
 MAX_HISTORY = 20  # 保留最近幾則 role/content 訊息給 LLM 使用
 _SCHEMA_READY = False
 _TW = timezone(timedelta(hours=8))
+_ROOT = Path(__file__).parent.parent.parent.parent
+
+
+@lru_cache(maxsize=1)
+def _load_topic_tags() -> dict:
+    p = _ROOT / "data" / "processed" / "nlp" / "nlp_topic_tags.json"
+    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
+
+
+@lru_cache(maxsize=1)
+def _load_course_domains() -> dict[str, list[str]]:
+    """course_code → list of 課程領域 strings（已切開）。"""
+    p = _ROOT / "data" / "processed" / "course_index.json"
+    if not p.exists():
+        return {}
+    idx = json.loads(p.read_text(encoding="utf-8"))
+    return {code: entry.get("course_domains", []) for code, entry in idx.items()}
+
+
+# 中心、處室 系所 → 通識大分類
+GE_CATEGORY_MAP: dict[str, str] = {
+    "語言中心":                             "外語",
+    "體育室":                               "體育",
+    "軍訓室":                               "體育",
+    "學務處-服務學習發展中心":              "服務學習",
+    "學務處-職涯發展中心":                  "服務學習",
+    "通識教育中心":                         "通識",
+    "核心通識課程":                         "通識",
+    "總教學中心":                           "通識",
+    "臺灣大專院校人工智慧學程聯盟":         "通識",
+    "環境科技博士學位學程(台灣聯合大學系統)": "通識",
+    "遙測科技碩士學位學程":                 "通識",
+}
 
 TOOL_LABELS: dict[str, str] = {
     "search_courses":              "課程語意搜尋",
@@ -318,9 +353,50 @@ def _ensure_schema() -> None:
         conn.execute(
             "create index if not exists idx_chat_turns_session_id on chat_turns(session_id, id)"
         )
+        conn.execute(
+            """
+            create table if not exists user_analytics (
+                user_id     text primary key,
+                data        jsonb not null default '{}'::jsonb,
+                computed_at timestamptz not null default to_timestamp(0)
+            )
+            """
+        )
         conn.commit()
 
     _SCHEMA_READY = True
+
+
+_ANALYTICS_TTL_SECONDS = 900  # 15 分鐘
+
+
+def _analytics_cache_get(conn, user_id: str) -> dict | None:
+    """若快取存在且未過期則回傳，否則回傳 None。"""
+    row = conn.execute(
+        """
+        SELECT data, computed_at
+        FROM user_analytics
+        WHERE user_id = %s
+          AND computed_at > now() - make_interval(secs => %s)
+        """,
+        (user_id, _ANALYTICS_TTL_SECONDS),
+    ).fetchone()
+    return _from_jsonb(row["data"], None) if row else None
+
+
+def _analytics_cache_set(conn, user_id: str, data: dict) -> None:
+    """寫入（upsert）快取。"""
+    conn.execute(
+        """
+        INSERT INTO user_analytics (user_id, data, computed_at)
+        VALUES (%s, %s::jsonb, now())
+        ON CONFLICT (user_id) DO UPDATE
+          SET data = EXCLUDED.data,
+              computed_at = EXCLUDED.computed_at
+        """,
+        (user_id, _json(data)),
+    )
+    conn.commit()
 
 
 def _get_accessible_session(
@@ -417,7 +493,7 @@ def get_analytics(
     user_id: str,
     college_map: dict[str, str] | None = None,
 ) -> dict:
-    """從用戶歷史對話萃取學習傾向統計。"""
+    """從用戶歷史對話萃取學習傾向統計（15 分鐘快取）。"""
     if not user_id:
         return _empty_analytics()
 
@@ -425,6 +501,10 @@ def get_analytics(
     college_map = college_map or {}
 
     with _connect() as conn:
+        cached = _analytics_cache_get(conn, user_id)
+        if cached is not None:
+            return cached
+
         session_row = conn.execute(
             "SELECT count(*)::int AS n FROM chat_sessions WHERE user_id = %s",
             (user_id,),
@@ -443,11 +523,14 @@ def get_analytics(
         ).fetchall()
 
     total_turns = len(rows)
-    seen_courses: set[str]           = set()
+    seen_courses: set[str]            = set()
     dept_counter: dict[str, int]      = {}
     tool_counter: dict[str, int]      = {}
     card_name_counter: dict[str, int] = {}   # top_courses：來自 course_cards
     domain_tag_counter: dict[str, int] = {}  # 興趣標籤：course_cards.domain_tags
+    ge_category_counter: dict[str, int] = {}  # 通識分類計數
+    ge_codes: set[str] = set()               # 通識課程代碼，用於查 topic_tags
+    course_domain_counter: dict[str, int] = {}  # 課程領域計數
 
     for row in rows:
         # 工具計數
@@ -455,7 +538,7 @@ def get_analytics(
             if isinstance(tool, str):
                 tool_counter[tool] = tool_counter.get(tool, 0) + 1
 
-        # course_pool：系所分佈 + 唯一課程數
+        # course_pool：系所分佈 + 唯一課程數 + 通識分類
         for course in _from_jsonb(row["course_pool"], []):
             if not isinstance(course, dict):
                 continue
@@ -465,6 +548,18 @@ def get_analytics(
             dept = course.get("dept", "").strip()
             if dept:
                 dept_counter[dept] = dept_counter.get(dept, 0) + 1
+                ge_cat = GE_CATEGORY_MAP.get(dept)
+                if ge_cat:
+                    ge_category_counter[ge_cat] = ge_category_counter.get(ge_cat, 0) + 1
+                    code = course.get("code", "").strip()
+                    if code:
+                        ge_codes.add(code)
+
+            # 課程領域（從 course_index 查）
+            code = course.get("code", "").strip()
+            if code:
+                for domain in _load_course_domains().get(code, []):
+                    course_domain_counter[domain] = course_domain_counter.get(domain, 0) + 1
 
         # course_cards：AI 推薦課程名稱 + domain_tags 興趣標籤
         for card in _from_jsonb(row["course_cards"], []):
@@ -490,11 +585,13 @@ def get_analytics(
                 else:
                     domain_tag_counter[part] = domain_tag_counter.get(part, 0) + 1
 
-    # ── 系所 Top 8 ───────────────────────────────────────────────
-    total_dept = sum(dept_counter.values()) or 1
+    # ── 系所 Top 8（只保留 college_map 中有對應的真實系所）────────
+    # course_pool 的 dept 欄位有時存學院名（如「工學院」院級課程），需過濾
+    valid_depts = {d: c for d, c in dept_counter.items() if d in college_map}
+    total_dept = sum(valid_depts.values()) or 1
     dept_distribution = [
         {"name": d, "count": c, "pct": round(c / total_dept * 100, 1)}
-        for d, c in sorted(dept_counter.items(), key=lambda x: -x[1])[:8]
+        for d, c in sorted(valid_depts.items(), key=lambda x: -x[1])[:8]
     ]
 
     # ── 學院 Top 5（從 dept 換算）────────────────────────────────
@@ -527,7 +624,38 @@ def get_analytics(
         for t, c in sorted(domain_tag_counter.items(), key=lambda x: -x[1])[:15]
     ]
 
-    return {
+    # ── 通識 / 語言 / 體育 / 服務學習 分析 ───────────────────────
+    ge_topic_counter: dict[str, int] = {}
+    if ge_codes:
+        topic_tags_db = _load_topic_tags()
+        for code in ge_codes:
+            for tag in topic_tags_db.get(code, {}).get("topic_tags", []):
+                tag = str(tag).strip()
+                if tag:
+                    ge_topic_counter[tag] = ge_topic_counter.get(tag, 0) + 1
+
+    GE_ORDER = ["通識", "外語", "體育", "服務學習"]
+    ge_total = sum(ge_category_counter.values())
+    general_edu = {
+        "total": ge_total,
+        "categories": [
+            {"name": cat, "count": ge_category_counter.get(cat, 0)}
+            for cat in GE_ORDER
+            if ge_category_counter.get(cat, 0) > 0
+        ],
+        "top_topic_tags": [
+            {"tag": t, "count": c}
+            for t, c in sorted(ge_topic_counter.items(), key=lambda x: -x[1])[:20]
+        ],
+    }
+
+    # ── 課程領域 Top 20 ──────────────────────────────────────────
+    top_course_domains = [
+        {"domain": d, "count": c}
+        for d, c in sorted(course_domain_counter.items(), key=lambda x: -x[1])[:20]
+    ]
+
+    result = {
         "overview": {
             "total_sessions":         total_sessions,
             "total_turns":            total_turns,
@@ -539,7 +667,12 @@ def get_analytics(
         "tool_usage":           tool_usage,
         "top_courses":          top_courses,
         "top_domain_tags":      top_domain_tags,
+        "general_edu":          general_edu,
+        "top_course_domains":   top_course_domains,
     }
+    with _connect() as conn:
+        _analytics_cache_set(conn, user_id, result)
+    return result
 
 
 def _empty_analytics() -> dict:
@@ -553,4 +686,6 @@ def _empty_analytics() -> dict:
         "tool_usage":           [],
         "top_courses":          [],
         "top_domain_tags":      [],
+        "general_edu":          {"total": 0, "categories": [], "top_topic_tags": []},
+        "top_course_domains":   [],
     }
