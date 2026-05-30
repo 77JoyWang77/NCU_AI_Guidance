@@ -13,8 +13,29 @@ def _make_url(raw: str) -> str:
     return raw
 
 
-engine = create_engine(_make_url(pdf_settings.database_url), pool_pre_ping=True)
-PdfSessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
+_engine = None
+_session_factory = None
+
+
+def _get_engine():
+    global _engine
+    if _engine is None:
+        url = _make_url(pdf_settings.database_url)
+        if not url:
+            raise RuntimeError(
+                "DATABASE_URL is not configured. "
+                "Set DATABASE_URL in the .env file at the project root."
+            )
+        _engine = create_engine(url, pool_pre_ping=True)
+    return _engine
+
+
+def PdfSessionLocal():
+    """Return a new SQLAlchemy session. Use as a context manager: `with PdfSessionLocal() as db:`"""
+    global _session_factory
+    if _session_factory is None:
+        _session_factory = sessionmaker(bind=_get_engine(), autocommit=False, autoflush=False)
+    return _session_factory()
 
 
 class PdfBase(DeclarativeBase):
