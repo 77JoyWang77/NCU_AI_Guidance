@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 
 class ResearchWriteup(BaseModel):
     answer: str = Field(description="Final answer in Traditional Chinese.")
-    sources: list[str] = Field(description='Sources as "filename p.N".')
+    sources: list[str] = Field(description='Page references as "p.N" or "p.N-M".')
 
 
 class AnswerSection(BaseModel):
@@ -28,7 +28,7 @@ class ResearchStructuredWriteup(BaseModel):
     sections: list[AnswerSection] = Field(
         description="Dynamic answer sections. Include one section for each important required coverage item."
     )
-    sources: list[str] = Field(description='Sources as "filename p.N".')
+    sources: list[str] = Field(description='Page references as "p.N" or "p.N-M".')
 
 
 def _section_title(state: ResearchState, coverage_id: str) -> str:
@@ -105,11 +105,8 @@ def _fallback_writeup(state: ResearchState) -> ResearchWriteup:
 
 
 def _source_from_detail(detail: dict) -> str:
-    filename = str(detail.get("filename") or "").strip()
     page = detail.get("page")
-    if not filename:
-        return ""
-    return f"{filename} p.{page}" if page not in (None, "", "?") else filename
+    return f"p.{page}" if page not in (None, "", "?") else ""
 
 
 def _to_writeup(result: ResearchStructuredWriteup, state: ResearchState) -> ResearchWriteup:

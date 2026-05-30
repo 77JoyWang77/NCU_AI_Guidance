@@ -29,6 +29,16 @@ from app.pdf_config import pdf_settings
 
 logger = logging.getLogger(__name__)
 
+
+def _to_page_num(val, fallback=None):
+    """Safely convert Qdrant page metadata (0-indexed) to 1-indexed int.
+    Returns fallback when val is None, empty, or non-numeric.
+    """
+    try:
+        return int(val) + 1
+    except (TypeError, ValueError):
+        return fallback
+
 VECTOR_SIZE = 3072
 DENSE_NAME = "dense"
 SPARSE_NAME = "sparse"
@@ -470,8 +480,8 @@ async def search_documents(
         filename = doc.metadata.get("filename", "Unknown")
         page = doc.metadata.get("page", "?")
         page_end = doc.metadata.get("page_end", page)
-        page_num = int(page) + 1 if page != "?" else "?"
-        page_end_num = int(page_end) + 1 if page_end != "?" else page_num
+        page_num = _to_page_num(page, "?")
+        page_end_num = _to_page_num(page_end, page_num)
         section = doc.metadata.get("section", "unknown")
         low_q = doc.metadata.get("is_low_quality", False)
         chunks.append(RetrievedChunk(

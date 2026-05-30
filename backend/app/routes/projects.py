@@ -215,6 +215,16 @@ async def chat_with_project_stream(
     async with _stream_lock_mutex:
         if lock_key in _stream_lock:
             _active = _stream_lock[lock_key]
+            if request.thread_id and request.thread_id == _active:
+                # Client sent back the in-flight thread_id → steering, not a duplicate.
+                steering.set(_active, request.message)
+                logger.info("steering accepted project=%s thread=%s", project_id, _active)
+
+                async def _steer():
+                    yield f"data: {_json.dumps({'token': '已收到補充，將納入考量。', 'done': True})}\n\n"
+
+                return StreamingResponse(_steer(), media_type="text/event-stream")
+
             logger.warning("duplicate stream dropped project=%s user=%s active_thread=%s",
                            project_id, user_id, _active)
 

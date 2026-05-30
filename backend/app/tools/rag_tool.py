@@ -9,6 +9,7 @@ import json
 from langchain.tools import ToolRuntime
 from langchain_core.tools import tool
 
+from app.rag import _to_page_num
 from app.tools.search_core import (
     AgentContext,
     SearchInput,
@@ -66,8 +67,8 @@ async def _section_filtered_search(ctx: AgentContext, section_terms: list[str]) 
             for doc in hits[:6]:
                 raw_page = doc.metadata.get("page")
                 raw_page_end = doc.metadata.get("page_end", raw_page)
-                p = (int(raw_page) + 1) if raw_page is not None else "?"
-                pe = (int(raw_page_end) + 1) if raw_page_end is not None else p
+                p = _to_page_num(raw_page, "?")
+                pe = _to_page_num(raw_page_end, p)
                 src = f"p.{p}-{pe}" if pe != p else f"p.{p}"
                 if src not in ctx.tool_sources:
                     ctx.tool_sources.append(src)
