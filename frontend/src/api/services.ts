@@ -209,6 +209,12 @@ export interface AnalyticsCourseItem {
   count: number;
 }
 
+export interface AnalyticsGeneralEdu {
+  total: number;
+  categories: { name: string; count: number }[];
+  top_topic_tags: { tag: string; count: number }[];
+}
+
 export interface AnalyticsData {
   overview: AnalyticsOverview;
   dept_distribution: AnalyticsDistItem[];
@@ -216,6 +222,8 @@ export interface AnalyticsData {
   tool_usage: AnalyticsToolItem[];
   top_courses: AnalyticsCourseItem[];
   top_domain_tags: { tag: string; count: number }[];
+  general_edu: AnalyticsGeneralEdu;
+  top_course_domains: { domain: string; count: number }[];
 }
 
 export const analyticsAPI = {

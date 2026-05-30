@@ -1,4 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
+import ReactECharts from 'echarts-for-react';
+import 'echarts-wordcloud';
 import { Link } from 'react-router-dom';
 import {
   HiAcademicCap,
@@ -14,13 +16,13 @@ import {
   HiAdjustments,
 } from 'react-icons/hi';
 import { useAuth } from '../auth/AuthContext';
-import { analyticsAPI, type AnalyticsData } from '../api/services';
+import { analyticsAPI, type AnalyticsData, type AnalyticsGeneralEdu } from '../api/services';
 
 // ── 學院 → 學術領域對照 ─────────────────────────────────────────
 const COLLEGE_TO_DOMAIN: Record<string, string> = {
   '理學院':                   '理工',
   '工學院':                   '理工',
-  '地球科學學院':             '理工',
+  '地球科學學院':             '地科',
   '永續與綠能科技研究學院':   '理工',
   '資訊電機學院':             '資訊',
   '生醫理工學院':             '生醫',
@@ -29,9 +31,10 @@ const COLLEGE_TO_DOMAIN: Record<string, string> = {
   '管理學院':                 '商管',
   '中心、處室':               '通識',
 };
-const DOMAIN_ORDER = ['理工', '資訊', '生醫', '人文', '商管'];
+const DOMAIN_ORDER = ['理工', '資訊', '地科', '生醫', '人文', '商管'];
 const DOMAIN_COLORS: Record<string, string> = {
-  理工: '#6366f1', 資訊: '#0ea5e9', 生醫: '#10b981', 人文: '#f59e0b', 商管: '#ef4444',
+  理工: '#6366f1', 資訊: '#0ea5e9', 地科: '#a16207',
+  生醫: '#10b981', 人文: '#f59e0b', 商管: '#ef4444',
 };
 
 // ── 探索型態診斷 ─────────────────────────────────────────────────
@@ -97,7 +100,7 @@ function diagnoseType(
   const topTools   = data.tool_usage.slice(0, 6).map(t => t.tool);
   const planningTools = ['get_graduation_requirements', 'get_graduation_rules',
     'get_program_info', 'get_program_courses', 'get_requirements_notes'];
-  const domainsActive = domainAxes.filter(a => a.value >= 15).length;
+  const domainsActive = domainAxes.filter(a => ((a as { pct?: number }).pct ?? a.value) >= 15).length;
 
   const hasPlanningFocus = topTools.some(t => planningTools.includes(t));
   if (hasPlanningFocus) return EXPLORE_TYPES[0];
@@ -108,7 +111,7 @@ function diagnoseType(
 }
 
 // ── 雷達圖 (SVG) ────────────────────────────────────────────────
-function RadarChart({ axes }: { axes: { label: string; value: number }[] }) {
+function RadarChart({ axes }: { axes: { label: string; value: number; pct?: number }[] }) {
   const SIZE = 200;
   const cx = SIZE / 2;
   const cy = SIZE / 2;
@@ -164,8 +167,8 @@ function RadarChart({ axes }: { axes: { label: string; value: number }[] }) {
               {ax.label}
             </text>
             <text x={lx} y={ly + 9} textAnchor="middle" fontSize="9.5"
-              fill="#94a3b8" fontFamily="system-ui,sans-serif">
-              {ax.value}%
+              fill={DOMAIN_COLORS[ax.label] ?? '#94a3b8'} fontFamily="system-ui,sans-serif" opacity="0.7">
+              {ax.value}
             </text>
           </g>
         );
@@ -175,7 +178,10 @@ function RadarChart({ axes }: { axes: { label: string; value: number }[] }) {
 }
 
 // ── 甜甜圈圖 (SVG) ───────────────────────────────────────────────
-const DONUT_COLORS = ['#6366f1', '#8b5cf6', '#06b6d4', '#10b981', '#f59e0b'];
+const DONUT_COLORS = [
+  '#6366f1', '#8b5cf6', '#06b6d4', '#10b981',
+  '#f59e0b', '#f97316', '#ec4899', '#14b8a6',
+];
 
 function DonutChart({ items }: { items: { name: string; pct: number }[] }) {
   const R = 56;
@@ -348,11 +354,15 @@ export default function AnalyticsPage() {
       const d = COLLEGE_TO_DOMAIN[item.name] ?? '其他';
       totals[d] = (totals[d] ?? 0) + item.count;
     }
-    const grand = Object.values(totals).reduce((a, b) => a + b, 0) || 1;
-    return DOMAIN_ORDER.map(d => ({
-      label: d,
-      value: Math.round(((totals[d] ?? 0) / grand) * 100),
-    }));
+    const nonGeTotal = DOMAIN_ORDER.reduce((s, d) => s + (totals[d] ?? 0), 0) || 1;
+    const maxVal = Math.max(...DOMAIN_ORDER.map(d => totals[d] ?? 0)) || 1;
+
+    return DOMAIN_ORDER.map(d => {
+      const raw = totals[d] ?? 0;
+      const pct = Math.round((raw / nonGeTotal) * 1000) / 10;        // 佔總量 %（顯示用）
+      const rel = Math.round((raw / maxVal) * 100);                   // 相對最大值（雷達圖用）
+      return { label: d, value: rel, pct };
+    });
   }, [data]);
 
   const exploreType = useMemo(
@@ -444,11 +454,12 @@ export default function AnalyticsPage() {
               ) : (
                 <div className="flex flex-col items-center gap-4">
                   <RadarChart axes={domainAxes} />
+                  {/* 圖例：顯示實際佔比 % */}
                   <div className="flex flex-wrap justify-center gap-x-4 gap-y-1.5">
                     {domainAxes.map(ax => (
                       <span key={ax.label} className="flex items-center gap-1.5 text-xs text-slate-500">
                         <span className="h-2 w-2 rounded-full" style={{ background: DOMAIN_COLORS[ax.label] ?? '#94a3b8' }} />
-                        {ax.label} <span className="font-medium text-slate-700">{ax.value}%</span>
+                        {ax.label} <span className="font-medium text-slate-700">{ax.pct}%</span>
                       </span>
                     ))}
                   </div>
@@ -483,7 +494,7 @@ export default function AnalyticsPage() {
                       </div>
                       <div className="flex justify-between">
                         <span>跨域廣度</span>
-                        <span className="font-medium">{domainAxes.filter(a => a.value >= 15).length} 個主要領域</span>
+                        <span className="font-medium">{domainAxes.filter(a => ((a as { pct?: number }).pct ?? a.value) >= 15).length} 個主要領域</span>
                       </div>
                     </div>
                   </div>
@@ -492,81 +503,199 @@ export default function AnalyticsPage() {
             )}
           </div>
 
-          {/* Row 2：興趣標籤雲 + 學院甜甜圈 */}
+          {/* Row 2：domain_tags WordCloud + 課程領域 WordCloud */}
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            <div className="card p-6">
-              <SectionTitle>課程興趣標籤雲</SectionTitle>
-              <p className="mb-4 text-xs text-slate-400">
-                標籤字體越大，代表 AI 推薦課程中該領域越常出現
-              </p>
-              {data.top_domain_tags.length === 0 ? (
-                <p className="text-sm text-slate-400">尚無資料（需要更多 AI 推薦記錄）</p>
-              ) : (
-                <TagCloud tags={data.top_domain_tags} />
-              )}
-            </div>
-
-            <div className="card p-6">
-              <SectionTitle>學院探索分佈</SectionTitle>
-              {data.college_distribution.length === 0 ? (
-                <p className="text-sm text-slate-400">尚無資料</p>
-              ) : (
-                <div className="flex items-center gap-6">
-                  <DonutChart items={data.college_distribution} />
-                  <div className="min-w-0 flex-1 space-y-2.5">
-                    {data.college_distribution.map((item, i) => (
-                      <div key={item.name} className="flex items-center gap-2">
-                        <span className="h-2.5 w-2.5 shrink-0 rounded-full"
-                          style={{ background: DONUT_COLORS[i % DONUT_COLORS.length] }} />
-                        <span className="min-w-0 flex-1 truncate text-xs text-slate-700">{item.name}</span>
-                        <span className="shrink-0 text-xs font-medium text-slate-500">{item.pct}%</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
+            {data.top_domain_tags.length > 0 && (
+              <EChartsWordCloud tags={data.top_domain_tags} title="課程探索領域" />
+            )}
+            {data.top_course_domains.length > 0 && (
+              <EChartsWordCloud
+                tags={data.top_course_domains.map(d => ({ tag: d.domain, count: d.count }))}
+                title="課程領域分佈"
+              />
+            )}
           </div>
 
-          {/* Row 3：系所分佈 + 最常被推薦課程 */}
+          {/* Row 3：探索系所 Pie + 通識與一般選修 */}
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            <div className="card p-6">
-              <SectionTitle>最常探索系所 Top 8</SectionTitle>
-              {data.dept_distribution.length === 0 ? (
-                <p className="text-sm text-slate-400">尚無資料</p>
-              ) : (
-                <div className="space-y-4">
-                  {data.dept_distribution.map((item, idx) => (
-                    <DeptBar key={item.name} name={item.name} count={item.count} pct={item.pct} rank={idx} />
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <div className="card p-6">
-              <SectionTitle>最常被推薦課程 Top 10</SectionTitle>
-              <p className="mb-3 text-xs text-slate-400">統計 AI 回答中實際提及的課程</p>
-              {data.top_courses.length === 0 ? (
-                <p className="text-sm text-slate-400">尚無資料</p>
-              ) : (
-                <ol className="space-y-2">
-                  {data.top_courses.map((item, idx) => (
-                    <li key={item.name} className="flex items-center gap-3">
-                      <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold
-                        ${idx < 3 ? 'bg-primary-900 text-white' : 'bg-slate-100 text-slate-500'}`}>
-                        {idx + 1}
-                      </span>
-                      <span className="flex-1 text-sm text-slate-700">{item.name}</span>
-                      <span className="shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-500">
-                        ×{item.count}
-                      </span>
-                    </li>
-                  ))}
-                </ol>
-              )}
-            </div>
+            {data.dept_distribution.length > 0 && (
+              <EChartsPie items={data.dept_distribution} title="探索系所分佈" />
+            )}
+            <GeneralEduRings ge={data.general_edu} />
           </div>
         </div>
+      )}
+    </div>
+  );
+}
+
+// ══════════════════════════════════════════════════════════════════
+// ECharts 圖表元件
+// ══════════════════════════════════════════════════════════════════
+
+// ── ECharts WordCloud：domain_tags ────────────────────────────────
+function EChartsWordCloud({ tags, title = '課程探索領域' }: { tags: { tag: string; count: number }[]; title?: string }) {
+  const option = {
+    series: [{
+      type: 'wordCloud',
+      shape: 'circle',
+      left: 'center', top: 'center',
+      width: '95%', height: '95%',
+      sizeRange: [13, 52],
+      rotationRange: [0, 0],       // 全部水平，中文更易讀
+      gridSize: 10,
+      drawOutOfBound: false,
+      textStyle: {
+        fontFamily: 'system-ui, sans-serif',
+        fontWeight: 'bold',
+        color() {
+          const palette = [
+            '#6366f1','#8b5cf6','#0ea5e9','#10b981',
+            '#f59e0b','#ec4899','#14b8a6','#f97316',
+          ];
+          return palette[Math.floor(Math.random() * palette.length)];
+        },
+      },
+      emphasis: { focus: 'self', textStyle: { shadowBlur: 10, shadowColor: '#333' } },
+      data: tags.map(t => ({ name: t.tag, value: t.count })),
+    }],
+  };
+  return (
+    <div className="card flex flex-col p-6">
+      <SectionTitle>{title}</SectionTitle>
+      <p className="mb-3 text-xs text-slate-400">字體大小反映探索頻率</p>
+      <ReactECharts option={option} style={{ flex: 1, minHeight: 200 }} />
+    </div>
+  );
+}
+
+// ── ECharts Pie：學院分佈 ─────────────────────────────────────────
+function EChartsPie({
+  items,
+  title = '探索分佈',
+}: {
+  items: { name: string; count: number; pct: number }[];
+  title?: string;
+}) {
+  // 系所名稱比學院長，legend 欄位要更寬
+  const nmWidth = items.some(i => i.name.length > 6) ? 136 : 108;
+  const option = {
+    tooltip: { trigger: 'item', formatter: '{b}：{d}%', confine: true },
+    legend: {
+      orient: 'vertical',
+      right: 0,
+      top: 'middle',
+      itemWidth: 8,
+      itemHeight: 8,
+      formatter: (name: string) => {
+        const it = items.find(i => i.name === name);
+        return `{nm|${name}}{pt|${it?.pct ?? 0}%}`;
+      },
+      textStyle: {
+        rich: {
+          nm: { width: nmWidth, align: 'left',  fontSize: 11, color: '#475569' },
+          pt: { width: 36,      align: 'right', fontSize: 11, color: '#94a3b8' },
+        },
+      },
+    },
+    series: [{
+      type: 'pie',
+      radius: ['40%', '66%'],
+      center: ['30%', '50%'],
+      label: { show: false },
+      labelLine: { show: false },
+      emphasis: {
+        label: { show: false },
+        labelLine: { show: false },
+        itemStyle: { shadowBlur: 10, shadowColor: 'rgba(0,0,0,0.15)' },
+      },
+      data: items.map((it, i) => ({
+        name: it.name,
+        value: it.count,
+        itemStyle: { color: DONUT_COLORS[i % DONUT_COLORS.length] },
+      })),
+    }],
+  };
+  return (
+    <div className="card flex flex-col p-6">
+      <SectionTitle>{title}</SectionTitle>
+      <ReactECharts option={option} style={{ flex: 1, minHeight: 200 }} />
+    </div>
+  );
+}
+
+const DOMAIN_TREEMAP_COLORS = [
+  '#6366f1','#8b5cf6','#0ea5e9','#10b981',
+  '#f59e0b','#ec4899','#f97316','#14b8a6',
+  '#64748b','#a855f7','#06b6d4','#84cc16',
+];
+
+// ── 通識與一般選修：圓形進度環 + 分類標籤 ──────────────────────
+const GE_CAT_COLORS: Record<string, string> = {
+  通識: '#8b5cf6', 外語: '#0ea5e9', 體育: '#10b981', 服務學習: '#f59e0b',
+};
+
+function GeneralEduRings({ ge }: { ge: AnalyticsGeneralEdu }) {
+  const top = ge.top_topic_tags.slice(0, 6);
+  const maxCount = top[0]?.count ?? 1;
+  const C = 2 * Math.PI * 28;
+
+  const hasData = top.length > 0 || ge.categories.length > 0;
+  if (!hasData) return null;
+
+  return (
+    <div className="card p-6">
+      <SectionTitle>通識與一般選修</SectionTitle>
+
+      {/* 分類計數標籤 */}
+      {ge.categories.length > 0 && (
+        <div className="mb-4 flex flex-wrap gap-2">
+          {ge.categories.map(cat => {
+            const color = GE_CAT_COLORS[cat.name] ?? '#94a3b8';
+            return (
+              <span key={cat.name}
+                className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium"
+                style={{ background: color + '18', color }}>
+                <span className="h-1.5 w-1.5 rounded-full" style={{ background: color }} />
+                {cat.name}
+                <span className="font-semibold ml-0.5">{cat.count} 門</span>
+              </span>
+            );
+          })}
+        </div>
+      )}
+
+      {/* 通識 topic_tags 圓形環 */}
+      {top.length > 0 ? (
+        <div className="grid grid-cols-3 gap-3">
+          {top.map((t, i) => {
+            const pct = t.count / maxCount;
+            const color = DOMAIN_TREEMAP_COLORS[i % DOMAIN_TREEMAP_COLORS.length];
+            const dash = pct * C;
+            const gap  = C - dash;
+            return (
+              <div key={t.tag} className="flex flex-col items-center gap-1.5">
+                <div className="relative h-[68px] w-[68px]">
+                  <svg viewBox="0 0 64 64" className="h-full w-full -rotate-90">
+                    <circle cx="32" cy="32" r="28" fill="none" stroke="#f1f5f9" strokeWidth="7" />
+                    <circle cx="32" cy="32" r="28" fill="none"
+                      stroke={color} strokeWidth="7" strokeLinecap="round"
+                      strokeDasharray={`${dash} ${gap}`} />
+                  </svg>
+                  <div className="absolute inset-0 flex items-center justify-center text-[11px] font-bold"
+                    style={{ color }}>
+                    {Math.round(pct * 100)}%
+                  </div>
+                </div>
+                <span className="max-w-[72px] text-center text-[10px] leading-tight text-slate-600">
+                  {t.tag}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <p className="text-sm text-slate-400">尚無通識課程探索記錄</p>
       )}
     </div>
   );
