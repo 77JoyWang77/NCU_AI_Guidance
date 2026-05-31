@@ -213,11 +213,12 @@ def _verify_cancel_ownership(thread_id: str, document_id: int, effective_req_id:
             .filter_by(thread_id=thread_id)
             .first()
         )
-    if conv:
-        if conv.document_id is not None and conv.document_id != document_id:
-            raise HTTPException(status_code=403, detail="此對話紀錄不屬於本論文。")
-        if conv.user_id != effective_req_id:
-            raise HTTPException(status_code=403, detail="無法取消他人的對話。")
+    if not conv:
+        raise HTTPException(status_code=404, detail="對話紀錄不存在。")
+    if conv.document_id is not None and conv.document_id != document_id:
+        raise HTTPException(status_code=403, detail="此對話紀錄不屬於本論文。")
+    if conv.user_id != effective_req_id:
+        raise HTTPException(status_code=403, detail="無法取消他人的對話。")
 
 
 # ── 非串流 chat（向下相容原有 schema）────────────────────────────────────────────

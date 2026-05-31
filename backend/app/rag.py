@@ -173,7 +173,12 @@ def _lang_from_text(text: str) -> str:
     total = cjk + ascii_alpha
     if total == 0:
         return "zh"
-    return "en" if cjk / total < 0.15 else "zh"
+    ratio = cjk / total
+    if ratio < 0.15:
+        return "en"
+    if ratio < 0.70:   # 15–70 % CJK → significant bilingual content
+        return "mixed"
+    return "zh"
 
 
 def get_document_language(document_id: int | None = None) -> str:

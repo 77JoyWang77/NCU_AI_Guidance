@@ -593,7 +593,7 @@ async def route_agent_stream(
                         break
 
                 last_sources = _retrieval_sources
-                _retrieval_has_answer = bool(_retrieval_response) and bool(_retrieval_sources)
+                _retrieval_has_answer = bool(_retrieval_sources) and len(_retrieval_response.strip()) >= 30
                 agent_result = AgentResult(
                     response=_retrieval_response,
                     sources=_retrieval_sources,
@@ -643,7 +643,8 @@ async def route_agent_stream(
                         ),
                     )
                 else:
-                    _fire_and_forget(_update_chat_summary(thread_id, user_message, _chat_full))
+                    if not _chat_jobs.is_cancelled(thread_id):
+                        _fire_and_forget(_update_chat_summary(thread_id, user_message, _chat_full))
 
         except Exception:
             raise
@@ -673,6 +674,8 @@ async def route_agent_stream(
                 _hop, _visited | {current_route.agent_name},
             )
             if _esc is not None:
+                if _streamed_response:
+                    yield "", "replace", []
                 _visited = _visited | {current_route.agent_name}
                 next_route = _esc
                 _hop += 1
@@ -684,7 +687,8 @@ async def route_agent_stream(
     if thread_id:
         _steering.get_and_clear(thread_id)
 
-    if plan is not None and step is not None and current_route is not None:
+    if (plan is not None and step is not None and current_route is not None
+            and not _chat_jobs.is_cancelled(thread_id)):
         await _finalize_plan(
             plan, current_route, thread_id, document_id, user_message,
             output_response=_full_response,

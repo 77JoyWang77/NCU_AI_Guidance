@@ -140,14 +140,16 @@ async def record_agent_memory(
         except Exception as exc:
             logger.warning("record_agent_memory: context_summary write failed: %s", exc)
 
-    if policy.long_term and user_id:
+    _is_anon = bool(user_id and user_id.startswith("anon:"))
+
+    if policy.long_term and user_id and not _is_anon:
         try:
             from app.services.pdf_memory_service import store_long_term_memory
             await store_long_term_memory(user_id, thread_id, document_id, question, result)
         except Exception as exc:
             logger.warning("record_agent_memory: long_term write failed: %s", exc)
 
-    if policy.user_profile and user_id:
+    if policy.user_profile and user_id and not _is_anon:
         try:
             from app.services.pdf_user_profile_service import update_user_profile
             await update_user_profile(user_id, question, result.response)
