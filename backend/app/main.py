@@ -44,7 +44,7 @@ async def lifespan(app: FastAPI):
             workers,
         )
 
-    global _pdf_init_ready
+    global _pdf_init_ready, _rag_init_ready
     pdf_ok = False
 
     # PDF 問答初始化

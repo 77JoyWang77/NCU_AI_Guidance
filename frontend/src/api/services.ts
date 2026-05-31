@@ -347,6 +347,11 @@ export const projectAPI = {
   },
 
   cancelChat: async (projectId: string, threadId: string): Promise<void> => {
-    await apiClient.post(`/projects/${projectId}/chat/${threadId}/cancel`);
+    const anonId = getAnonSessionId();
+    await apiClient.post(
+      `/projects/${projectId}/chat/${threadId}/cancel`,
+      undefined,
+      { headers: { 'X-Anon-Session': anonId } },
+    );
   },
 };

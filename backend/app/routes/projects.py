@@ -233,6 +233,7 @@ async def chat_with_project(
     from app.agents.pdf.router_agent import route_agent_stream
     from app.agents.pdf.request_context import set_user_id
     from app.services.pdf_quota_service import check_and_reserve, exit_reservation
+    from app.services.pdf_llm_gate import acquire_with_timeout, get_gate
 
     document_id = await asyncio.to_thread(_get_document_id_for_project, project_id)
     if document_id is None:
@@ -242,14 +243,16 @@ async def chat_with_project(
     _raw_anon = http_request.headers.get("X-Anon-Session", "")
     anon_id = _raw_anon if (not user_id and _UUID4_RE.match(_raw_anon)) else None
     owner_id = user_id or (f"anon:{anon_id}" if anon_id else None)
-    # Use anon: prefix so DB records match the quota key (fixes anonymous quota accumulation).
     set_user_id(owner_id or "")
-    # Atomically check quota and claim an in-flight slot (no await between check and increment).
     _quota_id = await check_and_reserve(user_id, anon_id)
 
-    conv = await asyncio.to_thread(_get_or_create_pdf_conversation, thread_id, owner_id, document_id)
+    gate_acquired = False
     full_response = ""
     try:
+        conv = await asyncio.to_thread(_get_or_create_pdf_conversation, thread_id, owner_id, document_id)
+        gate_acquired = await acquire_with_timeout(timeout=30.0)
+        if not gate_acquired:
+            raise HTTPException(status_code=503, detail="服務目前繁忙，請稍後再試。")
         async for token, is_done, _ in route_agent_stream(
             request.message,
             thread_id=thread_id,
@@ -260,10 +263,14 @@ async def chat_with_project(
                 full_response = token
             elif not is_done:
                 full_response += token
+    except HTTPException:
+        raise
     except Exception as exc:
         logger.error("chat_with_project error: %s", exc)
         full_response = "抱歉，處理您的問題時發生錯誤，請稍後再試。"
     finally:
+        if gate_acquired:
+            get_gate().release()
         exit_reservation(_quota_id)
 
     return ChatResponse(reply=full_response)
@@ -357,15 +364,19 @@ async def chat_with_project_stream(
         # regardless of which await is cancelled by a client disconnect.
         gate_acquired = False
         pending: asyncio.Task | None = None
-        # _quota_id is set in the outer coroutine (check_and_reserve) and captured here.
         try:
+            # Send session_id BEFORE waiting for the gate so the frontend can display
+            # the cancel button during the up-to-30s queue wait.
+            yield f"data: {_json.dumps({'session_id': thread_id})}\n\n"
+
             gate_acquired = await acquire_with_timeout(timeout=30.0)
             if not gate_acquired:
                 yield f"data: {_json.dumps({'error': '服務目前繁忙，請稍後再試。', 'done': True, 'session_id': thread_id})}\n\n"
                 return
 
-            # Send session_id immediately so the frontend can enable the cancel button.
-            yield f"data: {_json.dumps({'session_id': thread_id})}\n\n"
+            if chat_jobs.is_cancelled(thread_id):
+                yield f"data: {_json.dumps({'done': True, 'session_id': thread_id, 'cancelled': True})}\n\n"
+                return
 
             aiter = route_agent_stream(
                 request.message,
@@ -414,7 +425,11 @@ async def chat_with_project_stream(
             _stream_lock.pop(lock_key, None)
             exit_reservation(_quota_id)
 
-    return StreamingResponse(event_stream(), media_type="text/event-stream")
+    return StreamingResponse(
+        event_stream(),
+        media_type="text/event-stream",
+        headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+    )
 
 
 # ── 取消串流 ────────────────────────────────────────────────────────────────────
