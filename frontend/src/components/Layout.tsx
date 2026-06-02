@@ -5,6 +5,7 @@ import Navbar from './Navbar';
 
 interface LayoutProps {
   fullHeight?: boolean;
+  noPad?: boolean;
 }
 
 const BACKGROUND_THEMES = [
@@ -20,7 +21,7 @@ const BACKGROUND_THEMES = [
   'bg-theme-10',
 ];
 
-export default function Layout({ fullHeight = false }: LayoutProps) {
+export default function Layout({ fullHeight = false, noPad = false }: LayoutProps) {
   const location = useLocation();
   const [backgroundIndex, setBackgroundIndex] = useState(0);
   const backgroundClass = useMemo(() => BACKGROUND_THEMES[backgroundIndex % BACKGROUND_THEMES.length], [backgroundIndex]);
@@ -34,12 +35,15 @@ export default function Layout({ fullHeight = false }: LayoutProps) {
 
   return (
     <div
-      className={`${backgroundClass} ${fullHeight ? 'flex h-screen flex-col overflow-hidden' : 'min-h-screen'} transition-colors duration-500`}
-      onClick={handleBackgroundClick}
+      className={`${noPad ? 'bg-slate-950' : backgroundClass} ${fullHeight ? 'flex h-screen flex-col overflow-hidden' : 'min-h-screen'} transition-colors duration-500`}
+      onClick={noPad ? undefined : handleBackgroundClick}
     >
       <Navbar />
-      <main className={fullHeight ? 'flex-1 overflow-hidden' : 'page-container py-8'} onClick={handleBackgroundClick}>
-        <div key={location.pathname} className="page-animate h-full">
+      <main
+        className={fullHeight ? 'flex-1 overflow-hidden' : noPad ? '' : 'page-container py-8'}
+        onClick={noPad ? undefined : handleBackgroundClick}
+      >
+        <div key={location.pathname} className={`page-animate ${fullHeight ? 'h-full' : ''}`}>
           <Outlet />
         </div>
       </main>

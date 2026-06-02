@@ -8,6 +8,7 @@ GET  /api/chat/session/{id} — 取得單一對話完整資料
 """
 
 import json as _json
+import time as _time
 
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi.responses import StreamingResponse
@@ -73,11 +74,13 @@ async def chat(req: ChatRequest, user: AuthUser | None = Depends(get_optional_us
         hints.append("需包含研究所課程")
     context_hint = "、".join(hints) if hints else ""
 
+    _t0 = _time.perf_counter()
     result = llm.generate_with_tools(
         question=q,
         history=history,
         context_hint=context_hint,
     )
+    _llm_ms = int((_time.perf_counter() - _t0) * 1000)
 
     ss.save(
         sid, q, result["answer"],
@@ -85,6 +88,9 @@ async def chat(req: ChatRequest, user: AuthUser | None = Depends(get_optional_us
         tools_used=result.get("tools_used", []),
         user_id=user_id,
         user_profile=_user_profile(user),
+        input_tokens=result.get("input_tokens", 0),
+        output_tokens=result.get("output_tokens", 0),
+        llm_latency_ms=_llm_ms,
     )
 
     return ChatResponse(
@@ -123,6 +129,7 @@ async def chat_stream(req: ChatRequest, user: AuthUser | None = Depends(get_opti
     context_hint = "、".join(hints) if hints else ""
 
     answer_buf: list[str] = []
+    _stream_start = _time.perf_counter()
 
     def _generate():
         for raw in llm.stream_with_tools(
@@ -138,6 +145,7 @@ async def chat_stream(req: ChatRequest, user: AuthUser | None = Depends(get_opti
                     elif data.get("type") == "done":
                         data["session_id"] = sid
                         answer_text = data.get("final_answer") or "".join(answer_buf)
+                        _llm_ms = int((_time.perf_counter() - _stream_start) * 1000)
                         ss.save(
                             sid, q, answer_text,
                             course_cards=data.get("course_cards", []),
@@ -146,6 +154,9 @@ async def chat_stream(req: ChatRequest, user: AuthUser | None = Depends(get_opti
                             debug_trace=data.get("debug_trace"),
                             user_id=user_id,
                             user_profile=_user_profile(user),
+                            input_tokens=data.get("input_tokens", 0),
+                            output_tokens=data.get("output_tokens", 0),
+                            llm_latency_ms=_llm_ms,
                         )
                         raw = f"data: {_json.dumps(data, ensure_ascii=False)}\n\n"
                 except Exception:

@@ -219,6 +219,12 @@ export interface AnalyticsCourseItem {
   count: number;
 }
 
+export interface AnalyticsGeneralEdu {
+  total: number;
+  categories: { name: string; count: number }[];
+  top_topic_tags: { tag: string; count: number }[];
+}
+
 export interface AnalyticsData {
   overview: AnalyticsOverview;
   dept_distribution: AnalyticsDistItem[];
@@ -226,11 +232,133 @@ export interface AnalyticsData {
   tool_usage: AnalyticsToolItem[];
   top_courses: AnalyticsCourseItem[];
   top_domain_tags: { tag: string; count: number }[];
+  general_edu: AnalyticsGeneralEdu;
+  top_course_domains: { domain: string; count: number }[];
 }
 
 export const analyticsAPI = {
   get: async (): Promise<AnalyticsData> => {
     const response = await apiClient.get('/chat/analytics');
+    return response.data;
+  },
+};
+
+// 監控 API（開發人員專用）
+export interface MonitorHealth {
+  postgres: 'ok' | 'error';
+  qdrant: 'ok' | 'error';
+}
+
+export interface MonitorTrend {
+  current: number;
+  previous: number;
+  change_pct: number | null;
+}
+
+export interface LatencyEndpoint {
+  endpoint: string;
+  count: number;
+  avg_ms: number;
+  p95_ms: number;
+  error_count: number;
+  error_rate_pct: number;
+}
+
+export interface MonitorAllTime {
+  total_users: number;
+  total_sessions: number;
+  total_turns: number;
+  total_input: number;
+  total_output: number;
+  online_now: number;
+  estimated_cost_usd: number;
+}
+
+export interface LLMLatency {
+  count: number;
+  avg_ms: number;
+  p95_ms: number;
+  p99_ms: number;
+  min_ms: number;
+  max_ms: number;
+}
+
+export interface MonitorPeriod {
+  active_users: number;
+  new_users: number;
+  sessions: number;
+  turns: number;
+  avg_turns_per_session: number;
+  input_tokens: number;
+  output_tokens: number;
+  estimated_cost_usd: number;
+  llm_latency: LLMLatency | null;
+  llm_latency_trend: { date?: string; hour?: number; avg_ms: number }[];
+}
+
+export interface DBStats {
+  infra: {
+    server_uptime_seconds: number;
+    neon_region: string;
+    qdrant_region: string;
+    qdrant_total_points: number;
+  };
+  postgres: {
+    connections: number;
+    cache_hit_pct: number;
+    db_size: string;
+    tables: { name: string; rows: number; size_bytes: number; size_pretty: string }[];
+  };
+  qdrant: {
+    collections: {
+      name: string;
+      points_count: number;
+      segments_count: number;
+      optimizer_ok: boolean;
+      status: string;
+    }[];
+  };
+  cloudinary: {
+    total_resources: number;
+    storage_bytes: number;
+    storage_pretty: string;
+    bandwidth_bytes: number;
+    bandwidth_pretty: string;
+    plan: string;
+  } | null;
+  cloudinary_error: string | null;
+}
+
+export interface MonitorStats {
+  date_range: { start: string; end: string };
+  model_name: string;
+  server_uptime_seconds: number;
+  system_health: MonitorHealth;
+  all_time: MonitorAllTime;
+  period: MonitorPeriod;
+  trends: {
+    turns: MonitorTrend;
+    tokens: MonitorTrend;
+    active_users: MonitorTrend;
+  };
+  peak_hours: { hour: number; turns: number }[];
+  daily_trend: { date?: string; hour?: number; input: number; output: number; turns: number; sessions: number }[];
+  tools_usage: { tool: string; label: string; count: number }[];
+  activity_trend: { date: string; sessions: number; turns: number }[];
+  latency_stats: LatencyEndpoint[];
+}
+
+export const monitorAPI = {
+  getStats: async (opts: {
+    preset?: '1d' | '7d' | '30d';
+    start?: string;
+    end?: string;
+  } = {}): Promise<MonitorStats> => {
+    const response = await apiClient.get('/monitor/stats', { params: opts });
+    return response.data;
+  },
+  getDbStats: async (): Promise<DBStats> => {
+    const response = await apiClient.get('/monitor/db-stats');
     return response.data;
   },
 };

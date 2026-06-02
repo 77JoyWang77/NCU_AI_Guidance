@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Link, useLocation } from 'react-router-dom';
-import { HiMenu, HiX } from 'react-icons/hi';
+import { HiMenu, HiX, HiUser, HiChartBar, HiLogout } from 'react-icons/hi';
 import logo from '../assets/NCULogo.png';
 import GoogleLoginButton from './GoogleLoginButton';
+import { useAuth, type AuthUser } from '../auth/AuthContext';
+import { isDeveloper } from '../auth/developerUtils';
 
 const navItems = [
   { path: '/', label: '首頁' },
@@ -15,12 +17,29 @@ const navItems = [
   { path: '/curriculum', label: '修課規定' },
 ];
 
+function Avatar({ picture, name }: { picture: string; name: string }) {
+  if (picture) {
+    return <img src={picture} alt={name} className="h-8 w-8 rounded-full object-cover" />;
+  }
+  return (
+    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-600 text-sm font-bold text-white">
+      {name?.[0]?.toUpperCase() ?? 'U'}
+    </div>
+  );
+}
+
 function MobileMenuOverlay({
   pathname,
   onClose,
+  user,
+  isDev,
+  onLogout,
 }: {
   pathname: string;
   onClose: () => void;
+  user: AuthUser | null;
+  isDev: boolean;
+  onLogout: () => void;
 }) {
   return createPortal(
     <div className="fixed inset-0 z-[9999] bg-transparent md:hidden">
@@ -29,7 +48,6 @@ function MobileMenuOverlay({
           <Link to="/" className="flex items-center space-x-3" onClick={onClose}>
             <img src={logo} alt="國立中央大學科系探索平台" className="h-10 w-10 object-contain" />
           </Link>
-
           <button
             type="button"
             onClick={onClose}
@@ -42,6 +60,7 @@ function MobileMenuOverlay({
 
         <div className="w-full max-h-[calc(100vh-5rem)] overflow-y-auto border-t border-slate-200 bg-white px-4 py-4">
           <div className="flex w-full flex-col items-stretch gap-2">
+            {/* 主要導覽 */}
             {navItems.map((item) => (
               <Link
                 key={item.path}
@@ -56,9 +75,69 @@ function MobileMenuOverlay({
                 {item.label}
               </Link>
             ))}
-            <div className="mt-2 border-t border-slate-200 pt-4">
-              <GoogleLoginButton />
-            </div>
+
+            {/* 使用者區塊 */}
+            {user ? (
+              <>
+                <div className="mt-2 border-t border-slate-200 pt-4">
+                  {/* 使用者資訊 */}
+                  <div className="mb-2 flex items-center gap-3 rounded-xl bg-slate-50 px-4 py-3">
+                    <Avatar picture={user.picture} name={user.name} />
+                    <div className="min-w-0">
+                      <p className="truncate text-sm font-semibold text-slate-800">{user.name}</p>
+                      <p className="truncate text-xs text-slate-400">{user.email}</p>
+                    </div>
+                  </div>
+
+                  <Link
+                    to="/profile"
+                    onClick={onClose}
+                    className={`flex items-center gap-3 w-full px-4 py-3 text-base font-medium transition ${
+                      pathname === '/profile'
+                        ? 'bg-primary-900 text-white'
+                        : 'text-slate-700 hover:bg-slate-50'
+                    }`}
+                  >
+                    <HiUser className="h-5 w-5" />
+                    個人分析
+                  </Link>
+
+                  {isDev && (
+                    <Link
+                      to="/monitor"
+                      onClick={onClose}
+                      className={`flex items-center gap-3 w-full px-4 py-3 text-base font-medium transition ${
+                        pathname === '/monitor'
+                          ? 'bg-primary-900 text-white'
+                          : 'text-slate-700 hover:bg-slate-50'
+                      }`}
+                    >
+                      <HiChartBar className="h-5 w-5" />
+                      系統監控
+                      <span className="ml-auto rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-700">
+                        Dev
+                      </span>
+                    </Link>
+                  )}
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      onLogout();
+                      onClose();
+                    }}
+                    className="flex w-full items-center gap-3 px-4 py-3 text-base font-medium text-red-500 transition hover:bg-red-50"
+                  >
+                    <HiLogout className="h-5 w-5" />
+                    登出
+                  </button>
+                </div>
+              </>
+            ) : (
+              <div className="mt-2 border-t border-slate-200 pt-4">
+                <GoogleLoginButton />
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -70,6 +149,8 @@ function MobileMenuOverlay({
 export default function Navbar() {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { user, logout } = useAuth();
+  const isDev = isDeveloper(user?.email);
 
   useEffect(() => {
     void (async () => { await Promise.resolve(); setIsMobileMenuOpen(false); })();
@@ -77,10 +158,8 @@ export default function Navbar() {
 
   useEffect(() => {
     if (!isMobileMenuOpen) return;
-
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
-
     return () => {
       document.body.style.overflow = previousOverflow;
     };
@@ -99,6 +178,7 @@ export default function Navbar() {
               </div>
             </Link>
 
+            {/* 桌面版導覽 */}
             <div className="hidden items-center space-x-1 md:flex">
               {navItems.map((item) => (
                 <Link
@@ -112,6 +192,7 @@ export default function Navbar() {
               <GoogleLoginButton />
             </div>
 
+            {/* 手機版漢堡按鈕 */}
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen((prev) => !prev)}
@@ -126,7 +207,13 @@ export default function Navbar() {
       </nav>
 
       {isMobileMenuOpen ? (
-        <MobileMenuOverlay pathname={location.pathname} onClose={() => setIsMobileMenuOpen(false)} />
+        <MobileMenuOverlay
+          pathname={location.pathname}
+          onClose={() => setIsMobileMenuOpen(false)}
+          user={user}
+          isDev={isDev}
+          onLogout={logout}
+        />
       ) : null}
     </>
   );

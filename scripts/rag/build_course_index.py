@@ -218,6 +218,12 @@ def build_index(
         content   = syllabus.get("授課內容", "") or ""
         textbook  = syllabus.get("教科書/參考書", "") or ""
 
+        # 課程領域（以「、」分隔，切開後去空白、去重複）
+        raw_domains = syllabus.get("課程領域", "") or ""
+        course_domains = list(dict.fromkeys(
+            d.strip() for d in raw_domains.split("、") if d.strip()
+        ))
+
         # NLP 共用資料（by base_code）
         nlp_data = nlp.get(base_code, {})
 
@@ -297,6 +303,7 @@ def build_index(
             "core_questions":       nlp_data.get("core_questions", []),
             "simplified_concepts":  nlp_data.get("simplified_concepts", []),
             "domain_tags":          nlp_data.get("domain_tags", []),
+            "course_domains":       course_domains,
             # 多班差異
             "sections": [] if single else sections,
             # 單班的分發條件直接放外層

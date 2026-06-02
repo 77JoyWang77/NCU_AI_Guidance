@@ -9,6 +9,8 @@ import json
 import os
 import uuid
 from datetime import datetime, timedelta, timezone
+from functools import lru_cache
+from pathlib import Path
 from typing import Any
 
 import psycopg
@@ -18,6 +20,45 @@ from psycopg.rows import dict_row
 MAX_HISTORY = 20  # 保留最近幾則 role/content 訊息給 LLM 使用
 _SCHEMA_READY = False
 _TW = timezone(timedelta(hours=8))
+_MONITOR_CACHE: dict[str, dict] = {}
+_MONITOR_CACHE_AT: dict[str, datetime] = {}
+_MONITOR_CACHE_TTL_BY_RANGE: dict[str, int] = {"1d": 60, "7d": 300, "30d": 600}
+_DB_STATS_CACHE: dict | None = None
+_DB_STATS_CACHE_AT: datetime | None = None
+_DB_STATS_TTL = 60
+_ROOT = Path(__file__).parent.parent.parent.parent
+
+
+@lru_cache(maxsize=1)
+def _load_topic_tags() -> dict:
+    p = _ROOT / "data" / "processed" / "nlp" / "nlp_topic_tags.json"
+    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
+
+
+@lru_cache(maxsize=1)
+def _load_course_domains() -> dict[str, list[str]]:
+    """course_code → list of 課程領域 strings（已切開）。"""
+    p = _ROOT / "data" / "processed" / "course_index.json"
+    if not p.exists():
+        return {}
+    idx = json.loads(p.read_text(encoding="utf-8"))
+    return {code: entry.get("course_domains", []) for code, entry in idx.items()}
+
+
+# 中心、處室 系所 → 通識大分類
+GE_CATEGORY_MAP: dict[str, str] = {
+    "語言中心":                             "外語",
+    "體育室":                               "體育",
+    "軍訓室":                               "體育",
+    "學務處-服務學習發展中心":              "服務學習",
+    "學務處-職涯發展中心":                  "服務學習",
+    "通識教育中心":                         "通識",
+    "核心通識課程":                         "通識",
+    "總教學中心":                           "通識",
+    "臺灣大專院校人工智慧學程聯盟":         "通識",
+    "環境科技博士學位學程(台灣聯合大學系統)": "通識",
+    "遙測科技碩士學位學程":                 "通識",
+}
 
 TOOL_LABELS: dict[str, str] = {
     "search_courses":              "課程語意搜尋",
@@ -86,6 +127,9 @@ def save(
     debug_trace: dict | None = None,
     user_id: str | None = None,
     user_profile: dict | None = None,
+    input_tokens: int = 0,
+    output_tokens: int = 0,
+    llm_latency_ms: int = 0,
 ) -> None:
     """追加一輪對話到 PostgreSQL。"""
     if user_id is None:
@@ -137,9 +181,12 @@ def save(
                 course_pool,
                 tools_used,
                 debug_trace,
+                input_tokens,
+                output_tokens,
+                llm_latency_ms,
                 created_at
             )
-            values (%s, %s, %s, %s::jsonb, %s::jsonb, %s::jsonb, %s::jsonb, %s)
+            values (%s, %s, %s, %s::jsonb, %s::jsonb, %s::jsonb, %s::jsonb, %s, %s, %s, %s)
             """,
             (
                 session_id,
@@ -149,6 +196,9 @@ def save(
                 _json(course_pool or []),
                 _json(tools_used or []),
                 _json(debug_trace or {}),
+                input_tokens,
+                output_tokens,
+                llm_latency_ms,
                 now,
             ),
         )
@@ -305,9 +355,21 @@ def _ensure_schema() -> None:
                 course_pool jsonb not null default '[]'::jsonb,
                 tools_used jsonb not null default '[]'::jsonb,
                 debug_trace jsonb not null default '{}'::jsonb,
+                input_tokens int not null default 0,
+                output_tokens int not null default 0,
+                llm_latency_ms int not null default 0,
                 created_at timestamptz not null default now()
             )
             """
+        )
+        conn.execute(
+            "alter table chat_turns add column if not exists input_tokens int not null default 0"
+        )
+        conn.execute(
+            "alter table chat_turns add column if not exists llm_latency_ms int not null default 0"
+        )
+        conn.execute(
+            "alter table chat_turns add column if not exists output_tokens int not null default 0"
         )
         conn.execute(
             "create index if not exists idx_chat_sessions_user_updated on chat_sessions(user_id, updated_at desc)"
@@ -318,9 +380,50 @@ def _ensure_schema() -> None:
         conn.execute(
             "create index if not exists idx_chat_turns_session_id on chat_turns(session_id, id)"
         )
+        conn.execute(
+            """
+            create table if not exists user_analytics (
+                user_id     text primary key,
+                data        jsonb not null default '{}'::jsonb,
+                computed_at timestamptz not null default to_timestamp(0)
+            )
+            """
+        )
         conn.commit()
 
     _SCHEMA_READY = True
+
+
+_ANALYTICS_TTL_SECONDS = 900  # 15 分鐘
+
+
+def _analytics_cache_get(conn, user_id: str) -> dict | None:
+    """若快取存在且未過期則回傳，否則回傳 None。"""
+    row = conn.execute(
+        """
+        SELECT data, computed_at
+        FROM user_analytics
+        WHERE user_id = %s
+          AND computed_at > now() - make_interval(secs => %s)
+        """,
+        (user_id, _ANALYTICS_TTL_SECONDS),
+    ).fetchone()
+    return _from_jsonb(row["data"], None) if row else None
+
+
+def _analytics_cache_set(conn, user_id: str, data: dict) -> None:
+    """寫入（upsert）快取。"""
+    conn.execute(
+        """
+        INSERT INTO user_analytics (user_id, data, computed_at)
+        VALUES (%s, %s::jsonb, now())
+        ON CONFLICT (user_id) DO UPDATE
+          SET data = EXCLUDED.data,
+              computed_at = EXCLUDED.computed_at
+        """,
+        (user_id, _json(data)),
+    )
+    conn.commit()
 
 
 def _get_accessible_session(
@@ -417,7 +520,7 @@ def get_analytics(
     user_id: str,
     college_map: dict[str, str] | None = None,
 ) -> dict:
-    """從用戶歷史對話萃取學習傾向統計。"""
+    """從用戶歷史對話萃取學習傾向統計（15 分鐘快取）。"""
     if not user_id:
         return _empty_analytics()
 
@@ -425,6 +528,10 @@ def get_analytics(
     college_map = college_map or {}
 
     with _connect() as conn:
+        cached = _analytics_cache_get(conn, user_id)
+        if cached is not None:
+            return cached
+
         session_row = conn.execute(
             "SELECT count(*)::int AS n FROM chat_sessions WHERE user_id = %s",
             (user_id,),
@@ -443,11 +550,14 @@ def get_analytics(
         ).fetchall()
 
     total_turns = len(rows)
-    seen_courses: set[str]           = set()
+    seen_courses: set[str]            = set()
     dept_counter: dict[str, int]      = {}
     tool_counter: dict[str, int]      = {}
     card_name_counter: dict[str, int] = {}   # top_courses：來自 course_cards
     domain_tag_counter: dict[str, int] = {}  # 興趣標籤：course_cards.domain_tags
+    ge_category_counter: dict[str, int] = {}  # 通識分類計數
+    ge_codes: set[str] = set()               # 通識課程代碼，用於查 topic_tags
+    course_domain_counter: dict[str, int] = {}  # 課程領域計數
 
     for row in rows:
         # 工具計數
@@ -455,7 +565,7 @@ def get_analytics(
             if isinstance(tool, str):
                 tool_counter[tool] = tool_counter.get(tool, 0) + 1
 
-        # course_pool：系所分佈 + 唯一課程數
+        # course_pool：系所分佈 + 唯一課程數 + 通識分類
         for course in _from_jsonb(row["course_pool"], []):
             if not isinstance(course, dict):
                 continue
@@ -465,6 +575,18 @@ def get_analytics(
             dept = course.get("dept", "").strip()
             if dept:
                 dept_counter[dept] = dept_counter.get(dept, 0) + 1
+                ge_cat = GE_CATEGORY_MAP.get(dept)
+                if ge_cat:
+                    ge_category_counter[ge_cat] = ge_category_counter.get(ge_cat, 0) + 1
+                    code = course.get("code", "").strip()
+                    if code:
+                        ge_codes.add(code)
+
+            # 課程領域（從 course_index 查）
+            code = course.get("code", "").strip()
+            if code:
+                for domain in _load_course_domains().get(code, []):
+                    course_domain_counter[domain] = course_domain_counter.get(domain, 0) + 1
 
         # course_cards：AI 推薦課程名稱 + domain_tags 興趣標籤
         for card in _from_jsonb(row["course_cards"], []):
@@ -490,11 +612,13 @@ def get_analytics(
                 else:
                     domain_tag_counter[part] = domain_tag_counter.get(part, 0) + 1
 
-    # ── 系所 Top 8 ───────────────────────────────────────────────
-    total_dept = sum(dept_counter.values()) or 1
+    # ── 系所 Top 8（只保留 college_map 中有對應的真實系所）────────
+    # course_pool 的 dept 欄位有時存學院名（如「工學院」院級課程），需過濾
+    valid_depts = {d: c for d, c in dept_counter.items() if d in college_map}
+    total_dept = sum(valid_depts.values()) or 1
     dept_distribution = [
         {"name": d, "count": c, "pct": round(c / total_dept * 100, 1)}
-        for d, c in sorted(dept_counter.items(), key=lambda x: -x[1])[:8]
+        for d, c in sorted(valid_depts.items(), key=lambda x: -x[1])[:8]
     ]
 
     # ── 學院 Top 5（從 dept 換算）────────────────────────────────
@@ -527,7 +651,38 @@ def get_analytics(
         for t, c in sorted(domain_tag_counter.items(), key=lambda x: -x[1])[:15]
     ]
 
-    return {
+    # ── 通識 / 語言 / 體育 / 服務學習 分析 ───────────────────────
+    ge_topic_counter: dict[str, int] = {}
+    if ge_codes:
+        topic_tags_db = _load_topic_tags()
+        for code in ge_codes:
+            for tag in topic_tags_db.get(code, {}).get("topic_tags", []):
+                tag = str(tag).strip()
+                if tag:
+                    ge_topic_counter[tag] = ge_topic_counter.get(tag, 0) + 1
+
+    GE_ORDER = ["通識", "外語", "體育", "服務學習"]
+    ge_total = sum(ge_category_counter.values())
+    general_edu = {
+        "total": ge_total,
+        "categories": [
+            {"name": cat, "count": ge_category_counter.get(cat, 0)}
+            for cat in GE_ORDER
+            if ge_category_counter.get(cat, 0) > 0
+        ],
+        "top_topic_tags": [
+            {"tag": t, "count": c}
+            for t, c in sorted(ge_topic_counter.items(), key=lambda x: -x[1])[:20]
+        ],
+    }
+
+    # ── 課程領域 Top 20 ──────────────────────────────────────────
+    top_course_domains = [
+        {"domain": d, "count": c}
+        for d, c in sorted(course_domain_counter.items(), key=lambda x: -x[1])[:20]
+    ]
+
+    result = {
         "overview": {
             "total_sessions":         total_sessions,
             "total_turns":            total_turns,
@@ -539,7 +694,465 @@ def get_analytics(
         "tool_usage":           tool_usage,
         "top_courses":          top_courses,
         "top_domain_tags":      top_domain_tags,
+        "general_edu":          general_edu,
+        "top_course_domains":   top_course_domains,
     }
+    with _connect() as conn:
+        _analytics_cache_set(conn, user_id, result)
+    return result
+
+
+def get_monitor_stats(
+    start_dt,
+    end_dt,
+    cache_key=None,
+):
+    """取得系統監控統計（開發人員用）。preset 範圍有快取；自訂日期不快取。"""
+    global _MONITOR_CACHE, _MONITOR_CACHE_AT
+    now = _now_datetime()
+
+    if cache_key is not None:
+        ttl = _MONITOR_CACHE_TTL_BY_RANGE.get(cache_key, 300)
+        if cache_key in _MONITOR_CACHE and cache_key in _MONITOR_CACHE_AT:
+            if (now - _MONITOR_CACHE_AT[cache_key]).total_seconds() < ttl:
+                return _MONITOR_CACHE[cache_key]
+
+    _ensure_schema()
+
+    is_hourly = (end_dt.date() == start_dt.date())
+    duration = end_dt - start_dt
+    prev_end_dt   = start_dt - timedelta(seconds=1)
+    prev_start_dt = prev_end_dt - duration
+
+    # GPT-5.4-mini Global 端點定價
+    INPUT_PRICE  = 0.75 / 1_000_000
+    OUTPUT_PRICE = 4.50 / 1_000_000
+
+    def _pct(cur, prev):
+        return round((cur - prev) / prev * 100, 1) if prev else None
+
+    def _cost(inp: int, out: int) -> float:
+        return round(inp * INPUT_PRICE + out * OUTPUT_PRICE, 6)
+
+    postgres_status = "ok"
+    alltime_row = period_row = prev_period_row = None
+    active_users_row = prev_active_row = new_users_row = avg_turns_row = None
+    peak_rows = trend_rows = activity_trend_rows = tools_rows = latency_trend_rows = []
+
+    try:
+        with _connect() as conn:
+            alltime_row = conn.execute("""
+                select
+                    (select count(*)::int from app_users)                                        as total_users,
+                    (select count(distinct session_id)::int from chat_sessions)                  as total_sessions,
+                    (select count(id)::int from chat_turns)                                      as total_turns,
+                    (select coalesce(sum(input_tokens),0)::int from chat_turns)                  as total_input,
+                    (select coalesce(sum(output_tokens),0)::int from chat_turns)                 as total_output,
+                    (select count(distinct session_id)::int from chat_turns
+                     where created_at > now() - interval '15 minutes')                           as online_now
+            """).fetchone()
+
+            period_row = conn.execute("""
+                select count(distinct t.session_id)::int     as sessions,
+                       count(t.id)::int                      as turns,
+                       coalesce(sum(t.input_tokens),0)::int  as input_tokens,
+                       coalesce(sum(t.output_tokens),0)::int as output_tokens,
+                       count(*) filter (where t.llm_latency_ms > 0)::int as latency_count,
+                       coalesce(round(avg(t.llm_latency_ms) filter (where t.llm_latency_ms > 0)), 0)::int as lat_avg,
+                       coalesce(percentile_cont(0.95) within group (order by t.llm_latency_ms)
+                                filter (where t.llm_latency_ms > 0), 0)::int as lat_p95,
+                       coalesce(percentile_cont(0.99) within group (order by t.llm_latency_ms)
+                                filter (where t.llm_latency_ms > 0), 0)::int as lat_p99,
+                       coalesce(min(t.llm_latency_ms) filter (where t.llm_latency_ms > 0), 0)::int as lat_min,
+                       coalesce(max(t.llm_latency_ms) filter (where t.llm_latency_ms > 0), 0)::int as lat_max
+                from chat_turns t
+                where t.created_at >= %s and t.created_at <= %s
+            """, (start_dt, end_dt)).fetchone()
+
+            prev_period_row = conn.execute("""
+                select count(id)::int                                   as turns,
+                       coalesce(sum(input_tokens+output_tokens),0)::int as tokens
+                from chat_turns
+                where created_at >= %s and created_at <= %s
+            """, (prev_start_dt, prev_end_dt)).fetchone()
+
+            active_users_row = conn.execute("""
+                select count(distinct s.user_id)::int as active_users
+                from chat_sessions s
+                join chat_turns t on t.session_id = s.session_id
+                where t.created_at >= %s and t.created_at <= %s
+            """, (start_dt, end_dt)).fetchone()
+
+            prev_active_row = conn.execute("""
+                select count(distinct s.user_id)::int as active_users
+                from chat_sessions s
+                join chat_turns t on t.session_id = s.session_id
+                where t.created_at >= %s and t.created_at <= %s
+            """, (prev_start_dt, prev_end_dt)).fetchone()
+
+            new_users_row = conn.execute("""
+                select count(*)::int as new_users
+                from app_users
+                where created_at >= %s and created_at <= %s
+            """, (start_dt, end_dt)).fetchone()
+
+            avg_turns_row = conn.execute("""
+                select round(count(id)::numeric / nullif(count(distinct session_id),0), 1) as avg_turns
+                from chat_turns
+                where created_at >= %s and created_at <= %s
+            """, (start_dt, end_dt)).fetchone()
+
+            peak_rows = conn.execute("""
+                select extract(hour from created_at at time zone 'Asia/Taipei')::int as hour,
+                       count(id)::int as turns
+                from chat_turns
+                where created_at >= %s and created_at <= %s
+                group by 1 order by 1
+            """, (start_dt, end_dt)).fetchall()
+
+            if is_hourly:
+                trend_rows = conn.execute("""
+                    select extract(hour from created_at at time zone 'Asia/Taipei')::int as hour,
+                           coalesce(sum(input_tokens),0)::int  as input,
+                           coalesce(sum(output_tokens),0)::int as output,
+                           count(id)::int                       as turns,
+                           count(distinct session_id)::int     as sessions
+                    from chat_turns
+                    where created_at >= %s and created_at <= %s
+                    group by 1 order by 1
+                """, (start_dt, end_dt)).fetchall()
+            else:
+                trend_rows = conn.execute("""
+                    select (created_at at time zone 'Asia/Taipei')::date as date,
+                           coalesce(sum(input_tokens),0)::int  as input,
+                           coalesce(sum(output_tokens),0)::int as output,
+                           count(id)::int                       as turns,
+                           count(distinct session_id)::int     as sessions
+                    from chat_turns
+                    where created_at >= %s and created_at <= %s
+                    group by 1 order by 1
+                """, (start_dt, end_dt)).fetchall()
+
+            if is_hourly:
+                activity_trend_rows = conn.execute("""
+                    select extract(hour from created_at at time zone 'Asia/Taipei')::int as label,
+                           count(distinct session_id)::int as sessions,
+                           count(id)::int                   as turns
+                    from chat_turns
+                    where created_at >= %s and created_at <= %s
+                    group by 1 order by 1
+                """, (start_dt, end_dt)).fetchall()
+            else:
+                activity_trend_rows = conn.execute("""
+                    select (created_at at time zone 'Asia/Taipei')::date as label,
+                           count(distinct session_id)::int as sessions,
+                           count(id)::int                   as turns
+                    from chat_turns
+                    where created_at >= %s and created_at <= %s
+                    group by 1 order by 1
+                """, (start_dt, end_dt)).fetchall()
+
+            tools_rows = conn.execute("""
+                select tool_name, count(*)::int as cnt
+                from chat_turns,
+                     jsonb_array_elements_text(tools_used) as tool_name
+                where jsonb_array_length(tools_used) > 0
+                  and created_at >= %s and created_at <= %s
+                group by 1 order by 2 desc
+                limit 15
+            """, (start_dt, end_dt)).fetchall()
+
+            if is_hourly:
+                latency_trend_rows = conn.execute("""
+                    select extract(hour from created_at at time zone 'Asia/Taipei')::int as hour,
+                           coalesce(round(avg(llm_latency_ms) filter (where llm_latency_ms > 0)), 0)::int as avg_ms
+                    from chat_turns
+                    where created_at >= %s and created_at <= %s and llm_latency_ms > 0
+                    group by 1 order by 1
+                """, (start_dt, end_dt)).fetchall()
+            else:
+                latency_trend_rows = conn.execute("""
+                    select (created_at at time zone 'Asia/Taipei')::date as date,
+                           coalesce(round(avg(llm_latency_ms) filter (where llm_latency_ms > 0)), 0)::int as avg_ms
+                    from chat_turns
+                    where created_at >= %s and created_at <= %s and llm_latency_ms > 0
+                    group by 1 order by 1
+                """, (start_dt, end_dt)).fetchall()
+
+    except Exception:
+        postgres_status = "error"
+        latency_trend_rows = []
+
+    qdrant_status = "ok"
+    try:
+        from app.services.retriever import _get_qdrant
+        _get_qdrant().get_collections()
+    except Exception:
+        qdrant_status = "error"
+
+    hour_map = {row["hour"]: row["turns"] for row in peak_rows}
+    peak_hours = [{"hour": h, "turns": hour_map.get(h, 0)} for h in range(24)]
+
+    if is_hourly:
+        hmap = {row["hour"]: row for row in trend_rows}
+        daily_trend = [
+            {"hour": h,
+             "input":    hmap[h]["input"]    if h in hmap else 0,
+             "output":   hmap[h]["output"]   if h in hmap else 0,
+             "turns":    hmap[h]["turns"]    if h in hmap else 0,
+             "sessions": hmap[h]["sessions"] if h in hmap else 0}
+            for h in range(24)
+        ]
+    else:
+        daily_trend = [
+            {"date": str(row["date"]), "input": row["input"],
+             "output": row["output"], "turns": row["turns"], "sessions": row["sessions"]}
+            for row in trend_rows
+        ]
+
+    if is_hourly:
+        amap = {row["label"]: row for row in activity_trend_rows}
+        activity_trend = [
+            {"date": f"{h:02d}:00",
+             "sessions": amap[h]["sessions"] if h in amap else 0,
+             "turns":    amap[h]["turns"]    if h in amap else 0}
+            for h in range(24)
+        ]
+    else:
+        activity_trend = [
+            {"date": str(row["label"]), "sessions": row["sessions"], "turns": row["turns"]}
+            for row in activity_trend_rows
+        ]
+
+    cur_turns   = period_row["turns"]       if period_row else 0
+    prev_turns  = prev_period_row["turns"]  if prev_period_row else 0
+    cur_tokens  = (period_row["input_tokens"] + period_row["output_tokens"]) if period_row else 0
+    prev_tokens = prev_period_row["tokens"] if prev_period_row else 0
+    cur_active  = active_users_row["active_users"] if active_users_row else 0
+    prev_active = prev_active_row["active_users"]  if prev_active_row else 0
+
+    result = {
+        "system_health": {"postgres": postgres_status, "qdrant": qdrant_status},
+        "all_time": {
+            "total_users":         alltime_row["total_users"]    if alltime_row else 0,
+            "total_sessions":      alltime_row["total_sessions"] if alltime_row else 0,
+            "total_turns":         alltime_row["total_turns"]    if alltime_row else 0,
+            "total_input":         alltime_row["total_input"]    if alltime_row else 0,
+            "total_output":        alltime_row["total_output"]   if alltime_row else 0,
+            "online_now":          alltime_row["online_now"]     if alltime_row else 0,
+            "estimated_cost_usd":  _cost(
+                alltime_row["total_input"]  if alltime_row else 0,
+                alltime_row["total_output"] if alltime_row else 0,
+            ),
+        },
+        "period": {
+            "active_users":          cur_active,
+            "new_users":             new_users_row["new_users"]        if new_users_row else 0,
+            "sessions":              period_row["sessions"]            if period_row else 0,
+            "turns":                 cur_turns,
+            "avg_turns_per_session": float(avg_turns_row["avg_turns"]) if avg_turns_row and avg_turns_row["avg_turns"] else 0.0,
+            "input_tokens":          period_row["input_tokens"]        if period_row else 0,
+            "output_tokens":         period_row["output_tokens"]       if period_row else 0,
+            "estimated_cost_usd":    _cost(
+                period_row["input_tokens"]  if period_row else 0,
+                period_row["output_tokens"] if period_row else 0,
+            ),
+            "llm_latency": {
+                "count":  period_row["latency_count"] if period_row else 0,
+                "avg_ms": period_row["lat_avg"]       if period_row else 0,
+                "p95_ms": period_row["lat_p95"]       if period_row else 0,
+                "p99_ms": period_row["lat_p99"]       if period_row else 0,
+                "min_ms": period_row["lat_min"]       if period_row else 0,
+                "max_ms": period_row["lat_max"]       if period_row else 0,
+            } if period_row and period_row["latency_count"] > 0 else None,
+            "llm_latency_trend": [
+                {"hour": row["hour"],         "avg_ms": row["avg_ms"]} if is_hourly
+                else {"date": str(row["date"]), "avg_ms": row["avg_ms"]}
+                for row in latency_trend_rows
+            ],
+        },
+        "trends": {
+            "turns":        {"current": cur_turns,  "previous": prev_turns,  "change_pct": _pct(cur_turns,  prev_turns)},
+            "tokens":       {"current": cur_tokens, "previous": prev_tokens, "change_pct": _pct(cur_tokens, prev_tokens)},
+            "active_users": {"current": cur_active, "previous": prev_active, "change_pct": _pct(cur_active, prev_active)},
+        },
+        "peak_hours": peak_hours,
+        "daily_trend": daily_trend,
+        "tools_usage": [
+            {"tool": row["tool_name"], "label": TOOL_LABELS.get(row["tool_name"], row["tool_name"]), "count": row["cnt"]}
+            for row in tools_rows
+        ],
+        "activity_trend": activity_trend,
+    }
+
+    if cache_key is not None:
+        _MONITOR_CACHE[cache_key] = result
+        _MONITOR_CACHE_AT[cache_key] = now
+    return result
+
+def _fmt_bytes(b: int) -> str:
+    if b >= 1_073_741_824:
+        return f"{b/1_073_741_824:.2f} GB"
+    if b >= 1_048_576:
+        return f"{b/1_048_576:.1f} MB"
+    return f"{b/1_024:.0f} KB"
+
+
+def _parse_region(url: str, pattern: str) -> str:
+    import re
+    m = re.search(pattern, url or "")
+    return m.group(1) if m else "unknown"
+
+
+def get_db_stats() -> dict:
+    """回傳 PostgreSQL / Qdrant / Cloudinary 統計 + 基礎設施資訊（60 秒快取）。"""
+    global _DB_STATS_CACHE, _DB_STATS_CACHE_AT
+    now = _now_datetime()
+    if _DB_STATS_CACHE and _DB_STATS_CACHE_AT:
+        if (now - _DB_STATS_CACHE_AT).total_seconds() < _DB_STATS_TTL:
+            return _DB_STATS_CACHE
+
+    _ensure_schema()
+
+    # ── PostgreSQL ────────────────────────────────────────────────
+    tables = []
+    db_row = None
+    try:
+        with _connect() as conn:
+            tables = conn.execute("""
+                select relname as name,
+                       n_live_tup::int as rows,
+                       pg_total_relation_size(schemaname||'.'||relname)::bigint as size_bytes,
+                       pg_size_pretty(pg_total_relation_size(schemaname||'.'||relname)) as size_pretty
+                from pg_stat_user_tables
+                order by size_bytes desc
+            """).fetchall()
+            db_row = conn.execute("""
+                select numbackends::int as connections,
+                       blks_hit::bigint, blks_read::bigint,
+                       case when blks_hit + blks_read > 0
+                            then round(blks_hit::numeric/(blks_hit+blks_read)*100, 1)
+                            else 100 end as cache_hit_pct,
+                       pg_size_pretty(pg_database_size(current_database())) as db_size
+                from pg_stat_database
+                where datname = current_database()
+            """).fetchone()
+    except Exception:
+        pass
+
+    # ── Qdrant ───────────────────────────────────────────────────
+    qdrant_collections: list[dict] = []
+    qdrant_total_points = 0
+    try:
+        from app.services.retriever import _get_qdrant
+        client = _get_qdrant()
+        for col in client.get_collections().collections:
+            try:
+                info = client.get_collection(col.name)
+                points   = getattr(info, "points_count", None) or 0
+                segments = getattr(info, "segments_count", None) or 0
+                opt_raw  = getattr(info, "optimizer_status", None)
+                opt_ok   = (getattr(opt_raw, "ok", None) is not None) if opt_raw else True
+                st_raw   = getattr(info, "status", None)
+                status   = str(st_raw.value) if hasattr(st_raw, "value") else str(st_raw or "unknown")
+                qdrant_collections.append({
+                    "name":          col.name,
+                    "points_count":  points,
+                    "segments_count": segments,
+                    "optimizer_ok":  opt_ok,
+                    "status":        status,
+                })
+                qdrant_total_points += points
+            except Exception:
+                qdrant_collections.append({
+                    "name": col.name, "points_count": 0,
+                    "segments_count": 0, "optimizer_ok": True, "status": "unknown",
+                })
+    except Exception:
+        pass
+
+    # ── Cloudinary ────────────────────────────────────────────────
+    cloudinary_stats: dict | None = None
+    cloudinary_error: str | None = None
+    _cl_name   = os.getenv("CLOUDINARY_CLOUD_NAME", "")
+    _cl_key    = os.getenv("CLOUDINARY_API_KEY", "")
+    _cl_secret = os.getenv("CLOUDINARY_API_SECRET", "")
+    if not (_cl_name and _cl_key and _cl_secret):
+        cloudinary_error = "環境變數未設定：請確認 CLOUDINARY_CLOUD_NAME / API_KEY / API_SECRET 已加入 .env 並重啟後端"
+    else:
+        try:
+            import cloudinary
+            import cloudinary.api
+            cloudinary.config(
+                cloud_name=_cl_name, api_key=_cl_key, api_secret=_cl_secret, secure=True
+            )
+            data = cloudinary.api.usage()
+        except ImportError:
+            try:
+                import ssl, urllib.request, base64
+                ctx  = ssl.create_default_context()
+                cred = base64.b64encode(f"{_cl_key}:{_cl_secret}".encode()).decode()
+                req  = urllib.request.Request(
+                    f"https://api.cloudinary.com/v1_1/{_cl_name}/usage",
+                    headers={"Authorization": f"Basic {cred}"},
+                )
+                with urllib.request.urlopen(req, context=ctx, timeout=10) as r:
+                    data = json.loads(r.read())
+            except Exception as e:
+                data = None
+                cloudinary_error = f"urllib 失敗：{e}"
+        except Exception as e:
+            data = None
+            cloudinary_error = f"cloudinary SDK 失敗：{e}"
+
+        if data is not None:
+            # storage / bandwidth 是 dict（有 usage 子欄位）
+            # resources / requests 是直接的整數
+            st  = data.get("storage", {})
+            bw  = data.get("bandwidth", {})
+            storage_bytes   = st.get("usage", 0)  if isinstance(st, dict) else int(st or 0)
+            bandwidth_bytes = bw.get("usage", 0)  if isinstance(bw, dict) else int(bw or 0)
+            resource_count  = data.get("resources", 0)
+            if isinstance(resource_count, dict):
+                resource_count = resource_count.get("usage", 0)
+            cloudinary_stats = {
+                "total_resources":  int(resource_count or 0),
+                "storage_bytes":    storage_bytes,
+                "storage_pretty":   _fmt_bytes(storage_bytes),
+                "bandwidth_bytes":  bandwidth_bytes,
+                "bandwidth_pretty": _fmt_bytes(bandwidth_bytes),
+                "plan":             str(data.get("plan", "unknown")),
+            }
+
+    # ── 基礎設施 metadata ─────────────────────────────────────────
+    db_url     = os.getenv("DATABASE_URL", "")
+    qdrant_url = os.getenv("QDRANT_URL", "")
+    neon_region   = _parse_region(db_url,     r'\.([a-z]+-[a-z]+-\d+)\.aws\.neon\.tech')
+    qdrant_region = _parse_region(qdrant_url, r'\.([a-z]+-[a-z]+-\d+)-\d+\.aws\.cloud\.qdrant')
+
+    result = {
+        "infra": {
+            "neon_region":         neon_region,
+            "qdrant_region":       qdrant_region,
+            "qdrant_total_points": qdrant_total_points,
+        },
+        "postgres": {
+            "connections":   db_row["connections"]   if db_row else 0,
+            "cache_hit_pct": float(db_row["cache_hit_pct"]) if db_row else 0.0,
+            "db_size":       db_row["db_size"]       if db_row else "unknown",
+            "tables": [
+                {"name": r["name"], "rows": r["rows"],
+                 "size_bytes": r["size_bytes"], "size_pretty": r["size_pretty"]}
+                for r in tables
+            ],
+        },
+        "qdrant":           {"collections": qdrant_collections},
+        "cloudinary":       cloudinary_stats,
+        "cloudinary_error": cloudinary_error,
+    }
+    _DB_STATS_CACHE = result
+    _DB_STATS_CACHE_AT = now
+    return result
 
 
 def _empty_analytics() -> dict:
@@ -553,4 +1166,6 @@ def _empty_analytics() -> dict:
         "tool_usage":           [],
         "top_courses":          [],
         "top_domain_tags":      [],
+        "general_edu":          {"total": 0, "categories": [], "top_topic_tags": []},
+        "top_course_domains":   [],
     }

@@ -1,15 +1,19 @@
 import asyncio
 import logging
 import os
+import re
+import time
 from contextlib import asynccontextmanager
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
-from app.routes import assessment, auth, courses, projects, course_search, graph, chat, curriculum
+from starlette.middleware.base import BaseHTTPMiddleware
+from app.routes import assessment, auth, courses, projects, course_search, graph, chat, curriculum, monitor
 from app.logging_config import configure_logging
 from app import app_state
+from app.services import latency_store as ls
 
 configure_logging()
 
@@ -26,6 +30,28 @@ def get_allowed_origins() -> list[str]:
         "http://127.0.0.1:5173,http://127.0.0.1:5174,http://127.0.0.1:3000",
     )
     return [origin.strip() for origin in origins.split(",") if origin.strip()]
+
+
+_DYNAMIC_RE = re.compile(r"/[0-9a-f]{8,}|/\d+")
+_SKIP_PREFIXES = ("/health", "/docs", "/openapi", "/pdfs", "/redoc")
+
+
+def _normalize_path(path: str) -> str:
+    return _DYNAMIC_RE.sub("/{id}", path)
+
+
+class LatencyMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: Request, call_next):
+        if any(request.url.path.startswith(p) for p in _SKIP_PREFIXES):
+            return await call_next(request)
+        t0 = time.perf_counter()
+        response = await call_next(request)
+        ls.record_request(
+            _normalize_path(request.url.path),
+            (time.perf_counter() - t0) * 1000,
+            response.status_code,
+        )
+        return response
 
 
 @asynccontextmanager
@@ -111,6 +137,8 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+app.add_middleware(LatencyMiddleware)
+
 # CORS configuration
 app.add_middleware(
     CORSMiddleware,
@@ -129,6 +157,7 @@ app.include_router(course_search.router, prefix="/api/course-search", tags=["cou
 app.include_router(graph.router, prefix="/api/graph", tags=["graph"])
 app.include_router(chat.router, prefix="/api/chat", tags=["chat"])
 app.include_router(curriculum.router, prefix="/api/curriculum", tags=["curriculum"])
+app.include_router(monitor.router, prefix="/api/monitor", tags=["monitor"])
 
 # 掛載 PDF 靜態文件服務
 pdf_directory = Path(__file__).parent.parent.parent / "data" / "raw" / "projects" / "104-114"
