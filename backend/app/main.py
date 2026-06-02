@@ -59,10 +59,10 @@ async def lifespan(app: FastAPI):
     # PDF chat coordination (stream lock, cancel, steering) is process-local.
     # This application MUST run as a single Uvicorn worker (--workers 1).
     # Multi-worker support requires migrating these to PostgreSQL LISTEN/NOTIFY.
-    workers = os.getenv("WEB_CONCURRENCY", os.getenv("UVICORN_WORKERS", "1"))
-    if str(workers) != "1":
+    workers = os.getenv("WEB_CONCURRENCY") or os.getenv("UVICORN_WORKERS")
+    if workers and str(workers) != "1":
         logger.warning(
-            "SINGLE-WORKER VIOLATION: WEB_CONCURRENCY=%s detected. "
+            "SINGLE-WORKER VIOLATION: %s workers detected. "
             "PDF chat stream lock, cancel, and steering are process-local and will malfunction "
             "with multiple workers. Set WEB_CONCURRENCY=1 or --workers 1.",
             workers,
