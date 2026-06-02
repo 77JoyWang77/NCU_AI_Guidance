@@ -100,9 +100,6 @@ def _coverage_status_for_trace(state: ResearchGraphState | ResearchState) -> dic
     return {str(slot): str(status) for slot, status in statuses.items()}
 
 
-def _safe_update_current_observation(*, input=None, output=None, metadata: dict | None = None) -> None:
-    pass
-
 
 def _slot_label(state: ResearchGraphState | ResearchState | dict, slot: str) -> str:
     items = state.coverage_items if isinstance(state, ResearchState) else state.get("coverage_items", [])

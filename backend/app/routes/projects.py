@@ -24,6 +24,12 @@ from app.services.auth_service import get_optional_user, AuthUser
 logger = logging.getLogger(__name__)
 router = APIRouter()
 
+
+async def _require_pdf_chat() -> None:
+    from app import app_state
+    if not app_state.pdf_chat_ready:
+        raise HTTPException(status_code=503, detail="PDF 問答服務目前不可用，請稍後再試。")
+
 # Per-user stream lock: prevents duplicate concurrent requests for the same user+project.
 # Key: "{project_id}:{user_id_or_anon}"
 _stream_lock: dict[str, str] = {}  # key → active thread_id
@@ -223,7 +229,7 @@ def _verify_cancel_ownership(thread_id: str, document_id: int, effective_req_id:
 
 # ── 非串流 chat（向下相容原有 schema）────────────────────────────────────────────
 
-@router.post("/{project_id}/chat", response_model=ChatResponse)
+@router.post("/{project_id}/chat", response_model=ChatResponse, dependencies=[Depends(_require_pdf_chat)])
 async def chat_with_project(
     project_id: str,
     request: ChatRequest,
@@ -279,7 +285,7 @@ async def chat_with_project(
 
 # ── SSE 串流 chat（前端主要使用）──────────────────────────────────────────────────
 
-@router.post("/{project_id}/chat/stream")
+@router.post("/{project_id}/chat/stream", dependencies=[Depends(_require_pdf_chat)])
 async def chat_with_project_stream(
     project_id: str,
     request: ChatRequest,
@@ -435,7 +441,7 @@ async def chat_with_project_stream(
 
 # ── 取消串流 ────────────────────────────────────────────────────────────────────
 
-@router.post("/{project_id}/chat/{thread_id}/cancel")
+@router.post("/{project_id}/chat/{thread_id}/cancel", dependencies=[Depends(_require_pdf_chat)])
 async def cancel_project_chat(
     project_id: str,
     thread_id: str,

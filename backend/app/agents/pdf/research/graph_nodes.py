@@ -25,7 +25,6 @@ from .graph_utils import (
     _normalize_query,
     _per_slot_cap,
     _reserve_query,
-    _safe_update_current_observation,
     _seed_keywords,
     _slot_label,
     _slot_search_counts,

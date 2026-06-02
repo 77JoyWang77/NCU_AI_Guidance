@@ -108,13 +108,11 @@ def get_dense_embeddings() -> AzureOpenAIEmbeddings:
 
 def _ensure_collection(client: QdrantClient) -> None:
     name = _collection()
-    if client.collection_exists(name):
-        return
-    client.create_collection(
-        collection_name=name,
-        vectors_config={DENSE_NAME: VectorParams(size=VECTOR_SIZE, distance=Distance.COSINE)},
-        sparse_vectors_config={SPARSE_NAME: SparseVectorParams(modifier=Modifier.IDF)},
-    )
+    if not client.collection_exists(name):
+        raise RuntimeError(
+            f"Qdrant collection '{name}' does not exist. "
+            "Run the indexing pipeline to create and populate it before starting the server."
+        )
 
 
 def get_vectorstore() -> QdrantVectorStore:

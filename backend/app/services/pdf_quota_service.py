@@ -15,7 +15,6 @@ lock or atomic UPDATE ... RETURNING counter.
 from __future__ import annotations
 
 import asyncio
-from contextlib import contextmanager
 from datetime import datetime, timezone
 
 from fastapi import HTTPException
@@ -65,28 +64,6 @@ def _db_count(effective_id: str) -> int:
         )
 
 
-def check_quota(user_id: str | None, anon_id: str | None = None) -> None:
-    """Raise HTTP 429 if the effective identity has exceeded its daily quota.
-
-    effective_id priority: user_id (authenticated) > anon_id (X-Anon-Session).
-    If neither is present the request is untracked and passes through.
-
-    NOTE: calling this via asyncio.to_thread and then enter_reservation separately
-    is NOT atomic — use check_and_reserve() instead for new code.
-    """
-    eid = _effective_id(user_id, anon_id)
-    if not eid:
-        return
-
-    db_count = _db_count(eid)
-    in_flight = _in_flight.get(eid, 0)
-
-    if db_count + in_flight >= _DEFAULT_DAILY_LIMIT:
-        raise HTTPException(
-            status_code=429,
-            detail=f"今日 PDF 問答請求數已達上限（{_DEFAULT_DAILY_LIMIT} 次）",
-        )
-
 
 async def check_and_reserve(
     user_id: str | None, anon_id: str | None = None
@@ -115,37 +92,6 @@ async def check_and_reserve(
     _in_flight[eid] = in_flight + 1
     return eid
 
-
-@contextmanager
-def quota_reservation(user_id: str | None, anon_id: str | None = None):
-    """Context manager that holds an in-flight slot for the duration of a request.
-
-    Usage:
-        with quota_reservation(user_id, anon_id):
-            ... run LLM ...
-
-    Automatically releases the slot on exit (success, exception, or cancel).
-    """
-    eid = _effective_id(user_id, anon_id)
-    if eid:
-        _in_flight[eid] = _in_flight.get(eid, 0) + 1
-    try:
-        yield
-    finally:
-        if eid:
-            count = _in_flight.get(eid, 1) - 1
-            if count <= 0:
-                _in_flight.pop(eid, None)
-            else:
-                _in_flight[eid] = count
-
-
-def enter_reservation(user_id: str | None, anon_id: str | None = None) -> str | None:
-    """Increment the in-flight counter; returns effective_id for exit_reservation()."""
-    eid = _effective_id(user_id, anon_id)
-    if eid:
-        _in_flight[eid] = _in_flight.get(eid, 0) + 1
-    return eid
 
 
 def exit_reservation(effective_id: str | None) -> None:

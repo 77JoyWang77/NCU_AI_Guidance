@@ -95,8 +95,14 @@ def should_continue(state: ResearchGraphState) -> Literal["scheduler", "writer"]
 # ── Fault-tolerance error handlers ───────────────────────────────────────────
 
 def _scheduler_error_handler(state: ResearchGraphState, error: NodeError) -> dict:
-    logger.warning("scheduler exhausted retries (%s); clearing scheduled_slot", error.error)
-    return {"scheduled_slot": None}
+    logger.warning("scheduler exhausted retries (%s); marking remaining slots OMITTED to force writer", error.error)
+    required = _required_ids_from_state(state)
+    terminal = {"FILLED", "EXHAUSTED", "NOT_FOUND", "OMITTED"}
+    current_status = dict(state.get("slot_status", {}))
+    for slot in required:
+        if current_status.get(slot) not in terminal:
+            current_status[slot] = "OMITTED"
+    return {"scheduled_slot": None, "slot_status": current_status}
 
 
 def _slot_executor_error_handler(state: ResearchGraphState, error: NodeError) -> dict:

@@ -222,7 +222,6 @@ async def _orchestrate(
     agent_status: AgentStatus | None = None,
     steering_guidance: str | None = None,
 ) -> RouterDecision:
-    stack = load_stack("router_default")
     system = get_prompt(ROUTER_PROMPT_NAME)
 
     _doc = await asyncio.to_thread(_fetch_document_context, document_id)

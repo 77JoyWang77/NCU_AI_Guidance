@@ -271,4 +271,4 @@ async def create_research_plan(
         return _clean_plan(plan, task_context, question)
     except Exception as exc:
         logger.warning("create_research_plan failed: %s", exc)
-        return fallback_research_plan(task_context, question)
+        raise

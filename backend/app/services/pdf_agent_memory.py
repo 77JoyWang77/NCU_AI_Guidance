@@ -82,7 +82,9 @@ async def build_memory_context(
         except Exception as exc:
             logger.debug("build_memory_context: context_summary failed: %s", exc)
 
-    if policy.long_term and user_id:
+    _is_anon = bool(user_id and user_id.startswith("anon:"))
+
+    if policy.long_term and user_id and not _is_anon:
         try:
             from app.services.pdf_memory_service import search_long_term_memory
             items = await search_long_term_memory(user_id, query, document_id=document_id)
@@ -90,7 +92,7 @@ async def build_memory_context(
         except Exception as exc:
             logger.debug("build_memory_context: long_term failed: %s", exc)
 
-    if policy.user_profile and user_id:
+    if policy.user_profile and user_id and not _is_anon:
         try:
             from app.services.pdf_user_profile_service import (
                 get_user_profile,

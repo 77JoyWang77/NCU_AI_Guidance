@@ -627,6 +627,7 @@ function ChatPanel({
                       {message.content}
                     </ReactMarkdown>
                   </div>
+                  {/* 參考頁碼（頁碼不一定對應實際頁數，暫時隱藏）
                   {message.sources && message.sources.length > 0 && (
                     <div className="mt-2 border-t border-gray-200 pt-2">
                       <p className="text-xs font-medium text-gray-500">參考頁碼</p>
@@ -637,6 +638,7 @@ function ChatPanel({
                       </ul>
                     </div>
                   )}
+                  */}
                 </>
               ) : (
                 <p className="whitespace-pre-wrap text-sm leading-relaxed">{message.content}</p>

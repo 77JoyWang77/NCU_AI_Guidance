@@ -9,6 +9,7 @@ from fastapi.staticfiles import StaticFiles
 from pathlib import Path
 from app.routes import assessment, auth, courses, projects, course_search, graph, chat, curriculum
 from app.logging_config import configure_logging
+from app import app_state
 
 configure_logging()
 
@@ -16,9 +17,6 @@ configure_logging()
 load_dotenv(Path(__file__).parent.parent.parent / ".env")
 
 logger = logging.getLogger(__name__)
-
-_pdf_init_ready = False
-_rag_init_ready = False
 
 
 def get_allowed_origins() -> list[str]:
@@ -44,7 +42,6 @@ async def lifespan(app: FastAPI):
             workers,
         )
 
-    global _pdf_init_ready, _rag_init_ready
     pdf_ok = False
 
     # PDF 問答初始化
@@ -64,13 +61,13 @@ async def lifespan(app: FastAPI):
     except Exception as exc:
         logger.warning("RAG warmup failed (non-fatal): %s", exc)
 
-    _pdf_init_ready = pdf_ok
-    _rag_init_ready = rag_ok
+    app_state.pdf_chat_ready = pdf_ok
+    app_state.rag_ready = rag_ok
 
     yield
 
-    _pdf_init_ready = False
-    _rag_init_ready = False
+    app_state.pdf_chat_ready = False
+    app_state.rag_ready = False
 
     # PDF 問答 shutdown：先 drain 再等 tasks，最後關 pool
     try:
@@ -153,17 +150,17 @@ async def health_check():
 
 @app.get("/ready")
 async def readiness_check():
-    if not (_pdf_init_ready and _rag_init_ready):
+    if not app_state.rag_ready:
         raise HTTPException(
             status_code=503,
             detail={
                 "status": "not_ready",
-                "pdf_chat": "ready" if _pdf_init_ready else "initializing",
-                "rag": "ready" if _rag_init_ready else "initializing",
+                "rag": "initializing",
+                "pdf_chat": "ready" if app_state.pdf_chat_ready else "initializing",
             },
         )
     return {
         "status": "ready",
-        "pdf_chat": "ready",
         "rag": "ready",
+        "pdf_chat": "ready" if app_state.pdf_chat_ready else "degraded",
     }

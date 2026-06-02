@@ -291,6 +291,7 @@ export const projectAPI = {
 
         let parseErrorStreak = 0;
         let aborted = false;
+        let receivedDone = false;
         const processLine = (line: string) => {
           if (!line.startsWith('data: ')) return;
           try {
@@ -311,7 +312,7 @@ export const projectAPI = {
             // session_id-only event (no token/done): front-load the session id so cancel works from turn 1.
             if (ev.session_id && !ev.done && ev.token === undefined) { handlers.onSessionId?.(ev.session_id); return; }
             if (ev.token !== undefined) handlers.onToken(ev.token);
-            if (ev.done) handlers.onDone(ev.session_id ?? '', ev.cancelled, ev.sources ?? []);
+            if (ev.done) { handlers.onDone(ev.session_id ?? '', ev.cancelled, ev.sources ?? []); receivedDone = true; }
           } catch (e) {
             console.error('[SSE] parse error on line:', line.slice(6, 120), e);
             parseErrorStreak += 1;
@@ -337,6 +338,9 @@ export const projectAPI = {
         // flush any remaining data not ending with \n (only if not aborted)
         if (!aborted) {
           for (const line of buf.split('\n')) processLine(line);
+          if (!receivedDone) {
+            handlers.onError('連線中斷，請重新整理後再試。');
+          }
         }
       })
       .catch((err: Error) => {
