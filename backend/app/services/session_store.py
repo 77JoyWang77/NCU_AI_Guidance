@@ -883,12 +883,8 @@ def get_monitor_stats(
         postgres_status = "error"
         latency_trend_rows = []
 
-    qdrant_status = "ok"
-    try:
-        from app.services.retriever import _get_qdrant
-        _get_qdrant().get_collections()
-    except Exception:
-        qdrant_status = "error"
+    qdrant_debug = _qdrant_debug()
+    qdrant_status = "ok" if qdrant_debug["status"] == "ok" else "error"
 
     hour_map = {row["hour"]: row["turns"] for row in peak_rows}
     peak_hours = [{"hour": h, "turns": hour_map.get(h, 0)} for h in range(24)]
@@ -933,6 +929,7 @@ def get_monitor_stats(
 
     result = {
         "system_health": {"postgres": postgres_status, "qdrant": qdrant_status},
+        "qdrant_debug": qdrant_debug,
         "all_time": {
             "total_users":         alltime_row["total_users"]    if alltime_row else 0,
             "total_sessions":      alltime_row["total_sessions"] if alltime_row else 0,
@@ -1004,6 +1001,33 @@ def _parse_region(url: str, pattern: str) -> str:
     return m.group(1) if m else "unknown"
 
 
+def _qdrant_debug() -> dict:
+    qdrant_url = os.getenv("QDRANT_URL", "").strip()
+    masked_url = qdrant_url
+    if qdrant_url:
+        from urllib.parse import urlparse
+        parsed = urlparse(qdrant_url)
+        masked_url = f"{parsed.scheme}://{parsed.netloc}{parsed.path}".rstrip("/")
+    debug = {
+        "configured": bool(qdrant_url),
+        "url": masked_url or "local:data/processed/qdrant_data",
+        "api_key_set": bool(os.getenv("QDRANT_API_KEY", "").strip()),
+        "status": "unknown",
+        "error": None,
+        "collections": [],
+    }
+    try:
+        from app.services.retriever import _get_qdrant
+        client = _get_qdrant()
+        collections = client.get_collections().collections
+        debug["collections"] = [collection.name for collection in collections]
+        debug["status"] = "ok"
+    except Exception as exc:
+        debug["status"] = "error"
+        debug["error"] = f"{type(exc).__name__}: {exc}"
+    return debug
+
+
 def get_db_stats() -> dict:
     """回傳 PostgreSQL / Qdrant / Cloudinary 統計 + 基礎設施資訊（60 秒快取）。"""
     global _DB_STATS_CACHE, _DB_STATS_CACHE_AT
@@ -1041,14 +1065,15 @@ def get_db_stats() -> dict:
         pass
 
     # ── Qdrant ───────────────────────────────────────────────────
+    qdrant_debug = _qdrant_debug()
     qdrant_collections: list[dict] = []
     qdrant_total_points = 0
-    try:
+    if qdrant_debug["status"] == "ok":
         from app.services.retriever import _get_qdrant
         client = _get_qdrant()
-        for col in client.get_collections().collections:
+        for col_name in qdrant_debug["collections"]:
             try:
-                info = client.get_collection(col.name)
+                info = client.get_collection(col_name)
                 points   = getattr(info, "points_count", None) or 0
                 segments = getattr(info, "segments_count", None) or 0
                 opt_raw  = getattr(info, "optimizer_status", None)
@@ -1056,20 +1081,19 @@ def get_db_stats() -> dict:
                 st_raw   = getattr(info, "status", None)
                 status   = str(st_raw.value) if hasattr(st_raw, "value") else str(st_raw or "unknown")
                 qdrant_collections.append({
-                    "name":          col.name,
+                    "name":          col_name,
                     "points_count":  points,
                     "segments_count": segments,
                     "optimizer_ok":  opt_ok,
                     "status":        status,
                 })
                 qdrant_total_points += points
-            except Exception:
+            except Exception as exc:
                 qdrant_collections.append({
-                    "name": col.name, "points_count": 0,
+                    "name": col_name, "points_count": 0,
                     "segments_count": 0, "optimizer_ok": True, "status": "unknown",
+                    "error": f"{type(exc).__name__}: {exc}",
                 })
-    except Exception:
-        pass
 
     # ── Cloudinary ────────────────────────────────────────────────
     cloudinary_stats: dict | None = None
@@ -1140,6 +1164,7 @@ def get_db_stats() -> dict:
             ],
         },
         "qdrant":           {"collections": qdrant_collections},
+        "qdrant_debug":     qdrant_debug,
         "cloudinary":       cloudinary_stats,
         "cloudinary_error": cloudinary_error,
     }

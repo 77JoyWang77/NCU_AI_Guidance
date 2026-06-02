@@ -249,6 +249,15 @@ export interface MonitorHealth {
   qdrant: 'ok' | 'error';
 }
 
+export interface QdrantDebug {
+  configured: boolean;
+  url: string;
+  api_key_set: boolean;
+  status: 'ok' | 'error' | 'unknown';
+  error: string | null;
+  collections: string[];
+}
+
 export interface MonitorTrend {
   current: number;
   previous: number;
@@ -316,8 +325,10 @@ export interface DBStats {
       segments_count: number;
       optimizer_ok: boolean;
       status: string;
+      error?: string;
     }[];
   };
+  qdrant_debug?: QdrantDebug;
   cloudinary: {
     total_resources: number;
     storage_bytes: number;
@@ -334,6 +345,7 @@ export interface MonitorStats {
   model_name: string;
   server_uptime_seconds: number;
   system_health: MonitorHealth;
+  qdrant_debug?: QdrantDebug;
   all_time: MonitorAllTime;
   period: MonitorPeriod;
   trends: {

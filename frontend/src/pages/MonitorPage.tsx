@@ -437,6 +437,7 @@ function DatabaseTab({ dbStats, loading }: { dbStats: DBStats|null; loading: boo
   if (!dbStats) return <div className="flex h-40 items-center justify-center text-slate-600 text-sm">載入失敗</div>;
 
   const { infra, postgres: pg, qdrant: qd, cloudinary: cl, cloudinary_error: clErr } = dbStats;
+  const qdDebug = dbStats.qdrant_debug;
   const cacheColor = pg.cache_hit_pct >= 95 ? '#10b981' : pg.cache_hit_pct >= 80 ? '#f59e0b' : '#ef4444';
 
   return (
@@ -539,7 +540,18 @@ function DatabaseTab({ dbStats, loading }: { dbStats: DBStats|null; loading: boo
         </p>
         <div className="rounded-xl border border-slate-800 bg-slate-900 p-4">
           {qd.collections.length === 0
-            ? <p className="text-sm text-slate-600">無法取得 Collection 資料</p>
+            ? <div className="space-y-2">
+                <p className="text-sm text-red-400">無法取得 Collection 資料</p>
+                {qdDebug && (
+                  <div className="rounded-lg border border-red-900/60 bg-red-950/30 px-3 py-2 text-xs text-red-200">
+                    <p className="font-mono break-all">{qdDebug.url}</p>
+                    <p className="mt-1 break-all">{qdDebug.error || 'unknown error'}</p>
+                    <p className="mt-1 text-red-300/70">
+                      QDRANT_URL: {qdDebug.configured ? '已設定' : '未設定'} · API Key: {qdDebug.api_key_set ? '已設定' : '未設定'}
+                    </p>
+                  </div>
+                )}
+              </div>
             : <div className="rounded-lg border border-slate-800 overflow-hidden">
                 <table className="w-full text-sm">
                   <thead>
@@ -811,6 +823,14 @@ export default function MonitorPage() {
               <ServiceDot label="PostgreSQL" ok={stats.system_health.postgres==='ok'}/>
               <span className="text-slate-700">·</span>
               <ServiceDot label="Qdrant" ok={stats.system_health.qdrant==='ok'}/>
+              {stats.system_health.qdrant === 'error' && stats.qdrant_debug && (
+                <span
+                  className="max-w-[720px] truncate text-[11px] text-red-300"
+                  title={`${stats.qdrant_debug.url} · ${stats.qdrant_debug.error || 'unknown error'}`}
+                >
+                  {stats.qdrant_debug.url} · {stats.qdrant_debug.error || 'unknown error'}
+                </span>
+              )}
               {chatLat && <>
                 <span className="text-slate-700">·</span>
                 <ServiceDot label="/api/chat" ok={chatLat.error_rate_pct<=5} extra={`${chatLat.avg_ms.toFixed(0)}ms avg`}/>
