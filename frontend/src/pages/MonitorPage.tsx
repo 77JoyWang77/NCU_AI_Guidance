@@ -40,7 +40,6 @@ const AX  = {
   splitLine: { lineStyle: { color: '#1e293b' } },
   axisLabel: { color: '#94a3b8', fontSize: 11 },
 };
-const PAL = ['#6366f1','#10b981','#f59e0b','#0ea5e9','#ef4444','#8b5cf6','#06b6d4','#84cc16'];
 
 function fmt(n: number) {
   if (n >= 1_000_000) return `${(n/1_000_000).toFixed(1)}M`;
