@@ -9,6 +9,7 @@ import CourseSearchPage from './pages/CourseSearchPage';
 import ResourcesPage from './pages/ResourcesPage';
 import CurriculumPage from './pages/CurriculumPage';
 import AnalyticsPage from './pages/AnalyticsPage';
+import MonitorPage from './pages/MonitorPage';
 import { AuthProvider } from './auth/AuthContext';
 
 function ScrollToTop() {
@@ -30,6 +31,9 @@ function App() {
             <Route path="/assessment" element={<AssessmentPage />} />
             <Route path="/resources" element={<ResourcesPage />} />
             <Route path="/profile" element={<AnalyticsPage />} />
+          </Route>
+          <Route element={<Layout noPad />}>
+            <Route path="/monitor" element={<MonitorPage />} />
           </Route>
           <Route element={<Layout fullHeight />}>
             <Route path="/courses" element={<CoursesPage />} />
