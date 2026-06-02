@@ -31,7 +31,7 @@ from pathlib import Path
 
 import requests
 
-ROOT        = Path(__file__).parent.parent
+ROOT        = Path(__file__).parent.parent.parent
 RESULTS_DIR = ROOT / "data" / "test_results"
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 

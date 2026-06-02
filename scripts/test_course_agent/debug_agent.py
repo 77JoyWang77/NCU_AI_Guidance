@@ -23,7 +23,7 @@ import argparse
 from pathlib import Path
 from datetime import datetime
 
-ROOT = Path(__file__).parent.parent
+ROOT = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(ROOT / "backend"))
 
 from dotenv import load_dotenv

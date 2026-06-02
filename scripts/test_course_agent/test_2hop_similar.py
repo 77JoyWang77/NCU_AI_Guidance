@@ -14,7 +14,7 @@ from pathlib import Path
 from datetime import datetime
 from collections import defaultdict
 
-ROOT = Path(__file__).parent.parent
+ROOT = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(ROOT / "backend"))
 
 from app.services import graph_service

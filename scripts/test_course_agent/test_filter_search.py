@@ -21,10 +21,10 @@ import io
 from datetime import datetime
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "backend"))
+sys.path.insert(0, str(Path(__file__).parent.parent.parent / "backend"))
 
 from dotenv import load_dotenv
-load_dotenv(Path(__file__).parent.parent / ".env")
+load_dotenv(Path(__file__).parent.parent.parent / ".env")
 
 try:
     from app.services.tools import tool_search_courses
@@ -309,7 +309,7 @@ def main():
         cases = TEST_CASES
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    out_dir = Path(__file__).parent.parent / "data" / "test_results"
+    out_dir = Path(__file__).parent.parent.parent / "data" / "test_results"
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / f"{timestamp}_filter_search.md"
 
