@@ -20,7 +20,7 @@ class PdfChatSettings(BaseSettings):
     # Qdrant（與目標系統共用同一個 server）
     qdrant_url: str = ""
     qdrant_api_key: SecretStr = SecretStr("")
-    pdf_qdrant_collection: str = "documents"
+    pdf_qdrant_collection: str = "reports"
 
     # Database
     database_url: str = ""
