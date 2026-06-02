@@ -177,98 +177,12 @@ function RadarChart({ axes }: { axes: { label: string; value: number; pct?: numb
   );
 }
 
-// ── 甜甜圈圖 (SVG) ───────────────────────────────────────────────
+// ── 概覽卡片 ────────────────────────────────────────────────────
 const DONUT_COLORS = [
   '#6366f1', '#8b5cf6', '#06b6d4', '#10b981',
   '#f59e0b', '#f97316', '#ec4899', '#14b8a6',
 ];
 
-function DonutChart({ items }: { items: { name: string; pct: number }[] }) {
-  const R = 56;
-  const STROKE = 18;
-  const SIZE = 160;
-  const cx = SIZE / 2;
-  const cy = SIZE / 2;
-  const C = 2 * Math.PI * R;
-
-  let cumPct = 0;
-
-  return (
-    <svg viewBox={`0 0 ${SIZE} ${SIZE}`} className="w-36 h-36 shrink-0">
-      <circle cx={cx} cy={cy} r={R} fill="none" stroke="#f1f5f9" strokeWidth={STROKE} />
-      {items.map((item, i) => {
-        const segLen = (item.pct / 100) * C;
-        const dashoffset = C * 0.25 - (cumPct / 100) * C;
-        cumPct += item.pct;
-        return (
-          <circle
-            key={item.name}
-            cx={cx} cy={cy} r={R}
-            fill="none"
-            stroke={DONUT_COLORS[i % DONUT_COLORS.length]}
-            strokeWidth={STROKE}
-            strokeDasharray={`${segLen} ${C - segLen}`}
-            strokeDashoffset={dashoffset}
-            strokeLinecap="butt"
-          />
-        );
-      })}
-    </svg>
-  );
-}
-
-// ── 標籤雲 ─────────────────────────────────────────────────────
-const TAG_COLORS = [
-  'bg-primary-50 text-primary-700',
-  'bg-violet-50 text-violet-700',
-  'bg-sky-50 text-sky-700',
-  'bg-emerald-50 text-emerald-700',
-  'bg-amber-50 text-amber-700',
-  'bg-rose-50 text-rose-700',
-];
-
-function TagCloud({ tags }: { tags: { tag: string; count: number }[] }) {
-  const max = tags[0]?.count || 1;
-  return (
-    <div className="flex flex-wrap gap-2 leading-snug">
-      {tags.map((t, i) => {
-        const ratio = t.count / max;
-        const size =
-          ratio > 0.75 ? 'text-xl font-bold px-4 py-1.5' :
-          ratio > 0.5  ? 'text-base font-semibold px-3 py-1' :
-          ratio > 0.3  ? 'text-sm font-medium px-2.5 py-1' :
-                         'text-xs px-2 py-0.5';
-        return (
-          <span key={t.tag}
-            className={`inline-flex items-center rounded-full ${size} ${TAG_COLORS[i % TAG_COLORS.length]} transition-transform hover:scale-105`}
-            title={`出現 ${t.count} 次`}
-          >
-            {t.tag}
-          </span>
-        );
-      })}
-    </div>
-  );
-}
-
-// ── 系所橫條 ────────────────────────────────────────────────────
-function DeptBar({ name, count, pct, rank }: { name: string; count: number; pct: number; rank: number }) {
-  const opacity = rank < 3 ? 'opacity-100' : rank < 6 ? 'opacity-80' : 'opacity-60';
-  return (
-    <div>
-      <div className="mb-1 flex items-baseline justify-between gap-2">
-        <span className="text-xs font-medium text-slate-700">{name}</span>
-        <span className="shrink-0 text-xs text-slate-400">{count} 次</span>
-      </div>
-      <div className="h-2 rounded-full bg-slate-100">
-        <div className={`h-2 rounded-full bg-primary-500 transition-all duration-700 ${opacity}`}
-          style={{ width: `${Math.max(pct, 1)}%` }} />
-      </div>
-    </div>
-  );
-}
-
-// ── 概覽卡片 ────────────────────────────────────────────────────
 function StatCard({ icon, label, value, sub }: {
   icon: React.ReactNode; label: string; value: string | number; sub?: string;
 }) {
