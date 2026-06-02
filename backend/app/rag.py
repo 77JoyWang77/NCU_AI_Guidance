@@ -108,7 +108,8 @@ def get_dense_embeddings() -> AzureOpenAIEmbeddings:
 
 def _ensure_collection(client: QdrantClient) -> None:
     name = _collection()
-    if not client.collection_exists(name):
+    collection_names = {collection.name for collection in client.get_collections().collections}
+    if name not in collection_names:
         raise RuntimeError(
             f"Qdrant collection '{name}' does not exist. "
             "Run the indexing pipeline to create and populate it before starting the server."
