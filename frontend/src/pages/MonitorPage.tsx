@@ -14,6 +14,8 @@ import {
   type LLMLatency, type DBStats,
 } from '../api/services';
 
+type TipParam = { marker: string; seriesName: string; value: number; name: string; axisValue: string; seriesIndex: number };
+
 // ── 日期工具 ─────────────────────────────────────────────────────
 function toISO(d: Date) { return d.toISOString().split('T')[0]; }
 function weekToRange(w: string) {
@@ -134,7 +136,7 @@ function TokenChart({ daily_trend, isHourly }: { daily_trend: MonitorStats['dail
   const opt = {
     backgroundColor:'transparent', grid:{left:54,right:16,top:12,bottom:36},
     legend:{data:['Input','Output'],bottom:0,textStyle:{color:'#94a3b8',fontSize:11}},
-    tooltip:{...TIP,trigger:'axis',formatter:(p:any[])=>p.map(x=>`${x.marker}${x.seriesName}: <b>${fmt(x.value)}</b>`).join('<br/>')},
+    tooltip:{...TIP,trigger:'axis',formatter:(p:TipParam[])=>p.map(x=>`${x.marker}${x.seriesName}: <b>${fmt(x.value)}</b>`).join('<br/>')},
     xAxis:{type:'category',data:xData,boundaryGap:false,...AX},
     yAxis:{type:'value',...AX,axisLabel:{...AX.axisLabel,formatter:fmt}},
     series:[
@@ -155,7 +157,7 @@ function LatencyTrendChart({ trend, isHourly }: { trend: {date?:string;hour?:num
   const data  = trend.map(r=>r.avg_ms);
   const opt = {
     backgroundColor:'transparent', grid:{left:54,right:16,top:12,bottom:36},
-    tooltip:{...TIP,trigger:'axis',formatter:(p:any[])=>`${p[0].axisValue} &nbsp;<b>${ms(p[0].value)}</b>`},
+    tooltip:{...TIP,trigger:'axis',formatter:(p:TipParam[])=>`${p[0].axisValue} &nbsp;<b>${ms(p[0].value)}</b>`},
     xAxis:{type:'category',data:xData,boundaryGap:false,...AX},
     yAxis:{type:'value',...AX,axisLabel:{...AX.axisLabel,formatter:(v:number)=>ms(v)}},
     series:[{type:'line',smooth:true,data,symbol:'none',lineStyle:{color:'#f59e0b',width:2},itemStyle:{color:'#f59e0b'},
@@ -168,7 +170,7 @@ function PeakChart({ data }: { data: {hour:number;turns:number}[] }) {
   const mx = Math.max(...data.map(h=>h.turns),1);
   const opt = {
     backgroundColor:'transparent', grid:{left:28,right:8,top:8,bottom:36},
-    tooltip:{...TIP,trigger:'axis',formatter:(p:any[])=>`${String(p[0].name).padStart(2,'0')}:00 &nbsp;<b>${p[0].value} 輪</b>`},
+    tooltip:{...TIP,trigger:'axis',formatter:(p:TipParam[])=>`${String(p[0].name).padStart(2,'0')}:00 &nbsp;<b>${p[0].value} 輪</b>`},
     xAxis:{type:'category',data:data.map(h=>h.hour),...AX,axisLabel:{...AX.axisLabel,fontSize:10,formatter:(v:number)=>v%6===0?String(v).padStart(2,'0'):''}},
     yAxis:{type:'value',...AX,minInterval:1},
     series:[{type:'bar',barMaxWidth:16,data:data.map(h=>({value:h.turns,itemStyle:{color:`rgba(99,102,241,${Math.max(.12,h.turns/mx)})`,borderRadius:[2,2,0,0]}}))}],
@@ -176,17 +178,6 @@ function PeakChart({ data }: { data: {hour:number;turns:number}[] }) {
   return <ReactECharts option={opt} style={{height:160}}/>;
 }
 
-function ToolsChart({ tools }: { tools:{label:string;count:number}[] }) {
-  const top = tools.slice(0,8);
-  if (!top.length) return <div className="flex h-28 items-center justify-center text-sm text-slate-600">尚無紀錄</div>;
-  const opt = {
-    backgroundColor:'transparent',
-    legend:{orient:'vertical',right:0,top:'center',textStyle:{color:'#94a3b8',fontSize:11}},
-    tooltip:{...TIP,trigger:'item',formatter:'{b}: {c} ({d}%)'},
-    series:[{type:'pie',radius:['36%','62%'],center:['36%','50%'],color:PAL,data:top.map(t=>({name:t.label,value:t.count})),label:{show:false},emphasis:{itemStyle:{shadowBlur:8,shadowColor:'rgba(0,0,0,.4)'}}}],
-  };
-  return <ReactECharts option={opt} style={{height:160}}/>;
-}
 
 function ActivityChart({ data }: { data:{date:string;sessions:number;turns:number}[] }) {
   if (!data.length) return <div className="flex h-28 items-center justify-center text-sm text-slate-600">尚無資料</div>;
@@ -336,7 +327,7 @@ function DailyCostChart({ daily_trend, isHourly }: {
     legend: { data: ['估算費用 (USD)', '每輪 Token'], bottom: 4, textStyle: { color: '#94a3b8', fontSize: 11 } },
     tooltip: {
       ...TIP, trigger: 'axis',
-      formatter: (p: any[]) => p.map(x =>
+      formatter: (p: TipParam[]) => p.map(x =>
         `${x.marker}${x.seriesName}: <b>${x.seriesIndex === 0 ? `$${x.value.toFixed(5)}` : fmt(x.value)}</b>`
       ).join('<br/>'),
     },
@@ -626,7 +617,7 @@ function AllToolsBarChart({ tools }: { tools:{label:string;count:number}[] }) {
     backgroundColor: 'transparent',
     grid: { left: 140, right: 60, top: 8, bottom: 16 },
     tooltip: { ...TIP, trigger: 'axis', axisPointer: { type: 'none' },
-      formatter: (p: any[]) => `${p[0].name}<br/>${p[0].marker}<b>${p[0].value}</b> 次（${((p[0].value/total)*100).toFixed(1)}%）` },
+      formatter: (p: TipParam[]) => `${p[0].name}<br/>${p[0].marker}<b>${p[0].value}</b> 次（${((p[0].value/total)*100).toFixed(1)}%）` },
     xAxis: { type: 'value', ...AX, axisLabel: { ...AX.axisLabel, fontSize: 10 } },
     yAxis: {
       type: 'category',
@@ -638,7 +629,7 @@ function AllToolsBarChart({ tools }: { tools:{label:string;count:number}[] }) {
       type: 'bar', data: sorted.map(t => t.count), barMaxWidth: 14,
       itemStyle: { color: '#6366f1', borderRadius: [0,3,3,0] },
       label: { show: true, position: 'right', color: '#94a3b8', fontSize: 10,
-               formatter: (p: any) => `${p.value}` },
+               formatter: (p: { value: number }) => `${p.value}` },
     }],
   };
   const chartHeight = Math.max(160, sorted.length * 28 + 30);
@@ -735,6 +726,7 @@ export default function MonitorPage() {
   useEffect(() => {
     if (authLoading) return;
     if (!isDeveloper(user?.email)) { navigate('/'); return; }
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchStats(fetchOpts);
   }, [user, authLoading, navigate, fetchStats, fetchOpts]);
 
