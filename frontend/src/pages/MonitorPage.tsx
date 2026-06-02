@@ -38,7 +38,6 @@ const AX  = {
   splitLine: { lineStyle: { color: '#1e293b' } },
   axisLabel: { color: '#94a3b8', fontSize: 11 },
 };
-const PAL = ['#6366f1','#10b981','#f59e0b','#0ea5e9','#ef4444','#8b5cf6','#06b6d4','#84cc16'];
 
 function fmt(n: number) {
   if (n >= 1_000_000) return `${(n/1_000_000).toFixed(1)}M`;
@@ -172,18 +171,6 @@ function PeakChart({ data }: { data: {hour:number;turns:number}[] }) {
     xAxis:{type:'category',data:data.map(h=>h.hour),...AX,axisLabel:{...AX.axisLabel,fontSize:10,formatter:(v:number)=>v%6===0?String(v).padStart(2,'0'):''}},
     yAxis:{type:'value',...AX,minInterval:1},
     series:[{type:'bar',barMaxWidth:16,data:data.map(h=>({value:h.turns,itemStyle:{color:`rgba(99,102,241,${Math.max(.12,h.turns/mx)})`,borderRadius:[2,2,0,0]}}))}],
-  };
-  return <ReactECharts option={opt} style={{height:160}}/>;
-}
-
-function ToolsChart({ tools }: { tools:{label:string;count:number}[] }) {
-  const top = tools.slice(0,8);
-  if (!top.length) return <div className="flex h-28 items-center justify-center text-sm text-slate-600">尚無紀錄</div>;
-  const opt = {
-    backgroundColor:'transparent',
-    legend:{orient:'vertical',right:0,top:'center',textStyle:{color:'#94a3b8',fontSize:11}},
-    tooltip:{...TIP,trigger:'item',formatter:'{b}: {c} ({d}%)'},
-    series:[{type:'pie',radius:['36%','62%'],center:['36%','50%'],color:PAL,data:top.map(t=>({name:t.label,value:t.count})),label:{show:false},emphasis:{itemStyle:{shadowBlur:8,shadowColor:'rgba(0,0,0,.4)'}}}],
   };
   return <ReactECharts option={opt} style={{height:160}}/>;
 }
