@@ -39,3 +39,9 @@ duckduckgo-search>=6.0.0
 
 # Structured JSON logging
 python-json-logger>=2.0
+
+# PDF storage usage stats
+cloudinary>=1.40.0
+
+# UUID7 IDs used by PDF chat utilities
+uuid7>=0.1.0

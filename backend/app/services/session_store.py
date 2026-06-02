@@ -25,7 +25,7 @@ _MONITOR_CACHE_AT: dict[str, datetime] = {}
 _MONITOR_CACHE_TTL_BY_RANGE: dict[str, int] = {"1d": 60, "7d": 300, "30d": 600}
 _DB_STATS_CACHE: dict | None = None
 _DB_STATS_CACHE_AT: datetime | None = None
-_DB_STATS_TTL = 60
+_DB_STATS_TTL = 600
 _ROOT = Path(__file__).parent.parent.parent.parent
 
 
@@ -1088,22 +1088,15 @@ def get_db_stats() -> dict:
             )
             data = cloudinary.api.usage()
         except ImportError:
-            try:
-                import ssl, urllib.request, base64
-                ctx  = ssl.create_default_context()
-                cred = base64.b64encode(f"{_cl_key}:{_cl_secret}".encode()).decode()
-                req  = urllib.request.Request(
-                    f"https://api.cloudinary.com/v1_1/{_cl_name}/usage",
-                    headers={"Authorization": f"Basic {cred}"},
-                )
-                with urllib.request.urlopen(req, context=ctx, timeout=10) as r:
-                    data = json.loads(r.read())
-            except Exception as e:
-                data = None
-                cloudinary_error = f"urllib 失敗：{e}"
+            data = None
+            cloudinary_error = "後端未安裝 cloudinary 套件，無法取得 Cloudinary 用量統計。"
         except Exception as e:
             data = None
-            cloudinary_error = f"cloudinary SDK 失敗：{e}"
+            err = str(e)
+            if "420" in err or "Rate Limit" in err or "Enhance Your Calm" in err:
+                cloudinary_error = "Cloudinary API 查詢額度暫時用完，請稍後再試；PDF 連結不受影響。"
+            else:
+                cloudinary_error = f"cloudinary SDK 失敗：{e}"
 
         if data is not None:
             # storage / bandwidth 是 dict（有 usage 子欄位）
