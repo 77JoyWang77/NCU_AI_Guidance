@@ -8,12 +8,14 @@ import {
   HiChat,
   HiChevronLeft,
   HiChevronRight,
+  HiLockClosed,
   HiPaperAirplane,
   HiStop,
   HiUser,
 } from 'react-icons/hi';
 import { projectAPI } from '../api/services';
 import PdfViewer from '../components/PdfViewer';
+import { useAuth } from '../auth/AuthContext';
 import type { Project } from '../types';
 
 type ChatMessage = {
@@ -25,6 +27,7 @@ type ChatMessage = {
 type MobileOutlineView = 'list' | 'detail';
 
 export default function ProjectsPage() {
+  const { user, loginWithGoogle } = useAuth();
   const [projects, setProjects] = useState<Project[]>([]);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [viewMode, setViewMode] = useState<'outline' | 'pdf-chat'>('outline');
@@ -134,7 +137,7 @@ export default function ProjectsPage() {
 
   const handleSendMessage = (event: FormEvent) => {
     event.preventDefault();
-    if (!inputMessage.trim() || !selectedProject || chatLoading) return;
+    if (!user || !inputMessage.trim() || !selectedProject || chatLoading) return;
 
     const userMessage = inputMessage.trim();
     setChatMessages((prev) => [...prev, { role: 'user', content: userMessage }]);
@@ -482,6 +485,8 @@ export default function ProjectsPage() {
                   onSubmit={handleSendMessage}
                   onCancel={handleCancelStream}
                   onClose={() => setIsMobileChatOpen(false)}
+                  isLoggedIn={!!user}
+                  onLogin={loginWithGoogle}
                 />
 
                 <div className="flex w-11 items-center justify-center pl-2">
@@ -516,6 +521,8 @@ export default function ProjectsPage() {
               onInputChange={setInputMessage}
               onSubmit={handleSendMessage}
               onCancel={handleCancelStream}
+              isLoggedIn={!!user}
+              onLogin={loginWithGoogle}
             />
           </div>
         </>
@@ -576,6 +583,8 @@ function ChatPanel({
   onCancel,
   onClose,
   compact = false,
+  isLoggedIn = true,
+  onLogin,
 }: {
   messages: ChatMessage[];
   streamingText: string;
@@ -586,6 +595,8 @@ function ChatPanel({
   onCancel: () => void;
   onClose?: () => void;
   compact?: boolean;
+  isLoggedIn?: boolean;
+  onLogin?: () => void;
 }) {
   const bottomRef = useRef<HTMLDivElement>(null);
 
@@ -673,32 +684,59 @@ function ChatPanel({
         <div ref={bottomRef} />
       </div>
 
-      <form onSubmit={onSubmit} className="border-t border-gray-200 p-3">
-        <div className="flex gap-2">
-          <input
-            type="text"
-            value={inputMessage}
-            onChange={(event) => onInputChange(event.target.value)}
-            placeholder="輸入你想了解的研究問題..."
-            disabled={chatLoading}
-            className="min-w-0 flex-1 rounded-md border border-gray-300 px-4 py-3 transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500 disabled:bg-gray-50 disabled:text-gray-400"
-          />
-          {chatLoading ? (
+      {!isLoggedIn ? (
+        <div className="border-t border-gray-200 p-4">
+          <div className="flex flex-col items-center gap-3 rounded-2xl bg-slate-50 px-4 py-5 text-center">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100">
+              <HiLockClosed className="h-5 w-5 text-slate-400" />
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-slate-700">需要登入才能使用 AI 對話</p>
+              <p className="mt-0.5 text-xs text-slate-400">登入後即可針對論文內容進行提問</p>
+            </div>
             <button
               type="button"
-              onClick={onCancel}
-              className="btn-secondary shrink-0"
-              aria-label="中止回應"
+              onClick={onLogin}
+              className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-50 hover:shadow"
             >
-              <HiStop className="h-5 w-5" />
+              <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 shrink-0">
+                <path fill="#4285F4" d="M21.6 12.2c0-.7-.1-1.3-.2-1.9H12v3.6h5.4c-.2 1.2-.9 2.3-2 3v2.4h3.2c1.9-1.7 3-4.2 3-7.1z" />
+                <path fill="#34A853" d="M12 22c2.7 0 5-.9 6.6-2.5l-3.2-2.4c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.5C4.8 19.8 8.1 22 12 22z" />
+                <path fill="#FBBC05" d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.5H3.1C2.4 8.9 2 10.4 2 12s.4 3.1 1.1 4.5L6.4 14z" />
+                <path fill="#EA4335" d="M12 5.9c1.5 0 2.8.5 3.8 1.5l2.8-2.8C16.9 3 14.7 2 12 2 8.1 2 4.8 4.2 3.1 7.5L6.4 10c.8-2.3 3-4.1 5.6-4.1z" />
+              </svg>
+              使用 Google 帳號登入
             </button>
-          ) : (
-            <button type="submit" disabled={!inputMessage.trim()} className="btn-primary shrink-0">
-              <HiPaperAirplane className="h-5 w-5" />
-            </button>
-          )}
+          </div>
         </div>
-      </form>
+      ) : (
+        <form onSubmit={onSubmit} className="border-t border-gray-200 p-3">
+          <div className="flex gap-2">
+            <input
+              type="text"
+              value={inputMessage}
+              onChange={(event) => onInputChange(event.target.value)}
+              placeholder="輸入你想了解的研究問題..."
+              disabled={chatLoading}
+              className="min-w-0 flex-1 rounded-md border border-gray-300 px-4 py-3 transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500 disabled:bg-gray-50 disabled:text-gray-400"
+            />
+            {chatLoading ? (
+              <button
+                type="button"
+                onClick={onCancel}
+                className="btn-secondary shrink-0"
+                aria-label="中止回應"
+              >
+                <HiStop className="h-5 w-5" />
+              </button>
+            ) : (
+              <button type="submit" disabled={!inputMessage.trim()} className="btn-primary shrink-0">
+                <HiPaperAirplane className="h-5 w-5" />
+              </button>
+            )}
+          </div>
+        </form>
+      )}
     </div>
   );
 }

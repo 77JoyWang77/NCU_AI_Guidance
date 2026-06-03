@@ -19,7 +19,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query, Request
 from fastapi.responses import StreamingResponse
 
 from app.models.schemas import Project, ChatRequest, ChatResponse
-from app.services.auth_service import get_optional_user, AuthUser
+from app.services.auth_service import get_optional_user, get_current_user, AuthUser
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
@@ -234,7 +234,7 @@ async def chat_with_project(
     project_id: str,
     request: ChatRequest,
     http_request: Request,
-    user: Optional[AuthUser] = Depends(get_optional_user),
+    user: AuthUser = Depends(get_current_user),
 ):
     from app.utils import new_id
     from app.agents.pdf.router_agent import route_agent_stream
@@ -246,12 +246,10 @@ async def chat_with_project(
     if document_id is None:
         raise HTTPException(status_code=409, detail="此論文的 PDF 尚未完成索引，請稍後再試。")
     thread_id = request.thread_id or new_id()
-    user_id = user.user_id if user else None
-    _raw_anon = http_request.headers.get("X-Anon-Session", "")
-    anon_id = _raw_anon if (not user_id and _UUID4_RE.match(_raw_anon)) else None
-    owner_id = user_id or (f"anon:{anon_id}" if anon_id else None)
-    set_user_id(owner_id or "")
-    _quota_id = await check_and_reserve(user_id, anon_id)
+    user_id = user.user_id
+    owner_id = user_id
+    set_user_id(owner_id)
+    _quota_id = await check_and_reserve(user_id)
 
     gate_acquired = False
     full_response = ""
@@ -290,7 +288,7 @@ async def chat_with_project_stream(
     project_id: str,
     request: ChatRequest,
     http_request: Request,
-    user: Optional[AuthUser] = Depends(get_optional_user),
+    user: AuthUser = Depends(get_current_user),
 ):
     from app.utils import new_id
     from app.agents.pdf import chat_jobs, steering
@@ -302,12 +300,10 @@ async def chat_with_project_stream(
     if document_id is None:
         raise HTTPException(status_code=409, detail="此論文的 PDF 尚未完成索引，請稍後再試。")
     thread_id = request.thread_id or new_id()
-    user_id = user.user_id if user else None
-    _raw_anon = http_request.headers.get("X-Anon-Session", "")
-    anon_id = _raw_anon if (not user_id and _UUID4_RE.match(_raw_anon)) else None
-    owner_id = user_id or (f"anon:{anon_id}" if anon_id else None)
-    set_user_id(owner_id or "")
-    _quota_id = await check_and_reserve(user_id, anon_id)
+    user_id = user.user_id
+    owner_id = user_id
+    set_user_id(owner_id)
+    _quota_id = await check_and_reserve(user_id)
 
     # Per-user stream lock: if same user+project already has an active stream,
     # silently drop the duplicate request so the frontend only sees one response.

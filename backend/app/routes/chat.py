@@ -56,13 +56,13 @@ class ChatResponse(BaseModel):
 
 
 @router.post("", response_model=ChatResponse)
-async def chat(req: ChatRequest, user: AuthUser | None = Depends(get_optional_user)):
+async def chat(req: ChatRequest, user: AuthUser = Depends(get_current_user)):
     q = req.question.strip()
     if not q:
         raise HTTPException(status_code=400, detail="question 不得為空")
 
     sid = req.session_id or ss.new_session_id()
-    user_id = user.user_id if user else None
+    user_id = user.user_id
     history = ss.load(sid, user_id=user_id)
 
     hints = []
@@ -109,14 +109,14 @@ async def chat(req: ChatRequest, user: AuthUser | None = Depends(get_optional_us
 
 
 @router.post("/stream")
-async def chat_stream(req: ChatRequest, user: AuthUser | None = Depends(get_optional_user)):
+async def chat_stream(req: ChatRequest, user: AuthUser = Depends(get_current_user)):
     """串流版：SSE 逐字回傳 + 工具呼叫進度事件。"""
     q = req.question.strip()
     if not q:
         raise HTTPException(status_code=400, detail="question 不得為空")
 
     sid = req.session_id or ss.new_session_id()
-    user_id = user.user_id if user else None
+    user_id = user.user_id
     history = ss.load(sid, user_id=user_id)
 
     hints = []
