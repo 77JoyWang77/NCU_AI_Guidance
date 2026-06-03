@@ -345,27 +345,32 @@ async def _write_agent_message(
     primary_observation_id: str,
     result: AgentResult | None,
 ) -> None:
-    from app.database_pdf import PdfSessionLocal
-    from app.models.pdf_models import PdfAgentMessage
-    msg = PdfAgentMessage(
-        message_id=new_id(),
-        thread_id=thread_id,
-        user_id=get_user_id(),
-        agent_name=route.agent_name,
-        user_question=user_message,
-        agent_answer=output_response,
-        sources=sources,
-        trace_summary=result.coverage_result if result else None,
-        observation_id=primary_observation_id,
-    )
+    user_id = get_user_id()  # capture ContextVar before entering thread
     def _write():
-        from app.models.pdf_models import PdfConversation
+        from app.database_pdf import PdfSessionLocal
+        from app.models.pdf_models import PdfAgentMessage, PdfConversation
         with PdfSessionLocal() as db:
+            msg = PdfAgentMessage(
+                message_id=new_id(),
+                thread_id=thread_id,
+                user_id=user_id,
+                agent_name=route.agent_name,
+                user_question=user_message,
+                agent_answer=output_response,
+                sources=sources,
+                trace_summary=result.coverage_result if result else None,
+                observation_id=primary_observation_id,
+            )
             db.add(msg)
             conv = db.query(PdfConversation).filter_by(thread_id=thread_id).first()
             if conv:
                 conv.last_agent_name = route.agent_name
-                conv.message_count = (conv.message_count or 0) + 1
+                new_count = (conv.message_count or 0) + 1
+                conv.message_count = new_count
+                if new_count == 1 and not conv.title:
+                    conv.title = user_message[:60]
+            else:
+                logger.warning("_write_agent_message: no conversation for thread=%s", thread_id)
             db.commit()
     try:
         await asyncio.to_thread(_write)
