@@ -22,11 +22,11 @@ import io
 from datetime import datetime
 from pathlib import Path
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "backend"))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "backend"))
 
 # 載入專案根目錄的 .env（main.py 才會載，直接跑腳本需自行載入）
 from dotenv import load_dotenv
-load_dotenv(Path(__file__).parent.parent / ".env")
+load_dotenv(Path(__file__).parent.parent.parent / ".env")
 
 try:
     from app.services.tools import tool_search_courses
@@ -266,7 +266,7 @@ def main():
     # 設定 markdown 輸出路徑
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     suffix = "ppr" if run_ppr else "concept_threshold"
-    out_dir = Path(__file__).parent.parent / "data" / "test_results"
+    out_dir = Path(__file__).parent.parent.parent / "data" / "test_results"
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / f"{timestamp}_{suffix}.md"
 
