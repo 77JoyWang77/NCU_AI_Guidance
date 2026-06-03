@@ -96,6 +96,10 @@ data/test_results/
 data/processed/qdrant_data/
 data/processed/chroma_db_backup/
 
+data/raw/courses/
+data/raw/graduate_courses/
+data/raw/scraped_missing/
+
 # 大型資料檔案
 *.csv.gz
 *.jsonl.gz
