@@ -6,14 +6,19 @@ import {
   HiAcademicCap,
   HiArrowLeft,
   HiChat,
+  HiChevronDown,
   HiChevronLeft,
   HiChevronRight,
   HiLockClosed,
   HiPaperAirplane,
+  HiPencil,
+  HiPlus,
   HiStop,
+  HiTrash,
   HiUser,
 } from 'react-icons/hi';
 import { projectAPI } from '../api/services';
+import type { PdfConversationSummary } from '../api/services';
 import PdfViewer from '../components/PdfViewer';
 import { useAuth } from '../auth/AuthContext';
 import type { Project } from '../types';
@@ -41,6 +46,7 @@ export default function ProjectsPage() {
   const abortCtrlRef = useRef<AbortController | null>(null);
   const streamingTextRef = useRef('');
   const [loading, setLoading] = useState(true);
+  const [pdfConversations, setPdfConversations] = useState<PdfConversationSummary[]>([]);
   const [filterYear, setFilterYear] = useState('');
   const [filterDept, setFilterDept] = useState('');
 
@@ -112,8 +118,14 @@ export default function ProjectsPage() {
     streamingTextRef.current = '';
     setStreamingText('');
     setChatLoading(false);
+    setPdfConversations([]);
     abortCtrlRef.current?.abort();
     abortCtrlRef.current = null;
+    if (user) {
+      projectAPI.listConversations(project.id)
+        .then((convs) => setPdfConversations(convs))
+        .catch(() => {});
+    }
   };
 
   const handleBackToOutline = () => {
@@ -135,19 +147,18 @@ export default function ProjectsPage() {
     }
   };
 
-  const handleSendMessage = (event: FormEvent) => {
-    event.preventDefault();
-    if (!user || !inputMessage.trim() || !selectedProject || chatLoading) return;
-
-    const userMessage = inputMessage.trim();
-    setChatMessages((prev) => [...prev, { role: 'user', content: userMessage }]);
-    setInputMessage('');
+  const doSendProjectMessage = (msg: string, fromIdx?: number) => {
+    if (!user || !selectedProject || chatLoading) return;
     setChatLoading(true);
     setStreamingText('');
+    setChatMessages((prev) => {
+      const base = fromIdx !== undefined ? prev.slice(0, fromIdx) : [...prev];
+      return [...base, { role: 'user', content: msg }];
+    });
 
     const ctrl = projectAPI.streamChat(
       selectedProject.id,
-      userMessage,
+      msg,
       {
         onToken: (token) => {
           streamingTextRef.current += token;
@@ -171,11 +182,17 @@ export default function ProjectsPage() {
             ]);
           }
           setChatLoading(false);
-          setThreadId(sessionId || undefined);
+          const newThreadId = sessionId || undefined;
+          setThreadId(newThreadId);
           abortCtrlRef.current = null;
+          if (selectedProject && newThreadId) {
+            projectAPI.listConversations(selectedProject.id)
+              .then((convs) => setPdfConversations(convs))
+              .catch(() => {});
+          }
         },
-        onError: (msg) => {
-          console.error('Project stream error:', msg);
+        onError: (errMsg) => {
+          console.error('Project stream error:', errMsg);
           streamingTextRef.current = '';
           setStreamingText('');
           setChatMessages((prev) => [
@@ -191,6 +208,18 @@ export default function ProjectsPage() {
     abortCtrlRef.current = ctrl;
   };
 
+  const handleSendMessage = (event: FormEvent) => {
+    event.preventDefault();
+    if (!inputMessage.trim()) return;
+    const text = inputMessage.trim();
+    setInputMessage('');
+    doSendProjectMessage(text);
+  };
+
+  const handleSendEditedMessage = (newContent: string, fromIdx: number) => {
+    doSendProjectMessage(newContent, fromIdx);
+  };
+
   const handleCancelStream = () => {
     if (!abortCtrlRef.current || !selectedProject || !threadId) return;
     abortCtrlRef.current.abort();
@@ -203,6 +232,55 @@ export default function ProjectsPage() {
       setChatMessages((msgs) => [...msgs, { role: 'assistant', content: finalText + '…（已中止）' }]);
     }
     setChatLoading(false);
+  };
+
+  const handleNewPdfConversation = () => {
+    if (!selectedProject) return;
+    abortCtrlRef.current?.abort();
+    abortCtrlRef.current = null;
+    streamingTextRef.current = '';
+    setStreamingText('');
+    setChatLoading(false);
+    setThreadId(undefined);
+    setChatMessages([createWelcomeMessage(selectedProject)]);
+  };
+
+  const handleSwitchPdfConversation = async (targetThreadId: string) => {
+    if (!selectedProject || chatLoading || targetThreadId === threadId) return;
+    abortCtrlRef.current?.abort();
+    abortCtrlRef.current = null;
+    streamingTextRef.current = '';
+    setStreamingText('');
+    setChatLoading(true);
+    setThreadId(targetThreadId);
+    try {
+      const msgs = await projectAPI.loadConversationMessages(selectedProject.id, targetThreadId);
+      setChatMessages([createWelcomeMessage(selectedProject), ...msgs]);
+    } catch {
+      setChatMessages([createWelcomeMessage(selectedProject)]);
+    } finally {
+      setChatLoading(false);
+    }
+  };
+
+  const handleDeletePdfConversation = async (targetThreadId: string) => {
+    if (!selectedProject) return;
+    if (!window.confirm('確定要刪除此對話嗎？')) return;
+    try {
+      await projectAPI.deleteConversation(selectedProject.id, targetThreadId);
+    } catch {
+      return;
+    }
+    setPdfConversations((prev) => prev.filter((c) => c.thread_id !== targetThreadId));
+    if (targetThreadId === threadId) {
+      streamingTextRef.current = '';
+      setStreamingText('');
+      setChatLoading(false);
+      abortCtrlRef.current?.abort();
+      abortCtrlRef.current = null;
+      setThreadId(undefined);
+      setChatMessages([createWelcomeMessage(selectedProject)]);
+    }
   };
 
   const getCollegeLabel = (department: string) => {
@@ -309,7 +387,7 @@ export default function ProjectsPage() {
   }
 
   return (
-    <div className="page-container flex h-full flex-col py-3">
+    <div className="page-container-wide flex h-full flex-col py-3">
       {viewMode !== 'pdf-chat' ? (
         <div className="mb-3 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex min-w-0 items-center gap-2">
@@ -487,6 +565,12 @@ export default function ProjectsPage() {
                   onClose={() => setIsMobileChatOpen(false)}
                   isLoggedIn={!!user}
                   onLogin={loginWithGoogle}
+                  conversations={pdfConversations}
+                  activeThreadId={threadId}
+                  onNewConversation={handleNewPdfConversation}
+                  onSwitchConversation={handleSwitchPdfConversation}
+                  onDeleteConversation={handleDeletePdfConversation}
+                  onSendEdit={handleSendEditedMessage}
                 />
 
                 <div className="flex w-11 items-center justify-center pl-2">
@@ -523,6 +607,12 @@ export default function ProjectsPage() {
               onCancel={handleCancelStream}
               isLoggedIn={!!user}
               onLogin={loginWithGoogle}
+              conversations={pdfConversations}
+              activeThreadId={threadId}
+              onNewConversation={handleNewPdfConversation}
+              onSwitchConversation={handleSwitchPdfConversation}
+              onDeleteConversation={handleDeletePdfConversation}
+              onSendEdit={handleSendEditedMessage}
             />
           </div>
         </>
@@ -573,6 +663,92 @@ function PdfPanel({
 }
 
 
+function ConversationDropdown({
+  conversations,
+  activeThreadId,
+  onNew,
+  onSwitch,
+  onDelete,
+}: {
+  conversations: PdfConversationSummary[];
+  activeThreadId: string | undefined;
+  onNew: () => void;
+  onSwitch: (threadId: string) => void;
+  onDelete: (threadId: string) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
+
+  const activeConv = conversations.find((c) => c.thread_id === activeThreadId);
+  const label = activeConv ? activeConv.title : 'AI 對話區';
+  const hasConversations = conversations.length > 0 || activeThreadId !== undefined;
+
+  if (!hasConversations) {
+    return (
+      <div className="min-w-0">
+        <h2 className="text-sm font-semibold text-gray-800">AI 對話區</h2>
+        <p className="truncate text-xs text-gray-400">可針對研究主題、內容重點與延伸問題進行提問</p>
+      </div>
+    );
+  }
+
+  return (
+    <div ref={ref} className="relative min-w-0 flex-1">
+      <button
+        type="button"
+        onClick={() => setOpen((prev) => !prev)}
+        className="flex max-w-full items-center gap-1 rounded px-1 py-0.5 text-sm font-semibold text-gray-800 transition-colors hover:bg-gray-100"
+      >
+        <span className="max-w-[160px] truncate">{label}</span>
+        <HiChevronDown className={`h-4 w-4 shrink-0 transition-transform ${open ? 'rotate-180' : ''}`} />
+      </button>
+
+      {open && (
+        <div className="absolute left-0 top-full z-50 mt-1 w-64 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg">
+          {conversations.map((conv) => (
+            <div
+              key={conv.thread_id}
+              className={`group flex cursor-pointer items-center justify-between px-3 py-2 hover:bg-gray-50 ${conv.thread_id === activeThreadId ? 'bg-primary-50' : ''}`}
+              onClick={() => { onSwitch(conv.thread_id); setOpen(false); }}
+            >
+              <div className="mr-1 min-w-0 flex-1">
+                <p className="truncate text-sm font-medium text-gray-700">{conv.title}</p>
+                <p className="text-xs text-gray-400">{conv.message_count} 則</p>
+              </div>
+              <button
+                type="button"
+                onClick={(e) => { e.stopPropagation(); onDelete(conv.thread_id); setOpen(false); }}
+                className="shrink-0 rounded p-1 text-gray-300 opacity-0 transition-all hover:text-red-500 group-hover:opacity-100"
+                aria-label="刪除對話"
+              >
+                <HiTrash className="h-3.5 w-3.5" />
+              </button>
+            </div>
+          ))}
+          <div className="border-t border-gray-100">
+            <button
+              type="button"
+              onClick={() => { onNew(); setOpen(false); }}
+              className="flex w-full items-center gap-2 px-3 py-2 text-sm text-primary-600 transition-colors hover:bg-primary-50"
+            >
+              <HiPlus className="h-4 w-4" />
+              新增對話
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function ChatPanel({
   messages,
   streamingText,
@@ -585,6 +761,12 @@ function ChatPanel({
   compact = false,
   isLoggedIn = true,
   onLogin,
+  conversations = [],
+  activeThreadId,
+  onNewConversation,
+  onSwitchConversation,
+  onDeleteConversation,
+  onSendEdit,
 }: {
   messages: ChatMessage[];
   streamingText: string;
@@ -597,20 +779,74 @@ function ChatPanel({
   compact?: boolean;
   isLoggedIn?: boolean;
   onLogin?: () => void;
+  conversations?: PdfConversationSummary[];
+  activeThreadId?: string;
+  onNewConversation?: () => void;
+  onSwitchConversation?: (threadId: string) => void;
+  onDeleteConversation?: (threadId: string) => void;
+  onSendEdit?: (newContent: string, fromIdx: number) => void;
 }) {
   const bottomRef = useRef<HTMLDivElement>(null);
+  const chatInputRef = useRef<HTMLTextAreaElement>(null);
+  const [editingMsgIdx, setEditingMsgIdx] = useState(-1);
+  const [editingContent, setEditingContent] = useState('');
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, streamingText]);
 
+  useEffect(() => {
+    const el = chatInputRef.current;
+    if (!el) return;
+    el.style.height = 'auto';
+    const maxH = 120;
+    const newH = Math.min(el.scrollHeight, maxH);
+    el.style.height = `${newH}px`;
+    el.style.overflowY = el.scrollHeight > maxH ? 'auto' : 'hidden';
+  }, [inputMessage]);
+
+  const handleChatKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      onSubmit(e as unknown as FormEvent);
+    }
+  };
+
+  const handleSendEdit = () => {
+    if (!editingContent.trim() || !onSendEdit) return;
+    const idx = editingMsgIdx;
+    setEditingMsgIdx(-1);
+    setEditingContent('');
+    onSendEdit(editingContent.trim(), idx);
+  };
+
+  const handleCancelEdit = () => {
+    setEditingMsgIdx(-1);
+    setEditingContent('');
+  };
+
+  const lastUserIdx = messages.reduceRight(
+    (acc, m, i) => (acc === -1 && m.role === 'user' ? i : acc),
+    -1,
+  );
+
   return (
     <div className="card flex h-full flex-col overflow-hidden">
       <div className="flex flex-shrink-0 items-center justify-between gap-3 border-b border-gray-200 px-4 py-2.5">
-        <div className="min-w-0">
-          <h2 className="text-sm font-semibold text-gray-800">AI 對話區</h2>
-          <p className="truncate text-xs text-gray-400">可針對研究主題、內容重點與延伸問題進行提問</p>
-        </div>
+        {onNewConversation && onSwitchConversation && onDeleteConversation ? (
+          <ConversationDropdown
+            conversations={conversations}
+            activeThreadId={activeThreadId}
+            onNew={onNewConversation}
+            onSwitch={onSwitchConversation}
+            onDelete={onDeleteConversation}
+          />
+        ) : (
+          <div className="min-w-0">
+            <h2 className="text-sm font-semibold text-gray-800">AI 對話區</h2>
+            <p className="truncate text-xs text-gray-400">可針對研究主題、內容重點與延伸問題進行提問</p>
+          </div>
+        )}
         {onClose ? (
           <button
             type="button"
@@ -624,39 +860,84 @@ function ChatPanel({
       </div>
 
       <div className={`flex-1 space-y-3 overflow-y-auto p-4 ${compact ? 'bg-white' : ''}`}>
-        {messages.map((message, index) => (
+        {messages.map((message, index) => {
+          const isEditing = editingMsgIdx === index;
+          const canEdit   = message.role === 'user' && index === lastUserIdx && !chatLoading && !!onSendEdit;
+          return (
           <div key={index} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
             <div
-              className={`rounded-lg p-4 ${
-                message.role === 'user' ? 'max-w-[80%] bg-primary-700 text-white' : 'max-w-[85%] bg-gray-100 text-gray-900'
-              }`}
+              className={`${message.role === 'user' ? 'max-w-[80%]' : 'max-w-[85%]'}`}
             >
-              {message.role === 'assistant' ? (
-                <>
+              {/* 訊息氣泡 */}
+              <div
+                className={`rounded-lg p-4 ${
+                  message.role === 'user' ? 'bg-primary-700 text-white' : 'bg-gray-100 text-gray-900'
+                }`}
+                title={message.role === 'user' ? undefined : undefined}
+              >
+                {message.role === 'assistant' ? (
                   <div className="prose prose-sm prose-gray max-w-none text-sm">
                     <ReactMarkdown remarkPlugins={[remarkGfm]}>
                       {message.content}
                     </ReactMarkdown>
                   </div>
-                  {/* 參考頁碼（頁碼不一定對應實際頁數，暫時隱藏）
-                  {message.sources && message.sources.length > 0 && (
-                    <div className="mt-2 border-t border-gray-200 pt-2">
-                      <p className="text-xs font-medium text-gray-500">參考頁碼</p>
-                      <ul className="mt-1 space-y-0.5">
-                        {message.sources.map((src, i) => (
-                          <li key={i} className="text-xs text-gray-400">{src}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                  */}
-                </>
-              ) : (
-                <p className="whitespace-pre-wrap text-sm leading-relaxed">{message.content}</p>
+                ) : (
+                  <p className="whitespace-pre-wrap text-sm leading-relaxed">{message.content}</p>
+                )}
+              </div>
+
+              {/* 編輯按鈕（氣泡下方） */}
+              {canEdit && !isEditing && (
+                <div className="mt-1 flex justify-end">
+                  <button
+                    type="button"
+                    onClick={() => { setEditingMsgIdx(index); setEditingContent(message.content); }}
+                    className="flex items-center gap-1 rounded-lg px-2 py-0.5 text-xs text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600"
+                  >
+                    <HiPencil className="h-3 w-3" />
+                    編輯
+                  </button>
+                </div>
+              )}
+
+              {/* 原地編輯區 */}
+              {canEdit && isEditing && (
+                <div className="mt-2">
+                  <textarea
+                    value={editingContent}
+                    onChange={(e) => setEditingContent(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSendEdit(); }
+                      if (e.key === 'Escape') handleCancelEdit();
+                    }}
+                    rows={2}
+                    autoFocus
+                    className="w-full resize-none rounded-xl border border-primary-300 px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-300"
+                  />
+                  <div className="mt-1.5 flex justify-end gap-2">
+                    <button
+                      type="button"
+                      onClick={handleCancelEdit}
+                      className="rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-xs text-gray-500 transition hover:bg-gray-50"
+                    >
+                      返回
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleSendEdit}
+                      disabled={!editingContent.trim()}
+                      className="flex items-center gap-1.5 rounded-lg bg-primary-700 px-3 py-1.5 text-xs font-medium text-white transition hover:bg-primary-800 disabled:opacity-40"
+                    >
+                      <HiPaperAirplane className="h-3.5 w-3.5" />
+                      傳送
+                    </button>
+                  </div>
+                </div>
               )}
             </div>
           </div>
-        ))}
+        );
+        })}
 
         {chatLoading && streamingText ? (
           <div className="flex justify-start">
@@ -712,13 +993,15 @@ function ChatPanel({
       ) : (
         <form onSubmit={onSubmit} className="border-t border-gray-200 p-3">
           <div className="flex gap-2">
-            <input
-              type="text"
+            <textarea
+              ref={chatInputRef}
               value={inputMessage}
               onChange={(event) => onInputChange(event.target.value)}
+              onKeyDown={handleChatKeyDown}
               placeholder="輸入你想了解的研究問題..."
               disabled={chatLoading}
-              className="min-w-0 flex-1 rounded-md border border-gray-300 px-4 py-3 transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500 disabled:bg-gray-50 disabled:text-gray-400"
+              rows={1}
+              className="min-w-0 flex-1 resize-none overflow-y-hidden rounded-md border border-gray-300 px-4 py-3 text-sm leading-6 transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500 disabled:bg-gray-50 disabled:text-gray-400"
             />
             {chatLoading ? (
               <button

@@ -168,7 +168,7 @@ export default function Navbar() {
   return (
     <>
       <nav className="sticky top-0 z-50 border-b border-white/70 bg-white/80 backdrop-blur-xl">
-        <div className="page-container">
+        <div className="page-container-wide">
           <div className="flex h-16 items-center justify-between">
             <Link to="/" className="flex items-center space-x-3 transition duration-200 hover:-translate-y-0.5">
               <img src={logo} alt="國立中央大學科系探索平台" className="h-10 w-10 object-contain" />

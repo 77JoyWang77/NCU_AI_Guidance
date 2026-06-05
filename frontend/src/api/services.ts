@@ -453,6 +453,13 @@ export const monitorAPI = {
   },
 };
 
+export interface PdfConversationSummary {
+  thread_id: string;
+  title: string;
+  message_count: number;
+  created_at: string | null;
+}
+
 // 大专生计划 API
 export const projectAPI = {
   getProjects: async (filters?: {
@@ -575,5 +582,22 @@ export const projectAPI = {
       undefined,
       { headers: { 'X-Anon-Session': anonId } },
     );
+  },
+
+  listConversations: async (projectId: string): Promise<PdfConversationSummary[]> => {
+    const response = await apiClient.get(`/projects/${projectId}/conversations`);
+    return response.data;
+  },
+
+  loadConversationMessages: async (
+    projectId: string,
+    threadId: string,
+  ): Promise<{ role: 'user' | 'assistant'; content: string; sources?: string[] }[]> => {
+    const response = await apiClient.get(`/projects/${projectId}/conversations/${threadId}/messages`);
+    return response.data;
+  },
+
+  deleteConversation: async (projectId: string, threadId: string): Promise<void> => {
+    await apiClient.delete(`/projects/${projectId}/conversations/${threadId}`);
   },
 };

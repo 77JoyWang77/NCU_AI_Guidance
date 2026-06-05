@@ -7,7 +7,9 @@ import {
   HiLockClosed,
   HiMenu,
   HiPaperAirplane,
+  HiPencil,
   HiPlus,
+  HiStop,
   HiTrash,
 } from 'react-icons/hi';
 import { chatAPI, chatStreamAPI } from '../api/services';
@@ -118,10 +120,31 @@ type ConvListProps = {
   selectedConversationId: string;
   onSelectConversation: (id: string) => void;
   onDeleteConversation: (id: string) => void;
+  onRenameConversation: (id: string, title: string) => void;
   onSelect?: () => void;
 };
 
-function ConvList({ conversations, selectedConversationId, onSelectConversation, onDeleteConversation, onSelect }: ConvListProps) {
+function ConvList({ conversations, selectedConversationId, onSelectConversation, onDeleteConversation, onRenameConversation, onSelect }: ConvListProps) {
+  const [renamingId, setRenamingId] = useState<string | null>(null);
+  const [renameValue, setRenameValue] = useState('');
+  const renameInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (renamingId) renameInputRef.current?.focus();
+  }, [renamingId]);
+
+  const startRename = (e: React.MouseEvent, id: string, title: string) => {
+    e.stopPropagation();
+    setRenamingId(id);
+    setRenameValue(title);
+  };
+
+  const commitRename = (id: string) => {
+    const trimmed = renameValue.trim();
+    if (trimmed) onRenameConversation(id, trimmed);
+    setRenamingId(null);
+  };
+
   return (
     <div className="flex-1 space-y-2 overflow-y-auto p-3">
       {conversations.map((conv) => (
@@ -129,27 +152,55 @@ function ConvList({ conversations, selectedConversationId, onSelectConversation,
           key={conv.id}
           role="button"
           tabIndex={0}
-          onClick={() => { onSelectConversation(conv.id); onSelect?.(); }}
-          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { onSelectConversation(conv.id); onSelect?.(); } }}
+          onClick={() => { if (renamingId !== conv.id) { onSelectConversation(conv.id); onSelect?.(); } }}
+          onKeyDown={(e) => { if (renamingId !== conv.id && (e.key === 'Enter' || e.key === ' ')) { onSelectConversation(conv.id); onSelect?.(); } }}
           className={`w-full cursor-pointer rounded-2xl border p-3 text-left transition ${
             selectedConversationId === conv.id
               ? 'border-primary-300 bg-primary-50'
               : 'border-transparent bg-white hover:border-slate-200 hover:bg-slate-50'
           }`}
         >
-          <div className="flex items-start justify-between gap-3">
-            <div className="min-w-0">
+          <div className="flex items-start justify-between gap-2">
+            <div className="min-w-0 flex-1">
               <HiChat className="h-4 w-4 text-primary-700" />
-              <h3 className="mt-2 line-clamp-2 text-sm font-semibold text-slate-900">{conv.title}</h3>
+              {renamingId === conv.id ? (
+                <input
+                  ref={renameInputRef}
+                  type="text"
+                  value={renameValue}
+                  onChange={(e) => setRenameValue(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') commitRename(conv.id);
+                    if (e.key === 'Escape') setRenamingId(null);
+                    e.stopPropagation();
+                  }}
+                  onClick={(e) => e.stopPropagation()}
+                  onBlur={() => commitRename(conv.id)}
+                  className="mt-2 w-full rounded border border-primary-300 px-1.5 py-0.5 text-sm text-slate-900 focus:outline-none focus:ring-1 focus:ring-primary-500"
+                />
+              ) : (
+                <h3 className="mt-2 line-clamp-2 text-sm font-semibold text-slate-900">{conv.title}</h3>
+              )}
               <p className="mt-1 text-xs text-slate-500">{formatTime(conv.updatedAt)}</p>
             </div>
-            <button
-              type="button"
-              onClick={(e) => { e.stopPropagation(); onDeleteConversation(conv.id); }}
-              className="rounded-lg p-1 text-rose-500 transition hover:bg-rose-50 hover:text-rose-700"
-            >
-              <HiTrash className="h-4 w-4" />
-            </button>
+            <div className="flex shrink-0 items-center gap-0.5">
+              <button
+                type="button"
+                onClick={(e) => startRename(e, conv.id, conv.title)}
+                title="重新命名"
+                className="rounded-lg p-1 text-slate-400 transition hover:bg-slate-100 hover:text-slate-600"
+              >
+                <HiPencil className="h-3.5 w-3.5" />
+              </button>
+              <button
+                type="button"
+                onClick={(e) => { e.stopPropagation(); onDeleteConversation(conv.id); }}
+                title="刪除對話"
+                className="rounded-lg p-1 text-rose-400 transition hover:bg-rose-50 hover:text-rose-600"
+              >
+                <HiTrash className="h-3.5 w-3.5" />
+              </button>
+            </div>
           </div>
         </div>
       ))}
@@ -173,6 +224,10 @@ export default function CourseSearchPage() {
   const abortRef = useRef<AbortController | null>(null);
   const activeTraceRef = useRef<{ toolCalls: ToolTraceItem[]; poolSize: number }>({ toolCalls: [], poolSize: 0 });
 
+  // 原地編輯狀態
+  const [editingMsgIdx, setEditingMsgIdx]       = useState(-1);
+  const [editingContent, setEditingContent]     = useState('');
+
   // 右側推薦課程
   const [panelCourses, setPanelCourses] = useState<CourseCard[]>([]);
 
@@ -188,12 +243,15 @@ export default function CourseSearchPage() {
     [conversations, selectedConversationId],
   );
 
-  // textarea 自動增高
+  // textarea 自動增高，超過上限才顯示滾動條
   useEffect(() => {
     const el = textareaRef.current;
     if (!el) return;
     el.style.height = 'auto';
-    el.style.height = `${Math.min(el.scrollHeight, 96)}px`; // max ~4 行
+    const maxH = 120;
+    const newH = Math.min(el.scrollHeight, maxH);
+    el.style.height = `${newH}px`;
+    el.style.overflowY = el.scrollHeight > maxH ? 'auto' : 'hidden';
   }, [inputMessage]);
 
   const createDefaultConversation = useCallback(() => {
@@ -272,7 +330,7 @@ export default function CourseSearchPage() {
   }, []);
 
   // ── 對話管理 ────────────────────────────────────────────────────────────
-  const handleNewConversation = () => {
+  const handleNewConversation = useCallback(() => {
     const nc: Conversation = {
       id: Date.now().toString(), title: '新對話',
       messages: [{ role: 'assistant', content: GREETING, timestamp: new Date() }],
@@ -283,9 +341,14 @@ export default function CourseSearchPage() {
     setInputMessage('');
     setIsMobileConversationOpen(false);
     setPanelCourses([]);
-  };
+  }, []);
+
+  const handleRenameConversation = useCallback((id: string, title: string) => {
+    updateConv(id, (c) => ({ ...c, title }));
+  }, [updateConv]);
 
   const handleDeleteConversation = (id: string) => {
+    if (!window.confirm('確認要刪除這段對話嗎？此操作無法復原。')) return;
     const sid = sessionIds.current[id];
     if (sid) { chatAPI.clearSession(sid).catch(() => {}); delete sessionIds.current[id]; }
     setConversations((prev) => {
@@ -344,13 +407,26 @@ export default function CourseSearchPage() {
     setPanelCourses(msg.courseCards ?? []);
   }, []);
 
-  // ── 送出訊息（串流） ─────────────────────────────────────────────────────
-  const doSend = () => {
-    if (!user || !inputMessage.trim() || !selectedConversation || isStreaming) return;
+  // Ctrl+K / ⌘K 開新對話
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        handleNewConversation();
+      }
+    };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, [handleNewConversation]);
 
-    const text   = inputMessage.trim();
+  // ── 送出訊息（串流） ─────────────────────────────────────────────────────
+  // sendText: 覆蓋 inputMessage；fromIdx: 從此索引截斷再送（編輯用）
+  const doSend = (sendText?: string, fromIdx?: number) => {
+    const text = (sendText !== undefined ? sendText : inputMessage).trim();
+    if (!user || !text || !selectedConversation || isStreaming) return;
+
+    if (sendText === undefined) setInputMessage('');
     const convId = selectedConversation.id;
-    setInputMessage('');
     setIsStreaming(true);
     setActiveTools([]);
     setIsVerifying(false);
@@ -359,14 +435,19 @@ export default function CourseSearchPage() {
     const userMsg: Message   = { role: 'user',      content: text, timestamp: new Date() };
     const streamMsg: Message = { role: 'assistant',  content: '',   timestamp: new Date(), isStreaming: true };
 
-    updateConv(convId, (c) => ({
-      ...c,
-      updatedAt: new Date(),
-      title: c.messages.length === 1 ? text.slice(0, 30) : c.title,
-      messages: [...c.messages, userMsg, streamMsg],
-    }));
+    // 計算 streamIdx：如果有 fromIdx，訊息先截斷再加入，所以 streamMsg 在 fromIdx+1
+    const baseCount = fromIdx !== undefined ? fromIdx : selectedConversation.messages.length;
+    const streamIdx = baseCount + 1;
 
-    const streamIdx = selectedConversation.messages.length + 1;
+    updateConv(convId, (c) => {
+      const base = fromIdx !== undefined ? c.messages.slice(0, fromIdx) : [...c.messages];
+      return {
+        ...c,
+        updatedAt: new Date(),
+        title: base.length === 1 ? text.slice(0, 30) : c.title,
+        messages: [...base, userMsg, streamMsg],
+      };
+    });
 
     abortRef.current = chatStreamAPI.stream(
       text,
@@ -462,6 +543,42 @@ export default function CourseSearchPage() {
     doSend();
   };
 
+  const handleAbort = () => {
+    abortRef.current?.abort();
+    abortRef.current = null;
+    if (!selectedConversation) return;
+    const convId = selectedConversation.id;
+    updateConv(convId, (c) => {
+      const msgs = [...c.messages];
+      const last = msgs.at(-1);
+      if (last?.isStreaming) {
+        msgs[msgs.length - 1] = {
+          ...last,
+          isStreaming: false,
+          content: (last.content || '') + '…（已中止）',
+        };
+      }
+      return { ...c, messages: msgs };
+    });
+    setIsStreaming(false);
+    setIsVerifying(false);
+    setActiveTools([]);
+  };
+
+  const handleSendEdit = () => {
+    const text = editingContent.trim();
+    if (!text || isStreaming) return;
+    const fromIdx = editingMsgIdx;
+    setEditingMsgIdx(-1);
+    setEditingContent('');
+    doSend(text, fromIdx);
+  };
+
+  const handleCancelEdit = () => {
+    setEditingMsgIdx(-1);
+    setEditingContent('');
+  };
+
 
   if (!sessionsLoaded) {
     return (
@@ -475,7 +592,7 @@ export default function CourseSearchPage() {
   }
 
   return (
-    <div className="page-container flex h-full flex-col py-3">
+    <div className="page-container-wide flex h-full flex-col py-3">
       {/* 頁頭 */}
       <div className="mb-3 flex flex-shrink-0 items-center justify-between">
         <div className="flex items-center gap-2">
@@ -516,6 +633,7 @@ export default function CourseSearchPage() {
                   selectedConversationId={selectedConversationId}
                   onSelectConversation={handleSelectConversation}
                   onDeleteConversation={handleDeleteConversation}
+                  onRenameConversation={handleRenameConversation}
                   onSelect={() => setIsMobileConversationOpen(false)}
                 />
               </div>
@@ -565,6 +683,7 @@ export default function CourseSearchPage() {
                 selectedConversationId={selectedConversationId}
                 onSelectConversation={handleSelectConversation}
                 onDeleteConversation={handleDeleteConversation}
+                onRenameConversation={handleRenameConversation}
               />
             ) : (
               <div className="flex-1 space-y-2 overflow-y-auto p-2">
@@ -602,14 +721,24 @@ export default function CourseSearchPage() {
 
                 {/* 訊息列表 */}
                 <div className="flex-1 space-y-3 overflow-y-auto p-4">
-                  {selectedConversation.messages.map((msg, idx) => (
+                  {selectedConversation.messages.map((msg, idx, arr) => {
+                    const lastUserIdx = arr.reduceRight(
+                      (acc, m, i) => (acc === -1 && m.role === 'user' ? i : acc), -1,
+                    );
+                    const isEditing = editingMsgIdx === idx;
+                    const canEdit   = msg.role === 'user' && idx === lastUserIdx && !isStreaming;
+                    return (
                     <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                       <div className={msg.role === 'user' ? 'max-w-[82%]' : 'w-full'}>
-                        <div className={`rounded-2xl p-4 ${
-                          msg.role === 'user'
-                            ? 'bg-primary-700 text-white'
-                            : 'bg-gray-100 text-gray-900'
-                        }`}>
+                        {/* 訊息氣泡 */}
+                        <div
+                          className={`rounded-2xl p-4 ${
+                            msg.role === 'user'
+                              ? 'bg-primary-700 text-white'
+                              : 'bg-gray-100 text-gray-900'
+                          }`}
+                          title={msg.timestamp.toLocaleString('zh-TW')}
+                        >
                           {msg.role === 'user' ? (
                             <p className="whitespace-pre-line text-sm leading-relaxed">{msg.content}</p>
                           ) : (
@@ -624,6 +753,56 @@ export default function CourseSearchPage() {
                           )}
                         </div>
 
+                        {/* 編輯按鈕（氣泡下方，最後一則 user 訊息且未在編輯中） */}
+                        {canEdit && !isEditing && (
+                          <div className="mt-1 flex justify-end">
+                            <button
+                              type="button"
+                              onClick={() => { setEditingMsgIdx(idx); setEditingContent(msg.content); }}
+                              className="flex items-center gap-1 rounded-lg px-2 py-0.5 text-xs text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600"
+                            >
+                              <HiPencil className="h-3 w-3" />
+                              編輯
+                            </button>
+                          </div>
+                        )}
+
+                        {/* 原地編輯區 */}
+                        {canEdit && isEditing && (
+                          <div className="mt-2">
+                            <textarea
+                              value={editingContent}
+                              onChange={(e) => setEditingContent(e.target.value)}
+                              onKeyDown={(e) => {
+                                if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSendEdit(); }
+                                if (e.key === 'Escape') handleCancelEdit();
+                              }}
+                              rows={2}
+                              autoFocus
+                              className="w-full resize-none rounded-xl border border-primary-300 px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-300"
+                            />
+                            <div className="mt-1.5 flex justify-end gap-2">
+                              <button
+                                type="button"
+                                onClick={handleCancelEdit}
+                                className="rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-xs text-gray-500 transition hover:bg-gray-50"
+                              >
+                                返回
+                              </button>
+                              <button
+                                type="button"
+                                onClick={handleSendEdit}
+                                disabled={!editingContent.trim()}
+                                className="flex items-center gap-1.5 rounded-lg bg-primary-700 px-3 py-1.5 text-xs font-medium text-white transition hover:bg-primary-800 disabled:opacity-40"
+                              >
+                                <HiPaperAirplane className="h-3.5 w-3.5" />
+                                傳送
+                              </button>
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Assistant 訊息的附加資訊 */}
                         {msg.role === 'assistant' && !msg.isStreaming && (
                           <div className="mt-2 space-y-1.5">
                             {(msg.courseCards?.length ?? 0) > 0 && (
@@ -648,7 +827,8 @@ export default function CourseSearchPage() {
                         )}
                       </div>
                     </div>
-                  ))}
+                  );
+                  })}
 
                   {/* 工具呼叫進度 */}
                   {isStreaming && activeTools.length > 0 && (
@@ -740,12 +920,26 @@ export default function CourseSearchPage() {
                         disabled={isStreaming}
                         placeholder="輸入你想查詢的課程、學院或學習方向（Enter 送出，Shift+Enter 換行）"
                         rows={1}
-                        className="flex-1 resize-none overflow-y-auto rounded-xl border border-gray-300 px-4 py-3 text-sm leading-6 transition-colors focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500 disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-400"
+                        className="flex-1 resize-none overflow-y-hidden rounded-xl border border-gray-300 px-4 py-3 text-sm leading-6 transition-colors focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500 disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-400"
                       />
-                      <button type="submit" disabled={isStreaming || !inputMessage.trim()}
-                        className="btn-primary flex-shrink-0 self-end disabled:cursor-not-allowed disabled:opacity-50">
-                        <HiPaperAirplane className="h-5 w-5" />
-                      </button>
+                      {isStreaming ? (
+                        <button
+                          type="button"
+                          onClick={handleAbort}
+                          className="btn-secondary flex-shrink-0 self-end"
+                          aria-label="中止回應"
+                        >
+                          <HiStop className="h-5 w-5" />
+                        </button>
+                      ) : (
+                        <button
+                          type="submit"
+                          disabled={!inputMessage.trim()}
+                          className="btn-primary flex-shrink-0 self-end disabled:cursor-not-allowed disabled:opacity-50"
+                        >
+                          <HiPaperAirplane className="h-5 w-5" />
+                        </button>
+                      )}
                     </div>
                   </form>
                 )}

@@ -1,6 +1,5 @@
 import { useMemo, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import FloatingSearch from './FloatingSearch';
 import Navbar from './Navbar';
 
 interface LayoutProps {
@@ -26,7 +25,6 @@ export default function Layout({ fullHeight = false, noPad = false }: LayoutProp
   const [backgroundIndex, setBackgroundIndex] = useState(0);
   const backgroundClass = useMemo(() => BACKGROUND_THEMES[backgroundIndex % BACKGROUND_THEMES.length], [backgroundIndex]);
   const isHome = location.pathname === '/';
-  const hideFloatingSearch = location.pathname === '/course-search';
 
   const handleBackgroundClick = (event: React.MouseEvent<HTMLElement>) => {
     if (event.target !== event.currentTarget) return;
@@ -54,7 +52,6 @@ export default function Layout({ fullHeight = false, noPad = false }: LayoutProp
           </div>
         </footer>
       ) : null}
-      {hideFloatingSearch ? null : <FloatingSearch />}
     </div>
   );
 }

@@ -465,3 +465,118 @@ async def cancel_project_chat(
 
     chat_jobs.request_cancel(thread_id)
     return {"ok": True}
+
+
+# ── 對話管理 ────────────────────────────────────────────────────────────────────
+
+@router.get("/{project_id}/conversations", dependencies=[Depends(_require_pdf_chat)])
+async def list_conversations(
+    project_id: str,
+    user: AuthUser = Depends(get_current_user),
+):
+    document_id = await asyncio.to_thread(_get_document_id_for_project, project_id)
+    if document_id is None:
+        return []
+
+    from app.database_pdf import PdfSessionLocal
+    from app.models.pdf_models import PdfConversation
+
+    def _load():
+        with PdfSessionLocal() as db:
+            return (
+                db.query(PdfConversation)
+                .filter_by(document_id=document_id, user_id=user.user_id)
+                .order_by(PdfConversation.id.desc())
+                .all()
+            )
+
+    convs = await asyncio.to_thread(_load)
+    return [
+        {
+            "thread_id": c.thread_id,
+            "title": c.title or "未命名對話",
+            "message_count": c.message_count or 0,
+            "created_at": c.created_at.isoformat() if c.created_at else None,
+        }
+        for c in convs
+    ]
+
+
+@router.get("/{project_id}/conversations/{thread_id}/messages", dependencies=[Depends(_require_pdf_chat)])
+async def get_conversation_messages(
+    project_id: str,
+    thread_id: str,
+    user: AuthUser = Depends(get_current_user),
+):
+    document_id = await asyncio.to_thread(_get_document_id_for_project, project_id)
+    if document_id is None:
+        raise HTTPException(status_code=404, detail="找不到此論文。")
+
+    from app.database_pdf import PdfSessionLocal
+    from app.models.pdf_models import PdfConversation, PdfAgentMessage
+
+    def _load():
+        with PdfSessionLocal() as db:
+            conv = db.query(PdfConversation).filter_by(thread_id=thread_id).first()
+            if not conv:
+                return "not_found", None
+            if conv.user_id != user.user_id:
+                return "forbidden", None
+            if conv.document_id != document_id:
+                return "wrong_doc", None
+            rows = (
+                db.query(PdfAgentMessage)
+                .filter_by(thread_id=thread_id)
+                .order_by(PdfAgentMessage.created_at)
+                .all()
+            )
+            return "ok", [(m.user_question, m.agent_answer, m.sources) for m in rows]
+
+    status, data = await asyncio.to_thread(_load)
+    if status == "not_found":
+        raise HTTPException(status_code=404, detail="對話不存在。")
+    if status in ("forbidden", "wrong_doc"):
+        raise HTTPException(status_code=403, detail="無法存取此對話。")
+
+    result = []
+    for user_q, agent_a, sources in data:
+        if user_q:
+            result.append({"role": "user", "content": user_q})
+        if agent_a:
+            result.append({"role": "assistant", "content": agent_a, "sources": sources or []})
+    return result
+
+
+@router.delete("/{project_id}/conversations/{thread_id}", dependencies=[Depends(_require_pdf_chat)])
+async def delete_conversation(
+    project_id: str,
+    thread_id: str,
+    user: AuthUser = Depends(get_current_user),
+):
+    document_id = await asyncio.to_thread(_get_document_id_for_project, project_id)
+    if document_id is None:
+        raise HTTPException(status_code=404, detail="找不到此論文。")
+
+    from app.database_pdf import PdfSessionLocal
+    from app.models.pdf_models import PdfConversation, PdfAgentMessage
+
+    def _delete():
+        with PdfSessionLocal() as db:
+            conv = db.query(PdfConversation).filter_by(thread_id=thread_id).first()
+            if not conv:
+                return "not_found"
+            if conv.user_id != user.user_id:
+                return "forbidden"
+            if conv.document_id != document_id:
+                return "wrong_doc"
+            db.query(PdfAgentMessage).filter_by(thread_id=thread_id).delete()
+            db.delete(conv)
+            db.commit()
+            return "ok"
+
+    result = await asyncio.to_thread(_delete)
+    if result == "not_found":
+        raise HTTPException(status_code=404, detail="對話不存在。")
+    if result in ("forbidden", "wrong_doc"):
+        raise HTTPException(status_code=403, detail="無法刪除此對話。")
+    return {"ok": True}
