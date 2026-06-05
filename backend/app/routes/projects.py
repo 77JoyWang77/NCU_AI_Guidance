@@ -81,6 +81,42 @@ async def get_projects(
     return projects
 
 
+@router.get("/recent-chats", dependencies=[Depends(_require_pdf_chat)])
+async def get_recent_chats(user: AuthUser = Depends(get_current_user)):
+    """最近對話過的 project，每個 document_id 取最新一條，回傳前 5 筆。"""
+    from app.database_pdf import PdfSessionLocal
+    from app.models.pdf_models import PdfConversation
+
+    def _load():
+        with PdfSessionLocal() as db:
+            rows = (
+                db.query(PdfConversation)
+                .filter(
+                    PdfConversation.user_id == user.user_id,
+                    PdfConversation.document_id.isnot(None),
+                )
+                .order_by(PdfConversation.id.desc())
+                .limit(50)
+                .all()
+            )
+            seen: set[int] = set()
+            result = []
+            for c in rows:
+                if c.document_id not in seen:
+                    seen.add(c.document_id)
+                    result.append({
+                        "document_id": c.document_id,
+                        "thread_id":   c.thread_id,
+                        "title":       c.title or "未命名對話",
+                        "created_at":  c.created_at.isoformat() if c.created_at else None,
+                    })
+                if len(result) == 5:
+                    break
+            return result
+
+    return await asyncio.to_thread(_load)
+
+
 @router.get("/{project_id}", response_model=Project)
 async def get_project_by_id(project_id: str):
     for project in load_projects():

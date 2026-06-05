@@ -9,6 +9,7 @@ import {
   HiChevronDown,
   HiChevronLeft,
   HiChevronRight,
+  HiClock,
   HiLockClosed,
   HiPaperAirplane,
   HiPencil,
@@ -19,6 +20,12 @@ import {
 } from 'react-icons/hi';
 import { projectAPI } from '../api/services';
 import type { PdfConversationSummary } from '../api/services';
+import {
+  COLLEGE_ORDER,
+  getDeptCollege,
+  deptSortKey,
+  sortDeptsByCollegeOrder,
+} from '../constants/colleges';
 import PdfViewer from '../components/PdfViewer';
 import { useAuth } from '../auth/AuthContext';
 import type { Project } from '../types';
@@ -49,6 +56,13 @@ export default function ProjectsPage() {
   const [pdfConversations, setPdfConversations] = useState<PdfConversationSummary[]>([]);
   const [filterYear, setFilterYear] = useState('');
   const [filterDept, setFilterDept] = useState('');
+  const [recentChats, setRecentChats] = useState<{
+    document_id: number;
+    thread_id: string;
+    title: string;
+    created_at: string | null;
+  }[]>([]);
+  const [leftPanelTab, setLeftPanelTab] = useState<'projects' | 'recent'>('projects');
 
   useEffect(() => {
     projectAPI
@@ -62,22 +76,48 @@ export default function ProjectsPage() {
       .finally(() => setLoading(false));
   }, []);
 
+  useEffect(() => {
+    if (!user) { setRecentChats([]); return; }
+    projectAPI.listRecentChats()
+      .then(setRecentChats)
+      .catch(() => {});
+  }, [user]);
+
   const years = useMemo(
     () => [...new Set(projects.map((project) => project.year))].sort((a, b) => b.localeCompare(a)),
     [projects]
   );
 
   const departments = useMemo(
-    () => [...new Set(projects.map((project) => project.department))].sort((a, b) => a.localeCompare(b, 'zh-Hant')),
+    () => sortDeptsByCollegeOrder([...new Set(projects.map((p) => p.department))]),
     [projects]
   );
 
-  const filteredProjects = useMemo(
-    () =>
-      projects.filter(
-        (project) => (!filterYear || project.year === filterYear) && (!filterDept || project.department === filterDept)
-      ),
-    [projects, filterYear, filterDept]
+  const filteredProjects = useMemo(() => {
+    const filtered = projects.filter(
+      (p) => (!filterYear || p.year === filterYear) && (!filterDept || p.department === filterDept)
+    );
+    return filtered.sort((a, b) => {
+      const ca = getDeptCollege(a.department), cb = getDeptCollege(b.department);
+      const ia = COLLEGE_ORDER.indexOf(ca as (typeof COLLEGE_ORDER)[number]);
+      const ib = COLLEGE_ORDER.indexOf(cb as (typeof COLLEGE_ORDER)[number]);
+      const ra = ia === -1 ? COLLEGE_ORDER.length : ia;
+      const rb = ib === -1 ? COLLEGE_ORDER.length : ib;
+      if (ra !== rb) return ra - rb;
+      const ka = deptSortKey(a.department), kb = deptSortKey(b.department);
+      if (ka !== kb) return ka - kb;
+      const dc = a.department.localeCompare(b.department, 'zh-Hant');
+      if (dc !== 0) return dc;
+      return b.year.localeCompare(a.year);
+    });
+  }, [projects, filterYear, filterDept]);
+
+  const matchedRecentChats = useMemo(
+    () => recentChats.flatMap(rc => {
+      const proj = projects.find(p => p.documentId === rc.document_id);
+      return proj ? [{ ...rc, project: proj }] : [];
+    }),
+    [recentChats, projects]
   );
 
   const clearSelectedIfFiltered = (nextYear: string, nextDept: string) => {
@@ -283,55 +323,36 @@ export default function ProjectsPage() {
     }
   };
 
-  const getCollegeLabel = (department: string) => {
-    const collegeByDepartment: Record<string, string> = {
-      '文學院學士班': '文學院',
-      '中國文學系': '文學院',
-      '英美語文學系': '文學院',
-      '法國語文學系': '文學院',
-      '理學院學士班': '理學院',
-      '化學學系': '理學院',
-      '物理學系': '理學院',
-      '數學系': '理學院',
-      '光電科學與工程學系': '理學院',
-      '光電科學研究中心': '理學院',
-      '天文研究所': '理學院',
-      '統計研究所': '理學院',
-      '工學院學士班': '工學院',
-      '土木工程學系': '工學院',
-      '機械工程學系': '工學院',
-      '化學工程與材料工程學系': '工學院',
-      '材料科學與工程研究所': '工學院',
-      '營建管理研究所': '工學院',
-      '環境工程研究所': '工學院',
-      '能源工程研究所': '工學院',
-      '經濟學系': '管理學院',
-      '企業管理學系': '管理學院',
-      '財務金融學系': '管理學院',
-      '資訊管理學系': '管理學院',
-      '資訊電機學院學士班': '資訊電機學院',
-      '電機工程學系': '資訊電機學院',
-      '資訊工程學系': '資訊電機學院',
-      '通訊工程學系': '資訊電機學院',
-      '網路學習科技研究所': '資訊電機學院',
-      '地球科學學院學士班': '地球科學學院',
-      '地球科學學系': '地球科學學院',
-      '大氣科學學系': '地球科學學院',
-      '太空科學與工程學系': '地球科學學院',
-      '太空及遙測研究中心': '地球科學學院',
-      '太空科學與工程研究所': '地球科學學院',
-      '太空科學與科技研究中心': '地球科學學院',
-      '應用地質研究所': '地球科學學院',
-      '水文與海洋科學研究所': '地球科學學院',
-      '客家語文暨社會科學學系': '客家學院',
-      '生命科學系': '生醫理工學院',
-      '生醫科學與工程學系': '生醫理工學院',
-      '系統生物與生物資訊研究所': '生醫理工學院',
-      '認知神經科學研究所': '生醫理工學院',
-    };
-
-    return collegeByDepartment[department] || '未分類單位';
+  const handleOpenRecentChat = async (project: Project, targetThreadId: string) => {
+    abortCtrlRef.current?.abort();
+    abortCtrlRef.current = null;
+    streamingTextRef.current = '';
+    setStreamingText('');
+    setChatLoading(false);
+    setSelectedProject(project);
+    setInputMessage('');
+    setViewMode('pdf-chat');
+    setMobileOutlineView('detail');
+    setIsMobileChatOpen(false);
+    setThreadId(targetThreadId);
+    setPdfConversations([]);
+    if (user) {
+      projectAPI.listConversations(project.id)
+        .then((convs) => setPdfConversations(convs))
+        .catch(() => {});
+    }
+    setChatLoading(true);
+    try {
+      const msgs = await projectAPI.loadConversationMessages(project.id, targetThreadId);
+      setChatMessages([createWelcomeMessage(project), ...msgs]);
+    } catch {
+      setChatMessages([createWelcomeMessage(project)]);
+    } finally {
+      setChatLoading(false);
+    }
   };
+
+  const getCollegeLabel = getDeptCollege;
 
   const getCollegeBadgeClass = (college: string) => {
     switch (college) {
@@ -408,18 +429,12 @@ export default function ProjectsPage() {
                 </option>
               ))}
             </select>
-            <select
+            <DeptSelect
               value={filterDept}
-              onChange={(event) => handleFilterDeptChange(event.target.value)}
-              className="max-w-[180px] rounded-md border border-gray-300 px-2 py-1.5 text-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-500"
-            >
-              <option value="">全部系所</option>
-              {departments.map((department) => (
-                <option key={department} value={department}>
-                  {department}
-                </option>
-              ))}
-            </select>
+              onChange={handleFilterDeptChange}
+              departments={departments}
+              getCollegeLabel={getCollegeLabel}
+            />
             <span className="shrink-0 text-sm text-gray-500">
               共 <span className="font-semibold text-primary-700">{filteredProjects.length}</span> 筆
             </span>
@@ -486,28 +501,95 @@ export default function ProjectsPage() {
 
           <div className="hidden min-h-0 flex-1 lg:grid lg:grid-cols-3 lg:gap-4">
             <div className="flex min-h-0 flex-col">
-              <div className="flex-1 overflow-y-auto overflow-x-hidden [scrollbar-gutter:stable_both-edges]">
-                <div className="space-y-3 px-1 pt-2 pb-2 pr-4">
-                  {filteredProjects.map((project) => (
-                    <div
-                      key={project.id}
-                      className={`card cursor-pointer p-4 transition duration-200 ease-out hover:border-primary-200 hover:shadow-medium active:scale-[0.99] ${
-                        selectedProject?.id === project.id ? 'border-primary-500 shadow-medium' : ''
-                      }`}
-                      onClick={() => handleSelectProject(project)}
-                    >
-                      <ProjectCardContent
-                        project={project}
-                        getCollegeLabel={getCollegeLabel}
-                        getCollegeBadgeClass={getCollegeBadgeClass}
-                      />
-                    </div>
-                  ))}
-                  {filteredProjects.length === 0 ? (
-                    <div className="card p-6 text-center text-sm text-gray-500">目前沒有符合條件的研究計畫。</div>
-                  ) : null}
+              {/* Tab 切換（有最近對話時才顯示） */}
+              {user && matchedRecentChats.length > 0 && (
+                <div className="mb-2 flex shrink-0 gap-0.5 rounded-lg border border-gray-200 bg-gray-50 p-0.5">
+                  <button
+                    type="button"
+                    onClick={() => setLeftPanelTab('projects')}
+                    className={`flex flex-1 items-center justify-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium transition ${
+                      leftPanelTab === 'projects'
+                        ? 'bg-white shadow-sm text-primary-700'
+                        : 'text-gray-500 hover:text-gray-700'
+                    }`}
+                  >
+                    <HiAcademicCap className="h-3.5 w-3.5" />
+                    專題列表
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setLeftPanelTab('recent')}
+                    className={`flex flex-1 items-center justify-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium transition ${
+                      leftPanelTab === 'recent'
+                        ? 'bg-white shadow-sm text-primary-700'
+                        : 'text-gray-500 hover:text-gray-700'
+                    }`}
+                  >
+                    <HiClock className="h-3.5 w-3.5" />
+                    最近對話
+                  </button>
                 </div>
-              </div>
+              )}
+
+              {/* 專題列表 */}
+              {leftPanelTab === 'projects' && (
+                <div className="flex-1 overflow-y-auto overflow-x-hidden [scrollbar-gutter:stable_both-edges]">
+                  <div className="space-y-3 px-1 pt-2 pb-2 pr-4">
+                    {filteredProjects.map((project) => (
+                      <div
+                        key={project.id}
+                        className={`card cursor-pointer p-4 transition duration-200 ease-out hover:border-primary-200 hover:shadow-medium active:scale-[0.99] ${
+                          selectedProject?.id === project.id ? 'border-primary-500 shadow-medium' : ''
+                        }`}
+                        onClick={() => handleSelectProject(project)}
+                      >
+                        <ProjectCardContent
+                          project={project}
+                          getCollegeLabel={getCollegeLabel}
+                          getCollegeBadgeClass={getCollegeBadgeClass}
+                        />
+                      </div>
+                    ))}
+                    {filteredProjects.length === 0 ? (
+                      <div className="card p-6 text-center text-sm text-gray-500">目前沒有符合條件的研究計畫。</div>
+                    ) : null}
+                  </div>
+                </div>
+              )}
+
+              {/* 最近對話列表 */}
+              {leftPanelTab === 'recent' && (
+                <div className="flex-1 overflow-y-auto overflow-x-hidden [scrollbar-gutter:stable_both-edges]">
+                  <div className="space-y-1 px-1 pt-2 pb-2 pr-4">
+                    {matchedRecentChats.map(rc => (
+                      <button
+                        key={rc.thread_id}
+                        type="button"
+                        onClick={() => handleOpenRecentChat(rc.project, rc.thread_id)}
+                        className="flex w-full items-start gap-3 rounded-xl border border-transparent px-3 py-3 text-left transition hover:border-primary-100 hover:bg-primary-50"
+                      >
+                        <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary-100">
+                          <HiChat className="h-4 w-4 text-primary-500" />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <p className="truncate text-sm font-medium text-gray-800">{rc.project.title}</p>
+                          <p className="truncate text-xs text-gray-500">{rc.title}</p>
+                          <div className="mt-1.5 flex items-center justify-between gap-2">
+                            <span className={`inline-block shrink-0 rounded-full px-2 py-0.5 text-[10px] font-medium ${getCollegeBadgeClass(getCollegeLabel(rc.project.department))}`}>
+                              {rc.project.department}
+                            </span>
+                            {rc.created_at && (
+                              <span className="shrink-0 text-[10px] text-gray-400">
+                                {new Date(rc.created_at).toLocaleDateString('zh-TW')}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="min-h-0 overflow-y-auto lg:col-span-2">
@@ -1019,6 +1101,97 @@ function ChatPanel({
             )}
           </div>
         </form>
+      )}
+    </div>
+  );
+}
+
+function DeptSelect({
+  value,
+  onChange,
+  departments,
+  getCollegeLabel,
+}: {
+  value: string;
+  onChange: (v: string) => void;
+  departments: string[];
+  getCollegeLabel: (dept: string) => string;
+}) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
+
+  const groups = useMemo(() => {
+    const isGrad = (d: string) =>
+      d.includes('研究所') || (d.includes('研究中心') && !d.includes('學系'));
+    const map = new Map<string, string[]>();
+    // 依照 departments 原始順序插入，保留與專題列表相同的排序
+    for (const dept of departments) {
+      const college = getCollegeLabel(dept);
+      if (!map.has(college)) map.set(college, []);
+      map.get(college)!.push(dept);
+    }
+    // 每個學院內：學系/學士班在前，研究所/研究中心在後
+    const sorted = Array.from(map.entries()).map(([college, depts]) => [
+      college,
+      [
+        ...depts.filter((d) => !isGrad(d)),
+        ...depts.filter((d) =>  isGrad(d)),
+      ],
+    ] as [string, string[]]);
+    // 未分類放最後；其餘保留 departments 插入順序（已由 sortDeptsByCollegeOrder 保證）
+    const normal = sorted.filter(([c]) => c !== '未分類單位');
+    const uncat  = sorted.filter(([c]) => c === '未分類單位');
+    return [...normal, ...uncat];
+  }, [departments, getCollegeLabel]);
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((prev) => !prev)}
+        className="flex w-[200px] items-center gap-1 rounded-md border border-gray-300 bg-white px-2 py-1.5 text-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-500"
+      >
+        <span className="min-w-0 flex-1 truncate text-left">{value || '全部系所'}</span>
+        <HiChevronDown className={`h-4 w-4 shrink-0 transition-transform ${open ? 'rotate-180' : ''}`} />
+      </button>
+
+      {open && (
+        <div className="absolute right-0 top-full z-50 mt-1 max-h-80 w-64 overflow-y-auto rounded-lg border border-gray-200 bg-white shadow-lg">
+          <div
+            className={`cursor-pointer px-3 py-2 text-sm hover:bg-gray-50 ${!value ? 'font-medium text-primary-700' : 'text-gray-700'}`}
+            onClick={() => { onChange(''); setOpen(false); }}
+          >
+            全部系所
+          </div>
+          <div className="my-1 border-t border-gray-100" />
+          {groups.map(([college, depts], gi) => (
+            <div key={college}>
+              {gi > 0 && <div className="mx-3 my-0.5 border-t border-gray-50" />}
+              <p className="px-3 pb-0.5 pt-2 text-[10px] font-medium tracking-wider text-gray-400">
+                {college}
+              </p>
+              {depts.map((dept) => (
+                <div
+                  key={dept}
+                  className={`cursor-pointer px-3 py-1.5 text-sm transition-colors hover:bg-gray-50 ${
+                    dept === value ? 'bg-primary-50 font-medium text-primary-700' : 'text-gray-700'
+                  }`}
+                  onClick={() => { onChange(dept); setOpen(false); }}
+                >
+                  {dept}
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );

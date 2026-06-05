@@ -304,12 +304,17 @@ export interface PdfAllTimeStats {
   estimated_cost_usd: number;
 }
 
+export interface DepthStats {
+  count: number; min: number; q1: number; median: number; q3: number; max: number; avg: number;
+}
+
 export interface PdfPeriodStats {
   active_users: number;
   new_users: number;
   sessions: number;
   turns: number;
   avg_turns_per_session: number;
+  depth_stats: DepthStats | null;
   input_tokens: number;
   output_tokens: number;
   router_input_tokens: number;
@@ -341,6 +346,7 @@ export interface PdfStats {
     sessions: number;
   }[];
   activity_trend: { date: string; sessions: number; turns: number }[];
+  peak_hours: { hour: number; turns: number }[];
 }
 
 export interface CourseStats {
@@ -370,6 +376,7 @@ export interface MonitorPeriod {
   sessions: number;
   turns: number;
   avg_turns_per_session: number;
+  depth_stats: DepthStats | null;
   input_tokens: number;
   output_tokens: number;
   estimated_cost_usd: number;
@@ -599,5 +606,15 @@ export const projectAPI = {
 
   deleteConversation: async (projectId: string, threadId: string): Promise<void> => {
     await apiClient.delete(`/projects/${projectId}/conversations/${threadId}`);
+  },
+
+  listRecentChats: async (): Promise<{
+    document_id: number;
+    thread_id: string;
+    title: string;
+    created_at: string | null;
+  }[]> => {
+    const response = await apiClient.get('/projects/recent-chats');
+    return response.data;
   },
 };

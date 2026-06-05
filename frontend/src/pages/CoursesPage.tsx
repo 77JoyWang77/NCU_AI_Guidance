@@ -17,6 +17,7 @@ import {
 } from 'react-icons/hi';
 import { FaHeartbeat, FaLandmark, FaLeaf } from 'react-icons/fa';
 import { courseAPI } from '../api/services';
+import { sortDeptsInCollege } from '../constants/colleges';
 import CourseCompareModal from '../components/CourseCompareModal';
 import CourseDetailPanel from '../components/CourseDetailPanel';
 import HighlightText from '../components/HighlightText';
@@ -172,7 +173,7 @@ export default function CoursesPage() {
   );
 
   const currentDepartments = useMemo(
-    () => (!selectedCollege ? [] : Object.keys(groupedCourses[selectedCollege] || {}).sort((a, b) => a.localeCompare(b, 'zh-Hant'))),
+    () => (!selectedCollege ? [] : sortDeptsInCollege(Object.keys(groupedCourses[selectedCollege] || {}))),
     [groupedCourses, selectedCollege]
   );
 

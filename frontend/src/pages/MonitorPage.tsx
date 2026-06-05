@@ -11,7 +11,7 @@ import { isDeveloper } from '../auth/developerUtils';
 import {
   monitorAPI,
   type MonitorStats, type MonitorTrend,
-  type LLMLatency, type DBStats, type PdfStats, type CombinedStats,
+  type LLMLatency, type DBStats, type PdfStats, type CombinedStats, type DepthStats,
 } from '../api/services';
 
 type TipParam = { marker: string; seriesName: string; value: number; name: string; axisValue: string; seriesIndex: number };
@@ -1038,8 +1038,111 @@ function DatabaseTab({ dbStats, loading }: { dbStats: DBStats|null; loading: boo
   );
 }
 
-// ── ActivityTab ───────────────────────────────────────────────────
+// ── 對話深度 Box Plot ─────────────────────────────────────────────
 type ActivityFeature = 'all' | 'course' | 'pdf';
+
+function DepthBoxPlot({ courseStats, pdfStats, feature }: {
+  courseStats: DepthStats | null;
+  pdfStats: DepthStats | null;
+  feature: ActivityFeature;
+}) {
+  const items: { name: string; stats: DepthStats; color: string }[] = [];
+  if ((feature === 'all' || feature === 'course') && courseStats) {
+    items.push({ name: '課程推薦', stats: courseStats, color: '#6366f1' });
+  }
+  if ((feature === 'all' || feature === 'pdf') && pdfStats) {
+    items.push({ name: '大專生計畫', stats: pdfStats, color: '#10b981' });
+  }
+
+  if (!items.length) {
+    return <div className="flex h-28 items-center justify-center text-sm text-slate-600">尚無資料</div>;
+  }
+
+  const boxData  = items.map(i => [i.stats.min, i.stats.q1, i.stats.median, i.stats.q3, i.stats.max]);
+  const meanData = items.map((item, idx) => [idx, item.stats.avg]);
+
+  const opt = {
+    backgroundColor: 'transparent',
+    grid: { left: 48, right: 20, top: 12, bottom: 48 },
+    tooltip: {
+      ...TIP,
+      trigger: 'item',
+      formatter: (p: { seriesType: string; name: string; value: unknown; seriesName: string }) => {
+        if (p.seriesType === 'scatter') {
+          const v = p.value as [number, number];
+          return `${p.name}<br/>${p.seriesName}: <b>${(v[1] as number).toFixed(1)} 輪</b>`;
+        }
+        const v = p.value as number[];
+        return `${p.name}<br/>min: <b>${v[0]}</b> · Q1: <b>${v[1]}</b> · 中位: <b>${v[2]}</b> · Q3: <b>${v[3]}</b> · max: <b>${v[4]}</b>`;
+      },
+    },
+    xAxis: { type: 'category', data: items.map(i => i.name), ...AX },
+    yAxis: { type: 'value', ...AX, minInterval: 1 },
+    series: [
+      {
+        name: '對話深度',
+        type: 'boxplot',
+        data: boxData,
+        itemStyle: { color: 'rgba(99,102,241,0.15)', borderColor: '#6366f1', borderWidth: 2 },
+        boxWidth: ['30%', '50%'],
+      },
+      {
+        name: '平均值',
+        type: 'scatter',
+        data: meanData,
+        symbolSize: 10,
+        itemStyle: { color: '#f59e0b' },
+        tooltip: {},
+      },
+    ],
+  };
+
+  return (
+    <div>
+      <ReactECharts option={opt} style={{ height: 220 }}/>
+      <div className="mt-1 flex flex-wrap gap-x-5 gap-y-0.5">
+        {items.map(i => (
+          <p key={i.name} className="text-[11px] text-slate-500">
+            <span className="font-medium" style={{ color: i.color }}>{i.name}</span>
+            {' '}· {i.stats.count} sessions · 平均{' '}
+            <span className="text-slate-400 font-medium">{i.stats.avg.toFixed(1)} 輪</span>
+            {' '}· 中位 <span className="text-slate-400 font-medium">{i.stats.median} 輪</span>
+          </p>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ── 每日平均深度趨勢 ──────────────────────────────────────────────
+function DepthTrendChart({ data }: { data: { date: string; sessions: number; turns: number }[] }) {
+  const filtered = data.filter(d => d.sessions > 0);
+  if (!filtered.length) {
+    return <div className="flex h-20 items-center justify-center text-sm text-slate-600">尚無資料</div>;
+  }
+  const xData = filtered.map(d => d.date);
+  const yData = filtered.map(d => +(d.turns / d.sessions).toFixed(2));
+  const opt = {
+    backgroundColor: 'transparent',
+    grid: { left: 40, right: 16, top: 8, bottom: 36 },
+    tooltip: { ...TIP, trigger: 'axis',
+      formatter: (p: TipParam[]) => `${p[0].axisValue} &nbsp;<b>${p[0].value} 輪/session</b>`,
+    },
+    xAxis: { type: 'category', data: xData, boundaryGap: false, ...AX,
+      axisLabel: { ...AX.axisLabel, fontSize: 10 } },
+    yAxis: { type: 'value', ...AX, axisLabel: { ...AX.axisLabel, formatter: (v: number) => `${v}輪` } },
+    series: [{
+      type: 'line', smooth: true, data: yData, symbol: 'circle', symbolSize: 5,
+      lineStyle: { color: '#a78bfa', width: 2 },
+      itemStyle: { color: '#a78bfa' },
+      areaStyle: { color: { type: 'linear', x: 0, y: 0, x2: 0, y2: 1,
+        colorStops: [{ offset: 0, color: 'rgba(167,139,250,.25)' }, { offset: 1, color: 'rgba(167,139,250,.02)' }] } },
+    }],
+  };
+  return <ReactECharts option={opt} style={{ height: 140 }}/>;
+}
+
+// ── ActivityTab ───────────────────────────────────────────────────
 
 function ActivityTab({ stats }: { stats: MonitorStats }) {
   const [feature, setFeature] = useState<ActivityFeature>('all');
@@ -1050,34 +1153,27 @@ function ActivityTab({ stats }: { stats: MonitorStats }) {
   const courseTools    = stats.course?.tools_usage ?? stats.tools_usage;
 
   const combinedActivity = useMemo(() => {
-    const dateMap = new Map<string, {sessions:number;turns:number}>();
-    for (const r of courseActivity) {
-      dateMap.set(r.date, { sessions: r.sessions, turns: r.turns });
-    }
+    const dateMap = new Map<string, { sessions: number; turns: number }>();
+    for (const r of courseActivity) dateMap.set(r.date, { sessions: r.sessions, turns: r.turns });
     for (const r of pdfActivity) {
-      const existing = dateMap.get(r.date) ?? { sessions: 0, turns: 0 };
-      dateMap.set(r.date, { sessions: existing.sessions + r.sessions, turns: existing.turns + r.turns });
+      const e = dateMap.get(r.date) ?? { sessions: 0, turns: 0 };
+      dateMap.set(r.date, { sessions: e.sessions + r.sessions, turns: e.turns + r.turns });
     }
-    return Array.from(dateMap.entries())
-      .sort(([a],[b]) => a < b ? -1 : 1)
-      .map(([date, v]) => ({ date, ...v }));
+    return Array.from(dateMap.entries()).sort(([a],[b]) => a < b ? -1 : 1).map(([date, v]) => ({ date, ...v }));
   }, [courseActivity, pdfActivity]);
 
-  const activityData = feature === 'course' ? courseActivity
-    : feature === 'pdf' ? pdfActivity
-    : combinedActivity;
+  const activityData = feature === 'course' ? courseActivity : feature === 'pdf' ? pdfActivity : combinedActivity;
 
   const courseP = stats.period;
   const pdfP    = stats.pdf?.period;
 
-  const active_users = feature === 'pdf' ? (pdfP?.active_users ?? 0) : courseP.active_users;
-  const new_users    = feature === 'pdf' ? (pdfP?.new_users ?? 0)    : courseP.new_users;
-  const returning    = Math.max(0, active_users - new_users);
-  const newPct       = active_users > 0 ? Math.round(new_users / active_users * 100) : 0;
-  const returnPct    = active_users > 0 ? Math.round(returning / active_users * 100) : 0;
-  const avgTurns     = feature === 'pdf'
-    ? (pdfP?.avg_turns_per_session ?? 0).toFixed(1)
-    : courseP.avg_turns_per_session;
+  const active_users     = feature === 'pdf' ? (pdfP?.active_users ?? 0) : courseP.active_users;
+  const new_users        = feature === 'pdf' ? (pdfP?.new_users ?? 0)    : courseP.new_users;
+  const returning        = Math.max(0, active_users - new_users);
+  const courseDepthStats = courseP.depth_stats ?? null;
+  const pdfDepthStats    = pdfP?.depth_stats ?? null;
+
+  const featureLabel = feature === 'all' ? '合計' : feature === 'course' ? '課程推薦' : '大專生計畫';
 
   return (
     <div className="space-y-5">
@@ -1093,15 +1189,30 @@ function ActivityTab({ stats }: { stats: MonitorStats }) {
       </div>
 
       {/* 用戶概況 */}
-      <div className="rounded-xl border border-slate-800 bg-slate-900 grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-slate-800">
+      <div className="rounded-xl border border-slate-800 bg-slate-900 grid grid-cols-3 md:grid-cols-5 divide-x divide-slate-800">
         <Stat label="時段活躍用戶" value={active_users} sub="有對話紀錄"/>
-        <Stat label="新用戶"       value={new_users}    sub={`佔 ${newPct}%`}/>
-        <Stat label="回訪用戶"     value={returning}    sub={`佔 ${returnPct}%`}/>
-        <Stat label="平均對話深度" value={`${avgTurns} 輪`} sub="每 session"/>
+        <Stat label="新用戶"       value={new_users}    sub={`佔 ${active_users>0?Math.round(new_users/active_users*100):0}%`}/>
+        <Stat label="回訪用戶"     value={returning}    sub={`佔 ${active_users>0?Math.round(returning/active_users*100):0}%`}/>
+        <Stat label="Sessions"     value={(feature==='pdf'?(pdfP?.sessions??0):courseP.sessions).toLocaleString()} sub={featureLabel}/>
+        <Stat label="Turns"        value={(feature==='pdf'?(pdfP?.turns??0):courseP.turns).toLocaleString()} sub={featureLabel}/>
       </div>
 
+      {/* 對話深度分布 Box Plot */}
+      <Section title="對話深度分布" sub="min / Q1 / 中位數 / Q3 / max  ·  黃點為平均值">
+        <DepthBoxPlot
+          courseStats={courseDepthStats}
+          pdfStats={pdfDepthStats}
+          feature={feature}
+        />
+      </Section>
+
+      {/* 每日平均深度趨勢 */}
+      <Section title="每日平均對話深度趨勢" sub={`${featureLabel} · turns ÷ sessions`}>
+        <DepthTrendChart data={activityData}/>
+      </Section>
+
       {/* 活動趨勢 */}
-      <Section title={`對話活動趨勢${feature==='all'?' — 合計':feature==='course'?' — 課程推薦':' — 大專生計畫'}`} sub="Sessions & Turns">
+      <Section title={`對話活動趨勢 — ${featureLabel}`} sub="Sessions & Turns">
         <ActivityChart data={activityData}/>
       </Section>
 
@@ -1116,6 +1227,13 @@ function ActivityTab({ stats }: { stats: MonitorStats }) {
       {feature !== 'pdf' && (
         <Section title="課程推薦活躍時段分布" sub="24 小時">
           <PeakChart data={coursePeak}/>
+        </Section>
+      )}
+
+      {/* 活躍時段（大專生計畫） */}
+      {feature !== 'course' && stats.pdf?.peak_hours && stats.pdf.peak_hours.length > 0 && (
+        <Section title="大專生計畫活躍時段分布" sub="24 小時">
+          <PeakChart data={stats.pdf.peak_hours}/>
         </Section>
       )}
     </div>

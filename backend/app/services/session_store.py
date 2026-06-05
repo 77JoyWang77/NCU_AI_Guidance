@@ -875,6 +875,26 @@ def _get_pdf_stats(conn, start_dt, end_dt, is_hourly: bool, prev_start_dt, prev_
                 group by 1 order by 1
             """, (start_dt, end_dt)).fetchall()
 
+        depth_stats_pdf = conn.execute("""
+            select count(*)::int as cnt,
+                   coalesce(min(tc), 0)::int as min_t,
+                   coalesce(round(percentile_cont(0.25) within group (order by tc)), 0)::int as q1,
+                   coalesce(round(percentile_cont(0.50) within group (order by tc)), 0)::int as median,
+                   coalesce(round(percentile_cont(0.75) within group (order by tc)), 0)::int as q3,
+                   coalesce(max(tc), 0)::int as max_t,
+                   coalesce(round(avg(tc)::numeric, 1), 0.0)::float as avg_t
+            from (select thread_id, count(*)::int as tc from pdf_agent_messages
+                  where created_at >= %s and created_at <= %s group by thread_id) s
+        """, (start_dt, end_dt)).fetchone()
+
+        pdf_peak_rows = conn.execute("""
+            select extract(hour from created_at at time zone 'Asia/Taipei')::int as hour,
+                   count(*)::int as turns
+            from pdf_agent_messages
+            where created_at >= %s and created_at <= %s
+            group by 1 order by 1
+        """, (start_dt, end_dt)).fetchall()
+
         if is_hourly:
             latency_trend = conn.execute("""
                 select extract(hour from created_at at time zone 'Asia/Taipei')::int as hour,
@@ -974,6 +994,15 @@ def _get_pdf_stats(conn, start_dt, end_dt, is_hourly: bool, prev_start_dt, prev_
             "sessions":              p.get("sessions", 0) or 0,
             "turns":                 cur_turns,
             "avg_turns_per_session": float((avg_turns or {}).get("avg_turns", 0) or 0),
+            "depth_stats": {
+                "count":  depth_stats_pdf["cnt"]    if depth_stats_pdf else 0,
+                "min":    depth_stats_pdf["min_t"]  if depth_stats_pdf else 0,
+                "q1":     depth_stats_pdf["q1"]     if depth_stats_pdf else 0,
+                "median": depth_stats_pdf["median"] if depth_stats_pdf else 0,
+                "q3":     depth_stats_pdf["q3"]     if depth_stats_pdf else 0,
+                "max":    depth_stats_pdf["max_t"]  if depth_stats_pdf else 0,
+                "avg":    float(depth_stats_pdf["avg_t"] or 0) if depth_stats_pdf else 0.0,
+            } if depth_stats_pdf and depth_stats_pdf["cnt"] > 0 else None,
             "input_tokens":          p_inp,
             "output_tokens":         p_out,
             "router_input_tokens":   p_r_inp,
@@ -1009,6 +1038,10 @@ def _get_pdf_stats(conn, start_dt, end_dt, is_hourly: bool, prev_start_dt, prev_
         },
         "daily_trend":    daily_trend,
         "activity_trend": activity_trend,
+        "peak_hours": (
+            [{"hour": h, "turns": {r["hour"]: r["turns"] for r in pdf_peak_rows}.get(h, 0)} for h in range(24)]
+            if pdf_peak_rows is not None else []
+        ),
     }
 
 
@@ -1187,9 +1220,22 @@ def get_monitor_stats(
                     group by 1 order by 1
                 """, (start_dt, end_dt)).fetchall()
 
+            depth_stats_row = conn.execute("""
+                select count(*)::int as cnt,
+                       coalesce(min(tc), 0)::int as min_t,
+                       coalesce(round(percentile_cont(0.25) within group (order by tc)), 0)::int as q1,
+                       coalesce(round(percentile_cont(0.50) within group (order by tc)), 0)::int as median,
+                       coalesce(round(percentile_cont(0.75) within group (order by tc)), 0)::int as q3,
+                       coalesce(max(tc), 0)::int as max_t,
+                       coalesce(round(avg(tc)::numeric, 1), 0.0)::float as avg_t
+                from (select session_id, count(*)::int as tc from chat_turns
+                      where created_at >= %s and created_at <= %s group by session_id) s
+            """, (start_dt, end_dt)).fetchone()
+
     except Exception:
         postgres_status = "error"
         latency_trend_rows = []
+        depth_stats_row = None
 
     qdrant_debug = _qdrant_debug()
     qdrant_status = "ok" if qdrant_debug["status"] == "ok" else "error"
@@ -1256,6 +1302,15 @@ def get_monitor_stats(
             "sessions":              period_row["sessions"]            if period_row else 0,
             "turns":                 cur_turns,
             "avg_turns_per_session": float(avg_turns_row["avg_turns"]) if avg_turns_row and avg_turns_row["avg_turns"] else 0.0,
+            "depth_stats": {
+                "count":  depth_stats_row["cnt"]    if depth_stats_row else 0,
+                "min":    depth_stats_row["min_t"]  if depth_stats_row else 0,
+                "q1":     depth_stats_row["q1"]     if depth_stats_row else 0,
+                "median": depth_stats_row["median"] if depth_stats_row else 0,
+                "q3":     depth_stats_row["q3"]     if depth_stats_row else 0,
+                "max":    depth_stats_row["max_t"]  if depth_stats_row else 0,
+                "avg":    float(depth_stats_row["avg_t"] or 0) if depth_stats_row else 0.0,
+            } if depth_stats_row and depth_stats_row["cnt"] > 0 else None,
             "input_tokens":          period_row["input_tokens"]        if period_row else 0,
             "output_tokens":         period_row["output_tokens"]       if period_row else 0,
             "estimated_cost_usd":    _cost(

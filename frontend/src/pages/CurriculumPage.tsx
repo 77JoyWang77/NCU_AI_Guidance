@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { apiClient } from '../api/client';
+import { COLLEGE_ORDER, deptSortKey } from '../constants/colleges';
 import CourseDetailModal from '../components/CourseDetailModal';
 import type { CourseCard } from '../types';
 
@@ -932,7 +933,15 @@ export default function CurriculumPage() {
     apiClient
       .get('/curriculum/tree')
       .then((res) => {
-        setTree(res.data);
+        const sorted = [...(res.data as CollegeNode[])].sort((a, b) => {
+          const ia = COLLEGE_ORDER.indexOf(a.name as (typeof COLLEGE_ORDER)[number]);
+          const ib = COLLEGE_ORDER.indexOf(b.name as (typeof COLLEGE_ORDER)[number]);
+          if (ia === -1 && ib === -1) return a.name.localeCompare(b.name, 'zh-Hant');
+          if (ia === -1) return 1;
+          if (ib === -1) return -1;
+          return ia - ib;
+        });
+        setTree(sorted);
         const ids = new Set<string>();
         res.data.forEach((college: CollegeNode) => {
           if (college.id !== 'college_liberal_arts') return;
@@ -1117,7 +1126,11 @@ export default function CurriculumPage() {
                   program_type: c.program_type || 'bachelor_program',
                   groups: (c.specialization_tracks || []).map(t => ({ id: t.id, name: t.name }))
                 }))
-              ];
+              ].sort((a, b) => {
+                const ka = deptSortKey(a.name), kb = deptSortKey(b.name);
+                if (ka !== kb) return ka - kb;
+                return a.name.localeCompare(b.name, 'zh-Hant');
+              });
 
               const deptCount = depts.length;
 
