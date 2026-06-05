@@ -129,6 +129,7 @@ export default function CoursesPage() {
   const [compareCourses, setCompareCourses] = useState<Course[]>([]);
   const [compareOpen, setCompareOpen] = useState(false);
   const [compareNotice, setCompareNotice] = useState('');
+  const [isNavCollapsed, setIsNavCollapsed] = useState(false);
 
   useEffect(() => {
     courseAPI
@@ -177,10 +178,10 @@ export default function CoursesPage() {
     [groupedCourses, selectedCollege]
   );
 
-  const departmentCourses = useMemo(
-    () => (!selectedCollege || !selectedDepartment ? [] : groupedCourses[selectedCollege]?.[selectedDepartment] || []),
-    [groupedCourses, selectedCollege, selectedDepartment]
-  );
+  const departmentCourses = useMemo(() => {
+    const list = !selectedCollege || !selectedDepartment ? [] : groupedCourses[selectedCollege]?.[selectedDepartment] ?? [];
+    return [...list].sort((a, b) => (a.course_id ?? '').localeCompare(b.course_id ?? ''));
+  }, [groupedCourses, selectedCollege, selectedDepartment]);
 
   const hasActiveFilters =
     Boolean(searchQuery.trim()) || selectedTypes.length > 0 || selectedCredits.length > 0 || selectedSemesters.length > 0;
@@ -329,7 +330,7 @@ export default function CoursesPage() {
         count: Array.from(departments.values()).reduce((sum, list) => sum + list.length, 0),
         departments: Array.from(departments.entries())
           .sort((a, b) => a[0].localeCompare(b[0], 'zh-Hant'))
-          .map(([name, list]) => ({ name, count: list.length, courses: list })),
+          .map(([name, list]) => ({ name, count: list.length, courses: [...list].sort((a, b) => (a.course_id ?? '').localeCompare(b.course_id ?? '')) })),
       }));
   }, [filteredCourses]);
 
@@ -555,8 +556,19 @@ export default function CoursesPage() {
             </div>
           </div>
         ) : (
-          <div className="flex h-full min-h-0 flex-col md:flex-row">
-            <aside className={`relative z-10 min-h-0 w-full flex-col overflow-hidden ${navigationShellClass} ${isMobileNavigatorOpen ? 'flex flex-1' : 'hidden'} md:flex md:w-[24rem] md:min-w-[24rem] md:max-w-[24rem] md:flex-none`}>
+          <div className="relative flex h-full min-h-0 flex-col md:flex-row">
+            {/* Desktop sidebar toggle — matches CurriculumPage style */}
+            <button
+              type="button"
+              onClick={() => setIsNavCollapsed(!isNavCollapsed)}
+              className={`absolute z-30 top-24 hidden md:flex items-center justify-center w-5 h-20 bg-slate-50/95 backdrop-blur-md border-y border-r border-slate-300 rounded-r-xl shadow-[4px_0_12px_-2px_rgba(0,0,0,0.1)] hover:bg-slate-100 hover:border-slate-400 text-slate-500 transition-all duration-300 ${isNavCollapsed ? 'left-0' : 'left-[20rem]'}`}
+              aria-label={isNavCollapsed ? '展開課程導航' : '收起課程導航'}
+            >
+              <svg className={`w-4 h-4 transition-transform duration-300 ${isNavCollapsed ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <aside className={`relative z-10 min-h-0 w-full flex-col overflow-hidden ${navigationShellClass} ${isMobileNavigatorOpen ? 'flex flex-1' : 'hidden'} md:flex md:flex-none transition-all duration-300 ${isNavCollapsed ? 'md:w-0 md:min-w-0 md:max-w-0 md:opacity-0' : 'md:w-[20rem] md:min-w-[20rem] md:max-w-[20rem] md:opacity-100'}`}>
               <div className={`sticky top-0 z-10 ${navigationTopClass}`}>
                 <div className="flex items-center justify-between gap-3 bg-white px-4 py-3">
                   <h2 className="text-sm font-bold tracking-wide text-slate-900">課程導航</h2>
@@ -837,7 +849,7 @@ export default function CoursesPage() {
               </div>
             </aside>
 
-            <div className={`relative z-0 min-h-0 min-w-0 flex-1 overflow-y-auto bg-slate-50 p-4 ${isMobileNavigatorOpen ? 'hidden md:block' : 'block'}`}>
+<div className={`relative z-0 min-h-0 min-w-0 flex-1 overflow-y-auto bg-slate-50 p-4 ${isMobileNavigatorOpen ? 'hidden md:block' : 'block'}`}>
               {!isMobileNavigatorOpen ? (
                 <button
                   type="button"

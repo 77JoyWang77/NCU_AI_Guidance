@@ -43,6 +43,14 @@ const getApiErrorMessage = (error: unknown) => {
   return apiError.response?.data?.detail || apiError.message || 'AI 課程助理暫時無法回答，請稍後再試。';
 };
 
+const QUICK_ACTIONS = [
+  { id: 'translate', label: '翻譯成中文', prompt: '請把這門課的課程目標與課程內容翻譯成繁體中文，保持原本的架構。' },
+  { id: 'simplify', label: '高中生版本', prompt: '請用高中生能理解的語言，整理這門課在學什麼、有什麼實際用途。' },
+  { id: 'connect', label: '連結高中知識', prompt: '這門課的核心概念可以對應到高中哪些科目的哪些單元？請舉例說明。' },
+  { id: 'fit', label: '我適合修嗎', prompt: '這門課適合什麼樣背景的學生？需要哪些先備知識？' },
+  { id: 'prereq', label: '先備知識', prompt: '修這門課之前建議具備哪些基礎？有推薦先修的課程嗎？' },
+];
+
 const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKeyword = '', isCompared = false, onToggleCompare }) => {
   const [askOpen, setAskOpen] = useState(false);
   const [askQuestion, setAskQuestion] = useState('');
@@ -73,24 +81,15 @@ const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKey
     resetAskState();
   };
 
-  const handleAskSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const submitQuestion = async (question: string) => {
     if (!course) return;
-    const question = askQuestion.trim();
-    if (!question) {
-      setAskError('請先輸入問題。');
-      return;
-    }
-
     setAskLoading(true);
     setAskError('');
     setAskAnswer('');
     setAskLastQuestion(question);
-
     try {
       const response = await courseAPI.askCourse(course.course_id, question);
       setAskAnswer(response.answer);
-      setAskQuestion('');
       if (response.warnings.length > 0) {
         setAskError(response.warnings.join(' '));
       }
@@ -99,6 +98,21 @@ const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKey
     } finally {
       setAskLoading(false);
     }
+  };
+
+  const handleQuickAction = (prompt: string) => {
+    void submitQuestion(prompt);
+  };
+
+  const handleAskSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const question = askQuestion.trim();
+    if (!question) {
+      setAskError('請先輸入問題。');
+      return;
+    }
+    setAskQuestion('');
+    await submitQuestion(question);
   };
 
   if (!course) {
@@ -115,18 +129,19 @@ const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKey
 
   const metadataGroups = [
     { label: '工具', items: uniqueFields(course.tools) },
-    { label: '核心概念', items: uniqueFields(course.concepts) },
     { label: '主題', items: uniqueFields(course.topic_tags) },
     { label: '領域標籤', items: uniqueFields(course.domain_tags) },
     { label: '語言', items: uniqueFields(course.languages) },
-    { label: '簡化概念', items: uniqueFields(course.simplified_concepts) },
     { label: '核心問題', items: uniqueFields(course.core_questions) },
   ].filter((group) => group.items.length > 0);
+  const conceptsList = uniqueFields(course.concepts);
+  const simplifiedList = uniqueFields(course.simplified_concepts);
+  const hasConceptData = conceptsList.length > 0 || simplifiedList.length > 0;
   const courseFieldTags = splitFields(course.course_field);
 
   return (
-    <>
-    <div className="rounded-lg border border-slate-200 bg-white shadow-sm">
+    <div className={askOpen ? 'md:flex md:items-start md:gap-4' : undefined}>
+    <div className={`rounded-lg border border-slate-200 bg-white shadow-sm${askOpen ? ' md:flex-1 md:min-w-0' : ''}`}>
       <div className="border-b border-slate-200 bg-white p-5">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
           <div className="min-w-0 flex-1">
@@ -211,6 +226,12 @@ const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKey
             <p className="whitespace-pre-wrap text-sm leading-relaxed text-gray-700">
               <HighlightText text={course.course_content} keyword={searchKeyword} />
             </p>
+          </Section>
+        ) : null}
+
+        {hasConceptData ? (
+          <Section icon={<HiTag className="h-5 w-5" />} title="課程概念">
+            <ConceptPairChips concepts={conceptsList} simplified={simplifiedList} keyword={searchKeyword} />
           </Section>
         ) : null}
 
@@ -335,12 +356,104 @@ const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKey
       </div>
     </div>
 
+    {/* Desktop split AI chat panel */}
     {askOpen ? (
-      <div className="fixed inset-0 z-50 flex items-end justify-center bg-slate-950/35 p-0 sm:items-center sm:p-4" onClick={closeAsk}>
+      <div className="hidden md:flex w-[28rem] shrink-0 flex-col self-start sticky top-4 max-h-[calc(100vh-6rem)] rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+        <div className="flex items-center justify-between gap-3 border-b border-slate-200 px-4 py-3 shrink-0">
+          <div className="flex items-center gap-2 text-sm font-semibold text-slate-700">
+            <HiChatAlt2 className="h-5 w-5" />
+            AI 課程助理
+          </div>
+          <button type="button" onClick={closeAsk} className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-500 transition hover:bg-slate-200" aria-label="關閉">
+            <HiX className="h-4 w-4" />
+          </button>
+        </div>
+        <div className="border-b border-slate-100 px-4 py-3 shrink-0">
+          <p className="mb-2 text-xs font-medium text-slate-400">快速提問</p>
+          <div className="flex flex-wrap gap-1.5">
+            {QUICK_ACTIONS.map((action) => (
+              <button
+                key={action.id}
+                type="button"
+                onClick={() => handleQuickAction(action.prompt)}
+                disabled={askLoading}
+                className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-700 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {action.label}
+              </button>
+            ))}
+          </div>
+        </div>
+        <div className="min-h-0 flex-1 overflow-y-auto px-4 py-4 space-y-3">
+          {!askLastQuestion ? (
+            <div className="rounded-lg border border-slate-200 bg-white p-3 text-sm leading-relaxed text-slate-500">
+              可以詢問這門課的內容、修課資格、適合背景，或使用上方快速提問。
+            </div>
+          ) : (
+            <>
+              <div className="rounded-lg border border-slate-200 bg-slate-50 p-3">
+                <div className="mb-1 text-xs font-semibold text-slate-500">你的問題</div>
+                <p className="whitespace-pre-wrap text-sm leading-relaxed text-slate-800">{askLastQuestion}</p>
+              </div>
+              {askLoading && (
+                <div className="flex items-center gap-2 text-sm text-slate-500">
+                  <div className="h-4 w-4 animate-spin rounded-full border-2 border-slate-300 border-t-slate-600" />
+                  回答中...
+                </div>
+              )}
+              {askAnswer && (
+                <div className="rounded-lg border border-slate-200 bg-slate-50 p-3">
+                  <div className="mb-1 text-xs font-semibold text-slate-600">AI 回答</div>
+                  <MarkdownAnswer text={askAnswer} />
+                </div>
+              )}
+              {askError && (
+                <div className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm leading-relaxed text-amber-800">
+                  {askError}
+                </div>
+              )}
+            </>
+          )}
+        </div>
+        <form onSubmit={handleAskSubmit} className="border-t border-slate-200 p-3 shrink-0">
+          <div className="flex gap-2">
+            <textarea
+              value={askQuestion}
+              onChange={(event) => setAskQuestion(event.target.value)}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' && !event.shiftKey) {
+                  event.preventDefault();
+                  if (!askLoading && askQuestion.trim()) {
+                    const q = askQuestion.trim();
+                    setAskQuestion('');
+                    handleQuickAction(q);
+                  }
+                }
+              }}
+              rows={2}
+              placeholder="輸入問題，或點上方快速提問..."
+              className="flex-1 resize-none rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-500"
+              disabled={askLoading}
+            />
+            <button
+              type="submit"
+              disabled={askLoading}
+              className="shrink-0 rounded-lg bg-primary-900 px-3 py-2 text-white transition hover:bg-primary-800 disabled:cursor-not-allowed disabled:bg-slate-400"
+            >
+              <HiPaperAirplane className="h-4 w-4" />
+            </button>
+          </div>
+        </form>
+      </div>
+    ) : null}
+
+    {/* Mobile modal */}
+    {askOpen ? (
+      <div className="fixed inset-0 z-50 flex items-end justify-center bg-slate-950/35 p-0 sm:items-center sm:p-4 md:hidden" onClick={closeAsk}>
         <div className="max-h-[92vh] w-full max-w-2xl overflow-hidden rounded-t-2xl bg-white shadow-2xl sm:rounded-2xl" onClick={(event) => event.stopPropagation()}>
           <div className="flex items-start justify-between gap-4 border-b border-slate-200 px-5 py-4">
             <div className="min-w-0">
-              <div className="flex items-center gap-2 text-sm font-semibold text-violet-700">
+              <div className="flex items-center gap-2 text-sm font-semibold text-slate-700">
                 <HiChatAlt2 className="h-5 w-5" />
                 單門課程問答
               </div>
@@ -351,7 +464,24 @@ const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKey
             </button>
           </div>
 
-          <div className="max-h-[58vh] overflow-y-auto px-5 py-4">
+          <div className="border-b border-slate-100 px-5 py-3">
+            <p className="mb-2 text-xs font-medium text-slate-400">快速提問</p>
+            <div className="flex flex-wrap gap-1.5">
+              {QUICK_ACTIONS.map((action) => (
+                <button
+                  key={action.id}
+                  type="button"
+                  onClick={() => handleQuickAction(action.prompt)}
+                  disabled={askLoading}
+                  className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-700 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  {action.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="max-h-[44vh] overflow-y-auto px-5 py-4">
             {askLastQuestion ? (
               <div className="mb-4 rounded-lg border border-slate-200 bg-slate-50 p-3">
                 <div className="mb-1 text-xs font-semibold text-slate-500">你的問題</div>
@@ -360,8 +490,8 @@ const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKey
             ) : null}
 
             {askAnswer ? (
-              <div className="rounded-lg border border-fuchsia-100 bg-fuchsia-50 p-3">
-                <div className="mb-1 text-xs font-semibold text-fuchsia-700">AI 回答</div>
+              <div className="rounded-lg border border-slate-200 bg-slate-50 p-3">
+                <div className="mb-1 text-xs font-semibold text-slate-600">AI 回答</div>
                 <MarkdownAnswer text={askAnswer} />
               </div>
             ) : (
@@ -385,13 +515,13 @@ const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKey
                 onChange={(event) => setAskQuestion(event.target.value)}
                 rows={3}
                 placeholder="例如：這門課需要哪些先備知識？"
-                className="min-h-20 flex-1 resize-none rounded-xl border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-violet-500 focus:ring-2 focus:ring-violet-500"
+                className="min-h-20 flex-1 resize-none rounded-xl border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-500"
                 disabled={askLoading}
               />
               <button
                 type="submit"
                 disabled={askLoading}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500 px-4 py-3 text-sm font-medium text-white shadow-lg shadow-fuchsia-200 transition duration-200 hover:-translate-y-0.5 hover:from-violet-600 hover:to-fuchsia-600 disabled:cursor-not-allowed disabled:translate-y-0 disabled:from-slate-400 disabled:to-slate-400 disabled:shadow-none"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary-900 px-4 py-3 text-sm font-medium text-white shadow-lg shadow-slate-300 transition duration-200 hover:-translate-y-0.5 hover:bg-primary-800 disabled:cursor-not-allowed disabled:translate-y-0 disabled:bg-slate-400 disabled:shadow-none"
               >
                 <HiPaperAirplane className="h-4 w-4" />
                 {askLoading ? '回答中' : '送出'}
@@ -401,7 +531,7 @@ const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKey
         </div>
       </div>
     ) : null}
-    </>
+    </div>
   );
 };
 
@@ -423,6 +553,37 @@ const ChipList: React.FC<{ items: string[]; keyword: string }> = ({ items, keywo
           <HighlightText text={item} keyword={keyword} />
         </span>
       ))}
+    </div>
+  );
+};
+
+const ConceptPairChips: React.FC<{ concepts: string[]; simplified: string[]; keyword: string }> = ({ concepts, simplified, keyword }) => {
+  const maxLen = Math.max(concepts.length, simplified.length);
+  const pairs = Array.from({ length: maxLen }, (_, i) => ({
+    concept: concepts[i] ?? '',
+    simplified: simplified[i] ?? '',
+  })).filter((p) => p.concept || p.simplified);
+
+  if (pairs.length === 0) return null;
+
+  return (
+    <div className="flex flex-wrap gap-3">
+      {pairs.map((pair, i) => {
+        const title = pair.concept || pair.simplified;
+        const sub = pair.simplified || '';
+        return (
+          <div key={i} className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
+            <div className="text-sm font-semibold leading-snug text-slate-800">
+              <HighlightText text={title} keyword={keyword} />
+            </div>
+            {sub && (
+              <div className="mt-1.5 text-xs leading-snug text-slate-400">
+                <HighlightText text={sub} keyword={keyword} />
+              </div>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 };

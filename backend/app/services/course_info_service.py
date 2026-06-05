@@ -10,7 +10,7 @@ from typing import Any
 
 from openai import AzureOpenAI, OpenAI
 from qdrant_client import QdrantClient
-from qdrant_client.models import Distance, FieldCondition, Filter, MatchValue, PointStruct, VectorParams
+from qdrant_client.models import Distance, FieldCondition, Filter, MatchValue, PayloadSchemaType, PointStruct, VectorParams
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
@@ -386,11 +386,26 @@ def _query_cache_point_id(normalized_query: str, model: str) -> int:
 def _ensure_query_cache_collection(client: QdrantClient) -> None:
     existing = {collection.name for collection in client.get_collections().collections}
     if QUERY_CACHE_COLLECTION in existing:
+        _ensure_query_cache_indexes(client)
         return
     client.create_collection(
         collection_name=QUERY_CACHE_COLLECTION,
         vectors_config=VectorParams(size=VECTOR_DIM, distance=Distance.COSINE),
     )
+    _ensure_query_cache_indexes(client)
+
+
+def _ensure_query_cache_indexes(client: QdrantClient) -> None:
+    """為 query cache collection 建立必要的 keyword payload indexes。"""
+    for field in ("normalized_query", "embedding_model"):
+        try:
+            client.create_payload_index(
+                collection_name=QUERY_CACHE_COLLECTION,
+                field_name=field,
+                field_schema=PayloadSchemaType.KEYWORD,
+            )
+        except Exception:
+            pass  # 索引已存在時 Qdrant 會回傳錯誤，忽略即可
 
 
 def _extract_record_vector(record: Any) -> list[float] | None:
