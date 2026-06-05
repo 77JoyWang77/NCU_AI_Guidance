@@ -4,6 +4,8 @@ import logging
 import re
 import warnings
 from collections.abc import AsyncIterator
+from contextvars import ContextVar
+from dataclasses import dataclass
 from typing import Callable, Any
 from pydantic import BaseModel, Field
 from langchain.agents import create_agent
@@ -45,6 +47,18 @@ from app.tools.rag_tool import (
 )
 
 logger = logging.getLogger(__name__)
+
+
+@dataclass
+class _TurnCostAccumulator:
+    input_tokens: int = 0
+    output_tokens: int = 0
+    router_input_tokens: int = 0
+    router_output_tokens: int = 0
+    agent_model: str = ""
+
+
+_turn_cost_var: ContextVar[_TurnCostAccumulator | None] = ContextVar("_turn_cost", default=None)
 
 
 class _AnswerExtractor:
@@ -184,12 +198,20 @@ def _track_model_cost(state: dict, runtime) -> None:
         thread_id = (getattr(ctx, "thread_id", None) or "")[:8]
         model_name = (getattr(response, "response_metadata", None) or {}).get("model_name", "")
         cache_read = (usage.get("input_token_details") or {}).get("cache_read", 0)
+        inp = usage.get("input_tokens", 0)
+        out = usage.get("output_tokens", 0)
         logger.info(
             "model_cost agent=%s thread=%s in=%d out=%d total=%d cache_read=%d model=%s",
             agent_name_ctx, thread_id,
-            usage.get("input_tokens", 0), usage.get("output_tokens", 0),
+            inp, out,
             usage.get("total_tokens", 0), cache_read, model_name,
         )
+        acc = _turn_cost_var.get()
+        if acc is not None:
+            acc.input_tokens += inp
+            acc.output_tokens += out
+            if model_name and not acc.agent_model:
+                acc.agent_model = model_name
     except Exception:
         pass
 

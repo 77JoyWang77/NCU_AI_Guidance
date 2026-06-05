@@ -292,6 +292,78 @@ export interface LLMLatency {
   max_ms: number;
 }
 
+export interface PdfAllTimeStats {
+  total_users: number;
+  total_sessions: number;
+  total_turns: number;
+  total_input: number;
+  total_output: number;
+  total_router_input: number;
+  total_router_output: number;
+  online_now: number;
+  estimated_cost_usd: number;
+}
+
+export interface PdfPeriodStats {
+  active_users: number;
+  new_users: number;
+  sessions: number;
+  turns: number;
+  avg_turns_per_session: number;
+  input_tokens: number;
+  output_tokens: number;
+  router_input_tokens: number;
+  router_output_tokens: number;
+  estimated_cost_usd: number;
+  estimated_cost_breakdown: { agent_usd: number; router_usd: number };
+  llm_latency: LLMLatency | null;
+  llm_latency_trend: { date?: string; hour?: number; avg_ms: number }[];
+  agent_distribution: { agent_name: string; cnt: number }[];
+  latency_by_agent: { agent_name: string; cnt: number; avg_ms: number; p95_ms: number }[];
+}
+
+export interface PdfStats {
+  all_time: PdfAllTimeStats;
+  period: PdfPeriodStats;
+  trends: {
+    turns: MonitorTrend;
+    tokens: MonitorTrend;
+    active_users: MonitorTrend;
+  };
+  daily_trend: {
+    date?: string;
+    hour?: number;
+    input: number;
+    output: number;
+    router_input: number;
+    router_output: number;
+    turns: number;
+    sessions: number;
+  }[];
+  activity_trend: { date: string; sessions: number; turns: number }[];
+}
+
+export interface CourseStats {
+  all_time: MonitorAllTime;
+  period: MonitorPeriod;
+  trends: {
+    turns: MonitorTrend;
+    tokens: MonitorTrend;
+    active_users: MonitorTrend;
+  };
+  peak_hours: { hour: number; turns: number }[];
+  daily_trend: { date?: string; hour?: number; input: number; output: number; turns: number; sessions: number }[];
+  tools_usage: { tool: string; label: string; count: number }[];
+  activity_trend: { date: string; sessions: number; turns: number }[];
+}
+
+export interface CombinedStats {
+  total_users: number;
+  total_turns: number;
+  total_cost_usd: number;
+  online_now: number;
+}
+
 export interface MonitorPeriod {
   active_users: number;
   new_users: number;
@@ -358,6 +430,11 @@ export interface MonitorStats {
   tools_usage: { tool: string; label: string; count: number }[];
   activity_trend: { date: string; sessions: number; turns: number }[];
   latency_stats: LatencyEndpoint[];
+  pdf_model_name?: string;
+  pdf_router_model_name?: string;
+  course?: CourseStats;
+  pdf?: PdfStats;
+  combined?: CombinedStats;
 }
 
 export const monitorAPI = {
@@ -365,6 +442,7 @@ export const monitorAPI = {
     preset?: '1d' | '7d' | '30d';
     start?: string;
     end?: string;
+    feature?: 'all' | 'course' | 'pdf';
   } = {}): Promise<MonitorStats> => {
     const response = await apiClient.get('/monitor/stats', { params: opts });
     return response.data;

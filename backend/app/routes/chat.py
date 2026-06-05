@@ -91,6 +91,7 @@ async def chat(req: ChatRequest, user: AuthUser = Depends(get_current_user)):
         input_tokens=result.get("input_tokens", 0),
         output_tokens=result.get("output_tokens", 0),
         llm_latency_ms=_llm_ms,
+        model_name=result.get("model", ""),
     )
 
     return ChatResponse(
@@ -157,6 +158,7 @@ async def chat_stream(req: ChatRequest, user: AuthUser = Depends(get_current_use
                             input_tokens=data.get("input_tokens", 0),
                             output_tokens=data.get("output_tokens", 0),
                             llm_latency_ms=_llm_ms,
+                            model_name=data.get("model", ""),
                         )
                         raw = f"data: {_json.dumps(data, ensure_ascii=False)}\n\n"
                 except Exception:

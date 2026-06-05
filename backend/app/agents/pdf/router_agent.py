@@ -1,6 +1,7 @@
 from app.utils import new_id
 from collections.abc import AsyncIterator
 import asyncio
+import time as _time
 from dataclasses import dataclass
 from datetime import datetime, timezone
 import json
@@ -18,7 +19,7 @@ from app.prompting.registry import version as prompt_version
 
 from .types import AgentLimitation, AgentRoute, AgentResult, AgentStatus
 from .request_context import get_user_id
-from .runner import _AnswerExtractor
+from .runner import _AnswerExtractor, _turn_cost_var, _TurnCostAccumulator
 from . import steering as _steering
 
 logger = logging.getLogger(__name__)
@@ -249,11 +250,25 @@ async def _orchestrate(
             SystemMessage(content=system),
             ("human", "{payload}"),
         ])
-        structured = _get_router_llm().with_structured_output(RouterDecision)
+        structured = _get_router_llm().with_structured_output(RouterDecision, include_raw=True)
         chain = prompt | structured
-        decision: RouterDecision = await chain.ainvoke(
+        raw_result: dict = await chain.ainvoke(
             {"payload": json.dumps(user, ensure_ascii=False)}
         )
+        decision: RouterDecision = raw_result["parsed"]
+
+        acc = _turn_cost_var.get()
+        if acc is not None:
+            raw_msg = raw_result.get("raw")
+            if raw_msg is not None:
+                u = getattr(raw_msg, "usage_metadata", None) or {}
+                ri = u.get("input_tokens", 0)
+                ro = u.get("output_tokens", 0)
+                acc.router_input_tokens += ri
+                acc.router_output_tokens += ro
+                acc.input_tokens += ri
+                acc.output_tokens += ro
+
         return _normalise_decision(decision)
     except Exception as exc:
         logger.warning("Orchestrator LLM failed; using conservative fallback: %s", exc)
@@ -344,6 +359,12 @@ async def _write_agent_message(
     route: AgentRoute,
     primary_observation_id: str,
     result: AgentResult | None,
+    input_tokens: int = 0,
+    output_tokens: int = 0,
+    router_input_tokens: int = 0,
+    router_output_tokens: int = 0,
+    latency_ms: int = 0,
+    model_name: str = "",
 ) -> None:
     user_id = get_user_id()  # capture ContextVar before entering thread
     def _write():
@@ -360,6 +381,12 @@ async def _write_agent_message(
                 sources=sources,
                 trace_summary=result.coverage_result if result else None,
                 observation_id=primary_observation_id,
+                input_tokens=input_tokens,
+                output_tokens=output_tokens,
+                router_input_tokens=router_input_tokens,
+                router_output_tokens=router_output_tokens,
+                latency_ms=latency_ms,
+                model_name=model_name or None,
             )
             db.add(msg)
             conv = db.query(PdfConversation).filter_by(thread_id=thread_id).first()
@@ -389,6 +416,12 @@ async def _finalize_plan(
     primary_observation_id: str,
     sources: list[str] | None = None,
     result: AgentResult | None = None,
+    input_tokens: int = 0,
+    output_tokens: int = 0,
+    router_input_tokens: int = 0,
+    router_output_tokens: int = 0,
+    latency_ms: int = 0,
+    model_name: str = "",
 ) -> None:
     if thread_id and output_response:
         _fire_and_forget(_write_agent_message(
@@ -399,6 +432,12 @@ async def _finalize_plan(
             route=route,
             primary_observation_id=primary_observation_id,
             result=result,
+            input_tokens=input_tokens,
+            output_tokens=output_tokens,
+            router_input_tokens=router_input_tokens,
+            router_output_tokens=router_output_tokens,
+            latency_ms=latency_ms,
+            model_name=model_name,
         ))
     if route.agent_name == "research" and result is not None:
         _fire_and_forget(_update_memory(
@@ -456,6 +495,9 @@ async def route_agent_stream(
         raise ValueError("document_id is required for PDF chat")
 
     trace_id = trace_id or new_id()
+    _acc = _TurnCostAccumulator()
+    _turn_cost_var.set(_acc)
+    _wall_start = _time.monotonic()
     _visited: frozenset[str] = frozenset()
     _full_response: str | None = None
     last_sources: list[str] = []
@@ -691,6 +733,9 @@ async def route_agent_stream(
     if thread_id:
         _steering.get_and_clear(thread_id)
 
+    _latency_ms = int((_time.monotonic() - _wall_start) * 1000)
+    _turn_cost_var.set(None)
+
     if (plan is not None and step is not None and current_route is not None
             and not _chat_jobs.is_cancelled(thread_id)):
         await _finalize_plan(
@@ -699,6 +744,12 @@ async def route_agent_stream(
             primary_observation_id=step.observation_id,
             sources=last_sources,
             result=agent_result,
+            input_tokens=_acc.input_tokens,
+            output_tokens=_acc.output_tokens,
+            router_input_tokens=_acc.router_input_tokens,
+            router_output_tokens=_acc.router_output_tokens,
+            latency_ms=_latency_ms,
+            model_name=_acc.agent_model,
         )
 
     yield "", True, last_sources

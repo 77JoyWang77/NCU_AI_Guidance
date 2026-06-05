@@ -4,14 +4,14 @@ import ReactECharts from 'echarts-for-react';
 import {
   HiCheckCircle, HiXCircle, HiRefresh,
   HiTrendingUp, HiTrendingDown,
-  HiDatabase, HiServer, HiChip, HiChatAlt2,
+  HiDatabase, HiServer, HiChip, HiChatAlt2, HiDocumentText, HiAcademicCap,
 } from 'react-icons/hi';
 import { useAuth } from '../auth/AuthContext';
 import { isDeveloper } from '../auth/developerUtils';
 import {
   monitorAPI,
   type MonitorStats, type MonitorTrend,
-  type LLMLatency, type DBStats,
+  type LLMLatency, type DBStats, type PdfStats, type CombinedStats,
 } from '../api/services';
 
 type TipParam = { marker: string; seriesName: string; value: number; name: string; axisValue: string; seriesIndex: number };
@@ -51,6 +51,19 @@ function ms(n: number) {
   if (n >= 1_000)  return `${(n/1_000).toFixed(1)}s`;
   return `${n}ms`;
 }
+function fmtUptime(sec: number): string {
+  if (sec < 60)   return `${sec}s`;
+  if (sec < 3600) return `${Math.floor(sec/60)}m ${sec%60}s`;
+  const h = Math.floor(sec/3600), minu = Math.floor((sec%3600)/60);
+  return `${h}h ${minu}m`;
+}
+
+const AGENT_LABEL: Record<string, string> = {
+  chat: '直接回答',
+  retrieval: '文件搜尋',
+  research: '深度研究',
+};
+function agentLabel(name: string) { return AGENT_LABEL[name] ?? name; }
 
 // ── 共用組件 ──────────────────────────────────────────────────────
 function Trend({ t }: { t: MonitorTrend }) {
@@ -150,17 +163,104 @@ function TokenChart({ daily_trend, isHourly }: { daily_trend: MonitorStats['dail
     : <div className="flex h-28 items-center justify-center text-sm text-slate-600">對話後開始記錄</div>;
 }
 
-function LatencyTrendChart({ trend, isHourly }: { trend: {date?:string;hour?:number;avg_ms:number}[]; isHourly: boolean }) {
-  if (!trend.length) return <div className="flex h-28 items-center justify-center text-sm text-slate-600">尚無資料（需有 llm_latency_ms &gt; 0 的對話）</div>;
-  const xData = isHourly ? trend.map(r=>`${String(r.hour).padStart(2,'0')}:00`) : trend.map(r=>r.date??'');
-  const data  = trend.map(r=>r.avg_ms);
+type PdfTrendRow = PdfStats['daily_trend'][number];
+
+function PdfTokenChart({ daily_trend, isHourly }: { daily_trend: PdfTrendRow[]; isHourly: boolean }) {
+  const xData = isHourly
+    ? Array.from({length:24},(_,i)=>`${String(i).padStart(2,'0')}:00`)
+    : daily_trend.map(r=>r.date??'');
+  const agentInp  = daily_trend.map(r => Math.max(0, (r.input||0) - (r.router_input||0)));
+  const agentOut  = daily_trend.map(r => Math.max(0, (r.output||0) - (r.router_output||0)));
+  const routerInp = daily_trend.map(r => r.router_input || 0);
+  const routerOut = daily_trend.map(r => r.router_output || 0);
+  const hasData   = agentInp.some(v=>v>0) || agentOut.some(v=>v>0) || routerInp.some(v=>v>0);
+  const makeLine = (name: string, data: number[], color: string) => ({
+    name, type:'line', smooth:true, data, symbol:'none',
+    lineStyle:{color,width:2}, itemStyle:{color},
+    areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:`${color}40`},{offset:1,color:`${color}06`}]}},
+  });
   const opt = {
-    backgroundColor:'transparent', grid:{left:54,right:16,top:12,bottom:36},
+    backgroundColor:'transparent', grid:{left:54,right:16,top:12,bottom:52},
+    legend:{data:['Agent Input','Agent Output','Router Input','Router Output'],bottom:4,textStyle:{color:'#94a3b8',fontSize:10}},
+    tooltip:{...TIP,trigger:'axis',formatter:(p:TipParam[])=>p.map(x=>`${x.marker}${x.seriesName}: <b>${fmt(x.value)}</b>`).join('<br/>')},
+    xAxis:{type:'category',data:xData,boundaryGap:false,...AX},
+    yAxis:{type:'value',...AX,axisLabel:{...AX.axisLabel,formatter:fmt}},
+    series:[
+      makeLine('Agent Input',  agentInp,  '#6366f1'),
+      makeLine('Agent Output', agentOut,  '#0ea5e9'),
+      makeLine('Router Input', routerInp, '#a78bfa'),
+      makeLine('Router Output',routerOut, '#38bdf8'),
+    ],
+  };
+  return hasData
+    ? <ReactECharts option={opt} style={{height:200}}/>
+    : <div className="flex h-28 items-center justify-center text-sm text-slate-600">對話後開始記錄</div>;
+}
+
+function LatencyDistBar({ lat }: { lat: LLMLatency }) {
+  const range = lat.max_ms - lat.min_ms;
+  if (range <= 0) return null;
+  const pct = (v: number) => `${Math.max(0, Math.min(100, ((v - lat.min_ms) / range) * 100)).toFixed(1)}%`;
+  const ticks = [
+    { val: lat.min_ms, label: 'min', color: '#64748b' },
+    { val: lat.avg_ms, label: 'avg', color: '#f59e0b' },
+    { val: lat.p95_ms, label: 'P95', color: '#fb923c' },
+    { val: lat.p99_ms, label: 'P99', color: '#ef4444' },
+    { val: lat.max_ms, label: 'max', color: '#64748b' },
+  ];
+  const segments = [
+    { from: lat.min_ms, to: lat.avg_ms, bg: 'rgba(99,102,241,0.25)' },
+    { from: lat.avg_ms, to: lat.p95_ms, bg: 'rgba(245,158,11,0.30)' },
+    { from: lat.p95_ms, to: lat.p99_ms, bg: 'rgba(251,146,60,0.45)' },
+    { from: lat.p99_ms, to: lat.max_ms, bg: 'rgba(239,68,68,0.45)' },
+  ];
+  return (
+    <div className="mt-3 px-1 select-none">
+      <div className="relative h-3 rounded-full bg-slate-800 overflow-hidden">
+        {segments.map((s, i) => {
+          const left  = ((s.from - lat.min_ms) / range) * 100;
+          const width = ((s.to   - s.from)     / range) * 100;
+          return <div key={i} className="absolute top-0 bottom-0" style={{ left: `${left}%`, width: `${width}%`, backgroundColor: s.bg }}/>;
+        })}
+      </div>
+      <div className="relative mt-0.5" style={{ height: 32 }}>
+        {ticks.map((t, i) => (
+          <div key={i} className="absolute flex flex-col items-center gap-px" style={{ left: pct(t.val), transform: 'translateX(-50%)' }}>
+            <div className="h-1.5 w-px" style={{ backgroundColor: t.color }}/>
+            <span className="text-[10px] font-medium" style={{ color: t.color }}>{t.label}</span>
+            <span className="text-[9px] text-slate-600 tabular-nums whitespace-nowrap">{ms(t.val)}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function LatencyTrendChart({ trend, isHourly, p95Ref, p99Ref }: {
+  trend: {date?:string;hour?:number;avg_ms:number}[];
+  isHourly: boolean;
+  p95Ref?: number;
+  p99Ref?: number;
+}) {
+  if (!trend.length) return <div className="flex h-28 items-center justify-center text-sm text-slate-600">尚無資料（需有 llm_latency_ms &gt; 0 的對話）</div>;
+  const xData = isHourly ? trend.map(r=>`${String(r.hour??0).padStart(2,'0')}:00`) : trend.map(r=>r.date??'');
+  const data  = trend.map(r=>r.avg_ms);
+  const refLines: object[] = [];
+  if (p95Ref) refLines.push({ yAxis: p95Ref, name: 'P95', lineStyle: { color: '#fb923c', type: 'dashed', width: 1 },
+    label: { show: true, position: 'end', formatter: `P95 ${ms(p95Ref)}`, color: '#fb923c', fontSize: 10, padding: [2,4] } });
+  if (p99Ref) refLines.push({ yAxis: p99Ref, name: 'P99', lineStyle: { color: '#ef4444', type: 'dashed', width: 1 },
+    label: { show: true, position: 'end', formatter: `P99 ${ms(p99Ref)}`, color: '#ef4444', fontSize: 10, padding: [2,4] } });
+  const opt = {
+    backgroundColor:'transparent', grid:{left:54,right:64,top:12,bottom:36},
     tooltip:{...TIP,trigger:'axis',formatter:(p:TipParam[])=>`${p[0].axisValue} &nbsp;<b>${ms(p[0].value)}</b>`},
     xAxis:{type:'category',data:xData,boundaryGap:false,...AX},
     yAxis:{type:'value',...AX,axisLabel:{...AX.axisLabel,formatter:(v:number)=>ms(v)}},
-    series:[{type:'line',smooth:true,data,symbol:'none',lineStyle:{color:'#f59e0b',width:2},itemStyle:{color:'#f59e0b'},
-      areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'rgba(245,158,11,.25)'},{offset:1,color:'rgba(245,158,11,.02)'}]}}}],
+    series:[{
+      type:'line', smooth:true, data, symbol:'none',
+      lineStyle:{color:'#f59e0b',width:2}, itemStyle:{color:'#f59e0b'},
+      areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'rgba(245,158,11,.25)'},{offset:1,color:'rgba(245,158,11,.02)'}]}},
+      ...(refLines.length ? { markLine:{ silent:true, symbol:['none','none'], data: refLines } } : {}),
+    }],
   };
   return <ReactECharts option={opt} style={{height:160}}/>;
 }
@@ -177,7 +277,6 @@ function PeakChart({ data }: { data: {hour:number;turns:number}[] }) {
   return <ReactECharts option={opt} style={{height:160}}/>;
 }
 
-
 function ActivityChart({ data }: { data:{date:string;sessions:number;turns:number}[] }) {
   if (!data.length) return <div className="flex h-28 items-center justify-center text-sm text-slate-600">尚無資料</div>;
   const opt = {
@@ -192,6 +291,159 @@ function ActivityChart({ data }: { data:{date:string;sessions:number;turns:numbe
     ],
   };
   return <ReactECharts option={opt} style={{height:160}}/>;
+}
+
+const COURSE_INPUT_PRICE  = 0.75 / 1_000_000;
+const COURSE_OUTPUT_PRICE = 4.50 / 1_000_000;
+
+function DailyCostChart({ daily_trend, isHourly }: {
+  daily_trend: MonitorStats['daily_trend']; isHourly: boolean;
+}) {
+  if (!daily_trend.length) return <div className="flex h-28 items-center justify-center text-sm text-slate-600">尚無資料</div>;
+  const xData   = isHourly
+    ? Array.from({length:24}, (_,i) => `${String(i).padStart(2,'0')}:00`)
+    : daily_trend.map(r => r.date ?? '');
+  const costs   = daily_trend.map(r =>
+    +(r.input * COURSE_INPUT_PRICE + r.output * COURSE_OUTPUT_PRICE).toFixed(6)
+  );
+  const tokPerTurn = daily_trend.map(r =>
+    r.turns > 0 ? +((r.input + r.output) / r.turns).toFixed(0) : 0
+  );
+  const hasCost = costs.some(v => v > 0);
+  const opt = {
+    backgroundColor: 'transparent',
+    grid: { left: 60, right: 60, top: 12, bottom: 52 },
+    legend: { data: ['估算費用 (USD)', '每輪 Token'], bottom: 4, textStyle: { color: '#94a3b8', fontSize: 11 } },
+    tooltip: {
+      ...TIP, trigger: 'axis',
+      formatter: (p: TipParam[]) => p.map(x =>
+        `${x.marker}${x.seriesName}: <b>${x.seriesIndex === 0 ? `$${x.value.toFixed(5)}` : fmt(x.value)}</b>`
+      ).join('<br/>'),
+    },
+    xAxis: { type: 'category', data: xData, ...AX },
+    yAxis: [
+      { type: 'value', name: 'USD', nameTextStyle: { color: '#94a3b8', fontSize: 10 },
+        axisLabel: { ...AX.axisLabel, formatter: (v: number) => `$${v.toFixed(4)}` },
+        splitLine: AX.splitLine },
+      { type: 'value', name: 'tok/輪', nameTextStyle: { color: '#94a3b8', fontSize: 10 },
+        axisLabel: { ...AX.axisLabel, formatter: fmt }, splitLine: { show: false } },
+    ],
+    series: [
+      { name: '估算費用 (USD)', type: 'bar', data: costs, yAxisIndex: 0, barMaxWidth: 18,
+        itemStyle: { color: '#f59e0b', borderRadius: [2,2,0,0] } },
+      { name: '每輪 Token', type: 'line', data: tokPerTurn, yAxisIndex: 1,
+        smooth: true, symbol: 'none',
+        lineStyle: { color: '#6366f1', width: 2 },
+        itemStyle: { color: '#6366f1' } },
+    ],
+  };
+  return hasCost
+    ? <ReactECharts option={opt} style={{ height: 200 }}/>
+    : <div className="flex h-28 items-center justify-center text-sm text-slate-600">尚無 Token 記錄（對話後開始統計）</div>;
+}
+
+function AllToolsBarChart({ tools }: { tools:{label:string;count:number}[] }) {
+  if (!tools.length) return <div className="flex h-24 items-center justify-center text-sm text-slate-600">尚無紀錄</div>;
+  const sorted = [...tools].sort((a,b) => b.count - a.count);
+  const total  = sorted.reduce((s,t) => s + t.count, 0);
+  const opt = {
+    backgroundColor: 'transparent',
+    grid: { left: 140, right: 60, top: 8, bottom: 16 },
+    tooltip: { ...TIP, trigger: 'axis', axisPointer: { type: 'none' },
+      formatter: (p: TipParam[]) => `${p[0].name}<br/>${p[0].marker}<b>${p[0].value}</b> 次（${((p[0].value/total)*100).toFixed(1)}%）` },
+    xAxis: { type: 'value', ...AX, axisLabel: { ...AX.axisLabel, fontSize: 10 } },
+    yAxis: {
+      type: 'category',
+      data: sorted.map(t => t.label),
+      axisLabel: { color: '#94a3b8', fontSize: 11, width: 128, overflow: 'truncate' },
+      axisLine: { lineStyle: { color: '#334155' } },
+    },
+    series: [{
+      type: 'bar', data: sorted.map(t => t.count), barMaxWidth: 14,
+      itemStyle: { color: '#6366f1', borderRadius: [0,3,3,0] },
+      label: { show: true, position: 'right', color: '#94a3b8', fontSize: 10,
+               formatter: (p: { value: number }) => `${p.value}` },
+    }],
+  };
+  const chartHeight = Math.max(160, sorted.length * 28 + 30);
+  return <ReactECharts option={opt} style={{ height: chartHeight }}/>;
+}
+
+function AgentDistributionChart({ data }: { data: { agent_name: string; cnt: number }[] }) {
+  if (!data.length || data.every(d => d.cnt === 0)) {
+    return <div className="flex h-28 items-center justify-center text-sm text-slate-600">尚無資料</div>;
+  }
+  const COLORS = ['#6366f1','#10b981','#f59e0b','#0ea5e9','#a78bfa'];
+  const pieSeries = data.map((d, i) => ({
+    value: d.cnt,
+    name: agentLabel(d.agent_name),
+    itemStyle: { color: COLORS[i % COLORS.length] },
+  }));
+  const opt = {
+    backgroundColor: 'transparent',
+    tooltip: { ...TIP, trigger: 'item',
+      formatter: (p: { name: string; value: number; percent: number }) =>
+        `${p.name}<br/><b>${p.value}</b> 次（${p.percent.toFixed(1)}%）`,
+    },
+    legend: { orient: 'vertical', right: 8, top: 'middle', textStyle: { color: '#94a3b8', fontSize: 11 } },
+    series: [{
+      type: 'pie', radius: ['40%','70%'], center: ['40%','50%'],
+      data: pieSeries,
+      label: {
+        show: true, color: '#e2e8f0', fontSize: 11,
+        formatter: (p: { name: string; percent: number }) => `${p.name}\n${p.percent.toFixed(0)}%`,
+      },
+      emphasis: { itemStyle: { shadowBlur: 8, shadowColor: 'rgba(0,0,0,.5)' } },
+    }],
+  };
+  return <ReactECharts option={opt} style={{ height: 220 }}/>;
+}
+
+function LatencyByAgentChart({ data }: { data: { agent_name: string; cnt: number; avg_ms: number; p95_ms: number }[] }) {
+  if (!data.length) {
+    return <div className="flex h-28 items-center justify-center text-sm text-slate-600">尚無資料</div>;
+  }
+  const labels = data.map(d => agentLabel(d.agent_name));
+  const avgs   = data.map(d => d.avg_ms);
+  const p95s   = data.map(d => d.p95_ms);
+  const opt = {
+    backgroundColor: 'transparent',
+    grid: { left: 90, right: 72, top: 8, bottom: 8 },
+    tooltip: { ...TIP, trigger: 'axis', axisPointer: { type: 'none' },
+      formatter: (p: TipParam[]) =>
+        `${p[0].name}<br/>${p.map(x=>`${x.marker}${x.seriesName}: <b>${ms(x.value)}</b>`).join('<br/>')}`,
+    },
+    xAxis: { type: 'value', ...AX, axisLabel: { ...AX.axisLabel, formatter: (v:number)=>ms(v) } },
+    yAxis: {
+      type: 'category', data: labels,
+      axisLabel: { color: '#94a3b8', fontSize: 11, width: 80, overflow: 'truncate' },
+      axisLine: { lineStyle: { color: '#334155' } },
+    },
+    series: [
+      { name: 'Avg', type: 'bar', data: avgs, barMaxWidth: 14,
+        itemStyle: { color: '#f59e0b', borderRadius: [0,3,3,0] },
+        label: { show: true, position: 'right', color: '#94a3b8', fontSize: 10, formatter: (p:{value:number})=>ms(p.value) },
+      },
+      { name: 'P95', type: 'bar', data: p95s, barMaxWidth: 14,
+        itemStyle: { color: '#fb923c', borderRadius: [0,3,3,0] },
+        label: { show: true, position: 'right', color: '#94a3b8', fontSize: 10, formatter: (p:{value:number})=>ms(p.value) },
+      },
+    ],
+  };
+  const chartHeight = Math.max(100, data.length * 46 + 24);
+  return (
+    <div>
+      <div className="mb-2 flex gap-4 text-[11px] text-slate-500">
+        <span className="flex items-center gap-1.5">
+          <span className="inline-block h-2 w-3 rounded-sm bg-amber-400"/>Avg
+        </span>
+        <span className="flex items-center gap-1.5">
+          <span className="inline-block h-2 w-3 rounded-sm bg-orange-400"/>P95
+        </span>
+      </div>
+      <ReactECharts option={opt} style={{ height: chartHeight }}/>
+    </div>
+  );
 }
 
 // ── Tab 內容組件 ──────────────────────────────────────────────────
@@ -259,104 +511,122 @@ function TimeRangeSelector({ state, onChange, dateRange }: TimeRangeProps) {
   );
 }
 
+// ── OverviewTab ───────────────────────────────────────────────────
 function OverviewTab({ stats, timeState, onTimeChange }: {
   stats: MonitorStats; timeState: TimeRangeState; onTimeChange: (s: TimeRangeState) => void;
 }) {
+  const combined: CombinedStats | undefined = stats.combined;
+  const courseAt = stats.course?.all_time ?? stats.all_time;
+  const pdfAt    = stats.pdf?.all_time;
   const isHourly = stats.date_range.start === stats.date_range.end;
+
   return (
     <div className="space-y-5">
+      {/* 全時期合計 */}
       <div>
-        <p className="mb-2 text-[11px] uppercase tracking-wide text-slate-600">全時期統計</p>
+        <p className="mb-2 text-[11px] uppercase tracking-wide text-slate-600">全時期合計</p>
         <div className="rounded-xl border border-slate-800 bg-slate-900 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 divide-x divide-y md:divide-y-0 divide-slate-800">
-          <Stat label="總用戶數"   value={stats.all_time.total_users}    sub="已註冊"/>
-          <Stat label="總對話"     value={fmt(stats.all_time.total_sessions)} sub={`${fmt(stats.all_time.total_turns)} 輪`}/>
-          <Stat label="即時在線"   value={stats.all_time.online_now}     sub="15 分鐘內"/>
-          <Stat label="累計 Token" value={fmt(stats.all_time.total_input+stats.all_time.total_output)} sub="input + output"/>
-          <Stat label="累計費用"   value={`$${stats.all_time.estimated_cost_usd.toFixed(4)}`} sub={stats.model_name}/>
-          <Stat label="總 Input"   value={fmt(stats.all_time.total_input)} sub="tokens"/>
+          <Stat label="合計用戶"     value={combined?.total_users ?? courseAt.total_users}  sub="去重（兩功能）"/>
+          <Stat label="即時在線"     value={combined?.online_now  ?? courseAt.online_now}   sub="15 分鐘內"/>
+          <Stat label="課程推薦費用" value={`$${(courseAt.estimated_cost_usd??0).toFixed(4)}`} sub={stats.model_name}/>
+          <Stat label="大專生計畫費用" value={`$${(pdfAt?.estimated_cost_usd??0).toFixed(4)}`} sub="gpt-4o + gpt-4o-mini"/>
+          <Stat label="合計費用"     value={`$${(combined?.total_cost_usd??0).toFixed(4)}`} sub="USD"/>
+          <Stat label="合計 Turns"   value={fmt(combined?.total_turns ?? courseAt.total_turns)} sub="兩功能合計"/>
         </div>
         <p className="mt-1.5 text-[10px] text-slate-700">
-          {stats.model_name} Global：Input $0.75 · Output $4.50 per 1M（以 Azure 帳單為準）
+          課程推薦（{stats.model_name}）：Input $0.75 · Output $4.50 per 1M；大專生計畫（gpt-4o）：$2.50 · $10.00；Router（gpt-4o-mini）：$0.15 · $0.60（以 Azure 帳單為準）
         </p>
       </div>
 
+      {/* 時段統計 */}
       <div>
         <div className="mb-3 flex items-center justify-between flex-wrap gap-2">
           <p className="text-[11px] uppercase tracking-wide text-slate-600">時段統計</p>
           <TimeRangeSelector state={timeState} onChange={onTimeChange} dateRange={stats.date_range}/>
         </div>
-        <div className="rounded-xl border border-slate-800 bg-slate-900 grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-slate-800">
-          <Stat label="活躍用戶" value={stats.period.active_users}
-            sub={`新增 ${stats.period.new_users} 人`} trend={stats.trends.active_users}/>
-          <Stat label="對話輪數" value={stats.period.turns}
-            sub={`${stats.period.sessions} sessions`} trend={stats.trends.turns}/>
-          <Stat label="Token 用量" value={fmt(stats.period.input_tokens+stats.period.output_tokens)}
-            sub={`≈ $${stats.period.estimated_cost_usd.toFixed(4)}`} trend={stats.trends.tokens}/>
-          <Stat label="平均深度" value={`${stats.period.avg_turns_per_session} 輪`} sub="每 session"/>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          {/* 課程推薦時段卡 */}
+          <div className="rounded-xl border border-slate-800 bg-slate-900 p-4">
+            <div className="flex items-center gap-2 mb-3">
+              <HiAcademicCap className="h-4 w-4 text-indigo-400"/>
+              <span className="text-sm font-medium text-slate-300">課程推薦</span>
+              <span className="text-[11px] text-slate-600">{stats.model_name}</span>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <p className="text-[11px] text-slate-500 uppercase">活躍用戶</p>
+                <p className="text-xl font-semibold text-slate-100 tabular-nums">{stats.period.active_users}</p>
+                {stats.trends?.active_users && <Trend t={stats.trends.active_users}/>}
+              </div>
+              <div>
+                <p className="text-[11px] text-slate-500 uppercase">對話輪數</p>
+                <p className="text-xl font-semibold text-slate-100 tabular-nums">{stats.period.turns}</p>
+                {stats.trends?.turns && <Trend t={stats.trends.turns}/>}
+              </div>
+              <div>
+                <p className="text-[11px] text-slate-500 uppercase">Token 用量</p>
+                <p className="text-xl font-semibold text-slate-100 tabular-nums">{fmt(stats.period.input_tokens + stats.period.output_tokens)}</p>
+                <p className="text-[11px] text-slate-600">≈ ${stats.period.estimated_cost_usd.toFixed(4)}</p>
+              </div>
+              <div>
+                <p className="text-[11px] text-slate-500 uppercase">平均深度</p>
+                <p className="text-xl font-semibold text-slate-100 tabular-nums">{stats.period.avg_turns_per_session} 輪</p>
+              </div>
+            </div>
+          </div>
+
+          {/* 大專生計畫時段卡 */}
+          <div className="rounded-xl border border-slate-800 bg-slate-900 p-4">
+            <div className="flex items-center gap-2 mb-3">
+              <HiDocumentText className="h-4 w-4 text-emerald-400"/>
+              <span className="text-sm font-medium text-slate-300">大專生計畫</span>
+              <span className="text-[11px] text-slate-600">gpt-4o + gpt-4o-mini</span>
+            </div>
+            {stats.pdf?.period ? (
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <p className="text-[11px] text-slate-500 uppercase">活躍用戶</p>
+                  <p className="text-xl font-semibold text-slate-100 tabular-nums">{stats.pdf.period.active_users}</p>
+                  {stats.pdf.trends?.active_users && <Trend t={stats.pdf.trends.active_users}/>}
+                </div>
+                <div>
+                  <p className="text-[11px] text-slate-500 uppercase">對話輪數</p>
+                  <p className="text-xl font-semibold text-slate-100 tabular-nums">{stats.pdf.period.turns}</p>
+                  {stats.pdf.trends?.turns && <Trend t={stats.pdf.trends.turns}/>}
+                </div>
+                <div>
+                  <p className="text-[11px] text-slate-500 uppercase">Token 用量</p>
+                  <p className="text-xl font-semibold text-slate-100 tabular-nums">{fmt(stats.pdf.period.input_tokens + stats.pdf.period.output_tokens)}</p>
+                  <p className="text-[11px] text-slate-600">≈ ${stats.pdf.period.estimated_cost_usd.toFixed(4)}</p>
+                </div>
+                <div>
+                  <p className="text-[11px] text-slate-500 uppercase">平均深度</p>
+                  <p className="text-xl font-semibold text-slate-100 tabular-nums">{stats.pdf.period.avg_turns_per_session.toFixed(1)} 輪</p>
+                </div>
+              </div>
+            ) : (
+              <div className="flex h-24 items-center justify-center text-sm text-slate-600">尚無對話資料</div>
+            )}
+          </div>
         </div>
       </div>
 
-      <Section title="Token 用量趨勢" sub={isHourly?'今日（按小時）':'按日'}>
+      {/* Token 趨勢 */}
+      <Section title="課程推薦 Token 趨勢" sub={isHourly?'今日（按小時）':'按日'}>
         <TokenChart daily_trend={stats.daily_trend} isHourly={isHourly}/>
       </Section>
     </div>
   );
 }
 
-const INPUT_PRICE  = 0.75 / 1_000_000;
-const OUTPUT_PRICE = 4.50 / 1_000_000;
-
-function DailyCostChart({ daily_trend, isHourly }: {
-  daily_trend: MonitorStats['daily_trend']; isHourly: boolean;
-}) {
-  if (!daily_trend.length) return <div className="flex h-28 items-center justify-center text-sm text-slate-600">尚無資料</div>;
-  const xData   = isHourly
-    ? Array.from({length:24}, (_,i) => `${String(i).padStart(2,'0')}:00`)
-    : daily_trend.map(r => r.date ?? '');
-  const costs   = daily_trend.map(r =>
-    +(r.input * INPUT_PRICE + r.output * OUTPUT_PRICE).toFixed(6)
-  );
-  const tokPerTurn = daily_trend.map(r =>
-    r.turns > 0 ? +((r.input + r.output) / r.turns).toFixed(0) : 0
-  );
-  const hasCost = costs.some(v => v > 0);
-  const opt = {
-    backgroundColor: 'transparent',
-    grid: { left: 60, right: 60, top: 12, bottom: 52 },
-    legend: { data: ['估算費用 (USD)', '每輪 Token'], bottom: 4, textStyle: { color: '#94a3b8', fontSize: 11 } },
-    tooltip: {
-      ...TIP, trigger: 'axis',
-      formatter: (p: TipParam[]) => p.map(x =>
-        `${x.marker}${x.seriesName}: <b>${x.seriesIndex === 0 ? `$${x.value.toFixed(5)}` : fmt(x.value)}</b>`
-      ).join('<br/>'),
-    },
-    xAxis: { type: 'category', data: xData, ...AX },
-    yAxis: [
-      { type: 'value', name: 'USD', nameTextStyle: { color: '#94a3b8', fontSize: 10 },
-        axisLabel: { ...AX.axisLabel, formatter: (v: number) => `$${v.toFixed(4)}` },
-        splitLine: AX.splitLine },
-      { type: 'value', name: 'tok/輪', nameTextStyle: { color: '#94a3b8', fontSize: 10 },
-        axisLabel: { ...AX.axisLabel, formatter: fmt }, splitLine: { show: false } },
-    ],
-    series: [
-      { name: '估算費用 (USD)', type: 'bar', data: costs, yAxisIndex: 0, barMaxWidth: 18,
-        itemStyle: { color: '#f59e0b', borderRadius: [2,2,0,0] } },
-      { name: '每輪 Token', type: 'line', data: tokPerTurn, yAxisIndex: 1,
-        smooth: true, symbol: 'none',
-        lineStyle: { color: '#6366f1', width: 2 },
-        itemStyle: { color: '#6366f1' } },
-    ],
-  };
-  return hasCost
-    ? <ReactECharts option={opt} style={{ height: 200 }}/>
-    : <div className="flex h-28 items-center justify-center text-sm text-slate-600">尚無 Token 記錄（對話後開始統計）</div>;
-}
-
-function AITab({ stats }: { stats: MonitorStats }) {
-  const isHourly = stats.date_range.start === stats.date_range.end;
-  const lat = stats.period.llm_latency;
+// ── CourseTab ─────────────────────────────────────────────────────
+function CourseTab({ stats }: { stats: MonitorStats }) {
+  const isHourly      = stats.date_range.start === stats.date_range.end;
+  const lat           = stats.period.llm_latency;
   const { input_tokens, output_tokens } = stats.period;
-  const ratio = output_tokens > 0 ? (input_tokens / output_tokens).toFixed(1) : '—';
+  const ratio         = output_tokens > 0 ? (input_tokens / output_tokens).toFixed(1) : '—';
+  const courseTrend   = stats.course?.daily_trend ?? stats.daily_trend;
+  const courseTools   = stats.course?.tools_usage ?? stats.tools_usage;
 
   return (
     <div className="space-y-5">
@@ -387,31 +657,180 @@ function AITab({ stats }: { stats: MonitorStats }) {
         }
       </div>
 
+      {/* Latency 分布 */}
+      {lat && (
+        <div className="rounded-xl border border-slate-800 bg-slate-900 px-5 pt-3 pb-4">
+          <p className="text-[11px] uppercase tracking-wide text-slate-500 mb-1">Latency 分布（min → avg → P95 → P99 → max）</p>
+          <LatencyDistBar lat={lat}/>
+        </div>
+      )}
+
       {/* Latency 趨勢 */}
-      <Section title="Model Latency 趨勢" sub={isHourly?'今日（按小時）':'按日'}>
-        <LatencyTrendChart trend={stats.period.llm_latency_trend} isHourly={isHourly}/>
+      <Section title="Model Latency 趨勢" sub={isHourly?'今日（按小時）':'按日 · 虛線為整體 P95 / P99 基準'}>
+        <LatencyTrendChart
+          trend={stats.period.llm_latency_trend}
+          isHourly={isHourly}
+          p95Ref={lat?.p95_ms}
+          p99Ref={lat?.p99_ms}
+        />
       </Section>
 
       {/* Token + 費用 */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         <Section title="Token 用量趨勢" sub={isHourly?'今日（按小時）':'按日'}>
-          <TokenChart daily_trend={stats.daily_trend} isHourly={isHourly}/>
+          <TokenChart daily_trend={courseTrend} isHourly={isHourly}/>
         </Section>
         <Section title="每日費用 & 每輪 Token" sub="黃柱：USD 費用（左軸）  紫線：每輪平均 Token（右軸）">
-          <DailyCostChart daily_trend={stats.daily_trend} isHourly={isHourly}/>
+          <DailyCostChart daily_trend={courseTrend} isHourly={isHourly}/>
         </Section>
       </div>
+
+      {/* 工具使用 */}
+      <Section title="工具使用統計" sub={`${courseTools.length} 種工具（時段內）`}>
+        <AllToolsBarChart tools={courseTools}/>
+      </Section>
     </div>
   );
 }
 
-function fmtUptime(sec: number): string {
-  if (sec < 60)   return `${sec}s`;
-  if (sec < 3600) return `${Math.floor(sec/60)}m ${sec%60}s`;
-  const h = Math.floor(sec/3600), m = Math.floor((sec%3600)/60);
-  return `${h}h ${m}m`;
+// ── PdfTab ────────────────────────────────────────────────────────
+function PdfTab({ stats }: { stats: MonitorStats }) {
+  const pdf        = stats.pdf;
+  const isHourly   = stats.date_range.start === stats.date_range.end;
+  const agentModel  = stats.pdf_model_name ?? 'gpt-4o';
+  const routerModel = stats.pdf_router_model_name ?? 'gpt-4o-mini';
+
+  if (!pdf?.period) {
+    return <div className="flex h-40 items-center justify-center text-slate-600 text-sm">尚無大專生計畫對話資料</div>;
+  }
+
+  const { period, all_time, trends, daily_trend } = pdf;
+  const agentCost  = period.estimated_cost_breakdown?.agent_usd ?? 0;
+  const routerCost = period.estimated_cost_breakdown?.router_usd ?? 0;
+  const agentInp   = Math.max(0, period.input_tokens  - period.router_input_tokens);
+  const agentOut   = Math.max(0, period.output_tokens - period.router_output_tokens);
+
+  return (
+    <div className="space-y-5">
+      {/* 統計列 */}
+      <div className="rounded-xl border border-slate-800 bg-slate-900 grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-slate-800">
+        <Stat label="活躍用戶"  value={period.active_users}
+          sub={`新增 ${period.new_users} 人`} trend={trends?.active_users}/>
+        <Stat label="對話輪數"  value={period.turns}
+          sub={`${period.sessions} sessions`} trend={trends?.turns}/>
+        <Stat label="Token 用量" value={fmt(period.input_tokens+period.output_tokens)}
+          sub={`≈ $${period.estimated_cost_usd.toFixed(4)}`} trend={trends?.tokens}/>
+        <Stat label="平均深度"  value={`${period.avg_turns_per_session.toFixed(1)} 輪`} sub="每 session"/>
+      </div>
+
+      {/* Model 費用拆分 */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div className="rounded-xl border border-slate-800 bg-slate-900 p-4">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="h-2 w-2 rounded-full bg-indigo-500"/>
+            <span className="text-sm font-medium text-slate-300">{agentModel}（Agent）</span>
+          </div>
+          <p className="text-xs text-slate-600 mb-3">Input $2.50 / Output $10.00 per 1M tokens</p>
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <p className="text-[11px] text-slate-500 uppercase">時段費用</p>
+              <p className="text-xl font-semibold text-slate-100 tabular-nums">${agentCost.toFixed(5)}</p>
+            </div>
+            <div>
+              <p className="text-[11px] text-slate-500 uppercase">累計費用</p>
+              <p className="text-xl font-semibold text-slate-100 tabular-nums">${(all_time?.estimated_cost_usd??0).toFixed(4)}</p>
+              <p className="text-[11px] text-slate-600">（所有模型合計）</p>
+            </div>
+          </div>
+          <div className="mt-2 flex gap-4 text-[11px] text-slate-600">
+            <span>Agent Input: {fmt(agentInp)} tok</span>
+            <span>Agent Output: {fmt(agentOut)} tok</span>
+          </div>
+        </div>
+
+        <div className="rounded-xl border border-slate-800 bg-slate-900 p-4">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="h-2 w-2 rounded-full bg-violet-400"/>
+            <span className="text-sm font-medium text-slate-300">{routerModel}（Router）</span>
+          </div>
+          <p className="text-xs text-slate-600 mb-3">Input $0.15 / Output $0.60 per 1M tokens</p>
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <p className="text-[11px] text-slate-500 uppercase">時段費用</p>
+              <p className="text-xl font-semibold text-slate-100 tabular-nums">${routerCost.toFixed(5)}</p>
+            </div>
+            <div>
+              <p className="text-[11px] text-slate-500 uppercase">Router 佔比</p>
+              <p className="text-xl font-semibold text-slate-100 tabular-nums">
+                {period.estimated_cost_usd > 0
+                  ? ((routerCost / period.estimated_cost_usd) * 100).toFixed(1)
+                  : '0.0'}%
+              </p>
+            </div>
+          </div>
+          <div className="mt-2 flex gap-4 text-[11px] text-slate-600">
+            <span>Router Input: {fmt(period.router_input_tokens)} tok</span>
+            <span>Router Output: {fmt(period.router_output_tokens)} tok</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Agent 路由分佈 + Latency by Agent */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+        <Section title="Agent 路由分佈" sub="各 Agent 被調用次數">
+          <AgentDistributionChart data={period.agent_distribution}/>
+        </Section>
+        <Section title="各 Agent Latency" sub="端到端延遲（avg / P95）">
+          <LatencyByAgentChart data={period.latency_by_agent}/>
+        </Section>
+      </div>
+
+      {/* 端到端 Latency */}
+      {period.llm_latency && (
+        <div>
+          <p className="mb-2 text-[11px] uppercase tracking-wide text-slate-600">
+            端到端 Latency（{period.llm_latency.count} 次）
+          </p>
+          <LatencyGrid lat={period.llm_latency}/>
+          <div className="mt-3 rounded-xl border border-slate-800 bg-slate-900 px-5 pt-3 pb-4">
+            <p className="text-[11px] uppercase tracking-wide text-slate-500 mb-1">Latency 分布（min → avg → P95 → P99 → max）</p>
+            <LatencyDistBar lat={period.llm_latency}/>
+          </div>
+        </div>
+      )}
+
+      {/* Latency 趨勢 */}
+      <Section title="Latency 趨勢" sub={isHourly?'今日（按小時）':'按日 · 虛線為整體 P95 / P99 基準'}>
+        <LatencyTrendChart
+          trend={period.llm_latency_trend}
+          isHourly={isHourly}
+          p95Ref={period.llm_latency?.p95_ms}
+          p99Ref={period.llm_latency?.p99_ms}
+        />
+      </Section>
+
+      {/* PDF Token 趨勢（4 系列） */}
+      <Section title="Token 用量趨勢" sub={`${isHourly?'今日（按小時）':'按日'} · 紫/藍：Agent · 淺紫/淺藍：Router`}>
+        <PdfTokenChart daily_trend={daily_trend} isHourly={isHourly}/>
+      </Section>
+
+      {/* 全時期摘要 */}
+      {all_time && (
+        <div>
+          <p className="mb-2 text-[11px] uppercase tracking-wide text-slate-600">全時期累計</p>
+          <div className="rounded-xl border border-slate-800 bg-slate-900 grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-slate-800">
+            <Stat label="總 Sessions" value={all_time.total_sessions} sub=""/>
+            <Stat label="總 Turns"    value={fmt(all_time.total_turns)} sub=""/>
+            <Stat label="總 Token"    value={fmt(all_time.total_input + all_time.total_output)} sub="input + output"/>
+            <Stat label="累計費用"    value={`$${all_time.estimated_cost_usd.toFixed(4)}`} sub="USD"/>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }
 
+// ── InfraCard & DatabaseTab ────────────────────────────────────────
 function InfraCard({ label, sub, badge, badgeColor, value, valueColor }: {
   label: string; sub: string; badge?: string; badgeColor?: string;
   value?: string; valueColor?: string;
@@ -437,13 +856,12 @@ function DatabaseTab({ dbStats, loading }: { dbStats: DBStats|null; loading: boo
   if (!dbStats) return <div className="flex h-40 items-center justify-center text-slate-600 text-sm">載入失敗</div>;
 
   const { infra, postgres: pg, qdrant: qd, cloudinary: cl, cloudinary_error: clErr } = dbStats;
-  const qdDebug = dbStats.qdrant_debug;
+  const qdDebug    = dbStats.qdrant_debug;
   const cacheColor = pg.cache_hit_pct >= 95 ? '#10b981' : pg.cache_hit_pct >= 80 ? '#f59e0b' : '#ef4444';
 
   return (
     <div className="space-y-5">
-
-      {/* ── 基礎設施概覽 ── */}
+      {/* 基礎設施概覽 */}
       <div>
         <p className="mb-3 text-[11px] uppercase tracking-wide text-slate-600">基礎設施概覽</p>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
@@ -485,7 +903,7 @@ function DatabaseTab({ dbStats, loading }: { dbStats: DBStats|null; loading: boo
         )}
       </div>
 
-      {/* ── PostgreSQL ── */}
+      {/* PostgreSQL */}
       <div>
         <p className="mb-3 text-[11px] uppercase tracking-wide text-slate-600 flex items-center gap-1.5">
           <HiDatabase className="h-3.5 w-3.5"/> PostgreSQL
@@ -532,7 +950,7 @@ function DatabaseTab({ dbStats, loading }: { dbStats: DBStats|null; loading: boo
         </div>
       </div>
 
-      {/* ── Qdrant ── */}
+      {/* Qdrant */}
       <div>
         <p className="mb-3 text-[11px] uppercase tracking-wide text-slate-600 flex items-center gap-1.5">
           <HiServer className="h-3.5 w-3.5"/> Qdrant Cloud
@@ -590,7 +1008,7 @@ function DatabaseTab({ dbStats, loading }: { dbStats: DBStats|null; loading: boo
         </div>
       </div>
 
-      {/* ── Cloudinary ── */}
+      {/* Cloudinary */}
       <div>
         <p className="mb-3 text-[11px] uppercase tracking-wide text-slate-600">Cloudinary（PDF 儲存）</p>
         {cl ? (
@@ -620,76 +1038,98 @@ function DatabaseTab({ dbStats, loading }: { dbStats: DBStats|null; loading: boo
   );
 }
 
-function AllToolsBarChart({ tools }: { tools:{label:string;count:number}[] }) {
-  if (!tools.length) return <div className="flex h-24 items-center justify-center text-sm text-slate-600">尚無紀錄</div>;
-  const sorted = [...tools].sort((a,b) => b.count - a.count);
-  const total  = sorted.reduce((s,t) => s + t.count, 0);
-  const opt = {
-    backgroundColor: 'transparent',
-    grid: { left: 140, right: 60, top: 8, bottom: 16 },
-    tooltip: { ...TIP, trigger: 'axis', axisPointer: { type: 'none' },
-      formatter: (p: TipParam[]) => `${p[0].name}<br/>${p[0].marker}<b>${p[0].value}</b> 次（${((p[0].value/total)*100).toFixed(1)}%）` },
-    xAxis: { type: 'value', ...AX, axisLabel: { ...AX.axisLabel, fontSize: 10 } },
-    yAxis: {
-      type: 'category',
-      data: sorted.map(t => t.label),
-      axisLabel: { color: '#94a3b8', fontSize: 11, width: 128, overflow: 'truncate' },
-      axisLine: { lineStyle: { color: '#334155' } },
-    },
-    series: [{
-      type: 'bar', data: sorted.map(t => t.count), barMaxWidth: 14,
-      itemStyle: { color: '#6366f1', borderRadius: [0,3,3,0] },
-      label: { show: true, position: 'right', color: '#94a3b8', fontSize: 10,
-               formatter: (p: { value: number }) => `${p.value}` },
-    }],
-  };
-  const chartHeight = Math.max(160, sorted.length * 28 + 30);
-  return <ReactECharts option={opt} style={{ height: chartHeight }}/>;
-}
+// ── ActivityTab ───────────────────────────────────────────────────
+type ActivityFeature = 'all' | 'course' | 'pdf';
 
 function ActivityTab({ stats }: { stats: MonitorStats }) {
-  const { active_users, new_users } = stats.period;
-  const returning = Math.max(0, active_users - new_users);
-  const newPct     = active_users > 0 ? Math.round(new_users / active_users * 100) : 0;
-  const returnPct  = active_users > 0 ? Math.round(returning / active_users * 100) : 0;
+  const [feature, setFeature] = useState<ActivityFeature>('all');
+
+  const courseActivity = stats.course?.activity_trend ?? stats.activity_trend;
+  const pdfActivity    = stats.pdf?.activity_trend ?? [];
+  const coursePeak     = stats.course?.peak_hours ?? stats.peak_hours;
+  const courseTools    = stats.course?.tools_usage ?? stats.tools_usage;
+
+  const combinedActivity = useMemo(() => {
+    const dateMap = new Map<string, {sessions:number;turns:number}>();
+    for (const r of courseActivity) {
+      dateMap.set(r.date, { sessions: r.sessions, turns: r.turns });
+    }
+    for (const r of pdfActivity) {
+      const existing = dateMap.get(r.date) ?? { sessions: 0, turns: 0 };
+      dateMap.set(r.date, { sessions: existing.sessions + r.sessions, turns: existing.turns + r.turns });
+    }
+    return Array.from(dateMap.entries())
+      .sort(([a],[b]) => a < b ? -1 : 1)
+      .map(([date, v]) => ({ date, ...v }));
+  }, [courseActivity, pdfActivity]);
+
+  const activityData = feature === 'course' ? courseActivity
+    : feature === 'pdf' ? pdfActivity
+    : combinedActivity;
+
+  const courseP = stats.period;
+  const pdfP    = stats.pdf?.period;
+
+  const active_users = feature === 'pdf' ? (pdfP?.active_users ?? 0) : courseP.active_users;
+  const new_users    = feature === 'pdf' ? (pdfP?.new_users ?? 0)    : courseP.new_users;
+  const returning    = Math.max(0, active_users - new_users);
+  const newPct       = active_users > 0 ? Math.round(new_users / active_users * 100) : 0;
+  const returnPct    = active_users > 0 ? Math.round(returning / active_users * 100) : 0;
+  const avgTurns     = feature === 'pdf'
+    ? (pdfP?.avg_turns_per_session ?? 0).toFixed(1)
+    : courseP.avg_turns_per_session;
 
   return (
     <div className="space-y-5">
+      {/* Feature 切換 */}
+      <div className="flex items-center gap-0.5 rounded-lg bg-slate-900 border border-slate-800 p-0.5 w-fit">
+        {(['all','course','pdf'] as ActivityFeature[]).map(f => (
+          <button key={f} type="button" onClick={() => setFeature(f)}
+            className={`px-4 py-1.5 rounded-md text-xs font-medium transition
+              ${feature===f?'bg-indigo-700 text-white':'text-slate-500 hover:text-slate-300'}`}>
+            {f==='all'?'合計':f==='course'?'課程推薦':'大專生計畫'}
+          </button>
+        ))}
+      </div>
 
       {/* 用戶概況 */}
       <div className="rounded-xl border border-slate-800 bg-slate-900 grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-slate-800">
         <Stat label="時段活躍用戶" value={active_users} sub="有對話紀錄"/>
-        <Stat label="新用戶" value={new_users} sub={`佔 ${newPct}%`}/>
-        <Stat label="回訪用戶" value={returning} sub={`佔 ${returnPct}%`}/>
-        <Stat label="平均對話深度" value={`${stats.period.avg_turns_per_session} 輪`} sub="每 session"/>
+        <Stat label="新用戶"       value={new_users}    sub={`佔 ${newPct}%`}/>
+        <Stat label="回訪用戶"     value={returning}    sub={`佔 ${returnPct}%`}/>
+        <Stat label="平均對話深度" value={`${avgTurns} 輪`} sub="每 session"/>
       </div>
 
       {/* 活動趨勢 */}
-      <Section title="對話活動趨勢" sub="Sessions & Turns">
-        <ActivityChart data={stats.activity_trend}/>
+      <Section title={`對話活動趨勢${feature==='all'?' — 合計':feature==='course'?' — 課程推薦':' — 大專生計畫'}`} sub="Sessions & Turns">
+        <ActivityChart data={activityData}/>
       </Section>
 
-      {/* 工具使用全覽 */}
-      <Section title="工具使用全覽" sub={`全部 ${stats.tools_usage.length} 種工具（時段內）`}>
-        <AllToolsBarChart tools={stats.tools_usage}/>
-      </Section>
+      {/* 工具使用（課程推薦 or 合計） */}
+      {feature !== 'pdf' && (
+        <Section title="課程推薦工具使用統計" sub={`${courseTools.length} 種工具（時段內）`}>
+          <AllToolsBarChart tools={courseTools}/>
+        </Section>
+      )}
 
-      {/* 活躍時段 */}
-      <Section title="活躍時段分布" sub="24 小時">
-        <PeakChart data={stats.peak_hours}/>
-      </Section>
-
+      {/* 活躍時段（課程推薦 or 合計） */}
+      {feature !== 'pdf' && (
+        <Section title="課程推薦活躍時段分布" sub="24 小時">
+          <PeakChart data={coursePeak}/>
+        </Section>
+      )}
     </div>
   );
 }
 
 // ── 主頁面 ────────────────────────────────────────────────────────
-type TabId = 'overview'|'ai'|'database'|'activity';
+type TabId = 'overview'|'course'|'pdf'|'database'|'activity';
 const TABS: { id: TabId; label: string; icon: React.ComponentType<{className?:string}> }[] = [
-  { id:'overview',  label:'總覽',    icon: HiChip },
-  { id:'ai',        label:'AI 模型', icon: HiChip },
-  { id:'database',  label:'資料庫',  icon: HiDatabase },
-  { id:'activity',  label:'對話活動', icon: HiChatAlt2 },
+  { id:'overview',  label:'總覽',      icon: HiChip },
+  { id:'course',    label:'課程推薦',  icon: HiAcademicCap },
+  { id:'pdf',       label:'大專生計畫', icon: HiDocumentText },
+  { id:'database',  label:'資料庫',    icon: HiDatabase },
+  { id:'activity',  label:'對話活動',  icon: HiChatAlt2 },
 ];
 
 export default function MonitorPage() {
@@ -708,7 +1148,7 @@ export default function MonitorPage() {
   const [loading, setLoading]         = useState(true);
   const [error, setError]             = useState<string|null>(null);
   const [lastAt, setLastAt]           = useState<Date|null>(null);
-  const seqRef   = useRef(0);
+  const seqRef    = useRef(0);
   const dbFetched = useRef(false);
 
   const fetchOpts = useMemo(() => {
@@ -737,8 +1177,8 @@ export default function MonitorPage() {
   useEffect(() => {
     if (authLoading) return;
     if (!isDeveloper(user?.email)) { navigate('/'); return; }
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchStats(fetchOpts);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, authLoading, navigate, fetchStats, fetchOpts]);
 
   // auto-refresh
@@ -862,7 +1302,8 @@ export default function MonitorPage() {
         {stats && activeTab==='overview' && (
           <OverviewTab stats={stats} timeState={timeState} onTimeChange={setTimeState}/>
         )}
-        {stats && activeTab==='ai' && <AITab stats={stats}/>}
+        {stats && activeTab==='course'   && <CourseTab stats={stats}/>}
+        {stats && activeTab==='pdf'      && <PdfTab stats={stats}/>}
         {activeTab==='database' && (
           <DatabaseTab dbStats={dbStats} loading={dbLoading}/>
         )}

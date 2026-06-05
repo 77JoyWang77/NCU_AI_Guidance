@@ -45,6 +45,7 @@ async def get_monitor_stats(
     preset: Optional[Literal["1d", "7d", "30d"]] = Query(default=None),
     start: Optional[str] = Query(default=None),  # YYYY-MM-DD 台灣時間
     end:   Optional[str] = Query(default=None),  # YYYY-MM-DD 台灣時間
+    feature: Literal["all", "course", "pdf"] = Query(default="all"),
 ):
     """回傳系統健康、全時期統計、時段統計、圖表資料。"""
     today = datetime.now(_TW).date()
@@ -66,12 +67,14 @@ async def get_monitor_stats(
         start_dt = (end_dt - timedelta(days=days - 1)).replace(hour=0, minute=0, second=0)
         cache_key = preset or "7d"
 
-    stats = ss.get_monitor_stats(start_dt=start_dt, end_dt=end_dt, cache_key=cache_key)
+    stats = ss.get_monitor_stats(start_dt=start_dt, end_dt=end_dt, cache_key=cache_key, feature=feature)
     stats["latency_stats"] = ls.get_latency_stats()
     stats["date_range"] = {
         "start": start_dt.strftime("%Y-%m-%d"),
         "end":   end_dt.strftime("%Y-%m-%d"),
     }
     stats["model_name"] = os.getenv("AZURE_OPENAI_CHAT_DEPLOYMENT", "unknown")
+    stats["pdf_model_name"] = "gpt-4o"
+    stats["pdf_router_model_name"] = "gpt-4o-mini"
     stats["server_uptime_seconds"] = ls.get_server_uptime_seconds()
     return stats

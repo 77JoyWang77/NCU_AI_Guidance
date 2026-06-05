@@ -6,12 +6,15 @@ session_store.py
 """
 
 import json
+import logging
 import os
 import uuid
 from datetime import datetime, timedelta, timezone
 from functools import lru_cache
 from pathlib import Path
 from typing import Any
+
+logger = logging.getLogger(__name__)
 
 import psycopg
 from psycopg.rows import dict_row
@@ -130,6 +133,7 @@ def save(
     input_tokens: int = 0,
     output_tokens: int = 0,
     llm_latency_ms: int = 0,
+    model_name: str = "",
 ) -> None:
     """追加一輪對話到 PostgreSQL。"""
     if user_id is None:
@@ -184,9 +188,10 @@ def save(
                 input_tokens,
                 output_tokens,
                 llm_latency_ms,
+                model_name,
                 created_at
             )
-            values (%s, %s, %s, %s::jsonb, %s::jsonb, %s::jsonb, %s::jsonb, %s, %s, %s, %s)
+            values (%s, %s, %s, %s::jsonb, %s::jsonb, %s::jsonb, %s::jsonb, %s, %s, %s, %s, %s)
             """,
             (
                 session_id,
@@ -199,6 +204,7 @@ def save(
                 input_tokens,
                 output_tokens,
                 llm_latency_ms,
+                model_name or None,
                 now,
             ),
         )
@@ -370,6 +376,9 @@ def _ensure_schema() -> None:
         )
         conn.execute(
             "alter table chat_turns add column if not exists output_tokens int not null default 0"
+        )
+        conn.execute(
+            "alter table chat_turns add column if not exists model_name text"
         )
         conn.execute(
             "create index if not exists idx_chat_sessions_user_updated on chat_sessions(user_id, updated_at desc)"
@@ -702,20 +711,323 @@ def get_analytics(
     return result
 
 
+# ── 定價常數 ──────────────────────────────────────────────────────────────────
+_COURSE_PRICE  = {"input": 0.75 / 1_000_000, "output": 4.50 / 1_000_000}
+_PDF_AGENT_PX  = {"input": 2.50 / 1_000_000, "output": 10.00 / 1_000_000}
+_PDF_ROUTER_PX = {"input": 0.15 / 1_000_000, "output": 0.60 / 1_000_000}
+
+
+def _cost_course(inp: int, out: int) -> float:
+    return round(inp * _COURSE_PRICE["input"] + out * _COURSE_PRICE["output"], 6)
+
+
+def _cost_pdf(inp: int, out: int, r_inp: int, r_out: int) -> float:
+    agent_inp = max(inp - r_inp, 0)
+    agent_out = max(out - r_out, 0)
+    return round(
+        agent_inp * _PDF_AGENT_PX["input"]  + agent_out * _PDF_AGENT_PX["output"] +
+        r_inp     * _PDF_ROUTER_PX["input"] + r_out     * _PDF_ROUTER_PX["output"],
+        6,
+    )
+
+
+def _get_pdf_stats(conn, start_dt, end_dt, is_hourly: bool, prev_start_dt, prev_end_dt) -> dict:
+    """查詢 pdf_agent_messages 的監控統計。"""
+    def _pct(cur, prev):
+        return round((cur - prev) / prev * 100, 1) if prev else None
+
+    try:
+        alltime = conn.execute("""
+            select
+                (select count(distinct user_id)::int from pdf_conversations
+                 where user_id is not null)                                      as total_users,
+                (select count(distinct thread_id)::int from pdf_conversations)  as total_sessions,
+                (select count(*)::int from pdf_agent_messages)                  as total_turns,
+                (select coalesce(sum(input_tokens),0)::int from pdf_agent_messages) as total_input,
+                (select coalesce(sum(output_tokens),0)::int from pdf_agent_messages) as total_output,
+                (select coalesce(sum(router_input_tokens),0)::int from pdf_agent_messages)  as total_router_input,
+                (select coalesce(sum(router_output_tokens),0)::int from pdf_agent_messages) as total_router_output,
+                (select count(distinct thread_id)::int from pdf_agent_messages
+                 where created_at > now() - interval '15 minutes')              as online_now
+        """).fetchone()
+
+        period = conn.execute("""
+            select
+                count(distinct m.thread_id)::int              as sessions,
+                count(m.id)::int                              as turns,
+                coalesce(sum(m.input_tokens),0)::int          as input_tokens,
+                coalesce(sum(m.output_tokens),0)::int         as output_tokens,
+                coalesce(sum(m.router_input_tokens),0)::int   as router_input,
+                coalesce(sum(m.router_output_tokens),0)::int  as router_output,
+                count(*) filter (where m.latency_ms > 0)::int as latency_count,
+                coalesce(round(avg(m.latency_ms) filter (where m.latency_ms > 0)),0)::int as lat_avg,
+                coalesce(percentile_cont(0.95) within group (order by m.latency_ms)
+                         filter (where m.latency_ms > 0),0)::int as lat_p95,
+                coalesce(percentile_cont(0.99) within group (order by m.latency_ms)
+                         filter (where m.latency_ms > 0),0)::int as lat_p99,
+                coalesce(min(m.latency_ms) filter (where m.latency_ms > 0),0)::int as lat_min,
+                coalesce(max(m.latency_ms) filter (where m.latency_ms > 0),0)::int as lat_max
+            from pdf_agent_messages m
+            where m.created_at >= %s and m.created_at <= %s
+        """, (start_dt, end_dt)).fetchone()
+
+        prev_period = conn.execute("""
+            select count(*)::int as turns,
+                   coalesce(sum(input_tokens+output_tokens),0)::int as tokens
+            from pdf_agent_messages
+            where created_at >= %s and created_at <= %s
+        """, (prev_start_dt, prev_end_dt)).fetchone()
+
+        active_users = conn.execute("""
+            select count(distinct c.user_id)::int as active_users
+            from pdf_conversations c
+            join pdf_agent_messages m on m.thread_id = c.thread_id
+            where m.created_at >= %s and m.created_at <= %s
+              and c.user_id is not null
+        """, (start_dt, end_dt)).fetchone()
+
+        prev_active = conn.execute("""
+            select count(distinct c.user_id)::int as active_users
+            from pdf_conversations c
+            join pdf_agent_messages m on m.thread_id = c.thread_id
+            where m.created_at >= %s and m.created_at <= %s
+              and c.user_id is not null
+        """, (prev_start_dt, prev_end_dt)).fetchone()
+
+        new_users = conn.execute("""
+            select count(distinct user_id)::int as new_users
+            from pdf_conversations
+            where created_at >= %s and created_at <= %s
+              and user_id is not null
+              and user_id not in (
+                  select distinct user_id from pdf_conversations
+                  where created_at < %s and user_id is not null
+              )
+        """, (start_dt, end_dt, start_dt)).fetchone()
+
+        avg_turns = conn.execute("""
+            select round(count(*)::numeric / nullif(count(distinct thread_id),0), 1) as avg_turns
+            from pdf_agent_messages
+            where created_at >= %s and created_at <= %s
+        """, (start_dt, end_dt)).fetchone()
+
+        agent_dist = conn.execute("""
+            select agent_name, count(*)::int as cnt
+            from pdf_agent_messages
+            where created_at >= %s and created_at <= %s
+            group by 1 order by 2 desc
+        """, (start_dt, end_dt)).fetchall()
+
+        latency_by_agent = conn.execute("""
+            select agent_name,
+                   count(*)::int as cnt,
+                   coalesce(round(avg(latency_ms) filter (where latency_ms>0)),0)::int as avg_ms,
+                   coalesce(percentile_cont(0.95) within group (order by latency_ms)
+                            filter (where latency_ms>0),0)::int as p95_ms
+            from pdf_agent_messages
+            where created_at >= %s and created_at <= %s
+            group by 1 order by avg_ms desc
+        """, (start_dt, end_dt)).fetchall()
+
+        if is_hourly:
+            trend_rows = conn.execute("""
+                select extract(hour from created_at at time zone 'Asia/Taipei')::int as hour,
+                       coalesce(sum(input_tokens),0)::int          as input,
+                       coalesce(sum(output_tokens),0)::int         as output,
+                       coalesce(sum(router_input_tokens),0)::int   as router_input,
+                       coalesce(sum(router_output_tokens),0)::int  as router_output,
+                       count(*)::int                               as turns,
+                       count(distinct thread_id)::int              as sessions
+                from pdf_agent_messages
+                where created_at >= %s and created_at <= %s
+                group by 1 order by 1
+            """, (start_dt, end_dt)).fetchall()
+        else:
+            trend_rows = conn.execute("""
+                select (created_at at time zone 'Asia/Taipei')::date as date,
+                       coalesce(sum(input_tokens),0)::int          as input,
+                       coalesce(sum(output_tokens),0)::int         as output,
+                       coalesce(sum(router_input_tokens),0)::int   as router_input,
+                       coalesce(sum(router_output_tokens),0)::int  as router_output,
+                       count(*)::int                               as turns,
+                       count(distinct thread_id)::int              as sessions
+                from pdf_agent_messages
+                where created_at >= %s and created_at <= %s
+                group by 1 order by 1
+            """, (start_dt, end_dt)).fetchall()
+
+        if is_hourly:
+            activity_rows = conn.execute("""
+                select extract(hour from created_at at time zone 'Asia/Taipei')::int as label,
+                       count(distinct thread_id)::int as sessions,
+                       count(*)::int as turns
+                from pdf_agent_messages
+                where created_at >= %s and created_at <= %s
+                group by 1 order by 1
+            """, (start_dt, end_dt)).fetchall()
+        else:
+            activity_rows = conn.execute("""
+                select (created_at at time zone 'Asia/Taipei')::date as label,
+                       count(distinct thread_id)::int as sessions,
+                       count(*)::int as turns
+                from pdf_agent_messages
+                where created_at >= %s and created_at <= %s
+                group by 1 order by 1
+            """, (start_dt, end_dt)).fetchall()
+
+        if is_hourly:
+            latency_trend = conn.execute("""
+                select extract(hour from created_at at time zone 'Asia/Taipei')::int as hour,
+                       coalesce(round(avg(latency_ms) filter (where latency_ms>0)),0)::int as avg_ms
+                from pdf_agent_messages
+                where created_at >= %s and created_at <= %s and latency_ms > 0
+                group by 1 order by 1
+            """, (start_dt, end_dt)).fetchall()
+        else:
+            latency_trend = conn.execute("""
+                select (created_at at time zone 'Asia/Taipei')::date as date,
+                       coalesce(round(avg(latency_ms) filter (where latency_ms>0)),0)::int as avg_ms
+                from pdf_agent_messages
+                where created_at >= %s and created_at <= %s and latency_ms > 0
+                group by 1 order by 1
+            """, (start_dt, end_dt)).fetchall()
+
+    except Exception as exc:
+        logger.warning("_get_pdf_stats failed: %s", exc)
+        return {}
+
+    at = alltime or {}
+    p = period or {}
+    total_input  = at.get("total_input", 0)  or 0
+    total_output = at.get("total_output", 0) or 0
+    total_r_inp  = at.get("total_router_input", 0)  or 0
+    total_r_out  = at.get("total_router_output", 0) or 0
+    p_inp    = p.get("input_tokens", 0)   or 0
+    p_out    = p.get("output_tokens", 0)  or 0
+    p_r_inp  = p.get("router_input", 0)   or 0
+    p_r_out  = p.get("router_output", 0)  or 0
+    cur_turns   = p.get("turns", 0) or 0
+    prev_turns  = (prev_period or {}).get("turns", 0) or 0
+    cur_tokens  = p_inp + p_out
+    prev_tokens = (prev_period or {}).get("tokens", 0) or 0
+    cur_active  = (active_users or {}).get("active_users", 0) or 0
+    prev_active_v = (prev_active or {}).get("active_users", 0) or 0
+
+    agent_inp  = max(p_inp - p_r_inp, 0)
+    agent_out  = max(p_out - p_r_out, 0)
+    agent_cost = round(agent_inp * _PDF_AGENT_PX["input"] + agent_out * _PDF_AGENT_PX["output"], 6)
+    router_cost = round(p_r_inp * _PDF_ROUTER_PX["input"] + p_r_out * _PDF_ROUTER_PX["output"], 6)
+
+    if is_hourly:
+        hmap = {row["hour"]: row for row in trend_rows}
+        daily_trend = [
+            {"hour": h,
+             "input": hmap[h]["input"] if h in hmap else 0,
+             "output": hmap[h]["output"] if h in hmap else 0,
+             "router_input": hmap[h]["router_input"] if h in hmap else 0,
+             "router_output": hmap[h]["router_output"] if h in hmap else 0,
+             "turns": hmap[h]["turns"] if h in hmap else 0,
+             "sessions": hmap[h]["sessions"] if h in hmap else 0}
+            for h in range(24)
+        ]
+        amap = {row["label"]: row for row in activity_rows}
+        activity_trend = [
+            {"date": f"{h:02d}:00",
+             "sessions": amap[h]["sessions"] if h in amap else 0,
+             "turns":    amap[h]["turns"]    if h in amap else 0}
+            for h in range(24)
+        ]
+    else:
+        daily_trend = [
+            {"date": str(row["date"]),
+             "input": row["input"], "output": row["output"],
+             "router_input": row["router_input"], "router_output": row["router_output"],
+             "turns": row["turns"], "sessions": row["sessions"]}
+            for row in trend_rows
+        ]
+        activity_trend = [
+            {"date": str(row["label"]), "sessions": row["sessions"], "turns": row["turns"]}
+            for row in activity_rows
+        ]
+
+    llm_latency_trend = [
+        {"hour": row["hour"], "avg_ms": row["avg_ms"]} if is_hourly
+        else {"date": str(row["date"]), "avg_ms": row["avg_ms"]}
+        for row in latency_trend
+    ]
+
+    return {
+        "all_time": {
+            "total_users":         at.get("total_users", 0) or 0,
+            "total_sessions":      at.get("total_sessions", 0) or 0,
+            "total_turns":         at.get("total_turns", 0) or 0,
+            "total_input":         total_input,
+            "total_output":        total_output,
+            "total_router_input":  total_r_inp,
+            "total_router_output": total_r_out,
+            "online_now":          at.get("online_now", 0) or 0,
+            "estimated_cost_usd":  _cost_pdf(total_input, total_output, total_r_inp, total_r_out),
+        },
+        "period": {
+            "active_users":          cur_active,
+            "new_users":             (new_users or {}).get("new_users", 0) or 0,
+            "sessions":              p.get("sessions", 0) or 0,
+            "turns":                 cur_turns,
+            "avg_turns_per_session": float((avg_turns or {}).get("avg_turns", 0) or 0),
+            "input_tokens":          p_inp,
+            "output_tokens":         p_out,
+            "router_input_tokens":   p_r_inp,
+            "router_output_tokens":  p_r_out,
+            "estimated_cost_usd":    agent_cost + router_cost,
+            "estimated_cost_breakdown": {
+                "agent_usd":  agent_cost,
+                "router_usd": router_cost,
+            },
+            "llm_latency": {
+                "count":  p.get("latency_count", 0),
+                "avg_ms": p.get("lat_avg", 0),
+                "p95_ms": p.get("lat_p95", 0),
+                "p99_ms": p.get("lat_p99", 0),
+                "min_ms": p.get("lat_min", 0),
+                "max_ms": p.get("lat_max", 0),
+            } if p.get("latency_count", 0) else None,
+            "latency_by_agent": [
+                {"agent_name": row["agent_name"], "cnt": row["cnt"],
+                 "avg_ms": row["avg_ms"], "p95_ms": row["p95_ms"]}
+                for row in latency_by_agent
+            ],
+            "agent_distribution": [
+                {"agent_name": row["agent_name"], "cnt": row["cnt"]}
+                for row in agent_dist
+            ],
+            "llm_latency_trend": llm_latency_trend,
+        },
+        "trends": {
+            "turns":        {"current": cur_turns,  "previous": prev_turns,  "change_pct": _pct(cur_turns,  prev_turns)},
+            "tokens":       {"current": cur_tokens, "previous": prev_tokens, "change_pct": _pct(cur_tokens, prev_tokens)},
+            "active_users": {"current": cur_active, "previous": prev_active_v, "change_pct": _pct(cur_active, prev_active_v)},
+        },
+        "daily_trend":    daily_trend,
+        "activity_trend": activity_trend,
+    }
+
+
 def get_monitor_stats(
     start_dt,
     end_dt,
     cache_key=None,
+    feature: str = "all",
 ):
     """取得系統監控統計（開發人員用）。preset 範圍有快取；自訂日期不快取。"""
     global _MONITOR_CACHE, _MONITOR_CACHE_AT
     now = _now_datetime()
 
-    if cache_key is not None:
+    full_cache_key = f"{cache_key}:{feature}" if cache_key else None
+    if full_cache_key is not None:
         ttl = _MONITOR_CACHE_TTL_BY_RANGE.get(cache_key, 300)
-        if cache_key in _MONITOR_CACHE and cache_key in _MONITOR_CACHE_AT:
-            if (now - _MONITOR_CACHE_AT[cache_key]).total_seconds() < ttl:
-                return _MONITOR_CACHE[cache_key]
+        if full_cache_key in _MONITOR_CACHE and full_cache_key in _MONITOR_CACHE_AT:
+            if (now - _MONITOR_CACHE_AT[full_cache_key]).total_seconds() < ttl:
+                return _MONITOR_CACHE[full_cache_key]
 
     _ensure_schema()
 
@@ -724,15 +1036,11 @@ def get_monitor_stats(
     prev_end_dt   = start_dt - timedelta(seconds=1)
     prev_start_dt = prev_end_dt - duration
 
-    # GPT-5.4-mini Global 端點定價
-    INPUT_PRICE  = 0.75 / 1_000_000
-    OUTPUT_PRICE = 4.50 / 1_000_000
-
     def _pct(cur, prev):
         return round((cur - prev) / prev * 100, 1) if prev else None
 
     def _cost(inp: int, out: int) -> float:
-        return round(inp * INPUT_PRICE + out * OUTPUT_PRICE, 6)
+        return _cost_course(inp, out)
 
     postgres_status = "ok"
     alltime_row = period_row = prev_period_row = None
@@ -982,9 +1290,68 @@ def get_monitor_stats(
         "activity_trend": activity_trend,
     }
 
-    if cache_key is not None:
-        _MONITOR_CACHE[cache_key] = result
-        _MONITOR_CACHE_AT[cache_key] = now
+    # ── PDF stats ────────────────────────────────────────────────────────────
+    pdf_stats: dict = {}
+    if feature in ("all", "pdf"):
+        try:
+            with _connect() as conn2:
+                pdf_stats = _get_pdf_stats(conn2, start_dt, end_dt, is_hourly, prev_start_dt, prev_end_dt)
+        except Exception as exc:
+            logger.warning("PDF stats failed: %s", exc)
+
+    # ── combined 去重用戶 ─────────────────────────────────────────────────────
+    combined_users = 0
+    combined_online = 0
+    try:
+        if feature in ("all", "course", "pdf"):
+            with _connect() as conn3:
+                row = conn3.execute("""
+                    select count(distinct uid)::int as cnt from (
+                        select user_id as uid from chat_sessions where user_id is not null
+                        union
+                        select user_id as uid from pdf_conversations where user_id is not null
+                    ) sub
+                """).fetchone()
+                combined_users = (row["cnt"] if row else 0) or 0
+                combined_online = (
+                    (result.get("all_time") or {}).get("online_now", 0) or 0
+                ) + (
+                    (pdf_stats.get("all_time") or {}).get("online_now", 0) or 0
+                )
+    except Exception:
+        combined_users = result.get("all_time", {}).get("total_users", 0)
+
+    course_at = result.get("all_time", {})
+    pdf_at = pdf_stats.get("all_time", {})
+    combined = {
+        "total_users":    combined_users,
+        "total_turns":    (course_at.get("total_turns", 0) or 0) + (pdf_at.get("total_turns", 0) or 0),
+        "total_cost_usd": round(
+            (course_at.get("estimated_cost_usd", 0) or 0) +
+            (pdf_at.get("estimated_cost_usd", 0) or 0),
+            6,
+        ),
+        "online_now": combined_online,
+    }
+
+    # course 子物件：把課程相關的 key 組成獨立 dict
+    course_stats = {
+        "all_time":       result.get("all_time", {}),
+        "period":         result.get("period", {}),
+        "trends":         result.get("trends", {}),
+        "peak_hours":     result.get("peak_hours", []),
+        "daily_trend":    result.get("daily_trend", []),
+        "tools_usage":    result.get("tools_usage", []),
+        "activity_trend": result.get("activity_trend", []),
+    } if feature in ("all", "course") else {}
+
+    result["course"]   = course_stats
+    result["pdf"]      = pdf_stats
+    result["combined"] = combined
+
+    if full_cache_key is not None:
+        _MONITOR_CACHE[full_cache_key] = result
+        _MONITOR_CACHE_AT[full_cache_key] = now
     return result
 
 def _fmt_bytes(b: int) -> str:
