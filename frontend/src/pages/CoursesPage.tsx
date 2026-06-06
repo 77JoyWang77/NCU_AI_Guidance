@@ -1,9 +1,10 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { ComponentType, Dispatch, SetStateAction } from 'react';
 import {
   HiBeaker,
   HiBookOpen,
   HiBriefcase,
+  HiChevronDown,
   HiChevronLeft,
   HiChevronRight,
   HiChip,
@@ -49,6 +50,7 @@ type SemanticSearchMode = 'idle' | 'semantic' | 'fallback';
 type GroupedCourses = Record<string, Record<string, Course[]>>;
 
 const normalize = (value?: string | null) => (value ?? '').trim();
+const splitFields = (value?: string | null) => (value ?? '').split(/[、,;；／/]/).map((s) => s.trim()).filter(Boolean);
 const courseKey = (course: Course) => `${course.serial_no}-${course.course_id}`;
 const formatScore = (score?: number) => (typeof score === 'number' ? `${Math.round(score * 100)}%` : null);
 const sameStringArray = (left: string[], right: string[]) => {
@@ -130,14 +132,26 @@ export default function CoursesPage() {
   const [compareOpen, setCompareOpen] = useState(false);
   const [compareNotice, setCompareNotice] = useState('');
   const [isNavCollapsed, setIsNavCollapsed] = useState(false);
+  const [selectedFieldFilters, setSelectedFieldFilters] = useState<string[]>([]);
+  const [isFieldDropdownOpen, setIsFieldDropdownOpen] = useState(false);
+  const [courseLevel, setCourseLevel] = useState<'undergrad' | 'grad'>('undergrad');
+  const fieldDropdownRef = useRef<HTMLDivElement>(null);
+  const contentPanelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    setLoading(true);
+    setCourses([]);
+    setSelectedCollege(null);
+    setSelectedDepartment(null);
+    setSelectedCourse(null);
+    setNavigationLevel('colleges');
+    setSelectedFieldFilters([]);
     courseAPI
-      .getCourses()
+      .getCourses({ level: courseLevel })
       .then(setCourses)
       .catch((error) => console.error('Failed to load courses:', error))
       .finally(() => setLoading(false));
-  }, []);
+  }, [courseLevel]);
 
   useEffect(() => {
     if (!showSearchPanel) return;
@@ -288,10 +302,18 @@ export default function CoursesPage() {
     return matchesStructuredFilters(course) && matchesQuery;
   }, [searchQuery, matchesStructuredFilters, searchableFields]);
 
-  const currentCourses = useMemo(
-    () => departmentCourses.filter(matchesKeywordFilters),
-    [departmentCourses, matchesKeywordFilters]
+  const departmentFieldOptions = useMemo(
+    () => Array.from(new Set(departmentCourses.flatMap((course) => splitFields(course.course_field)).filter(Boolean))).sort((a, b) => a.localeCompare(b, 'zh-Hant')),
+    [departmentCourses]
   );
+
+  const currentCourses = useMemo(() => {
+    let list = departmentCourses.filter(matchesKeywordFilters);
+    if (selectedFieldFilters.length > 0) {
+      list = list.filter((course) => splitFields(course.course_field).some((f) => selectedFieldFilters.includes(f)));
+    }
+    return list;
+  }, [departmentCourses, matchesKeywordFilters, selectedFieldFilters]);
 
   const filteredCourses = useMemo(
     () => {
@@ -393,6 +415,21 @@ export default function CoursesPage() {
     })();
   }, [currentCourses, filteredCourses, hasActiveFilters, selectedCourse]);
 
+  useEffect(() => {
+    contentPanelRef.current?.scrollTo({ top: 0, behavior: 'instant' });
+  }, [selectedCourse]);
+
+  useEffect(() => {
+    if (!isFieldDropdownOpen) return;
+    const handleMouseDown = (event: MouseEvent) => {
+      if (fieldDropdownRef.current && !fieldDropdownRef.current.contains(event.target as Node)) {
+        setIsFieldDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleMouseDown);
+    return () => document.removeEventListener('mousedown', handleMouseDown);
+  }, [isFieldDropdownOpen]);
+
   const toggleValue = (value: string, setter: Dispatch<SetStateAction<string[]>>) =>
     setter((current) => (current.includes(value) ? current.filter((item) => item !== value) : [...current, value]));
 
@@ -489,8 +526,8 @@ export default function CoursesPage() {
   const navigationListClass = 'bg-white';
   const navigationRowClass = 'border-b border-slate-100 bg-white hover:bg-slate-50';
   const selectedCourseRowClass = hasCollegeNavigationColor
-    ? `${selectedCollegeConfig!.selectedBorder} bg-white`
-    : 'border-indigo-600 bg-white';
+    ? `${selectedCollegeConfig!.selectedBorder} ${selectedCollegeConfig!.headerSurface}`
+    : 'border-indigo-500 bg-indigo-50';
   const closeMobileNavigator = () => setIsMobileNavigatorOpen(false);
   const openMobileNavigator = () => setIsMobileNavigatorOpen(true);
 
@@ -517,6 +554,8 @@ export default function CoursesPage() {
   const handleSelectDepartment = (department: string) => {
     setSelectedDepartment(department);
     setSelectedCourse(null);
+    setSelectedFieldFilters([]);
+    setIsFieldDropdownOpen(false);
     setNavigationLevel('courses');
     openMobileNavigator();
   };
@@ -638,16 +677,92 @@ export default function CoursesPage() {
                           <HiChevronLeft className="h-5 w-5" />
                         </button>
                       ) : null}
-                      <div className="min-w-0">
+                      <div className="min-w-0 flex-1">
                         <div className={navigationTitleClass}>{navigationTitle}</div>
-                        <div className={navigationHintClass}>{navigationHint}</div>
+                        {navigationLevel === 'courses' ? (
+                          <div className="mt-0.5 flex items-center gap-3">
+                            <span className="flex items-center gap-1 text-xs text-slate-500">
+                              <span className="h-2 w-2 shrink-0 rounded-full bg-red-400" />
+                              必修
+                            </span>
+                            <span className="flex items-center gap-1 text-xs text-slate-500">
+                              <span className="h-2 w-2 shrink-0 rounded-full bg-green-400" />
+                              選修
+                            </span>
+                          </div>
+                        ) : (
+                          <div className={navigationHintClass}>{navigationHint}</div>
+                        )}
                       </div>
+                      {navigationLevel === 'colleges' ? (
+                        <div className="flex shrink-0 overflow-hidden rounded-lg border border-slate-200 bg-slate-50 text-xs font-semibold">
+                          <button
+                            type="button"
+                            onClick={() => setCourseLevel('undergrad')}
+                            className={`px-2.5 py-1.5 transition ${courseLevel === 'undergrad' ? 'bg-slate-800 text-white' : 'text-slate-500 hover:bg-slate-100'}`}
+                          >
+                            大學部
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setCourseLevel('grad')}
+                            className={`border-l border-slate-200 px-2.5 py-1.5 transition ${courseLevel === 'grad' ? 'bg-slate-800 text-white' : 'text-slate-500 hover:bg-slate-100'}`}
+                          >
+                            研究所
+                          </button>
+                        </div>
+                      ) : null}
+                      {navigationLevel === 'courses' && departmentFieldOptions.length > 1 ? (
+                        <div ref={fieldDropdownRef} className="relative shrink-0">
+                          <button
+                            type="button"
+                            onClick={() => setIsFieldDropdownOpen((v) => !v)}
+                            className={`flex items-center gap-1 rounded-lg px-2.5 py-1.5 text-xs font-medium transition ${selectedFieldFilters.length > 0 ? (selectedCollegeConfig ? selectedCollegeConfig.badge : 'bg-indigo-50 text-indigo-700') : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}
+                          >
+                            <span className="max-w-[4.5rem] truncate">
+                              {selectedFieldFilters.length === 0 ? '領域' : selectedFieldFilters.length === 1 ? selectedFieldFilters[0] : `${selectedFieldFilters.length} 個領域`}
+                            </span>
+                            <HiChevronDown className={`h-3 w-3 shrink-0 transition-transform duration-200 ${isFieldDropdownOpen ? 'rotate-180' : ''}`} />
+                          </button>
+                          {isFieldDropdownOpen ? (
+                            <div className="absolute right-0 top-full z-50 mt-1 min-w-[9rem] overflow-hidden rounded-lg border border-slate-200 bg-white shadow-lg">
+                              <button
+                                type="button"
+                                onClick={() => setSelectedFieldFilters([])}
+                                className={`flex w-full items-center gap-2 px-3 py-2 text-left text-xs transition hover:bg-slate-50 ${selectedFieldFilters.length === 0 ? 'font-semibold text-indigo-600' : 'text-slate-700'}`}
+                              >
+                                <span className={`flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-sm border ${selectedFieldFilters.length === 0 ? 'border-indigo-500 bg-indigo-500' : 'border-slate-300'}`}>
+                                  {selectedFieldFilters.length === 0 && <svg className="h-2.5 w-2.5 text-white" viewBox="0 0 10 10" fill="currentColor"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+                                </span>
+                                全部
+                              </button>
+                              <div className="border-t border-slate-100" />
+                              {departmentFieldOptions.map((field) => {
+                                const checked = selectedFieldFilters.includes(field);
+                                return (
+                                  <button
+                                    key={field}
+                                    type="button"
+                                    onClick={() => setSelectedFieldFilters((prev) => checked ? prev.filter((f) => f !== field) : [...prev, field])}
+                                    className={`flex w-full items-center gap-2 px-3 py-2 text-left text-xs transition hover:bg-slate-50 ${checked ? 'font-semibold text-indigo-600' : 'text-slate-700'}`}
+                                  >
+                                    <span className={`flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-sm border ${checked ? 'border-indigo-500 bg-indigo-500' : 'border-slate-300'}`}>
+                                      {checked && <svg className="h-2.5 w-2.5 text-white" viewBox="0 0 10 10" fill="currentColor"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+                                    </span>
+                                    {field}
+                                  </button>
+                                );
+                              })}
+                            </div>
+                          ) : null}
+                        </div>
+                      ) : null}
                     </div>
                   </div>
                 )}
               </div>
 
-              <div className="flex-1 overflow-y-auto bg-white">
+              <div className={`flex-1 overflow-y-auto bg-white ${compareCourses.length > 0 ? 'pb-44 md:pb-0' : ''}`}>
                 {hasActiveFilters ? (
                   <div className="bg-white">
                     {hasSearchQuery && searchMode === 'semantic' ? (
@@ -820,14 +935,24 @@ export default function CoursesPage() {
                         {currentCourses.map((course) => {
                           const isSelected = selectedCourse ? courseKey(selectedCourse) === courseKey(course) : false;
                           const isRequired = normalize(course.required_elective) === '必修';
+                          const dotClass = isRequired
+                            ? 'bg-red-400'
+                            : course.required_elective
+                              ? 'bg-green-400'
+                              : 'bg-slate-300';
                           return (
-                            <div key={courseKey(course)} className={`flex gap-2 border-b px-4 py-3 transition ${navigationRowClass} ${isSelected ? `border-l-4 ${selectedCourseRowClass}` : ''}`}>
+                            <div key={courseKey(course)} className={`flex gap-2 px-4 py-3 transition ${isSelected ? `border-b border-l-4 ${selectedCourseRowClass}` : navigationRowClass}`}>
                               <button type="button" onClick={() => handleSelectCourse(course)} className="min-w-0 flex-1 text-left">
-                                <div className="mb-1 text-sm font-semibold leading-snug text-slate-900">
+                                <div className={`mb-1 text-sm leading-snug ${isSelected ? 'font-bold text-slate-950' : 'font-semibold text-slate-900'}`}>
                                   <HighlightText text={course.course_name_zh} keyword={searchQuery} />
                                 </div>
                                 <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500">
-                                  {course.required_elective ? <span className={`rounded-full px-2 py-0.5 font-medium ${isRequired ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>{course.required_elective}</span> : null}
+                                  {course.course_id ? (
+                                    <span className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5">
+                                      <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${dotClass}`} />
+                                      <span className="font-mono text-[11px] text-slate-600">{course.course_id}</span>
+                                    </span>
+                                  ) : null}
                                   <span>{course.credits} 學分</span>
                                   {course.instructor ? <span>{course.instructor}</span> : null}
                                 </div>
@@ -849,18 +974,7 @@ export default function CoursesPage() {
               </div>
             </aside>
 
-<div className={`relative z-0 min-h-0 min-w-0 flex-1 overflow-y-auto bg-slate-50 p-4 ${isMobileNavigatorOpen ? 'hidden md:block' : 'block'}`}>
-              {!isMobileNavigatorOpen ? (
-                <button
-                  type="button"
-                  onClick={openMobileNavigator}
-                  className="fixed right-4 top-24 z-30 inline-flex h-11 items-center gap-2 rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-700 shadow-lg transition hover:bg-slate-50 md:hidden"
-                >
-                  <HiChevronRight className="h-4 w-4" />
-                  課程導航
-                </button>
-              ) : null}
-
+<div ref={contentPanelRef} className={`relative z-0 min-h-0 min-w-0 flex-1 overflow-y-auto bg-slate-50 p-4 ${isMobileNavigatorOpen ? 'hidden md:block' : 'block'} ${compareCourses.length > 0 ? 'pb-44 md:pb-4' : ''}`}>
               <div className="mb-3 flex items-center justify-between md:hidden">
                 <button type="button" onClick={openMobileNavigator} className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-50">
                   <HiChevronRight className="h-4 w-4" />
@@ -880,7 +994,7 @@ export default function CoursesPage() {
       </div>
 
       {compareCourses.length > 0 ? (
-        <div className="fixed bottom-4 right-4 z-40 w-[min(24rem,calc(100vw-2rem))] rounded-2xl border border-slate-200 bg-white p-4 shadow-2xl">
+        <div className="fixed bottom-0 left-0 right-0 z-40 rounded-t-2xl border-t border-slate-200 bg-white px-4 pb-[calc(1rem+env(safe-area-inset-bottom))] pt-4 shadow-2xl md:bottom-4 md:left-auto md:right-4 md:w-96 md:rounded-2xl md:border md:pb-4">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
               <div className="text-sm font-semibold text-slate-950">課程對比</div>
@@ -902,9 +1016,6 @@ export default function CoursesPage() {
           <div className="mt-3 flex gap-2">
             <button type="button" onClick={() => setCompareOpen(true)} disabled={compareCourses.length < 2} className="flex-1 rounded-xl bg-primary-900 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-primary-800 disabled:cursor-not-allowed disabled:bg-slate-300">
               開始對比
-            </button>
-            <button type="button" onClick={clearCompareCourses} className="rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50">
-              清空
             </button>
           </div>
           {compareCourses.length < 2 ? <div className="mt-2 text-xs text-slate-500">至少選 2 門課才能開始對比。</div> : null}

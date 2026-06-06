@@ -5,6 +5,7 @@ import {
   HiBookOpen,
   HiCalendar,
   HiChatAlt2,
+  HiChevronDown,
   HiClock,
   HiDocumentText,
   HiExternalLink,
@@ -44,11 +45,10 @@ const getApiErrorMessage = (error: unknown) => {
 };
 
 const QUICK_ACTIONS = [
-  { id: 'translate', label: '翻譯成中文', prompt: '請把這門課的課程目標與課程內容翻譯成繁體中文，保持原本的架構。' },
+  { id: 'translate', label: '翻成中文', prompt: '請把這門課的課程目標與課程內容翻譯成繁體中文，保持原本的架構。' },
   { id: 'simplify', label: '高中生版本', prompt: '請用高中生能理解的語言，整理這門課在學什麼、有什麼實際用途。' },
   { id: 'connect', label: '連結高中知識', prompt: '這門課的核心概念可以對應到高中哪些科目的哪些單元？請舉例說明。' },
-  { id: 'fit', label: '我適合修嗎', prompt: '這門課適合什麼樣背景的學生？需要哪些先備知識？' },
-  { id: 'prereq', label: '先備知識', prompt: '修這門課之前建議具備哪些基礎？有推薦先修的課程嗎？' },
+  { id: 'fit', label: '我適合修嗎', prompt: '這門課適合什麼樣背景的學生？需要哪些先備知識？有推薦先修的課程嗎？' },
 ];
 
 const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKeyword = '', isCompared = false, onToggleCompare }) => {
@@ -58,6 +58,8 @@ const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKey
   const [askAnswer, setAskAnswer] = useState('');
   const [askError, setAskError] = useState('');
   const [askLoading, setAskLoading] = useState(false);
+  const [aiPanelWidth, setAiPanelWidth] = useState(360);
+  const [quickActionsOpen, setQuickActionsOpen] = useState(true);
   const courseIdentity = course ? `${course.serial_no}-${course.course_id}` : '';
 
   const resetAskState = () => {
@@ -101,7 +103,27 @@ const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKey
   };
 
   const handleQuickAction = (prompt: string) => {
+    setQuickActionsOpen(false);
     void submitQuestion(prompt);
+  };
+
+  const handleResizeDragStart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const startX = e.clientX;
+    const startWidth = aiPanelWidth;
+    const onMove = (ev: MouseEvent) => {
+      setAiPanelWidth(Math.max(280, Math.min(640, startWidth + startX - ev.clientX)));
+    };
+    const onUp = () => {
+      document.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mouseup', onUp);
+      document.body.style.cursor = '';
+      document.body.style.userSelect = '';
+    };
+    document.body.style.cursor = 'col-resize';
+    document.body.style.userSelect = 'none';
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseup', onUp);
   };
 
   const handleAskSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -112,6 +134,7 @@ const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKey
       return;
     }
     setAskQuestion('');
+    setQuickActionsOpen(false);
     await submitQuestion(question);
   };
 
@@ -140,7 +163,7 @@ const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKey
   const courseFieldTags = splitFields(course.course_field);
 
   return (
-    <div className={askOpen ? 'md:flex md:items-start md:gap-4' : undefined}>
+    <div className={askOpen ? 'md:flex md:items-start' : undefined}>
     <div className={`rounded-lg border border-slate-200 bg-white shadow-sm${askOpen ? ' md:flex-1 md:min-w-0' : ''}`}>
       <div className="border-b border-slate-200 bg-white p-5">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
@@ -258,7 +281,7 @@ const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKey
           {course.distribution_conditions && course.distribution_conditions.length > 0 ? (
             <div className="space-y-2">
               {course.distribution_conditions.map((condition, index) => (
-                <div key={index} className="flex gap-3 rounded-lg border border-primary-100 bg-primary-50 p-3">
+                <div key={index} className="flex items-center gap-3 rounded-lg border border-primary-100 bg-primary-50 p-3">
                   <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary-500 text-sm font-medium text-white shadow-sm">
                     {condition.priority}
                   </span>
@@ -358,7 +381,15 @@ const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKey
 
     {/* Desktop split AI chat panel */}
     {askOpen ? (
-      <div className="hidden md:flex w-[28rem] shrink-0 flex-col self-start sticky top-4 max-h-[calc(100vh-6rem)] rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+      <>
+      {/* Drag handle */}
+      <div
+        className="hidden md:flex w-3 self-stretch shrink-0 cursor-col-resize items-center justify-center group"
+        onMouseDown={handleResizeDragStart}
+      >
+        <div className="h-12 w-0.5 rounded-full bg-slate-200 transition-colors group-hover:bg-primary-400" />
+      </div>
+      <div className="hidden md:flex shrink-0 flex-col self-start sticky top-4 max-h-[calc(100vh-6rem)] rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden" style={{ width: aiPanelWidth }}>
         <div className="flex items-center justify-between gap-3 border-b border-slate-200 px-4 py-3 shrink-0">
           <div className="flex items-center gap-2 text-sm font-semibold text-slate-700">
             <HiChatAlt2 className="h-5 w-5" />
@@ -368,21 +399,30 @@ const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKey
             <HiX className="h-4 w-4" />
           </button>
         </div>
-        <div className="border-b border-slate-100 px-4 py-3 shrink-0">
-          <p className="mb-2 text-xs font-medium text-slate-400">快速提問</p>
-          <div className="flex flex-wrap gap-1.5">
-            {QUICK_ACTIONS.map((action) => (
-              <button
-                key={action.id}
-                type="button"
-                onClick={() => handleQuickAction(action.prompt)}
-                disabled={askLoading}
-                className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-700 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50"
-              >
-                {action.label}
-              </button>
-            ))}
-          </div>
+        <div className="border-b border-slate-100 shrink-0">
+          <button
+            type="button"
+            onClick={() => setQuickActionsOpen((v) => !v)}
+            className="flex w-full items-center justify-between px-4 py-2.5 text-xs font-medium text-slate-400 transition hover:text-slate-600"
+          >
+            <span>快速提問</span>
+            <HiChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${quickActionsOpen ? '' : '-rotate-90'}`} />
+          </button>
+          {quickActionsOpen && (
+            <div className="flex flex-wrap gap-1.5 px-4 pb-3">
+              {QUICK_ACTIONS.map((action) => (
+                <button
+                  key={action.id}
+                  type="button"
+                  onClick={() => handleQuickAction(action.prompt)}
+                  disabled={askLoading}
+                  className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-700 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  {action.label}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
         <div className="min-h-0 flex-1 overflow-y-auto px-4 py-4 space-y-3">
           {!askLastQuestion ? (
@@ -445,6 +485,7 @@ const CourseDetailPanel: React.FC<CourseDetailPanelProps> = ({ course, searchKey
           </div>
         </form>
       </div>
+      </>
     ) : null}
 
     {/* Mobile modal */}

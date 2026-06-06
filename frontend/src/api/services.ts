@@ -61,7 +61,8 @@ export const courseAPI = {
   getCourses: async (filters?: {
     college?: string;
     department?: string;
-    type?: string; // 必修/选修
+    type?: string;
+    level?: 'undergrad' | 'grad';
   }): Promise<Course[]> => {
     const response = await apiClient.get('/courses', { params: filters });
     return response.data;

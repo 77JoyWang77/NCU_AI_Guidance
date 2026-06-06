@@ -64,11 +64,11 @@ const CoreAbilityTable: React.FC<CoreAbilityTableProps> = ({ abilities }) => {
       </div>
 
       <div className="hidden overflow-x-auto md:block">
-        <table className="w-full table-fixed rounded-lg border border-gray-200 bg-white">
+        <table className="w-full table-fixed rounded-lg border border-gray-200 bg-white" style={{ minWidth: '28rem' }}>
           <colgroup>
-            <col className="w-2/5" />
-            <col className="w-1/5" />
-            <col className="w-2/5" />
+            <col className="w-[40%]" />
+            <col className="w-[22%]" />
+            <col className="w-[38%]" />
           </colgroup>
           <thead className="bg-gray-50">
             <tr>
@@ -86,8 +86,8 @@ const CoreAbilityTable: React.FC<CoreAbilityTableProps> = ({ abilities }) => {
                 <tr key={index} className="transition-colors hover:bg-gray-50">
                   <td className="break-words px-4 py-3 text-sm text-gray-900">{ability.ability_name}</td>
                   <td className="px-4 py-3 text-sm">
-                    <div className="flex items-center gap-2">
-                      <div className="h-2.5 w-24 shrink-0 overflow-hidden rounded-full bg-gray-200">
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                      <div className="h-2 min-w-[2.5rem] flex-1 overflow-hidden rounded-full bg-gray-200">
                         <div
                           className={`h-full ${colorClass} transition-all duration-300`}
                           style={{ width: `${intensityValue * 20}%` }}
