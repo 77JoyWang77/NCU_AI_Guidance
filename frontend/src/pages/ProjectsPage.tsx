@@ -14,6 +14,7 @@ import {
   HiPaperAirplane,
   HiPencil,
   HiPlus,
+  HiSearch,
   HiStop,
   HiTrash,
   HiUser,
@@ -56,6 +57,7 @@ export default function ProjectsPage() {
   const [pdfConversations, setPdfConversations] = useState<PdfConversationSummary[]>([]);
   const [filterYear, setFilterYear] = useState('');
   const [filterDept, setFilterDept] = useState('');
+  const [filterTitle, setFilterTitle] = useState('');
   const [recentChats, setRecentChats] = useState<{
     document_id: number;
     thread_id: string;
@@ -94,8 +96,12 @@ export default function ProjectsPage() {
   );
 
   const filteredProjects = useMemo(() => {
+    const q = filterTitle.trim().toLowerCase();
     const filtered = projects.filter(
-      (p) => (!filterYear || p.year === filterYear) && (!filterDept || p.department === filterDept)
+      (p) =>
+        (!filterYear || p.year === filterYear) &&
+        (!filterDept || p.department === filterDept) &&
+        (!q || p.title.toLowerCase().includes(q))
     );
     return filtered.sort((a, b) => {
       const ca = getDeptCollege(a.department), cb = getDeptCollege(b.department);
@@ -110,7 +116,7 @@ export default function ProjectsPage() {
       if (dc !== 0) return dc;
       return b.year.localeCompare(a.year);
     });
-  }, [projects, filterYear, filterDept]);
+  }, [projects, filterYear, filterDept, filterTitle]);
 
   const matchedRecentChats = useMemo(
     () => recentChats.flatMap(rc => {
@@ -323,15 +329,16 @@ export default function ProjectsPage() {
     }
   };
 
-  const handleOpenRecentChat = async (project: Project, targetThreadId: string) => {
+  const handleSelectFromRecentChat = (project: Project, targetThreadId: string) => {
     abortCtrlRef.current?.abort();
     abortCtrlRef.current = null;
     streamingTextRef.current = '';
     setStreamingText('');
     setChatLoading(false);
     setSelectedProject(project);
+    setChatMessages([createWelcomeMessage(project)]);
     setInputMessage('');
-    setViewMode('pdf-chat');
+    setViewMode('outline');
     setMobileOutlineView('detail');
     setIsMobileChatOpen(false);
     setThreadId(targetThreadId);
@@ -341,12 +348,18 @@ export default function ProjectsPage() {
         .then((convs) => setPdfConversations(convs))
         .catch(() => {});
     }
+  };
+
+  const handleContinueRecentChat = async () => {
+    if (!selectedProject || !threadId) return;
+    setViewMode('pdf-chat');
+    setIsMobileChatOpen(false);
     setChatLoading(true);
     try {
-      const msgs = await projectAPI.loadConversationMessages(project.id, targetThreadId);
-      setChatMessages([createWelcomeMessage(project), ...msgs]);
+      const msgs = await projectAPI.loadConversationMessages(selectedProject.id, threadId);
+      setChatMessages([createWelcomeMessage(selectedProject), ...msgs]);
     } catch {
-      setChatMessages([createWelcomeMessage(project)]);
+      setChatMessages([createWelcomeMessage(selectedProject)]);
     } finally {
       setChatLoading(false);
     }
@@ -417,6 +430,16 @@ export default function ProjectsPage() {
             <span className="text-sm text-gray-500">瀏覽歷年專題，並可進一步開啟 PDF 與 AI 問答。</span>
           </div>
           <div className="flex flex-wrap items-center gap-2">
+            <div className="relative">
+              <HiSearch className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-gray-400" />
+              <input
+                type="text"
+                value={filterTitle}
+                onChange={(e) => setFilterTitle(e.target.value)}
+                placeholder="搜尋標題…"
+                className="rounded-md border border-gray-300 py-1.5 pl-8 pr-3 text-sm focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
+              />
+            </div>
             <select
               value={filterYear}
               onChange={(event) => handleFilterYearChange(event.target.value)}
@@ -435,9 +458,6 @@ export default function ProjectsPage() {
               departments={departments}
               getCollegeLabel={getCollegeLabel}
             />
-            <span className="shrink-0 text-sm text-gray-500">
-              共 <span className="font-semibold text-primary-700">{filteredProjects.length}</span> 筆
-            </span>
           </div>
         </div>
       ) : null}
@@ -487,6 +507,7 @@ export default function ProjectsPage() {
                           project={project}
                           getCollegeLabel={getCollegeLabel}
                           getCollegeBadgeClass={getCollegeBadgeClass}
+                          highlight={filterTitle}
                         />
                       </div>
                     ))}
@@ -501,35 +522,40 @@ export default function ProjectsPage() {
 
           <div className="hidden min-h-0 flex-1 lg:grid lg:grid-cols-3 lg:gap-4">
             <div className="flex min-h-0 flex-col">
-              {/* Tab 切換（有最近對話時才顯示） */}
-              {user && matchedRecentChats.length > 0 && (
-                <div className="mb-2 flex shrink-0 gap-0.5 rounded-lg border border-gray-200 bg-gray-50 p-0.5">
-                  <button
-                    type="button"
-                    onClick={() => setLeftPanelTab('projects')}
-                    className={`flex flex-1 items-center justify-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium transition ${
-                      leftPanelTab === 'projects'
-                        ? 'bg-white shadow-sm text-primary-700'
-                        : 'text-gray-500 hover:text-gray-700'
-                    }`}
-                  >
-                    <HiAcademicCap className="h-3.5 w-3.5" />
-                    專題列表
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setLeftPanelTab('recent')}
-                    className={`flex flex-1 items-center justify-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium transition ${
-                      leftPanelTab === 'recent'
-                        ? 'bg-white shadow-sm text-primary-700'
-                        : 'text-gray-500 hover:text-gray-700'
-                    }`}
-                  >
-                    <HiClock className="h-3.5 w-3.5" />
-                    最近對話
-                  </button>
-                </div>
-              )}
+              {/* 計數 + Tab 切換列 */}
+              <div className="mb-2 flex shrink-0 items-center justify-between">
+                <span className="text-xs text-gray-500">
+                  共 <span className="font-semibold text-primary-700">{filteredProjects.length}</span> 筆
+                </span>
+                {user && matchedRecentChats.length > 0 && (
+                  <div className="flex items-center gap-0.5 rounded-full bg-black/5 px-0.5 py-0.5">
+                    <button
+                      type="button"
+                      onClick={() => setLeftPanelTab('projects')}
+                      className={`flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium transition-all duration-150 focus:outline-none ${
+                        leftPanelTab === 'projects'
+                          ? 'bg-white text-primary-900 shadow-soft'
+                          : 'text-slate-400 hover:text-slate-600'
+                      }`}
+                    >
+                      <HiAcademicCap className="h-3.5 w-3.5" />
+                      專題列表
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setLeftPanelTab('recent')}
+                      className={`flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium transition-all duration-150 focus:outline-none ${
+                        leftPanelTab === 'recent'
+                          ? 'bg-white text-primary-900 shadow-soft'
+                          : 'text-slate-400 hover:text-slate-600'
+                      }`}
+                    >
+                      <HiClock className="h-3.5 w-3.5" />
+                      最近對話
+                    </button>
+                  </div>
+                )}
+              </div>
 
               {/* 專題列表 */}
               {leftPanelTab === 'projects' && (
@@ -547,6 +573,7 @@ export default function ProjectsPage() {
                           project={project}
                           getCollegeLabel={getCollegeLabel}
                           getCollegeBadgeClass={getCollegeBadgeClass}
+                          highlight={filterTitle}
                         />
                       </div>
                     ))}
@@ -565,8 +592,12 @@ export default function ProjectsPage() {
                       <button
                         key={rc.thread_id}
                         type="button"
-                        onClick={() => handleOpenRecentChat(rc.project, rc.thread_id)}
-                        className="flex w-full items-start gap-3 rounded-xl border border-transparent px-3 py-3 text-left transition hover:border-primary-100 hover:bg-primary-50"
+                        onClick={() => handleSelectFromRecentChat(rc.project, rc.thread_id)}
+                        className={`flex w-full items-start gap-3 rounded-xl border px-3 py-3 text-left transition hover:border-primary-100 hover:bg-primary-50 ${
+                          selectedProject?.id === rc.project.id && threadId === rc.thread_id
+                            ? 'border-primary-200 bg-primary-50'
+                            : 'border-transparent'
+                        }`}
                       >
                         <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary-100">
                           <HiChat className="h-4 w-4 text-primary-500" />
@@ -574,12 +605,15 @@ export default function ProjectsPage() {
                         <div className="min-w-0 flex-1">
                           <p className="truncate text-sm font-medium text-gray-800">{rc.project.title}</p>
                           <p className="truncate text-xs text-gray-500">{rc.title}</p>
-                          <div className="mt-1.5 flex items-center justify-between gap-2">
+                          <div className="mt-1.5 flex items-center gap-2">
                             <span className={`inline-block shrink-0 rounded-full px-2 py-0.5 text-[10px] font-medium ${getCollegeBadgeClass(getCollegeLabel(rc.project.department))}`}>
                               {rc.project.department}
                             </span>
+                            <span className="shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-medium text-slate-500">
+                              {rc.project.year}
+                            </span>
                             {rc.created_at && (
-                              <span className="shrink-0 text-[10px] text-gray-400">
+                              <span className="ml-auto shrink-0 text-[10px] text-gray-400">
                                 {new Date(rc.created_at).toLocaleDateString('zh-TW')}
                               </span>
                             )}
@@ -601,10 +635,16 @@ export default function ProjectsPage() {
                     getCollegeBadgeClass={getCollegeBadgeClass}
                   />
 
-                  <div className="flex justify-end">
-                    <button type="button" onClick={handleOpenPdfChat} className="btn-primary flex items-center gap-2">
+                  <div className="flex justify-end gap-3">
+                    {threadId && (
+                      <button type="button" onClick={handleContinueRecentChat} className="btn-primary flex items-center gap-2">
+                        <HiChat className="h-5 w-5" />
+                        繼續對話
+                      </button>
+                    )}
+                    <button type="button" onClick={() => { setThreadId(undefined); handleOpenPdfChat(); }} className={threadId ? 'btn-secondary flex items-center gap-2' : 'btn-primary flex items-center gap-2'}>
                       <HiChat className="h-5 w-5" />
-                      查看 PDF 與 AI 對話
+                      {threadId ? '新對話' : '查看 PDF 與 AI 對話'}
                     </button>
                   </div>
                 </div>
@@ -1197,14 +1237,30 @@ function DeptSelect({
   );
 }
 
+function HighlightText({ text, query }: { text: string; query: string }) {
+  const q = query.trim().toLowerCase();
+  if (!q) return <>{text}</>;
+  const idx = text.toLowerCase().indexOf(q);
+  if (idx === -1) return <>{text}</>;
+  return (
+    <>
+      {text.slice(0, idx)}
+      <mark className="rounded bg-yellow-200 px-0.5 not-italic text-yellow-900">{text.slice(idx, idx + q.length)}</mark>
+      {text.slice(idx + q.length)}
+    </>
+  );
+}
+
 function ProjectCardContent({
   project,
   getCollegeLabel,
   getCollegeBadgeClass,
+  highlight = '',
 }: {
   project: Project;
   getCollegeLabel: (department: string) => string;
   getCollegeBadgeClass: (college: string) => string;
+  highlight?: string;
 }) {
   return (
     <>
@@ -1212,7 +1268,9 @@ function ProjectCardContent({
         <span className={`badge text-xs ${getCollegeBadgeClass(getCollegeLabel(project.department))}`}>{getCollegeLabel(project.department)}</span>
         <span className="text-xs text-gray-500">{project.year}</span>
       </div>
-      <h3 className="mb-2 line-clamp-2 text-sm font-semibold leading-tight text-primary-900">{project.title}</h3>
+      <h3 className="mb-2 line-clamp-2 text-sm font-semibold leading-tight text-primary-900">
+        <HighlightText text={project.title} query={highlight} />
+      </h3>
       <div className="space-y-1 text-xs text-gray-600">
         <div className="flex items-center">
           <HiUser className="mr-1 h-3 w-3" />
