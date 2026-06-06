@@ -443,7 +443,6 @@ export default function HomePage() {
                   </p>
                   <h2 className="mt-2 text-2xl font-bold text-slate-950">平台功能總覽</h2>
                 </div>
-                <p className="hidden text-sm text-slate-400 sm:block">左右拖動或點擊兩側切換，中央卡片可直接進入</p>
               </div>
             </Reveal>
           </div>

@@ -243,6 +243,43 @@ export const analyticsAPI = {
   },
 };
 
+// 研究計畫個人分析
+export interface PdfAnalyticsOverview {
+  total_conversations: number;
+  total_questions: number;
+  total_documents_explored: number;
+  avg_depth: number;
+}
+
+export interface PdfDocumentStat {
+  document_id: number;
+  title: string;
+  department: string;
+  college: string;
+  year: string;
+  conversation_count: number;
+  question_count: number;
+  avg_depth: number;
+  last_viewed_at: string | null;
+}
+
+export interface PdfAnalyticsData {
+  overview: PdfAnalyticsOverview;
+  dept_distribution: AnalyticsDistItem[];
+  college_distribution: AnalyticsDistItem[];
+  depth_distribution: { range: string; count: number }[];
+  exploration_type: { type: string; desc: string };
+  document_list: PdfDocumentStat[];
+  recent_questions: { question: string; document_title: string; created_at: string | null }[];
+}
+
+export const projectAnalyticsAPI = {
+  get: async (): Promise<PdfAnalyticsData> => {
+    const response = await apiClient.get('/projects/analytics');
+    return response.data;
+  },
+};
+
 // 監控 API（開發人員專用）
 export interface MonitorHealth {
   postgres: 'ok' | 'error';

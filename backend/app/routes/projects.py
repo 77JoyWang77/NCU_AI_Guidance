@@ -4,6 +4,7 @@ import logging
 import os
 import re as _re
 from datetime import datetime, timezone
+from functools import lru_cache
 from typing import List, Optional
 from urllib.parse import quote
 
@@ -79,6 +80,28 @@ async def get_projects(
     if year:
         projects = [p for p in projects if p['year'] == year]
     return projects
+
+
+@lru_cache(maxsize=1)
+def _build_doc_meta_map() -> dict[int, dict]:
+    """document_id → {title, department, year}，從 projects.json 一次建立並快取。"""
+    result: dict[int, dict] = {}
+    for p in load_projects():
+        doc_id = p.get("documentId")
+        if doc_id is not None:
+            result[int(doc_id)] = {
+                "title":      p.get("title", ""),
+                "department": p.get("department", ""),
+                "year":       p.get("year", ""),
+            }
+    return result
+
+
+@router.get("/analytics", dependencies=[Depends(_require_pdf_chat)])
+async def get_pdf_user_analytics(user: AuthUser = Depends(get_current_user)):
+    """取得目前使用者的研究計畫探索分析（需登入，15 分鐘快取）。"""
+    from app.services.session_store import get_pdf_analytics
+    return await asyncio.to_thread(get_pdf_analytics, user.user_id, _build_doc_meta_map())
 
 
 @router.get("/recent-chats", dependencies=[Depends(_require_pdf_chat)])
