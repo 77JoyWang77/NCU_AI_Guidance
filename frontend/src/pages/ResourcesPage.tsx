@@ -61,7 +61,7 @@ const departmentGroups = [
     links: [
       ['工學院學士班', 'https://ipe.ec.ncu.edu.tw/'],
       ['土木工程學系', 'https://www.cv.ncu.edu.tw/'],
-      ['機械工程學系光機電工程碩士班', 'https://www.cme.ncu.edu.tw/'],
+      ['化學工程與材料工程學系', 'https://www.cme.ncu.edu.tw/'],
       ['機械工程學系', 'https://www.me.ncu.edu.tw/'],
     ],
   },
