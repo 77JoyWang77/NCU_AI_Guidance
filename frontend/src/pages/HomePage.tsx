@@ -114,9 +114,9 @@ const highlights = [
     description: '用自然語言描述你想學的方向，AI 自動搜尋相關課程並即時回答問題，省去逐頁翻找的時間。',
     path: '/course-search',
     cta: '試試 AI 搜尋',
-    border:    'border-amber-300',
-    iconColor: 'text-amber-400',
-    ctaColor:  'text-amber-600 hover:text-amber-700',
+    border:    'border-primary-200',
+    iconColor: 'text-primary-400',
+    ctaColor:  'text-primary-700 hover:text-primary-900',
   },
   {
     icon: HiAcademicCap,
@@ -124,9 +124,9 @@ const highlights = [
     description: '回答 40 道題目，系統分析學習偏好，推薦最值得深入了解的中央大學系所方向，不是泛用測驗。',
     path: '/assessment',
     cta: '開始測評',
-    border:    'border-teal-300',
-    iconColor: 'text-teal-500',
-    ctaColor:  'text-teal-600 hover:text-teal-700',
+    border:    'border-primary-200',
+    iconColor: 'text-primary-400',
+    ctaColor:  'text-primary-700 hover:text-primary-900',
   },
   {
     icon: HiDocumentText,
@@ -134,9 +134,9 @@ const highlights = [
     description: '瀏覽 459 份大專生研究計畫，遇到不懂的段落直接問 AI，快速掌握各系的研究方向與深度。',
     path: '/projects',
     cta: '查看研究計畫',
-    border:    'border-sky-300',
-    iconColor: 'text-sky-400',
-    ctaColor:  'text-sky-600 hover:text-sky-700',
+    border:    'border-primary-200',
+    iconColor: 'text-primary-400',
+    ctaColor:  'text-primary-700 hover:text-primary-900',
   },
 ];
 
@@ -393,11 +393,11 @@ export default function HomePage() {
         {/* ══════════════════════════════════════════════════════════════════
             2. HIGHLIGHTS — 白底，彩色左邊框
         ══════════════════════════════════════════════════════════════════ */}
-        <section className="bg-white/85 py-16 md:py-20">
+        <section className="bg-white/70 py-16 md:py-20">
           <div className="mx-auto max-w-7xl px-6 md:px-10">
             <Reveal>
               <div className="mb-12">
-                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">
+                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary-500">
                   Platform Highlights
                 </p>
                 <h2 className="mt-2 text-3xl font-bold text-slate-950">三個獨特功能</h2>
@@ -433,12 +433,12 @@ export default function HomePage() {
         {/* ══════════════════════════════════════════════════════════════════
             3. FEATURE CAROUSEL — 深一點的底色讓白色卡片浮起
         ══════════════════════════════════════════════════════════════════ */}
-        <section className="bg-white/60 py-14 md:py-16">
+        <section className="bg-white/50 py-14 md:py-16">
           <div className="mx-auto max-w-7xl px-6 md:px-10">
             <Reveal>
               <div className="mb-8 flex items-end justify-between gap-4">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">
+                  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary-500">
                     Core Modules
                   </p>
                   <h2 className="mt-2 text-2xl font-bold text-slate-950">平台功能總覽</h2>
@@ -499,15 +499,15 @@ export default function HomePage() {
                     {/* 中央卡片加上邊框光暈與頂部色條，更突出 */}
                     <div className={`feature-coverflow-card-inner relative min-h-[232px] overflow-hidden rounded-3xl p-6 text-left transition-shadow duration-300 ${
                       isCenter
-                        ? 'bg-white shadow-[0_8px_28px_rgba(0,0,0,0.10)] ring-2 ring-teal-200'
+                        ? 'bg-white shadow-[0_8px_28px_rgba(0,0,0,0.10)] ring-2 ring-primary-200'
                         : 'card'
                     }`}>
                       {/* 中央卡片頂部裝飾條（漸層色系配合背景主題） */}
                       {isCenter && (
-                        <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-teal-400 via-sky-300 to-blue-300" />
+                        <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-primary-400 via-primary-300 to-primary-400" />
                       )}
                       <div className={`flex h-12 w-12 items-center justify-center rounded-2xl ${
-                        isCenter ? 'bg-teal-50 text-teal-600' : 'bg-slate-100 text-slate-500'
+                        isCenter ? 'bg-primary-50 text-primary-600' : 'bg-slate-100 text-slate-500'
                       }`}>
                         <Icon className="h-6 w-6" />
                       </div>
@@ -516,7 +516,7 @@ export default function HomePage() {
                           {feature.title}
                         </h3>
                         <span className={`rounded-full px-3 py-1 text-xs font-medium ${
-                          isCenter ? 'bg-sky-50 text-sky-600' : 'bg-slate-100 text-slate-500'
+                          isCenter ? 'bg-primary-50 text-primary-600' : 'bg-slate-100 text-slate-500'
                         }`}>
                           {feature.tag}
                         </span>
@@ -525,7 +525,7 @@ export default function HomePage() {
                         {feature.description}
                       </p>
                       <div className={`mt-6 inline-flex items-center text-sm font-medium ${
-                        isCenter ? 'text-teal-600' : 'text-slate-400'
+                        isCenter ? 'text-primary-700' : 'text-slate-400'
                       }`}>
                         前往功能
                         <HiArrowRight className="ml-2 h-4 w-4" />
@@ -555,11 +555,11 @@ export default function HomePage() {
         {/* ══════════════════════════════════════════════════════════════════
             4. EXPLORE PATHS — 白底，超大步驟序號
         ══════════════════════════════════════════════════════════════════ */}
-        <section className="bg-white/85 py-16">
+        <section className="bg-white/70 py-16">
           <div className="mx-auto max-w-5xl px-6 md:px-10">
             <Reveal>
               <div className="mb-10">
-                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">
+                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary-500">
                   How to Start
                 </p>
                 <h2 className="mt-2 text-3xl font-bold text-slate-950">如何開始探索？</h2>
