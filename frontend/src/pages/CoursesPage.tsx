@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import type { ComponentType, Dispatch, SetStateAction } from 'react';
 import {
   HiBeaker,
@@ -104,6 +105,7 @@ function FilterPill({ label, active, onClick }: { label: string; active: boolean
 }
 
 export default function CoursesPage() {
+  const location = useLocation();
   const [courses, setCourses] = useState<Course[]>([]);
   const [loading, setLoading] = useState(true);
   const [isMobileNavigatorOpen, setIsMobileNavigatorOpen] = useState(true);
@@ -137,6 +139,18 @@ export default function CoursesPage() {
   const [courseLevel, setCourseLevel] = useState<'undergrad' | 'grad'>('undergrad');
   const fieldDropdownRef = useRef<HTMLDivElement>(null);
   const contentPanelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const q = params.get('search');
+    if (q && q.trim()) {
+      setSearchQuery(q.trim());
+      setDraftSearchQuery(q.trim());
+      setSearchMode('keyword');
+      setDraftSearchMode('keyword');
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     setLoading(true);
