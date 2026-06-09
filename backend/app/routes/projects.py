@@ -440,11 +440,28 @@ async def chat_with_project_stream(
                 yield f"data: {_json.dumps({'done': True, 'session_id': thread_id, 'cancelled': True})}\n\n"
                 return
 
+            _meta_queue: asyncio.Queue = asyncio.Queue()
+
+            _ROUTE_LABELS = {
+                "chat":      "直接回答",
+                "retrieval": "搜尋文獻",
+                "research":  "深度研究",
+            }
+
+            def _on_stage(msg: str) -> None:
+                _meta_queue.put_nowait(("stage", msg))
+
+            def _on_route(route) -> None:
+                label = _ROUTE_LABELS.get(route.agent_name, route.agent_name)
+                _meta_queue.put_nowait(("agent_start", route.agent_name, label))
+
             aiter = route_agent_stream(
                 request.message,
                 thread_id=thread_id,
                 document_id=document_id,
                 previous_agent_name=conv.last_agent_name,
+                on_stage=_on_stage,
+                on_route=_on_route,
             ).__aiter__()
 
             pending = asyncio.create_task(aiter.__anext__())
@@ -458,6 +475,12 @@ async def chat_with_project_stream(
                     break
 
                 token, is_done, sources = result
+                while not _meta_queue.empty():
+                    meta = _meta_queue.get_nowait()
+                    if meta[0] == "stage":
+                        yield f"data: {_json.dumps({'type': 'stage', 'text': meta[1]})}\n\n"
+                    elif meta[0] == "agent_start":
+                        yield f"data: {_json.dumps({'type': 'agent_start', 'agent': meta[1], 'label': meta[2]})}\n\n"
                 if is_done == "replace":
                     yield f"data: {_json.dumps({'replace': token, 'sources': sources})}\n\n"
                 elif is_done:
