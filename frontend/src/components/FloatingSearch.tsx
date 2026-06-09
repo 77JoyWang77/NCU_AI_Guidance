@@ -6,7 +6,7 @@ const SEARCH_ROUTES = [
   { label: '首頁', keywords: ['首頁', 'home', '平台'], path: '/' },
   { label: '興趣量表', keywords: ['興趣量表', '測評', 'assessment'], path: '/assessment' },
   { label: '課程資訊', keywords: ['課程資訊', '課程', 'courses'], path: '/courses' },
-  { label: '課程搜尋', keywords: ['課程搜尋', '搜尋', 'chat'], path: '/course-search' },
+  { label: '課程助理', keywords: ['課程助理', '助理', 'chat'], path: '/course-search' },
   { label: '研究計畫', keywords: ['研究計畫', '專題', 'project'], path: '/projects' },
   { label: '資源連結', keywords: ['資源連結', '資源', '升學', 'resource'], path: '/resources' },
 ];

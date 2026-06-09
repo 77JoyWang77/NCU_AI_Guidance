@@ -244,13 +244,13 @@ function diagnoseCombinedType(
   if (coursePct > 60 && hasPlanningFocus) {
     return {
       style: COMBINED_EXPLORE_TYPES[1],
-      desc: `你主要透過課程助手（佔 ${coursePct}%）規劃修課路徑，常查詢學分規定與畢業門檻，目標導向清晰。`,
+      desc: `你主要透過課程助理（佔 ${coursePct}%）規劃修課路徑，常查詢學分規定與畢業門檻，目標導向清晰。`,
     };
   }
   if (coursePct > 60) {
     return {
       style: COMBINED_EXPLORE_TYPES[2],
-      desc: `你的互動以課程助手為主（佔 ${coursePct}%），廣泛探索各系所開設課程，對學習內容充滿好奇心。`,
+      desc: `你的互動以課程助理為主（佔 ${coursePct}%），廣泛探索各系所開設課程，對學習內容充滿好奇心。`,
     };
   }
   if (domainsActive >= 3 && uniqueColleges >= 3) {
@@ -267,7 +267,7 @@ function diagnoseCombinedType(
   }
   return {
     style: COMBINED_EXPLORE_TYPES[5],
-    desc: `你在課程助手（${coursePct}%）與研究計畫（${researchPct}%）之間保持均衡，兼顧課程規劃與學術探索兩個面向。`,
+    desc: `你在課程助理（${coursePct}%）與研究計畫（${researchPct}%）之間保持均衡，兼顧課程規劃與學術探索兩個面向。`,
   };
 }
 
@@ -436,7 +436,7 @@ function NotLoggedIn() {
       <h2 className="text-lg font-semibold text-slate-700">請先登入</h2>
       <p className="mt-1 text-sm text-slate-400">登入後即可查看你的課程探索分析</p>
       <Link to="/course-search" className="btn-primary mt-6 inline-flex items-center gap-1.5 text-sm">
-        前往課程搜尋 <HiChevronRight className="h-4 w-4" />
+        前往課程助理 <HiChevronRight className="h-4 w-4" />
       </Link>
     </div>
   );
@@ -449,7 +449,7 @@ function EmptyState() {
         <HiBookOpen className="h-8 w-8 text-slate-300" />
       </div>
       <h2 className="text-lg font-semibold text-slate-600">還沒有使用記錄</h2>
-      <p className="mt-1 text-sm text-slate-400">開始使用課程搜尋，分析結果將在這裡呈現</p>
+      <p className="mt-1 text-sm text-slate-400">開始使用課程助理，分析結果將在這裡呈現</p>
       <Link to="/course-search" className="btn-primary mt-6 inline-flex items-center gap-1.5 text-sm">
         開始搜尋課程 <HiChevronRight className="h-4 w-4" />
       </Link>
@@ -462,7 +462,7 @@ type TabId = 'all' | 'course' | 'project';
 // ── Tab Bar ─────────────────────────────────────────────────────
 const TAB_LABELS: { id: TabId; label: string }[] = [
   { id: 'all',     label: '全部' },
-  { id: 'course',  label: '課程助手' },
+  { id: 'course',  label: '課程助理' },
   { id: 'project', label: '研究計畫' },
 ];
 
@@ -545,14 +545,14 @@ function AllTab({
 
   if (loading) return <TabLoadingSkeleton />;
   if (!courseData && !projectData) {
-    return <p className="py-10 text-center text-sm text-slate-400">切換到「課程助手」或「研究計畫」分頁以開始分析</p>;
+    return <p className="py-10 text-center text-sm text-slate-400">切換到「課程助理」或「研究計畫」分頁以開始分析</p>;
   }
 
   return (
     <div className="space-y-6">
       {/* 概覽數字 */}
       <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-        <StatCard icon={<HiChat className="h-5 w-5" />}         label="課程對話"   value={courseData?.overview.total_sessions ?? '—'}           sub="課程助手歷史對話" />
+        <StatCard icon={<HiChat className="h-5 w-5" />}         label="課程對話"   value={courseData?.overview.total_sessions ?? '—'}           sub="課程助理歷史對話" />
         <StatCard icon={<HiDocumentText className="h-5 w-5" />} label="研究計畫對話" value={projectData?.overview.total_conversations ?? '—'}    sub="研究計畫歷史對話" />
         <StatCard icon={<HiBookOpen className="h-5 w-5" />}     label="課程提問"   value={courseData?.overview.total_turns ?? '—'}              sub="累計提問次數" />
         <StatCard icon={<HiLightningBolt className="h-5 w-5" />} label="探索論文"  value={projectData?.overview.total_documents_explored ?? '—'} sub="不重複論文篇數" />
@@ -587,7 +587,7 @@ function AllTab({
               </div>
               <p className="text-center text-[11px] text-slate-400">
                 {radarMode === 'weighted'
-                  ? `依互動量加權：課程助手 ${coursePct}%、研究計畫 ${researchPct}%`
+                  ? `依互動量加權：課程助理 ${coursePct}%、研究計畫 ${researchPct}%`
                   : '兩個系統各佔 50% 等比計算'}
               </p>
             </div>
@@ -612,7 +612,7 @@ function AllTab({
                 <p className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-slate-400">關鍵數據</p>
                 <div className="space-y-1.5 text-xs text-slate-600">
                   <div className="flex justify-between">
-                    <span>課程助手提問</span>
+                    <span>課程助理提問</span>
                     <span className="font-medium">{courseInteractions.toLocaleString()} 次</span>
                   </div>
                   <div className="flex justify-between">
@@ -652,7 +652,7 @@ function AllTab({
               <div className="flex items-start gap-3">
                 <span className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-indigo-400" />
                 <div>
-                  <p className="text-xs font-medium text-slate-500">課程助手</p>
+                  <p className="text-xs font-medium text-slate-500">課程助理</p>
                   <p className="text-2xl font-bold text-indigo-600">{coursePct}%</p>
                   <p className="text-[11px] text-slate-400">{courseInteractions.toLocaleString()} 次提問</p>
                 </div>
@@ -668,12 +668,12 @@ function AllTab({
             </div>
             <p className="rounded-xl bg-slate-50 px-4 py-2.5 text-sm text-slate-600">
               {coursePct > 70
-                ? '你主要使用課程助手探索修課資訊，對課程規劃有清晰的需求。'
+                ? '你主要使用課程助理探索修課資訊，對課程規劃有清晰的需求。'
                 : researchPct > 70
                 ? '你大量使用研究計畫功能，對學術研究有高度的探索興趣。'
                 : coursePct >= researchPct
-                ? `你對兩個功能都有使用，課程助手（${coursePct}%）略多於研究計畫（${researchPct}%）。`
-                : `你對兩個功能都有使用，研究計畫（${researchPct}%）略多於課程助手（${coursePct}%）。`}
+                ? `你對兩個功能都有使用，課程助理（${coursePct}%）略多於研究計畫（${researchPct}%）。`
+                : `你對兩個功能都有使用，研究計畫（${researchPct}%）略多於課程助理（${coursePct}%）。`}
             </p>
           </div>
         </div>
@@ -682,7 +682,7 @@ function AllTab({
   );
 }
 
-// ── 課程助手 Tab ─────────────────────────────────────────────────
+// ── 課程助理 Tab ─────────────────────────────────────────────────
 function CourseTab({
   data,
   loading,

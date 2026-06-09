@@ -156,7 +156,7 @@ const features = [
     tag: '4,500+ 課程',
   },
   {
-    title: 'AI 課程搜尋',
+    title: 'AI 課程助理',
     description: '用 AI 對話描述想學的主題或方向，取得相關課程推薦與延伸查詢結果。',
     icon: HiLightningBolt,
     path: '/course-search',
@@ -201,7 +201,7 @@ const paths = [
     description: '三個工具各有側重：課程資訊讓你循學院瀏覽比較，AI 助理用自然語言找課，系所修課呈現各系的畢業學分架構與修課規定。',
     links: [
       { label: '課程資訊',    path: '/courses',      sub: '4,500+ 課程', locked: false },
-      { label: 'AI 課程搜尋', path: '/course-search', sub: 'AI 對話',     locked: false },
+      { label: 'AI 課程助理', path: '/course-search', sub: 'AI 對話',     locked: false },
       { label: '系所修課',    path: '/curriculum',    sub: '修課規劃',     locked: false },
     ],
   },

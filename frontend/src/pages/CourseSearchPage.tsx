@@ -65,7 +65,7 @@ interface Conversation {
   isStub?:   boolean; // true = metadata only, full turns not yet loaded
 }
 
-const GREETING = '你好，我是課程搜尋助理。你可以直接問我課程方向、學分安排，或想比較的學院特色。';
+const GREETING = '你好，我是課程推薦助理。你可以直接問我課程方向、學分安排，或想比較的學院特色。';
 
 function makeConvFromSession(detail: {
   session_id: string;
@@ -596,7 +596,7 @@ export default function CourseSearchPage() {
       {/* 頁頭 */}
       <div className="mb-3 flex flex-shrink-0 items-center justify-between">
         <div className="flex items-center gap-2">
-          <h1 className="text-base font-bold text-primary-900">課程搜尋</h1>
+          <h1 className="text-base font-bold text-primary-900">課程助理</h1>
           <span className="text-sm text-gray-400">/</span>
           <span className="text-sm text-gray-500">用 AI 對話方式快速整理課程方向與學習線索</span>
         </div>
