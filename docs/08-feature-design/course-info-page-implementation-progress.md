@@ -1,133 +1,96 @@
-# Course Info Page Implementation Progress
+# 課程資訊頁功能說明
 
-## Phase 0 - 專案盤點與 Qdrant 資料檢查
+頁面路由：`/courses`  
+主要元件：`CoursesPage.tsx`、`CourseDetailPanel.tsx`、`CourseCompareModal.tsx`、`CoreAbilityTable.tsx`
 
-狀態：已完成
+---
 
-完成事項：
-- 已讀取 `C:\Users\user\Desktop\AI_project\course_info_page_codex_final_prompt.md`。
-- 已檢查專案根目錄 `C:\Users\user\Desktop\AI_project\ncu_ai_guidance`。
-- 已確認 `data/processed/qdrant_data` 存在，不需要解壓縮 `qdrant_data.zip`。
-- 已確認以下必要路徑存在：
-  - `data/processed/qdrant_data/meta.json`
-  - `data/processed/qdrant_data/collection/ncu_courses_ug`
-  - `data/processed/qdrant_data/collection/ncu_courses_grad`
-- 已確認 `meta.json` 內 `ncu_courses_ug` 與 `ncu_courses_grad` 均為 Cosine 向量 collection，向量維度為 3072。
-- 已盤點課程資訊頁主要修改範圍：
-  - `frontend/src/pages/CoursesPage.tsx`
-  - `frontend/src/components/CourseDetailPanel.tsx`
-  - `frontend/src/api/services.ts`
-  - `frontend/src/types/index.ts`
-  - `backend/app/routes/courses.py`
-  - `backend/app/models/schemas.py`
+## Phase 1 — 三層課程導航
 
-限制與風險紀錄：
-- `C:\Users\user\Desktop\AI_project\course_info_page_codex_final_prompt_with_qdrant.md` 目前不存在；後續每個 Phase 仍會重新嘗試讀取並記錄狀態。
-- 不會修改 `data/processed/qdrant_data` 原始資料。
-- 後續會保留快速搜尋 keyword fallback，避免 Qdrant、embedding 或 OpenAI API key 問題導致課程搜尋不可用。
+左側欄以「學院 → 系所 → 課程」三層結構瀏覽所有課程。
 
-## Phase 1 - 快速搜尋改成 Qdrant 向量搜尋
+- 頂層顯示所有學院卡片，每個學院有獨立主題色（icon、背景色、邊框色）
+- 點擊學院後進入系所列表，顯示該學院下的系所與課程數量
+- 點擊系所後進入課程列表，依課號（`course_id`）排序顯示
+- header 顯示麵包屑路徑與返回按鈕
+- 側欄可透過收合按鈕（pill style）隱藏，讓課程詳情有更大空間
+- 大學部 / 研究所切換按鈕位於學院層 header 右側，切換時重置導航至頂層
 
-狀態：已完成
+---
 
-完成事項：
-- 新增 `backend/app/services/course_info_service.py`，提供課程資訊頁專用的 Qdrant semantic search helper。
-- 新增 `POST /api/courses/semantic-search`，使用 `OPENAI_API_KEY` 建立 embedding，並優先查詢：
-  - `ncu_courses_ug`
-  - `ncu_courses_grad`
-- 語意搜尋結果會合併兩個 collection、依 Qdrant score 由高到低排序，並轉成既有 `Course` 格式。
-- 快速搜尋保留修別、學分、學期篩選。
-- Qdrant、embedding 或 OpenAI key 失敗時，後端回傳 `mode: fallback`，前端自動回到原本 keyword search。
-- 前端快速搜尋面板已改為自然語言輸入提示，並顯示目前使用 Qdrant 語意搜尋或 keyword fallback。
-- 搜尋結果會在有 Qdrant score 時顯示相關度百分比。
+## Phase 2 — 課程搜尋與篩選
 
-驗證：
-- 已執行 `python -m compileall backend/app`，後端語法檢查通過。
+點擊搜尋 icon 開啟搜尋面板，支援兩種模式：
 
-限制與風險紀錄：
-- `course_info_page_codex_final_prompt_with_qdrant.md` 在進入 Phase 1 前重新讀取仍不存在。
-- 若環境未設定 `OPENAI_API_KEY`，語意搜尋會按要求 fallback 到 keyword search。
+**關鍵字向量搜尋（Qdrant semantic search）**  
+輸入自然語言關鍵字（如「資料分析」、「機器學習」），後端呼叫 embedding API 進行向量搜尋，結果依相關度排序並顯示相關度百分比。Qdrant 或 API key 不可用時自動 fallback 到一般文字搜尋。
 
-## Phase 2 - 整合 course_eligibility.json 到課程 context
+**一般文字搜尋**  
+對課程名稱或詳細內容（課程目標、授課內容、metadata）做 substring 比對，結果分「課名」與「詳細內容」兩個 tab 顯示。
 
-狀態：已完成
+搜尋可搭配以下篩選條件：
+- 修別（必修 / 選修）
+- 學分數
+- 學期（上學期 / 下學期 / 全年）
 
-完成事項：
-- `backend/app/services/course_info_service.py` 已讀取 `data/processed/course_eligibility.json`。
-- 已建立課程資格對應策略：
-  - 優先使用 `course_code` / `course_id` 正規化後對應。
-  - 找不到課號時，使用 `course_name + dept + semester` 與 `course_name + dept` 補充對應。
-- 課程列表與 Qdrant 搜尋結果都會附加：
-  - `eligibility_summary`
-  - `eligibility_status`
-  - `eligibility_warning`
-- 摘要內容整合 `is_unrestricted`、`is_grad_only`、`is_undergrad_open`、`is_open_to_all_undergrad`、`access_rules` 與 `course_relations`。
-- 摘要已包含常見條件：學制、年級、系所、學院、輔系、雙主修、學分學程、第二專長、校際選課、先修、並修與不得重複修習。
-- 單門課程 AI context 已納入修課資格摘要、原始條件與解析警示。
-- 課程詳情頁新增「修課資格摘要」區塊；若資料缺失或有特殊條件，會以警示樣式顯示。
+進入特定系所的課程列表後，可使用「領域」下拉多選 filter，依課程領域縮小顯示範圍；點擊其他地方自動收起下拉。
 
-驗證：
-- 已執行 `python -m compileall backend/app`，後端語法檢查通過。
+---
 
-限制與風險紀錄：
-- `course_info_page_codex_final_prompt_with_qdrant.md` 在進入 Phase 2 前重新讀取仍不存在。
-- `course_eligibility.json` 若沒有可對應資料，頁面會顯示缺失摘要，不會中斷課程頁。
+## Phase 3 — 課程列表 UX
 
-## Phase 3 - 整合 tool / concept / topic metadata
+課程列表中每筆課程顯示：
+- 課程名稱（搜尋關鍵字高亮）
+- 課號 pill：彩色圓點（紅＝必修、綠＝選修）+ 課號文字
+- 學分數與授課教師
 
-狀態：已完成
+選取中的課程以學院主題色背景（`headerSurface`）＋加重字體＋學院色左邊框標示，視覺上與 navigation header 的主題色一致。
 
-完成事項：
-- 課程列表與 Qdrant 搜尋結果會帶入既有 NLP metadata：
-  - `tools`
-  - `concepts`
-  - `topic_tags`
-  - `domain_tags`
-  - `languages`
-  - `simplified_concepts`
-  - `core_questions`
-- 快速搜尋的「詳細內容」模式已納入上述 metadata 與修課資格摘要作為 keyword fallback 搜尋欄位。
-- 搜尋結果預覽已顯示最多 3 個工具 / 概念 / 主題 metadata chip。
-- 課程詳情頁新增「課程知識標籤」區塊，分組顯示工具、核心概念、主題、領域標籤、語言、簡化概念與核心問題。
-- 單門課程 AI context 已納入語言、工具、概念、簡化概念、主題、領域與核心問題。
+課程列表右側每筆課程有「加入對比」按鈕（`+` / `✕`）。
 
-驗證：
-- 已執行 `python -m compileall backend/app`，後端語法檢查通過。
-- 已執行 `npm.cmd run build`，前端 production build 通過。
+---
 
-限制與風險紀錄：
-- `course_info_page_codex_final_prompt_with_qdrant.md` 在進入 Phase 3 前重新讀取仍不存在。
+## Phase 4 — 課程詳情面板
 
-## Phase 4 - 新增單門課程 OpenAI 問答小窗
+右側詳情面板（`CourseDetailPanel`）顯示選取課程的完整資訊：
 
-狀態：已完成
+- **基本資訊**：學分、修別、學制、學期、授課教師、上課時間、教室、備註
+- **分發條件**：優先順序列表，各條件垂直置中對齊
+- **課程目標與授課內容**：純文字展示
+- **教材與參考書**
+- **評量方式**
+- **核心能力表格**（`CoreAbilityTable`）：桌機顯示表格，強度指數可在欄位縮小時自動換行；手機顯示卡片堆疊
+- **修課資格摘要**：整合 `course_eligibility.json` 的條件解析結果，異常條件以警示樣式標示
+- **課程知識標籤**：工具、核心概念、主題標籤、領域標籤、語言、簡化概念、核心問題
+- **課程領域標籤**（`course_field`）
 
-完成事項：
-- 新增 `POST /api/courses/{course_id}/ask`，提供單門課程一次性 OpenAI 問答。
-- API 使用 `OPENAI_API_KEY`，可用 `OPENAI_MODEL` 覆寫預設模型；未設定 key 時回傳清楚錯誤訊息。
-- 問答 context 只使用課程資料、修課資格與 metadata，不使用既有獨立 Chat 頁面。
-- 後端不建立 session、不寫入資料庫、不儲存聊天紀錄。
-- 課程詳情頁新增「詢問這門課」按鈕與 modal 小窗。
-- 小窗只保留目前這次問題與回答；關閉或切換課程會清空狀態。
-- AI 回答區會顯示 context 缺失或資格解析警示。
+切換課程時右側面板自動捲回頂部。
 
-驗證：
-- 已執行 `python -m compileall backend/app`，後端語法檢查通過。
-- 已執行 `npm.cmd run build`，前端 production build 通過。
+---
 
-限制與風險紀錄：
-- `course_info_page_codex_final_prompt_with_qdrant.md` 在進入 Phase 4 前重新讀取仍不存在。
-- 未實際呼叫 OpenAI API；若本機 `.env` 未設定有效 `OPENAI_API_KEY`，小窗會顯示後端提供的缺 key 錯誤。
+## Phase 5 — AI 課程助理
 
-後續修正：
-- 已將課程資訊頁的 embedding 與單門課程問答改為支援 Azure OpenAI。
-- 若 `.env` 設定 `AZURE_OPENAI_API_KEY`、`AZURE_OPENAI_ENDPOINT`、`AZURE_OPENAI_CHAT_DEPLOYMENT`、`AZURE_OPENAI_EMBEDDING_DEPLOYMENT`，會優先使用 Azure OpenAI。
-- 若未設定 Azure OpenAI，才會退回使用 `OPENAI_API_KEY`。
+桌機版採分割畫面，AI 面板與課程詳情並排（drag handle 可手動調整寬度，範圍 280–640px，預設 360px）。手機版以 bottom sheet modal 呈現。
 
-## 驗證紀錄
+功能：
+- **快速提問**：4 個預設問題按鈕（翻成中文、高中生版本、連結高中知識、我適合修嗎），收合後可透過 toggle 展開；提交第一個問題後自動收合
+- **自由輸入**：文字框輸入任意問題，Enter 送出
+- 切換課程時清空對話記錄
+- AI context 包含課程資料、修課資格摘要、NLP metadata
 
-狀態：已完成初步驗證
+---
 
-- `python -m compileall backend/app`：通過。
-- `npm.cmd run build`：通過。
-- Vite build 仍有既有的大 chunk warning，但不影響 build 成功。
+## Phase 6 — 課程對比
+
+最多同時對比 3 門課程。
+
+**Compare bar**（浮動）：
+- 手機版：固定於畫面底部全寬，含 iOS safe-area 間距
+- 桌機版：固定於右下角卡片樣式
+- 已選課程以 chip 顯示，點擊 chip 可個別移除；垃圾桶 icon 清空全部
+- 選滿 2 門後「開始對比」按鈕啟用
+
+**Compare modal**（`CourseCompareModal`）：
+- 手機版：欄位卡片佈局，每個比較項目獨立一張卡，課程並排在同一列（grid 等寬）
+- 桌機版：表格佈局，第一欄（比較項目）sticky left，header sticky top，橫向捲動
+- 比較欄位：開課系所、教師、學分、修別、學期、學制、課程領域、知識標籤、工具與語言、修課資格、課程目標、授課內容、教材、備註
