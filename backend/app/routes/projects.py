@@ -41,6 +41,12 @@ _project_doc_id_cache: dict[str, int | None] = {}
 
 HEARTBEAT_INTERVAL = 15.0  # seconds between SSE heartbeats while waiting for LLM tokens
 
+_ROUTE_LABELS = {
+    "chat":      "直接回答",
+    "retrieval": "搜尋文獻",
+    "research":  "深度研究",
+}
+
 
 # ── 資料載入 ───────────────────────────────────────────────────────────────────
 
@@ -442,12 +448,6 @@ async def chat_with_project_stream(
 
             _meta_queue: asyncio.Queue = asyncio.Queue()
 
-            _ROUTE_LABELS = {
-                "chat":      "直接回答",
-                "retrieval": "搜尋文獻",
-                "research":  "深度研究",
-            }
-
             def _on_stage(msg: str) -> None:
                 _meta_queue.put_nowait(("stage", msg))
 
@@ -469,6 +469,15 @@ async def chat_with_project_stream(
                 try:
                     result = await asyncio.wait_for(asyncio.shield(pending), timeout=HEARTBEAT_INTERVAL)
                 except asyncio.TimeoutError:
+                    # drain 再 heartbeat，讓前端更快收到 stage 事件
+                    while not _meta_queue.empty():
+                        meta = _meta_queue.get_nowait()
+                        if meta[0] == "stage":
+                            yield f"data: {_json.dumps({'type': 'stage', 'text': meta[1]})}\n\n"
+                        elif meta[0] == "agent_start":
+                            yield f"data: {_json.dumps({'type': 'agent_start', 'agent': meta[1], 'label': meta[2]})}\n\n"
+                        else:
+                            logger.debug("unknown meta event type: %s", meta[0])
                     yield f"data: {_json.dumps({'heartbeat': True})}\n\n"
                     continue
                 except StopAsyncIteration:
@@ -481,6 +490,8 @@ async def chat_with_project_stream(
                         yield f"data: {_json.dumps({'type': 'stage', 'text': meta[1]})}\n\n"
                     elif meta[0] == "agent_start":
                         yield f"data: {_json.dumps({'type': 'agent_start', 'agent': meta[1], 'label': meta[2]})}\n\n"
+                    else:
+                        logger.debug("unknown meta event type: %s", meta[0])
                 if is_done == "replace":
                     yield f"data: {_json.dumps({'replace': token, 'sources': sources})}\n\n"
                 elif is_done:
