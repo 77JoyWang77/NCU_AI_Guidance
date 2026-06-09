@@ -12,9 +12,11 @@ class Question(BaseModel):
     id: str
     department: str
     title: str
-    motivation: str
-    method: str
-    result: str
+    motivation: Optional[str] = None
+    method: Optional[str] = None
+    result: Optional[str] = None
+    intro: Optional[str] = None
+    questions: Optional[List[str]] = None
     tags: List[str]
 
 class Answer(BaseModel):
@@ -116,6 +118,10 @@ class Project(BaseModel):
     pdfPath: Optional[str] = None
     pdfUrl: Optional[str] = None
     documentId: Optional[int] = None
+    motivation: Optional[str] = None
+    method: Optional[str] = None
+    result: Optional[str] = None
+    tags: Optional[List[str]] = None
 
 class ChatRequest(BaseModel):
     message: str

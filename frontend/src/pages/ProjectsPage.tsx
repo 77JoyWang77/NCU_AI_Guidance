@@ -1257,9 +1257,30 @@ function ProjectSummary({
       </div>
 
       <div className="mb-8 space-y-6">
-        <SectionBlock title="專題摘要">
-          這份研究計畫來自 {project.department}，可作為了解研究主題、作品方向與成果呈現方式的參考。
-        </SectionBlock>
+        {project.motivation ? (
+          <SectionBlock title="研究動機與問題">{project.motivation}</SectionBlock>
+        ) : (
+          <SectionBlock title="專題摘要">
+            這份研究計畫來自 {project.department}，可作為了解研究主題、作品方向與成果呈現方式的參考。
+          </SectionBlock>
+        )}
+        {project.method && <SectionBlock title="研究方法">{project.method}</SectionBlock>}
+        {project.result && <SectionBlock title="研究成果">{project.result}</SectionBlock>}
+        {project.tags && project.tags.length > 0 && (
+          <div>
+            <h3 className="mb-3 flex items-center text-lg font-semibold text-primary-900">
+              <span className="mr-3 h-6 w-1 bg-primary-600"></span>
+              領域標籤
+            </h3>
+            <div className="flex flex-wrap gap-2 pl-4">
+              {project.tags.map((tag) => (
+                <span key={tag} className="badge badge-primary">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
         <SectionBlock title="閱讀建議">
           建議先查看 PDF 原文掌握研究架構，再透過 AI 問答快速整理重點、釐清術語與延伸討論方向。
         </SectionBlock>

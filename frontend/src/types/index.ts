@@ -5,10 +5,14 @@ export interface Question {
   id: string;
   department: string; // 隐藏，仅用于后端计算
   title: string; // 研究题目
-  motivation: string; // 动机与问题
-  method: string; // 研究方法
-  result: string; // 研究结果
+  motivation?: string; // 动机与问题
+  method?: string; // 研究方法
+  result?: string; // 研究结果
+  intro?: string; // 興趣量表導讀
+  questions?: string[]; // 興趣量表題目
   tags: string[]; // 小领域标签
+  sourceDocumentId?: number;
+  projectId?: string;
 }
 
 export interface Answer {
@@ -122,6 +126,10 @@ export interface Project {
   pdfPath?: string;
   pdfUrl?: string;
   documentId?: number;
+  motivation?: string;
+  method?: string;
+  result?: string;
+  tags?: string[];
 }
 
 // 聊天 API 相關型別

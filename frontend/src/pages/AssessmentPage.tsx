@@ -159,9 +159,12 @@ export default function AssessmentPage() {
     loadQuestions();
   };
 
-  const handleScore = (score: number) => {
+  const getQuestionCount = (question: Question) => question.questions?.length || 1;
+  const getAnswerKey = (questionId: string, questionIndex: number) => `${questionId}::${questionIndex}`;
+
+  const handleScore = (score: number, questionIndex = 0) => {
     const newAnswers = new Map(answers);
-    newAnswers.set(questions[currentIndex].id, score);
+    newAnswers.set(getAnswerKey(questions[currentIndex].id, questionIndex), score);
     setAnswers(newAnswers);
   };
 
@@ -181,8 +184,8 @@ export default function AssessmentPage() {
     try {
       setLoading(true);
       const answersArray: Answer[] = Array.from(answers.entries()).map(
-        ([questionId, score]) => ({
-          questionId,
+        ([answerKey, score]) => ({
+          questionId: answerKey.split('::')[0],
           score,
         })
       );
@@ -527,10 +530,15 @@ export default function AssessmentPage() {
     );
   }
 
-  const currentScore = answers.get(current.id) || 0;
+  const currentPrompts = current.questions?.length
+    ? current.questions
+    : ['這個研究主題讓你感興趣嗎？'];
+  const currentScores = currentPrompts.map((_, index) => answers.get(getAnswerKey(current.id, index)) || 0);
+  const currentComplete = currentScores.every((score) => score > 0);
   const progress = ((currentIndex + 1) / questions.length) * 100;
   const answeredCount = answers.size;
-  const canSubmit = answeredCount === questions.length;
+  const totalAnswerCount = questions.reduce((sum, question) => sum + getQuestionCount(question), 0);
+  const canSubmit = answeredCount === totalAnswerCount;
 
   // 計算有多少個不同的科系
   const uniqueDepartments = new Set(questions.map(q => q.department));
@@ -546,20 +554,29 @@ export default function AssessmentPage() {
         </div>
 
         <div className="space-y-6 mb-8">
-          <div>
-            <h3 className="text-sm font-semibold text-gray-700 mb-2">研究動機與問題</h3>
-            <p className="text-gray-600 leading-relaxed">{current.motivation}</p>
-          </div>
+          {current.intro ? (
+            <div>
+              <h3 className="text-sm font-semibold text-gray-700 mb-2">主題導讀</h3>
+              <p className="text-gray-600 leading-relaxed">{current.intro}</p>
+            </div>
+          ) : (
+            <>
+              <div>
+                <h3 className="text-sm font-semibold text-gray-700 mb-2">研究動機與問題</h3>
+                <p className="text-gray-600 leading-relaxed">{current.motivation}</p>
+              </div>
 
-          <div>
-            <h3 className="text-sm font-semibold text-gray-700 mb-2">研究方法</h3>
-            <p className="text-gray-600 leading-relaxed">{current.method}</p>
-          </div>
+              <div>
+                <h3 className="text-sm font-semibold text-gray-700 mb-2">研究方法</h3>
+                <p className="text-gray-600 leading-relaxed">{current.method}</p>
+              </div>
 
-          <div>
-            <h3 className="text-sm font-semibold text-gray-700 mb-2">研究結果</h3>
-            <p className="text-gray-600 leading-relaxed">{current.result}</p>
-          </div>
+              <div>
+                <h3 className="text-sm font-semibold text-gray-700 mb-2">研究結果</h3>
+                <p className="text-gray-600 leading-relaxed">{current.result}</p>
+              </div>
+            </>
+          )}
 
           <div>
             <h3 className="text-sm font-semibold text-gray-700 mb-2">領域標籤</h3>
@@ -579,28 +596,41 @@ export default function AssessmentPage() {
         {/* 評分區 */}
         <div className="border-t border-gray-200 pt-6">
           <h3 className="text-lg font-bold text-primary-900 mb-4">
-            這個研究主題讓你感興趣嗎？
+            請分別評分你對這些問題的興趣
           </h3>
-          <div className="space-y-4">
-            <div className="flex justify-between text-sm text-gray-600 mb-3">
-              <span>1 分 - 完全不感興趣</span>
-              <span>5 分 - 非常感興趣</span>
-            </div>
-            <div className="grid grid-cols-5 gap-3">
-              {[1, 2, 3, 4, 5].map((score) => (
-                <button
-                  key={score}
-                  onClick={() => handleScore(score)}
-                  className={`py-4 rounded-lg font-bold text-lg transition-all ${
-                    currentScore === score
-                      ? 'bg-primary-700 text-white ring-2 ring-primary-600 ring-offset-2 scale-105'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  {score}
-                </button>
-              ))}
-            </div>
+          <div className="space-y-6">
+            {currentPrompts.map((prompt, questionIndex) => {
+              const selectedScore = currentScores[questionIndex];
+              return (
+                <div key={`${current.id}-score-${questionIndex}`} className="rounded-lg bg-gray-50 p-4">
+                  <div className="mb-3 flex gap-3 text-gray-700 leading-relaxed">
+                    <span className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary-100 text-xs font-semibold text-primary-700">
+                      {questionIndex + 1}
+                    </span>
+                    <p>{prompt}</p>
+                  </div>
+                  <div className="mb-2 flex justify-between text-xs text-gray-500">
+                    <span>1 分 - 完全不感興趣</span>
+                    <span>5 分 - 非常感興趣</span>
+                  </div>
+                  <div className="grid grid-cols-5 gap-3">
+                    {[1, 2, 3, 4, 5].map((score) => (
+                      <button
+                        key={score}
+                        onClick={() => handleScore(score, questionIndex)}
+                        className={`py-4 rounded-lg font-bold text-lg transition-all ${
+                          selectedScore === score
+                            ? 'bg-primary-700 text-white ring-2 ring-primary-600 ring-offset-2 scale-105'
+                            : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
+                        }`}
+                      >
+                        {score}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -619,7 +649,7 @@ export default function AssessmentPage() {
         {currentIndex < questions.length - 1 ? (
           <button
             onClick={handleNext}
-            disabled={currentScore === 0}
+            disabled={!currentComplete}
             className="btn-primary disabled:opacity-50"
           >
             下一題
@@ -643,7 +673,7 @@ export default function AssessmentPage() {
             <span>第 {currentIndex + 1} / {questions.length} 題</span>
             <span className="text-primary-600">涵蓋 {departmentCount} 個科系</span>
           </div>
-          <span>已完成 {answeredCount} 題</span>
+          <span>已完成 {answeredCount} / {totalAnswerCount} 題</span>
         </div>
         <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden">
           <div
@@ -654,14 +684,14 @@ export default function AssessmentPage() {
       </div>
 
       {/* 提示訊息 */}
-      {currentScore === 0 && (
+      {!currentComplete && (
         <p className="text-center text-gray-500 mt-4 text-sm">
-          請先為這題評分後再繼續
+          請完成這張卡片的所有評分後再繼續
         </p>
       )}
       {!canSubmit && currentIndex === questions.length - 1 && (
         <p className="text-center text-amber-600 mt-4 text-sm">
-          還有 {questions.length - answeredCount} 題未完成，請完成所有題目後提交
+          還有 {totalAnswerCount - answeredCount} 題未完成，請完成所有題目後提交
         </p>
       )}
     </div>
