@@ -33,19 +33,20 @@ class CourseAskResponse(BaseModel):
     warnings: List[str] = Field(default_factory=list)
 
 # 載入課程資料
-def load_courses():
-    """從 data/processed/courses_deduped/undergrad.json 載入並轉換課程資料"""
-    canonical = Path(__file__).parent.parent.parent.parent / 'data' / 'processed' / 'courses_deduped' / 'undergrad.json'
+def load_courses(level: str = 'undergrad'):
+    """從 data/processed/courses_deduped/{level}.json 載入並轉換課程資料"""
+    filename = 'grad.json' if level == 'grad' else 'undergrad.json'
+    canonical = Path(__file__).parent.parent.parent.parent / 'data' / 'processed' / 'courses_deduped' / filename
 
     if not canonical.exists():
-        print(f"[WARN] 找不到 {canonical}，請先執行 deduplicate_courses.py")
+        print(f"[WARN] 找不到 {canonical}")
         return []
 
     try:
         with open(canonical, 'r', encoding='utf-8') as f:
             raw_courses = json.load(f)
     except Exception as e:
-        print(f"Error loading canonical courses: {e}")
+        print(f"Error loading courses ({level}): {e}")
         return []
 
     all_courses = []
@@ -138,12 +139,13 @@ async def get_courses(
     college: Optional[str] = Query(None, description="學院篩選"),
     department: Optional[str] = Query(None, description="系所篩選"),
     type: Optional[str] = Query(None, description="必修/選修篩選"),
-    limit: Optional[int] = Query(None, description="回傳結果數量限制（預設回傳全部）")
+    limit: Optional[int] = Query(None, description="回傳結果數量限制（預設回傳全部）"),
+    level: str = Query("undergrad", description="課程層級：undergrad（大學部）或 grad（研究所）")
 ):
     """
     取得課程列表，支援篩選
     """
-    courses = load_courses()
+    courses = load_courses(level=level)
 
     # 套用篩選條件
     filtered_courses = courses

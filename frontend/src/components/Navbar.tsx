@@ -12,7 +12,7 @@ const navItems = [
   { path: '/assessment', label: '興趣量表' },
   { path: '/curriculum', label: '系所修課' },
   { path: '/courses', label: '課程資訊' },
-  { path: '/course-search', label: '課程搜尋' },
+  { path: '/course-search', label: '課程助理' },
   { path: '/projects', label: '研究計畫' },
   { path: '/resources', label: '資源連結' },
 ];

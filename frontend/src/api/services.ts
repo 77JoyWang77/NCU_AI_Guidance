@@ -61,7 +61,8 @@ export const courseAPI = {
   getCourses: async (filters?: {
     college?: string;
     department?: string;
-    type?: string; // 必修/选修
+    type?: string;
+    level?: 'undergrad' | 'grad';
   }): Promise<Course[]> => {
     const response = await apiClient.get('/courses', { params: filters });
     return response.data;
@@ -239,6 +240,43 @@ export interface AnalyticsData {
 export const analyticsAPI = {
   get: async (): Promise<AnalyticsData> => {
     const response = await apiClient.get('/chat/analytics');
+    return response.data;
+  },
+};
+
+// 研究計畫個人分析
+export interface PdfAnalyticsOverview {
+  total_conversations: number;
+  total_questions: number;
+  total_documents_explored: number;
+  avg_depth: number;
+}
+
+export interface PdfDocumentStat {
+  document_id: number;
+  title: string;
+  department: string;
+  college: string;
+  year: string;
+  conversation_count: number;
+  question_count: number;
+  avg_depth: number;
+  last_viewed_at: string | null;
+}
+
+export interface PdfAnalyticsData {
+  overview: PdfAnalyticsOverview;
+  dept_distribution: AnalyticsDistItem[];
+  college_distribution: AnalyticsDistItem[];
+  depth_distribution: { range: string; count: number }[];
+  exploration_type: { type: string; desc: string };
+  document_list: PdfDocumentStat[];
+  recent_questions: { question: string; document_title: string; created_at: string | null }[];
+}
+
+export const projectAnalyticsAPI = {
+  get: async (): Promise<PdfAnalyticsData> => {
+    const response = await apiClient.get('/projects/analytics');
     return response.data;
   },
 };
@@ -496,6 +534,8 @@ export const projectAPI = {
       onError: (msg: string) => void;
       onReplace?: (text: string) => void;
       onSessionId?: (sessionId: string) => void;
+      onAgentStart?: (agent: string, label: string) => void;
+      onStage?: (text: string) => void;
     },
     threadId?: string,
   ): AbortController {
@@ -536,9 +576,15 @@ export const projectAPI = {
               error?: string;
               replace?: string;
               sources?: string[];
+              type?: string;
+              agent?: string;
+              label?: string;
+              text?: string;
             };
             parseErrorStreak = 0;
             if (ev.heartbeat) return;
+            if (ev.type === 'agent_start') { handlers.onAgentStart?.(ev.agent ?? '', ev.label ?? ''); return; }
+            if (ev.type === 'stage')       { handlers.onStage?.(ev.text ?? ''); return; }
             if (ev.error) { handlers.onError(ev.error); aborted = true; return; }
             if (ev.replace !== undefined) { handlers.onReplace?.(ev.replace); return; }
             // session_id-only event (no token/done): front-load the session id so cancel works from turn 1.

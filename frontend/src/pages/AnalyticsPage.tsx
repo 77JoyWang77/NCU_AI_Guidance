@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import ReactECharts from 'echarts-for-react';
 import 'echarts-wordcloud';
 import { Link } from 'react-router-dom';
@@ -8,15 +8,24 @@ import {
   HiBookOpen,
   HiOfficeBuilding,
   HiChevronRight,
-  HiLogout,
   HiClipboardList,
   HiGlobeAlt,
   HiZoomIn,
   HiMap,
   HiAdjustments,
+  HiDocumentText,
+  HiLightningBolt,
+  HiSearchCircle,
+  HiClock,
 } from 'react-icons/hi';
 import { useAuth } from '../auth/AuthContext';
-import { analyticsAPI, type AnalyticsData, type AnalyticsGeneralEdu } from '../api/services';
+import {
+  analyticsAPI,
+  projectAnalyticsAPI,
+  type AnalyticsData,
+  type AnalyticsGeneralEdu,
+  type PdfAnalyticsData,
+} from '../api/services';
 
 // ── 學院 → 學術領域對照 ─────────────────────────────────────────
 const COLLEGE_TO_DOMAIN: Record<string, string> = {
@@ -91,22 +100,198 @@ const EXPLORE_TYPES = [
   },
 ];
 
+// ── 研究計畫探索型態 ────────────────────────────────────────────
+const PDF_EXPLORE_TYPES = [
+  {
+    id: 'deep',
+    label: '深度鑽研型',
+    Icon: HiZoomIn,
+    iconColor: 'text-blue-600',
+    iconBg: 'bg-blue-100',
+    color: 'from-blue-50 to-indigo-50 border-blue-200',
+    badge: 'bg-blue-100 text-blue-700',
+  },
+  {
+    id: 'cross',
+    label: '跨域探索型',
+    Icon: HiGlobeAlt,
+    iconColor: 'text-violet-600',
+    iconBg: 'bg-violet-100',
+    color: 'from-violet-50 to-purple-50 border-violet-200',
+    badge: 'bg-violet-100 text-violet-700',
+  },
+  {
+    id: 'wide',
+    label: '廣泛涉獵型',
+    Icon: HiMap,
+    iconColor: 'text-emerald-600',
+    iconBg: 'bg-emerald-100',
+    color: 'from-emerald-50 to-teal-50 border-emerald-200',
+    badge: 'bg-emerald-100 text-emerald-700',
+  },
+  {
+    id: 'focused',
+    label: '專注研究型',
+    Icon: HiSearchCircle,
+    iconColor: 'text-amber-600',
+    iconBg: 'bg-amber-100',
+    color: 'from-amber-50 to-orange-50 border-amber-200',
+    badge: 'bg-amber-100 text-amber-700',
+  },
+  {
+    id: 'balanced',
+    label: '均衡探索型',
+    Icon: HiAdjustments,
+    iconColor: 'text-slate-600',
+    iconBg: 'bg-slate-100',
+    color: 'from-slate-50 to-gray-50 border-slate-200',
+    badge: 'bg-slate-100 text-slate-600',
+  },
+] as const;
+
+const PDF_TYPE_MAP: Record<string, typeof PDF_EXPLORE_TYPES[number]> = {
+  '深度鑽研型': PDF_EXPLORE_TYPES[0],
+  '跨域探索型': PDF_EXPLORE_TYPES[1],
+  '廣泛涉獵型': PDF_EXPLORE_TYPES[2],
+  '專注研究型': PDF_EXPLORE_TYPES[3],
+  '均衡探索型': PDF_EXPLORE_TYPES[4],
+};
+
+// ── 綜合探索型態 ─────────────────────────────────────────────────
+const COMBINED_EXPLORE_TYPES = [
+  {
+    id: 'researcher',
+    label: '學術研究導向',
+    Icon: HiDocumentText,
+    iconColor: 'text-emerald-600',
+    iconBg: 'bg-emerald-100',
+    color: 'from-emerald-50 to-teal-50 border-emerald-200',
+    badge: 'bg-emerald-100 text-emerald-700',
+  },
+  {
+    id: 'planner',
+    label: '課程規劃導向',
+    Icon: HiClipboardList,
+    iconColor: 'text-amber-600',
+    iconBg: 'bg-amber-100',
+    color: 'from-amber-50 to-orange-50 border-amber-200',
+    badge: 'bg-amber-100 text-amber-700',
+  },
+  {
+    id: 'course_explorer',
+    label: '課程探索導向',
+    Icon: HiAcademicCap,
+    iconColor: 'text-blue-600',
+    iconBg: 'bg-blue-100',
+    color: 'from-blue-50 to-sky-50 border-blue-200',
+    badge: 'bg-blue-100 text-blue-700',
+  },
+  {
+    id: 'integrator',
+    label: '跨域整合型',
+    Icon: HiGlobeAlt,
+    iconColor: 'text-violet-600',
+    iconBg: 'bg-violet-100',
+    color: 'from-violet-50 to-purple-50 border-violet-200',
+    badge: 'bg-violet-100 text-violet-700',
+  },
+  {
+    id: 'explorer',
+    label: '廣泛探索型',
+    Icon: HiMap,
+    iconColor: 'text-indigo-600',
+    iconBg: 'bg-indigo-100',
+    color: 'from-indigo-50 to-blue-50 border-indigo-200',
+    badge: 'bg-indigo-100 text-indigo-700',
+  },
+  {
+    id: 'balanced',
+    label: '均衡發展型',
+    Icon: HiAdjustments,
+    iconColor: 'text-slate-600',
+    iconBg: 'bg-slate-100',
+    color: 'from-slate-50 to-gray-50 border-slate-200',
+    badge: 'bg-slate-100 text-slate-600',
+  },
+] as const;
+
+function diagnoseCombinedType(
+  courseData: AnalyticsData | null,
+  projectData: PdfAnalyticsData | null,
+  coursePct: number,
+  combinedAxes: { label: string; pct: number }[],
+): { style: typeof COMBINED_EXPLORE_TYPES[number]; desc: string } {
+  const researchPct = 100 - coursePct;
+  const avgDepth = projectData?.overview.avg_depth ?? 0;
+  const uniqueColleges = new Set([
+    ...(courseData?.college_distribution.map(i => i.name) ?? []),
+    ...(projectData?.college_distribution.map(i => i.name) ?? []),
+  ]).size;
+  const domainsActive = combinedAxes.filter(a => a.pct >= 12).length;
+  const planningTools = ['get_graduation_requirements','get_graduation_rules','get_program_info','get_program_courses','get_requirements_notes'];
+  const totalToolCalls = courseData?.tool_usage.reduce((s, t) => s + t.count, 0) || 1;
+  const planningCount  = (courseData?.tool_usage ?? [])
+    .filter(t => planningTools.includes(t.tool))
+    .reduce((s, t) => s + t.count, 0);
+  const hasPlanningFocus = planningCount / totalToolCalls >= 0.25;
+
+  if (researchPct > 60 && avgDepth >= 2) {
+    return {
+      style: COMBINED_EXPLORE_TYPES[0],
+      desc: `你投入大量時間深入研讀研究計畫（佔 ${researchPct}% 互動量），平均每次對話提問 ${avgDepth} 輪，對學術研究有高度興趣。`,
+    };
+  }
+  if (coursePct > 60 && hasPlanningFocus) {
+    return {
+      style: COMBINED_EXPLORE_TYPES[1],
+      desc: `你主要透過課程助理（佔 ${coursePct}%）規劃修課路徑，常查詢學分規定與畢業門檻，目標導向清晰。`,
+    };
+  }
+  if (coursePct > 60) {
+    return {
+      style: COMBINED_EXPLORE_TYPES[2],
+      desc: `你的互動以課程助理為主（佔 ${coursePct}%），廣泛探索各系所開設課程，對學習內容充滿好奇心。`,
+    };
+  }
+  if (domainsActive >= 3 && uniqueColleges >= 3) {
+    return {
+      style: COMBINED_EXPLORE_TYPES[3],
+      desc: `你在課程與研究兩個面向都跨越了 ${uniqueColleges} 個學院、${domainsActive} 個主要領域，具備強烈的跨域整合意識。`,
+    };
+  }
+  if ((courseData?.dept_distribution.length ?? 0) + (projectData?.dept_distribution.length ?? 0) >= 8) {
+    return {
+      style: COMBINED_EXPLORE_TYPES[4],
+      desc: `你在課程與研究兩個系統都保持廣泛探索，涉足的系所數量豐富，善於發掘不同領域的可能性。`,
+    };
+  }
+  return {
+    style: COMBINED_EXPLORE_TYPES[5],
+    desc: `你在課程助理（${coursePct}%）與研究計畫（${researchPct}%）之間保持均衡，兼顧課程規劃與學術探索兩個面向。`,
+  };
+}
+
 function diagnoseType(
   data: AnalyticsData,
   domainAxes: { label: string; value: number }[],
 ): typeof EXPLORE_TYPES[0] {
+  if (data.overview.total_turns < 3) return EXPLORE_TYPES[4];
+
   const topDeptPct = data.dept_distribution[0]?.pct ?? 0;
   const deptCount  = data.dept_distribution.length;
-  const topTools   = data.tool_usage.slice(0, 6).map(t => t.tool);
   const planningTools = ['get_graduation_requirements', 'get_graduation_rules',
     'get_program_info', 'get_program_courses', 'get_requirements_notes'];
-  const domainsActive = domainAxes.filter(a => ((a as { pct?: number }).pct ?? a.value) >= 15).length;
+  const totalToolCalls = data.tool_usage.reduce((s, t) => s + t.count, 0) || 1;
+  const planningCount  = data.tool_usage
+    .filter(t => planningTools.includes(t.tool))
+    .reduce((s, t) => s + t.count, 0);
+  const planningRatio  = planningCount / totalToolCalls;
+  const domainsActive  = domainAxes.filter(a => ((a as { pct?: number }).pct ?? a.value) >= 15).length;
 
-  const hasPlanningFocus = topTools.some(t => planningTools.includes(t));
-  if (hasPlanningFocus) return EXPLORE_TYPES[0];
-  if (domainsActive >= 3)        return EXPLORE_TYPES[1];
-  if (topDeptPct > 50)           return EXPLORE_TYPES[2];
-  if (deptCount >= 5 && topDeptPct < 35) return EXPLORE_TYPES[3];
+  if (planningRatio >= 0.25)              return EXPLORE_TYPES[0];
+  if (domainsActive >= 3)                 return EXPLORE_TYPES[1];
+  if (topDeptPct > 55 && deptCount <= 4)  return EXPLORE_TYPES[2];
+  if (deptCount >= 6 && topDeptPct < 30)  return EXPLORE_TYPES[3];
   return EXPLORE_TYPES[4];
 }
 
@@ -182,10 +367,38 @@ const DONUT_COLORS = [
   '#f59e0b', '#f97316', '#ec4899', '#14b8a6',
 ];
 
+// ── 滾動數字 hook ────────────────────────────────────────────────
+function useCountUp(target: number, duration = 900) {
+  const [val, setVal] = useState(0);
+  const raf = useRef<number>(0);
+  useEffect(() => {
+    cancelAnimationFrame(raf.current);
+    if (target === 0) { setVal(0); return; }
+    const start = performance.now();
+    const step = (now: number) => {
+      const t = Math.min((now - start) / duration, 1);
+      const eased = 1 - (1 - t) ** 3; // ease-out cubic
+      setVal(target * eased);
+      if (t < 1) raf.current = requestAnimationFrame(step);
+      else setVal(target);
+    };
+    raf.current = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf.current);
+  }, [target, duration]);
+  return val;
+}
+
 // ── 概覽卡片 ────────────────────────────────────────────────────
 function StatCard({ icon, label, value, sub }: {
   icon: React.ReactNode; label: string; value: string | number; sub?: string;
 }) {
+  const isFloat = typeof value === 'number' && !Number.isInteger(value);
+  const animated = useCountUp(typeof value === 'number' ? value : 0);
+  const displayed = typeof value !== 'number'
+    ? value
+    : isFloat
+      ? animated.toFixed(1)
+      : Math.round(animated);
   return (
     <div className="card flex items-start gap-4 p-5">
       <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary-700">
@@ -193,7 +406,7 @@ function StatCard({ icon, label, value, sub }: {
       </div>
       <div className="min-w-0">
         <p className="text-xs font-medium text-slate-500">{label}</p>
-        <p className="mt-0.5 truncate text-2xl font-bold text-primary-900">{value}</p>
+        <p className="mt-0.5 truncate text-2xl font-bold text-primary-900">{displayed}</p>
         {sub && <p className="mt-0.5 truncate text-xs text-slate-400">{sub}</p>}
       </div>
     </div>
@@ -223,7 +436,7 @@ function NotLoggedIn() {
       <h2 className="text-lg font-semibold text-slate-700">請先登入</h2>
       <p className="mt-1 text-sm text-slate-400">登入後即可查看你的課程探索分析</p>
       <Link to="/course-search" className="btn-primary mt-6 inline-flex items-center gap-1.5 text-sm">
-        前往課程搜尋 <HiChevronRight className="h-4 w-4" />
+        前往課程助理 <HiChevronRight className="h-4 w-4" />
       </Link>
     </div>
   );
@@ -236,7 +449,7 @@ function EmptyState() {
         <HiBookOpen className="h-8 w-8 text-slate-300" />
       </div>
       <h2 className="text-lg font-semibold text-slate-600">還沒有使用記錄</h2>
-      <p className="mt-1 text-sm text-slate-400">開始使用課程搜尋，分析結果將在這裡呈現</p>
+      <p className="mt-1 text-sm text-slate-400">開始使用課程助理，分析結果將在這裡呈現</p>
       <Link to="/course-search" className="btn-primary mt-6 inline-flex items-center gap-1.5 text-sm">
         開始搜尋課程 <HiChevronRight className="h-4 w-4" />
       </Link>
@@ -244,30 +457,241 @@ function EmptyState() {
   );
 }
 
-// ── 主頁面 ──────────────────────────────────────────────────────
-export default function AnalyticsPage() {
-  const { user, loading: authLoading, logout } = useAuth();
-  const [data, setData] = useState<AnalyticsData | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+type TabId = 'all' | 'course' | 'project';
 
-  useEffect(() => {
-    if (!user) return;
-    void (async () => {
-      await Promise.resolve();
-      setLoading(true);
-      setError('');
-      try {
-        const result = await analyticsAPI.get();
-        setData(result);
-      } catch {
-        setError('載入分析資料失敗，請稍後再試');
-      } finally {
-        setLoading(false);
-      }
-    })();
-  }, [user]);
+// ── Tab Bar ─────────────────────────────────────────────────────
+const TAB_LABELS: { id: TabId; label: string }[] = [
+  { id: 'all',     label: '全部' },
+  { id: 'course',  label: '課程助理' },
+  { id: 'project', label: '研究計畫' },
+];
 
+function TabSwitcher({ active, onChange }: { active: TabId; onChange: (t: TabId) => void }) {
+  return (
+    <div className="flex items-center gap-0.5 rounded-full bg-black/5 px-0.5 py-0.5">
+      {TAB_LABELS.map(({ id, label }) => (
+        <button
+          key={id}
+          type="button"
+          onClick={() => onChange(id)}
+          className={[
+            'rounded-full px-3 py-1 text-xs font-medium transition-all duration-150 focus:outline-none',
+            active === id
+              ? 'bg-white text-primary-900 shadow-soft'
+              : 'text-slate-400 hover:text-slate-600',
+          ].join(' ')}
+        >
+          {label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+// ── 全部 Tab ─────────────────────────────────────────────────────
+function AllTab({
+  courseData,
+  projectData,
+  loading,
+}: {
+  courseData: AnalyticsData | null;
+  projectData: PdfAnalyticsData | null;
+  loading: boolean;
+}) {
+  const [radarMode, setRadarMode] = useState<'weighted' | 'equal'>('weighted');
+
+  const courseInteractions = courseData?.overview.total_turns ?? 0;
+  const researchInteractions = projectData?.overview.total_questions ?? 0;
+  const totalInteractions = courseInteractions + researchInteractions;
+  const coursePct = totalInteractions > 0 ? Math.round((courseInteractions / totalInteractions) * 100) : 0;
+  const researchPct = 100 - coursePct;
+
+  // 綜合雷達圖
+  const combinedAxes = useMemo(() => {
+    const courseCols = courseData?.college_distribution ?? [];
+    const projCols = projectData?.college_distribution ?? [];
+    if (!courseCols.length && !projCols.length) return [];
+
+    const courseTotal = courseCols.reduce((s, i) => s + i.count, 0) || 1;
+    const projTotal = projCols.reduce((s, i) => s + i.count, 0) || 1;
+
+    const courseW = radarMode === 'weighted'
+      ? (totalInteractions > 0 ? courseInteractions / totalInteractions : 0.5)
+      : 0.5;
+    const projW = 1 - courseW;
+
+    const blended: Record<string, number> = {};
+    for (const item of courseCols) {
+      const d = COLLEGE_TO_DOMAIN[item.name];
+      if (!d) continue;
+      blended[d] = (blended[d] ?? 0) + (item.count / courseTotal) * courseW;
+    }
+    for (const item of projCols) {
+      const d = COLLEGE_TO_DOMAIN[item.name];
+      if (!d) continue;
+      blended[d] = (blended[d] ?? 0) + (item.count / projTotal) * projW;
+    }
+
+    const total = DOMAIN_ORDER.reduce((s, d) => s + (blended[d] ?? 0), 0) || 1;
+    const maxVal = Math.max(...DOMAIN_ORDER.map(d => blended[d] ?? 0)) || 1;
+    return DOMAIN_ORDER.map(d => ({
+      label: d,
+      value: Math.round((blended[d] ?? 0) / maxVal * 100),
+      pct: Math.round((blended[d] ?? 0) / total * 1000) / 10,
+    }));
+  }, [courseData, projectData, radarMode, courseInteractions, totalInteractions]);
+
+  const combined = diagnoseCombinedType(courseData, projectData, coursePct, combinedAxes);
+
+  if (loading) return <TabLoadingSkeleton />;
+  if (!courseData && !projectData) {
+    return <p className="py-10 text-center text-sm text-slate-400">切換到「課程助理」或「研究計畫」分頁以開始分析</p>;
+  }
+
+  return (
+    <div className="space-y-6">
+      {/* 概覽數字 */}
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+        <StatCard icon={<HiChat className="h-5 w-5" />}         label="課程對話"   value={courseData?.overview.total_sessions ?? '—'}           sub="課程助理歷史對話" />
+        <StatCard icon={<HiDocumentText className="h-5 w-5" />} label="研究計畫對話" value={projectData?.overview.total_conversations ?? '—'}    sub="研究計畫歷史對話" />
+        <StatCard icon={<HiBookOpen className="h-5 w-5" />}     label="課程提問"   value={courseData?.overview.total_turns ?? '—'}              sub="累計提問次數" />
+        <StatCard icon={<HiLightningBolt className="h-5 w-5" />} label="探索論文"  value={projectData?.overview.total_documents_explored ?? '—'} sub="不重複論文篇數" />
+      </div>
+
+      {/* 綜合學術領域雷達（左） + 探索型態診斷（右） */}
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        {combinedAxes.filter(a => a.value > 0).length >= 2 && (
+          <div className="card p-6">
+            <div className="mb-4 flex items-center justify-between">
+              <SectionTitle>綜合學術領域分佈</SectionTitle>
+              <div className="flex items-center gap-0.5 rounded-full bg-slate-100 p-0.5">
+                {(['weighted', 'equal'] as const).map(mode => (
+                  <button key={mode} type="button" onClick={() => setRadarMode(mode)}
+                    className={['rounded-full px-2.5 py-1 text-[11px] font-medium transition-all duration-150',
+                      radarMode === mode ? 'bg-white text-primary-800 shadow-soft' : 'text-slate-400 hover:text-slate-600',
+                    ].join(' ')}>
+                    {mode === 'weighted' ? '加權' : '等比'}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="flex flex-col items-center gap-4">
+              <RadarChart axes={combinedAxes} />
+              <div className="flex flex-wrap justify-center gap-x-4 gap-y-1.5">
+                {combinedAxes.map(ax => (
+                  <span key={ax.label} className="flex items-center gap-1.5 text-xs text-slate-500">
+                    <span className="h-2 w-2 rounded-full" style={{ background: DOMAIN_COLORS[ax.label] ?? '#94a3b8' }} />
+                    {ax.label} <span className="font-medium text-slate-700">{ax.pct}%</span>
+                  </span>
+                ))}
+              </div>
+              <p className="text-center text-[11px] text-slate-400">
+                {radarMode === 'weighted'
+                  ? `依互動量加權：課程助理 ${coursePct}%、研究計畫 ${researchPct}%`
+                  : '兩個系統各佔 50% 等比計算'}
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* 綜合探索型態診斷 */}
+        {totalInteractions > 0 && (
+          <div className={`card overflow-hidden border bg-gradient-to-br p-6 ${combined.style.color}`}>
+            <SectionTitle>探索型態診斷</SectionTitle>
+            <div className="flex flex-col items-center gap-5 pt-2 text-center">
+              <div className={`flex h-20 w-20 items-center justify-center rounded-2xl ${combined.style.iconBg}`}>
+                <combined.style.Icon className={`h-10 w-10 ${combined.style.iconColor}`} />
+              </div>
+              <div>
+                <span className={`rounded-full px-4 py-1 text-sm font-bold ${combined.style.badge}`}>
+                  {combined.style.label}
+                </span>
+                <p className="mt-3 text-sm leading-relaxed text-slate-600">{combined.desc}</p>
+              </div>
+              <div className="w-full rounded-xl bg-white/60 px-4 py-3 text-left">
+                <p className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-slate-400">關鍵數據</p>
+                <div className="space-y-1.5 text-xs text-slate-600">
+                  <div className="flex justify-between">
+                    <span>課程助理提問</span>
+                    <span className="font-medium">{courseInteractions.toLocaleString()} 次</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>研究計畫提問</span>
+                    <span className="font-medium">{researchInteractions.toLocaleString()} 次</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>探索學院數（合計）</span>
+                    <span className="font-medium">
+                      {new Set([
+                        ...(courseData?.college_distribution.map(i => i.name) ?? []),
+                        ...(projectData?.college_distribution.map(i => i.name) ?? []),
+                      ]).size} 個
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>研究計畫平均對話深度</span>
+                    <span className="font-medium">{projectData?.overview.avg_depth ?? '—'} 輪／次</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* 使用偏好（下方全寬） */}
+      {totalInteractions > 0 && (
+        <div className="card p-6">
+          <SectionTitle>使用偏好分析</SectionTitle>
+          <div className="space-y-4">
+            <div className="flex h-2.5 overflow-hidden rounded-full bg-slate-100">
+              <div className="bg-indigo-400 transition-all duration-500" style={{ width: `${coursePct}%` }} />
+              <div className="bg-emerald-400 transition-all duration-500" style={{ width: `${researchPct}%` }} />
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="flex items-start gap-3">
+                <span className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-indigo-400" />
+                <div>
+                  <p className="text-xs font-medium text-slate-500">課程助理</p>
+                  <p className="text-2xl font-bold text-indigo-600">{coursePct}%</p>
+                  <p className="text-[11px] text-slate-400">{courseInteractions.toLocaleString()} 次提問</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-emerald-400" />
+                <div>
+                  <p className="text-xs font-medium text-slate-500">研究計畫</p>
+                  <p className="text-2xl font-bold text-emerald-600">{researchPct}%</p>
+                  <p className="text-[11px] text-slate-400">{researchInteractions.toLocaleString()} 次提問</p>
+                </div>
+              </div>
+            </div>
+            <p className="rounded-xl bg-slate-50 px-4 py-2.5 text-sm text-slate-600">
+              {coursePct > 70
+                ? '你主要使用課程助理探索修課資訊，對課程規劃有清晰的需求。'
+                : researchPct > 70
+                ? '你大量使用研究計畫功能，對學術研究有高度的探索興趣。'
+                : coursePct >= researchPct
+                ? `你對兩個功能都有使用，課程助理（${coursePct}%）略多於研究計畫（${researchPct}%）。`
+                : `你對兩個功能都有使用，研究計畫（${researchPct}%）略多於課程助理（${coursePct}%）。`}
+            </p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ── 課程助理 Tab ─────────────────────────────────────────────────
+function CourseTab({
+  data,
+  loading,
+  error,
+}: {
+  data: AnalyticsData | null;
+  loading: boolean;
+  error: string;
+}) {
   const domainAxes = useMemo(() => {
     if (!data?.college_distribution.length) return [];
     const totals: Record<string, number> = {};
@@ -277,11 +701,10 @@ export default function AnalyticsPage() {
     }
     const nonGeTotal = DOMAIN_ORDER.reduce((s, d) => s + (totals[d] ?? 0), 0) || 1;
     const maxVal = Math.max(...DOMAIN_ORDER.map(d => totals[d] ?? 0)) || 1;
-
     return DOMAIN_ORDER.map(d => {
       const raw = totals[d] ?? 0;
-      const pct = Math.round((raw / nonGeTotal) * 1000) / 10;        // 佔總量 %（顯示用）
-      const rel = Math.round((raw / maxVal) * 100);                   // 相對最大值（雷達圖用）
+      const pct = Math.round((raw / nonGeTotal) * 1000) / 10;
+      const rel = Math.round((raw / maxVal) * 100);
       return { label: d, value: rel, pct };
     });
   }, [data]);
@@ -292,6 +715,394 @@ export default function AnalyticsPage() {
   );
 
   const hasData = data && data.overview.total_turns > 0;
+
+  if (loading) return <TabLoadingSkeleton />;
+  if (error) return <TabError msg={error} />;
+  if (!hasData) return <EmptyState />;
+
+  return (
+    <div className="space-y-6">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+        <StatCard icon={<HiChat className="h-5 w-5" />} label="對話次數"
+          value={data.overview.total_sessions} sub="歷史對話總數" />
+        <StatCard icon={<HiBookOpen className="h-5 w-5" />} label="提問輪次"
+          value={data.overview.total_turns} sub="累計提問次數" />
+        <StatCard icon={<HiAcademicCap className="h-5 w-5" />} label="探索課程"
+          value={data.overview.total_courses_explored} sub="不重複課程數" />
+        <StatCard icon={<HiOfficeBuilding className="h-5 w-5" />} label="最常探索學院"
+          value={data.overview.fav_college || '—'} sub="依出現頻率統計" />
+      </div>
+
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="card p-6">
+          <SectionTitle>學術探索領域分佈</SectionTitle>
+          {domainAxes.filter(a => a.value > 0).length < 2 ? (
+            <p className="text-sm text-slate-400">需要更多對話資料</p>
+          ) : (
+            <div className="flex flex-col items-center gap-4">
+              <RadarChart axes={domainAxes} />
+              <div className="flex flex-wrap justify-center gap-x-4 gap-y-1.5">
+                {domainAxes.map(ax => (
+                  <span key={ax.label} className="flex items-center gap-1.5 text-xs text-slate-500">
+                    <span className="h-2 w-2 rounded-full" style={{ background: DOMAIN_COLORS[ax.label] ?? '#94a3b8' }} />
+                    {ax.label} <span className="font-medium text-slate-700">{ax.pct}%</span>
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
+        {exploreType && (
+          <div className={`card overflow-hidden border bg-gradient-to-br p-6 ${exploreType.color}`}>
+            <SectionTitle>探索型態診斷</SectionTitle>
+            <div className="flex flex-col items-center gap-5 pt-2 text-center">
+              <div className={`flex h-20 w-20 items-center justify-center rounded-2xl ${exploreType.iconBg}`}>
+                <exploreType.Icon className={`h-10 w-10 ${exploreType.iconColor}`} />
+              </div>
+              <div>
+                <span className={`rounded-full px-4 py-1 text-sm font-bold ${exploreType.badge}`}>
+                  {exploreType.label}
+                </span>
+                <p className="mt-3 text-sm leading-relaxed text-slate-600">{exploreType.desc}</p>
+              </div>
+              <div className="w-full rounded-xl bg-white/60 px-4 py-3 text-left">
+                <p className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-400">關鍵數據</p>
+                <div className="space-y-1 text-xs text-slate-600">
+                  <div className="flex justify-between">
+                    <span>探索系所數</span>
+                    <span className="font-medium">{data.dept_distribution.length} 個</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>最集中系所</span>
+                    <span className="font-medium">{data.dept_distribution[0]?.pct.toFixed(1) ?? 0}%</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>跨域廣度</span>
+                    <span className="font-medium">{domainAxes.filter(a => ((a as { pct?: number }).pct ?? a.value) >= 15).length} 個主要領域</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        {data.top_domain_tags.length > 0 && (
+          <EChartsWordCloud tags={data.top_domain_tags} title="課程探索領域" />
+        )}
+        {data.top_course_domains.length > 0 && (
+          <EChartsWordCloud
+            tags={data.top_course_domains.map(d => ({ tag: d.domain, count: d.count }))}
+            title="課程領域分佈"
+          />
+        )}
+      </div>
+
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        {data.dept_distribution.length > 0 && (
+          <EChartsPie items={data.dept_distribution} title="探索系所分佈" />
+        )}
+        <GeneralEduRings ge={data.general_edu} />
+      </div>
+    </div>
+  );
+}
+
+// ── 研究計畫 Tab ─────────────────────────────────────────────────
+function ProjectTab({
+  data,
+  loading,
+  error,
+}: {
+  data: PdfAnalyticsData | null;
+  loading: boolean;
+  error: string;
+}) {
+  const [showAllDocs, setShowAllDocs] = useState(false);
+
+  const domainAxes = useMemo(() => {
+    if (!data?.college_distribution.length) return [];
+    const totals: Record<string, number> = {};
+    for (const item of data.college_distribution) {
+      const d = COLLEGE_TO_DOMAIN[item.name] ?? '其他';
+      totals[d] = (totals[d] ?? 0) + item.count;
+    }
+    const nonGeTotal = DOMAIN_ORDER.reduce((s, d) => s + (totals[d] ?? 0), 0) || 1;
+    const maxVal = Math.max(...DOMAIN_ORDER.map(d => totals[d] ?? 0)) || 1;
+    return DOMAIN_ORDER.map(d => {
+      const raw = totals[d] ?? 0;
+      const pct = Math.round((raw / nonGeTotal) * 1000) / 10;
+      const rel = Math.round((raw / maxVal) * 100);
+      return { label: d, value: rel, pct };
+    });
+  }, [data]);
+
+  const pdfExploreStyle = data?.exploration_type.type
+    ? (PDF_TYPE_MAP[data.exploration_type.type] ?? PDF_EXPLORE_TYPES[4])
+    : null;
+
+  const hasData = data && data.overview.total_conversations > 0;
+
+  if (loading) return <TabLoadingSkeleton />;
+  if (error) return <TabError msg={error} />;
+  if (!hasData) {
+    return (
+      <div className="flex flex-col items-center justify-center py-20 text-center">
+        <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-slate-100">
+          <HiDocumentText className="h-8 w-8 text-slate-300" />
+        </div>
+        <h2 className="text-lg font-semibold text-slate-600">還沒有研究計畫探索記錄</h2>
+        <p className="mt-1 text-sm text-slate-400">前往研究計畫頁面，與論文對話後分析將在這裡呈現</p>
+        <Link to="/projects" className="btn-primary mt-6 inline-flex items-center gap-1.5 text-sm">
+          前往研究計畫 <HiChevronRight className="h-4 w-4" />
+        </Link>
+      </div>
+    );
+  }
+
+  const visibleDocs = showAllDocs ? data.document_list : data.document_list.slice(0, 4);
+
+  return (
+    <div className="space-y-6">
+      {/* 概覽卡片 */}
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+        <StatCard icon={<HiChat className="h-5 w-5" />} label="對話次數"
+          value={data.overview.total_conversations} sub="歷史對話總數" />
+        <StatCard icon={<HiBookOpen className="h-5 w-5" />} label="提問次數"
+          value={data.overview.total_questions} sub="累計提問次數" />
+        <StatCard icon={<HiDocumentText className="h-5 w-5" />} label="探索論文"
+          value={data.overview.total_documents_explored} sub="不重複論文篇數" />
+        <StatCard icon={<HiOfficeBuilding className="h-5 w-5" />} label="最常探索學院"
+          value={data.college_distribution[0]?.name || '—'} sub="依對話次數統計" />
+      </div>
+
+      {/* 學術領域雷達 + 探索型態診斷 */}
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="card p-6">
+          <SectionTitle>研究領域探索分佈</SectionTitle>
+          {domainAxes.filter(a => a.value > 0).length < 2 ? (
+            <p className="text-sm text-slate-400">需要更多對話資料</p>
+          ) : (
+            <div className="flex flex-col items-center gap-4">
+              <RadarChart axes={domainAxes} />
+              <div className="flex flex-wrap justify-center gap-x-4 gap-y-1.5">
+                {domainAxes.map(ax => (
+                  <span key={ax.label} className="flex items-center gap-1.5 text-xs text-slate-500">
+                    <span className="h-2 w-2 rounded-full" style={{ background: DOMAIN_COLORS[ax.label] ?? '#94a3b8' }} />
+                    {ax.label} <span className="font-medium text-slate-700">{ax.pct}%</span>
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
+        {pdfExploreStyle && (
+          <div className={`card overflow-hidden border bg-gradient-to-br p-6 ${pdfExploreStyle.color}`}>
+            <SectionTitle>探索型態診斷</SectionTitle>
+            <div className="flex flex-col items-center gap-5 pt-2 text-center">
+              <div className={`flex h-20 w-20 items-center justify-center rounded-2xl ${pdfExploreStyle.iconBg}`}>
+                <pdfExploreStyle.Icon className={`h-10 w-10 ${pdfExploreStyle.iconColor}`} />
+              </div>
+              <div>
+                <span className={`rounded-full px-4 py-1 text-sm font-bold ${pdfExploreStyle.badge}`}>
+                  {data.exploration_type.type}
+                </span>
+                <p className="mt-3 text-sm leading-relaxed text-slate-600">{data.exploration_type.desc}</p>
+              </div>
+              <div className="w-full rounded-xl bg-white/60 px-4 py-3 text-left">
+                <p className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-400">關鍵數據</p>
+                <div className="space-y-1 text-xs text-slate-600">
+                  <div className="flex justify-between">
+                    <span>探索論文篇數</span>
+                    <span className="font-medium">{data.overview.total_documents_explored} 篇</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>平均對話深度</span>
+                    <span className="font-medium">{data.overview.avg_depth} 輪／次</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>涉及系所數</span>
+                    <span className="font-medium">{data.dept_distribution.length} 個</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* 系所分佈 + 對話深度長條圖 */}
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        {data.dept_distribution.length > 0 && (
+          <EChartsPie items={data.dept_distribution} title="探索系所分佈" />
+        )}
+        <EChartsBar items={data.depth_distribution} title="對話深度分佈" />
+      </div>
+
+      {/* 論文探索列表 */}
+      {data.document_list.length > 0 && (
+        <div className="card p-6">
+          <SectionTitle>探索的研究計畫</SectionTitle>
+          <div className="space-y-3">
+            {visibleDocs.map(doc => (
+              <div key={doc.document_id}
+                className="flex items-center gap-3 rounded-xl border border-slate-100 bg-slate-50 px-4 py-3">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary-100">
+                  <HiDocumentText className="h-5 w-5 text-primary-600" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="truncate text-sm font-medium text-slate-800" title={doc.title}>
+                    {doc.title || doc.department + ' 研究計畫'}
+                  </p>
+                  <div className="mt-0.5 flex flex-wrap items-center gap-2 text-xs text-slate-400">
+                    {doc.department && (
+                      <span className="rounded-full bg-white px-2 py-0.5 ring-1 ring-slate-200 text-slate-500">
+                        {doc.department}
+                      </span>
+                    )}
+                    {doc.year && <span>{doc.year} 年度</span>}
+                  </div>
+                </div>
+                <div className="shrink-0 text-right">
+                  <p className="text-sm font-bold text-primary-700">{doc.conversation_count} 次對話</p>
+                  {doc.last_viewed_at && (
+                    <p className="text-[11px] text-slate-400">
+                      {formatRelativeTime(doc.last_viewed_at)}
+                    </p>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+          {data.document_list.length > 4 && (
+            <button type="button" onClick={() => setShowAllDocs(v => !v)}
+              className="mt-3 w-full rounded-xl border border-slate-200 py-2 text-xs font-medium text-slate-500 hover:bg-slate-50 transition">
+              {showAllDocs ? '收起' : `查看全部 ${data.document_list.length} 篇`}
+            </button>
+          )}
+        </div>
+      )}
+
+      {/* 最近提問 */}
+      {data.recent_questions.length > 0 && (
+        <div className="card p-6">
+          <SectionTitle>最近提問記錄</SectionTitle>
+          <div className="space-y-2">
+            {data.recent_questions.map((q, i) => (
+              <div key={i} className="flex items-start gap-3 rounded-xl border border-slate-100 px-4 py-3">
+                <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent-100">
+                  <HiClock className="h-3.5 w-3.5 text-accent-600" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="line-clamp-2 text-sm text-slate-700">{q.question || '（無內容）'}</p>
+                  {q.document_title && (
+                    <p className="mt-0.5 truncate text-xs text-slate-400">{q.document_title}</p>
+                  )}
+                </div>
+                {q.created_at && (
+                  <span className="shrink-0 text-[11px] text-slate-400">{formatRelativeTime(q.created_at)}</span>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function formatRelativeTime(iso: string): string {
+  const diff = Date.now() - new Date(iso).getTime();
+  const days = Math.floor(diff / 86_400_000);
+  if (days === 0) return '今天';
+  if (days === 1) return '昨天';
+  if (days < 30) return `${days} 天前`;
+  const months = Math.floor(days / 30);
+  if (months < 12) return `${months} 個月前`;
+  return `${Math.floor(months / 12)} 年前`;
+}
+
+function TabLoadingSkeleton() {
+  return (
+    <div className="space-y-6">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+        {[...Array(4)].map((_, i) => <Skeleton key={i} className="h-24" />)}
+      </div>
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <Skeleton className="h-80" /><Skeleton className="h-80" />
+        <Skeleton className="h-64" /><Skeleton className="h-64" />
+      </div>
+    </div>
+  );
+}
+
+function TabError({ msg }: { msg: string }) {
+  return (
+    <div className="rounded-xl border border-red-100 bg-red-50 px-4 py-3 text-sm text-red-600">{msg}</div>
+  );
+}
+
+// ── 主頁面 ──────────────────────────────────────────────────────
+export default function AnalyticsPage() {
+  const { user, loading: authLoading } = useAuth();
+  const [activeTab, setActiveTab] = useState<TabId>('all');
+
+  const [courseData, setCourseData] = useState<AnalyticsData | null>(null);
+  const [courseLoading, setCourseLoading] = useState(false);
+  const [courseError, setCourseError] = useState('');
+  const [courseFetched, setCourseFetched] = useState(false);
+
+  const [projectData, setProjectData] = useState<PdfAnalyticsData | null>(null);
+  const [projectLoading, setProjectLoading] = useState(false);
+  const [projectError, setProjectError] = useState('');
+  const [projectFetched, setProjectFetched] = useState(false);
+
+  const fetchCourse = async () => {
+    if (courseFetched) return;
+    setCourseLoading(true);
+    setCourseError('');
+    try {
+      const result = await analyticsAPI.get();
+      setCourseData(result);
+    } catch {
+      setCourseError('載入課程分析失敗，請稍後再試');
+    } finally {
+      setCourseLoading(false);
+      setCourseFetched(true);
+    }
+  };
+
+  const fetchProject = async () => {
+    if (projectFetched) return;
+    setProjectLoading(true);
+    setProjectError('');
+    try {
+      const result = await projectAnalyticsAPI.get();
+      setProjectData(result);
+    } catch {
+      setProjectError('載入研究計畫分析失敗，請稍後再試');
+    } finally {
+      setProjectLoading(false);
+      setProjectFetched(true);
+    }
+  };
+
+  // 切換 tab 時懶載入
+  useEffect(() => {
+    if (!user) return;
+    if (activeTab === 'all') {
+      void fetchCourse();
+      void fetchProject();
+    } else if (activeTab === 'course') {
+      void fetchCourse();
+    } else if (activeTab === 'project') {
+      void fetchProject();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, activeTab]);
 
   if (authLoading) {
     return (
@@ -328,123 +1139,17 @@ export default function AnalyticsPage() {
             <p className="mt-0.5 text-xs text-slate-400">學習傾向分析</p>
           </div>
         </div>
-        <button type="button" onClick={logout}
-          className="flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3.5 py-2 text-sm font-medium text-slate-500 shadow-sm transition hover:border-red-200 hover:bg-red-50 hover:text-red-600">
-          <HiLogout className="h-4 w-4" /> 登出
-        </button>
+        <TabSwitcher active={activeTab} onChange={setActiveTab} />
       </div>
 
-      {error && (
-        <div className="mb-6 rounded-xl border border-red-100 bg-red-50 px-4 py-3 text-sm text-red-600">
-          {error}
-        </div>
+      {activeTab === 'all' && (
+        <AllTab courseData={courseData} projectData={projectData} loading={courseLoading || projectLoading} />
       )}
-
-      {loading ? (
-        <div className="space-y-6">
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-            {[...Array(4)].map((_, i) => <Skeleton key={i} className="h-24" />)}
-          </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            <Skeleton className="h-80" /><Skeleton className="h-80" />
-            <Skeleton className="h-64" /><Skeleton className="h-64" />
-          </div>
-        </div>
-      ) : !hasData ? (
-        <EmptyState />
-      ) : (
-        <div className="space-y-6">
-          {/* 概覽卡片 */}
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-            <StatCard icon={<HiChat className="h-5 w-5" />} label="對話次數"
-              value={data.overview.total_sessions} sub="歷史對話總數" />
-            <StatCard icon={<HiBookOpen className="h-5 w-5" />} label="提問輪次"
-              value={data.overview.total_turns} sub="累計提問次數" />
-            <StatCard icon={<HiAcademicCap className="h-5 w-5" />} label="探索課程"
-              value={data.overview.total_courses_explored} sub="不重複課程數" />
-            <StatCard icon={<HiOfficeBuilding className="h-5 w-5" />} label="最常探索學院"
-              value={data.overview.fav_college || '—'} sub="依出現頻率統計" />
-          </div>
-
-          {/* Row 1：學術領域雷達 + 探索型態診斷 */}
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            <div className="card p-6">
-              <SectionTitle>學術探索領域分佈</SectionTitle>
-              {domainAxes.filter(a => a.value > 0).length < 2 ? (
-                <p className="text-sm text-slate-400">需要更多對話資料</p>
-              ) : (
-                <div className="flex flex-col items-center gap-4">
-                  <RadarChart axes={domainAxes} />
-                  {/* 圖例：顯示實際佔比 % */}
-                  <div className="flex flex-wrap justify-center gap-x-4 gap-y-1.5">
-                    {domainAxes.map(ax => (
-                      <span key={ax.label} className="flex items-center gap-1.5 text-xs text-slate-500">
-                        <span className="h-2 w-2 rounded-full" style={{ background: DOMAIN_COLORS[ax.label] ?? '#94a3b8' }} />
-                        {ax.label} <span className="font-medium text-slate-700">{ax.pct}%</span>
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* 探索型態診斷 */}
-            {exploreType && (
-              <div className={`card overflow-hidden border bg-gradient-to-br p-6 ${exploreType.color}`}>
-                <SectionTitle>探索型態診斷</SectionTitle>
-                <div className="flex flex-col items-center gap-5 pt-2 text-center">
-                  <div className={`flex h-20 w-20 items-center justify-center rounded-2xl ${exploreType.iconBg}`}>
-                    <exploreType.Icon className={`h-10 w-10 ${exploreType.iconColor}`} />
-                  </div>
-                  <div>
-                    <span className={`rounded-full px-4 py-1 text-sm font-bold ${exploreType.badge}`}>
-                      {exploreType.label}
-                    </span>
-                    <p className="mt-3 text-sm leading-relaxed text-slate-600">{exploreType.desc}</p>
-                  </div>
-                  <div className="w-full rounded-xl bg-white/60 px-4 py-3 text-left">
-                    <p className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-400">關鍵數據</p>
-                    <div className="space-y-1 text-xs text-slate-600">
-                      <div className="flex justify-between">
-                        <span>探索系所數</span>
-                        <span className="font-medium">{data.dept_distribution.length} 個</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>最集中系所</span>
-                        <span className="font-medium">{data.dept_distribution[0]?.pct.toFixed(1) ?? 0}%</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>跨域廣度</span>
-                        <span className="font-medium">{domainAxes.filter(a => ((a as { pct?: number }).pct ?? a.value) >= 15).length} 個主要領域</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Row 2：domain_tags WordCloud + 課程領域 WordCloud */}
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            {data.top_domain_tags.length > 0 && (
-              <EChartsWordCloud tags={data.top_domain_tags} title="課程探索領域" />
-            )}
-            {data.top_course_domains.length > 0 && (
-              <EChartsWordCloud
-                tags={data.top_course_domains.map(d => ({ tag: d.domain, count: d.count }))}
-                title="課程領域分佈"
-              />
-            )}
-          </div>
-
-          {/* Row 3：探索系所 Pie + 通識與一般選修 */}
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            {data.dept_distribution.length > 0 && (
-              <EChartsPie items={data.dept_distribution} title="探索系所分佈" />
-            )}
-            <GeneralEduRings ge={data.general_edu} />
-          </div>
-        </div>
+      {activeTab === 'course' && (
+        <CourseTab data={courseData} loading={courseLoading} error={courseError} />
+      )}
+      {activeTab === 'project' && (
+        <ProjectTab data={projectData} loading={projectLoading} error={projectError} />
       )}
     </div>
   );
@@ -535,6 +1240,47 @@ function EChartsPie({
         value: it.count,
         itemStyle: { color: DONUT_COLORS[i % DONUT_COLORS.length] },
       })),
+    }],
+  };
+  return (
+    <div className="card flex flex-col p-6">
+      <SectionTitle>{title}</SectionTitle>
+      <ReactECharts option={option} style={{ flex: 1, minHeight: 200 }} />
+    </div>
+  );
+}
+
+// ── ECharts Bar：對話深度分佈 ──────────────────────────────────
+function EChartsBar({
+  items,
+  title = '分佈',
+}: {
+  items: { range: string; count: number }[];
+  title?: string;
+}) {
+  const option = {
+    tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' }, confine: true },
+    grid: { left: 16, right: 16, top: 16, bottom: 16, containLabel: true },
+    xAxis: {
+      type: 'category',
+      data: items.map(i => i.range),
+      axisLabel: { fontSize: 11, color: '#64748b' },
+      axisTick: { show: false },
+      axisLine: { lineStyle: { color: '#e2e8f0' } },
+    },
+    yAxis: {
+      type: 'value',
+      minInterval: 1,
+      axisLabel: { fontSize: 11, color: '#94a3b8' },
+      splitLine: { lineStyle: { color: '#f1f5f9' } },
+    },
+    series: [{
+      type: 'bar',
+      data: items.map((it, i) => ({
+        value: it.count,
+        itemStyle: { color: DONUT_COLORS[i % DONUT_COLORS.length], borderRadius: [6, 6, 0, 0] },
+      })),
+      barMaxWidth: 60,
     }],
   };
   return (

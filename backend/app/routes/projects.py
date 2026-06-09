@@ -4,6 +4,7 @@ import logging
 import os
 import re as _re
 from datetime import datetime, timezone
+from functools import lru_cache
 from typing import List, Optional
 from urllib.parse import quote
 
@@ -39,6 +40,12 @@ _stream_lock_mutex = asyncio.Lock()  # makes check-and-set atomic within a singl
 _project_doc_id_cache: dict[str, int | None] = {}
 
 HEARTBEAT_INTERVAL = 15.0  # seconds between SSE heartbeats while waiting for LLM tokens
+
+_ROUTE_LABELS = {
+    "chat":      "直接回答",
+    "retrieval": "搜尋文獻",
+    "research":  "深度研究",
+}
 
 
 # ── 資料載入 ───────────────────────────────────────────────────────────────────
@@ -79,6 +86,28 @@ async def get_projects(
     if year:
         projects = [p for p in projects if p['year'] == year]
     return projects
+
+
+@lru_cache(maxsize=1)
+def _build_doc_meta_map() -> dict[int, dict]:
+    """document_id → {title, department, year}，從 projects.json 一次建立並快取。"""
+    result: dict[int, dict] = {}
+    for p in load_projects():
+        doc_id = p.get("documentId")
+        if doc_id is not None:
+            result[int(doc_id)] = {
+                "title":      p.get("title", ""),
+                "department": p.get("department", ""),
+                "year":       p.get("year", ""),
+            }
+    return result
+
+
+@router.get("/analytics", dependencies=[Depends(_require_pdf_chat)])
+async def get_pdf_user_analytics(user: AuthUser = Depends(get_current_user)):
+    """取得目前使用者的研究計畫探索分析（需登入，15 分鐘快取）。"""
+    from app.services.session_store import get_pdf_analytics
+    return await asyncio.to_thread(get_pdf_analytics, user.user_id, _build_doc_meta_map())
 
 
 @router.get("/recent-chats", dependencies=[Depends(_require_pdf_chat)])
@@ -417,11 +446,22 @@ async def chat_with_project_stream(
                 yield f"data: {_json.dumps({'done': True, 'session_id': thread_id, 'cancelled': True})}\n\n"
                 return
 
+            _meta_queue: asyncio.Queue = asyncio.Queue()
+
+            def _on_stage(msg: str) -> None:
+                _meta_queue.put_nowait(("stage", msg))
+
+            def _on_route(route) -> None:
+                label = _ROUTE_LABELS.get(route.agent_name, route.agent_name)
+                _meta_queue.put_nowait(("agent_start", route.agent_name, label))
+
             aiter = route_agent_stream(
                 request.message,
                 thread_id=thread_id,
                 document_id=document_id,
                 previous_agent_name=conv.last_agent_name,
+                on_stage=_on_stage,
+                on_route=_on_route,
             ).__aiter__()
 
             pending = asyncio.create_task(aiter.__anext__())
@@ -429,12 +469,29 @@ async def chat_with_project_stream(
                 try:
                     result = await asyncio.wait_for(asyncio.shield(pending), timeout=HEARTBEAT_INTERVAL)
                 except asyncio.TimeoutError:
+                    # drain 再 heartbeat，讓前端更快收到 stage 事件
+                    while not _meta_queue.empty():
+                        meta = _meta_queue.get_nowait()
+                        if meta[0] == "stage":
+                            yield f"data: {_json.dumps({'type': 'stage', 'text': meta[1]})}\n\n"
+                        elif meta[0] == "agent_start":
+                            yield f"data: {_json.dumps({'type': 'agent_start', 'agent': meta[1], 'label': meta[2]})}\n\n"
+                        else:
+                            logger.debug("unknown meta event type: %s", meta[0])
                     yield f"data: {_json.dumps({'heartbeat': True})}\n\n"
                     continue
                 except StopAsyncIteration:
                     break
 
                 token, is_done, sources = result
+                while not _meta_queue.empty():
+                    meta = _meta_queue.get_nowait()
+                    if meta[0] == "stage":
+                        yield f"data: {_json.dumps({'type': 'stage', 'text': meta[1]})}\n\n"
+                    elif meta[0] == "agent_start":
+                        yield f"data: {_json.dumps({'type': 'agent_start', 'agent': meta[1], 'label': meta[2]})}\n\n"
+                    else:
+                        logger.debug("unknown meta event type: %s", meta[0])
                 if is_done == "replace":
                     yield f"data: {_json.dumps({'replace': token, 'sources': sources})}\n\n"
                 elif is_done:

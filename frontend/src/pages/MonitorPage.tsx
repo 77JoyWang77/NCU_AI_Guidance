@@ -32,6 +32,18 @@ function monthToRange(m: string) {
   return { start: toISO(new Date(yr, mo - 1, 1)), end: toISO(new Date(yr, mo, 0)) };
 }
 function todayISO() { return toISO(new Date()); }
+function currentWeekISO() {
+  const now = new Date();
+  const d   = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
+  d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+  const yr  = d.getUTCFullYear();
+  const wk  = Math.ceil((((d.getTime() - Date.UTC(yr, 0, 1)) / 86400000) + 1) / 7);
+  return `${yr}-W${String(wk).padStart(2, '0')}`;
+}
+function currentMonthISO() {
+  const now = new Date();
+  return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+}
 
 // ── ECharts 深色共用 ──────────────────────────────────────────────
 const TIP = { backgroundColor: '#0f172a', borderColor: '#334155', textStyle: { color: '#e2e8f0' } };
@@ -187,14 +199,67 @@ function PdfTokenChart({ daily_trend, isHourly }: { daily_trend: PdfTrendRow[]; 
     yAxis:{type:'value',...AX,axisLabel:{...AX.axisLabel,formatter:fmt}},
     series:[
       makeLine('Agent Input',  agentInp,  '#6366f1'),
-      makeLine('Agent Output', agentOut,  '#0ea5e9'),
-      makeLine('Router Input', routerInp, '#a78bfa'),
-      makeLine('Router Output',routerOut, '#38bdf8'),
+      makeLine('Agent Output', agentOut,  '#10b981'),
+      makeLine('Router Input', routerInp, '#f59e0b'),
+      makeLine('Router Output',routerOut, '#f87171'),
     ],
   };
   return hasData
     ? <ReactECharts option={opt} style={{height:200}}/>
     : <div className="flex h-28 items-center justify-center text-sm text-slate-600">對話後開始記錄</div>;
+}
+
+function CombinedCostChart({
+  courseTrend, pdfTrend,
+}: {
+  courseTrend: MonitorStats['daily_trend'];
+  pdfTrend: PdfStats['daily_trend'];
+}) {
+  const dates = Array.from(new Set([
+    ...courseTrend.map(r => r.date ?? ''),
+    ...pdfTrend.map(r => r.date ?? ''),
+  ])).filter(Boolean).sort();
+
+  if (!dates.length) return <div className="flex h-28 items-center justify-center text-sm text-slate-600">尚無資料</div>;
+
+  const cMap = new Map(courseTrend.map(r => [r.date ?? '', r]));
+  const pMap = new Map(pdfTrend.map(r => [r.date ?? '', r]));
+
+  const courseCosts = dates.map(d => {
+    const r = cMap.get(d); if (!r) return 0;
+    return +((r.input * COURSE_INPUT_PRICE + r.output * COURSE_OUTPUT_PRICE).toFixed(6));
+  });
+  const pdfCosts = dates.map(d => {
+    const r = pMap.get(d); if (!r) return 0;
+    const ai = Math.max(0, (r.input || 0) - (r.router_input || 0));
+    const ao = Math.max(0, (r.output || 0) - (r.router_output || 0));
+    return +(
+      ai * PDF_AGENT_INPUT_PRICE + ao * PDF_AGENT_OUTPUT_PRICE +
+      (r.router_input || 0) * PDF_ROUTER_INPUT_PRICE + (r.router_output || 0) * PDF_ROUTER_OUTPUT_PRICE
+    ).toFixed(6);
+  });
+
+  const hasData = [...courseCosts, ...pdfCosts].some(v => v > 0);
+  if (!hasData) return <div className="flex h-28 items-center justify-center text-sm text-slate-600">尚無費用記錄（對話後開始統計）</div>;
+
+  const opt = {
+    backgroundColor: 'transparent', grid: { left: 64, right: 16, top: 12, bottom: 52 },
+    legend: { data: ['課程推薦', '大專生計畫'], bottom: 4, textStyle: { color: '#94a3b8', fontSize: 11 } },
+    tooltip: {
+      ...TIP, trigger: 'axis',
+      formatter: (p: TipParam[]) => {
+        const total = p.reduce((s, x) => s + (x.value as number), 0);
+        return [p[0].axisValue, ...p.map(x => `${x.marker}${x.seriesName}: <b>$${(x.value as number).toFixed(5)}</b>`), `合計: <b>$${total.toFixed(5)}</b>`].join('<br/>');
+      },
+    },
+    xAxis: { type: 'category', data: dates, ...AX },
+    yAxis: { type: 'value', ...AX, axisLabel: { ...AX.axisLabel, formatter: (v: number) => `$${v.toFixed(4)}` } },
+    series: [
+      { name: '課程推薦',   type: 'bar', stack: 'cost', data: courseCosts, barMaxWidth: 20, itemStyle: { color: '#6366f1', borderRadius: [0,0,0,0] } },
+      { name: '大專生計畫', type: 'bar', stack: 'cost', data: pdfCosts,    barMaxWidth: 20, itemStyle: { color: '#10b981', borderRadius: [2,2,0,0] } },
+    ],
+  };
+  return <ReactECharts option={opt} style={{ height: 200 }} />;
 }
 
 function LatencyDistBar({ lat }: { lat: LLMLatency }) {
@@ -293,8 +358,12 @@ function ActivityChart({ data }: { data:{date:string;sessions:number;turns:numbe
   return <ReactECharts option={opt} style={{height:160}}/>;
 }
 
-const COURSE_INPUT_PRICE  = 0.75 / 1_000_000;
-const COURSE_OUTPUT_PRICE = 4.50 / 1_000_000;
+const COURSE_INPUT_PRICE       = 0.75  / 1_000_000;
+const COURSE_OUTPUT_PRICE      = 4.50  / 1_000_000;
+const PDF_AGENT_INPUT_PRICE    = 2.50  / 1_000_000;
+const PDF_AGENT_OUTPUT_PRICE   = 10.00 / 1_000_000;
+const PDF_ROUTER_INPUT_PRICE   = 0.15  / 1_000_000;
+const PDF_ROUTER_OUTPUT_PRICE  = 0.60  / 1_000_000;
 
 function DailyCostChart({ daily_trend, isHourly }: {
   daily_trend: MonitorStats['daily_trend']; isHourly: boolean;
@@ -611,10 +680,28 @@ function OverviewTab({ stats, timeState, onTimeChange }: {
         </div>
       </div>
 
-      {/* Token 趨勢 */}
-      <Section title="課程推薦 Token 趨勢" sub={isHourly?'今日（按小時）':'按日'}>
-        <TokenChart daily_trend={stats.daily_trend} isHourly={isHourly}/>
-      </Section>
+      {/* Token 趨勢（各自 Y 軸，避免量級差距） */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <Section title="課程推薦 Token 趨勢" sub={isHourly?'今日（按小時）':'按日'}>
+          <TokenChart daily_trend={stats.daily_trend} isHourly={isHourly}/>
+        </Section>
+        <Section title="大專生計畫 Token 趨勢" sub={isHourly?'今日（按小時）':'按日'}>
+          {stats.pdf?.daily_trend
+            ? <PdfTokenChart daily_trend={stats.pdf.daily_trend} isHourly={isHourly}/>
+            : <div className="flex h-28 items-center justify-center text-sm text-slate-600">尚無對話資料</div>
+          }
+        </Section>
+      </div>
+
+      {/* 每日費用比較 */}
+      {!isHourly && (
+        <Section title="每日費用比較" sub="課程推薦 vs 大專生計畫（堆疊，USD）">
+          <CombinedCostChart
+            courseTrend={stats.daily_trend}
+            pdfTrend={stats.pdf?.daily_trend ?? []}
+          />
+        </Section>
+      )}
     </div>
   );
 }
@@ -1256,7 +1343,7 @@ export default function MonitorPage() {
 
   const [activeTab, setActiveTab] = useState<TabId>('overview');
   const [timeState, setTimeState] = useState<TimeRangeState>({
-    mode:'preset', preset:'7d', dayVal:todayISO(), weekVal:'', monthVal:'',
+    mode:'preset', preset:'7d', dayVal:todayISO(), weekVal:currentWeekISO(), monthVal:currentMonthISO(),
   });
   const [refreshSec, setRefreshSec]   = useState(60);
   const [countdown, setCountdown]     = useState(60);
@@ -1405,6 +1492,7 @@ export default function MonitorPage() {
         )}
 
         {/* ── Tab bar ── */}
+        <div className="sticky top-0 z-10 -mx-5 px-5 py-2 bg-slate-950/95 backdrop-blur-sm border-b border-slate-900">
         <div className="flex items-center gap-0.5 rounded-lg bg-slate-900 border border-slate-800 p-0.5 w-fit">
           {TABS.map(t => (
             <button key={t.id} type="button" onClick={() => setActiveTab(t.id)}
@@ -1414,6 +1502,7 @@ export default function MonitorPage() {
               {t.label}
             </button>
           ))}
+        </div>
         </div>
 
         {/* ── Tab content ── */}
