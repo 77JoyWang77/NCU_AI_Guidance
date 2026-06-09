@@ -209,57 +209,6 @@ function PdfTokenChart({ daily_trend, isHourly }: { daily_trend: PdfTrendRow[]; 
     : <div className="flex h-28 items-center justify-center text-sm text-slate-600">對話後開始記錄</div>;
 }
 
-function CombinedTokenChart({
-  courseTrend, pdfTrend, isHourly,
-}: {
-  courseTrend: MonitorStats['daily_trend'];
-  pdfTrend: PdfStats['daily_trend'];
-  isHourly: boolean;
-}) {
-  const xData = isHourly
-    ? Array.from({ length: 24 }, (_, i) => `${String(i).padStart(2, '0')}:00`)
-    : courseTrend.length ? courseTrend.map(r => r.date ?? '') : pdfTrend.map(r => r.date ?? '');
-
-  const cMap = new Map<string, { input: number; output: number }>();
-  const pMap = new Map<string, { input: number; output: number }>();
-  if (isHourly) {
-    courseTrend.forEach(r => cMap.set(`${String(r.hour ?? 0).padStart(2, '0')}:00`, { input: r.input, output: r.output }));
-    pdfTrend.forEach(r => pMap.set(`${String(r.hour ?? 0).padStart(2, '0')}:00`, { input: r.input || 0, output: r.output || 0 }));
-  } else {
-    courseTrend.forEach(r => cMap.set(r.date ?? '', { input: r.input, output: r.output }));
-    pdfTrend.forEach(r => pMap.set(r.date ?? '', { input: r.input || 0, output: r.output || 0 }));
-  }
-
-  const courseInp = xData.map(k => cMap.get(k)?.input  ?? 0);
-  const courseOut = xData.map(k => cMap.get(k)?.output ?? 0);
-  const pdfInp    = xData.map(k => pMap.get(k)?.input  ?? 0);
-  const pdfOut    = xData.map(k => pMap.get(k)?.output ?? 0);
-  const hasData   = [...courseInp, ...courseOut, ...pdfInp, ...pdfOut].some(v => v > 0);
-
-  const makeLine = (name: string, data: number[], color: string) => ({
-    name, type: 'line', smooth: true, data, symbol: 'none',
-    lineStyle: { color, width: 2 }, itemStyle: { color },
-    areaStyle: { color: { type: 'linear', x: 0, y: 0, x2: 0, y2: 1,
-      colorStops: [{ offset: 0, color: `${color}35` }, { offset: 1, color: `${color}05` }] } },
-  });
-  const opt = {
-    backgroundColor: 'transparent', grid: { left: 54, right: 16, top: 12, bottom: 52 },
-    legend: { data: ['課程 Input', '課程 Output', 'PDF Input', 'PDF Output'], bottom: 4, textStyle: { color: '#94a3b8', fontSize: 10 } },
-    tooltip: { ...TIP, trigger: 'axis', formatter: (p: TipParam[]) => p.map(x => `${x.marker}${x.seriesName}: <b>${fmt(x.value)}</b>`).join('<br/>') },
-    xAxis: { type: 'category', data: xData, boundaryGap: false, ...AX },
-    yAxis: { type: 'value', ...AX, axisLabel: { ...AX.axisLabel, formatter: fmt } },
-    series: [
-      makeLine('課程 Input',  courseInp, '#6366f1'),
-      makeLine('課程 Output', courseOut, '#0ea5e9'),
-      makeLine('PDF Input',   pdfInp,    '#10b981'),
-      makeLine('PDF Output',  pdfOut,    '#f59e0b'),
-    ],
-  };
-  return hasData
-    ? <ReactECharts option={opt} style={{ height: 210 }} />
-    : <div className="flex h-28 items-center justify-center text-sm text-slate-600">對話後開始記錄</div>;
-}
-
 function CombinedCostChart({
   courseTrend, pdfTrend,
 }: {
