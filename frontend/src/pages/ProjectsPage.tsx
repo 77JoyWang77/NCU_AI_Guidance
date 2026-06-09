@@ -49,6 +49,8 @@ export default function ProjectsPage() {
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
   const [inputMessage, setInputMessage] = useState('');
   const [chatLoading, setChatLoading] = useState(false);
+  const [activeAgent, setActiveAgent] = useState<{ name: string; label: string } | null>(null);
+  const [currentStage, setCurrentStage] = useState<string>('');
   const [threadId, setThreadId] = useState<string | undefined>(undefined);
   const [streamingText, setStreamingText] = useState('');
   const abortCtrlRef = useRef<AbortController | null>(null);
@@ -217,7 +219,16 @@ export default function ProjectsPage() {
         onSessionId: (id) => {
           setThreadId(id || undefined);
         },
+        onAgentStart: (agent, label) => {
+          setActiveAgent({ name: agent, label });
+          setCurrentStage('');
+        },
+        onStage: (text) => {
+          setCurrentStage(text);
+        },
         onDone: (sessionId, _cancelled, sources) => {
+          setActiveAgent(null);
+          setCurrentStage('');
           const finalText = streamingTextRef.current;
           streamingTextRef.current = '';
           setStreamingText('');
@@ -238,6 +249,8 @@ export default function ProjectsPage() {
           }
         },
         onError: (errMsg) => {
+          setActiveAgent(null);
+          setCurrentStage('');
           console.error('Project stream error:', errMsg);
           streamingTextRef.current = '';
           setStreamingText('');
@@ -681,6 +694,8 @@ export default function ProjectsPage() {
                   streamingText={streamingText}
                   inputMessage={inputMessage}
                   chatLoading={chatLoading}
+                  activeAgent={activeAgent}
+                  currentStage={currentStage}
                   onInputChange={setInputMessage}
                   onSubmit={handleSendMessage}
                   onCancel={handleCancelStream}
@@ -724,6 +739,8 @@ export default function ProjectsPage() {
               streamingText={streamingText}
               inputMessage={inputMessage}
               chatLoading={chatLoading}
+              activeAgent={activeAgent}
+              currentStage={currentStage}
               onInputChange={setInputMessage}
               onSubmit={handleSendMessage}
               onCancel={handleCancelStream}
@@ -876,6 +893,8 @@ function ChatPanel({
   streamingText,
   inputMessage,
   chatLoading,
+  activeAgent,
+  currentStage,
   onInputChange,
   onSubmit,
   onCancel,
@@ -894,6 +913,8 @@ function ChatPanel({
   streamingText: string;
   inputMessage: string;
   chatLoading: boolean;
+  activeAgent?: { name: string; label: string } | null;
+  currentStage?: string;
   onInputChange: (value: string) => void;
   onSubmit: (event: FormEvent) => void;
   onCancel: () => void;
@@ -1073,15 +1094,35 @@ function ChatPanel({
             </div>
           </div>
         ) : chatLoading ? (
-          <div className="flex justify-start">
-            <div className="rounded-lg bg-gray-100 p-4 text-gray-900">
-              <div className="flex space-x-2">
-                <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400"></div>
-                <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400 delay-100"></div>
-                <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400 delay-200"></div>
+          <>
+            {(activeAgent || currentStage) && (
+              <div className="flex justify-start">
+                <div className="rounded-2xl bg-gray-50 px-4 py-3 text-xs shadow-sm">
+                  {activeAgent && (
+                    <div className="mb-1.5 flex items-center gap-2 font-medium text-gray-700">
+                      <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-primary-500" />
+                      {activeAgent.label}
+                    </div>
+                  )}
+                  {currentStage && (
+                    <div className="flex items-center gap-2 text-gray-500">
+                      <span className="inline-block h-3 w-3 animate-spin rounded-full border-2 border-gray-200 border-t-primary-500" />
+                      {currentStage}
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+            <div className="flex justify-start">
+              <div className="rounded-lg bg-gray-100 p-4 text-gray-900">
+                <div className="flex space-x-2">
+                  <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400"></div>
+                  <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400 delay-100"></div>
+                  <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400 delay-200"></div>
+                </div>
               </div>
             </div>
-          </div>
+          </>
         ) : null}
 
         <div ref={bottomRef} />
