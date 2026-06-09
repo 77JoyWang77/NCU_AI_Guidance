@@ -291,6 +291,8 @@ export default function ProjectsPage() {
       setChatMessages((msgs) => [...msgs, { role: 'assistant', content: finalText + '…（已中止）' }]);
     }
     setChatLoading(false);
+    setActiveAgent(null);
+    setCurrentStage('');
   };
 
   const handleNewPdfConversation = () => {
@@ -300,6 +302,8 @@ export default function ProjectsPage() {
     streamingTextRef.current = '';
     setStreamingText('');
     setChatLoading(false);
+    setActiveAgent(null);
+    setCurrentStage('');
     setThreadId(undefined);
     setChatMessages([createWelcomeMessage(selectedProject)]);
   };
@@ -319,6 +323,8 @@ export default function ProjectsPage() {
       setChatMessages([createWelcomeMessage(selectedProject)]);
     } finally {
       setChatLoading(false);
+      setActiveAgent(null);
+      setCurrentStage('');
     }
   };
 
@@ -335,6 +341,8 @@ export default function ProjectsPage() {
       streamingTextRef.current = '';
       setStreamingText('');
       setChatLoading(false);
+      setActiveAgent(null);
+      setCurrentStage('');
       abortCtrlRef.current?.abort();
       abortCtrlRef.current = null;
       setThreadId(undefined);
@@ -348,6 +356,8 @@ export default function ProjectsPage() {
     streamingTextRef.current = '';
     setStreamingText('');
     setChatLoading(false);
+    setActiveAgent(null);
+    setCurrentStage('');
     setSelectedProject(project);
     setChatMessages([createWelcomeMessage(project)]);
     setInputMessage('');
