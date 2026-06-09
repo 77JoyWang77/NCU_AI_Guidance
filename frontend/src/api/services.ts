@@ -534,6 +534,8 @@ export const projectAPI = {
       onError: (msg: string) => void;
       onReplace?: (text: string) => void;
       onSessionId?: (sessionId: string) => void;
+      onAgentStart?: (agent: string, label: string) => void;
+      onStage?: (text: string) => void;
     },
     threadId?: string,
   ): AbortController {
@@ -574,9 +576,15 @@ export const projectAPI = {
               error?: string;
               replace?: string;
               sources?: string[];
+              type?: string;
+              agent?: string;
+              label?: string;
+              text?: string;
             };
             parseErrorStreak = 0;
             if (ev.heartbeat) return;
+            if (ev.type === 'agent_start') { handlers.onAgentStart?.(ev.agent ?? '', ev.label ?? ''); return; }
+            if (ev.type === 'stage')       { handlers.onStage?.(ev.text ?? ''); return; }
             if (ev.error) { handlers.onError(ev.error); aborted = true; return; }
             if (ev.replace !== undefined) { handlers.onReplace?.(ev.replace); return; }
             // session_id-only event (no token/done): front-load the session id so cancel works from turn 1.
