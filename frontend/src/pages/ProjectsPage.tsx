@@ -1104,36 +1104,25 @@ function ChatPanel({
             </div>
           </div>
         ) : chatLoading ? (
-          <>
-            {(activeAgent || currentStage) && (
-              <div className="flex justify-start">
-                <div className="rounded-2xl bg-gray-50 px-4 py-3 text-xs shadow-sm">
-                  {activeAgent && (
-                    <div className="mb-1.5 flex items-center gap-2 font-medium text-gray-700">
-                      <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-primary-500" />
-                      {activeAgent.label}
-                    </div>
-                  )}
-                  {currentStage && (
-                    <div className="flex items-center gap-2 text-gray-500">
-                      <span className="inline-block h-3 w-3 animate-spin rounded-full border-2 border-gray-200 border-t-primary-500" />
-                      {currentStage}
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
-            <div className="flex justify-start">
-              <div className="rounded-lg bg-gray-100 p-4 text-gray-900">
-                <div className="flex space-x-2">
-                  <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400"></div>
-                  <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400 delay-100"></div>
-                  <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400 delay-200"></div>
-                </div>
+          <div className="flex justify-start">
+            <div className="rounded-lg bg-gray-100 p-4 text-gray-900">
+              <div className="flex space-x-2">
+                <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400"></div>
+                <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400 delay-100"></div>
+                <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400 delay-200"></div>
               </div>
             </div>
-          </>
+          </div>
         ) : null}
+
+        {chatLoading && (activeAgent || currentStage) && (
+          <div className="ml-1 mt-1 flex items-center gap-1.5 text-xs text-gray-400">
+            <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-primary-500" />
+            {activeAgent?.label}
+            {activeAgent && currentStage && <span className="mx-0.5 text-gray-300">·</span>}
+            {currentStage}
+          </div>
+        )}
 
         <div ref={bottomRef} />
       </div>
