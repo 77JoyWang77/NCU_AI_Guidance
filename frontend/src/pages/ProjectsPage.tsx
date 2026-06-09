@@ -1379,12 +1379,6 @@ function ProjectSummary({
             </div>
           </div>
         )}
-        <SectionBlock title="閱讀建議">
-          建議先查看 PDF 原文掌握研究架構，再透過 AI 問答快速整理重點、釐清術語與延伸討論方向。
-        </SectionBlock>
-        <SectionBlock title="AI 對話提示">
-          你可以直接詢問研究方法、實作內容、成果特色，或請系統幫你整理摘要、列出重點與延伸問題。
-        </SectionBlock>
       </div>
     </>
   );
