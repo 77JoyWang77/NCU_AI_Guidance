@@ -95,6 +95,7 @@ data/sessions/
 data/test_results/
 data/processed/qdrant_data/
 data/processed/chroma_db_backup/
+data/processed/qdrant_snapshots/
 
 data/raw/courses/
 data/raw/graduate_courses/
