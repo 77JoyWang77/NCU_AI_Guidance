@@ -1,7 +1,7 @@
 # 人工智慧跨域應用專題 — 期末成果報告
 
 > 國立中央大學 選課助理暨大專研究計畫 AI 平台  
-> 報告日期：2026-06-03
+> 報告日期：2026-09-08
 
 ---
 
@@ -36,15 +36,15 @@
 
 | 資料類型 | 來源 | 規模 |
 |---------|------|------|
-| 大學部課程 | 中央大學課務系統 | **3,594 門** |
-| 研究所課程 | 中央大學課務系統 | **930 門** |
+| 大學部課程 | 中央大學課務系統 | **3,547 門** |
+| 研究所課程 | 中央大學課務系統 | **974 門** |
 | 教師領域專長 | 教育部大專校院一覽表 | **1,009 位** / 2,469 個專長詞彙 |
 | 應修科目表 | 中央大學教務處 | **28 系所** / 458 門必修課 |
 | 學分學程 | 中央大學課務資訊網 | **42 個學程** / 998 門課 |
-| 科系介紹 | Collego | **~40 個系所**（特色、意涵、生涯進路） |
+| 科系介紹 | Collego | **32 個系所**（特色、意涵、生涯進路） |
 | 大專研究計畫 PDF | 國科會 | **459 份**（104–114 學年） |
-| 知識圖譜 | NLP 萃取 + 結構化整合 | **15,186 節點 / 37,055 邊** |
-| NLP 萃取語意節點 | Qwen3-14B-AWQ 本地推理 | 概念 7,286 + 領域 3,594 + 技術 441 |
+| 知識圖譜 | NLP 萃取 + 結構化整合 | **27,447 節點 / 103,111 邊** |
+| NLP 萃取語意節點 | Qwen3-14B-AWQ 本地推理 | 概念 16,985 + 領域 2,760 + 技術 895 |
 | 修課資格規則 | 課務系統解析 | **7,282 條**（3,765 門課） |
 
 ---
@@ -108,7 +108,7 @@
 | 類別 | 技術 |
 |------|------|
 | Web 框架 | FastAPI + Uvicorn（非同步） |
-| LLM | Azure OpenAI：`gpt-4o`（主要）、`gpt-4o-mini`（路由/摘要） |
+| LLM | Azure OpenAI：`gpt-5.4-mini`（課程助理主力模型）、`gpt-4o`（PDF 計畫 Agent）、`gpt-4o-mini`（PDF 路由/摘要） |
 | Embedding | `text-embedding-3-large`（3072 維） |
 | 向量資料庫 | Qdrant（Hybrid：Dense + BM25 Sparse） |
 | 關聯式資料庫 | PostgreSQL（Neon Serverless） |
@@ -156,7 +156,7 @@
                     │  Neon        │ │  Qdrant   │ │  Azure    │
                     │  PostgreSQL  │ │  Cloud    │ │  OpenAI   │
                     │  ap-se-1     │ │  us-w-1   │ │  API      │
-                    │  對話記錄    │ │  8 個集合 │ │  GPT/Emb  │
+                    │  對話記錄    │ │  9 個集合 │ │  GPT/Emb  │
                     │  使用者分析  │ │           │ └───────────┘
                     │  LangGraph   │ └───────────┘
                     │  checkpoint  │
@@ -169,18 +169,19 @@
                     └───────────────────┘
 ```
 
-### Qdrant Collections（共 8 個，us-west-1）
+### Qdrant Collections（共 9 個，us-west-1）
 
 | Collection | 用途 | 向量數 |
 |-----------|------|------|
-| `ncu_courses_ug` | 大學部課程（課綱 + NLP 語意 + 教師專長） | **3,594** |
-| `ncu_courses_grad` | 研究所課程 | **930** |
+| `ncu_courses_ug` | 大學部課程（課綱 + NLP 語意 + 教師專長） | **3,547** |
+| `ncu_courses_grad` | 研究所課程 | **974** |
 | `ncu_teachers` | 教師資料（專長 + 開課） | **1,009** |
 | `ncu_departments` | 系所介紹（Collego 科系說明） | **32** |
 | `ncu_credit_programs` | 學分學程說明 | **42** |
-| `ncu_graph_nodes` | 知識圖譜節點（Query Expansion 種子；概念 / 技術 / 領域） | **24,948** |
-| `reports` | PDF 研究計畫 chunks | **14,819** |
+| `ncu_graph_nodes` | 知識圖譜節點（Query Expansion 種子；概念 / 技術 / 領域 / 核心能力 / 課程） | **25,071** |
+| `reports` | PDF 研究計畫 chunks | **14,815** |
 | `research_memories` | （預留，目前 0 筆） | 0 |
+| `ncu_query_embedding_cache` | 常用查詢的 embedding 快取（`course_info_service.py`，避免重複呼叫 Embedding API） | **2** |
 
 ### CI/CD 流程
 
@@ -238,27 +239,27 @@ PDF 多解析器攝入（pymupdf4llm → Azure DI → LlamaParse 依品質自動
 ### 6.1 知識圖譜結構
 
 ```
-圖規模：15,186 節點 / 37,055 邊
+圖規模：27,447 節點 / 103,111 邊
 
 節點類型：
-  Course（課程）        1,581
-  Instructor（教師）    1,023
-  Concept（知識概念）   7,286  ← NLP 萃取最大類
-  Technology（技術工具）  441
-  Field（研究領域）     3,594
-  Competency（核心能力）  224
-  Domain（課程大領域）    216
+  Concept（知識概念）  16,985  ← NLP 萃取最大類
+  Course（課程）        3,982
+  Field（研究領域）     2,760
+  Instructor（教師）    1,187
+  Technology（技術工具）  895
+  Competency（核心能力）  458
+  Domain（課程大領域）    359
   CreditProgram（學程）    42
-  其他機構結構節點        779  （College / Department / GraduationRule 等）
+  其他機構結構節點        779  （College / Department / GraduationRule 等，與期中相比未變）
 
 邊類型：
-  COVERS       課程 → 概念（9,515 條）
-  SIMILAR_TO   同義概念（5,268 條）
-  DEVELOPS     課程 → 核心能力（4,779 條）
-  COVERS_FIELD 課程 → 領域（3,911 條）
-  COURSE_EXPERT 教師擅長課程（3,705 條）
-  EXPERT_IN    教師官方研究領域（2,629 條）
-  其他         REQUIRES / TAUGHT_BY / 機構結構邊（7,248 條）
+  COVERS       課程 → 概念（23,527 條）
+  DEVELOPS     課程 → 核心能力（21,608 條）
+  SIMILAR_TO   同義概念（15,966 條）
+  COURSE_EXPERT 教師擅長課程（10,991 條）
+  COVERS_FIELD 課程 → 領域（10,694 條）
+  EXPERT_IN    教師官方研究領域（2,629 條，與期中相比未變）
+  其他         REQUIRES / TAUGHT_BY / IN_DOMAIN / 機構結構邊等（17,696 條）
 ```
 
 ### 6.2 兩階段建置
@@ -271,11 +272,11 @@ Phase 1（結構骨架）
     → 必修課程邊 + 學程邊
 
 Phase 2（語意補入，各步驟獨立）
-  2-a 教師全量補建   114_ulistteacher.csv → 1,023 個 Instructor + EXPERT_IN 邊
+  2-a 教師全量補建   114_ulistteacher.csv → 1,187 個 Instructor + EXPERT_IN 邊
   2-b NLP 語意節點   Agent 1/2 結果 → Field / Technology / Concept + 相關邊
   2-c 教授課程關聯   nlp_professor_links.json → COURSE_EXPERT 邊
   2-d 修課先修條件   course_eligibility.json → PREREQUISITE_OF 邊
-  2-f 同義概念邊     Jaro-Winkler ≥ 0.70 → 5,268 條 SIMILAR_TO 邊
+  2-f 同義概念邊     Jaro-Winkler ≥ 0.70 → 15,966 條 SIMILAR_TO 邊
 ```
 
 ### 6.3 PPR（Personalized PageRank）
@@ -305,7 +306,7 @@ Phase 2（語意補入，各步驟獨立）
        │
        ▼
 ┌─────────────────────────────────────┐
-│         LLM（gpt-4o）               │
+│         LLM（gpt-5.4-mini）         │
 │  System Prompt：選課助理角色 +      │
 │  工具選用指引 + 防幻覺規則          │
 │  多輪對話歷史（最多 4 輪）          │
@@ -451,7 +452,7 @@ PDF 原始檔
   │
   ▼
 Dense（text-embedding-3-large）+ Sparse BM25 embedding
-  → 上傳至 Qdrant Collection: reports（14,819 筆）
+  → 上傳至 Qdrant Collection: reports（14,815 筆）
   → pdf_documents 表寫入 filename / document_id
 ```
 
@@ -809,7 +810,7 @@ PDF 費用在 Python 層以 agent 與 router token 分開計算後加總，不�
 ### 期中已完成
 
 - 課程智能助理基礎架構（ReAct + 14 個工具）
-- 知識圖譜建構（15,186 節點）
+- 知識圖譜建構（27,447 節點）
 - PDF 問答系統（多 Agent + LangGraph）
 - 興趣量表（資料 Pipeline + 前端評測流程）
 - 雲端部署（Firebase + Render + Neon + Qdrant Cloud）
@@ -864,4 +865,4 @@ job_history          (id, job_id, doc_id, filename, job_type,
 
 ---
 
-*本報告由程式碼自動分析生成，對應版本：2026-06-03*
+*本報告由程式碼自動分析生成，對應版本：2026-09-08*
