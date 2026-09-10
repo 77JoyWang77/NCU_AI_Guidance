@@ -16523,18 +16523,9 @@
       },
       {
         "field": "統計學",
-        "relevance": "medium"
-      },
-      {
-        "field": "財務計量",
-        "relevance": "medium"
-      },
-      {
-        "field": "時間序列分析",
-        "relevance": "medium"
+        "relevance": "high"
       }
-    ],
-    "error": true
+    ]
   },
   "FM6016": {
     "domain_tags": [
@@ -18134,11 +18125,11 @@
   "CE2002": {
     "domain_tags": [
       {
-        "field": "演演算法設計與分析",
+        "field": "演算法設計與分析",
         "relevance": "high"
       },
       {
-        "field": "演演算法",
+        "field": "演算法",
         "relevance": "high"
       }
     ]
@@ -28123,27 +28114,14 @@
         "relevance": "medium"
       },
       {
-        "field": "中國文學批評",
-        "relevance": "medium"
-      },
-      {
-        "field": "域外漢學",
-        "relevance": "medium"
-      },
-      {
         "field": "古典詩學",
-        "relevance": "medium"
-      },
-      {
-        "field": "古典文學",
         "relevance": "medium"
       },
       {
         "field": "文學與文化研究",
         "relevance": "medium"
       }
-    ],
-    "error": true
+    ]
   },
   "CL8290": {
     "domain_tags": [
@@ -28412,8 +28390,7 @@
         "field": "媒體文化研究",
         "relevance": "medium"
       }
-    ],
-    "error": true
+    ]
   },
   "IL4409": {
     "domain_tags": [
@@ -31320,8 +31297,7 @@
         "field": "電磁波",
         "relevance": "high"
       }
-    ],
-    "error": true
+    ]
   },
   "PH1030": {
     "domain_tags": [
@@ -35181,19 +35157,18 @@
         "relevance": "high"
       },
       {
-        "field": "統計學",
-        "relevance": "high"
-      },
-      {
         "field": "財務計量",
         "relevance": "high"
       },
       {
-        "field": "時間序列分析",
-        "relevance": "high"
+        "field": "統計學",
+        "relevance": "low"
+      },
+      {
+        "field": "財務管理",
+        "relevance": "low"
       }
-    ],
-    "error": true
+    ]
   },
   "FM6012": {
     "domain_tags": [
@@ -42770,30 +42745,21 @@
       },
       {
         "field": "儒學",
-        "relevance": "high"
+        "relevance": "medium"
       },
       {
         "field": "宋明理學",
-        "relevance": "high"
+        "relevance": "medium"
       },
       {
         "field": "當代理學",
-        "relevance": "high"
+        "relevance": "medium"
       },
       {
         "field": "先秦哲學",
-        "relevance": "medium"
-      },
-      {
-        "field": "中國大乘佛學",
-        "relevance": "medium"
-      },
-      {
-        "field": "儒道佛會通",
-        "relevance": "medium"
+        "relevance": "high"
       }
-    ],
-    "error": true
+    ]
   },
   "PD5002": {
     "domain_tags": [
@@ -48080,8 +48046,16 @@
   "AG7081": {
     "domain_tags": [
       {
-        "field": "地下水汙染傳輸與整治",
+        "field": "地下水污染傳輸與整治",
         "relevance": "high"
+      },
+      {
+        "field": "污染傳輸",
+        "relevance": "medium"
+      },
+      {
+        "field": "地下水模擬",
+        "relevance": "medium"
       }
     ]
   },
@@ -50653,12 +50627,20 @@
   "ENA112": {
     "domain_tags": [
       {
-        "field": "多變數統計",
+        "field": "多變量統計",
         "relevance": "medium"
       },
       {
-        "field": "大資料分析技術",
+        "field": "大數據分析技術",
         "relevance": "medium"
+      },
+      {
+        "field": "風險評估",
+        "relevance": "low"
+      },
+      {
+        "field": "風險管理",
+        "relevance": "low"
       }
     ]
   },
@@ -51117,6 +51099,10 @@
         "relevance": "high"
       },
       {
+        "field": "漢語文哲學當代詮釋",
+        "relevance": "high"
+      },
+      {
         "field": "先秦哲學",
         "relevance": "medium"
       },
@@ -51125,11 +51111,14 @@
         "relevance": "medium"
       },
       {
-        "field": "漢語哲學當代詮釋",
-        "relevance": "high"
+        "field": "儒學",
+        "relevance": "medium"
+      },
+      {
+        "field": "儒家哲學",
+        "relevance": "medium"
       }
-    ],
-    "error": true
+    ]
   },
   "PD6310": {
     "domain_tags": [
@@ -51275,10 +51264,9 @@
       },
       {
         "field": "醫學哲學",
-        "relevance": "high"
+        "relevance": "medium"
       }
-    ],
-    "error": true
+    ]
   },
   "PDA122": {
     "domain_tags": [
@@ -51460,6 +51448,10 @@
       },
       {
         "field": "中國現代史研究",
+        "relevance": "high"
+      },
+      {
+        "field": "環境史",
         "relevance": "medium"
       },
       {
@@ -51467,15 +51459,18 @@
         "relevance": "medium"
       },
       {
-        "field": "區域研究",
+        "field": "明清社會文化史",
+        "relevance": "medium"
+      },
+      {
+        "field": "當代西方史學理論",
         "relevance": "medium"
       },
       {
         "field": "兩岸關係史研究",
         "relevance": "medium"
       }
-    ],
-    "error": true
+    ]
   },
   "HI5082": {
     "domain_tags": [
@@ -54830,8 +54825,12 @@
   "NLA028": {
     "domain_tags": [
       {
-        "field": "資料視覺化探索與教育大資料分析",
+        "field": "資料視覺化探索與教育大數據分析",
         "relevance": "high"
+      },
+      {
+        "field": "人機互動",
+        "relevance": "medium"
       }
     ]
   },

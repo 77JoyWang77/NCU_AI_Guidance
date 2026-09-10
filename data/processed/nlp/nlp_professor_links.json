@@ -71498,6 +71498,20 @@
         "陳瑞昇"
       ],
       "relevance": "high"
+    },
+    {
+      "field": "污染傳輸",
+      "professors": [
+        "陳瑞昇"
+      ],
+      "relevance": "medium"
+    },
+    {
+      "field": "地下水模擬",
+      "professors": [
+        "倪春發"
+      ],
+      "relevance": "medium"
     }
   ],
   "AG7083": [
@@ -74807,6 +74821,20 @@
         "余泰毅"
       ],
       "relevance": "medium"
+    },
+    {
+      "field": "風險評估",
+      "professors": [
+        "余泰毅"
+      ],
+      "relevance": "low"
+    },
+    {
+      "field": "風險管理",
+      "professors": [
+        "于樹偉"
+      ],
+      "relevance": "low"
     }
   ],
   "ER5004": [
@@ -79760,6 +79788,13 @@
         "洪暉鈞"
       ],
       "relevance": "high"
+    },
+    {
+      "field": "人機互動",
+      "professors": [
+        "陳攸華"
+      ],
+      "relevance": "medium"
     }
   ],
   "NLA040": [
@@ -79914,6 +79949,276 @@
       "field": "文化研究",
       "professors": [
         "王俐容"
+      ],
+      "relevance": "medium"
+    }
+  ],
+  "FM6005": [
+    {
+      "field": "經濟與財務計量方法",
+      "professors": [
+        "葉錦徽"
+      ],
+      "relevance": "high"
+    },
+    {
+      "field": "計量經濟",
+      "professors": [
+        "周賓凰"
+      ],
+      "relevance": "high"
+    },
+    {
+      "field": "統計學",
+      "professors": [
+        "朱珊瑩"
+      ],
+      "relevance": "high"
+    }
+  ],
+  "CL8288": [
+    {
+      "field": "中國現當代文學研究",
+      "professors": [
+        "宋玉雯"
+      ],
+      "relevance": "high"
+    },
+    {
+      "field": "比較文學方法論",
+      "professors": [
+        "呂文翠"
+      ],
+      "relevance": "medium"
+    },
+    {
+      "field": "古典詩學",
+      "professors": [
+        "羅健祐"
+      ],
+      "relevance": "medium"
+    },
+    {
+      "field": "文學與文化研究",
+      "professors": [
+        "宋玉雯"
+      ],
+      "relevance": "medium"
+    }
+  ],
+  "IL4402": [
+    {
+      "field": "電影研究",
+      "professors": [
+        "林文淇"
+      ],
+      "relevance": "high"
+    },
+    {
+      "field": "媒體文化研究",
+      "professors": [
+        "莎瓏．伊斯哈罕布德"
+      ],
+      "relevance": "medium"
+    }
+  ],
+  "FM6006": [
+    {
+      "field": "經濟與財務計量方法",
+      "professors": [
+        "葉錦徽"
+      ],
+      "relevance": "high"
+    },
+    {
+      "field": "計量經濟",
+      "professors": [
+        "周賓凰"
+      ],
+      "relevance": "high"
+    },
+    {
+      "field": "財務計量",
+      "professors": [
+        "高櫻芬"
+      ],
+      "relevance": "high"
+    },
+    {
+      "field": "統計學",
+      "professors": [
+        "朱珊瑩"
+      ],
+      "relevance": "low"
+    },
+    {
+      "field": "財務管理",
+      "professors": [
+        "林基財",
+        "賴弘能"
+      ],
+      "relevance": "low"
+    }
+  ],
+  "PD2304": [
+    {
+      "field": "中國哲學史",
+      "professors": [
+        "黃崇修"
+      ],
+      "relevance": "high"
+    },
+    {
+      "field": "儒學",
+      "professors": [
+        "楊祖漢"
+      ],
+      "relevance": "medium"
+    },
+    {
+      "field": "宋明理學",
+      "professors": [
+        "黃崇修"
+      ],
+      "relevance": "medium"
+    },
+    {
+      "field": "先秦哲學",
+      "professors": [
+        "黃崇修"
+      ],
+      "relevance": "high"
+    }
+  ],
+  "PD6308": [
+    {
+      "field": "中國哲學",
+      "professors": [
+        "蔡耀明"
+      ],
+      "relevance": "high"
+    },
+    {
+      "field": "中國哲學史",
+      "professors": [
+        "黃崇修"
+      ],
+      "relevance": "high"
+    },
+    {
+      "field": "宋明理學",
+      "professors": [
+        "黃崇修"
+      ],
+      "relevance": "high"
+    },
+    {
+      "field": "先秦哲學",
+      "professors": [
+        "黃崇修"
+      ],
+      "relevance": "medium"
+    },
+    {
+      "field": "醫學哲學",
+      "professors": [
+        "黃崇修"
+      ],
+      "relevance": "medium"
+    },
+    {
+      "field": "儒學",
+      "professors": [
+        "楊祖漢"
+      ],
+      "relevance": "medium"
+    },
+    {
+      "field": "儒家哲學",
+      "professors": [
+        "蘇子媖"
+      ],
+      "relevance": "medium"
+    }
+  ],
+  "PDA074": [
+    {
+      "field": "中國哲學",
+      "professors": [
+        "蔡耀明"
+      ],
+      "relevance": "high"
+    },
+    {
+      "field": "中國哲學史",
+      "professors": [
+        "黃崇修"
+      ],
+      "relevance": "high"
+    },
+    {
+      "field": "宋明理學",
+      "professors": [
+        "黃崇修"
+      ],
+      "relevance": "high"
+    },
+    {
+      "field": "先秦哲學",
+      "professors": [
+        "黃崇修"
+      ],
+      "relevance": "medium"
+    },
+    {
+      "field": "醫學哲學",
+      "professors": [
+        "黃崇修"
+      ],
+      "relevance": "medium"
+    }
+  ],
+  "HI5005": [
+    {
+      "field": "中國現代史研究",
+      "professors": [
+        "賴澤涵"
+      ],
+      "relevance": "high"
+    },
+    {
+      "field": "環境史",
+      "professors": [
+        "蔣竹山"
+      ],
+      "relevance": "medium"
+    },
+    {
+      "field": "經濟史",
+      "professors": [
+        "陳家豪"
+      ],
+      "relevance": "medium"
+    },
+    {
+      "field": "明清社會文化史",
+      "professors": [
+        "李孝悌",
+        "蔣竹山"
+      ],
+      "relevance": "medium"
+    },
+    {
+      "field": "當代西方史學理論",
+      "professors": [
+        "蔣竹山"
+      ],
+      "relevance": "medium"
+    },
+    {
+      "field": "兩岸關係史研究",
+      "professors": [
+        "齊茂吉"
       ],
       "relevance": "medium"
     }

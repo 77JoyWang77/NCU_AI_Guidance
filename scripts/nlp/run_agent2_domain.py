@@ -27,6 +27,12 @@ from pathlib import Path
 
 from openai import OpenAI
 
+try:
+    import opencc
+    _S2T = opencc.OpenCC("s2tw")
+except ImportError:
+    _S2T = None
+
 BASE          = Path(__file__).parent.parent.parent
 RAW_DIRS      = [
     BASE / "data" / "raw" / "courses",
@@ -195,7 +201,12 @@ def match_domains(client: OpenAI, course: dict, vocab: list[str],
         raw = re.sub(r"^```[a-z]*\n?", "", raw)
         raw = re.sub(r"\n?```$", "", raw)
         parsed = json.loads(raw)
-        return parsed.get("domain_tags", [])
+        tags = parsed.get("domain_tags", [])
+        if _S2T is not None:
+            for tag in tags:
+                if "field" in tag:
+                    tag["field"] = _S2T.convert(tag["field"])
+        return tags
     except json.JSONDecodeError as e:
         print(f"  JSON 解析失敗：{e}，raw={repr(raw[:100])}")
         return "error"
