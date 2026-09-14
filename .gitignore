@@ -93,7 +93,7 @@ data/raw/課程地圖/
 data/raw/projects/
 data/sessions/
 data/test_results/
-data/processed/qdrant_data/
+data/processed/qdrant*/
 data/processed/chroma_db_backup/
 data/processed/qdrant_snapshots/
 
